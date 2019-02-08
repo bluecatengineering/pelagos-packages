@@ -1,6 +1,11 @@
 export * from './Colors';
 export {default as Button} from './components/Button';
+export {default as CheckBox} from './components/CheckBox';
+export {default as IconButton} from './components/IconButton';
 export {default as Overlay} from './components/Overlay';
 export {default as OverlayTrigger} from './components/OverlayTrigger';
+export {default as RadioButton} from './components/RadioButton';
+export {default as SvgIcon} from './components/SvgIcon';
 export {default as Toggle} from './components/Toggle';
+export {default as ToolbarButton} from './components/ToolbarButton';
 export {default as Tooltip} from './components/Tooltip';

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SvgIcon rendering renders expected elements 1`] = `
+<svg
+  className="SvgIcon SvgIcon--spin TestClass"
+  style={
+    Object {
+      "width": "0.5em",
+    }
+  }
+  viewBox="0 0 10 20"
+>
+  <path
+    d="test path"
+    fill="currentColor"
+  />
+</svg>
+`;
+
+exports[`SvgIcon rendering renders expected elements when optional properties are not set 1`] = `
+<svg
+  className="SvgIcon"
+  style={
+    Object {
+      "width": "0.5em",
+    }
+  }
+  viewBox="0 0 10 20"
+>
+  <path
+    d="test path"
+    fill="currentColor"
+  />
+</svg>
+`;

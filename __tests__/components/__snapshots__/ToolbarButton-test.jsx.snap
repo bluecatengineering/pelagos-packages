@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarButton rendering renders the expected elements 1`] = `
+<IconButton
+  ariaLabel="Test"
+  className="ToolbarButton TestClass"
+  componentId="test"
+  disabled={true}
+  icon={Object {}}
+  tooltipText="This is a test"
+/>
+`;
+
+exports[`ToolbarButton rendering renders the expected elements if active is true 1`] = `
+<IconButton
+  ariaLabel="Test"
+  className="ToolbarButton ToolbarButton--active"
+  componentId="test"
+  icon={Object {}}
+  tooltipText="This is a test"
+/>
+`;
+
+exports[`ToolbarButton rendering renders the expected elements when className is not set 1`] = `
+<IconButton
+  ariaLabel="Test"
+  className="ToolbarButton"
+  componentId="test"
+  disabled={true}
+  icon={Object {}}
+  tooltipText="This is a test"
+/>
+`;

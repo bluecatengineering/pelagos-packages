@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButton rendering renders the expected elements 1`] = `
+<OverlayTrigger
+  overlay={
+    <Tooltip
+      id="tooltip-test"
+    >
+      This is a test
+    </Tooltip>
+  }
+  placement="right"
+>
+  <span
+    aria-label="Test"
+    className="IconButton TestClass"
+    data-bcn-id="btn-test"
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <SvgIcon
+      icon={Object {}}
+    />
+  </span>
+</OverlayTrigger>
+`;
+
+exports[`IconButton rendering renders the expected elements if disabled is true 1`] = `
+<OverlayTrigger
+  overlay={
+    <Tooltip
+      id="tooltip-test"
+    >
+      This is a test
+    </Tooltip>
+  }
+  placement="right"
+>
+  <span
+    aria-disabled={true}
+    aria-label="Test"
+    className="IconButton"
+    data-bcn-id="btn-test"
+    onClick={null}
+    onKeyDown={null}
+    role="button"
+    tabIndex={-1}
+  >
+    <SvgIcon
+      icon={Object {}}
+    />
+  </span>
+</OverlayTrigger>
+`;
+
+exports[`IconButton rendering renders the expected elements if large is true 1`] = `
+<OverlayTrigger
+  overlay={
+    <Tooltip
+      id="tooltip-test"
+    >
+      This is a test
+    </Tooltip>
+  }
+  placement="left"
+>
+  <span
+    aria-label="Test"
+    className="IconButton IconButton--large"
+    data-bcn-id="btn-test"
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <SvgIcon
+      icon={Object {}}
+    />
+  </span>
+</OverlayTrigger>
+`;
+
+exports[`IconButton rendering renders the expected elements when className is not set 1`] = `
+<OverlayTrigger
+  overlay={
+    <Tooltip
+      id="tooltip-test"
+    >
+      This is a test
+    </Tooltip>
+  }
+  placement="right"
+>
+  <span
+    aria-label="Test"
+    className="IconButton"
+    data-bcn-id="btn-test"
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <SvgIcon
+      icon={Object {}}
+    />
+  </span>
+</OverlayTrigger>
+`;
+
+exports[`IconButton rendering renders the expected elements when tooltipText is not set 1`] = `
+<span
+  aria-label="Test"
+  className="IconButton TestClass"
+  data-bcn-id="btn-test"
+  onKeyDown={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <SvgIcon
+    icon={Object {}}
+  />
+</span>
+`;

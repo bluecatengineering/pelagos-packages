@@ -1,0 +1,66 @@
+@import '../colors';
+
+.CheckBox {
+	display: inline-block;
+	position: relative;
+	padding-left: 22px;
+	margin: 2px;
+	cursor: pointer;
+	outline: none;
+}
+
+.CheckBox::before,
+.CheckBox::after {
+	display: block;
+	position: absolute;
+	content: '';
+}
+
+.CheckBox::before {
+	top: 1px;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	border: 2px solid @slate;
+	border-radius: 2px;
+}
+.CheckBox[aria-checked='true']::before {
+	background-color: @ocean;
+	border-color: @ocean;
+}
+
+.CheckBox--error::before {
+	border-color: @burnt;
+}
+.CheckBox--error[aria-checked='true']::before {
+	background-color: @burnt;
+	border-color: @burnt;
+}
+
+.CheckBox:focus::before {
+	box-shadow: 0 0 0 2px @bondi;
+}
+
+.CheckBox[aria-checked='true']::after {
+	top: 2px;
+	left: 6px;
+	width: 7px;
+	height: 13px;
+	border: solid @white;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+}
+
+.CheckBox[aria-disabled='true'] {
+	color: @battleship;
+	cursor: default;
+}
+.CheckBox[aria-disabled='true']::before {
+	border-color: @battleship;
+}
+.CheckBox[aria-disabled='true'][aria-checked='true']::before {
+	background-color: @battleship;
+}
+.CheckBox[aria-disabled='true']::after {
+	border-color: @silver;
+}

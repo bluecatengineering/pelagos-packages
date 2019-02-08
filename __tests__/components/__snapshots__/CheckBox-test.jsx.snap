@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox rendering renders expected elements 1`] = `
+<span
+  aria-checked={true}
+  className="CheckBox TestClass"
+  data-bcn-id="test"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="checkbox"
+  tabIndex={0}
+>
+  Test
+</span>
+`;
+
+exports[`CheckBox rendering renders expected elements when disabled is true 1`] = `
+<span
+  aria-checked={true}
+  aria-disabled={true}
+  className="CheckBox TestClass"
+  data-bcn-id="test"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="checkbox"
+  tabIndex={-1}
+>
+  Test
+</span>
+`;
+
+exports[`CheckBox rendering renders expected elements when error is true 1`] = `
+<span
+  aria-checked={true}
+  className="CheckBox TestClass CheckBox--error"
+  data-bcn-id="test"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="checkbox"
+  tabIndex={0}
+>
+  Test
+</span>
+`;

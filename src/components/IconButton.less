@@ -1,0 +1,30 @@
+@import '../colors';
+
+.IconButton {
+	display: inline-block;
+	font-size: 19px;
+	cursor: pointer;
+	padding: 2px;
+	color: @azure;
+	transition: color 0.3s ease-out;
+	vertical-align: -4px;
+}
+
+.IconButton--large {
+	font-size: 31px;
+}
+
+.IconButton:hover {
+	color: @sea;
+}
+
+.IconButton:active {
+	color: @ocean;
+}
+
+.IconButton[aria-disabled='true'],
+.IconButton[aria-disabled='true']:hover,
+.IconButton[aria-disabled='true']:active {
+	color: @battleship;
+	cursor: not-allowed;
+}

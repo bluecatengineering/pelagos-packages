@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioButton rendering renders expected elements 1`] = `
+<span
+  aria-checked={true}
+  className="RadioButton TestClass"
+  data-bcn-id="test"
+  onClick={[MockFunction]}
+  onKeyDown={[Function]}
+  role="radio"
+  tabIndex="0"
+>
+  Test
+</span>
+`;
+
+exports[`RadioButton rendering renders expected elements when error is true 1`] = `
+<span
+  aria-checked={true}
+  className="RadioButton TestClass RadioButton--error"
+  data-bcn-id="test"
+  onClick={[MockFunction]}
+  onKeyDown={[Function]}
+  role="radio"
+  tabIndex="0"
+>
+  Test
+</span>
+`;
