@@ -1,0 +1,12 @@
+.eslintrc.yml
+.prettierrc
+babel.config.js
+
+.idea/
+__mocks__/
+__tests__/
+build/
+coverage/
+jest_helpers/
+scripts/
+src/

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle rendering renders expected elements 1`] = `
+<span
+  aria-checked={true}
+  aria-label="Test"
+  className="Toggle TestClass"
+  data-bcn-id="test"
+  onClick={[MockFunction]}
+  onKeyDown={[Function]}
+  role="checkbox"
+  tabIndex={0}
+/>
+`;
+
+exports[`Toggle rendering renders expected elements when disabled is true 1`] = `
+<span
+  aria-checked={true}
+  aria-disabled={true}
+  aria-label="Test"
+  className="Toggle TestClass"
+  data-bcn-id="test"
+  onClick={[MockFunction]}
+  onKeyDown={[Function]}
+  role="checkbox"
+  tabIndex={-1}
+/>
+`;

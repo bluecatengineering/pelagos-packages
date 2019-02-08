@@ -1,0 +1,83 @@
+@import '../colors';
+@import '../fonts';
+
+.Button {
+	cursor: pointer;
+	white-space: nowrap;
+	color: @azure;
+	border: 2px solid @azure;
+	border-radius: 3px;
+	text-align: center;
+	background-color: transparent;
+	transition: color 0.3s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out;
+}
+
+.Button--small {
+	@font-button-small();
+	padding: 3px 10px;
+}
+
+.Button--medium {
+	@font-button-medium();
+	padding: 7px 20px;
+}
+
+.Button--large {
+	@font-button-large();
+	padding: 10px 40px;
+}
+
+.Button--active {
+	color: @white;
+	background-color: @azure;
+}
+
+.Button:hover {
+	border-color: @sea;
+}
+
+.Button--active:hover {
+	background-color: @sea;
+}
+
+.Button:active {
+	color: @oxford;
+	background-color: @ocean;
+	border-color: @ocean;
+}
+
+.Button:focus {
+	outline: 5px auto @bondi;
+	outline-offset: -2px;
+}
+
+.Button[aria-disabled='true'] {
+	color: @battleship;
+	border-color: @battleship;
+}
+
+.Dialog {
+	.Button {
+		color: @ocean;
+		border-color: @ocean;
+	}
+
+	.Button--active {
+		color: @white;
+		background-color: @ocean;
+	}
+
+	.Button:hover {
+		border-color: @cerulean;
+	}
+
+	.Button--active:hover {
+		background-color: @cerulean;
+	}
+
+	.Button:active {
+		color: @black;
+		background-color: @midnight;
+		border-color: @midnight;
+	}
+}

@@ -1,0 +1,57 @@
+@import '../colors';
+
+.Toggle {
+	display: inline-block;
+	position: relative;
+	width: 43px;
+	height: 20px;
+	cursor: pointer;
+	outline: none;
+}
+
+.Toggle[aria-disabled='true'] {
+	cursor: not-allowed;
+	opacity: 0.5;
+	transition: opacity 0.25s;
+}
+
+.Toggle::before,
+.Toggle::after {
+	display: block;
+	position: absolute;
+	content: '';
+}
+
+.Toggle::before {
+	top: 3px;
+	left: 2px;
+	width: 41px;
+	height: 14px;
+	padding: 0;
+	border-radius: 30px;
+	background-color: @prussian;
+	transition: all 0.2s ease;
+}
+.Toggle[aria-checked='true']::before {
+	background-color: @dartmouth;
+}
+
+.Toggle::after {
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: @slate;
+	transition: all 0.25s ease-out, box-shadow 0s;
+}
+.Toggle[aria-checked='true']::after {
+	background-color: @emerald;
+	left: 24px;
+}
+.Toggle:focus:not([aria-disabled='true'])::after {
+	box-shadow: 0 0 0 2px @bondi;
+}
+.Toggle:active:not([aria-disabled='true'])::after {
+	box-shadow: 0 0 3px 3px @azure;
+}

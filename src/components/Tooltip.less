@@ -1,0 +1,73 @@
+@import '../colors';
+@import '../fonts';
+
+//** Tooltip max width
+@tooltip-max-width: 400px;
+//** Tooltip background color
+@tooltip-bg: @black;
+//** Tooltip arrow width
+@tooltip-arrow-width: 5px;
+//** Tooltip arrow color
+@tooltip-arrow-color: @tooltip-bg;
+
+.Tooltip {
+	position: absolute;
+	z-index: 5900;
+}
+
+.Tooltip--left {
+	margin-left: -3px;
+	padding-right: @tooltip-arrow-width;
+}
+.Tooltip--right {
+	margin-left: 3px;
+	padding-left: @tooltip-arrow-width;
+}
+.Tooltip--top {
+	margin-top: -3px;
+	padding-bottom: @tooltip-arrow-width;
+}
+.Tooltip--bottom {
+	margin-top: 3px;
+	padding-top: @tooltip-arrow-width;
+}
+
+.Tooltip__body {
+	@font-body-small();
+	background-color: @tooltip-bg;
+	max-width: @tooltip-max-width;
+	padding: 6px 12px;
+	border-radius: 4px;
+	white-space: pre-line;
+}
+
+.Tooltip__arrow {
+	position: absolute;
+	border-color: transparent;
+	border-style: solid;
+}
+
+.Tooltip--left > .Tooltip__arrow {
+	right: 0;
+	margin-top: -@tooltip-arrow-width;
+	border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
+	border-left-color: @tooltip-arrow-color;
+}
+.Tooltip--right > .Tooltip__arrow {
+	left: 0;
+	margin-top: -@tooltip-arrow-width;
+	border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
+	border-right-color: @tooltip-arrow-color;
+}
+.Tooltip--top > .Tooltip__arrow {
+	bottom: 0;
+	margin-left: -@tooltip-arrow-width;
+	border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+	border-top-color: @tooltip-arrow-color;
+}
+.Tooltip--bottom > .Tooltip__arrow {
+	top: 0;
+	margin-left: -@tooltip-arrow-width;
+	border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+	border-bottom-color: @tooltip-arrow-color;
+}

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Overlay rendering renders expected elements 1`] = `
+<UNDEFINED
+  containerInfo={<body />}
+>
+  <Test
+    arrowOffsetLeft={null}
+    arrowOffsetTop={null}
+    className="Overlay"
+    placement="left"
+    positionLeft={0}
+    positionTop={0}
+  />
+</UNDEFINED>
+`;
+
+exports[`Overlay rendering renders expected elements when show is false 1`] = `null`;
+
+exports[`Overlay rendering renders expected elements when the child has className 1`] = `
+<UNDEFINED
+  containerInfo={<body />}
+>
+  <Test
+    arrowOffsetLeft={null}
+    arrowOffsetTop={null}
+    className="TestClass Overlay"
+    placement="left"
+    positionLeft={0}
+    positionTop={0}
+  />
+</UNDEFINED>
+`;
