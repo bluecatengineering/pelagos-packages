@@ -1,0 +1,43 @@
+@import 'colors';
+@import 'fonts';
+
+input,
+button,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
+:-ms-input-placeholder {
+	@font-field-hint();
+}
+
+::placeholder {
+	@font-field-hint();
+}
+
+input[disabled] {
+	color: @battleship;
+	border-color: @battleship;
+}
+input[disabled]:-ms-input-placeholder {
+	color: @battleship;
+}
+input[disabled]::placeholder {
+	color: @battleship;
+}
+
+@media print {
+	:-ms-input-placeholder {
+		color: @battleship;
+	}
+
+	::placeholder {
+		color: @battleship;
+	}
+
+	input[disabled] {
+		border-color: transparent;
+	}
+}

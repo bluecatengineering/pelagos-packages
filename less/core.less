@@ -1,0 +1,50 @@
+@import 'colors';
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+a {
+	color: @azure;
+	text-decoration: none;
+	cursor: pointer;
+	transition: color 0.3s ease-out;
+
+	&:hover,
+	&:focus {
+		color: @sea;
+	}
+
+	&:active {
+		color: @ocean;
+	}
+}
+
+ol {
+	margin: 4px 0;
+	padding-left: 1em;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+@keyframes highlight-fade {
+	0% {
+		background: @azure;
+	}
+}
+
+@media print {
+	html {
+		height: auto;
+		color: @black;
+		background-color: @white;
+	}
+
+	a {
+		color: @black;
+	}
+}

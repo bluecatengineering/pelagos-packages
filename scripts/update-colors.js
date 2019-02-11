@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const IN = 'src/colors.less';
+const IN = 'less/colors.less';
 const OUT = 'src/Colors.js';
 
 const HEADER = [

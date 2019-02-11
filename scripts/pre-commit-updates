@@ -1,2 +1,2 @@
 #! /bin/sh
-git diff --quiet --cached src/colors.less || (npm run update-colors && git add src/Colors.js)
+git diff --quiet --cached less/colors.less || (npm run update-colors && git add src/Colors.js)
