@@ -1,4 +1,5 @@
-@import '../../../styles/variables';
+@import '../../less/colors';
+@import '../../less/fonts';
 
 .DataTable {
 	display: flex;
@@ -55,10 +56,10 @@
 }
 
 .DataTable__row:nth-child(even) {
-	background-color: @table-bg-accent;
+	background-color: fade(@prussian, 50%);
 }
 .DataTable__row:hover {
-	background-color: @table-bg-hover;
+	background-color: @fiord;
 }
 .DataTable__row--selected,
 .DataTable__row--selected:nth-child(even),
