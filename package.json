@@ -1,6 +1,6 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "UI components",
   "license": "ISC",
   "main": "lib",
@@ -21,10 +21,13 @@
     "react"
   ],
   "peerDependencies": {
+    "@bluecat/helpers": ">= 0",
+    "@fortawesome/free-solid-svg-icons": ">= 5",
     "lodash-es": ">= 4",
     "prop-types": ">= 15",
     "react": ">= 16",
-    "react-dom": ">= 16"
+    "react-dom": ">= 16",
+    "stable": ">= 0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -34,6 +37,8 @@
     "@babel/preset-react": "^7.0.0",
     "@bluecat/eslint-config-react": "^0.1.2",
     "@bluecat/git-checks": "^0.1.0",
+    "@bluecat/helpers": "0.0.5",
+    "@fortawesome/free-solid-svg-icons": "^5.7.1",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "eslint": "^5.13.0",
@@ -45,12 +50,16 @@
     "prettier": "^1.16.1",
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "stable": "^0.1.8"
   },
   "jest": {
     "automock": true,
     "clearMocks": true,
     "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "/jest_helpers/"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 98,

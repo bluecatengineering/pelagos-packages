@@ -1,0 +1,131 @@
+@import '../../../styles/variables';
+
+.DataTable {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	overflow: hidden;
+	position: relative;
+	margin-top: 10px;
+}
+
+.DataTable__table {
+	width: 99%;
+}
+
+.DataTable__header {
+	flex: none;
+	.no-hiddenscroll & {
+		padding-right: 17px;
+	}
+}
+
+.DataTable__printHeader {
+	display: none;
+}
+
+.DataTable__th {
+	@font-table-title();
+	text-align: left;
+	vertical-align: bottom;
+	padding: 8px;
+	max-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.DataTable__sort {
+	display: inline-block;
+	margin-left: 12px;
+	color: @battleship;
+	font-size: 14px;
+	vertical-align: -2px;
+	cursor: pointer;
+}
+.DataTable__sort--active {
+	color: @azure;
+}
+
+.DataTable__body {
+	margin-top: 10px;
+	flex: 1;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.DataTable__row:nth-child(even) {
+	background-color: @table-bg-accent;
+}
+.DataTable__row:hover {
+	background-color: @table-bg-hover;
+}
+.DataTable__row--selected,
+.DataTable__row--selected:nth-child(even),
+.DataTable__row--selected:hover {
+	background-color: @bondi;
+}
+
+.DataTable__row--highlight {
+	animation: highlight-fade 2s ease-out;
+}
+
+.DataTable__row--clickable {
+	cursor: pointer;
+}
+
+.DataTable__td {
+	vertical-align: middle;
+	padding: 2px 8px;
+	max-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.DataTable__message {
+	@font-empty-msg();
+	white-space: pre-line;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.DataTable__spinner {
+	display: flex;
+	flex-direction: column;
+	margin: 7px 0;
+	align-items: center;
+}
+
+.DataTable__loadingSpinner {
+	font-size: 5rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+@media print {
+	.DataTable__header {
+		display: none;
+	}
+
+	.DataTable__printHeader {
+		display: table-header-group;
+	}
+
+	.DataTable__row:nth-child(even) {
+		background-color: transparent;
+	}
+
+	.DataTable__th {
+		color: @black;
+	}
+
+	.DataTable__sortable:after {
+		display: none;
+	}
+}
