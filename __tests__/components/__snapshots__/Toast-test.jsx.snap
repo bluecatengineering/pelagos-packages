@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast rendering renders all messages 1`] = `
+<div
+  className="Toast"
+>
+  <TransitionGroup
+    childFactory={[Function]}
+    component="div"
+  >
+    <CSSTransition
+      classNames="swing"
+      timeout={
+        Object {
+          "enter": 500,
+          "exit": 300,
+        }
+      }
+    >
+      <ToastMessage
+        message={
+          Object {
+            "text": "Test 1",
+            "type": "a",
+          }
+        }
+      />
+    </CSSTransition>
+    <CSSTransition
+      classNames="swing"
+      timeout={
+        Object {
+          "enter": 500,
+          "exit": 300,
+        }
+      }
+    >
+      <ToastMessage
+        message={
+          Object {
+            "text": "Test 2",
+            "type": "b",
+          }
+        }
+      />
+    </CSSTransition>
+  </TransitionGroup>
+</div>
+`;

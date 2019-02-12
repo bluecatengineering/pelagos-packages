@@ -1,0 +1,59 @@
+@import '../../less/colors';
+
+.ToastMessage {
+	position: relative;
+	overflow: hidden;
+	margin: 0 0 10px;
+	padding: 15px 20px;
+	border-radius: 3px;
+	box-shadow: 0 0 12px @black;
+	cursor: pointer;
+}
+
+.ToastMessage--action {
+	text-align: center;
+	background-color: @bondi;
+	width: 500px;
+	left: 15%;
+}
+
+.ToastMessage--success {
+	text-align: center;
+	background-color: @bondi;
+	width: 500px;
+	left: 15%;
+}
+
+.ToastMessage--warning {
+	background-color: @goldenrod;
+	color: @font-color-black;
+}
+
+.ToastMessage--error {
+	background-color: @burnt;
+	color: @font-color-black;
+}
+
+.ToastMessage--fatal {
+	background-color: @burnt;
+	color: @font-color-black;
+}
+
+.ToastMessage--info {
+	background-color: @bondi;
+}
+
+.ToastMessage__text {
+	word-wrap: break-word;
+}
+
+.ToastMessage__text--closeable {
+	margin-right: 25px;
+}
+
+.ToastMessage__close {
+	position: absolute;
+	right: 20px;
+	top: 16px;
+	font-size: 19px;
+}

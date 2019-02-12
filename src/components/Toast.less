@@ -1,0 +1,17 @@
+@import '../../less/fonts';
+
+.Toast {
+	@font-body-large();
+	position: fixed;
+	z-index: 5800;
+	top: 14px;
+	left: 50%;
+	width: 700px;
+	margin-left: -350px;
+}
+
+@media print {
+	.Toast {
+		display: none;
+	}
+}

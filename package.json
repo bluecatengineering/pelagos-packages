@@ -1,6 +1,6 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "UI components",
   "license": "ISC",
   "main": "lib",
@@ -27,6 +27,8 @@
     "prop-types": ">= 15",
     "react": ">= 16",
     "react-dom": ">= 16",
+    "react-transition-group": ">= 2",
+    "redux-actions": ">= 2",
     "stable": ">= 0"
   },
   "devDependencies": {
@@ -51,6 +53,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "react-transition-group": "^2.5.3",
+    "redux-actions": "^2.6.4",
     "stable": "^0.1.8"
   },
   "jest": {
@@ -83,7 +87,8 @@
       "lodash-es",
       "prop-types",
       "react",
-      "react-dom"
+      "react-dom",
+      "redux-actions"
     ]
   },
   "jest-junit": {

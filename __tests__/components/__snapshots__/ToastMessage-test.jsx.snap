@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToastMessage rendering does not render button on application error 1`] = `
+<div
+  className="ToastMessage ToastMessage--fatal"
+  data-bcn-id="toast-fatal"
+  onClick={[Function]}
+>
+  <div
+    className="ToastMessage__text"
+    data-bcn-id="message"
+  >
+    This is a test
+  </div>
+</div>
+`;
+
+exports[`ToastMessage rendering renders close button on error 1`] = `
+<div
+  className="ToastMessage ToastMessage--error"
+  data-bcn-id="toast-error"
+  onClick={[Function]}
+>
+  <div
+    className="ToastMessage__text ToastMessage__text--closeable"
+    data-bcn-id="message"
+  >
+    This is a test
+  </div>
+  <div
+    aria-label="Dismiss"
+    className="ToastMessage__close"
+    data-bcn-id="message-close"
+    role="button"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "times",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+</div>
+`;
