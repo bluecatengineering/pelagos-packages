@@ -1,0 +1,34 @@
+@import '../less/core';
+@import '../less/animations';
+@import '../less/inputs';
+@import '../less/scrollbar';
+
+body {
+	font: 400 14px/1.5 'Open Sans', Helvetica, Arial, sans-serif;
+	color: @font-color-1;
+	background-color: @oxford;
+	transition: background-color 0.3s ease-out;
+}
+
+.Story__wrapper {
+	display: flex;
+	margin: 24px 16px;
+}
+
+.Story__row {
+	display: flex;
+	flex-direction: row;
+}
+.Story__row > :not(:first-child) {
+	margin-left: 30px;
+}
+
+.Story__group {
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
+}
+
+.Story__group > :not(:first-child) {
+	margin-top: 12px;
+}
