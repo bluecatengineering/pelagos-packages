@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog rendering renders expected elements 1`] = `
+<div
+  className="Dialog__backdrop"
+  onClick={[Function]}
+>
+  <form
+    className="Dialog"
+    data-bcn-id="test-dialog"
+    onSubmit={null}
+  >
+    <div
+      className="Dialog__title"
+    >
+      Test
+    </div>
+    <div
+      className="TestClass Dialog__body"
+    >
+      This is a test
+    </div>
+    <div
+      className="Dialog__buttons"
+    >
+      <Button
+        componentId="a"
+        size="medium"
+        text="A"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Dialog rendering renders expected elements when child has no className 1`] = `
+<div
+  className="Dialog__backdrop"
+  onClick={[Function]}
+>
+  <form
+    className="Dialog"
+    data-bcn-id="test-dialog"
+    onSubmit={null}
+  >
+    <div
+      className="Dialog__title"
+    >
+      Test
+    </div>
+    <div
+      className="Dialog__body"
+    >
+      This is a test
+    </div>
+    <div
+      className="Dialog__buttons"
+    >
+      <Button
+        componentId="a"
+        size="medium"
+        text="A"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
+<div
+  className="Dialog__backdrop"
+  onClick={[Function]}
+>
+  <form
+    className="Dialog"
+    data-bcn-id="test-dialog"
+    onSubmit={[Function]}
+  >
+    <div
+      className="Dialog__title"
+    >
+      Test
+    </div>
+    <div
+      className="TestClass Dialog__body"
+    >
+      This is a test
+    </div>
+    <div
+      className="Dialog__buttons"
+    >
+      <Button
+        componentId="a"
+        size="medium"
+        text="A"
+      />
+    </div>
+  </form>
+</div>
+`;

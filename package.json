@@ -1,6 +1,6 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "UI components",
   "license": "ISC",
   "main": "lib",

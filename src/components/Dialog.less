@@ -1,0 +1,53 @@
+@import '../../less/colors';
+@import '../../less/fonts';
+@import '../../less/shadows';
+
+.Dialog__backdrop {
+	position: fixed;
+	display: flex;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: @modal-bg;
+	align-items: center;
+	justify-content: center;
+	z-index: 5700;
+}
+
+.Dialog {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	border-radius: 3px;
+	background-color: @silver;
+	box-shadow: @shadow24;
+	max-width: 66vw;
+}
+
+.Dialog__title {
+	@font-title-small();
+	border-radius: 3px 3px 0 0;
+	padding: 11px 21px;
+	background-color: @slate;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.Dialog__body {
+	color: @font-color-black;
+	margin: 42px 21px;
+}
+
+.Dialog__buttons {
+	display: flex;
+	flex-direction: row;
+	border-top: 1px solid @slate;
+	padding: 12px;
+	justify-content: flex-end;
+}
+
+.Dialog__buttons :not(:last-child) {
+	margin-right: 12px;
+}
