@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormOutput rendering renders expected elements 1`] = `
+<div
+  className="FormOutput"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <div
+    className="FormOutput--value"
+    data-bcn-id="test"
+  >
+    This is a test
+  </div>
+</div>
+`;
+
+exports[`FormOutput rendering renders expected elements when active is true 1`] = `
+<div
+  className="FormOutput"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <div
+    className="FormOutput--value FormOutput--active"
+    data-bcn-id="test"
+  >
+    This is a test
+  </div>
+</div>
+`;
+
+exports[`FormOutput rendering renders expected elements when alignRight is true 1`] = `
+<div
+  className="FormOutput FormOutput--alignRight"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <div
+    className="FormOutput--value"
+    data-bcn-id="test"
+  >
+    This is a test
+  </div>
+</div>
+`;
+
+exports[`FormOutput rendering renders expected elements when className is set 1`] = `
+<div
+  className="FormOutput TestClass"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <div
+    className="FormOutput--value"
+    data-bcn-id="test"
+  >
+    This is a test
+  </div>
+</div>
+`;

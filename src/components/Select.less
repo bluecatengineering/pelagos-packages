@@ -1,0 +1,76 @@
+@import '../../less/colors';
+@import '../../less/fonts';
+@import '../../less/shadows';
+
+.Select {
+	display: inline-block;
+	position: relative;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.Select__text {
+	display: inline-block;
+	width: 100%;
+	height: 35px;
+	padding: 6px 20px 6px 12px;
+	background-color: @form-field-bg;
+	border: 1px solid @form-field-border;
+	border-radius: 3px;
+
+	&:focus {
+		outline: 3px auto @bondi;
+		outline-offset: -2px;
+	}
+}
+.Select__text--empty {
+	@font-field-hint();
+}
+.Select__text--error {
+	border-color: @form-field-error;
+}
+.Select__text[aria-disabled='true'] {
+	cursor: default;
+	color: @battleship;
+	border-color: @battleship;
+}
+
+.Select__icon {
+	position: absolute;
+	top: 10px;
+	right: 8px;
+}
+
+.Select__list {
+	position: absolute;
+	width: 100%;
+	max-height: 30vh;
+	background-color: @oxford;
+	border: 1px solid @fiord;
+	border-radius: 3px;
+	outline: none;
+	padding: 4px 0;
+	margin-top: -1px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	z-index: 1;
+	box-shadow: @shadow4;
+}
+
+.Select__option {
+	padding: 6px 12px;
+}
+.Select__option--focused {
+	background-color: @fiord;
+}
+
+@media print {
+	.Select__text {
+		background-color: transparent;
+		border-color: transparent;
+	}
+
+	.Select__text::before {
+		display: none;
+	}
+}

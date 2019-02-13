@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormTextArea rendering adds the error class if the error is set 1`] = `
+<div
+  className="FormTextArea"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+  </div>
+  <textarea
+    className="FormTextArea__area FormTextArea--noresize FormTextArea--error"
+    id="test-id"
+    maxLength={10}
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+    text="Error"
+  />
+</div>
+`;
+
+exports[`FormTextArea rendering does not add the resize class if the resize is true 1`] = `
+<div
+  className="FormTextArea"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+  </div>
+  <textarea
+    className="FormTextArea__area"
+    id="test-id"
+    maxLength={10}
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`FormTextArea rendering renders expected elements 1`] = `
+<div
+  className="FormTextArea"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+  </div>
+  <textarea
+    className="FormTextArea__area FormTextArea--noresize"
+    id="test-id"
+    maxLength={10}
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`FormTextArea rendering renders expected elements when className is set 1`] = `
+<div
+  className="FormTextArea TestClass"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+  </div>
+  <textarea
+    className="FormTextArea__area FormTextArea--noresize"
+    id="test-id"
+    maxLength={10}
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`FormTextArea rendering sets a random id if not provided 1`] = `
+<div
+  className="FormTextArea"
+>
+  <div>
+    <Label
+      htmlFor="e1"
+      text="Label"
+    />
+  </div>
+  <textarea
+    className="FormTextArea__area FormTextArea--noresize"
+    id="e1"
+    maxLength={10}
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;

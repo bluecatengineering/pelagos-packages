@@ -1,0 +1,49 @@
+@import '../../less/colors';
+@import '../../less/fonts';
+
+.FormTextInput {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.FormTextInput__optional {
+	@font-indicator();
+	position: relative;
+	top: -1px;
+	margin-left: 12px;
+}
+
+.FormTextInput__input {
+	height: 35px;
+	padding: 6px 12px;
+	background-color: @form-field-bg;
+	border: 1px solid @form-field-border;
+	border-radius: 3px;
+
+	&:focus {
+		outline: 3px auto @bondi;
+		outline-offset: -2px;
+	}
+
+	&.FormTextInput--error {
+		border-color: @form-field-error;
+	}
+
+	&:focus.FormTextInput--error {
+		outline-color: @form-field-error;
+	}
+}
+
+.Dialog {
+	.FormTextInput__input {
+		@font-body-medium();
+	}
+}
+
+@media print {
+	.FormTextInput__input {
+		background-color: transparent;
+		border-color: transparent;
+	}
+}

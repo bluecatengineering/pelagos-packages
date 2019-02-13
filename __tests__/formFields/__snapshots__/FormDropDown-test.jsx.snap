@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormDropDown rendering renders expected elements 1`] = `
+<div
+  className="FormDropDown"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <Select
+    className="FormDropDown__select"
+    componentId="id"
+    getOptionValue={[MockFunction]}
+    onChange={[MockFunction]}
+    options={
+      Array [
+        "o0",
+        "o1",
+      ]
+    }
+    renderOption={[Function]}
+    value="o0"
+  />
+</div>
+`;
+
+exports[`FormDropDown rendering renders expected elements when className is set 1`] = `
+<div
+  className="FormDropDown TestClass"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <Select
+    className="FormDropDown__select"
+    componentId="id"
+    getOptionValue={[MockFunction]}
+    onChange={[MockFunction]}
+    options={
+      Array [
+        "o0",
+        "o1",
+      ]
+    }
+    renderOption={[Function]}
+    value="o0"
+  />
+</div>
+`;
+
+exports[`FormDropDown rendering renders expected elements when there are errors 1`] = `
+<div
+  className="FormDropDown"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <Select
+    className="FormDropDown__select"
+    componentId="id"
+    error={true}
+    getOptionValue={[MockFunction]}
+    onChange={[MockFunction]}
+    options={
+      Array [
+        Object {
+          "componentId": "id",
+          "text": "Option 0",
+          "value": "o0",
+        },
+        Object {
+          "text": "Option 1",
+          "value": "o1",
+        },
+      ]
+    }
+    renderOption={[Function]}
+    value="o0"
+  />
+</div>
+`;

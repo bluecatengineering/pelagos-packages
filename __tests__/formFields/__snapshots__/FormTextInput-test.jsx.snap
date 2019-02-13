@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormTextInput rendering adds the error class if the error is set 1`] = `
+<div
+  className="FormTextInput"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+  </div>
+  <input
+    className="FormTextInput__input FormTextInput--error"
+    disabled={false}
+    id="test-id"
+    maxLength={10}
+    name="name"
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    type="text"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+    text="Error"
+  />
+</div>
+`;
+
+exports[`FormTextInput rendering does not render optional text if value is set 1`] = `
+<div
+  className="FormTextInput"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+  </div>
+  <input
+    className="FormTextInput__input"
+    disabled={false}
+    id="test-id"
+    maxLength={10}
+    name="name"
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    type="text"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`FormTextInput rendering renders expected elements 1`] = `
+<div
+  className="FormTextInput"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+  </div>
+  <input
+    className="FormTextInput__input"
+    disabled={false}
+    id="test-id"
+    maxLength={10}
+    name="name"
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    type="text"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`FormTextInput rendering renders expected elements when className is set 1`] = `
+<div
+  className="FormTextInput TestClass"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+  </div>
+  <input
+    className="FormTextInput__input"
+    disabled={false}
+    id="test-id"
+    maxLength={10}
+    name="name"
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    type="text"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`FormTextInput rendering renders optional text if provided 1`] = `
+<div
+  className="FormTextInput"
+>
+  <div>
+    <Label
+      htmlFor="test-id"
+      text="Label"
+    />
+    <span
+      className="FormTextInput__optional"
+    >
+      optional
+    </span>
+  </div>
+  <input
+    className="FormTextInput__input"
+    disabled={false}
+    id="test-id"
+    maxLength={10}
+    name="name"
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    type="text"
+    value=""
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`FormTextInput rendering sets a random id if not provided 1`] = `
+<div
+  className="FormTextInput"
+>
+  <div>
+    <Label
+      htmlFor="e1"
+      text="Label"
+    />
+  </div>
+  <input
+    className="FormTextInput__input"
+    disabled={false}
+    id="e1"
+    maxLength={10}
+    name="name"
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    type="text"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;

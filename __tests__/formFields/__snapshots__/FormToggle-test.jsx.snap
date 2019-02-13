@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormToggle rendering renders expected elements 1`] = `
+<div
+  className="FormToggle"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <Toggle
+    ariaLabel="Test"
+    checked={true}
+    className="Toggle__field"
+    componentId="test"
+    onChange={[Function]}
+  />
+</div>
+`;
+
+exports[`FormToggle rendering renders expected elements when className is set 1`] = `
+<div
+  className="FormToggle TestClass"
+>
+  <div>
+    <Label
+      text="Test"
+    />
+  </div>
+  <Toggle
+    ariaLabel="Test"
+    checked={true}
+    className="Toggle__field"
+    componentId="test"
+    onChange={[Function]}
+  />
+</div>
+`;

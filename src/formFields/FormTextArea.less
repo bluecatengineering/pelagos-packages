@@ -1,0 +1,39 @@
+@import '../../less/colors';
+
+.FormTextArea {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.FormTextArea__area {
+	height: 65px;
+	padding: 6px 12px;
+	background-color: @form-field-bg;
+	border: 1px solid @form-field-border;
+	border-radius: 3px;
+
+	&:focus {
+		outline: 3px auto @bondi;
+		outline-offset: -2px;
+	}
+
+	&.FormTextArea--error {
+		border-color: @form-field-error;
+	}
+
+	&:focus.FormTextArea--error {
+		outline-color: @form-field-error;
+	}
+}
+
+.FormTextArea--noresize {
+	resize: none;
+}
+
+@media print {
+	.FormTextArea__area {
+		background-color: transparent;
+		border-color: transparent;
+	}
+}

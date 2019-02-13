@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label rendering renders expected elements 1`] = `
+<label
+  className="Label"
+  htmlFor="test-id"
+>
+  Test
+</label>
+`;

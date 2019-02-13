@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select rendering renders expected elements 1`] = `
+<div
+  className="Select Test"
+>
+  <span
+    aria-expanded={false}
+    aria-haspopup="listbox"
+    className="Select__text"
+    data-bcn-id="test"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    Two
+    <SvgIcon
+      className="Select__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "caret-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+</div>
+`;
+
+exports[`Select rendering renders expected elements when className is not set 1`] = `
+<div
+  className="Select"
+>
+  <span
+    aria-expanded={false}
+    aria-haspopup="listbox"
+    className="Select__text"
+    data-bcn-id="test"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    Two
+    <SvgIcon
+      className="Select__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "caret-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+</div>
+`;
+
+exports[`Select rendering renders expected elements when disabled is true 1`] = `
+<div
+  className="Select Test"
+>
+  <span
+    aria-disabled={true}
+    aria-expanded={false}
+    aria-haspopup="listbox"
+    className="Select__text"
+    data-bcn-id="test"
+    role="button"
+  >
+    Two
+    <SvgIcon
+      className="Select__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "caret-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+</div>
+`;
+
+exports[`Select rendering renders expected elements when error is true 1`] = `
+<div
+  className="Select Test"
+>
+  <span
+    aria-expanded={false}
+    aria-haspopup="listbox"
+    className="Select__text Select__text--error"
+    data-bcn-id="test"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    Two
+    <SvgIcon
+      className="Select__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "caret-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+</div>
+`;
+
+exports[`Select rendering renders expected elements when open is true 1`] = `
+<div
+  className="Select Test"
+>
+  <span
+    aria-expanded={true}
+    aria-haspopup="listbox"
+    className="Select__text"
+    data-bcn-id="test"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    Two
+    <SvgIcon
+      className="Select__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "caret-up",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+  <div
+    aria-activedescendant="e12345-two"
+    className="Select__list"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onMouseOver={[Function]}
+    role="listbox"
+    tabIndex="-1"
+  >
+    <div
+      aria-selected={false}
+      className="Select__option"
+      data-value="one"
+      id="e12345-one"
+      role="option"
+    >
+      One
+    </div>
+    <div
+      aria-selected={true}
+      className="Select__option Select__option--focused"
+      data-value="two"
+      id="e12345-two"
+      role="option"
+    >
+      Two
+    </div>
+    <div
+      aria-selected={false}
+      className="Select__option"
+      data-value="three"
+      id="e12345-three"
+      role="option"
+    >
+      Three
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Select rendering renders expected elements when value is not set 1`] = `
+<div
+  className="Select Test"
+>
+  <span
+    aria-expanded={false}
+    aria-haspopup="listbox"
+    className="Select__text Select__text--empty"
+    data-bcn-id="test"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    Testing
+    <SvgIcon
+      className="Select__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "caret-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+</div>
+`;

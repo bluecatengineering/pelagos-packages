@@ -1,11 +1,11 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "UI components",
   "license": "ISC",
   "main": "lib",
   "scripts": {
-    "build": "rm -rf lib && npm run update-colors && babel -d lib src && cp src/components/*.less lib/components/",
+    "build": "rm -rf lib && npm run update-colors && babel -d lib src && cp src/components/*.less lib/components/ && cp src/formFields/*.less lib/formFields/",
     "test": "jest --verbose",
     "test-ci": "npm install && jest --ci --silent --reporters=jest-junit",
     "lint": "eslint --ext .js,.jsx src",
