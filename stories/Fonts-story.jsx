@@ -18,7 +18,7 @@ const fonts = [
 	['font-body-disabled', 14, 400],
 	['font-body-dim', 14, 400],
 	['font-body-medium', 14, 400],
-	['font-block-action', 14, 600],
+	['font-block-action', 14, 400],
 	['font-important', 14, 600],
 	['font-button-medium', 14, 600],
 	['font-field-hint-large', 16, 400],

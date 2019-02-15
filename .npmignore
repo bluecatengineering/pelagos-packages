@@ -3,6 +3,7 @@
 babel.config.js
 
 .idea/
+.storybook/
 __mocks__/
 __tests__/
 build/
@@ -10,3 +11,4 @@ coverage/
 jest_helpers/
 scripts/
 src/
+stories/
