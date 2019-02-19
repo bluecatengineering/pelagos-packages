@@ -4,7 +4,9 @@ exports[`FormTextInput rendering adds the error class if the error is set 1`] = 
 <div
   className="FormTextInput"
 >
-  <div>
+  <div
+    className="FormTextInput__label"
+  >
     <Label
       htmlFor="test-id"
       text="Label"
@@ -32,7 +34,9 @@ exports[`FormTextInput rendering does not render optional text if value is set 1
 <div
   className="FormTextInput"
 >
-  <div>
+  <div
+    className="FormTextInput__label"
+  >
     <Label
       htmlFor="test-id"
       text="Label"
@@ -59,7 +63,9 @@ exports[`FormTextInput rendering renders expected elements 1`] = `
 <div
   className="FormTextInput"
 >
-  <div>
+  <div
+    className="FormTextInput__label"
+  >
     <Label
       htmlFor="test-id"
       text="Label"
@@ -86,7 +92,9 @@ exports[`FormTextInput rendering renders expected elements when className is set
 <div
   className="FormTextInput TestClass"
 >
-  <div>
+  <div
+    className="FormTextInput__label"
+  >
     <Label
       htmlFor="test-id"
       text="Label"
@@ -113,7 +121,9 @@ exports[`FormTextInput rendering renders optional text if provided 1`] = `
 <div
   className="FormTextInput"
 >
-  <div>
+  <div
+    className="FormTextInput__label"
+  >
     <Label
       htmlFor="test-id"
       text="Label"
@@ -145,7 +155,9 @@ exports[`FormTextInput rendering sets a random id if not provided 1`] = `
 <div
   className="FormTextInput"
 >
-  <div>
+  <div
+    className="FormTextInput__label"
+  >
     <Label
       htmlFor="e1"
       text="Label"

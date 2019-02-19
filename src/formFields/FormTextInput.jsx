@@ -25,7 +25,7 @@ const FormTextInput = ({
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'FormTextInput' + (className ? ' ' + className : '')}>
-			<div>
+			<div className="FormTextInput__label">
 				<Label text={label} htmlFor={id} />
 				{optionalText && !value ? <span className="FormTextInput__optional">{optionalText}</span> : null}
 			</div>
