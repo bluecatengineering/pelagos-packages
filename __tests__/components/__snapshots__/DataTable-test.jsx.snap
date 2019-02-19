@@ -1420,7 +1420,7 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
 
 exports[`DataTable rendering renders the expected elements if there is data 1`] = `
 <div
-  className="DataTable"
+  className="DataTable TestClass"
   data-bcn-id="datatable-1"
 >
   <div

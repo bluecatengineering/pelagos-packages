@@ -55,6 +55,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable
 					componentId={componentId}
+					className="TestClass"
 					metadata={metadata}
 					data={testData}
 					defaultSort={{columnId: 'time', order: 'asc'}}

@@ -90,6 +90,7 @@ const renderRows = (data, {metadata, selectedId, highlightId, getRowId, onRowCli
 export default class DataTable extends Component {
 	static propTypes = {
 		componentId: PropTypes.string,
+		className: PropTypes.string,
 		metadata: PropTypes.arrayOf(
 			PropTypes.shape({
 				header: PropTypes.string.isRequired,
@@ -201,13 +202,21 @@ export default class DataTable extends Component {
 	};
 
 	render() {
-		const {componentId, metadata, data, isFetchingPrevDataPage, isFetchingNextDataPage, emptyTableText} = this.props;
+		const {
+			componentId,
+			className,
+			metadata,
+			data,
+			isFetchingPrevDataPage,
+			isFetchingNextDataPage,
+			emptyTableText,
+		} = this.props;
 		const showLoadingSpinner = isFetchingNextDataPage && (!data || data.length === 0);
 		const displayTableMessage = !showLoadingSpinner && emptyTableText && (!data || data.length === 0);
 
 		const headers = renderHeaders(this.state.dataSort, metadata, this.updateSortColumn);
 		return (
-			<div className="DataTable" data-bcn-id={componentId}>
+			<div className={'DataTable' + (className ? ' ' + className : '')} data-bcn-id={componentId}>
 				<div data-bcn-id="table-header" className="DataTable__header">
 					<table className="DataTable__table">
 						<thead>
