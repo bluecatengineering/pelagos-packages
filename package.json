@@ -1,6 +1,6 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "UI components",
   "license": "ISC",
   "main": "lib",
@@ -22,17 +22,6 @@
   "keywords": [
     "react"
   ],
-  "peerDependencies": {
-    "@bluecat/helpers": ">= 0",
-    "@fortawesome/free-solid-svg-icons": ">= 5",
-    "lodash-es": ">= 4",
-    "prop-types": ">= 15",
-    "react": ">= 16",
-    "react-dom": ">= 16",
-    "react-transition-group": ">= 2",
-    "redux-actions": ">= 2",
-    "stable": ">= 0"
-  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
