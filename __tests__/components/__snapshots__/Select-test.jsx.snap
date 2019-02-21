@@ -4,7 +4,7 @@ exports[`Select rendering renders expected elements 1`] = `
 <div
   className="Select Test"
 >
-  <span
+  <div
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text"
@@ -25,7 +25,7 @@ exports[`Select rendering renders expected elements 1`] = `
         }
       }
     />
-  </span>
+  </div>
 </div>
 `;
 
@@ -33,7 +33,7 @@ exports[`Select rendering renders expected elements when className is not set 1`
 <div
   className="Select"
 >
-  <span
+  <div
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text"
@@ -54,7 +54,7 @@ exports[`Select rendering renders expected elements when className is not set 1`
         }
       }
     />
-  </span>
+  </div>
 </div>
 `;
 
@@ -62,7 +62,7 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
 <div
   className="Select Test"
 >
-  <span
+  <div
     aria-disabled={true}
     aria-expanded={false}
     aria-haspopup="listbox"
@@ -81,7 +81,7 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
         }
       }
     />
-  </span>
+  </div>
 </div>
 `;
 
@@ -89,7 +89,7 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
 <div
   className="Select Test"
 >
-  <span
+  <div
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text Select__text--error"
@@ -110,7 +110,7 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
         }
       }
     />
-  </span>
+  </div>
 </div>
 `;
 
@@ -118,7 +118,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
 <div
   className="Select Test"
 >
-  <span
+  <div
     aria-expanded={true}
     aria-haspopup="listbox"
     className="Select__text"
@@ -139,7 +139,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
         }
       }
     />
-  </span>
+  </div>
   <div
     aria-activedescendant="e12345-two"
     className="Select__list"
@@ -185,7 +185,7 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
 <div
   className="Select Test"
 >
-  <span
+  <div
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text Select__text--empty"
@@ -206,6 +206,6 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
         }
       }
     />
-  </span>
+  </div>
 </div>
 `;

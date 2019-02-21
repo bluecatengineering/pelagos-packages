@@ -266,7 +266,7 @@ export default class Select extends PureComponent {
 		const selected = value && renderedOptions.find(o => o.value === value);
 		return (
 			<div className={'Select' + (className ? ' ' + className : '')}>
-				<span
+				<div
 					data-bcn-id={componentId}
 					className={'Select__text' + (selected ? '' : ' Select__text--empty') + (error ? ' Select__text--error' : '')}
 					tabIndex={disabled ? undefined : '0'}
@@ -279,7 +279,7 @@ export default class Select extends PureComponent {
 					onMouseDown={disabled ? undefined : this.handleMouseDown}>
 					{selected ? selected.element : placeholder}
 					<SvgIcon icon={open ? faCaretUp : faCaretDown} className="Select__icon" />
-				</span>
+				</div>
 				{open && (
 					<div
 						className="Select__list"
