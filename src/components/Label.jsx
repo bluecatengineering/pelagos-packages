@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 
 import './Label.less';
 
-const Label = ({text, htmlFor}) => (
-	<label className="Label" htmlFor={htmlFor}>
+const Label = ({text, ...props}) => (
+	<label {...props} className="Label">
 		{text}
 	</label>
 );
 
 Label.propTypes = {
-	text: PropTypes.string,
+	id: PropTypes.string,
 	htmlFor: PropTypes.string,
+	text: PropTypes.string,
 };
 
 export default Label;

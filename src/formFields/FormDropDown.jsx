@@ -5,35 +5,12 @@ import Label from '../components/Label';
 import Select from '../components/Select';
 import './FormDropDown.less';
 
-const FormDropDown = ({
-	componentId,
-	className,
-	label,
-	value,
-	options,
-	placeholder,
-	disabled,
-	error,
-	getOptionValue,
-	renderOption,
-	onChange,
-}) => (
+const FormDropDown = ({className, label, ...props}) => (
 	<div className={'FormDropDown' + (className ? ' ' + className : '')}>
 		<div>
 			<Label text={label} />
 		</div>
-		<Select
-			componentId={componentId}
-			className="FormDropDown__select"
-			value={value}
-			options={options}
-			placeholder={placeholder}
-			disabled={disabled}
-			error={error}
-			getOptionValue={getOptionValue}
-			renderOption={renderOption}
-			onChange={onChange}
-		/>
+		<Select {...props} className="FormDropDown__select" />
 	</div>
 );
 

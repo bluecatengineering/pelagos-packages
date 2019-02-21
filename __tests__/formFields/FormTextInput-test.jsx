@@ -71,7 +71,7 @@ describe('FormTextInput', () => {
 					placeholder="placeholder"
 					maxLength={10}
 					disabled={false}
-					optional={true}
+					optionalText="optional"
 					onChange={jest.fn()}
 				/>
 			);

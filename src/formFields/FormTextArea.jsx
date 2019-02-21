@@ -6,7 +6,7 @@ import Label from '../components/Label';
 import FieldError from './FieldError';
 import './FormTextArea.less';
 
-const FormTextArea = ({id, className, label, value, placeholder, resize, maxLength, error, onChange}) => {
+const FormTextArea = ({id, className, label, resize, error, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'FormTextArea' + (className ? ' ' + className : '')}>
@@ -14,14 +14,11 @@ const FormTextArea = ({id, className, label, value, placeholder, resize, maxLeng
 				<Label text={label} htmlFor={id} />
 			</div>
 			<textarea
+				{...props}
 				id={id}
 				className={
 					'FormTextArea__area' + (resize ? '' : ' FormTextArea--noresize') + (error ? ' FormTextArea--error' : '')
 				}
-				placeholder={placeholder}
-				value={value}
-				maxLength={maxLength}
-				onChange={onChange}
 			/>
 			<FieldError text={error} />
 		</div>

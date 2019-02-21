@@ -6,22 +6,7 @@ import Label from '../components/Label';
 import FieldError from './FieldError';
 import './FormTextInput.less';
 
-const FormTextInput = ({
-	id,
-	className,
-	label,
-	type,
-	name,
-	autoComplete,
-	value,
-	placeholder,
-	maxLength,
-	autoFocus,
-	disabled,
-	optionalText,
-	error,
-	onChange,
-}) => {
+const FormTextInput = ({id, className, label, value, optionalText, error, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'FormTextInput' + (className ? ' ' + className : '')}>
@@ -30,17 +15,10 @@ const FormTextInput = ({
 				{optionalText && !value ? <span className="FormTextInput__optional">{optionalText}</span> : null}
 			</div>
 			<input
-				type={type}
+				{...props}
 				id={id}
 				className={'FormTextInput__input' + (error ? ' FormTextInput--error' : '')}
-				name={name}
-				autoComplete={autoComplete}
-				placeholder={placeholder}
 				value={value}
-				maxLength={maxLength}
-				autoFocus={autoFocus}
-				disabled={disabled}
-				onChange={onChange}
 			/>
 			<FieldError text={error} />
 		</div>
