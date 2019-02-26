@@ -11,5 +11,10 @@ describe('FieldError', () => {
 			const wrapper = shallow(<FieldError text="Test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when componentId is set', () => {
+			const wrapper = shallow(<FieldError componentId="test" text="Test" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });
