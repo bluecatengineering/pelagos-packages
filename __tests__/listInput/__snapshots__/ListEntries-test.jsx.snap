@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListEntries rendering renders expected elements 1`] = `
+<div
+  className="ListEntries"
+  data-bcn-id="test"
+>
+  <div
+    className="ListEntries__item "
+    data-bcn-id="added-item"
+  >
+    <div
+      className="ListEntries__icon"
+      data-bcn-id="remove-item"
+      onClick={[Function]}
+      role="button"
+    >
+      <SvgIcon
+        icon={
+          Object {
+            "icon": Array [],
+          }
+        }
+      />
+    </div>
+    <div
+      className="ListEntries__name"
+    >
+      test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListEntries rendering renders expected elements when highlightKey is set 1`] = `
+<div
+  className="ListEntries"
+  data-bcn-id="test"
+>
+  <div
+    className="ListEntries__item  ListEntries__item--highlight"
+    data-bcn-id="added-item"
+  >
+    <div
+      className="ListEntries__icon"
+      data-bcn-id="remove-item"
+      onClick={[Function]}
+      role="button"
+    >
+      <SvgIcon
+        icon={
+          Object {
+            "icon": Array [],
+          }
+        }
+      />
+    </div>
+    <div
+      className="ListEntries__name"
+    >
+      test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListEntries rendering renders expected elements when the item has className 1`] = `
+<div
+  className="ListEntries"
+  data-bcn-id="test"
+>
+  <div
+    className="ListEntries__item "
+    data-bcn-id="added-item"
+  >
+    <div
+      className="ListEntries__icon"
+      data-bcn-id="remove-item"
+      onClick={[Function]}
+      role="button"
+    >
+      <SvgIcon
+        icon={
+          Object {
+            "icon": Array [],
+          }
+        }
+      />
+    </div>
+    <div
+      className="TestClass ListEntries__name"
+    >
+      test
+    </div>
+  </div>
+</div>
+`;

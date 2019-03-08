@@ -1,11 +1,11 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "UI components",
   "license": "ISC",
   "main": "lib",
   "scripts": {
-    "build": "rm -rf lib && npm run update-colors && babel -d lib src && cp src/components/*.less lib/components/ && cp src/formFields/*.less lib/formFields/",
+    "build": "rm -rf lib && npm run update-colors && babel -d lib src && npm run copy-resources",
     "test": "jest --verbose",
     "test-ci": "npm install && jest --ci --silent --reporters=jest-junit",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js,.jsx src",
     "reformat": "prettier --write \"**/*.+(js|jsx|json|less)\"",
     "update-colors": "node scripts/update-colors",
+    "copy-resources": "node scripts/copy-resources",
     "prepack": "npm t && npm run build"
   },
   "repository": {
@@ -30,7 +31,7 @@
     "@babel/preset-react": "^7.0.0",
     "@bluecat/eslint-config-react": "^0.1.2",
     "@bluecat/git-checks": "^0.1.0",
-    "@bluecat/helpers": "^0.1.0",
+    "@bluecat/helpers": "^0.2.0",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@storybook/addon-a11y": "^4.1.11",
     "@storybook/react": "^4.1.11",
@@ -38,6 +39,7 @@
     "enzyme-adapter-react-16": "^1.9.1",
     "eslint": "^5.13.0",
     "husky": "^1.3.1",
+    "intl-messageformat": "^2.2.0",
     "jest": "^24.1.0",
     "jest-junit": "^6.2.1",
     "less": "^3.9.0",
@@ -74,11 +76,16 @@
       "<rootDir>/jest_helpers/setup-enzyme"
     ],
     "timers": "fake",
+    "transform": {
+      "\\.jsx?$": "babel-jest",
+      "\\.yml$": "<rootDir>/jest_helpers/yaml-processor"
+    },
     "transformIgnorePatterns": [
       "node_modules/(?!(lodash-es|@bluecat)/)"
     ],
     "unmockedModulePathPatterns": [
       "enzyme",
+      "intl-messageformat",
       "lodash-es",
       "prop-types",
       "react",

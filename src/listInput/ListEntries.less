@@ -1,0 +1,55 @@
+@import '../../less/colors';
+
+.ListEntries {
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 145px;
+	overflow-y: auto;
+	margin-bottom: 20px;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
+.ListEntries__item {
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 4px 8px;
+	width: 100%;
+}
+
+.ListEntries__item--highlight {
+	animation: highlight-fade 2s ease-out;
+}
+.ListEntries__item--highlight > .ListEntries__icon {
+	color: @white;
+}
+
+.ListEntries__icon {
+	font-size: 19px;
+	color: @azure;
+	padding-top: 2px;
+	cursor: pointer;
+}
+
+.ListEntries__name {
+	flex: 1;
+	padding-left: 8px;
+}
+
+@media (min-width: 768px) {
+	.ListEntries__item {
+		width: 50%;
+	}
+}
+
+@media (min-width: 992px) {
+	.ListEntries__item {
+		width: 33.3333%;
+	}
+}
+
+@media (min-width: 1200px) {
+	.ListEntries__item {
+		width: 25%;
+	}
+}

@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComboBox rendering renders expected elements 1`] = `
+<div
+  aria-expanded={false}
+  aria-haspopup="listbox"
+  aria-owns="test-list"
+  className="ComboBox"
+  role="combobox"
+>
+  <input
+    aria-activedescendant={null}
+    aria-autocomplete="list"
+    aria-controls="test-list"
+    autoComplete="off"
+    className="FormTextInput__input FormTextInput--error"
+    id="test"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    placeholder="test placeholder"
+    value="test text"
+  />
+</div>
+`;
+
+exports[`ComboBox rendering renders expected elements when error is not set 1`] = `
+<div
+  aria-expanded={false}
+  aria-haspopup="listbox"
+  aria-owns="test-list"
+  className="ComboBox"
+  role="combobox"
+>
+  <input
+    aria-activedescendant={null}
+    aria-autocomplete="list"
+    aria-controls="test-list"
+    autoComplete="off"
+    className="FormTextInput__input"
+    id="test"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    placeholder="test placeholder"
+    value="test text"
+  />
+</div>
+`;
+
+exports[`ComboBox rendering renders expected elements when the suggestions are displayed 1`] = `
+<div
+  aria-expanded={true}
+  aria-haspopup="listbox"
+  aria-owns="test-list"
+  className="ComboBox"
+  role="combobox"
+>
+  <input
+    aria-activedescendant="test-opt-0"
+    aria-autocomplete="list"
+    aria-controls="test-list"
+    autoComplete="off"
+    className="FormTextInput__input"
+    id="test"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    placeholder="test placeholder"
+    value="x"
+  />
+  <div
+    className="ComboBox__suggestions"
+    id="test-list"
+    onMouseDown={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    role="listbox"
+  >
+    <div
+      aria-selected={true}
+      className="ComboBox__option TestClass"
+      data-index={0}
+      id="test-opt-0"
+      role="option"
+    >
+      Test suggestion 0
+    </div>
+    <div
+      aria-selected={false}
+      className="ComboBox__option TestClass"
+      data-index={1}
+      id="test-opt-1"
+      role="option"
+    >
+      Test suggestion 1
+    </div>
+  </div>
+</div>
+`;

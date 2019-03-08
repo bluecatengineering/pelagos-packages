@@ -5,6 +5,7 @@ import ToastTypes from '../../src/ToastTypes';
 import ToastMessage from '../../src/components/ToastMessage';
 
 jest.unmock('../../src/components/ToastMessage');
+jest.unmock('../../src/strings');
 
 describe('ToastMessage', () => {
 	describe('rendering', () => {
@@ -13,7 +14,7 @@ describe('ToastMessage', () => {
 				type: ToastTypes.ERROR,
 				text: 'This is a test',
 			};
-			const wrapper = shallow(<ToastMessage message={message} closeLabel="Dismiss" />);
+			const wrapper = shallow(<ToastMessage message={message} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 

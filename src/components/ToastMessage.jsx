@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
 import ToastTypes from '../ToastTypes';
+import __ from '../strings';
 
 import SvgIcon from './SvgIcon';
 import './ToastMessage.less';
 
 const REQUIRES_CLOSE = [ToastTypes.INFO, ToastTypes.WARNING, ToastTypes.ERROR];
 
-const ToastMessage = ({message, closeLabel, onRemove}) => {
+const ToastMessage = ({message, onRemove}) => {
 	const {type, text, onClick} = message;
 
 	const handleClick = useCallback(() => {
@@ -27,7 +28,7 @@ const ToastMessage = ({message, closeLabel, onRemove}) => {
 
 	if (REQUIRES_CLOSE.includes(type)) {
 		closeButton = (
-			<div data-bcn-id="message-close" className="ToastMessage__close" role="button" aria-label={closeLabel}>
+			<div data-bcn-id="message-close" className="ToastMessage__close" role="button" aria-label={__('DISMISS')}>
 				<SvgIcon icon={faTimes} />
 			</div>
 		);
@@ -49,7 +50,6 @@ ToastMessage.propTypes = {
 		text: PropTypes.string,
 		onClick: PropTypes.func,
 	}).isRequired,
-	closeLabel: PropTypes.string,
 	onRemove: PropTypes.func,
 };
 

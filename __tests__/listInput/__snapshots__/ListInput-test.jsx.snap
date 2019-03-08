@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListInput rendering renders expected elements 1`] = `
+<div
+  className="ListInput"
+>
+  <div
+    className="ListInput__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+    <div
+      className="ListInput__notice"
+    >
+      Notice
+    </div>
+  </div>
+  <ComboBox
+    autoSelect={true}
+    error={true}
+    getSuggestions={[Function]}
+    id="test"
+    onChange={[Function]}
+    onEnter={[Function]}
+    onTextChange={[Function]}
+    placeholder="test placeholder"
+    text="test text"
+  />
+  <FieldError
+    alignment="right"
+    id="test-error"
+    text="test error"
+  />
+  <ListEntries
+    highlightKey={null}
+    id="test-grid"
+    list={
+      Array [
+        Object {
+          "id": "0",
+          "name": "test",
+        },
+      ]
+    }
+    onHighlightClear={[Function]}
+    onRemoveClick={[Function]}
+  />
+</div>
+`;
+
+exports[`ListInput rendering renders expected elements when error is not set 1`] = `
+<div
+  className="ListInput"
+>
+  <div
+    className="ListInput__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+    <div
+      className="ListInput__notice"
+    >
+      Notice
+    </div>
+  </div>
+  <ComboBox
+    autoSelect={true}
+    error={false}
+    getSuggestions={[Function]}
+    id="test"
+    onChange={[Function]}
+    onEnter={[Function]}
+    onTextChange={[Function]}
+    placeholder="test placeholder"
+    text="test text"
+  />
+  <FieldError
+    alignment="right"
+    id="test-error"
+  />
+  <ListEntries
+    highlightKey={null}
+    id="test-grid"
+    list={
+      Array [
+        Object {
+          "id": "0",
+          "name": "test",
+        },
+      ]
+    }
+    onHighlightClear={[Function]}
+    onRemoveClick={[Function]}
+  />
+</div>
+`;
+
+exports[`ListInput rendering renders expected elements when the list is empty 1`] = `
+<div
+  className="ListInput"
+>
+  <div
+    className="ListInput__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+    <div
+      className="ListInput__notice"
+    >
+      Notice
+    </div>
+  </div>
+  <ComboBox
+    autoSelect={true}
+    error={true}
+    getSuggestions={[Function]}
+    id="test"
+    onChange={[Function]}
+    onEnter={[Function]}
+    onTextChange={[Function]}
+    placeholder="test placeholder"
+    text="test text"
+  />
+  <FieldError
+    alignment="right"
+    id="test-error"
+    text="test error"
+  />
+  <div
+    className="ListInput__empty"
+    id="test-empty"
+  >
+    Test empty
+  </div>
+</div>
+`;
+
+exports[`ListInput rendering renders expected elements when the notice is not set 1`] = `
+<div
+  className="ListInput"
+>
+  <div
+    className="ListInput__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+  </div>
+  <ComboBox
+    autoSelect={true}
+    error={true}
+    getSuggestions={[Function]}
+    id="test"
+    onChange={[Function]}
+    onEnter={[Function]}
+    onTextChange={[Function]}
+    placeholder="test placeholder"
+    text="test text"
+  />
+  <FieldError
+    alignment="right"
+    id="test-error"
+    text="test error"
+  />
+  <ListEntries
+    highlightKey={null}
+    id="test-grid"
+    list={
+      Array [
+        Object {
+          "id": "0",
+          "name": "test",
+        },
+      ]
+    }
+    onHighlightClear={[Function]}
+    onRemoveClick={[Function]}
+  />
+</div>
+`;

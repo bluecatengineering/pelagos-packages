@@ -6,12 +6,12 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import ToastMessage from './ToastMessage';
 import './Toast.less';
 
-const Toast = ({messages, closeLabel, onRemove}) => (
+const Toast = ({messages, onRemove}) => (
 	<div className="Toast">
 		<TransitionGroup>
 			{messages.map((m, i) => (
 				<CSSTransition key={i} classNames="swing" timeout={{enter: 500, exit: 300}}>
-					<ToastMessage message={m} closeLabel={closeLabel} onRemove={onRemove} />
+					<ToastMessage message={m} onRemove={onRemove} />
 				</CSSTransition>
 			))}
 		</TransitionGroup>
@@ -20,7 +20,6 @@ const Toast = ({messages, closeLabel, onRemove}) => (
 
 Toast.propTypes = {
 	messages: PropTypes.array,
-	closeLabel: PropTypes.string,
 	onRemove: PropTypes.func,
 };
 
