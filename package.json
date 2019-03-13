@@ -54,6 +54,9 @@
     "redux-actions": "^2.6.4",
     "stable": "^0.1.8"
   },
+  "eslintConfig": {
+    "extends": ["@bluecat/react"]
+  },
   "jest": {
     "automock": true,
     "clearMocks": true,
