@@ -31,4 +31,4 @@ const copyDir = (from, to) =>
 		}
 	});
 
-copyDir('src', 'lib');
+copyDir('src', process.argv[2]);

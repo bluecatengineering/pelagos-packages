@@ -1,11 +1,13 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "UI components",
   "license": "ISC",
-  "main": "lib",
+  "main": "es5",
   "scripts": {
-    "build": "rm -rf lib && npm run update-colors && babel -d lib src && npm run copy-resources",
+    "build:es5": "rm -rf es5 && BABEL_ENV=es5 babel -d es5 src && npm run copy-resources es5",
+    "build:es6": "rm -rf es6 && BABEL_ENV=es6 babel -d es6 src && npm run copy-resources es6",
+    "build": "npm run update-colors && npm run build:es5 && npm run build:es6",
     "test": "jest --verbose",
     "test-ci": "npm install && jest --ci --silent --reporters=jest-junit",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -22,6 +24,11 @@
   },
   "keywords": [
     "react"
+  ],
+  "files": [
+    "es5",
+    "es6",
+    "less"
   ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
