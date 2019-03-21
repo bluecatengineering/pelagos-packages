@@ -10,6 +10,27 @@ exports[`Button rendering renders expected elements when active is true 1`] = `
 </button>
 `;
 
+exports[`Button rendering renders expected elements when both id and tooltipText are set 1`] = `
+<OverlayTrigger
+  overlay={
+    <Tooltip
+      id="tooltip-test"
+    >
+      Tooltip
+    </Tooltip>
+  }
+  placement="top"
+>
+  <button
+    className="Button Button--medium"
+    id="test"
+    type="submit"
+  >
+    Test
+  </button>
+</OverlayTrigger>
+`;
+
 exports[`Button rendering renders expected elements when both size is small and disabled is true 1`] = `
 <span
   aria-disabled="true"

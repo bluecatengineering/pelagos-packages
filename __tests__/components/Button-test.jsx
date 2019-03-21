@@ -51,6 +51,11 @@ describe('Button', () => {
 			const wrapper = shallow(<Button componentId="test" text="Test" tooltipText="Tooltip" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when both id and tooltipText are set', () => {
+			const wrapper = shallow(<Button id="test" text="Test" tooltipText="Tooltip" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {
