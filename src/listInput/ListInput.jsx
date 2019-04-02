@@ -16,7 +16,6 @@ const ListInput = ({
 	placeholder,
 	emptyText,
 	list,
-	text,
 	error,
 	getSuggestions,
 	getSuggestionText,
@@ -30,6 +29,7 @@ const ListInput = ({
 	onTextChange,
 	onErrorChange,
 }) => {
+	const [text, setText] = useState('');
 	const [highlightKey, setHighlightKey] = useState(null);
 
 	const handleGetSuggestions = useCallback(
@@ -49,18 +49,23 @@ const ListInput = ({
 		suggestion => {
 			const id = getHighlightKey(suggestion);
 			if (id) {
-				onTextChange('');
+				setText('');
+				onTextChange(false);
 				setHighlightKey(id);
 			} else if (parseInput) {
-				onTextChange('');
+				setText('');
+				onTextChange(false);
 				onListChange([getSuggestionText(suggestion), ...list]);
 			} else {
 				const error = validateSuggestion && validateSuggestion(suggestion);
 				if (error) {
-					onTextChange(getSuggestionText(suggestion));
+					const suggestionText = getSuggestionText(suggestion);
+					setText(suggestionText);
+					onTextChange(!!suggestionText);
 					onErrorChange(error);
 				} else {
-					onTextChange('');
+					setText('');
+					onTextChange(false);
 					onListChange([suggestion, ...list]);
 				}
 			}
@@ -70,14 +75,16 @@ const ListInput = ({
 
 	const handleEnter = useCallback(() => {
 		if (text === '/clear') {
-			onTextChange('');
+			setText('');
+			onTextChange(false);
 			onListChange([]);
 		} else if (parseInput) {
 			const {entries, error} = parseInput(text, list);
 			if (error) {
 				onErrorChange(error);
 			} else {
-				onTextChange('');
+				setText('');
+				onTextChange(false);
 				onListChange([...entries, ...list]);
 			}
 		}
@@ -88,7 +95,8 @@ const ListInput = ({
 			if (error) {
 				onErrorChange(null);
 			}
-			onTextChange(text);
+			setText(text);
+			onTextChange(!!text);
 		},
 		[error, onTextChange, onErrorChange]
 	);
@@ -142,7 +150,6 @@ ListInput.propTypes = {
 	placeholder: PropTypes.string,
 	emptyText: PropTypes.string,
 	list: PropTypes.array,
-	text: PropTypes.string,
 	error: PropTypes.string,
 	getSuggestions: PropTypes.func,
 	getSuggestionText: PropTypes.func,

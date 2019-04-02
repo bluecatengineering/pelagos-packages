@@ -26,7 +26,7 @@ exports[`ListInput rendering renders expected elements 1`] = `
     onEnter={[Function]}
     onTextChange={[Function]}
     placeholder="test placeholder"
-    text="test text"
+    text=""
   />
   <FieldError
     alignment="right"
@@ -76,7 +76,7 @@ exports[`ListInput rendering renders expected elements when error is not set 1`]
     onEnter={[Function]}
     onTextChange={[Function]}
     placeholder="test placeholder"
-    text="test text"
+    text=""
   />
   <FieldError
     alignment="right"
@@ -125,7 +125,7 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
     onEnter={[Function]}
     onTextChange={[Function]}
     placeholder="test placeholder"
-    text="test text"
+    text=""
   />
   <FieldError
     alignment="right"
@@ -162,7 +162,7 @@ exports[`ListInput rendering renders expected elements when the notice is not se
     onEnter={[Function]}
     onTextChange={[Function]}
     placeholder="test placeholder"
-    text="test text"
+    text=""
   />
   <FieldError
     alignment="right"
