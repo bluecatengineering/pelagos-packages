@@ -9,7 +9,7 @@ describe('RadioButton', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<RadioButton componentId="test" className="TestClass" label="Test" checked onChange={jest.fn()} />
+				<RadioButton id="test" componentId="test" className="TestClass" label="Test" checked onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

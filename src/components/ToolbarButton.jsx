@@ -5,8 +5,9 @@ import IconButton from './IconButton';
 
 import './ToolbarButton.less';
 
-const ToolbarButton = ({componentId, className, icon, ariaLabel, tooltipText, disabled, active, onClick}) => (
+const ToolbarButton = ({id, componentId, className, icon, ariaLabel, tooltipText, disabled, active, onClick}) => (
 	<IconButton
+		id={id}
 		componentId={componentId}
 		icon={icon}
 		className={'ToolbarButton' + (active ? ' ToolbarButton--active' : '') + (className ? ' ' + className : '')}
@@ -18,6 +19,7 @@ const ToolbarButton = ({componentId, className, icon, ariaLabel, tooltipText, di
 );
 
 ToolbarButton.propTypes = {
+	id: PropTypes.string,
 	componentId: PropTypes.string,
 	className: PropTypes.string,
 	icon: PropTypes.object,

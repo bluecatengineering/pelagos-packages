@@ -15,6 +15,7 @@ exports[`IconButton rendering renders the expected elements 1`] = `
     aria-label="Test"
     className="IconButton TestClass"
     data-bcn-id="btn-test"
+    id="test"
     onKeyDown={[Function]}
     role="button"
     tabIndex={0}

@@ -10,6 +10,7 @@ describe('ToolbarButton', () => {
 		it('renders the expected elements', () => {
 			const wrapper = shallow(
 				<ToolbarButton
+					id="test"
 					componentId="test"
 					className="TestClass"
 					icon={{}}

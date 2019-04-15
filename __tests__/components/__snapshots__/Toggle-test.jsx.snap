@@ -6,6 +6,7 @@ exports[`Toggle rendering renders expected elements 1`] = `
   aria-label="Test"
   className="Toggle TestClass"
   data-bcn-id="test"
+  id="test"
   onClick={[MockFunction]}
   onKeyDown={[Function]}
   role="checkbox"

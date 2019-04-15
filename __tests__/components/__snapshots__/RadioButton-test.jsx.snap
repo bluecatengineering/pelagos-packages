@@ -5,6 +5,7 @@ exports[`RadioButton rendering renders expected elements 1`] = `
   aria-checked={true}
   className="RadioButton TestClass"
   data-bcn-id="test"
+  id="test"
   onClick={[MockFunction]}
   onKeyDown={[Function]}
   role="radio"

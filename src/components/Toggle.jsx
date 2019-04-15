@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 import './Toggle.less';
 
-const Toggle = ({componentId, className, ariaLabel, checked, disabled, onChange}) => {
+const Toggle = ({id, componentId, className, ariaLabel, checked, disabled, onChange}) => {
 	const handleKeyDown = useCallback(
 		event => (event.keyCode === 32 ? (event.preventDefault(), onChange(event)) : null),
 		[onChange]
 	);
 	return (
 		<span
+			id={id}
 			data-bcn-id={componentId}
 			className={'Toggle ' + className}
 			role="checkbox"
@@ -24,6 +25,7 @@ const Toggle = ({componentId, className, ariaLabel, checked, disabled, onChange}
 };
 
 Toggle.propTypes = {
+	id: PropTypes.string,
 	componentId: PropTypes.string,
 	className: PropTypes.string,
 	ariaLabel: PropTypes.string,

@@ -11,8 +11,9 @@ exports[`FormDropDown rendering renders expected elements 1`] = `
   </div>
   <Select
     className="FormDropDown__select"
-    componentId="id"
+    componentId="test"
     getOptionValue={[MockFunction]}
+    id="test"
     onChange={[MockFunction]}
     options={
       Array [

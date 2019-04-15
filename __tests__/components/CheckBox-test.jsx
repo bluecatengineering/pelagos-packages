@@ -9,7 +9,7 @@ describe('CheckBox', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<CheckBox componentId="test" className="TestClass" label="Test" checked onChange={jest.fn()} />
+				<CheckBox id="test" componentId="test" className="TestClass" label="Test" checked onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

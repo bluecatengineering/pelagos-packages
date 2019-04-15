@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 import './RadioButton.less';
 
-const RadioButton = ({componentId, className, label, checked, error, onChange}) => {
+const RadioButton = ({id, componentId, className, label, checked, error, onChange}) => {
 	const handleKeyDown = useCallback(
 		event => (event.keyCode === 32 ? (event.preventDefault(), onChange(event)) : null),
 		[onChange]
 	);
 	return (
 		<span
+			id={id}
 			data-bcn-id={componentId}
 			className={'RadioButton ' + className + (error ? ' RadioButton--error' : '')}
 			role="radio"
@@ -23,6 +24,7 @@ const RadioButton = ({componentId, className, label, checked, error, onChange}) 
 };
 
 RadioButton.propTypes = {
+	id: PropTypes.string,
 	componentId: PropTypes.string,
 	className: PropTypes.string,
 	label: PropTypes.string,

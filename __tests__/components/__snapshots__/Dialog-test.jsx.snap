@@ -8,6 +8,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
   <form
     className="Dialog"
     data-bcn-id="test-dialog"
+    id="test-dialog"
     onSubmit={null}
   >
     <div

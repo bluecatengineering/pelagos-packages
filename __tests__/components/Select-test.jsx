@@ -21,6 +21,7 @@ describe('Select', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<Select
+					id="test"
 					componentId="test"
 					className="Test"
 					value="two"

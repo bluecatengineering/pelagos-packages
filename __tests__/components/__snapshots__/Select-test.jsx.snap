@@ -9,6 +9,7 @@ exports[`Select rendering renders expected elements 1`] = `
     aria-haspopup="listbox"
     className="Select__text"
     data-bcn-id="test"
+    id="test"
     onKeyDown={[Function]}
     onMouseDown={[Function]}
     role="button"

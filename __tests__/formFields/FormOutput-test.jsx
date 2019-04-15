@@ -8,7 +8,7 @@ jest.unmock('../../src/formFields/FormOutput');
 describe('FormOutput', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<FormOutput componentId="test" label="Test" value="This is a test" />);
+			const wrapper = shallow(<FormOutput id="test" componentId="test" label="Test" value="This is a test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 

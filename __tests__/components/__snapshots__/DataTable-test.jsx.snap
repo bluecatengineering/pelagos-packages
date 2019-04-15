@@ -1422,6 +1422,7 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
 <div
   className="DataTable TestClass"
   data-bcn-id="datatable-1"
+  id="test"
 >
   <div
     className="DataTable__header"

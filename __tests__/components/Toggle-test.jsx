@@ -9,7 +9,7 @@ describe('Toggle', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<Toggle componentId="test" className="TestClass" ariaLabel="Test" checked onChange={jest.fn()} />
+				<Toggle id="test" componentId="test" className="TestClass" ariaLabel="Test" checked onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

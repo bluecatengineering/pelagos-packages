@@ -89,6 +89,7 @@ const renderRows = (data, {metadata, selectedId, highlightId, getRowId, onRowCli
 
 export default class DataTable extends Component {
 	static propTypes = {
+		id: PropTypes.string,
 		componentId: PropTypes.string,
 		className: PropTypes.string,
 		metadata: PropTypes.arrayOf(
@@ -203,6 +204,7 @@ export default class DataTable extends Component {
 
 	render() {
 		const {
+			id,
 			componentId,
 			className,
 			metadata,
@@ -216,7 +218,7 @@ export default class DataTable extends Component {
 
 		const headers = renderHeaders(this.state.dataSort, metadata, this.updateSortColumn);
 		return (
-			<div className={'DataTable' + (className ? ' ' + className : '')} data-bcn-id={componentId}>
+			<div id={id} className={'DataTable' + (className ? ' ' + className : '')} data-bcn-id={componentId}>
 				<div data-bcn-id="table-header" className="DataTable__header">
 					<table className="DataTable__table">
 						<thead>

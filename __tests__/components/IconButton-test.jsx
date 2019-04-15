@@ -9,7 +9,14 @@ describe('IconButton', () => {
 	describe('rendering', () => {
 		it('renders the expected elements', () => {
 			const wrapper = shallow(
-				<IconButton componentId="test" icon={{}} className="TestClass" ariaLabel="Test" tooltipText="This is a test" />
+				<IconButton
+					id="test"
+					componentId="test"
+					icon={{}}
+					className="TestClass"
+					ariaLabel="Test"
+					tooltipText="This is a test"
+				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

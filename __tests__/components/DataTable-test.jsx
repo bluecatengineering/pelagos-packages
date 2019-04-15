@@ -54,6 +54,7 @@ describe('DataTable', () => {
 		it('renders the expected elements if there is data', () => {
 			const wrapper = shallow(
 				<DataTable
+					id="test"
 					componentId={componentId}
 					className="TestClass"
 					metadata={metadata}

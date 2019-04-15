@@ -17,7 +17,8 @@ describe('FormDropDown', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<FormDropDown
-					componentId="id"
+					id="test"
+					componentId="test"
 					label="Test"
 					value="o0"
 					options={options}

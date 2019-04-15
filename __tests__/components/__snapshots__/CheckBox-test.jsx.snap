@@ -5,6 +5,7 @@ exports[`CheckBox rendering renders expected elements 1`] = `
   aria-checked={true}
   className="CheckBox TestClass"
   data-bcn-id="test"
+  id="test"
   onClick={[Function]}
   onKeyDown={[Function]}
   role="checkbox"

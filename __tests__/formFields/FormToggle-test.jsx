@@ -9,7 +9,7 @@ describe('FormToggle', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<FormToggle componentId="test" label="Test" icons={false} value={true} onChange={jest.fn()} />
+				<FormToggle id="test" componentId="test" label="Test" icons={false} value={true} onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

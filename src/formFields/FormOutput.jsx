@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 import Label from '../components/Label';
 import './FormOutput.less';
 
-const FormOutput = ({componentId, className, label, value, alignRight, active}) => (
+const FormOutput = ({id, componentId, className, label, value, alignRight, active}) => (
 	<div className={'FormOutput' + (alignRight ? ' FormOutput--alignRight' : '') + (className ? ' ' + className : '')}>
 		<div>
 			<Label text={label} />
 		</div>
-		<div data-bcn-id={componentId} className={'FormOutput--value' + (active ? ' FormOutput--active' : '')}>
+		<div id={id} data-bcn-id={componentId} className={'FormOutput--value' + (active ? ' FormOutput--active' : '')}>
 			{value}
 		</div>
 	</div>
 );
 
 FormOutput.propTypes = {
-	componentId: PropTypes.string.isRequired,
+	id: PropTypes.string,
+	componentId: PropTypes.string,
 	className: PropTypes.string,
 	label: PropTypes.string.isRequired,
 	value: PropTypes.any,

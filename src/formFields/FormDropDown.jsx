@@ -15,6 +15,7 @@ const FormDropDown = ({className, label, ...props}) => (
 );
 
 FormDropDown.propTypes = {
+	id: PropTypes.string,
 	componentId: PropTypes.string,
 	className: PropTypes.string,
 	label: PropTypes.string.isRequired,

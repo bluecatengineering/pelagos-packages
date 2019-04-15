@@ -12,6 +12,7 @@ exports[`FormOutput rendering renders expected elements 1`] = `
   <div
     className="FormOutput--value"
     data-bcn-id="test"
+    id="test"
   >
     This is a test
   </div>

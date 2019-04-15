@@ -9,6 +9,7 @@ import './Select.less';
 
 export default class Select extends PureComponent {
 	static propTypes = {
+		id: PropTypes.string,
 		componentId: PropTypes.string,
 		className: PropTypes.string,
 		value: PropTypes.string,
@@ -248,6 +249,7 @@ export default class Select extends PureComponent {
 
 	render() {
 		const {
+			id,
 			componentId,
 			className,
 			value,
@@ -267,6 +269,7 @@ export default class Select extends PureComponent {
 		return (
 			<div className={'Select' + (className ? ' ' + className : '')}>
 				<div
+					id={id}
 					data-bcn-id={componentId}
 					className={'Select__text' + (selected ? '' : ' Select__text--empty') + (error ? ' Select__text--error' : '')}
 					tabIndex={disabled ? undefined : '0'}

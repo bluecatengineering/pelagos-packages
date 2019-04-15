@@ -6,13 +6,14 @@ import OverlayTrigger from './OverlayTrigger';
 import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
-const IconButton = ({componentId, icon, className, ariaLabel, tooltipText, large, disabled, onClick}) => {
+const IconButton = ({id, componentId, icon, className, ariaLabel, tooltipText, large, disabled, onClick}) => {
 	const keyHandker = useCallback(
 		event => (event.keyCode === 13 || event.keyCode === 32 ? (event.preventDefault(), onClick(event)) : null),
 		[onClick]
 	);
 	const button = (
 		<span
+			id={id}
 			role="button"
 			aria-disabled={disabled}
 			aria-label={ariaLabel}
@@ -28,7 +29,7 @@ const IconButton = ({componentId, icon, className, ariaLabel, tooltipText, large
 		return button;
 	}
 
-	const tooltipId = 'tooltip-' + componentId;
+	const tooltipId = 'tooltip-' + (id || componentId);
 	const tooltip = <Tooltip id={tooltipId}>{tooltipText}</Tooltip>;
 	return (
 		<OverlayTrigger placement={large ? 'left' : 'right'} overlay={tooltip}>
@@ -38,7 +39,8 @@ const IconButton = ({componentId, icon, className, ariaLabel, tooltipText, large
 };
 
 IconButton.propTypes = {
-	componentId: PropTypes.string.isRequired,
+	id: PropTypes.string,
+	componentId: PropTypes.string,
 	icon: PropTypes.object.isRequired,
 	className: PropTypes.string,
 	ariaLabel: PropTypes.string,

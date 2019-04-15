@@ -5,13 +5,14 @@ import Label from '../components/Label';
 import Toggle from '../components/Toggle';
 import './FormToggle.less';
 
-const FormToggle = ({componentId, className, label, value, onChange}) => (
+const FormToggle = ({id, componentId, className, label, value, onChange}) => (
 	<div className={'FormToggle' + (className ? ' ' + className : '')}>
 		<div>
 			<Label text={label} />
 		</div>
 
 		<Toggle
+			id={id}
 			componentId={componentId}
 			className="Toggle__field"
 			ariaLabel={label}
@@ -22,6 +23,7 @@ const FormToggle = ({componentId, className, label, value, onChange}) => (
 );
 
 FormToggle.propTypes = {
+	id: PropTypes.string,
 	componentId: PropTypes.string,
 	className: PropTypes.string,
 	label: PropTypes.string.isRequired,
