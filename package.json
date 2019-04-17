@@ -1,9 +1,8 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "UI components",
   "license": "ISC",
-  "main": "es6",
   "scripts": {
     "build:es5": "rm -rf es5 && BABEL_ENV=es5 babel -d es5 src && npm run copy-resources es5",
     "build:es6": "rm -rf es6 && BABEL_ENV=es6 babel -d es6 src && npm run copy-resources es6",
@@ -26,6 +25,7 @@
     "react"
   ],
   "files": [
+    "index.js",
     "es5",
     "es6",
     "less"
