@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '../components/Label';
@@ -14,10 +14,10 @@ const FormToggle = ({id, componentId, className, label, value, onChange}) => (
 		<Toggle
 			id={id}
 			componentId={componentId}
-			className="Toggle__field"
+			className="FormToggle__field"
 			ariaLabel={label}
 			checked={value}
-			onChange={() => onChange(!value)}
+			onChange={useCallback(() => onChange(!value), [value])}
 		/>
 	</div>
 );
