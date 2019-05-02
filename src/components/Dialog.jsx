@@ -3,21 +3,35 @@ import PropTypes from 'prop-types';
 
 import './Dialog.less';
 
-const Dialog = ({id, componentId, title, children: [body, buttons], onSubmit}) => (
-	<div className="Dialog__backdrop" onClick={event => event.nativeEvent.stopImmediatePropagation()}>
-		<form
-			id={id}
-			className="Dialog"
-			data-bcn-id={componentId}
-			onSubmit={onSubmit ? event => (event.preventDefault(), onSubmit()) : null}>
+const Dialog = ({id, componentId, title, children: [body, buttons], onSubmit}) => {
+	const content = (
+		<>
 			<div className="Dialog__title">{title}</div>
 			{cloneElement(body, {
 				className: body.props.className ? body.props.className + ' Dialog__body' : 'Dialog__body',
 			})}
 			{cloneElement(buttons, {className: 'Dialog__buttons'})}
-		</form>
-	</div>
-);
+		</>
+	);
+
+	return (
+		<div className="Dialog__backdrop" onClick={event => event.nativeEvent.stopImmediatePropagation()}>
+			{onSubmit ? (
+				<form
+					id={id}
+					data-bcn-id={componentId}
+					className="Dialog"
+					onSubmit={event => (event.preventDefault(), onSubmit())}>
+					{content}
+				</form>
+			) : (
+				<div id={id} data-bcn-id={componentId} className="Dialog">
+					{content}
+				</div>
+			)}
+		</div>
+	);
+};
 
 Dialog.propTypes = {
 	id: PropTypes.string,
