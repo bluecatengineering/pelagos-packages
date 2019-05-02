@@ -6,6 +6,7 @@ exports[`FormDropDown rendering renders expected elements 1`] = `
 >
   <div>
     <Label
+      htmlFor="test"
       text="Test"
     />
   </div>
@@ -33,6 +34,7 @@ exports[`FormDropDown rendering renders expected elements when className is set 
 >
   <div>
     <Label
+      htmlFor="test"
       text="Test"
     />
   </div>
@@ -40,6 +42,7 @@ exports[`FormDropDown rendering renders expected elements when className is set 
     className="FormDropDown__select"
     componentId="id"
     getOptionValue={[MockFunction]}
+    id="test"
     onChange={[MockFunction]}
     options={
       Array [
@@ -59,6 +62,7 @@ exports[`FormDropDown rendering renders expected elements when there are errors 
 >
   <div>
     <Label
+      htmlFor="test"
       text="Test"
     />
   </div>
@@ -67,6 +71,7 @@ exports[`FormDropDown rendering renders expected elements when there are errors 
     componentId="id"
     error={true}
     getOptionValue={[MockFunction]}
+    id="test"
     onChange={[MockFunction]}
     options={
       Array [

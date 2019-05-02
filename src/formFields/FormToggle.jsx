@@ -5,22 +5,25 @@ import Label from '../components/Label';
 import Toggle from '../components/Toggle';
 import './FormToggle.less';
 
-const FormToggle = ({id, componentId, className, label, value, onChange}) => (
-	<div className={'FormToggle' + (className ? ' ' + className : '')}>
-		<div>
-			<Label text={label} />
-		</div>
+const FormToggle = ({id, componentId, className, label, value, onChange}) => {
+	id = id || 'e' + ('' + Math.random()).substr(2);
+	return (
+		<div className={'FormToggle' + (className ? ' ' + className : '')}>
+			<div>
+				<Label text={label} htmlFor={id} />
+			</div>
 
-		<Toggle
-			id={id}
-			componentId={componentId}
-			className="FormToggle__field"
-			ariaLabel={label}
-			checked={value}
-			onChange={useCallback(() => onChange(!value), [value])}
-		/>
-	</div>
-);
+			<Toggle
+				id={id}
+				componentId={componentId}
+				className="FormToggle__field"
+				ariaLabel={label}
+				checked={value}
+				onChange={useCallback(() => onChange(!value), [value])}
+			/>
+		</div>
+	);
+};
 
 FormToggle.propTypes = {
 	id: PropTypes.string,

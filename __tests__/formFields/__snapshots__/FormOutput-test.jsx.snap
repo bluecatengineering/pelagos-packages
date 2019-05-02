@@ -6,16 +6,17 @@ exports[`FormOutput rendering renders expected elements 1`] = `
 >
   <div>
     <Label
+      htmlFor="test"
       text="Test"
     />
   </div>
-  <div
-    className="FormOutput--value"
+  <output
+    className="FormOutput__value"
     data-bcn-id="test"
     id="test"
   >
     This is a test
-  </div>
+  </output>
 </div>
 `;
 
@@ -25,15 +26,17 @@ exports[`FormOutput rendering renders expected elements when active is true 1`] 
 >
   <div>
     <Label
+      htmlFor="test"
       text="Test"
     />
   </div>
-  <div
-    className="FormOutput--value FormOutput--active"
+  <output
+    className="FormOutput__value FormOutput--active"
     data-bcn-id="test"
+    id="test"
   >
     This is a test
-  </div>
+  </output>
 </div>
 `;
 
@@ -43,15 +46,17 @@ exports[`FormOutput rendering renders expected elements when alignRight is true 
 >
   <div>
     <Label
+      htmlFor="test"
       text="Test"
     />
   </div>
-  <div
-    className="FormOutput--value"
+  <output
+    className="FormOutput__value"
     data-bcn-id="test"
+    id="test"
   >
     This is a test
-  </div>
+  </output>
 </div>
 `;
 
@@ -61,14 +66,16 @@ exports[`FormOutput rendering renders expected elements when className is set 1`
 >
   <div>
     <Label
+      htmlFor="test"
       text="Test"
     />
   </div>
-  <div
-    className="FormOutput--value"
+  <output
+    className="FormOutput__value"
     data-bcn-id="test"
+    id="test"
   >
     This is a test
-  </div>
+  </output>
 </div>
 `;

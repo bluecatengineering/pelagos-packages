@@ -14,18 +14,22 @@ describe('FormOutput', () => {
 
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
-				<FormOutput componentId="test" className="TestClass" label="Test" value="This is a test" />
+				<FormOutput id="test" componentId="test" className="TestClass" label="Test" value="This is a test" />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when alignRight is true', () => {
-			const wrapper = shallow(<FormOutput componentId="test" label="Test" value="This is a test" alignRight={true} />);
+			const wrapper = shallow(
+				<FormOutput id="test" componentId="test" label="Test" value="This is a test" alignRight={true} />
+			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when active is true', () => {
-			const wrapper = shallow(<FormOutput componentId="test" label="Test" value="This is a test" active={true} />);
+			const wrapper = shallow(
+				<FormOutput id="test" componentId="test" label="Test" value="This is a test" active={true} />
+			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});

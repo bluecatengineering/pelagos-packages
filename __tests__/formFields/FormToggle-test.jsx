@@ -17,6 +17,7 @@ describe('FormToggle', () => {
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
 				<FormToggle
+					id="test"
 					componentId="test"
 					className="TestClass"
 					label="Test"
