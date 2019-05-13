@@ -78,7 +78,7 @@ const ListInput = ({
 			setText('');
 			onTextChange(false);
 			onListChange([]);
-		} else if (parseInput) {
+		} else if (text && parseInput) {
 			const {entries, error} = parseInput(text, list);
 			if (error) {
 				onErrorChange(error);

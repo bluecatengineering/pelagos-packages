@@ -242,6 +242,13 @@ describe('ListInput', () => {
 			wrapper.find('ComboBox').prop('onEnter')();
 		});
 
+		it('ignores input when enter is pressed and text is empty', () => {
+			const parseInput = jest.fn();
+			const wrapper = shallow(<ListInput id="test" parseInput={parseInput} />);
+			wrapper.find('ComboBox').prop('onEnter')();
+			expect(parseInput).not.toHaveBeenCalled();
+		});
+
 		it('calls onTextChange when the combo-box text changes', () => {
 			const text = 'test';
 			const onTextChange = jest.fn();
