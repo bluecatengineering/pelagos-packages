@@ -30,7 +30,6 @@ exports[`OverlayTrigger rendering renders expected elements 1`] = `
           "_callbacks": Array [],
           "_renderer": ReactShallowRenderer {
             "_context": Object {},
-            "_currentlyRenderingComponent": null,
             "_didScheduleRenderPhaseUpdate": false,
             "_dispatcher": Object {
               "readContext": [Function],
@@ -57,7 +56,6 @@ exports[`OverlayTrigger rendering renders expected elements 1`] = `
             "_isReRender": false,
             "_newState": null,
             "_numberOfReRenders": 0,
-            "_previousComponentIdentity": null,
             "_renderPhaseUpdates": null,
             "_rendered": <React.Fragment>
               <div
