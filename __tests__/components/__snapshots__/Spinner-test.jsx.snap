@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner rendering renders expected elements 1`] = `
+<div
+  className="Spinner CssSpinner Spinner--medium"
+  id="test"
+/>
+`;

@@ -348,15 +348,8 @@ exports[`DataTable rendering renders clickable row 1`] = `
         className="DataTable__spinner"
         data-bcn-id="spinner-datatable-next"
       >
-        <SvgIcon
-          animation="spin"
-          icon={
-            Object {
-              "icon": Array [],
-              "iconName": "spinner",
-              "prefix": "fas",
-            }
-          }
+        <Spinner
+          size="tiny"
         />
       </div>
     </React.Fragment>
@@ -561,15 +554,8 @@ exports[`DataTable rendering renders highlighted row 1`] = `
         className="DataTable__spinner"
         data-bcn-id="spinner-datatable-next"
       >
-        <SvgIcon
-          animation="spin"
-          icon={
-            Object {
-              "icon": Array [],
-              "iconName": "spinner",
-              "prefix": "fas",
-            }
-          }
+        <Spinner
+          size="tiny"
         />
       </div>
     </React.Fragment>
@@ -734,15 +720,8 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
         className="DataTable__loadingSpinner"
         data-bcn-id="spinner-datatable-next"
       >
-        <SvgIcon
-          animation="spin"
-          icon={
-            Object {
-              "icon": Array [],
-              "iconName": "spinner",
-              "prefix": "fas",
-            }
-          }
+        <Spinner
+          size="large"
         />
       </div>
     </React.Fragment>
@@ -836,15 +815,8 @@ exports[`DataTable rendering renders previous spinner when isFetchingPrevDataPag
         className="DataTable__spinner"
         data-bcn-id="spinner-datatable-prev"
       >
-        <SvgIcon
-          animation="spin"
-          icon={
-            Object {
-              "icon": Array [],
-              "iconName": "spinner",
-              "prefix": "fas",
-            }
-          }
+        <Spinner
+          size="tiny"
         />
       </div>
       <table
@@ -1311,15 +1283,8 @@ exports[`DataTable rendering renders selected row 1`] = `
         className="DataTable__spinner"
         data-bcn-id="spinner-datatable-next"
       >
-        <SvgIcon
-          animation="spin"
-          icon={
-            Object {
-              "icon": Array [],
-              "iconName": "spinner",
-              "prefix": "fas",
-            }
-          }
+        <Spinner
+          size="tiny"
         />
       </div>
     </React.Fragment>

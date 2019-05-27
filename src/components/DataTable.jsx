@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash-es/throttle';
 import stableSort from 'stable';
 import {buildHighlighter} from '@bluecat/helpers';
-import {faSort, faSortDown, faSortUp, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import {faSort, faSortDown, faSortUp} from '@fortawesome/free-solid-svg-icons';
 
 import SvgIcon from './SvgIcon';
+import Spinner from './Spinner';
 import './DataTable.less';
 
 const sortData = (dataSort, defaultSortColumnId, {data, metadata}) => {
@@ -231,7 +232,7 @@ export default class DataTable extends Component {
 						<>
 							{isFetchingPrevDataPage && (
 								<div data-bcn-id="spinner-datatable-prev" className="DataTable__spinner">
-									<SvgIcon icon={faSpinner} animation="spin" />
+									<Spinner size="tiny" />
 								</div>
 							)}
 							<table className="DataTable__table" data-bcn-id="datatable-table">
@@ -246,7 +247,7 @@ export default class DataTable extends Component {
 								<div
 									data-bcn-id="spinner-datatable-next"
 									className={showLoadingSpinner ? 'DataTable__loadingSpinner' : 'DataTable__spinner'}>
-									<SvgIcon icon={faSpinner} animation="spin" />
+									<Spinner size={showLoadingSpinner ? 'large' : 'tiny'} />
 								</div>
 							)}
 						</>

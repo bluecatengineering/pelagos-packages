@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalSpinner rendering renders expected elements 1`] = `
+<div
+  className="ModalSpinner"
+  data-bcn-id="test-component"
+  id="test"
+>
+  <Spinner
+    size="large"
+  />
+</div>
+`;

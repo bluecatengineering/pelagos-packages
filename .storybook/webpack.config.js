@@ -1,11 +1,15 @@
 const path = require('path');
 
-module.exports = {
+module.exports = ({config}) => ({
+	...config,
 	resolveLoader: {
+		...config.resolveLoader,
 		modules: ['node_modules', 'loaders'],
 	},
 	module: {
+		...config.module,
 		rules: [
+			...config.module.rules,
 			{
 				test: /\.less$/,
 				loaders: ['style-loader', 'css-loader', 'less-loader'],
@@ -29,4 +33,4 @@ module.exports = {
 			},
 		],
 	},
-};
+});

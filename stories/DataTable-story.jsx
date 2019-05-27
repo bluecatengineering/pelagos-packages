@@ -33,13 +33,30 @@ const data = [
 
 const getRowId = row => row.id;
 
-storiesOf('DataTable', module).add('all states', () => (
-	<DataTable
-		metadata={metadata}
-		data={data}
-		selectedId="3"
-		getRowId={getRowId}
-		addedCount={data.length}
-		defaultSort={defaultSort}
-	/>
-));
+storiesOf('DataTable', module)
+	.add('normal', () => (
+		<DataTable
+			metadata={metadata}
+			data={data}
+			selectedId="3"
+			getRowId={getRowId}
+			addedCount={data.length}
+			defaultSort={defaultSort}
+		/>
+	))
+	.add('loading', () => (
+		<DataTable
+			className="Story__table"
+			metadata={metadata}
+			data={[]}
+			addedCount={0}
+			getRowId={getRowId}
+			isFetchingNextDataPage
+		/>
+	))
+	.add('loading next', () => (
+		<DataTable metadata={metadata} data={data} addedCount={data.length} getRowId={getRowId} isFetchingNextDataPage />
+	))
+	.add('loading previous', () => (
+		<DataTable metadata={metadata} data={data} addedCount={data.length} getRowId={getRowId} isFetchingPrevDataPage />
+	));
