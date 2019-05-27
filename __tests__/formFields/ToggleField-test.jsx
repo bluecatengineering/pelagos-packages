@@ -1,30 +1,20 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import FormToggle from '../../src/formFields/FormToggle';
+import ToggleField from '../../src/formFields/ToggleField';
 
-jest.unmock('../../src/formFields/FormToggle');
+jest.unmock('../../src/formFields/ToggleField');
 
-describe('FormToggle', () => {
+describe('ToggleField', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(
-				<FormToggle id="test" componentId="test" label="Test" icons={false} value={true} onChange={jest.fn()} />
-			);
+			const wrapper = shallow(<ToggleField id="test" label="Test" icons={false} value={true} onChange={jest.fn()} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
-				<FormToggle
-					id="test"
-					componentId="test"
-					className="TestClass"
-					label="Test"
-					icons={false}
-					value={true}
-					onChange={jest.fn()}
-				/>
+				<ToggleField id="test" className="TestClass" label="Test" icons={false} value={true} onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
@@ -37,7 +27,7 @@ describe('FormToggle', () => {
 				target: {checked: false},
 			};
 
-			const wrapper = shallow(<FormToggle label="Test" icons={false} value={true} onChange={onChange} />);
+			const wrapper = shallow(<ToggleField label="Test" icons={false} value={true} onChange={onChange} />);
 			wrapper.find('Toggle').simulate('change', event);
 			expect(onChange.mock.calls).toEqual([[false]]);
 		});

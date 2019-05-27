@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollToItem} from '@bluecat/helpers';
 
-import '../formFields/FormTextInput.less';
+import '../formFields/TextInputField.less';
 import './ComboBox.less';
 
 const ComboBox = ({
@@ -141,7 +141,7 @@ const ComboBox = ({
 		<div className="ComboBox" role="combobox" aria-haspopup="listbox" aria-owns={listId} aria-expanded={expanded}>
 			<input
 				id={id}
-				className={'FormTextInput__input' + (error ? ' FormTextInput--error' : '')}
+				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				autoComplete="off"
 				aria-autocomplete="list"
 				aria-controls={listId}

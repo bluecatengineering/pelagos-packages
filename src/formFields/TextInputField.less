@@ -1,15 +1,15 @@
 @import '../../less/colors';
 @import '../../less/fonts';
 
-.FormTextInput {
+.TextInputField {
 	margin-bottom: 10px;
 }
 
-.FormTextInput__label {
+.TextInputField__label {
 	flex-direction: row;
 }
 
-.FormTextInput__optional {
+.TextInputField__optional {
 	@font-10-400();
 	color: @font-color-3;
 	position: relative;
@@ -17,7 +17,7 @@
 	margin-left: 12px;
 }
 
-.FormTextInput__input {
+.TextInputField__input {
 	height: 35px;
 	padding: 6px 12px;
 	background-color: @form-field-bg;
@@ -29,23 +29,23 @@
 		outline-offset: -2px;
 	}
 
-	&.FormTextInput--error {
+	&.TextInputField--error {
 		border-color: @form-field-error;
 	}
 
-	&:focus.FormTextInput--error {
+	&:focus.TextInputField--error {
 		outline-color: @form-field-error;
 	}
 }
 
 .Dialog {
-	.FormTextInput__input {
+	.TextInputField__input {
 		color: @font-color-1;
 	}
 }
 
 @media print {
-	.FormTextInput__input {
+	.TextInputField__input {
 		background-color: transparent;
 		border-color: transparent;
 	}

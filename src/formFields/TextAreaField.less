@@ -1,10 +1,10 @@
 @import '../../less/colors';
 
-.FormTextArea {
+.TextAreaField {
 	margin-bottom: 10px;
 }
 
-.FormTextArea__area {
+.TextAreaField__area {
 	height: 65px;
 	padding: 6px 12px;
 	background-color: @form-field-bg;
@@ -16,21 +16,21 @@
 		outline-offset: -2px;
 	}
 
-	&.FormTextArea--error {
+	&.TextAreaField--error {
 		border-color: @form-field-error;
 	}
 
-	&:focus.FormTextArea--error {
+	&:focus.TextAreaField--error {
 		outline-color: @form-field-error;
 	}
 }
 
-.FormTextArea--noresize {
+.TextAreaField--noresize {
 	resize: none;
 }
 
 @media print {
-	.FormTextArea__area {
+	.TextAreaField__area {
 		background-color: transparent;
 		border-color: transparent;
 	}

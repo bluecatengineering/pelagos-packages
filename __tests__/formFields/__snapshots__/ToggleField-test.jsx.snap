@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormToggle rendering renders expected elements 1`] = `
+exports[`ToggleField rendering renders expected elements 1`] = `
 <div
-  className="FormToggle"
+  className="ToggleField"
 >
   <div>
     <Label
@@ -13,17 +13,16 @@ exports[`FormToggle rendering renders expected elements 1`] = `
   <Toggle
     ariaLabel="Test"
     checked={true}
-    className="FormToggle__field"
-    componentId="test"
+    className="ToggleField__field"
     id="test"
     onChange={[Function]}
   />
 </div>
 `;
 
-exports[`FormToggle rendering renders expected elements when className is set 1`] = `
+exports[`ToggleField rendering renders expected elements when className is set 1`] = `
 <div
-  className="FormToggle TestClass"
+  className="ToggleField TestClass"
 >
   <div>
     <Label
@@ -34,8 +33,7 @@ exports[`FormToggle rendering renders expected elements when className is set 1`
   <Toggle
     ariaLabel="Test"
     checked={true}
-    className="FormToggle__field"
-    componentId="test"
+    className="ToggleField__field"
     id="test"
     onChange={[Function]}
   />

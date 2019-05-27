@@ -7,7 +7,7 @@ module.exports = {
 			presets: [['@babel/env', {loose: true, targets: {node: true}}], ['@babel/react', {useBuiltIns: true}]],
 		},
 		es5: {
-			presets: [['@babel/env', {loose: true, modules: false, useBuiltIns: 'usage', targets: {ie: '11'}}]],
+			presets: [['@babel/env', {loose: true, modules: false, useBuiltIns: 'usage', corejs: 2, targets: {ie: '11'}}]],
 		},
 		es6: {
 			presets: [

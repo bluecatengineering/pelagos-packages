@@ -2,25 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '../components/Label';
-import './FormOutput.less';
+import './OutputField.less';
 
-const FormOutput = ({id, componentId, className, label, value, alignRight, active}) => {
+const OutputField = ({id, className, label, value, alignRight, active}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
-		<div className={'FormOutput' + (alignRight ? ' FormOutput--alignRight' : '') + (className ? ' ' + className : '')}>
+		<div
+			className={'OutputField' + (alignRight ? ' OutputField--alignRight' : '') + (className ? ' ' + className : '')}>
 			<div>
 				<Label text={label} htmlFor={id} />
 			</div>
-			<output id={id} data-bcn-id={componentId} className={'FormOutput__value' + (active ? ' FormOutput--active' : '')}>
+			<output id={id} className={'OutputField__value' + (active ? ' OutputField--active' : '')}>
 				{value}
 			</output>
 		</div>
 	);
 };
 
-FormOutput.propTypes = {
+OutputField.propTypes = {
 	id: PropTypes.string,
-	componentId: PropTypes.string,
 	className: PropTypes.string,
 	label: PropTypes.string.isRequired,
 	value: PropTypes.any,
@@ -28,4 +28,4 @@ FormOutput.propTypes = {
 	active: PropTypes.bool,
 };
 
-export default FormOutput;
+export default OutputField;

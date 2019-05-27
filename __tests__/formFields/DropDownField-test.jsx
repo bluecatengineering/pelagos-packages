@@ -1,9 +1,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import FormDropDown from '../../src/formFields/FormDropDown';
+import DropDownField from '../../src/formFields/DropDownField';
 
-jest.unmock('../../src/formFields/FormDropDown');
+jest.unmock('../../src/formFields/DropDownField');
 
 const values = {
 	o0: 'Option 0',
@@ -12,13 +12,12 @@ const values = {
 const options = Object.keys(values);
 const renderOption = o => values[o];
 
-describe('FormDropDown', () => {
+describe('DropDownField', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<FormDropDown
+				<DropDownField
 					id="test"
-					componentId="test"
 					label="Test"
 					value="o0"
 					options={options}
@@ -31,9 +30,8 @@ describe('FormDropDown', () => {
 
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
-				<FormDropDown
+				<DropDownField
 					id="test"
-					componentId="id"
 					className="TestClass"
 					label="Test"
 					value="o0"
@@ -45,16 +43,15 @@ describe('FormDropDown', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when there are errors', () => {
-			const options = [{componentId: 'id', value: 'o0', text: 'Option 0'}, {value: 'o1', text: 'Option 1'}];
+		it('renders expected elements when error is set', () => {
+			const options = [{value: 'o0', text: 'Option 0'}, {value: 'o1', text: 'Option 1'}];
 			const wrapper = shallow(
-				<FormDropDown
+				<DropDownField
 					id="test"
-					componentId="id"
 					label="Test"
 					value="o0"
 					options={options}
-					error={true}
+					error="Error"
 					renderOption={renderOption}
 					onChange={jest.fn()}
 				/>
@@ -67,7 +64,7 @@ describe('FormDropDown', () => {
 		it('calls onChange when the value changes', () => {
 			const onChange = jest.fn();
 			const wrapper = shallow(
-				<FormDropDown componentId="id" label="Test" options={[]} renderOption={renderOption} onChange={onChange} />
+				<DropDownField label="Test" options={[]} renderOption={renderOption} onChange={onChange} />
 			);
 			wrapper.find('Select').simulate('change', 'test');
 			expect(onChange.mock.calls).toEqual([['test']]);

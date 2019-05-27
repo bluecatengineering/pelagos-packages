@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormTextArea rendering adds the error class if the error is set 1`] = `
+exports[`TextAreaField rendering adds the error class if the error is set 1`] = `
 <div
-  className="FormTextArea"
+  className="TextAreaField"
 >
   <div>
     <Label
@@ -11,7 +11,7 @@ exports[`FormTextArea rendering adds the error class if the error is set 1`] = `
     />
   </div>
   <textarea
-    className="FormTextArea__area FormTextArea--noresize FormTextArea--error"
+    className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
     id="test-id"
     maxLength={10}
     onChange={[MockFunction]}
@@ -25,9 +25,9 @@ exports[`FormTextArea rendering adds the error class if the error is set 1`] = `
 </div>
 `;
 
-exports[`FormTextArea rendering does not add the resize class if the resize is true 1`] = `
+exports[`TextAreaField rendering does not add the resize class if the resize is true 1`] = `
 <div
-  className="FormTextArea"
+  className="TextAreaField"
 >
   <div>
     <Label
@@ -36,7 +36,7 @@ exports[`FormTextArea rendering does not add the resize class if the resize is t
     />
   </div>
   <textarea
-    className="FormTextArea__area"
+    className="TextAreaField__area"
     id="test-id"
     maxLength={10}
     onChange={[MockFunction]}
@@ -49,9 +49,9 @@ exports[`FormTextArea rendering does not add the resize class if the resize is t
 </div>
 `;
 
-exports[`FormTextArea rendering renders expected elements 1`] = `
+exports[`TextAreaField rendering renders expected elements 1`] = `
 <div
-  className="FormTextArea"
+  className="TextAreaField"
 >
   <div>
     <Label
@@ -60,7 +60,7 @@ exports[`FormTextArea rendering renders expected elements 1`] = `
     />
   </div>
   <textarea
-    className="FormTextArea__area FormTextArea--noresize"
+    className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
     onChange={[MockFunction]}
@@ -73,9 +73,9 @@ exports[`FormTextArea rendering renders expected elements 1`] = `
 </div>
 `;
 
-exports[`FormTextArea rendering renders expected elements when className is set 1`] = `
+exports[`TextAreaField rendering renders expected elements when className is set 1`] = `
 <div
-  className="FormTextArea TestClass"
+  className="TextAreaField TestClass"
 >
   <div>
     <Label
@@ -84,7 +84,7 @@ exports[`FormTextArea rendering renders expected elements when className is set 
     />
   </div>
   <textarea
-    className="FormTextArea__area FormTextArea--noresize"
+    className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
     onChange={[MockFunction]}
@@ -97,9 +97,9 @@ exports[`FormTextArea rendering renders expected elements when className is set 
 </div>
 `;
 
-exports[`FormTextArea rendering sets a random id if not provided 1`] = `
+exports[`TextAreaField rendering sets a random id if not provided 1`] = `
 <div
-  className="FormTextArea"
+  className="TextAreaField"
 >
   <div>
     <Label
@@ -108,7 +108,7 @@ exports[`FormTextArea rendering sets a random id if not provided 1`] = `
     />
   </div>
   <textarea
-    className="FormTextArea__area FormTextArea--noresize"
+    className="TextAreaField__area TextAreaField--noresize"
     id="e1"
     maxLength={10}
     onChange={[MockFunction]}

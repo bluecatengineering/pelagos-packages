@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormDropDown rendering renders expected elements 1`] = `
+exports[`DropDownField rendering renders expected elements 1`] = `
 <div
-  className="FormDropDown"
+  className="DropDownField"
 >
   <div>
     <Label
@@ -11,8 +11,8 @@ exports[`FormDropDown rendering renders expected elements 1`] = `
     />
   </div>
   <Select
-    className="FormDropDown__select"
-    componentId="test"
+    className="DropDownField__select"
+    error={false}
     getOptionValue={[MockFunction]}
     id="test"
     onChange={[MockFunction]}
@@ -25,12 +25,15 @@ exports[`FormDropDown rendering renders expected elements 1`] = `
     renderOption={[Function]}
     value="o0"
   />
+  <FieldError
+    alignment="right"
+  />
 </div>
 `;
 
-exports[`FormDropDown rendering renders expected elements when className is set 1`] = `
+exports[`DropDownField rendering renders expected elements when className is set 1`] = `
 <div
-  className="FormDropDown TestClass"
+  className="DropDownField TestClass"
 >
   <div>
     <Label
@@ -39,8 +42,8 @@ exports[`FormDropDown rendering renders expected elements when className is set 
     />
   </div>
   <Select
-    className="FormDropDown__select"
-    componentId="id"
+    className="DropDownField__select"
+    error={false}
     getOptionValue={[MockFunction]}
     id="test"
     onChange={[MockFunction]}
@@ -53,12 +56,15 @@ exports[`FormDropDown rendering renders expected elements when className is set 
     renderOption={[Function]}
     value="o0"
   />
+  <FieldError
+    alignment="right"
+  />
 </div>
 `;
 
-exports[`FormDropDown rendering renders expected elements when there are errors 1`] = `
+exports[`DropDownField rendering renders expected elements when error is set 1`] = `
 <div
-  className="FormDropDown"
+  className="DropDownField"
 >
   <div>
     <Label
@@ -67,8 +73,7 @@ exports[`FormDropDown rendering renders expected elements when there are errors 
     />
   </div>
   <Select
-    className="FormDropDown__select"
-    componentId="id"
+    className="DropDownField__select"
     error={true}
     getOptionValue={[MockFunction]}
     id="test"
@@ -76,7 +81,6 @@ exports[`FormDropDown rendering renders expected elements when there are errors 
     options={
       Array [
         Object {
-          "componentId": "id",
           "text": "Option 0",
           "value": "o0",
         },
@@ -88,6 +92,10 @@ exports[`FormDropDown rendering renders expected elements when there are errors 
     }
     renderOption={[Function]}
     value="o0"
+  />
+  <FieldError
+    alignment="right"
+    text="Error"
   />
 </div>
 `;

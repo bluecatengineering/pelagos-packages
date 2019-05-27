@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import Label from '../components/Label';
 
 import FieldError from './FieldError';
-import './FormTextArea.less';
+import './TextAreaField.less';
 
-const FormTextArea = ({id, className, label, resize, error, ...props}) => {
+const TextAreaField = ({id, className, label, resize, error, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
-		<div className={'FormTextArea' + (className ? ' ' + className : '')}>
+		<div className={'TextAreaField' + (className ? ' ' + className : '')}>
 			<div>
 				<Label text={label} htmlFor={id} />
 			</div>
@@ -17,7 +17,7 @@ const FormTextArea = ({id, className, label, resize, error, ...props}) => {
 				{...props}
 				id={id}
 				className={
-					'FormTextArea__area' + (resize ? '' : ' FormTextArea--noresize') + (error ? ' FormTextArea--error' : '')
+					'TextAreaField__area' + (resize ? '' : ' TextAreaField--noresize') + (error ? ' TextAreaField--error' : '')
 				}
 			/>
 			<FieldError text={error} />
@@ -25,7 +25,7 @@ const FormTextArea = ({id, className, label, resize, error, ...props}) => {
 	);
 };
 
-FormTextArea.propTypes = {
+TextAreaField.propTypes = {
 	id: PropTypes.string,
 	className: PropTypes.string,
 	label: PropTypes.string.isRequired,
@@ -37,4 +37,4 @@ FormTextArea.propTypes = {
 	onChange: PropTypes.func.isRequired,
 };
 
-export default FormTextArea;
+export default TextAreaField;

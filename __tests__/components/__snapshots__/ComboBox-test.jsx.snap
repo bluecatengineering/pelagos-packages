@@ -13,7 +13,7 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     aria-autocomplete="list"
     aria-controls="test-list"
     autoComplete="off"
-    className="FormTextInput__input FormTextInput--error"
+    className="TextInputField__input TextInputField--error"
     id="test"
     onBlur={[Function]}
     onChange={[Function]}
@@ -39,7 +39,7 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     aria-autocomplete="list"
     aria-controls="test-list"
     autoComplete="off"
-    className="FormTextInput__input"
+    className="TextInputField__input"
     id="test"
     onBlur={[Function]}
     onChange={[Function]}
@@ -65,7 +65,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     aria-autocomplete="list"
     aria-controls="test-list"
     autoComplete="off"
-    className="FormTextInput__input"
+    className="TextInputField__input"
     id="test"
     onBlur={[Function]}
     onChange={[Function]}

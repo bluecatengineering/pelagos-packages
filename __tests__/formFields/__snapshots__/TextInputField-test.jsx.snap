@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormTextInput rendering adds the error class if the error is set 1`] = `
+exports[`TextInputField rendering adds the error class if the error is set 1`] = `
 <div
-  className="FormTextInput"
+  className="TextInputField"
 >
   <div
-    className="FormTextInput__label"
+    className="TextInputField__label"
   >
     <Label
       htmlFor="test-id"
@@ -13,7 +13,7 @@ exports[`FormTextInput rendering adds the error class if the error is set 1`] = 
     />
   </div>
   <input
-    className="FormTextInput__input FormTextInput--error"
+    className="TextInputField__input TextInputField--error"
     disabled={false}
     id="test-id"
     maxLength={10}
@@ -30,12 +30,12 @@ exports[`FormTextInput rendering adds the error class if the error is set 1`] = 
 </div>
 `;
 
-exports[`FormTextInput rendering does not render optional text if value is set 1`] = `
+exports[`TextInputField rendering does not render optional text if value is set 1`] = `
 <div
-  className="FormTextInput"
+  className="TextInputField"
 >
   <div
-    className="FormTextInput__label"
+    className="TextInputField__label"
   >
     <Label
       htmlFor="test-id"
@@ -43,7 +43,7 @@ exports[`FormTextInput rendering does not render optional text if value is set 1
     />
   </div>
   <input
-    className="FormTextInput__input"
+    className="TextInputField__input"
     disabled={false}
     id="test-id"
     maxLength={10}
@@ -59,12 +59,12 @@ exports[`FormTextInput rendering does not render optional text if value is set 1
 </div>
 `;
 
-exports[`FormTextInput rendering renders expected elements 1`] = `
+exports[`TextInputField rendering renders expected elements 1`] = `
 <div
-  className="FormTextInput"
+  className="TextInputField"
 >
   <div
-    className="FormTextInput__label"
+    className="TextInputField__label"
   >
     <Label
       htmlFor="test-id"
@@ -72,7 +72,7 @@ exports[`FormTextInput rendering renders expected elements 1`] = `
     />
   </div>
   <input
-    className="FormTextInput__input"
+    className="TextInputField__input"
     disabled={false}
     id="test-id"
     maxLength={10}
@@ -88,12 +88,12 @@ exports[`FormTextInput rendering renders expected elements 1`] = `
 </div>
 `;
 
-exports[`FormTextInput rendering renders expected elements when className is set 1`] = `
+exports[`TextInputField rendering renders expected elements when className is set 1`] = `
 <div
-  className="FormTextInput TestClass"
+  className="TextInputField TestClass"
 >
   <div
-    className="FormTextInput__label"
+    className="TextInputField__label"
   >
     <Label
       htmlFor="test-id"
@@ -101,7 +101,7 @@ exports[`FormTextInput rendering renders expected elements when className is set
     />
   </div>
   <input
-    className="FormTextInput__input"
+    className="TextInputField__input"
     disabled={false}
     id="test-id"
     maxLength={10}
@@ -117,25 +117,25 @@ exports[`FormTextInput rendering renders expected elements when className is set
 </div>
 `;
 
-exports[`FormTextInput rendering renders optional text if provided 1`] = `
+exports[`TextInputField rendering renders optional text if provided 1`] = `
 <div
-  className="FormTextInput"
+  className="TextInputField"
 >
   <div
-    className="FormTextInput__label"
+    className="TextInputField__label"
   >
     <Label
       htmlFor="test-id"
       text="Label"
     />
     <span
-      className="FormTextInput__optional"
+      className="TextInputField__optional"
     >
       optional
     </span>
   </div>
   <input
-    className="FormTextInput__input"
+    className="TextInputField__input"
     disabled={false}
     id="test-id"
     maxLength={10}
@@ -151,12 +151,12 @@ exports[`FormTextInput rendering renders optional text if provided 1`] = `
 </div>
 `;
 
-exports[`FormTextInput rendering sets a random id if not provided 1`] = `
+exports[`TextInputField rendering sets a random id if not provided 1`] = `
 <div
-  className="FormTextInput"
+  className="TextInputField"
 >
   <div
-    className="FormTextInput__label"
+    className="TextInputField__label"
   >
     <Label
       htmlFor="e1"
@@ -164,7 +164,7 @@ exports[`FormTextInput rendering sets a random id if not provided 1`] = `
     />
   </div>
   <input
-    className="FormTextInput__input"
+    className="TextInputField__input"
     disabled={false}
     id="e1"
     maxLength={10}

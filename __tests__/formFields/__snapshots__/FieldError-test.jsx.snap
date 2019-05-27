@@ -3,21 +3,7 @@
 exports[`FieldError rendering renders expected elements 1`] = `
 <div
   className="FieldError"
-  data-bcn-id="input-error"
-  style={
-    Object {
-      "textAlign": "right",
-    }
-  }
->
-  Test
-</div>
-`;
-
-exports[`FieldError rendering renders expected elements when componentId is set 1`] = `
-<div
-  className="FieldError"
-  data-bcn-id="test"
+  id="test"
   style={
     Object {
       "textAlign": "right",

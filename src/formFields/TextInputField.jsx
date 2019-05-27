@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import Label from '../components/Label';
 
 import FieldError from './FieldError';
-import './FormTextInput.less';
+import './TextInputField.less';
 
-const FormTextInput = ({id, className, label, value, optionalText, error, ...props}) => {
+const TextInputField = ({id, className, label, value, optionalText, error, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
-		<div className={'FormTextInput' + (className ? ' ' + className : '')}>
-			<div className="FormTextInput__label">
+		<div className={'TextInputField' + (className ? ' ' + className : '')}>
+			<div className="TextInputField__label">
 				<Label text={label} htmlFor={id} />
-				{optionalText && !value ? <span className="FormTextInput__optional">{optionalText}</span> : null}
+				{optionalText && !value ? <span className="TextInputField__optional">{optionalText}</span> : null}
 			</div>
 			<input
 				{...props}
 				id={id}
-				className={'FormTextInput__input' + (error ? ' FormTextInput--error' : '')}
+				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				value={value}
 			/>
 			<FieldError text={error} />
@@ -25,7 +25,7 @@ const FormTextInput = ({id, className, label, value, optionalText, error, ...pro
 	);
 };
 
-FormTextInput.propTypes = {
+TextInputField.propTypes = {
 	id: PropTypes.string,
 	className: PropTypes.string,
 	label: PropTypes.string.isRequired,
@@ -42,8 +42,8 @@ FormTextInput.propTypes = {
 	onChange: PropTypes.func.isRequired,
 };
 
-FormTextInput.defaultProps = {
+TextInputField.defaultProps = {
 	type: 'text',
 };
 
-export default FormTextInput;
+export default TextInputField;

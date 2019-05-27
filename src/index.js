@@ -20,12 +20,12 @@ export {default as Toggle} from './components/Toggle';
 export {default as ToolbarButton} from './components/ToolbarButton';
 export {default as Tooltip} from './components/Tooltip';
 
+export {default as DropDownField} from './formFields/DropDownField';
 export {default as FieldError} from './formFields/FieldError';
-export {default as FormDropDown} from './formFields/FormDropDown';
-export {default as FormOutput} from './formFields/FormOutput';
-export {default as FormTextArea} from './formFields/FormTextArea';
-export {default as FormTextInput} from './formFields/FormTextInput';
-export {default as FormToggle} from './formFields/FormToggle';
+export {default as OutputField} from './formFields/OutputField';
+export {default as TextAreaField} from './formFields/TextAreaField';
+export {default as TextInputField} from './formFields/TextInputField';
+export {default as ToggleField} from './formFields/ToggleField';
 
 export {default as ListEntries} from './listInput/ListEntries';
 export {default as ListInput} from './listInput/ListInput';

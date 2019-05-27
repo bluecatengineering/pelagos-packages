@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OutputField rendering renders expected elements 1`] = `
+<div
+  className="OutputField"
+>
+  <div>
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+  </div>
+  <output
+    className="OutputField__value"
+    id="test"
+  >
+    This is a test
+  </output>
+</div>
+`;
+
+exports[`OutputField rendering renders expected elements when active is true 1`] = `
+<div
+  className="OutputField"
+>
+  <div>
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+  </div>
+  <output
+    className="OutputField__value OutputField--active"
+    id="test"
+  >
+    This is a test
+  </output>
+</div>
+`;
+
+exports[`OutputField rendering renders expected elements when alignRight is true 1`] = `
+<div
+  className="OutputField OutputField--alignRight"
+>
+  <div>
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+  </div>
+  <output
+    className="OutputField__value"
+    id="test"
+  >
+    This is a test
+  </output>
+</div>
+`;
+
+exports[`OutputField rendering renders expected elements when className is set 1`] = `
+<div
+  className="OutputField TestClass"
+>
+  <div>
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+  </div>
+  <output
+    className="OutputField__value"
+    id="test"
+  >
+    This is a test
+  </output>
+</div>
+`;
+
+exports[`OutputField rendering renders expected elements when id is not set 1`] = `
+<div
+  className="OutputField"
+>
+  <div>
+    <Label
+      htmlFor="e1"
+      text="Test"
+    />
+  </div>
+  <output
+    className="OutputField__value"
+    id="e1"
+  >
+    This is a test
+  </output>
+</div>
+`;

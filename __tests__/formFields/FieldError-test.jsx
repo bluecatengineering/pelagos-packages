@@ -8,12 +8,7 @@ jest.unmock('../../src/formFields/FieldError');
 describe('FieldError', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<FieldError text="Test" />);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when componentId is set', () => {
-			const wrapper = shallow(<FieldError componentId="test" text="Test" />);
+			const wrapper = shallow(<FieldError id="test" text="Test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});
