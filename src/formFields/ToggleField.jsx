@@ -16,7 +16,7 @@ const ToggleField = ({id, className, label, value, onChange}) => {
 			<Toggle
 				id={id}
 				className="ToggleField__field"
-				ariaLabel={label}
+				aria-label={label}
 				checked={value}
 				onChange={useCallback(() => onChange(!value), [value])}
 			/>

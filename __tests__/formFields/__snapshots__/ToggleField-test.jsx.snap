@@ -11,7 +11,7 @@ exports[`ToggleField rendering renders expected elements 1`] = `
     />
   </div>
   <Toggle
-    ariaLabel="Test"
+    aria-label="Test"
     checked={true}
     className="ToggleField__field"
     id="test"
@@ -31,7 +31,7 @@ exports[`ToggleField rendering renders expected elements when className is set 1
     />
   </div>
   <Toggle
-    ariaLabel="Test"
+    aria-label="Test"
     checked={true}
     className="ToggleField__field"
     id="test"

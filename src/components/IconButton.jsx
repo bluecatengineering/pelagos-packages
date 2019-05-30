@@ -6,17 +6,17 @@ import OverlayTrigger from './OverlayTrigger';
 import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
-const IconButton = ({id, componentId, icon, className, ariaLabel, tooltipText, large, disabled, onClick}) => {
+const IconButton = ({id, componentId, icon, className, tooltipText, large, disabled, onClick, ...props}) => {
 	const keyHandker = useCallback(
 		event => (event.keyCode === 13 || event.keyCode === 32 ? (event.preventDefault(), onClick(event)) : null),
 		[onClick]
 	);
 	const button = (
 		<span
+			{...props}
 			id={id}
 			role="button"
 			aria-disabled={disabled}
-			aria-label={ariaLabel}
 			tabIndex={disabled ? -1 : 0}
 			className={'IconButton' + (className ? ' ' + className : '') + (large ? ' IconButton--large' : '')}
 			data-bcn-id={'btn-' + componentId}
@@ -43,7 +43,6 @@ IconButton.propTypes = {
 	componentId: PropTypes.string,
 	icon: PropTypes.object.isRequired,
 	className: PropTypes.string,
-	ariaLabel: PropTypes.string,
 	tooltipText: PropTypes.string,
 	large: PropTypes.bool,
 	disabled: PropTypes.bool,

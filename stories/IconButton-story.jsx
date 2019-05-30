@@ -6,8 +6,8 @@ import {IconButton} from '../src';
 
 storiesOf('IconButton', module).add('all states', () => (
 	<div className="Story__group">
-		<IconButton componentId="test" icon={faCat} tooltipText="Tooltip" ariaLabel="Label" />
-		<IconButton componentId="test" icon={faCat} tooltipText="Tooltip" ariaLabel="Label" large />
-		<IconButton componentId="test" icon={faCat} tooltipText="Tooltip" ariaLabel="Label" disabled />
+		<IconButton componentId="test" icon={faCat} tooltipText="Tooltip" aria-label="Label" />
+		<IconButton componentId="test" icon={faCat} tooltipText="Tooltip" aria-label="Label" large />
+		<IconButton componentId="test" icon={faCat} tooltipText="Tooltip" aria-label="Label" disabled />
 	</div>
 ));
