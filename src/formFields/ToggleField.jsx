@@ -5,7 +5,7 @@ import Label from '../components/Label';
 import Toggle from '../components/Toggle';
 import './ToggleField.less';
 
-const ToggleField = ({id, className, label, value, onChange}) => {
+const ToggleField = ({id, className, label, value, disabled, onChange}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'ToggleField' + (className ? ' ' + className : '')}>
@@ -16,8 +16,8 @@ const ToggleField = ({id, className, label, value, onChange}) => {
 			<Toggle
 				id={id}
 				className="ToggleField__field"
-				aria-label={label}
 				checked={value}
+				disabled={disabled}
 				onChange={useCallback(() => onChange(!value), [value])}
 			/>
 		</div>
@@ -29,6 +29,7 @@ ToggleField.propTypes = {
 	className: PropTypes.string,
 	label: PropTypes.string.isRequired,
 	value: PropTypes.bool,
+	disabled: PropTypes.bool,
 	onChange: PropTypes.func.isRequired,
 };
 

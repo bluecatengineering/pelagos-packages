@@ -11,9 +11,9 @@ exports[`ToggleField rendering renders expected elements 1`] = `
     />
   </div>
   <Toggle
-    aria-label="Test"
     checked={true}
     className="ToggleField__field"
+    disabled={true}
     id="test"
     onChange={[Function]}
   />
@@ -31,7 +31,6 @@ exports[`ToggleField rendering renders expected elements when className is set 1
     />
   </div>
   <Toggle
-    aria-label="Test"
     checked={true}
     className="ToggleField__field"
     id="test"

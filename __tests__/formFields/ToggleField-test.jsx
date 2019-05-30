@@ -8,7 +8,9 @@ jest.unmock('../../src/formFields/ToggleField');
 describe('ToggleField', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<ToggleField id="test" label="Test" icons={false} value={true} onChange={jest.fn()} />);
+			const wrapper = shallow(
+				<ToggleField id="test" label="Test" icons={false} value={true} disabled={true} onChange={jest.fn()} />
+			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
