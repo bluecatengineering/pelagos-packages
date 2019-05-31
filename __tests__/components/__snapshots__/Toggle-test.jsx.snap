@@ -21,8 +21,6 @@ exports[`Toggle rendering renders expected elements when disabled is true 1`] = 
   aria-label="Test"
   className="Toggle TestClass"
   data-bcn-id="test"
-  onClick={[MockFunction]}
-  onKeyDown={[Function]}
   role="checkbox"
   tabIndex={-1}
 />

@@ -17,8 +17,8 @@ const Toggle = ({componentId, className, checked, disabled, onChange, ...props})
 			aria-checked={!!checked}
 			aria-disabled={disabled}
 			tabIndex={disabled ? -1 : 0}
-			onClick={onChange}
-			onKeyDown={handleKeyDown}
+			onClick={disabled ? undefined : onChange}
+			onKeyDown={disabled ? undefined : handleKeyDown}
 		/>
 	);
 };
