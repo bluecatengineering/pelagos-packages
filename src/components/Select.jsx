@@ -70,16 +70,19 @@ export default class Select extends PureComponent {
 		switch (keyCode) {
 			case 27: // esc
 				event.preventDefault();
+				event.nativeEvent.stopImmediatePropagation();
 				this.hideList();
 				break;
 			case 13: // enter
 			case 32: // space
 				event.preventDefault();
+				event.nativeEvent.stopImmediatePropagation();
 				this.select(this.state.focused);
 				break;
 			case 33: {
 				// page up
 				event.preventDefault();
+				event.nativeEvent.stopImmediatePropagation();
 				let i;
 				const renderedOptions = this.renderedOptions;
 				const list = this.list.current;
@@ -100,6 +103,7 @@ export default class Select extends PureComponent {
 			case 34: {
 				// page down
 				event.preventDefault();
+				event.nativeEvent.stopImmediatePropagation();
 				let i;
 				const renderedOptions = this.renderedOptions;
 				const list = this.list.current;
@@ -120,15 +124,18 @@ export default class Select extends PureComponent {
 			}
 			case 35: // end
 				event.preventDefault();
+				event.nativeEvent.stopImmediatePropagation();
 				this.setFocused(this.renderedOptions.length - 1);
 				break;
 			case 36: // home
 				event.preventDefault();
+				event.nativeEvent.stopImmediatePropagation();
 				this.setFocused(0);
 				break;
 			case 38: {
 				// up
 				event.preventDefault();
+				event.nativeEvent.stopImmediatePropagation();
 				const i = this.findFocused();
 				if (i > 0) {
 					this.setFocused(i - 1);
@@ -138,6 +145,7 @@ export default class Select extends PureComponent {
 			case 40: {
 				// down
 				event.preventDefault();
+				event.nativeEvent.stopImmediatePropagation();
 				const i = this.findFocused();
 				if (i < this.renderedOptions.length - 1) {
 					this.setFocused(i + 1);
@@ -147,6 +155,7 @@ export default class Select extends PureComponent {
 			default:
 				if (keyCode >= 48) {
 					event.preventDefault();
+					event.nativeEvent.stopImmediatePropagation();
 					const i = this.findItemToFocus(keyCode);
 					if (i !== -1) {
 						this.setFocused(i);

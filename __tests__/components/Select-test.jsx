@@ -276,7 +276,7 @@ describe('Select', () => {
 		});
 
 		it('hides the list when it is visible and escape is pressed', () => {
-			const event = {keyCode: 27, preventDefault: jest.fn()};
+			const event = {keyCode: 27, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const onChange = jest.fn();
 			const wrapper = shallow(
 				<Select
@@ -301,7 +301,7 @@ describe('Select', () => {
 		});
 
 		it('hides the list and calls onChange when it is visible and enter is pressed', () => {
-			const event = {keyCode: 13, preventDefault: jest.fn()};
+			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const onChange = jest.fn();
 			const wrapper = shallow(
 				<Select
@@ -326,7 +326,7 @@ describe('Select', () => {
 		});
 
 		it('scrolls the list up when it is visible and page up is pressed', () => {
-			const event = {keyCode: 33, preventDefault: jest.fn()};
+			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
@@ -356,7 +356,7 @@ describe('Select', () => {
 		});
 
 		it('focuses the first option when the list is visible, page up is pressed and list cannot be scrolled up', () => {
-			const event = {keyCode: 33, preventDefault: jest.fn()};
+			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
@@ -386,7 +386,7 @@ describe('Select', () => {
 		});
 
 		it('scrolls the list down when it is visible and page down is pressed', () => {
-			const event = {keyCode: 34, preventDefault: jest.fn()};
+			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
@@ -416,7 +416,7 @@ describe('Select', () => {
 		});
 
 		it('focuses the last option when the list is visible, page down is pressed and the list cannot be scrolled down', () => {
-			const event = {keyCode: 34, preventDefault: jest.fn()};
+			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
@@ -446,7 +446,7 @@ describe('Select', () => {
 		});
 
 		it('focuses the last option when the list is visible and end is pressed', () => {
-			const event = {keyCode: 35, preventDefault: jest.fn()};
+			const event = {keyCode: 35, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
@@ -476,7 +476,7 @@ describe('Select', () => {
 		});
 
 		it('focuses the first option when the list is visible and home is pressed', () => {
-			const event = {keyCode: 36, preventDefault: jest.fn()};
+			const event = {keyCode: 36, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
@@ -506,7 +506,7 @@ describe('Select', () => {
 		});
 
 		it('focuses the previous option when the list is visible and up is pressed', () => {
-			const event = {keyCode: 38, preventDefault: jest.fn()};
+			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
@@ -536,7 +536,7 @@ describe('Select', () => {
 		});
 
 		it('does not change focused when the list is visible, up is pressed and the first option is already focused', () => {
-			const event = {keyCode: 38, preventDefault: jest.fn()};
+			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
@@ -566,7 +566,7 @@ describe('Select', () => {
 		});
 
 		it('focuses the next option when the list is visible and down is pressed', () => {
-			const event = {keyCode: 40, preventDefault: jest.fn()};
+			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
@@ -596,7 +596,7 @@ describe('Select', () => {
 		});
 
 		it('does not change focused when the list is visible, down is pressed and the last option is already focused', () => {
-			const event = {keyCode: 40, preventDefault: jest.fn()};
+			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
@@ -626,7 +626,11 @@ describe('Select', () => {
 		});
 
 		it('finds an option starting with typed key when the list is visible and an alphanumeric key is pressed', () => {
-			const event = {keyCode: 'T'.codePointAt(0), preventDefault: jest.fn()};
+			const event = {
+				keyCode: 'T'.codePointAt(0),
+				preventDefault: jest.fn(),
+				nativeEvent: {stopImmediatePropagation: jest.fn()},
+			};
 			const list = {
 				clientHeight: 75,
 				scrollTop: 0,
@@ -659,7 +663,11 @@ describe('Select', () => {
 		});
 
 		it('finds an option starting with the current prefix when the list is visible and two alphanumeric keys are pressed in sequence', () => {
-			const event = {keyCode: 'H'.codePointAt(0), preventDefault: jest.fn()};
+			const event = {
+				keyCode: 'H'.codePointAt(0),
+				preventDefault: jest.fn(),
+				nativeEvent: {stopImmediatePropagation: jest.fn()},
+			};
 			const list = {
 				clientHeight: 75,
 				scrollTop: 0,
@@ -683,7 +691,11 @@ describe('Select', () => {
 			instance.showList();
 			wrapper.update();
 			const listBox = wrapper.find('[role="listbox"]');
-			listBox.simulate('keydown', {keyCode: 'T'.codePointAt(0), preventDefault: jest.fn()});
+			listBox.simulate('keydown', {
+				keyCode: 'T'.codePointAt(0),
+				preventDefault: jest.fn(),
+				nativeEvent: {stopImmediatePropagation: jest.fn()},
+			});
 			listBox.simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(wrapper.state('focused')).toBe('three');
@@ -691,7 +703,11 @@ describe('Select', () => {
 		});
 
 		it('does not change focused when the list is visible and an alphanumeric key with no matches is pressed', () => {
-			const event = {keyCode: 'X'.codePointAt(0), preventDefault: jest.fn()};
+			const event = {
+				keyCode: 'X'.codePointAt(0),
+				preventDefault: jest.fn(),
+				nativeEvent: {stopImmediatePropagation: jest.fn()},
+			};
 			const list = {
 				clientHeight: 75,
 				scrollTop: 0,
