@@ -10,19 +10,14 @@
 	background-color: @form-field-bg;
 	border: 1px solid @form-field-border;
 	border-radius: 3px;
+}
 
-	&:focus {
-		outline: 3px auto @bondi;
-		outline-offset: -2px;
-	}
+.TextAreaField--error {
+	border-color: @form-field-error;
+}
 
-	&.TextAreaField--error {
-		border-color: @form-field-error;
-	}
-
-	&:focus.TextAreaField--error {
-		outline-color: @form-field-error;
-	}
+.TextAreaField--error:focus {
+	outline-color: @form-field-error;
 }
 
 .TextAreaField--noresize {

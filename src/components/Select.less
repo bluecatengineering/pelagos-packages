@@ -19,7 +19,7 @@
 	border-radius: 3px;
 
 	&:focus {
-		outline: 3px auto @bondi;
+		outline: 2px solid @bondi;
 		outline-offset: -2px;
 	}
 }
@@ -29,6 +29,9 @@
 }
 .Select__text--error {
 	border-color: @form-field-error;
+}
+.Select__text--error:focus {
+	outline-color: @form-field-error;
 }
 .Select__text[aria-disabled='true'] {
 	cursor: default;

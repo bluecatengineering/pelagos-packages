@@ -22,9 +22,14 @@ a {
 	cursor: pointer;
 	transition: color 0.3s ease-out;
 
-	&:hover,
+	&:hover {
+		color: @sea;
+	}
+
 	&:focus {
 		color: @sea;
+		outline: 2px solid @bondi;
+		outline-offset: 0;
 	}
 
 	&:active {

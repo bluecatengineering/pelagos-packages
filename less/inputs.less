@@ -29,6 +29,13 @@ input[disabled]:-ms-input-placeholder {
 input[disabled]::placeholder {
 	color: @battleship;
 }
+input:not([type]):focus,
+input[type='text']:focus,
+input[type='password']:focus,
+textarea:focus {
+	outline: 2px solid @bondi;
+	outline-offset: -2px;
+}
 
 @media print {
 	:-ms-input-placeholder {
