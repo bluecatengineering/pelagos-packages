@@ -4,14 +4,13 @@ exports[`ComboBox rendering renders expected elements 1`] = `
 <div
   aria-expanded={false}
   aria-haspopup="listbox"
-  aria-owns="test-list"
   className="ComboBox"
   role="combobox"
 >
   <input
     aria-activedescendant={null}
     aria-autocomplete="list"
-    aria-controls="test-list"
+    aria-controls={null}
     autoComplete="off"
     className="TextInputField__input TextInputField--error"
     id="test"
@@ -30,14 +29,13 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
 <div
   aria-expanded={false}
   aria-haspopup="listbox"
-  aria-owns="test-list"
   className="ComboBox"
   role="combobox"
 >
   <input
     aria-activedescendant={null}
     aria-autocomplete="list"
-    aria-controls="test-list"
+    aria-controls={null}
     autoComplete="off"
     className="TextInputField__input"
     id="test"
@@ -56,7 +54,6 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
 <div
   aria-expanded={true}
   aria-haspopup="listbox"
-  aria-owns="test-list"
   className="ComboBox"
   role="combobox"
 >

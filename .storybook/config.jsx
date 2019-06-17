@@ -1,6 +1,6 @@
 import React from 'react';
 import {configure, addDecorator} from '@storybook/react';
-import {checkA11y} from '@storybook/addon-a11y';
+import {withA11y} from '@storybook/addon-a11y';
 
 import BackgroundPicker from './BackgroundPicker';
 
@@ -14,6 +14,6 @@ addDecorator(story => (
 		{story()}
 	</div>
 ));
-addDecorator(checkA11y);
+addDecorator(withA11y);
 
 configure(() => req.keys().forEach(filename => req(filename)), module);

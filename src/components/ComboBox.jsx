@@ -1,4 +1,4 @@
-import React, {cloneElement, createRef, useCallback, useEffect, useState} from 'react';
+import React, {cloneElement, useRef, useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollToItem} from '@bluecat/helpers';
@@ -8,7 +8,6 @@ import './ComboBox.less';
 
 const ComboBox = ({
 	id,
-	placeholder,
 	autoSelect,
 	text,
 	error,
@@ -17,8 +16,9 @@ const ComboBox = ({
 	onChange,
 	onEnter,
 	onTextChange,
+	...props
 }) => {
-	const listRef = createRef();
+	const listRef = useRef(null);
 
 	const [suggestions, setSuggestions] = useState([]);
 	const [expanded, setExpanded] = useState(false);
@@ -45,13 +45,10 @@ const ComboBox = ({
 		event => {
 			switch (event.keyCode) {
 				case 13: // enter
-					event.preventDefault();
-					break;
 				case 27: // escape
 					event.preventDefault();
 					break;
-				case 38: {
-					// up
+				case 38: // up
 					event.preventDefault();
 					if (expanded) {
 						const index = selected <= 0 ? suggestions.length - 1 : selected - 1;
@@ -59,9 +56,7 @@ const ComboBox = ({
 						scrollToItem(listRef.current, index);
 					}
 					break;
-				}
-				case 40: {
-					// down
+				case 40: // down
 					event.preventDefault();
 					if (expanded) {
 						const index = selected === -1 || selected === suggestions.length - 1 ? 0 : selected + 1;
@@ -69,7 +64,6 @@ const ComboBox = ({
 						scrollToItem(listRef.current, index);
 					}
 					break;
-				}
 			}
 		},
 		[expanded, selected, listRef]
@@ -138,16 +132,16 @@ const ComboBox = ({
 
 	const listId = id + '-list';
 	return (
-		<div className="ComboBox" role="combobox" aria-haspopup="listbox" aria-owns={listId} aria-expanded={expanded}>
+		<div className="ComboBox" role="combobox" aria-haspopup="listbox" aria-expanded={expanded}>
 			<input
+				{...props}
 				id={id}
 				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				autoComplete="off"
 				aria-autocomplete="list"
-				aria-controls={listId}
+				aria-controls={expanded ? listId : null}
 				aria-activedescendant={selected === -1 ? null : id + '-opt-' + selected}
 				value={text}
-				placeholder={placeholder}
 				onKeyDown={handleKeyDown}
 				onKeyUp={handleKeyUp}
 				onChange={handleChange}
@@ -185,6 +179,7 @@ ComboBox.propTypes = {
 	placeholder: PropTypes.string,
 	autoSelect: PropTypes.bool,
 	text: PropTypes.string,
+	disabled: PropTypes.bool,
 	error: PropTypes.bool,
 	getSuggestions: PropTypes.func,
 	renderSuggestion: PropTypes.func,

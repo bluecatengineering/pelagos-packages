@@ -1,4 +1,4 @@
-import React, {createRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
 import {scrollToItem} from '@bluecat/helpers';
@@ -12,6 +12,7 @@ jest.mock('react', () => ({
 	createRef: jest.fn(() => ({})),
 	useEffect: jest.fn(),
 	useState: jest.fn(v => [v, jest.fn()]),
+	useRef: jest.fn(current => ({current})),
 }));
 jest.mock('lodash-es/debounce', () => jest.fn(f => ((f.cancel = jest.fn()), f)));
 
@@ -119,7 +120,7 @@ describe('ComboBox', () => {
 
 		it('selects the previous item when up is pressed', () => {
 			const listElement = {};
-			createRef.mockReturnValue({current: listElement});
+			useRef.mockReturnValue({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
 				.mockReturnValueOnce([true, jest.fn()])
@@ -132,7 +133,7 @@ describe('ComboBox', () => {
 
 		it('selects the last item when up is pressed and selected is 0', () => {
 			const listElement = {};
-			createRef.mockReturnValue({current: listElement});
+			useRef.mockReturnValue({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
 				.mockReturnValueOnce([true, jest.fn()])
@@ -151,7 +152,7 @@ describe('ComboBox', () => {
 
 		it('selects the next item when down is pressed', () => {
 			const listElement = {};
-			createRef.mockReturnValue({current: listElement});
+			useRef.mockReturnValue({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
 				.mockReturnValueOnce([true, jest.fn()])
@@ -164,7 +165,7 @@ describe('ComboBox', () => {
 
 		it('selects the first item when down is pressed and selected is the last item', () => {
 			const listElement = {};
-			createRef.mockReturnValue({current: listElement});
+			useRef.mockReturnValue({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
 				.mockReturnValueOnce([true, jest.fn()])
