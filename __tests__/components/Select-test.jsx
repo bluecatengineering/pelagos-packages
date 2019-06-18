@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 import {smoothScroll} from '@bluecat/helpers';
 
 import Select from '../../src/components/Select';
 
 jest.unmock('../../src/components/Select');
+
+jest.mock('react', () => ({
+	...jest.requireActual('react'),
+	useEffect: jest.fn(),
+	useRef: jest.fn(current => ({current})),
+	useState: jest.fn(v => [v, jest.fn()]),
+}));
 
 const strings = {
 	one: 'One',
@@ -15,14 +22,11 @@ const options = Object.keys(strings);
 const renderOption = o => strings[o];
 
 describe('Select', () => {
-	jest.spyOn(Math, 'random').mockReturnValue(0.12345);
-
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<Select
 					id="test"
-					componentId="test"
 					className="Test"
 					value="two"
 					options={options}
@@ -37,7 +41,7 @@ describe('Select', () => {
 		it('renders expected elements when className is not set', () => {
 			const wrapper = shallow(
 				<Select
-					componentId="test"
+					id="test"
 					value="two"
 					options={options}
 					placeholder="Testing"
@@ -51,7 +55,7 @@ describe('Select', () => {
 		it('renders expected elements when value is not set', () => {
 			const wrapper = shallow(
 				<Select
-					componentId="test"
+					id="test"
 					className="Test"
 					options={options}
 					placeholder="Testing"
@@ -65,7 +69,7 @@ describe('Select', () => {
 		it('renders expected elements when disabled is true', () => {
 			const wrapper = shallow(
 				<Select
-					componentId="test"
+					id="test"
 					className="Test"
 					value="two"
 					options={options}
@@ -81,7 +85,7 @@ describe('Select', () => {
 		it('renders expected elements when error is true', () => {
 			const wrapper = shallow(
 				<Select
-					componentId="test"
+					id="test"
 					className="Test"
 					value="two"
 					options={options}
@@ -95,9 +99,10 @@ describe('Select', () => {
 		});
 
 		it('renders expected elements when open is true', () => {
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1]);
 			const wrapper = shallow(
 				<Select
-					componentId="test"
+					id="test"
 					className="Test"
 					value="two"
 					options={options}
@@ -106,526 +111,390 @@ describe('Select', () => {
 					onChange={jest.fn()}
 				/>
 			);
-			const instance = wrapper.instance();
-			instance.list.current = {focus: jest.fn()};
-			instance.showList();
-			wrapper.update();
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});
 
 	describe('behaviour', () => {
-		it('sets the focus on the list and scrolls to current option when open changes from false to true', () => {
+		it('scrolls to current option when open changes from false to true', () => {
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
-				focus: jest.fn(),
+
 				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
 			};
-			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
-			);
-			wrapper.instance().list.current = list;
-			wrapper.setState({open: true, focused: 'three'});
-			expect(list.focus).toHaveBeenCalledTimes(1);
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
+			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
+			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [true]]]);
+
+			useEffect.mock.calls[0][0]();
 			expect(smoothScroll.mock.calls).toEqual([[list, 0, 25, 150]]);
 		});
 
-		it('sets the focus on the button when open changes from true to false', () => {
-			const button = {
-				focus: jest.fn(),
-			};
-			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
-			);
-			const instance = wrapper.instance();
-			instance.button.current = button;
-			instance.state.open = true;
-			wrapper.setState({open: false});
-			expect(button.focus).toHaveBeenCalledTimes(1);
-		});
+		it('does not scroll to current option when open changes from true to false', () => {
+			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
+			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [false]]]);
 
-		it('does not change focus when open does not change', () => {
-			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
-			);
-			// since neither list nor button are set this call would fail if not implemented correctly
-			wrapper.setState({focused: 'one'});
-		});
-
-		it('shows the list when enter is pressed on the button', () => {
-			const event = {keyCode: 13, preventDefault: jest.fn()};
-			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
-			);
-			wrapper.instance().list.current = {focus: jest.fn()};
-			wrapper.find('[role="button"]').simulate('keydown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('open')).toBe(true);
-			expect(wrapper.state('focused')).toBe('three');
-		});
-
-		it('shows the list and selects the first option when enter is pressed on the button and the value is not set', () => {
-			const event = {keyCode: 13, preventDefault: jest.fn()};
-			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
-			);
-			wrapper.instance().list.current = {focus: jest.fn()};
-			wrapper.find('[role="button"]').simulate('keydown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('open')).toBe(true);
-			expect(wrapper.state('focused')).toBe('one');
-		});
-
-		it('does not show the list when an unknown key is pressed on the button', () => {
-			const event = {keyCode: 9, preventDefault: jest.fn()};
-			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
-			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
-			expect(event.preventDefault).not.toHaveBeenCalled();
-			expect(wrapper.state('open')).toBe(false);
+			useEffect.mock.calls[0][0]();
+			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
 		it('shows the list when it is hidden and the button receives mouse down', () => {
-			const event = {preventDefault: jest.fn()};
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
+			const focus = jest.fn();
+			const element = {focus};
+			const closest = jest.fn().mockReturnValue(element);
+			const event = {preventDefault: jest.fn(), target: {closest}};
+			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.instance().list.current = {focus: jest.fn()};
 			wrapper.find('[role="button"]').simulate('mousedown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('open')).toBe(true);
+			expect(closest.mock.calls).toEqual([['[role="button"]']]);
+			expect(focus).toHaveBeenCalledTimes(1);
+			expect(setOpen.mock.calls).toEqual([[true]]);
+			expect(setFocused.mock.calls).toEqual([[2]]);
 		});
 
 		it('hides the list when it is visible and the button receives mouse down', () => {
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
 			const event = {preventDefault: jest.fn()};
+			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.state.open = true;
-			instance.button.current = {focus: jest.fn()};
 			wrapper.find('[role="button"]').simulate('mousedown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('open')).toBe(false);
+			expect(setOpen.mock.calls).toEqual([[false]]);
+			expect(setFocused.mock.calls).toEqual([[-1]]);
 		});
 
-		it('hides the list when it is visible and escape is pressed', () => {
-			const event = {keyCode: 27, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const onChange = jest.fn();
+		it('prevents event default when enter, space or escape are pressed', () => {
+			const preventDefault = jest.fn();
+			const nativeEvent = {stopImmediatePropagation: jest.fn()};
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={onChange}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = {focus: jest.fn()};
-			instance.button.current = {focus: jest.fn()};
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('open')).toBe(false);
-			expect(onChange).not.toHaveBeenCalled();
-		});
+			const button = wrapper.find('[role="button"]');
 
-		it('hides the list and calls onChange when it is visible and enter is pressed', () => {
-			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const onChange = jest.fn();
-			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={onChange}
-				/>
-			);
-			const instance = wrapper.instance();
-			instance.list.current = {focus: jest.fn()};
-			instance.button.current = {focus: jest.fn()};
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('open')).toBe(false);
-			expect(onChange.mock.calls).toEqual([['three']]);
+			button.simulate('keydown', {keyCode: 13, preventDefault, nativeEvent});
+			button.simulate('keydown', {keyCode: 32, preventDefault, nativeEvent});
+			button.simulate('keydown', {keyCode: 27, preventDefault, nativeEvent});
+
+			expect(preventDefault).toHaveBeenCalledTimes(3);
 		});
 
 		it('scrolls the list up when it is visible and page up is pressed', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
 				scrollHeight: 75,
 				children: [{offsetHeight: 25}, {}, {}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('one');
+			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(smoothScroll.mock.calls).toEqual([[list, 25, -25, 150]]);
 		});
 
 		it('focuses the first option when the list is visible, page up is pressed and list cannot be scrolled up', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
 				children: [{offsetHeight: 25}, {}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="two"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('one');
+			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
+		it('ignores the event when the list is not visible and page up is pressed', () => {
+			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="button"]').simulate('keydown', event);
+			expect(event.preventDefault).not.toHaveBeenCalled();
+		});
+
 		it('scrolls the list down when it is visible and page down is pressed', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
 				children: [{offsetHeight: 25}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('three');
+			expect(setFocused.mock.calls).toEqual([[2]]);
 			expect(smoothScroll.mock.calls).toEqual([[list, 0, 25, 150]]);
 		});
 
 		it('focuses the last option when the list is visible, page down is pressed and the list cannot be scrolled down', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
 				scrollHeight: 75,
 				children: [{offsetHeight: 25}, {}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="two"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('three');
+			expect(setFocused.mock.calls).toEqual([[2]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
+		it('ignores the event when the list is not visible and page down is pressed', () => {
+			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="button"]').simulate('keydown', event);
+			expect(event.preventDefault).not.toHaveBeenCalled();
+		});
+
 		it('focuses the last option when the list is visible and end is pressed', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 35, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
 				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('three');
+			expect(setFocused.mock.calls).toEqual([[2]]);
 			expect(smoothScroll.mock.calls).toEqual([[list, 0, 25, 150]]);
 		});
 
+		it('ignores the event when the list is not visible and end is pressed', () => {
+			const event = {keyCode: 35, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="button"]').simulate('keydown', event);
+			expect(event.preventDefault).not.toHaveBeenCalled();
+		});
+
 		it('focuses the first option when the list is visible and home is pressed', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 36, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
 				scrollHeight: 75,
 				children: [{offsetTop: 0, offsetHeight: 25}, {}, {}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('one');
+			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(smoothScroll.mock.calls).toEqual([[list, 25, -25, 150]]);
 		});
 
+		it('ignores the event when the list is not visible and home is pressed', () => {
+			const event = {keyCode: 36, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="button"]').simulate('keydown', event);
+			expect(event.preventDefault).not.toHaveBeenCalled();
+		});
+
 		it('focuses the previous option when the list is visible and up is pressed', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
 				children: [{offsetTop: 0, offsetHeight: 25}, {}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="two"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('one');
+			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
-		it('does not change focused when the list is visible, up is pressed and the first option is already focused', () => {
+		it('focuses the last option when the list is visible, up is pressed and the first option is focused', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
-				children: [{offsetTop: 0, offsetHeight: 25}],
-				focus: jest.fn(),
+				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('one');
-			expect(smoothScroll).not.toHaveBeenCalled();
+			expect(setFocused.mock.calls).toEqual([[2]]);
+			expect(smoothScroll.mock.calls).toEqual([[list, 0, 25, 150]]);
+		});
+
+		it('only prevents the event default when the list is not visible and up is pressed', () => {
+			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="button"]').simulate('keydown', event);
+			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 		});
 
 		it('focuses the next option when the list is visible and down is pressed', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
 				scrollHeight: 75,
 				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="two"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('three');
+			expect(setFocused.mock.calls).toEqual([[2]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
-		it('does not change focused when the list is visible, down is pressed and the last option is already focused', () => {
+		it('focuses the first option when the list is visible, down is pressed and the last option is focused', () => {
+			const setFocused = jest.fn();
 			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
 				scrollHeight: 75,
 				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="three"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('three');
+			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
+		});
+
+		it('shows the list when it is not visible and down is pressed', () => {
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
+			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="button"]').simulate('keydown', event);
+			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
+			expect(setOpen.mock.calls).toEqual([[true]]);
+			expect(setFocused.mock.calls).toEqual([[2]]);
 		});
 
 		it('finds an option starting with typed key when the list is visible and an alphanumeric key is pressed', () => {
+			const setFocused = jest.fn();
 			const event = {
 				keyCode: 'T'.codePointAt(0),
 				preventDefault: jest.fn(),
@@ -636,33 +505,28 @@ describe('Select', () => {
 				scrollTop: 0,
 				scrollHeight: 75,
 				children: options.map(o => ({textContent: renderOption(o)})),
-				focus: jest.fn(),
 			};
+			const searchString = {current: null};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce(searchString)
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('two');
+			expect(setFocused.mock.calls).toEqual([[1]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
-			expect(instance.searchString).toBe('T');
+			expect(searchString.current).toBe('T');
 			jest.runOnlyPendingTimers();
-			expect(instance.searchString).toBe('');
+			expect(searchString.current).toBeNull();
 		});
 
 		it('finds an option starting with the current prefix when the list is visible and two alphanumeric keys are pressed in sequence', () => {
+			const setFocused = jest.fn();
 			const event = {
 				keyCode: 'H'.codePointAt(0),
 				preventDefault: jest.fn(),
@@ -673,24 +537,17 @@ describe('Select', () => {
 				scrollTop: 0,
 				scrollHeight: 75,
 				children: options.map(o => ({textContent: renderOption(o)})),
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			const listBox = wrapper.find('[role="listbox"]');
+			const listBox = wrapper.find('[role="button"]');
 			listBox.simulate('keydown', {
 				keyCode: 'T'.codePointAt(0),
 				preventDefault: jest.fn(),
@@ -698,11 +555,12 @@ describe('Select', () => {
 			});
 			listBox.simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('three');
+			expect(setFocused.mock.calls).toEqual([[1], [2]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
 		it('does not change focused when the list is visible and an alphanumeric key with no matches is pressed', () => {
+			const setFocused = jest.fn();
 			const event = {
 				keyCode: 'X'.codePointAt(0),
 				preventDefault: jest.fn(),
@@ -713,140 +571,205 @@ describe('Select', () => {
 				scrollTop: 0,
 				scrollHeight: 75,
 				children: options.map(o => ({textContent: renderOption(o)})),
-				focus: jest.fn(),
 			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
+			useRef
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = list;
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('focused')).toBe('one');
+			expect(setFocused).not.toHaveBeenCalled();
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
-		it('ignores the pressed key when the list is visible and the key is unknown', () => {
-			const event = {keyCode: 1, preventDefault: jest.fn()};
+		it('ignores the event when an unknown key is pressed', () => {
+			const preventDefault = jest.fn();
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = {focus: jest.fn()};
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('keydown', event);
-			expect(event.preventDefault).not.toHaveBeenCalled();
-			expect(wrapper.state('focused')).toBe('one');
-			expect(smoothScroll).not.toHaveBeenCalled();
+			const button = wrapper.find('[role="button"]');
+
+			button.simulate('keydown', {keyCode: 47, preventDefault});
+			button.simulate('keydown', {keyCode: 91, preventDefault});
+
+			expect(preventDefault).not.toHaveBeenCalled();
 		});
 
-		it('focuses the option when the list is visible and the mouse is over it', () => {
-			const event = {target: {dataset: {value: 'two'}}};
+		it('ignores the event when a key is pressed and any modifier is set', () => {
+			const preventDefault = jest.fn();
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = {focus: jest.fn()};
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('mouseover', event);
-			expect(wrapper.state('focused')).toBe('two');
+			const button = wrapper.find('[role="button"]');
+
+			button.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
+			button.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
+			button.simulate('keydown', {keyCode: 13, altKey: true, preventDefault});
+			button.simulate('keydown', {keyCode: 13, metaKey: true, preventDefault});
+
+			expect(preventDefault).not.toHaveBeenCalled();
 		});
 
-		it('does not change focused when the list is visible and the mouse is over other element', () => {
-			const event = {target: {dataset: {}}};
-			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
-			);
-			const instance = wrapper.instance();
-			instance.list.current = {focus: jest.fn()};
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('mouseover', event);
-			expect(wrapper.state('focused')).toBe('one');
-		});
-
-		it('hides the list and calls onChange when it is visible and an option is clicked', () => {
-			const event = {target: {dataset: {value: 'two'}}, preventDefault: jest.fn()};
+		it('hides the list and calls onChange when it is visible and enter is released', () => {
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([2, setFocused]);
+			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const onChange = jest.fn();
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={onChange}
-				/>
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={onChange} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = {focus: jest.fn()};
-			instance.button.current = {focus: jest.fn()};
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('click', event);
+			wrapper.find('[role="button"]').simulate('keyup', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(wrapper.state('open')).toBe(false);
-			expect(onChange.mock.calls).toEqual([['two']]);
+			expect(setOpen.mock.calls).toEqual([[false]]);
+			expect(setFocused.mock.calls).toEqual([[-1]]);
+			expect(onChange.mock.calls).toEqual([['three']]);
+		});
+
+		it('shows the list when it is not visible and enter is released', () => {
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
+			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="button"]').simulate('keyup', event);
+			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
+			expect(setOpen.mock.calls).toEqual([[true]]);
+			expect(setFocused.mock.calls).toEqual([[2]]);
+		});
+
+		it('shows the list and selects the first option when enter is released and the value is not set', () => {
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
+			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const wrapper = shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
+			wrapper.find('[role="button"]').simulate('keyup', event);
+			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
+			expect(setOpen.mock.calls).toEqual([[true]]);
+			expect(setFocused.mock.calls).toEqual([[0]]);
+		});
+
+		it('hides the list when it is visible and escape is released', () => {
+			const onChange = jest.fn();
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
+			const event = {keyCode: 27, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([0, setFocused]);
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={onChange} />
+			);
+			wrapper.find('[role="button"]').simulate('keyup', event);
+			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			expect(setOpen.mock.calls).toEqual([[false]]);
+			expect(setFocused.mock.calls).toEqual([[-1]]);
+			expect(onChange).not.toHaveBeenCalled();
+		});
+
+		it('ignores the event when a key is released and any modifier is set', () => {
+			const preventDefault = jest.fn();
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			const button = wrapper.find('[role="button"]');
+
+			button.simulate('keyup', {keyCode: 13, shiftKey: true, preventDefault});
+			button.simulate('keyup', {keyCode: 13, ctrlKey: true, preventDefault});
+			button.simulate('keyup', {keyCode: 13, altKey: true, preventDefault});
+			button.simulate('keyup', {keyCode: 13, metaKey: true, preventDefault});
+
+			expect(preventDefault).not.toHaveBeenCalled();
 		});
 
 		it('hides the list when it is visible and loses focus', () => {
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
 			const onChange = jest.fn();
+			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
-				<Select
-					componentId="test"
-					className="Test"
-					value="one"
-					options={options}
-					placeholder="Testing"
-					renderOption={renderOption}
-					onChange={onChange}
-				/>
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={onChange} />
 			);
-			const instance = wrapper.instance();
-			instance.list.current = {focus: jest.fn()};
-			instance.button.current = {focus: jest.fn()};
-			instance.showList();
-			wrapper.update();
-			wrapper.find('[role="listbox"]').simulate('blur');
-			expect(wrapper.state('open')).toBe(false);
+			wrapper.find('[role="button"]').simulate('blur');
+			expect(setOpen.mock.calls).toEqual([[false]]);
+			expect(setFocused.mock.calls).toEqual([[-1]]);
 			expect(onChange).not.toHaveBeenCalled();
+		});
+
+		it('focuses the option when the list is visible and the mouse is over it', () => {
+			const setFocused = jest.fn();
+			const element = {dataset: {index: '1'}};
+			const closest = jest.fn().mockReturnValue(element);
+			const event = {target: {closest}};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
+			const wrapper = shallow(
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="listbox"]').simulate('mouseover', event);
+			expect(closest.mock.calls).toEqual([['[role="option"]']]);
+			expect(setFocused.mock.calls).toEqual([[1]]);
+		});
+
+		it('does not change focused when the list is visible and the mouse is over other element', () => {
+			const setFocused = jest.fn();
+			const event = {target: {closest: jest.fn()}};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
+			const wrapper = shallow(
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="listbox"]').simulate('mouseover', event);
+			expect(setFocused).not.toHaveBeenCalled();
+		});
+
+		it('prevents event default when a mouse button is pressed pressed', () => {
+			const event = {preventDefault: jest.fn()};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+
+			wrapper.find('[role="listbox"]').simulate('mousedown', event);
+
+			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+		});
+
+		it('hides the list and calls onChange when it is visible and an option is clicked', () => {
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
+			const element = {dataset: {index: '1'}};
+			const closest = jest.fn().mockReturnValue(element);
+			const event = {target: {closest}, preventDefault: jest.fn()};
+			const onChange = jest.fn();
+			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([0, setFocused]);
+			const wrapper = shallow(
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={onChange} />
+			);
+			wrapper.find('[role="listbox"]').simulate('mouseup', event);
+			expect(closest.mock.calls).toEqual([['[role="option"]']]);
+			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			expect(setOpen.mock.calls).toEqual([[false]]);
+			expect(setFocused.mock.calls).toEqual([[-1]]);
+			expect(onChange.mock.calls).toEqual([['two']]);
+		});
+
+		it('ignores the mouse up event when the option is not found', () => {
+			const closest = jest.fn();
+			const event = {target: {closest}, preventDefault: jest.fn()};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
+			const wrapper = shallow(
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="listbox"]').simulate('mouseup', event);
+			expect(closest.mock.calls).toEqual([['[role="option"]']]);
+			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
 	});
 });

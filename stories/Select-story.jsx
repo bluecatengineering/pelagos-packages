@@ -8,9 +8,9 @@ const options = ['Alpha', 'Beta', 'Gamma'];
 
 storiesOf('Select', module).add('all states', () => (
 	<div className="Story__group">
-		<Select value="Alpha" options={options} renderOption={identity} onChange={identity} />
-		<Select placeholder="Placeholder" options={options} renderOption={identity} onChange={identity} />
-		<Select value="Alpha" options={options} renderOption={identity} onChange={identity} disabled />
-		<Select value="Alpha" options={options} renderOption={identity} onChange={identity} error />
+		<Select id="s0" value="Alpha" options={options} renderOption={identity} onChange={identity} />
+		<Select id="s1" placeholder="Placeholder" options={options} renderOption={identity} onChange={identity} />
+		<Select id="s2" value="Alpha" options={options} renderOption={identity} onChange={identity} disabled />
+		<Select id="s3" value="Alpha" options={options} renderOption={identity} onChange={identity} error />
 	</div>
 ));

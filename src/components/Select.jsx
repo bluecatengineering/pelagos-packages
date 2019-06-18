@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
 import {smoothScroll} from '@bluecat/helpers';
@@ -7,316 +7,342 @@ import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 import SvgIcon from './SvgIcon';
 import './Select.less';
 
-export default class Select extends PureComponent {
-	static propTypes = {
-		id: PropTypes.string,
-		componentId: PropTypes.string,
-		className: PropTypes.string,
-		value: PropTypes.string,
-		options: PropTypes.array.isRequired,
-		placeholder: PropTypes.string,
-		disabled: PropTypes.bool,
-		error: PropTypes.bool,
-		getOptionValue: PropTypes.func,
-		renderOption: PropTypes.func.isRequired,
-		onChange: PropTypes.func.isRequired,
-	};
+const scrollToItem = (list, index) => {
+	const listHeight = list.clientHeight;
+	if (list.scrollHeight > listHeight) {
+		const scrollTop = list.scrollTop;
+		const scrollBottom = listHeight + scrollTop;
+		const element = list.children[index];
+		const elementTop = element.offsetTop;
+		const elementBottom = elementTop + element.offsetHeight;
+		if (elementBottom > scrollBottom) {
+			smoothScroll(list, scrollTop, elementBottom - listHeight - scrollTop, 150);
+		} else if (elementTop < scrollTop) {
+			smoothScroll(list, scrollTop, elementTop - scrollTop, 150);
+		}
+	}
+};
 
-	static defaultProps = {
-		getOptionValue: identity,
-	};
+const findInRange = (string, list, start, end) => {
+	for (let i = start; i < end; ++i) {
+		if (list[i].textContent.toUpperCase().startsWith(string)) {
+			return i;
+		}
+	}
+	return -1;
+};
 
-	button = createRef();
-	list = createRef();
-	baseId = 'e' + ('' + Math.random()).substr(2) + '-';
-	searchString = '';
-	state = {
-		open: false,
-	};
+const Select = ({
+	id,
+	className,
+	value,
+	options,
+	placeholder,
+	disabled,
+	error,
+	getOptionValue,
+	renderOption,
+	onChange,
+}) => {
+	const [open, setOpen] = useState(false);
+	const [focused, setFocused] = useState(-1);
 
-	componentDidUpdate(prevProps, prevState) {
-		const open = this.state.open;
-		if (open !== prevState.open) {
-			(open ? this.list.current : this.button.current).focus();
+	const renderedOptions = useMemo(
+		() =>
+			options.map(o => ({
+				value: getOptionValue(o),
+				element: renderOption(o),
+			})),
+		[options, getOptionValue, renderOption]
+	);
+
+	const list = useRef(null);
+	const searchString = useRef(null);
+	const searchIndex = useRef(-1);
+	const keyTimer = useRef(null);
+
+	const showList = useCallback(() => {
+		setOpen(true);
+		setFocused(value ? renderedOptions.findIndex(o => o.value === value) : 0);
+	}, [value, renderedOptions]);
+
+	const hideList = useCallback(() => {
+		setOpen(false);
+		setFocused(-1);
+	}, []);
+
+	const select = useCallback(
+		value => {
+			hideList();
+			onChange(value);
+		},
+		[hideList, onChange]
+	);
+
+	const updateFocused = useCallback(index => {
+		setFocused(index);
+		scrollToItem(list.current, index);
+	}, []);
+
+	const findItemToFocus = useCallback(
+		keyCode => {
+			const char = String.fromCharCode(keyCode);
+			if (!searchString.current) {
+				searchString.current = char;
+				searchIndex.current = focused;
+			} else {
+				searchString.current += char;
+			}
+
+			if (keyTimer.current) {
+				clearTimeout(keyTimer.current);
+			}
+			keyTimer.current = setTimeout(() => {
+				searchString.current = null;
+				keyTimer.current = null;
+			}, 500);
+
+			const children = list.current.children;
+			let result = findInRange(searchString.current, children, searchIndex.current + 1, children.length);
+			if (result === -1) {
+				result = findInRange(searchString.current, children, 0, searchIndex.current);
+			}
+			return result;
+		},
+		[focused]
+	);
+
+	const handleMouseDown = useCallback(
+		event => {
+			event.preventDefault();
 			if (open) {
-				this.scrollToItem(this.findFocused());
+				hideList();
+			} else {
+				showList();
+				event.target.closest('[role="button"]').focus();
 			}
-		}
-	}
+		},
+		[open, hideList, showList]
+	);
 
-	handleKeyDown = event => {
-		switch (event.keyCode) {
-			case 13: // enter
-			case 32: // space
-			case 38: // up
-			case 40: // down
-				event.preventDefault();
-				this.showList();
-				break;
-		}
-	};
-
-	handleMouseDown = event => {
-		event.preventDefault();
-		if (this.state.open) {
-			this.hideList();
-		} else {
-			this.showList();
-		}
-	};
-
-	handleListKeyDown = event => {
-		const keyCode = event.keyCode;
-		switch (keyCode) {
-			case 27: // esc
-				event.preventDefault();
-				event.nativeEvent.stopImmediatePropagation();
-				this.hideList();
-				break;
-			case 13: // enter
-			case 32: // space
-				event.preventDefault();
-				event.nativeEvent.stopImmediatePropagation();
-				this.select(this.state.focused);
-				break;
-			case 33: {
-				// page up
-				event.preventDefault();
-				event.nativeEvent.stopImmediatePropagation();
-				let i;
-				const renderedOptions = this.renderedOptions;
-				const list = this.list.current;
-				const listHeight = list.clientHeight;
-				const scrollTop = list.scrollTop;
-				if (scrollTop > 0) {
-					const optionHeight = list.children[0].offsetHeight;
-					const count = Math.floor(listHeight / optionHeight);
-					i = Math.max(0, this.findFocused() - count);
-					const offset = Math.max(-optionHeight * count, -scrollTop);
-					smoothScroll(list, scrollTop, offset, 150);
-				} else {
-					i = 0;
-				}
-				this.setState({focused: renderedOptions[i].value});
-				break;
-			}
-			case 34: {
-				// page down
-				event.preventDefault();
-				event.nativeEvent.stopImmediatePropagation();
-				let i;
-				const renderedOptions = this.renderedOptions;
-				const list = this.list.current;
-				const listHeight = list.clientHeight;
-				const scrollTop = list.scrollTop;
-				const scrollMax = list.scrollHeight - listHeight;
-				if (scrollTop < scrollMax) {
-					const optionHeight = list.children[0].offsetHeight;
-					const count = Math.floor(listHeight / optionHeight);
-					i = Math.min(renderedOptions.length - 1, this.findFocused() + count);
-					const offset = Math.min(optionHeight * count, scrollMax - scrollTop);
-					smoothScroll(list, scrollTop, offset, 150);
-				} else {
-					i = renderedOptions.length - 1;
-				}
-				this.setState({focused: renderedOptions[i].value});
-				break;
-			}
-			case 35: // end
-				event.preventDefault();
-				event.nativeEvent.stopImmediatePropagation();
-				this.setFocused(this.renderedOptions.length - 1);
-				break;
-			case 36: // home
-				event.preventDefault();
-				event.nativeEvent.stopImmediatePropagation();
-				this.setFocused(0);
-				break;
-			case 38: {
-				// up
-				event.preventDefault();
-				event.nativeEvent.stopImmediatePropagation();
-				const i = this.findFocused();
-				if (i > 0) {
-					this.setFocused(i - 1);
-				}
-				break;
-			}
-			case 40: {
-				// down
-				event.preventDefault();
-				event.nativeEvent.stopImmediatePropagation();
-				const i = this.findFocused();
-				if (i < this.renderedOptions.length - 1) {
-					this.setFocused(i + 1);
-				}
-				break;
-			}
-			default:
-				if (keyCode >= 48) {
-					event.preventDefault();
-					event.nativeEvent.stopImmediatePropagation();
-					const i = this.findItemToFocus(keyCode);
-					if (i !== -1) {
-						this.setFocused(i);
+	const handleKeyDown = useCallback(
+		event => {
+			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+				const keyCode = event.keyCode;
+				switch (keyCode) {
+					case 13: // enter
+					case 32: // space
+					case 27: // escape
+						event.preventDefault();
+						event.nativeEvent.stopImmediatePropagation();
+						break;
+					case 33: // page up
+						if (open) {
+							event.preventDefault();
+							event.nativeEvent.stopImmediatePropagation();
+							let i;
+							const listElement = list.current;
+							const listHeight = listElement.clientHeight;
+							const scrollTop = listElement.scrollTop;
+							if (scrollTop > 0) {
+								const optionHeight = listElement.children[0].offsetHeight;
+								const count = Math.floor(listHeight / optionHeight);
+								i = Math.max(0, focused - count);
+								const offset = Math.max(-optionHeight * count, -scrollTop);
+								smoothScroll(listElement, scrollTop, offset, 150);
+							} else {
+								i = 0;
+							}
+							setFocused(i);
+						}
+						break;
+					case 34: // page down
+						if (open) {
+							event.preventDefault();
+							event.nativeEvent.stopImmediatePropagation();
+							let i;
+							const listElement = list.current;
+							const listHeight = listElement.clientHeight;
+							const scrollTop = listElement.scrollTop;
+							const scrollMax = listElement.scrollHeight - listHeight;
+							if (scrollTop < scrollMax) {
+								const optionHeight = listElement.children[0].offsetHeight;
+								const count = Math.floor(listHeight / optionHeight);
+								i = Math.min(renderedOptions.length - 1, focused + count);
+								const offset = Math.min(optionHeight * count, scrollMax - scrollTop);
+								smoothScroll(listElement, scrollTop, offset, 150);
+							} else {
+								i = renderedOptions.length - 1;
+							}
+							setFocused(i);
+						}
+						break;
+					case 35: // end
+						if (open) {
+							event.preventDefault();
+							event.nativeEvent.stopImmediatePropagation();
+							updateFocused(renderedOptions.length - 1);
+						}
+						break;
+					case 36: // home
+						if (open) {
+							event.preventDefault();
+							event.nativeEvent.stopImmediatePropagation();
+							updateFocused(0);
+						}
+						break;
+					case 38: {
+						// up
+						event.preventDefault();
+						event.nativeEvent.stopImmediatePropagation();
+						if (open) {
+							updateFocused(focused > 0 ? focused - 1 : renderedOptions.length - 1);
+						}
+						break;
 					}
+					case 40: {
+						// down
+						event.preventDefault();
+						event.nativeEvent.stopImmediatePropagation();
+						if (open) {
+							updateFocused(focused < renderedOptions.length - 1 ? focused + 1 : 0);
+						} else {
+							showList();
+						}
+						break;
+					}
+					default:
+						if (open && keyCode >= 48 && keyCode <= 90) {
+							event.preventDefault();
+							event.nativeEvent.stopImmediatePropagation();
+							const i = findItemToFocus(keyCode);
+							if (i !== -1) {
+								updateFocused(i);
+							}
+						}
+						break;
 				}
-				break;
-		}
-	};
-
-	handleListMouseOver = event => {
-		const value = event.target.dataset.value;
-		if (value) {
-			this.setState({focused: value});
-		}
-	};
-
-	handleListClick = event => {
-		event.preventDefault();
-		this.select(event.target.dataset.value);
-	};
-
-	handleListBlur = () => {
-		this.hideList();
-	};
-
-	select(value) {
-		this.hideList();
-		this.props.onChange(value);
-	}
-
-	showList() {
-		const value = this.props.value;
-		this.setState({open: true, focused: value ? value : this.renderedOptions[0].value});
-	}
-
-	hideList() {
-		this.setState({open: false, focused: null});
-	}
-
-	findFocused() {
-		const focused = this.state.focused;
-		return this.renderedOptions.findIndex(o => o.value === focused);
-	}
-
-	setFocused(index) {
-		this.setState({focused: this.renderedOptions[index].value});
-		this.scrollToItem(index);
-	}
-
-	scrollToItem(index) {
-		const list = this.list.current;
-		const listHeight = list.clientHeight;
-		if (list.scrollHeight > listHeight) {
-			const scrollTop = list.scrollTop;
-			const scrollBottom = listHeight + scrollTop;
-			const element = list.children[index];
-			const elementTop = element.offsetTop;
-			const elementBottom = elementTop + element.offsetHeight;
-			if (elementBottom > scrollBottom) {
-				smoothScroll(list, scrollTop, elementBottom - listHeight - scrollTop, 150);
-			} else if (elementTop < scrollTop) {
-				smoothScroll(list, scrollTop, elementTop - scrollTop, 150);
 			}
-		}
-	}
+		},
+		[open, focused, renderedOptions, hideList, select, updateFocused, findItemToFocus]
+	);
 
-	findItemToFocus(keyCode) {
-		if (!this.searchString) {
-			this.searchIndex = this.findFocused();
-		}
-		this.searchString += String.fromCharCode(keyCode);
-		this.resetClearSearchTimer();
-
-		const children = this.list.current.children;
-		let result = this.findInRange(children, this.searchIndex + 1, children.length);
-		if (result === -1) {
-			result = this.findInRange(children, 0, this.searchIndex);
-		}
-		return result;
-	}
-
-	resetClearSearchTimer() {
-		if (this.keyTimer) {
-			clearTimeout(this.keyTimer);
-		}
-		this.keyTimer = setTimeout(() => {
-			this.searchString = '';
-			this.keyTimer = null;
-		}, 500);
-	}
-
-	findInRange(list, start, end) {
-		for (let i = start; i < end; ++i) {
-			if (list[i].textContent.toUpperCase().startsWith(this.searchString)) {
-				return i;
+	const handleKeyUp = useCallback(
+		event => {
+			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+				switch (event.keyCode) {
+					case 13: // enter
+					case 32: // space
+						event.preventDefault();
+						event.nativeEvent.stopImmediatePropagation();
+						if (open) {
+							select(renderedOptions[focused].value);
+						} else {
+							showList();
+						}
+						break;
+					case 27: // escape
+						event.preventDefault();
+						event.nativeEvent.stopImmediatePropagation();
+						hideList();
+						break;
+				}
 			}
-		}
-		return -1;
-	}
+		},
+		[open, focused, renderedOptions, select, showList, hideList]
+	);
 
-	render() {
-		const {
-			id,
-			componentId,
-			className,
-			value,
-			options,
-			placeholder,
-			disabled,
-			error,
-			getOptionValue,
-			renderOption,
-		} = this.props;
-		const {open, focused} = this.state;
-		const renderedOptions = (this.renderedOptions = options.map(o => ({
-			value: getOptionValue(o),
-			element: renderOption(o),
-		})));
-		const selected = value && renderedOptions.find(o => o.value === value);
-		return (
-			<div className={'Select' + (className ? ' ' + className : '')}>
-				<div
-					id={id}
-					data-bcn-id={componentId}
-					className={'Select__text' + (selected ? '' : ' Select__text--empty') + (error ? ' Select__text--error' : '')}
-					tabIndex={disabled ? undefined : '0'}
-					role="button"
-					aria-haspopup="listbox"
-					aria-expanded={open}
-					aria-disabled={disabled}
-					ref={this.button}
-					onKeyDown={disabled ? undefined : this.handleKeyDown}
-					onMouseDown={disabled ? undefined : this.handleMouseDown}>
-					{selected ? selected.element : placeholder}
-					<SvgIcon icon={open ? faCaretUp : faCaretDown} className="Select__icon" />
-				</div>
-				{open && (
-					<div
-						className="Select__list"
-						tabIndex="-1"
-						role="listbox"
-						aria-activedescendant={this.baseId + focused}
-						ref={this.list}
-						onKeyDown={this.handleListKeyDown}
-						onMouseOver={this.handleListMouseOver}
-						onClick={this.handleListClick}
-						onBlur={this.handleListBlur}>
-						{renderedOptions.map(o => (
-							<div
-								key={o.value}
-								id={this.baseId + o.value}
-								className={'Select__option' + (o.value === focused ? ' Select__option--focused' : '')}
-								role="option"
-								aria-selected={o.value === value}
-								data-value={o.value}>
-								{o.element}
-							</div>
-						))}
-					</div>
-				)}
+	const handleBlur = useCallback(() => hideList(), [hideList]);
+
+	const handleListMouseOver = useCallback(event => {
+		const element = event.target.closest('[role="option"]');
+		if (element) {
+			setFocused(+element.dataset.index);
+		}
+	}, []);
+
+	const handleListMouseDown = useCallback(event => event.preventDefault(), []);
+
+	const handleListMouseUp = useCallback(
+		event => {
+			const element = event.target.closest('[role="option"]');
+			if (element) {
+				event.preventDefault();
+				select(renderedOptions[+element.dataset.index].value);
+			}
+		},
+		[select, renderedOptions]
+	);
+
+	useEffect(() => {
+		if (open) {
+			scrollToItem(list.current, focused);
+		}
+	}, [open]);
+
+	const listId = id + '-list';
+	const selected = value && renderedOptions.find(o => o.value === value);
+	return (
+		<div className={'Select' + (className ? ' ' + className : '')}>
+			<div
+				id={id}
+				className={'Select__text' + (selected ? '' : ' Select__text--empty') + (error ? ' Select__text--error' : '')}
+				tabIndex={disabled ? undefined : '0'}
+				role="button"
+				aria-haspopup="listbox"
+				aria-expanded={open}
+				aria-disabled={disabled}
+				aria-controls={open ? listId : null}
+				aria-activedescendant={focused === -1 ? null : id + '-opt-' + focused}
+				onMouseDown={disabled ? undefined : handleMouseDown}
+				onKeyDown={disabled ? undefined : handleKeyDown}
+				onKeyUp={disabled ? undefined : handleKeyUp}
+				onBlur={handleBlur}>
+				{selected ? selected.element : placeholder}
+				<SvgIcon icon={open ? faCaretUp : faCaretDown} className="Select__icon" />
 			</div>
-		);
-	}
-}
+			{open && (
+				<div
+					id={listId}
+					className="Select__list"
+					tabIndex="-1"
+					role="listbox"
+					ref={list}
+					onMouseOver={handleListMouseOver}
+					onMouseDown={handleListMouseDown}
+					onMouseUp={handleListMouseUp}>
+					{renderedOptions.map((o, index) => (
+						<div
+							key={o.value}
+							id={id + '-opt-' + index}
+							className={'Select__option' + (index === focused ? ' Select__option--focused' : '')}
+							role="option"
+							aria-selected={o.value === value}
+							data-index={index}>
+							{o.element}
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	);
+};
+
+Select.propTypes = {
+	id: PropTypes.string.isRequired,
+	className: PropTypes.string,
+	value: PropTypes.string,
+	options: PropTypes.array.isRequired,
+	placeholder: PropTypes.string,
+	disabled: PropTypes.bool,
+	error: PropTypes.bool,
+	getOptionValue: PropTypes.func,
+	renderOption: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
+};
+
+Select.defaultProps = {
+	getOptionValue: identity,
+};
+
+export default Select;

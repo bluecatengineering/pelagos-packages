@@ -1,6 +1,6 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.7.7",
+  "version": "0.8.0",
   "description": "UI components",
   "license": "ISC",
   "scripts": {
@@ -78,7 +78,7 @@
         "branches": 98,
         "functions": 99,
         "lines": 99,
-        "statements": 99
+        "statements": -3
       }
     },
     "moduleNameMapper": {

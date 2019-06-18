@@ -5,12 +5,15 @@ exports[`Select rendering renders expected elements 1`] = `
   className="Select Test"
 >
   <div
+    aria-activedescendant={null}
+    aria-controls={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text"
-    data-bcn-id="test"
     id="test"
+    onBlur={[Function]}
     onKeyDown={[Function]}
+    onKeyUp={[Function]}
     onMouseDown={[Function]}
     role="button"
     tabIndex="0"
@@ -35,11 +38,15 @@ exports[`Select rendering renders expected elements when className is not set 1`
   className="Select"
 >
   <div
+    aria-activedescendant={null}
+    aria-controls={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text"
-    data-bcn-id="test"
+    id="test"
+    onBlur={[Function]}
     onKeyDown={[Function]}
+    onKeyUp={[Function]}
     onMouseDown={[Function]}
     role="button"
     tabIndex="0"
@@ -64,11 +71,14 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
   className="Select Test"
 >
   <div
+    aria-activedescendant={null}
+    aria-controls={null}
     aria-disabled={true}
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text"
-    data-bcn-id="test"
+    id="test"
+    onBlur={[Function]}
     role="button"
   >
     Two
@@ -91,11 +101,15 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
   className="Select Test"
 >
   <div
+    aria-activedescendant={null}
+    aria-controls={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text Select__text--error"
-    data-bcn-id="test"
+    id="test"
+    onBlur={[Function]}
     onKeyDown={[Function]}
+    onKeyUp={[Function]}
     onMouseDown={[Function]}
     role="button"
     tabIndex="0"
@@ -120,11 +134,15 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
   className="Select Test"
 >
   <div
+    aria-activedescendant="test-opt-1"
+    aria-controls="test-list"
     aria-expanded={true}
     aria-haspopup="listbox"
     className="Select__text"
-    data-bcn-id="test"
+    id="test"
+    onBlur={[Function]}
     onKeyDown={[Function]}
+    onKeyUp={[Function]}
     onMouseDown={[Function]}
     role="button"
     tabIndex="0"
@@ -142,20 +160,19 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     />
   </div>
   <div
-    aria-activedescendant="e12345-two"
     className="Select__list"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onKeyDown={[Function]}
+    id="test-list"
+    onMouseDown={[Function]}
     onMouseOver={[Function]}
+    onMouseUp={[Function]}
     role="listbox"
     tabIndex="-1"
   >
     <div
       aria-selected={false}
       className="Select__option"
-      data-value="one"
-      id="e12345-one"
+      data-index={0}
+      id="test-opt-0"
       role="option"
     >
       One
@@ -163,8 +180,8 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     <div
       aria-selected={true}
       className="Select__option Select__option--focused"
-      data-value="two"
-      id="e12345-two"
+      data-index={1}
+      id="test-opt-1"
       role="option"
     >
       Two
@@ -172,8 +189,8 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     <div
       aria-selected={false}
       className="Select__option"
-      data-value="three"
-      id="e12345-three"
+      data-index={2}
+      id="test-opt-2"
       role="option"
     >
       Three
@@ -187,11 +204,15 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
   className="Select Test"
 >
   <div
+    aria-activedescendant={null}
+    aria-controls={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     className="Select__text Select__text--empty"
-    data-bcn-id="test"
+    id="test"
+    onBlur={[Function]}
     onKeyDown={[Function]}
+    onKeyUp={[Function]}
     onMouseDown={[Function]}
     role="button"
     tabIndex="0"
