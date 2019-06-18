@@ -1,5 +1,7 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import useButtonKeyHandler from '../hooks/useButtonKeyHandler';
 
 import Tooltip from './Tooltip';
 import OverlayTrigger from './OverlayTrigger';
@@ -7,10 +9,7 @@ import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
 const IconButton = ({id, componentId, icon, className, tooltipText, large, disabled, onClick, ...props}) => {
-	const keyHandker = useCallback(
-		event => (event.keyCode === 13 || event.keyCode === 32 ? (event.preventDefault(), onClick(event)) : null),
-		[onClick]
-	);
+	const keyHandker = useButtonKeyHandler(onClick);
 	const button = (
 		<span
 			{...props}

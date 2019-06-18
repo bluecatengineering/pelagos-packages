@@ -35,3 +35,5 @@ export {default as ListInput} from './listInput/ListInput';
 export * from './toasts/ToastActions';
 export * from './toasts/ToastFunctions';
 export {default as toastReducer} from './toasts/ToastReducer';
+
+export {default as useButtonKeyHandler} from './hooks/useButtonKeyHandler';
