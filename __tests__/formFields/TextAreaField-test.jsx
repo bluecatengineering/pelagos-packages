@@ -36,6 +36,35 @@ describe('TextAreaField', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders optional text if provided', () => {
+			const wrapper = shallow(
+				<TextAreaField
+					id="test-id"
+					label="Label"
+					placeholder="placeholder"
+					optionalText="optional"
+					maxLength={10}
+					onChange={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('does not render optional text if value is set', () => {
+			const wrapper = shallow(
+				<TextAreaField
+					id="test-id"
+					label="Label"
+					value="value"
+					placeholder="placeholder"
+					optionalText="optional"
+					maxLength={10}
+					onChange={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('does not add the resize class if the resize is true', () => {
 			const wrapper = shallow(
 				<TextAreaField

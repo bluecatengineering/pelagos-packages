@@ -1,7 +1,20 @@
 @import '../../less/colors';
+@import '../../less/fonts';
 
 .TextAreaField {
 	margin-bottom: 10px;
+}
+
+.TextAreaField__label {
+	flex-direction: row;
+}
+
+.TextAreaField__optional {
+	@font-10-400();
+	color: @font-color-3;
+	position: relative;
+	top: -1px;
+	margin-left: 12px;
 }
 
 .TextAreaField__area {

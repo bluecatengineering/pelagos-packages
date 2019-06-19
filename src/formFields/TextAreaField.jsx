@@ -6,12 +6,13 @@ import Label from '../components/Label';
 import FieldError from './FieldError';
 import './TextAreaField.less';
 
-const TextAreaField = ({id, className, label, resize, error, ...props}) => {
+const TextAreaField = ({id, className, label, value, optionalText, resize, error, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'TextAreaField' + (className ? ' ' + className : '')}>
-			<div>
+			<div className="TextAreaField__label">
 				<Label text={label} htmlFor={id} />
+				{optionalText && !value ? <span className="TextAreaField__optional">{optionalText}</span> : null}
 			</div>
 			<textarea
 				{...props}
@@ -19,6 +20,7 @@ const TextAreaField = ({id, className, label, resize, error, ...props}) => {
 				className={
 					'TextAreaField__area' + (resize ? '' : ' TextAreaField--noresize') + (error ? ' TextAreaField--error' : '')
 				}
+				value={value}
 			/>
 			<FieldError text={error} />
 		</div>
@@ -31,6 +33,7 @@ TextAreaField.propTypes = {
 	label: PropTypes.string.isRequired,
 	value: PropTypes.string,
 	placeholder: PropTypes.string,
+	optionalText: PropTypes.string,
 	resize: PropTypes.bool,
 	maxLength: PropTypes.number,
 	error: PropTypes.string,
