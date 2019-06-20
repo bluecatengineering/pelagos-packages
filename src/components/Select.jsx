@@ -292,7 +292,7 @@ const Select = ({
 				aria-haspopup="listbox"
 				aria-expanded={open}
 				aria-disabled={disabled}
-				aria-controls={open ? listId : null}
+				aria-owns={open ? listId : null}
 				aria-activedescendant={focused === -1 ? null : id + '-' + focused}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
