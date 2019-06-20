@@ -58,7 +58,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
   role="combobox"
 >
   <input
-    aria-activedescendant="test-opt-0"
+    aria-activedescendant="test-0"
     aria-autocomplete="list"
     aria-controls="test-list"
     autoComplete="off"
@@ -84,7 +84,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
       aria-selected={true}
       className="ComboBox__option TestClass"
       data-index={0}
-      id="test-opt-0"
+      id="test-0"
       role="option"
     >
       Test suggestion 0
@@ -93,7 +93,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
       aria-selected={false}
       className="ComboBox__option TestClass"
       data-index={1}
-      id="test-opt-1"
+      id="test-1"
       role="option"
     >
       Test suggestion 1

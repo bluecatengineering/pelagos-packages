@@ -293,7 +293,7 @@ const Select = ({
 				aria-expanded={open}
 				aria-disabled={disabled}
 				aria-controls={open ? listId : null}
-				aria-activedescendant={focused === -1 ? null : id + '-opt-' + focused}
+				aria-activedescendant={focused === -1 ? null : id + '-' + focused}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
 				onKeyUp={disabled ? undefined : handleKeyUp}
@@ -314,7 +314,7 @@ const Select = ({
 					{renderedOptions.map((o, index) => (
 						<div
 							key={o.value}
-							id={id + '-opt-' + index}
+							id={id + '-' + index}
 							className={'Select__option' + (index === focused ? ' Select__option--focused' : '')}
 							role="option"
 							aria-selected={o.value === value}

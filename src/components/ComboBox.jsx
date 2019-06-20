@@ -140,7 +140,7 @@ const ComboBox = ({
 				autoComplete="off"
 				aria-autocomplete="list"
 				aria-controls={expanded ? listId : null}
-				aria-activedescendant={selected === -1 ? null : id + '-opt-' + selected}
+				aria-activedescendant={selected === -1 ? null : id + '-' + selected}
 				value={text}
 				onKeyDown={handleKeyDown}
 				onKeyUp={handleKeyUp}
@@ -161,7 +161,7 @@ const ComboBox = ({
 						const element = renderSuggestion(item, index);
 						return cloneElement(element, {
 							key: index,
-							id: id + '-opt-' + index,
+							id: id + '-' + index,
 							role: 'option',
 							className: 'ComboBox__option ' + element.props.className,
 							'aria-selected': selected === index,

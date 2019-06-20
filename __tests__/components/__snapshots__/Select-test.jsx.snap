@@ -134,7 +134,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
   className="Select Test"
 >
   <div
-    aria-activedescendant="test-opt-1"
+    aria-activedescendant="test-1"
     aria-controls="test-list"
     aria-expanded={true}
     aria-haspopup="listbox"
@@ -172,7 +172,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       aria-selected={false}
       className="Select__option"
       data-index={0}
-      id="test-opt-0"
+      id="test-0"
       role="option"
     >
       One
@@ -181,7 +181,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       aria-selected={true}
       className="Select__option Select__option--focused"
       data-index={1}
-      id="test-opt-1"
+      id="test-1"
       role="option"
     >
       Two
@@ -190,7 +190,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       aria-selected={false}
       className="Select__option"
       data-index={2}
-      id="test-opt-2"
+      id="test-2"
       role="option"
     >
       Three
