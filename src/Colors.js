@@ -2,7 +2,7 @@
 // it will be re-generated on commit, to generate manually run `npm run update-colors`
 
 export const BLACK = '#000000';
-export const AZURE = '#00a3e6';
+export const AZURE = '#00b5ff';
 export const SEA = '#0085c4';
 export const OCEAN = '#0067a2';
 export const CERULEAN = '#004f7c';

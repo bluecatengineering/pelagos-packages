@@ -1,5 +1,6 @@
 import React from 'react';
-import {BLACK, MIDNIGHT, OXFORD, PRUSSIAN, SILVER, WHITE} from '../src/Colors';
+
+import {MIDNIGHT, OXFORD, PRUSSIAN, WHITE} from '../src/Colors';
 
 import './BackgroundPicker.less';
 
@@ -7,7 +8,6 @@ const options = [
 	{name: 'Oxford (form)', fg: WHITE, bg: OXFORD, default: true},
 	{name: 'Prussian (details)', fg: WHITE, bg: PRUSSIAN},
 	{name: 'Midnight (page)', fg: WHITE, bg: MIDNIGHT},
-	{name: 'Silver (dialog)', fg: BLACK, bg: SILVER},
 ];
 
 const setColors = (fg, bg) => ((document.body.style.color = fg), (document.body.style.backgroundColor = bg));
