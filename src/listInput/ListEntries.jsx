@@ -14,6 +14,7 @@ const ListEntries = ({
 	componentId,
 	highlightKey,
 	list,
+	column,
 	getItemKey,
 	renderItem,
 	onRemoveClick,
@@ -42,7 +43,11 @@ const ListEntries = ({
 				return (
 					<div
 						data-bcn-id="added-item"
-						className={'ListEntries__item ' + (itemKey === highlightKey ? ' ListEntries__item--highlight' : '')}
+						className={
+							'ListEntries__item ' +
+							(itemKey === highlightKey ? ' ListEntries__item--highlight' : '') +
+							(column ? '' : ' ListEntries__gridItem')
+						}
 						key={itemKey}>
 						<div
 							data-bcn-id="remove-item"
@@ -65,6 +70,7 @@ ListEntries.propTypes = {
 	componentId: PropTypes.string,
 	highlightKey: PropTypes.string,
 	list: PropTypes.array,
+	column: PropTypes.bool,
 	getItemKey: PropTypes.func,
 	renderItem: PropTypes.func,
 	onRemoveClick: PropTypes.func,

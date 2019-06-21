@@ -13,10 +13,10 @@ const ListInput = ({
 	id,
 	label,
 	notice,
-	placeholder,
 	emptyText,
 	list,
 	error,
+	column,
 	getSuggestions,
 	getSuggestionText,
 	getHighlightKey,
@@ -28,6 +28,7 @@ const ListInput = ({
 	onListChange,
 	onTextChange,
 	onErrorChange,
+	...props
 }) => {
 	const [text, setText] = useState('');
 	const [highlightKey, setHighlightKey] = useState(null);
@@ -112,8 +113,8 @@ const ListInput = ({
 				{notice && <div className="ListInput__notice">{notice}</div>}
 			</div>
 			<ComboBox
+				{...props}
 				id={id}
-				placeholder={placeholder}
 				autoSelect={!parseInput}
 				text={text}
 				error={!!error}
@@ -129,6 +130,7 @@ const ListInput = ({
 					id={id + '-grid'}
 					highlightKey={highlightKey}
 					list={list}
+					column={column}
 					getItemKey={getItemKey}
 					renderItem={renderItem}
 					onRemoveClick={handleRemoveClick}
@@ -151,6 +153,7 @@ ListInput.propTypes = {
 	emptyText: PropTypes.string,
 	list: PropTypes.array,
 	error: PropTypes.string,
+	column: PropTypes.bool,
 	getSuggestions: PropTypes.func,
 	getSuggestionText: PropTypes.func,
 	getHighlightKey: PropTypes.func,

@@ -51,6 +51,19 @@ describe('ListEntries', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when column is set', () => {
+			const wrapper = shallow(
+				<ListEntries
+					componentId="test"
+					list={[{id: '0', name: 'test'}]}
+					column
+					getItemKey={i => i.id}
+					renderItem={i => <div>{i.name}</div>}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {

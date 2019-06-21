@@ -50,6 +50,57 @@ exports[`ListInput rendering renders expected elements 1`] = `
 </div>
 `;
 
+exports[`ListInput rendering renders expected elements when column is set 1`] = `
+<div
+  className="ListInput"
+>
+  <div
+    className="ListInput__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test"
+    />
+    <div
+      className="ListInput__notice"
+    >
+      Notice
+    </div>
+  </div>
+  <ComboBox
+    autoSelect={true}
+    error={true}
+    getSuggestions={[Function]}
+    id="test"
+    onChange={[Function]}
+    onEnter={[Function]}
+    onTextChange={[Function]}
+    placeholder="test placeholder"
+    text=""
+  />
+  <FieldError
+    alignment="right"
+    id="test-error"
+    text="test error"
+  />
+  <ListEntries
+    column={true}
+    highlightKey={null}
+    id="test-grid"
+    list={
+      Array [
+        Object {
+          "id": "0",
+          "name": "test",
+        },
+      ]
+    }
+    onHighlightClear={[Function]}
+    onRemoveClick={[Function]}
+  />
+</div>
+`;
+
 exports[`ListInput rendering renders expected elements when error is not set 1`] = `
 <div
   className="ListInput"

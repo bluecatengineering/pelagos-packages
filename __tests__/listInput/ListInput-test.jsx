@@ -69,6 +69,22 @@ describe('ListInput', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when column is set', () => {
+			const wrapper = shallow(
+				<ListInput
+					id="test"
+					label="Test"
+					notice="Notice"
+					placeholder="test placeholder"
+					emptyText="Test empty"
+					list={[{id: '0', name: 'test'}]}
+					error="test error"
+					column
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {
