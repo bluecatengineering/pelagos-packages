@@ -53,7 +53,7 @@ const ComboBox = ({
 					if (expanded) {
 						const index = selected <= 0 ? suggestions.length - 1 : selected - 1;
 						setSelected(index);
-						scrollToItem(listRef.current, index);
+						scrollToItem(listRef.current, listRef.current.children[index]);
 					}
 					break;
 				case 40: // down
@@ -61,7 +61,7 @@ const ComboBox = ({
 					if (expanded) {
 						const index = selected === -1 || selected === suggestions.length - 1 ? 0 : selected + 1;
 						setSelected(index);
-						scrollToItem(listRef.current, index);
+						scrollToItem(listRef.current, listRef.current.children[index]);
 					}
 					break;
 			}

@@ -1,27 +1,11 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
-import {smoothScroll} from '@bluecat/helpers';
+import {smoothScroll, scrollToItem} from '@bluecat/helpers';
 import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
 import SvgIcon from './SvgIcon';
 import './Select.less';
-
-const scrollToItem = (list, index) => {
-	const listHeight = list.clientHeight;
-	if (list.scrollHeight > listHeight) {
-		const scrollTop = list.scrollTop;
-		const scrollBottom = listHeight + scrollTop;
-		const element = list.children[index];
-		const elementTop = element.offsetTop;
-		const elementBottom = elementTop + element.offsetHeight;
-		if (elementBottom > scrollBottom) {
-			smoothScroll(list, scrollTop, elementBottom - listHeight - scrollTop, 150);
-		} else if (elementTop < scrollTop) {
-			smoothScroll(list, scrollTop, elementTop - scrollTop, 150);
-		}
-	}
-};
 
 const findInRange = (string, list, start, end) => {
 	for (let i = start; i < end; ++i) {
@@ -81,7 +65,7 @@ const Select = ({
 
 	const updateFocused = useCallback(index => {
 		setFocused(index);
-		scrollToItem(list.current, index);
+		scrollToItem(list.current, list.current.children[index]);
 	}, []);
 
 	const findItemToFocus = useCallback(
@@ -276,7 +260,7 @@ const Select = ({
 
 	useEffect(() => {
 		if (open) {
-			scrollToItem(list.current, focused);
+			scrollToItem(list.current, list.current.children[focused]);
 		}
 	}, [open]);
 

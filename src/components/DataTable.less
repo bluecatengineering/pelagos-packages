@@ -10,6 +10,7 @@
 
 .DataTable__table {
 	width: 99%;
+	outline: none;
 }
 
 .DataTable__header {
@@ -56,14 +57,18 @@
 .DataTable__row:nth-child(even) {
 	background-color: fade(@prussian, 50%);
 }
-.DataTable__row:hover {
+.DataTable__row--focused,
+.DataTable__row--focused:nth-child(even) {
 	background-color: @fiord;
 }
-.DataTable__row--selected,
-.DataTable__row--selected:nth-child(even),
-.DataTable__row--selected:hover {
+.DataTable__row[aria-selected='true'],
+.DataTable__row[aria-selected='true']:nth-child(even) {
 	color: @font-color-black;
 	background-color: @bondi;
+}
+.DataTable__row--focused[aria-selected='true'],
+.DataTable__row--focused[aria-selected='true']:nth-child(even) {
+	background-color: @sea;
 }
 
 .DataTable__row--highlight {

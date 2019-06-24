@@ -119,7 +119,8 @@ describe('ComboBox', () => {
 		});
 
 		it('selects the previous item when up is pressed', () => {
-			const listElement = {};
+			const child = {};
+			const listElement = {children: [child]};
 			useRef.mockReturnValue({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
@@ -128,11 +129,12 @@ describe('ComboBox', () => {
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
 			wrapper.find('input').simulate('keydown', {keyCode: 38, preventDefault: jest.fn()});
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[0]]);
-			expect(scrollToItem.mock.calls).toEqual([[listElement, 0]]);
+			expect(scrollToItem.mock.calls).toEqual([[listElement, child]]);
 		});
 
 		it('selects the last item when up is pressed and selected is 0', () => {
-			const listElement = {};
+			const child = {};
+			const listElement = {children: [null, child]};
 			useRef.mockReturnValue({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
@@ -141,7 +143,7 @@ describe('ComboBox', () => {
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
 			wrapper.find('input').simulate('keydown', {keyCode: 38, preventDefault: jest.fn()});
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[1]]);
-			expect(scrollToItem.mock.calls).toEqual([[listElement, 1]]);
+			expect(scrollToItem.mock.calls).toEqual([[listElement, child]]);
 		});
 
 		it('ignores the key when up is pressed and visible is false', () => {
@@ -151,7 +153,8 @@ describe('ComboBox', () => {
 		});
 
 		it('selects the next item when down is pressed', () => {
-			const listElement = {};
+			const child = {};
+			const listElement = {children: [null, child]};
 			useRef.mockReturnValue({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
@@ -160,11 +163,12 @@ describe('ComboBox', () => {
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
 			wrapper.find('input').simulate('keydown', {keyCode: 40, preventDefault: jest.fn()});
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[1]]);
-			expect(scrollToItem.mock.calls).toEqual([[listElement, 1]]);
+			expect(scrollToItem.mock.calls).toEqual([[listElement, child]]);
 		});
 
 		it('selects the first item when down is pressed and selected is the last item', () => {
-			const listElement = {};
+			const child = {};
+			const listElement = {children: [child]};
 			useRef.mockReturnValue({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
@@ -173,7 +177,7 @@ describe('ComboBox', () => {
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
 			wrapper.find('input').simulate('keydown', {keyCode: 40, preventDefault: jest.fn()});
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[0]]);
-			expect(scrollToItem.mock.calls).toEqual([[listElement, 0]]);
+			expect(scrollToItem.mock.calls).toEqual([[listElement, child]]);
 		});
 
 		it('ignores the key when down is pressed and visible is false', () => {

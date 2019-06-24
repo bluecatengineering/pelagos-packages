@@ -22,7 +22,7 @@ const metadata = [
 	},
 ];
 
-const defaultSort = {columnId: 'name', order: 'asc'};
+const defaultSort = {columnId: 'name', order: 'a'};
 
 const data = [
 	{id: '1', name: 'One', value: 1},
@@ -36,6 +36,7 @@ const getRowId = row => row.id;
 storiesOf('DataTable', module)
 	.add('normal', () => (
 		<DataTable
+			id="normal"
 			metadata={metadata}
 			data={data}
 			selectedId="3"
@@ -46,6 +47,7 @@ storiesOf('DataTable', module)
 	))
 	.add('loading', () => (
 		<DataTable
+			id="loading"
 			className="Story__table"
 			metadata={metadata}
 			data={[]}
@@ -55,8 +57,22 @@ storiesOf('DataTable', module)
 		/>
 	))
 	.add('loading next', () => (
-		<DataTable metadata={metadata} data={data} addedCount={data.length} getRowId={getRowId} isFetchingNextDataPage />
+		<DataTable
+			id="next"
+			metadata={metadata}
+			data={data}
+			addedCount={data.length}
+			getRowId={getRowId}
+			isFetchingNextDataPage
+		/>
 	))
 	.add('loading previous', () => (
-		<DataTable metadata={metadata} data={data} addedCount={data.length} getRowId={getRowId} isFetchingPrevDataPage />
+		<DataTable
+			id="prev"
+			metadata={metadata}
+			data={data}
+			addedCount={data.length}
+			getRowId={getRowId}
+			isFetchingPrevDataPage
+		/>
 	));

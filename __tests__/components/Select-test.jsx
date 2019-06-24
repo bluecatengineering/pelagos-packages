@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
-import {smoothScroll} from '@bluecat/helpers';
+import {smoothScroll, scrollToItem} from '@bluecat/helpers';
 
 import Select from '../../src/components/Select';
 
@@ -117,12 +117,13 @@ describe('Select', () => {
 
 	describe('behaviour', () => {
 		it('scrolls to current option when open changes from false to true', () => {
+			const child = {offsetTop: 50, offsetHeight: 25};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
 
-				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
+				children: [{}, {}, child],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2]);
 			useRef
@@ -134,7 +135,7 @@ describe('Select', () => {
 			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [true]]]);
 
 			useEffect.mock.calls[0][0]();
-			expect(smoothScroll.mock.calls).toEqual([[list, 0, 25, 150]]);
+			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
 		});
 
 		it('does not scroll to current option when open changes from true to false', () => {
@@ -310,11 +311,12 @@ describe('Select', () => {
 		it('focuses the last option when the list is visible and end is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {keyCode: 35, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const child = {offsetTop: 50, offsetHeight: 25};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
-				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
+				children: [{}, {}, child],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
@@ -328,7 +330,7 @@ describe('Select', () => {
 			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[2]]);
-			expect(smoothScroll.mock.calls).toEqual([[list, 0, 25, 150]]);
+			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
 		});
 
 		it('ignores the event when the list is not visible and end is pressed', () => {
@@ -343,11 +345,12 @@ describe('Select', () => {
 		it('focuses the first option when the list is visible and home is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {keyCode: 36, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const child = {offsetTop: 0, offsetHeight: 25};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
 				scrollHeight: 75,
-				children: [{offsetTop: 0, offsetHeight: 25}, {}, {}],
+				children: [child, {}, {}],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
 			useRef
@@ -361,7 +364,7 @@ describe('Select', () => {
 			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
-			expect(smoothScroll.mock.calls).toEqual([[list, 25, -25, 150]]);
+			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
 		});
 
 		it('ignores the event when the list is not visible and home is pressed', () => {
@@ -400,11 +403,12 @@ describe('Select', () => {
 		it('focuses the last option when the list is visible, up is pressed and the first option is focused', () => {
 			const setFocused = jest.fn();
 			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const child = {offsetTop: 50, offsetHeight: 25};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
-				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
+				children: [{}, {}, child],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
@@ -418,7 +422,7 @@ describe('Select', () => {
 			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[2]]);
-			expect(smoothScroll.mock.calls).toEqual([[list, 0, 25, 150]]);
+			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
 		});
 
 		it('only prevents the event default when the list is not visible and up is pressed', () => {
