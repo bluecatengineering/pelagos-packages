@@ -5,6 +5,7 @@ exports[`ToastMessage rendering does not render button on application error 1`] 
   className="ToastMessage ToastMessage--fatal"
   data-bcn-id="toast-fatal"
   onClick={[Function]}
+  role="alert"
 >
   <div
     className="ToastMessage__text"
@@ -20,6 +21,7 @@ exports[`ToastMessage rendering renders close button on error 1`] = `
   className="ToastMessage ToastMessage--error"
   data-bcn-id="toast-error"
   onClick={[Function]}
+  role="alert"
 >
   <div
     className="ToastMessage__text ToastMessage__text--closeable"

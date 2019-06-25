@@ -35,7 +35,11 @@ const ToastMessage = ({message, onRemove}) => {
 		toastMessageClass = ' ToastMessage__text--closeable';
 	}
 	return (
-		<div data-bcn-id={'toast-' + type} className={'ToastMessage ToastMessage--' + type} onClick={handleClick}>
+		<div
+			data-bcn-id={'toast-' + type}
+			className={'ToastMessage ToastMessage--' + type}
+			role="alert"
+			onClick={handleClick}>
 			<div data-bcn-id="message" className={'ToastMessage__text' + toastMessageClass}>
 				{text}
 			</div>

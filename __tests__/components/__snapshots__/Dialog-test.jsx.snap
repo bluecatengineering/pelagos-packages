@@ -6,13 +6,16 @@ exports[`Dialog rendering renders expected elements 1`] = `
   onClick={[Function]}
 >
   <div
+    aria-labelledby="dialogTitle"
+    aria-modal={true}
     className="Dialog"
-    data-bcn-id="test-dialog"
     id="test-dialog"
+    role="dialog"
   >
     <React.Fragment>
       <div
         className="Dialog__title"
+        id="dialogTitle"
       >
         Test
       </div>
@@ -41,12 +44,15 @@ exports[`Dialog rendering renders expected elements when child has no className 
   onClick={[Function]}
 >
   <div
+    aria-labelledby="dialogTitle"
+    aria-modal={true}
     className="Dialog"
-    data-bcn-id="test-dialog"
+    role="dialog"
   >
     <React.Fragment>
       <div
         className="Dialog__title"
+        id="dialogTitle"
       >
         Test
       </div>
@@ -75,13 +81,16 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
   onClick={[Function]}
 >
   <form
+    aria-labelledby="dialogTitle"
+    aria-modal={true}
     className="Dialog"
-    data-bcn-id="test-dialog"
     onSubmit={[Function]}
+    role="dialog"
   >
     <React.Fragment>
       <div
         className="Dialog__title"
+        id="dialogTitle"
       >
         Test
       </div>
