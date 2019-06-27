@@ -346,7 +346,7 @@ const DataTable = ({
 							aria-activedescendant={focused === -1 ? null : getRowId(sortedData[focused])}
 							onMouseOver={handleMouseOver}
 							onMouseOut={clearFocus}
-							onClick={handleClick}
+							onClick={onRowClick ? handleClick : null}
 							onFocus={handleFocus}
 							onBlur={clearFocus}
 							onKeyDown={handleKeyDown}
