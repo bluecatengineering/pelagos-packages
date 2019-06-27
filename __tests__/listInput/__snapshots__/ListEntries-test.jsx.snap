@@ -3,11 +3,11 @@
 exports[`ListEntries rendering renders expected elements 1`] = `
 <div
   className="ListEntries"
-  data-bcn-id="test"
+  id="test"
 >
   <div
     className="ListEntries__item  ListEntries__gridItem"
-    data-bcn-id="added-item"
+    data-bcn-id="list-item"
   >
     <div
       className="ListEntries__icon"
@@ -35,11 +35,11 @@ exports[`ListEntries rendering renders expected elements 1`] = `
 exports[`ListEntries rendering renders expected elements when column is set 1`] = `
 <div
   className="ListEntries"
-  data-bcn-id="test"
+  id="test"
 >
   <div
     className="ListEntries__item "
-    data-bcn-id="added-item"
+    data-bcn-id="list-item"
   >
     <div
       className="ListEntries__icon"
@@ -67,11 +67,11 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
 exports[`ListEntries rendering renders expected elements when highlightKey is set 1`] = `
 <div
   className="ListEntries"
-  data-bcn-id="test"
+  id="test"
 >
   <div
     className="ListEntries__item  ListEntries__item--highlight ListEntries__gridItem"
-    data-bcn-id="added-item"
+    data-bcn-id="list-item"
   >
     <div
       className="ListEntries__icon"
@@ -99,11 +99,11 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
 exports[`ListEntries rendering renders expected elements when the item has className 1`] = `
 <div
   className="ListEntries"
-  data-bcn-id="test"
+  id="test"
 >
   <div
     className="ListEntries__item  ListEntries__gridItem"
-    data-bcn-id="added-item"
+    data-bcn-id="list-item"
   >
     <div
       className="ListEntries__icon"

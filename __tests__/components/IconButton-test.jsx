@@ -10,40 +10,31 @@ describe('IconButton', () => {
 	describe('rendering', () => {
 		it('renders the expected elements', () => {
 			const wrapper = shallow(
-				<IconButton
-					id="test"
-					componentId="test"
-					icon={{}}
-					className="TestClass"
-					aria-label="Test"
-					tooltipText="This is a test"
-				/>
+				<IconButton id="test" icon={{}} className="TestClass" aria-label="Test" tooltipText="This is a test" />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders the expected elements when className is not set', () => {
-			const wrapper = shallow(
-				<IconButton componentId="test" icon={{}} aria-label="Test" tooltipText="This is a test" />
-			);
+			const wrapper = shallow(<IconButton id="test" icon={{}} aria-label="Test" tooltipText="This is a test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders the expected elements when tooltipText is not set', () => {
-			const wrapper = shallow(<IconButton componentId="test" icon={{}} className="TestClass" aria-label="Test" />);
+			const wrapper = shallow(<IconButton id="test" icon={{}} className="TestClass" aria-label="Test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders the expected elements if disabled is true', () => {
 			const wrapper = shallow(
-				<IconButton componentId="test" icon={{}} aria-label="Test" tooltipText="This is a test" disabled={true} />
+				<IconButton id="test" icon={{}} aria-label="Test" tooltipText="This is a test" disabled={true} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders the expected elements if large is true', () => {
 			const wrapper = shallow(
-				<IconButton componentId="test" icon={{}} aria-label="Test" tooltipText="This is a test" large={true} />
+				<IconButton id="test" icon={{}} aria-label="Test" tooltipText="This is a test" large={true} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

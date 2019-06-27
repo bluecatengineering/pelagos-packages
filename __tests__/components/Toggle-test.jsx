@@ -9,14 +9,14 @@ describe('Toggle', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<Toggle id="test" componentId="test" className="TestClass" aria-label="Test" checked onChange={jest.fn()} />
+				<Toggle id="test" className="TestClass" aria-label="Test" checked onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when disabled is true', () => {
 			const wrapper = shallow(
-				<Toggle componentId="test" className="TestClass" aria-label="Test" checked disabled onChange={jest.fn()} />
+				<Toggle id="test" className="TestClass" aria-label="Test" checked disabled onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

@@ -9,14 +9,14 @@ describe('RadioButton', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<RadioButton id="test" componentId="test" className="TestClass" label="Test" checked onChange={jest.fn()} />
+				<RadioButton id="test" className="TestClass" label="Test" checked onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when error is true', () => {
 			const wrapper = shallow(
-				<RadioButton componentId="test" className="TestClass" label="Test" checked error onChange={jest.fn()} />
+				<RadioButton id="test" className="TestClass" label="Test" checked error onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

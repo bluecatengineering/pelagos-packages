@@ -8,22 +8,20 @@ jest.unmock('../../src/components/CheckBox');
 describe('CheckBox', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(
-				<CheckBox id="test" componentId="test" className="TestClass" label="Test" checked onChange={jest.fn()} />
-			);
+			const wrapper = shallow(<CheckBox id="test" className="TestClass" label="Test" checked onChange={jest.fn()} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when disabled is true', () => {
 			const wrapper = shallow(
-				<CheckBox componentId="test" className="TestClass" label="Test" checked disabled onChange={jest.fn()} />
+				<CheckBox id="test" className="TestClass" label="Test" checked disabled onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when error is true', () => {
 			const wrapper = shallow(
-				<CheckBox componentId="test" className="TestClass" label="Test" checked error onChange={jest.fn()} />
+				<CheckBox id="test" className="TestClass" label="Test" checked error onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

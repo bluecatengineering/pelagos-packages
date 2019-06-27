@@ -3,7 +3,7 @@
 exports[`Button rendering renders expected elements when active is true 1`] = `
 <button
   className="Button Button--medium Button--active"
-  data-bcn-id="test"
+  id="test"
   type="submit"
 >
   Test
@@ -14,7 +14,7 @@ exports[`Button rendering renders expected elements when both id and tooltipText
 <OverlayTrigger
   overlay={
     <Tooltip
-      id="tooltip-test"
+      id="test-tooltip"
     >
       Tooltip
     </Tooltip>
@@ -35,7 +35,7 @@ exports[`Button rendering renders expected elements when both size is small and 
 <span
   aria-disabled="true"
   className="Button Button--small"
-  data-bcn-id="test"
+  id="test"
 >
   Test
 </span>
@@ -44,7 +44,7 @@ exports[`Button rendering renders expected elements when both size is small and 
 exports[`Button rendering renders expected elements when className is set 1`] = `
 <button
   className="Button Button--medium testClass"
-  data-bcn-id="test"
+  id="test"
   type="submit"
 >
   Test
@@ -55,7 +55,7 @@ exports[`Button rendering renders expected elements when disabled is true 1`] = 
 <span
   aria-disabled="true"
   className="Button Button--medium"
-  data-bcn-id="test"
+  id="test"
 >
   Test
 </span>
@@ -65,7 +65,7 @@ exports[`Button rendering renders expected elements when disabled is true and cl
 <span
   aria-disabled="true"
   className="Button Button--medium testClass"
-  data-bcn-id="test"
+  id="test"
 >
   Test
 </span>
@@ -74,7 +74,7 @@ exports[`Button rendering renders expected elements when disabled is true and cl
 exports[`Button rendering renders expected elements when onClick is not specified 1`] = `
 <button
   className="Button Button--medium"
-  data-bcn-id="test"
+  id="test"
   type="submit"
 >
   Test
@@ -84,7 +84,7 @@ exports[`Button rendering renders expected elements when onClick is not specifie
 exports[`Button rendering renders expected elements when onClick is specified 1`] = `
 <button
   className="Button Button--medium"
-  data-bcn-id="test"
+  id="test"
   onClick={[MockFunction]}
   type="button"
 >
@@ -95,7 +95,7 @@ exports[`Button rendering renders expected elements when onClick is specified 1`
 exports[`Button rendering renders expected elements when size is small 1`] = `
 <button
   className="Button Button--small"
-  data-bcn-id="test"
+  id="test"
   type="submit"
 >
   Test
@@ -106,7 +106,7 @@ exports[`Button rendering renders expected elements when tooltipText is set 1`] 
 <OverlayTrigger
   overlay={
     <Tooltip
-      id="tooltip-test"
+      id="test-tooltip"
     >
       Tooltip
     </Tooltip>
@@ -115,7 +115,7 @@ exports[`Button rendering renders expected elements when tooltipText is set 1`] 
 >
   <button
     className="Button Button--medium"
-    data-bcn-id="test"
+    id="test"
     type="submit"
   >
     Test

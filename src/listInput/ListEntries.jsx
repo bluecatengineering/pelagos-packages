@@ -9,17 +9,7 @@ import __ from '../strings';
 
 import './ListEntries.less';
 
-const ListEntries = ({
-	id,
-	componentId,
-	highlightKey,
-	list,
-	column,
-	getItemKey,
-	renderItem,
-	onRemoveClick,
-	onHighlightClear,
-}) => {
+const ListEntries = ({id, highlightKey, list, column, getItemKey, renderItem, onRemoveClick, onHighlightClear}) => {
 	const clearHighlight = useMemo(() => onHighlightClear && debounce(onHighlightClear, 1000), [onHighlightClear]);
 
 	useEffect(() => {
@@ -34,7 +24,7 @@ const ListEntries = ({
 	}, [highlightKey, clearHighlight]);
 
 	return (
-		<div id={id} className="ListEntries" data-bcn-id={componentId}>
+		<div id={id} className="ListEntries">
 			{list.map((item, i) => {
 				const element = renderItem(item);
 				let className = element.props.className;
@@ -42,7 +32,7 @@ const ListEntries = ({
 				const itemKey = getItemKey(item, i);
 				return (
 					<div
-						data-bcn-id="added-item"
+						data-bcn-id="list-item"
 						className={
 							'ListEntries__item ' +
 							(itemKey === highlightKey ? ' ListEntries__item--highlight' : '') +
@@ -67,7 +57,6 @@ const ListEntries = ({
 
 ListEntries.propTypes = {
 	id: PropTypes.string,
-	componentId: PropTypes.string,
 	highlightKey: PropTypes.string,
 	list: PropTypes.array,
 	column: PropTypes.bool,

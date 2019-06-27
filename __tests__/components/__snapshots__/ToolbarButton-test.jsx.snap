@@ -4,7 +4,6 @@ exports[`ToolbarButton rendering renders the expected elements 1`] = `
 <IconButton
   aria-label="Test"
   className="ToolbarButton TestClass"
-  componentId="test"
   disabled={true}
   icon={Object {}}
   id="test"
@@ -16,8 +15,8 @@ exports[`ToolbarButton rendering renders the expected elements if active is true
 <IconButton
   aria-label="Test"
   className="ToolbarButton ToolbarButton--active"
-  componentId="test"
   icon={Object {}}
+  id="test"
   tooltipText="This is a test"
 />
 `;
@@ -26,9 +25,9 @@ exports[`ToolbarButton rendering renders the expected elements when className is
 <IconButton
   aria-label="Test"
   className="ToolbarButton"
-  componentId="test"
   disabled={true}
   icon={Object {}}
+  id="test"
   tooltipText="This is a test"
 />
 `;

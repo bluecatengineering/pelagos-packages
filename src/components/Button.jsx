@@ -6,20 +6,15 @@ import OverlayTrigger from './OverlayTrigger';
 
 import './Button.less';
 
-const Button = ({id, componentId, text, className, tooltipText, size, active, disabled, onClick, onFocus, onBlur}) => {
+const Button = ({id, text, className, tooltipText, size, active, disabled, onClick, onFocus, onBlur}) => {
 	const button = disabled ? (
-		<span
-			id={id}
-			data-bcn-id={componentId}
-			className={'Button Button--' + size + (className ? ' ' + className : '')}
-			aria-disabled="true">
+		<span id={id} className={'Button Button--' + size + (className ? ' ' + className : '')} aria-disabled="true">
 			{text}
 		</span>
 	) : (
 		<button
 			type={onClick ? 'button' : 'submit'}
 			id={id}
-			data-bcn-id={componentId}
 			className={'Button Button--' + size + (className ? ' ' + className : '') + (active ? ' Button--active' : '')}
 			onClick={onClick}
 			onFocus={onFocus}
@@ -32,7 +27,7 @@ const Button = ({id, componentId, text, className, tooltipText, size, active, di
 		return button;
 	}
 
-	const tooltip = <Tooltip id={'tooltip-' + (id || componentId)}>{tooltipText}</Tooltip>;
+	const tooltip = <Tooltip id={id + '-tooltip'}>{tooltipText}</Tooltip>;
 
 	return (
 		<OverlayTrigger placement="top" overlay={tooltip}>
@@ -43,7 +38,6 @@ const Button = ({id, componentId, text, className, tooltipText, size, active, di
 
 Button.propTypes = {
 	id: PropTypes.string,
-	componentId: PropTypes.string,
 	text: PropTypes.string,
 	className: PropTypes.string,
 	tooltipText: PropTypes.string,

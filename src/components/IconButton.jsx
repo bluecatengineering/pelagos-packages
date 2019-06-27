@@ -8,7 +8,7 @@ import OverlayTrigger from './OverlayTrigger';
 import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
-const IconButton = ({id, componentId, icon, className, tooltipText, large, disabled, onClick, ...props}) => {
+const IconButton = ({id, icon, className, tooltipText, large, disabled, onClick, ...props}) => {
 	const keyHandker = useButtonKeyHandler(onClick);
 	const button = (
 		<span
@@ -18,7 +18,6 @@ const IconButton = ({id, componentId, icon, className, tooltipText, large, disab
 			aria-disabled={disabled}
 			tabIndex={disabled ? -1 : 0}
 			className={'IconButton' + (className ? ' ' + className : '') + (large ? ' IconButton--large' : '')}
-			data-bcn-id={'btn-' + componentId}
 			onClick={disabled ? null : onClick}
 			onKeyDown={disabled ? null : keyHandker}>
 			<SvgIcon icon={icon} />
@@ -28,7 +27,7 @@ const IconButton = ({id, componentId, icon, className, tooltipText, large, disab
 		return button;
 	}
 
-	const tooltipId = 'tooltip-' + (id || componentId);
+	const tooltipId = id + '-tooltip';
 	const tooltip = <Tooltip id={tooltipId}>{tooltipText}</Tooltip>;
 	return (
 		<OverlayTrigger placement={large ? 'left' : 'right'} overlay={tooltip}>
@@ -39,7 +38,6 @@ const IconButton = ({id, componentId, icon, className, tooltipText, large, disab
 
 IconButton.propTypes = {
 	id: PropTypes.string,
-	componentId: PropTypes.string,
 	icon: PropTypes.object.isRequired,
 	className: PropTypes.string,
 	tooltipText: PropTypes.string,

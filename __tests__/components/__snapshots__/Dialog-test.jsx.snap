@@ -28,7 +28,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
         className="Dialog__buttons"
       >
         <Button
-          componentId="a"
+          id="a"
           size="medium"
           text="A"
         />
@@ -47,6 +47,7 @@ exports[`Dialog rendering renders expected elements when child has no className 
     aria-labelledby="dialogTitle"
     aria-modal={true}
     className="Dialog"
+    id="test-dialog"
     role="dialog"
   >
     <React.Fragment>
@@ -65,7 +66,7 @@ exports[`Dialog rendering renders expected elements when child has no className 
         className="Dialog__buttons"
       >
         <Button
-          componentId="a"
+          id="a"
           size="medium"
           text="A"
         />
@@ -84,6 +85,7 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
     aria-labelledby="dialogTitle"
     aria-modal={true}
     className="Dialog"
+    id="test-dialog"
     onSubmit={[Function]}
     role="dialog"
   >
@@ -103,7 +105,7 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
         className="Dialog__buttons"
       >
         <Button
-          componentId="a"
+          id="a"
           size="medium"
           text="A"
         />

@@ -10,10 +10,10 @@ describe('Dialog', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<Dialog id="test-dialog" componentId="test-dialog" title="Test">
+				<Dialog id="test-dialog" title="Test">
 					<div className="TestClass">This is a test</div>
 					<div>
-						<Button componentId="a" text="A" />
+						<Button id="a" text="A" />
 					</div>
 				</Dialog>
 			);
@@ -22,10 +22,10 @@ describe('Dialog', () => {
 
 		it('renders expected elements when child has no className', () => {
 			const wrapper = shallow(
-				<Dialog componentId="test-dialog" title="Test">
+				<Dialog id="test-dialog" title="Test">
 					<div>This is a test</div>
 					<div>
-						<Button componentId="a" text="A" />
+						<Button id="a" text="A" />
 					</div>
 				</Dialog>
 			);
@@ -34,10 +34,10 @@ describe('Dialog', () => {
 
 		it('renders expected elements when onSubmit is set', () => {
 			const wrapper = shallow(
-				<Dialog componentId="test-dialog" title="Test" onSubmit={jest.fn()}>
+				<Dialog id="test-dialog" title="Test" onSubmit={jest.fn()}>
 					<div className="TestClass">This is a test</div>
 					<div>
-						<Button componentId="a" text="A" />
+						<Button id="a" text="A" />
 					</div>
 				</Dialog>
 			);
@@ -50,7 +50,7 @@ describe('Dialog', () => {
 			const stopImmediatePropagation = jest.fn();
 			const event = {nativeEvent: {stopImmediatePropagation}};
 			const wrapper = shallow(
-				<Dialog componentId="test" title="Test">
+				<Dialog id="test" title="Test">
 					<div />
 					<div />
 				</Dialog>
@@ -63,7 +63,7 @@ describe('Dialog', () => {
 			const onSubmit = jest.fn();
 			const event = {preventDefault: jest.fn()};
 			const wrapper = shallow(
-				<Dialog componentId="test" title="Test" onSubmit={onSubmit}>
+				<Dialog id="test" title="Test" onSubmit={onSubmit}>
 					<div />
 					<div />
 				</Dialog>

@@ -4,7 +4,7 @@ exports[`IconButton rendering renders the expected elements 1`] = `
 <OverlayTrigger
   overlay={
     <Tooltip
-      id="tooltip-test"
+      id="test-tooltip"
     >
       This is a test
     </Tooltip>
@@ -14,7 +14,6 @@ exports[`IconButton rendering renders the expected elements 1`] = `
   <span
     aria-label="Test"
     className="IconButton TestClass"
-    data-bcn-id="btn-test"
     id="test"
     role="button"
     tabIndex={0}
@@ -30,7 +29,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
 <OverlayTrigger
   overlay={
     <Tooltip
-      id="tooltip-test"
+      id="test-tooltip"
     >
       This is a test
     </Tooltip>
@@ -41,7 +40,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
     aria-disabled={true}
     aria-label="Test"
     className="IconButton"
-    data-bcn-id="btn-test"
+    id="test"
     onClick={null}
     onKeyDown={null}
     role="button"
@@ -58,7 +57,7 @@ exports[`IconButton rendering renders the expected elements if large is true 1`]
 <OverlayTrigger
   overlay={
     <Tooltip
-      id="tooltip-test"
+      id="test-tooltip"
     >
       This is a test
     </Tooltip>
@@ -68,7 +67,7 @@ exports[`IconButton rendering renders the expected elements if large is true 1`]
   <span
     aria-label="Test"
     className="IconButton IconButton--large"
-    data-bcn-id="btn-test"
+    id="test"
     role="button"
     tabIndex={0}
   >
@@ -83,7 +82,7 @@ exports[`IconButton rendering renders the expected elements when className is no
 <OverlayTrigger
   overlay={
     <Tooltip
-      id="tooltip-test"
+      id="test-tooltip"
     >
       This is a test
     </Tooltip>
@@ -93,7 +92,7 @@ exports[`IconButton rendering renders the expected elements when className is no
   <span
     aria-label="Test"
     className="IconButton"
-    data-bcn-id="btn-test"
+    id="test"
     role="button"
     tabIndex={0}
   >
@@ -108,7 +107,7 @@ exports[`IconButton rendering renders the expected elements when tooltipText is 
 <span
   aria-label="Test"
   className="IconButton TestClass"
-  data-bcn-id="btn-test"
+  id="test"
   role="button"
   tabIndex={0}
 >

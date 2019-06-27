@@ -8,7 +8,7 @@ jest.unmock('../../src/components/ModalSpinner');
 describe('ModalSpinner', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<ModalSpinner id="test" componentId="test-component" />);
+			const wrapper = shallow(<ModalSpinner id="test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});

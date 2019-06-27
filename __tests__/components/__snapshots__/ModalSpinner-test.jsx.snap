@@ -3,7 +3,6 @@
 exports[`ModalSpinner rendering renders expected elements 1`] = `
 <div
   className="ModalSpinner"
-  data-bcn-id="test-component"
   id="test"
 >
   <Spinner

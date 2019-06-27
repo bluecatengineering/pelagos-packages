@@ -14,7 +14,6 @@ const ToolbarButton = ({className, active, ...props}) => (
 
 ToolbarButton.propTypes = {
 	id: PropTypes.string,
-	componentId: PropTypes.string,
 	className: PropTypes.string,
 	icon: PropTypes.object,
 	tooltipText: PropTypes.string,

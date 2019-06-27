@@ -18,7 +18,7 @@ describe('ListEntries', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<ListEntries
-					componentId="test"
+					id="test"
 					list={[{id: '0', name: 'test'}]}
 					getItemKey={i => i.id}
 					renderItem={i => <div>{i.name}</div>}
@@ -30,7 +30,7 @@ describe('ListEntries', () => {
 		it('renders expected elements when the item has className', () => {
 			const wrapper = shallow(
 				<ListEntries
-					componentId="test"
+					id="test"
 					list={[{id: '0', name: 'test'}]}
 					getItemKey={i => i.id}
 					renderItem={i => <div className="TestClass">{i.name}</div>}
@@ -42,7 +42,7 @@ describe('ListEntries', () => {
 		it('renders expected elements when highlightKey is set', () => {
 			const wrapper = shallow(
 				<ListEntries
-					componentId="test"
+					id="test"
 					highlightKey="0"
 					list={[{id: '0', name: 'test'}]}
 					getItemKey={i => i.id}
@@ -55,7 +55,7 @@ describe('ListEntries', () => {
 		it('renders expected elements when column is set', () => {
 			const wrapper = shallow(
 				<ListEntries
-					componentId="test"
+					id="test"
 					list={[{id: '0', name: 'test'}]}
 					column
 					getItemKey={i => i.id}
@@ -72,7 +72,7 @@ describe('ListEntries', () => {
 			const item = {id: '0', name: 'test'};
 			const wrapper = shallow(
 				<ListEntries
-					componentId="test"
+					id="test"
 					list={[item]}
 					getItemKey={i => i.id}
 					renderItem={i => <div>{i.name}</div>}
@@ -90,7 +90,7 @@ describe('ListEntries', () => {
 			querySelector.mockReturnValue(element);
 			shallow(
 				<ListEntries
-					componentId="test"
+					id="test"
 					highlightKey="0"
 					list={[{id: '0', name: 'test'}]}
 					getItemKey={i => i.id}
@@ -114,7 +114,7 @@ describe('ListEntries', () => {
 			querySelector.mockReturnValue(null);
 			shallow(
 				<ListEntries
-					componentId="test"
+					id="test"
 					highlightKey="1"
 					list={[{id: '0', name: 'test'}]}
 					getItemKey={i => i.id}
@@ -133,7 +133,7 @@ describe('ListEntries', () => {
 			const querySelector = jest.spyOn(document, 'querySelector');
 			shallow(
 				<ListEntries
-					componentId="test"
+					id="test"
 					list={[{id: '0', name: 'test'}]}
 					getItemKey={i => i.id}
 					renderItem={i => <div>{i.name}</div>}
