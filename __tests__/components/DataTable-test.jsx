@@ -684,6 +684,25 @@ describe('DataTable', () => {
 			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
 		});
 
+		it('sets focused to 0 on focus when focused is -1, selectedId is set and the selected item is not found', () => {
+			const setFocused = jest.fn();
+			const child = {};
+			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
+			const tableBody = {querySelector};
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1, setFocused]);
+			useRef.mockReturnValueOnce({current: tableBody});
+			const wrapper = shallow(
+				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} selectedId="r9" getRowId={getRowId} />
+			);
+			const table = wrapper.find('#test-tableBody > table');
+
+			table.simulate('focus');
+
+			expect(setFocused.mock.calls).toEqual([[0]]);
+			expect(querySelector.mock.calls).toEqual([['table']]);
+			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
+		});
+
 		it('does not set focused on focus when focused is not -1', () => {
 			const setFocused = jest.fn();
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([1, setFocused]);

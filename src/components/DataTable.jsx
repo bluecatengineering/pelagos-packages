@@ -175,7 +175,15 @@ const DataTable = ({
 
 	const handleFocus = useCallback(() => {
 		if (focused === -1) {
-			const index = selectedId ? sortedData.findIndex(item => getRowId(item) === selectedId) : 0;
+			let index;
+			if (selectedId) {
+				index = sortedData.findIndex(item => getRowId(item) === selectedId);
+				if (index === -1) {
+					index = 0;
+				}
+			} else {
+				index = 0;
+			}
 			setFocused(index);
 			const element = tableBody.current;
 			scrollToItem(element, getRow(element, index));
