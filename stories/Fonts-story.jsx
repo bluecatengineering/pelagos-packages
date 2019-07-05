@@ -3,14 +3,14 @@ import {storiesOf} from '@storybook/react';
 
 import './Fonts-story.less';
 
-const fontColors = ['color1', 'color2', 'color3', 'red', 'orange', 'sky'];
+const fontColors = ['color1', 'color2', 'color3', 'orange', 'sky'];
 
 const fontTable = [
 	{name: '10-400', colors: {color1: 'footer', color3: 'indicator', orange: 'notice'}},
 	{name: '10-600-uc', colors: {color1: 'error', color2: 'label'}},
 	{name: '12-400', colors: {color1: 'body-small', color2: 'crumbs', sky: 'field-hint'}},
 	{name: '12-600-uc', colors: {color1: 'button-small', color2: 'table-title', color3: 'cmd-header'}},
-	{name: '14-400', colors: {color1: 'body-medium', color2: 'body-dim', color3: 'body-disabled', red: 'block-action'}},
+	{name: '14-400', colors: {color1: 'body-medium', color2: 'body-dim', color3: 'body-disabled'}},
 	{name: '14-600', colors: {color1: 'important'}},
 	{name: '14-600-uc', colors: {color1: 'button-medium'}},
 	{name: '16-400', colors: {color1: 'body-large', color3: 'empty-msg'}},
