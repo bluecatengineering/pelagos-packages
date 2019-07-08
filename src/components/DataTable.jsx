@@ -338,7 +338,7 @@ const DataTable = ({
 					</thead>
 				</table>
 			</div>
-			<div id={id + '-tableBody'} className="DataTable__body" ref={tableBody}>
+			<div id={id + '-tableBody'} className="DataTable__body" tabIndex="-1" ref={tableBody}>
 				{!displayTableMessage ? (
 					<>
 						{isFetchingPrevDataPage && (
