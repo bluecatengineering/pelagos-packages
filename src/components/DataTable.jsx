@@ -105,6 +105,7 @@ const DataTable = ({
 }) => {
 	const [dataSort, setDataSort] = useState(defaultSort);
 	const [focused, setFocused] = useState(-1);
+	const [hasFocus, setHasFocus] = useState(-1);
 
 	const tableBody = useRef(null);
 	const isLoadingNextData = useRef(false);
@@ -151,14 +152,14 @@ const DataTable = ({
 		[data, isFetchingNextDataPage, isFetchingPrevDataPage]
 	);
 
-	const clearFocus = useCallback(() => setFocused(-1), []);
-
 	const handleMouseOver = useCallback(event => {
 		const element = event.target.closest('.DataTable__row');
 		if (element) {
 			setFocused(+element.dataset.index);
 		}
 	}, []);
+
+	const handleMouseOut = useCallback(() => (hasFocus ? null : setFocused(-1)), [hasFocus]);
 
 	const handleClick = useCallback(
 		event => {
@@ -174,6 +175,7 @@ const DataTable = ({
 	);
 
 	const handleFocus = useCallback(() => {
+		setHasFocus(true);
 		if (focused === -1) {
 			let index;
 			if (selectedId) {
@@ -189,6 +191,8 @@ const DataTable = ({
 			scrollToItem(element, getRow(element, index));
 		}
 	}, [focused, sortedData, selectedId, getRowId]);
+
+	const handleBlur = useCallback(() => (setFocused(-1), setHasFocus(false)), []);
 
 	const handleKeyDown = useCallback(
 		event => {
@@ -325,8 +329,9 @@ const DataTable = ({
 		}
 	});
 
-	const showLoadingSpinner = isFetchingNextDataPage && (!data || data.length === 0);
-	const displayTableMessage = !showLoadingSpinner && emptyTableText && (!data || data.length === 0);
+	const empty = data.length === 0;
+	const showLoadingSpinner = isFetchingNextDataPage && empty;
+	const displayTableMessage = !showLoadingSpinner && emptyTableText && empty;
 
 	const headers = renderHeaders(metadata, dataSort, updateSortColumn);
 	return (
@@ -338,7 +343,19 @@ const DataTable = ({
 					</thead>
 				</table>
 			</div>
-			<div id={id + '-tableBody'} className="DataTable__body" tabIndex="-1" ref={tableBody}>
+			<div
+				id={id + '-tableBody'}
+				className="DataTable__body"
+				tabIndex="0"
+				aria-activedescendant={focused === -1 ? null : getRowId(sortedData[focused])}
+				onMouseOver={handleMouseOver}
+				onMouseOut={handleMouseOut}
+				onClick={onRowClick ? handleClick : null}
+				onFocus={empty ? null : handleFocus}
+				onBlur={handleBlur}
+				onKeyDown={empty ? null : handleKeyDown}
+				onKeyUp={onRowClick && !empty ? handleKeyUp : null}
+				ref={tableBody}>
 				{!displayTableMessage ? (
 					<>
 						{isFetchingPrevDataPage && (
@@ -346,19 +363,7 @@ const DataTable = ({
 								<Spinner size="tiny" />
 							</div>
 						)}
-						<table
-							id={id + '-table'}
-							className="DataTable__table"
-							tabIndex="0"
-							role="grid"
-							aria-activedescendant={focused === -1 ? null : getRowId(sortedData[focused])}
-							onMouseOver={handleMouseOver}
-							onMouseOut={clearFocus}
-							onClick={onRowClick ? handleClick : null}
-							onFocus={handleFocus}
-							onBlur={clearFocus}
-							onKeyDown={handleKeyDown}
-							onKeyUp={onRowClick ? handleKeyUp : null}>
+						<table id={id + '-table'} className="DataTable__table" role="grid">
 							<thead className="DataTable__printHeader">
 								<tr>{headers}</tr>
 							</thead>

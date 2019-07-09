@@ -556,7 +556,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('mouseover', event);
 
@@ -572,7 +572,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('mouseover', event);
 
@@ -580,17 +580,36 @@ describe('DataTable', () => {
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 
-		it('sets focused to -1 on mouse out', () => {
+		it('sets focused to -1 on mouse out when hasFocus is false', () => {
 			const setFocused = jest.fn();
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
+			useState
+				.mockReturnValueOnce([])
+				.mockReturnValueOnce([0, setFocused])
+				.mockReturnValueOnce([false]);
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('mouseout');
 
 			expect(setFocused.mock.calls).toEqual([[-1]]);
+		});
+
+		it('does not change focused on mouse out when hasFocus is true', () => {
+			const setFocused = jest.fn();
+			useState
+				.mockReturnValueOnce([])
+				.mockReturnValueOnce([0, setFocused])
+				.mockReturnValueOnce([true]);
+			const wrapper = shallow(
+				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+			);
+			const table = wrapper.find('#test-tableBody');
+
+			table.simulate('mouseout');
+
+			expect(setFocused).not.toHaveBeenCalled();
 		});
 
 		it('calls onRowClick when user clicks on a row', () => {
@@ -611,7 +630,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('click', event);
 
@@ -636,7 +655,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('click', event);
 
@@ -648,18 +667,23 @@ describe('DataTable', () => {
 
 		it('sets focused to 0 on focus when focused is -1 and selectedId is not set', () => {
 			const setFocused = jest.fn();
+			const setHasFocus = jest.fn();
 			const child = {};
 			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
 			const tableBody = {querySelector};
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1, setFocused]);
+			useState
+				.mockReturnValueOnce([])
+				.mockReturnValueOnce([-1, setFocused])
+				.mockReturnValueOnce([false, setHasFocus]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('focus');
 
+			expect(setHasFocus.mock.calls).toEqual([[true]]);
 			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(querySelector.mock.calls).toEqual([['table']]);
 			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
@@ -675,7 +699,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} selectedId="r2" getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('focus');
 
@@ -694,7 +718,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} selectedId="r9" getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('focus');
 
@@ -709,7 +733,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('focus');
 
@@ -718,15 +742,20 @@ describe('DataTable', () => {
 
 		it('sets focused to -1 on blur', () => {
 			const setFocused = jest.fn();
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
+			const setHasFocus = jest.fn();
+			useState
+				.mockReturnValueOnce([])
+				.mockReturnValueOnce([0, setFocused])
+				.mockReturnValueOnce([true, setHasFocus]);
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('blur');
 
 			expect(setFocused.mock.calls).toEqual([[-1]]);
+			expect(setHasFocus.mock.calls).toEqual([[false]]);
 		});
 
 		it('prevents event default when enter or space are pressed', () => {
@@ -735,7 +764,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', {keyCode: 13, preventDefault, nativeEvent});
 			table.simulate('keydown', {keyCode: 32, preventDefault, nativeEvent});
@@ -758,7 +787,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -779,7 +808,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -804,7 +833,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -826,7 +855,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -846,7 +875,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -866,7 +895,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -886,7 +915,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -902,7 +931,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -921,7 +950,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -937,7 +966,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', event);
 
@@ -950,7 +979,7 @@ describe('DataTable', () => {
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
 			table.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
@@ -974,7 +1003,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keyup', event);
 
@@ -996,7 +1025,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keyup', event);
 
@@ -1016,7 +1045,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody > table');
+			const table = wrapper.find('#test-tableBody');
 
 			table.simulate('keyup', {keyCode: 13, shiftKey: true, preventDefault});
 			table.simulate('keyup', {keyCode: 13, ctrlKey: true, preventDefault});

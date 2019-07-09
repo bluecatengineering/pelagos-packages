@@ -81,24 +81,23 @@ exports[`DataTable rendering renders clickable row 1`] = `
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -457,24 +456,23 @@ exports[`DataTable rendering renders focused row 1`] = `
     </table>
   </div>
   <div
+    aria-activedescendant="id"
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant="id"
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -673,24 +671,23 @@ exports[`DataTable rendering renders highlighted row 1`] = `
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -889,24 +886,23 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={null}
+    onKeyDown={null}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -1072,24 +1068,23 @@ exports[`DataTable rendering renders next spinner when isFetchingNextDataPage is
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -1456,9 +1451,17 @@ exports[`DataTable rendering renders previous spinner when isFetchingPrevDataPag
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <div
@@ -1470,18 +1473,9 @@ exports[`DataTable rendering renders previous spinner when isFetchingPrevDataPag
         />
       </div>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -1840,24 +1834,23 @@ exports[`DataTable rendering renders selected row 1`] = `
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -2056,9 +2049,17 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={null}
+    onKeyDown={null}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <div
       className="DataTable__message"
@@ -2151,24 +2152,23 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -2527,24 +2527,23 @@ exports[`DataTable rendering renders the expected elements in descending order 1
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
@@ -2903,24 +2902,23 @@ exports[`DataTable rendering renders the expected elements using a secondary key
     </table>
   </div>
   <div
+    aria-activedescendant={null}
     className="DataTable__body"
     id="test-tableBody"
-    tabIndex="-1"
+    onBlur={[Function]}
+    onClick={null}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={null}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    tabIndex="0"
   >
     <React.Fragment>
       <table
-        aria-activedescendant={null}
         className="DataTable__table"
         id="test-table"
-        onBlur={[Function]}
-        onClick={null}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={null}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
         role="grid"
-        tabIndex="0"
       >
         <thead
           className="DataTable__printHeader"
