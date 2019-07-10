@@ -1,6 +1,6 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "UI components",
   "license": "ISC",
   "scripts": {
@@ -31,14 +31,14 @@
     "less"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
-    "@bluecat/eslint-config-react": "^0.1.3",
     "@bluecat/git-checks": "^0.1.0",
     "@bluecat/helpers": "^0.3.0",
+    "@bluecateng/eslint-config-react": "^0.4.1",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@storybook/addon-a11y": "^5.1.9",
     "@storybook/react": "^5.1.9",
@@ -46,25 +46,25 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.0.1",
-    "husky": "^2.5.0",
-    "intl-messageformat": "^3.3.0",
+    "husky": "^3.0.0",
+    "intl-messageformat": "^5.0.1",
     "jest": "^24.8.0",
     "jest-junit": "^6.4.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
-    "lint-staged": "^8.2.1",
-    "lodash-es": "^4.17.11",
+    "lint-staged": "^9.2.0",
+    "lodash-es": "^4.17.14",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-transition-group": "^4.1.1",
+    "react-transition-group": "^4.2.1",
     "redux-actions": "^2.6.5",
     "stable": "^0.1.8"
   },
   "eslintConfig": {
     "extends": [
-      "@bluecat/react"
+      "@bluecateng/react"
     ]
   },
   "jest": {
@@ -76,9 +76,9 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 98,
-        "functions": 99,
-        "lines": 99,
+        "branches": 99,
+        "functions": 100,
+        "lines": 100,
         "statements": -2
       }
     },
@@ -94,7 +94,7 @@
       "\\.yml$": "<rootDir>/jest_helpers/yaml-processor"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(lodash-es|@bluecat)/)"
+      "node_modules/(?!(intl-messageformat|lodash-es|@bluecat)/)"
     ],
     "unmockedModulePathPatterns": [
       "enzyme",
@@ -120,20 +120,15 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "*.{js,jsx}": [
-        "eslint --fix --max-warnings 0 --no-ignore",
-        "prettier --write",
-        "git add"
-      ],
-      "*.{json,less,md,yml}": [
-        "prettier --write",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "package.json",
-      "package-lock.json"
+    "(package.json|package-lock.json)": [],
+    "*.{js,jsx}": [
+      "eslint --fix --max-warnings 0 --no-ignore",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,less,md,yml}": [
+      "prettier --write",
+      "git add"
     ]
   }
 }

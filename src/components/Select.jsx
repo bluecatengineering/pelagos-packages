@@ -208,7 +208,7 @@ const Select = ({
 				}
 			}
 		},
-		[open, focused, renderedOptions, hideList, select, updateFocused, findItemToFocus]
+		[open, focused, renderedOptions, updateFocused, findItemToFocus, showList]
 	);
 
 	const handleKeyUp = useCallback(
@@ -262,7 +262,7 @@ const Select = ({
 		if (open) {
 			scrollToItem(list.current, list.current.children[focused]);
 		}
-	}, [open]);
+	}, [open, focused]);
 
 	const listId = id + '-list';
 	const selected = value && renderedOptions.find(o => o.value === value);

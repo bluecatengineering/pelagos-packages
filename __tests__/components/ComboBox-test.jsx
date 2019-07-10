@@ -48,7 +48,9 @@ describe('ComboBox', () => {
 	describe('behaviour', () => {
 		it('hides the list when text is empty', () => {
 			shallow(<ComboBox id="test" />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [undefined, undefined]]]);
+			expect(useEffect.mock.calls).toEqual([
+				[expect.any(Function), [expect.any(Function), expect.any(Function), undefined, undefined]],
+			]);
 			const cancel = debounce.mock.results[0].value.cancel;
 			expect(useEffect.mock.calls[0][0]()).toBe(cancel);
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
@@ -59,7 +61,9 @@ describe('ComboBox', () => {
 
 		it('hides the list when text starts with slash', () => {
 			shallow(<ComboBox id="test" text="/x" />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), ['/x', undefined]]]);
+			expect(useEffect.mock.calls).toEqual([
+				[expect.any(Function), [expect.any(Function), expect.any(Function), '/x', undefined]],
+			]);
 			const cancel = debounce.mock.results[0].value.cancel;
 			expect(useEffect.mock.calls[0][0]()).toBe(cancel);
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
@@ -72,7 +76,9 @@ describe('ComboBox', () => {
 			const suggestions = [{}];
 			const getSuggestions = jest.fn().mockReturnValue(suggestions);
 			shallow(<ComboBox id="test" text="x" getSuggestions={getSuggestions} />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), ['x', undefined]]]);
+			expect(useEffect.mock.calls).toEqual([
+				[expect.any(Function), [expect.any(Function), expect.any(Function), 'x', undefined]],
+			]);
 			useEffect.mock.calls[0][0]();
 			expect(getSuggestions.mock.calls).toEqual([['x']]);
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[suggestions]]);
@@ -84,7 +90,9 @@ describe('ComboBox', () => {
 			const suggestions = [{}];
 			const getSuggestions = jest.fn().mockReturnValue(suggestions);
 			shallow(<ComboBox id="test" autoSelect text="x" getSuggestions={getSuggestions} />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), ['x', undefined]]]);
+			expect(useEffect.mock.calls).toEqual([
+				[expect.any(Function), [expect.any(Function), expect.any(Function), 'x', undefined]],
+			]);
 			useEffect.mock.calls[0][0]();
 			expect(getSuggestions.mock.calls).toEqual([['x']]);
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[suggestions]]);
@@ -96,7 +104,9 @@ describe('ComboBox', () => {
 			const suggestions = [];
 			const getSuggestions = jest.fn().mockReturnValue(suggestions);
 			shallow(<ComboBox id="test" text="x" getSuggestions={getSuggestions} />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), ['x', undefined]]]);
+			expect(useEffect.mock.calls).toEqual([
+				[expect.any(Function), [expect.any(Function), expect.any(Function), 'x', undefined]],
+			]);
 			useEffect.mock.calls[0][0]();
 			expect(getSuggestions.mock.calls).toEqual([['x']]);
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);

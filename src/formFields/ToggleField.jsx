@@ -18,7 +18,7 @@ const ToggleField = ({id, className, label, value, disabled, onChange}) => {
 				className="ToggleField__field"
 				checked={value}
 				disabled={disabled}
-				onChange={useCallback(() => onChange(!value), [value])}
+				onChange={useCallback(() => onChange(!value), [value, onChange])}
 			/>
 		</div>
 	);

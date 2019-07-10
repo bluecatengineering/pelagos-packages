@@ -132,7 +132,7 @@ describe('Select', () => {
 				.mockReturnValueOnce({current: -1})
 				.mockReturnValueOnce({current: null});
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [true]]]);
+			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [true, 2]]]);
 
 			useEffect.mock.calls[0][0]();
 			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
@@ -140,7 +140,7 @@ describe('Select', () => {
 
 		it('does not scroll to current option when open changes from true to false', () => {
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [false]]]);
+			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [false, -1]]]);
 
 			useEffect.mock.calls[0][0]();
 			expect(smoothScroll).not.toHaveBeenCalled();

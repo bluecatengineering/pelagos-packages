@@ -39,7 +39,11 @@ const ComboBox = ({
 		}, 150),
 		[getSuggestions]
 	);
-	const selectSuggestion = useCallback(index => (hideList(), onChange(suggestions[index])), [suggestions, onChange]);
+	const selectSuggestion = useCallback(index => (hideList(), onChange(suggestions[index])), [
+		suggestions,
+		hideList,
+		onChange,
+	]);
 
 	const handleKeyDown = useCallback(
 		event => {
@@ -66,7 +70,7 @@ const ComboBox = ({
 					break;
 			}
 		},
-		[expanded, selected, listRef]
+		[suggestions, expanded, selected, listRef]
 	);
 
 	const handleKeyUp = useCallback(
@@ -88,14 +92,14 @@ const ComboBox = ({
 					break;
 			}
 		},
-		[selected, selectSuggestion, onEnter, onTextChange]
+		[selected, selectSuggestion, hideList, onEnter, onTextChange]
 	);
 
 	const handleChange = useCallback(event => onTextChange(event.target.value), [onTextChange]);
 
 	const handleFocus = useCallback(
 		() => (suggestions.length !== 0 ? (setExpanded(true), setSelected(autoSelect ? 0 : -1)) : null),
-		[suggestions]
+		[suggestions, autoSelect]
 	);
 
 	const handleBlur = useCallback(() => setExpanded(false), []);
@@ -128,7 +132,7 @@ const ComboBox = ({
 			updateSuggestions(text);
 		}
 		return updateSuggestions.cancel;
-	}, [text, error]);
+	}, [hideList, updateSuggestions, text, error]);
 
 	const listId = id + '-list';
 	return (

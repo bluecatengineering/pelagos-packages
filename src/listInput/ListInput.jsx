@@ -71,7 +71,16 @@ const ListInput = ({
 				}
 			}
 		},
-		[list, getHighlightKey, validateSuggestion, onListChange, onTextChange, onErrorChange]
+		[
+			getHighlightKey,
+			parseInput,
+			onTextChange,
+			onListChange,
+			getSuggestionText,
+			list,
+			validateSuggestion,
+			onErrorChange,
+		]
 	);
 
 	const handleEnter = useCallback(() => {

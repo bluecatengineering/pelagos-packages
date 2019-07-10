@@ -21,7 +21,7 @@ const ToastMessage = ({message, onRemove}) => {
 		if (onClick) {
 			onClick();
 		}
-	}, [message, onRemove]);
+	}, [type, message, onRemove, onClick]);
 
 	let closeButton;
 	let toastMessageClass = '';

@@ -292,12 +292,9 @@ const DataTable = ({
 
 	useEffect(() => {
 		if (requestNextDataPage && requestPrevDataPage) {
-			tableBody.current.addEventListener(
-				'scroll',
-				handleScroll,
-				/Trident\//.test(navigator.userAgent) ? false : {passive: true}
-			);
-			return () => tableBody.current.removeEventListener('scroll', handleScroll);
+			const element = tableBody.current;
+			element.addEventListener('scroll', handleScroll, /Trident\//.test(navigator.userAgent) ? false : {passive: true});
+			return () => element.removeEventListener('scroll', handleScroll);
 		}
 		return undefined;
 	}, [requestNextDataPage, requestPrevDataPage, handleScroll]);
@@ -306,7 +303,7 @@ const DataTable = ({
 		if (highlightId) {
 			buildHighlighter(false)(highlightId, onHighlightClear);
 		}
-	}, []);
+	}, [highlightId, onHighlightClear]);
 
 	useEffect(() => {
 		if (data.length === addedCount) {
@@ -327,7 +324,7 @@ const DataTable = ({
 				setFocused(focused + addedCount);
 			}
 		}
-	});
+	}, [data, addedCount, isFetchingNextDataPage, isFetchingPrevDataPage, focused]);
 
 	const empty = data.length === 0;
 	const showLoadingSpinner = isFetchingNextDataPage && empty;
