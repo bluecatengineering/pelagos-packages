@@ -37,8 +37,10 @@ const sortData = (data, metadata, dataSort, defaultSortColumnId) => {
 	});
 };
 
-const renderHeaders = (metadata, dataSort, onClick) =>
-	metadata.map(col => {
+const mapColumns = (metadata, columns, f) => (columns ? columns.map(c => f(metadata[c])) : metadata.map(f));
+
+const renderHeaders = (metadata, columns, dataSort, onClick) =>
+	mapColumns(metadata, columns, col => {
 		const sortOrder = dataSort && dataSort.columnId === col.id ? dataSort.order : null;
 		const ariaSort = !col.sortable ? null : sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none';
 		return (
@@ -61,7 +63,7 @@ const renderHeaders = (metadata, dataSort, onClick) =>
 		);
 	});
 
-const renderRows = (data, metadata, selectedId, highlightId, focused, getRowId, onRowClick) =>
+const renderRows = (data, metadata, columns, selectedId, highlightId, focused, getRowId, onRowClick) =>
 	data.map((row, rowIndex) => {
 		const rowId = getRowId(row);
 		const className =
@@ -72,7 +74,7 @@ const renderRows = (data, metadata, selectedId, highlightId, focused, getRowId, 
 
 		return (
 			<tr key={rowIndex} id={rowId} className={className} aria-selected={selectedId === rowId} data-index={rowIndex}>
-				{metadata.map(col => (
+				{mapColumns(metadata, columns, col => (
 					<td
 						key={col.id}
 						style={{...col.style, width: col.width}}
@@ -90,6 +92,7 @@ const DataTable = ({
 	className,
 	metadata,
 	data,
+	columns,
 	defaultSort,
 	addedCount,
 	emptyTableText,
@@ -330,7 +333,7 @@ const DataTable = ({
 	const showLoadingSpinner = isFetchingNextDataPage && empty;
 	const displayTableMessage = !showLoadingSpinner && emptyTableText && empty;
 
-	const headers = renderHeaders(metadata, dataSort, updateSortColumn);
+	const headers = renderHeaders(metadata, columns, dataSort, updateSortColumn);
 	return (
 		<div id={id} className={'DataTable' + (className ? ' ' + className : '')}>
 			<div id={id + '-tableHeader'} className="DataTable__header">
@@ -364,7 +367,9 @@ const DataTable = ({
 							<thead className="DataTable__printHeader">
 								<tr>{headers}</tr>
 							</thead>
-							<tbody>{renderRows(sortedData, metadata, selectedId, highlightId, focused, getRowId, onRowClick)}</tbody>
+							<tbody>
+								{renderRows(sortedData, metadata, columns, selectedId, highlightId, focused, getRowId, onRowClick)}
+							</tbody>
 						</table>
 						{isFetchingNextDataPage && (
 							<div
@@ -397,6 +402,7 @@ DataTable.propTypes = {
 		})
 	).isRequired,
 	data: PropTypes.array.isRequired,
+	columns: PropTypes.array,
 	defaultSort: PropTypes.shape({
 		columnId: PropTypes.string,
 		order: PropTypes.string,

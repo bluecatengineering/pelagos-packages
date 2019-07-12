@@ -115,6 +115,22 @@ describe('DataTable', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders the expected elements when columns is set', () => {
+			const wrapper = shallow(
+				<DataTable
+					id="test"
+					className="TestClass"
+					metadata={metadata}
+					data={testData}
+					columns={[2, 1]}
+					defaultSort={{columnId: 'time', order: 'a'}}
+					addedCount={4}
+					getRowId={getRowId}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders loading spinner when loading initial data', () => {
 			const wrapper = shallow(
 				<DataTable
