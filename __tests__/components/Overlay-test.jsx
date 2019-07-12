@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {shallow, mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 
 import Overlay from '../../src/components/Overlay';
 
@@ -195,6 +195,39 @@ describe('Overlay', () => {
 				arrowOffsetLeft: '50%',
 				visible: true,
 			});
+		});
+
+		it('does not change state when visible is true and other property changes', () => {
+			const wrapper = mount(
+				<Overlay show={true} placement="left">
+					<Test id="child" />
+				</Overlay>
+			);
+			wrapper.setState({visible: true});
+			wrapper.setProps({other: true});
+			const child = wrapper.find('#child');
+			expect(child.getDOMNode().classList.contains('Overlay--visible')).toBe(true);
+		});
+
+		it('clears the timeout on unmount if set', () => {
+			const wrapper = mount(
+				<Overlay show={false} placement="bottom" target={<div />}>
+					<Test />
+				</Overlay>
+			);
+			wrapper.instance().timer = 1;
+			wrapper.unmount();
+			expect(clearTimeout.mock.calls).toEqual([[1]]);
+		});
+
+		it('does not clear the timeout on unmount if not set', () => {
+			const wrapper = mount(
+				<Overlay show={false} placement="bottom" target={<div />}>
+					<Test />
+				</Overlay>
+			);
+			wrapper.unmount();
+			expect(clearTimeout).not.toHaveBeenCalled();
 		});
 	});
 });

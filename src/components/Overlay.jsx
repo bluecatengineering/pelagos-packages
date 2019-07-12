@@ -34,6 +34,12 @@ export default class Overlay extends Component {
 		}
 	}
 
+	componentWillUnmount() {
+		if (this.timer) {
+			clearTimeout(this.timer);
+		}
+	}
+
 	componentDidUpdate(prevProps, prevState) {
 		if (this.props.show && (!prevProps.show || (!prevProps.target && this.props.target))) {
 			this.updatePosition();
@@ -44,7 +50,7 @@ export default class Overlay extends Component {
 				this.getNode().classList.add('Overlay--visible');
 			} else if (!this.props.show) {
 				this.getNode().classList.remove('Overlay--visible');
-				setTimeout(() => this.setState({visible: false}), 300);
+				this.timer = setTimeout(() => ((this.timer = null), this.setState({visible: false})), 300);
 			}
 		}
 	}
