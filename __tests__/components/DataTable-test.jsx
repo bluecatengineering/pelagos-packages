@@ -488,6 +488,27 @@ describe('DataTable', () => {
 			expect(setFocused.mock.calls).toEqual([[2]]);
 		});
 
+		it('updates the table scrollTop and sets focused when the next data is loaded and focused would be less than 0', () => {
+			const setFocused = jest.fn();
+			const tableBody = {
+				clientHeight: 100,
+				scrollHeight: 1000,
+				scrollTop: 900,
+			};
+			const isLoadingNextData = {current: true};
+			const isLoadingPrevData = {current: false};
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([1, setFocused]);
+			initTable(2, isLoadingNextData, isLoadingPrevData, tableBody, jest.fn(), jest.fn());
+
+			expect(useEffect).toHaveBeenCalledTimes(3);
+
+			useEffect.mock.calls[2][0]();
+			expect(tableBody.scrollTop).toBe(500);
+			expect(isLoadingNextData.current).toBe(false);
+			expect(isLoadingPrevData.current).toBe(false);
+			expect(setFocused.mock.calls).toEqual([[0]]);
+		});
+
 		it('updates the table scrollTop when the previous data is loaded', () => {
 			const tableBody = {
 				clientHeight: 100,
@@ -516,6 +537,27 @@ describe('DataTable', () => {
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: true};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([2, setFocused]);
+			initTable(2, isLoadingNextData, isLoadingPrevData, tableBody, jest.fn(), jest.fn());
+
+			expect(useEffect).toHaveBeenCalledTimes(3);
+
+			useEffect.mock.calls[2][0]();
+			expect(tableBody.scrollTop).toBe(400);
+			expect(isLoadingNextData.current).toBe(false);
+			expect(isLoadingPrevData.current).toBe(false);
+			expect(setFocused.mock.calls).toEqual([[4]]);
+		});
+
+		it('updates the table scrollTop and sets focused when the previous data is loaded and focused would be larger than data length', () => {
+			const setFocused = jest.fn();
+			const tableBody = {
+				clientHeight: 100,
+				scrollHeight: 1000,
+				scrollTop: 0,
+			};
+			const isLoadingNextData = {current: false};
+			const isLoadingPrevData = {current: true};
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([4, setFocused]);
 			initTable(2, isLoadingNextData, isLoadingPrevData, tableBody, jest.fn(), jest.fn());
 
 			expect(useEffect).toHaveBeenCalledTimes(3);

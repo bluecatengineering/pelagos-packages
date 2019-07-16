@@ -318,13 +318,13 @@ const DataTable = ({
 			element.scrollTop = (element.scrollHeight / data.length) * (data.length - addedCount) - element.clientHeight;
 			isLoadingNextData.current = false;
 			if (focused !== -1) {
-				setFocused(focused - addedCount);
+				setFocused(Math.max(0, focused - addedCount));
 			}
 		} else if (isLoadingPrevData.current && !isFetchingPrevDataPage) {
 			element.scrollTop = (element.scrollHeight / data.length) * addedCount;
 			isLoadingPrevData.current = false;
 			if (focused !== -1) {
-				setFocused(focused + addedCount);
+				setFocused(Math.min(data.length - 1, focused + addedCount));
 			}
 		}
 	}, [data, addedCount, isFetchingNextDataPage, isFetchingPrevDataPage, focused]);
