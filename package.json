@@ -1,6 +1,6 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "UI components",
   "license": "ISC",
   "scripts": {
@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "@bluecat/git-checks": "^0.1.0",
-    "@bluecat/helpers": "^0.3.0",
+    "@bluecat/helpers": "^0.4.0",
     "@bluecateng/eslint-config-react": "^0.4.1",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@storybook/addon-a11y": "^5.1.9",
@@ -47,7 +47,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.0.1",
     "husky": "^3.0.0",
-    "intl-messageformat": "^5.0.1",
+    "intl-messageformat": "^5.1.0",
     "jest": "^24.8.0",
     "jest-junit": "^6.4.0",
     "less": "^3.9.0",
