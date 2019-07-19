@@ -8,6 +8,7 @@ storiesOf('ListInput', module)
 	.add('grid', () => (
 		<ListInput
 			id="id"
+			label="Grid"
 			placeHolder="1.1.1.1, 1.1.1.2"
 			type="text"
 			autoFocus
@@ -29,10 +30,35 @@ storiesOf('ListInput', module)
 	.add('column', () => (
 		<ListInput
 			id="id"
+			label="Column"
 			placeHolder="1.1.1.1, 1.1.1.2"
 			type="text"
 			autoFocus
 			list={['1.1.1.1', '1.1.1.2']}
+			error={null}
+			text="1.1"
+			column
+			aria-label="test"
+			getSuggestions={() => ({})}
+			getSuggestionText={identity}
+			getHighlightKey={identity}
+			renderSuggestion={identity}
+			getItemKey={identity}
+			renderItem={d => <div>{d}</div>}
+			onListChange={identity}
+			onTextChange={identity}
+			onErrorChange={identity}
+		/>
+	))
+	.add('empty', () => (
+		<ListInput
+			id="id"
+			label="Empty"
+			placeHolder="1.1.1.1, 1.1.1.2"
+			emptyText="The list is empty"
+			type="text"
+			autoFocus
+			list={[]}
 			error={null}
 			text="1.1"
 			column

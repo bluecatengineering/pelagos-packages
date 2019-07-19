@@ -1,21 +1,21 @@
 @import '../../less/colors';
 @import '../../less/shadows';
+@import '../../less/spacing';
 
 .ComboBox {
 	position: relative;
 }
 
-.ComboBox__suggestions {
+.ComboBox__list {
 	position: absolute;
-	top: 37px;
+	top: 31px;
 	width: 100%;
-	max-height: 165px;
+	max-height: 15em;
 	background-color: @oxford;
 	border: 1px solid @fiord;
 	border-radius: 3px;
 	outline: none;
-	padding: 4px 0;
-	margin-top: -1px;
+	padding: @sp-04 0;
 	overflow-x: hidden;
 	overflow-y: auto;
 	z-index: 1;
@@ -23,7 +23,7 @@
 }
 
 .ComboBox__option {
-	padding: 6px 12px;
+	padding: @sp-04 @sp-12;
 	cursor: default;
 }
 .ComboBox__option[aria-selected='true'] {

@@ -1,11 +1,11 @@
 @import '../../less/colors';
+@import '../../less/spacing';
 
 .ListEntries {
 	flex-direction: row;
 	flex-wrap: wrap;
 	height: 145px;
 	overflow-y: auto;
-	margin-bottom: 20px;
 	align-items: flex-start;
 	align-content: flex-start;
 }
@@ -13,7 +13,7 @@
 .ListEntries__item {
 	flex-direction: row;
 	align-items: flex-start;
-	padding: 4px 8px;
+	padding: @sp-04 @sp-08;
 	width: 100%;
 }
 
@@ -33,7 +33,7 @@
 
 .ListEntries__name {
 	flex: 1;
-	padding-left: 8px;
+	padding-left: @sp-08;
 }
 
 @media (min-width: 768px) {

@@ -1,12 +1,14 @@
 @import '../../less/colors';
 @import '../../less/fonts';
+@import '../../less/spacing';
 
 .TextInputField {
-	margin-bottom: 10px;
+	margin-top: @sp-12;
 }
 
 .TextInputField__label {
 	flex-direction: row;
+	margin-bottom: @sp-04;
 }
 
 .TextInputField__optional {
@@ -14,12 +16,11 @@
 	color: @font-color-3;
 	position: relative;
 	top: -1px;
-	margin-left: 12px;
+	margin-left: @sp-12;
 }
 
 .TextInputField__input {
-	height: 35px;
-	padding: 6px 12px;
+	padding: @sp-04 @sp-12;
 	background-color: @form-field-bg;
 	border: 1px solid @form-field-border;
 	border-radius: 3px;

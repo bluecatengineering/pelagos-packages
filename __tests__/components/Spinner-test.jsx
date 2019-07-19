@@ -11,5 +11,10 @@ describe('Spinner', () => {
 			const wrapper = shallow(<Spinner id="test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when className is set', () => {
+			const wrapper = shallow(<Spinner id="test" className="TestClass" size="large" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

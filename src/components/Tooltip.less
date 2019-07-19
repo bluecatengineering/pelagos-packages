@@ -1,6 +1,8 @@
 @import '../../less/colors';
 @import '../../less/fonts';
 @import '../../less/shadows';
+@import '../../less/spacing';
+@import '../../less/zindexes';
 
 @tooltip-max-width: 400px;
 @tooltip-bg: @black;
@@ -9,7 +11,7 @@
 
 .Tooltip {
 	position: absolute;
-	z-index: 5900;
+	z-index: @zindex-tooltip;
 }
 
 .Tooltip--left {
@@ -33,8 +35,8 @@
 	@font-12-400();
 	background-color: @tooltip-bg;
 	max-width: @tooltip-max-width;
-	padding: 6px 12px;
-	border-radius: 4px;
+	padding: @sp-04 @sp-12;
+	border-radius: 3px;
 	white-space: pre-line;
 	box-shadow: @shadow6;
 }

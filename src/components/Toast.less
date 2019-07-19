@@ -1,13 +1,15 @@
 @import '../../less/fonts';
+@import '../../less/spacing';
+@import '../../less/zindexes';
 
 .Toast {
 	@font-16-400();
 	position: fixed;
-	z-index: 5800;
-	top: 14px;
+	z-index: @zindex-toast;
+	top: @sp-16;
 	left: 50%;
-	width: 700px;
-	margin-left: -350px;
+	width: 50vw;
+	margin-left: -25vw;
 }
 
 @media print {

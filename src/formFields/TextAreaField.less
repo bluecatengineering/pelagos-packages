@@ -1,12 +1,14 @@
 @import '../../less/colors';
 @import '../../less/fonts';
+@import '../../less/spacing';
 
 .TextAreaField {
-	margin-bottom: 10px;
+	margin-top: @sp-12;
 }
 
 .TextAreaField__label {
 	flex-direction: row;
+	margin-bottom: @sp-04;
 }
 
 .TextAreaField__optional {
@@ -14,12 +16,12 @@
 	color: @font-color-3;
 	position: relative;
 	top: -1px;
-	margin-left: 12px;
+	margin-left: @sp-12;
 }
 
 .TextAreaField__area {
 	height: 65px;
-	padding: 6px 12px;
+	padding: @sp-04 @sp-12;
 	background-color: @form-field-bg;
 	border: 1px solid @form-field-border;
 	border-radius: 3px;

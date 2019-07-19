@@ -21,10 +21,10 @@ const ComboBox = ({
 	const listRef = useRef(null);
 
 	const [suggestions, setSuggestions] = useState([]);
-	const [expanded, setExpanded] = useState(false);
+	const [open, setOpen] = useState(false);
 	const [selected, setSelected] = useState(-1);
 
-	const hideList = useCallback(() => (setSuggestions([]), setExpanded(false), setSelected(-1)), []);
+	const hideList = useCallback(() => (setSuggestions([]), setOpen(false), setSelected(-1)), []);
 
 	const updateSuggestions = useCallback(
 		debounce(text => {
@@ -33,7 +33,7 @@ const ComboBox = ({
 				hideList();
 			} else {
 				setSuggestions(suggestions);
-				setExpanded(true);
+				setOpen(true);
 				setSelected(autoSelect ? 0 : -1);
 			}
 		}, 150),
@@ -54,7 +54,7 @@ const ComboBox = ({
 					break;
 				case 38: // up
 					event.preventDefault();
-					if (expanded) {
+					if (open) {
 						const index = selected <= 0 ? suggestions.length - 1 : selected - 1;
 						setSelected(index);
 						scrollToItem(listRef.current, listRef.current.children[index]);
@@ -62,7 +62,7 @@ const ComboBox = ({
 					break;
 				case 40: // down
 					event.preventDefault();
-					if (expanded) {
+					if (open) {
 						const index = selected === -1 || selected === suggestions.length - 1 ? 0 : selected + 1;
 						setSelected(index);
 						scrollToItem(listRef.current, listRef.current.children[index]);
@@ -70,7 +70,7 @@ const ComboBox = ({
 					break;
 			}
 		},
-		[suggestions, expanded, selected, listRef]
+		[suggestions, open, selected, listRef]
 	);
 
 	const handleKeyUp = useCallback(
@@ -98,11 +98,11 @@ const ComboBox = ({
 	const handleChange = useCallback(event => onTextChange(event.target.value), [onTextChange]);
 
 	const handleFocus = useCallback(
-		() => (suggestions.length !== 0 ? (setExpanded(true), setSelected(autoSelect ? 0 : -1)) : null),
+		() => (suggestions.length !== 0 ? (setOpen(true), setSelected(autoSelect ? 0 : -1)) : null),
 		[suggestions, autoSelect]
 	);
 
-	const handleBlur = useCallback(() => setExpanded(false), []);
+	const handleBlur = useCallback(() => setOpen(false), []);
 
 	const handleListMouseOver = useCallback(event => {
 		const element = event.target.closest('.ComboBox__option');
@@ -136,14 +136,14 @@ const ComboBox = ({
 
 	const listId = id + '-list';
 	return (
-		<div className="ComboBox" role="combobox" aria-haspopup="listbox" aria-expanded={expanded}>
+		<div className="ComboBox" role="combobox" aria-haspopup="listbox" aria-expanded={open}>
 			<input
 				{...props}
 				id={id}
 				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				autoComplete="off"
 				aria-autocomplete="list"
-				aria-controls={expanded ? listId : null}
+				aria-controls={open ? listId : null}
 				aria-activedescendant={selected === -1 ? null : id + '-' + selected}
 				value={text}
 				onKeyDown={handleKeyDown}
@@ -152,10 +152,10 @@ const ComboBox = ({
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 			/>
-			{expanded && (
+			{open && (
 				<div
 					id={listId}
-					className="ComboBox__suggestions"
+					className="ComboBox__list"
 					role="listbox"
 					ref={listRef}
 					onMouseOver={handleListMouseOver}

@@ -73,7 +73,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     value="x"
   />
   <div
-    className="ComboBox__suggestions"
+    className="ComboBox__list"
     id="test-list"
     onMouseDown={[Function]}
     onMouseOver={[Function]}

@@ -6,3 +6,10 @@ exports[`Spinner rendering renders expected elements 1`] = `
   id="test"
 />
 `;
+
+exports[`Spinner rendering renders expected elements when className is set 1`] = `
+<div
+  className="Spinner CssSpinner Spinner--large TestClass"
+  id="test"
+/>
+`;

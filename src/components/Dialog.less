@@ -1,6 +1,8 @@
 @import '../../less/colors';
 @import '../../less/fonts';
 @import '../../less/shadows';
+@import '../../less/spacing';
+@import '../../less/zindexes';
 
 .Dialog__backdrop {
 	position: fixed;
@@ -11,7 +13,7 @@
 	background-color: @modal-bg;
 	align-items: center;
 	justify-content: center;
-	z-index: 5700;
+	z-index: @zindex-modal-bg;
 }
 
 .Dialog {
@@ -25,7 +27,7 @@
 .Dialog__title {
 	@font-16-600();
 	border-radius: 3px 3px 0 0;
-	padding: 12px 24px;
+	padding: @sp-12 @sp-24;
 	background-color: @fiord;
 	white-space: nowrap;
 	overflow: hidden;
@@ -33,16 +35,16 @@
 }
 
 .Dialog__body {
-	margin: 42px 24px;
+	margin: @sp-40 @sp-24;
 }
 
 .Dialog__buttons {
 	flex-direction: row;
 	border-top: 1px solid @fiord;
-	padding: 12px;
+	padding: @sp-12;
 	justify-content: flex-end;
 }
 
 .Dialog__buttons :not(:last-child) {
-	margin-right: 12px;
+	margin-right: @sp-12;
 }

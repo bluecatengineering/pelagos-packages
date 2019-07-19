@@ -1,13 +1,12 @@
 @import '../../less/colors';
+@import '../../less/spacing';
 
 .IconButton {
 	display: inline-block;
 	font-size: 19px;
 	cursor: pointer;
-	padding: 2px;
 	color: @azure;
 	transition: color 0.3s ease-out;
-	vertical-align: -4px;
 }
 
 .IconButton--large {
@@ -24,7 +23,7 @@
 
 .IconButton:focus {
 	outline: 2px solid @bondi;
-	outline-offset: 0;
+	outline-offset: 2px;
 }
 
 .IconButton[aria-disabled='true'],

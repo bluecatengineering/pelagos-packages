@@ -9,7 +9,7 @@ const OutputField = ({id, className, label, value, alignRight, active}) => {
 	return (
 		<div
 			className={'OutputField' + (alignRight ? ' OutputField--alignRight' : '') + (className ? ' ' + className : '')}>
-			<div>
+			<div className="OutputField__label">
 				<Label text={label} htmlFor={id} />
 			</div>
 			<output id={id} className={'OutputField__value' + (active ? ' OutputField--active' : '')}>

@@ -11,7 +11,7 @@ const DropDownField = ({id, className, label, error, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'DropDownField' + (className ? ' ' + className : '')}>
-			<div>
+			<div className="DropDownField__label">
 				<Label text={label} htmlFor={id} />
 			</div>
 			<Select {...props} id={id} error={!!error} className="DropDownField__select" />

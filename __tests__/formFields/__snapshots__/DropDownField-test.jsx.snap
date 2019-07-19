@@ -4,7 +4,9 @@ exports[`DropDownField rendering renders expected elements 1`] = `
 <div
   className="DropDownField"
 >
-  <div>
+  <div
+    className="DropDownField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"
@@ -35,7 +37,9 @@ exports[`DropDownField rendering renders expected elements when className is set
 <div
   className="DropDownField TestClass"
 >
-  <div>
+  <div
+    className="DropDownField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"
@@ -66,7 +70,9 @@ exports[`DropDownField rendering renders expected elements when error is set 1`]
 <div
   className="DropDownField"
 >
-  <div>
+  <div
+    className="DropDownField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"

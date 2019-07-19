@@ -1,11 +1,12 @@
 @import '../../less/colors';
 @import '../../less/shadows';
+@import '../../less/spacing';
 
 .ToastMessage {
 	position: relative;
 	overflow: hidden;
-	margin: 0 0 10px;
-	padding: 15px 20px;
+	margin: 0 0 @sp-12;
+	padding: @sp-12 @sp-24;
 	border-radius: 3px;
 	box-shadow: @shadow16;
 	cursor: pointer;
@@ -14,15 +15,11 @@
 .ToastMessage--action {
 	text-align: center;
 	background-color: @ocean;
-	width: 500px;
-	left: 15%;
 }
 
 .ToastMessage--success {
 	text-align: center;
 	background-color: @ocean;
-	width: 500px;
-	left: 15%;
 }
 
 .ToastMessage--warning {
@@ -49,12 +46,12 @@
 }
 
 .ToastMessage__text--closeable {
-	margin-right: 25px;
+	margin-right: @sp-24;
 }
 
 .ToastMessage__close {
 	position: absolute;
-	right: 20px;
-	top: 16px;
+	right: 29px;
+	top: 15px;
 	font-size: 19px;
 }

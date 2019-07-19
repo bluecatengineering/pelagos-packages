@@ -1,5 +1,6 @@
 @import '../../less/colors';
 @import '../../less/fonts';
+@import '../../less/spacing';
 
 .Button {
 	cursor: pointer;
@@ -14,17 +15,17 @@
 
 .Button--small {
 	@font-12-600-uc();
-	padding: 3px 10px;
+	padding: @sp-04 @sp-12;
 }
 
 .Button--medium {
 	@font-14-600-uc();
-	padding: 7px 20px;
+	padding: @sp-08 @sp-24;
 }
 
 .Button--large {
 	@font-16-600-uc();
-	padding: 10px 40px;
+	padding: @sp-12 @sp-40;
 }
 
 .Button--active {

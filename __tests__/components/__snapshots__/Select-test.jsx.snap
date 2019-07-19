@@ -166,7 +166,6 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     role="listbox"
-    tabIndex="-1"
   >
     <div
       aria-selected={false}

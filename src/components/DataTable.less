@@ -1,11 +1,12 @@
 @import '../../less/colors';
 @import '../../less/fonts';
+@import '../../less/spacing';
 
 .DataTable {
 	flex: 1;
 	overflow: hidden;
 	position: relative;
-	margin-top: 10px;
+	margin-top: @sp-16;
 }
 
 .DataTable__table {
@@ -27,7 +28,7 @@
 	color: @font-color-2;
 	text-align: left;
 	vertical-align: bottom;
-	padding: 8px;
+	padding: 0 @sp-08;
 	max-width: 0;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -36,7 +37,7 @@
 
 .DataTable__sort {
 	display: inline-block;
-	margin-left: 12px;
+	margin-left: @sp-12;
 	color: @battleship;
 	font-size: 14px;
 	vertical-align: -2px;
@@ -47,7 +48,7 @@
 }
 
 .DataTable__body {
-	margin-top: 10px;
+	margin-top: @sp-16;
 	flex: 1;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -81,7 +82,7 @@
 
 .DataTable__td {
 	vertical-align: middle;
-	padding: 2px 8px;
+	padding: @sp-02 @sp-08;
 	max-width: 0;
 	overflow: hidden;
 	text-overflow: ellipsis;

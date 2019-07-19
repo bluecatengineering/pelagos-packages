@@ -289,7 +289,6 @@ const Select = ({
 				<div
 					id={listId}
 					className="Select__list"
-					tabIndex="-1"
 					role="listbox"
 					ref={list}
 					onMouseOver={handleListMouseOver}

@@ -1,14 +1,20 @@
 @import '../../less/colors';
 @import '../../less/fonts';
+@import '../../less/spacing';
+
+.ListInput {
+	margin-top: @sp-12;
+}
 
 .ListInput__label {
 	flex-direction: row;
+	margin-bottom: @sp-04;
 }
 
 .ListInput__notice {
 	@font-10-400();
 	color: @orange;
-	margin-left: 12px;
+	margin-left: @sp-12;
 }
 
 .ListInput__empty {
@@ -17,5 +23,5 @@
 	white-space: pre-line;
 	height: 145px;
 	text-align: center;
-	margin-top: 20px;
+	margin-top: @sp-16;
 }

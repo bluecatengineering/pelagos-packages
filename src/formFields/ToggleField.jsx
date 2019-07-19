@@ -9,7 +9,7 @@ const ToggleField = ({id, className, label, value, disabled, onChange}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'ToggleField' + (className ? ' ' + className : '')}>
-			<div>
+			<div className="ToggleField__label">
 				<Label text={label} htmlFor={id} />
 			</div>
 

@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 
 import './Spinner.less';
 
-const Spinner = ({size, ...props}) => <div {...props} className={'Spinner CssSpinner Spinner--' + size} />;
+const Spinner = ({className, size, ...props}) => (
+	<div {...props} className={'Spinner CssSpinner Spinner--' + size + (className ? ' ' + className : '')} />
+);
 
 Spinner.propTypes = {
+	className: PropTypes.string,
 	size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
 };
 

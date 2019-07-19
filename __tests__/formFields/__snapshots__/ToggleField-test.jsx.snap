@@ -4,7 +4,9 @@ exports[`ToggleField rendering renders expected elements 1`] = `
 <div
   className="ToggleField"
 >
-  <div>
+  <div
+    className="ToggleField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"
@@ -24,7 +26,9 @@ exports[`ToggleField rendering renders expected elements when className is set 1
 <div
   className="ToggleField TestClass"
 >
-  <div>
+  <div
+    className="ToggleField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"

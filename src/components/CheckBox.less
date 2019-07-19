@@ -1,10 +1,11 @@
 @import '../../less/colors';
+@import '../../less/spacing';
 
 .CheckBox {
 	display: inline-block;
 	position: relative;
-	padding-left: 24px;
-	margin: 2px;
+	padding-left: @sp-24;
+	margin-left: @sp-02;
 	cursor: pointer;
 	outline: none;
 }
@@ -17,7 +18,7 @@
 }
 
 .CheckBox::before {
-	top: 2px;
+	top: @sp-02;
 	left: 0;
 	width: 18px;
 	height: 18px;

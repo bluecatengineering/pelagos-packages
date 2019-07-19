@@ -4,7 +4,9 @@ exports[`OutputField rendering renders expected elements 1`] = `
 <div
   className="OutputField"
 >
-  <div>
+  <div
+    className="OutputField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"
@@ -23,7 +25,9 @@ exports[`OutputField rendering renders expected elements when active is true 1`]
 <div
   className="OutputField"
 >
-  <div>
+  <div
+    className="OutputField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"
@@ -42,7 +46,9 @@ exports[`OutputField rendering renders expected elements when alignRight is true
 <div
   className="OutputField OutputField--alignRight"
 >
-  <div>
+  <div
+    className="OutputField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"
@@ -61,7 +67,9 @@ exports[`OutputField rendering renders expected elements when className is set 1
 <div
   className="OutputField TestClass"
 >
-  <div>
+  <div
+    className="OutputField__label"
+  >
     <Label
       htmlFor="test"
       text="Test"
@@ -80,7 +88,9 @@ exports[`OutputField rendering renders expected elements when id is not set 1`] 
 <div
   className="OutputField"
 >
-  <div>
+  <div
+    className="OutputField__label"
+  >
     <Label
       htmlFor="e1"
       text="Test"
