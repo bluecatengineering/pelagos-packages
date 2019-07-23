@@ -10,6 +10,7 @@ exports[`Select rendering renders expected elements 1`] = `
     aria-haspopup="listbox"
     aria-owns={null}
     className="Select__text"
+    data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
     onKeyDown={[Function]}
@@ -43,6 +44,7 @@ exports[`Select rendering renders expected elements when className is not set 1`
     aria-haspopup="listbox"
     aria-owns={null}
     className="Select__text"
+    data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
     onKeyDown={[Function]}
@@ -77,6 +79,7 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     aria-haspopup="listbox"
     aria-owns={null}
     className="Select__text"
+    data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
     role="button"
@@ -106,6 +109,7 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     aria-haspopup="listbox"
     aria-owns={null}
     className="Select__text Select__text--error"
+    data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
     onKeyDown={[Function]}
@@ -139,6 +143,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     aria-haspopup="listbox"
     aria-owns="test-list"
     className="Select__text"
+    data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
     onKeyDown={[Function]}
@@ -208,6 +213,7 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     aria-haspopup="listbox"
     aria-owns={null}
     className="Select__text Select__text--empty"
+    data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
     onKeyDown={[Function]}
@@ -216,7 +222,7 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     role="button"
     tabIndex="0"
   >
-    Testing
+    
     <SvgIcon
       className="Select__icon"
       icon={

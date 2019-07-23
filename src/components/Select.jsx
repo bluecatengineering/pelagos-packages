@@ -278,11 +278,12 @@ const Select = ({
 				aria-disabled={disabled}
 				aria-owns={open ? listId : null}
 				aria-activedescendant={focused === -1 ? null : id + '-' + focused}
+				data-placeholder={placeholder}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
 				onKeyUp={disabled ? undefined : handleKeyUp}
 				onBlur={handleBlur}>
-				{selected ? selected.element : placeholder}
+				{selected ? selected.element : ''}
 				<SvgIcon icon={open ? faCaretUp : faCaretDown} className="Select__icon" />
 			</div>
 			{open && (
