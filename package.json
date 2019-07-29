@@ -39,6 +39,7 @@
     "@babel/preset-react": "^7.0.0",
     "@bluecat/git-checks": "^0.1.0",
     "@bluecat/helpers": "^0.4.0",
+    "@bluecat/stylelint-config": "^0.1.0",
     "@bluecateng/eslint-config-react": "^0.4.1",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@storybook/addon-a11y": "^5.1.9",
@@ -73,13 +74,8 @@
   },
   "stylelint": {
     "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-prettier"
-    ],
-    "rules": {
-      "declaration-empty-line-before": null,
-      "declaration-no-important": true
-    }
+      "@bluecat/stylelint-config"
+    ]
   },
   "jest": {
     "automock": true,
