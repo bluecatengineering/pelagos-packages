@@ -976,7 +976,7 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
       </table>
       <div
         className="DataTable__loadingSpinner"
-        id="testnextSpinner"
+        id="test-nextSpinner"
       >
         <Spinner
           size="large"
@@ -1359,7 +1359,7 @@ exports[`DataTable rendering renders next spinner when isFetchingNextDataPage is
       </table>
       <div
         className="DataTable__spinner"
-        id="testnextSpinner"
+        id="test-nextSpinner"
       >
         <Spinner
           size="tiny"

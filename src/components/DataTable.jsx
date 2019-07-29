@@ -373,7 +373,7 @@ const DataTable = ({
 						</table>
 						{isFetchingNextDataPage && (
 							<div
-								id={id + 'nextSpinner'}
+								id={id + '-nextSpinner'}
 								className={showLoadingSpinner ? 'DataTable__loadingSpinner' : 'DataTable__spinner'}>
 								<Spinner size={showLoadingSpinner ? 'large' : 'tiny'} />
 							</div>
