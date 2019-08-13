@@ -235,6 +235,7 @@ describe('ListInput', () => {
 			const parseInput = jest.fn().mockReturnValue({entries});
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
+			const onErrorChange = jest.fn();
 			useState.mockReturnValueOnce(['test', jest.fn()]).mockReturnValueOnce([null, jest.fn()]);
 			const wrapper = shallow(
 				<ListInput
@@ -243,12 +244,14 @@ describe('ListInput', () => {
 					parseInput={parseInput}
 					onListChange={onListChange}
 					onTextChange={onTextChange}
+					onErrorChange={onErrorChange}
 				/>
 			);
 			wrapper.find('ComboBox').prop('onEnter')();
 			expect(parseInput.mock.calls).toEqual([['test', list]]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[[...entries, ...list]]]);
+			expect(onErrorChange.mock.calls).toEqual([[null]]);
 		});
 
 		it('ignores input when enter is pressed and parseInput is not set', () => {

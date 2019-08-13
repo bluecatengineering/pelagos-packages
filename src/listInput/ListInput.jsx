@@ -96,6 +96,7 @@ const ListInput = ({
 				setText('');
 				onTextChange(false);
 				onListChange([...entries, ...list]);
+				onErrorChange(null);
 			}
 		}
 	}, [list, text, parseInput, onTextChange, onListChange, onErrorChange]);
