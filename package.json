@@ -1,12 +1,12 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.11.7",
+  "version": "0.11.8",
   "description": "UI components",
   "license": "ISC",
   "scripts": {
     "build:es5": "rm -rf es5 && BABEL_ENV=es5 babel -d es5 src && npm run copy-resources es5",
     "build:es6": "rm -rf es6 && BABEL_ENV=es6 babel -d es6 src && npm run copy-resources es6",
-    "build": "npm run update-colors && npm run build:es5 && npm run build:es6",
+    "build": "npm run update-colors && npm run update-fonts && npm run build:es5 && npm run build:es6",
     "test": "jest --verbose",
     "test-ci": "npm install && jest --ci --silent --reporters=jest-junit",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -15,6 +15,7 @@
     "lint-styles": "stylelint less src/**/*.less",
     "reformat": "prettier --write \"**/*.+(js|jsx|json|less)\"",
     "update-colors": "node scripts/update-colors",
+    "update-fonts": "node scripts/update-fonts",
     "copy-resources": "node scripts/copy-resources",
     "prepack": "npm t && npm run build"
   },
@@ -27,6 +28,7 @@
   ],
   "files": [
     "index.js",
+    "defs",
     "es5",
     "es6",
     "less"
@@ -52,6 +54,7 @@
     "intl-messageformat": "^5.1.0",
     "jest": "^24.8.0",
     "jest-junit": "^6.4.0",
+    "js-yaml": "^3.13.1",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.2.0",
@@ -140,7 +143,7 @@
       "prettier --write",
       "git add"
     ],
-    "*.{json,md,yml}": [
+    "*.{json,md,yml,yaml}": [
       "prettier --write",
       "git add"
     ]

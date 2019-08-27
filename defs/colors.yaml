@@ -1,0 +1,119 @@
+# This file is used to generate colors.less and Colors.js,
+# it will be processed on commit, to generate manually run `npm run update-colors`
+
+azure:
+  value: '#00b5ff'
+  tags: [primary]
+  palette: 1
+sea:
+  value: '#0085c4'
+  tags: [primary]
+ocean:
+  value: '#0067a2'
+  tags: [primary]
+  palette: 0
+cerulean:
+  value: '#004f7c'
+  tags: [primary]
+midnight:
+  value: '#003656'
+  tags: [primary]
+oxford:
+  value: '#1d2333'
+  tags: [primary]
+prussian:
+  value: '#2c354d'
+  tags: [primary]
+fiord:
+  value: '#47526b'
+  tags: [primary]
+sky:
+  value: '#aed3e7'
+  tags: [primary]
+  palette: 2
+bondi:
+  value: '#258cac'
+  tags: [primary]
+  palette: 3
+emerald:
+  value: '#00dfa0'
+  tags: [primary]
+  palette: 4
+dartmouth:
+  value: '#0f6244'
+  tags: [primary]
+  palette: 6
+persian:
+  value: '#009688'
+  tags: [primary]
+  palette: 5
+neon:
+  value: '#90ea00'
+  tags: [primary]
+violet:
+  value: '#a728ee'
+  tags: [primary]
+red:
+  value: '#ff0000'
+  tags: [primary]
+orange:
+  value: '#ffac00'
+  tags: [primary]
+  palette: 7
+burnt:
+  value: '#da6900'
+  tags: [primary]
+  palette: 8
+goldenrod:
+  value: '#ccaf00'
+  tags: [primary]
+  palette: 9
+battleship:
+  value: '#666666'
+  tags: [primary]
+slate:
+  value: '#70788a'
+  tags: [primary]
+silver:
+  value: '#a3aab4'
+  tags: [primary]
+black:
+  value: '#000000'
+  tags: [primary]
+white:
+  value: '#ffffff'
+  tags: [primary]
+
+font-color-1:
+  base: white
+  fade: 90%
+  tags: [text]
+  sample: oxford
+font-color-2:
+  base: white
+  fade: 65%
+  tags: [text]
+  sample: oxford
+font-color-3:
+  base: white
+  fade: 50%
+  tags: [text]
+  sample: oxford
+font-color-black:
+  base: black
+  fade: 90%
+  tags: [text]
+  sample: bondi
+
+modal-bg:
+  base: black
+  fade: 50%
+
+form-field-border:
+  alias: prussian
+form-field-bg:
+  alias: prussian
+form-field-hint:
+  alias: sky
+form-field-error:
+  alias: burnt

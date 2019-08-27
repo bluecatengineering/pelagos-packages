@@ -1,7 +1,6 @@
-// This file was generated from colors.less
+// This file was generated from defs/colors.yaml
 // it will be re-generated on commit, to generate manually run `npm run update-colors`
 
-export const BLACK = '#000000';
 export const AZURE = '#00b5ff';
 export const SEA = '#0085c4';
 export const OCEAN = '#0067a2';
@@ -24,4 +23,5 @@ export const GOLDENROD = '#ccaf00';
 export const BATTLESHIP = '#666666';
 export const SLATE = '#70788a';
 export const SILVER = '#a3aab4';
+export const BLACK = '#000000';
 export const WHITE = '#ffffff';
