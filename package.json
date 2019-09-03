@@ -1,6 +1,6 @@
 {
   "name": "@bluecat/pelagos",
-  "version": "0.11.8",
+  "version": "0.12.0",
   "description": "UI components",
   "license": "ISC",
   "scripts": {
@@ -41,17 +41,19 @@
     "@babel/preset-react": "^7.0.0",
     "@bluecat/git-checks": "^0.1.0",
     "@bluecat/helpers": "^0.4.0",
+    "@bluecat/strings-jest": "^0.1.0",
+    "@bluecat/strings-linter": "^0.1.0",
+    "@bluecat/strings-loader": "^0.1.0",
     "@bluecat/stylelint-config": "^0.1.0",
-    "@bluecateng/eslint-config-react": "^0.4.2",
+    "@bluecateng/eslint-config-react": "^0.5.0",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@storybook/addon-a11y": "^5.1.11",
     "@storybook/react": "^5.1.11",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "eslint": "^6.2.2",
-    "husky": "^3.0.4",
-    "intl-messageformat": "^7.0.0",
+    "eslint": "^6.3.0",
+    "husky": "^3.0.5",
     "jest": "^24.9.0",
     "jest-junit": "^8.0.0",
     "js-yaml": "^3.13.1",
@@ -104,10 +106,10 @@
     "timers": "fake",
     "transform": {
       "\\.jsx?$": "babel-jest",
-      "\\.yml$": "<rootDir>/jest_helpers/yaml-processor"
+      "\\.strings\\.yaml$": "@bluecat/strings-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(intl-messageformat|lodash-es|@bluecat)/)"
+      "node_modules/(?!(lodash-es|@bluecat)/)"
     ],
     "unmockedModulePathPatterns": [
       "enzyme",
@@ -116,7 +118,8 @@
       "prop-types",
       "react",
       "react-dom",
-      "redux-actions"
+      "redux-actions",
+      ".strings.yaml"
     ]
   },
   "jest-junit": {
@@ -143,7 +146,10 @@
       "prettier --write",
       "git add"
     ],
-    "*.{json,md,yml,yaml}": [
+    "*.strings.yaml": [
+      "lint-icu-strings"
+    ],
+    "*.{json,md,yaml}": [
       "prettier --write",
       "git add"
     ]

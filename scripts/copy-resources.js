@@ -1,7 +1,7 @@
 const {mkdirSync, readdirSync, readFileSync, statSync, writeFileSync} = require('fs');
 const {dirname, join} = require('path');
 
-const EXTENSIONS = /\.(less|yml)$/;
+const EXTENSIONS = /\.(less|yaml)$/;
 
 const mkdirs = path => {
 	try {

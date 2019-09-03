@@ -1,0 +1,3 @@
+*.strings.yaml
+package.json
+package-lock.json

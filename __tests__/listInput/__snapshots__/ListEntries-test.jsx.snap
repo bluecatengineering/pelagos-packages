@@ -10,6 +10,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
     data-bcn-id="list-item"
   >
     <div
+      aria-label="Remove"
       className="ListEntries__icon"
       data-bcn-id="remove-item"
       onClick={[Function]}
@@ -42,6 +43,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
     data-bcn-id="list-item"
   >
     <div
+      aria-label="Remove"
       className="ListEntries__icon"
       data-bcn-id="remove-item"
       onClick={[Function]}
@@ -74,6 +76,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
     data-bcn-id="list-item"
   >
     <div
+      aria-label="Remove"
       className="ListEntries__icon"
       data-bcn-id="remove-item"
       onClick={[Function]}
@@ -106,6 +109,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
     data-bcn-id="list-item"
   >
     <div
+      aria-label="Remove"
       className="ListEntries__icon"
       data-bcn-id="remove-item"
       onClick={[Function]}

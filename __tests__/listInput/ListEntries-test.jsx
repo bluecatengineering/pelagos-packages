@@ -6,6 +6,7 @@ import {scrollIntoView} from '@bluecat/helpers';
 import ListEntries from '../../src/listInput/ListEntries';
 
 jest.unmock('../../src/listInput/ListEntries');
+jest.unmock('../../src/strings');
 
 jest.mock('react', () => ({
 	...jest.requireActual('react'),
