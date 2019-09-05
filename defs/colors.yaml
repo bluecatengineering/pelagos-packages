@@ -21,12 +21,6 @@ midnight:
 oxford:
   value: '#1d2333'
   tags: [primary]
-prussian:
-  value: '#2c354d'
-  tags: [primary]
-fiord:
-  value: '#47526b'
-  tags: [primary]
 sky:
   value: '#aed3e7'
   tags: [primary]
@@ -70,6 +64,12 @@ goldenrod:
   palette: 9
 battleship:
   value: '#666666'
+  tags: [primary]
+prussian:
+  value: '#2c354d'
+  tags: [primary]
+fiord:
+  value: '#47526b'
   tags: [primary]
 slate:
   value: '#70788a'
