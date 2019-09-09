@@ -1,3 +1,4 @@
 #! /bin/sh
 git diff --quiet --cached defs/colors.yaml || (npm run update-colors && git add less/colors.less src/Colors.js)
 git diff --quiet --cached defs/fonts.yaml || (npm run update-fonts && git add less/fonts.less)
+git diff --quiet --cached defs/spacing.yaml || (npm run update-spacing && git add less/spacing.less)
