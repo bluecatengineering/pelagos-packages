@@ -1,4 +1,5 @@
 @import '../../less/colors';
+@import '../../less/elevations';
 @import '../../less/fonts';
 @import '../../less/shadows';
 @import '../../less/spacing';
@@ -17,10 +18,9 @@
 }
 
 .Dialog {
+	@elv-24();
 	position: relative;
 	border-radius: 3px;
-	background-color: @prussian;
-	box-shadow: @shadow24;
 	max-width: 66vw;
 }
 
@@ -28,7 +28,7 @@
 	@font-16-600();
 	border-radius: 3px 3px 0 0;
 	padding: @sp-12 @sp-24;
-	background-color: @fiord;
+	border-bottom: 1px solid @separator;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -40,7 +40,6 @@
 
 .Dialog__buttons {
 	flex-direction: row;
-	border-top: 1px solid @fiord;
 	padding: @sp-12;
 	justify-content: flex-end;
 }

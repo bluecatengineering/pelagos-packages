@@ -19,7 +19,7 @@ midnight:
   value: '#003656'
   tags: [primary]
 oxford:
-  value: '#1d2333'
+  value: '#0c1a33'
   tags: [primary]
 sky:
   value: '#aed3e7'
@@ -104,6 +104,38 @@ font-color-black:
   fade: 90%
   tags: [text]
   sample: bondi
+
+bg-01:
+  value: '#18253d'
+  tags: [background]
+bg-02:
+  value: '#1d2a41'
+  tags: [background]
+bg-03:
+  value: '#1f2c43'
+  tags: [background]
+bg-04:
+  value: '#222f45'
+  tags: [background]
+bg-06:
+  value: '#273349'
+  tags: [background]
+bg-08:
+  value: '#29354b'
+  tags: [background]
+bg-12:
+  value: '#2e3a50'
+  tags: [background]
+bg-16:
+  value: '#303c52'
+  tags: [background]
+bg-24:
+  value: '#333f54'
+  tags: [background]
+
+separator:
+  base: white
+  fade: 17%
 
 modal-bg:
   base: black
