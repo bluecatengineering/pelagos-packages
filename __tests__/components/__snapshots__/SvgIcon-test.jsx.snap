@@ -3,6 +3,7 @@
 exports[`SvgIcon rendering renders expected elements 1`] = `
 <svg
   className="SvgIcon SvgIcon--spin TestClass"
+  focusable="false"
   style={
     Object {
       "width": "0.5em",
@@ -20,6 +21,7 @@ exports[`SvgIcon rendering renders expected elements 1`] = `
 exports[`SvgIcon rendering renders expected elements when optional properties are not set 1`] = `
 <svg
   className="SvgIcon"
+  focusable="false"
   style={
     Object {
       "width": "0.5em",

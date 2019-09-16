@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {shallow} from 'enzyme';
+import focusTrap from 'focus-trap';
 
 import Dialog from '../../src/components/Dialog';
 import Button from '../../src/components/Button';
 
 jest.unmock('../../src/components/Dialog');
+
+jest.mock('react', () => ({
+	...jest.requireActual('react'),
+	useEffect: jest.fn(),
+}));
 
 describe('Dialog', () => {
 	describe('rendering', () => {
@@ -46,19 +52,6 @@ describe('Dialog', () => {
 	});
 
 	describe('behaviour', () => {
-		it('calls stopImmediatePropagation when the component is clicked', () => {
-			const stopImmediatePropagation = jest.fn();
-			const event = {nativeEvent: {stopImmediatePropagation}};
-			const wrapper = shallow(
-				<Dialog id="test" title="Test">
-					<div />
-					<div />
-				</Dialog>
-			);
-			wrapper.simulate('click', event);
-			expect(stopImmediatePropagation.mock.calls).toEqual([[]]);
-		});
-
 		it('calls onSubmit when the form is submitted', () => {
 			const onSubmit = jest.fn();
 			const event = {preventDefault: jest.fn()};
@@ -71,6 +64,29 @@ describe('Dialog', () => {
 			wrapper.find('form').simulate('submit', event);
 			expect(onSubmit).toHaveBeenCalledTimes(1);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+		});
+
+		it('activates and deactivates focus trap when appropriate', () => {
+			const previousActive = document.activeElement;
+			const trap = {activate: jest.fn(), deactivate: jest.fn()};
+			focusTrap.mockReturnValue(trap);
+			jest.spyOn(previousActive, 'focus');
+			shallow(
+				<Dialog id="test" title="Test">
+					<div />
+					<div />
+				</Dialog>
+			);
+
+			expect(useEffect).toHaveBeenCalledTimes(1);
+
+			const result = useEffect.mock.calls[0][0]();
+			expect(focusTrap.mock.calls).toEqual([[null, {escapeDeactivates: false, returnFocusOnDeactivate: false}]]);
+			expect(trap.activate).toHaveBeenCalledTimes(1);
+
+			result();
+			expect(trap.deactivate).toHaveBeenCalledTimes(1);
+			expect(previousActive.focus).toHaveBeenCalledTimes(1);
 		});
 	});
 });

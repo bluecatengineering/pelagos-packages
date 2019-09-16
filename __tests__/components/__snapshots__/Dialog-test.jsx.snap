@@ -3,7 +3,6 @@
 exports[`Dialog rendering renders expected elements 1`] = `
 <div
   className="Dialog__backdrop"
-  onClick={[Function]}
 >
   <div
     aria-labelledby="dialogTitle"
@@ -41,7 +40,6 @@ exports[`Dialog rendering renders expected elements 1`] = `
 exports[`Dialog rendering renders expected elements when child has no className 1`] = `
 <div
   className="Dialog__backdrop"
-  onClick={[Function]}
 >
   <div
     aria-labelledby="dialogTitle"
@@ -79,7 +77,6 @@ exports[`Dialog rendering renders expected elements when child has no className 
 exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
 <div
   className="Dialog__backdrop"
-  onClick={[Function]}
 >
   <form
     aria-labelledby="dialogTitle"

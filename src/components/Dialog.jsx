@@ -1,9 +1,13 @@
-import React, {cloneElement} from 'react';
+import React, {cloneElement, useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
+import focusTrap from 'focus-trap';
 
 import './Dialog.less';
 
 const Dialog = ({id, title, role, children: [body, buttons], onSubmit}) => {
+	const previousActive = useRef(document.activeElement);
+	const element = useRef(null);
+
 	const content = (
 		<>
 			<div id="dialogTitle" className="Dialog__title">
@@ -16,8 +20,22 @@ const Dialog = ({id, title, role, children: [body, buttons], onSubmit}) => {
 		</>
 	);
 
+	const handleSubmit = useCallback(event => (event.preventDefault(), onSubmit()), [onSubmit]);
+
+	useEffect(() => {
+		const p = previousActive.current;
+		const trap = focusTrap(element.current, {escapeDeactivates: false, returnFocusOnDeactivate: false});
+		trap.activate();
+		return () => {
+			trap.deactivate();
+			if (p && p.focus) {
+				p.focus();
+			}
+		};
+	}, []);
+
 	return (
-		<div className="Dialog__backdrop" onClick={event => event.nativeEvent.stopImmediatePropagation()}>
+		<div className="Dialog__backdrop">
 			{onSubmit ? (
 				<form
 					id={id}
@@ -25,11 +43,12 @@ const Dialog = ({id, title, role, children: [body, buttons], onSubmit}) => {
 					role={role}
 					aria-modal
 					aria-labelledby="dialogTitle"
-					onSubmit={event => (event.preventDefault(), onSubmit())}>
+					ref={element}
+					onSubmit={handleSubmit}>
 					{content}
 				</form>
 			) : (
-				<div id={id} className="Dialog" role={role} aria-modal aria-labelledby="dialogTitle">
+				<div id={id} className="Dialog" role={role} aria-modal aria-labelledby="dialogTitle" ref={element}>
 					{content}
 				</div>
 			)}

@@ -13,6 +13,7 @@ const SvgIcon = ({
 	<svg
 		className={'SvgIcon' + (animation ? ' SvgIcon--' + animation : '') + (className ? ' ' + className : '')}
 		style={{width: width / height + 'em'}}
+		focusable="false"
 		viewBox={'0 0 ' + width + ' ' + height}>
 		<path fill="currentColor" d={path} />
 	</svg>
