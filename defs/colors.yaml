@@ -19,7 +19,7 @@ midnight:
   value: '#00385a'
   tags: [primary]
 oxford:
-  value: '#0c1a33'
+  value: '#001c32'
   tags: [primary]
 sky:
   value: '#aed3e7'
@@ -106,31 +106,31 @@ font-color-black:
   sample: bondi
 
 bg-01:
-  value: '#18253d'
+  value: '#0e263c'
   tags: [background]
 bg-02:
-  value: '#1d2a41'
+  value: '#132a40'
   tags: [background]
 bg-03:
-  value: '#1f2c43'
+  value: '#162c42'
   tags: [background]
 bg-04:
-  value: '#222f45'
+  value: '#182f45'
   tags: [background]
 bg-06:
-  value: '#273349'
+  value: '#1d3349'
   tags: [background]
 bg-08:
-  value: '#29354b'
+  value: '#1f354c'
   tags: [background]
 bg-12:
-  value: '#2e3a50'
+  value: '#233951'
   tags: [background]
 bg-16:
-  value: '#303c52'
+  value: '#263c53'
   tags: [background]
 bg-24:
-  value: '#333f54'
+  value: '#283e56'
   tags: [background]
 
 separator:
