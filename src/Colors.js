@@ -1,11 +1,11 @@
 // This file was generated from defs/colors.yaml
 // it will be re-generated on commit, to generate manually run `npm run update-colors`
 
-export const AZURE = '#00b5ff';
-export const SEA = '#0085c4';
-export const OCEAN = '#0067a2';
-export const CERULEAN = '#004f7c';
-export const MIDNIGHT = '#003656';
+export const AZURE = '#01b5ff';
+export const SEA = '#0085c3';
+export const OCEAN = '#006297';
+export const CERULEAN = '#004a75';
+export const MIDNIGHT = '#00385a';
 export const OXFORD = '#0c1a33';
 export const SKY = '#aed3e7';
 export const BONDI = '#258cac';
@@ -19,9 +19,9 @@ export const ORANGE = '#ffac00';
 export const BURNT = '#da6900';
 export const GOLDENROD = '#ccaf00';
 export const BATTLESHIP = '#666666';
-export const PRUSSIAN = '#2c354d';
-export const FIORD = '#47526b';
-export const SLATE = '#70788a';
-export const SILVER = '#a3aab4';
+export const PRUSSIAN = '#22314e';
+export const FIORD = '#3f485e';
+export const SLATE = '#676d7e';
+export const SILVER = '#a5a9b4';
 export const BLACK = '#000000';
 export const WHITE = '#ffffff';

@@ -2,21 +2,21 @@
 # it will be processed on commit, to generate manually run `npm run update-colors`
 
 azure:
-  value: '#00b5ff'
+  value: '#01b5ff'
   tags: [primary]
   palette: 1
 sea:
-  value: '#0085c4'
+  value: '#0085c3'
   tags: [primary]
 ocean:
-  value: '#0067a2'
+  value: '#006297'
   tags: [primary]
   palette: 0
 cerulean:
-  value: '#004f7c'
+  value: '#004a75'
   tags: [primary]
 midnight:
-  value: '#003656'
+  value: '#00385a'
   tags: [primary]
 oxford:
   value: '#0c1a33'
@@ -66,16 +66,16 @@ battleship:
   value: '#666666'
   tags: [primary]
 prussian:
-  value: '#2c354d'
+  value: '#22314e'
   tags: [primary]
 fiord:
-  value: '#47526b'
+  value: '#3f485e'
   tags: [primary]
 slate:
-  value: '#70788a'
+  value: '#676d7e'
   tags: [primary]
 silver:
-  value: '#a3aab4'
+  value: '#a5a9b4'
   tags: [primary]
 black:
   value: '#000000'
