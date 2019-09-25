@@ -13,7 +13,7 @@ exports[`IconButton rendering renders the expected elements 1`] = `
 >
   <span
     aria-label="Test"
-    className="IconButton TestClass"
+    className="IconButton IconButton--medium TestClass"
     id="test"
     role="button"
     tabIndex={0}
@@ -39,7 +39,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
   <span
     aria-disabled={true}
     aria-label="Test"
-    className="IconButton"
+    className="IconButton IconButton--medium"
     id="test"
     onClick={null}
     onKeyDown={null}
@@ -53,7 +53,32 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
 </OverlayTrigger>
 `;
 
-exports[`IconButton rendering renders the expected elements if large is true 1`] = `
+exports[`IconButton rendering renders the expected elements when className is not set 1`] = `
+<OverlayTrigger
+  overlay={
+    <Tooltip
+      id="test-tooltip"
+    >
+      This is a test
+    </Tooltip>
+  }
+  placement="right"
+>
+  <span
+    aria-label="Test"
+    className="IconButton IconButton--medium"
+    id="test"
+    role="button"
+    tabIndex={0}
+  >
+    <SvgIcon
+      icon={Object {}}
+    />
+  </span>
+</OverlayTrigger>
+`;
+
+exports[`IconButton rendering renders the expected elements when size and tooltipPlacement are set 1`] = `
 <OverlayTrigger
   overlay={
     <Tooltip
@@ -78,35 +103,10 @@ exports[`IconButton rendering renders the expected elements if large is true 1`]
 </OverlayTrigger>
 `;
 
-exports[`IconButton rendering renders the expected elements when className is not set 1`] = `
-<OverlayTrigger
-  overlay={
-    <Tooltip
-      id="test-tooltip"
-    >
-      This is a test
-    </Tooltip>
-  }
-  placement="right"
->
-  <span
-    aria-label="Test"
-    className="IconButton"
-    id="test"
-    role="button"
-    tabIndex={0}
-  >
-    <SvgIcon
-      icon={Object {}}
-    />
-  </span>
-</OverlayTrigger>
-`;
-
 exports[`IconButton rendering renders the expected elements when tooltipText is not set 1`] = `
 <span
   aria-label="Test"
-  className="IconButton TestClass"
+  className="IconButton IconButton--medium TestClass"
   id="test"
   role="button"
   tabIndex={0}

@@ -32,9 +32,16 @@ describe('IconButton', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders the expected elements if large is true', () => {
+		it('renders the expected elements when size and tooltipPlacement are set', () => {
 			const wrapper = shallow(
-				<IconButton id="test" icon={{}} aria-label="Test" tooltipText="This is a test" large={true} />
+				<IconButton
+					id="test"
+					icon={{}}
+					aria-label="Test"
+					size="large"
+					tooltipText="This is a test"
+					tooltipPlacement="left"
+				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

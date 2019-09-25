@@ -8,7 +8,7 @@ import OverlayTrigger from './OverlayTrigger';
 import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
-const IconButton = ({id, icon, className, tooltipText, large, disabled, onClick, ...props}) => {
+const IconButton = ({id, icon, className, size, tooltipText, tooltipPlacement, disabled, onClick, ...props}) => {
 	const keyHandker = useButtonKeyHandler(onClick);
 	const button = (
 		<span
@@ -17,7 +17,7 @@ const IconButton = ({id, icon, className, tooltipText, large, disabled, onClick,
 			role="button"
 			aria-disabled={disabled}
 			tabIndex={disabled ? -1 : 0}
-			className={'IconButton' + (className ? ' ' + className : '') + (large ? ' IconButton--large' : '')}
+			className={'IconButton IconButton--' + size + (className ? ' ' + className : '')}
 			onClick={disabled ? null : onClick}
 			onKeyDown={disabled ? null : keyHandker}>
 			<SvgIcon icon={icon} />
@@ -30,7 +30,7 @@ const IconButton = ({id, icon, className, tooltipText, large, disabled, onClick,
 	const tooltipId = id + '-tooltip';
 	const tooltip = <Tooltip id={tooltipId}>{tooltipText}</Tooltip>;
 	return (
-		<OverlayTrigger placement={large ? 'left' : 'right'} overlay={tooltip}>
+		<OverlayTrigger placement={tooltipPlacement} overlay={tooltip}>
 			{button}
 		</OverlayTrigger>
 	);
@@ -40,10 +40,16 @@ IconButton.propTypes = {
 	id: PropTypes.string,
 	icon: PropTypes.object.isRequired,
 	className: PropTypes.string,
+	size: PropTypes.oneOf(['medium', 'large']),
 	tooltipText: PropTypes.string,
-	large: PropTypes.bool,
+	tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
 	disabled: PropTypes.bool,
 	onClick: PropTypes.func,
+};
+
+IconButton.defaultProps = {
+	size: 'medium',
+	tooltipPlacement: 'right',
 };
 
 export default IconButton;

@@ -7,6 +7,8 @@ exports[`ToolbarButton rendering renders the expected elements 1`] = `
   disabled={true}
   icon={Object {}}
   id="test"
+  size="medium"
+  tooltipPlacement="right"
   tooltipText="This is a test"
 />
 `;
@@ -17,6 +19,8 @@ exports[`ToolbarButton rendering renders the expected elements if active is true
   className="ToolbarButton ToolbarButton--active"
   icon={Object {}}
   id="test"
+  size="medium"
+  tooltipPlacement="right"
   tooltipText="This is a test"
 />
 `;
@@ -28,6 +32,8 @@ exports[`ToolbarButton rendering renders the expected elements when className is
   disabled={true}
   icon={Object {}}
   id="test"
+  size="medium"
+  tooltipPlacement="right"
   tooltipText="This is a test"
 />
 `;
