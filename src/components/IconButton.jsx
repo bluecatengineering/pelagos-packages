@@ -9,7 +9,7 @@ import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
 const IconButton = ({id, icon, className, size, tooltipText, tooltipPlacement, disabled, onClick, ...props}) => {
-	const keyHandker = useButtonKeyHandler(onClick);
+	const handleKeyDown = useButtonKeyHandler(onClick);
 	const button = (
 		<span
 			{...props}
@@ -19,7 +19,7 @@ const IconButton = ({id, icon, className, size, tooltipText, tooltipPlacement, d
 			tabIndex={disabled ? -1 : 0}
 			className={'IconButton IconButton--' + size + (className ? ' ' + className : '')}
 			onClick={disabled ? null : onClick}
-			onKeyDown={disabled ? null : keyHandker}>
+			onKeyDown={disabled ? null : handleKeyDown}>
 			<SvgIcon icon={icon} />
 		</span>
 	);
