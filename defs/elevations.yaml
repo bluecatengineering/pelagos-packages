@@ -4,27 +4,36 @@
 elv-01:
   bg: bg-01
   shadow: shadow-01
+  zIndex: 1
 elv-02:
   bg: bg-02
   shadow: shadow-02
+  zIndex: 2
 elv-03:
   bg: bg-03
   shadow: shadow-03
+  zIndex: 3
 elv-04:
   bg: bg-04
   shadow: shadow-04
+  zIndex: 4
 elv-06:
   bg: bg-06
   shadow: shadow-06
+  zIndex: 6
 elv-08:
   bg: bg-08
   shadow: shadow-08
+  zIndex: 8
 elv-12:
   bg: bg-12
   shadow: shadow-12
+  zIndex: 12
 elv-16:
   bg: bg-16
   shadow: shadow-16
+  zIndex: 16
 elv-24:
   bg: bg-24
   shadow: shadow-24
+  zIndex: 24

@@ -20,10 +20,11 @@ writeFileSync(
 	LESS,
 	HEADER.concat(
 		elevations.map(
-			([key, {bg, shadow}]) =>
+			([key, {bg, shadow, zIndex}]) =>
 				`@${key}: {
 	background-color: @${bg};
 	box-shadow: @${shadow};
+	z-index: ${zIndex};
 };`
 		),
 		''
