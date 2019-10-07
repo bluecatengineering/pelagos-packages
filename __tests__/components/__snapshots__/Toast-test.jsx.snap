@@ -6,6 +6,7 @@ exports[`Toast rendering renders all messages 1`] = `
 >
   <TransitionGroup
     childFactory={[Function]}
+    className="Toast__messages"
     component="div"
   >
     <CSSTransition
@@ -45,5 +46,34 @@ exports[`Toast rendering renders all messages 1`] = `
       />
     </CSSTransition>
   </TransitionGroup>
+</div>
+`;
+
+exports[`Toast rendering renders modal backdrop when hasFatalError returns true 1`] = `
+<div
+  className="Toast"
+>
+  <TransitionGroup
+    childFactory={[Function]}
+    className="Toast__messages"
+    component="div"
+  >
+    <CSSTransition
+      classNames="swing"
+      timeout={
+        Object {
+          "enter": 500,
+          "exit": 300,
+        }
+      }
+    >
+      <ToastMessage
+        message={Object {}}
+      />
+    </CSSTransition>
+  </TransitionGroup>
+  <div
+    className="Toast__backdrop"
+  />
 </div>
 `;

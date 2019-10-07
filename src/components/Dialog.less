@@ -1,20 +1,14 @@
 @import '../../less/colors';
 @import '../../less/elevations';
 @import '../../less/fonts';
+@import '../../less/modal';
 @import '../../less/shadows';
 @import '../../less/spacing';
-@import '../../less/zindexes';
 
 .Dialog__backdrop {
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: @modal-bg;
+	@modal-backdrop();
 	align-items: center;
 	justify-content: center;
-	z-index: @zindex-modal-bg;
 }
 
 .Dialog {

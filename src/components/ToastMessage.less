@@ -5,11 +5,13 @@
 .ToastMessage {
 	position: relative;
 	overflow: hidden;
-	margin: 0 0 @sp-12;
 	padding: @sp-12 @sp-24;
 	border-radius: 3px;
 	box-shadow: @shadow-16;
 	cursor: pointer;
+}
+.ToastMessage:not(:last-child) {
+	margin-bottom: @sp-12;
 }
 
 .ToastMessage--action {

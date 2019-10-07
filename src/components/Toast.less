@@ -1,15 +1,18 @@
 @import '../../less/fonts';
+@import '../../less/modal';
 @import '../../less/spacing';
-@import '../../less/zindexes';
 
-.Toast {
+.Toast__messages {
 	@font-16-400();
 	position: fixed;
 	z-index: @zindex-toast;
 	top: @sp-16;
-	left: 50%;
+	left: 25vw;
 	width: 50vw;
-	margin-left: -25vw;
+}
+
+.Toast__backdrop {
+	@modal-backdrop();
 }
 
 @media print {
