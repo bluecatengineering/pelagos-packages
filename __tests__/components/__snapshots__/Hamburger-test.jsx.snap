@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hamburger rendering renders expected elements 1`] = `
+<div
+  className="Hamburger"
+  role="button"
+  tabIndex="0"
+>
+  <div
+    className="Hamburger__inner Hamburger--active"
+  />
+</div>
+`;
+
+exports[`Hamburger rendering renders expected elements when active is not set 1`] = `
+<div
+  className="Hamburger"
+  role="button"
+  tabIndex="0"
+>
+  <div
+    className="Hamburger__inner"
+  />
+</div>
+`;

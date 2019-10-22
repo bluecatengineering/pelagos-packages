@@ -8,6 +8,7 @@ export {default as CheckBox} from './components/CheckBox';
 export {default as ComboBox} from './components/ComboBox';
 export {default as DataTable} from './components/DataTable';
 export {default as Dialog} from './components/Dialog';
+export {default as Hamburger} from './components/Hamburger';
 export {default as IconButton} from './components/IconButton';
 export {default as Label} from './components/Label';
 export {default as ModalSpinner} from './components/ModalSpinner';
