@@ -12,6 +12,7 @@ import './ListInput.less';
 const ListInput = ({
 	id,
 	label,
+	optionalText,
 	notice,
 	emptyText,
 	list,
@@ -120,7 +121,8 @@ const ListInput = ({
 		<div className="ListInput">
 			<div className="ListInput__label">
 				<Label htmlFor={id} text={label} />
-				{notice && <div className="ListInput__notice">{notice}</div>}
+				{optionalText && (!list || list.length === 0) && <span className="ListInput__optional">{optionalText}</span>}
+				{notice && <span className="ListInput__notice">{notice}</span>}
 			</div>
 			<ComboBox
 				{...props}
@@ -158,6 +160,7 @@ const ListInput = ({
 ListInput.propTypes = {
 	id: PropTypes.string.isRequired,
 	label: PropTypes.string,
+	optionalText: PropTypes.string,
 	notice: PropTypes.string,
 	placeholder: PropTypes.string,
 	emptyText: PropTypes.string,

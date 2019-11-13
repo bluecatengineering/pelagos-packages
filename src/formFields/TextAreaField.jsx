@@ -12,7 +12,7 @@ const TextAreaField = ({id, className, label, value, optionalText, resize, error
 		<div className={'TextAreaField' + (className ? ' ' + className : '')}>
 			<div className="TextAreaField__label">
 				<Label text={label} htmlFor={id} />
-				{optionalText && !value ? <span className="TextAreaField__optional">{optionalText}</span> : null}
+				{optionalText && !value && <span className="TextAreaField__optional">{optionalText}</span>}
 			</div>
 			<textarea
 				{...props}

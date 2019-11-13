@@ -12,7 +12,7 @@ const TextInputField = ({id, className, label, value, optionalText, error, ...pr
 		<div className={'TextInputField' + (className ? ' ' + className : '')}>
 			<div className="TextInputField__label">
 				<Label text={label} htmlFor={id} />
-				{optionalText && !value ? <span className="TextInputField__optional">{optionalText}</span> : null}
+				{optionalText && !value && <span className="TextInputField__optional">{optionalText}</span>}
 			</div>
 			<input
 				{...props}

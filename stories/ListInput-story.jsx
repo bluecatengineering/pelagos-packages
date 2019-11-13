@@ -54,6 +54,8 @@ storiesOf('ListInput', module)
 		<ListInput
 			id="id"
 			label="Empty"
+			optionalText="(optional)"
+			notice="A notice"
 			placeHolder="1.1.1.1, 1.1.1.2"
 			emptyText="The list is empty"
 			type="text"
