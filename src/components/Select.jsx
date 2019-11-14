@@ -27,6 +27,7 @@ const Select = ({
 	getOptionValue,
 	renderOption,
 	onChange,
+	...props
 }) => {
 	const [open, setOpen] = useState(false);
 	const [focused, setFocused] = useState(-1);
@@ -269,6 +270,7 @@ const Select = ({
 	return (
 		<div className={'Select' + (className ? ' ' + className : '')}>
 			<div
+				{...props}
 				id={id}
 				className={'Select__text' + (selected ? '' : ' Select__text--empty') + (error ? ' Select__text--error' : '')}
 				tabIndex={disabled ? undefined : '0'}
