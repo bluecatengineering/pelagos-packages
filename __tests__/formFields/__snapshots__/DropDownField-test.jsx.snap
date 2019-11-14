@@ -8,11 +8,12 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     className="DropDownField__label"
   >
     <Label
-      htmlFor="test"
+      id="test-label"
       text="Test"
     />
   </div>
   <Select
+    aria-labelledby="test-label"
     className="DropDownField__select"
     error={false}
     getOptionValue={[MockFunction]}
@@ -41,11 +42,12 @@ exports[`DropDownField rendering renders expected elements when className is set
     className="DropDownField__label"
   >
     <Label
-      htmlFor="test"
+      id="test-label"
       text="Test"
     />
   </div>
   <Select
+    aria-labelledby="test-label"
     className="DropDownField__select"
     error={false}
     getOptionValue={[MockFunction]}
@@ -74,11 +76,12 @@ exports[`DropDownField rendering renders expected elements when error is set 1`]
     className="DropDownField__label"
   >
     <Label
-      htmlFor="test"
+      id="test-label"
       text="Test"
     />
   </div>
   <Select
+    aria-labelledby="test-label"
     className="DropDownField__select"
     error={true}
     getOptionValue={[MockFunction]}

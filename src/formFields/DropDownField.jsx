@@ -9,12 +9,13 @@ import './DropDownField.less';
 
 const DropDownField = ({id, className, label, error, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
+	const labelId = `${id}-label`;
 	return (
 		<div className={'DropDownField' + (className ? ' ' + className : '')}>
 			<div className="DropDownField__label">
-				<Label text={label} htmlFor={id} />
+				<Label id={labelId} text={label} />
 			</div>
-			<Select {...props} id={id} error={!!error} className="DropDownField__select" />
+			<Select {...props} id={id} error={!!error} className="DropDownField__select" aria-labelledby={labelId} />
 			<FieldError text={error} />
 		</div>
 	);

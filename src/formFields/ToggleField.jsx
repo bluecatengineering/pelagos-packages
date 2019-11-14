@@ -7,10 +7,11 @@ import './ToggleField.less';
 
 const ToggleField = ({id, className, label, value, disabled, onChange}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
+	const labelId = `${id}-label`;
 	return (
 		<div className={'ToggleField' + (className ? ' ' + className : '')}>
 			<div className="ToggleField__label">
-				<Label text={label} htmlFor={id} />
+				<Label id={labelId} text={label} />
 			</div>
 
 			<Toggle
@@ -18,6 +19,7 @@ const ToggleField = ({id, className, label, value, disabled, onChange}) => {
 				className="ToggleField__field"
 				checked={value}
 				disabled={disabled}
+				aria-labelledby={labelId}
 				onChange={useCallback(() => onChange(!value), [value, onChange])}
 			/>
 		</div>

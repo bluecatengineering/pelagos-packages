@@ -8,11 +8,12 @@ exports[`ToggleField rendering renders expected elements 1`] = `
     className="ToggleField__label"
   >
     <Label
-      htmlFor="test"
+      id="test-label"
       text="Test"
     />
   </div>
   <Toggle
+    aria-labelledby="test-label"
     checked={true}
     className="ToggleField__field"
     disabled={true}
@@ -30,11 +31,12 @@ exports[`ToggleField rendering renders expected elements when className is set 1
     className="ToggleField__label"
   >
     <Label
-      htmlFor="test"
+      id="test-label"
       text="Test"
     />
   </div>
   <Toggle
+    aria-labelledby="test-label"
     checked={true}
     className="ToggleField__field"
     id="test"
