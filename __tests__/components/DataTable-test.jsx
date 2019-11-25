@@ -1168,7 +1168,8 @@ describe('DataTable', () => {
 				.find('th')
 				.at(0)
 				.simulate('click');
-			expect(setDataSort.mock.calls).toEqual([[{columnId: 'time', order: 'd'}]]);
+			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
+			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'd'});
 		});
 
 		it('updates the sort column when the order is desc the sorted header is clicked', () => {
@@ -1190,7 +1191,8 @@ describe('DataTable', () => {
 				.find('th')
 				.at(0)
 				.simulate('click');
-			expect(setDataSort.mock.calls).toEqual([[{columnId: 'time', order: 'a'}]]);
+			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
+			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'a'});
 		});
 
 		it('updates the sort column when a different header is clicked', () => {
@@ -1212,7 +1214,8 @@ describe('DataTable', () => {
 				.find('th')
 				.at(1)
 				.simulate('click');
-			expect(setDataSort.mock.calls).toEqual([[{columnId: 'source', order: 'a'}]]);
+			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
+			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'source', order: 'a'});
 		});
 	});
 });

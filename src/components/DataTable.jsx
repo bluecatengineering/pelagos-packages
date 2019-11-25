@@ -129,12 +129,12 @@ const DataTable = ({
 
 	const updateSortColumn = useCallback(
 		column =>
-			setDataSort(
+			setDataSort(dataSort =>
 				dataSort && dataSort.columnId === column.id
 					? {...dataSort, order: dataSort.order === 'a' ? 'd' : 'a'}
 					: {columnId: column.id, order: 'a'}
 			),
-		[dataSort]
+		[]
 	);
 
 	const handleScroll = useCallback(
