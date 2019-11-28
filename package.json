@@ -11,9 +11,9 @@
     "test-ci": "npm install && jest --ci --silent --reporters=jest-junit",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "build-storybook -c .storybook -o .out",
-    "lint": "eslint --ext .js,.jsx src",
+    "lint": "eslint src",
     "lint-styles": "stylelint less src/**/*.less",
-    "reformat": "prettier --write \"**/*.+(js|jsx|json|less)\"",
+    "reformat": "prettier --write \"**/*.+(js|json|less)\"",
     "update-colors": "node scripts/update-colors",
     "update-elevations": "node scripts/update-elevations",
     "update-fonts": "node scripts/update-fonts",
@@ -109,7 +109,7 @@
     ],
     "timers": "fake",
     "transform": {
-      "\\.jsx?$": "babel-jest",
+      "\\.js$": "babel-jest",
       "\\.strings\\.yaml$": "@bluecat/strings-jest"
     },
     "transformIgnorePatterns": [
@@ -140,7 +140,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.js": [
       "eslint --fix --max-warnings 0 --no-ignore",
       "prettier --write",
       "git add"

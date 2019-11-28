@@ -6,7 +6,7 @@ import BackgroundPicker from './BackgroundPicker';
 
 import './stories.less';
 
-const req = require.context('../stories', true, /-story\.jsx$/);
+const req = require.context('../stories', true, /-story\.js$/);
 
 addDecorator(story => (
 	<div className="Story__wrapper">
