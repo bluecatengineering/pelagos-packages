@@ -42,6 +42,7 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
+    "@bluecat/babel-plugin-transform-hash-icu-key": "^0.3.0",
     "@bluecat/git-checks": "^0.1.0",
     "@bluecat/helpers": "^0.4.0",
     "@bluecat/strings-jest": "^0.3.0",
