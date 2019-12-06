@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderListItem renders expected elements 1`] = `
+<ListItem
+  className="TestClass"
+  item="Test"
+/>
+`;

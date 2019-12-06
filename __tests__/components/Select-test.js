@@ -6,13 +6,6 @@ import Select from '../../src/components/Select';
 
 jest.unmock('../../src/components/Select');
 
-jest.mock('react', () => ({
-	...jest.requireActual('react'),
-	useEffect: jest.fn(),
-	useRef: jest.fn(current => ({current})),
-	useState: jest.fn(v => [v, jest.fn()]),
-}));
-
 const strings = {
 	one: 'One',
 	two: 'Two',

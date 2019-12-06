@@ -1,0 +1,37 @@
+@import '../../less/colors';
+@import '../../less/elevations';
+@import '../../less/spacing';
+
+.FilterMenu {
+	position: relative;
+	margin-left: @sp-16;
+}
+
+.FilterMenu__button {
+	padding: @sp-08;
+	cursor: pointer;
+	color: @azure;
+}
+
+.FilterMenu__button:focus {
+	outline: 2px solid @bondi;
+	outline-offset: 0;
+}
+
+.FilterMenu__menu {
+	@elv-08();
+	position: absolute;
+	padding-top: @sp-08;
+	padding-bottom: @sp-08;
+	border-radius: 3px;
+	white-space: nowrap;
+}
+
+.FilterMenu__option {
+	padding: @sp-08 @sp-24;
+	cursor: pointer;
+}
+
+.FilterMenu__option--current {
+	background-color: @fiord;
+}

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextFilterEditor rendering renders expected elements 1`] = `
+<ListInput
+  column={true}
+  error={null}
+  getHighlightKey={[Function]}
+  getItemKey={[Function]}
+  getSuggestionText={[Function]}
+  id="textFilterEditorInput"
+  label="label"
+  list={
+    Array [
+      "a",
+    ]
+  }
+  onErrorChange={[MockFunction]}
+  onTextChange={[MockFunction]}
+  placeholder="placeholder"
+  renderItem={[MockFunction]}
+  renderSuggestion={[MockFunction]}
+  type="text"
+  value=""
+/>
+`;
+
+exports[`TextFilterEditor rendering renders expected elements when list input requests suggestions text 1`] = `
+<ListInput
+  column={true}
+  error={null}
+  getHighlightKey={[Function]}
+  getItemKey={[Function]}
+  getSuggestionText={[Function]}
+  id="textFilterEditorInput"
+  label="label"
+  list={
+    Array [
+      "a",
+    ]
+  }
+  onErrorChange={[MockFunction]}
+  onTextChange={[MockFunction]}
+  placeholder="placeholder"
+  renderItem={[MockFunction]}
+  renderSuggestion={[MockFunction]}
+  type="text"
+  value=""
+/>
+`;

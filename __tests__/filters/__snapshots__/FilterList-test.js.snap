@@ -1,0 +1,343 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterList rendering renders expected elements 1`] = `
+<div
+  className="FilterList"
+>
+  <div
+    aria-label="Scroll left"
+    className="FilterList__scrollLeft"
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  <div
+    className="FilterList__track"
+    id="filterListTrack"
+  >
+    <div
+      className="FilterList__items"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+    />
+  </div>
+  <div
+    aria-label="Scroll right"
+    className="FilterList__scrollRight"
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`FilterList rendering renders expected elements when filter is set 1`] = `
+<div
+  className="FilterList"
+>
+  <div
+    aria-label="Scroll left"
+    className="FilterList__scrollLeft"
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  <div
+    className="FilterList__track"
+    id="filterListTrack"
+  >
+    <div
+      className="FilterList__items"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+    >
+      <div
+        aria-controls="filterListDropDown"
+        aria-expanded={true}
+        aria-haspopup="dialog"
+        className="FilterList__item"
+        data-key="view"
+        data-kind="item"
+        id="filter-view"
+        role="button"
+        tabIndex="0"
+      >
+        <span
+          className="FilterList__filterTitle"
+        />
+        <span
+          aria-label="Remove"
+          className="FilterList__remove"
+          data-key="view"
+          data-kind="remove"
+          id="filter-view-remove"
+          role="button"
+          tabIndex="0"
+        >
+          <SvgIcon
+            icon={
+              Object {
+                "icon": Array [],
+              }
+            }
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-label="Scroll right"
+    className="FilterList__scrollRight"
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  Object {
+    "$$typeof": Symbol(react.portal),
+    "children": <FilterEditor
+      buttonId="filter-view"
+      filter="view"
+      filters={
+        Object {
+          "view": Array [
+            "abc",
+          ],
+        }
+      }
+      onClose={[Function]}
+      onSave={[Function]}
+      trackId="filterListTrack"
+    />,
+    "containerInfo": <body />,
+    "implementation": null,
+    "key": null,
+  }
+</div>
+`;
+
+exports[`FilterList rendering renders expected elements when filter key is excluded 1`] = `
+<div
+  className="FilterList"
+>
+  <div
+    aria-label="Scroll left"
+    className="FilterList__scrollLeft"
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  <div
+    className="FilterList__track"
+    id="filterListTrack"
+  >
+    <div
+      className="FilterList__items"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+    />
+  </div>
+  <div
+    aria-label="Scroll right"
+    className="FilterList__scrollRight"
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  Object {
+    "$$typeof": Symbol(react.portal),
+    "children": <FilterEditor
+      buttonId="filter-view"
+      filter="view"
+      filters={
+        Object {
+          "view": Array [
+            "abc",
+          ],
+        }
+      }
+      onClose={[Function]}
+      onSave={[Function]}
+      trackId="filterListTrack"
+    />,
+    "containerInfo": <body />,
+    "implementation": null,
+    "key": null,
+  }
+</div>
+`;
+
+exports[`FilterList rendering renders expected elements when filters are set 1`] = `
+<div
+  className="FilterList"
+>
+  <div
+    aria-label="Scroll left"
+    className="FilterList__scrollLeft"
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  <div
+    className="FilterList__track"
+    id="filterListTrack"
+  >
+    <div
+      className="FilterList__items"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+    >
+      <div
+        aria-controls={null}
+        aria-expanded={false}
+        aria-haspopup="dialog"
+        className="FilterList__item"
+        data-key="view"
+        data-kind="item"
+        id="filter-view"
+        role="button"
+        tabIndex="0"
+      >
+        <span
+          className="FilterList__filterTitle"
+        />
+        <span
+          aria-label="Remove"
+          className="FilterList__remove"
+          data-key="view"
+          data-kind="remove"
+          id="filter-view-remove"
+          role="button"
+          tabIndex="0"
+        >
+          <SvgIcon
+            icon={
+              Object {
+                "icon": Array [],
+              }
+            }
+          />
+        </span>
+      </div>
+      <div
+        aria-controls={null}
+        aria-expanded={false}
+        aria-haspopup="dialog"
+        className="FilterList__item"
+        data-key="zoneName"
+        data-kind="item"
+        id="filter-zoneName"
+        role="button"
+        tabIndex="0"
+      >
+        <span
+          className="FilterList__filterTitle"
+        />
+        <span
+          aria-label="Remove"
+          className="FilterList__remove"
+          data-key="zoneName"
+          data-kind="remove"
+          id="filter-zoneName-remove"
+          role="button"
+          tabIndex="0"
+        >
+          <SvgIcon
+            icon={
+              Object {
+                "icon": Array [],
+              }
+            }
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-label="Scroll right"
+    className="FilterList__scrollRight"
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+</div>
+`;

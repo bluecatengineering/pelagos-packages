@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Suggestion renders expected elements 1`] = `
+<div
+  className="Suggestion"
+  id="0"
+>
+  <div>
+    Test
+  </div>
+  <div
+    className="Suggestion__description"
+  >
+    test
+  </div>
+</div>
+`;
+
+exports[`Suggestion renders expected elements when className is set 1`] = `
+<div
+  className="Suggestion TestClass"
+  id="0"
+>
+  <div>
+    Test
+  </div>
+  <div
+    className="Suggestion__description"
+  >
+    test
+  </div>
+</div>
+`;

@@ -7,11 +7,6 @@ import Button from '../../src/components/Button';
 
 jest.unmock('../../src/components/Dialog');
 
-jest.mock('react', () => ({
-	...jest.requireActual('react'),
-	useEffect: jest.fn(),
-}));
-
 describe('Dialog', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {

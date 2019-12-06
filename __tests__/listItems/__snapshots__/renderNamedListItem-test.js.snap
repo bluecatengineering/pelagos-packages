@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderNamedListItem renders expected elements 1`] = `
+<ListItem
+  className="TestClass"
+  item="Test"
+/>
+`;
+
+exports[`renderNamedListItem renders expected elements when name and className are not passed in 1`] = `
+<ListItem
+  className=" ListItem--unresolved"
+  item="Test"
+/>
+`;

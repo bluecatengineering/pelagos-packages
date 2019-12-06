@@ -33,8 +33,29 @@ export {default as ToggleField} from './formFields/ToggleField';
 export {default as ListEntries} from './listInput/ListEntries';
 export {default as ListInput} from './listInput/ListInput';
 
+export {default as CheckBoxFilterEditor} from './filters/CheckBoxFilterEditor';
+export {default as FilterList} from './filters/FilterList';
+export {default as FilterMenu} from './filters/FilterMenu';
+export {default as NameFilterEditor} from './filters/NameFilterEditor';
+export {default as TextFilterEditor} from './filters/TextFilterEditor';
+
+export {default as renderListItem} from './listItems/renderListItem';
+export {default as renderNamedListItem} from './listItems/renderNamedListItem';
+
+export {default as renderSimpleSuggestion} from './suggestions/renderSimpleSuggestion';
+export {default as renderSuggestion} from './suggestions/renderSuggestion';
+
+export {default as addResizeObserver} from './functions/addResizeObserver';
+export {default as buildSimpleSuggestionsParser} from './functions/buildSimpleSuggestionsParser';
+export {default as compareSuggestions} from './functions/compareSuggestions';
+export {default as getGenericSuggestions} from './functions/getGenericSuggestions';
+export {default as throttleAF} from './functions/throttleAF';
+
 export * from './toasts/ToastActions';
 export * from './toasts/ToastFunctions';
 export {default as toastReducer} from './toasts/ToastReducer';
 
 export {default as useButtonKeyHandler} from './hooks/useButtonKeyHandler';
+export {default as useEditorPositioner} from './hooks/useEditorPositioner';
+export {default as useFocusTrap} from './hooks/useFocusTrap';
+export {default as useMenuHandler} from './hooks/useMenuHandler';

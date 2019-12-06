@@ -8,10 +8,6 @@ import ListEntries from '../../src/listInput/ListEntries';
 jest.unmock('../../src/listInput/ListEntries');
 jest.unmock('../../src/strings');
 
-jest.mock('react', () => ({
-	...jest.requireActual('react'),
-	useEffect: jest.fn(),
-}));
 jest.mock('lodash-es/debounce', () => jest.fn(f => ((f.cancel = jest.fn()), f)));
 
 describe('ListEntries', () => {

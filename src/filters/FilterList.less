@@ -1,0 +1,79 @@
+@import '../../less/colors';
+@import '../../less/shadows';
+@import '../../less/spacing';
+
+.FilterList {
+	flex-direction: row;
+	flex: 1;
+	margin-left: @sp-16;
+	overflow: hidden;
+}
+
+.FilterList__track {
+	flex-direction: row;
+	flex: 1;
+	overflow: hidden;
+	scroll-behavior: smooth;
+}
+
+.FilterList__items {
+	flex-direction: row;
+}
+
+.FilterList__scrollLeft,
+.FilterList__scrollRight {
+	display: none;
+	font-size: 14px;
+	cursor: pointer;
+	justify-content: center;
+	padding: 0 @sp-04;
+	margin: @sp-02;
+}
+
+.FilterList__scrollLeft {
+	margin-right: @sp-16;
+}
+
+.FilterList__scrollRight {
+	margin-left: @sp-16;
+}
+
+.FilterList__scrollLeft--visible,
+.FilterList__scrollRight--visible {
+	display: flex;
+}
+
+.FilterList__filterTitle {
+	margin-right: @sp-08;
+	color: @font-color-2;
+}
+
+.FilterList__item {
+	flex-direction: row;
+	margin: @sp-02;
+	border-radius: 3px;
+	padding: @sp-04 @sp-08;
+	cursor: pointer;
+	background-color: @prussian;
+	color: @emerald;
+}
+
+.FilterList__item:not(:first-child) {
+	margin-left: @sp-16;
+}
+
+.FilterList__remove {
+	font-size: 19px;
+	color: @azure;
+	padding: @sp-02 @sp-04;
+	margin-left: @sp-08;
+	cursor: pointer;
+}
+
+.FilterList__scrollLeft:focus,
+.FilterList__scrollRight:focus,
+.FilterList__item:focus,
+.FilterList__remove:focus {
+	outline: 2px solid @bondi;
+	outline-offset: 0;
+}

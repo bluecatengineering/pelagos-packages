@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBoxFilterEditor rendering renders expected elements 1`] = `
+Array [
+  <React.Fragment>
+    <div
+      className="CheckBoxFilterEditor__label"
+    >
+      <Label
+        text="label"
+      />
+    </div>
+    <CheckBox
+      checked={true}
+      className="CheckBoxFilterEditor__option"
+      id="checkBoxOption-a"
+      label="a"
+      onChange={[Function]}
+    />
+    <CheckBox
+      checked={false}
+      className="CheckBoxFilterEditor__option"
+      id="checkBoxOption-b"
+      label="b"
+      onChange={[Function]}
+    />
+  </React.Fragment>,
+]
+`;

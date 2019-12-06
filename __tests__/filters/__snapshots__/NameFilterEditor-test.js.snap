@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NameFilterEditor rendering renders expected elements 1`] = `
+<ListInput
+  column={true}
+  error={null}
+  getHighlightKey={[Function]}
+  getItemKey={[Function]}
+  getSuggestionText={[Function]}
+  getSuggestions={[Function]}
+  id="nameFilterEditorInput"
+  label="label"
+  list={
+    Array [
+      Object {
+        "name": "Alpha",
+      },
+    ]
+  }
+  onErrorChange={[MockFunction]}
+  onListChange={[Function]}
+  onTextChange={[MockFunction]}
+  placeholder="placeholder"
+  renderItem={[MockFunction]}
+  renderSuggestion={[MockFunction]}
+  type="text"
+  value=""
+/>
+`;
+
+exports[`NameFilterEditor rendering renders expected elements when list input requests suggestion highlight key 1`] = `
+<ListInput
+  column={true}
+  error={null}
+  getHighlightKey={[Function]}
+  getItemKey={[Function]}
+  getSuggestionText={[Function]}
+  getSuggestions={[Function]}
+  id="nameFilterEditorInput"
+  label="label"
+  list={
+    Array [
+      Object {
+        "name": "Alpha",
+      },
+    ]
+  }
+  onErrorChange={[MockFunction]}
+  onListChange={[Function]}
+  onTextChange={[MockFunction]}
+  placeholder="placeholder"
+  renderItem={[MockFunction]}
+  renderSuggestion={[MockFunction]}
+  type="text"
+  value=""
+/>
+`;
+
+exports[`NameFilterEditor rendering renders expected elements when list input requests suggestions text 1`] = `
+<ListInput
+  column={true}
+  error={null}
+  getHighlightKey={[Function]}
+  getItemKey={[Function]}
+  getSuggestionText={[Function]}
+  getSuggestions={[Function]}
+  id="nameFilterEditorInput"
+  label="label"
+  list={
+    Array [
+      Object {
+        "name": "Alpha",
+      },
+    ]
+  }
+  onErrorChange={[MockFunction]}
+  onListChange={[Function]}
+  onTextChange={[MockFunction]}
+  placeholder="placeholder"
+  renderItem={[MockFunction]}
+  renderSuggestion={[MockFunction]}
+  type="text"
+  value=""
+/>
+`;
+
+exports[`NameFilterEditor rendering renders expected elements when sourceById does not have list id 1`] = `
+<ListInput
+  column={true}
+  error={null}
+  getHighlightKey={[Function]}
+  getItemKey={[Function]}
+  getSuggestionText={[Function]}
+  getSuggestions={[Function]}
+  id="nameFilterEditorInput"
+  label="label"
+  list={
+    Array [
+      Object {
+        "id": "a",
+      },
+    ]
+  }
+  onErrorChange={[MockFunction]}
+  onListChange={[Function]}
+  onTextChange={[MockFunction]}
+  placeholder="placeholder"
+  renderItem={[MockFunction]}
+  renderSuggestion={[MockFunction]}
+  type="text"
+  value=""
+/>
+`;

@@ -7,14 +7,6 @@ import DataTable from '../../src/components/DataTable';
 jest.unmock('../../src/components/DataTable');
 jest.unmock('stable');
 
-jest.mock('react', () => ({
-	...jest.requireActual('react'),
-	useState: jest.fn(v => [v, jest.fn()]),
-	useCallback: fn => fn,
-	useEffect: jest.fn(),
-	useRef: jest.fn(current => ({current})),
-}));
-
 const originalUserAgent = navigator.userAgent;
 
 const metadata = [

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem rendering renders expected elements when className is set 1`] = `
+<span
+  className="ListItem TestClass"
+  data-bcn-id="name"
+  title="Test"
+>
+  Test
+</span>
+`;
+
+exports[`ListItem rendering renders expected elements when unresolved is false 1`] = `
+<span
+  className="ListItem"
+  data-bcn-id="name"
+  title="Test"
+>
+  Test
+</span>
+`;

@@ -1,4 +1,14 @@
 DISMISS:
   Dismiss
+FILTERS:
+  Filters
+ITEM_NOT_ADDED:
+  An item has been entered but not added to the list.
+MEMBER:
+  member
 REMOVE:
   Remove
+SCROLL_LEFT:
+  Scroll left
+SCROLL_RIGHT:
+  Scroll right

@@ -2,11 +2,6 @@ import useButtonKeyHandler from '../../src/hooks/useButtonKeyHandler';
 
 jest.unmock('../../src/hooks/useButtonKeyHandler');
 
-jest.mock('react', () => ({
-	...jest.requireActual('react'),
-	useCallback: fn => fn,
-}));
-
 describe('useButtonKeyHandler', () => {
 	it('calls onClick when enter is pressed', () => {
 		const onClick = jest.fn();

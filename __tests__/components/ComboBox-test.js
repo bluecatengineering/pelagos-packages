@@ -7,13 +7,6 @@ import ComboBox from '../../src/components/ComboBox';
 
 jest.unmock('../../src/components/ComboBox');
 
-jest.mock('react', () => ({
-	...jest.requireActual('react'),
-	createRef: jest.fn(() => ({})),
-	useEffect: jest.fn(),
-	useState: jest.fn(v => [v, jest.fn()]),
-	useRef: jest.fn(current => ({current})),
-}));
 jest.mock('lodash-es/debounce', () => jest.fn(f => ((f.cancel = jest.fn()), f)));
 
 describe('ComboBox', () => {

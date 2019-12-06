@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterMenu rendering renders expected elements 1`] = `
+<div
+  className="FilterMenu"
+>
+  <div
+    aria-activedescendant={null}
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    aria-label="Filters"
+    className="FilterMenu__button"
+    id="filterButton"
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "filter",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`FilterMenu rendering renders expected elements when filter is not null 1`] = `
+<div
+  className="FilterMenu"
+>
+  <div
+    aria-activedescendant={null}
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    aria-label="Filters"
+    className="FilterMenu__button"
+    id="filterButton"
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "filter",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  Object {
+    "$$typeof": Symbol(react.portal),
+    "children": <FilterEditor
+      buttonId="filterButton"
+      filter="value"
+      onClose={[Function]}
+      onSave={[Function]}
+    />,
+    "containerInfo": <body />,
+    "implementation": null,
+    "key": null,
+  }
+</div>
+`;
+
+exports[`FilterMenu rendering renders expected elements when filters is set 1`] = `
+<div
+  className="FilterMenu"
+>
+  <div
+    aria-activedescendant={null}
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    aria-label="Filters"
+    className="FilterMenu__button"
+    id="filterButton"
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "filter",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`FilterMenu rendering renders expected elements when menuVisible is true 1`] = `
+<div
+  className="FilterMenu"
+>
+  <div
+    aria-activedescendant="FilterMenu-a"
+    aria-controls="filterMenu"
+    aria-expanded={true}
+    aria-haspopup="true"
+    aria-label="Filters"
+    className="FilterMenu__button"
+    id="filterButton"
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "filter",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  Object {
+    "$$typeof": Symbol(react.portal),
+    "children": <div
+      className="FilterMenu__menu"
+      id="filterMenu"
+      role="menu"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <div
+        className="FilterMenu__option FilterMenu__option--current"
+        data-index={0}
+        id="filterMenu-a"
+        role="menuitem"
+      />
+      <div
+        className="FilterMenu__option"
+        data-index={1}
+        id="filterMenu-b"
+        role="menuitem"
+      />
+    </div>,
+    "containerInfo": <body />,
+    "implementation": null,
+    "key": null,
+  }
+</div>
+`;

@@ -5,11 +5,6 @@ import ListInput from '../../src/listInput/ListInput';
 
 jest.unmock('../../src/listInput/ListInput');
 
-jest.mock('react', () => ({
-	...jest.requireActual('react'),
-	useState: jest.fn(v => [v, jest.fn()]),
-}));
-
 describe('ListInput', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
