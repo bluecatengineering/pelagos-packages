@@ -36,13 +36,16 @@ exports[`OverlayTrigger rendering renders expected elements 1`] = `
               "useCallback": [Function],
               "useContext": [Function],
               "useDebugValue": [Function],
+              "useDeferredValue": [Function],
               "useEffect": [Function],
               "useImperativeHandle": [Function],
               "useLayoutEffect": [Function],
               "useMemo": [Function],
               "useReducer": [Function],
               "useRef": [Function],
+              "useResponder": [Function],
               "useState": [Function],
+              "useTransition": [Function],
             },
             "_element": <OverlayTrigger
               overlay={<div />}
