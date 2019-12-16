@@ -1,0 +1,47 @@
+@import '../../less/colors';
+@import '../../less/fonts';
+@import '../../less/spacing';
+
+.Tabs {
+	position: relative;
+	flex: 1;
+	overflow: hidden;
+}
+
+.Tabs__list {
+	flex-direction: row;
+	padding: 0 @sp-16;
+	height: 47px;
+	border-bottom: 1px solid @separator;
+	outline: none;
+}
+
+.Tabs__tab {
+	@font-14-400();
+	color: @font-color-2;
+	width: 140px;
+	height: 47px;
+	padding: @sp-12 0;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease-out;
+}
+
+.Tabs__tab--focused {
+	background-color: fade(@sea, 20%);
+}
+
+.Tabs__tab:active {
+	background-color: fade(@ocean, 20%);
+}
+
+.Tabs__tab[aria-selected='true'] {
+	color: @font-color-1;
+	border-bottom: 3px solid @azure;
+}
+
+@media print {
+	.Tabs__tab[aria-selected='true'] {
+		color: @black;
+	}
+}

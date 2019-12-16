@@ -18,6 +18,7 @@ export {default as RadioButton} from './components/RadioButton';
 export {default as Select} from './components/Select';
 export {default as Spinner} from './components/Spinner';
 export {default as SvgIcon} from './components/SvgIcon';
+export {default as Tabs} from './components/Tabs';
 export {default as Toast} from './components/Toast';
 export {default as Toggle} from './components/Toggle';
 export {default as ToolbarButton} from './components/ToolbarButton';
