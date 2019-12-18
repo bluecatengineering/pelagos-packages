@@ -65,7 +65,7 @@ const renderHeaders = (metadata, columns, dataSort, onClick) =>
 
 const renderRows = (data, metadata, columns, selectedId, highlightId, focused, getRowId, onRowClick) =>
 	data.map((row, rowIndex) => {
-		const rowId = getRowId(row);
+		const rowId = getRowId(row, rowIndex);
 		const className =
 			'DataTable__row' +
 			(rowId === highlightId ? ' DataTable__row--highlight' : '') +
@@ -182,7 +182,7 @@ const DataTable = ({
 		if (focused === -1) {
 			let index;
 			if (selectedId) {
-				index = sortedData.findIndex(item => getRowId(item) === selectedId);
+				index = sortedData.findIndex((item, index) => getRowId(item, index) === selectedId);
 				if (index === -1) {
 					index = 0;
 				}
@@ -347,7 +347,7 @@ const DataTable = ({
 				id={id + '-tableBody'}
 				className="DataTable__body"
 				tabIndex="0"
-				aria-activedescendant={focused === -1 || !sortedData[focused] ? null : getRowId(sortedData[focused])}
+				aria-activedescendant={focused === -1 || !sortedData[focused] ? null : getRowId(sortedData[focused], focused)}
 				onMouseOver={handleMouseOver}
 				onMouseOut={handleMouseOut}
 				onClick={onRowClick ? handleClick : null}
