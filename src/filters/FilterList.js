@@ -21,6 +21,7 @@ const showChevrons = (filterList, {width}) => {
 	}
 };
 
+/** Displays a list of filters. */
 export const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilterTitle, getValues, onApply}) => {
 	const filterRef = useRef(null);
 	const [filter, setFilter] = useState(null);
@@ -135,12 +136,22 @@ export const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, g
 };
 
 FilterList.propTypes = {
+	/** The filters to display. */
 	filters: PropTypes.object,
+	/** The filter keys to exclude. */
 	excludedKeys: PropTypes.array,
+	/** The editor component. */
 	filterEditor: PropTypes.elementType,
+	/** Function returning the filter title. */
 	getFilterTitle: PropTypes.func,
+	/** Function returning the filter values. */
 	getValues: PropTypes.func,
+	/** Function invoked to apply changes. */
 	onApply: PropTypes.func,
+};
+
+FilterList.defaultProps = {
+	excludedKeys: [],
 };
 
 export default FilterList;
