@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Tabs.less';
 
+/** Displays components in tabs. */
 const Tabs = ({id, active, items, onTabClick}) => {
 	const [focused, setFocused] = useState(-1);
 	const activeItem = useMemo(() => items.find(item => item.id === active), [items, active]);
@@ -116,8 +117,11 @@ const Tabs = ({id, active, items, onTabClick}) => {
 };
 
 Tabs.propTypes = {
+	/** The component ID. */
 	id: PropTypes.string.isRequired,
+	/** The ID of the active tab. */
 	active: PropTypes.string.isRequired,
+	/** The tab items. */
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string.isRequired,
@@ -125,6 +129,7 @@ Tabs.propTypes = {
 			getPanel: PropTypes.func,
 		})
 	).isRequired,
+	/** Function invoked when a tab is clicked. */
 	onTabClick: PropTypes.func,
 };
 
