@@ -11,7 +11,8 @@ const getName = o => o.name;
 const getId = o => o.id;
 const getSuggestionHighlightKey = s => (s.order === 2 ? s.id : null);
 
-const NameFilterEditor = ({label, list, sourceById, placeholder, errorMessage, onListChange, validateSaveRef}) => {
+/** Filter editor where values are selected from a list. */
+const NameFilterEditor = ({label, placeholder, list, sourceById, errorMessage, validateSaveRef, onListChange}) => {
 	const [text, setText] = useState('');
 	const [error, setError] = useState(null);
 
@@ -56,13 +57,20 @@ const NameFilterEditor = ({label, list, sourceById, placeholder, errorMessage, o
 };
 
 NameFilterEditor.propTypes = {
+	/** The field label. */
 	label: PropTypes.string,
-	list: PropTypes.array,
-	sourceById: PropTypes.object,
+	/** The field hint. */
 	placeholder: PropTypes.string,
+	/** The current filter values. */
+	list: PropTypes.array,
+	/** The source for filter values. */
+	sourceById: PropTypes.object,
+	/** The error message when a value does not match. */
 	errorMessage: PropTypes.string,
-	onListChange: PropTypes.func,
+	/** A ref where the validation function will be stored. */
 	validateSaveRef: PropTypes.object,
+	/** Function invoked to apply changes. */
+	onListChange: PropTypes.func,
 };
 
 export default NameFilterEditor;

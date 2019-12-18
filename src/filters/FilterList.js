@@ -22,7 +22,7 @@ const showChevrons = (filterList, {width}) => {
 };
 
 /** Displays a list of filters. */
-export const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilterTitle, getValues, onApply}) => {
+const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilterTitle, getValues, onApply}) => {
 	const filterRef = useRef(null);
 	const [filter, setFilter] = useState(null);
 	const handleClickLeft = useCallback(() => (filterRef.current.scrollLeft += -100), []);

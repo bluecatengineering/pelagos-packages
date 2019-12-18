@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {shallow} from 'enzyme';
 
-import {FilterMenu} from '../../src/filters/FilterMenu';
+import FilterMenu from '../../src/filters/FilterMenu';
 import useMenuHandler from '../../src/hooks/useMenuHandler';
 
 jest.unmock('../../src/filters/FilterMenu');

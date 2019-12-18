@@ -6,7 +6,8 @@ import CheckBox from '../components/CheckBox';
 
 import './CheckBoxFilterEditor.less';
 
-const CheckBoxFilterEditor = ({label, list, options, getLabel, onListChange}) => (
+/** Filter editor where options are presented as check boxes. */
+const CheckBoxFilterEditor = ({label, options, list, getLabel, onListChange}) => (
 	<>
 		<div className="CheckBoxFilterEditor__label">
 			<Label text={label} />
@@ -27,11 +28,15 @@ const CheckBoxFilterEditor = ({label, list, options, getLabel, onListChange}) =>
 );
 
 CheckBoxFilterEditor.propTypes = {
-	label: PropTypes.string,
-	list: PropTypes.array,
-	options: PropTypes.array,
-	filterName: PropTypes.string,
-	getLabel: PropTypes.func,
+	/** The field label. */
+	label: PropTypes.string.isRequired,
+	/** The filter options. */
+	options: PropTypes.array.isRequired,
+	/** The current filter values. */
+	list: PropTypes.array.isRequired,
+	/** Function returning the option label. */
+	getLabel: PropTypes.func.isRequired,
+	/** Function invoked to apply changes. */
 	onListChange: PropTypes.func,
 };
 

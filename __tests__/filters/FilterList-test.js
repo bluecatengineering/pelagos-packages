@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
-import {FilterList} from '../../src/filters/FilterList';
+import FilterList from '../../src/filters/FilterList';
 import addResizeObserver from '../../src/functions/addResizeObserver';
 
 jest.unmock('../../src/filters/FilterList');

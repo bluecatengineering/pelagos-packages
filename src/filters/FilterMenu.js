@@ -9,7 +9,8 @@ import __ from '../strings';
 
 import './FilterMenu.less';
 
-export const FilterMenu = ({filters, options, filterEditor: FilterEditor, getOptionText, onApply}) => {
+/** A menu for adding filters. */
+const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText, onApply}) => {
 	const [menuVisible, setMenuVisible] = useState(false);
 	const [filter, setFilter] = useState(null);
 
@@ -89,10 +90,15 @@ export const FilterMenu = ({filters, options, filterEditor: FilterEditor, getOpt
 };
 
 FilterMenu.propTypes = {
+	/** The menu options. */
+	options: PropTypes.array.isRequired,
+	/** The current set of filters. */
 	filters: PropTypes.object,
-	options: PropTypes.array,
+	/** The filter editor component. */
 	filterEditor: PropTypes.elementType,
-	getOptionText: PropTypes.func,
+	/** Function returning the option text. */
+	getOptionText: PropTypes.func.isRequired,
+	/** Function invoked to apply changes. */
 	onApply: PropTypes.func,
 };
 

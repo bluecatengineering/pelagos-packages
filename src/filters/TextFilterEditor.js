@@ -10,7 +10,8 @@ import __ from '../strings';
 const getName = o => o.name;
 const getSuggestionHighlightKey = s => (s.order === 2 ? s.name : null);
 
-const TextFilterEditor = ({label, list, placeholder, getSuggestions, parseInput, onListChange, validateSaveRef}) => {
+/** Filter editor where values are typed. */
+const TextFilterEditor = ({label, placeholder, list, getSuggestions, parseInput, validateSaveRef, onListChange}) => {
 	const [text, setText] = useState('');
 	const [error, setError] = useState(null);
 
@@ -47,13 +48,20 @@ const TextFilterEditor = ({label, list, placeholder, getSuggestions, parseInput,
 };
 
 TextFilterEditor.propTypes = {
+	/** The field label. */
 	label: PropTypes.string,
-	list: PropTypes.array,
+	/** The field hint. */
 	placeholder: PropTypes.string,
+	/** The current filter values. */
+	list: PropTypes.array,
+	/** Function returning suggestions. */
 	getSuggestions: PropTypes.func,
+	/** Function to parse the input text. */
 	parseInput: PropTypes.func,
-	onListChange: PropTypes.func,
+	/** A ref where the validation function will be stored. */
 	validateSaveRef: PropTypes.object,
+	/** Function invoked to apply changes. */
+	onListChange: PropTypes.func,
 };
 
 export default TextFilterEditor;
