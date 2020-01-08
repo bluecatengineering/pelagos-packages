@@ -54,7 +54,7 @@ describe('TextFilterEditor', () => {
 			shallow(<TextFilterEditor label="label" list={['a']} placeholder="placeholder" validateSaveRef={ref} />);
 			expect(ref).not.toEqual({});
 			expect(ref.current()).toEqual(false);
-			expect(setError.mock.calls).toEqual([['An item has been entered but not added to the list.']]);
+			expect(setError.mock.calls).toEqual([['Press Enter to add item(s) to the list.']]);
 		});
 	});
 });
