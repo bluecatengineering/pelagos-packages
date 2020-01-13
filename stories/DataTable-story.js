@@ -41,7 +41,6 @@ storiesOf('DataTable', module)
 			data={data}
 			selectedId="3"
 			getRowId={getRowId}
-			addedCount={data.length}
 			defaultSort={defaultSort}
 		/>
 	))
@@ -51,28 +50,13 @@ storiesOf('DataTable', module)
 			className="Story__table"
 			metadata={metadata}
 			data={[]}
-			addedCount={0}
 			getRowId={getRowId}
-			isFetchingNextDataPage
+			fetchingNextPage
 		/>
 	))
 	.add('loading next', () => (
-		<DataTable
-			id="next"
-			metadata={metadata}
-			data={data}
-			addedCount={data.length}
-			getRowId={getRowId}
-			isFetchingNextDataPage
-		/>
+		<DataTable id="next" metadata={metadata} data={data} getRowId={getRowId} fetchingNextPage />
 	))
 	.add('loading previous', () => (
-		<DataTable
-			id="prev"
-			metadata={metadata}
-			data={data}
-			addedCount={data.length}
-			getRowId={getRowId}
-			isFetchingPrevDataPage
-		/>
+		<DataTable id="prev" metadata={metadata} data={data} getRowId={getRowId} fetchingPrevPage />
 	));

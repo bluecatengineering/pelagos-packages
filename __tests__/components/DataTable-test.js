@@ -54,8 +54,8 @@ const initTable = (
 	isLoadingNextData,
 	isLoadingPrevData,
 	tableBody,
-	requestNextDataPage,
-	requestPrevDataPage,
+	requestNextPage,
+	requestPrevPage,
 	data = testData
 ) => {
 	useRef
@@ -69,8 +69,8 @@ const initTable = (
 			metadata={metadata}
 			data={data}
 			addedCount={addedCount}
-			requestNextDataPage={requestNextDataPage}
-			requestPrevDataPage={requestPrevDataPage}
+			requestNextPage={requestNextPage}
+			requestPrevPage={requestPrevPage}
 			getRowId={getRowId}
 		/>
 	);
@@ -125,40 +125,33 @@ describe('DataTable', () => {
 
 		it('renders loading spinner when loading initial data', () => {
 			const wrapper = shallow(
-				<DataTable
-					id="test"
-					metadata={metadata}
-					data={[]}
-					addedCount={0}
-					isFetchingNextDataPage={true}
-					getRowId={getRowId}
-				/>
+				<DataTable id="test" metadata={metadata} data={[]} addedCount={0} fetchingNextPage={true} getRowId={getRowId} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders previous spinner when isFetchingPrevDataPage is true', () => {
+		it('renders previous spinner when fetchingPrevPage is true', () => {
 			const wrapper = shallow(
 				<DataTable
 					id="test"
 					metadata={metadata}
 					data={testData}
 					addedCount={0}
-					isFetchingPrevDataPage={true}
+					fetchingPrevPage={true}
 					getRowId={getRowId}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders next spinner when isFetchingNextDataPage is true', () => {
+		it('renders next spinner when fetchingNextPage is true', () => {
 			const wrapper = shallow(
 				<DataTable
 					id="test"
 					metadata={metadata}
 					data={testData}
 					addedCount={0}
-					isFetchingNextDataPage={true}
+					fetchingNextPage={true}
 					getRowId={getRowId}
 				/>
 			);
@@ -280,7 +273,7 @@ describe('DataTable', () => {
 	describe('behaviour', () => {
 		afterEach(() => Object.defineProperty(navigator, 'userAgent', {value: originalUserAgent, configurable: true}));
 
-		it('adds a scroll listener to the table body on mount if both requestNextDataPage and requestPrevDataPage are set', () => {
+		it('adds a scroll listener to the table body on mount if both requestNextPage and requestPrevPage are set', () => {
 			const addEventListener = jest.fn();
 			const removeEventListener = jest.fn();
 			const tableBody = {
@@ -300,7 +293,7 @@ describe('DataTable', () => {
 			expect(removeEventListener.mock.calls).toEqual([['scroll', addEventListener.mock.calls[0][1]]]);
 		});
 
-		it('adds a scroll listener to the table body on mount if both requestNextDataPage and requestPrevDataPage are set and the browser is IE', () => {
+		it('adds a scroll listener to the table body on mount if both requestNextPage and requestPrevPage are set and the browser is IE', () => {
 			const addEventListener = jest.fn();
 			const removeEventListener = jest.fn();
 			const tableBody = {
@@ -318,7 +311,7 @@ describe('DataTable', () => {
 			expect(addEventListener.mock.calls).toEqual([['scroll', expect.any(Function), false]]);
 		});
 
-		it('does not add a scroll listener to the table body on mount if neither requestNextDataPage and requestPrevDataPage are set', () => {
+		it('does not add a scroll listener to the table body on mount if neither requestNextPage and requestPrevPage are set', () => {
 			const addEventListener = jest.fn();
 			const removeEventListener = jest.fn();
 			const tableBody = {
@@ -335,7 +328,7 @@ describe('DataTable', () => {
 			expect(addEventListener).not.toHaveBeenCalled();
 		});
 
-		it('calls requestNextDataPage when scroll bar at the bottom', () => {
+		it('calls requestNextPage when scroll bar at the bottom', () => {
 			const addEventListener = jest.fn();
 			const tableBody = {
 				clientHeight: 100,
@@ -343,11 +336,11 @@ describe('DataTable', () => {
 				scrollTop: 900,
 				addEventListener,
 			};
-			const requestNextDataPage = jest.fn().mockReturnValue(true);
-			const requestPrevDataPage = jest.fn().mockReturnValue(true);
+			const requestNextPage = jest.fn().mockReturnValue(true);
+			const requestPrevPage = jest.fn().mockReturnValue(true);
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: false};
-			initTable(0, isLoadingNextData, isLoadingPrevData, tableBody, requestNextDataPage, requestPrevDataPage);
+			initTable(0, isLoadingNextData, isLoadingPrevData, tableBody, requestNextPage, requestPrevPage);
 
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
@@ -357,12 +350,12 @@ describe('DataTable', () => {
 			addEventListener.mock.calls[0][1]();
 			jest.runOnlyPendingTimers();
 
-			expect(requestNextDataPage).toHaveBeenCalledTimes(1);
+			expect(requestNextPage).toHaveBeenCalledTimes(1);
 			expect(isLoadingNextData.current).toBe(true);
 			expect(isLoadingPrevData.current).toBe(false);
 		});
 
-		it('calls requestPrevDataPage when scroll bar at the top', () => {
+		it('calls requestPrevPage when scroll bar at the top', () => {
 			const addEventListener = jest.fn();
 			const tableBody = {
 				clientHeight: 100,
@@ -370,11 +363,11 @@ describe('DataTable', () => {
 				scrollTop: 0,
 				addEventListener,
 			};
-			const requestNextDataPage = jest.fn().mockReturnValue(true);
-			const requestPrevDataPage = jest.fn().mockReturnValue(true);
+			const requestNextPage = jest.fn().mockReturnValue(true);
+			const requestPrevPage = jest.fn().mockReturnValue(true);
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: false};
-			initTable(0, isLoadingNextData, isLoadingPrevData, tableBody, requestNextDataPage, requestPrevDataPage);
+			initTable(0, isLoadingNextData, isLoadingPrevData, tableBody, requestNextPage, requestPrevPage);
 
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
@@ -384,12 +377,12 @@ describe('DataTable', () => {
 			addEventListener.mock.calls[0][1]();
 			jest.runOnlyPendingTimers();
 
-			expect(requestPrevDataPage).toHaveBeenCalledTimes(1);
+			expect(requestPrevPage).toHaveBeenCalledTimes(1);
 			expect(isLoadingNextData.current).toBe(false);
 			expect(isLoadingPrevData.current).toBe(true);
 		});
 
-		it('does not call neither requestNextDataPage nor requestPrevDataPage when scroll bar is in the middle', () => {
+		it('does not call neither requestNextPage nor requestPrevPage when scroll bar is in the middle', () => {
 			const addEventListener = jest.fn();
 			const tableBody = {
 				clientHeight: 100,
@@ -397,11 +390,11 @@ describe('DataTable', () => {
 				scrollTop: 500,
 				addEventListener,
 			};
-			const requestNextDataPage = jest.fn().mockReturnValue(true);
-			const requestPrevDataPage = jest.fn().mockReturnValue(true);
+			const requestNextPage = jest.fn().mockReturnValue(true);
+			const requestPrevPage = jest.fn().mockReturnValue(true);
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: false};
-			initTable(0, isLoadingNextData, isLoadingPrevData, tableBody, requestNextDataPage, requestPrevDataPage);
+			initTable(0, isLoadingNextData, isLoadingPrevData, tableBody, requestNextPage, requestPrevPage);
 
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
@@ -411,11 +404,11 @@ describe('DataTable', () => {
 			addEventListener.mock.calls[0][1]();
 			jest.runOnlyPendingTimers();
 
-			expect(requestNextDataPage).not.toHaveBeenCalled();
-			expect(requestPrevDataPage).not.toHaveBeenCalled();
+			expect(requestNextPage).not.toHaveBeenCalled();
+			expect(requestPrevPage).not.toHaveBeenCalled();
 		});
 
-		it('does not call neither requestNextDataPage nor requestPrevDataPage when data is empty', () => {
+		it('does not call neither requestNextPage nor requestPrevPage when data is empty', () => {
 			const addEventListener = jest.fn();
 			const tableBody = {
 				clientHeight: 100,
@@ -423,11 +416,11 @@ describe('DataTable', () => {
 				scrollTop: 500,
 				addEventListener,
 			};
-			const requestNextDataPage = jest.fn().mockReturnValue(true);
-			const requestPrevDataPage = jest.fn().mockReturnValue(true);
+			const requestNextPage = jest.fn().mockReturnValue(true);
+			const requestPrevPage = jest.fn().mockReturnValue(true);
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: false};
-			initTable(0, isLoadingNextData, isLoadingPrevData, tableBody, requestNextDataPage, requestPrevDataPage, []);
+			initTable(0, isLoadingNextData, isLoadingPrevData, tableBody, requestNextPage, requestPrevPage, []);
 
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
@@ -437,8 +430,8 @@ describe('DataTable', () => {
 			addEventListener.mock.calls[0][1]();
 			jest.runOnlyPendingTimers();
 
-			expect(requestNextDataPage).not.toHaveBeenCalled();
-			expect(requestPrevDataPage).not.toHaveBeenCalled();
+			expect(requestNextPage).not.toHaveBeenCalled();
+			expect(requestPrevPage).not.toHaveBeenCalled();
 		});
 
 		it('updates the table scrollTop when the next data is loaded', () => {
@@ -570,24 +563,6 @@ describe('DataTable', () => {
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: false};
 			initTable(2, isLoadingNextData, isLoadingPrevData, tableBody, jest.fn(), jest.fn());
-
-			expect(useEffect).toHaveBeenCalledTimes(3);
-
-			useEffect.mock.calls[2][0]();
-			expect(tableBody.scrollTop).toBe(500);
-			expect(isLoadingNextData.current).toBe(false);
-			expect(isLoadingPrevData.current).toBe(false);
-		});
-
-		it('does not update the table scrollTop when the data is loaded for the first time', () => {
-			const tableBody = {
-				clientHeight: 100,
-				scrollHeight: 1000,
-				scrollTop: 500,
-			};
-			const isLoadingNextData = {current: false};
-			const isLoadingPrevData = {current: false};
-			initTable(testData.length, isLoadingNextData, isLoadingPrevData, tableBody, jest.fn(), jest.fn());
 
 			expect(useEffect).toHaveBeenCalledTimes(3);
 

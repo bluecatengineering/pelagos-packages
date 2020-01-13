@@ -91,18 +91,18 @@ const DataTable = ({
 	id,
 	className,
 	metadata,
-	data,
 	columns,
 	defaultSort,
+	data,
 	addedCount,
 	emptyTableText,
 	highlightId,
 	selectedId,
-	isFetchingPrevDataPage,
-	isFetchingNextDataPage,
+	fetchingPrevPage,
+	fetchingNextPage,
 	getRowId,
-	requestNextDataPage,
-	requestPrevDataPage,
+	requestNextPage,
+	requestPrevPage,
 	onHighlightClear,
 	onRowClick,
 }) => {
@@ -139,20 +139,20 @@ const DataTable = ({
 
 	const handleScroll = useCallback(
 		throttle(() => {
-			if (isFetchingNextDataPage || isFetchingPrevDataPage || data.length === 0) {
+			if (fetchingNextPage || fetchingPrevPage || data.length === 0) {
 				return;
 			}
 
 			const element = tableBody.current;
 			if (element.clientHeight + element.scrollTop + 75 >= element.scrollHeight) {
-				isLoadingNextData.current = requestNextDataPage();
+				isLoadingNextData.current = requestNextPage();
 				isLoadingPrevData.current = false;
 			} else if (element.scrollTop <= 75) {
-				isLoadingPrevData.current = requestPrevDataPage();
+				isLoadingPrevData.current = requestPrevPage();
 				isLoadingNextData.current = false;
 			}
 		}, 500),
-		[data, isFetchingNextDataPage, isFetchingPrevDataPage]
+		[data, fetchingNextPage, fetchingPrevPage]
 	);
 
 	const handleMouseOver = useCallback(event => {
@@ -294,13 +294,13 @@ const DataTable = ({
 	);
 
 	useEffect(() => {
-		if (requestNextDataPage && requestPrevDataPage) {
+		if (requestNextPage && requestPrevPage) {
 			const element = tableBody.current;
 			element.addEventListener('scroll', handleScroll, /Trident\//.test(navigator.userAgent) ? false : {passive: true});
 			return () => element.removeEventListener('scroll', handleScroll);
 		}
 		return undefined;
-	}, [requestNextDataPage, requestPrevDataPage, handleScroll]);
+	}, [requestNextPage, requestPrevPage, handleScroll]);
 
 	useEffect(() => {
 		if (highlightId) {
@@ -309,28 +309,25 @@ const DataTable = ({
 	}, [highlightId, onHighlightClear]);
 
 	useEffect(() => {
-		if (data.length === addedCount) {
-			return;
-		}
-
-		const element = tableBody.current;
-		if (isLoadingNextData.current && !isFetchingNextDataPage) {
+		if (isLoadingNextData.current && !fetchingNextPage) {
+			const element = tableBody.current;
 			element.scrollTop = (element.scrollHeight / data.length) * (data.length - addedCount) - element.clientHeight;
 			isLoadingNextData.current = false;
 			if (focused !== -1) {
 				setFocused(Math.max(0, focused - addedCount));
 			}
-		} else if (isLoadingPrevData.current && !isFetchingPrevDataPage) {
+		} else if (isLoadingPrevData.current && !fetchingPrevPage) {
+			const element = tableBody.current;
 			element.scrollTop = (element.scrollHeight / data.length) * addedCount;
 			isLoadingPrevData.current = false;
 			if (focused !== -1) {
 				setFocused(Math.min(data.length - 1, focused + addedCount));
 			}
 		}
-	}, [data, addedCount, isFetchingNextDataPage, isFetchingPrevDataPage, focused]);
+	}, [data, addedCount, fetchingNextPage, fetchingPrevPage, focused]);
 
 	const empty = data.length === 0;
-	const showLoadingSpinner = isFetchingNextDataPage && empty;
+	const showLoadingSpinner = fetchingNextPage && empty;
 	const displayTableMessage = !showLoadingSpinner && emptyTableText && empty;
 
 	const headers = renderHeaders(metadata, columns, dataSort, updateSortColumn);
@@ -358,7 +355,7 @@ const DataTable = ({
 				ref={tableBody}>
 				{!displayTableMessage ? (
 					<>
-						{isFetchingPrevDataPage && (
+						{fetchingPrevPage && (
 							<div id={id + '-prevSpinner'} className="DataTable__spinner">
 								<Spinner size="tiny" />
 							</div>
@@ -371,7 +368,7 @@ const DataTable = ({
 								{renderRows(sortedData, metadata, columns, selectedId, highlightId, focused, getRowId, onRowClick)}
 							</tbody>
 						</table>
-						{isFetchingNextDataPage && (
+						{fetchingNextPage && (
 							<div
 								id={id + '-nextSpinner'}
 								className={showLoadingSpinner ? 'DataTable__loadingSpinner' : 'DataTable__spinner'}>
@@ -401,21 +398,21 @@ DataTable.propTypes = {
 			sortComparator: PropTypes.func,
 		})
 	).isRequired,
-	data: PropTypes.array.isRequired,
 	columns: PropTypes.array,
 	defaultSort: PropTypes.shape({
 		columnId: PropTypes.string,
 		order: PropTypes.string,
 	}),
-	addedCount: PropTypes.number.isRequired,
+	data: PropTypes.array.isRequired,
+	addedCount: PropTypes.number,
 	emptyTableText: PropTypes.string,
 	highlightId: PropTypes.string,
 	selectedId: PropTypes.string,
-	isFetchingPrevDataPage: PropTypes.bool,
-	isFetchingNextDataPage: PropTypes.bool,
+	fetchingPrevPage: PropTypes.bool,
+	fetchingNextPage: PropTypes.bool,
 	getRowId: PropTypes.func.isRequired,
-	requestNextDataPage: PropTypes.func,
-	requestPrevDataPage: PropTypes.func,
+	requestNextPage: PropTypes.func,
+	requestPrevPage: PropTypes.func,
 	onHighlightClear: PropTypes.func,
 	onRowClick: PropTypes.func,
 };
