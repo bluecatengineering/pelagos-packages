@@ -50,15 +50,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 		},
 		[onApply]
 	);
-
-	const handleKeyDown = useCallback(
-		event => {
-			if (event.keyCode === 13 || event.keyCode === 32) {
-				handleMouseDown(event);
-			}
-		},
-		[handleMouseDown]
-	);
+	const handleKeyDown = useButtonKeyHandler(handleMouseDown);
 
 	useEffect(() => addResizeObserver(filterRef.current, rect => showChevrons(filterRef.current, rect)), []);
 	useEffect(() => {
