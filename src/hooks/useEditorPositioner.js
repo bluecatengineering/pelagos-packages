@@ -4,10 +4,10 @@ export default (ref, buttonId, trackId) =>
 	useEffect(() => {
 		const editor = ref.current;
 		const button = document.getElementById(buttonId);
-		const {top, left, right} = button.getBoundingClientRect();
+		const {bottom, left, right} = button.getBoundingClientRect();
 
 		editor.style.display = '';
-		editor.style.top = top + 32 + 'px';
+		editor.style.top = bottom + 1 + 'px';
 
 		if (!trackId) {
 			editor.style.left = left + 'px';

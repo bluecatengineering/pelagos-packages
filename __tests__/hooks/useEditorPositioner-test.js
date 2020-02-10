@@ -7,7 +7,7 @@ jest.unmock('../../src/hooks/useEditorPositioner');
 describe('useEditorPositioner', () => {
 	it('places the component below the specified button', () => {
 		const editor = {style: {}, display: 'hidden'};
-		const rect = {top: 100, left: 200, right: 300};
+		const rect = {bottom: 100, left: 200, right: 300};
 		const button = {getBoundingClientRect: jest.fn().mockReturnValue(rect)};
 		const ref = {current: editor};
 		const buttonId = 'buttonId';
@@ -18,13 +18,13 @@ describe('useEditorPositioner', () => {
 		useEffect.mock.calls[0][0]();
 		expect(document.getElementById.mock.calls).toEqual([['buttonId']]);
 		expect(editor.style.display).toBe('');
-		expect(editor.style.top).toBe('132px');
+		expect(editor.style.top).toBe('101px');
 		expect(editor.style.left).toBe('200px');
 	});
 
 	it('places the component below the specified button in a track', () => {
 		const editor = {style: {}, display: 'hidden'};
-		const button = {getBoundingClientRect: jest.fn().mockReturnValue({top: 100, left: 200, right: 300})};
+		const button = {getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, right: 300})};
 		const tracks = {getBoundingClientRect: jest.fn().mockReturnValue({left: 100, right: 200})};
 		const ref = {current: editor};
 		const buttonId = 'buttonId';
@@ -40,13 +40,13 @@ describe('useEditorPositioner', () => {
 		useEffect.mock.calls[0][0]();
 		expect(document.getElementById.mock.calls).toEqual([['buttonId'], ['trackId']]);
 		expect(editor.style.display).toBe('');
-		expect(editor.style.top).toBe('132px');
+		expect(editor.style.top).toBe('101px');
 		expect(editor.style.left).toBe('200px');
 	});
 
 	it('places the component below the specified button that is partially out of bounds', () => {
 		const editor = {style: {}, display: 'hidden'};
-		const button = {getBoundingClientRect: jest.fn().mockReturnValue({top: 100, left: 200, right: 300})};
+		const button = {getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, right: 300})};
 		const tracks = {getBoundingClientRect: jest.fn().mockReturnValue({left: 100, right: 200})};
 		const ref = {current: editor};
 		const buttonId = 'buttonId';
@@ -62,7 +62,7 @@ describe('useEditorPositioner', () => {
 		useEffect.mock.calls[0][0]();
 		expect(document.getElementById.mock.calls).toEqual([['buttonId'], ['trackId']]);
 		expect(editor.style.display).toBe('');
-		expect(editor.style.top).toBe('132px');
+		expect(editor.style.top).toBe('101px');
 		expect(editor.style.right).toBe('100px');
 	});
 });
