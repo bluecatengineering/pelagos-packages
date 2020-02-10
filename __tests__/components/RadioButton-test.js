@@ -14,6 +14,13 @@ describe('RadioButton', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when tabIndex is set', () => {
+			const wrapper = shallow(
+				<RadioButton id="test" className="TestClass" label="Test" checked tabIndex={-1} onChange={jest.fn()} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when error is true', () => {
 			const wrapper = shallow(
 				<RadioButton id="test" className="TestClass" label="Test" checked error onChange={jest.fn()} />

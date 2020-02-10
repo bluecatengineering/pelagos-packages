@@ -8,7 +8,7 @@ exports[`RadioButton rendering renders expected elements 1`] = `
   onClick={[MockFunction]}
   onKeyDown={[Function]}
   role="radio"
-  tabIndex="0"
+  tabIndex={0}
 >
   Test
 </span>
@@ -22,7 +22,21 @@ exports[`RadioButton rendering renders expected elements when error is true 1`] 
   onClick={[MockFunction]}
   onKeyDown={[Function]}
   role="radio"
-  tabIndex="0"
+  tabIndex={0}
+>
+  Test
+</span>
+`;
+
+exports[`RadioButton rendering renders expected elements when tabIndex is set 1`] = `
+<span
+  aria-checked={true}
+  className="RadioButton TestClass"
+  id="test"
+  onClick={[MockFunction]}
+  onKeyDown={[Function]}
+  role="radio"
+  tabIndex={-1}
 >
   Test
 </span>
