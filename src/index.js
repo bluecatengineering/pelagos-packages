@@ -15,6 +15,7 @@ export {default as ModalSpinner} from './components/ModalSpinner';
 export {default as Overlay} from './components/Overlay';
 export {default as OverlayTrigger} from './components/OverlayTrigger';
 export {default as RadioButton} from './components/RadioButton';
+export {default as RadioGroup} from './components/RadioGroup';
 export {default as Select} from './components/Select';
 export {default as Spinner} from './components/Spinner';
 export {default as SvgIcon} from './components/SvgIcon';

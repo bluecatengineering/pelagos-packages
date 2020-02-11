@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioGroup rendering renders expected elements 1`] = `
+<div
+  id="test"
+  onKeyDown={[Function]}
+  role="radiogroup"
+>
+  <RadioButton
+    checked={true}
+    data-value="foo"
+    id="test-foo"
+    label="FOO"
+    onChange={[Function]}
+    tabIndex={0}
+  />
+  <RadioButton
+    checked={false}
+    data-value="bar"
+    id="test-bar"
+    label="BAR"
+    onChange={[Function]}
+    tabIndex={-1}
+  />
+  <RadioButton
+    checked={false}
+    data-value="baz"
+    id="test-baz"
+    label="BAZ"
+    onChange={[Function]}
+    tabIndex={-1}
+  />
+</div>
+`;
