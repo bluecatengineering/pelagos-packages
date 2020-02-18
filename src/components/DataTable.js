@@ -391,7 +391,7 @@ DataTable.propTypes = {
 	className: PropTypes.string,
 	metadata: PropTypes.arrayOf(
 		PropTypes.shape({
-			header: PropTypes.string.isRequired,
+			header: PropTypes.any.isRequired,
 			value: PropTypes.func.isRequired,
 			width: PropTypes.string.isRequired,
 			style: PropTypes.object,
