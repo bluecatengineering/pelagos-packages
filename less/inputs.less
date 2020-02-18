@@ -19,6 +19,15 @@ textarea {
 	color: @sky;
 }
 
+input:not([type]),
+input[type='text'],
+input[type='password'],
+textarea {
+	padding: @sp-04 @sp-12;
+	background-color: @form-field-bg;
+	border: 1px solid @form-field-border;
+	border-radius: 3px;
+}
 input:read-only,
 textarea:read-only {
 	color: @font-color-2;
