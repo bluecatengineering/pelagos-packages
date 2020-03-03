@@ -6,6 +6,7 @@ import {scrollToItem} from '@bluecat/helpers';
 import '../formFields/TextInputField.less';
 import './ComboBox.less';
 
+/** A combination box of a text field and an autocomplete list. */
 const ComboBox = ({
 	id,
 	autoSelect,
@@ -105,7 +106,7 @@ const ComboBox = ({
 	const handleBlur = useCallback(() => setOpen(false), []);
 
 	const handleListMouseOver = useCallback((event) => {
-		const element = event.target.closest('.ComboBox__option');
+		const element = event.target.closest('[role=option]');
 		if (element) {
 			setSelected(+element.dataset.index);
 		}
@@ -115,7 +116,7 @@ const ComboBox = ({
 
 	const handleListMouseUp = useCallback(
 		(event) => {
-			const element = event.target.closest('.ComboBox__option');
+			const element = event.target.closest('[role=option]');
 			if (element) {
 				event.preventDefault();
 				selectSuggestion(+element.dataset.index);
@@ -179,16 +180,27 @@ const ComboBox = ({
 };
 
 ComboBox.propTypes = {
+	/** The component id. */
 	id: PropTypes.string.isRequired,
+	/** The placeholder text. */
 	placeholder: PropTypes.string,
+	/** Whether the first suggestion is selected by default. */
 	autoSelect: PropTypes.bool,
+	/** The input field text. */
 	text: PropTypes.string,
+	/** Whether the component is disabled. */
 	disabled: PropTypes.bool,
+	/** Whether the component is in error. */
 	error: PropTypes.bool,
+	/** Function invoked to get suggestions based on text input. */
 	getSuggestions: PropTypes.func,
+	/** Function invoked to render suggestions. */
 	renderSuggestion: PropTypes.func,
+	/** Function invoked when a suggestion is selected. */
 	onChange: PropTypes.func,
+	/** Function invoked when the enter key is pressed. */
 	onEnter: PropTypes.func,
+	/** Function invoked when the text input is changed. */
 	onTextChange: PropTypes.func,
 };
 

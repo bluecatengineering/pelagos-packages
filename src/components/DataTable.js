@@ -87,6 +87,7 @@ const renderRows = (data, metadata, columns, selectedId, highlightId, focused, g
 		);
 	});
 
+/** A scrollable table. */
 const DataTable = ({
 	id,
 	className,
@@ -382,33 +383,54 @@ const DataTable = ({
 };
 
 DataTable.propTypes = {
+	/** The component id. */
 	id: PropTypes.string.isRequired,
+	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The attributes of the table columns. */
 	metadata: PropTypes.arrayOf(
 		PropTypes.shape({
+			id: PropTypes.string.isRequired,
 			header: PropTypes.any.isRequired,
 			value: PropTypes.func.isRequired,
 			width: PropTypes.string.isRequired,
+			className: PropTypes.string,
+			hoverValue: PropTypes.boolean,
 			style: PropTypes.object,
+			sortable: PropTypes.boolean,
 			sortComparator: PropTypes.func,
 		})
 	).isRequired,
+	/** The indices of the columns to display. */
 	columns: PropTypes.array,
+	/** The parameters of the default sort. */
 	defaultSort: PropTypes.shape({
 		columnId: PropTypes.string,
 		order: PropTypes.string,
 	}),
+	/** The data to display. */
 	data: PropTypes.array.isRequired,
+	/** The number of rows added in most recent update. */
 	addedCount: PropTypes.number,
+	/** The message to display when the table is empty. */
 	emptyTableText: PropTypes.string,
+	/** The id of the highlighted row. */
 	highlightId: PropTypes.string,
+	/** The id of the selected row. */
 	selectedId: PropTypes.string,
+	/** Whether the previous page is being retrieved. */
 	fetchingPrevPage: PropTypes.bool,
+	/** Whether the next page is being retrieved. */
 	fetchingNextPage: PropTypes.bool,
+	/** Function to get the row id. */
 	getRowId: PropTypes.func.isRequired,
-	requestNextPage: PropTypes.func,
+	/** Function to request previous page of data. */
 	requestPrevPage: PropTypes.func,
+	/** Function to request next page of data. */
+	requestNextPage: PropTypes.func,
+	/** Function invoked to clear highlight. */
 	onHighlightClear: PropTypes.func,
+	/** Function invoked when a given row is clicked. */
 	onRowClick: PropTypes.func,
 };
 
