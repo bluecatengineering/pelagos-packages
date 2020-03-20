@@ -1,9 +1,11 @@
 @import '../../less/colors';
+@import '../../less/focus';
 @import '../../less/spacing';
 
 .IconButton {
 	display: inline-block;
 	font-size: 19px;
+	padding: @sp-02;
 	cursor: pointer;
 	color: @azure;
 	transition: color 0.3s ease-out;
@@ -22,8 +24,7 @@
 }
 
 .IconButton:focus {
-	outline: 2px solid @bondi;
-	outline-offset: 2px;
+	@focus-ring();
 }
 
 .IconButton[aria-disabled='true'],

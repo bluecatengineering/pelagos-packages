@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash-es/throttle';
 import stableSort from 'stable';
-import {buildHighlighter, smoothScroll, scrollToItem} from '@bluecat/helpers';
+import {buildHighlighter, scrollToItem, smoothScroll} from '@bluecat/helpers';
 import {faSort, faSortDown, faSortUp} from '@fortawesome/free-solid-svg-icons';
 
 import SvgIcon from './SvgIcon';
@@ -108,7 +108,6 @@ const DataTable = ({
 }) => {
 	const [dataSort, setDataSort] = useState(defaultSort);
 	const [focused, setFocused] = useState(-1);
-	const [hasFocus, setHasFocus] = useState(-1);
 
 	const tableBody = useRef(null);
 	const isLoadingNextData = useRef(false);
@@ -155,14 +154,12 @@ const DataTable = ({
 		[data, fetchingNextPage, fetchingPrevPage]
 	);
 
-	const handleMouseOver = useCallback((event) => {
+	const handleMouseDown = useCallback((event) => {
 		const element = event.target.closest('.DataTable__row');
 		if (element) {
 			setFocused(+element.dataset.index);
 		}
 	}, []);
-
-	const handleMouseOut = useCallback(() => (hasFocus ? null : setFocused(-1)), [hasFocus]);
 
 	const handleClick = useCallback(
 		(event) => {
@@ -178,7 +175,6 @@ const DataTable = ({
 	);
 
 	const handleFocus = useCallback(() => {
-		setHasFocus(true);
 		if (focused === -1) {
 			let index;
 			if (selectedId) {
@@ -195,7 +191,7 @@ const DataTable = ({
 		}
 	}, [focused, sortedData, selectedId, getRowId]);
 
-	const handleBlur = useCallback(() => (setFocused(-1), setHasFocus(false)), []);
+	const handleBlur = useCallback(() => setFocused(-1), []);
 
 	const handleKeyDown = useCallback(
 		(event) => {
@@ -345,8 +341,7 @@ const DataTable = ({
 				className="DataTable__body"
 				tabIndex="0"
 				aria-activedescendant={focused === -1 || !sortedData[focused] ? null : getRowId(sortedData[focused], focused)}
-				onMouseOver={handleMouseOver}
-				onMouseOut={handleMouseOut}
+				onMouseDown={handleMouseDown}
 				onClick={onRowClick ? handleClick : null}
 				onFocus={empty ? null : handleFocus}
 				onBlur={handleBlur}

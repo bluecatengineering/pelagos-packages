@@ -1,5 +1,6 @@
 @import '../../less/colors';
 @import '../../less/fonts';
+@import '../../less/focus';
 @import '../../less/spacing';
 
 .TextAreaField {
@@ -28,7 +29,7 @@
 }
 
 .TextAreaField--error:focus {
-	outline-color: @form-field-error;
+	@focus-ring-error();
 }
 
 .TextAreaField--noresize {

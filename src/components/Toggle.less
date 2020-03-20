@@ -1,10 +1,12 @@
 @import '../../less/colors';
+@import '../../less/spacing';
 
 .Toggle {
 	display: inline-block;
 	position: relative;
-	width: 43px;
+	width: 44px;
 	height: 20px;
+	margin: @sp-02;
 	cursor: pointer;
 	outline: none;
 }
@@ -42,7 +44,7 @@
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	background-color: @slate;
+	background-color: @silver;
 	transition: all 0.25s ease-out, box-shadow 0s;
 }
 .Toggle[aria-checked='true']::after {
@@ -50,8 +52,5 @@
 	left: 24px;
 }
 .Toggle:focus:not([aria-disabled='true'])::after {
-	box-shadow: 0 0 0 2px @bondi;
-}
-.Toggle:active:not([aria-disabled='true'])::after {
-	box-shadow: 0 0 0 2px @ocean;
+	box-shadow: 0 0 0 1px @ocean, 0 0 4px 2px @sky;
 }

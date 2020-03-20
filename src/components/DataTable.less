@@ -1,4 +1,5 @@
 @import '../../less/colors';
+@import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
 
@@ -11,6 +12,7 @@
 
 .DataTable__table {
 	width: 99%;
+	margin: @sp-02;
 }
 
 .DataTable__header {
@@ -61,16 +63,15 @@
 }
 .DataTable__row--focused,
 .DataTable__row--focused:nth-child(even) {
-	background-color: @fiord;
+	@focus-ring();
 }
 .DataTable__row[aria-selected='true'],
 .DataTable__row[aria-selected='true']:nth-child(even) {
-	color: @font-color-black;
-	background-color: @bondi;
-}
-.DataTable__row--focused[aria-selected='true'],
-.DataTable__row--focused[aria-selected='true']:nth-child(even) {
 	background-color: @sea;
+}
+.DataTable__row:hover,
+.DataTable__row:nth-child(even):hover {
+	background-color: @ocean;
 }
 
 .DataTable__row--highlight {

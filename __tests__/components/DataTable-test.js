@@ -572,7 +572,7 @@ describe('DataTable', () => {
 			expect(isLoadingPrevData.current).toBe(false);
 		});
 
-		it('sets focused to the index of the row on mouse over', () => {
+		it('sets focused to the index of the row on mouse down', () => {
 			const setFocused = jest.fn();
 			const element = {dataset: {index: '1'}};
 			const closest = jest.fn().mockReturnValue(element);
@@ -583,13 +583,13 @@ describe('DataTable', () => {
 			);
 			const table = wrapper.find('#test-tableBody');
 
-			table.simulate('mouseover', event);
+			table.simulate('mousedown', event);
 
 			expect(closest.mock.calls).toEqual([['.DataTable__row']]);
 			expect(setFocused.mock.calls).toEqual([[1]]);
 		});
 
-		it('does not set focused on mouse over other elements', () => {
+		it('does not set focused on mouse down other elements', () => {
 			const setFocused = jest.fn();
 			const closest = jest.fn();
 			const event = {target: {closest}};
@@ -599,28 +599,15 @@ describe('DataTable', () => {
 			);
 			const table = wrapper.find('#test-tableBody');
 
-			table.simulate('mouseover', event);
+			table.simulate('mousedown', event);
 
 			expect(closest.mock.calls).toEqual([['.DataTable__row']]);
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 
-		it('sets focused to -1 on mouse out when hasFocus is false', () => {
-			const setFocused = jest.fn();
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]).mockReturnValueOnce([false]);
-			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
-			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('mouseout');
-
-			expect(setFocused.mock.calls).toEqual([[-1]]);
-		});
-
 		it('does not change focused on mouse out when hasFocus is true', () => {
 			const setFocused = jest.fn();
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]).mockReturnValueOnce([true]);
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
@@ -686,11 +673,10 @@ describe('DataTable', () => {
 
 		it('sets focused to 0 on focus when focused is -1 and selectedId is not set', () => {
 			const setFocused = jest.fn();
-			const setHasFocus = jest.fn();
 			const child = {};
 			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
 			const tableBody = {querySelector};
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1, setFocused]).mockReturnValueOnce([false, setHasFocus]);
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
@@ -699,7 +685,6 @@ describe('DataTable', () => {
 
 			table.simulate('focus');
 
-			expect(setHasFocus.mock.calls).toEqual([[true]]);
 			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(querySelector.mock.calls).toEqual([['table']]);
 			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
@@ -758,8 +743,7 @@ describe('DataTable', () => {
 
 		it('sets focused to -1 on blur', () => {
 			const setFocused = jest.fn();
-			const setHasFocus = jest.fn();
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]).mockReturnValueOnce([true, setHasFocus]);
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
@@ -768,7 +752,6 @@ describe('DataTable', () => {
 			table.simulate('blur');
 
 			expect(setFocused.mock.calls).toEqual([[-1]]);
-			expect(setHasFocus.mock.calls).toEqual([[false]]);
 		});
 
 		it('prevents event default when enter or space are pressed', () => {

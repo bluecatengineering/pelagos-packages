@@ -1,4 +1,5 @@
 @import '../../less/colors';
+@import '../../less/focus';
 @import '../../less/elevations';
 @import '../../less/spacing';
 
@@ -14,8 +15,7 @@
 }
 
 .FilterMenu__button:focus {
-	outline: 2px solid @bondi;
-	outline-offset: 0;
+	@focus-ring();
 }
 
 .FilterMenu__menu {

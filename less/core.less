@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'focus';
 @import 'spacing';
 
 *,
@@ -20,6 +21,8 @@ footer {
 a {
 	color: @azure;
 	text-decoration: none;
+	padding: 0 @sp-02;
+	margin: @sp-02;
 	cursor: pointer;
 	transition: color 0.3s ease-out;
 
@@ -28,9 +31,8 @@ a {
 	}
 
 	&:focus {
+		@focus-ring();
 		color: @sea;
-		outline: 2px solid @bondi;
-		outline-offset: 0;
 	}
 
 	&:active {

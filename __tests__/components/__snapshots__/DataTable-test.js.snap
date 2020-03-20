@@ -89,8 +89,7 @@ exports[`DataTable rendering renders clickable row 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -464,8 +463,7 @@ exports[`DataTable rendering renders focused row 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -679,8 +677,7 @@ exports[`DataTable rendering renders highlighted row 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -894,8 +891,7 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
     onFocus={null}
     onKeyDown={null}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -1076,8 +1072,7 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -1459,8 +1454,7 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -1842,8 +1836,7 @@ exports[`DataTable rendering renders selected row 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -2057,8 +2050,7 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
     onFocus={null}
     onKeyDown={null}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <div
@@ -2160,8 +2152,7 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -2535,8 +2526,7 @@ exports[`DataTable rendering renders the expected elements in descending order 1
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -2910,8 +2900,7 @@ exports[`DataTable rendering renders the expected elements using a secondary key
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>
@@ -3261,8 +3250,7 @@ exports[`DataTable rendering renders the expected elements when columns is set 1
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={null}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
+    onMouseDown={[Function]}
     tabIndex="0"
   >
     <React.Fragment>

@@ -1,4 +1,5 @@
 @import '../../less/colors';
+@import '../../less/focus';
 @import '../../less/spacing';
 
 .CheckBox {
@@ -39,10 +40,10 @@
 }
 
 .CheckBox:focus::before {
-	box-shadow: 0 0 0 2px @bondi;
+	@focus-ring();
 }
 .CheckBox--error:focus::before {
-	box-shadow: 0 0 0 2px @burnt;
+	@focus-ring-error();
 }
 
 .CheckBox[aria-checked='true']::after {

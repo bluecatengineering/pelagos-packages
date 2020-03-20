@@ -1,4 +1,5 @@
 @import '../../less/colors';
+@import '../../less/focus';
 
 .Hamburger {
 	position: relative;
@@ -19,9 +20,8 @@
 }
 
 .Hamburger:focus {
+	@focus-ring();
 	color: @sea;
-	outline: 2px solid @bondi;
-	outline-offset: 0;
 }
 
 .Hamburger__inner,
