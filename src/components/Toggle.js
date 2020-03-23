@@ -5,7 +5,7 @@ import './Toggle.less';
 
 const Toggle = ({className, checked, disabled, onChange, ...props}) => {
 	const handleKeyDown = useCallback(
-		event => (event.keyCode === 32 ? (event.preventDefault(), onChange(event)) : null),
+		(event) => (event.keyCode === 32 ? (event.preventDefault(), onChange(event)) : null),
 		[onChange]
 	);
 	return (

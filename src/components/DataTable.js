@@ -17,9 +17,9 @@ const sortData = (data, metadata, dataSort, defaultSortColumnId) => {
 	}
 
 	const sortColumnId = dataSort.columnId;
-	const sortIndex = metadata.findIndex(m => m.id === sortColumnId);
+	const sortIndex = metadata.findIndex((m) => m.id === sortColumnId);
 
-	const secondarySortIndex = metadata.findIndex(m => m.id === defaultSortColumnId);
+	const secondarySortIndex = metadata.findIndex((m) => m.id === defaultSortColumnId);
 
 	const primarySortComparator = metadata[sortIndex].sortComparator.bind(metadata[sortIndex]);
 	const secondarySortComparator =
@@ -37,10 +37,10 @@ const sortData = (data, metadata, dataSort, defaultSortColumnId) => {
 	});
 };
 
-const mapColumns = (metadata, columns, f) => (columns ? columns.map(c => f(metadata[c])) : metadata.map(f));
+const mapColumns = (metadata, columns, f) => (columns ? columns.map((c) => f(metadata[c])) : metadata.map(f));
 
 const renderHeaders = (metadata, columns, dataSort, onClick) =>
-	mapColumns(metadata, columns, col => {
+	mapColumns(metadata, columns, (col) => {
 		const sortOrder = dataSort && dataSort.columnId === col.id ? dataSort.order : null;
 		const ariaSort = !col.sortable ? null : sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none';
 		return (
@@ -74,7 +74,7 @@ const renderRows = (data, metadata, columns, selectedId, highlightId, focused, g
 
 		return (
 			<tr key={rowIndex} id={rowId} className={className} aria-selected={selectedId === rowId} data-index={rowIndex}>
-				{mapColumns(metadata, columns, col => (
+				{mapColumns(metadata, columns, (col) => (
 					<td
 						key={col.id}
 						style={{...col.style, width: col.width}}
@@ -121,15 +121,15 @@ const DataTable = ({
 		dataSort,
 	]);
 
-	const updateFocused = useCallback(index => {
+	const updateFocused = useCallback((index) => {
 		setFocused(index);
 		const element = tableBody.current;
 		scrollToItem(element, getRow(element, index));
 	}, []);
 
 	const updateSortColumn = useCallback(
-		column =>
-			setDataSort(dataSort =>
+		(column) =>
+			setDataSort((dataSort) =>
 				dataSort && dataSort.columnId === column.id
 					? {...dataSort, order: dataSort.order === 'a' ? 'd' : 'a'}
 					: {columnId: column.id, order: 'a'}
@@ -155,7 +155,7 @@ const DataTable = ({
 		[data, fetchingNextPage, fetchingPrevPage]
 	);
 
-	const handleMouseOver = useCallback(event => {
+	const handleMouseOver = useCallback((event) => {
 		const element = event.target.closest('.DataTable__row');
 		if (element) {
 			setFocused(+element.dataset.index);
@@ -165,7 +165,7 @@ const DataTable = ({
 	const handleMouseOut = useCallback(() => (hasFocus ? null : setFocused(-1)), [hasFocus]);
 
 	const handleClick = useCallback(
-		event => {
+		(event) => {
 			const element = event.target.closest('.DataTable__row');
 			if (element) {
 				event.preventDefault();
@@ -198,7 +198,7 @@ const DataTable = ({
 	const handleBlur = useCallback(() => (setFocused(-1), setHasFocus(false)), []);
 
 	const handleKeyDown = useCallback(
-		event => {
+		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				switch (event.keyCode) {
 					case 13: // enter
@@ -278,7 +278,7 @@ const DataTable = ({
 	);
 
 	const handleKeyUp = useCallback(
-		event => {
+		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				switch (event.keyCode) {
 					case 13: // enter

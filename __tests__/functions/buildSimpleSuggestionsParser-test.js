@@ -9,7 +9,10 @@ describe('buildSimpleSuggestionsParser', () => {
 	});
 
 	it('returns expected entries when transform is set', () => {
-		const parser = buildSimpleSuggestionsParser(() => null, s => s.toUpperCase());
+		const parser = buildSimpleSuggestionsParser(
+			() => null,
+			(s) => s.toUpperCase()
+		);
 		expect(parser('a, b, a, c', ['B', 'D'])).toEqual({entries: ['A', 'C']});
 	});
 

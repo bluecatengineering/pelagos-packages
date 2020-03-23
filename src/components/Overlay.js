@@ -10,7 +10,7 @@ const PROPS = ['positionLeft', 'positionTop', 'arrowOffsetLeft', 'arrowOffsetTop
 const getOffset = (position, size, windowSize) =>
 	position < 0 ? -position : position + size > windowSize ? windowSize - position - size : 0;
 
-const addClassName = child => (child.props.className ? child.props.className + ' ' : '') + 'Overlay';
+const addClassName = (child) => (child.props.className ? child.props.className + ' ' : '') + 'Overlay';
 
 export default class Overlay extends Component {
 	static propTypes = {

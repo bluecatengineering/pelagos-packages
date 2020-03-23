@@ -29,10 +29,7 @@ describe('useEditorPositioner', () => {
 		const ref = {current: editor};
 		const buttonId = 'buttonId';
 		const trackId = 'trackId';
-		jest
-			.spyOn(document, 'getElementById')
-			.mockReturnValueOnce(button)
-			.mockReturnValueOnce(tracks);
+		jest.spyOn(document, 'getElementById').mockReturnValueOnce(button).mockReturnValueOnce(tracks);
 		window.innerWidth = 500;
 
 		useEditorPositioner(ref, buttonId, trackId);
@@ -51,10 +48,7 @@ describe('useEditorPositioner', () => {
 		const ref = {current: editor};
 		const buttonId = 'buttonId';
 		const trackId = 'trackId';
-		jest
-			.spyOn(document, 'getElementById')
-			.mockReturnValueOnce(button)
-			.mockReturnValueOnce(tracks);
+		jest.spyOn(document, 'getElementById').mockReturnValueOnce(button).mockReturnValueOnce(tracks);
 		window.innerWidth = 300;
 
 		useEditorPositioner(ref, buttonId, trackId);

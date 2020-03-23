@@ -6,14 +6,14 @@ import './Tabs.less';
 /** Displays components in tabs. */
 const Tabs = ({id, active, items, onTabClick}) => {
 	const [focused, setFocused] = useState(-1);
-	const activeItem = useMemo(() => items.find(item => item.id === active), [items, active]);
+	const activeItem = useMemo(() => items.find((item) => item.id === active), [items, active]);
 
 	const clearFocus = useCallback(() => setFocused(-1), []);
 
-	const handleFocus = useCallback(() => setFocused(items.findIndex(item => item.id === active)), [items, active]);
+	const handleFocus = useCallback(() => setFocused(items.findIndex((item) => item.id === active)), [items, active]);
 
 	const handleKeyDown = useCallback(
-		event => {
+		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				const keyCode = event.keyCode;
 				switch (keyCode) {
@@ -35,12 +35,12 @@ const Tabs = ({id, active, items, onTabClick}) => {
 					case 37: // left
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
-						setFocused(focused => (focused > 0 ? focused - 1 : items.length - 1));
+						setFocused((focused) => (focused > 0 ? focused - 1 : items.length - 1));
 						break;
 					case 39: // right
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
-						setFocused(focused => (focused < items.length - 1 ? focused + 1 : 0));
+						setFocused((focused) => (focused < items.length - 1 ? focused + 1 : 0));
 						break;
 				}
 			}
@@ -49,7 +49,7 @@ const Tabs = ({id, active, items, onTabClick}) => {
 	);
 
 	const handleKeyUp = useCallback(
-		event => {
+		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				switch (event.keyCode) {
 					case 13: // enter
@@ -64,15 +64,15 @@ const Tabs = ({id, active, items, onTabClick}) => {
 		[focused, items, onTabClick]
 	);
 
-	const handleMouseOver = useCallback(event => {
+	const handleMouseOver = useCallback((event) => {
 		const element = event.target.closest('[role="tab"]');
 		setFocused(element ? +element.dataset.index : -1);
 	}, []);
 
-	const handleMouseDown = useCallback(event => event.preventDefault(), []);
+	const handleMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleMouseUp = useCallback(
-		event => {
+		(event) => {
 			const element = event.target.closest('[role="tab"]');
 			if (element) {
 				event.preventDefault();

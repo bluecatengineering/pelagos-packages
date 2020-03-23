@@ -111,10 +111,7 @@ describe('FilterList', () => {
 			const item = {dataset: {key: 'view'}};
 			const event = {
 				target: {
-					closest: jest
-						.fn()
-						.mockReturnValueOnce(null)
-						.mockReturnValueOnce(item),
+					closest: jest.fn().mockReturnValueOnce(null).mockReturnValueOnce(item),
 				},
 				stopPropagation: jest.fn(),
 			};

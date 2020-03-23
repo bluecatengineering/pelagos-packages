@@ -8,7 +8,7 @@ import './stories.less';
 
 const req = require.context('../stories', true, /-story\.js$/);
 
-addDecorator(story => (
+addDecorator((story) => (
 	<div className="Story__wrapper">
 		<BackgroundPicker />
 		{story()}
@@ -16,4 +16,4 @@ addDecorator(story => (
 ));
 addDecorator(withA11y);
 
-configure(() => req.keys().forEach(filename => req(filename)), module);
+configure(() => req.keys().forEach((filename) => req(filename)), module);

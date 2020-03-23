@@ -7,9 +7,9 @@ import renderSuggestion from '../suggestions/renderSuggestion';
 import renderNamedListItem from '../listItems/renderNamedListItem';
 import __ from '../strings';
 
-const getName = o => o.name;
-const getId = o => o.id;
-const getSuggestionHighlightKey = s => (s.order === 2 ? s.id : null);
+const getName = (o) => o.name;
+const getId = (o) => o.id;
+const getSuggestionHighlightKey = (s) => (s.order === 2 ? s.id : null);
 
 /** Filter editor where values are selected from a list. */
 const NameFilterEditor = ({label, placeholder, list, sourceById, errorMessage, validateSaveRef, onListChange}) => {
@@ -23,7 +23,7 @@ const NameFilterEditor = ({label, placeholder, list, sourceById, errorMessage, v
 		errorMessage,
 	]);
 
-	const handleListChange = useCallback(list => onListChange(list.map(getId)), [onListChange]);
+	const handleListChange = useCallback((list) => onListChange(list.map(getId)), [onListChange]);
 
 	validateSaveRef.current = useCallback(() => {
 		if (text) {
@@ -41,7 +41,7 @@ const NameFilterEditor = ({label, placeholder, list, sourceById, errorMessage, v
 			type="text"
 			column
 			value={text}
-			list={list.map(id => sourceById[id] || {id})}
+			list={list.map((id) => sourceById[id] || {id})}
 			error={error}
 			getSuggestions={getSuggestions}
 			getSuggestionText={getName}

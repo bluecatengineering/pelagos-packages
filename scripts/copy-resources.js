@@ -3,7 +3,7 @@ const {dirname, join} = require('path');
 
 const EXTENSIONS = /\.(less|yaml)$/;
 
-const mkdirs = path => {
+const mkdirs = (path) => {
 	try {
 		mkdirSync(path);
 	} catch (err) {
@@ -19,7 +19,7 @@ const mkdirs = path => {
 const copyFile = (from, to) => writeFileSync(to, readFileSync(from));
 
 const copyDir = (from, to) =>
-	readdirSync(from).forEach(name => {
+	readdirSync(from).forEach((name) => {
 		const subFrom = join(from, name);
 		const subTo = join(to, name);
 		const stats = statSync(subFrom);

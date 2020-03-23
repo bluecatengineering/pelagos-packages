@@ -5,7 +5,7 @@ import identity from 'lodash-es/identity';
 import {ComboBox} from '../src';
 
 const getSuggestions = () => ['Alpha', 'Beta', 'Gamma'];
-const renderSuggestion = text => <div>{text}</div>;
+const renderSuggestion = (text) => <div>{text}</div>;
 
 storiesOf('ComboBox', module).add('all states', () => (
 	<div className="Story__group">

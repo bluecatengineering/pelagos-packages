@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import './CheckBox.less';
 
 const CheckBox = ({id, className, label, checked, disabled, error, onChange}) => {
-	const handleClick = useCallback(event => (disabled ? null : onChange(event)), [disabled, onChange]);
+	const handleClick = useCallback((event) => (disabled ? null : onChange(event)), [disabled, onChange]);
 
 	const handleKeyDown = useCallback(
-		event => (disabled || event.keyCode !== 32 ? null : (event.preventDefault(), onChange(event))),
+		(event) => (disabled || event.keyCode !== 32 ? null : (event.preventDefault(), onChange(event))),
 		[disabled, onChange]
 	);
 

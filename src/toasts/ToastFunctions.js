@@ -8,7 +8,7 @@ const toasts = {};
 export const SHORT_DURATION = 3000;
 export const DEFAULT_DURATION = 8000;
 
-export const hasFatalError = messages => messages.some(m => m.type === ToastTypes.FATAL);
+export const hasFatalError = (messages) => messages.some((m) => m.type === ToastTypes.FATAL);
 
 export const registerActionToast = (action, text, type = ToastTypes.FATAL) => {
 	let list = toasts[action];
@@ -18,7 +18,7 @@ export const registerActionToast = (action, text, type = ToastTypes.FATAL) => {
 	list.push(typeof text === 'object' ? text : {text, type});
 };
 
-export const toaster = store => next => action => {
+export const toaster = (store) => (next) => (action) => {
 	const actionType = action.type;
 	const dispatch = store.dispatch;
 	if (actionType === ADD_TOAST_TYPE) {
@@ -26,7 +26,7 @@ export const toaster = store => next => action => {
 	} else {
 		const list = toasts[actionType];
 		if (list) {
-			list.forEach(toast => {
+			list.forEach((toast) => {
 				let message;
 				const getter = toast.toast;
 				if (getter) {

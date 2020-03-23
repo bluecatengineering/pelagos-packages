@@ -7,8 +7,8 @@ import renderSuggestion from '../suggestions/renderSuggestion';
 import renderListItem from '../listItems/renderListItem';
 import __ from '../strings';
 
-const getName = o => o.name;
-const getSuggestionHighlightKey = s => (s.order === 2 ? s.name : null);
+const getName = (o) => o.name;
+const getSuggestionHighlightKey = (s) => (s.order === 2 ? s.name : null);
 
 /** Filter editor where values are typed. */
 const TextFilterEditor = ({label, placeholder, list, getSuggestions, parseInput, validateSaveRef, onListChange}) => {

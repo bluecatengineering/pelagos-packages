@@ -12,7 +12,7 @@ const strings = {
 	three: 'Three',
 };
 const options = Object.keys(strings);
-const renderOption = o => strings[o];
+const renderOption = (o) => strings[o];
 
 describe('Select', () => {
 	describe('rendering', () => {
@@ -501,7 +501,7 @@ describe('Select', () => {
 				clientHeight: 75,
 				scrollTop: 0,
 				scrollHeight: 75,
-				children: options.map(o => ({textContent: renderOption(o)})),
+				children: options.map((o) => ({textContent: renderOption(o)})),
 			};
 			const searchString = {current: null};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
@@ -533,7 +533,7 @@ describe('Select', () => {
 				clientHeight: 75,
 				scrollTop: 0,
 				scrollHeight: 75,
-				children: options.map(o => ({textContent: renderOption(o)})),
+				children: options.map((o) => ({textContent: renderOption(o)})),
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
@@ -567,7 +567,7 @@ describe('Select', () => {
 				clientHeight: 75,
 				scrollTop: 0,
 				scrollHeight: 75,
-				children: options.map(o => ({textContent: renderOption(o)})),
+				children: options.map((o) => ({textContent: renderOption(o)})),
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef

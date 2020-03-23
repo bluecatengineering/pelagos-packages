@@ -37,45 +37,45 @@
     "less"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/preset-env": "^7.7.6",
-    "@babel/preset-react": "^7.7.4",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.1",
     "@bluecat/babel-plugin-transform-hash-icu-key": "^0.3.0",
-    "@bluecat/helpers": "^0.5.2",
+    "@bluecat/helpers": "^0.6.0",
     "@bluecat/strings-jest": "^0.3.0",
     "@bluecat/strings-linter": "^0.3.0",
     "@bluecat/strings-loader": "^0.3.0",
-    "@bluecat/stylelint-config": "^1.0.0",
-    "@bluecateng/eslint-config-react": "^1.1.0",
-    "@bluecateng/git-checks": "^0.2.0",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@storybook/addon-a11y": "^5.2.8",
-    "@storybook/react": "^5.2.8",
-    "babel-loader": "^8.0.6",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "eslint": "^6.7.2",
+    "@bluecat/stylelint-config": "^1.2.0",
+    "@bluecateng/eslint-config-react": "^1.2.0",
+    "@bluecateng/git-checks": "^0.3.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@storybook/addon-a11y": "^5.3.17",
+    "@storybook/react": "^5.3.17",
+    "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
     "focus-trap": "^5.1.0",
-    "husky": "^3.1.0",
-    "jest": "^24.9.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
     "jest-junit": "^10.0.0",
     "js-yaml": "^3.13.1",
-    "less": "^3.10.3",
+    "less": "^3.11.1",
     "less-loader": "^5.0.0",
-    "lint-staged": "^9.5.0",
+    "lint-staged": "^10.0.8",
     "lodash-es": "^4.17.15",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.1",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-transition-group": "^4.3.0",
     "redux-actions": "^2.6.5",
     "stable": "^0.1.8",
-    "stylelint": "^12.0.0",
-    "stylelint-config-prettier": "^8.0.0",
-    "stylelint-config-standard": "^19.0.0"
+    "stylelint": "^13.2.1",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-standard": "^20.0.0"
   },
   "eslintConfig": {
     "extends": [
@@ -143,20 +143,17 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix --max-warnings 0 --no-ignore",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.less": [
       "stylelint",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.strings.yaml": [
       "lint-icu-strings"
     ],
     "*.{json,md,yaml}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }

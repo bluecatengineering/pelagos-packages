@@ -1,7 +1,7 @@
 import identity from 'lodash-es/identity';
 
 export default (validate, transform = identity) => (text, list) => {
-	const allEntries = text.split(',').map(entry => transform(entry.trim()));
+	const allEntries = text.split(',').map((entry) => transform(entry.trim()));
 	const entries = [];
 	let error;
 	for (let i = 0; i < allEntries.length; ++i) {

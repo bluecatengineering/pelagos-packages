@@ -35,7 +35,7 @@ const ListInput = ({
 	const [highlightKey, setHighlightKey] = useState(null);
 
 	const handleGetSuggestions = useCallback(
-		text => {
+		(text) => {
 			const {suggestions, error} = getSuggestions(text, list);
 			if (error) {
 				onErrorChange(error);
@@ -48,7 +48,7 @@ const ListInput = ({
 	);
 
 	const handleChange = useCallback(
-		suggestion => {
+		(suggestion) => {
 			const id = getHighlightKey(suggestion);
 			if (id) {
 				setText('');
@@ -103,7 +103,7 @@ const ListInput = ({
 	}, [list, text, parseInput, onTextChange, onListChange, onErrorChange]);
 
 	const handleTextChange = useCallback(
-		text => {
+		(text) => {
 			if (error) {
 				onErrorChange(null);
 			}
@@ -113,7 +113,10 @@ const ListInput = ({
 		[error, onTextChange, onErrorChange]
 	);
 
-	const handleRemoveClick = useCallback(item => onListChange(list.filter(old => old !== item)), [list, onListChange]);
+	const handleRemoveClick = useCallback((item) => onListChange(list.filter((old) => old !== item)), [
+		list,
+		onListChange,
+	]);
 
 	const handleHighlightClear = useCallback(() => setHighlightKey(null), []);
 

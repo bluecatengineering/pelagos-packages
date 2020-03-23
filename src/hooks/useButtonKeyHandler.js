@@ -1,8 +1,8 @@
 import {useCallback} from 'react';
 
-export default onClick =>
+export default (onClick) =>
 	useCallback(
-		event =>
+		(event) =>
 			!event.shiftKey &&
 			!event.ctrlKey &&
 			!event.altKey &&

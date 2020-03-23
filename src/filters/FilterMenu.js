@@ -14,14 +14,14 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 	const [menuVisible, setMenuVisible] = useState(false);
 	const [filter, setFilter] = useState(null);
 
-	const filteredOptions = !filters ? options : options.filter(key => !filters[key] || !filters[key].length);
+	const filteredOptions = !filters ? options : options.filter((key) => !filters[key] || !filters[key].length);
 
 	const handleClose = useCallback(() => setFilter(null), []);
-	const handleSave = useCallback(values => (setFilter(null), onApply(filter, values)), [filter, onApply]);
+	const handleSave = useCallback((values) => (setFilter(null), onApply(filter, values)), [filter, onApply]);
 
 	const links = useMemo(
 		() =>
-			filteredOptions.map(key => ({
+			filteredOptions.map((key) => ({
 				key,
 				text: getOptionText(key),
 				handler: () => setFilter(key),

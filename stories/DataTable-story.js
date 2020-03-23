@@ -9,7 +9,7 @@ const metadata = [
 		header: 'Name',
 		width: '60%',
 		sortable: true,
-		value: row => row.name,
+		value: (row) => row.name,
 		sortComparator: (a, b) => a.name.localeCompare(b.name),
 	},
 	{
@@ -17,7 +17,7 @@ const metadata = [
 		header: 'Value',
 		width: '40%',
 		sortable: true,
-		value: row => row.value,
+		value: (row) => row.value,
 		sortComparator: (a, b) => a.value - b.value,
 	},
 ];
@@ -31,7 +31,7 @@ const data = [
 	{id: '4', name: 'Four', value: 4},
 ];
 
-const getRowId = row => row.id;
+const getRowId = (row) => row.id;
 
 storiesOf('DataTable', module)
 	.add('normal', () => (

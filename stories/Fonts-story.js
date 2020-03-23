@@ -27,7 +27,7 @@ storiesOf('Fonts', module).add('all fonts', () => (
 		<thead>
 			<tr>
 				<th>Properties</th>
-				{fontColors.map(color => (
+				{fontColors.map((color) => (
 					<th key={color}>{color}</th>
 				))}
 			</tr>
@@ -36,7 +36,7 @@ storiesOf('Fonts', module).add('all fonts', () => (
 			{fontTable.map(({name, colors}) => (
 				<tr key={name}>
 					<td>{name}</td>
-					{fontColors.map(color => (
+					{fontColors.map((color) => (
 						<td key={color} className={'font-' + colors[color]}>
 							{colors[color]}
 						</td>

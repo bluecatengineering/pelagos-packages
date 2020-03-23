@@ -30,7 +30,7 @@ describe('Hamburger', () => {
 		it('calls the key handler when a key is pressed', () => {
 			const onClick = jest.fn();
 			const event = {keyCode: 13};
-			useButtonKeyHandler.mockImplementation(v => v);
+			useButtonKeyHandler.mockImplementation((v) => v);
 			const wrapper = shallow(<Hamburger onClick={onClick} />);
 			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(onClick.mock.calls).toEqual([[event]]);

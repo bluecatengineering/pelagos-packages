@@ -8,7 +8,7 @@ import ListEntries from '../../src/listInput/ListEntries';
 jest.unmock('../../src/listInput/ListEntries');
 jest.unmock('../../src/strings');
 
-jest.mock('lodash-es/debounce', () => jest.fn(f => ((f.cancel = jest.fn()), f)));
+jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)));
 
 describe('ListEntries', () => {
 	describe('rendering', () => {
@@ -17,8 +17,8 @@ describe('ListEntries', () => {
 				<ListEntries
 					id="test"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={i => i.id}
-					renderItem={i => <div>{i.name}</div>}
+					getItemKey={(i) => i.id}
+					renderItem={(i) => <div>{i.name}</div>}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -29,8 +29,8 @@ describe('ListEntries', () => {
 				<ListEntries
 					id="test"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={i => i.id}
-					renderItem={i => <div className="TestClass">{i.name}</div>}
+					getItemKey={(i) => i.id}
+					renderItem={(i) => <div className="TestClass">{i.name}</div>}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -42,8 +42,8 @@ describe('ListEntries', () => {
 					id="test"
 					highlightKey="0"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={i => i.id}
-					renderItem={i => <div>{i.name}</div>}
+					getItemKey={(i) => i.id}
+					renderItem={(i) => <div>{i.name}</div>}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -55,8 +55,8 @@ describe('ListEntries', () => {
 					id="test"
 					list={[{id: '0', name: 'test'}]}
 					column
-					getItemKey={i => i.id}
-					renderItem={i => <div>{i.name}</div>}
+					getItemKey={(i) => i.id}
+					renderItem={(i) => <div>{i.name}</div>}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -71,8 +71,8 @@ describe('ListEntries', () => {
 				<ListEntries
 					id="test"
 					list={[item]}
-					getItemKey={i => i.id}
-					renderItem={i => <div>{i.name}</div>}
+					getItemKey={(i) => i.id}
+					renderItem={(i) => <div>{i.name}</div>}
 					onRemoveClick={onRemoveClick}
 				/>
 			);
@@ -90,8 +90,8 @@ describe('ListEntries', () => {
 					id="test"
 					highlightKey="0"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={i => i.id}
-					renderItem={i => <div>{i.name}</div>}
+					getItemKey={(i) => i.id}
+					renderItem={(i) => <div>{i.name}</div>}
 					onHighlightClear={onHighlightClear}
 				/>
 			);
@@ -114,8 +114,8 @@ describe('ListEntries', () => {
 					id="test"
 					highlightKey="1"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={i => i.id}
-					renderItem={i => <div>{i.name}</div>}
+					getItemKey={(i) => i.id}
+					renderItem={(i) => <div>{i.name}</div>}
 					onHighlightClear={onHighlightClear}
 				/>
 			);
@@ -132,8 +132,8 @@ describe('ListEntries', () => {
 				<ListEntries
 					id="test"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={i => i.id}
-					renderItem={i => <div>{i.name}</div>}
+					getItemKey={(i) => i.id}
+					renderItem={(i) => <div>{i.name}</div>}
 					onHighlightClear={onHighlightClear}
 				/>
 			);

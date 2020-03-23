@@ -21,7 +21,7 @@ storiesOf('ListInput', module)
 			getHighlightKey={identity}
 			renderSuggestion={identity}
 			getItemKey={identity}
-			renderItem={d => <div>{d}</div>}
+			renderItem={(d) => <div>{d}</div>}
 			onListChange={identity}
 			onTextChange={identity}
 			onErrorChange={identity}
@@ -44,7 +44,7 @@ storiesOf('ListInput', module)
 			getHighlightKey={identity}
 			renderSuggestion={identity}
 			getItemKey={identity}
-			renderItem={d => <div>{d}</div>}
+			renderItem={(d) => <div>{d}</div>}
 			onListChange={identity}
 			onTextChange={identity}
 			onErrorChange={identity}
@@ -70,7 +70,7 @@ storiesOf('ListInput', module)
 			getHighlightKey={identity}
 			renderSuggestion={identity}
 			getItemKey={identity}
-			renderItem={d => <div>{d}</div>}
+			renderItem={(d) => <div>{d}</div>}
 			onListChange={identity}
 			onTextChange={identity}
 			onErrorChange={identity}

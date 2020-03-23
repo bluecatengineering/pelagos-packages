@@ -5,7 +5,7 @@ import './RadioButton.less';
 
 const RadioButton = ({id, className, label, checked, error, tabIndex, onChange, ...props}) => {
 	const handleKeyDown = useCallback(
-		event => (event.keyCode === 32 ? (event.preventDefault(), onChange(event)) : null),
+		(event) => (event.keyCode === 32 ? (event.preventDefault(), onChange(event)) : null),
 		[onChange]
 	);
 	return (

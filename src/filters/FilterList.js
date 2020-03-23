@@ -31,10 +31,10 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 	const handleKeyRight = useButtonKeyHandler(handleClickRight);
 
 	const handleClose = useCallback(() => setFilter(null), []);
-	const handleSave = useCallback(values => (setFilter(null), onApply(filter, values)), [filter, onApply]);
+	const handleSave = useCallback((values) => (setFilter(null), onApply(filter, values)), [filter, onApply]);
 
 	const handleMouseDown = useCallback(
-		event => {
+		(event) => {
 			const target = event.target;
 			const remove = target.closest('[data-kind="remove"]');
 			if (remove) {
@@ -52,7 +52,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 	);
 	const handleKeyDown = useButtonKeyHandler(handleMouseDown);
 
-	useEffect(() => addResizeObserver(filterRef.current, rect => showChevrons(filterRef.current, rect)), []);
+	useEffect(() => addResizeObserver(filterRef.current, (rect) => showChevrons(filterRef.current, rect)), []);
 	useEffect(() => {
 		const filterList = filterRef.current;
 		showChevrons(filterList, filterList.getBoundingClientRect());

@@ -10,7 +10,7 @@ const values = {
 	o1: 'Option 1',
 };
 const options = Object.keys(values);
-const renderOption = o => values[o];
+const renderOption = (o) => values[o];
 
 describe('DropDownField', () => {
 	describe('rendering', () => {
@@ -44,7 +44,10 @@ describe('DropDownField', () => {
 		});
 
 		it('renders expected elements when error is set', () => {
-			const options = [{value: 'o0', text: 'Option 0'}, {value: 'o1', text: 'Option 1'}];
+			const options = [
+				{value: 'o0', text: 'Option 0'},
+				{value: 'o1', text: 'Option 1'},
+			];
 			const wrapper = shallow(
 				<DropDownField
 					id="test"

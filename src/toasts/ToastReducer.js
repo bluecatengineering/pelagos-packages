@@ -11,12 +11,12 @@ const clearMessageTimer = ({timerId}) => {
 	}
 };
 
-const clearAllTimers = messages => {
+const clearAllTimers = (messages) => {
 	messages.forEach(clearMessageTimer);
 };
 
 const remove = (messages, condition) =>
-	messages.filter(m => {
+	messages.filter((m) => {
 		const matches = condition(m);
 		if (matches) {
 			clearMessageTimer(m);
@@ -30,9 +30,9 @@ export default (state, {type, payload, meta}) => {
 	}
 	switch (type) {
 		case removeToast.toString():
-			return remove(state, m => m === payload);
+			return remove(state, (m) => m === payload);
 		case removeToastType.toString():
-			return remove(state, m => m.type === payload);
+			return remove(state, (m) => m.type === payload);
 		case removeAllToasts.toString():
 			clearAllTimers(state);
 			return [];
@@ -43,17 +43,17 @@ export default (state, {type, payload, meta}) => {
 				}
 
 				const toasts = meta.toasts;
-				const fatal = toasts.find(m => m.type === ToastTypes.FATAL);
+				const fatal = toasts.find((m) => m.type === ToastTypes.FATAL);
 				if (fatal) {
 					clearAllTimers(state);
 					return [fatal];
 				}
 
-				toasts.forEach(toast => {
+				toasts.forEach((toast) => {
 					const toastType = toast.type;
 
 					if (toastType === ToastTypes.ACTION) {
-						state = remove(state, m => m.type === toastType);
+						state = remove(state, (m) => m.type === toastType);
 					}
 
 					if (state.length === BUFFER_SIZE) {

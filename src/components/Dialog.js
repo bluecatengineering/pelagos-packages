@@ -20,7 +20,7 @@ const Dialog = ({id, title, role, children: [body, buttons], onSubmit}) => {
 		</>
 	);
 
-	const handleSubmit = useCallback(event => (event.preventDefault(), onSubmit()), [onSubmit]);
+	const handleSubmit = useCallback((event) => (event.preventDefault(), onSubmit()), [onSubmit]);
 
 	useEffect(() => {
 		const p = previousActive.current;

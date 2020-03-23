@@ -65,7 +65,7 @@ describe('IconButton', () => {
 		it('calls the key handler when a key is pressed', () => {
 			const onClick = jest.fn();
 			const event = {keyCode: 13};
-			useButtonKeyHandler.mockImplementation(v => v);
+			useButtonKeyHandler.mockImplementation((v) => v);
 			const wrapper = shallow(<IconButton id="test" icon={{}} onClick={onClick} />);
 			wrapper.find('#test').simulate('keydown', event);
 			expect(onClick.mock.calls).toEqual([[event]]);
@@ -73,7 +73,7 @@ describe('IconButton', () => {
 
 		it('does not call the key handler when the button is disabled and a key is pressed', () => {
 			const onClick = jest.fn();
-			useButtonKeyHandler.mockImplementation(v => v);
+			useButtonKeyHandler.mockImplementation((v) => v);
 			const wrapper = shallow(<IconButton id="test" icon={{}} disabled={true} onClick={onClick} />);
 			wrapper.find('#test').simulate('keydown');
 			expect(onClick).not.toHaveBeenCalled();

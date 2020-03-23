@@ -27,7 +27,7 @@ const ComboBox = ({
 	const hideList = useCallback(() => (setSuggestions([]), setOpen(false), setSelected(-1)), []);
 
 	const updateSuggestions = useCallback(
-		debounce(text => {
+		debounce((text) => {
 			const suggestions = getSuggestions(text);
 			if (suggestions.length === 0) {
 				hideList();
@@ -39,14 +39,14 @@ const ComboBox = ({
 		}, 150),
 		[getSuggestions]
 	);
-	const selectSuggestion = useCallback(index => (hideList(), onChange(suggestions[index])), [
+	const selectSuggestion = useCallback((index) => (hideList(), onChange(suggestions[index])), [
 		suggestions,
 		hideList,
 		onChange,
 	]);
 
 	const handleKeyDown = useCallback(
-		event => {
+		(event) => {
 			switch (event.keyCode) {
 				case 13: // enter
 				case 27: // escape
@@ -74,7 +74,7 @@ const ComboBox = ({
 	);
 
 	const handleKeyUp = useCallback(
-		event => {
+		(event) => {
 			switch (event.keyCode) {
 				case 13: // enter
 					event.preventDefault();
@@ -95,7 +95,7 @@ const ComboBox = ({
 		[selected, selectSuggestion, hideList, onEnter, onTextChange]
 	);
 
-	const handleChange = useCallback(event => onTextChange(event.target.value), [onTextChange]);
+	const handleChange = useCallback((event) => onTextChange(event.target.value), [onTextChange]);
 
 	const handleFocus = useCallback(
 		() => (suggestions.length !== 0 ? (setOpen(true), setSelected(autoSelect ? 0 : -1)) : null),
@@ -104,17 +104,17 @@ const ComboBox = ({
 
 	const handleBlur = useCallback(() => setOpen(false), []);
 
-	const handleListMouseOver = useCallback(event => {
+	const handleListMouseOver = useCallback((event) => {
 		const element = event.target.closest('.ComboBox__option');
 		if (element) {
 			setSelected(+element.dataset.index);
 		}
 	}, []);
 
-	const handleListMouseDown = useCallback(event => event.preventDefault(), []);
+	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleListMouseUp = useCallback(
-		event => {
+		(event) => {
 			const element = event.target.closest('.ComboBox__option');
 			if (element) {
 				event.preventDefault();

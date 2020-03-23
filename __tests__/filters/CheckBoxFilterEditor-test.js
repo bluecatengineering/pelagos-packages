@@ -9,7 +9,7 @@ describe('CheckBoxFilterEditor', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<CheckBoxFilterEditor label="label" list={['a']} options={['a', 'b']} getLabel={o => o} />
+				<CheckBoxFilterEditor label="label" list={['a']} options={['a', 'b']} getLabel={(o) => o} />
 			);
 			expect(wrapper.getElements()).toMatchSnapshot();
 		});

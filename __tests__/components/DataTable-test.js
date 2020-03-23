@@ -12,7 +12,7 @@ const originalUserAgent = navigator.userAgent;
 const metadata = [
 	{
 		id: 'time',
-		value: item => item.time,
+		value: (item) => item.time,
 		sortComparator: (a, b) => a.time - b.time,
 		sortable: true,
 		header: 'TIME',
@@ -20,7 +20,7 @@ const metadata = [
 	},
 	{
 		id: 'source',
-		value: item => item.source,
+		value: (item) => item.source,
 		sortComparator: (a, b) => a.source.toLowerCase().localeCompare(b.source.toLowerCase()),
 		sortable: true,
 		header: 'SOURCE',
@@ -28,7 +28,7 @@ const metadata = [
 	},
 	{
 		id: 'site',
-		value: item => item.site,
+		value: (item) => item.site,
 		sortable: false,
 		header: 'SITE',
 		width: '10px',
@@ -37,7 +37,7 @@ const metadata = [
 	},
 ];
 
-const getRowId = row => row.id;
+const getRowId = (row) => row.id;
 
 const createDataItem = (id, time, source, site) => ({id, time, source, site});
 
@@ -607,10 +607,7 @@ describe('DataTable', () => {
 
 		it('sets focused to -1 on mouse out when hasFocus is false', () => {
 			const setFocused = jest.fn();
-			useState
-				.mockReturnValueOnce([])
-				.mockReturnValueOnce([0, setFocused])
-				.mockReturnValueOnce([false]);
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]).mockReturnValueOnce([false]);
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
@@ -623,10 +620,7 @@ describe('DataTable', () => {
 
 		it('does not change focused on mouse out when hasFocus is true', () => {
 			const setFocused = jest.fn();
-			useState
-				.mockReturnValueOnce([])
-				.mockReturnValueOnce([0, setFocused])
-				.mockReturnValueOnce([true]);
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]).mockReturnValueOnce([true]);
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
@@ -696,10 +690,7 @@ describe('DataTable', () => {
 			const child = {};
 			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
 			const tableBody = {querySelector};
-			useState
-				.mockReturnValueOnce([])
-				.mockReturnValueOnce([-1, setFocused])
-				.mockReturnValueOnce([false, setHasFocus]);
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1, setFocused]).mockReturnValueOnce([false, setHasFocus]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
@@ -768,10 +759,7 @@ describe('DataTable', () => {
 		it('sets focused to -1 on blur', () => {
 			const setFocused = jest.fn();
 			const setHasFocus = jest.fn();
-			useState
-				.mockReturnValueOnce([])
-				.mockReturnValueOnce([0, setFocused])
-				.mockReturnValueOnce([true, setHasFocus]);
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]).mockReturnValueOnce([true, setHasFocus]);
 			const wrapper = shallow(
 				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
 			);
@@ -1131,10 +1119,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper
-				.find('th')
-				.at(0)
-				.simulate('click');
+			wrapper.find('th').at(0).simulate('click');
 			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'd'});
 		});
@@ -1154,10 +1139,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper
-				.find('th')
-				.at(0)
-				.simulate('click');
+			wrapper.find('th').at(0).simulate('click');
 			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'a'});
 		});
@@ -1177,10 +1159,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper
-				.find('th')
-				.at(1)
-				.simulate('click');
+			wrapper.find('th').at(1).simulate('click');
 			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'source', order: 'a'});
 		});

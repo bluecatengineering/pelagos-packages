@@ -34,7 +34,7 @@ const Select = ({
 
 	const renderedOptions = useMemo(
 		() =>
-			options.map(o => ({
+			options.map((o) => ({
 				value: getOptionValue(o),
 				element: renderOption(o),
 			})),
@@ -48,7 +48,7 @@ const Select = ({
 
 	const showList = useCallback(() => {
 		setOpen(true);
-		setFocused(value ? renderedOptions.findIndex(o => o.value === value) : 0);
+		setFocused(value ? renderedOptions.findIndex((o) => o.value === value) : 0);
 	}, [value, renderedOptions]);
 
 	const hideList = useCallback(() => {
@@ -57,20 +57,20 @@ const Select = ({
 	}, []);
 
 	const select = useCallback(
-		value => {
+		(value) => {
 			hideList();
 			onChange(value);
 		},
 		[hideList, onChange]
 	);
 
-	const updateFocused = useCallback(index => {
+	const updateFocused = useCallback((index) => {
 		setFocused(index);
 		scrollToItem(list.current, list.current.children[index]);
 	}, []);
 
 	const findItemToFocus = useCallback(
-		keyCode => {
+		(keyCode) => {
 			const char = String.fromCharCode(keyCode);
 			if (!searchString.current) {
 				searchString.current = char;
@@ -98,7 +98,7 @@ const Select = ({
 	);
 
 	const handleMouseDown = useCallback(
-		event => {
+		(event) => {
 			event.preventDefault();
 			if (open) {
 				hideList();
@@ -111,7 +111,7 @@ const Select = ({
 	);
 
 	const handleKeyDown = useCallback(
-		event => {
+		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				const keyCode = event.keyCode;
 				switch (keyCode) {
@@ -213,7 +213,7 @@ const Select = ({
 	);
 
 	const handleKeyUp = useCallback(
-		event => {
+		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				switch (event.keyCode) {
 					case 13: // enter
@@ -239,17 +239,17 @@ const Select = ({
 
 	const handleBlur = useCallback(() => hideList(), [hideList]);
 
-	const handleListMouseOver = useCallback(event => {
+	const handleListMouseOver = useCallback((event) => {
 		const element = event.target.closest('[role="option"]');
 		if (element) {
 			setFocused(+element.dataset.index);
 		}
 	}, []);
 
-	const handleListMouseDown = useCallback(event => event.preventDefault(), []);
+	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleListMouseUp = useCallback(
-		event => {
+		(event) => {
 			const element = event.target.closest('[role="option"]');
 			if (element) {
 				event.preventDefault();
@@ -266,7 +266,7 @@ const Select = ({
 	}, [open, focused]);
 
 	const listId = id + '-list';
-	const selected = value && renderedOptions.find(o => o.value === value);
+	const selected = value && renderedOptions.find((o) => o.value === value);
 	return (
 		<div className={'Select' + (className ? ' ' + className : '')}>
 			<div

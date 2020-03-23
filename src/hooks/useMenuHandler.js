@@ -17,7 +17,7 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 	const [current, setCurrent] = useState(-1);
 
 	const findItemToFocus = useCallback(
-		keyCode => {
+		(keyCode) => {
 			const char = String.fromCharCode(keyCode);
 			if (!searchString.current) {
 				searchString.current = char;
@@ -44,16 +44,16 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 	);
 
 	const handleMouseDown = useCallback(
-		event => (
+		(event) => (
 			event.preventDefault(),
 			event.target.closest('[role="button"]').focus(),
-			setExpanded(expanded => (expanded ? setCurrent(-1) : null, !expanded))
+			setExpanded((expanded) => (expanded ? setCurrent(-1) : null, !expanded))
 		),
 		[setExpanded]
 	);
 
 	const handleKeyDown = useCallback(
-		event => {
+		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				const keyCode = event.keyCode;
 				switch (keyCode) {
@@ -77,13 +77,13 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 					case 38: // up
 						event.preventDefault();
 						if (expanded) {
-							setCurrent(current => (current <= 0 ? links.length - 1 : current - 1));
+							setCurrent((current) => (current <= 0 ? links.length - 1 : current - 1));
 						}
 						break;
 					case 40: // down
 						event.preventDefault();
 						if (expanded) {
-							setCurrent(current => (current === -1 || current === links.length - 1 ? 0 : current + 1));
+							setCurrent((current) => (current === -1 || current === links.length - 1 ? 0 : current + 1));
 						} else {
 							setCurrent(0);
 							setExpanded(true);
@@ -106,7 +106,7 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 	);
 
 	const handleKeyUp = useCallback(
-		event => {
+		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				switch (event.keyCode) {
 					case 13: // enter
@@ -139,17 +139,17 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 		setExpanded,
 	]);
 
-	const handleListMouseOver = useCallback(event => {
+	const handleListMouseOver = useCallback((event) => {
 		const element = event.target.closest('[role="menuitem"]');
 		if (element) {
 			setCurrent(+element.dataset.index);
 		}
 	}, []);
 
-	const handleListMouseDown = useCallback(event => event.preventDefault(), []);
+	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleListMouseUp = useCallback(
-		event => {
+		(event) => {
 			const element = event.target.closest('[role="menuitem"]');
 			if (element) {
 				event.preventDefault();

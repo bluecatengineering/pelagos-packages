@@ -74,7 +74,10 @@ describe('ToastFunctions', () => {
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toEqual({
 				foo: 'test',
-				toasts: [{type: ToastTypes.INFO, text, timerId: 1}, {type: ToastTypes.INFO, text: other, timerId: 1}],
+				toasts: [
+					{type: ToastTypes.INFO, text, timerId: 1},
+					{type: ToastTypes.INFO, text: other, timerId: 1},
+				],
 			});
 			expect(next.mock.calls).toEqual([[action]]);
 			expect(dispatch).not.toHaveBeenCalled();

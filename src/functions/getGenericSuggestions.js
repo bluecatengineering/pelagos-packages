@@ -4,14 +4,14 @@ import compareSuggestions from './compareSuggestions';
 
 export default (text, list, sourceList, errorMessage) => {
 	text = text.toLowerCase();
-	const suggestions = sourceList.filter(item => item.name.toLowerCase().includes(text));
+	const suggestions = sourceList.filter((item) => item.name.toLowerCase().includes(text));
 	const memberText = __('MEMBER');
 	return suggestions.length === 0
 		? {error: errorMessage}
 		: {
 				suggestions: suggestions
 					.map(({id, name}) => {
-						const member = list.find(d => d.id === id);
+						const member = list.find((d) => d.id === id);
 						return {
 							id,
 							name,

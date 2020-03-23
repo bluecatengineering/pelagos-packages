@@ -7,7 +7,7 @@ import ComboBox from '../../src/components/ComboBox';
 
 jest.unmock('../../src/components/ComboBox');
 
-jest.mock('lodash-es/debounce', () => jest.fn(f => ((f.cancel = jest.fn()), f)));
+jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)));
 
 describe('ComboBox', () => {
 	describe('rendering', () => {
@@ -31,7 +31,7 @@ describe('ComboBox', () => {
 					id="test"
 					placeholder="test placeholder"
 					text="x"
-					renderSuggestion={i => <div className="TestClass">{i.name}</div>}
+					renderSuggestion={(i) => <div className="TestClass">{i.name}</div>}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -215,7 +215,7 @@ describe('ComboBox', () => {
 
 		it('ignores input when enter is relased, no item is selected and onEnter is not set', () => {
 			const wrapper = shallow(<ComboBox id="test" text="Test" />);
-			wrapper.find('input').simulate('keyup', {keyCode: 13, preventDefault: jest.fn()});
+			expect(() => wrapper.find('input').simulate('keyup', {keyCode: 13, preventDefault: jest.fn()})).not.toThrow();
 		});
 
 		it('hides the list and clears the text when escape is relased', () => {

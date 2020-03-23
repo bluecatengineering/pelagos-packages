@@ -13,4 +13,10 @@ const HEADER = [
 
 const spacing = Object.entries(safeLoad(readFileSync(IN, 'utf8')));
 
-writeFileSync(LESS, HEADER.concat(spacing.map(([key, {value}]) => '@' + key + ': ' + value + ';'), '').join('\n'));
+writeFileSync(
+	LESS,
+	HEADER.concat(
+		spacing.map(([key, {value}]) => '@' + key + ': ' + value + ';'),
+		''
+	).join('\n')
+);

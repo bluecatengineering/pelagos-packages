@@ -68,10 +68,7 @@ describe('FilterMenu', () => {
 			const menu = {style: {}};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([null]);
 			const button = {getBoundingClientRect: jest.fn().mockReturnValue({top: 100, left: 200})};
-			jest
-				.spyOn(document, 'getElementById')
-				.mockReturnValueOnce(button)
-				.mockReturnValueOnce(menu);
+			jest.spyOn(document, 'getElementById').mockReturnValueOnce(button).mockReturnValueOnce(menu);
 			shallow(<FilterMenu getOptionText={getOptionText} options={options} />);
 			useEffect.mock.calls[0][0]();
 			expect(useEffect).toHaveBeenCalledTimes(1);

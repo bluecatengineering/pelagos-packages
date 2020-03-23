@@ -12,7 +12,7 @@ const CheckBoxFilterEditor = ({label, options, list, getLabel, onListChange}) =>
 		<div className="CheckBoxFilterEditor__label">
 			<Label text={label} />
 		</div>
-		{options.map(opt => (
+		{options.map((opt) => (
 			<CheckBox
 				key={opt}
 				id={`checkBoxOption-${opt}`}
@@ -20,7 +20,7 @@ const CheckBoxFilterEditor = ({label, options, list, getLabel, onListChange}) =>
 				label={getLabel(opt)}
 				checked={list.includes(opt)}
 				onChange={() =>
-					list.includes(opt) ? onListChange(list.filter(cur => cur !== opt)) : onListChange([...list, opt])
+					list.includes(opt) ? onListChange(list.filter((cur) => cur !== opt)) : onListChange([...list, opt])
 				}
 			/>
 		))}

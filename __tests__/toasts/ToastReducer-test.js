@@ -76,7 +76,11 @@ describe('ToastMessagesReducer', () => {
 
 	describe('removeToastType action', () => {
 		it('removes all toasts of the specified type', () => {
-			const state = [{type: 'a', timerId: 100}, {type: 'b', timerId: 101}, {type: 'a', timerId: 102}];
+			const state = [
+				{type: 'a', timerId: 100},
+				{type: 'b', timerId: 101},
+				{type: 'a', timerId: 102},
+			];
 			expect(reducer(state, removeToastType('a'))).toEqual([{type: 'b', timerId: 101}]);
 			expect(clearTimeout.mock.calls).toEqual([[100], [102]]);
 		});

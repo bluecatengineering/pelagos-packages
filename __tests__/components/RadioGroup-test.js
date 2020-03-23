@@ -6,7 +6,7 @@ import RadioGroup from '../../src/components/RadioGroup';
 jest.unmock('../../src/components/RadioGroup');
 
 const options = ['foo', 'bar', 'baz'];
-const renderLabel = v => v.toUpperCase();
+const renderLabel = (v) => v.toUpperCase();
 
 describe('RadioGroup', () => {
 	describe('rendering', () => {

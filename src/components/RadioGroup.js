@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import RadioButton from './RadioButton';
 
 const RadioGroup = ({id, value, options, renderLabel, setValue, ...props}) => {
-	const handleChange = useCallback(event => setValue(event.target.dataset.value), [setValue]);
+	const handleChange = useCallback((event) => setValue(event.target.dataset.value), [setValue]);
 
 	const handleKeyDown = useCallback(
-		event => {
+		(event) => {
 			const keyCode = event.keyCode;
 			if (keyCode === 37 || keyCode === 38) {
 				const current = options.indexOf(value);
@@ -26,7 +26,7 @@ const RadioGroup = ({id, value, options, renderLabel, setValue, ...props}) => {
 
 	return (
 		<div {...props} id={id} role="radiogroup" onKeyDown={handleKeyDown}>
-			{options.map(option => (
+			{options.map((option) => (
 				<RadioButton
 					key={option}
 					id={`${id}-${option}`}
