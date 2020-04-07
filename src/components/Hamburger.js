@@ -5,6 +5,7 @@ import useButtonKeyHandler from '../hooks/useButtonKeyHandler';
 
 import './Hamburger.less';
 
+/** A hamburger menu. */
 const Hamburger = ({active, onClick, ...props}) => (
 	<div
 		{...props}
@@ -18,7 +19,9 @@ const Hamburger = ({active, onClick, ...props}) => (
 );
 
 Hamburger.propTypes = {
+	/** Whether the button is active. */
 	active: PropTypes.bool,
+	/** Function invoked when the button is clicked. */
 	onClick: PropTypes.func,
 };
 

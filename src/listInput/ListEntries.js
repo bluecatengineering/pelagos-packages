@@ -9,6 +9,7 @@ import __ from '../strings';
 
 import './ListEntries.less';
 
+/** A list of entries. */
 const ListEntries = ({id, highlightKey, list, column, getItemKey, renderItem, onRemoveClick, onHighlightClear}) => {
 	const clearHighlight = useMemo(() => onHighlightClear && debounce(onHighlightClear, 1000), [onHighlightClear]);
 
@@ -56,13 +57,21 @@ const ListEntries = ({id, highlightKey, list, column, getItemKey, renderItem, on
 };
 
 ListEntries.propTypes = {
+	/** The component id. */
 	id: PropTypes.string,
+	/** The key of the highlighted row. */
 	highlightKey: PropTypes.string,
+	/** The data for the list. */
 	list: PropTypes.array,
+	/** Whether items are listed as columns. */
 	column: PropTypes.bool,
+	/** Function invoked to get each item's key. */
 	getItemKey: PropTypes.func,
+	/** Function invoked to render each list item. */
 	renderItem: PropTypes.func,
+	/** Function invoked when the remove button is clicked. */
 	onRemoveClick: PropTypes.func,
+	/** Function invoked to clear the highlight key. */
 	onHighlightClear: PropTypes.func,
 };
 

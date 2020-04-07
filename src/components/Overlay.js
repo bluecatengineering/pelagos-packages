@@ -12,11 +12,16 @@ const getOffset = (position, size, windowSize) =>
 
 const addClassName = (child) => (child.props.className ? child.props.className + ' ' : '') + 'Overlay';
 
+/** An overlay. */
 export default class Overlay extends Component {
 	static propTypes = {
+		/** Whether the component will display. */
 		show: PropTypes.bool,
+		/** The placement of the overlay. */
 		placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+		/** The target element for display reference. */
 		target: PropTypes.any,
+		/** The children elements. */
 		children: PropTypes.element,
 	};
 

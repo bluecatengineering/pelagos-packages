@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 
 import Overlay from './Overlay';
 
+/** An overlay setup. */
 export default class OverlayTrigger extends Component {
 	static propTypes = {
+		/** The placement of the overlay. */
 		placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+		/** The element as overlay. */
 		overlay: PropTypes.element,
+		/** The children elements. */
 		children: PropTypes.any,
 	};
 

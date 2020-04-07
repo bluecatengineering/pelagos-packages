@@ -9,6 +9,7 @@ import ListEntries from './ListEntries';
 
 import './ListInput.less';
 
+/** An input box for a list of values. */
 const ListInput = ({
 	id,
 	label,
@@ -161,25 +162,45 @@ const ListInput = ({
 };
 
 ListInput.propTypes = {
+	/** The component id. */
 	id: PropTypes.string.isRequired,
+	/** The label text. */
 	label: PropTypes.string,
+	/** The hint text when list is empty. */
 	optionalText: PropTypes.string,
+	/** The notice/warning text. */
 	notice: PropTypes.string,
+	/** The placeholder text in the input box. */
 	placeholder: PropTypes.string,
+	/** The text below input box when list is empty. */
 	emptyText: PropTypes.string,
+	/** The entries for the list. */
 	list: PropTypes.array,
+	/** The error text. */
 	error: PropTypes.string,
+	/** Whether the list should be displayed as columns. */
 	column: PropTypes.bool,
+	/** Function invoked to provide a list of suggestions. */
 	getSuggestions: PropTypes.func,
+	/** Function invoked to render the suggestion text for the returned items. (see above) */
 	getSuggestionText: PropTypes.func,
+	/** Function invoked to get the key of the suggestion to highlight. */
 	getHighlightKey: PropTypes.func,
+	/** Function invoked to parse the input text. */
 	parseInput: PropTypes.func,
+	/** Function invoked to validate the suggestion. */
 	validateSuggestion: PropTypes.func,
+	/** Function invoked to render the suggestions. */
 	renderSuggestion: PropTypes.func,
+	/** Function invoked to get each item's key. */
 	getItemKey: PropTypes.func,
+	/** Function invoked to render each list item. */
 	renderItem: PropTypes.func,
+	/** Function invoked when the list changes. */
 	onListChange: PropTypes.func,
+	/** Function invoked when the text input changes. */
 	onTextChange: PropTypes.func,
+	/** Function invoked when error status changes. */
 	onErrorChange: PropTypes.func,
 };
 
