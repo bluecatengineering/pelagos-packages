@@ -4,7 +4,7 @@ import focusTrap from 'focus-trap';
 
 import './Dialog.less';
 
-const Dialog = ({id, title, role, children: [body, buttons], onSubmit}) => {
+const Dialog = ({id, title, role, initialFocus, children: [body, buttons], onSubmit}) => {
 	const previousActive = useRef(document.activeElement);
 	const element = useRef(null);
 
@@ -24,7 +24,7 @@ const Dialog = ({id, title, role, children: [body, buttons], onSubmit}) => {
 
 	useEffect(() => {
 		const p = previousActive.current;
-		const trap = focusTrap(element.current, {escapeDeactivates: false, returnFocusOnDeactivate: false});
+		const trap = focusTrap(element.current, {initialFocus, escapeDeactivates: false, returnFocusOnDeactivate: false});
 		trap.activate();
 		return () => {
 			trap.deactivate();
@@ -32,7 +32,7 @@ const Dialog = ({id, title, role, children: [body, buttons], onSubmit}) => {
 				p.focus();
 			}
 		};
-	}, []);
+	}, [initialFocus]);
 
 	return (
 		<div className="Dialog__backdrop">
@@ -60,6 +60,7 @@ Dialog.propTypes = {
 	id: PropTypes.string,
 	title: PropTypes.string.isRequired,
 	role: PropTypes.oneOf(['dialog', 'alertdialog']),
+	initialFocus: PropTypes.string,
 	children: PropTypes.arrayOf(PropTypes.element).isRequired,
 	onSubmit: PropTypes.func,
 };
