@@ -2,6 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import Button from '../../src/components/Button';
+import useTooltip from '../../src/hooks/useTooltip';
 
 jest.unmock('../../src/components/Button');
 
@@ -50,11 +51,7 @@ describe('Button', () => {
 		it('renders expected elements when tooltipText is set', () => {
 			const wrapper = shallow(<Button id="test" text="Test" tooltipText="Tooltip" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when both id and tooltipText are set', () => {
-			const wrapper = shallow(<Button id="test" text="Test" tooltipText="Tooltip" />);
-			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useTooltip.mock.calls).toEqual([['Tooltip', 'top']]);
 		});
 	});
 

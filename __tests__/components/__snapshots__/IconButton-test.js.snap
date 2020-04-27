@@ -1,106 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IconButton rendering renders the expected elements 1`] = `
-<OverlayTrigger
-  overlay={
-    <Tooltip
-      id="test-tooltip"
-    >
-      This is a test
-    </Tooltip>
-  }
-  placement="right"
+<span
+  aria-label="Test"
+  className="IconButton IconButton--medium TestClass"
+  id="test"
+  role="button"
+  tabIndex={0}
 >
-  <span
-    aria-label="Test"
-    className="IconButton IconButton--medium TestClass"
-    id="test"
-    role="button"
-    tabIndex={0}
-  >
-    <SvgIcon
-      icon={Object {}}
-    />
-  </span>
-</OverlayTrigger>
+  <SvgIcon
+    icon={Object {}}
+  />
+</span>
 `;
 
 exports[`IconButton rendering renders the expected elements if disabled is true 1`] = `
-<OverlayTrigger
-  overlay={
-    <Tooltip
-      id="test-tooltip"
-    >
-      This is a test
-    </Tooltip>
-  }
-  placement="right"
+<span
+  aria-disabled={true}
+  aria-label="Test"
+  className="IconButton IconButton--medium"
+  id="test"
+  onClick={null}
+  onKeyDown={null}
+  role="button"
+  tabIndex={-1}
 >
-  <span
-    aria-disabled={true}
-    aria-label="Test"
-    className="IconButton IconButton--medium"
-    id="test"
-    onClick={null}
-    onKeyDown={null}
-    role="button"
-    tabIndex={-1}
-  >
-    <SvgIcon
-      icon={Object {}}
-    />
-  </span>
-</OverlayTrigger>
+  <SvgIcon
+    icon={Object {}}
+  />
+</span>
 `;
 
 exports[`IconButton rendering renders the expected elements when className is not set 1`] = `
-<OverlayTrigger
-  overlay={
-    <Tooltip
-      id="test-tooltip"
-    >
-      This is a test
-    </Tooltip>
-  }
-  placement="right"
+<span
+  aria-label="Test"
+  className="IconButton IconButton--medium"
+  id="test"
+  role="button"
+  tabIndex={0}
 >
-  <span
-    aria-label="Test"
-    className="IconButton IconButton--medium"
-    id="test"
-    role="button"
-    tabIndex={0}
-  >
-    <SvgIcon
-      icon={Object {}}
-    />
-  </span>
-</OverlayTrigger>
+  <SvgIcon
+    icon={Object {}}
+  />
+</span>
 `;
 
 exports[`IconButton rendering renders the expected elements when size and tooltipPlacement are set 1`] = `
-<OverlayTrigger
-  overlay={
-    <Tooltip
-      id="test-tooltip"
-    >
-      This is a test
-    </Tooltip>
-  }
-  placement="left"
+<span
+  aria-label="Test"
+  className="IconButton IconButton--large"
+  id="test"
+  role="button"
+  tabIndex={0}
 >
-  <span
-    aria-label="Test"
-    className="IconButton IconButton--large"
-    id="test"
-    role="button"
-    tabIndex={0}
-  >
-    <SvgIcon
-      icon={Object {}}
-    />
-  </span>
-</OverlayTrigger>
+  <SvgIcon
+    icon={Object {}}
+  />
+</span>
 `;
 
 exports[`IconButton rendering renders the expected elements when tooltipText is not set 1`] = `

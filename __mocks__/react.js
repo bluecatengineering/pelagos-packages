@@ -4,5 +4,6 @@ module.exports = {
 	useCallback: (fn) => fn,
 	useContext: jest.fn(),
 	useEffect: jest.fn(),
+	useMemo: jest.fn((f) => f()),
 	useRef: jest.fn((current) => ({current})),
 };

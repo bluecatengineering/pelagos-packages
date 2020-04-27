@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Tooltip from './Tooltip';
-import OverlayTrigger from './OverlayTrigger';
+import useTooltip from '../hooks/useTooltip';
 
 import './Button.less';
 
 /** A button. */
 const Button = ({id, text, className, tooltipText, size, active, disabled, onClick, ...props}) => {
-	const button = disabled ? (
-		<span id={id} className={'Button Button--' + size + (className ? ' ' + className : '')} aria-disabled="true">
+	const tooltip = useTooltip(tooltipText, 'top');
+	return disabled ? (
+		<span
+			id={id}
+			className={'Button Button--' + size + (className ? ' ' + className : '')}
+			aria-disabled="true"
+			ref={tooltip}>
 			{text}
 		</span>
 	) : (
@@ -18,21 +22,10 @@ const Button = ({id, text, className, tooltipText, size, active, disabled, onCli
 			type={onClick ? 'button' : 'submit'}
 			id={id}
 			className={'Button Button--' + size + (className ? ' ' + className : '') + (active ? ' Button--active' : '')}
+			ref={tooltip}
 			onClick={onClick}>
 			{text}
 		</button>
-	);
-
-	if (!tooltipText) {
-		return button;
-	}
-
-	const tooltip = <Tooltip id={id + '-tooltip'}>{tooltipText}</Tooltip>;
-
-	return (
-		<OverlayTrigger placement="top" overlay={tooltip}>
-			{button}
-		</OverlayTrigger>
 	);
 };
 

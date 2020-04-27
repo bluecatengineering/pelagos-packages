@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useTooltip shows tooltip on mouse over and removes it on mouse leave 1`] = `
+<div
+  class="Tooltip Tooltip--top Tooltip--visible"
+  id="tooltip"
+  style="left: 190px; top: 90px;"
+>
+  <div
+    class="Tooltip__body"
+  >
+    Test
+  </div>
+  <div
+    class="Tooltip__arrow"
+    style="left: 50%;"
+  />
+</div>
+`;
+
+exports[`useTooltip shows tooltip on mouse over when placement is bottom 1`] = `
+<div
+  class="Tooltip Tooltip--bottom Tooltip--visible"
+  id="tooltip"
+  style="left: 190px; top: 150px;"
+>
+  <div
+    class="Tooltip__body"
+  >
+    Test
+  </div>
+  <div
+    class="Tooltip__arrow"
+    style="left: 50%;"
+  />
+</div>
+`;
+
+exports[`useTooltip shows tooltip on mouse over when placement is left 1`] = `
+<div
+  class="Tooltip Tooltip--left Tooltip--visible"
+  id="tooltip"
+  style="left: 80px; top: 120px;"
+>
+  <div
+    class="Tooltip__body"
+  >
+    Test
+  </div>
+  <div
+    class="Tooltip__arrow"
+    style="top: 50%;"
+  />
+</div>
+`;
+
+exports[`useTooltip shows tooltip on mouse over when placement is right 1`] = `
+<div
+  class="Tooltip Tooltip--right Tooltip--visible"
+  id="tooltip"
+  style="left: 300px; top: 120px;"
+>
+  <div
+    class="Tooltip__body"
+  >
+    Test
+  </div>
+  <div
+    class="Tooltip__arrow"
+    style="top: 50%;"
+  />
+</div>
+`;
+
+exports[`useTooltip shows tooltip on mouse over when the tooltip position exceeds the window width 1`] = `
+<div
+  class="Tooltip Tooltip--top Tooltip--visible"
+  id="tooltip"
+  style="left: 224px; top: 90px;"
+>
+  <div
+    class="Tooltip__body"
+  >
+    Test
+  </div>
+  <div
+    class="Tooltip__arrow"
+    style="left: 72%;"
+  />
+</div>
+`;
+
+exports[`useTooltip shows tooltip on mouse over when the tooltip position is negative 1`] = `
+<div
+  class="Tooltip Tooltip--top Tooltip--visible"
+  id="tooltip"
+  style="left: 0px; top: 90px;"
+>
+  <div
+    class="Tooltip__body"
+  >
+    Test
+  </div>
+  <div
+    class="Tooltip__arrow"
+    style="left: 25%;"
+  />
+</div>
+`;

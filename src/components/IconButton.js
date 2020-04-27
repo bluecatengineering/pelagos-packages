@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import useButtonKeyHandler from '../hooks/useButtonKeyHandler';
+import useTooltip from '../hooks/useTooltip';
 
-import Tooltip from './Tooltip';
-import OverlayTrigger from './OverlayTrigger';
 import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
 /** An icon button. */
 const IconButton = ({id, icon, className, size, tooltipText, tooltipPlacement, disabled, onClick, ...props}) => {
 	const handleKeyDown = useButtonKeyHandler(onClick);
-	const button = (
+	return (
 		<span
 			{...props}
 			id={id}
@@ -19,21 +18,11 @@ const IconButton = ({id, icon, className, size, tooltipText, tooltipPlacement, d
 			aria-disabled={disabled}
 			tabIndex={disabled ? -1 : 0}
 			className={'IconButton IconButton--' + size + (className ? ' ' + className : '')}
+			ref={useTooltip(tooltipText, tooltipPlacement)}
 			onClick={disabled ? null : onClick}
 			onKeyDown={disabled ? null : handleKeyDown}>
 			<SvgIcon icon={icon} />
 		</span>
-	);
-	if (!tooltipText) {
-		return button;
-	}
-
-	const tooltipId = id + '-tooltip';
-	const tooltip = <Tooltip id={tooltipId}>{tooltipText}</Tooltip>;
-	return (
-		<OverlayTrigger placement={tooltipPlacement} overlay={tooltip}>
-			{button}
-		</OverlayTrigger>
 	);
 };
 

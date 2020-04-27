@@ -3,6 +3,7 @@ import {shallow} from 'enzyme';
 
 import IconButton from '../../src/components/IconButton';
 import useButtonKeyHandler from '../../src/hooks/useButtonKeyHandler';
+import useTooltip from '../../src/hooks/useTooltip';
 
 jest.unmock('../../src/components/IconButton');
 
@@ -13,6 +14,7 @@ describe('IconButton', () => {
 				<IconButton id="test" icon={{}} className="TestClass" aria-label="Test" tooltipText="This is a test" />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useTooltip.mock.calls).toEqual([['This is a test', 'right']]);
 		});
 
 		it('renders the expected elements when className is not set', () => {
