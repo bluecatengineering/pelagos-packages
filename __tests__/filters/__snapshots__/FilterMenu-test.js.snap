@@ -101,7 +101,7 @@ exports[`FilterMenu rendering renders expected elements when menuVisible is true
   className="FilterMenu"
 >
   <div
-    aria-activedescendant="FilterMenu-a"
+    aria-activedescendant="filterMenu-a"
     aria-controls="filterMenu"
     aria-expanded={true}
     aria-haspopup="true"

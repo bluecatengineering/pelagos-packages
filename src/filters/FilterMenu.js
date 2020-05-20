@@ -53,7 +53,7 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 				aria-controls={menuVisible ? 'filterMenu' : null}
 				aria-haspopup="true"
 				aria-expanded={menuVisible}
-				aria-activedescendant={current === -1 ? null : `FilterMenu-${links[current].key}`}
+				aria-activedescendant={current === -1 ? null : `filterMenu-${links[current].key}`}
 				tabIndex="0"
 				{...buttonProps}>
 				<SvgIcon icon={faFilter} />
