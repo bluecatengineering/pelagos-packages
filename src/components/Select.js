@@ -117,9 +117,18 @@ const Select = ({
 				switch (keyCode) {
 					case 13: // enter
 					case 32: // space
+						event.preventDefault();
+						event.nativeEvent.stopImmediatePropagation();
+						if (open) {
+							select(renderedOptions[focused].value);
+						} else {
+							showList();
+						}
+						break;
 					case 27: // escape
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
+						hideList();
 						break;
 					case 33: // page up
 						if (open) {
@@ -209,32 +218,7 @@ const Select = ({
 				}
 			}
 		},
-		[open, focused, renderedOptions, updateFocused, findItemToFocus, showList]
-	);
-
-	const handleKeyUp = useCallback(
-		(event) => {
-			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-				switch (event.keyCode) {
-					case 13: // enter
-					case 32: // space
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
-						if (open) {
-							select(renderedOptions[focused].value);
-						} else {
-							showList();
-						}
-						break;
-					case 27: // escape
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
-						hideList();
-						break;
-				}
-			}
-		},
-		[open, focused, renderedOptions, select, showList, hideList]
+		[open, focused, select, renderedOptions, updateFocused, findItemToFocus, showList, hideList]
 	);
 
 	const handleBlur = useCallback(() => hideList(), [hideList]);
@@ -283,7 +267,6 @@ const Select = ({
 				data-placeholder={placeholder}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
-				onKeyUp={disabled ? undefined : handleKeyUp}
 				onBlur={handleBlur}>
 				{selected ? selected.element : ''}
 				<SvgIcon icon={open ? faCaretUp : faCaretDown} className="Select__icon" />

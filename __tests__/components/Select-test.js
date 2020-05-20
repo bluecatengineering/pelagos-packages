@@ -172,21 +172,6 @@ describe('Select', () => {
 			expect(setFocused.mock.calls).toEqual([[-1]]);
 		});
 
-		it('prevents event default when enter, space or escape are pressed', () => {
-			const preventDefault = jest.fn();
-			const nativeEvent = {stopImmediatePropagation: jest.fn()};
-			const wrapper = shallow(
-				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
-			);
-			const button = wrapper.find('[role="button"]');
-
-			button.simulate('keydown', {keyCode: 13, preventDefault, nativeEvent});
-			button.simulate('keydown', {keyCode: 32, preventDefault, nativeEvent});
-			button.simulate('keydown', {keyCode: 27, preventDefault, nativeEvent});
-
-			expect(preventDefault).toHaveBeenCalledTimes(3);
-		});
-
 		it('scrolls the list up when it is visible and page up is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
@@ -612,7 +597,7 @@ describe('Select', () => {
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
 
-		it('hides the list and calls onChange when it is visible and enter is released', () => {
+		it('hides the list and calls onChange when it is visible and enter is pressed', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
 			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([2, setFocused]);
@@ -621,14 +606,14 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={onChange} />
 			);
-			wrapper.find('[role="button"]').simulate('keyup', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[false]]);
 			expect(setFocused.mock.calls).toEqual([[-1]]);
 			expect(onChange.mock.calls).toEqual([['three']]);
 		});
 
-		it('shows the list when it is not visible and enter is released', () => {
+		it('shows the list when it is not visible and enter is pressed', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
 			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
@@ -636,27 +621,27 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keyup', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[true]]);
 			expect(setFocused.mock.calls).toEqual([[2]]);
 		});
 
-		it('shows the list and selects the first option when enter is released and the value is not set', () => {
+		it('shows the list and selects the first option when enter is pressed and the value is not set', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
 			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
 			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			wrapper.find('[role="button"]').simulate('keyup', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[true]]);
 			expect(setFocused.mock.calls).toEqual([[0]]);
 		});
 
-		it('hides the list when it is visible and escape is released', () => {
+		it('hides the list when it is visible and escape is pressed', () => {
 			const onChange = jest.fn();
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
@@ -665,26 +650,11 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={onChange} />
 			);
-			wrapper.find('[role="button"]').simulate('keyup', event);
+			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[false]]);
 			expect(setFocused.mock.calls).toEqual([[-1]]);
 			expect(onChange).not.toHaveBeenCalled();
-		});
-
-		it('ignores the event when a key is released and any modifier is set', () => {
-			const preventDefault = jest.fn();
-			const wrapper = shallow(
-				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
-			);
-			const button = wrapper.find('[role="button"]');
-
-			button.simulate('keyup', {keyCode: 13, shiftKey: true, preventDefault});
-			button.simulate('keyup', {keyCode: 13, ctrlKey: true, preventDefault});
-			button.simulate('keyup', {keyCode: 13, altKey: true, preventDefault});
-			button.simulate('keyup', {keyCode: 13, metaKey: true, preventDefault});
-
-			expect(preventDefault).not.toHaveBeenCalled();
 		});
 
 		it('hides the list when it is visible and loses focus', () => {
