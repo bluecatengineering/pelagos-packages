@@ -5,7 +5,7 @@ import './FieldError.less';
 
 /** An error message. */
 const FieldError = ({text, alignment, ...props}) => (
-	<div {...props} className="FieldError" style={{textAlign: alignment}}>
+	<div {...props} className="FieldError" style={{textAlign: alignment}} aria-live="polite">
 		{text}
 	</div>
 );

@@ -2,6 +2,7 @@
 
 exports[`FieldError rendering renders expected elements 1`] = `
 <div
+  aria-live="polite"
   className="FieldError"
   id="test"
   style={
