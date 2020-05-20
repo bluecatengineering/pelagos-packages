@@ -8,6 +8,8 @@ MEMBER:
   member
 REMOVE:
   Remove
+REMOVE_OBJECT:
+  Remove {name}
 SCROLL_LEFT:
   Scroll left
 SCROLL_RIGHT:

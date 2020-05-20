@@ -33,7 +33,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 	const handleClose = useCallback(() => setFilter(null), []);
 	const handleSave = useCallback((values) => (setFilter(null), onApply(filter, values)), [filter, onApply]);
 
-	const handleMouseDown = useCallback(
+	const handleClick = useCallback(
 		(event) => {
 			const target = event.target;
 			const remove = target.closest('[data-kind="remove"]');
@@ -50,7 +50,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 		},
 		[onApply]
 	);
-	const handleKeyDown = useButtonKeyHandler(handleMouseDown);
+	const handleKeyDown = useButtonKeyHandler();
 
 	useEffect(() => addResizeObserver(filterRef.current, (rect) => showChevrons(filterRef.current, rect)), []);
 	useEffect(() => {
@@ -70,7 +70,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 				<SvgIcon icon={faChevronLeft} />
 			</div>
 			<div id="filterListTrack" className="FilterList__track" ref={filterRef}>
-				<div className="FilterList__items" onMouseDown={handleMouseDown} onKeyDown={handleKeyDown}>
+				<div className="FilterList__items" onClick={handleClick} onKeyDown={handleKeyDown}>
 					{filters &&
 						Object.entries(filters).map(([key, v]) =>
 							!excludedKeys.includes(key) ? (
@@ -92,7 +92,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 										className="FilterList__remove"
 										tabIndex="0"
 										role="button"
-										aria-label={__('REMOVE')}
+										aria-label={__('REMOVE_OBJECT', {name: getFilterTitle(key)})}
 										data-kind="remove"
 										data-key={key}>
 										<SvgIcon icon={timesThin} />

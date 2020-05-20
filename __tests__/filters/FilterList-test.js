@@ -8,6 +8,7 @@ jest.unmock('../../src/filters/FilterList');
 jest.unmock('../../src/strings');
 
 const FilterEditor = () => <></>;
+const getFilterTitle = (name) => name;
 
 describe('FilterList', () => {
 	describe('rendering', () => {
@@ -17,7 +18,6 @@ describe('FilterList', () => {
 		});
 
 		it('renders expected elements when filters are set', () => {
-			const getFilterTitle = jest.fn();
 			const getValues = jest.fn();
 			const filters = {
 				view: [{id: 'a'}, {id: 'abc'}],
@@ -38,7 +38,6 @@ describe('FilterList', () => {
 		});
 
 		it('renders expected elements when filter is set', () => {
-			const getFilterTitle = jest.fn();
 			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const setFilter = jest.fn();
@@ -56,7 +55,6 @@ describe('FilterList', () => {
 		});
 
 		it('renders expected elements when filter key is excluded', () => {
-			const getFilterTitle = jest.fn();
 			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const setFilter = jest.fn();
@@ -76,7 +74,6 @@ describe('FilterList', () => {
 
 	describe('behaviour', () => {
 		it('calls onApply with null when a remove button is clicked', () => {
-			const getFilterTitle = jest.fn();
 			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const onApply = jest.fn();
@@ -97,14 +94,13 @@ describe('FilterList', () => {
 					filterEditor={FilterEditor}
 				/>
 			);
-			wrapper.find('[onMouseDown]').simulate('mousedown', event);
+			wrapper.find('#filterListTrack > [onClick]').simulate('click', event);
 			expect(event.target.closest.mock.calls).toEqual([['[data-kind="remove"]']]);
 			expect(event.stopPropagation.mock.calls).toEqual([[]]);
 			expect(onApply.mock.calls).toEqual([['view', null]]);
 		});
 
 		it('calls setFilter when a filter button is clicked', () => {
-			const getFilterTitle = jest.fn();
 			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const setFilter = jest.fn();
@@ -119,14 +115,13 @@ describe('FilterList', () => {
 			const wrapper = shallow(
 				<FilterList filters={filters} getFilterTitle={getFilterTitle} getValues={getValues} excludedKeys={[]} />
 			);
-			wrapper.find('[onMouseDown]').simulate('mousedown', event);
+			wrapper.find('#filterListTrack > [onClick]').simulate('click', event);
 			expect(event.target.closest.mock.calls).toEqual([['[data-kind="remove"]'], ['[data-kind="item"]']]);
 			expect(event.stopPropagation.mock.calls).toEqual([[]]);
 			expect(setFilter.mock.calls).toEqual([['view']]);
 		});
 
 		it('does not call setFilter when no button is clicked', () => {
-			const getFilterTitle = jest.fn();
 			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const setFilter = jest.fn();
@@ -140,7 +135,7 @@ describe('FilterList', () => {
 			const wrapper = shallow(
 				<FilterList filters={filters} getFilterTitle={getFilterTitle} getValues={getValues} excludedKeys={[]} />
 			);
-			wrapper.find('[onMouseDown]').simulate('mousedown', event);
+			wrapper.find('#filterListTrack > [onClick]').simulate('click', event);
 			expect(event.target.closest.mock.calls).toEqual([['[data-kind="remove"]'], ['[data-kind="item"]']]);
 			expect(event.stopPropagation.mock.calls).toEqual([]);
 			expect(setFilter.mock.calls).toEqual([]);
@@ -195,7 +190,6 @@ describe('FilterList', () => {
 		});
 
 		it('calls setFilter when the editor is closed', () => {
-			const getFilterTitle = jest.fn();
 			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const setFilter = jest.fn();
@@ -214,7 +208,6 @@ describe('FilterList', () => {
 		});
 
 		it('calls onApply when the editor is saved', () => {
-			const getFilterTitle = jest.fn();
 			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const values = ['x'];
