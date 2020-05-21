@@ -57,5 +57,6 @@ export {default as toastReducer} from './toasts/ToastReducer';
 export {default as useButtonKeyHandler} from './hooks/useButtonKeyHandler';
 export {default as useEditorPositioner} from './hooks/useEditorPositioner';
 export {default as useFocusTrap} from './hooks/useFocusTrap';
+export {default as useLiveText} from './hooks/useLiveText';
 export {default as useMenuHandler} from './hooks/useMenuHandler';
 export {default as useTooltip} from './hooks/useTooltip';
