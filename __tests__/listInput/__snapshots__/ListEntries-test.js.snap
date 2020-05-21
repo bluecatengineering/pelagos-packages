@@ -4,17 +4,21 @@ exports[`ListEntries rendering renders expected elements 1`] = `
 <div
   className="ListEntries"
   id="test"
+  onClick={[Function]}
+  role="list"
 >
   <div
     className="ListEntries__item  ListEntries__gridItem"
     data-bcn-id="list-item"
+    role="listitem"
   >
     <div
-      aria-label="Remove"
+      aria-label="Remove test"
       className="ListEntries__icon"
       data-bcn-id="remove-item"
-      onClick={[Function]}
+      data-index={0}
       role="button"
+      tabIndex="0"
     >
       <SvgIcon
         icon={
@@ -37,17 +41,21 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
 <div
   className="ListEntries"
   id="test"
+  onClick={[Function]}
+  role="list"
 >
   <div
     className="ListEntries__item "
     data-bcn-id="list-item"
+    role="listitem"
   >
     <div
-      aria-label="Remove"
+      aria-label="Remove test"
       className="ListEntries__icon"
       data-bcn-id="remove-item"
-      onClick={[Function]}
+      data-index={0}
       role="button"
+      tabIndex="0"
     >
       <SvgIcon
         icon={
@@ -70,17 +78,58 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
 <div
   className="ListEntries"
   id="test"
+  onClick={[Function]}
+  role="list"
 >
   <div
     className="ListEntries__item  ListEntries__item--highlight ListEntries__gridItem"
     data-bcn-id="list-item"
+    role="listitem"
   >
     <div
-      aria-label="Remove"
+      aria-label="Remove test"
       className="ListEntries__icon"
       data-bcn-id="remove-item"
-      onClick={[Function]}
+      data-index={0}
       role="button"
+      tabIndex="0"
+    >
+      <SvgIcon
+        icon={
+          Object {
+            "icon": Array [],
+          }
+        }
+      />
+    </div>
+    <div
+      className="ListEntries__name"
+    >
+      test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListEntries rendering renders expected elements when renderItem is not set 1`] = `
+<div
+  className="ListEntries"
+  id="test"
+  onClick={[Function]}
+  role="list"
+>
+  <div
+    className="ListEntries__item  ListEntries__gridItem"
+    data-bcn-id="list-item"
+    role="listitem"
+  >
+    <div
+      aria-label="Remove test"
+      className="ListEntries__icon"
+      data-bcn-id="remove-item"
+      data-index={0}
+      role="button"
+      tabIndex="0"
     >
       <SvgIcon
         icon={
@@ -103,17 +152,21 @@ exports[`ListEntries rendering renders expected elements when the item has class
 <div
   className="ListEntries"
   id="test"
+  onClick={[Function]}
+  role="list"
 >
   <div
     className="ListEntries__item  ListEntries__gridItem"
     data-bcn-id="list-item"
+    role="listitem"
   >
     <div
-      aria-label="Remove"
+      aria-label="Remove test"
       className="ListEntries__icon"
       data-bcn-id="remove-item"
-      onClick={[Function]}
+      data-index={0}
       role="button"
+      tabIndex="0"
     >
       <SvgIcon
         icon={

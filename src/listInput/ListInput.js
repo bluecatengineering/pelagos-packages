@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Label from '../components/Label';
 import ComboBox from '../components/ComboBox';
 import FieldError from '../formFields/FieldError';
+import useLiveText from '../hooks/useLiveText';
+import __ from '../strings';
 
 import ListEntries from './ListEntries';
 
@@ -26,6 +28,7 @@ const ListInput = ({
 	validateSuggestion,
 	renderSuggestion,
 	getItemKey,
+	getItemName,
 	renderItem,
 	onListChange,
 	onTextChange,
@@ -34,6 +37,8 @@ const ListInput = ({
 }) => {
 	const [text, setText] = useState('');
 	const [highlightKey, setHighlightKey] = useState(null);
+
+	const setLiveText = useLiveText();
 
 	const handleGetSuggestions = useCallback(
 		(text) => {
@@ -55,21 +60,25 @@ const ListInput = ({
 				setText('');
 				onTextChange(false);
 				setHighlightKey(id);
-			} else if (parseInput) {
-				setText('');
-				onTextChange(false);
-				onListChange([getSuggestionText(suggestion), ...list]);
 			} else {
-				const error = validateSuggestion && validateSuggestion(suggestion);
-				if (error) {
-					const suggestionText = getSuggestionText(suggestion);
-					setText(suggestionText);
-					onTextChange(!!suggestionText);
-					onErrorChange(error);
-				} else {
+				const suggestionText = getSuggestionText(suggestion);
+				if (parseInput) {
+					setLiveText(__('OBJECT_ADDED', {name: suggestionText}));
 					setText('');
 					onTextChange(false);
-					onListChange([suggestion, ...list]);
+					onListChange([suggestionText, ...list]);
+				} else {
+					const error = validateSuggestion && validateSuggestion(suggestion);
+					if (error) {
+						setText(suggestionText);
+						onTextChange(!!suggestionText);
+						onErrorChange(error);
+					} else {
+						setLiveText(__('OBJECT_ADDED', {name: suggestionText}));
+						setText('');
+						onTextChange(false);
+						onListChange([suggestion, ...list]);
+					}
 				}
 			}
 		},
@@ -82,6 +91,7 @@ const ListInput = ({
 			list,
 			validateSuggestion,
 			onErrorChange,
+			setLiveText,
 		]
 	);
 
@@ -95,13 +105,14 @@ const ListInput = ({
 			if (error) {
 				onErrorChange(error);
 			} else {
+				setLiveText(__('OBJECT_ADDED', {name: entries.join(', ')}));
 				setText('');
 				onTextChange(false);
 				onListChange([...entries, ...list]);
 				onErrorChange(null);
 			}
 		}
-	}, [list, text, parseInput, onTextChange, onListChange, onErrorChange]);
+	}, [list, text, parseInput, onTextChange, onListChange, onErrorChange, setLiveText]);
 
 	const handleTextChange = useCallback(
 		(text) => {
@@ -148,6 +159,7 @@ const ListInput = ({
 					list={list}
 					column={column}
 					getItemKey={getItemKey}
+					getItemName={getItemName}
 					renderItem={renderItem}
 					onRemoveClick={handleRemoveClick}
 					onHighlightClear={handleHighlightClear}
@@ -194,6 +206,8 @@ ListInput.propTypes = {
 	renderSuggestion: PropTypes.func,
 	/** Function invoked to get each item's key. */
 	getItemKey: PropTypes.func,
+	/** Function invoked to get each item's name. */
+	getItemName: PropTypes.func,
 	/** Function invoked to render each list item. */
 	renderItem: PropTypes.func,
 	/** Function invoked when the list changes. */

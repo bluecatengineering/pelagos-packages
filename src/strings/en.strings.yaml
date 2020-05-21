@@ -6,8 +6,10 @@ ITEM_NOT_ADDED:
   Press Enter to add item(s) to the list.
 MEMBER:
   member
-REMOVE:
-  Remove
+OBJECT_ADDED:
+  "{name} added"
+OBJECT_REMOVED:
+  "{name} removed"
 REMOVE_OBJECT:
   Remove {name}
 SCROLL_LEFT:

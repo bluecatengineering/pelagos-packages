@@ -48,6 +48,7 @@ const NameFilterEditor = ({label, placeholder, list, sourceById, errorMessage, v
 			getHighlightKey={getSuggestionHighlightKey}
 			renderSuggestion={renderSuggestion}
 			getItemKey={getId}
+			getItemName={getName}
 			renderItem={renderNamedListItem}
 			onListChange={handleListChange}
 			onTextChange={setText}

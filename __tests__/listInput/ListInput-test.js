@@ -2,8 +2,13 @@ import React, {useState} from 'react';
 import {shallow} from 'enzyme';
 
 import ListInput from '../../src/listInput/ListInput';
+import useLiveText from '../../src/hooks/useLiveText';
 
 jest.unmock('../../src/listInput/ListInput');
+jest.unmock('../../src/strings');
+
+const setLiveText = jest.fn();
+useLiveText.mockReturnValue(setLiveText);
 
 describe('ListInput', () => {
 	describe('rendering', () => {
@@ -148,6 +153,7 @@ describe('ListInput', () => {
 			expect(getHighlightKey.mock.calls).toEqual([[suggestion]]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[['Text', 'Foo']]]);
+			expect(setLiveText.mock.calls).toEqual([['Text added']]);
 		});
 
 		it('calls onErrorChange when the combo-box value changes and validateSuggestion returns an error', () => {
@@ -180,6 +186,7 @@ describe('ListInput', () => {
 		it('calls onListChange when the combo-box value changes and validateSuggestion returns null', () => {
 			const item = {name: 'Item'};
 			const suggestion = {name: 'Test suggestion'};
+			const getSuggestionText = jest.fn().mockReturnValue('Text');
 			const getHighlightKey = jest.fn();
 			const validateSuggestion = jest.fn();
 			const onListChange = jest.fn();
@@ -188,6 +195,7 @@ describe('ListInput', () => {
 				<ListInput
 					id="test"
 					list={[item]}
+					getSuggestionText={getSuggestionText}
 					getHighlightKey={getHighlightKey}
 					validateSuggestion={validateSuggestion}
 					renderSuggestion={() => <div />}
@@ -200,6 +208,7 @@ describe('ListInput', () => {
 			expect(validateSuggestion.mock.calls).toEqual([[suggestion]]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[[suggestion, item]]]);
+			expect(setLiveText.mock.calls).toEqual([['Text added']]);
 		});
 
 		it('calls onListChange with an empty list when enter is pressed and text is /clear', () => {
@@ -228,7 +237,7 @@ describe('ListInput', () => {
 
 		it('calls onListChange with the parsed list when enter is pressed and parseInput returns a list', () => {
 			const list = [{id: 0}];
-			const entries = [{id: 1}];
+			const entries = ['Foo', 'Bar'];
 			const parseInput = jest.fn().mockReturnValue({entries});
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
@@ -249,13 +258,14 @@ describe('ListInput', () => {
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[[...entries, ...list]]]);
 			expect(onErrorChange.mock.calls).toEqual([[null]]);
+			expect(setLiveText.mock.calls).toEqual([['Foo, Bar added']]);
 		});
 
 		it('ignores input when enter is pressed and parseInput is not set', () => {
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
 			const wrapper = shallow(<ListInput id="test" onListChange={onListChange} onTextChange={onTextChange} />);
-			wrapper.find('ComboBox').prop('onEnter')();
+			expect(() => wrapper.find('ComboBox').prop('onEnter')()).not.toThrow();
 		});
 
 		it('ignores input when enter is pressed and text is empty', () => {

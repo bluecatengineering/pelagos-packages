@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useLiveText sets text on a live element 1`] = `
+<div
+  aria-live="assertive"
+  class="assistive-text"
+  id="liveText"
+>
+  Test1
+</div>
+`;
+
+exports[`useLiveText sets text on a live element 2`] = `
+<div
+  aria-live="assertive"
+  class="assistive-text"
+  id="liveText"
+>
+  Test2
+</div>
+`;

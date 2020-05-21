@@ -4,7 +4,6 @@ import identity from 'lodash-es/identity';
 
 import ListInput from '../listInput/ListInput';
 import renderSuggestion from '../suggestions/renderSuggestion';
-import renderListItem from '../listItems/renderListItem';
 import __ from '../strings';
 
 const getName = (o) => o.name;
@@ -38,7 +37,7 @@ const TextFilterEditor = ({label, placeholder, list, getSuggestions, parseInput,
 			getHighlightKey={getSuggestionHighlightKey}
 			renderSuggestion={renderSuggestion}
 			getItemKey={identity}
-			renderItem={renderListItem}
+			getItemName={identity}
 			parseInput={parseInput}
 			onListChange={onListChange}
 			onTextChange={setText}

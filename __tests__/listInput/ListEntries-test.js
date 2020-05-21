@@ -4,11 +4,19 @@ import debounce from 'lodash-es/debounce';
 import {scrollIntoView} from '@bluecat/helpers';
 
 import ListEntries from '../../src/listInput/ListEntries';
+import renderListItem from '../../src/listItems/renderListItem';
+import useLiveText from '../../src/hooks/useLiveText';
 
 jest.unmock('../../src/listInput/ListEntries');
 jest.unmock('../../src/strings');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)));
+
+const getId = (i) => i.id;
+const getName = (i) => i.name;
+
+const setLiveText = jest.fn();
+useLiveText.mockReturnValue(setLiveText);
 
 describe('ListEntries', () => {
 	describe('rendering', () => {
@@ -17,11 +25,21 @@ describe('ListEntries', () => {
 				<ListEntries
 					id="test"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={(i) => i.id}
+					getItemKey={getId}
+					getItemName={getName}
 					renderItem={(i) => <div>{i.name}</div>}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when renderItem is not set', () => {
+			renderListItem.mockReturnValue(<div>test</div>);
+			const wrapper = shallow(
+				<ListEntries id="test" list={[{id: '0', name: 'test'}]} getItemKey={getId} getItemName={getName} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(renderListItem.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when the item has className', () => {
@@ -29,7 +47,8 @@ describe('ListEntries', () => {
 				<ListEntries
 					id="test"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={(i) => i.id}
+					getItemKey={getId}
+					getItemName={getName}
 					renderItem={(i) => <div className="TestClass">{i.name}</div>}
 				/>
 			);
@@ -42,7 +61,8 @@ describe('ListEntries', () => {
 					id="test"
 					highlightKey="0"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={(i) => i.id}
+					getItemKey={getId}
+					getItemName={getName}
 					renderItem={(i) => <div>{i.name}</div>}
 				/>
 			);
@@ -55,7 +75,8 @@ describe('ListEntries', () => {
 					id="test"
 					list={[{id: '0', name: 'test'}]}
 					column
-					getItemKey={(i) => i.id}
+					getItemKey={getId}
+					getItemName={getName}
 					renderItem={(i) => <div>{i.name}</div>}
 				/>
 			);
@@ -71,13 +92,32 @@ describe('ListEntries', () => {
 				<ListEntries
 					id="test"
 					list={[item]}
-					getItemKey={(i) => i.id}
+					getItemKey={getId}
+					getItemName={getName}
 					renderItem={(i) => <div>{i.name}</div>}
 					onRemoveClick={onRemoveClick}
 				/>
 			);
-			wrapper.find('[data-bcn-id="remove-item"]').simulate('click');
+			wrapper.find('[role="list"]').simulate('click', {target: {closest: () => ({dataset: {index: '0'}})}});
 			expect(onRemoveClick.mock.calls).toEqual([[item, 0]]);
+			expect(setLiveText.mock.calls).toEqual([['test removed']]);
+		});
+
+		it('does not call onRemoveClick when the list is clicked outside', () => {
+			const onRemoveClick = jest.fn();
+			const item = {id: '0', name: 'test'};
+			const wrapper = shallow(
+				<ListEntries
+					id="test"
+					list={[item]}
+					getItemKey={getId}
+					getItemName={getName}
+					renderItem={(i) => <div>{i.name}</div>}
+					onRemoveClick={onRemoveClick}
+				/>
+			);
+			wrapper.find('[role="list"]').simulate('click', {target: {closest: () => null}});
+			expect(onRemoveClick.mock.calls).toEqual([]);
 		});
 
 		it('calls scrollIntoView when highlightKey is set and the element is found', () => {
@@ -90,7 +130,8 @@ describe('ListEntries', () => {
 					id="test"
 					highlightKey="0"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={(i) => i.id}
+					getItemKey={getId}
+					getItemName={getName}
 					renderItem={(i) => <div>{i.name}</div>}
 					onHighlightClear={onHighlightClear}
 				/>
@@ -114,7 +155,8 @@ describe('ListEntries', () => {
 					id="test"
 					highlightKey="1"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={(i) => i.id}
+					getItemKey={getId}
+					getItemName={getName}
 					renderItem={(i) => <div>{i.name}</div>}
 					onHighlightClear={onHighlightClear}
 				/>
@@ -132,7 +174,8 @@ describe('ListEntries', () => {
 				<ListEntries
 					id="test"
 					list={[{id: '0', name: 'test'}]}
-					getItemKey={(i) => i.id}
+					getItemKey={getId}
+					getItemName={getName}
 					renderItem={(i) => <div>{i.name}</div>}
 					onHighlightClear={onHighlightClear}
 				/>
