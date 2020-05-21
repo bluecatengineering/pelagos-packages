@@ -9,14 +9,14 @@ exports[`ListEntries rendering renders expected elements 1`] = `
 >
   <div
     className="ListEntries__item  ListEntries__gridItem"
-    data-bcn-id="list-item"
+    data-testid="list-item"
     role="listitem"
   >
     <div
       aria-label="Remove test"
       className="ListEntries__icon"
-      data-bcn-id="remove-item"
       data-index={0}
+      data-testid="remove-item"
       role="button"
       tabIndex="0"
     >
@@ -46,14 +46,14 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
 >
   <div
     className="ListEntries__item "
-    data-bcn-id="list-item"
+    data-testid="list-item"
     role="listitem"
   >
     <div
       aria-label="Remove test"
       className="ListEntries__icon"
-      data-bcn-id="remove-item"
       data-index={0}
+      data-testid="remove-item"
       role="button"
       tabIndex="0"
     >
@@ -83,14 +83,14 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
 >
   <div
     className="ListEntries__item  ListEntries__item--highlight ListEntries__gridItem"
-    data-bcn-id="list-item"
+    data-testid="list-item"
     role="listitem"
   >
     <div
       aria-label="Remove test"
       className="ListEntries__icon"
-      data-bcn-id="remove-item"
       data-index={0}
+      data-testid="remove-item"
       role="button"
       tabIndex="0"
     >
@@ -120,14 +120,14 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
 >
   <div
     className="ListEntries__item  ListEntries__gridItem"
-    data-bcn-id="list-item"
+    data-testid="list-item"
     role="listitem"
   >
     <div
       aria-label="Remove test"
       className="ListEntries__icon"
-      data-bcn-id="remove-item"
       data-index={0}
+      data-testid="remove-item"
       role="button"
       tabIndex="0"
     >
@@ -157,14 +157,14 @@ exports[`ListEntries rendering renders expected elements when the item has class
 >
   <div
     className="ListEntries__item  ListEntries__gridItem"
-    data-bcn-id="list-item"
+    data-testid="list-item"
     role="listitem"
   >
     <div
       aria-label="Remove test"
       className="ListEntries__icon"
-      data-bcn-id="remove-item"
       data-index={0}
+      data-testid="remove-item"
       role="button"
       tabIndex="0"
     >

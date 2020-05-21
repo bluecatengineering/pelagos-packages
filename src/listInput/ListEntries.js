@@ -71,9 +71,9 @@ const ListEntries = ({
 							(column ? '' : ' ListEntries__gridItem')
 						}
 						role="listitem"
-						data-bcn-id="list-item">
+						data-testid="list-item">
 						<div
-							data-bcn-id="remove-item"
+							data-testid="remove-item"
 							className="ListEntries__icon"
 							tabIndex="0"
 							role="button"

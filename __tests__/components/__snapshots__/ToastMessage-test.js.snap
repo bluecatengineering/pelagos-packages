@@ -3,13 +3,13 @@
 exports[`ToastMessage rendering does not render button on application error 1`] = `
 <div
   className="ToastMessage ToastMessage--fatal"
-  data-bcn-id="toast-fatal"
+  data-testid="toast-fatal"
   onClick={[Function]}
   role="alert"
 >
   <div
     className="ToastMessage__text"
-    data-bcn-id="message"
+    data-testid="message"
   >
     This is a test
   </div>
@@ -19,20 +19,20 @@ exports[`ToastMessage rendering does not render button on application error 1`] 
 exports[`ToastMessage rendering renders close button on error 1`] = `
 <div
   className="ToastMessage ToastMessage--error"
-  data-bcn-id="toast-error"
+  data-testid="toast-error"
   onClick={[Function]}
   role="alert"
 >
   <div
     className="ToastMessage__text ToastMessage__text--closeable"
-    data-bcn-id="message"
+    data-testid="message"
   >
     This is a test
   </div>
   <div
     aria-label="Dismiss"
     className="ToastMessage__close"
-    data-bcn-id="message-close"
+    data-testid="message-close"
     role="button"
   >
     <SvgIcon

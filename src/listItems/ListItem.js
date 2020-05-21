@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './ListItem.less';
 
 const ListItem = ({item, className}) => (
-	<span data-bcn-id="name" className={'ListItem' + (className ? ' ' + className : '')} title={item}>
+	<span data-testid="name" className={'ListItem' + (className ? ' ' + className : '')} title={item}>
 		{item}
 	</span>
 );

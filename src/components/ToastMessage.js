@@ -28,7 +28,7 @@ const ToastMessage = ({message, onRemove}) => {
 
 	if (REQUIRES_CLOSE.includes(type)) {
 		closeButton = (
-			<div data-bcn-id="message-close" className="ToastMessage__close" role="button" aria-label={__('DISMISS')}>
+			<div data-testid="message-close" className="ToastMessage__close" role="button" aria-label={__('DISMISS')}>
 				<SvgIcon icon={faTimes} />
 			</div>
 		);
@@ -36,11 +36,11 @@ const ToastMessage = ({message, onRemove}) => {
 	}
 	return (
 		<div
-			data-bcn-id={'toast-' + type}
+			data-testid={'toast-' + type}
 			className={'ToastMessage ToastMessage--' + type}
 			role="alert"
 			onClick={handleClick}>
-			<div data-bcn-id="message" className={'ToastMessage__text' + toastMessageClass}>
+			<div data-testid="message" className={'ToastMessage__text' + toastMessageClass}>
 				{text}
 			</div>
 			{closeButton}
