@@ -48,6 +48,7 @@ export {default as addResizeObserver} from './functions/addResizeObserver';
 export {default as buildSimpleSuggestionsParser} from './functions/buildSimpleSuggestionsParser';
 export {default as compareSuggestions} from './functions/compareSuggestions';
 export {default as getGenericSuggestions} from './functions/getGenericSuggestions';
+export {default as setLiveText} from './functions/setLiveText';
 export {default as throttleAF} from './functions/throttleAF';
 
 export * from './toasts/ToastActions';

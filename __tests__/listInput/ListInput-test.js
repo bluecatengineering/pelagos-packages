@@ -2,13 +2,10 @@ import React, {useState} from 'react';
 import {shallow} from 'enzyme';
 
 import ListInput from '../../src/listInput/ListInput';
-import useLiveText from '../../src/hooks/useLiveText';
+import setLiveText from '../../src/functions/setLiveText';
 
 jest.unmock('../../src/listInput/ListInput');
 jest.unmock('../../src/strings');
-
-const setLiveText = jest.fn();
-useLiveText.mockReturnValue(setLiveText);
 
 describe('ListInput', () => {
 	describe('rendering', () => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useLiveText sets text on a live element 1`] = `
+exports[`setLiveText sets text on a live element 1`] = `
 <div
   aria-live="assertive"
   class="assistive-text"
@@ -10,7 +10,7 @@ exports[`useLiveText sets text on a live element 1`] = `
 </div>
 `;
 
-exports[`useLiveText sets text on a live element 2`] = `
+exports[`setLiveText sets text on a live element 2`] = `
 <div
   aria-live="assertive"
   class="assistive-text"

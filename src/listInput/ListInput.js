@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Label from '../components/Label';
 import ComboBox from '../components/ComboBox';
 import FieldError from '../formFields/FieldError';
-import useLiveText from '../hooks/useLiveText';
+import setLiveText from '../functions/setLiveText';
 import __ from '../strings';
 
 import ListEntries from './ListEntries';
@@ -37,8 +37,6 @@ const ListInput = ({
 }) => {
 	const [text, setText] = useState('');
 	const [highlightKey, setHighlightKey] = useState(null);
-
-	const setLiveText = useLiveText();
 
 	const handleGetSuggestions = useCallback(
 		(text) => {
@@ -91,7 +89,6 @@ const ListInput = ({
 			list,
 			validateSuggestion,
 			onErrorChange,
-			setLiveText,
 		]
 	);
 
@@ -112,7 +109,7 @@ const ListInput = ({
 				onErrorChange(null);
 			}
 		}
-	}, [list, text, parseInput, onTextChange, onListChange, onErrorChange, setLiveText]);
+	}, [list, text, parseInput, onTextChange, onListChange, onErrorChange]);
 
 	const handleTextChange = useCallback(
 		(text) => {

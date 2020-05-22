@@ -7,7 +7,7 @@ import useButtonKeyHandler from '../hooks/useButtonKeyHandler';
 import renderListItem from '../listItems/renderListItem';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
-import useLiveText from '../hooks/useLiveText';
+import setLiveText from '../functions/setLiveText';
 import __ from '../strings';
 
 import './ListEntries.less';
@@ -26,8 +26,6 @@ const ListEntries = ({
 }) => {
 	const clearHighlight = useMemo(() => onHighlightClear && debounce(onHighlightClear, 1000), [onHighlightClear]);
 
-	const setLiveText = useLiveText();
-
 	const handleClick = useCallback(
 		(event) => {
 			const target = event.target.closest('[data-index]');
@@ -38,7 +36,7 @@ const ListEntries = ({
 				onRemoveClick(item, index);
 			}
 		},
-		[list, onRemoveClick, getItemName, setLiveText]
+		[list, onRemoveClick, getItemName]
 	);
 
 	const handleKeyDown = useButtonKeyHandler();

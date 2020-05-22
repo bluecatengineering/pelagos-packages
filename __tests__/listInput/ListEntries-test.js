@@ -5,7 +5,7 @@ import {scrollIntoView} from '@bluecat/helpers';
 
 import ListEntries from '../../src/listInput/ListEntries';
 import renderListItem from '../../src/listItems/renderListItem';
-import useLiveText from '../../src/hooks/useLiveText';
+import setLiveText from '../../src/functions/setLiveText';
 
 jest.unmock('../../src/listInput/ListEntries');
 jest.unmock('../../src/strings');
@@ -14,9 +14,6 @@ jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)
 
 const getId = (i) => i.id;
 const getName = (i) => i.name;
-
-const setLiveText = jest.fn();
-useLiveText.mockReturnValue(setLiveText);
 
 describe('ListEntries', () => {
 	describe('rendering', () => {
