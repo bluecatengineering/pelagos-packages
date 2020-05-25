@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import useButtonKeyHandler from '../hooks/useButtonKeyHandler';
+import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 
 import './Hamburger.less';
 
 /** A hamburger menu. */
 const Hamburger = ({active, onClick, ...props}) => (
-	<div
-		{...props}
-		className="Hamburger"
-		role="button"
-		tabIndex="0"
-		onClick={onClick}
-		onKeyDown={useButtonKeyHandler(onClick)}>
+	<div {...props} className="Hamburger" role="button" tabIndex="0" onClick={onClick} onKeyDown={handleButtonKeyDown}>
 		<div className={'Hamburger__inner' + (active ? ' Hamburger--active' : '')} />
 	</div>
 );

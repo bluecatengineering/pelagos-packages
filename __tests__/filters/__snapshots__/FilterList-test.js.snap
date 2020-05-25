@@ -8,6 +8,7 @@ exports[`FilterList rendering renders expected elements 1`] = `
     aria-label="Scroll left"
     className="FilterList__scrollLeft"
     onClick={[Function]}
+    onKeyDown={[MockFunction]}
     role="button"
     tabIndex="0"
   >
@@ -28,12 +29,14 @@ exports[`FilterList rendering renders expected elements 1`] = `
     <div
       className="FilterList__items"
       onClick={[Function]}
+      onKeyDown={[MockFunction]}
     />
   </div>
   <div
     aria-label="Scroll right"
     className="FilterList__scrollRight"
     onClick={[Function]}
+    onKeyDown={[MockFunction]}
     role="button"
     tabIndex="0"
   >
@@ -58,6 +61,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
     aria-label="Scroll left"
     className="FilterList__scrollLeft"
     onClick={[Function]}
+    onKeyDown={[MockFunction]}
     role="button"
     tabIndex="0"
   >
@@ -78,6 +82,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
     <div
       className="FilterList__items"
       onClick={[Function]}
+      onKeyDown={[MockFunction]}
     >
       <div
         aria-controls="filterListDropDown"
@@ -119,6 +124,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
     aria-label="Scroll right"
     className="FilterList__scrollRight"
     onClick={[Function]}
+    onKeyDown={[MockFunction]}
     role="button"
     tabIndex="0"
   >
@@ -163,6 +169,7 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
     aria-label="Scroll left"
     className="FilterList__scrollLeft"
     onClick={[Function]}
+    onKeyDown={[MockFunction]}
     role="button"
     tabIndex="0"
   >
@@ -183,12 +190,14 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
     <div
       className="FilterList__items"
       onClick={[Function]}
+      onKeyDown={[MockFunction]}
     />
   </div>
   <div
     aria-label="Scroll right"
     className="FilterList__scrollRight"
     onClick={[Function]}
+    onKeyDown={[MockFunction]}
     role="button"
     tabIndex="0"
   >
@@ -233,6 +242,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
     aria-label="Scroll left"
     className="FilterList__scrollLeft"
     onClick={[Function]}
+    onKeyDown={[MockFunction]}
     role="button"
     tabIndex="0"
   >
@@ -253,6 +263,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
     <div
       className="FilterList__items"
       onClick={[Function]}
+      onKeyDown={[MockFunction]}
     >
       <div
         aria-controls={null}
@@ -328,6 +339,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
     aria-label="Scroll right"
     className="FilterList__scrollRight"
     onClick={[Function]}
+    onKeyDown={[MockFunction]}
     role="button"
     tabIndex="0"
   >

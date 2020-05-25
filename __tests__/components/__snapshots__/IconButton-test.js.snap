@@ -5,6 +5,7 @@ exports[`IconButton rendering renders the expected elements 1`] = `
   aria-label="Test"
   className="IconButton IconButton--medium TestClass"
   id="test"
+  onKeyDown={[MockFunction]}
   role="button"
   tabIndex={0}
 >
@@ -36,6 +37,7 @@ exports[`IconButton rendering renders the expected elements when className is no
   aria-label="Test"
   className="IconButton IconButton--medium"
   id="test"
+  onKeyDown={[MockFunction]}
   role="button"
   tabIndex={0}
 >
@@ -50,6 +52,7 @@ exports[`IconButton rendering renders the expected elements when size and toolti
   aria-label="Test"
   className="IconButton IconButton--large"
   id="test"
+  onKeyDown={[MockFunction]}
   role="button"
   tabIndex={0}
 >
@@ -64,6 +67,7 @@ exports[`IconButton rendering renders the expected elements when tooltipText is 
   aria-label="Test"
   className="IconButton IconButton--medium TestClass"
   id="test"
+  onKeyDown={[MockFunction]}
   role="button"
   tabIndex={0}
 >

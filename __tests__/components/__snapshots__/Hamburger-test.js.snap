@@ -3,6 +3,7 @@
 exports[`Hamburger rendering renders expected elements 1`] = `
 <div
   className="Hamburger"
+  onKeyDown={[MockFunction]}
   role="button"
   tabIndex="0"
 >
@@ -15,6 +16,7 @@ exports[`Hamburger rendering renders expected elements 1`] = `
 exports[`Hamburger rendering renders expected elements when active is not set 1`] = `
 <div
   className="Hamburger"
+  onKeyDown={[MockFunction]}
   role="button"
   tabIndex="0"
 >

@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
-import useButtonKeyHandler from '../hooks/useButtonKeyHandler';
+import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import addResizeObserver from '../functions/addResizeObserver';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
@@ -27,8 +27,6 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 	const [filter, setFilter] = useState(null);
 	const handleClickLeft = useCallback(() => (filterRef.current.scrollLeft += -100), []);
 	const handleClickRight = useCallback(() => (filterRef.current.scrollLeft += 100), []);
-	const handleKeyLeft = useButtonKeyHandler(handleClickLeft);
-	const handleKeyRight = useButtonKeyHandler(handleClickRight);
 
 	const handleClose = useCallback(() => setFilter(null), []);
 	const handleSave = useCallback((values) => (setFilter(null), onApply(filter, values)), [filter, onApply]);
@@ -50,7 +48,6 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 		},
 		[onApply]
 	);
-	const handleKeyDown = useButtonKeyHandler();
 
 	useEffect(() => addResizeObserver(filterRef.current, (rect) => showChevrons(filterRef.current, rect)), []);
 	useEffect(() => {
@@ -66,11 +63,11 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 				role="button"
 				aria-label={__('SCROLL_LEFT')}
 				onClick={handleClickLeft}
-				onKeyDown={handleKeyLeft}>
+				onKeyDown={handleButtonKeyDown}>
 				<SvgIcon icon={faChevronLeft} />
 			</div>
 			<div id="filterListTrack" className="FilterList__track" ref={filterRef}>
-				<div className="FilterList__items" onClick={handleClick} onKeyDown={handleKeyDown}>
+				<div className="FilterList__items" onClick={handleClick} onKeyDown={handleButtonKeyDown}>
 					{filters &&
 						Object.entries(filters).map(([key, v]) =>
 							!excludedKeys.includes(key) ? (
@@ -108,7 +105,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 				role="button"
 				aria-label={__('SCROLL_RIGHT')}
 				onClick={handleClickRight}
-				onKeyDown={handleKeyRight}>
+				onKeyDown={handleButtonKeyDown}>
 				<SvgIcon icon={faChevronRight} />
 			</div>
 			{filter &&

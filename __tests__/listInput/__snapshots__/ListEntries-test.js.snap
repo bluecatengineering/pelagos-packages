@@ -5,6 +5,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
   className="ListEntries"
   id="test"
   onClick={[Function]}
+  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -42,6 +43,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
   className="ListEntries"
   id="test"
   onClick={[Function]}
+  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -79,6 +81,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
   className="ListEntries"
   id="test"
   onClick={[Function]}
+  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -116,6 +119,7 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
   className="ListEntries"
   id="test"
   onClick={[Function]}
+  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -153,6 +157,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
   className="ListEntries"
   id="test"
   onClick={[Function]}
+  onKeyDown={[MockFunction]}
   role="list"
 >
   <div

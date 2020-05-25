@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollIntoView} from '@bluecat/helpers';
 
-import useButtonKeyHandler from '../hooks/useButtonKeyHandler';
+import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import renderListItem from '../listItems/renderListItem';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
@@ -39,8 +39,6 @@ const ListEntries = ({
 		[list, onRemoveClick, getItemName]
 	);
 
-	const handleKeyDown = useButtonKeyHandler();
-
 	useEffect(() => {
 		if (highlightKey) {
 			const element = document.querySelector('.ListEntries__item--highlight');
@@ -53,7 +51,7 @@ const ListEntries = ({
 	}, [highlightKey, clearHighlight]);
 
 	return (
-		<div id={id} className="ListEntries" role="list" onClick={handleClick} onKeyDown={handleKeyDown}>
+		<div id={id} className="ListEntries" role="list" onClick={handleClick} onKeyDown={handleButtonKeyDown}>
 			{list.map((item, i) => {
 				const name = getItemName(item);
 				const element = renderItem ? renderItem(item) : renderListItem(name);
