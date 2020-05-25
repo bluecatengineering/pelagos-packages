@@ -57,6 +57,7 @@ export default (text, placement) => {
 		if (text) {
 			if (timerRef.current) {
 				clearTimeout(timerRef.current);
+				timerRef.current = 0;
 			}
 
 			document.body.appendChild(tooltip);
