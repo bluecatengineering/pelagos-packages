@@ -135,23 +135,6 @@ describe('useTooltip', () => {
 		expect(addEventListener.mock.calls).toEqual(addEventListener.mock.calls);
 	});
 
-	it('removes tooltip when target changes', () => {
-		const addEventListener = jest.fn();
-		const setAttribute = jest.fn();
-		const removeAttribute = jest.fn();
-		const getBoundingClientRect = jest.fn().mockReturnValue({top: 100, left: 100, width: 200, height: 50});
-		const removeEventListener = jest.fn();
-		const tooltip = useTooltip('Test', 'top');
-		tooltip({addEventListener, removeEventListener, setAttribute, removeAttribute, getBoundingClientRect});
-		addEventListener.mock.calls[0][1]();
-		addEventListener.mock.calls[1][1]();
-		expect(document.getElementById('tooltip')).not.toBeNull();
-
-		tooltip(null);
-		expect(document.getElementById('tooltip')).toBeNull();
-		expect(clearTimeout).toHaveBeenCalledTimes(1);
-	});
-
 	it('does not remove tooltip if not in the DOM', () => {
 		const addEventListener = jest.fn();
 		const tooltip = useTooltip('Test', 'top');

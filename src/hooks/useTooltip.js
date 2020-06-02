@@ -71,11 +71,12 @@ export default (text, placement) => {
 		}
 	}, [text, placement, tooltip]);
 	const hide = useCallback(() => {
-		if (tooltip.parentNode) {
+		if (!timerRef.current && tooltip.parentNode) {
 			tooltip.classList.remove('Tooltip--visible');
 
+			const target = targetRef.current;
 			timerRef.current = setTimeout(() => {
-				targetRef.current.removeAttribute('aria-describedby');
+				target.removeAttribute('aria-describedby');
 				document.body.removeChild(tooltip);
 				timerRef.current = 0;
 			}, 300);
@@ -91,14 +92,7 @@ export default (text, placement) => {
 				target.removeEventListener('focus', show);
 				target.removeEventListener('blur', hide);
 
-				if (timerRef.current) {
-					clearTimeout(timerRef.current);
-					timerRef.current = 0;
-				}
-				if (tooltip.parentNode) {
-					targetRef.current.removeAttribute('aria-describedby');
-					document.body.removeChild(tooltip);
-				}
+				hide();
 			}
 			if (element) {
 				element.addEventListener('mouseenter', show);
@@ -108,6 +102,6 @@ export default (text, placement) => {
 			}
 			targetRef.current = element;
 		},
-		[hide, show, tooltip, targetRef]
+		[hide, show, targetRef]
 	);
 };
