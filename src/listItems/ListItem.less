@@ -1,11 +1,8 @@
 @import '../../less/colors';
+@import '../../less/utils';
 
 .ListItem {
-	display: block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	word-break: break-all;
+	@ellipsis();
 }
 
 .ListItem--unresolved {

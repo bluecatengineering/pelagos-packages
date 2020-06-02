@@ -4,6 +4,7 @@
 @import '../../less/modal';
 @import '../../less/shadows';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .Dialog__backdrop {
 	@modal-backdrop();
@@ -20,13 +21,10 @@
 
 .Dialog__title {
 	@font-16-600();
-	display: block;
+	@ellipsis();
 	border-radius: 3px 3px 0 0;
 	padding: @sp-12 @sp-24;
 	border-bottom: 1px solid @separator;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 
 .Dialog__body {

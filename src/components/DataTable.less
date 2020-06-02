@@ -2,6 +2,7 @@
 @import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .DataTable {
 	flex: 1;
@@ -28,14 +29,12 @@
 
 .DataTable__th {
 	@font-12-600-uc();
+	@base-ellipsis();
 	color: @font-color-2;
 	text-align: left;
 	vertical-align: bottom;
 	padding: 0 @sp-08;
 	max-width: 0;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 
 .DataTable__sort {
@@ -85,12 +84,10 @@
 }
 
 .DataTable__td {
+	@base-ellipsis();
 	vertical-align: middle;
 	padding: @sp-02 @sp-08;
 	max-width: 0;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 
 .DataTable__message {
