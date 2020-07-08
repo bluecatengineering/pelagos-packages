@@ -18,6 +18,7 @@ describe('TextInputField', () => {
 					placeholder="placeholder"
 					maxLength={10}
 					disabled={false}
+					optionalText="optional"
 					onChange={jest.fn()}
 				/>
 			);
@@ -36,42 +37,6 @@ describe('TextInputField', () => {
 					placeholder="placeholder"
 					maxLength={10}
 					disabled={false}
-					onChange={jest.fn()}
-				/>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders optional text if provided', () => {
-			const wrapper = shallow(
-				<TextInputField
-					id="test-id"
-					label="Label"
-					type="text"
-					name="name"
-					value=""
-					placeholder="placeholder"
-					maxLength={10}
-					disabled={false}
-					optionalText="optional"
-					onChange={jest.fn()}
-				/>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('does not render optional text if value is set', () => {
-			const wrapper = shallow(
-				<TextInputField
-					id="test-id"
-					label="Label"
-					type="text"
-					name="name"
-					value="value"
-					placeholder="placeholder"
-					maxLength={10}
-					disabled={false}
-					optionalText="optional"
 					onChange={jest.fn()}
 				/>
 			);

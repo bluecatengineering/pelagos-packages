@@ -4,14 +4,11 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
 <div
   className="TextAreaField"
 >
-  <div
-    className="TextAreaField__label"
-  >
-    <Label
-      htmlFor="test-id"
-      text="Label"
-    />
-  </div>
+  <LabelLine
+    htmlFor="test-id"
+    showOptionalText={false}
+    text="Label"
+  />
   <textarea
     className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
     id="test-id"
@@ -31,42 +28,13 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
 <div
   className="TextAreaField"
 >
-  <div
-    className="TextAreaField__label"
-  >
-    <Label
-      htmlFor="test-id"
-      text="Label"
-    />
-  </div>
+  <LabelLine
+    htmlFor="test-id"
+    showOptionalText={false}
+    text="Label"
+  />
   <textarea
     className="TextAreaField__area"
-    id="test-id"
-    maxLength={10}
-    onChange={[MockFunction]}
-    placeholder="placeholder"
-    value="value"
-  />
-  <FieldError
-    alignment="right"
-  />
-</div>
-`;
-
-exports[`TextAreaField rendering does not render optional text if value is set 1`] = `
-<div
-  className="TextAreaField"
->
-  <div
-    className="TextAreaField__label"
-  >
-    <Label
-      htmlFor="test-id"
-      text="Label"
-    />
-  </div>
-  <textarea
-    className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
     onChange={[MockFunction]}
@@ -83,14 +51,12 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
 <div
   className="TextAreaField"
 >
-  <div
-    className="TextAreaField__label"
-  >
-    <Label
-      htmlFor="test-id"
-      text="Label"
-    />
-  </div>
+  <LabelLine
+    htmlFor="test-id"
+    optionalText="optional"
+    showOptionalText={false}
+    text="Label"
+  />
   <textarea
     className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
@@ -109,14 +75,11 @@ exports[`TextAreaField rendering renders expected elements when className is set
 <div
   className="TextAreaField TestClass"
 >
-  <div
-    className="TextAreaField__label"
-  >
-    <Label
-      htmlFor="test-id"
-      text="Label"
-    />
-  </div>
+  <LabelLine
+    htmlFor="test-id"
+    showOptionalText={false}
+    text="Label"
+  />
   <textarea
     className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
@@ -131,48 +94,15 @@ exports[`TextAreaField rendering renders expected elements when className is set
 </div>
 `;
 
-exports[`TextAreaField rendering renders optional text if provided 1`] = `
-<div
-  className="TextAreaField"
->
-  <div
-    className="TextAreaField__label"
-  >
-    <Label
-      htmlFor="test-id"
-      text="Label"
-    />
-    <span
-      className="TextAreaField__optional"
-    >
-      optional
-    </span>
-  </div>
-  <textarea
-    className="TextAreaField__area TextAreaField--noresize"
-    id="test-id"
-    maxLength={10}
-    onChange={[MockFunction]}
-    placeholder="placeholder"
-  />
-  <FieldError
-    alignment="right"
-  />
-</div>
-`;
-
 exports[`TextAreaField rendering sets a random id if not provided 1`] = `
 <div
   className="TextAreaField"
 >
-  <div
-    className="TextAreaField__label"
-  >
-    <Label
-      htmlFor="e1"
-      text="Label"
-    />
-  </div>
+  <LabelLine
+    htmlFor="e1"
+    showOptionalText={false}
+    text="Label"
+  />
   <textarea
     className="TextAreaField__area TextAreaField--noresize"
     id="e1"

@@ -11,6 +11,7 @@ export {default as Dialog} from './components/Dialog';
 export {default as Hamburger} from './components/Hamburger';
 export {default as IconButton} from './components/IconButton';
 export {default as Label} from './components/Label';
+export {default as LabelLine} from './components/LabelLine';
 export {default as ModalSpinner} from './components/ModalSpinner';
 export {default as RadioButton} from './components/RadioButton';
 export {default as RadioGroup} from './components/RadioGroup';

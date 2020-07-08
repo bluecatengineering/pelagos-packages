@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LabelLine rendering renders expected elements 1`] = `
+<div
+  className="LabelLine__label"
+>
+  <Label
+    htmlFor="test-id"
+    text="Test"
+  />
+  <span
+    className="LabelLine__optional"
+  >
+    Optional
+  </span>
+  <span
+    className="LabelLine__notice"
+  >
+    Notice
+  </span>
+</div>
+`;
+
+exports[`LabelLine rendering renders expected elements when optionalText and notice are not set 1`] = `
+<div
+  className="LabelLine__label"
+>
+  <Label
+    htmlFor="test-id"
+    text="Test"
+  />
+  <span
+    className="LabelLine__notice"
+  >
+    Notice
+  </span>
+</div>
+`;
+
+exports[`LabelLine rendering renders expected elements when showOptionalText is false 1`] = `
+<div
+  className="LabelLine__label"
+>
+  <Label
+    htmlFor="test-id"
+    text="Test"
+  />
+  <span
+    className="LabelLine__notice"
+  >
+    Notice
+  </span>
+</div>
+`;

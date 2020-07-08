@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 
-import Label from '../components/Label';
+import LabelLine from '../components/LabelLine';
 import ComboBox from '../components/ComboBox';
 import FieldError from '../formFields/FieldError';
 import setLiveText from '../functions/setLiveText';
@@ -131,11 +131,13 @@ const ListInput = ({
 
 	return (
 		<div className="ListInput">
-			<div className="ListInput__label">
-				<Label htmlFor={id} text={label} />
-				{optionalText && (!list || list.length === 0) && <span className="ListInput__optional">{optionalText}</span>}
-				{notice && <span className="ListInput__notice">{notice}</span>}
-			</div>
+			<LabelLine
+				htmlFor={id}
+				text={label}
+				optionalText={optionalText}
+				showOptionalText={!list || list.length === 0}
+				notice={notice}
+			/>
 			<ComboBox
 				{...props}
 				id={id}

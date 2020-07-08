@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Label from '../components/Label';
+import LabelLine from '../components/LabelLine';
 
 import FieldError from './FieldError';
 import './TextInputField.less';
@@ -10,10 +10,7 @@ const TextInputField = ({id, className, label, value, optionalText, error, ...pr
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'TextInputField' + (className ? ' ' + className : '')}>
-			<div className="TextInputField__label">
-				<Label text={label} htmlFor={id} />
-				{optionalText && !value && <span className="TextInputField__optional">{optionalText}</span>}
-			</div>
+			<LabelLine htmlFor={id} text={label} optionalText={optionalText} showOptionalText={!value} />
 			<input
 				{...props}
 				id={id}

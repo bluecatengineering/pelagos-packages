@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Label from '../components/Label';
+import LabelLine from '../components/LabelLine';
 
 import FieldError from './FieldError';
 import './TextAreaField.less';
@@ -10,10 +10,7 @@ const TextAreaField = ({id, className, label, value, optionalText, resize, error
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'TextAreaField' + (className ? ' ' + className : '')}>
-			<div className="TextAreaField__label">
-				<Label text={label} htmlFor={id} />
-				{optionalText && !value && <span className="TextAreaField__optional">{optionalText}</span>}
-			</div>
+			<LabelLine htmlFor={id} text={label} optionalText={optionalText} showOptionalText={!value} />
 			<textarea
 				{...props}
 				id={id}
