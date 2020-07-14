@@ -7,7 +7,7 @@ exports[`ListInput rendering renders expected elements 1`] = `
   <LabelLine
     htmlFor="test"
     notice="Notice"
-    optionalText="optional"
+    optional={false}
     showOptionalText={false}
     text="Test"
   />
@@ -130,7 +130,7 @@ exports[`ListInput rendering renders expected elements when error is not set 1`]
 </div>
 `;
 
-exports[`ListInput rendering renders expected elements when the list is empty 1`] = `
+exports[`ListInput rendering renders expected elements when optionalText is set 1`] = `
 <div
   className="ListInput"
 >
@@ -138,6 +138,50 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
     htmlFor="test"
     notice="Notice"
     optionalText="optional"
+    showOptionalText={false}
+    text="Test"
+  />
+  <ComboBox
+    autoSelect={true}
+    error={true}
+    getSuggestions={[Function]}
+    id="test"
+    onChange={[Function]}
+    onEnter={[Function]}
+    onTextChange={[Function]}
+    placeholder="test placeholder"
+    text=""
+  />
+  <FieldError
+    alignment="right"
+    id="test-error"
+    text="test error"
+  />
+  <ListEntries
+    highlightKey={null}
+    id="test-grid"
+    list={
+      Array [
+        Object {
+          "id": "0",
+          "name": "test",
+        },
+      ]
+    }
+    onHighlightClear={[Function]}
+    onRemoveClick={[Function]}
+  />
+</div>
+`;
+
+exports[`ListInput rendering renders expected elements when the list is empty 1`] = `
+<div
+  className="ListInput"
+>
+  <LabelLine
+    htmlFor="test"
+    notice="Notice"
+    optional={true}
     showOptionalText={true}
     text="Test"
   />

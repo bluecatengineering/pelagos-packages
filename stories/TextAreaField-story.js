@@ -8,7 +8,7 @@ storiesOf('TextAreaField', module).add('all states', () => (
 	<div className="Story__group">
 		<TextAreaField label="Normal" value="Alpha" onChange={identity} />
 		<TextAreaField label="Empty" placeholder="Placeholder" onChange={identity} />
-		<TextAreaField label="Optional" optionalText="(optional)" onChange={identity} />
+		<TextAreaField label="Optional" optional onChange={identity} />
 		<TextAreaField label="Error" value="Alpha" error="Error message" onChange={identity} />
 	</div>
 ));

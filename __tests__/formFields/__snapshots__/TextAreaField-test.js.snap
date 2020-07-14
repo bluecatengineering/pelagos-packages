@@ -53,7 +53,7 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
 >
   <LabelLine
     htmlFor="test-id"
-    optionalText="optional"
+    optional={false}
     showOptionalText={false}
     text="Label"
   />
@@ -77,6 +77,30 @@ exports[`TextAreaField rendering renders expected elements when className is set
 >
   <LabelLine
     htmlFor="test-id"
+    showOptionalText={false}
+    text="Label"
+  />
+  <textarea
+    className="TextAreaField__area TextAreaField--noresize"
+    id="test-id"
+    maxLength={10}
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`TextAreaField rendering renders expected elements when optionalText is set 1`] = `
+<div
+  className="TextAreaField"
+>
+  <LabelLine
+    htmlFor="test-id"
+    optionalText="optional"
     showOptionalText={false}
     text="Label"
   />

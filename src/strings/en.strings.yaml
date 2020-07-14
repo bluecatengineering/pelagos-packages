@@ -10,6 +10,8 @@ OBJECT_ADDED:
   "{name} added"
 OBJECT_REMOVED:
   "{name} removed"
+P_OPTIONAL:
+  (optional)
 REMOVE_OBJECT:
   Remove {name}
 SCROLL_LEFT:

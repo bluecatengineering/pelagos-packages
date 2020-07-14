@@ -33,7 +33,7 @@ exports[`TextInputField rendering renders expected elements 1`] = `
 >
   <LabelLine
     htmlFor="test-id"
-    optionalText="optional"
+    optional={false}
     showOptionalText={false}
     text="Label"
   />
@@ -60,6 +60,33 @@ exports[`TextInputField rendering renders expected elements when className is se
 >
   <LabelLine
     htmlFor="test-id"
+    showOptionalText={false}
+    text="Label"
+  />
+  <input
+    className="TextInputField__input"
+    disabled={false}
+    id="test-id"
+    maxLength={10}
+    name="name"
+    onChange={[MockFunction]}
+    placeholder="placeholder"
+    type="text"
+    value="value"
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`TextInputField rendering renders expected elements when optionalText is set 1`] = `
+<div
+  className="TextInputField"
+>
+  <LabelLine
+    htmlFor="test-id"
+    optionalText="optional"
     showOptionalText={false}
     text="Label"
   />

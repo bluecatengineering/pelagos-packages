@@ -15,6 +15,7 @@ import './ListInput.less';
 const ListInput = ({
 	id,
 	label,
+	optional,
 	optionalText,
 	notice,
 	emptyText,
@@ -129,13 +130,15 @@ const ListInput = ({
 
 	const handleHighlightClear = useCallback(() => setHighlightKey(null), []);
 
+	const empty = !list?.length;
 	return (
 		<div className="ListInput">
 			<LabelLine
 				htmlFor={id}
 				text={label}
+				optional={optional && empty}
 				optionalText={optionalText}
-				showOptionalText={!list || list.length === 0}
+				showOptionalText={empty}
 				notice={notice}
 			/>
 			<ComboBox
@@ -151,7 +154,11 @@ const ListInput = ({
 				onTextChange={handleTextChange}
 			/>
 			<FieldError id={id + '-error'} text={error} />
-			{list && list.length !== 0 ? (
+			{empty ? (
+				<div className="ListInput__empty" id={id + '-empty'}>
+					{emptyText}
+				</div>
+			) : (
 				<ListEntries
 					id={id + '-grid'}
 					highlightKey={highlightKey}
@@ -163,10 +170,6 @@ const ListInput = ({
 					onRemoveClick={handleRemoveClick}
 					onHighlightClear={handleHighlightClear}
 				/>
-			) : (
-				<div className="ListInput__empty" id={id + '-empty'}>
-					{emptyText}
-				</div>
 			)}
 		</div>
 	);
@@ -177,7 +180,9 @@ ListInput.propTypes = {
 	id: PropTypes.string.isRequired,
 	/** The label text. */
 	label: PropTypes.string,
-	/** The hint text when list is empty. */
+	/** Whether the field is optional. */
+	optional: PropTypes.bool,
+	/** @deprecated use optional instead. */
 	optionalText: PropTypes.string,
 	/** The notice/warning text. */
 	notice: PropTypes.string,

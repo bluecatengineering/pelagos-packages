@@ -14,6 +14,22 @@ describe('ListInput', () => {
 				<ListInput
 					id="test"
 					label="Test"
+					optional
+					notice="Notice"
+					placeholder="test placeholder"
+					emptyText="Test empty"
+					list={[{id: '0', name: 'test'}]}
+					error="test error"
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when optionalText is set', () => {
+			const wrapper = shallow(
+				<ListInput
+					id="test"
+					label="Test"
 					optionalText="optional"
 					notice="Notice"
 					placeholder="test placeholder"
@@ -30,7 +46,7 @@ describe('ListInput', () => {
 				<ListInput
 					id="test"
 					label="Test"
-					optionalText="optional"
+					optional
 					notice="Notice"
 					placeholder="test placeholder"
 					emptyText="Test empty"
