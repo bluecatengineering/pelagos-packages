@@ -3,11 +3,18 @@ const {
 	copyFileSync,
 	mkdirSync,
 	readdirSync,
+	readFileSync,
 	statSync,
+	writeFileSync,
 } = require('fs');
 const {dirname, join} = require('path');
 
+const generator = require('@bluecat/strings-generator');
+
+const hashLength = require('./hash-length');
+
 const EXTENSIONS = /\.(less|yaml)$/;
+const STRINGS = /\.strings\.yaml$/;
 
 const mkdirs = (path) => {
 	try {
@@ -31,8 +38,13 @@ const copyDir = (from, to) =>
 			copyDir(subFrom, subTo);
 		} else if (stats.isFile() && EXTENSIONS.test(name)) {
 			mkdirs(to);
-			copyFileSync(subFrom, subTo, COPYFILE_FICLONE);
+			if (STRINGS.test(name)) {
+				writeFileSync(`${subTo}.js`, generator(readFileSync(subFrom, 'utf8'), output, hashLength));
+			} else {
+				copyFileSync(subFrom, subTo, COPYFILE_FICLONE);
+			}
 		}
 	});
 
-copyDir('src', process.argv[2]);
+const output = process.argv[2];
+copyDir('src', output);

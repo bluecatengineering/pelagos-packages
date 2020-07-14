@@ -1,4 +1,4 @@
-const hashLength = 5;
+const hashLength = require('./scripts/hash-length');
 
 module.exports = {
 	presets: [['@babel/react', {useBuiltIns: true}]],
