@@ -1,4 +1,10 @@
-const {mkdirSync, readdirSync, readFileSync, statSync, writeFileSync} = require('fs');
+const {
+	constants: {COPYFILE_FICLONE},
+	copyFileSync,
+	mkdirSync,
+	readdirSync,
+	statSync,
+} = require('fs');
 const {dirname, join} = require('path');
 
 const EXTENSIONS = /\.(less|yaml)$/;
@@ -16,8 +22,6 @@ const mkdirs = (path) => {
 	}
 };
 
-const copyFile = (from, to) => writeFileSync(to, readFileSync(from));
-
 const copyDir = (from, to) =>
 	readdirSync(from).forEach((name) => {
 		const subFrom = join(from, name);
@@ -27,7 +31,7 @@ const copyDir = (from, to) =>
 			copyDir(subFrom, subTo);
 		} else if (stats.isFile() && EXTENSIONS.test(name)) {
 			mkdirs(to);
-			copyFile(subFrom, subTo);
+			copyFileSync(subFrom, subTo, COPYFILE_FICLONE);
 		}
 	});
 
