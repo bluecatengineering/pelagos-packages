@@ -7,7 +7,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
   <div
     aria-labelledby="dialogTitle"
     aria-modal={true}
-    className="Dialog"
+    className="Dialog TestClass"
     id="test-dialog"
     role="dialog"
   >

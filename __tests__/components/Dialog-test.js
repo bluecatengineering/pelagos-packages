@@ -11,7 +11,7 @@ describe('Dialog', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<Dialog id="test-dialog" title="Test">
+				<Dialog id="test-dialog" className="TestClass" title="Test">
 					<div className="TestClass">This is a test</div>
 					<div>
 						<Button id="a" text="A" />

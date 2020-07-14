@@ -4,7 +4,7 @@ import focusTrap from 'focus-trap';
 
 import './Dialog.less';
 
-const Dialog = ({id, title, role, initialFocus, children: [body, buttons], onSubmit}) => {
+const Dialog = ({id, className, title, role, initialFocus, children: [body, buttons], onSubmit}) => {
 	const previousActive = useRef(document.activeElement);
 	const element = useRef(null);
 
@@ -34,12 +34,13 @@ const Dialog = ({id, title, role, initialFocus, children: [body, buttons], onSub
 		};
 	}, [initialFocus]);
 
+	const fullClassName = `Dialog${className ? ' ' + className : ''}`;
 	return (
 		<div className="Dialog__backdrop">
 			{onSubmit ? (
 				<form
 					id={id}
-					className="Dialog"
+					className={fullClassName}
 					role={role}
 					aria-modal
 					aria-labelledby="dialogTitle"
@@ -48,7 +49,7 @@ const Dialog = ({id, title, role, initialFocus, children: [body, buttons], onSub
 					{content}
 				</form>
 			) : (
-				<div id={id} className="Dialog" role={role} aria-modal aria-labelledby="dialogTitle" ref={element}>
+				<div id={id} className={fullClassName} role={role} aria-modal aria-labelledby="dialogTitle" ref={element}>
 					{content}
 				</div>
 			)}
@@ -58,6 +59,7 @@ const Dialog = ({id, title, role, initialFocus, children: [body, buttons], onSub
 
 Dialog.propTypes = {
 	id: PropTypes.string,
+	className: PropTypes.string,
 	title: PropTypes.string.isRequired,
 	role: PropTypes.oneOf(['dialog', 'alertdialog']),
 	initialFocus: PropTypes.string,
