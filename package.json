@@ -44,6 +44,7 @@
     "@babel/preset-react": "^7.10.4",
     "@bluecat/babel-plugin-transform-hash-icu-key": "^0.4.0",
     "@bluecat/helpers": "^0.6.1",
+    "@bluecat/strings-generator": "^0.4.1",
     "@bluecat/strings-jest": "^0.4.1",
     "@bluecat/strings-linter": "^0.4.0",
     "@bluecat/strings-loader": "^0.4.1",
@@ -154,8 +155,5 @@
     "*.{json,md,yaml}": [
       "prettier --write"
     ]
-  },
-  "dependencies": {
-    "@bluecat/strings-generator": "^0.4.1"
   }
 }
