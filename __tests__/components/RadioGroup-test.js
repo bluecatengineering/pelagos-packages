@@ -17,66 +17,66 @@ describe('RadioGroup', () => {
 	});
 
 	describe('behaviour', () => {
-		it('calls setValue when a radio button is changed', () => {
-			const setValue = jest.fn();
+		it('calls onChange when a radio button is changed', () => {
+			const onChange = jest.fn();
 			const wrapper = shallow(
-				<RadioGroup id="test" value="foo" options={options} renderLabel={renderLabel} setValue={setValue} />
+				<RadioGroup id="test" value="foo" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
 			wrapper.find('#test-bar').simulate('change', {target: {dataset: {value: 'bar'}}});
-			expect(setValue.mock.calls).toEqual([['bar']]);
+			expect(onChange.mock.calls).toEqual([['bar']]);
 		});
 
-		it('calls setValue when the left key is pressed', () => {
-			const setValue = jest.fn();
+		it('calls onChange when the left key is pressed', () => {
+			const onChange = jest.fn();
 			const focus = jest.fn();
 			const wrapper = shallow(
-				<RadioGroup id="test" value="bar" options={options} renderLabel={renderLabel} setValue={setValue} />
+				<RadioGroup id="test" value="bar" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
 			wrapper.find('#test').simulate('keydown', {keyCode: 37, currentTarget: {childNodes: [{focus}]}});
-			expect(setValue.mock.calls).toEqual([['foo']]);
+			expect(onChange.mock.calls).toEqual([['foo']]);
 			expect(focus).toHaveBeenCalledTimes(1);
 		});
 
-		it('calls setValue when the up key is pressed on the first option', () => {
-			const setValue = jest.fn();
+		it('calls onChange when the up key is pressed on the first option', () => {
+			const onChange = jest.fn();
 			const focus = jest.fn();
 			const wrapper = shallow(
-				<RadioGroup id="test" value="foo" options={options} renderLabel={renderLabel} setValue={setValue} />
+				<RadioGroup id="test" value="foo" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
 			wrapper.find('#test').simulate('keydown', {keyCode: 38, currentTarget: {childNodes: [{}, {}, {focus}]}});
-			expect(setValue.mock.calls).toEqual([['baz']]);
+			expect(onChange.mock.calls).toEqual([['baz']]);
 			expect(focus).toHaveBeenCalledTimes(1);
 		});
 
-		it('calls setValue when the right key is pressed', () => {
-			const setValue = jest.fn();
+		it('calls onChange when the right key is pressed', () => {
+			const onChange = jest.fn();
 			const focus = jest.fn();
 			const wrapper = shallow(
-				<RadioGroup id="test" value="bar" options={options} renderLabel={renderLabel} setValue={setValue} />
+				<RadioGroup id="test" value="bar" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
 			wrapper.find('#test').simulate('keydown', {keyCode: 39, currentTarget: {childNodes: [{}, {}, {focus}]}});
-			expect(setValue.mock.calls).toEqual([['baz']]);
+			expect(onChange.mock.calls).toEqual([['baz']]);
 			expect(focus).toHaveBeenCalledTimes(1);
 		});
 
-		it('calls setValue when the down key is pressed on the last option', () => {
-			const setValue = jest.fn();
+		it('calls onChange when the down key is pressed on the last option', () => {
+			const onChange = jest.fn();
 			const focus = jest.fn();
 			const wrapper = shallow(
-				<RadioGroup id="test" value="baz" options={options} renderLabel={renderLabel} setValue={setValue} />
+				<RadioGroup id="test" value="baz" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
 			wrapper.find('#test').simulate('keydown', {keyCode: 40, currentTarget: {childNodes: [{focus}]}});
-			expect(setValue.mock.calls).toEqual([['foo']]);
+			expect(onChange.mock.calls).toEqual([['foo']]);
 			expect(focus).toHaveBeenCalledTimes(1);
 		});
 
-		it('does not call setValue when other key is pressed', () => {
-			const setValue = jest.fn();
+		it('does not call onChange when other key is pressed', () => {
+			const onChange = jest.fn();
 			const wrapper = shallow(
-				<RadioGroup id="test" value="baz" options={options} renderLabel={renderLabel} setValue={setValue} />
+				<RadioGroup id="test" value="baz" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
 			wrapper.find('#test').simulate('keydown', {keyCode: 32});
-			expect(setValue).not.toHaveBeenCalled();
+			expect(onChange).not.toHaveBeenCalled();
 		});
 	});
 });

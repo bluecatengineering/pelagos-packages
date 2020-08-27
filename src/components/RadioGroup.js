@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import RadioButton from './RadioButton';
 
-const RadioGroup = ({id, value, options, renderLabel, setValue, ...props}) => {
-	const handleChange = useCallback((event) => setValue(event.target.dataset.value), [setValue]);
+const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
+	const handleChange = useCallback((event) => onChange(event.target.dataset.value), [onChange]);
 
 	const handleKeyDown = useCallback(
 		(event) => {
@@ -13,15 +13,15 @@ const RadioGroup = ({id, value, options, renderLabel, setValue, ...props}) => {
 				const current = options.indexOf(value);
 				const focused = current === 0 ? options.length - 1 : current - 1;
 				event.currentTarget.childNodes[focused].focus();
-				setValue(options[focused]);
+				onChange(options[focused]);
 			} else if (keyCode === 39 || keyCode === 40) {
 				const current = options.indexOf(value);
 				const focused = current === options.length - 1 ? 0 : current + 1;
 				event.currentTarget.childNodes[focused].focus();
-				setValue(options[focused]);
+				onChange(options[focused]);
 			}
 		},
-		[value, options, setValue]
+		[value, options, onChange]
 	);
 
 	return (
@@ -46,7 +46,7 @@ RadioGroup.propTypes = {
 	value: PropTypes.string,
 	options: PropTypes.array.isRequired,
 	renderLabel: PropTypes.func.isRequired,
-	setValue: PropTypes.func,
+	onChange: PropTypes.func,
 };
 
 export default RadioGroup;
