@@ -57,7 +57,7 @@ exports[`FilterMenu rendering renders expected elements when filter is not null 
     "$$typeof": Symbol(react.portal),
     "children": <FilterEditor
       buttonId="filterButton"
-      filter="value"
+      name="value"
       onClose={[Function]}
       onSave={[Function]}
     />,

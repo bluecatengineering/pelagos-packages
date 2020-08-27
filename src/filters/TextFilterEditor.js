@@ -14,6 +14,8 @@ const TextFilterEditor = ({label, placeholder, list, getSuggestions, parseInput,
 	const [text, setText] = useState('');
 	const [error, setError] = useState(null);
 
+	const handleListChange = useCallback((list) => onListChange(list.length ? list : null), [onListChange]);
+
 	validateSaveRef.current = useCallback(() => {
 		if (text) {
 			setError(__('ITEM_NOT_ADDED'));
@@ -30,7 +32,7 @@ const TextFilterEditor = ({label, placeholder, list, getSuggestions, parseInput,
 			type="text"
 			column
 			value={text}
-			list={list}
+			list={list || []}
 			error={error}
 			getSuggestions={getSuggestions}
 			getSuggestionText={getName}
@@ -39,7 +41,7 @@ const TextFilterEditor = ({label, placeholder, list, getSuggestions, parseInput,
 			getItemKey={identity}
 			getItemName={identity}
 			parseInput={parseInput}
-			onListChange={onListChange}
+			onListChange={handleListChange}
 			onTextChange={setText}
 			onErrorChange={setError}
 		/>

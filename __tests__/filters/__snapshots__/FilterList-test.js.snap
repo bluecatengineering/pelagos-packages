@@ -142,17 +142,15 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
     "$$typeof": Symbol(react.portal),
     "children": <FilterEditor
       buttonId="filter-view"
-      filter="view"
-      filters={
-        Object {
-          "view": Array [
-            "abc",
-          ],
-        }
-      }
+      name="view"
       onClose={[Function]}
       onSave={[Function]}
       trackId="filterListTrack"
+      value={
+        Array [
+          "abc",
+        ]
+      }
     />,
     "containerInfo": <body />,
     "implementation": null,
@@ -215,17 +213,15 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
     "$$typeof": Symbol(react.portal),
     "children": <FilterEditor
       buttonId="filter-view"
-      filter="view"
-      filters={
-        Object {
-          "view": Array [
-            "abc",
-          ],
-        }
-      }
+      name="view"
       onClose={[Function]}
       onSave={[Function]}
       trackId="filterListTrack"
+      value={
+        Array [
+          "abc",
+        ]
+      }
     />,
     "containerInfo": <body />,
     "implementation": null,

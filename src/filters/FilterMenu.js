@@ -12,19 +12,19 @@ import './FilterMenu.less';
 /** A menu for adding filters. */
 const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText, onApply}) => {
 	const [menuVisible, setMenuVisible] = useState(false);
-	const [filter, setFilter] = useState(null);
+	const [filterName, setFilterName] = useState(null);
 
-	const filteredOptions = !filters ? options : options.filter((key) => !filters[key] || !filters[key].length);
+	const filteredOptions = !filters ? options : options.filter((key) => !filters[key]);
 
-	const handleClose = useCallback(() => setFilter(null), []);
-	const handleSave = useCallback((values) => (setFilter(null), onApply(filter, values)), [filter, onApply]);
+	const handleClose = useCallback(() => setFilterName(null), []);
+	const handleSave = useCallback((value) => (setFilterName(null), onApply(filterName, value)), [filterName, onApply]);
 
 	const links = useMemo(
 		() =>
 			filteredOptions.map((key) => ({
 				key,
 				text: getOptionText(key),
-				handler: () => setFilter(key),
+				handler: () => setFilterName(key),
 			})),
 		[filteredOptions, getOptionText]
 	);
@@ -74,11 +74,11 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 					</div>,
 					document.body
 				)}
-			{filter &&
+			{filterName &&
 				createPortal(
 					<FilterEditor
-						filter={filter}
-						filters={filters}
+						name={filterName}
+						value={filters?.[filterName]}
 						buttonId="filterButton"
 						onClose={handleClose}
 						onSave={handleSave}

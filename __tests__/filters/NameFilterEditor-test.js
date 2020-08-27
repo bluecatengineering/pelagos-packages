@@ -23,6 +23,20 @@ describe('NameFilterEditor', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when list is null', () => {
+			const wrapper = shallow(
+				<NameFilterEditor
+					label="label"
+					list={null}
+					sourceById={{a: {name: 'Alpha'}}}
+					placeholder="placeholder"
+					errorMessage="error message"
+					validateSaveRef={{}}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when sourceById does not have list id', () => {
 			const wrapper = shallow(
 				<NameFilterEditor
@@ -85,6 +99,23 @@ describe('NameFilterEditor', () => {
 			);
 			wrapper.find('#nameFilterEditorInput').prop('onListChange')([{id: 'a'}]);
 			expect(onListChange.mock.calls).toEqual([[['a']]]);
+		});
+
+		it('calls onListChange when list is empty', () => {
+			const onListChange = jest.fn();
+			const wrapper = shallow(
+				<NameFilterEditor
+					label="label"
+					list={['a']}
+					sourceById={{a: {name: 'Alpha'}}}
+					placeholder="placeholder"
+					errorMessage="error message"
+					onListChange={onListChange}
+					validateSaveRef={{}}
+				/>
+			);
+			wrapper.find('#nameFilterEditorInput').prop('onListChange')([]);
+			expect(onListChange.mock.calls).toEqual([[null]]);
 		});
 
 		it('calls getGenericSuggestions when list input requests suggestions', () => {

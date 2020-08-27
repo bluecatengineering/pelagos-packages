@@ -18,9 +18,17 @@ const CheckBoxFilterEditor = ({label, options, list, getLabel, onListChange}) =>
 				id={`checkBoxOption-${opt}`}
 				className="CheckBoxFilterEditor__option"
 				label={getLabel(opt)}
-				checked={list.includes(opt)}
+				checked={list && list.includes(opt)}
 				onChange={() =>
-					list.includes(opt) ? onListChange(list.filter((cur) => cur !== opt)) : onListChange([...list, opt])
+					onListChange(
+						list
+							? list.includes(opt)
+								? list.length === 1
+									? null
+									: list.filter((cur) => cur !== opt)
+								: [...list, opt]
+							: [opt]
+					)
 				}
 			/>
 		))}
@@ -33,7 +41,7 @@ CheckBoxFilterEditor.propTypes = {
 	/** The filter options. */
 	options: PropTypes.array.isRequired,
 	/** The current filter values. */
-	list: PropTypes.array.isRequired,
+	list: PropTypes.array,
 	/** Function returning the option label. */
 	getLabel: PropTypes.func.isRequired,
 	/** Function invoked to apply changes. */

@@ -23,7 +23,7 @@ const NameFilterEditor = ({label, placeholder, list, sourceById, errorMessage, v
 		errorMessage,
 	]);
 
-	const handleListChange = useCallback((list) => onListChange(list.map(getId)), [onListChange]);
+	const handleListChange = useCallback((list) => onListChange(list.length ? list.map(getId) : null), [onListChange]);
 
 	validateSaveRef.current = useCallback(() => {
 		if (text) {
@@ -41,7 +41,7 @@ const NameFilterEditor = ({label, placeholder, list, sourceById, errorMessage, v
 			type="text"
 			column
 			value={text}
-			list={list.map((id) => sourceById[id] || {id})}
+			list={list ? list.map((id) => sourceById[id] || {id}) : []}
 			error={error}
 			getSuggestions={getSuggestions}
 			getSuggestionText={getName}

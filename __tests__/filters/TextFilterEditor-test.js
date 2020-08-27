@@ -15,6 +15,13 @@ describe('TextFilterEditor', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when list is null', () => {
+			const wrapper = shallow(
+				<TextFilterEditor label="label" list={null} placeholder="placeholder" validateSaveRef={{}} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when list input requests suggestions text', () => {
 			const wrapper = shallow(
 				<TextFilterEditor label="label" list={['a']} placeholder="placeholder" validateSaveRef={{}} />
@@ -25,6 +32,24 @@ describe('TextFilterEditor', () => {
 	});
 
 	describe('behaviour', () => {
+		it('calls onListChange when list is changed', () => {
+			const onListChange = jest.fn();
+			const wrapper = shallow(
+				<TextFilterEditor label="label" list={['a']} validateSaveRef={{}} onListChange={onListChange} />
+			);
+			wrapper.find('#textFilterEditorInput').prop('onListChange')(['a']);
+			expect(onListChange.mock.calls).toEqual([[['a']]]);
+		});
+
+		it('calls onListChange when list is empty', () => {
+			const onListChange = jest.fn();
+			const wrapper = shallow(
+				<TextFilterEditor label="label" list={[]} validateSaveRef={{}} onListChange={onListChange} />
+			);
+			wrapper.find('#textFilterEditorInput').prop('onListChange')([]);
+			expect(onListChange.mock.calls).toEqual([[null]]);
+		});
+
 		it('returns the suggestion name if the order is 2', () => {
 			const wrapper = shallow(
 				<TextFilterEditor label="label" list={[]} placeholder="placeholder" validateSaveRef={{}} />

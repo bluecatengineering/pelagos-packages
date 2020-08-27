@@ -24,12 +24,12 @@ const showChevrons = (filterList, {width}) => {
 /** Displays a list of filters. */
 const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilterTitle, getValues, onApply}) => {
 	const filterRef = useRef(null);
-	const [filter, setFilter] = useState(null);
+	const [filterName, setFilterName] = useState(null);
 	const handleClickLeft = useCallback(() => (filterRef.current.scrollLeft += -100), []);
 	const handleClickRight = useCallback(() => (filterRef.current.scrollLeft += 100), []);
 
-	const handleClose = useCallback(() => setFilter(null), []);
-	const handleSave = useCallback((values) => (setFilter(null), onApply(filter, values)), [filter, onApply]);
+	const handleClose = useCallback(() => setFilterName(null), []);
+	const handleSave = useCallback((value) => (setFilterName(null), onApply(filterName, value)), [filterName, onApply]);
 
 	const handleClick = useCallback(
 		(event) => {
@@ -42,7 +42,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 				const item = target.closest('[data-kind="item"]');
 				if (item) {
 					event.stopPropagation();
-					setFilter(item.dataset.key);
+					setFilterName(item.dataset.key);
 				}
 			}
 		},
@@ -78,8 +78,8 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 									tabIndex="0"
 									role="button"
 									aria-haspopup="dialog"
-									aria-expanded={key === filter}
-									aria-controls={key === filter ? 'filterListDropDown' : null}
+									aria-expanded={key === filterName}
+									aria-controls={key === filterName ? 'filterListDropDown' : null}
 									data-kind="item"
 									data-key={key}>
 									<span className="FilterList__filterTitle">{getFilterTitle(key)}</span>
@@ -108,12 +108,12 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 				onKeyDown={handleButtonKeyDown}>
 				<SvgIcon icon={faChevronRight} />
 			</div>
-			{filter &&
+			{filterName &&
 				createPortal(
 					<FilterEditor
-						filter={filter}
-						filters={filters}
-						buttonId={`filter-${filter}`}
+						name={filterName}
+						value={filters[filterName]}
+						buttonId={`filter-${filterName}`}
 						trackId="filterListTrack"
 						onClose={handleClose}
 						onSave={handleSave}

@@ -16,6 +16,7 @@ exports[`TextFilterEditor rendering renders expected elements 1`] = `
     ]
   }
   onErrorChange={[MockFunction]}
+  onListChange={[Function]}
   onTextChange={[MockFunction]}
   placeholder="placeholder"
   renderSuggestion={[MockFunction]}
@@ -40,6 +41,28 @@ exports[`TextFilterEditor rendering renders expected elements when list input re
     ]
   }
   onErrorChange={[MockFunction]}
+  onListChange={[Function]}
+  onTextChange={[MockFunction]}
+  placeholder="placeholder"
+  renderSuggestion={[MockFunction]}
+  type="text"
+  value=""
+/>
+`;
+
+exports[`TextFilterEditor rendering renders expected elements when list is null 1`] = `
+<ListInput
+  column={true}
+  error={null}
+  getHighlightKey={[Function]}
+  getItemKey={[Function]}
+  getItemName={[Function]}
+  getSuggestionText={[Function]}
+  id="textFilterEditorInput"
+  label="label"
+  list={Array []}
+  onErrorChange={[MockFunction]}
+  onListChange={[Function]}
   onTextChange={[MockFunction]}
   placeholder="placeholder"
   renderSuggestion={[MockFunction]}
