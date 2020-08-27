@@ -13,7 +13,7 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
     className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
     id="test-id"
     maxLength={10}
-    onChange={[MockFunction]}
+    onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
@@ -37,7 +37,7 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
     className="TextAreaField__area"
     id="test-id"
     maxLength={10}
-    onChange={[MockFunction]}
+    onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
@@ -61,7 +61,7 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
     className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
-    onChange={[MockFunction]}
+    onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
@@ -84,7 +84,7 @@ exports[`TextAreaField rendering renders expected elements when className is set
     className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
-    onChange={[MockFunction]}
+    onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
@@ -108,7 +108,7 @@ exports[`TextAreaField rendering renders expected elements when optionalText is 
     className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
-    onChange={[MockFunction]}
+    onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
@@ -131,7 +131,7 @@ exports[`TextAreaField rendering sets a random id if not provided 1`] = `
     className="TextAreaField__area TextAreaField--noresize"
     id="e1"
     maxLength={10}
-    onChange={[MockFunction]}
+    onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />

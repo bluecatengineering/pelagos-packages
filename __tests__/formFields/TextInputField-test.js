@@ -101,10 +101,10 @@ describe('TextInputField', () => {
 	describe('behaviour', () => {
 		it('calls onChange when a change event is fired', () => {
 			const onChange = jest.fn();
-			const event = {type: 'change'};
+			const event = {target: {value: 'test'}};
 			const wrapper = shallow(<TextInputField label="Label" name="name" value="" onChange={onChange} />);
 			wrapper.find('input').simulate('change', event);
-			expect(onChange.mock.calls).toEqual([[event]]);
+			expect(onChange.mock.calls).toEqual([['test']]);
 		});
 	});
 });

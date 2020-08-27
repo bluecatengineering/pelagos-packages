@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
 import LabelLine from '../components/LabelLine';
@@ -6,7 +6,7 @@ import LabelLine from '../components/LabelLine';
 import FieldError from './FieldError';
 import './TextInputField.less';
 
-const TextInputField = ({id, className, label, value, optional, optionalText, error, ...props}) => {
+const TextInputField = ({id, className, label, value, optional, optionalText, error, onChange, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'TextInputField' + (className ? ' ' + className : '')}>
@@ -22,6 +22,7 @@ const TextInputField = ({id, className, label, value, optional, optionalText, er
 				id={id}
 				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				value={value}
+				onChange={useCallback((event) => onChange(event.target.value), [onChange])}
 			/>
 			<FieldError text={error} />
 		</div>

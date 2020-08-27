@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
 import LabelLine from '../components/LabelLine';
@@ -6,7 +6,7 @@ import LabelLine from '../components/LabelLine';
 import FieldError from './FieldError';
 import './TextAreaField.less';
 
-const TextAreaField = ({id, className, label, value, optional, optionalText, resize, error, ...props}) => {
+const TextAreaField = ({id, className, label, value, optional, optionalText, resize, error, onChange, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'TextAreaField' + (className ? ' ' + className : '')}>
@@ -24,6 +24,7 @@ const TextAreaField = ({id, className, label, value, optional, optionalText, res
 					'TextAreaField__area' + (resize ? '' : ' TextAreaField--noresize') + (error ? ' TextAreaField--error' : '')
 				}
 				value={value}
+				onChange={useCallback((event) => onChange(event.target.value), [onChange])}
 			/>
 			<FieldError text={error} />
 		</div>
