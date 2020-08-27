@@ -6,7 +6,6 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
 >
   <LabelLine
     htmlFor="test-id"
-    showOptionalText={false}
     text="Label"
   />
   <input
@@ -34,7 +33,6 @@ exports[`TextInputField rendering renders expected elements 1`] = `
   <LabelLine
     htmlFor="test-id"
     optional={false}
-    showOptionalText={false}
     text="Label"
   />
   <input
@@ -60,7 +58,6 @@ exports[`TextInputField rendering renders expected elements when className is se
 >
   <LabelLine
     htmlFor="test-id"
-    showOptionalText={false}
     text="Label"
   />
   <input
@@ -80,14 +77,13 @@ exports[`TextInputField rendering renders expected elements when className is se
 </div>
 `;
 
-exports[`TextInputField rendering renders expected elements when optionalText is set 1`] = `
+exports[`TextInputField rendering renders expected elements when value is empty 1`] = `
 <div
   className="TextInputField"
 >
   <LabelLine
     htmlFor="test-id"
-    optionalText="optional"
-    showOptionalText={false}
+    optional={true}
     text="Label"
   />
   <input
@@ -99,7 +95,7 @@ exports[`TextInputField rendering renders expected elements when optionalText is
     onChange={[Function]}
     placeholder="placeholder"
     type="text"
-    value="value"
+    value=""
   />
   <FieldError
     alignment="right"
@@ -113,7 +109,6 @@ exports[`TextInputField rendering sets a random id if not provided 1`] = `
 >
   <LabelLine
     htmlFor="e1"
-    showOptionalText={false}
     text="Label"
   />
   <input

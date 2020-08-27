@@ -22,6 +22,21 @@ describe('TextAreaField', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when value is empty', () => {
+			const wrapper = shallow(
+				<TextAreaField
+					id="test-id"
+					label="Label"
+					value=""
+					placeholder="placeholder"
+					optional
+					maxLength={10}
+					onChange={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
 				<TextAreaField
@@ -30,21 +45,6 @@ describe('TextAreaField', () => {
 					label="Label"
 					value="value"
 					placeholder="placeholder"
-					maxLength={10}
-					onChange={jest.fn()}
-				/>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when optionalText is set', () => {
-			const wrapper = shallow(
-				<TextAreaField
-					id="test-id"
-					label="Label"
-					value="value"
-					placeholder="placeholder"
-					optionalText="optional"
 					maxLength={10}
 					onChange={jest.fn()}
 				/>

@@ -25,6 +25,24 @@ describe('TextInputField', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when value is empty', () => {
+			const wrapper = shallow(
+				<TextInputField
+					id="test-id"
+					label="Label"
+					type="text"
+					name="name"
+					value=""
+					placeholder="placeholder"
+					maxLength={10}
+					disabled={false}
+					optional
+					onChange={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
 				<TextInputField
@@ -37,24 +55,6 @@ describe('TextInputField', () => {
 					placeholder="placeholder"
 					maxLength={10}
 					disabled={false}
-					onChange={jest.fn()}
-				/>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when optionalText is set', () => {
-			const wrapper = shallow(
-				<TextInputField
-					id="test-id"
-					label="Label"
-					type="text"
-					name="name"
-					value="value"
-					placeholder="placeholder"
-					maxLength={10}
-					disabled={false}
-					optionalText="optional"
 					onChange={jest.fn()}
 				/>
 			);

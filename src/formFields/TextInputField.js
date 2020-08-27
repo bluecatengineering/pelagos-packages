@@ -6,17 +6,11 @@ import LabelLine from '../components/LabelLine';
 import FieldError from './FieldError';
 import './TextInputField.less';
 
-const TextInputField = ({id, className, label, value, optional, optionalText, error, onChange, ...props}) => {
+const TextInputField = ({id, className, label, value, optional, error, onChange, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	return (
 		<div className={'TextInputField' + (className ? ' ' + className : '')}>
-			<LabelLine
-				htmlFor={id}
-				text={label}
-				optional={optional && !value}
-				optionalText={optionalText}
-				showOptionalText={!value}
-			/>
+			<LabelLine htmlFor={id} text={label} optional={optional && !value} />
 			<input
 				{...props}
 				id={id}
@@ -42,8 +36,6 @@ TextInputField.propTypes = {
 	autoFocus: PropTypes.bool,
 	disabled: PropTypes.bool,
 	optional: PropTypes.bool,
-	/** @deprecated use optional instead. */
-	optionalText: PropTypes.string,
 	error: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
 };

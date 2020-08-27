@@ -16,7 +16,6 @@ const ListInput = ({
 	id,
 	label,
 	optional,
-	optionalText,
 	notice,
 	emptyText,
 	list,
@@ -133,14 +132,7 @@ const ListInput = ({
 	const empty = !list?.length;
 	return (
 		<div className="ListInput">
-			<LabelLine
-				htmlFor={id}
-				text={label}
-				optional={optional && empty}
-				optionalText={optionalText}
-				showOptionalText={empty}
-				notice={notice}
-			/>
+			<LabelLine htmlFor={id} text={label} optional={optional && empty} notice={notice} />
 			<ComboBox
 				{...props}
 				id={id}
@@ -182,8 +174,6 @@ ListInput.propTypes = {
 	label: PropTypes.string,
 	/** Whether the field is optional. */
 	optional: PropTypes.bool,
-	/** @deprecated use optional instead. */
-	optionalText: PropTypes.string,
 	/** The notice/warning text. */
 	notice: PropTypes.string,
 	/** The placeholder text in the input box. */

@@ -6,7 +6,6 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
 >
   <LabelLine
     htmlFor="test-id"
-    showOptionalText={false}
     text="Label"
   />
   <textarea
@@ -30,7 +29,6 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
 >
   <LabelLine
     htmlFor="test-id"
-    showOptionalText={false}
     text="Label"
   />
   <textarea
@@ -54,7 +52,6 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
   <LabelLine
     htmlFor="test-id"
     optional={false}
-    showOptionalText={false}
     text="Label"
   />
   <textarea
@@ -77,7 +74,6 @@ exports[`TextAreaField rendering renders expected elements when className is set
 >
   <LabelLine
     htmlFor="test-id"
-    showOptionalText={false}
     text="Label"
   />
   <textarea
@@ -94,14 +90,13 @@ exports[`TextAreaField rendering renders expected elements when className is set
 </div>
 `;
 
-exports[`TextAreaField rendering renders expected elements when optionalText is set 1`] = `
+exports[`TextAreaField rendering renders expected elements when value is empty 1`] = `
 <div
   className="TextAreaField"
 >
   <LabelLine
     htmlFor="test-id"
-    optionalText="optional"
-    showOptionalText={false}
+    optional={true}
     text="Label"
   />
   <textarea
@@ -110,7 +105,7 @@ exports[`TextAreaField rendering renders expected elements when optionalText is 
     maxLength={10}
     onChange={[Function]}
     placeholder="placeholder"
-    value="value"
+    value=""
   />
   <FieldError
     alignment="right"
@@ -124,7 +119,6 @@ exports[`TextAreaField rendering sets a random id if not provided 1`] = `
 >
   <LabelLine
     htmlFor="e1"
-    showOptionalText={false}
     text="Label"
   />
   <textarea

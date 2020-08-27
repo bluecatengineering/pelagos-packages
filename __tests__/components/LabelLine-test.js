@@ -13,20 +13,8 @@ describe('LabelLine', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when optionalText is set', () => {
-			const wrapper = shallow(
-				<LabelLine htmlFor="test-id" text="Test" optionalText="Optional" showOptionalText notice="Notice" />
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when showOptionalText is false', () => {
-			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" optionalText="Optional" notice="Notice" />);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when optionalText and notice are not set', () => {
-			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" optionalText="Optional" notice="Notice" />);
+		it('renders expected elements when notice is not set', () => {
+			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" notice="Notice" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});
