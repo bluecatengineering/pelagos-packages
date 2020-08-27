@@ -29,45 +29,57 @@ describe('RadioGroup', () => {
 		it('calls onChange when the left key is pressed', () => {
 			const onChange = jest.fn();
 			const focus = jest.fn();
+			const preventDefault = jest.fn();
 			const wrapper = shallow(
 				<RadioGroup id="test" value="bar" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
-			wrapper.find('#test').simulate('keydown', {keyCode: 37, currentTarget: {childNodes: [{focus}]}});
+			wrapper.find('#test').simulate('keydown', {keyCode: 37, currentTarget: {childNodes: [{focus}]}, preventDefault});
 			expect(onChange.mock.calls).toEqual([['foo']]);
 			expect(focus).toHaveBeenCalledTimes(1);
+			expect(preventDefault).toHaveBeenCalledTimes(1);
 		});
 
 		it('calls onChange when the up key is pressed on the first option', () => {
 			const onChange = jest.fn();
 			const focus = jest.fn();
+			const preventDefault = jest.fn();
 			const wrapper = shallow(
 				<RadioGroup id="test" value="foo" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
-			wrapper.find('#test').simulate('keydown', {keyCode: 38, currentTarget: {childNodes: [{}, {}, {focus}]}});
+			wrapper
+				.find('#test')
+				.simulate('keydown', {keyCode: 38, currentTarget: {childNodes: [{}, {}, {focus}]}, preventDefault});
 			expect(onChange.mock.calls).toEqual([['baz']]);
 			expect(focus).toHaveBeenCalledTimes(1);
+			expect(preventDefault).toHaveBeenCalledTimes(1);
 		});
 
 		it('calls onChange when the right key is pressed', () => {
 			const onChange = jest.fn();
 			const focus = jest.fn();
+			const preventDefault = jest.fn();
 			const wrapper = shallow(
 				<RadioGroup id="test" value="bar" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
-			wrapper.find('#test').simulate('keydown', {keyCode: 39, currentTarget: {childNodes: [{}, {}, {focus}]}});
+			wrapper
+				.find('#test')
+				.simulate('keydown', {keyCode: 39, currentTarget: {childNodes: [{}, {}, {focus}]}, preventDefault});
 			expect(onChange.mock.calls).toEqual([['baz']]);
 			expect(focus).toHaveBeenCalledTimes(1);
+			expect(preventDefault).toHaveBeenCalledTimes(1);
 		});
 
 		it('calls onChange when the down key is pressed on the last option', () => {
 			const onChange = jest.fn();
 			const focus = jest.fn();
+			const preventDefault = jest.fn();
 			const wrapper = shallow(
 				<RadioGroup id="test" value="baz" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
-			wrapper.find('#test').simulate('keydown', {keyCode: 40, currentTarget: {childNodes: [{focus}]}});
+			wrapper.find('#test').simulate('keydown', {keyCode: 40, currentTarget: {childNodes: [{focus}]}, preventDefault});
 			expect(onChange.mock.calls).toEqual([['foo']]);
 			expect(focus).toHaveBeenCalledTimes(1);
+			expect(preventDefault).toHaveBeenCalledTimes(1);
 		});
 
 		it('does not call onChange when other key is pressed', () => {

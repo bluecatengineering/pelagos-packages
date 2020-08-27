@@ -8,6 +8,7 @@ exports[`RadioGroup rendering renders expected elements 1`] = `
 >
   <RadioButton
     checked={true}
+    className="RadioGroup__option"
     data-value="foo"
     id="test-foo"
     label="FOO"
@@ -16,6 +17,7 @@ exports[`RadioGroup rendering renders expected elements 1`] = `
   />
   <RadioButton
     checked={false}
+    className="RadioGroup__option"
     data-value="bar"
     id="test-bar"
     label="BAR"
@@ -24,6 +26,7 @@ exports[`RadioGroup rendering renders expected elements 1`] = `
   />
   <RadioButton
     checked={false}
+    className="RadioGroup__option"
     data-value="baz"
     id="test-baz"
     label="BAZ"

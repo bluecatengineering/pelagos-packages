@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import RadioButton from './RadioButton';
 
+import './RadioGroup.less';
+
 const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
 	const handleChange = useCallback((event) => onChange(event.target.dataset.value), [onChange]);
 
@@ -14,11 +16,13 @@ const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
 				const focused = current === 0 ? options.length - 1 : current - 1;
 				event.currentTarget.childNodes[focused].focus();
 				onChange(options[focused]);
+				event.preventDefault();
 			} else if (keyCode === 39 || keyCode === 40) {
 				const current = options.indexOf(value);
 				const focused = current === options.length - 1 ? 0 : current + 1;
 				event.currentTarget.childNodes[focused].focus();
 				onChange(options[focused]);
+				event.preventDefault();
 			}
 		},
 		[value, options, onChange]
@@ -30,6 +34,7 @@ const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
 				<RadioButton
 					key={option}
 					id={`${id}-${option}`}
+					className="RadioGroup__option"
 					label={renderLabel(option)}
 					checked={value === option}
 					tabIndex={value === option ? 0 : -1}
