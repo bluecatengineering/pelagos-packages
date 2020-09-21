@@ -1,6 +1,6 @@
 import React, {cloneElement, useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import focusTrap from 'focus-trap';
+import {createFocusTrap} from 'focus-trap';
 
 import './Dialog.less';
 
@@ -24,7 +24,11 @@ const Dialog = ({id, className, title, role, initialFocus, children: [body, butt
 
 	useEffect(() => {
 		const p = previousActive.current;
-		const trap = focusTrap(element.current, {initialFocus, escapeDeactivates: false, returnFocusOnDeactivate: false});
+		const trap = createFocusTrap(element.current, {
+			initialFocus,
+			escapeDeactivates: false,
+			returnFocusOnDeactivate: false,
+		});
 		trap.activate();
 		return () => {
 			trap.deactivate();

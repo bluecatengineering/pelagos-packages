@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {shallow} from 'enzyme';
-import focusTrap from 'focus-trap';
+import {createFocusTrap} from 'focus-trap';
 
 import Dialog from '../../src/components/Dialog';
 import Button from '../../src/components/Button';
@@ -64,7 +64,7 @@ describe('Dialog', () => {
 		it('activates and deactivates focus trap when appropriate', () => {
 			const previousActive = document.activeElement;
 			const trap = {activate: jest.fn(), deactivate: jest.fn()};
-			focusTrap.mockReturnValue(trap);
+			createFocusTrap.mockReturnValue(trap);
 			jest.spyOn(previousActive, 'focus');
 			shallow(
 				<Dialog id="test" title="Test">
@@ -76,7 +76,7 @@ describe('Dialog', () => {
 			expect(useEffect).toHaveBeenCalledTimes(1);
 
 			const result = useEffect.mock.calls[0][0]();
-			expect(focusTrap.mock.calls).toEqual([[null, {escapeDeactivates: false, returnFocusOnDeactivate: false}]]);
+			expect(createFocusTrap.mock.calls).toEqual([[null, {escapeDeactivates: false, returnFocusOnDeactivate: false}]]);
 			expect(trap.activate).toHaveBeenCalledTimes(1);
 
 			result();
