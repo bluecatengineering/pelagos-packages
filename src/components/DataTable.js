@@ -396,7 +396,7 @@ DataTable.propTypes = {
 			header: PropTypes.any.isRequired,
 			value: PropTypes.func.isRequired,
 			width: PropTypes.string.isRequired,
-			className: PropTypes.string,
+			className: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 			hoverValue: PropTypes.boolean,
 			style: PropTypes.object,
 			sortable: PropTypes.boolean,
