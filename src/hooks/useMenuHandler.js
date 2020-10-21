@@ -59,8 +59,23 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 				switch (keyCode) {
 					case 13: // enter
 					case 32: // space
+						event.preventDefault();
+						if (!expanded) {
+							setExpanded(true);
+						} else if (current === -1) {
+							setExpanded(false);
+						} else {
+							links[current].handler();
+							setCurrent(-1);
+							if (!keepExpanded) {
+								setExpanded(false);
+							}
+						}
+						break;
 					case 27: // escape
 						event.preventDefault();
+						setCurrent(-1);
+						setExpanded(false);
 						break;
 					case 35: // end
 						event.preventDefault();
@@ -102,36 +117,7 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 				}
 			}
 		},
-		[expanded, links, findItemToFocus, setExpanded]
-	);
-
-	const handleKeyUp = useCallback(
-		(event) => {
-			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-				switch (event.keyCode) {
-					case 13: // enter
-					case 32: // space
-						event.preventDefault();
-						if (!expanded) {
-							setExpanded(true);
-						} else if (current === -1) {
-							setExpanded(false);
-						} else {
-							links[current].handler();
-							if (!keepExpanded) {
-								setExpanded(false);
-							}
-						}
-						break;
-					case 27: // escape
-						event.preventDefault();
-						setCurrent(-1);
-						setExpanded(false);
-						break;
-				}
-			}
-		},
-		[expanded, keepExpanded, current, links, setExpanded]
+		[expanded, links, keepExpanded, current, findItemToFocus, setExpanded]
 	);
 
 	const handleBlur = useCallback(() => (setCurrent(-1), keepExpanded ? null : setExpanded(false)), [
@@ -154,6 +140,7 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 			if (element) {
 				event.preventDefault();
 				links[+element.dataset.index].handler();
+				setCurrent(-1);
 				if (!keepExpanded) {
 					setExpanded(false);
 				}
@@ -169,7 +156,6 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 		buttonProps: {
 			onMouseDown: handleMouseDown,
 			onKeyDown: handleKeyDown,
-			onKeyUp: handleKeyUp,
 			onBlur: handleBlur,
 		},
 		listProps: {
