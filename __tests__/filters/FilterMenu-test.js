@@ -3,6 +3,7 @@ import {shallow} from 'enzyme';
 
 import FilterMenu from '../../src/filters/FilterMenu';
 import useMenuHandler from '../../src/hooks/useMenuHandler';
+import useTooltip from '../../src/hooks/useTooltip';
 
 jest.unmock('../../src/filters/FilterMenu');
 jest.unmock('../../src/strings');
@@ -17,6 +18,7 @@ describe('FilterMenu', () => {
 			useMenuHandler.mockReturnValue({current: -1});
 			const wrapper = shallow(<FilterMenu getOptionText={getOptionText} options={options} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useTooltip.mock.calls).toEqual([['Add filter', 'top']]);
 		});
 
 		it('renders expected elements when menuVisible is true', () => {

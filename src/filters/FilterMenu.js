@@ -4,6 +4,7 @@ import {createPortal} from 'react-dom';
 import {faFilter} from '@fortawesome/free-solid-svg-icons';
 
 import useMenuHandler from '../hooks/useMenuHandler';
+import useTooltip from '../hooks/useTooltip';
 import SvgIcon from '../components/SvgIcon';
 import __ from '../strings';
 
@@ -55,6 +56,7 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 				aria-expanded={menuVisible}
 				aria-activedescendant={current === -1 ? null : `filterMenu-${links[current].key}`}
 				tabIndex="0"
+				ref={useTooltip(__('ADD_FILTER'), 'top')}
 				{...buttonProps}>
 				<SvgIcon icon={faFilter} />
 			</div>
