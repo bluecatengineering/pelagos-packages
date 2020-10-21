@@ -137,6 +137,8 @@ const DataTable = ({
 		[]
 	);
 
+	// there's no easy way to combine useCallback and throttle yet
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const handleScroll = useCallback(
 		throttle(() => {
 			if (fetchingNextPage || fetchingPrevPage || data.length === 0) {

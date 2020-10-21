@@ -27,6 +27,8 @@ const ComboBox = ({
 
 	const hideList = useCallback(() => (setSuggestions([]), setOpen(false), setSelected(-1)), []);
 
+	// there's no easy way to combine useCallback and debounce yet
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const updateSuggestions = useCallback(
 		debounce((text) => {
 			const suggestions = getSuggestions(text);
@@ -38,7 +40,7 @@ const ComboBox = ({
 				setSelected(autoSelect ? 0 : -1);
 			}
 		}, 150),
-		[getSuggestions]
+		[hideList, getSuggestions]
 	);
 	const selectSuggestion = useCallback((index) => (hideList(), onChange(suggestions[index])), [
 		suggestions,

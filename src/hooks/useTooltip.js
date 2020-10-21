@@ -61,7 +61,7 @@ export default (text, placement) => {
 			}
 
 			document.body.appendChild(tooltip);
-			// eslint-disable-next-line no-unused-expressions
+			// eslint-disable-next-line babel/no-unused-expressions
 			tooltip.scrollTop; // force layout to start transition
 			tooltip.classList.add('Tooltip--visible');
 
