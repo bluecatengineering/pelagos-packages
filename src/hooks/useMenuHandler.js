@@ -125,13 +125,6 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 		setExpanded,
 	]);
 
-	const handleListMouseOver = useCallback((event) => {
-		const element = event.target.closest('[role="menuitem"]');
-		if (element) {
-			setCurrent(+element.dataset.index);
-		}
-	}, []);
-
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleListMouseUp = useCallback(
@@ -149,8 +142,6 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 		[links, keepExpanded, setExpanded]
 	);
 
-	const handleListMouseOut = useCallback(() => setCurrent(-1), []);
-
 	return {
 		current,
 		buttonProps: {
@@ -159,10 +150,8 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 			onBlur: handleBlur,
 		},
 		listProps: {
-			onMouseOver: handleListMouseOver,
 			onMouseDown: handleListMouseDown,
 			onMouseUp: handleListMouseUp,
-			onMouseOut: handleListMouseOut,
 		},
 	};
 };

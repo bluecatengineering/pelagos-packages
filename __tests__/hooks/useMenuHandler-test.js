@@ -483,39 +483,6 @@ describe('useMenuHandler', () => {
 	});
 
 	describe('listProps', () => {
-		describe('onMouseOver', () => {
-			it('calls setCurrent when a menu item is found', () => {
-				const preventDefault = jest.fn();
-				const element = {dataset: {index: '0'}};
-				const closest = jest.fn().mockReturnValue(element);
-				const event = {preventDefault, target: {closest}};
-				const setCurrent = jest.fn();
-				useState.mockReturnValue([1, setCurrent]);
-				const {
-					listProps: {onMouseOver},
-				} = useMenuHandler();
-
-				onMouseOver(event);
-
-				expect(setCurrent.mock.calls).toEqual([[0]]);
-			});
-
-			it('ignores the event when the menu item is not found', () => {
-				const preventDefault = jest.fn();
-				const closest = jest.fn();
-				const event = {preventDefault, target: {closest}};
-				const setCurrent = jest.fn();
-				useState.mockReturnValue([1, setCurrent]);
-				const {
-					listProps: {onMouseOver},
-				} = useMenuHandler();
-
-				onMouseOver(event);
-
-				expect(setCurrent).not.toHaveBeenCalled();
-			});
-		});
-
 		describe('onMouseDown', () => {
 			it('calls preventDefault on the event', () => {
 				const preventDefault = jest.fn();
@@ -592,20 +559,6 @@ describe('useMenuHandler', () => {
 				expect(closest.mock.calls).toEqual([['[role="menuitem"]']]);
 				expect(preventDefault).not.toHaveBeenCalled();
 				expect(handler).not.toHaveBeenCalled();
-			});
-		});
-
-		describe('onMouseOut', () => {
-			it('calls setCurrent with -1', () => {
-				const setCurrent = jest.fn();
-				useState.mockReturnValue([1, setCurrent]);
-				const {
-					listProps: {onMouseOut},
-				} = useMenuHandler(false);
-
-				onMouseOut();
-
-				expect(setCurrent.mock.calls).toEqual([[-1]]);
 			});
 		});
 	});

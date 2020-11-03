@@ -149,3 +149,7 @@ form-field-hint:
   alias: sky
 form-field-error:
   alias: burnt
+
+menu-hover:
+  base: fiord
+  fade: 50%
