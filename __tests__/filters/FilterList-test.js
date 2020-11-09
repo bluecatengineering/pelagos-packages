@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import FilterList from '../../src/filters/FilterList';

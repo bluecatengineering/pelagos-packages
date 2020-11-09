@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {OutputField} from '../src';
 
 const Template = (args) => <OutputField {...args} />;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './Fonts-story.less';
 
 const fontColors = ['color1', 'color2', 'color3', 'orange', 'sky'];

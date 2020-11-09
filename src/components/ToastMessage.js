@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 

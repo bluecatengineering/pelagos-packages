@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Spinner} from '../src';
 
 const Template = (args) => <Spinner {...args} />;

@@ -1,4 +1,3 @@
-import React from 'react';
 import {shallow} from 'enzyme';
 
 import ListItem from '../../src/listItems/ListItem';

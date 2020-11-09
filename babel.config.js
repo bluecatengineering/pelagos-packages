@@ -1,7 +1,7 @@
 const hashLength = require('./scripts/hash-length');
 
 module.exports = {
-	presets: [['@babel/react', {useBuiltIns: true}]],
+	presets: [['@babel/react', {useBuiltIns: true, runtime: 'automatic'}]],
 	plugins: ['@babel/plugin-proposal-class-properties'],
 	env: {
 		test: {

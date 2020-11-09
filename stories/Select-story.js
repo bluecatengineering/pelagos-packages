@@ -1,4 +1,3 @@
-import React from 'react';
 import identity from 'lodash-es/identity';
 
 import {Select} from '../src';

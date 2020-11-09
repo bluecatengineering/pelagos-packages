@@ -1,4 +1,3 @@
-import React from 'react';
 import {shallow} from 'enzyme';
 
 import TextAreaField from '../../src/formFields/TextAreaField';

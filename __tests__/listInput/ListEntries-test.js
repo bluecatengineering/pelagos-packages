@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
 import {scrollIntoView} from '@bluecat/helpers';

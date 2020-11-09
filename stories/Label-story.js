@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Label} from '../src';
 
 const Template = (args) => <Label {...args} />;

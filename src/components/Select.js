@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
 import {smoothScroll, scrollToItem} from '@bluecat/helpers';

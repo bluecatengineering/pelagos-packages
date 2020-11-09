@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Dialog, Button} from '../src';
 
 const Template = (args) => <Dialog {...args} />;

@@ -1,4 +1,4 @@
-import React, {cloneElement, useRef, useCallback, useEffect, useState} from 'react';
+import {cloneElement, useRef, useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollToItem} from '@bluecat/helpers';

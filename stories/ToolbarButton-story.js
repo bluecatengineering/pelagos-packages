@@ -1,4 +1,3 @@
-import React from 'react';
 import {faCat} from '@fortawesome/free-solid-svg-icons';
 
 import {ToolbarButton} from '../src';

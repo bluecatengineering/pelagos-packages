@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {DataTable} from '../src';
 
 const metadata = [

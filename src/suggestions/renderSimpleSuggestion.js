@@ -1,5 +1,3 @@
-import React from 'react';
-
 import __ from '../strings';
 
 import {Suggestion} from './Suggestion';

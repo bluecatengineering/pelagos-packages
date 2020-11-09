@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Toggle} from '../src';
 
 const Template = (args) => <Toggle {...args} />;

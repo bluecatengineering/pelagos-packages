@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Hamburger} from '../src';
 
 const Template = (args) => <Hamburger {...args} />;

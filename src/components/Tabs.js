@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState, cloneElement} from 'react';
+import {useCallback, useMemo, useState, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 
 import './Tabs.less';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {CheckBox} from '../src';
 
 const Template = (args) => <CheckBox {...args} />;

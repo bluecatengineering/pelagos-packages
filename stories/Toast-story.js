@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {ToastTypes, Toast} from '../src';
 
 const messages = [

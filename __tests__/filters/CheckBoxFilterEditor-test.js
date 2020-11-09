@@ -1,4 +1,3 @@
-import React from 'react';
 import {shallow} from 'enzyme';
 
 import CheckBoxFilterEditor from '../../src/filters/CheckBoxFilterEditor';

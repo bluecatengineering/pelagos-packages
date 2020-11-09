@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {shallow} from 'enzyme';
 
 import NameFilterEditor from '../../src/filters/NameFilterEditor';

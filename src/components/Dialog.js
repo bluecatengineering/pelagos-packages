@@ -1,4 +1,4 @@
-import React, {cloneElement, useCallback, useEffect, useRef} from 'react';
+import {cloneElement, useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {createFocusTrap} from 'focus-trap';
 
