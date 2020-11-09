@@ -1,6 +1,14 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
 
 import {Label} from '../src';
 
-storiesOf('Label', module).add('all states', () => <Label text="Label" />);
+const Template = (args) => <Label {...args} />;
+
+export const Normal = Template.bind({});
+Normal.args = {text: 'Normal'};
+
+export default {
+	title: 'Label',
+	component: Label,
+	parameters: {actions: {argTypesRegex: '^on.*'}},
+};

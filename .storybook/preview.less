@@ -2,24 +2,25 @@
 @import '../less/animations';
 @import '../less/inputs';
 @import '../less/scrollbar';
+@import '../less/spacing';
 @import '../less/spinner';
 
 body {
 	@root-font();
 	color: @font-color-1;
-	background-color: @oxford;
 	transition: background-color 0.3s ease-out;
 }
 
-.Story__wrapper {
-	margin: 24px 16px;
+#root {
+	align-items: flex-start;
 }
 
 .Story__row {
 	flex-direction: row;
+	align-self: stretch;
 }
 .Story__row > :not(:first-child) {
-	margin-left: 30px;
+	margin-left: @sp-24;
 }
 
 .Story__group {
@@ -27,9 +28,18 @@ body {
 }
 
 .Story__group > :not(:first-child) {
-	margin-top: 12px;
+	margin-top: @sp-12;
 }
 
 .Story__table {
 	height: 400px;
+	align-self: stretch;
+}
+
+// stylelint-disable-next-line @bluecat/selector-bem
+.assistive-text {
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
 }

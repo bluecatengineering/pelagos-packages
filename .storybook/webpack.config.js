@@ -20,6 +20,11 @@ module.exports = ({config}) => ({
 				loader: '@bluecat/strings-loader',
 			},
 			{
+				test: /(?<!\.strings)\.yaml$/,
+				type: 'json',
+				loader: 'yaml-loader',
+			},
+			{
 				test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
 				use: [
 					{

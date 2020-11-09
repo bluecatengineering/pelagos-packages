@@ -1,5 +1,4 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
 
 import './Fonts-story.less';
 
@@ -22,7 +21,7 @@ const fontTable = [
 	{name: '68-300', colors: {color1: 'display-large'}},
 ];
 
-storiesOf('Fonts', module).add('all fonts', () => (
+export const AllFonts = () => (
 	<table className="FontsStory">
 		<thead>
 			<tr>
@@ -45,4 +44,9 @@ storiesOf('Fonts', module).add('all fonts', () => (
 			))}
 		</tbody>
 	</table>
-));
+);
+AllFonts.storyName = 'All fonts';
+
+export default {
+	title: 'Fonts',
+};

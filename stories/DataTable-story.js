@@ -1,5 +1,4 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
 
 import {DataTable} from '../src';
 
@@ -33,30 +32,22 @@ const data = [
 
 const getRowId = (row) => row.id;
 
-storiesOf('DataTable', module)
-	.add('normal', () => (
-		<DataTable
-			id="normal"
-			metadata={metadata}
-			data={data}
-			selectedId="3"
-			getRowId={getRowId}
-			defaultSort={defaultSort}
-		/>
-	))
-	.add('loading', () => (
-		<DataTable
-			id="loading"
-			className="Story__table"
-			metadata={metadata}
-			data={[]}
-			getRowId={getRowId}
-			fetchingNextPage
-		/>
-	))
-	.add('loading next', () => (
-		<DataTable id="next" metadata={metadata} data={data} getRowId={getRowId} fetchingNextPage />
-	))
-	.add('loading previous', () => (
-		<DataTable id="prev" metadata={metadata} data={data} getRowId={getRowId} fetchingPrevPage />
-	));
+const Template = (args) => <DataTable {...args} />;
+
+export const Normal = Template.bind({});
+Normal.args = {id: 'normal', className: 'Story__table', metadata, data, selectedId: '3', getRowId, defaultSort};
+
+export const Loading = Template.bind({});
+Loading.args = {id: 'loading', className: 'Story__table', metadata, data: [], getRowId, fetchingNextPage: true};
+
+export const LoadingNext = Template.bind({});
+LoadingNext.args = {id: 'next', className: 'Story__table', metadata, data, getRowId, fetchingNextPage: true};
+
+export const LoadingPrevious = Template.bind({});
+LoadingPrevious.args = {id: 'prev', className: 'Story__table', metadata, data, getRowId, fetchingPrevPage: true};
+
+export default {
+	title: 'DataTable',
+	component: DataTable,
+	parameters: {actions: {argTypesRegex: '^on.*'}},
+};

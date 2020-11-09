@@ -53,6 +53,7 @@
     "@bluecateng/git-checks": "^0.3.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@storybook/addon-a11y": "^6.0.21",
+    "@storybook/addon-essentials": "^6.0.28",
     "@storybook/react": "^6.0.21",
     "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
@@ -76,7 +77,8 @@
     "stable": "^0.1.8",
     "stylelint": "^13.7.1",
     "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "yaml-loader": "^0.6.0"
   },
   "eslintConfig": {
     "extends": [

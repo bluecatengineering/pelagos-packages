@@ -1,9 +1,19 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
 
 import {Button} from '../src';
 
-storiesOf('Button', module).add('all states', () => (
+const Template = (args) => <Button {...args} />;
+
+export const Normal = Template.bind({});
+Normal.args = {text: 'Normal'};
+
+export const Active = Template.bind({});
+Active.args = {text: 'Active', active: true};
+
+export const Disabled = Template.bind({});
+Disabled.args = {text: 'Disabled', disabled: true};
+
+export const AllStates = () => (
 	<div className="Story__row">
 		<div className="Story__group">
 			<Button text="Normal" size="small" />
@@ -21,4 +31,11 @@ storiesOf('Button', module).add('all states', () => (
 			<Button text="Disabled" size="large" tooltipText="Tooltip" disabled />
 		</div>
 	</div>
-));
+);
+AllStates.storyName = 'All states';
+
+export default {
+	title: 'Button',
+	component: Button,
+	parameters: {actions: {argTypesRegex: '^on.*'}},
+};

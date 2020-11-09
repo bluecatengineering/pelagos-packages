@@ -1,8 +1,10 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
 
-storiesOf('Link', module).add('all states', () => (
-	<div style={{display: 'block'}}>
-		<a href="#">Link</a>
-	</div>
-));
+// eslint-disable-next-line react/prop-types
+export const Normal = ({text}) => <a href="#">{text}</a>;
+Normal.args = {text: 'Link'};
+
+export default {
+	title: 'Link',
+	parameters: {actions: {argTypesRegex: '^on.*'}},
+};
