@@ -2,6 +2,7 @@
 @import '../../less/focus';
 @import '../../less/elevations';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .FilterMenu {
 	position: relative;
@@ -9,13 +10,8 @@
 }
 
 .FilterMenu__button {
-	padding: @sp-08;
-	cursor: pointer;
-	color: @azure;
-
-	&:focus {
-		@focus-ring();
-	}
+	@icon-button();
+	padding: @sp-04;
 }
 
 .FilterMenu__menu {
@@ -34,9 +30,9 @@
 	&:hover {
 		background-color: @menu-hover;
 	}
-}
 
-.FilterMenu__option--current,
-.FilterMenu__option--current:hover {
-	background-color: @fiord;
+	&--current,
+	&--current:hover {
+		background-color: @menu-current;
+	}
 }

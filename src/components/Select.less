@@ -21,6 +21,10 @@
 	border: 1px solid @form-field-border;
 	border-radius: 3px;
 
+	&:hover {
+		background-color: @form-field-hover;
+	}
+
 	&:focus {
 		@focus-ring();
 	}
@@ -31,7 +35,7 @@
 }
 .Select__text--empty::before {
 	@font-12-400();
-	color: @sky;
+	color: @form-field-hint;
 	content: attr(data-placeholder);
 }
 .Select__text--error {
@@ -71,9 +75,15 @@
 .Select__option {
 	display: block;
 	padding: @sp-04 @sp-12;
-}
-.Select__option--focused {
-	background-color: @fiord;
+
+	&:hover {
+		background-color: @menu-hover;
+	}
+
+	&--focused,
+	&--focused:hover {
+		background-color: @menu-current;
+	}
 }
 
 @media print {

@@ -2,6 +2,7 @@
 @import '../../less/focus';
 @import '../../less/shadows';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .FilterList {
 	flex-direction: row;
@@ -23,10 +24,9 @@
 
 .FilterList__scrollLeft,
 .FilterList__scrollRight {
+	@icon-button();
 	display: none;
 	font-size: 14px;
-	color: @azure;
-	cursor: pointer;
 	justify-content: center;
 	padding: 0 @sp-04;
 	margin: @sp-02;
@@ -58,6 +58,10 @@
 	cursor: pointer;
 	background-color: @prussian;
 	color: @emerald;
+
+	&:focus {
+		@focus-ring();
+	}
 }
 
 .FilterList__item:not(:first-child) {
@@ -65,16 +69,8 @@
 }
 
 .FilterList__remove {
+	@icon-button-nested();
 	font-size: 19px;
-	color: @azure;
 	padding: @sp-02;
 	margin-left: @sp-08;
-	cursor: pointer;
-}
-
-.FilterList__scrollLeft:focus,
-.FilterList__scrollRight:focus,
-.FilterList__item:focus,
-.FilterList__remove:focus {
-	@focus-ring();
 }

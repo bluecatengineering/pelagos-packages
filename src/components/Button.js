@@ -5,12 +5,12 @@ import useTooltip from '../hooks/useTooltip';
 import './Button.less';
 
 /** A button. */
-const Button = ({id, text, className, tooltipText, size, active, disabled, onClick, ...props}) => {
+const Button = ({id, text, className, tooltipText, size, type, disabled, onClick, ...props}) => {
 	const tooltip = useTooltip(tooltipText, 'top');
 	return disabled ? (
 		<span
 			id={id}
-			className={'Button Button--' + size + (className ? ' ' + className : '')}
+			className={`Button Button--${size}${className ? ' ' + className : ''}`}
 			aria-disabled="true"
 			ref={tooltip}>
 			{text}
@@ -20,7 +20,7 @@ const Button = ({id, text, className, tooltipText, size, active, disabled, onCli
 			{...props}
 			type={onClick ? 'button' : 'submit'}
 			id={id}
-			className={'Button Button--' + size + (className ? ' ' + className : '') + (active ? ' Button--active' : '')}
+			className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
 			ref={tooltip}
 			onClick={onClick}>
 			{text}
@@ -39,8 +39,8 @@ Button.propTypes = {
 	tooltipText: PropTypes.string,
 	/** The size of the button. */
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
-	/** Whether the button is active. */
-	active: PropTypes.bool,
+	/** The button type. */
+	type: PropTypes.oneOf(['primary', 'secondary']),
 	/** Whether the button is disabled. */
 	disabled: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
@@ -49,6 +49,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
 	size: 'medium',
+	type: 'secondary',
 };
 
 export default Button;

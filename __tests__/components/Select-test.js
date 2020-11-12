@@ -671,20 +671,6 @@ describe('Select', () => {
 			expect(onChange).not.toHaveBeenCalled();
 		});
 
-		it('focuses the option when the list is visible and the mouse is over it', () => {
-			const setFocused = jest.fn();
-			const element = {dataset: {index: '1'}};
-			const closest = jest.fn().mockReturnValue(element);
-			const event = {target: {closest}};
-			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
-			const wrapper = shallow(
-				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
-			);
-			wrapper.find('[role="listbox"]').simulate('mouseover', event);
-			expect(closest.mock.calls).toEqual([['[role="option"]']]);
-			expect(setFocused.mock.calls).toEqual([[1]]);
-		});
-
 		it('does not change focused when the list is visible and the mouse is over other element', () => {
 			const setFocused = jest.fn();
 			const event = {target: {closest: jest.fn()}};

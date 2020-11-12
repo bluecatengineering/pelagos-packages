@@ -20,13 +20,6 @@ describe('ToolbarButton', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders the expected elements if active is true', () => {
-			const wrapper = shallow(
-				<ToolbarButton id="test" icon={{}} aria-label="Test" tooltipText="This is a test" active={true} />
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
 		it('renders the expected elements when className is not set', () => {
 			const wrapper = shallow(
 				<ToolbarButton id="test" icon={{}} aria-label="Test" tooltipText="This is a test" disabled={true} />

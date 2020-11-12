@@ -1,4 +1,4 @@
-import {useCallback, useMemo, useState, cloneElement} from 'react';
+import {cloneElement, useCallback, useMemo, useState} from 'react';
 import PropTypes from 'prop-types';
 
 import './Tabs.less';
@@ -64,12 +64,14 @@ const Tabs = ({id, active, items, onTabClick}) => {
 		[focused, items, onTabClick]
 	);
 
-	const handleMouseOver = useCallback((event) => {
+	const handleMouseDown = useCallback((event) => {
 		const element = event.target.closest('[role="tab"]');
-		setFocused(element ? +element.dataset.index : -1);
+		if (element) {
+			event.preventDefault();
+			event.currentTarget.focus();
+			setFocused(+element.dataset.index);
+		}
 	}, []);
-
-	const handleMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleMouseUp = useCallback(
 		(event) => {
@@ -94,10 +96,8 @@ const Tabs = ({id, active, items, onTabClick}) => {
 				onBlur={clearFocus}
 				onKeyDown={handleKeyDown}
 				onKeyUp={handleKeyUp}
-				onMouseOver={handleMouseOver}
 				onMouseDown={handleMouseDown}
-				onMouseUp={handleMouseUp}
-				onMouseOut={clearFocus}>
+				onMouseUp={handleMouseUp}>
 				{items.map((item, index) => (
 					<div
 						key={item.id}

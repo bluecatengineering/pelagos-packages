@@ -7,3 +7,29 @@
 	box-shadow: 0 0 0 1px @burnt, 0 0 4px 1px @orange;
 	outline: none;
 };
+
+@focus-visible: {
+	outline: none;
+
+	&:focus {
+		@focus-ring();
+	}
+
+	// workaround for browsers that don't support :focus-visible
+	&:focus:not(:focus-visible) {
+		box-shadow: none;
+	}
+};
+
+@focus-visible-error: {
+	outline: none;
+
+	&:focus {
+		@focus-ring-error();
+	}
+
+	// workaround for browsers that don't support :focus-visible
+	&:focus:not(:focus-visible) {
+		box-shadow: none;
+	}
+};

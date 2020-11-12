@@ -223,13 +223,6 @@ const Select = ({
 
 	const handleBlur = useCallback(() => hideList(), [hideList]);
 
-	const handleListMouseOver = useCallback((event) => {
-		const element = event.target.closest('[role="option"]');
-		if (element) {
-			setFocused(+element.dataset.index);
-		}
-	}, []);
-
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleListMouseUp = useCallback(
@@ -277,7 +270,6 @@ const Select = ({
 					className="Select__list"
 					role="listbox"
 					ref={list}
-					onMouseOver={handleListMouseOver}
 					onMouseDown={handleListMouseDown}
 					onMouseUp={handleListMouseUp}>
 					{renderedOptions.map((o, index) => (

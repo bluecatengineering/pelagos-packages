@@ -14,8 +14,6 @@ exports[`Tabs rendering renders the expected elements 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
     onMouseUp={[Function]}
     role="tablist"
     tabIndex="0"
@@ -74,8 +72,6 @@ exports[`Tabs rendering renders the expected elements when a tab is focused 1`] 
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
     onMouseUp={[Function]}
     role="tablist"
     tabIndex="0"
@@ -134,8 +130,6 @@ exports[`Tabs rendering renders the expected elements when the active tab is not
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
     onMouseUp={[Function]}
     role="tablist"
     tabIndex="0"

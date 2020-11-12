@@ -1,8 +1,8 @@
 import {useCallback} from 'react';
 import PropTypes from 'prop-types';
-import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
 import ToastTypes from '../ToastTypes';
+import timesThin from '../icons/timesThin';
 import __ from '../strings';
 
 import SvgIcon from './SvgIcon';
@@ -29,7 +29,7 @@ const ToastMessage = ({message, onRemove}) => {
 	if (REQUIRES_CLOSE.includes(type)) {
 		closeButton = (
 			<div data-testid="message-close" className="ToastMessage__close" role="button" aria-label={__('DISMISS')}>
-				<SvgIcon icon={faTimes} />
+				<SvgIcon icon={timesThin} />
 			</div>
 		);
 		toastMessageClass = ' ToastMessage__text--closeable';

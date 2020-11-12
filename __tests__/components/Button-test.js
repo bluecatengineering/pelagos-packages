@@ -27,8 +27,8 @@ describe('Button', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when active is true', () => {
-			const wrapper = shallow(<Button id="test" text="Test" active />);
+		it('renders expected elements when type is primary', () => {
+			const wrapper = shallow(<Button id="test" text="Test" type="primary" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 

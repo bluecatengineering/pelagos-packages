@@ -30,6 +30,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
           id="a"
           size="medium"
           text="A"
+          type="secondary"
         />
       </div>
     </React.Fragment>
@@ -67,6 +68,7 @@ exports[`Dialog rendering renders expected elements when child has no className 
           id="a"
           size="medium"
           text="A"
+          type="secondary"
         />
       </div>
     </React.Fragment>
@@ -105,6 +107,7 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
           id="a"
           size="medium"
           text="A"
+          type="secondary"
         />
       </div>
     </React.Fragment>

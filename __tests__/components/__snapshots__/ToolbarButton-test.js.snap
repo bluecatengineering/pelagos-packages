@@ -13,18 +13,6 @@ exports[`ToolbarButton rendering renders the expected elements 1`] = `
 />
 `;
 
-exports[`ToolbarButton rendering renders the expected elements if active is true 1`] = `
-<IconButton
-  aria-label="Test"
-  className="ToolbarButton ToolbarButton--active"
-  icon={Object {}}
-  id="test"
-  size="medium"
-  tooltipPlacement="right"
-  tooltipText="This is a test"
-/>
-`;
-
 exports[`ToolbarButton rendering renders the expected elements when className is not set 1`] = `
 <IconButton
   aria-label="Test"

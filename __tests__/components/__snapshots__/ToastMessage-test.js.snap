@@ -39,8 +39,6 @@ exports[`ToastMessage rendering renders close button on error 1`] = `
       icon={
         Object {
           "icon": Array [],
-          "iconName": "times",
-          "prefix": "fas",
         }
       }
     />

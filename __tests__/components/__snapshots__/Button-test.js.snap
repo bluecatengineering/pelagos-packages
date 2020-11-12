@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button rendering renders expected elements when active is true 1`] = `
-<button
-  className="Button Button--medium Button--active"
-  id="test"
-  type="submit"
->
-  Test
-</button>
-`;
-
 exports[`Button rendering renders expected elements when both size is small and disabled is true 1`] = `
 <span
   aria-disabled="true"
@@ -22,7 +12,7 @@ exports[`Button rendering renders expected elements when both size is small and 
 
 exports[`Button rendering renders expected elements when className is set 1`] = `
 <button
-  className="Button Button--medium testClass"
+  className="Button Button--medium Button--secondary testClass"
   id="test"
   type="submit"
 >
@@ -52,7 +42,7 @@ exports[`Button rendering renders expected elements when disabled is true and cl
 
 exports[`Button rendering renders expected elements when onClick is not specified 1`] = `
 <button
-  className="Button Button--medium"
+  className="Button Button--medium Button--secondary"
   id="test"
   type="submit"
 >
@@ -62,7 +52,7 @@ exports[`Button rendering renders expected elements when onClick is not specifie
 
 exports[`Button rendering renders expected elements when onClick is specified 1`] = `
 <button
-  className="Button Button--medium"
+  className="Button Button--medium Button--secondary"
   id="test"
   onClick={[MockFunction]}
   type="button"
@@ -73,7 +63,7 @@ exports[`Button rendering renders expected elements when onClick is specified 1`
 
 exports[`Button rendering renders expected elements when size is small 1`] = `
 <button
-  className="Button Button--small"
+  className="Button Button--small Button--secondary"
   id="test"
   type="submit"
 >
@@ -83,7 +73,17 @@ exports[`Button rendering renders expected elements when size is small 1`] = `
 
 exports[`Button rendering renders expected elements when tooltipText is set 1`] = `
 <button
-  className="Button Button--medium"
+  className="Button Button--medium Button--secondary"
+  id="test"
+  type="submit"
+>
+  Test
+</button>
+`;
+
+exports[`Button rendering renders expected elements when type is primary 1`] = `
+<button
+  className="Button Button--medium Button--primary"
   id="test"
   type="submit"
 >

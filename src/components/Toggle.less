@@ -6,15 +6,16 @@
 	position: relative;
 	width: 44px;
 	height: 20px;
-	margin: @sp-02;
+	margin: @sp-04;
 	cursor: pointer;
 	outline: none;
+	transition: opacity 0.15s;
 }
 
 .Toggle[aria-disabled='true'] {
 	cursor: not-allowed;
 	opacity: 0.5;
-	transition: opacity 0.25s;
+	pointer-events: none;
 }
 
 .Toggle::before,
@@ -31,8 +32,8 @@
 	height: 14px;
 	padding: 0;
 	border-radius: 30px;
-	background-color: @prussian;
-	transition: all 0.2s ease;
+	background-color: @form-field-bg;
+	transition: all 0.15s ease;
 }
 .Toggle[aria-checked='true']::before {
 	background-color: @dartmouth;
@@ -45,12 +46,24 @@
 	height: 20px;
 	border-radius: 50%;
 	background-color: @silver;
-	transition: all 0.25s ease-out, box-shadow 0s;
+	transition: all 0.15s ease-out;
 }
 .Toggle[aria-checked='true']::after {
 	background-color: @emerald;
 	left: 24px;
 }
-.Toggle:focus:not([aria-disabled='true'])::after {
-	box-shadow: 0 0 0 1px @ocean, 0 0 4px 2px @sky;
+.Toggle:hover::before {
+	background-color: @form-field-hover;
+}
+.Toggle[aria-checked='true']:hover::before {
+	background-color: fade(@emerald, 45%);
+}
+.Toggle:hover::after {
+	box-shadow: 0 0 0 4px @toggle-hover;
+}
+.Toggle:focus::after {
+	box-shadow: 0 0 0 1px @ocean, 0 0 0 4px @toggle-focus;
+}
+.Toggle:active::after {
+	box-shadow: 0 0 0 1px @ocean, 0 0 0 4px @toggle-active;
 }

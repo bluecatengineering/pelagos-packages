@@ -1,43 +1,23 @@
 @import '../../less/colors';
 @import '../../less/focus';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .ToolbarButton {
+	@focus-visible();
+	@primary-button-effects();
 	font-size: 21px;
-	border: 2px solid @azure;
+	color: @oxford;
+	background-color: @action-color;
+	border: 1px solid @action-color;
 	border-radius: 3px;
 	padding: @sp-04;
-	transition: background-color 0.3s ease-out, border-color 0.3s ease-out;
-}
 
-.ToolbarButton--active {
-	color: @oxford;
-	background-color: @azure;
-}
-
-.ToolbarButton:hover {
-	border-color: @sea;
-}
-
-.ToolbarButton--active:hover {
-	color: @oxford;
-	background-color: @sea;
-}
-
-.ToolbarButton:active {
-	color: @oxford;
-	background-color: @ocean;
-	border-color: @ocean;
-}
-
-.ToolbarButton:focus {
-	@focus-ring();
-}
-
-.ToolbarButton[aria-disabled='true'],
-.ToolbarButton[aria-disabled='true']:hover,
-.ToolbarButton[aria-disabled='true']:active {
-	background-color: transparent;
-	border-color: @battleship;
-	cursor: not-allowed;
+	&[aria-disabled='true'],
+	&[aria-disabled='true']:hover,
+	&[aria-disabled='true']:active {
+		background-color: transparent;
+		border-color: @battleship;
+		cursor: not-allowed;
+	}
 }

@@ -26,17 +26,17 @@
 
 .ToastMessage--warning {
 	background-color: @goldenrod;
-	color: @font-color-black;
+	color: @font-color-i1;
 }
 
 .ToastMessage--error {
 	background-color: @burnt;
-	color: @font-color-black;
+	color: @font-color-i1;
 }
 
 .ToastMessage--fatal {
 	background-color: @burnt;
-	color: @font-color-black;
+	color: @font-color-i1;
 }
 
 .ToastMessage--info {
@@ -53,7 +53,17 @@
 
 .ToastMessage__close {
 	position: absolute;
-	right: 29px;
-	top: 15px;
-	font-size: 19px;
+	right: 21px;
+	top: 9px;
+	font-size: 31px;
+	border-radius: 50%;
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: fade(@black, 12%);
+	}
+
+	&:active {
+		background-color: fade(@black, 20%);
+	}
 }

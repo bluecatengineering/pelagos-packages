@@ -5,16 +5,16 @@ import Tabs from '../../src/components/Tabs';
 
 jest.unmock('../../src/components/Tabs');
 
-describe('Tabs', () => {
-	const items = [
-		// eslint-disable-next-line react/display-name
-		{id: 'a', title: 'A', getPanel: () => <div>A panel</div>},
-		// eslint-disable-next-line react/display-name
-		{id: 'b', title: 'B', getPanel: () => <div>B panel</div>},
-		// eslint-disable-next-line react/display-name
-		{id: 'c', title: 'C', getPanel: () => <div>C panel</div>},
-	];
+const items = [
+	// eslint-disable-next-line react/display-name
+	{id: 'a', title: 'A', getPanel: () => <div>A panel</div>},
+	// eslint-disable-next-line react/display-name
+	{id: 'b', title: 'B', getPanel: () => <div>B panel</div>},
+	// eslint-disable-next-line react/display-name
+	{id: 'c', title: 'C', getPanel: () => <div>C panel</div>},
+];
 
+describe('Tabs', () => {
 	describe('rendering', () => {
 		it('renders the expected elements', () => {
 			const wrapper = shallow(<Tabs id="test" active="a" items={items} />);
@@ -187,38 +187,32 @@ describe('Tabs', () => {
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
 
-		it('focuses the tab when the mouse is over it', () => {
+		it('prevents event default when a mouse button is pressed pressed', () => {
 			const setFocused = jest.fn();
 			const element = {dataset: {index: '1'}};
 			const closest = jest.fn().mockReturnValue(element);
-			const event = {target: {closest}};
+			const focus = jest.fn();
+			const event = {target: {closest}, currentTarget: {focus}, preventDefault: jest.fn()};
 			useState.mockReturnValueOnce([0, setFocused]);
-			const wrapper = shallow(<Tabs id="test" active="a" items={items} onTabClick={jest.fn()} />);
-
-			wrapper.find('#test-list').simulate('mouseover', event);
-
-			expect(closest.mock.calls).toEqual([['[role="tab"]']]);
-			expect(setFocused.mock.calls).toEqual([[1]]);
-		});
-
-		it('sets focused to -1 when the mouse is over other element', () => {
-			const setFocused = jest.fn();
-			const event = {target: {closest: jest.fn()}};
-			useState.mockReturnValueOnce([0, setFocused]);
-			const wrapper = shallow(<Tabs id="test" active="a" items={items} onTabClick={jest.fn()} />);
-
-			wrapper.find('#test-list').simulate('mouseover', event);
-
-			expect(setFocused.mock.calls).toEqual([[-1]]);
-		});
-
-		it('prevents event default when a mouse button is pressed pressed', () => {
-			const event = {preventDefault: jest.fn()};
 			const wrapper = shallow(<Tabs id="test" active="a" items={items} onTabClick={jest.fn()} />);
 
 			wrapper.find('#test-list').simulate('mousedown', event);
 
+			expect(closest.mock.calls).toEqual([['[role="tab"]']]);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			expect(focus.mock.calls).toEqual([[]]);
+			expect(setFocused.mock.calls).toEqual([[1]]);
+		});
+
+		it('ignores the mouse down event when the tab is not found', () => {
+			const closest = jest.fn();
+			const event = {target: {closest}, preventDefault: jest.fn()};
+			const wrapper = shallow(<Tabs id="test" active="a" items={items} onTabClick={jest.fn()} />);
+
+			wrapper.find('#test-list').simulate('mousedown', event);
+
+			expect(closest.mock.calls).toEqual([['[role="tab"]']]);
+			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
 
 		it('calls onTabClick when a tab is clicked', () => {
@@ -246,16 +240,6 @@ describe('Tabs', () => {
 			expect(closest.mock.calls).toEqual([['[role="tab"]']]);
 			expect(event.preventDefault).not.toHaveBeenCalled();
 			expect(onTabClick).not.toHaveBeenCalled();
-		});
-
-		it('sets focused to -1 when the mouse leaves', () => {
-			const setFocused = jest.fn();
-			useState.mockReturnValueOnce([0, setFocused]);
-			const wrapper = shallow(<Tabs id="test" active="a" items={items} onTabClick={jest.fn()} />);
-
-			wrapper.find('#test-list').simulate('mouseout');
-
-			expect(setFocused.mock.calls).toEqual([[-1]]);
 		});
 	});
 });

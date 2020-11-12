@@ -1,8 +1,10 @@
 @import '../../less/colors';
 @import '../../less/focus';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .CheckBox {
+	@secondary-button-effects();
 	display: inline-block;
 	position: relative;
 	padding-left: @sp-24;
@@ -29,6 +31,11 @@
 .CheckBox[aria-checked='true']::before {
 	background-color: @ocean;
 	border-color: @ocean;
+
+	@media print {
+		background-color: transparent;
+		border-color: @battleship;
+	}
 }
 
 .CheckBox--error::before {
@@ -54,11 +61,16 @@
 	border: solid @font-color-1;
 	border-width: 0 3px 3px 0;
 	transform: rotate(45deg);
+
+	@media print {
+		border-color: @black;
+	}
 }
 
 .CheckBox[aria-disabled='true'] {
 	color: @battleship;
 	cursor: default;
+	pointer-events: none;
 }
 .CheckBox[aria-disabled='true']::before {
 	border-color: @battleship;

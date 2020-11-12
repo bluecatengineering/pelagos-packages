@@ -164,7 +164,6 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     className="Select__list"
     id="test-list"
     onMouseDown={[Function]}
-    onMouseOver={[Function]}
     onMouseUp={[Function]}
     role="listbox"
   >

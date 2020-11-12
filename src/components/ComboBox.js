@@ -107,13 +107,6 @@ const ComboBox = ({
 
 	const handleBlur = useCallback(() => setOpen(false), []);
 
-	const handleListMouseOver = useCallback((event) => {
-		const element = event.target.closest('[role=option]');
-		if (element) {
-			setSelected(+element.dataset.index);
-		}
-	}, []);
-
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleListMouseUp = useCallback(
@@ -161,7 +154,6 @@ const ComboBox = ({
 					className="ComboBox__list"
 					role="listbox"
 					ref={listRef}
-					onMouseOver={handleListMouseOver}
 					onMouseDown={handleListMouseDown}
 					onMouseUp={handleListMouseUp}>
 					{suggestions.map((item, index) => {

@@ -38,6 +38,7 @@
 }
 
 .DataTable__sort {
+	@icon-button();
 	display: inline-block;
 	margin-left: @sp-12;
 	color: @battleship;
@@ -46,7 +47,7 @@
 	cursor: pointer;
 }
 .DataTable__sort--active {
-	color: @azure;
+	color: @action-color;
 }
 
 .DataTable__body {
@@ -57,6 +58,10 @@
 	outline: none;
 }
 
+.DataTable__row,
+.DataTable__row:nth-child(even) {
+	@secondary-button-effects();
+}
 .DataTable__row:nth-child(even) {
 	background-color: fade(@prussian, 50%);
 }
@@ -66,12 +71,6 @@
 }
 .DataTable__row[aria-selected='true'],
 .DataTable__row[aria-selected='true']:nth-child(even) {
-	color: @font-color-black;
-	background-color: @sea;
-}
-.DataTable__row:hover,
-.DataTable__row:nth-child(even):hover {
-	color: @font-color-1;
 	background-color: @ocean;
 }
 

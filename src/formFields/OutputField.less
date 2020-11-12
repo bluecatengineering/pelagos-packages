@@ -15,6 +15,10 @@
 	color: @font-color-2;
 	// stylelint-disable-next-line @bluecat/property-strict-value
 	padding: 5px 0; // to match height of text field
+
+	@media print {
+		color: @black;
+	}
 }
 
 .OutputField--alignRight {

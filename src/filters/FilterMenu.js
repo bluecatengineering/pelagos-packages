@@ -35,12 +35,12 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 	useEffect(() => {
 		if (menuVisible) {
 			const button = document.getElementById('filterButton');
-			const {top, left} = button.getBoundingClientRect();
+			const {bottom, left} = button.getBoundingClientRect();
 
 			const menu = document.getElementById('filterMenu');
 			menu.style.display = '';
-			menu.style.top = top + 32 + 'px';
-			menu.style.left = left + 'px';
+			menu.style.top = `${bottom + 3}px`;
+			menu.style.left = `${left}px`;
 		}
 	}, [menuVisible]);
 

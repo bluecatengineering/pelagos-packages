@@ -1,27 +1,13 @@
 @import '../../less/colors';
 @import '../../less/focus';
+@import '../../less/utils';
 
 .Hamburger {
+	@icon-button();
 	position: relative;
 	width: 44px;
 	height: 44px;
-	color: @azure;
 	align-items: center;
-	cursor: pointer;
-	transition: color 0.3s ease-out;
-}
-
-.Hamburger:hover {
-	color: @sea;
-}
-
-.Hamburger:active {
-	color: @ocean;
-}
-
-.Hamburger:focus {
-	@focus-ring();
-	color: @sea;
 }
 
 .Hamburger__inner,

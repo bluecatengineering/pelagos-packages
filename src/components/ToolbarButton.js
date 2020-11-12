@@ -4,11 +4,8 @@ import IconButton from './IconButton';
 
 import './ToolbarButton.less';
 
-const ToolbarButton = ({className, active, ...props}) => (
-	<IconButton
-		{...props}
-		className={'ToolbarButton' + (active ? ' ToolbarButton--active' : '') + (className ? ' ' + className : '')}
-	/>
+const ToolbarButton = ({className, ...props}) => (
+	<IconButton {...props} className={`ToolbarButton${className ? ' ' + className : ''}`} />
 );
 
 ToolbarButton.propTypes = {
@@ -17,7 +14,6 @@ ToolbarButton.propTypes = {
 	icon: PropTypes.object,
 	tooltipText: PropTypes.string,
 	disabled: PropTypes.bool,
-	active: PropTypes.bool,
 	onClick: PropTypes.func,
 };
 

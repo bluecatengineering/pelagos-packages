@@ -1,3 +1,6 @@
+@import './colors';
+@import './focus';
+
 @base-ellipsis: {
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -7,4 +10,48 @@
 @ellipsis: {
 	@base-ellipsis();
 	display: block;
+};
+
+@primary-button-effects: {
+	transition: border-color 0.15s ease-out, background-color 0.15s ease-out;
+
+	&:hover {
+		border-color: @primary-button-hover;
+		background-color: @primary-button-hover;
+	}
+
+	&:active {
+		border-color: @primary-button-active;
+		background-color: @primary-button-active;
+	}
+};
+
+@secondary-button-effects: {
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: @secondary-button-hover;
+	}
+
+	&:active {
+		background-color: @secondary-button-active;
+	}
+};
+
+@icon-button: {
+	@focus-visible();
+	@secondary-button-effects();
+	cursor: pointer;
+	color: @action-color;
+
+	&[aria-disabled='true'] {
+		color: @battleship;
+		background-color: transparent;
+		cursor: not-allowed;
+	}
+};
+
+@icon-button-nested: {
+	@icon-button();
+	border-radius: 50%;
 };

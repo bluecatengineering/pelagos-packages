@@ -1,10 +1,10 @@
 // This file was generated from defs/colors.yaml
 // it will be re-generated on commit, to generate manually run `npm run update-colors`
 
+export const CRYSTAL = '#71c4ff';
+export const ICEBERG = '#4ebdff';
 export const AZURE = '#01b5ff';
-export const SEA = '#0085c3';
 export const OCEAN = '#006297';
-export const CERULEAN = '#004a75';
 export const MIDNIGHT = '#00385a';
 export const OXFORD = '#001c32';
 export const SKY = '#aed3e7';

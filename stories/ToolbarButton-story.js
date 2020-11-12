@@ -7,16 +7,12 @@ const Template = (args) => <ToolbarButton {...args} />;
 export const Normal = Template.bind({});
 Normal.args = {id: 'normal', icon: faCat, tooltipText: 'Normal', 'aria-label': 'Normal'};
 
-export const Active = Template.bind({});
-Active.args = {id: 'active', icon: faCat, tooltipText: 'Active', 'aria-label': 'Active', active: true};
-
 export const Disabled = Template.bind({});
 Disabled.args = {id: 'disabled', icon: faCat, tooltipText: 'Disabled', 'aria-label': 'Disabled', disabled: true};
 
 export const AllStates = () => (
 	<div className="Story__group">
 		<ToolbarButton id="test0" icon={faCat} tooltipText="Normal" aria-label="Label" />
-		<ToolbarButton id="test1" icon={faCat} tooltipText="Active" aria-label="Label" active />
 		<ToolbarButton id="test2" icon={faCat} tooltipText="Disabled" aria-label="Label" disabled />
 	</div>
 );

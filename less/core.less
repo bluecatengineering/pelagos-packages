@@ -19,24 +19,24 @@ footer {
 }
 
 a {
-	color: @azure;
+	@focus-visible();
+	color: @action-color;
 	text-decoration: none;
 	padding: 0 @sp-02;
 	margin: @sp-02;
 	cursor: pointer;
-	transition: color 0.3s ease-out;
 
 	&:hover {
-		color: @sea;
+		text-decoration: underline;
 	}
 
 	&:focus {
-		@focus-ring();
-		color: @sea;
+		text-decoration: underline;
 	}
 
-	&:active {
-		color: @ocean;
+	// workaround for browsers that don't support :focus-visible
+	&:focus:not(:focus-visible) {
+		text-decoration: none;
 	}
 }
 
@@ -51,7 +51,7 @@ table {
 
 @keyframes highlight-fade {
 	0% {
-		background: @azure;
+		background: @bondi;
 	}
 }
 

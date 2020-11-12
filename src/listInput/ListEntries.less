@@ -1,6 +1,7 @@
 @import '../../less/colors';
 @import '../../less/focus';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .ListEntries {
 	flex-direction: row;
@@ -23,14 +24,9 @@
 }
 
 .ListEntries__icon {
+	@icon-button-nested();
 	font-size: 19px;
-	color: @azure;
 	padding: @sp-02;
-	cursor: pointer;
-
-	&:focus {
-		@focus-ring();
-	}
 }
 .ListEntries__item--highlight > .ListEntries__icon {
 	color: @white;

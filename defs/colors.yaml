@@ -1,20 +1,20 @@
 # This file is used to generate colors.less and Colors.js,
 # it will be processed on commit, to generate manually run `npm run update-colors`
 
+crystal:
+  value: '#71c4ff'
+  tags: [primary]
+iceberg:
+  value: '#4ebdff'
+  tags: [primary]
 azure:
   value: '#01b5ff'
   tags: [primary]
   palette: 1
-sea:
-  value: '#0085c3'
-  tags: [primary]
 ocean:
   value: '#006297'
   tags: [primary]
   palette: 0
-cerulean:
-  value: '#004a75'
-  tags: [primary]
 midnight:
   value: '#00385a'
   tags: [primary]
@@ -99,7 +99,7 @@ font-color-3:
   fade: 50%
   tags: [text]
   sample: oxford
-font-color-black:
+font-color-i1:
   base: black
   fade: 90%
   tags: [text]
@@ -141,6 +141,31 @@ modal-bg:
   base: black
   fade: 50%
 
+action-color:
+  alias: azure
+
+primary-button-hover:
+  alias: iceberg
+
+primary-button-active:
+  alias: crystal
+
+secondary-button-hover:
+  base: sky
+  fade: 15%
+
+secondary-button-active:
+  base: sky
+  fade: 30%
+
+menu-hover:
+  base: sky
+  fade: 7.5%
+
+menu-current:
+  base: sky
+  fade: 15%
+
 form-field-border:
   alias: prussian
 form-field-bg:
@@ -149,7 +174,18 @@ form-field-hint:
   alias: sky
 form-field-error:
   alias: burnt
-
-menu-hover:
+form-field-hover:
   base: fiord
+  fade: 65%
+
+toggle-hover:
+  base: sky
+  fade: 15%
+
+toggle-focus:
+  base: sky
+  fade: 30%
+
+toggle-active:
+  base: sky
   fade: 50%

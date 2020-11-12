@@ -1,6 +1,7 @@
 @import 'colors';
 @import 'focus';
 @import 'fonts';
+@import 'spacing';
 
 input,
 button,
@@ -16,12 +17,12 @@ button::-moz-focus-inner {
 
 :-ms-input-placeholder {
 	@font-12-400();
-	color: @sky;
+	color: @form-field-hint;
 }
 
 ::placeholder {
 	@font-12-400();
-	color: @sky;
+	color: @form-field-hint;
 }
 
 input:not([type]),
@@ -35,7 +36,27 @@ textarea {
 	background-color: @form-field-bg;
 	border: 1px solid @form-field-border;
 	border-radius: 3px;
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: @form-field-hover;
+	}
+
+	&:focus {
+		@focus-ring();
+	}
+
+	.Dialog & {
+		background-color: @oxford;
+	}
+
+	@media print {
+		background-color: transparent;
+		border-color: transparent;
+	}
 }
+// Looks like a bug in stylelint
+// stylelint-disable no-descending-specificity
 input:read-only,
 textarea:read-only {
 	color: @font-color-2;
@@ -49,14 +70,6 @@ input[disabled]:-ms-input-placeholder {
 }
 input[disabled]::placeholder {
 	color: @battleship;
-}
-input:not([type]):focus,
-input[type='text']:focus,
-input[type='password']:focus,
-input[type='search']:focus,
-input[type='email']:focus,
-textarea:focus {
-	@focus-ring();
 }
 
 @media print {

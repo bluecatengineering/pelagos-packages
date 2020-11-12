@@ -270,30 +270,6 @@ describe('ComboBox', () => {
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
 		});
 
-		it('selects the item on mouse over', () => {
-			useState
-				.mockReturnValueOnce([[{}], jest.fn()])
-				.mockReturnValueOnce([true, jest.fn()])
-				.mockReturnValueOnce([-1, jest.fn()]);
-			const closest = jest.fn().mockReturnValue({dataset: {index: '0'}});
-			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
-			wrapper.find('[role="listbox"]').simulate('mouseover', {target: {closest}});
-			expect(closest).toHaveBeenCalledTimes(1);
-			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[0]]);
-		});
-
-		it('ignores the event on mouse over if the element is not found', () => {
-			useState
-				.mockReturnValueOnce([[{}], jest.fn()])
-				.mockReturnValueOnce([true, jest.fn()])
-				.mockReturnValueOnce([-1, jest.fn()]);
-			const closest = jest.fn();
-			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
-			wrapper.find('[role="listbox"]').simulate('mouseover', {target: {closest}});
-			expect(closest).toHaveBeenCalledTimes(1);
-			expect(useState.mock.results[2].value[1]).not.toHaveBeenCalled();
-		});
-
 		it('calls preventDefault on mouse down', () => {
 			useState
 				.mockReturnValueOnce([[{}], jest.fn()])

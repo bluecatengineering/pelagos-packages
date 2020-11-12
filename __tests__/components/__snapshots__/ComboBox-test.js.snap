@@ -76,7 +76,6 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     className="ComboBox__list"
     id="test-list"
     onMouseDown={[Function]}
-    onMouseOver={[Function]}
     onMouseUp={[Function]}
     role="listbox"
   >

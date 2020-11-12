@@ -2,57 +2,49 @@
 @import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .Button {
+	@focus-visible();
 	cursor: pointer;
 	white-space: nowrap;
-	color: @azure;
-	border: 2px solid @azure;
+	border-width: 1px;
+	border-style: solid;
 	border-radius: 3px;
 	text-align: center;
 	background-color: transparent;
-	transition: color 0.3s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out;
-}
 
-.Button--small {
-	@font-12-600-uc();
-	padding: @sp-04 @sp-12;
-}
+	&--small {
+		@font-12-600-uc();
+		padding: @sp-04 @sp-12;
+	}
 
-.Button--medium {
-	@font-14-600-uc();
-	padding: @sp-08 @sp-24;
-}
+	&--medium {
+		@font-14-600-uc();
+		padding: @sp-08 @sp-24;
+	}
 
-.Button--large {
-	@font-16-600-uc();
-	padding: @sp-12 @sp-40;
-}
+	&--large {
+		@font-16-600-uc();
+		padding: @sp-12 @sp-40;
+	}
 
-.Button--active {
-	color: @oxford;
-	background-color: @azure;
-}
+	&--primary {
+		@primary-button-effects();
+		color: @oxford;
+		border-color: @action-color;
+		background-color: @action-color;
+	}
 
-.Button:hover {
-	border-color: @sea;
-}
+	&--secondary {
+		@secondary-button-effects();
+		color: @action-color;
+		border-color: @action-color;
+	}
 
-.Button--active:hover {
-	background-color: @sea;
-}
-
-.Button:active {
-	color: @oxford;
-	background-color: @ocean;
-	border-color: @ocean;
-}
-
-.Button:focus {
-	@focus-ring();
-}
-
-.Button[aria-disabled='true'] {
-	color: @battleship;
-	border-color: @battleship;
+	&[aria-disabled='true'] {
+		color: @battleship;
+		border-color: @battleship;
+		background-color: transparent;
+	}
 }
