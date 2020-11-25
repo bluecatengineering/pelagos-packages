@@ -1,0 +1,12 @@
+javascript:
+  stage: test
+  script:
+    - 'npm run init-scope && npm run set-token && npm ci && npm run test-ci'
+  image: docker-ext.artifactory.bluecatlabs.net/node:lts-alpine
+  variables:
+    NPM_TOKEN: $NPM_TOKEN
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - build/junit.xml
