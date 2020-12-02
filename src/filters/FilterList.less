@@ -56,11 +56,15 @@
 	border-radius: 3px;
 	padding: @sp-04 @sp-08;
 	cursor: pointer;
-	background-color: @prussian;
+	background-color: @form-field-bg;
 	color: @emerald;
 
 	&:focus {
 		@focus-ring();
+	}
+
+	&:hover {
+		background-color: @form-field-hover;
 	}
 }
 
