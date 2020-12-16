@@ -4,6 +4,7 @@ import {createFocusTrap} from 'focus-trap';
 
 import './Dialog.less';
 
+/** A modal dialog box. */
 const Dialog = ({id, className, title, role, initialFocus, children: [body, buttons], onSubmit}) => {
 	const previousActive = useRef(document.activeElement);
 	const element = useRef(null);
@@ -62,12 +63,19 @@ const Dialog = ({id, className, title, role, initialFocus, children: [body, butt
 };
 
 Dialog.propTypes = {
+	/** The component ID. */
 	id: PropTypes.string,
+	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The dialog title. */
 	title: PropTypes.string.isRequired,
+	/** The dialog ARIA role. */
 	role: PropTypes.oneOf(['dialog', 'alertdialog']),
+	/** The ID of the component to focus. */
 	initialFocus: PropTypes.string,
+	/** The dialog children. */
 	children: PropTypes.arrayOf(PropTypes.element).isRequired,
+	/** Function invoked when a submit button is clicked. */
 	onSubmit: PropTypes.func,
 };
 

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import './SvgIcon.less';
 
+/** An SVG icon. */
 const SvgIcon = ({
 	icon: {
 		icon: [width, height, , , path],
@@ -19,8 +20,11 @@ const SvgIcon = ({
 );
 
 SvgIcon.propTypes = {
-	icon: PropTypes.object.isRequired,
+	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The icon to display. */
+	icon: PropTypes.object.isRequired,
+	/** The animation. */
 	animation: PropTypes.oneOf(['spin']),
 };
 

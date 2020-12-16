@@ -5,6 +5,7 @@ import Label from '../components/Label';
 import Toggle from '../components/Toggle';
 import './ToggleField.less';
 
+/** A toggle button field. */
 const ToggleField = ({id, className, label, value, disabled, onChange}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
 	const labelId = `${id}-label`;
@@ -27,11 +28,17 @@ const ToggleField = ({id, className, label, value, disabled, onChange}) => {
 };
 
 ToggleField.propTypes = {
+	/** The component ID. */
 	id: PropTypes.string,
+	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The label text. */
 	label: PropTypes.string.isRequired,
+	/** The field value. */
 	value: PropTypes.bool,
+	/** Whether the toggle is disabled */
 	disabled: PropTypes.bool,
+	/** Function invoked when the value changes. */
 	onChange: PropTypes.func.isRequired,
 };
 

@@ -16,6 +16,7 @@ const findInRange = (string, list, start, end) => {
 	return -1;
 };
 
+/** A select drop-down. */
 const Select = ({
 	id,
 	className,
@@ -290,15 +291,25 @@ const Select = ({
 };
 
 Select.propTypes = {
+	/** The component ID. */
 	id: PropTypes.string.isRequired,
+	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The value of the selected option. */
 	value: PropTypes.string,
+	/** The list of options. */
 	options: PropTypes.array.isRequired,
+	/** The placeholder text. */
 	placeholder: PropTypes.string,
+	/** Whether the component is disabled. */
 	disabled: PropTypes.bool,
+	/** Whether the component is in error. */
 	error: PropTypes.bool,
+	/** Function invoked to get the value of each option. */
 	getOptionValue: PropTypes.func,
+	/** Function invoked to render each option. */
 	renderOption: PropTypes.func.isRequired,
+	/** Function invoked when the selected option changes. */
 	onChange: PropTypes.func.isRequired,
 };
 

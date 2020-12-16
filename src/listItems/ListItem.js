@@ -2,15 +2,18 @@ import PropTypes from 'prop-types';
 
 import './ListItem.less';
 
-const ListItem = ({item, className}) => (
+/** A list item. */
+const ListItem = ({className, item}) => (
 	<span data-testid="name" className={'ListItem' + (className ? ' ' + className : '')} title={item}>
 		{item}
 	</span>
 );
 
 ListItem.propTypes = {
-	item: PropTypes.string.isRequired,
+	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The item. */
+	item: PropTypes.string.isRequired,
 };
 
 export default ListItem;

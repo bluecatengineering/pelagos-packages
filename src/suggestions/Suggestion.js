@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 
 import './Suggestion.less';
 
-export const Suggestion = ({name, description, className, ...props}) => (
+/** A suggestion. */
+export const Suggestion = ({className, name, description, ...props}) => (
 	<div {...props} className={'Suggestion' + (className ? ' ' + className : '')}>
 		<div>{name}</div>
 		<div className="Suggestion__description">{description}</div>
@@ -10,9 +11,12 @@ export const Suggestion = ({name, description, className, ...props}) => (
 );
 
 Suggestion.propTypes = {
-	name: PropTypes.string,
-	description: PropTypes.string,
+	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The name. */
+	name: PropTypes.string,
+	/** The description. */
+	description: PropTypes.string,
 };
 
 export default Suggestion;

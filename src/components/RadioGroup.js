@@ -5,6 +5,7 @@ import RadioButton from './RadioButton';
 
 import './RadioGroup.less';
 
+/** A group of radio buttons. */
 const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
 	const handleChange = useCallback((event) => onChange(event.target.dataset.value), [onChange]);
 
@@ -47,10 +48,15 @@ const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
 };
 
 RadioGroup.propTypes = {
+	/** The component ID. */
 	id: PropTypes.string.isRequired,
+	/** The value of the selected option. */
 	value: PropTypes.string,
-	options: PropTypes.array.isRequired,
+	/** The list of options. */
+	options: PropTypes.arrayOf(PropTypes.string).isRequired,
+	/** Function invoked to render each option. */
 	renderLabel: PropTypes.func.isRequired,
+	/** Function invoked when the selected option changes. */
 	onChange: PropTypes.func,
 };
 
