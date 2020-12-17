@@ -8,14 +8,17 @@
 	padding: @sp-12 @sp-24;
 	border-radius: 3px;
 	box-shadow: @shadow-16;
-	cursor: pointer;
+	opacity: 0;
+	transform: rotateX(-90deg);
 }
 .ToastMessage:not(:last-child) {
 	margin-bottom: @sp-12;
 }
 
 .ToastMessage--action {
-	text-align: center;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 	background-color: @ocean;
 }
 
@@ -51,6 +54,10 @@
 	margin-right: @sp-24;
 }
 
+.ToastMessage__button {
+	margin-left: @sp-12;
+}
+
 .ToastMessage__close {
 	position: absolute;
 	right: 21px;
@@ -66,4 +73,12 @@
 	&:active {
 		background-color: fade(@black, 20%);
 	}
+}
+
+.ToastMessage__time {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 3px;
+	background-color: fade(@white, 75%);
 }

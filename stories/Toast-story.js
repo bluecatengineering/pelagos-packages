@@ -1,9 +1,9 @@
 import {ToastTypes, Toast} from '../src';
 
 const messages = [
-	{type: ToastTypes.INFO, text: 'Info'},
-	{type: ToastTypes.WARNING, text: 'Warning'},
-	{type: ToastTypes.ERROR, text: 'Error'},
+	{id: '0', type: ToastTypes.INFO, text: 'Info'},
+	{id: '1', type: ToastTypes.WARNING, text: 'Warning'},
+	{id: '2', type: ToastTypes.ERROR, text: 'Error'},
 ];
 
 const Template = (args) => <Toast {...args} />;

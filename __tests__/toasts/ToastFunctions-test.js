@@ -1,11 +1,5 @@
-import {
-	SHORT_DURATION,
-	DEFAULT_DURATION,
-	hasFatalError,
-	registerActionToast,
-	toaster,
-} from '../../src/toasts/ToastFunctions';
-import {addToast, removeToast} from '../../src/toasts/ToastActions';
+import {hasFatalError, registerActionToast, toaster} from '../../src/toasts/ToastFunctions';
+import {addToast} from '../../src/toasts/ToastActions';
 import ToastTypes from '../../src/ToastTypes';
 
 jest.unmock('../../src/toasts/ToastFunctions');
@@ -30,6 +24,9 @@ describe('ToastFunctions', () => {
 		const actionTypeGet = 'TEST_GET';
 
 		beforeAll(() => {
+			jest.spyOn(Date, 'now').mockReturnValue(0x123456);
+			jest.spyOn(Math, 'random').mockReturnValue(0.987654);
+
 			registerActionToast(actionType, text, ToastTypes.INFO);
 			registerActionToast(actionType, other, ToastTypes.INFO);
 			registerActionToast(actionTypeFn, ({payload}) => payload + ' is a test');
@@ -42,41 +39,34 @@ describe('ToastFunctions', () => {
 			const dispatch = jest.fn();
 			const next = jest.fn();
 			const action = addToast(ToastTypes.INFO, text);
-			const toast = {type: ToastTypes.INFO, text, timerId: 1};
+			const toast = {type: ToastTypes.INFO, text, id: '123456-fcd6e47dc37a4'};
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toEqual({toasts: [toast]});
 			expect(next.mock.calls).toEqual([[action]]);
 			expect(dispatch).not.toHaveBeenCalled();
-			expect(setTimeout.mock.calls).toEqual([[expect.any(Function), DEFAULT_DURATION]]);
-
-			jest.runOnlyPendingTimers();
-			expect(dispatch.mock.calls).toEqual([[removeToast(toast)]]);
 		});
 
 		it('uses short duration for successful actions', () => {
 			const dispatch = jest.fn();
 			const next = jest.fn();
 			const action = addToast(ToastTypes.SUCCESS, text);
-			const toast = {type: ToastTypes.SUCCESS, text, timerId: 1};
-			setTimeout.mockReturnValue(1);
+			const toast = {type: ToastTypes.SUCCESS, text, id: '123456-fcd6e47dc37a4'};
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toEqual({toasts: [toast]});
 			expect(next.mock.calls).toEqual([[action]]);
 			expect(dispatch).not.toHaveBeenCalled();
-			expect(setTimeout.mock.calls).toEqual([[expect.any(Function), SHORT_DURATION]]);
 		});
 
 		it("sets a toast meta if there's a registered action", () => {
 			const dispatch = jest.fn();
 			const next = jest.fn();
 			const action = {type: actionType, meta: {foo: 'test'}};
-			setTimeout.mockReturnValue(1);
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toEqual({
 				foo: 'test',
 				toasts: [
-					{type: ToastTypes.INFO, text, timerId: 1},
-					{type: ToastTypes.INFO, text: other, timerId: 1},
+					{type: ToastTypes.INFO, text, id: '123456-fcd6e47dc37a4'},
+					{type: ToastTypes.INFO, text: other, id: '123456-fcd6e47dc37a4'},
 				],
 			});
 			expect(next.mock.calls).toEqual([[action]]);
@@ -89,7 +79,7 @@ describe('ToastFunctions', () => {
 			const action = {type: actionTypeFn, payload: 'That'};
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toEqual({
-				toasts: [{type: ToastTypes.FATAL, text: 'That is a test'}],
+				toasts: [{type: ToastTypes.FATAL, text: 'That is a test', id: '123456-fcd6e47dc37a4'}],
 			});
 			expect(next.mock.calls).toEqual([[action]]);
 			expect(dispatch).not.toHaveBeenCalled();
@@ -99,10 +89,9 @@ describe('ToastFunctions', () => {
 			const dispatch = jest.fn();
 			const next = jest.fn();
 			const action = {type: actionTypeGet, payload: 'That'};
-			setTimeout.mockReturnValue(1);
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toEqual({
-				toasts: [{type: ToastTypes.ERROR, text: 'That is a getter test', timerId: 1}],
+				toasts: [{type: ToastTypes.ERROR, text: 'That is a getter test', id: '123456-fcd6e47dc37a4'}],
 			});
 			expect(next.mock.calls).toEqual([[action]]);
 			expect(dispatch).not.toHaveBeenCalled();
@@ -122,31 +111,28 @@ describe('ToastFunctions', () => {
 			const dispatch = jest.fn();
 			const next = jest.fn();
 			const action = addToast(ToastTypes.FATAL, text);
-			const toast = {type: ToastTypes.FATAL, text};
+			const toast = {type: ToastTypes.FATAL, text, id: '123456-fcd6e47dc37a4'};
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toEqual({toasts: [toast]});
 			expect(next.mock.calls).toEqual([[action]]);
 			expect(dispatch).not.toHaveBeenCalled();
-			expect(setTimeout).not.toHaveBeenCalled();
 		});
 
 		it("doesn't start a timer if the type is link", () => {
 			const dispatch = jest.fn();
 			const next = jest.fn();
 			const action = addToast(ToastTypes.ACTION, text);
-			const toast = {type: ToastTypes.ACTION, text};
+			const toast = {type: ToastTypes.ACTION, text, id: '123456-fcd6e47dc37a4'};
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toEqual({toasts: [toast]});
 			expect(next.mock.calls).toEqual([[action]]);
 			expect(dispatch).not.toHaveBeenCalled();
-			expect(setTimeout).not.toHaveBeenCalled();
 		});
 
 		it("doesn't set a toast meta if there's a registered action and toast is provided but it returns null", () => {
 			const dispatch = jest.fn();
 			const next = jest.fn();
 			const action = {type: actionTypeGet, payload: null};
-			setTimeout.mockReturnValue(1);
 			toaster({dispatch})(next)(action);
 			expect(action.meta).toBeUndefined();
 			expect(next.mock.calls).toEqual([[action]]);

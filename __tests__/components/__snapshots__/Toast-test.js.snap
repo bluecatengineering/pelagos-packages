@@ -1,51 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Toast behaviour creates initial elements 1`] = `
+Array [
+  <ToastMessage
+    message={
+      Object {
+        "id": "foo",
+        "text": "Test 1",
+        "type": "a",
+      }
+    }
+  />,
+  <ToastMessage
+    message={
+      Object {
+        "id": "bar",
+        "text": "Test 2",
+        "type": "b",
+      }
+    }
+  />,
+]
+`;
+
 exports[`Toast rendering renders all messages 1`] = `
 <div
   className="Toast"
 >
-  <TransitionGroup
-    childFactory={[Function]}
+  <div
     className="Toast__messages"
-    component="div"
   >
-    <CSSTransition
-      classNames="swing"
-      timeout={
-        Object {
-          "enter": 500,
-          "exit": 300,
-        }
-      }
-    >
-      <ToastMessage
-        message={
-          Object {
-            "text": "Test 1",
-            "type": "a",
-          }
-        }
-      />
-    </CSSTransition>
-    <CSSTransition
-      classNames="swing"
-      timeout={
-        Object {
-          "enter": 500,
-          "exit": 300,
-        }
-      }
-    >
-      <ToastMessage
-        message={
-          Object {
-            "text": "Test 2",
-            "type": "b",
-          }
-        }
-      />
-    </CSSTransition>
-  </TransitionGroup>
+    <div />
+    <div />
+  </div>
 </div>
 `;
 
@@ -53,25 +40,12 @@ exports[`Toast rendering renders modal backdrop when hasFatalError returns true 
 <div
   className="Toast"
 >
-  <TransitionGroup
-    childFactory={[Function]}
+  <div
     className="Toast__messages"
-    component="div"
   >
-    <CSSTransition
-      classNames="swing"
-      timeout={
-        Object {
-          "enter": 500,
-          "exit": 300,
-        }
-      }
-    >
-      <ToastMessage
-        message={Object {}}
-      />
-    </CSSTransition>
-  </TransitionGroup>
+    <div />
+    <div />
+  </div>
   <div
     className="Toast__backdrop"
   />

@@ -6,7 +6,7 @@ import {hasFatalError} from '../../src/toasts/ToastFunctions';
 jest.unmock('../../src/toasts/ToastReducer');
 jest.unmock('../../src/toasts/ToastActions');
 
-describe('ToastMessagesReducer', () => {
+describe('ToastReducer', () => {
 	describe('basic behaviour', () => {
 		it('returns default state when state is undefined', () => {
 			expect(reducer(undefined, {type: 'TEST'})).toEqual([]);
@@ -38,60 +38,38 @@ describe('ToastMessagesReducer', () => {
 		});
 
 		it('discards oldest toast when there are 3 toasts', () => {
-			const state = [{timerId: 100}, {timerId: 101}, {timerId: 102}];
-			expect(reducer(state, {meta: {toasts: [{timerId: 103}]}})).toEqual([
-				{timerId: 101},
-				{timerId: 102},
-				{timerId: 103},
-			]);
-			expect(clearTimeout.mock.calls).toEqual([[100]]);
+			const state = [{id: '100'}, {id: '101'}, {id: '102'}];
+			expect(reducer(state, {meta: {toasts: [{id: '103'}]}})).toEqual([{id: '101'}, {id: '102'}, {id: '103'}]);
 		});
 
-		it('removes all toasts if the type is application error', () => {
-			const state = [{timerId: 100}, {timerId: 101}, {timerId: 102}];
+		it('removes all toasts if the type is fatal', () => {
+			const state = [{id: '100'}, {id: '101'}, {id: '102'}];
 			expect(reducer(state, {meta: {toasts: [{type: ToastTypes.FATAL}]}})).toEqual([{type: ToastTypes.FATAL}]);
-			expect(clearTimeout.mock.calls).toEqual([[100], [101], [102]]);
-			expect(setTimeout).not.toHaveBeenCalled();
-		});
-
-		it('removes all toasts of the same type if the type is link', () => {
-			const state = [{timerId: 101}, {type: ToastTypes.ACTION}, {timerId: 102}];
-			expect(reducer(state, {meta: {toasts: [{type: ToastTypes.ACTION}]}})).toEqual([
-				{timerId: 101},
-				{timerId: 102},
-				{type: ToastTypes.ACTION},
-			]);
-			expect(clearTimeout).not.toHaveBeenCalled();
-			expect(setTimeout).not.toHaveBeenCalled();
 		});
 	});
 
 	describe('removeToast action', () => {
 		it('removes the specified toast', () => {
-			const state = [{timerId: 100}, {timerId: 101}];
-			expect(reducer(state, removeToast(state[0]))).toEqual([{timerId: 101}]);
-			expect(clearTimeout.mock.calls).toEqual([[100]]);
+			const state = [{id: '100'}, {id: '101'}];
+			expect(reducer(state, removeToast(state[0]))).toEqual([{id: '101'}]);
 		});
 	});
 
 	describe('removeToastType action', () => {
 		it('removes all toasts of the specified type', () => {
 			const state = [
-				{type: 'a', timerId: 100},
-				{type: 'b', timerId: 101},
-				{type: 'a', timerId: 102},
+				{type: 'a', id: '100'},
+				{type: 'b', id: '101'},
+				{type: 'a', id: '102'},
 			];
-			expect(reducer(state, removeToastType('a'))).toEqual([{type: 'b', timerId: 101}]);
-			expect(clearTimeout.mock.calls).toEqual([[100], [102]]);
+			expect(reducer(state, removeToastType('a'))).toEqual([{type: 'b', id: '101'}]);
 		});
 	});
 
 	describe('removeAllToasts action', () => {
 		it('returns default state and clears timers', () => {
-			const state = [{timerId: 5}];
-
+			const state = [{id: '5'}];
 			expect(reducer(state, removeAllToasts())).toEqual([]);
-			expect(clearTimeout.mock.calls).toEqual([[5]]);
 		});
 	});
 });
