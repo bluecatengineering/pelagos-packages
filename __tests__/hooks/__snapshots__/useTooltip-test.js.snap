@@ -2,7 +2,7 @@
 
 exports[`useTooltip shows tooltip on mouse over and removes it on mouse leave 1`] = `
 <div
-  class="Tooltip Tooltip--top Tooltip--visible"
+  class="Tooltip Tooltip--top"
   id="tooltip"
   style="left: 190px; top: 90px;"
 >
@@ -20,7 +20,7 @@ exports[`useTooltip shows tooltip on mouse over and removes it on mouse leave 1`
 
 exports[`useTooltip shows tooltip on mouse over when placement is bottom 1`] = `
 <div
-  class="Tooltip Tooltip--bottom Tooltip--visible"
+  class="Tooltip Tooltip--bottom"
   id="tooltip"
   style="left: 190px; top: 150px;"
 >
@@ -38,7 +38,7 @@ exports[`useTooltip shows tooltip on mouse over when placement is bottom 1`] = `
 
 exports[`useTooltip shows tooltip on mouse over when placement is left 1`] = `
 <div
-  class="Tooltip Tooltip--left Tooltip--visible"
+  class="Tooltip Tooltip--left"
   id="tooltip"
   style="left: 80px; top: 120px;"
 >
@@ -56,7 +56,7 @@ exports[`useTooltip shows tooltip on mouse over when placement is left 1`] = `
 
 exports[`useTooltip shows tooltip on mouse over when placement is right 1`] = `
 <div
-  class="Tooltip Tooltip--right Tooltip--visible"
+  class="Tooltip Tooltip--right"
   id="tooltip"
   style="left: 300px; top: 120px;"
 >
@@ -74,7 +74,7 @@ exports[`useTooltip shows tooltip on mouse over when placement is right 1`] = `
 
 exports[`useTooltip shows tooltip on mouse over when the tooltip position exceeds the window width 1`] = `
 <div
-  class="Tooltip Tooltip--top Tooltip--visible"
+  class="Tooltip Tooltip--top"
   id="tooltip"
   style="left: 224px; top: 90px;"
 >
@@ -92,7 +92,7 @@ exports[`useTooltip shows tooltip on mouse over when the tooltip position exceed
 
 exports[`useTooltip shows tooltip on mouse over when the tooltip position is negative 1`] = `
 <div
-  class="Tooltip Tooltip--top Tooltip--visible"
+  class="Tooltip Tooltip--top"
   id="tooltip"
   style="left: 0px; top: 90px;"
 >

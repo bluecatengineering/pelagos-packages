@@ -46,42 +46,40 @@ const createTooltip = (text, placement) => {
 	arrow.className = 'Tooltip__arrow';
 	tooltip.appendChild(arrow);
 
-	return tooltip;
+	const animation = tooltip.animate([{opacity: 0}, {opacity: 1}], {duration: 150, fill: 'both', easing: 'ease-out'});
+	animation.onfinish = ({currentTime}) => {
+		if (currentTime === 0) {
+			document.body.removeChild(tooltip);
+		}
+	};
+	animation.pause();
+
+	return [tooltip, animation];
 };
 
 export default (text, placement) => {
 	const targetRef = useRef(null);
-	const timerRef = useRef(0);
-	const tooltip = useMemo(() => createTooltip(text, placement), [text, placement]);
+	const [tooltip, animation] = useMemo(() => createTooltip(text, placement), [text, placement]);
 	const show = useCallback(() => {
 		if (text) {
-			if (timerRef.current) {
-				clearTimeout(timerRef.current);
-				timerRef.current = 0;
-			}
-
 			document.body.appendChild(tooltip);
-			// eslint-disable-next-line babel/no-unused-expressions
-			tooltip.scrollTop; // force layout to start transition
-			tooltip.classList.add('Tooltip--visible');
+			animation.pause();
+			animation.playbackRate = 1;
+			animation.play();
 
 			const target = targetRef.current;
 			target.setAttribute('aria-describedby', 'tooltip');
 			updatePosition(target, tooltip, placement);
 		}
-	}, [text, placement, tooltip]);
+	}, [text, placement, tooltip, animation]);
 	const hide = useCallback(() => {
-		if (!timerRef.current && tooltip.parentNode) {
-			tooltip.classList.remove('Tooltip--visible');
-
-			const target = targetRef.current;
-			timerRef.current = setTimeout(() => {
-				target.removeAttribute('aria-describedby');
-				document.body.removeChild(tooltip);
-				timerRef.current = 0;
-			}, 300);
+		if (tooltip.parentNode) {
+			targetRef.current.removeAttribute('aria-describedby');
+			animation.pause();
+			animation.playbackRate = -1;
+			animation.play();
 		}
-	}, [tooltip]);
+	}, [tooltip, animation]);
 
 	return useCallback(
 		(element) => {
