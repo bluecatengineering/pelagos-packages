@@ -137,24 +137,23 @@ const DataTable = ({
 		[]
 	);
 
-	// there's no easy way to combine useCallback and throttle yet
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const handleScroll = useCallback(
-		throttle(() => {
-			if (fetchingNextPage || fetchingPrevPage || data.length === 0) {
-				return;
-			}
+	const handleScroll = useMemo(
+		() =>
+			throttle(() => {
+				if (fetchingNextPage || fetchingPrevPage || data.length === 0) {
+					return;
+				}
 
-			const element = tableBody.current;
-			if (element.clientHeight + element.scrollTop + 75 >= element.scrollHeight) {
-				isLoadingNextData.current = requestNextPage();
-				isLoadingPrevData.current = false;
-			} else if (element.scrollTop <= 75) {
-				isLoadingPrevData.current = requestPrevPage();
-				isLoadingNextData.current = false;
-			}
-		}, 500),
-		[data, fetchingNextPage, fetchingPrevPage]
+				const element = tableBody.current;
+				if (element.clientHeight + element.scrollTop + 75 >= element.scrollHeight) {
+					isLoadingNextData.current = requestNextPage();
+					isLoadingPrevData.current = false;
+				} else if (element.scrollTop <= 75) {
+					isLoadingPrevData.current = requestPrevPage();
+					isLoadingNextData.current = false;
+				}
+			}, 500),
+		[data, fetchingNextPage, fetchingPrevPage, requestNextPage, requestPrevPage]
 	);
 
 	const handleMouseDown = useCallback((event) => {

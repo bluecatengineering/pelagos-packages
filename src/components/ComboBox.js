@@ -1,4 +1,4 @@
-import {cloneElement, useRef, useCallback, useEffect, useState} from 'react';
+import {cloneElement, useRef, useCallback, useEffect, useState, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollToItem} from '@bluecat/helpers';
@@ -27,20 +27,19 @@ const ComboBox = ({
 
 	const hideList = useCallback(() => (setSuggestions([]), setOpen(false), setSelected(-1)), []);
 
-	// there's no easy way to combine useCallback and debounce yet
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const updateSuggestions = useCallback(
-		debounce((text) => {
-			const suggestions = getSuggestions(text);
-			if (suggestions.length === 0) {
-				hideList();
-			} else {
-				setSuggestions(suggestions);
-				setOpen(true);
-				setSelected(autoSelect ? 0 : -1);
-			}
-		}, 150),
-		[hideList, getSuggestions]
+	const updateSuggestions = useMemo(
+		() =>
+			debounce((text) => {
+				const suggestions = getSuggestions(text);
+				if (suggestions.length === 0) {
+					hideList();
+				} else {
+					setSuggestions(suggestions);
+					setOpen(true);
+					setSelected(autoSelect ? 0 : -1);
+				}
+			}, 150),
+		[hideList, autoSelect, getSuggestions]
 	);
 	const selectSuggestion = useCallback((index) => (hideList(), onChange(suggestions[index])), [
 		suggestions,
