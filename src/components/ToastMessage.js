@@ -51,15 +51,16 @@ const ToastMessage = ({message, onRemove}) => {
 					text={actionText}
 					size="small"
 					type="primary"
+					data-testid="toast-button"
 					onClick={handleActionClick}
 				/>
 			)}
 			{requiresClose && (
 				<div
-					data-testid="message-close"
 					className="ToastMessage__close"
 					role="button"
 					aria-label={__('DISMISS')}
+					data-testid="toast-close"
 					onClick={handleCloseClick}>
 					<SvgIcon icon={timesThin} />
 				</div>

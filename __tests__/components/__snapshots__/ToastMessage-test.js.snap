@@ -31,6 +31,7 @@ exports[`ToastMessage rendering renders action button if type is action 1`] = `
   </div>
   <Button
     className="ToastMessage__button"
+    data-testid="toast-button"
     onClick={[Function]}
     size="small"
     text="Action"
@@ -55,7 +56,7 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
   <div
     aria-label="Dismiss"
     className="ToastMessage__close"
-    data-testid="message-close"
+    data-testid="toast-close"
     onClick={[Function]}
     role="button"
   >
