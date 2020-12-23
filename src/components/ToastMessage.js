@@ -24,10 +24,10 @@ const ToastMessage = ({message, onRemove}) => {
 		const progress = progressRef.current;
 		if (progress) {
 			const parent = progress.parentNode;
-			let animation = progress.animate(
-				[{width: '100%'}, {width: '0'}],
-				message.type === ToastTypes.SUCCESS ? SHORT_DURATION : DEFAULT_DURATION
-			);
+			let animation = progress.animate([{transform: 'scaleX(1)'}, {transform: 'scaleX(0)'}], {
+				duration: message.type === ToastTypes.SUCCESS ? SHORT_DURATION : DEFAULT_DURATION,
+				fill: 'both',
+			});
 			animation.onfinish = () => ((animation = null), onRemove(message));
 			parent.addEventListener('mouseenter', () => (animation ? animation.pause() : null));
 			parent.addEventListener('mouseleave', () => (animation ? animation.play() : null));

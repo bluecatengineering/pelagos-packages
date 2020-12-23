@@ -86,7 +86,9 @@ describe('ToastMessage', () => {
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [message, onRemove]]);
 
 			const remove = useEffect.mock.calls[0][0]();
-			expect(animate.mock.calls).toEqual([[[{width: '100%'}, {width: '0'}], 8000]]);
+			expect(animate.mock.calls).toEqual([
+				[[{transform: 'scaleX(1)'}, {transform: 'scaleX(0)'}], {duration: 8000, fill: 'both'}],
+			]);
 			expect(addEventListener.mock.calls).toEqual([
 				['mouseenter', anyFunction],
 				['mouseleave', anyFunction],
@@ -120,7 +122,9 @@ describe('ToastMessage', () => {
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [message, onRemove]]);
 
 			const remove = useEffect.mock.calls[0][0]();
-			expect(animate.mock.calls).toEqual([[[{width: '100%'}, {width: '0'}], 3000]]);
+			expect(animate.mock.calls).toEqual([
+				[[{transform: 'scaleX(1)'}, {transform: 'scaleX(0)'}], {duration: 3000, fill: 'both'}],
+			]);
 
 			expect(remove()).toBe(true);
 			expect(cancel.mock.calls).toEqual([[]]);
