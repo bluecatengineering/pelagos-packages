@@ -4,52 +4,15 @@ exports[`FilterList rendering renders expected elements 1`] = `
 <div
   className="FilterList"
 >
-  <div
-    aria-label="Scroll left"
-    className="FilterList__scrollLeft"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
-    />
-  </div>
-  <div
-    className="FilterList__track"
-    id="filterListTrack"
+  <ScrollBox
+    trackId="filterListTrack"
   >
     <div
       className="FilterList__items"
       onClick={[Function]}
       onKeyDown={[MockFunction]}
     />
-  </div>
-  <div
-    aria-label="Scroll right"
-    className="FilterList__scrollRight"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
-    />
-  </div>
+  </ScrollBox>
 </div>
 `;
 
@@ -57,27 +20,8 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
 <div
   className="FilterList"
 >
-  <div
-    aria-label="Scroll left"
-    className="FilterList__scrollLeft"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
-    />
-  </div>
-  <div
-    className="FilterList__track"
-    id="filterListTrack"
+  <ScrollBox
+    trackId="filterListTrack"
   >
     <div
       className="FilterList__items"
@@ -119,25 +63,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
         </span>
       </div>
     </div>
-  </div>
-  <div
-    aria-label="Scroll right"
-    className="FilterList__scrollRight"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
-    />
-  </div>
+  </ScrollBox>
   Object {
     "$$typeof": Symbol(react.portal),
     "children": <FilterEditor
@@ -163,52 +89,15 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
 <div
   className="FilterList"
 >
-  <div
-    aria-label="Scroll left"
-    className="FilterList__scrollLeft"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
-    />
-  </div>
-  <div
-    className="FilterList__track"
-    id="filterListTrack"
+  <ScrollBox
+    trackId="filterListTrack"
   >
     <div
       className="FilterList__items"
       onClick={[Function]}
       onKeyDown={[MockFunction]}
     />
-  </div>
-  <div
-    aria-label="Scroll right"
-    className="FilterList__scrollRight"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
-    />
-  </div>
+  </ScrollBox>
   Object {
     "$$typeof": Symbol(react.portal),
     "children": <FilterEditor
@@ -234,27 +123,8 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
 <div
   className="FilterList"
 >
-  <div
-    aria-label="Scroll left"
-    className="FilterList__scrollLeft"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
-    />
-  </div>
-  <div
-    className="FilterList__track"
-    id="filterListTrack"
+  <ScrollBox
+    trackId="filterListTrack"
   >
     <div
       className="FilterList__items"
@@ -330,24 +200,6 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
         </span>
       </div>
     </div>
-  </div>
-  <div
-    aria-label="Scroll right"
-    className="FilterList__scrollRight"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
-    />
-  </div>
+  </ScrollBox>
 </div>
 `;

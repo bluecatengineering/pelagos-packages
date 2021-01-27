@@ -1,0 +1,42 @@
+@import '../../less/spacing';
+@import '../../less/utils';
+
+.ScrollBox {
+	flex-direction: row;
+	flex: 1;
+	overflow: hidden;
+}
+
+.ScrollBox__track {
+	flex-direction: row;
+	flex: 1;
+	overflow: hidden;
+	scroll-behavior: smooth;
+}
+
+.ScrollBox__btn {
+	@icon-button();
+	display: none;
+	font-size: 14px;
+	justify-content: center;
+	padding: 0 @sp-04;
+	margin: @sp-02;
+
+	&:first-child {
+		margin-right: @sp-08;
+	}
+
+	&:last-child {
+		margin-left: @sp-08;
+	}
+
+	.ScrollBox--overflow > & {
+		display: inherit;
+	}
+
+	@media print {
+		.ScrollBox--overflow > & {
+			display: none;
+		}
+	}
+}

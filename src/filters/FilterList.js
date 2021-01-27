@@ -1,32 +1,18 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useCallback, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
 import handleButtonKeyDown from '../functions/handleButtonKeyDown';
-import addResizeObserver from '../functions/addResizeObserver';
+import ScrollBox from '../components/ScrollBox';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
 import __ from '../strings';
 
 import './FilterList.less';
 
-const showChevrons = (filterList, {width}) => {
-	if (width < filterList.firstChild.scrollWidth) {
-		filterList.previousSibling.classList.add('FilterList__scrollLeft--visible');
-		filterList.nextSibling.classList.add('FilterList__scrollRight--visible');
-	} else {
-		filterList.previousSibling.classList.remove('FilterList__scrollLeft--visible');
-		filterList.nextSibling.classList.remove('FilterList__scrollRight--visible');
-	}
-};
-
 /** Displays a list of filters. */
 const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilterTitle, getValues, onApply}) => {
-	const filterRef = useRef(null);
 	const [filterName, setFilterName] = useState(null);
-	const handleClickLeft = useCallback(() => (filterRef.current.scrollLeft += -100), []);
-	const handleClickRight = useCallback(() => (filterRef.current.scrollLeft += 100), []);
 
 	const handleClose = useCallback(() => setFilterName(null), []);
 	const handleSave = useCallback((value) => (setFilterName(null), onApply(filterName, value)), [filterName, onApply]);
@@ -49,24 +35,9 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 		[onApply]
 	);
 
-	useEffect(() => addResizeObserver(filterRef.current, (rect) => showChevrons(filterRef.current, rect)), []);
-	useEffect(() => {
-		const filterList = filterRef.current;
-		showChevrons(filterList, filterList.getBoundingClientRect());
-	});
-
 	return (
 		<div className="FilterList">
-			<div
-				className="FilterList__scrollLeft"
-				tabIndex="0"
-				role="button"
-				aria-label={__('SCROLL_LEFT')}
-				onClick={handleClickLeft}
-				onKeyDown={handleButtonKeyDown}>
-				<SvgIcon icon={faChevronLeft} />
-			</div>
-			<div id="filterListTrack" className="FilterList__track" ref={filterRef}>
+			<ScrollBox trackId="filterListTrack">
 				<div className="FilterList__items" onClick={handleClick} onKeyDown={handleButtonKeyDown}>
 					{filters &&
 						Object.entries(filters).map(([key, v]) =>
@@ -98,16 +69,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 							) : null
 						)}
 				</div>
-			</div>
-			<div
-				className="FilterList__scrollRight"
-				tabIndex="0"
-				role="button"
-				aria-label={__('SCROLL_RIGHT')}
-				onClick={handleClickRight}
-				onKeyDown={handleButtonKeyDown}>
-				<SvgIcon icon={faChevronRight} />
-			</div>
+			</ScrollBox>
 			{filterName &&
 				createPortal(
 					<FilterEditor

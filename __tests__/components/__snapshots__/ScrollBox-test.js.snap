@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollBox rendering renders expected elements 1`] = `
+<div
+  className="ScrollBox"
+>
+  <div
+    aria-label="Scroll left"
+    className="ScrollBox__btn"
+    onClick={[Function]}
+    onKeyDown={[MockFunction]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  <div
+    className="ScrollBox__track"
+  >
+    <div>
+      Test
+    </div>
+  </div>
+  <div
+    aria-label="Scroll right"
+    className="ScrollBox__btn"
+    onClick={[Function]}
+    onKeyDown={[MockFunction]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`ScrollBox rendering renders expected elements when className is set 1`] = `
+<div
+  className="ScrollBox TestClass"
+>
+  <div
+    aria-label="Scroll left"
+    className="ScrollBox__btn"
+    onClick={[Function]}
+    onKeyDown={[MockFunction]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+  <div
+    className="ScrollBox__track"
+  >
+    <div>
+      Test
+    </div>
+  </div>
+  <div
+    aria-label="Scroll right"
+    className="ScrollBox__btn"
+    onClick={[Function]}
+    onKeyDown={[MockFunction]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </div>
+</div>
+`;

@@ -1,8 +1,7 @@
-import {useEffect, useRef, useState} from 'react';
+import {useState} from 'react';
 import {shallow} from 'enzyme';
 
 import FilterList from '../../src/filters/FilterList';
-import addResizeObserver from '../../src/functions/addResizeObserver';
 
 jest.unmock('../../src/filters/FilterList');
 jest.unmock('../../src/strings');
@@ -94,7 +93,7 @@ describe('FilterList', () => {
 					filterEditor={FilterEditor}
 				/>
 			);
-			wrapper.find('#filterListTrack > [onClick]').simulate('click', event);
+			wrapper.find('[onClick]').simulate('click', event);
 			expect(event.target.closest.mock.calls).toEqual([['[data-kind="remove"]']]);
 			expect(event.stopPropagation.mock.calls).toEqual([[]]);
 			expect(onApply.mock.calls).toEqual([['view', null]]);
@@ -115,7 +114,7 @@ describe('FilterList', () => {
 			const wrapper = shallow(
 				<FilterList filters={filters} getFilterTitle={getFilterTitle} getValues={getValues} excludedKeys={[]} />
 			);
-			wrapper.find('#filterListTrack > [onClick]').simulate('click', event);
+			wrapper.find('[onClick]').simulate('click', event);
 			expect(event.target.closest.mock.calls).toEqual([['[data-kind="remove"]'], ['[data-kind="item"]']]);
 			expect(event.stopPropagation.mock.calls).toEqual([[]]);
 			expect(setFilter.mock.calls).toEqual([['view']]);
@@ -135,58 +134,10 @@ describe('FilterList', () => {
 			const wrapper = shallow(
 				<FilterList filters={filters} getFilterTitle={getFilterTitle} getValues={getValues} excludedKeys={[]} />
 			);
-			wrapper.find('#filterListTrack > [onClick]').simulate('click', event);
+			wrapper.find('[onClick]').simulate('click', event);
 			expect(event.target.closest.mock.calls).toEqual([['[data-kind="remove"]'], ['[data-kind="item"]']]);
 			expect(event.stopPropagation.mock.calls).toEqual([]);
 			expect(setFilter.mock.calls).toEqual([]);
-		});
-
-		it('scrolls left when the left arrow is clicked', () => {
-			const current = {scrollLeft: 500};
-			useRef.mockReturnValue({current});
-			const wrapper = shallow(<FilterList />);
-			wrapper.find('.FilterList__scrollLeft').simulate('click');
-			expect(current.scrollLeft).toBe(400);
-		});
-
-		it('scrolls right when the right arrow is clicked', () => {
-			const current = {scrollLeft: 500};
-			useRef.mockReturnValue({current});
-			const wrapper = shallow(<FilterList />);
-			wrapper.find('.FilterList__scrollRight').simulate('click');
-			expect(current.scrollLeft).toBe(600);
-		});
-
-		it('adds and removes resize observer', () => {
-			const rect = {width: 50};
-			const current = {
-				firstChild: {scrollWidth: 100},
-				previousSibling: {classList: {add: jest.fn()}},
-				nextSibling: {classList: {add: jest.fn()}},
-			};
-			useRef.mockReturnValue({current});
-			shallow(<FilterList />);
-			expect(useEffect).toHaveBeenCalledTimes(2);
-			useEffect.mock.calls[0][0]();
-			expect(addResizeObserver.mock.calls).toEqual([[current, expect.any(Function)]]);
-			addResizeObserver.mock.calls[0][1](rect);
-			expect(current.previousSibling.classList.add.mock.calls).toEqual([['FilterList__scrollLeft--visible']]);
-			expect(current.nextSibling.classList.add.mock.calls).toEqual([['FilterList__scrollRight--visible']]);
-		});
-
-		it('removes chevrons when width is less', () => {
-			const rect = {width: 100};
-			const current = {
-				getBoundingClientRect: jest.fn().mockReturnValue(rect),
-				firstChild: {scrollWidth: 50},
-				previousSibling: {classList: {remove: jest.fn()}},
-				nextSibling: {classList: {remove: jest.fn()}},
-			};
-			useRef.mockReturnValue({current});
-			shallow(<FilterList />);
-			useEffect.mock.calls[1][0]();
-			expect(current.previousSibling.classList.remove.mock.calls).toEqual([['FilterList__scrollLeft--visible']]);
-			expect(current.nextSibling.classList.remove.mock.calls).toEqual([['FilterList__scrollRight--visible']]);
 		});
 
 		it('calls setFilter when the editor is closed', () => {
