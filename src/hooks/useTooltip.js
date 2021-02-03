@@ -34,7 +34,7 @@ const updatePosition = (target, tooltip, placement) => {
 
 const createTooltip = (text, placement) => {
 	const tooltip = document.createElement('div');
-	tooltip.id = 'tooltip';
+	tooltip.id = `tooltip-${('' + Math.random()).slice(2)}`;
 	tooltip.className = 'Tooltip Tooltip--' + placement;
 
 	const body = document.createElement('div');
@@ -68,7 +68,7 @@ export default (text, placement) => {
 			animation.play();
 
 			const target = targetRef.current;
-			target.setAttribute('aria-describedby', 'tooltip');
+			target.setAttribute('aria-describedby', tooltip.id);
 			updatePosition(target, tooltip, placement);
 		}
 	}, [text, placement, tooltip, animation]);
