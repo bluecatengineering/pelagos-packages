@@ -92,24 +92,27 @@ const ListInput = ({
 		]
 	);
 
-	const handleEnter = useCallback(() => {
-		if (text === '/clear') {
-			setText('');
-			onTextChange(false);
-			onListChange([]);
-		} else if (text && parseInput) {
-			const {entries, error} = parseInput(text, list);
-			if (error) {
-				onErrorChange(error);
-			} else {
-				setLiveText(__('OBJECT_ADDED', {name: entries.join(', ')}));
+	const handleEnter = useCallback(
+		(text) => {
+			if (text === '/clear') {
 				setText('');
 				onTextChange(false);
-				onListChange([...entries, ...list]);
-				onErrorChange(null);
+				onListChange([]);
+			} else if (text && parseInput) {
+				const {entries, error} = parseInput(text, list);
+				if (error) {
+					onErrorChange(error);
+				} else {
+					setLiveText(__('OBJECT_ADDED', {name: entries.join(', ')}));
+					setText('');
+					onTextChange(false);
+					onListChange([...entries, ...list]);
+					onErrorChange(null);
+				}
 			}
-		}
-	}, [list, text, parseInput, onTextChange, onListChange, onErrorChange]);
+		},
+		[list, parseInput, onTextChange, onListChange, onErrorChange]
+	);
 
 	const handleTextChange = useCallback(
 		(text) => {

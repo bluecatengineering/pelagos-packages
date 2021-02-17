@@ -97,10 +97,11 @@ describe('ListInput', () => {
 
 		it('sets highlightKey when the combo-box value changes and getHighlightKey returns an id', () => {
 			const suggestion = {name: 'Test suggestion'};
+			const setText = jest.fn();
 			const getHighlightKey = jest.fn().mockReturnValue(1);
 			const onTextChange = jest.fn();
 			const onErrorChange = jest.fn();
-			useState.mockReturnValueOnce([null, jest.fn()]);
+			useState.mockReturnValueOnce(['', setText]);
 			const wrapper = shallow(
 				<ListInput
 					id="test"
@@ -111,6 +112,7 @@ describe('ListInput', () => {
 			);
 			wrapper.find('ComboBox').prop('onChange')(suggestion);
 			expect(getHighlightKey.mock.calls).toEqual([[suggestion]]);
+			expect(setText.mock.calls).toEqual([['']]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[1]]);
 		});
@@ -195,11 +197,13 @@ describe('ListInput', () => {
 		});
 
 		it('calls onListChange with an empty list when enter is pressed and text is /clear', () => {
+			const setText = jest.fn();
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
-			useState.mockReturnValueOnce(['/clear', jest.fn()]).mockReturnValueOnce([null, jest.fn()]);
+			useState.mockReturnValueOnce(['', setText]).mockReturnValueOnce([]);
 			const wrapper = shallow(<ListInput id="test" onListChange={onListChange} onTextChange={onTextChange} />);
-			wrapper.find('ComboBox').prop('onEnter')();
+			wrapper.find('ComboBox').prop('onEnter')('/clear');
+			expect(setText.mock.calls).toEqual([['']]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[[]]]);
 		});
@@ -209,11 +213,11 @@ describe('ListInput', () => {
 			const error = 'Error';
 			const parseInput = jest.fn().mockReturnValue({error});
 			const onErrorChange = jest.fn();
-			useState.mockReturnValueOnce(['test', jest.fn()]).mockReturnValueOnce([null, jest.fn()]);
+			useState.mockReturnValueOnce(['']).mockReturnValueOnce([null]);
 			const wrapper = shallow(
 				<ListInput id="test" list={list} parseInput={parseInput} onErrorChange={onErrorChange} />
 			);
-			wrapper.find('ComboBox').prop('onEnter')();
+			wrapper.find('ComboBox').prop('onEnter')('test');
 			expect(parseInput.mock.calls).toEqual([['test', list]]);
 			expect(onErrorChange.mock.calls).toEqual([[error]]);
 		});
@@ -221,11 +225,12 @@ describe('ListInput', () => {
 		it('calls onListChange with the parsed list when enter is pressed and parseInput returns a list', () => {
 			const list = [{id: 0}];
 			const entries = ['Foo', 'Bar'];
+			const setText = jest.fn();
 			const parseInput = jest.fn().mockReturnValue({entries});
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
 			const onErrorChange = jest.fn();
-			useState.mockReturnValueOnce(['test', jest.fn()]).mockReturnValueOnce([null, jest.fn()]);
+			useState.mockReturnValueOnce(['', setText]).mockReturnValueOnce([null]);
 			const wrapper = shallow(
 				<ListInput
 					id="test"
@@ -236,8 +241,9 @@ describe('ListInput', () => {
 					onErrorChange={onErrorChange}
 				/>
 			);
-			wrapper.find('ComboBox').prop('onEnter')();
+			wrapper.find('ComboBox').prop('onEnter')('test');
 			expect(parseInput.mock.calls).toEqual([['test', list]]);
+			expect(setText.mock.calls).toEqual([['']]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[[...entries, ...list]]]);
 			expect(onErrorChange.mock.calls).toEqual([[null]]);

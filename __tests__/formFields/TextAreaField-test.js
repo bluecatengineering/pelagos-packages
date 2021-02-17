@@ -3,6 +3,7 @@ import {shallow} from 'enzyme';
 import TextAreaField from '../../src/formFields/TextAreaField';
 
 jest.unmock('../../src/formFields/TextAreaField');
+jest.mock('lodash-es/debounce', () => jest.fn((f) => f));
 
 describe('TextAreaField', () => {
 	describe('rendering', () => {

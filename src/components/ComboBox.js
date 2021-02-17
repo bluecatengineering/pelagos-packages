@@ -25,6 +25,8 @@ const ComboBox = ({
 	const [open, setOpen] = useState(false);
 	const [selected, setSelected] = useState(-1);
 
+	const debouncedChange = useMemo(() => debounce(onTextChange, 150), [onTextChange]);
+
 	const hideList = useCallback(() => (setSuggestions([]), setOpen(false), setSelected(-1)), []);
 
 	const updateSuggestions = useMemo(
@@ -51,8 +53,20 @@ const ComboBox = ({
 		(event) => {
 			switch (event.keyCode) {
 				case 13: // enter
+					event.preventDefault();
+					if (selected !== -1) {
+						selectSuggestion(selected);
+					} else if (onEnter) {
+						debouncedChange.flush();
+						hideList();
+						onEnter(event.target.value);
+					}
+					break;
 				case 27: // escape
 					event.preventDefault();
+					debouncedChange.cancel();
+					hideList();
+					onTextChange('');
 					break;
 				case 38: // up
 					event.preventDefault();
@@ -72,32 +86,10 @@ const ComboBox = ({
 					break;
 			}
 		},
-		[suggestions, open, selected, listRef]
+		[debouncedChange, hideList, onEnter, onTextChange, open, selectSuggestion, selected, suggestions.length]
 	);
 
-	const handleKeyUp = useCallback(
-		(event) => {
-			switch (event.keyCode) {
-				case 13: // enter
-					event.preventDefault();
-					if (selected !== -1) {
-						selectSuggestion(selected);
-					} else if (onEnter) {
-						hideList();
-						onEnter();
-					}
-					break;
-				case 27: // escape
-					event.preventDefault();
-					hideList();
-					onTextChange('');
-					break;
-			}
-		},
-		[selected, selectSuggestion, hideList, onEnter, onTextChange]
-	);
-
-	const handleChange = useCallback((event) => onTextChange(event.target.value), [onTextChange]);
+	const handleChange = useCallback((event) => debouncedChange(event.target.value), [debouncedChange]);
 
 	const handleFocus = useCallback(
 		() => (suggestions.length !== 0 ? (setOpen(true), setSelected(autoSelect ? 0 : -1)) : null),
@@ -142,7 +134,6 @@ const ComboBox = ({
 				aria-activedescendant={selected === -1 ? null : id + '-' + selected}
 				value={text}
 				onKeyDown={handleKeyDown}
-				onKeyUp={handleKeyUp}
 				onChange={handleChange}
 				onFocus={handleFocus}
 				onBlur={handleBlur}

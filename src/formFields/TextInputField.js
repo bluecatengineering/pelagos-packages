@@ -1,5 +1,6 @@
-import {useCallback} from 'react';
+import {useCallback, useMemo} from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash-es/debounce';
 
 import LabelLine from '../components/LabelLine';
 
@@ -9,6 +10,7 @@ import './TextInputField.less';
 /** A text input field. */
 const TextInputField = ({id, className, label, value, optional, error, onChange, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
+	const debounced = useMemo(() => debounce(onChange, 150), [onChange]);
 	return (
 		<div className={'TextInputField' + (className ? ' ' + className : '')}>
 			<LabelLine htmlFor={id} text={label} optional={optional && !value} />
@@ -17,7 +19,7 @@ const TextInputField = ({id, className, label, value, optional, error, onChange,
 				id={id}
 				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				value={value}
-				onChange={useCallback((event) => onChange(event.target.value), [onChange])}
+				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
 			/>
 			<FieldError text={error} />
 		</div>
