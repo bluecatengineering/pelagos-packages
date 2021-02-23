@@ -10,7 +10,7 @@ import './TextAreaField.less';
 /** A text area field. */
 const TextAreaField = ({id, className, label, value, optional, resize, error, onChange, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
-	const debounced = useMemo(() => debounce(onChange, 150), [onChange]);
+	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
 		<div className={'TextAreaField' + (className ? ' ' + className : '')}>
 			<LabelLine htmlFor={id} text={label} optional={optional && !value} />

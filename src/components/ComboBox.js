@@ -25,7 +25,7 @@ const ComboBox = ({
 	const [open, setOpen] = useState(false);
 	const [selected, setSelected] = useState(-1);
 
-	const debouncedChange = useMemo(() => debounce(onTextChange, 150), [onTextChange]);
+	const debouncedChange = useMemo(() => debounce(onTextChange, 33), [onTextChange]);
 
 	const hideList = useCallback(() => (setSuggestions([]), setOpen(false), setSelected(-1)), []);
 

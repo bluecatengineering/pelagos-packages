@@ -10,7 +10,7 @@ import './TextInputField.less';
 /** A text input field. */
 const TextInputField = ({id, className, label, value, optional, error, onChange, ...props}) => {
 	id = id || 'e' + ('' + Math.random()).substr(2);
-	const debounced = useMemo(() => debounce(onChange, 150), [onChange]);
+	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
 		<div className={'TextInputField' + (className ? ' ' + className : '')}>
 			<LabelLine htmlFor={id} text={label} optional={optional && !value} />
