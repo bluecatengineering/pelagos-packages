@@ -6,6 +6,7 @@ import {scrollToItem} from '@bluecat/helpers';
 import ComboBox from '../../src/components/ComboBox';
 
 jest.unmock('../../src/components/ComboBox');
+jest.unmock('../../src/strings');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && ((f.cancel = jest.fn()), (f.flush = jest.fn())), f)));
 
@@ -266,6 +267,20 @@ describe('ComboBox', () => {
 			const wrapper = shallow(<ComboBox id="test" />);
 			wrapper.find('input').simulate('blur');
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
+		});
+
+		it('calls onEnter when the add button is clicked', () => {
+			const onTextChange = jest.fn();
+			const onEnter = jest.fn();
+			const focus = jest.fn();
+			const value = 'test value';
+			const input = {focus, value};
+			jest.spyOn(document, 'getElementById').mockReturnValue(input);
+			const wrapper = shallow(<ComboBox id="test" onTextChange={onTextChange} onEnter={onEnter} />);
+			wrapper.find('#test-add').simulate('click');
+			expect(focus.mock.calls).toEqual([[]]);
+			expect(onTextChange.flush.mock.calls).toEqual([[]]);
+			expect(onEnter.mock.calls).toEqual([[value]]);
 		});
 
 		it('calls preventDefault on mouse down', () => {

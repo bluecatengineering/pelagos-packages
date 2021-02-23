@@ -1,10 +1,29 @@
 @import '../../less/colors';
 @import '../../less/elevations';
+@import '../../less/focus';
 @import '../../less/shadows';
 @import '../../less/spacing';
 
 .ComboBox {
 	position: relative;
+	flex-direction: row;
+	align-items: center;
+}
+
+.ComboBox__input {
+	flex: 1;
+
+	&.ComboBox--error {
+		border-color: @form-field-error;
+	}
+
+	&:focus.ComboBox--error {
+		@focus-ring-error();
+	}
+}
+
+.ComboBox__add {
+	margin-left: @sp-08;
 }
 
 .ComboBox__list {

@@ -12,7 +12,7 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     aria-autocomplete="list"
     aria-controls={null}
     autoComplete="off"
-    className="TextInputField__input TextInputField--error"
+    className="ComboBox__input ComboBox--error"
     id="test"
     onBlur={[Function]}
     onChange={[Function]}
@@ -20,6 +20,22 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     onKeyDown={[Function]}
     placeholder="test placeholder"
     value="test text"
+  />
+  <IconButton
+    aria-label="Add"
+    className="ComboBox__add"
+    disabled={false}
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "plus",
+        "prefix": "fas",
+      }
+    }
+    id="test-add"
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
   />
 </div>
 `;
@@ -36,7 +52,7 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     aria-autocomplete="list"
     aria-controls={null}
     autoComplete="off"
-    className="TextInputField__input"
+    className="ComboBox__input"
     id="test"
     onBlur={[Function]}
     onChange={[Function]}
@@ -44,6 +60,22 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     onKeyDown={[Function]}
     placeholder="test placeholder"
     value="test text"
+  />
+  <IconButton
+    aria-label="Add"
+    className="ComboBox__add"
+    disabled={false}
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "plus",
+        "prefix": "fas",
+      }
+    }
+    id="test-add"
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
   />
 </div>
 `;
@@ -60,7 +92,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     aria-autocomplete="list"
     aria-controls="test-list"
     autoComplete="off"
-    className="TextInputField__input"
+    className="ComboBox__input"
     id="test"
     onBlur={[Function]}
     onChange={[Function]}
@@ -68,6 +100,22 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     onKeyDown={[Function]}
     placeholder="test placeholder"
     value="x"
+  />
+  <IconButton
+    aria-label="Add"
+    className="ComboBox__add"
+    disabled={false}
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "plus",
+        "prefix": "fas",
+      }
+    }
+    id="test-add"
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
   />
   <div
     className="ComboBox__list"

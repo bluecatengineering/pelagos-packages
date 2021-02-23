@@ -2,8 +2,12 @@ import {cloneElement, useRef, useCallback, useEffect, useState, useMemo} from 'r
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollToItem} from '@bluecat/helpers';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
-import '../formFields/TextInputField.less';
+import __ from '../strings';
+
+import IconButton from './IconButton';
+
 import './ComboBox.less';
 
 /** A combination box of a text field and an autocomplete list. */
@@ -98,6 +102,13 @@ const ComboBox = ({
 
 	const handleBlur = useCallback(() => setOpen(false), []);
 
+	const handleAddClick = useCallback(() => {
+		const input = document.getElementById(id);
+		input.focus();
+		debouncedChange.flush();
+		onEnter(input.value);
+	}, [debouncedChange, id, onEnter]);
+
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 
 	const handleListMouseUp = useCallback(
@@ -127,7 +138,7 @@ const ComboBox = ({
 			<input
 				{...props}
 				id={id}
-				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
+				className={'ComboBox__input' + (error ? ' ComboBox--error' : '')}
 				autoComplete="off"
 				aria-autocomplete="list"
 				aria-controls={open ? listId : null}
@@ -138,6 +149,16 @@ const ComboBox = ({
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 			/>
+			{!autoSelect && (
+				<IconButton
+					id={`${id}-add`}
+					className="ComboBox__add"
+					icon={faPlus}
+					aria-label={__('ADD')}
+					disabled={!text}
+					onClick={handleAddClick}
+				/>
+			)}
 			{open && (
 				<div
 					id={listId}
