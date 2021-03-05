@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const {safeLoad} = require('js-yaml');
+const {load} = require('js-yaml');
 
 const IN = 'defs/colors.yaml';
 const JS = 'src/Colors.js';
@@ -12,7 +12,7 @@ const HEADER = [
 	'',
 ];
 
-const colors = Object.entries(safeLoad(readFileSync(IN, 'utf8')));
+const colors = Object.entries(load(readFileSync(IN, 'utf8')));
 
 writeFileSync(
 	JS,

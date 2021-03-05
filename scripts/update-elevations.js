@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const {safeLoad} = require('js-yaml');
+const {load} = require('js-yaml');
 
 const IN = 'defs/elevations.yaml';
 const LESS = 'less/elevations.less';
@@ -14,7 +14,7 @@ const HEADER = [
 	'',
 ];
 
-const elevations = Object.entries(safeLoad(readFileSync(IN, 'utf8')));
+const elevations = Object.entries(load(readFileSync(IN, 'utf8')));
 
 writeFileSync(
 	LESS,

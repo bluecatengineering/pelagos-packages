@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const {safeLoad} = require('js-yaml');
+const {load} = require('js-yaml');
 
 const IN = 'defs/shadows.yaml';
 const LESS = 'less/shadows.less';
@@ -11,7 +11,7 @@ const HEADER = [
 	'',
 ];
 
-const spacing = Object.entries(safeLoad(readFileSync(IN, 'utf8')));
+const spacing = Object.entries(load(readFileSync(IN, 'utf8')));
 
 writeFileSync(
 	LESS,
