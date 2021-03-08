@@ -49,11 +49,13 @@ const Toast = ({messages, onRemove}) => {
 			// Run animation backwards for removed children
 			for (const id of leavingRef.current) {
 				const animation = animations[id];
-				animation.reverse();
-				animation.onfinish = () => {
+				if (animation) {
 					delete animations[id];
-					setChildren((children) => children.filter(({key}) => key !== id));
-				};
+					animation.reverse();
+					animation.onfinish = () => {
+						setChildren((children) => children.filter(({key}) => key !== id));
+					};
+				}
 			}
 			leavingRef.current = null;
 		}

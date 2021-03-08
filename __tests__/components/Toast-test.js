@@ -89,7 +89,7 @@ describe('Toast', () => {
 			const reverse = jest.fn();
 			const animation = {reverse};
 			const animations = {foo: animation};
-			const leavingRef = {current: ['foo']};
+			const leavingRef = {current: ['foo', 'bar']};
 			const setChildren = jest.fn();
 			useRef.mockReturnValueOnce({current: animations}).mockReturnValueOnce({}).mockReturnValueOnce(leavingRef);
 			useState.mockReturnValueOnce([[], setChildren]);
