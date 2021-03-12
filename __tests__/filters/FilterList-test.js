@@ -9,6 +9,8 @@ jest.unmock('../../src/strings');
 const FilterEditor = () => <></>;
 const getFilterTitle = (name) => name;
 
+global.document = {body: {}};
+
 describe('FilterList', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -154,7 +156,7 @@ describe('FilterList', () => {
 					filterEditor={FilterEditor}
 				/>
 			);
-			wrapper.find('FilterEditor').simulate('close');
+			wrapper.find('FilterEditor').prop('onClose')();
 			expect(setFilter.mock.calls).toEqual([[null]]);
 		});
 
@@ -175,7 +177,7 @@ describe('FilterList', () => {
 					filterEditor={FilterEditor}
 				/>
 			);
-			wrapper.find('FilterEditor').simulate('save', values);
+			wrapper.find('FilterEditor').prop('onSave')(values);
 			expect(setFilter.mock.calls).toEqual([[null]]);
 			expect(onApply.mock.calls).toEqual([['view', values]]);
 		});

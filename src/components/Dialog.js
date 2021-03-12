@@ -33,7 +33,7 @@ const Dialog = ({id, className, title, role, initialFocus, children: [body, butt
 		trap.activate();
 		return () => {
 			trap.deactivate();
-			if (p && p.focus) {
+			if (p?.focus) {
 				p.focus();
 			}
 		};

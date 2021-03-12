@@ -10,6 +10,9 @@ jest.unmock('../../src/strings');
 
 const FilterEditor = () => <></>;
 
+const getElementById = jest.fn();
+global.document = {getElementById};
+
 describe('FilterMenu', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -70,11 +73,11 @@ describe('FilterMenu', () => {
 			const menu = {style: {}};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([null]);
 			const button = {getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200})};
-			jest.spyOn(document, 'getElementById').mockReturnValueOnce(button).mockReturnValueOnce(menu);
+			getElementById.mockReturnValueOnce(button).mockReturnValueOnce(menu);
 			shallow(<FilterMenu getOptionText={getOptionText} options={options} />);
 			useEffect.mock.calls[0][0]();
 			expect(useEffect).toHaveBeenCalledTimes(1);
-			expect(document.getElementById.mock.calls).toEqual([['filterButton'], ['filterMenu']]);
+			expect(getElementById.mock.calls).toEqual([['filterButton'], ['filterMenu']]);
 			expect(menu.style.display).toBe('');
 			expect(menu.style.top).toBe('103px');
 			expect(menu.style.left).toBe('200px');
@@ -103,7 +106,7 @@ describe('FilterMenu', () => {
 			const wrapper = shallow(
 				<FilterMenu filters={filters} getOptionText={getOptionText} options={options} filterEditor={FilterEditor} />
 			);
-			wrapper.find('FilterEditor').simulate('close');
+			wrapper.find('FilterEditor').prop('onClose')();
 			expect(setFilter.mock.calls).toEqual([[null]]);
 		});
 
@@ -124,7 +127,7 @@ describe('FilterMenu', () => {
 					filterEditor={FilterEditor}
 				/>
 			);
-			wrapper.find('FilterEditor').simulate('save', values);
+			wrapper.find('FilterEditor').prop('onSave')(values);
 			expect(setFilter.mock.calls).toEqual([[null]]);
 			expect(onApply.mock.calls).toEqual([['view', values]]);
 		});

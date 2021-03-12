@@ -54,6 +54,7 @@
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
     "@bluecat/babel-plugin-transform-hash-icu-key": "^0.5.0",
+    "@bluecat/jest-helpers": "^2.0.0",
     "@bluecat/strings-generator": "^0.5.0",
     "@bluecat/strings-jest": "^0.5.0",
     "@bluecat/strings-linter": "^0.5.1",
@@ -66,7 +67,6 @@
     "@storybook/react": "^6.1.21",
     "babel-loader": "^8.2.2",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.21.0",
     "husky": "^4.3.8",
     "jest": "^26.6.3",
@@ -102,18 +102,25 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 99,
+        "branches": 100,
         "functions": 100,
         "lines": 100,
-        "statements": -1
+        "statements": 100
       }
     },
     "moduleNameMapper": {
-      "\\.(less)$": "<rootDir>/jest_helpers/style-mapper"
+      "^react$": "@bluecat/jest-helpers/mock-react",
+      "^react-dom$": "@bluecat/jest-helpers/mock-react",
+      "^react/jsx-runtime$": "@bluecat/jest-helpers/mock-react",
+      "\\.(less)$": "@bluecat/jest-helpers/style-mapper"
     },
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest_helpers/setup-enzyme"
+    "setupFiles": [
+      "<rootDir>/jest-helpers/setup-globals"
     ],
+    "setupFilesAfterEnv": [
+      "@bluecat/jest-helpers/setup-enzyme"
+    ],
+    "testEnvironment": "node",
     "timers": "fake",
     "transform": {
       "\\.js$": "babel-jest",

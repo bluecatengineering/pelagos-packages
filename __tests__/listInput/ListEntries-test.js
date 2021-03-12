@@ -15,6 +15,9 @@ jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)
 const getId = (i) => i.id;
 const getName = (i) => i.name;
 
+const querySelector = jest.fn();
+global.document = {querySelector};
+
 describe('ListEntries', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -119,7 +122,6 @@ describe('ListEntries', () => {
 
 		it('calls scrollIntoView when highlightKey is set and the element is found', () => {
 			const onHighlightClear = jest.fn();
-			const querySelector = jest.spyOn(document, 'querySelector');
 			const element = {};
 			querySelector.mockReturnValue(element);
 			shallow(
@@ -145,7 +147,6 @@ describe('ListEntries', () => {
 
 		it('does not call scrollIntoView when highlightKey is set and the element is not found', () => {
 			const onHighlightClear = jest.fn();
-			const querySelector = jest.spyOn(document, 'querySelector');
 			querySelector.mockReturnValue(null);
 			shallow(
 				<ListEntries
@@ -166,7 +167,6 @@ describe('ListEntries', () => {
 
 		it('does not call querySelector when highlightKey is not set', () => {
 			const onHighlightClear = jest.fn();
-			const querySelector = jest.spyOn(document, 'querySelector');
 			shallow(
 				<ListEntries
 					id="test"

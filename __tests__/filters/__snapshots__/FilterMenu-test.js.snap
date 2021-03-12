@@ -53,18 +53,14 @@ exports[`FilterMenu rendering renders expected elements when filter is not null 
       }
     />
   </div>
-  Object {
-    "$$typeof": Symbol(react.portal),
-    "children": <FilterEditor
+  <React.Portal>
+    <FilterEditor
       buttonId="filterButton"
       name="value"
       onClose={[Function]}
       onSave={[Function]}
-    />,
-    "containerInfo": <body />,
-    "implementation": null,
-    "key": null,
-  }
+    />
+  </React.Portal>
 </div>
 `;
 
@@ -121,9 +117,8 @@ exports[`FilterMenu rendering renders expected elements when menuVisible is true
       }
     />
   </div>
-  Object {
-    "$$typeof": Symbol(react.portal),
-    "children": <div
+  <React.Portal>
+    <div
       className="FilterMenu__menu"
       id="filterMenu"
       role="menu"
@@ -145,10 +140,7 @@ exports[`FilterMenu rendering renders expected elements when menuVisible is true
         id="filterMenu-b"
         role="menuitem"
       />
-    </div>,
-    "containerInfo": <body />,
-    "implementation": null,
-    "key": null,
-  }
+    </div>
+  </React.Portal>
 </div>
 `;

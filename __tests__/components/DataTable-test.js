@@ -7,7 +7,7 @@ import DataTable from '../../src/components/DataTable';
 jest.unmock('../../src/components/DataTable');
 jest.unmock('stable');
 
-const originalUserAgent = navigator.userAgent;
+global.navigator = {};
 
 const metadata = [
 	{
@@ -271,7 +271,7 @@ describe('DataTable', () => {
 	});
 
 	describe('behaviour', () => {
-		afterEach(() => Object.defineProperty(navigator, 'userAgent', {value: originalUserAgent, configurable: true}));
+		beforeEach(() => (navigator.userAgent = ''));
 
 		it('adds a scroll listener to the table body on mount if both requestNextPage and requestPrevPage are set', () => {
 			const addEventListener = jest.fn();
@@ -306,7 +306,7 @@ describe('DataTable', () => {
 
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
-			Object.defineProperty(navigator, 'userAgent', {value: 'Trident/0', configurable: true});
+			navigator.userAgent = 'Trident/0';
 			useEffect.mock.calls[0][0]();
 			expect(addEventListener.mock.calls).toEqual([['scroll', expect.any(Function), false]]);
 		});
@@ -602,19 +602,6 @@ describe('DataTable', () => {
 			table.simulate('mousedown', event);
 
 			expect(closest.mock.calls).toEqual([['.DataTable__row']]);
-			expect(setFocused).not.toHaveBeenCalled();
-		});
-
-		it('does not change focused on mouse out when hasFocus is true', () => {
-			const setFocused = jest.fn();
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
-			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
-			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('mouseout');
-
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 

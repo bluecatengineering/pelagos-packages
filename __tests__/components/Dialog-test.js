@@ -7,6 +7,10 @@ import Button from '../../src/components/Button';
 
 jest.unmock('../../src/components/Dialog');
 
+const anyFunction = expect.any(Function);
+
+global.document = {};
+
 describe('Dialog', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -57,15 +61,15 @@ describe('Dialog', () => {
 				</Dialog>
 			);
 			wrapper.find('form').simulate('submit', event);
-			expect(onSubmit).toHaveBeenCalledTimes(1);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			expect(onSubmit.mock.calls).toEqual([[]]);
+			expect(event.preventDefault.mock.calls).toEqual([[]]);
 		});
 
 		it('activates and deactivates focus trap when appropriate', () => {
-			const previousActive = document.activeElement;
+			const focus = jest.fn();
 			const trap = {activate: jest.fn(), deactivate: jest.fn()};
 			createFocusTrap.mockReturnValue(trap);
-			jest.spyOn(previousActive, 'focus');
+			document.activeElement = {focus};
 			shallow(
 				<Dialog id="test" title="Test">
 					<div />
@@ -73,15 +77,33 @@ describe('Dialog', () => {
 				</Dialog>
 			);
 
-			expect(useEffect).toHaveBeenCalledTimes(1);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [undefined]]);
 
 			const result = useEffect.mock.calls[0][0]();
 			expect(createFocusTrap.mock.calls).toEqual([[null, {escapeDeactivates: false, returnFocusOnDeactivate: false}]]);
-			expect(trap.activate).toHaveBeenCalledTimes(1);
+			expect(trap.activate.mock.calls).toEqual([[]]);
 
 			result();
-			expect(trap.deactivate).toHaveBeenCalledTimes(1);
-			expect(previousActive.focus).toHaveBeenCalledTimes(1);
+			expect(trap.deactivate.mock.calls).toEqual([[]]);
+			expect(focus.mock.calls).toEqual([[]]);
+		});
+
+		it('calls only deactivate when activeElement is null', () => {
+			const trap = {activate: jest.fn(), deactivate: jest.fn()};
+			createFocusTrap.mockReturnValue(trap);
+			document.activeElement = null;
+			shallow(
+				<Dialog id="test" title="Test">
+					<div />
+					<div />
+				</Dialog>
+			);
+
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [undefined]]);
+
+			const result = useEffect.mock.calls[0][0]();
+			result();
+			expect(trap.deactivate.mock.calls).toEqual([[]]);
 		});
 	});
 });

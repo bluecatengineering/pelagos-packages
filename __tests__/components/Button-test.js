@@ -62,13 +62,6 @@ describe('Button', () => {
 			expect(onClick).toHaveBeenCalled();
 		});
 
-		it('does not call onClick when the button is clicked if disabled is true', () => {
-			const onClick = jest.fn();
-			const wrapper = shallow(<Button id="test" text="Test" disabled onClick={onClick} />);
-			wrapper.simulate('click');
-			expect(onClick).not.toHaveBeenCalled();
-		});
-
 		it('calls onFocus when the button receives the focus', () => {
 			const onFocus = jest.fn();
 			const wrapper = shallow(<Button id="test" text="Test" onFocus={onFocus} />);

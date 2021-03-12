@@ -2,10 +2,13 @@ import throttleAF from '../../src/functions/throttleAF';
 
 jest.unmock('../../src/functions/throttleAF');
 
+global.requestAnimationFrame = jest.fn();
+global.cancelAnimationFrame = jest.fn();
+
 describe('throttleAF', () => {
 	it('calls requestAnimationFrame when necessary', () => {
 		const f = jest.fn();
-		jest.spyOn(window, 'requestAnimationFrame').mockReturnValue(1);
+		requestAnimationFrame.mockReturnValue(1);
 		const t = throttleAF(f);
 
 		t(1);
@@ -25,8 +28,7 @@ describe('throttleAF', () => {
 
 	it('calls cancelAnimationFrame only once on cancel', () => {
 		const f = jest.fn();
-		jest.spyOn(window, 'requestAnimationFrame').mockReturnValue(1);
-		jest.spyOn(window, 'cancelAnimationFrame');
+		requestAnimationFrame.mockReturnValue(1);
 		const t = throttleAF(f);
 
 		t.cancel();
@@ -40,8 +42,7 @@ describe('throttleAF', () => {
 
 	it('calls cancelAnimationFrame only once on flush', () => {
 		const f = jest.fn();
-		jest.spyOn(window, 'requestAnimationFrame').mockReturnValue(1);
-		jest.spyOn(window, 'cancelAnimationFrame');
+		requestAnimationFrame.mockReturnValue(1);
 		const t = throttleAF(f);
 
 		t.flush();

@@ -671,17 +671,6 @@ describe('Select', () => {
 			expect(onChange).not.toHaveBeenCalled();
 		});
 
-		it('does not change focused when the list is visible and the mouse is over other element', () => {
-			const setFocused = jest.fn();
-			const event = {target: {closest: jest.fn()}};
-			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
-			const wrapper = shallow(
-				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
-			);
-			wrapper.find('[role="listbox"]').simulate('mouseover', event);
-			expect(setFocused).not.toHaveBeenCalled();
-		});
-
 		it('prevents event default when a mouse button is pressed pressed', () => {
 			const event = {preventDefault: jest.fn()};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);

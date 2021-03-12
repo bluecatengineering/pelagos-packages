@@ -1,21 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`setLiveText sets text on a live element 1`] = `
-<div
-  aria-live="assertive"
-  class="assistive-text"
-  id="liveText"
->
-  Test1
-</div>
+Object {
+  "aria-live": "assertive",
+  "className": "assistive-text",
+  "id": "liveText",
+  "textContent": "Test1",
+}
 `;
 
-exports[`setLiveText sets text on a live element 2`] = `
-<div
-  aria-live="assertive"
-  class="assistive-text"
-  id="liveText"
->
-  Test2
-</div>
+exports[`setLiveText sets text on a live element when the element already exists 1`] = `
+Object {
+  "textContent": "Test2",
+}
 `;

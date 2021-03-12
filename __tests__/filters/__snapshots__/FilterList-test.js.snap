@@ -64,9 +64,10 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
       </div>
     </div>
   </ScrollBox>
-  Object {
-    "$$typeof": Symbol(react.portal),
-    "children": <FilterEditor
+  <React.Portal
+    container={Object {}}
+  >
+    <FilterEditor
       buttonId="filter-view"
       name="view"
       onClose={[Function]}
@@ -77,11 +78,8 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
           "abc",
         ]
       }
-    />,
-    "containerInfo": <body />,
-    "implementation": null,
-    "key": null,
-  }
+    />
+  </React.Portal>
 </div>
 `;
 
@@ -98,9 +96,10 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
       onKeyDown={[MockFunction]}
     />
   </ScrollBox>
-  Object {
-    "$$typeof": Symbol(react.portal),
-    "children": <FilterEditor
+  <React.Portal
+    container={Object {}}
+  >
+    <FilterEditor
       buttonId="filter-view"
       name="view"
       onClose={[Function]}
@@ -111,11 +110,8 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
           "abc",
         ]
       }
-    />,
-    "containerInfo": <body />,
-    "implementation": null,
-    "key": null,
-  }
+    />
+  </React.Portal>
 </div>
 `;
 

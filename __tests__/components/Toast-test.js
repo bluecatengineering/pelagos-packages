@@ -11,7 +11,8 @@ const anyFunction = expect.any(Function);
 const pause = jest.fn();
 const finish = jest.fn();
 const animate = jest.fn().mockReturnValue({pause, finish});
-const getElementById = jest.spyOn(document, 'getElementById').mockReturnValue({animate});
+const getElementById = jest.fn().mockReturnValue({animate});
+global.document = {getElementById};
 
 describe('Toast', () => {
 	describe('rendering', () => {

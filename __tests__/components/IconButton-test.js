@@ -56,24 +56,11 @@ describe('IconButton', () => {
 			expect(onClick).toHaveBeenCalled();
 		});
 
-		it('does not call onClick when the button is disabled and clicked', () => {
-			const onClick = jest.fn();
-			const wrapper = shallow(<IconButton id="test" icon={{}} disabled={true} onClick={onClick} />);
-			wrapper.find('#test').simulate('click');
-			expect(onClick).not.toHaveBeenCalled();
-		});
-
 		it('calls the key handler when a key is pressed', () => {
 			const event = {keyCode: 13};
 			const wrapper = shallow(<IconButton id="test" icon={{}} />);
 			wrapper.find('#test').simulate('keydown', event);
 			expect(handleButtonKeyDown.mock.calls).toEqual([[event]]);
-		});
-
-		it('does not call the key handler when the button is disabled and a key is pressed', () => {
-			const wrapper = shallow(<IconButton id="test" icon={{}} disabled={true} />);
-			wrapper.find('#test').simulate('keydown');
-			expect(handleButtonKeyDown).not.toHaveBeenCalled();
 		});
 	});
 });

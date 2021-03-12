@@ -7,19 +7,30 @@ const anyFunction = expect.any(Function);
 const pause = jest.fn();
 const play = jest.fn();
 const animate = jest.fn().mockReturnValue({pause, play});
-Element.prototype.animate = animate;
-const elementBoundingRect = jest.spyOn(Element.prototype, 'getBoundingClientRect');
+const elementBoundingRect = jest.fn();
+const baseElement = {
+	animate,
+	getBoundingClientRect: elementBoundingRect,
+	appendChild(child) {
+		if (!this.firstChild) {
+			this.firstChild = child;
+		}
+		this.lastChild = child;
+	},
+};
+const createElement = jest.fn(() => {
+	const element = Object.create(baseElement);
+	element.style = {};
+	return element;
+});
+const appendChild = jest.fn();
+const removeChild = jest.fn();
+global.document = {createElement, body: {appendChild, removeChild}};
+global.window = {innerWidth: 1024, innerHeight: 768};
 
 jest.spyOn(Math, 'random').mockReturnValue(0.1);
 
 describe('useTooltip', () => {
-	afterEach(() => {
-		const tooltip = document.getElementById('tooltip-1');
-		if (tooltip) {
-			document.body.removeChild(tooltip);
-		}
-	});
-
 	it('shows tooltip on mouse over and removes it on mouse leave', () => {
 		const addEventListener = jest.fn();
 		const setAttribute = jest.fn();
@@ -40,18 +51,20 @@ describe('useTooltip', () => {
 		const animation = animate.mock.results[0].value;
 		expect(animation).toEqual({pause, play, onfinish: anyFunction});
 
+		const tooltipDiv = createElement.mock.results[0].value;
 		addEventListener.mock.calls[0][1]();
 		animation.onfinish({currentTime: 150});
-		expect(document.getElementById('tooltip-1')).toMatchSnapshot();
+		expect(tooltipDiv).toMatchSnapshot();
 		expect(setAttribute.mock.calls).toEqual([['aria-describedby', 'tooltip-1']]);
 
+		tooltipDiv.parentNode = document.body;
 		addEventListener.mock.calls[1][1]();
 		expect(pause.mock.calls).toEqual([[], [], []]);
 		expect(play.mock.calls).toEqual([[], []]);
 
 		animation.onfinish({currentTime: 0});
 		expect(removeAttribute.mock.calls).toEqual([['aria-describedby']]);
-		expect(document.getElementById('tooltip-1')).toBeNull();
+		expect(removeChild.mock.calls).toEqual([[tooltipDiv]]);
 	});
 
 	it('shows tooltip on mouse over when placement is bottom', () => {
@@ -63,7 +76,7 @@ describe('useTooltip', () => {
 		tooltip({addEventListener, setAttribute, getBoundingClientRect});
 
 		addEventListener.mock.calls[0][1]();
-		expect(document.getElementById('tooltip-1')).toMatchSnapshot();
+		expect(createElement.mock.results[0].value).toMatchSnapshot();
 	});
 
 	it('shows tooltip on mouse over when placement is left', () => {
@@ -75,7 +88,7 @@ describe('useTooltip', () => {
 		tooltip({addEventListener, setAttribute, getBoundingClientRect});
 
 		addEventListener.mock.calls[0][1]();
-		expect(document.getElementById('tooltip-1')).toMatchSnapshot();
+		expect(createElement.mock.results[0].value).toMatchSnapshot();
 	});
 
 	it('shows tooltip on mouse over when placement is right', () => {
@@ -87,7 +100,7 @@ describe('useTooltip', () => {
 		tooltip({addEventListener, setAttribute, getBoundingClientRect});
 
 		addEventListener.mock.calls[0][1]();
-		expect(document.getElementById('tooltip-1')).toMatchSnapshot();
+		expect(createElement.mock.results[0].value).toMatchSnapshot();
 	});
 
 	it('shows tooltip on mouse over when the tooltip position is negative', () => {
@@ -99,7 +112,7 @@ describe('useTooltip', () => {
 		tooltip({addEventListener, setAttribute, getBoundingClientRect});
 
 		addEventListener.mock.calls[0][1]();
-		expect(document.getElementById('tooltip-1')).toMatchSnapshot();
+		expect(createElement.mock.results[0].value).toMatchSnapshot();
 	});
 
 	it('shows tooltip on mouse over when the tooltip position exceeds the window width', () => {
@@ -111,7 +124,7 @@ describe('useTooltip', () => {
 		tooltip({addEventListener, setAttribute, getBoundingClientRect});
 
 		addEventListener.mock.calls[0][1]();
-		expect(document.getElementById('tooltip-1')).toMatchSnapshot();
+		expect(createElement.mock.results[0].value).toMatchSnapshot();
 	});
 
 	it('does not show tooltip on mouse over if text is null', () => {
@@ -120,7 +133,7 @@ describe('useTooltip', () => {
 		tooltip({addEventListener});
 
 		addEventListener.mock.calls[0][1]();
-		expect(document.getElementById('tooltip-1')).toBeNull();
+		expect(document.body.appendChild).not.toHaveBeenCalled();
 	});
 
 	it('removes listeners from previous target when target changes', () => {

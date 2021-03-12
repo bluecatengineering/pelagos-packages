@@ -10,6 +10,9 @@ jest.unmock('../../src/strings');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && ((f.cancel = jest.fn()), (f.flush = jest.fn())), f)));
 
+const getElementById = jest.fn();
+global.document = {getElementById};
+
 describe('ComboBox', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -275,7 +278,7 @@ describe('ComboBox', () => {
 			const focus = jest.fn();
 			const value = 'test value';
 			const input = {focus, value};
-			jest.spyOn(document, 'getElementById').mockReturnValue(input);
+			getElementById.mockReturnValue(input);
 			const wrapper = shallow(<ComboBox id="test" onTextChange={onTextChange} onEnter={onEnter} />);
 			wrapper.find('#test-add').simulate('click');
 			expect(focus.mock.calls).toEqual([[]]);
