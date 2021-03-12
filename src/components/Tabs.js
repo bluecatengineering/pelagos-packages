@@ -1,46 +1,114 @@
-import {cloneElement, useCallback, useMemo, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 
+import ScrollBox from './ScrollBox';
 import './Tabs.less';
 
-/** Displays components in tabs. */
-const Tabs = ({id, active, items, onTabClick}) => {
-	const [focused, setFocused] = useState(-1);
-	const activeItem = useMemo(() => items.find((item) => item.id === active), [items, active]);
+const getCurrentTab = (tabs) => document.getElementById(tabs.getAttribute('aria-activedescendant'));
 
-	const clearFocus = useCallback(() => setFocused(-1), []);
+const scrollTabs = (track, tr, overflow) => {
+	if (overflow) {
+		const tabs = track.firstChild;
+		const currentTab = getCurrentTab(tabs);
+		const wr = tabs.getBoundingClientRect();
+		const cr = currentTab.getBoundingClientRect();
+		if (cr.left < tr.left) {
+			track.scrollLeft = cr.left - wr.left;
+		} else if (cr.right > tr.right) {
+			track.scrollLeft = cr.right - wr.left - tr.width;
+		}
+	}
+};
 
-	const handleFocus = useCallback(() => setFocused(items.findIndex((item) => item.id === active)), [items, active]);
+/** Displays a row of tabs. */
+const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClose}) => {
+	const tabsRef = useRef(null);
+
+	const [focused, setFocused] = useState(null);
+
+	const getTabIndex = useCallback((tabKey) => items.findIndex((item) => getTabKey(item) === tabKey), [
+		getTabKey,
+		items,
+	]);
+
+	const handleFocus = useCallback(() => {
+		const tabs = tabsRef.current;
+		const track = tabs.parentNode;
+		const rect = track.getBoundingClientRect();
+		if (rect.width < tabs.scrollWidth) {
+			scrollTabs(track, rect, true);
+		}
+	}, []);
+
+	const handleClick = useCallback(
+		(event) => {
+			const target = event.target;
+			let element;
+			if ((element = target.closest('[role="button"]'))) {
+				event.preventDefault();
+				onTabClose(element.dataset.key);
+				event.currentTarget.focus();
+			} else if ((element = target.closest('[role="tab"]'))) {
+				event.preventDefault();
+				if (element.getAttribute('aria-selected') !== 'true') {
+					onTabClick(element.dataset.key);
+				}
+			}
+		},
+		[onTabClick, onTabClose]
+	);
+
+	const handleMouseDown = useCallback(
+		(event) => {
+			const element = event.target.closest('[role="tab"]');
+			if (element) {
+				event.preventDefault();
+				setFocused(getTabIndex(element.dataset.key));
+				const activeElement = document.activeElement;
+				if (activeElement && activeElement !== event.currentTarget) {
+					activeElement.blur();
+				}
+			}
+		},
+		[getTabIndex]
+	);
+
+	const handleMouseUp = useCallback(
+		(event) => {
+			if (event.button === 1) {
+				const element = event.target.closest('[role="tab"]');
+				if (element && element.dataset.canClose) {
+					onTabClose(element.dataset.key);
+				}
+			}
+		},
+		[onTabClose]
+	);
 
 	const handleKeyDown = useCallback(
 		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-				const keyCode = event.keyCode;
-				switch (keyCode) {
-					case 13: // enter
-					case 32: // space
+				const last = items.length - 1;
+				switch (event.keyCode) {
+					case 13: // enter or space
+					case 32: {
+						const target = event.target;
 						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
+						// Must use getAttribute because IE
+						(target.getAttribute('role') === 'tablist' ? getCurrentTab(target) : target).click();
 						break;
+					}
 					case 35: // end
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
-						setFocused(items.length - 1);
+						setFocused(last);
 						break;
 					case 36: // home
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
 						setFocused(0);
 						break;
 					case 37: // left
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
-						setFocused((focused) => (focused > 0 ? focused - 1 : items.length - 1));
+						setFocused((focused) => (focused === 0 ? last : focused - 1));
 						break;
 					case 39: // right
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
-						setFocused((focused) => (focused < items.length - 1 ? focused + 1 : 0));
+						setFocused((focused) => (focused === last ? 0 : focused + 1));
 						break;
 				}
 			}
@@ -48,89 +116,65 @@ const Tabs = ({id, active, items, onTabClick}) => {
 		[items]
 	);
 
-	const handleKeyUp = useCallback(
-		(event) => {
-			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-				switch (event.keyCode) {
-					case 13: // enter
-					case 32: // space
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
-						onTabClick(items[focused].id);
-						break;
-				}
-			}
-		},
-		[focused, items, onTabClick]
-	);
+	const itemsRef = useRef(null);
+	const currentTabRef = useRef(null);
+	let currentFocused;
+	if (itemsRef.current !== items || currentTabRef.current !== currentTab) {
+		itemsRef.current = items;
+		currentTabRef.current = currentTab;
+		currentFocused = getTabIndex(currentTab);
+		setFocused(currentFocused);
+	} else {
+		currentFocused = focused;
+	}
 
-	const handleMouseDown = useCallback((event) => {
-		const element = event.target.closest('[role="tab"]');
-		if (element) {
-			event.preventDefault();
-			event.currentTarget.focus();
-			setFocused(+element.dataset.index);
+	const firstTimeRef = useRef(true);
+	useEffect(() => {
+		// don't focus the first time the component is displayed
+		if (firstTimeRef.current) {
+			firstTimeRef.current = false;
+		} else {
+			const activeElement = document.activeElement;
+			if (!activeElement || activeElement === document.body) {
+				tabsRef.current.focus();
+			}
 		}
-	}, []);
-
-	const handleMouseUp = useCallback(
-		(event) => {
-			const element = event.target.closest('[role="tab"]');
-			if (element) {
-				event.preventDefault();
-				onTabClick(items[+element.dataset.index].id);
-			}
-		},
-		[items, onTabClick]
-	);
+	}, [currentFocused]);
 
 	return (
-		<div id={id} className="Tabs">
+		<ScrollBox onResize={scrollTabs}>
 			<div
-				id={`${id}-list`}
-				className="Tabs__list"
+				className="Tabs"
 				tabIndex="0"
 				role="tablist"
-				aria-activedescendant={focused === -1 ? null : `${id}-${focused}`}
+				aria-activedescendant={`${id}-${getTabKey(items[currentFocused])}`}
+				ref={tabsRef}
 				onFocus={handleFocus}
-				onBlur={clearFocus}
-				onKeyDown={handleKeyDown}
-				onKeyUp={handleKeyUp}
+				onClick={handleClick}
 				onMouseDown={handleMouseDown}
-				onMouseUp={handleMouseUp}>
-				{items.map((item, index) => (
-					<div
-						key={item.id}
-						id={`${id}-${index}`}
-						className={'Tabs__tab' + (index === focused ? ' Tabs__tab--focused' : '')}
-						role="tab"
-						aria-selected={item.id === active}
-						aria-controls={`${id}-panel`}
-						data-index={index}>
-						{item.title}
-					</div>
-				))}
+				onMouseUp={handleMouseUp}
+				onKeyDown={handleKeyDown}>
+				{items.map((item, index) => renderTab(item, getTabKey(item) === currentTab, index === currentFocused))}
 			</div>
-			{activeItem ? cloneElement(activeItem.getPanel(), {id: `${id}-panel`, role: 'tabpanel'}) : null}
-		</div>
+		</ScrollBox>
 	);
 };
 
 Tabs.propTypes = {
 	/** The component ID. */
 	id: PropTypes.string.isRequired,
-	/** The ID of the active tab. */
-	active: PropTypes.string.isRequired,
 	/** The tab items. */
-	items: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.string.isRequired,
-			title: PropTypes.string.isRequired,
-			getPanel: PropTypes.func,
-		})
-	).isRequired,
+	items: PropTypes.array.isRequired,
+	/** The key of the current tab. */
+	currentTab: PropTypes.string.isRequired,
+	/** Function invoked to get the key of each tab. */
+	getTabKey: PropTypes.func.isRequired,
+	/** Function invoked to render each tab. */
+	renderTab: PropTypes.func.isRequired,
 	/** Function invoked when a tab is clicked. */
-	onTabClick: PropTypes.func,
+	onTabClick: PropTypes.func.isRequired,
+	/** Function invoked when a tab is closed. */
+	onTabClose: PropTypes.func,
 };
 
 export default Tabs;

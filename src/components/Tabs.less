@@ -1,45 +1,31 @@
 @import '../../less/colors';
-@import '../../less/fonts';
+@import '../../less/elevations';
 @import '../../less/spacing';
 @import '../../less/utils';
 
 .Tabs {
-	position: relative;
-	flex: 1;
-	overflow: hidden;
-}
-
-.Tabs__list {
 	flex-direction: row;
-	padding: 0 @sp-16;
-	height: 47px;
-	border-bottom: 1px solid @separator;
 	outline: none;
 }
 
 .Tabs__tab {
-	@font-14-400();
 	@secondary-button-effects();
-	color: @font-color-2;
-	width: 140px;
-	height: 47px;
-	padding: @sp-12 0;
-	text-align: center;
 	cursor: pointer;
+	border-bottom: 3px solid transparent;
 
-	&--focused,
-	&--focused:hover {
+	.Tabs:focus > &[data-focused] {
 		background-color: @secondary-button-active;
 	}
 
 	&[aria-selected='true'] {
 		color: @font-color-1;
-		border-bottom: 3px solid @action-color;
+		border-bottom-color: @action-color;
 	}
 
 	@media print {
 		&[aria-selected='true'] {
 			color: @black;
+			border-bottom-color: transparent;
 		}
 	}
 }

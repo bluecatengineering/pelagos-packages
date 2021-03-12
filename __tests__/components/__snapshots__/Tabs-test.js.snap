@@ -1,169 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tabs rendering renders the expected elements 1`] = `
-<div
-  className="Tabs"
-  id="test"
->
-  <div
-    aria-activedescendant={null}
-    className="Tabs__list"
-    id="test-list"
-    onBlur={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    role="tablist"
-    tabIndex="0"
-  >
-    <div
-      aria-controls="test-panel"
-      aria-selected={true}
-      className="Tabs__tab"
-      data-index={0}
-      id="test-0"
-      role="tab"
-    >
-      A
-    </div>
-    <div
-      aria-controls="test-panel"
-      aria-selected={false}
-      className="Tabs__tab"
-      data-index={1}
-      id="test-1"
-      role="tab"
-    >
-      B
-    </div>
-    <div
-      aria-controls="test-panel"
-      aria-selected={false}
-      className="Tabs__tab"
-      data-index={2}
-      id="test-2"
-      role="tab"
-    >
-      C
-    </div>
-  </div>
-  <div
-    id="test-panel"
-    role="tabpanel"
-  >
-    A panel
-  </div>
-</div>
-`;
-
-exports[`Tabs rendering renders the expected elements when a tab is focused 1`] = `
-<div
-  className="Tabs"
-  id="test"
+exports[`Tabs rendering renders expected elements 1`] = `
+<ScrollBox
+  onResize={[Function]}
 >
   <div
     aria-activedescendant="test-1"
-    className="Tabs__list"
-    id="test-list"
-    onBlur={[Function]}
+    className="Tabs"
+    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
     onMouseUp={[Function]}
     role="tablist"
     tabIndex="0"
   >
-    <div
-      aria-controls="test-panel"
-      aria-selected={true}
-      className="Tabs__tab"
-      data-index={0}
-      id="test-0"
-      role="tab"
-    >
-      A
-    </div>
-    <div
-      aria-controls="test-panel"
-      aria-selected={false}
-      className="Tabs__tab Tabs__tab--focused"
-      data-index={1}
-      id="test-1"
-      role="tab"
-    >
-      B
-    </div>
-    <div
-      aria-controls="test-panel"
-      aria-selected={false}
-      className="Tabs__tab"
-      data-index={2}
-      id="test-2"
-      role="tab"
-    >
-      C
-    </div>
+    foo
+    bar
+    baz
   </div>
-  <div
-    id="test-panel"
-    role="tabpanel"
-  >
-    A panel
-  </div>
-</div>
-`;
-
-exports[`Tabs rendering renders the expected elements when the active tab is not found 1`] = `
-<div
-  className="Tabs"
-  id="test"
->
-  <div
-    aria-activedescendant={null}
-    className="Tabs__list"
-    id="test-list"
-    onBlur={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    role="tablist"
-    tabIndex="0"
-  >
-    <div
-      aria-controls="test-panel"
-      aria-selected={false}
-      className="Tabs__tab"
-      data-index={0}
-      id="test-0"
-      role="tab"
-    >
-      A
-    </div>
-    <div
-      aria-controls="test-panel"
-      aria-selected={false}
-      className="Tabs__tab"
-      data-index={1}
-      id="test-1"
-      role="tab"
-    >
-      B
-    </div>
-    <div
-      aria-controls="test-panel"
-      aria-selected={false}
-      className="Tabs__tab"
-      data-index={2}
-      id="test-2"
-      role="tab"
-    >
-      C
-    </div>
-  </div>
-</div>
+</ScrollBox>
 `;
