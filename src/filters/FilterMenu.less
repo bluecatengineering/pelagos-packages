@@ -1,4 +1,3 @@
-@import '../../less/colors';
 @import '../../less/focus';
 @import '../../less/elevations';
 @import '../../less/spacing';
@@ -28,11 +27,11 @@
 	cursor: pointer;
 
 	&:hover {
-		background-color: @menu-hover;
+		background-color: var(--menu-hover);
 	}
 
 	&--current,
 	&--current:hover {
-		background-color: @menu-current;
+		background-color: var(--menu-current);
 	}
 }

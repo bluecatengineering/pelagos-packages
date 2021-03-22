@@ -9,9 +9,6 @@ const HEADER = [
 	'// This file was generated from defs/elevations.yaml',
 	'// it will be re-generated on commit, to generate manually run `npm run update-elevations`',
 	'',
-	"@import 'colors';",
-	"@import 'shadows';",
-	'',
 ];
 
 const elevations = Object.entries(load(readFileSync(IN, 'utf8')));
@@ -22,8 +19,8 @@ writeFileSync(
 		elevations.map(
 			([key, {bg, shadow, zIndex}]) =>
 				`@${key}: {
-	background-color: @${bg};
-	box-shadow: @${shadow};
+	background-color: var(--${bg});
+	box-shadow: var(--${shadow});
 	z-index: ${zIndex};
 };`
 		),

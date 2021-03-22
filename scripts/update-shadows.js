@@ -11,12 +11,16 @@ const HEADER = [
 	'',
 ];
 
-const spacing = Object.entries(load(readFileSync(IN, 'utf8')));
+const {levels, base, dark, light} = load(readFileSync(IN, 'utf8'));
 
-writeFileSync(
-	LESS,
-	HEADER.concat(
-		spacing.map(([key, {value}]) => '@' + key + ': ' + value + ';'),
-		''
-	).join('\n')
-);
+const color = (alpha) => `rgba(0, 0, 0, ${alpha})`;
+
+const generate = (name, {umbra, penumbra, ambient}) =>
+	levels.map(
+		(key) =>
+			`@shadow-${name}-${`${key}`.padStart(2, '0')}: ${base.umbra[key]} ${color(umbra)}, ${base.penumbra[key]} ${color(
+				penumbra
+			)}, ${base.ambient[key]} ${color(ambient)};`
+	);
+
+writeFileSync(LESS, HEADER.concat(generate('dark', dark), generate('light', light), '').join('\n'));

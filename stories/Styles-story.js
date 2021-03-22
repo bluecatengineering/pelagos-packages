@@ -1,11 +1,12 @@
-import './Fonts-story.less';
+import elevations from '../defs/elevations.yaml';
+import './Styles-story.less';
 
-const fontColors = ['color1', 'color2', 'color3', 'orange', 'sky'];
+const fontColors = ['color1', 'color2', 'color3'];
 
 const fontTable = [
-	{name: '10-400', colors: {color1: 'footer', color3: 'indicator', orange: 'notice'}},
+	{name: '10-400', colors: {color1: 'footer', color3: 'indicator'}},
 	{name: '10-600-uc', colors: {color1: 'error', color2: 'label'}},
-	{name: '12-400', colors: {color1: 'body-small', color2: 'crumbs', sky: 'field-hint'}},
+	{name: '12-400', colors: {color1: 'body-small', color2: 'crumbs'}},
 	{name: '12-600-uc', colors: {color1: 'button-small', color2: 'table-title', color3: 'cmd-header'}},
 	{name: '14-400', colors: {color1: 'body-medium', color2: 'body-dim', color3: 'body-disabled'}},
 	{name: '14-600', colors: {color1: 'important'}},
@@ -19,8 +20,8 @@ const fontTable = [
 	{name: '68-300', colors: {color1: 'display-large'}},
 ];
 
-export const AllFonts = () => (
-	<table className="FontsStory">
+export const Fonts = () => (
+	<table className="Fonts">
 		<thead>
 			<tr>
 				<th>Properties</th>
@@ -34,7 +35,7 @@ export const AllFonts = () => (
 				<tr key={name}>
 					<td>{name}</td>
 					{fontColors.map((color) => (
-						<td key={color} className={'font-' + colors[color]}>
+						<td key={color} className={'Fonts--' + colors[color]}>
 							{colors[color]}
 						</td>
 					))}
@@ -43,8 +44,22 @@ export const AllFonts = () => (
 		</tbody>
 	</table>
 );
-AllFonts.storyName = 'All fonts';
+Fonts.storyName = 'Fonts';
+
+export const Elevations = () => (
+	<div className="Elevations">
+		{Object.entries(elevations).map(([k, {bg, shadow}]) => (
+			<div
+				key={k}
+				className="Elevations__card"
+				style={{backgroundColor: `var(--${bg})`, boxShadow: `var(--${shadow})`}}>
+				{k}
+			</div>
+		))}
+	</div>
+);
+Elevations.storyName = 'Elevations';
 
 export default {
-	title: 'Fonts',
+	title: 'Styles',
 };

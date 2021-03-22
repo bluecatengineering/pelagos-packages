@@ -1,7 +1,5 @@
-@import 'colors';
-
 ::-webkit-scrollbar-thumb {
-	background-color: @slate;
+	background-color: var(--scrollbar-face);
 	border-radius: 8px;
 }
 
@@ -16,14 +14,14 @@
 
 // For IE
 html {
-	scrollbar-base-color: @fiord;
-	scrollbar-shadow-color: @fiord;
-	scrollbar-arrow-color: @bondi;
-	scrollbar-track-color: @oxford;
+	scrollbar-base-color: var(--scrollbar-face);
+	scrollbar-shadow-color: var(--scrollbar-face);
+	scrollbar-arrow-color: var(--scrollbar-arrow);
+	scrollbar-track-color: var(--page-bg);
 }
 
 // For Firefox
 * {
-	scrollbar-color: @slate transparent;
+	scrollbar-color: var(--scrollbar-face) transparent;
 	scrollbar-width: thin;
 }

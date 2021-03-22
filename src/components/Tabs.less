@@ -1,4 +1,3 @@
-@import '../../less/colors';
 @import '../../less/elevations';
 @import '../../less/spacing';
 @import '../../less/utils';
@@ -14,17 +13,17 @@
 	border-bottom: 3px solid transparent;
 
 	.Tabs:focus > &[data-focused] {
-		background-color: @secondary-button-active;
+		background-color: var(--secondary-button-active);
 	}
 
 	&[aria-selected='true'] {
-		color: @font-color-1;
-		border-bottom-color: @action-color;
+		color: var(--font-color-1);
+		border-bottom-color: var(--action-color);
 	}
 
 	@media print {
 		&[aria-selected='true'] {
-			color: @black;
+			color: var(--print-color);
 			border-bottom-color: transparent;
 		}
 	}

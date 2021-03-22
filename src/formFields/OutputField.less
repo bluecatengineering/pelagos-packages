@@ -1,4 +1,3 @@
-@import '../../less/colors';
 @import '../../less/fonts';
 @import '../../less/spacing';
 
@@ -12,12 +11,12 @@
 
 .OutputField__value {
 	@font-14-400();
-	color: @font-color-2;
+	color: var(--font-color-2);
 	// stylelint-disable-next-line @bluecat/property-strict-value
 	padding: 5px 0; // to match height of text field
 
 	@media print {
-		color: @black;
+		color: var(--print-color);
 	}
 }
 
@@ -26,5 +25,5 @@
 }
 
 .OutputField--active {
-	color: @font-color-1;
+	color: var(--font-color-1);
 }

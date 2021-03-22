@@ -1,21 +1,45 @@
 # This file is used to generate shadows.less,
 # it will be processed on commit, to generate manually run `npm run update-shadows`
 
-shadow-01:
-  value: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3)
-shadow-02:
-  value: 0 2px 2px 0 rgba(0, 0, 0, 0.21), 0 3px 1px -2px rgba(0, 0, 0, 0.18), 0 1px 5px 0 rgba(0, 0, 0, 0.3)
-shadow-03:
-  value: 0 3px 4px 0 rgba(0, 0, 0, 0.21), 0 3px 3px -2px rgba(0, 0, 0, 0.18), 0 1px 8px 0 rgba(0, 0, 0, 0.3)
-shadow-04:
-  value: 0 4px 5px 0 rgba(0, 0, 0, 0.21), 0 1px 10px 0 rgba(0, 0, 0, 0.18), 0 2px 4px -1px rgba(0, 0, 0, 0.3)
-shadow-06:
-  value: 0 6px 10px 0 rgba(0, 0, 0, 0.21), 0 1px 18px 0 rgba(0, 0, 0, 0.18), 0 3px 5px -1px rgba(0, 0, 0, 0.3)
-shadow-08:
-  value: 0 8px 10px 1px rgba(0, 0, 0, 0.21), 0 3px 14px 2px rgba(0, 0, 0, 0.18), 0 5px 5px -3px rgba(0, 0, 0, 0.3)
-shadow-12:
-  value: 0 12px 17px 2px rgba(0, 0, 0, 0.21), 0 5px 22px 4px rgba(0, 0, 0, 0.18), 0 7px 8px -4px rgba(0, 0, 0, 0.3)
-shadow-16:
-  value: 0 16px 24px 2px rgba(0, 0, 0, 0.21), 0 6px 30px 5px rgba(0, 0, 0, 0.18), 0 8px 10px -5px rgba(0, 0, 0, 0.3)
-shadow-24:
-  value: 0 24px 38px 3px rgba(0, 0, 0, 0.21), 0 9px 46px 8px rgba(0, 0, 0, 0.18), 0 11px 15px -7px rgba(0, 0, 0, 0.3)
+# Based on: https://github.com/material-components/material-components-web/blob/master/packages/mdc-elevation/_elevation-theme.scss
+
+levels: [1, 2, 3, 4, 6, 8, 12, 16, 24]
+base:
+  umbra:
+    1: '0px 2px 1px -1px'
+    2: '0px 3px 1px -2px'
+    3: '0px 3px 3px -2px'
+    4: '0px 2px 4px -1px'
+    6: '0px 3px 5px -1px'
+    8: '0px 5px 5px -3px'
+    12: '0px 7px 8px -4px'
+    16: '0px 8px 10px -5px'
+    24: '0px 11px 15px -7px'
+  penumbra:
+    1: '0px 1px 1px 0px'
+    2: '0px 2px 2px 0px'
+    3: '0px 3px 4px 0px'
+    4: '0px 4px 5px 0px'
+    6: '0px 6px 10px 0px'
+    8: '0px 8px 10px 1px'
+    12: '0px 12px 17px 2px'
+    16: '0px 16px 24px 2px'
+    24: '0px 24px 38px 3px'
+  ambient:
+    1: '0px 1px 3px 0px'
+    2: '0px 1px 5px 0px'
+    3: '0px 1px 8px 0px'
+    4: '0px 1px 10px 0px'
+    6: '0px 1px 18px 0px'
+    8: '0px 3px 14px 2px'
+    12: '0px 5px 22px 4px'
+    16: '0px 6px 30px 5px'
+    24: '0px 9px 46px 8px'
+dark:
+  umbra: .3
+  penumbra: .21
+  ambient: .18
+light:
+  umbra: .2
+  penumbra: .14
+  ambient: .12

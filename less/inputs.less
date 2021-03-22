@@ -1,4 +1,3 @@
-@import 'colors';
 @import 'focus';
 @import 'fonts';
 @import 'spacing';
@@ -17,12 +16,12 @@ button::-moz-focus-inner {
 
 :-ms-input-placeholder {
 	@font-12-400();
-	color: @form-field-hint;
+	color: var(--form-field-hint);
 }
 
 ::placeholder {
 	@font-12-400();
-	color: @form-field-hint;
+	color: var(--form-field-hint);
 }
 
 input:not([type]),
@@ -33,13 +32,13 @@ input[type='email'],
 textarea {
 	padding: @sp-04 @sp-12;
 	margin: @sp-02;
-	background-color: @form-field-bg;
-	border: 1px solid @form-field-border;
+	background-color: var(--form-field-bg);
+	border: 1px solid var(--form-field-border);
 	border-radius: 3px;
 	transition: background-color 0.15s ease-out;
 
 	&:hover {
-		background-color: @form-field-hover;
+		background-color: var(--form-field-hover);
 	}
 
 	&:focus {
@@ -47,7 +46,7 @@ textarea {
 	}
 
 	.Dialog & {
-		background-color: @oxford;
+		background-color: var(--form-field-dialog-bg);
 	}
 
 	@media print {
@@ -59,26 +58,25 @@ textarea {
 // stylelint-disable no-descending-specificity
 input:read-only,
 textarea:read-only {
-	color: @font-color-2;
+	color: var(--font-color-2);
 }
 input[disabled] {
-	color: @battleship;
-	border-color: @battleship;
+	color: var(--font-color-3);
 }
 input[disabled]:-ms-input-placeholder {
-	color: @battleship;
+	color: var(--font-color-3);
 }
 input[disabled]::placeholder {
-	color: @battleship;
+	color: var(--font-color-3);
 }
 
 @media print {
 	:-ms-input-placeholder {
-		color: @battleship;
+		color: var(--print-medium);
 	}
 
 	::placeholder {
-		color: @battleship;
+		color: var(--print-medium);
 	}
 
 	input[disabled] {

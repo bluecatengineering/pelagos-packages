@@ -1,4 +1,3 @@
-@import '../../less/colors';
 @import '../../less/focus';
 @import '../../less/spacing';
 @import '../../less/utils';
@@ -7,9 +6,9 @@
 	@focus-visible();
 	@primary-button-effects();
 	font-size: 21px;
-	color: @oxford;
-	background-color: @action-color;
-	border: 1px solid @action-color;
+	color: var(--font-color-i1);
+	background-color: var(--action-color);
+	border: 1px solid var(--action-color);
 	border-radius: 3px;
 	padding: @sp-04;
 
@@ -17,7 +16,7 @@
 	&[aria-disabled='true']:hover,
 	&[aria-disabled='true']:active {
 		background-color: transparent;
-		border-color: @battleship;
+		border-color: var(--disabled-color);
 		cursor: not-allowed;
 	}
 }

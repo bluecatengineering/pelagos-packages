@@ -1,6 +1,4 @@
-@import '../../less/colors';
 @import '../../less/focus';
-@import '../../less/shadows';
 @import '../../less/spacing';
 @import '../../less/utils';
 
@@ -17,10 +15,10 @@
 
 .FilterList__filterTitle {
 	margin-right: @sp-08;
-	color: @font-color-2;
+	color: var(--font-color-2);
 
 	@media print {
-		color: @battleship;
+		color: var(--print-medium);
 	}
 }
 
@@ -30,8 +28,8 @@
 	border-radius: 3px;
 	padding: @sp-04 @sp-08;
 	cursor: pointer;
-	background-color: @form-field-bg;
-	color: @emerald;
+	background-color: var(--form-field-bg);
+	color: var(--current-value-color);
 	transition: background-color 0.15s ease-out;
 
 	&:focus {
@@ -39,11 +37,11 @@
 	}
 
 	&:hover {
-		background-color: @form-field-hover;
+		background-color: var(--form-field-hover);
 	}
 
 	@media print {
-		color: @black;
+		color: var(--print-color);
 		background-color: transparent;
 	}
 }

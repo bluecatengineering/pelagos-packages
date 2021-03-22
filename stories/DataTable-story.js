@@ -26,6 +26,8 @@ const data = [
 	{id: '2', name: 'Two', value: 2},
 	{id: '3', name: 'Three', value: 3},
 	{id: '4', name: 'Four', value: 4},
+	{id: '5', name: 'Five', value: 5},
+	{id: '6', name: 'Six', value: 6},
 ];
 
 const emptyTableText = 'This table is empty';

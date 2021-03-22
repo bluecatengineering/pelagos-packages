@@ -1,8 +1,6 @@
-@import '../../less/colors';
 @import '../../less/elevations';
 @import '../../less/fonts';
 @import '../../less/modal';
-@import '../../less/shadows';
 @import '../../less/spacing';
 @import '../../less/utils';
 
@@ -25,7 +23,7 @@
 	@ellipsis();
 	border-radius: 3px 3px 0 0;
 	padding: @sp-12 @sp-24;
-	border-bottom: 1px solid @separator;
+	border-bottom: 1px solid var(--separator-color);
 }
 
 .Dialog__body {

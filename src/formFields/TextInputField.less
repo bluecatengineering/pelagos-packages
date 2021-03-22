@@ -1,6 +1,4 @@
-@import '../../less/colors';
 @import '../../less/focus';
-@import '../../less/fonts';
 @import '../../less/spacing';
 
 .TextInputField {
@@ -9,7 +7,7 @@
 
 .TextInputField__input {
 	&.TextInputField--error {
-		border-color: @form-field-error;
+		border-color: var(--form-field-error);
 	}
 
 	&:focus.TextInputField--error {

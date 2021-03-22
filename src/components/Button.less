@@ -1,4 +1,3 @@
-@import '../../less/colors';
 @import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
@@ -31,20 +30,20 @@
 
 	&--primary {
 		@primary-button-effects();
-		color: @oxford;
-		border-color: @action-color;
-		background-color: @action-color;
+		color: var(--font-color-i1);
+		border-color: var(--action-color);
+		background-color: var(--action-color);
 	}
 
 	&--secondary {
 		@secondary-button-effects();
-		color: @action-color;
-		border-color: @action-color;
+		color: var(--action-color);
+		border-color: var(--action-color);
 	}
 
 	&[aria-disabled='true'] {
-		color: @battleship;
-		border-color: @battleship;
+		color: var(--disabled-color);
+		border-color: var(--disabled-color);
 		background-color: transparent;
 	}
 }

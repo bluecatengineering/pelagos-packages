@@ -4,7 +4,8 @@ const {load} = require('js-yaml');
 
 const IN = 'defs/colors.yaml';
 const JS = 'src/Colors.js';
-const LESS = 'less/colors.less';
+const LESS_DARK = 'less/colors-dark.less';
+const LESS_LIGHT = 'less/colors-light.less';
 
 const HEADER = [
 	'// This file was generated from defs/colors.yaml',
@@ -18,19 +19,24 @@ writeFileSync(
 	JS,
 	HEADER.concat(
 		colors
-			.filter(([, {tags}]) => tags && tags.includes('primary'))
+			.filter(([, {tags}]) => tags && !tags.includes('background'))
 			.map(([key, {value}]) => 'export const ' + key.toUpperCase() + " = '" + value + "';"),
 		''
 	).join('\n')
 );
 
 writeFileSync(
-	LESS,
+	LESS_DARK,
 	HEADER.concat(
-		colors.map(
-			([key, {value, alias, base, fade}]) =>
-				'@' + key + ': ' + (value ? value : alias ? '@' + alias : 'fade(@' + base + ', ' + fade + ')') + ';'
-		),
+		colors.filter(([, {tags}]) => tags && tags.includes('dark')).map(([key, {value}]) => `@${key}: ${value};`),
+		''
+	).join('\n')
+);
+
+writeFileSync(
+	LESS_LIGHT,
+	HEADER.concat(
+		colors.filter(([, {tags}]) => tags && tags.includes('light')).map(([key, {value}]) => `@${key}: ${value};`),
 		''
 	).join('\n')
 );

@@ -3,189 +3,196 @@
 
 crystal:
   value: '#71c4ff'
-  tags: [primary]
+  tags: [dark]
 iceberg:
   value: '#4ebdff'
-  tags: [primary]
+  tags: [dark]
 azure:
   value: '#01b5ff'
-  tags: [primary]
+  tags: [dark]
   palette: 1
 ocean:
   value: '#006297'
-  tags: [primary]
+  tags: [dark]
   palette: 0
-midnight:
-  value: '#00385a'
-  tags: [primary]
 oxford:
   value: '#001c32'
-  tags: [primary]
+  tags: [dark]
 sky:
   value: '#aed3e7'
-  tags: [primary]
+  tags: [dark]
   palette: 2
 bondi:
   value: '#258cac'
-  tags: [primary]
+  tags: [dark]
   palette: 3
 emerald:
   value: '#00dfa0'
-  tags: [primary]
+  tags: [dark]
   palette: 4
 dartmouth:
   value: '#0f6244'
-  tags: [primary]
+  tags: [dark]
   palette: 6
 persian:
   value: '#009688'
-  tags: [primary]
+  tags: [dark]
   palette: 5
 neon:
   value: '#90ea00'
-  tags: [primary]
+  tags: [dark]
 violet:
   value: '#a728ee'
-  tags: [primary]
+  tags: [dark]
 red:
   value: '#ff0000'
-  tags: [primary]
+  tags: [dark, light]
 orange:
-  value: '#ffac00'
-  tags: [primary]
+  value: '#ffa500'
+  tags: [dark, light]
   palette: 7
 burnt:
   value: '#da6900'
-  tags: [primary]
+  tags: [dark]
   palette: 8
 goldenrod:
   value: '#ccaf00'
-  tags: [primary]
+  tags: [dark]
   palette: 9
 battleship:
   value: '#666666'
-  tags: [primary]
+  tags: [dark]
 prussian:
   value: '#22314e'
-  tags: [primary]
+  tags: [dark]
 fiord:
   value: '#3f485e'
-  tags: [primary]
+  tags: [dark]
 slate:
   value: '#676d7e'
-  tags: [primary]
+  tags: [dark]
 silver:
   value: '#a5a9b4'
-  tags: [primary]
+  tags: [dark]
 black:
   value: '#000000'
-  tags: [primary]
+  tags: [dark, light]
 white:
   value: '#ffffff'
-  tags: [primary]
-
-font-color-1:
-  base: white
-  fade: 90%
-  tags: [text]
-  sample: oxford
-font-color-2:
-  base: white
-  fade: 65%
-  tags: [text]
-  sample: oxford
-font-color-3:
-  base: white
-  fade: 50%
-  tags: [text]
-  sample: oxford
-font-color-i1:
-  base: black
-  fade: 90%
-  tags: [text]
-  sample: bondi
+  tags: [dark, light]
 
 bg-01:
   value: '#0e263c'
-  tags: [background]
+  tags: [dark, background]
 bg-02:
   value: '#132a40'
-  tags: [background]
+  tags: [dark, background]
 bg-03:
   value: '#162c42'
-  tags: [background]
+  tags: [dark, background]
 bg-04:
   value: '#182f45'
-  tags: [background]
+  tags: [dark, background]
 bg-06:
   value: '#1d3349'
-  tags: [background]
+  tags: [dark, background]
 bg-08:
   value: '#1f354c'
-  tags: [background]
+  tags: [dark, background]
 bg-12:
   value: '#233951'
-  tags: [background]
+  tags: [dark, background]
 bg-16:
   value: '#263c53'
-  tags: [background]
+  tags: [dark, background]
 bg-24:
   value: '#283e56'
-  tags: [background]
+  tags: [dark, background]
 
-separator:
-  base: white
-  fade: 17%
+federal:
+  value: '#00497e'
+  tags: [light]
 
-modal-bg:
-  base: black
-  fade: 50%
+cobalt:
+  value: '#0073ae'
+  tags: [light]
 
-action-color:
-  alias: azure
+maya:
+  value: '#0da5e2'
+  tags: [light]
 
-primary-button-hover:
-  alias: iceberg
+capri:
+  value: '#51bfea'
+  tags: [light]
 
-primary-button-active:
-  alias: crystal
+baby:
+  value: '#b1e4f6'
+  tags: [light]
 
-secondary-button-hover:
-  base: sky
-  fade: 15%
+marian:
+  value: '#e0f4fb'
+  tags: [light]
 
-secondary-button-active:
-  base: sky
-  fade: 30%
+brunswick:
+  value: '#092734'
+  tags: [light]
 
-menu-hover:
-  base: sky
-  fade: 7.5%
+hunter:
+  value: '#007e64'
+  tags: [light]
 
-menu-current:
-  base: sky
-  fade: 15%
+jade:
+  value: '#00ae91'
+  tags: [light]
 
-form-field-border:
-  alias: prussian
-form-field-bg:
-  alias: prussian
-form-field-hint:
-  alias: sky
-form-field-error:
-  alias: burnt
-form-field-hover:
-  base: fiord
-  fade: 65%
+celadon:
+  value: '#bbddd9'
+  tags: [light]
 
-toggle-hover:
-  base: sky
-  fade: 15%
+yellow:
+  value: '#ffff00'
+  tags: [light]
 
-toggle-focus:
-  base: sky
-  fade: 30%
+cream:
+  value: '#ffffcc'
+  tags: [light]
 
-toggle-active:
-  base: sky
-  fade: 50%
+duke:
+  value: '#00007d'
+  tags: [light]
+
+blue:
+  value: '#021cae'
+  tags: [light]
+
+periwinkle:
+  value: '#c2c2f4'
+  tags: [light]
+
+mulberry:
+  value: '#cc79a7'
+  tags: [light]
+
+palepink:
+  value: '#ffcccc'
+  tags: [light]
+
+gray5:
+  value: '#424242'
+  tags: [light]
+
+gray4:
+  value: '#757575'
+  tags: [light]
+
+gray3:
+  value: '#bdbdbd'
+  tags: [light]
+
+gray2:
+  value: '#eeeeee'
+  tags: [light]
+
+gray1:
+  value: '#fafafa'
+  tags: [light]

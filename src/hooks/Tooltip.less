@@ -1,6 +1,4 @@
-@import '../../less/colors';
 @import '../../less/fonts';
-@import '../../less/shadows';
 @import '../../less/spacing';
 @import '../../less/zindexes';
 
@@ -33,12 +31,13 @@
 
 .Tooltip__body {
 	@font-12-400();
-	background-color: @black;
+	color: var(--tooltip-color);
+	background-color: var(--tooltip-bg);
 	max-width: 400px;
 	padding: @sp-04 @sp-12;
 	border-radius: 3px;
 	white-space: pre-line;
-	box-shadow: @shadow-06;
+	box-shadow: var(--shadow-06);
 }
 
 .Tooltip__arrow {
@@ -51,23 +50,23 @@
 	right: 0;
 	margin-top: -@tooltip-arrow-width;
 	border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
-	border-left-color: @black;
+	border-left-color: var(--tooltip-bg);
 }
 .Tooltip--right > .Tooltip__arrow {
 	left: 0;
 	margin-top: -@tooltip-arrow-width;
 	border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
-	border-right-color: @black;
+	border-right-color: var(--tooltip-bg);
 }
 .Tooltip--top > .Tooltip__arrow {
 	bottom: 0;
 	margin-left: -@tooltip-arrow-width;
 	border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-	border-top-color: @black;
+	border-top-color: var(--tooltip-bg);
 }
 .Tooltip--bottom > .Tooltip__arrow {
 	top: 0;
 	margin-left: -@tooltip-arrow-width;
 	border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-	border-bottom-color: @black;
+	border-bottom-color: var(--tooltip-bg);
 }
