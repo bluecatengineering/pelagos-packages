@@ -160,41 +160,48 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       }
     />
   </div>
-  <div
-    className="Select__list"
-    id="test-list"
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    role="listbox"
-  >
+  <React.Portal>
     <div
-      aria-selected={false}
-      className="Select__option"
-      data-index={0}
-      id="test-0"
-      role="option"
+      className="Select__list"
+      id="test-list"
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="listbox"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
     >
-      One
+      <div
+        aria-selected={false}
+        className="Select__option"
+        data-index={0}
+        id="test-0"
+        role="option"
+      >
+        One
+      </div>
+      <div
+        aria-selected={true}
+        className="Select__option Select__option--focused"
+        data-index={1}
+        id="test-1"
+        role="option"
+      >
+        Two
+      </div>
+      <div
+        aria-selected={false}
+        className="Select__option"
+        data-index={2}
+        id="test-2"
+        role="option"
+      >
+        Three
+      </div>
     </div>
-    <div
-      aria-selected={true}
-      className="Select__option Select__option--focused"
-      data-index={1}
-      id="test-1"
-      role="option"
-    >
-      Two
-    </div>
-    <div
-      aria-selected={false}
-      className="Select__option"
-      data-index={2}
-      id="test-2"
-      role="option"
-    >
-      Three
-    </div>
-  </div>
+  </React.Portal>
 </div>
 `;
 

@@ -1,4 +1,5 @@
 import {cloneElement, useRef, useCallback, useEffect, useState, useMemo} from 'react';
+import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollToItem} from '@bluecat/helpers';
@@ -23,6 +24,7 @@ const ComboBox = ({
 	onTextChange,
 	...props
 }) => {
+	const buttonRef = useRef(null);
 	const listRef = useRef(null);
 
 	const [suggestions, setSuggestions] = useState([]);
@@ -132,17 +134,29 @@ const ComboBox = ({
 		return updateSuggestions.cancel;
 	}, [hideList, updateSuggestions, text, error]);
 
-	const listId = id + '-list';
+	useEffect(() => {
+		if (open) {
+			const {bottom, left, width} = buttonRef.current.getBoundingClientRect();
+
+			const list = listRef.current;
+			list.style.display = '';
+			list.style.top = `${bottom}px`;
+			list.style.left = `${left}px`;
+			list.style.width = `${width}px`;
+		}
+	}, [open]);
+
+	const listId = `${id}-list`;
 	return (
-		<div className="ComboBox" role="combobox" aria-haspopup="listbox" aria-expanded={open}>
+		<div className="ComboBox" role="combobox" aria-haspopup="listbox" aria-expanded={open} ref={buttonRef}>
 			<input
 				{...props}
 				id={id}
-				className={'ComboBox__input' + (error ? ' ComboBox--error' : '')}
+				className={`ComboBox__input${error ? ' ComboBox--error' : ''}`}
 				autoComplete="off"
 				aria-autocomplete="list"
 				aria-controls={open ? listId : null}
-				aria-activedescendant={selected === -1 ? null : id + '-' + selected}
+				aria-activedescendant={selected === -1 ? null : `${id}-${selected}`}
 				value={text}
 				onKeyDown={handleKeyDown}
 				onChange={handleChange}
@@ -159,27 +173,30 @@ const ComboBox = ({
 					onClick={handleAddClick}
 				/>
 			)}
-			{open && (
-				<div
-					id={listId}
-					className="ComboBox__list"
-					role="listbox"
-					ref={listRef}
-					onMouseDown={handleListMouseDown}
-					onMouseUp={handleListMouseUp}>
-					{suggestions.map((item, index) => {
-						const element = renderSuggestion(item, index);
-						return cloneElement(element, {
-							key: index,
-							id: id + '-' + index,
-							role: 'option',
-							className: 'ComboBox__option ' + element.props.className,
-							'aria-selected': selected === index,
-							'data-index': index,
-						});
-					})}
-				</div>
-			)}
+			{open &&
+				createPortal(
+					<div
+						id={listId}
+						className="ComboBox__list"
+						role="listbox"
+						style={{display: 'none'}}
+						ref={listRef}
+						onMouseDown={handleListMouseDown}
+						onMouseUp={handleListMouseUp}>
+						{suggestions.map((item, index) => {
+							const element = renderSuggestion(item, index);
+							return cloneElement(element, {
+								key: index,
+								id: `${id}-${index}`,
+								role: 'option',
+								className: `ComboBox__option ${element.props.className}`,
+								'aria-selected': selected === index,
+								'data-index': index,
+							});
+						})}
+					</div>,
+					document.body
+				)}
 		</div>
 	);
 };

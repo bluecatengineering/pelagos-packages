@@ -14,6 +14,8 @@ const strings = {
 const options = Object.keys(strings);
 const renderOption = (o) => strings[o];
 
+global.document = {};
+
 describe('Select', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -109,6 +111,32 @@ describe('Select', () => {
 	});
 
 	describe('behaviour', () => {
+		it('places the list under the button', () => {
+			const button = {getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400})};
+			const list = {style: {}};
+			useRef
+				.mockReturnValueOnce({current: button})
+				.mockReturnValueOnce({current: list})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: -1})
+				.mockReturnValueOnce({current: null});
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
+			shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
+			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [true]]);
+			useEffect.mock.calls[0][0]();
+			expect(list.style.display).toBe('');
+			expect(list.style.top).toBe('102px');
+			expect(list.style.left).toBe('200px');
+			expect(list.style.width).toBe('400px');
+		});
+
+		it('does not place the list when open is false', () => {
+			useState.mockReturnValueOnce([false]).mockReturnValueOnce([0]);
+			shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
+			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [false]]);
+			expect(() => useEffect.mock.calls[0][0]()).not.toThrow();
+		});
+
 		it('scrolls to current option when open changes from false to true', () => {
 			const child = {offsetTop: 50, offsetHeight: 25};
 			const list = {
@@ -120,22 +148,23 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
 				.mockReturnValueOnce({current: null});
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [true, 2]]]);
+			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [true, 2]]);
 
-			useEffect.mock.calls[0][0]();
+			useEffect.mock.calls[1][0]();
 			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
 		});
 
 		it('does not scroll to current option when open changes from true to false', () => {
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls).toEqual([[expect.any(Function), [false, -1]]]);
+			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [false, -1]]);
 
-			useEffect.mock.calls[0][0]();
+			useEffect.mock.calls[1][0]();
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
@@ -183,6 +212,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -207,6 +237,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -240,6 +271,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -264,6 +296,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -298,6 +331,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -332,6 +366,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -365,6 +400,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -390,6 +426,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -423,6 +460,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -447,6 +485,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -491,6 +530,7 @@ describe('Select', () => {
 			const searchString = {current: null};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce(searchString)
 				.mockReturnValueOnce({current: -1})
@@ -522,6 +562,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})
@@ -556,6 +597,7 @@ describe('Select', () => {
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef
+				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: list})
 				.mockReturnValueOnce({current: null})
 				.mockReturnValueOnce({current: -1})

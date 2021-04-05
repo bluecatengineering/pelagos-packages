@@ -1,4 +1,5 @@
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
 import {smoothScroll, scrollToItem} from '@bluecat/helpers';
@@ -43,7 +44,8 @@ const Select = ({
 		[options, getOptionKey, renderOption]
 	);
 
-	const list = useRef(null);
+	const buttonRef = useRef(null);
+	const listRef = useRef(null);
 	const searchString = useRef(null);
 	const searchIndex = useRef(-1);
 	const keyTimer = useRef(null);
@@ -68,7 +70,7 @@ const Select = ({
 
 	const updateFocused = useCallback((index) => {
 		setFocused(index);
-		scrollToItem(list.current, list.current.children[index]);
+		scrollToItem(listRef.current, listRef.current.children[index]);
 	}, []);
 
 	const findItemToFocus = useCallback(
@@ -89,7 +91,7 @@ const Select = ({
 				keyTimer.current = null;
 			}, 500);
 
-			const children = list.current.children;
+			const children = listRef.current.children;
 			let result = findInRange(searchString.current, children, searchIndex.current + 1, children.length);
 			if (result === -1) {
 				result = findInRange(searchString.current, children, 0, searchIndex.current);
@@ -137,7 +139,7 @@ const Select = ({
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
 							let i;
-							const listElement = list.current;
+							const listElement = listRef.current;
 							const listHeight = listElement.clientHeight;
 							const scrollTop = listElement.scrollTop;
 							if (scrollTop > 0) {
@@ -157,7 +159,7 @@ const Select = ({
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
 							let i;
-							const listElement = list.current;
+							const listElement = listRef.current;
 							const listHeight = listElement.clientHeight;
 							const scrollTop = listElement.scrollTop;
 							const scrollMax = listElement.scrollHeight - listHeight;
@@ -240,25 +242,37 @@ const Select = ({
 
 	useEffect(() => {
 		if (open) {
-			scrollToItem(list.current, list.current.children[focused]);
+			const {bottom, left, width} = buttonRef.current.getBoundingClientRect();
+
+			const list = listRef.current;
+			list.style.display = '';
+			list.style.top = `${bottom + 2}px`;
+			list.style.left = `${left}px`;
+			list.style.width = `${width}px`;
+		}
+	}, [open]);
+
+	useEffect(() => {
+		if (open) {
+			scrollToItem(listRef.current, listRef.current.children[focused]);
 		}
 	}, [open, focused]);
 
-	const listId = id + '-list';
+	const listId = `${id}-list`;
 	const selected = value && renderedOptions.find((o) => o.value === value);
 	return (
-		<div className={'Select' + (className ? ' ' + className : '')}>
+		<div className={`Select${className ? ` ${className}` : ''}`} ref={buttonRef}>
 			<div
 				{...props}
 				id={id}
-				className={'Select__text' + (selected ? '' : ' Select__text--empty') + (error ? ' Select__text--error' : '')}
+				className={`Select__text${selected ? '' : ' Select__text--empty'}${error ? ' Select__text--error' : ''}`}
 				tabIndex={disabled ? undefined : '0'}
 				role="button"
 				aria-haspopup="listbox"
 				aria-expanded={open}
 				aria-disabled={disabled}
 				aria-owns={open ? listId : null}
-				aria-activedescendant={focused === -1 ? null : id + '-' + focused}
+				aria-activedescendant={focused === -1 ? null : `${id}-${focused}`}
 				data-placeholder={placeholder}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
@@ -266,27 +280,30 @@ const Select = ({
 				{selected ? selected.element : ''}
 				<SvgIcon icon={open ? faCaretUp : faCaretDown} className="Select__icon" />
 			</div>
-			{open && (
-				<div
-					id={listId}
-					className="Select__list"
-					role="listbox"
-					ref={list}
-					onMouseDown={handleListMouseDown}
-					onMouseUp={handleListMouseUp}>
-					{renderedOptions.map((o, index) => (
-						<div
-							key={o.key}
-							id={id + '-' + index}
-							className={'Select__option' + (index === focused ? ' Select__option--focused' : '')}
-							role="option"
-							aria-selected={o.value === value}
-							data-index={index}>
-							{o.element}
-						</div>
-					))}
-				</div>
-			)}
+			{open &&
+				createPortal(
+					<div
+						id={listId}
+						className="Select__list"
+						role="listbox"
+						style={{display: 'none'}}
+						ref={listRef}
+						onMouseDown={handleListMouseDown}
+						onMouseUp={handleListMouseUp}>
+						{renderedOptions.map((o, index) => (
+							<div
+								key={o.key}
+								id={`${id}-${index}`}
+								className={`Select__option${index === focused ? ' Select__option--focused' : ''}`}
+								role="option"
+								aria-selected={o.value === value}
+								data-index={index}>
+								{o.element}
+							</div>
+						))}
+					</div>,
+					document.body
+				)}
 		</div>
 	);
 };

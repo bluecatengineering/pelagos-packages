@@ -45,8 +45,9 @@ describe('ComboBox', () => {
 	describe('behaviour', () => {
 		it('hides the list when text is empty', () => {
 			shallow(<ComboBox id="test" />);
-			expect(useEffect.mock.calls).toEqual([
-				[expect.any(Function), [expect.any(Function), expect.any(Function), undefined, undefined]],
+			expect(useEffect.mock.calls[0]).toEqual([
+				expect.any(Function),
+				[expect.any(Function), expect.any(Function), undefined, undefined],
 			]);
 			const cancel = debounce.mock.results[1].value.cancel;
 			expect(useEffect.mock.calls[0][0]()).toBe(cancel);
@@ -58,8 +59,9 @@ describe('ComboBox', () => {
 
 		it('hides the list when text starts with slash', () => {
 			shallow(<ComboBox id="test" text="/x" />);
-			expect(useEffect.mock.calls).toEqual([
-				[expect.any(Function), [expect.any(Function), expect.any(Function), '/x', undefined]],
+			expect(useEffect.mock.calls[0]).toEqual([
+				expect.any(Function),
+				[expect.any(Function), expect.any(Function), '/x', undefined],
 			]);
 			const cancel = debounce.mock.results[1].value.cancel;
 			expect(useEffect.mock.calls[0][0]()).toBe(cancel);
@@ -73,8 +75,9 @@ describe('ComboBox', () => {
 			const suggestions = [{}];
 			const getSuggestions = jest.fn().mockReturnValue(suggestions);
 			shallow(<ComboBox id="test" text="x" getSuggestions={getSuggestions} />);
-			expect(useEffect.mock.calls).toEqual([
-				[expect.any(Function), [expect.any(Function), expect.any(Function), 'x', undefined]],
+			expect(useEffect.mock.calls[0]).toEqual([
+				expect.any(Function),
+				[expect.any(Function), expect.any(Function), 'x', undefined],
 			]);
 			useEffect.mock.calls[0][0]();
 			expect(getSuggestions.mock.calls).toEqual([['x']]);
@@ -87,8 +90,9 @@ describe('ComboBox', () => {
 			const suggestions = [{}];
 			const getSuggestions = jest.fn().mockReturnValue(suggestions);
 			shallow(<ComboBox id="test" autoSelect text="x" getSuggestions={getSuggestions} />);
-			expect(useEffect.mock.calls).toEqual([
-				[expect.any(Function), [expect.any(Function), expect.any(Function), 'x', undefined]],
+			expect(useEffect.mock.calls[0]).toEqual([
+				expect.any(Function),
+				[expect.any(Function), expect.any(Function), 'x', undefined],
 			]);
 			useEffect.mock.calls[0][0]();
 			expect(getSuggestions.mock.calls).toEqual([['x']]);
@@ -101,14 +105,42 @@ describe('ComboBox', () => {
 			const suggestions = [];
 			const getSuggestions = jest.fn().mockReturnValue(suggestions);
 			shallow(<ComboBox id="test" text="x" getSuggestions={getSuggestions} />);
-			expect(useEffect.mock.calls).toEqual([
-				[expect.any(Function), [expect.any(Function), expect.any(Function), 'x', undefined]],
+			expect(useEffect.mock.calls[0]).toEqual([
+				expect.any(Function),
+				[expect.any(Function), expect.any(Function), 'x', undefined],
 			]);
 			useEffect.mock.calls[0][0]();
 			expect(getSuggestions.mock.calls).toEqual([['x']]);
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
+		});
+
+		it('places the list under the button', () => {
+			const button = {getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400})};
+			const list = {style: {}};
+			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
+			useState
+				.mockReturnValueOnce([[null]])
+				.mockReturnValueOnce([true])
+				.mockReturnValueOnce([0]);
+			shallow(<ComboBox id="test" text="x" renderSuggestion={() => <div />} />);
+			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [true]]);
+			useEffect.mock.calls[1][0]();
+			expect(list.style.display).toBe('');
+			expect(list.style.top).toBe('100px');
+			expect(list.style.left).toBe('200px');
+			expect(list.style.width).toBe('400px');
+		});
+
+		it('does not place the list when open is false', () => {
+			useState
+				.mockReturnValueOnce([[null]])
+				.mockReturnValueOnce([false])
+				.mockReturnValueOnce([0]);
+			shallow(<ComboBox id="test" text="x" />);
+			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [false]]);
+			expect(() => useEffect.mock.calls[1][0]()).not.toThrow();
 		});
 
 		it('calls onChange when enter is pressed and an item is selected', () => {

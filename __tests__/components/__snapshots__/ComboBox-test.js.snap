@@ -117,33 +117,40 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     size="medium"
     tooltipPlacement="right"
   />
-  <div
-    className="ComboBox__list"
-    id="test-list"
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    role="listbox"
-  >
+  <React.Portal>
     <div
-      aria-selected={true}
-      className="ComboBox__option TestClass"
-      data-index={0}
-      id="test-0"
-      key={0}
-      role="option"
+      className="ComboBox__list"
+      id="test-list"
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="listbox"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
     >
-      Test suggestion 0
+      <div
+        aria-selected={true}
+        className="ComboBox__option TestClass"
+        data-index={0}
+        id="test-0"
+        key={0}
+        role="option"
+      >
+        Test suggestion 0
+      </div>
+      <div
+        aria-selected={false}
+        className="ComboBox__option TestClass"
+        data-index={1}
+        id="test-1"
+        key={1}
+        role="option"
+      >
+        Test suggestion 1
+      </div>
     </div>
-    <div
-      aria-selected={false}
-      className="ComboBox__option TestClass"
-      data-index={1}
-      id="test-1"
-      key={1}
-      role="option"
-    >
-      Test suggestion 1
-    </div>
-  </div>
+  </React.Portal>
 </div>
 `;
