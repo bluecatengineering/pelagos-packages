@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagInput rendering renders expected elements 1`] = `
+<div
+  className="TagInput"
+  id="test-tags"
+  onClick={[Function]}
+  onKeyDown={[MockFunction]}
+>
+  <span
+    className="TagInput__tag"
+  >
+    foo
+    <span
+      aria-label="Remove foo"
+      className="TagInput__remove"
+      data-index={0}
+      role="button"
+      tabIndex="0"
+    >
+      <SvgIcon
+        icon={
+          Object {
+            "icon": Array [],
+          }
+        }
+      />
+    </span>
+  </span>
+  <span
+    className="TagInput__tag"
+  >
+    bar
+    <span
+      aria-label="Remove bar"
+      className="TagInput__remove"
+      data-index={1}
+      role="button"
+      tabIndex="0"
+    >
+      <SvgIcon
+        icon={
+          Object {
+            "icon": Array [],
+          }
+        }
+      />
+    </span>
+  </span>
+  <input
+    className="TagInput__input"
+    id="test"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`TagInput rendering renders expected elements when error is set 1`] = `
+<div
+  className="TagInput TagInput--error"
+  id="test-tags"
+  onClick={[Function]}
+  onKeyDown={[MockFunction]}
+>
+  <span
+    className="TagInput__tag"
+  >
+    foo
+    <span
+      aria-label="Remove foo"
+      className="TagInput__remove"
+      data-index={0}
+      role="button"
+      tabIndex="0"
+    >
+      <SvgIcon
+        icon={
+          Object {
+            "icon": Array [],
+          }
+        }
+      />
+    </span>
+  </span>
+  <span
+    className="TagInput__tag"
+  >
+    bar
+    <span
+      aria-label="Remove bar"
+      className="TagInput__remove"
+      data-index={1}
+      role="button"
+      tabIndex="0"
+    >
+      <SvgIcon
+        icon={
+          Object {
+            "icon": Array [],
+          }
+        }
+      />
+    </span>
+  </span>
+  <input
+    className="TagInput__input"
+    id="test"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`TagInput rendering renders expected elements when tags is empty and defaultTags is not set 1`] = `
+<div
+  className="TagInput"
+  id="test-tags"
+  onClick={[Function]}
+  onKeyDown={[MockFunction]}
+>
+  <input
+    className="TagInput__input"
+    id="test"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`TagInput rendering renders expected elements when tags is empty and defaultTags is set 1`] = `
+<div
+  className="TagInput"
+  id="test-tags"
+  onClick={[Function]}
+  onKeyDown={[MockFunction]}
+>
+  <span
+    className="TagInput__defaultTag"
+  >
+    foo
+  </span>
+  <span
+    className="TagInput__defaultTag"
+  >
+    bar
+  </span>
+  <input
+    className="TagInput__input"
+    id="test"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;

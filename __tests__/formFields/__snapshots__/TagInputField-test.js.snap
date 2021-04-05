@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagInputField rendering renders expected elements 1`] = `
+<div
+  className="TagInputField"
+>
+  <LabelLine
+    htmlFor="test"
+    id="test-label"
+    optional={false}
+    text="Label"
+  />
+  <TagInput
+    aria-labelledby="test-label"
+    id="test"
+    onChange={[MockFunction]}
+    onError={[MockFunction]}
+    tags={
+      Array [
+        "foo",
+      ]
+    }
+    validate={[MockFunction]}
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`TagInputField rendering renders expected elements when className is set 1`] = `
+<div
+  className="TagInputField TestClass"
+>
+  <LabelLine
+    htmlFor="test"
+    id="test-label"
+    text="Label"
+  />
+  <TagInput
+    aria-labelledby="test-label"
+    id="test"
+    onChange={[MockFunction]}
+    onError={[MockFunction]}
+    tags={
+      Array [
+        "foo",
+      ]
+    }
+    validate={[MockFunction]}
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
+
+exports[`TagInputField rendering shows optional text if tags is empty 1`] = `
+<div
+  className="TagInputField"
+>
+  <LabelLine
+    htmlFor="test"
+    id="test-label"
+    optional={true}
+    text="Label"
+  />
+  <TagInput
+    aria-labelledby="test-label"
+    id="test"
+    onChange={[MockFunction]}
+    onError={[MockFunction]}
+    tags={Array []}
+    validate={[MockFunction]}
+  />
+  <FieldError
+    alignment="right"
+  />
+</div>
+`;
