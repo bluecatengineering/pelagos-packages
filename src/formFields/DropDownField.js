@@ -38,8 +38,8 @@ DropDownField.propTypes = {
 	disabled: PropTypes.bool,
 	/** The error text. */
 	error: PropTypes.string,
-	/** Function invoked to get the option's value. */
-	getOptionValue: PropTypes.func,
+	/** Function invoked to get the key of each option. */
+	getOptionKey: PropTypes.func,
 	/** Function invoked to render the options. */
 	renderOption: PropTypes.func.isRequired,
 	/** Function invoked when the option is changed. */

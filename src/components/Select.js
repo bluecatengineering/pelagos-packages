@@ -25,7 +25,7 @@ const Select = ({
 	placeholder,
 	disabled,
 	error,
-	getOptionValue,
+	getOptionKey,
 	renderOption,
 	onChange,
 	...props
@@ -35,11 +35,12 @@ const Select = ({
 
 	const renderedOptions = useMemo(
 		() =>
-			options.map((o) => ({
-				value: getOptionValue(o),
-				element: renderOption(o),
+			options.map((option) => ({
+				value: option,
+				key: getOptionKey(option),
+				element: renderOption(option),
 			})),
-		[options, getOptionValue, renderOption]
+		[options, getOptionKey, renderOption]
 	);
 
 	const list = useRef(null);
@@ -49,8 +50,8 @@ const Select = ({
 
 	const showList = useCallback(() => {
 		setOpen(true);
-		setFocused(value ? renderedOptions.findIndex((o) => o.value === value) : 0);
-	}, [value, renderedOptions]);
+		setFocused(value ? options.indexOf(value) : 0);
+	}, [value, options]);
 
 	const hideList = useCallback(() => {
 		setOpen(false);
@@ -275,7 +276,7 @@ const Select = ({
 					onMouseUp={handleListMouseUp}>
 					{renderedOptions.map((o, index) => (
 						<div
-							key={o.value}
+							key={o.key}
 							id={id + '-' + index}
 							className={'Select__option' + (index === focused ? ' Select__option--focused' : '')}
 							role="option"
@@ -296,7 +297,7 @@ Select.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The value of the selected option. */
-	value: PropTypes.string,
+	value: PropTypes.any,
 	/** The list of options. */
 	options: PropTypes.array.isRequired,
 	/** The placeholder text. */
@@ -305,8 +306,8 @@ Select.propTypes = {
 	disabled: PropTypes.bool,
 	/** Whether the component is in error. */
 	error: PropTypes.bool,
-	/** Function invoked to get the value of each option. */
-	getOptionValue: PropTypes.func,
+	/** Function invoked to get the key of each option. */
+	getOptionKey: PropTypes.func,
 	/** Function invoked to render each option. */
 	renderOption: PropTypes.func.isRequired,
 	/** Function invoked when the selected option changes. */
@@ -314,7 +315,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
-	getOptionValue: identity,
+	getOptionKey: identity,
 };
 
 export default Select;

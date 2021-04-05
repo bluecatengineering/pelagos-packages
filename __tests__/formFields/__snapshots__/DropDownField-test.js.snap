@@ -16,7 +16,7 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     aria-labelledby="test-label"
     className="DropDownField__select"
     error={false}
-    getOptionValue={[MockFunction]}
+    getOptionKey={[MockFunction]}
     id="test"
     onChange={[MockFunction]}
     options={
@@ -50,7 +50,7 @@ exports[`DropDownField rendering renders expected elements when className is set
     aria-labelledby="test-label"
     className="DropDownField__select"
     error={false}
-    getOptionValue={[MockFunction]}
+    getOptionKey={[MockFunction]}
     id="test"
     onChange={[MockFunction]}
     options={
@@ -84,7 +84,7 @@ exports[`DropDownField rendering renders expected elements when error is set 1`]
     aria-labelledby="test-label"
     className="DropDownField__select"
     error={true}
-    getOptionValue={[MockFunction]}
+    getOptionKey={[MockFunction]}
     id="test"
     onChange={[MockFunction]}
     options={
