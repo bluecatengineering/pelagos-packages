@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import Label from '../components/Label';
 import Toggle from '../components/Toggle';
+import useRandomId from '../hooks/useRandomId';
+
 import './ToggleField.less';
 
 /** A toggle button field. */
 const ToggleField = ({id, className, label, value, disabled, onChange}) => {
-	id = id || 'e' + ('' + Math.random()).substr(2);
+	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	return (
 		<div className={'ToggleField' + (className ? ' ' + className : '')}>

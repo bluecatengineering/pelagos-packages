@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 
 import Label from '../components/Label';
 import Select from '../components/Select';
+import useRandomId from '../hooks/useRandomId';
 
 import FieldError from './FieldError';
 import './DropDownField.less';
 
 /** A dropdown field. */
 const DropDownField = ({id, className, label, error, ...props}) => {
-	id = id || 'e' + ('' + Math.random()).substr(2);
+	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	return (
 		<div className={'DropDownField' + (className ? ' ' + className : '')}>

@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 
 import LabelLine from '../components/LabelLine';
+import useRandomId from '../hooks/useRandomId';
 
 import FieldError from './FieldError';
 import './TextAreaField.less';
 
 /** A text area field. */
 const TextAreaField = ({id, className, label, value, optional, resize, error, onChange, ...props}) => {
-	id = id || 'e' + ('' + Math.random()).substr(2);
+	id = useRandomId(id);
 	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
 		<div className={'TextAreaField' + (className ? ' ' + className : '')}>

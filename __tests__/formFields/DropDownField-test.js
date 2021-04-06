@@ -1,6 +1,7 @@
 import {shallow} from 'enzyme';
 
 import DropDownField from '../../src/formFields/DropDownField';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/formFields/DropDownField');
 
@@ -10,6 +11,8 @@ const values = {
 };
 const options = Object.keys(values);
 const renderOption = (o) => values[o];
+
+useRandomId.mockReturnValue('test');
 
 describe('DropDownField', () => {
 	describe('rendering', () => {

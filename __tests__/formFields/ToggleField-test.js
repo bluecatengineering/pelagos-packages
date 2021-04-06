@@ -1,8 +1,11 @@
 import {shallow} from 'enzyme';
 
 import ToggleField from '../../src/formFields/ToggleField';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/formFields/ToggleField');
+
+useRandomId.mockReturnValue('test');
 
 describe('ToggleField', () => {
 	describe('rendering', () => {

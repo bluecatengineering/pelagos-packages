@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 
 import LabelLine from '../components/LabelLine';
+import useRandomId from '../hooks/useRandomId';
 
 import FieldError from './FieldError';
 import './TextInputField.less';
 
 /** A text input field. */
 const TextInputField = ({id, className, label, value, optional, error, onChange, ...props}) => {
-	id = id || 'e' + ('' + Math.random()).substr(2);
+	id = useRandomId(id);
 	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
 		<div className={'TextInputField' + (className ? ' ' + className : '')}>

@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 
 import Label from '../components/Label';
+import useRandomId from '../hooks/useRandomId';
+
 import './OutputField.less';
 
 /** A labelled output. */
 const OutputField = ({id, className, label, value, alignRight, active}) => {
-	id = id || 'e' + ('' + Math.random()).substr(2);
+	id = useRandomId(id);
 	return (
 		<div
 			className={'OutputField' + (alignRight ? ' OutputField--alignRight' : '') + (className ? ' ' + className : '')}>

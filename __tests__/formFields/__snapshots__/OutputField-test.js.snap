@@ -83,24 +83,3 @@ exports[`OutputField rendering renders expected elements when className is set 1
   </output>
 </div>
 `;
-
-exports[`OutputField rendering renders expected elements when id is not set 1`] = `
-<div
-  className="OutputField"
->
-  <div
-    className="OutputField__label"
-  >
-    <Label
-      htmlFor="e1"
-      text="Test"
-    />
-  </div>
-  <output
-    className="OutputField__value"
-    id="e1"
-  >
-    This is a test
-  </output>
-</div>
-`;

@@ -1,9 +1,12 @@
 import {shallow} from 'enzyme';
 
 import TextAreaField from '../../src/formFields/TextAreaField';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/formFields/TextAreaField');
 jest.mock('lodash-es/debounce', () => jest.fn((f) => f));
+
+useRandomId.mockReturnValue('test-id');
 
 describe('TextAreaField', () => {
 	describe('rendering', () => {
@@ -65,15 +68,6 @@ describe('TextAreaField', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('sets a random id if not provided', () => {
-			const random = jest.spyOn(Math, 'random').mockReturnValue(0.1);
-			const wrapper = shallow(
-				<TextAreaField label="Label" value="value" placeholder="placeholder" maxLength={10} onChange={jest.fn()} />
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(random).toHaveBeenCalledTimes(1);
 		});
 
 		it('adds the error class if the error is set', () => {

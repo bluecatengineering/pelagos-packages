@@ -102,28 +102,3 @@ exports[`TextInputField rendering renders expected elements when value is empty 
   />
 </div>
 `;
-
-exports[`TextInputField rendering sets a random id if not provided 1`] = `
-<div
-  className="TextInputField"
->
-  <LabelLine
-    htmlFor="e1"
-    text="Label"
-  />
-  <input
-    className="TextInputField__input"
-    disabled={false}
-    id="e1"
-    maxLength={10}
-    name="name"
-    onChange={[Function]}
-    placeholder="placeholder"
-    type="text"
-    value="value"
-  />
-  <FieldError
-    alignment="right"
-  />
-</div>
-`;

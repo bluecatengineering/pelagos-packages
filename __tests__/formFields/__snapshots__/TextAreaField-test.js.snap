@@ -112,25 +112,3 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
   />
 </div>
 `;
-
-exports[`TextAreaField rendering sets a random id if not provided 1`] = `
-<div
-  className="TextAreaField"
->
-  <LabelLine
-    htmlFor="e1"
-    text="Label"
-  />
-  <textarea
-    className="TextAreaField__area TextAreaField--noresize"
-    id="e1"
-    maxLength={10}
-    onChange={[Function]}
-    placeholder="placeholder"
-    value="value"
-  />
-  <FieldError
-    alignment="right"
-  />
-</div>
-`;
