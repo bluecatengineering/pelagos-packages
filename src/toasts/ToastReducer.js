@@ -1,5 +1,4 @@
-import ToastTypes from '../ToastTypes';
-
+import ToastTypes from './ToastTypes';
 import {removeAllToasts, removeToast, removeToastType} from './ToastActions';
 import {hasFatalError} from './ToastFunctions';
 

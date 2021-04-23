@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
-import ToastTypes from '../ToastTypes';
+import ToastTypes from '../toasts/ToastTypes';
 import timesThin from '../icons/timesThin';
 import __ from '../strings';
 

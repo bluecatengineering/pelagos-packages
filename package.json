@@ -53,6 +53,7 @@
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
+    "@bluecat/analyze-imports": "^0.1.2",
     "@bluecat/babel-plugin-transform-hash-icu-key": "^0.5.0",
     "@bluecat/jest-helpers": "^2.0.0",
     "@bluecat/strings-generator": "^0.5.0",
@@ -150,7 +151,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "scripts/pre-commit-updates && lint-staged",
+      "pre-commit": "scripts/pre-commit-updates && lint-staged && npx --no-install analyze-imports src",
       "commit-msg": "check-git-msg",
       "pre-push": "check-git-commits"
     }

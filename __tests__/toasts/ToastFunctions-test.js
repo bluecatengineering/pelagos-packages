@@ -1,6 +1,6 @@
 import {hasFatalError, registerActionToast, toaster} from '../../src/toasts/ToastFunctions';
 import {addToast} from '../../src/toasts/ToastActions';
-import ToastTypes from '../../src/ToastTypes';
+import ToastTypes from '../../src/toasts/ToastTypes';
 
 jest.unmock('../../src/toasts/ToastFunctions');
 jest.unmock('../../src/toasts/ToastActions');

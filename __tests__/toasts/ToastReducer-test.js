@@ -1,5 +1,5 @@
 import reducer from '../../src/toasts/ToastReducer';
-import ToastTypes from '../../src/ToastTypes';
+import ToastTypes from '../../src/toasts/ToastTypes';
 import {removeToast, removeAllToasts, removeToastType} from '../../src/toasts/ToastActions';
 import {hasFatalError} from '../../src/toasts/ToastFunctions';
 

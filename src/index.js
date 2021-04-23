@@ -1,5 +1,4 @@
 export * from './Colors';
-export {default as ToastTypes} from './ToastTypes';
 
 export {default as timesThin} from './icons/timesThin';
 
@@ -58,6 +57,7 @@ export {default as throttleAF} from './functions/throttleAF';
 
 export * from './toasts/ToastActions';
 export * from './toasts/ToastFunctions';
+export {default as ToastTypes} from './toasts/ToastTypes';
 export {default as toastReducer} from './toasts/ToastReducer';
 
 export {default as useEditorPositioner} from './hooks/useEditorPositioner';

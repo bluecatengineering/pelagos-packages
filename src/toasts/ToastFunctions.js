@@ -1,5 +1,4 @@
-import ToastTypes from '../ToastTypes';
-
+import ToastTypes from './ToastTypes';
 import {addToast} from './ToastActions';
 
 const ADD_TOAST_TYPE = addToast.toString();
