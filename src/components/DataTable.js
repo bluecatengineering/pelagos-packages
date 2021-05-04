@@ -87,7 +87,11 @@ const renderRows = (data, metadata, columns, selectedId, highlightId, focused, g
 		);
 	});
 
-/** A scrollable table. */
+/**
+ * A scrollable table.
+ *
+ * This component has no intrinsic size. For a correct display the container should be sized appropriately.
+ */
 const DataTable = ({
 	id,
 	className,
