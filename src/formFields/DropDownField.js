@@ -30,7 +30,7 @@ DropDownField.propTypes = {
 	/** The field label. */
 	label: PropTypes.string.isRequired,
 	/** The selected value. */
-	value: PropTypes.string,
+	value: PropTypes.any,
 	/** The options for the dropdown. */
 	options: PropTypes.array.isRequired,
 	/** The placeholder text when no option is selected. */
