@@ -2094,7 +2094,7 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
                 icon={
                   Object {
                     "icon": Array [],
-                    "iconName": "sort-down",
+                    "iconName": "sort-up",
                     "prefix": "fas",
                   }
                 }
@@ -2182,7 +2182,7 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
                   icon={
                     Object {
                       "icon": Array [],
-                      "iconName": "sort-down",
+                      "iconName": "sort-up",
                       "prefix": "fas",
                     }
                   }
@@ -2468,7 +2468,7 @@ exports[`DataTable rendering renders the expected elements in descending order 1
                 icon={
                   Object {
                     "icon": Array [],
-                    "iconName": "sort-up",
+                    "iconName": "sort-down",
                     "prefix": "fas",
                   }
                 }
@@ -2556,7 +2556,7 @@ exports[`DataTable rendering renders the expected elements in descending order 1
                   icon={
                     Object {
                       "icon": Array [],
-                      "iconName": "sort-up",
+                      "iconName": "sort-down",
                       "prefix": "fas",
                     }
                   }
@@ -2866,7 +2866,7 @@ exports[`DataTable rendering renders the expected elements using a secondary key
                 icon={
                   Object {
                     "icon": Array [],
-                    "iconName": "sort-down",
+                    "iconName": "sort-up",
                     "prefix": "fas",
                   }
                 }
@@ -2954,7 +2954,7 @@ exports[`DataTable rendering renders the expected elements using a secondary key
                   icon={
                     Object {
                       "icon": Array [],
-                      "iconName": "sort-down",
+                      "iconName": "sort-up",
                       "prefix": "fas",
                     }
                   }

@@ -55,7 +55,7 @@ const renderHeaders = (metadata, columns, dataSort, onClick) =>
 					{col.sortable && (
 						<SvgIcon
 							className={'DataTable__sort' + (sortOrder ? ' DataTable__sort--active' : '')}
-							icon={sortOrder === 'a' ? faSortDown : sortOrder === 'd' ? faSortUp : faSort}
+							icon={sortOrder === 'a' ? faSortUp : sortOrder === 'd' ? faSortDown : faSort}
 						/>
 					)}
 				</span>
