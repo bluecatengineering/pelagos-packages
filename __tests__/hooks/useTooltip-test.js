@@ -153,6 +153,7 @@ describe('useTooltip', () => {
 	});
 
 	it('does not remove tooltip if not in the DOM', () => {
+		jest.spyOn(global, 'setTimeout');
 		const addEventListener = jest.fn();
 		const tooltip = useTooltip('Test', 'top');
 		tooltip({addEventListener});

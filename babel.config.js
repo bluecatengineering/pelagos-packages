@@ -2,7 +2,11 @@ const hashLength = require('./scripts/hash-length');
 
 module.exports = {
 	presets: [['@babel/react', {useBuiltIns: true, runtime: 'automatic'}]],
-	plugins: ['@babel/plugin-proposal-class-properties'],
+	plugins: [
+		['@babel/plugin-proposal-class-properties', {loose: true}],
+		['@babel/plugin-proposal-private-methods', {loose: true}],
+		['@babel/plugin-proposal-private-property-in-object', {loose: true}],
+	],
 	env: {
 		test: {
 			sourceMaps: 'both',
