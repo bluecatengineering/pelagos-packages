@@ -1,12 +1,12 @@
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import PropTypes from 'prop-types';
 import {createPortal} from 'react-dom';
+import {t} from '@bluecat/l10n.macro';
 import {faFilter} from '@fortawesome/free-solid-svg-icons';
 
 import useMenuHandler from '../hooks/useMenuHandler';
 import useTooltip from '../hooks/useTooltip';
 import SvgIcon from '../components/SvgIcon';
-import __ from '../strings';
 
 import './FilterMenu.less';
 
@@ -50,13 +50,13 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 				id="filterButton"
 				className="FilterMenu__button"
 				role="button"
-				aria-label={__('ADD_FILTER')}
+				aria-label={t`Add filter`}
 				aria-controls={menuVisible ? 'filterMenu' : null}
 				aria-haspopup="true"
 				aria-expanded={menuVisible}
 				aria-activedescendant={current === -1 ? null : `filterMenu-${links[current].key}`}
 				tabIndex="0"
-				ref={useTooltip(__('ADD_FILTER'), 'top')}
+				ref={useTooltip(t`Add filter`, 'top')}
 				{...buttonProps}>
 				<SvgIcon icon={faFilter} />
 			</div>

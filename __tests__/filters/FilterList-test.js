@@ -4,7 +4,6 @@ import {shallow} from 'enzyme';
 import FilterList from '../../src/filters/FilterList';
 
 jest.unmock('../../src/filters/FilterList');
-jest.unmock('../../src/strings');
 
 const FilterEditor = () => <></>;
 const getFilterTitle = (name) => name;

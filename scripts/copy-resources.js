@@ -9,12 +9,10 @@ const {
 } = require('fs');
 const {dirname, join} = require('path');
 
-const generator = require('@bluecat/strings-generator');
+const converter = require('@bluecat/l10n-icu2obj');
 
-const hashLength = require('./hash-length');
-
-const EXTENSIONS = /\.(less|yaml)$/;
-const STRINGS = /\.strings\.yaml$/;
+const EXTENSIONS = /\.(less|po|yaml)$/;
+const PO = /\.po$/;
 
 const mkdirs = (path) => {
 	try {
@@ -38,8 +36,8 @@ const copyDir = (from, to) =>
 			copyDir(subFrom, subTo);
 		} else if (stats.isFile() && EXTENSIONS.test(name)) {
 			mkdirs(to);
-			if (STRINGS.test(name)) {
-				writeFileSync(`${subTo}.js`, generator(readFileSync(subFrom, 'utf8'), output, hashLength));
+			if (PO.test(name)) {
+				writeFileSync(`${subTo}.js`, converter(readFileSync(subFrom, 'utf8'), 'es'));
 			} else {
 				copyFileSync(subFrom, subTo, COPYFILE_FICLONE);
 			}

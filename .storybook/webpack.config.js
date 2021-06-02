@@ -16,8 +16,8 @@ module.exports = ({config}) => ({
 				include: path.resolve(__dirname, '../'),
 			},
 			{
-				test: /\.strings\.yaml$/,
-				loader: '@bluecat/strings-loader',
+				test: /\.po$/,
+				loader: '@bluecat/l10n-loader',
 			},
 			{
 				test: /(?<!\.strings)\.yaml$/,

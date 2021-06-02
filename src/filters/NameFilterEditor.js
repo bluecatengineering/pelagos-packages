@@ -1,11 +1,11 @@
 import {useCallback, useMemo, useState} from 'react';
 import PropTypes from 'prop-types';
+import {t} from '@bluecat/l10n.macro';
 
 import ListInput from '../listInput/ListInput';
 import getGenericSuggestions from '../functions/getGenericSuggestions';
 import renderSuggestion from '../suggestions/renderSuggestion';
 import renderNamedListItem from '../listItems/renderNamedListItem';
-import __ from '../strings';
 
 const getName = (o) => o.name;
 const getId = (o) => o.id;
@@ -18,16 +18,16 @@ const NameFilterEditor = ({label, placeholder, list, sourceById, errorMessage, v
 
 	const sourceList = useMemo(() => Object.values(sourceById), [sourceById]);
 
-	const getSuggestions = useCallback((text, list) => getGenericSuggestions(text, list, sourceList, errorMessage), [
-		sourceList,
-		errorMessage,
-	]);
+	const getSuggestions = useCallback(
+		(text, list) => getGenericSuggestions(text, list, sourceList, errorMessage),
+		[sourceList, errorMessage]
+	);
 
 	const handleListChange = useCallback((list) => onListChange(list.length ? list.map(getId) : null), [onListChange]);
 
 	validateSaveRef.current = useCallback(() => {
 		if (text) {
-			setError(__('ITEM_NOT_ADDED'));
+			setError(t`Press Enter to add item(s) to the list.`);
 			return false;
 		}
 		return true;

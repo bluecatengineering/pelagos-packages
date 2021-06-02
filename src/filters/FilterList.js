@@ -1,12 +1,12 @@
 import {useCallback, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
+import {t} from '@bluecat/l10n.macro';
 
 import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import ScrollBox from '../components/ScrollBox';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
-import __ from '../strings';
 
 import './FilterList.less';
 
@@ -41,32 +41,35 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 				<div className="FilterList__items" onClick={handleClick} onKeyDown={handleButtonKeyDown}>
 					{filters &&
 						Object.entries(filters).map(([key, v]) =>
-							!excludedKeys.includes(key) ? (
-								<div
-									key={key}
-									id={`filter-${key}`}
-									className="FilterList__item"
-									tabIndex="0"
-									role="button"
-									aria-haspopup="dialog"
-									aria-expanded={key === filterName}
-									aria-controls={key === filterName ? 'filterListDropDown' : null}
-									data-kind="item"
-									data-key={key}>
-									<span className="FilterList__filterTitle">{getFilterTitle(key)}</span>
-									{getValues(key, v)}
-									<span
-										id={`filter-${key}-remove`}
-										className="FilterList__remove"
-										tabIndex="0"
-										role="button"
-										aria-label={__('REMOVE_OBJECT', {name: getFilterTitle(key)})}
-										data-kind="remove"
-										data-key={key}>
-										<SvgIcon icon={timesThin} />
-									</span>
-								</div>
-							) : null
+							!excludedKeys.includes(key)
+								? do {
+										const name = getFilterTitle(key);
+										<div
+											key={key}
+											id={`filter-${key}`}
+											className="FilterList__item"
+											tabIndex="0"
+											role="button"
+											aria-haspopup="dialog"
+											aria-expanded={key === filterName}
+											aria-controls={key === filterName ? 'filterListDropDown' : null}
+											data-kind="item"
+											data-key={key}>
+											<span className="FilterList__filterTitle">{name}</span>
+											{getValues(key, v)}
+											<span
+												id={`filter-${key}-remove`}
+												className="FilterList__remove"
+												tabIndex="0"
+												role="button"
+												aria-label={t`Remove ${name}`}
+												data-kind="remove"
+												data-key={key}>
+												<SvgIcon icon={timesThin} />
+											</span>
+										</div>;
+								  }
+								: null
 						)}
 				</div>
 			</ScrollBox>

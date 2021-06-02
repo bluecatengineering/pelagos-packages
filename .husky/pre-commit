@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-scripts/pre-commit-updates && npx --no-install lint-staged && npx --no-install analyze-imports src
+scripts/pre-commit-updates && npx lint-staged && npx @bluecat/analyze-imports src && npx @bluecat/l10n-cli

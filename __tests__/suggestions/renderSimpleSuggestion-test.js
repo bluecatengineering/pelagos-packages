@@ -1,7 +1,6 @@
 import renderSimpleSuggestion from '../../src/suggestions/renderSimpleSuggestion';
 
 jest.unmock('../../src/suggestions/renderSimpleSuggestion');
-jest.unmock('../../src/strings');
 
 describe('renderSimpleSuggestion', () => {
 	it('renders expected elements', () => {

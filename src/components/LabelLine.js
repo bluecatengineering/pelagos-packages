@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-
-import __ from '../strings';
+import {t} from '@bluecat/l10n.macro';
 
 import Label from './Label';
 import './LabelLine.less';
@@ -9,7 +8,7 @@ import './LabelLine.less';
 const LabelLine = ({text, optional, notice, ...props}) => (
 	<div className="LabelLine__label">
 		<Label {...props} text={text} />
-		{optional && <span className="LabelLine__optional">{__('P_OPTIONAL')}</span>}
+		{optional && <span className="LabelLine__optional">{t`(optional)`}</span>}
 		{notice && <span className="LabelLine__notice">{notice}</span>}
 	</div>
 );

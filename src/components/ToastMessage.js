@@ -1,9 +1,9 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
+import {t} from '@bluecat/l10n.macro';
 
 import ToastTypes from '../toasts/ToastTypes';
 import timesThin from '../icons/timesThin';
-import __ from '../strings';
 
 import Button from './Button';
 import SvgIcon from './SvgIcon';
@@ -59,7 +59,7 @@ const ToastMessage = ({message, onRemove}) => {
 				<div
 					className="ToastMessage__close"
 					role="button"
-					aria-label={__('DISMISS')}
+					aria-label={t`Dismiss`}
 					data-testid="toast-close"
 					onClick={handleCloseClick}>
 					<SvgIcon icon={timesThin} />

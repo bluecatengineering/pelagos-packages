@@ -1,10 +1,10 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
+import {t} from '@bluecat/l10n.macro';
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
 import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import addResizeObserver from '../functions/addResizeObserver';
-import __ from '../strings';
 
 import SvgIcon from './SvgIcon';
 import './ScrollBox.less';
@@ -42,7 +42,7 @@ const ScrollBox = ({className, trackId, children, onResize}) => {
 				className="ScrollBox__btn"
 				tabIndex="0"
 				role="button"
-				aria-label={__('SCROLL_LEFT')}
+				aria-label={t`Scroll left`}
 				onMouseDown={preventDefault}
 				onClick={handleClickLeft}
 				onKeyDown={handleButtonKeyDown}>
@@ -55,7 +55,7 @@ const ScrollBox = ({className, trackId, children, onResize}) => {
 				className="ScrollBox__btn"
 				tabIndex="0"
 				role="button"
-				aria-label={__('SCROLL_RIGHT')}
+				aria-label={t`Scroll right`}
 				onMouseDown={preventDefault}
 				onClick={handleClickRight}
 				onKeyDown={handleButtonKeyDown}>

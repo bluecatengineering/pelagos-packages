@@ -1,10 +1,10 @@
 import {useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
+import {t} from '@bluecat/l10n.macro';
 
 import ListInput from '../listInput/ListInput';
 import renderSuggestion from '../suggestions/renderSuggestion';
-import __ from '../strings';
 
 const getName = (o) => o.name;
 const getSuggestionHighlightKey = (s) => (s.order === 2 ? s.name : null);
@@ -18,7 +18,7 @@ const TextFilterEditor = ({label, placeholder, list, getSuggestions, parseInput,
 
 	validateSaveRef.current = useCallback(() => {
 		if (text) {
-			setError(__('ITEM_NOT_ADDED'));
+			setError(t`Press Enter to add item(s) to the list.`);
 			return false;
 		}
 		return true;

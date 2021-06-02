@@ -2,7 +2,6 @@ import getGenericSuggestions from '../../src/functions/getGenericSuggestions';
 
 jest.unmock('../../src/functions/getGenericSuggestions');
 jest.unmock('../../src/functions/compareSuggestions');
-jest.unmock('../../src/strings');
 
 describe('getGenericSuggestions', () => {
 	it('returns expected suggestions', () => {

@@ -1,11 +1,11 @@
-import __ from '../strings';
+import {t} from '@bluecat/l10n.macro';
 
 import compareSuggestions from './compareSuggestions';
 
 export default (text, list, sourceList, errorMessage) => {
 	text = text.toLowerCase();
 	const suggestions = sourceList.filter((item) => item.name.toLowerCase().includes(text));
-	const memberText = __('MEMBER');
+	const memberText = t`member`;
 	return suggestions.length === 0
 		? {error: errorMessage}
 		: {

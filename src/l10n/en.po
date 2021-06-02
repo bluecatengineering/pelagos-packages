@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2021-06-02T22:21:52.246Z\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @bluecat/l10n-cli\n"
+"Language: en\n"
+
+#: b16
+msgid "(optional)"
+msgstr ""
+
+#: dae
+msgid "{name} added"
+msgstr ""
+
+#: c5f
+msgid "{name} removed"
+msgstr ""
+
+#: 61c
+msgid "Add"
+msgstr ""
+
+#: 854
+msgid "Add filter"
+msgstr ""
+
+#: 70a
+msgid "Dismiss"
+msgstr ""
+
+#: 646
+msgid "member"
+msgstr ""
+
+#: 187
+msgid "Press Enter to add item(s) to the list."
+msgstr ""
+
+#: df7
+msgid "Remove {name}"
+msgstr ""
+
+#: 2c9
+msgid "Scroll left"
+msgstr ""
+
+#: 299
+msgid "Scroll right"
+msgstr ""

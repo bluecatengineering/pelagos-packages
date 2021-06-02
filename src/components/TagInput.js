@@ -1,12 +1,12 @@
 import {useCallback, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
+import {t} from '@bluecat/l10n.macro';
 
 import setLiveText from '../functions/setLiveText';
 import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import useTooltip from '../hooks/useTooltip';
 import timesThin from '../icons/timesThin';
-import __ from '../strings';
 
 import SvgIcon from './SvgIcon';
 import './TagInput.less';
@@ -36,7 +36,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 			if (button) {
 				const index = +button.dataset.index;
 				const name = tags[index];
-				setLiveText(__('OBJECT_REMOVED', {name}));
+				setLiveText(t`${name} removed`);
 				onChange(removeTag(tags, index));
 				inputRef.current.focus();
 			}
@@ -45,15 +45,15 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 	);
 
 	const addTag = useCallback(
-		(value) => {
-			if (!hasTag(tags, value)) {
-				const error = validate(value);
+		(name) => {
+			if (!hasTag(tags, name)) {
+				const error = validate(name);
 				if (error) {
 					onError(error);
 				} else {
 					debChange.cancel();
-					setLiveText(__('OBJECT_ADDED', {name: value}));
-					onChange([...tags, value]);
+					setLiveText(t`${name} added`);
+					onChange([...tags, name]);
 					setText('');
 				}
 			} else {
@@ -83,7 +83,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 						if (length) {
 							const index = length - 1;
 							const name = tags[index];
-							setLiveText(__('OBJECT_REMOVED', {name}));
+							setLiveText(t`${name} removed`);
 							onChange(removeTag(tags, index));
 						}
 					}
@@ -115,14 +115,14 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 			onClick={handleTagClick}
 			onKeyDown={handleButtonKeyDown}>
 			{length
-				? tags.map((tag, i) => (
-						<span key={tag} className="TagInput__tag">
-							{tag}
+				? tags.map((name, i) => (
+						<span key={name} className="TagInput__tag">
+							{name}
 							<span
 								className="TagInput__remove"
 								tabIndex="0"
 								role="button"
-								aria-label={__('REMOVE_OBJECT', {name: tag})}
+								aria-label={t`Remove ${name}`}
 								data-index={i}>
 								<SvgIcon icon={timesThin} />
 							</span>

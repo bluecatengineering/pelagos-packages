@@ -6,7 +6,6 @@ import {scrollToItem} from '@bluecat/helpers';
 import ComboBox from '../../src/components/ComboBox';
 
 jest.unmock('../../src/components/ComboBox');
-jest.unmock('../../src/strings');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && ((f.cancel = jest.fn()), (f.flush = jest.fn())), f)));
 

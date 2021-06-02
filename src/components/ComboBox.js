@@ -3,9 +3,8 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollToItem} from '@bluecat/helpers';
+import {t} from '@bluecat/l10n.macro';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
-
-import __ from '../strings';
 
 import IconButton from './IconButton';
 
@@ -49,11 +48,10 @@ const ComboBox = ({
 			}, 150),
 		[hideList, autoSelect, getSuggestions]
 	);
-	const selectSuggestion = useCallback((index) => (hideList(), onChange(suggestions[index])), [
-		suggestions,
-		hideList,
-		onChange,
-	]);
+	const selectSuggestion = useCallback(
+		(index) => (hideList(), onChange(suggestions[index])),
+		[suggestions, hideList, onChange]
+	);
 
 	const handleKeyDown = useCallback(
 		(event) => {
@@ -168,7 +166,7 @@ const ComboBox = ({
 					id={`${id}-add`}
 					className="ComboBox__add"
 					icon={faPlus}
-					aria-label={__('ADD')}
+					aria-label={t`Add`}
 					disabled={!text}
 					onClick={handleAddClick}
 				/>

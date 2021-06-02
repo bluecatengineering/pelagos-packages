@@ -1,11 +1,11 @@
 import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
+import {t} from '@bluecat/l10n.macro';
 
 import LabelLine from '../components/LabelLine';
 import ComboBox from '../components/ComboBox';
 import FieldError from '../formFields/FieldError';
 import setLiveText from '../functions/setLiveText';
-import __ from '../strings';
 
 import ListEntries from './ListEntries';
 
@@ -59,20 +59,20 @@ const ListInput = ({
 				onTextChange(false);
 				setHighlightKey(id);
 			} else {
-				const suggestionText = getSuggestionText(suggestion);
+				const name = getSuggestionText(suggestion);
 				if (parseInput) {
-					setLiveText(__('OBJECT_ADDED', {name: suggestionText}));
+					setLiveText(t`${name} added`);
 					setText('');
 					onTextChange(false);
-					onListChange([suggestionText, ...list]);
+					onListChange([name, ...list]);
 				} else {
 					const error = validateSuggestion && validateSuggestion(suggestion);
 					if (error) {
-						setText(suggestionText);
-						onTextChange(!!suggestionText);
+						setText(name);
+						onTextChange(!!name);
 						onErrorChange(error);
 					} else {
-						setLiveText(__('OBJECT_ADDED', {name: suggestionText}));
+						setLiveText(t`${name} added`);
 						setText('');
 						onTextChange(false);
 						onListChange([suggestion, ...list]);
@@ -103,7 +103,8 @@ const ListInput = ({
 				if (error) {
 					onErrorChange(error);
 				} else {
-					setLiveText(__('OBJECT_ADDED', {name: entries.join(', ')}));
+					const name = entries.join(', ');
+					setLiveText(t`${name} added`);
 					setText('');
 					onTextChange(false);
 					onListChange([...entries, ...list]);
@@ -125,10 +126,10 @@ const ListInput = ({
 		[error, onTextChange, onErrorChange]
 	);
 
-	const handleRemoveClick = useCallback((item) => onListChange(list.filter((old) => old !== item)), [
-		list,
-		onListChange,
-	]);
+	const handleRemoveClick = useCallback(
+		(item) => onListChange(list.filter((old) => old !== item)),
+		[list, onListChange]
+	);
 
 	const handleHighlightClear = useCallback(() => setHighlightKey(null), []);
 

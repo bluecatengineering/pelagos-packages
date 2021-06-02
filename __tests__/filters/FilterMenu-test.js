@@ -6,7 +6,6 @@ import useMenuHandler from '../../src/hooks/useMenuHandler';
 import useTooltip from '../../src/hooks/useTooltip';
 
 jest.unmock('../../src/filters/FilterMenu');
-jest.unmock('../../src/strings');
 
 const FilterEditor = () => <></>;
 

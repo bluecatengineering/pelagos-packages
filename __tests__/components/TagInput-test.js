@@ -6,7 +6,6 @@ import useTooltip from '../../src/hooks/useTooltip';
 import setLiveText from '../../src/functions/setLiveText';
 
 jest.unmock('../../src/components/TagInput');
-jest.unmock('../../src/strings');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && (f.cancel = jest.fn()), f)));
 

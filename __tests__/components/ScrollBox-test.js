@@ -5,7 +5,6 @@ import ScrollBox from '../../src/components/ScrollBox';
 import addResizeObserver from '../../src/functions/addResizeObserver';
 
 jest.unmock('../../src/components/ScrollBox');
-jest.unmock('../../src/strings');
 
 describe('ScrollBox', () => {
 	describe('rendering', () => {

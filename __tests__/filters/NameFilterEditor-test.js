@@ -5,7 +5,6 @@ import NameFilterEditor from '../../src/filters/NameFilterEditor';
 import getGenericSuggestions from '../../src/functions/getGenericSuggestions';
 
 jest.unmock('../../src/filters/NameFilterEditor');
-jest.unmock('../../src/strings');
 
 describe('NameFilterEditor', () => {
 	describe('rendering', () => {

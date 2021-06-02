@@ -4,7 +4,6 @@ import {shallow} from 'enzyme';
 import TextFilterEditor from '../../src/filters/TextFilterEditor';
 
 jest.unmock('../../src/filters/TextFilterEditor');
-jest.unmock('../../src/strings');
 
 describe('TextFilterEditor', () => {
 	describe('rendering', () => {

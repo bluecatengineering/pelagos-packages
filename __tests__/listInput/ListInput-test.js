@@ -5,7 +5,6 @@ import ListInput from '../../src/listInput/ListInput';
 import setLiveText from '../../src/functions/setLiveText';
 
 jest.unmock('../../src/listInput/ListInput');
-jest.unmock('../../src/strings');
 
 describe('ListInput', () => {
 	describe('rendering', () => {

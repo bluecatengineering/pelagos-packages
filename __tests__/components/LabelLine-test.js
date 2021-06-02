@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 import LabelLine from '../../src/components/LabelLine';
 
 jest.unmock('../../src/components/LabelLine');
-jest.unmock('../../src/strings');
 
 describe('LabelLine', () => {
 	describe('rendering', () => {

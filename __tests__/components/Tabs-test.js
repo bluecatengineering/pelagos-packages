@@ -4,7 +4,6 @@ import {shallow} from 'enzyme';
 import Tabs from '../../src/components/Tabs';
 
 jest.unmock('../../src/components/Tabs');
-jest.unmock('../../src/strings');
 
 const anyFunction = expect.any(Function);
 

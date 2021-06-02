@@ -41,6 +41,7 @@
   ],
   "dependencies": {
     "@bluecat/helpers": "^0.7.0",
+    "@bluecat/l10n-core": "^0.1.0",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "focus-trap": "^6.4.0",
     "lodash-es": "^4.17.21",
@@ -52,15 +53,16 @@
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-do-expressions": "^7.14.0",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "@bluecat/analyze-imports": "^0.1.4",
-    "@bluecat/babel-plugin-transform-hash-icu-key": "^0.5.0",
     "@bluecat/jest-helpers": "^2.0.1",
-    "@bluecat/strings-generator": "^0.5.0",
-    "@bluecat/strings-jest": "^0.5.0",
-    "@bluecat/strings-linter": "^0.5.1",
-    "@bluecat/strings-loader": "^0.5.0",
+    "@bluecat/l10n-cli": "^0.1.0",
+    "@bluecat/l10n-icu2obj": "^0.1.0",
+    "@bluecat/l10n-jest": "^0.1.0",
+    "@bluecat/l10n-loader": "^0.1.0",
+    "@bluecat/l10n.macro": "^0.1.0",
     "@bluecat/stylelint-config": "^2.0.0",
     "@bluecateng/eslint-config-react": "^2.1.0",
     "@bluecateng/git-checks": "^1.0.0",
@@ -68,6 +70,7 @@
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "babel-loader": "^8.2.2",
+    "babel-plugin-macros": "^3.1.0",
     "enzyme": "^3.11.0",
     "eslint": "^7.27.0",
     "husky": "^6.0.0",
@@ -128,7 +131,7 @@
     "timers": "fake",
     "transform": {
       "\\.js$": "babel-jest",
-      "\\.strings\\.yaml$": "@bluecat/strings-jest"
+      "\\.po$": "@bluecat/l10n-jest"
     },
     "transformIgnorePatterns": [
       "node_modules/(?!(lodash-es|@bluecat)/)"
@@ -141,7 +144,7 @@
       "react",
       "react-dom",
       "redux-actions",
-      ".strings.yaml"
+      "l10n"
     ]
   },
   "jest-junit": {
@@ -149,6 +152,14 @@
     "classNameTemplate": "{classname}",
     "titleTemplate": "{title}",
     "ancestorSeparator": " › "
+  },
+  "bc-l10n": {
+    "hashLength": 3,
+    "module": "src/l10n",
+    "catalogPath": "src/l10n/{locale}",
+    "locales": [
+      "en"
+    ]
   },
   "lint-staged": {
     "*.js": [

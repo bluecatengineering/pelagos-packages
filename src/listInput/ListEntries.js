@@ -2,13 +2,13 @@ import {cloneElement, useCallback, useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {scrollIntoView} from '@bluecat/helpers';
+import {t} from '@bluecat/l10n.macro';
 
 import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import renderListItem from '../listItems/renderListItem';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
 import setLiveText from '../functions/setLiveText';
-import __ from '../strings';
 
 import './ListEntries.less';
 
@@ -32,7 +32,8 @@ const ListEntries = ({
 			if (target) {
 				const index = +target.dataset.index;
 				const item = list[index];
-				setLiveText(__('OBJECT_REMOVED', {name: getItemName(item)}));
+				const name = getItemName(item);
+				setLiveText(t`${name} removed`);
 				onRemoveClick(item, index);
 			}
 		},
@@ -73,7 +74,7 @@ const ListEntries = ({
 							className="ListEntries__icon"
 							tabIndex="0"
 							role="button"
-							aria-label={__('REMOVE_OBJECT', {name})}
+							aria-label={t`Remove ${name}`}
 							data-index={i}>
 							<SvgIcon icon={timesThin} />
 						</div>

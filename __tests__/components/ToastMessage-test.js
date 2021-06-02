@@ -5,7 +5,6 @@ import ToastMessage from '../../src/components/ToastMessage';
 import ToastTypes from '../../src/toasts/ToastTypes';
 
 jest.unmock('../../src/components/ToastMessage');
-jest.unmock('../../src/strings');
 
 const anyFunction = expect.any(Function);
 
