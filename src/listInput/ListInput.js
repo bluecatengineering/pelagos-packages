@@ -23,6 +23,7 @@ const ListInput = ({
 	column,
 	getSuggestions,
 	getSuggestionText,
+	getSuggestionValue,
 	getHighlightKey,
 	parseInput,
 	validateSuggestion,
@@ -58,25 +59,31 @@ const ListInput = ({
 				setText('');
 				onTextChange(false);
 				setHighlightKey(id);
+			} else if (parseInput) {
+				let name, item;
+				if (getSuggestionValue) {
+					item = getSuggestionValue(suggestion);
+					name = getItemName(item);
+				} else {
+					item = name = getSuggestionText(suggestion);
+				}
+				setLiveText(t`${name} added`);
+				setText('');
+				onTextChange(false);
+				onListChange([item, ...list]);
 			} else {
-				const name = getSuggestionText(suggestion);
-				if (parseInput) {
+				const item = getSuggestionValue ? getSuggestionValue(suggestion) : suggestion;
+				const name = getSuggestionValue ? getItemName(item) : getSuggestionText(suggestion);
+				const error = validateSuggestion && validateSuggestion(suggestion);
+				if (error) {
+					setText(name);
+					onTextChange(!!name);
+					onErrorChange(error);
+				} else {
 					setLiveText(t`${name} added`);
 					setText('');
 					onTextChange(false);
-					onListChange([name, ...list]);
-				} else {
-					const error = validateSuggestion && validateSuggestion(suggestion);
-					if (error) {
-						setText(name);
-						onTextChange(!!name);
-						onErrorChange(error);
-					} else {
-						setLiveText(t`${name} added`);
-						setText('');
-						onTextChange(false);
-						onListChange([suggestion, ...list]);
-					}
+					onListChange([item, ...list]);
 				}
 			}
 		},
@@ -86,6 +93,8 @@ const ListInput = ({
 			onTextChange,
 			onListChange,
 			getSuggestionText,
+			getSuggestionValue,
+			getItemName,
 			list,
 			validateSuggestion,
 			onErrorChange,
@@ -103,7 +112,7 @@ const ListInput = ({
 				if (error) {
 					onErrorChange(error);
 				} else {
-					const name = entries.join(', ');
+					const name = entries.map(getItemName).join(', ');
 					setLiveText(t`${name} added`);
 					setText('');
 					onTextChange(false);
@@ -112,7 +121,7 @@ const ListInput = ({
 				}
 			}
 		},
-		[list, parseInput, onTextChange, onListChange, onErrorChange]
+		[list, parseInput, getItemName, onTextChange, onListChange, onErrorChange]
 	);
 
 	const handleTextChange = useCallback(
@@ -194,6 +203,8 @@ ListInput.propTypes = {
 	getSuggestions: PropTypes.func,
 	/** Function invoked to render the suggestion text for the returned items. (see above) */
 	getSuggestionText: PropTypes.func,
+	/** Function invoked to get the value from the suggestion to add to the list. (see above) */
+	getSuggestionValue: PropTypes.func,
 	/** Function invoked to get the key of the suggestion to highlight. */
 	getHighlightKey: PropTypes.func,
 	/** Function invoked to parse the input text. */

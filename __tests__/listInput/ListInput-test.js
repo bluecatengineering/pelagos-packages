@@ -140,6 +140,34 @@ describe('ListInput', () => {
 			expect(setLiveText.mock.calls).toEqual([['Text added']]);
 		});
 
+		it('calls onListChange when the combo-box value changes and both parseInput and getSuggestionValue are set', () => {
+			const suggestion = {name: 'Test suggestion'};
+			const getSuggestionValue = jest.fn().mockReturnValue('Value');
+			const getHighlightKey = jest.fn();
+			const getItemName = jest.fn().mockReturnValue('Name');
+			const onListChange = jest.fn();
+			const onTextChange = jest.fn();
+			const wrapper = shallow(
+				<ListInput
+					id="test"
+					list={['Foo']}
+					getSuggestionValue={getSuggestionValue}
+					getHighlightKey={getHighlightKey}
+					parseInput={jest.fn()}
+					getItemName={getItemName}
+					onListChange={onListChange}
+					onTextChange={onTextChange}
+				/>
+			);
+			wrapper.find('ComboBox').prop('onChange')(suggestion);
+			expect(getHighlightKey.mock.calls).toEqual([[suggestion]]);
+			expect(getSuggestionValue.mock.calls).toEqual([[suggestion]]);
+			expect(getItemName.mock.calls).toEqual([['Value']]);
+			expect(onTextChange.mock.calls).toEqual([[false]]);
+			expect(onListChange.mock.calls).toEqual([[['Value', 'Foo']]]);
+			expect(setLiveText.mock.calls).toEqual([['Name added']]);
+		});
+
 		it('calls onErrorChange when the combo-box value changes and validateSuggestion returns an error', () => {
 			const suggestion = {name: 'Test suggestion'};
 			const getSuggestionText = jest.fn().mockReturnValue('Text');
@@ -195,6 +223,39 @@ describe('ListInput', () => {
 			expect(setLiveText.mock.calls).toEqual([['Text added']]);
 		});
 
+		it('calls onListChange when the combo-box value changes, getSuggestionValue is set and validateSuggestion returns null', () => {
+			const item = {name: 'Item'};
+			const value = {name: 'Value'};
+			const suggestion = {name: 'Test suggestion'};
+			const getSuggestionValue = jest.fn().mockReturnValue(value);
+			const getHighlightKey = jest.fn();
+			const validateSuggestion = jest.fn();
+			const getItemName = jest.fn().mockReturnValue('Name');
+			const onListChange = jest.fn();
+			const onTextChange = jest.fn();
+			const wrapper = shallow(
+				<ListInput
+					id="test"
+					list={[item]}
+					getSuggestionValue={getSuggestionValue}
+					getHighlightKey={getHighlightKey}
+					validateSuggestion={validateSuggestion}
+					renderSuggestion={() => <div />}
+					getItemName={getItemName}
+					onListChange={onListChange}
+					onTextChange={onTextChange}
+				/>
+			);
+			wrapper.find('ComboBox').prop('onChange')(suggestion);
+			expect(getHighlightKey.mock.calls).toEqual([[suggestion]]);
+			expect(getSuggestionValue.mock.calls).toEqual([[suggestion]]);
+			expect(getItemName.mock.calls).toEqual([[value]]);
+			expect(validateSuggestion.mock.calls).toEqual([[suggestion]]);
+			expect(onTextChange.mock.calls).toEqual([[false]]);
+			expect(onListChange.mock.calls).toEqual([[[value, item]]]);
+			expect(setLiveText.mock.calls).toEqual([['Name added']]);
+		});
+
 		it('calls onListChange with an empty list when enter is pressed and text is /clear', () => {
 			const setText = jest.fn();
 			const onListChange = jest.fn();
@@ -235,6 +296,7 @@ describe('ListInput', () => {
 					id="test"
 					list={list}
 					parseInput={parseInput}
+					getItemName={(x) => x}
 					onListChange={onListChange}
 					onTextChange={onTextChange}
 					onErrorChange={onErrorChange}
