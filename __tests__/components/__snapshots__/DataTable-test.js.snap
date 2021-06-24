@@ -85,7 +85,7 @@ exports[`DataTable rendering renders clickable row 1`] = `
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -188,7 +188,7 @@ exports[`DataTable rendering renders clickable row 1`] = `
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -489,7 +489,7 @@ exports[`DataTable rendering renders focused row 1`] = `
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -592,7 +592,7 @@ exports[`DataTable rendering renders focused row 1`] = `
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -733,7 +733,7 @@ exports[`DataTable rendering renders highlighted row 1`] = `
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -836,7 +836,7 @@ exports[`DataTable rendering renders highlighted row 1`] = `
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -977,7 +977,7 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -1080,7 +1080,7 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -1188,7 +1188,7 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -1291,7 +1291,7 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -1600,7 +1600,7 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -1711,7 +1711,7 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -2012,7 +2012,7 @@ exports[`DataTable rendering renders selected row 1`] = `
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -2115,7 +2115,7 @@ exports[`DataTable rendering renders selected row 1`] = `
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -2256,7 +2256,7 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -2373,7 +2373,7 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -2476,7 +2476,7 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -2777,7 +2777,7 @@ exports[`DataTable rendering renders the expected elements in descending order 1
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -2880,7 +2880,7 @@ exports[`DataTable rendering renders the expected elements in descending order 1
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -3181,7 +3181,7 @@ exports[`DataTable rendering renders the expected elements using a secondary key
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -3284,7 +3284,7 @@ exports[`DataTable rendering renders the expected elements using a secondary key
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE
@@ -3527,7 +3527,7 @@ exports[`DataTable rendering renders the expected elements when columns is set 1
               className="DataTable__hw"
               onClick={null}
               onKeyDown={null}
-              role="button"
+              role={null}
               tabIndex={-1}
             >
               SITE
@@ -3601,7 +3601,7 @@ exports[`DataTable rendering renders the expected elements when columns is set 1
                 className="DataTable__hw"
                 onClick={null}
                 onKeyDown={null}
-                role="button"
+                role={null}
                 tabIndex={-1}
               >
                 SITE

@@ -42,19 +42,19 @@ const sortData = (data, metadata, dataSort, defaultSortColumnId) => {
 const mapColumns = (metadata, columns, f) => (columns ? columns.map((c) => f(metadata[c])) : metadata.map(f));
 
 const renderHeaders = (metadata, columns, dataSort, onClick) =>
-	mapColumns(metadata, columns, (col) => {
-		const sortOrder = dataSort && dataSort.columnId === col.id ? dataSort.order : null;
-		const ariaSort = !col.sortable ? null : sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none';
+	mapColumns(metadata, columns, ({id, sortable, style, width, header}) => {
+		const sortOrder = dataSort && dataSort.columnId === id ? dataSort.order : null;
+		const ariaSort = !sortable ? null : sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none';
 		return (
-			<th key={col.id} style={{...col.style, width: col.width}} className="DataTable__th" aria-sort={ariaSort}>
+			<th key={id} style={{...style, width}} className="DataTable__th" aria-sort={ariaSort}>
 				<span
 					className="DataTable__hw"
-					tabIndex={col.sortable ? 0 : -1}
-					role="button"
-					onClick={col.sortable ? () => onClick(col) : null}
-					onKeyDown={col.sortable ? handleButtonKeyDown : null}>
-					{col.header}
-					{col.sortable && (
+					tabIndex={sortable ? 0 : -1}
+					role={sortable ? 'button' : null}
+					onClick={sortable ? () => onClick(id) : null}
+					onKeyDown={sortable ? handleButtonKeyDown : null}>
+					{header}
+					{sortable && (
 						<SvgIcon
 							className={'DataTable__sort' + (sortOrder ? ' DataTable__sort--active' : '')}
 							icon={sortOrder === 'a' ? faSortUp : sortOrder === 'd' ? faSortDown : faSort}
@@ -133,11 +133,11 @@ const DataTable = ({
 	}, []);
 
 	const updateSortColumn = useCallback(
-		(column) =>
+		(columnId) =>
 			setDataSort((dataSort) =>
-				dataSort && dataSort.columnId === column.id
+				dataSort && dataSort.columnId === columnId
 					? {...dataSort, order: dataSort.order === 'a' ? 'd' : 'a'}
-					: {columnId: column.id, order: 'a'}
+					: {columnId, order: 'a'}
 			),
 		[]
 	);
