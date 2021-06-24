@@ -112,87 +112,69 @@ bg-24:
 federal:
   value: '#00497e'
   tags: [light]
-
 cobalt:
   value: '#0073ae'
   tags: [light]
-
+pacific:
+  value: '#058cc8'
+  tags: [light]
 maya:
   value: '#0da5e2'
   tags: [light]
-
 capri:
   value: '#51bfea'
   tags: [light]
-
 baby:
   value: '#b1e4f6'
   tags: [light]
-
 marian:
   value: '#e0f4fb'
   tags: [light]
-
 brunswick:
   value: '#092734'
   tags: [light]
-
 hunter:
   value: '#007e64'
   tags: [light]
-
 jade:
   value: '#00ae91'
   tags: [light]
-
 celadon:
   value: '#bbddd9'
   tags: [light]
-
 yellow:
   value: '#ffff00'
   tags: [light]
-
 cream:
   value: '#ffffcc'
   tags: [light]
-
 duke:
   value: '#00007d'
   tags: [light]
-
 blue:
   value: '#021cae'
   tags: [light]
-
 periwinkle:
   value: '#c2c2f4'
   tags: [light]
-
 mulberry:
   value: '#cc79a7'
   tags: [light]
-
 palepink:
   value: '#ffcccc'
   tags: [light]
-
 gray5:
   value: '#424242'
   tags: [light]
-
 gray4:
   value: '#757575'
   tags: [light]
-
 gray3:
   value: '#bdbdbd'
   tags: [light]
-
 gray2:
   value: '#eeeeee'
   tags: [light]
-
 gray1:
   value: '#fafafa'
   tags: [light]

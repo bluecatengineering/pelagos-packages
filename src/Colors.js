@@ -26,6 +26,7 @@ export const BLACK = '#000000';
 export const WHITE = '#ffffff';
 export const FEDERAL = '#00497e';
 export const COBALT = '#0073ae';
+export const PACIFIC = '#058cc8';
 export const MAYA = '#0da5e2';
 export const CAPRI = '#51bfea';
 export const BABY = '#b1e4f6';
