@@ -36,16 +36,19 @@ const ComboBox = ({
 
 	const updateSuggestions = useMemo(
 		() =>
-			debounce((text) => {
-				const suggestions = getSuggestions(text);
-				if (suggestions.length === 0) {
-					hideList();
-				} else {
-					setSuggestions(suggestions);
-					setOpen(true);
-					setSelected(autoSelect ? 0 : -1);
-				}
-			}, 150),
+			debounce(
+				(text) =>
+					Promise.resolve(getSuggestions(text)).then((suggestions) => {
+						if (suggestions.length === 0) {
+							hideList();
+						} else {
+							setSuggestions(suggestions);
+							setOpen(true);
+							setSelected(autoSelect ? 0 : -1);
+						}
+					}),
+				150
+			),
 		[hideList, autoSelect, getSuggestions]
 	);
 	const selectSuggestion = useCallback(
@@ -212,7 +215,7 @@ ComboBox.propTypes = {
 	disabled: PropTypes.bool,
 	/** Whether the component is in error. */
 	error: PropTypes.bool,
-	/** Function invoked to get suggestions based on text input. */
+	/** Function invoked to get suggestions based on text input, can return a promise. */
 	getSuggestions: PropTypes.func,
 	/** Function invoked to render suggestions. */
 	renderSuggestion: PropTypes.func,
