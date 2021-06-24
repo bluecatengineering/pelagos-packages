@@ -5,6 +5,8 @@ import stableSort from 'stable';
 import {buildHighlighter, scrollToItem, smoothScroll} from '@bluecat/helpers';
 import {faSort, faSortDown, faSortUp} from '@fortawesome/free-solid-svg-icons';
 
+import handleButtonKeyDown from '../functions/handleButtonKeyDown';
+
 import SvgIcon from './SvgIcon';
 import Spinner from './Spinner';
 import './DataTable.less';
@@ -44,13 +46,13 @@ const renderHeaders = (metadata, columns, dataSort, onClick) =>
 		const sortOrder = dataSort && dataSort.columnId === col.id ? dataSort.order : null;
 		const ariaSort = !col.sortable ? null : sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none';
 		return (
-			<th
-				key={col.id}
-				style={{...col.style, width: col.width}}
-				className="DataTable__th"
-				aria-sort={ariaSort}
-				onClick={col.sortable ? () => onClick(col) : null}>
-				<span>
+			<th key={col.id} style={{...col.style, width: col.width}} className="DataTable__th" aria-sort={ariaSort}>
+				<span
+					className="DataTable__hw"
+					tabIndex={col.sortable ? 0 : -1}
+					role="button"
+					onClick={col.sortable ? () => onClick(col) : null}
+					onKeyDown={col.sortable ? handleButtonKeyDown : null}>
 					{col.header}
 					{col.sortable && (
 						<SvgIcon
@@ -119,11 +121,10 @@ const DataTable = ({
 	const isLoadingPrevData = useRef(false);
 	const defaultSortColumnId = useRef(defaultSort ? defaultSort.columnId : null);
 
-	const sortedData = useMemo(() => sortData(data, metadata, dataSort, defaultSortColumnId.current), [
-		data,
-		metadata,
-		dataSort,
-	]);
+	const sortedData = useMemo(
+		() => sortData(data, metadata, dataSort, defaultSortColumnId.current),
+		[data, metadata, dataSort]
+	);
 
 	const updateFocused = useCallback((index) => {
 		setFocused(index);

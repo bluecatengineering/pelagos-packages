@@ -17,14 +17,19 @@ exports[`DataTable rendering renders clickable row 1`] = `
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -41,14 +46,19 @@ exports[`DataTable rendering renders clickable row 1`] = `
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -65,14 +75,19 @@ exports[`DataTable rendering renders clickable row 1`] = `
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -105,14 +120,19 @@ exports[`DataTable rendering renders clickable row 1`] = `
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort"
@@ -129,14 +149,19 @@ exports[`DataTable rendering renders clickable row 1`] = `
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -153,14 +178,19 @@ exports[`DataTable rendering renders clickable row 1`] = `
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -391,14 +421,19 @@ exports[`DataTable rendering renders focused row 1`] = `
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -415,14 +450,19 @@ exports[`DataTable rendering renders focused row 1`] = `
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -439,14 +479,19 @@ exports[`DataTable rendering renders focused row 1`] = `
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -479,14 +524,19 @@ exports[`DataTable rendering renders focused row 1`] = `
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort"
@@ -503,14 +553,19 @@ exports[`DataTable rendering renders focused row 1`] = `
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -527,14 +582,19 @@ exports[`DataTable rendering renders focused row 1`] = `
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -605,14 +665,19 @@ exports[`DataTable rendering renders highlighted row 1`] = `
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -629,14 +694,19 @@ exports[`DataTable rendering renders highlighted row 1`] = `
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -653,14 +723,19 @@ exports[`DataTable rendering renders highlighted row 1`] = `
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -693,14 +768,19 @@ exports[`DataTable rendering renders highlighted row 1`] = `
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort"
@@ -717,14 +797,19 @@ exports[`DataTable rendering renders highlighted row 1`] = `
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -741,14 +826,19 @@ exports[`DataTable rendering renders highlighted row 1`] = `
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -819,14 +909,19 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -843,14 +938,19 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -867,14 +967,19 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -907,14 +1012,19 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort"
@@ -931,14 +1041,19 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -955,14 +1070,19 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -1000,14 +1120,19 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -1024,14 +1149,19 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -1048,14 +1178,19 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -1088,14 +1223,19 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort"
@@ -1112,14 +1252,19 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -1136,14 +1281,19 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -1382,14 +1532,19 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -1406,14 +1561,19 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -1430,14 +1590,19 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -1478,14 +1643,19 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort"
@@ -1502,14 +1672,19 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -1526,14 +1701,19 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -1764,14 +1944,19 @@ exports[`DataTable rendering renders selected row 1`] = `
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -1788,14 +1973,19 @@ exports[`DataTable rendering renders selected row 1`] = `
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -1812,14 +2002,19 @@ exports[`DataTable rendering renders selected row 1`] = `
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -1852,14 +2047,19 @@ exports[`DataTable rendering renders selected row 1`] = `
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort"
@@ -1876,14 +2076,19 @@ exports[`DataTable rendering renders selected row 1`] = `
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -1900,14 +2105,19 @@ exports[`DataTable rendering renders selected row 1`] = `
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -1978,14 +2188,19 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -2002,14 +2217,19 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -2026,14 +2246,19 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -2080,14 +2305,19 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
           <th
             aria-sort="ascending"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort DataTable__sort--active"
@@ -2104,14 +2334,19 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -2128,14 +2363,19 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -2168,14 +2408,19 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
             <th
               aria-sort="ascending"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort DataTable__sort--active"
@@ -2192,14 +2437,19 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -2216,14 +2466,19 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -2454,14 +2709,19 @@ exports[`DataTable rendering renders the expected elements in descending order 1
           <th
             aria-sort="descending"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort DataTable__sort--active"
@@ -2478,14 +2738,19 @@ exports[`DataTable rendering renders the expected elements in descending order 1
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -2502,14 +2767,19 @@ exports[`DataTable rendering renders the expected elements in descending order 1
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -2542,14 +2812,19 @@ exports[`DataTable rendering renders the expected elements in descending order 1
             <th
               aria-sort="descending"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort DataTable__sort--active"
@@ -2566,14 +2841,19 @@ exports[`DataTable rendering renders the expected elements in descending order 1
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"
@@ -2590,14 +2870,19 @@ exports[`DataTable rendering renders the expected elements in descending order 1
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -2828,14 +3113,19 @@ exports[`DataTable rendering renders the expected elements using a secondary key
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               TIME
               <SvgIcon
                 className="DataTable__sort"
@@ -2852,14 +3142,19 @@ exports[`DataTable rendering renders the expected elements using a secondary key
           <th
             aria-sort="ascending"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort DataTable__sort--active"
@@ -2876,14 +3171,19 @@ exports[`DataTable rendering renders the expected elements using a secondary key
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
@@ -2916,14 +3216,19 @@ exports[`DataTable rendering renders the expected elements using a secondary key
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 TIME
                 <SvgIcon
                   className="DataTable__sort"
@@ -2940,14 +3245,19 @@ exports[`DataTable rendering renders the expected elements using a secondary key
             <th
               aria-sort="ascending"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort DataTable__sort--active"
@@ -2964,14 +3274,19 @@ exports[`DataTable rendering renders the expected elements using a secondary key
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
@@ -3202,28 +3517,38 @@ exports[`DataTable rendering renders the expected elements when columns is set 1
           <th
             aria-sort={null}
             className="DataTable__th"
-            onClick={null}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={null}
+              onKeyDown={null}
+              role="button"
+              tabIndex={-1}
+            >
               SITE
             </span>
           </th>
           <th
             aria-sort="none"
             className="DataTable__th"
-            onClick={[Function]}
             style={
               Object {
                 "width": "10px",
               }
             }
           >
-            <span>
+            <span
+              className="DataTable__hw"
+              onClick={[Function]}
+              onKeyDown={[MockFunction]}
+              role="button"
+              tabIndex={0}
+            >
               SOURCE
               <SvgIcon
                 className="DataTable__sort"
@@ -3266,28 +3591,38 @@ exports[`DataTable rendering renders the expected elements when columns is set 1
             <th
               aria-sort={null}
               className="DataTable__th"
-              onClick={null}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={null}
+                onKeyDown={null}
+                role="button"
+                tabIndex={-1}
+              >
                 SITE
               </span>
             </th>
             <th
               aria-sort="none"
               className="DataTable__th"
-              onClick={[Function]}
               style={
                 Object {
                   "width": "10px",
                 }
               }
             >
-              <span>
+              <span
+                className="DataTable__hw"
+                onClick={[Function]}
+                onKeyDown={[MockFunction]}
+                role="button"
+                tabIndex={0}
+              >
                 SOURCE
                 <SvgIcon
                   className="DataTable__sort"

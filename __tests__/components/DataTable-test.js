@@ -1089,7 +1089,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('th').at(0).simulate('click');
+			wrapper.find('th > span').at(0).simulate('click');
 			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'd'});
 		});
@@ -1109,7 +1109,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('th').at(0).simulate('click');
+			wrapper.find('th > span').at(0).simulate('click');
 			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'a'});
 		});
@@ -1129,7 +1129,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('th').at(1).simulate('click');
+			wrapper.find('th > span').at(1).simulate('click');
 			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'source', order: 'a'});
 		});
