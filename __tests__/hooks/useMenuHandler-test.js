@@ -129,25 +129,6 @@ describe('useMenuHandler', () => {
 				expect(setExpanded.mock.calls).toEqual([[false]]);
 			});
 
-			it('calls the item handler when space is pressed, expanded is true, current is not -1, and keepExpanded is true', () => {
-				const setCurrent = jest.fn();
-				const setExpanded = jest.fn();
-				const preventDefault = jest.fn();
-				const handler = jest.fn();
-				const link = {handler};
-				useState.mockReturnValue([0, setCurrent]);
-				const {
-					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, setExpanded, [link], true);
-
-				onKeyDown({keyCode: 32, preventDefault});
-
-				expect(handler).toHaveBeenCalledTimes(1);
-				expect(preventDefault).toHaveBeenCalledTimes(1);
-				expect(setCurrent.mock.calls).toEqual([[-1]]);
-				expect(setExpanded).not.toHaveBeenCalled();
-			});
-
 			it('calls setExpanded with false and setCurrent with -1 when escape is pressed', () => {
 				const preventDefault = jest.fn();
 				const setExpanded = jest.fn();
@@ -452,7 +433,7 @@ describe('useMenuHandler', () => {
 		});
 
 		describe('onBlur', () => {
-			it('calls setCurrent with -1 and setExpanded with false when keepExpanded is false', () => {
+			it('calls setCurrent with -1 and setExpanded with false', () => {
 				const setCurrent = jest.fn();
 				const setExpanded = jest.fn();
 				useState.mockReturnValue([1, setCurrent]);
@@ -464,20 +445,6 @@ describe('useMenuHandler', () => {
 
 				expect(setCurrent.mock.calls).toEqual([[-1]]);
 				expect(setExpanded.mock.calls).toEqual([[false]]);
-			});
-
-			it('calls setCurrent with -1 but not setExpanded when keepExpanded is true', () => {
-				const setCurrent = jest.fn();
-				const setExpanded = jest.fn();
-				useState.mockReturnValue([1, setCurrent]);
-				const {
-					buttonProps: {onBlur},
-				} = useMenuHandler(true, setExpanded, [], true);
-
-				onBlur();
-
-				expect(setCurrent.mock.calls).toEqual([[-1]]);
-				expect(setExpanded).not.toHaveBeenCalled();
 			});
 		});
 	});
@@ -519,29 +486,6 @@ describe('useMenuHandler', () => {
 				expect(handler).toHaveBeenCalledTimes(1);
 				expect(setCurrent.mock.calls).toEqual([[-1]]);
 				expect(setExpanded.mock.calls).toEqual([[false]]);
-			});
-
-			it('calls the item handler when a menu item is found and keepExpanded is true', () => {
-				const setCurrent = jest.fn();
-				const setExpanded = jest.fn();
-				const preventDefault = jest.fn();
-				const element = {dataset: {index: '0'}};
-				const closest = jest.fn().mockReturnValue(element);
-				const event = {preventDefault, target: {closest}};
-				const handler = jest.fn();
-				const link = {handler};
-				useState.mockReturnValue([0, setCurrent]);
-				const {
-					listProps: {onMouseUp},
-				} = useMenuHandler(true, setExpanded, [link], true);
-
-				onMouseUp(event);
-
-				expect(closest.mock.calls).toEqual([['[role="menuitem"]']]);
-				expect(preventDefault).toHaveBeenCalledTimes(1);
-				expect(handler).toHaveBeenCalledTimes(1);
-				expect(setCurrent.mock.calls).toEqual([[-1]]);
-				expect(setExpanded).not.toHaveBeenCalled();
 			});
 
 			it('ignores the event when the menu item is not found', () => {

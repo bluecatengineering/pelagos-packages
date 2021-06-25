@@ -9,7 +9,7 @@ const findInRange = (string, links, start, end) => {
 	return -1;
 };
 
-export default (expanded, setExpanded, links, keepExpanded) => {
+export default (expanded, setExpanded, links) => {
 	const searchString = useRef(null);
 	const searchIndex = useRef(-1);
 	const keyTimer = useRef(null);
@@ -67,9 +67,7 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 						} else {
 							links[current].handler();
 							setCurrent(-1);
-							if (!keepExpanded) {
-								setExpanded(false);
-							}
+							setExpanded(false);
 						}
 						break;
 					case 27: // escape
@@ -117,13 +115,10 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 				}
 			}
 		},
-		[expanded, links, keepExpanded, current, findItemToFocus, setExpanded]
+		[expanded, links, current, findItemToFocus, setExpanded]
 	);
 
-	const handleBlur = useCallback(() => (setCurrent(-1), keepExpanded ? null : setExpanded(false)), [
-		keepExpanded,
-		setExpanded,
-	]);
+	const handleBlur = useCallback(() => (setCurrent(-1), setExpanded(false)), [setExpanded]);
 
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 
@@ -134,12 +129,10 @@ export default (expanded, setExpanded, links, keepExpanded) => {
 				event.preventDefault();
 				links[+element.dataset.index].handler();
 				setCurrent(-1);
-				if (!keepExpanded) {
-					setExpanded(false);
-				}
+				setExpanded(false);
 			}
 		},
-		[links, keepExpanded, setExpanded]
+		[links, setExpanded]
 	);
 
 	return {
