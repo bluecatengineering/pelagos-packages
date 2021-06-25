@@ -1,7 +1,21 @@
 import {useCallback, useMemo, useRef, useState} from 'react';
 
 const defaultGetItemText = (item) => item.text;
+const defaultIsItemDisabled = () => false;
 const defaultOnItemSelected = (item) => item.handler();
+
+const checkEnabled = (index, increment, items, isItemDisabled) => {
+	const last = items.length - 1;
+	do {
+		index += increment;
+		if (index < 0) {
+			index = last;
+		} else if (index > last) {
+			index = 0;
+		}
+	} while (isItemDisabled(items[index]));
+	return index;
+};
 
 const findInRange = (string, texts, start, end) => {
 	for (let i = start; i < end; ++i) {
@@ -20,12 +34,14 @@ const findInRange = (string, texts, start, end) => {
  * @param {*[]} items the menu items.
  * @param {Object} [options] the options.
  * @param {function(*): string} options.getItemText returns the item text.
+ * @param {function(*): string} options.isItemDisabled returns whether the item is disabled.
  * @param {function(*): void} options.onItemSelected invoked when the item is selected by the user.
  * @return {{current: number, buttonProps: Object, listProps: Object}}
  */
 export default (expanded, setExpanded, items, options) => {
-	const {getItemText, onItemSelected} = {
+	const {getItemText, isItemDisabled, onItemSelected} = {
 		getItemText: defaultGetItemText,
+		isItemDisabled: defaultIsItemDisabled,
 		onItemSelected: defaultOnItemSelected,
 		...options,
 	};
@@ -36,7 +52,11 @@ export default (expanded, setExpanded, items, options) => {
 
 	const [current, setCurrent] = useState(-1);
 
-	const texts = useMemo(() => items.map((item) => getItemText(item).toUpperCase()), [items, getItemText]);
+	const hasEnabledItems = useMemo(() => items.some((item) => !isItemDisabled(item)), [items, isItemDisabled]);
+	const texts = useMemo(
+		() => items.map((item) => (isItemDisabled(item) ? '' : getItemText(item).toUpperCase())),
+		[items, getItemText, isItemDisabled]
+	);
 
 	const findItemToFocus = useCallback(
 		(keyCode) => {
@@ -78,66 +98,69 @@ export default (expanded, setExpanded, items, options) => {
 		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				const keyCode = event.keyCode;
-				switch (keyCode) {
-					case 13: // enter
-					case 32: // space
-						event.preventDefault();
-						if (!expanded) {
-							setExpanded(true);
-						} else if (current === -1) {
-							setExpanded(false);
-						} else {
-							onItemSelected(items[current]);
-							setCurrent(-1);
-							setExpanded(false);
-						}
-						break;
-					case 27: // escape
-						event.preventDefault();
-						setCurrent(-1);
-						setExpanded(false);
-						break;
-					case 35: // end
-						event.preventDefault();
-						if (expanded) {
-							setCurrent(items.length - 1);
-						}
-						break;
-					case 36: // home
-						event.preventDefault();
-						if (expanded) {
-							setCurrent(0);
-						}
-						break;
-					case 38: // up
-						event.preventDefault();
-						if (expanded) {
-							setCurrent((current) => (current <= 0 ? items.length - 1 : current - 1));
-						}
-						break;
-					case 40: // down
-						event.preventDefault();
-						if (expanded) {
-							setCurrent((current) => (current === -1 || current === items.length - 1 ? 0 : current + 1));
-						} else {
-							setCurrent(0);
-							setExpanded(true);
-						}
-						break;
-					default:
-						if (expanded && keyCode >= 48 && keyCode <= 90) {
+				if (keyCode === 27) {
+					event.preventDefault();
+					setCurrent(-1);
+					setExpanded(false);
+				} else if (hasEnabledItems)
+					switch (keyCode) {
+						case 13: // enter
+						case 32: // space
 							event.preventDefault();
-							event.nativeEvent.stopImmediatePropagation();
-							const i = findItemToFocus(keyCode);
-							if (i !== -1) {
-								setCurrent(i);
+							if (!expanded) {
+								setExpanded(true);
+							} else if (current === -1) {
+								setExpanded(false);
+							} else {
+								const item = items[current];
+								if (!isItemDisabled(item)) {
+									onItemSelected(item);
+									setCurrent(-1);
+									setExpanded(false);
+								}
 							}
-						}
-						break;
-				}
+							break;
+						case 35: // end
+							event.preventDefault();
+							if (expanded) {
+								setCurrent(checkEnabled(items.length, -1, items, isItemDisabled));
+							}
+							break;
+						case 36: // home
+							event.preventDefault();
+							if (expanded) {
+								setCurrent(checkEnabled(-1, 1, items, isItemDisabled));
+							}
+							break;
+						case 38: // up
+							event.preventDefault();
+							if (expanded) {
+								setCurrent((current) => checkEnabled(current, -1, items, isItemDisabled));
+							}
+							break;
+						case 40: // down
+							event.preventDefault();
+							if (expanded) {
+								setCurrent((current) => checkEnabled(current, 1, items, isItemDisabled));
+							} else {
+								setCurrent(checkEnabled(-1, 1, items, isItemDisabled));
+								setExpanded(true);
+							}
+							break;
+						default:
+							if (expanded && keyCode >= 48 && keyCode <= 90) {
+								event.preventDefault();
+								event.nativeEvent.stopImmediatePropagation();
+								const i = findItemToFocus(keyCode);
+								if (i !== -1) {
+									setCurrent(i);
+								}
+							}
+							break;
+					}
 			}
 		},
-		[expanded, items, current, findItemToFocus, setExpanded, onItemSelected]
+		[hasEnabledItems, expanded, current, setExpanded, items, isItemDisabled, onItemSelected, findItemToFocus]
 	);
 
 	const handleBlur = useCallback(() => (setCurrent(-1), setExpanded(false)), [setExpanded]);
@@ -149,12 +172,15 @@ export default (expanded, setExpanded, items, options) => {
 			const element = event.target.closest('[role="menuitem"]');
 			if (element) {
 				event.preventDefault();
-				onItemSelected(items[+element.dataset.index]);
-				setCurrent(-1);
-				setExpanded(false);
+				const item = items[+element.dataset.index];
+				if (!isItemDisabled(item)) {
+					onItemSelected(item);
+					setCurrent(-1);
+					setExpanded(false);
+				}
 			}
 		},
-		[items, setExpanded, onItemSelected]
+		[items, setExpanded, isItemDisabled, onItemSelected]
 	);
 
 	return {
