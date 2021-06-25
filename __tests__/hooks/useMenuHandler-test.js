@@ -4,6 +4,8 @@ import useMenuHandler from '../../src/hooks/useMenuHandler';
 
 jest.unmock('../../src/hooks/useMenuHandler');
 
+const getItemText = () => '';
+
 describe('useMenuHandler', () => {
 	describe('buttonProps', () => {
 		describe('onMouseDown', () => {
@@ -16,7 +18,7 @@ describe('useMenuHandler', () => {
 				const event = {preventDefault, target: {closest}};
 				const {
 					buttonProps: {onMouseDown},
-				} = useMenuHandler(false, setExpanded);
+				} = useMenuHandler(false, setExpanded, []);
 
 				onMouseDown(event);
 
@@ -38,7 +40,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([-1, setCurrent]);
 				const {
 					buttonProps: {onMouseDown},
-				} = useMenuHandler(true, setExpanded);
+				} = useMenuHandler(true, setExpanded, []);
 
 				onMouseDown(event);
 
@@ -54,7 +56,7 @@ describe('useMenuHandler', () => {
 				const preventDefault = jest.fn();
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler();
+				} = useMenuHandler(true, null, []);
 
 				onKeyDown({keyCode: 13, shiftKey: true, preventDefault});
 				onKeyDown({keyCode: 13, ctrlKey: true, preventDefault});
@@ -69,7 +71,7 @@ describe('useMenuHandler', () => {
 				const setExpanded = jest.fn();
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(false, setExpanded);
+				} = useMenuHandler(false, setExpanded, []);
 
 				onKeyDown({keyCode: 13, preventDefault});
 
@@ -83,7 +85,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([-1]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, setExpanded);
+				} = useMenuHandler(true, setExpanded, []);
 
 				onKeyDown({keyCode: 13, preventDefault});
 
@@ -96,7 +98,7 @@ describe('useMenuHandler', () => {
 				const setExpanded = jest.fn();
 				const preventDefault = jest.fn();
 				const handler = jest.fn();
-				const link = {handler};
+				const link = {text: '', handler};
 				useState.mockReturnValue([0, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
@@ -115,7 +117,7 @@ describe('useMenuHandler', () => {
 				const setExpanded = jest.fn();
 				const preventDefault = jest.fn();
 				const handler = jest.fn();
-				const link = {handler};
+				const link = {text: '', handler};
 				useState.mockReturnValue([0, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
@@ -136,7 +138,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(false, setExpanded);
+				} = useMenuHandler(false, setExpanded, []);
 
 				onKeyDown({keyCode: 27, preventDefault});
 
@@ -151,7 +153,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{}, {}, {}]);
+				} = useMenuHandler(true, null, [{}, {}, {}], {getItemText});
 
 				onKeyDown({keyCode: 35, preventDefault});
 
@@ -165,7 +167,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(false);
+				} = useMenuHandler(false, null, []);
 
 				onKeyDown({keyCode: 35, preventDefault});
 
@@ -179,7 +181,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true);
+				} = useMenuHandler(true, null, []);
 
 				onKeyDown({keyCode: 36, preventDefault});
 
@@ -193,7 +195,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(false);
+				} = useMenuHandler(false, null, []);
 
 				onKeyDown({keyCode: 36, preventDefault});
 
@@ -207,7 +209,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([-1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{}, {}, {}]);
+				} = useMenuHandler(true, null, [{}, {}, {}], {getItemText});
 
 				onKeyDown({keyCode: 38, preventDefault});
 
@@ -222,7 +224,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([0, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{}, {}, {}]);
+				} = useMenuHandler(true, null, [{}, {}, {}], {getItemText});
 
 				onKeyDown({keyCode: 38, preventDefault});
 
@@ -237,7 +239,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{}, {}, {}]);
+				} = useMenuHandler(true, null, [{}, {}, {}], {getItemText});
 
 				onKeyDown({keyCode: 38, preventDefault});
 
@@ -252,7 +254,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(false);
+				} = useMenuHandler(false, null, []);
 
 				onKeyDown({keyCode: 38, preventDefault});
 
@@ -266,7 +268,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([-1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{}, {}, {}]);
+				} = useMenuHandler(true, null, [{}, {}, {}], {getItemText});
 
 				onKeyDown({keyCode: 40, preventDefault});
 
@@ -281,7 +283,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([2, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{}, {}, {}]);
+				} = useMenuHandler(true, null, [{}, {}, {}], {getItemText});
 
 				onKeyDown({keyCode: 40, preventDefault});
 
@@ -296,7 +298,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{}, {}, {}]);
+				} = useMenuHandler(true, null, [{}, {}, {}], {getItemText});
 
 				onKeyDown({keyCode: 40, preventDefault});
 
@@ -312,7 +314,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(false, setExpanded);
+				} = useMenuHandler(false, setExpanded, []);
 
 				onKeyDown({keyCode: 40, preventDefault});
 
@@ -409,7 +411,7 @@ describe('useMenuHandler', () => {
 				const stopImmediatePropagation = jest.fn();
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(false);
+				} = useMenuHandler(false, null, []);
 
 				onKeyDown({keyCode: 68, preventDefault, nativeEvent: {stopImmediatePropagation}});
 
@@ -422,7 +424,7 @@ describe('useMenuHandler', () => {
 				const stopImmediatePropagation = jest.fn();
 				const {
 					buttonProps: {onKeyDown},
-				} = useMenuHandler(true);
+				} = useMenuHandler(true, null, []);
 
 				onKeyDown({keyCode: 47, preventDefault, nativeEvent: {stopImmediatePropagation}});
 				onKeyDown({keyCode: 91, preventDefault, nativeEvent: {stopImmediatePropagation}});
@@ -439,7 +441,7 @@ describe('useMenuHandler', () => {
 				useState.mockReturnValue([1, setCurrent]);
 				const {
 					buttonProps: {onBlur},
-				} = useMenuHandler(true, setExpanded);
+				} = useMenuHandler(true, setExpanded, []);
 
 				onBlur();
 
@@ -456,7 +458,7 @@ describe('useMenuHandler', () => {
 				const event = {preventDefault};
 				const {
 					listProps: {onMouseDown},
-				} = useMenuHandler();
+				} = useMenuHandler(true, null, []);
 
 				onMouseDown(event);
 
@@ -473,7 +475,7 @@ describe('useMenuHandler', () => {
 				const closest = jest.fn().mockReturnValue(element);
 				const event = {preventDefault, target: {closest}};
 				const handler = jest.fn();
-				const link = {handler};
+				const link = {text: '', handler};
 				useState.mockReturnValue([0, setCurrent]);
 				const {
 					listProps: {onMouseUp},
@@ -493,7 +495,7 @@ describe('useMenuHandler', () => {
 				const closest = jest.fn();
 				const event = {preventDefault, target: {closest}};
 				const handler = jest.fn();
-				const link = {handler};
+				const link = {text: '', handler};
 				const {
 					listProps: {onMouseUp},
 				} = useMenuHandler(true, null, [link]);

@@ -1,20 +1,42 @@
-import {useCallback, useRef, useState} from 'react';
+import {useCallback, useMemo, useRef, useState} from 'react';
 
-const findInRange = (string, links, start, end) => {
+const defaultGetItemText = (item) => item.text;
+const defaultOnItemSelected = (item) => item.handler();
+
+const findInRange = (string, texts, start, end) => {
 	for (let i = start; i < end; ++i) {
-		if (links[i].text.toUpperCase().startsWith(string)) {
+		if (texts[i].startsWith(string)) {
 			return i;
 		}
 	}
 	return -1;
 };
 
-export default (expanded, setExpanded, links) => {
+/**
+ * Returns properties to be added to the button which displays a menu and to the menu item list element.
+ * Rendered menu items must have `role="menuitem"` and `data-index={<index>}`.
+ * @param {boolean} expanded whether the menu is expanded.
+ * @param {function(boolean): void} setExpanded function invoked to change `expanded`.
+ * @param {*[]} items the menu items.
+ * @param {Object} [options] the options.
+ * @param {function(*): string} options.getItemText returns the item text.
+ * @param {function(*): void} options.onItemSelected invoked when the item is selected by the user.
+ * @return {{current: number, buttonProps: Object, listProps: Object}}
+ */
+export default (expanded, setExpanded, items, options) => {
+	const {getItemText, onItemSelected} = {
+		getItemText: defaultGetItemText,
+		onItemSelected: defaultOnItemSelected,
+		...options,
+	};
+
 	const searchString = useRef(null);
 	const searchIndex = useRef(-1);
 	const keyTimer = useRef(null);
 
 	const [current, setCurrent] = useState(-1);
+
+	const texts = useMemo(() => items.map((item) => getItemText(item).toUpperCase()), [items, getItemText]);
 
 	const findItemToFocus = useCallback(
 		(keyCode) => {
@@ -34,13 +56,13 @@ export default (expanded, setExpanded, links) => {
 				keyTimer.current = null;
 			}, 500);
 
-			let result = findInRange(searchString.current, links, searchIndex.current + 1, links.length);
+			let result = findInRange(searchString.current, texts, searchIndex.current + 1, texts.length);
 			if (result === -1) {
-				result = findInRange(searchString.current, links, 0, searchIndex.current);
+				result = findInRange(searchString.current, texts, 0, searchIndex.current);
 			}
 			return result;
 		},
-		[current, links]
+		[current, texts]
 	);
 
 	const handleMouseDown = useCallback(
@@ -65,7 +87,7 @@ export default (expanded, setExpanded, links) => {
 						} else if (current === -1) {
 							setExpanded(false);
 						} else {
-							links[current].handler();
+							onItemSelected(items[current]);
 							setCurrent(-1);
 							setExpanded(false);
 						}
@@ -78,7 +100,7 @@ export default (expanded, setExpanded, links) => {
 					case 35: // end
 						event.preventDefault();
 						if (expanded) {
-							setCurrent(links.length - 1);
+							setCurrent(items.length - 1);
 						}
 						break;
 					case 36: // home
@@ -90,13 +112,13 @@ export default (expanded, setExpanded, links) => {
 					case 38: // up
 						event.preventDefault();
 						if (expanded) {
-							setCurrent((current) => (current <= 0 ? links.length - 1 : current - 1));
+							setCurrent((current) => (current <= 0 ? items.length - 1 : current - 1));
 						}
 						break;
 					case 40: // down
 						event.preventDefault();
 						if (expanded) {
-							setCurrent((current) => (current === -1 || current === links.length - 1 ? 0 : current + 1));
+							setCurrent((current) => (current === -1 || current === items.length - 1 ? 0 : current + 1));
 						} else {
 							setCurrent(0);
 							setExpanded(true);
@@ -115,7 +137,7 @@ export default (expanded, setExpanded, links) => {
 				}
 			}
 		},
-		[expanded, links, current, findItemToFocus, setExpanded]
+		[expanded, items, current, findItemToFocus, setExpanded, onItemSelected]
 	);
 
 	const handleBlur = useCallback(() => (setCurrent(-1), setExpanded(false)), [setExpanded]);
@@ -127,12 +149,12 @@ export default (expanded, setExpanded, links) => {
 			const element = event.target.closest('[role="menuitem"]');
 			if (element) {
 				event.preventDefault();
-				links[+element.dataset.index].handler();
+				onItemSelected(items[+element.dataset.index]);
 				setCurrent(-1);
 				setExpanded(false);
 			}
 		},
-		[links, setExpanded]
+		[items, setExpanded, onItemSelected]
 	);
 
 	return {

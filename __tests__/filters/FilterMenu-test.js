@@ -90,10 +90,9 @@ describe('FilterMenu', () => {
 			const setFilter = jest.fn();
 			useState.mockReturnValueOnce([false, setMenuVisible]).mockReturnValueOnce([null, setFilter]);
 			shallow(<FilterMenu getOptionText={getOptionText} options={options} />);
-			expect(useMenuHandler.mock.calls).toEqual([[false, setMenuVisible, expect.any(Array)]]);
-			const handler = useMenuHandler.mock.calls[0][2][0].handler;
-			handler();
-			expect(setFilter.mock.calls).toEqual([['a']]);
+			expect(useMenuHandler.mock.calls).toEqual([
+				[false, setMenuVisible, ['a', 'b'], {getItemText: getOptionText, onItemSelected: setFilter}],
+			]);
 		});
 
 		it('calls setFilter when the editor is closed', () => {

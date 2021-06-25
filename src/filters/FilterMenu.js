@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useMemo, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {createPortal} from 'react-dom';
 import {t} from '@bluecat/l10n.macro';
@@ -20,17 +20,10 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 	const handleClose = useCallback(() => setFilterName(null), []);
 	const handleSave = useCallback((value) => (setFilterName(null), onApply(filterName, value)), [filterName, onApply]);
 
-	const links = useMemo(
-		() =>
-			filteredOptions.map((key) => ({
-				key,
-				text: getOptionText(key),
-				handler: () => setFilterName(key),
-			})),
-		[filteredOptions, getOptionText]
-	);
-
-	const {current, buttonProps, listProps} = useMenuHandler(menuVisible, setMenuVisible, links);
+	const {current, buttonProps, listProps} = useMenuHandler(menuVisible, setMenuVisible, filteredOptions, {
+		getItemText: getOptionText,
+		onItemSelected: setFilterName,
+	});
 
 	useEffect(() => {
 		if (menuVisible) {
@@ -54,7 +47,7 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 				aria-controls={menuVisible ? 'filterMenu' : null}
 				aria-haspopup="true"
 				aria-expanded={menuVisible}
-				aria-activedescendant={current === -1 ? null : `filterMenu-${links[current].key}`}
+				aria-activedescendant={current === -1 ? null : `filterMenu-${filteredOptions[current]}`}
 				tabIndex="0"
 				ref={useTooltip(t`Add filter`, 'top')}
 				{...buttonProps}>
@@ -63,14 +56,14 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 			{menuVisible &&
 				createPortal(
 					<div id="filterMenu" className="FilterMenu__menu" role="menu" {...listProps} style={{display: 'none'}}>
-						{links.map(({key, text}, index) => (
+						{filteredOptions.map((key, index) => (
 							<div
 								key={key}
 								id={`filterMenu-${key}`}
 								className={`FilterMenu__option${current === index ? ' FilterMenu__option--current' : ''}`}
 								role="menuitem"
 								data-index={index}>
-								{text}
+								{getOptionText(key)}
 							</div>
 						))}
 					</div>,
