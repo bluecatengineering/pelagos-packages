@@ -2,20 +2,15 @@ import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
-import {smoothScroll, scrollToItem} from '@bluecat/helpers';
+import {scrollToItem} from '@bluecat/helpers';
 import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
+
+import useStringFinder from '../hooks/useStringFinder';
+import pageUp from '../functions/pageUp';
+import pageDown from '../functions/pageDown';
 
 import SvgIcon from './SvgIcon';
 import './Select.less';
-
-const findInRange = (string, list, start, end) => {
-	for (let i = start; i < end; ++i) {
-		if (list[i].textContent.toUpperCase().startsWith(string)) {
-			return i;
-		}
-	}
-	return -1;
-};
 
 /** A select drop-down. */
 const Select = ({
@@ -46,9 +41,6 @@ const Select = ({
 
 	const buttonRef = useRef(null);
 	const listRef = useRef(null);
-	const searchString = useRef(null);
-	const searchIndex = useRef(-1);
-	const keyTimer = useRef(null);
 
 	const showList = useCallback(() => {
 		setOpen(true);
@@ -73,33 +65,7 @@ const Select = ({
 		scrollToItem(listRef.current, listRef.current.children[index]);
 	}, []);
 
-	const findItemToFocus = useCallback(
-		(keyCode) => {
-			const char = String.fromCharCode(keyCode);
-			if (!searchString.current) {
-				searchString.current = char;
-				searchIndex.current = focused;
-			} else {
-				searchString.current += char;
-			}
-
-			if (keyTimer.current) {
-				clearTimeout(keyTimer.current);
-			}
-			keyTimer.current = setTimeout(() => {
-				searchString.current = null;
-				keyTimer.current = null;
-			}, 500);
-
-			const children = listRef.current.children;
-			let result = findInRange(searchString.current, children, searchIndex.current + 1, children.length);
-			if (result === -1) {
-				result = findInRange(searchString.current, children, 0, searchIndex.current);
-			}
-			return result;
-		},
-		[focused]
-	);
+	const findItemToFocus = useStringFinder();
 
 	const handleMouseDown = useCallback(
 		(event) => {
@@ -138,41 +104,14 @@ const Select = ({
 						if (open) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
-							let i;
-							const listElement = listRef.current;
-							const listHeight = listElement.clientHeight;
-							const scrollTop = listElement.scrollTop;
-							if (scrollTop > 0) {
-								const optionHeight = listElement.children[0].offsetHeight;
-								const count = Math.floor(listHeight / optionHeight);
-								i = Math.max(0, focused - count);
-								const offset = Math.max(-optionHeight * count, -scrollTop);
-								smoothScroll(listElement, scrollTop, offset, 150);
-							} else {
-								i = 0;
-							}
-							setFocused(i);
+							setFocused(pageUp(listRef.current, focused));
 						}
 						break;
 					case 34: // page down
 						if (open) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
-							let i;
-							const listElement = listRef.current;
-							const listHeight = listElement.clientHeight;
-							const scrollTop = listElement.scrollTop;
-							const scrollMax = listElement.scrollHeight - listHeight;
-							if (scrollTop < scrollMax) {
-								const optionHeight = listElement.children[0].offsetHeight;
-								const count = Math.floor(listHeight / optionHeight);
-								i = Math.min(renderedOptions.length - 1, focused + count);
-								const offset = Math.min(optionHeight * count, scrollMax - scrollTop);
-								smoothScroll(listElement, scrollTop, offset, 150);
-							} else {
-								i = renderedOptions.length - 1;
-							}
-							setFocused(i);
+							setFocused(pageDown(listRef.current, focused));
 						}
 						break;
 					case 35: // end
@@ -213,7 +152,10 @@ const Select = ({
 						if (open && keyCode >= 48 && keyCode <= 90) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
-							const i = findItemToFocus(keyCode);
+							const children = listRef.current.children;
+							const i = findItemToFocus(keyCode, focused, children.length, (i) =>
+								children[i].textContent.toUpperCase()
+							);
 							if (i !== -1) {
 								updateFocused(i);
 							}

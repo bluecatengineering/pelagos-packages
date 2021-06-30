@@ -12,6 +12,7 @@ export {default as IconButton} from './components/IconButton';
 export {default as Label} from './components/Label';
 export {default as LabelLine} from './components/LabelLine';
 export {default as ModalSpinner} from './components/ModalSpinner';
+export {default as MultiColumn} from './components/MultiColumn';
 export {default as RadioButton} from './components/RadioButton';
 export {default as RadioGroup} from './components/RadioGroup';
 export {default as ScrollBox} from './components/ScrollBox';

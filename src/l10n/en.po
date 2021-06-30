@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @bluecat/l10n-cli\n"
 "Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: b16
 msgid "(optional)"
@@ -25,6 +31,10 @@ msgstr ""
 
 #: 854
 msgid "Add filter"
+msgstr ""
+
+#: 076
+msgid "Column {0} of {columnCount}"
 msgstr ""
 
 #: 70a

@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiColumn rendering renders expected elements 1`] = `
+<div
+  className="MultiColumn"
+  id="test"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  role="group"
+>
+  <div
+    aria-activedescendant="test-0-0"
+    aria-hidden={false}
+    aria-label="Column 1 of 2"
+    className="MultiColumn__column"
+    data-index={0}
+    role="listbox"
+    style={
+      Object {
+        "width": "12em",
+      }
+    }
+    tabIndex={0}
+  >
+    <div
+      aria-selected={false}
+      className="MultiColumn__item MultiColumn__selected"
+      data-index={0}
+      id="test-0-0"
+      role="option"
+    >
+      <div
+        className="MultiColumn__text"
+      >
+        item00
+      </div>
+      <SvgIcon
+        className="MultiColumn__arrow"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "caret-right",
+            "prefix": "fas",
+          }
+        }
+      />
+    </div>
+    <div
+      aria-selected={false}
+      className="MultiColumn__item"
+      data-index={1}
+      id="test-0-1"
+      role="option"
+    >
+      <div
+        className="MultiColumn__text"
+      >
+        item01
+      </div>
+    </div>
+  </div>
+  <div
+    aria-activedescendant={null}
+    aria-hidden={true}
+    aria-label="Column 2 of 2"
+    className="MultiColumn__column"
+    data-index={1}
+    role="listbox"
+    style={
+      Object {
+        "width": "12em",
+      }
+    }
+    tabIndex={-1}
+  >
+    <Spinner
+      size="tiny"
+    />
+  </div>
+</div>
+`;
+
+exports[`MultiColumn rendering renders expected elements when className is set 1`] = `
+<div
+  className="MultiColumn TestClass"
+  id="test"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  role="group"
+>
+  <div
+    aria-activedescendant="test-0-0"
+    aria-hidden={false}
+    aria-label="Column 1 of 2"
+    className="MultiColumn__column"
+    data-index={0}
+    role="listbox"
+    style={
+      Object {
+        "width": "12em",
+      }
+    }
+    tabIndex={0}
+  >
+    <div
+      aria-selected={false}
+      className="MultiColumn__item MultiColumn__selected"
+      data-index={0}
+      id="test-0-0"
+      role="option"
+    >
+      <div
+        className="MultiColumn__text"
+      >
+        item00
+      </div>
+      <SvgIcon
+        className="MultiColumn__arrow"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "caret-right",
+            "prefix": "fas",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    aria-activedescendant={null}
+    aria-hidden={true}
+    aria-label="Column 2 of 2"
+    className="MultiColumn__column"
+    data-index={1}
+    role="listbox"
+    style={
+      Object {
+        "width": "12em",
+      }
+    }
+    tabIndex={-1}
+  >
+    <Spinner
+      size="tiny"
+    />
+  </div>
+</div>
+`;
+
+exports[`MultiColumn rendering renders expected elements when focused is true 1`] = `
+<div
+  className="MultiColumn"
+  id="test"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  role="group"
+>
+  <div
+    aria-activedescendant="test-0-0"
+    aria-hidden={false}
+    aria-label="Column 1 of 2"
+    className="MultiColumn__column"
+    data-index={0}
+    role="listbox"
+    style={
+      Object {
+        "width": "12em",
+      }
+    }
+    tabIndex={0}
+  >
+    <div
+      aria-selected={true}
+      className="MultiColumn__item MultiColumn__selected"
+      data-index={0}
+      id="test-0-0"
+      role="option"
+    >
+      <div
+        className="MultiColumn__text"
+      >
+        item00
+      </div>
+      <SvgIcon
+        className="MultiColumn__arrow"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "caret-right",
+            "prefix": "fas",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    aria-activedescendant={null}
+    aria-hidden={true}
+    aria-label="Column 2 of 2"
+    className="MultiColumn__column"
+    data-index={1}
+    role="listbox"
+    style={
+      Object {
+        "width": "12em",
+      }
+    }
+    tabIndex={-1}
+  >
+    <Spinner
+      size="tiny"
+    />
+  </div>
+</div>
+`;
+
+exports[`MultiColumn rendering renders expected elements when path is empty 1`] = `
+<div
+  className="MultiColumn__empty"
+>
+  <div>
+    Test empty
+  </div>
+</div>
+`;
+
+exports[`MultiColumn rendering renders expected elements when path is empty and className is set 1`] = `
+<div
+  className="MultiColumn__empty TestClass"
+>
+  <div>
+    Test empty
+  </div>
+</div>
+`;

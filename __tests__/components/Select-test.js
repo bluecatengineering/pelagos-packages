@@ -3,8 +3,13 @@ import {shallow} from 'enzyme';
 import {smoothScroll, scrollToItem} from '@bluecat/helpers';
 
 import Select from '../../src/components/Select';
+import useStringFinder from '../../src/hooks/useStringFinder';
+import pageDown from '../../src/functions/pageDown';
+import pageUp from '../../src/functions/pageUp';
 
 jest.unmock('../../src/components/Select');
+
+const anyFunction = expect.any(Function);
 
 const strings = {
 	one: 'One',
@@ -114,15 +119,10 @@ describe('Select', () => {
 		it('places the list under the button', () => {
 			const button = {getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400})};
 			const list = {style: {}};
-			useRef
-				.mockReturnValueOnce({current: button})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
 			shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [true]]);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [true]]);
 			useEffect.mock.calls[0][0]();
 			expect(list.style.display).toBe('');
 			expect(list.style.top).toBe('102px');
@@ -133,7 +133,7 @@ describe('Select', () => {
 		it('does not place the list when open is false', () => {
 			useState.mockReturnValueOnce([false]).mockReturnValueOnce([0]);
 			shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [false]]);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [false]]);
 			expect(() => useEffect.mock.calls[0][0]()).not.toThrow();
 		});
 
@@ -147,14 +147,9 @@ describe('Select', () => {
 				children: [{}, {}, child],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [true, 2]]);
+			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [true, 2]]);
 
 			useEffect.mock.calls[1][0]();
 			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
@@ -162,7 +157,7 @@ describe('Select', () => {
 
 		it('does not scroll to current option when open changes from true to false', () => {
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [false, -1]]);
+			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [false, -1]]);
 
 			useEffect.mock.calls[1][0]();
 			expect(smoothScroll).not.toHaveBeenCalled();
@@ -204,51 +199,17 @@ describe('Select', () => {
 		it('scrolls the list up when it is visible and page up is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const list = {
-				clientHeight: 50,
-				scrollTop: 25,
-				scrollHeight: 75,
-				children: [{offsetHeight: 25}, {}, {}],
-			};
+			const list = {};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
+			pageUp.mockReturnValue(0);
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
 			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
-			expect(smoothScroll.mock.calls).toEqual([[list, 25, -25, 150]]);
-		});
-
-		it('focuses the first option when the list is visible, page up is pressed and list cannot be scrolled up', () => {
-			const setFocused = jest.fn();
-			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const list = {
-				clientHeight: 50,
-				scrollTop: 0,
-				scrollHeight: 75,
-				children: [{offsetHeight: 25}, {}],
-			};
-			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
-			const wrapper = shallow(
-				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
-			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(setFocused.mock.calls).toEqual([[0]]);
-			expect(smoothScroll).not.toHaveBeenCalled();
+			expect(pageUp.mock.calls).toEqual([[list, 2]]);
 		});
 
 		it('ignores the event when the list is not visible and page up is pressed', () => {
@@ -263,51 +224,17 @@ describe('Select', () => {
 		it('scrolls the list down when it is visible and page down is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const list = {
-				clientHeight: 50,
-				scrollTop: 0,
-				scrollHeight: 75,
-				children: [{offsetHeight: 25}],
-			};
+			const list = {};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
+			pageDown.mockReturnValue(2);
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
 			wrapper.find('[role="button"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[2]]);
-			expect(smoothScroll.mock.calls).toEqual([[list, 0, 25, 150]]);
-		});
-
-		it('focuses the last option when the list is visible, page down is pressed and the list cannot be scrolled down', () => {
-			const setFocused = jest.fn();
-			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const list = {
-				clientHeight: 50,
-				scrollTop: 25,
-				scrollHeight: 75,
-				children: [{offsetHeight: 25}, {}],
-			};
-			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
-			const wrapper = shallow(
-				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
-			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(setFocused.mock.calls).toEqual([[2]]);
-			expect(smoothScroll).not.toHaveBeenCalled();
+			expect(pageDown.mock.calls).toEqual([[list, 0]]);
 		});
 
 		it('ignores the event when the list is not visible and page down is pressed', () => {
@@ -330,12 +257,7 @@ describe('Select', () => {
 				children: [{}, {}, child],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -365,12 +287,7 @@ describe('Select', () => {
 				children: [child, {}, {}],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -399,12 +316,7 @@ describe('Select', () => {
 				children: [{offsetTop: 0, offsetHeight: 25}, {}],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
 			const wrapper = shallow(
 				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -425,12 +337,7 @@ describe('Select', () => {
 				children: [{}, {}, child],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -459,12 +366,7 @@ describe('Select', () => {
 				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
 			const wrapper = shallow(
 				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -484,12 +386,7 @@ describe('Select', () => {
 				children: [{}, {}, {offsetTop: 50, offsetHeight: 25}],
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -527,14 +424,10 @@ describe('Select', () => {
 				scrollHeight: 75,
 				children: options.map((o) => ({textContent: renderOption(o)})),
 			};
-			const searchString = {current: null};
+			const find = jest.fn().mockReturnValue(1);
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce(searchString)
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
+			useStringFinder.mockReturnValue(find);
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -542,44 +435,9 @@ describe('Select', () => {
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[1]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
-			expect(searchString.current).toBe('T');
-			jest.runOnlyPendingTimers();
-			expect(searchString.current).toBeNull();
-		});
+			expect(find.mock.calls).toEqual([[84, 0, 3, anyFunction]]);
 
-		it('finds an option starting with the current prefix when the list is visible and two alphanumeric keys are pressed in sequence', () => {
-			const setFocused = jest.fn();
-			const event = {
-				keyCode: 'H'.codePointAt(0),
-				preventDefault: jest.fn(),
-				nativeEvent: {stopImmediatePropagation: jest.fn()},
-			};
-			const list = {
-				clientHeight: 75,
-				scrollTop: 0,
-				scrollHeight: 75,
-				children: options.map((o) => ({textContent: renderOption(o)})),
-			};
-			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
-			const wrapper = shallow(
-				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
-			);
-			const listBox = wrapper.find('[role="button"]');
-			listBox.simulate('keydown', {
-				keyCode: 'T'.codePointAt(0),
-				preventDefault: jest.fn(),
-				nativeEvent: {stopImmediatePropagation: jest.fn()},
-			});
-			listBox.simulate('keydown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(setFocused.mock.calls).toEqual([[1], [2]]);
-			expect(smoothScroll).not.toHaveBeenCalled();
+			expect(find.mock.calls[0][3](1)).toBe('TWO');
 		});
 
 		it('does not change focused when the list is visible and an alphanumeric key with no matches is pressed', () => {
@@ -595,13 +453,10 @@ describe('Select', () => {
 				scrollHeight: 75,
 				children: options.map((o) => ({textContent: renderOption(o)})),
 			};
+			const find = jest.fn().mockReturnValue(-1);
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
-			useRef
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: list})
-				.mockReturnValueOnce({current: null})
-				.mockReturnValueOnce({current: -1})
-				.mockReturnValueOnce({current: null});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
+			useStringFinder.mockReturnValue(find);
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -609,6 +464,7 @@ describe('Select', () => {
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused).not.toHaveBeenCalled();
 			expect(smoothScroll).not.toHaveBeenCalled();
+			expect(find.mock.calls).toEqual([[88, 0, 3, anyFunction]]);
 		});
 
 		it('ignores the event when an unknown key is pressed', () => {

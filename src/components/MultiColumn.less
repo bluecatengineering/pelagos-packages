@@ -1,0 +1,56 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+@import '../../less/utils';
+
+.MultiColumn {
+	flex-direction: row;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.MultiColumn__column {
+	position: relative;
+	padding: @sp-02;
+	overflow-x: hidden;
+	overflow-y: auto;
+	outline: none;
+
+	&:not(:first-child) {
+		border-left: 1px solid var(--separator-color);
+	}
+}
+
+.MultiColumn__item {
+	@secondary-button-effects();
+	flex-direction: row;
+	align-items: center;
+	padding: @sp-04 @sp-08;
+	cursor: pointer;
+
+	&[aria-selected='true'] {
+		@focus-ring();
+		background-color: var(--multi-selected-bg);
+	}
+}
+
+.MultiColumn__selected {
+	background-color: var(--multi-path-bg);
+}
+
+.MultiColumn__text {
+	@ellipsis();
+	flex: 1;
+}
+
+.MultiColumn__arrow {
+	font-size: 14px;
+	opacity: 0.4;
+}
+
+.MultiColumn__empty {
+	@font-16-400();
+	color: var(--font-color-3);
+	white-space: pre-line;
+	justify-content: center;
+	align-items: center;
+}

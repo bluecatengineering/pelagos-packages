@@ -1,8 +1,11 @@
 import {useState} from 'react';
 
 import useMenuHandler from '../../src/hooks/useMenuHandler';
+import useStringFinder from '../../src/hooks/useStringFinder';
 
 jest.unmock('../../src/hooks/useMenuHandler');
+
+const anyFunction = expect.any(Function);
 
 const getItemText = () => '';
 
@@ -25,7 +28,7 @@ describe('useMenuHandler', () => {
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 				expect(closest.mock.calls).toEqual([['[role="button"]']]);
 				expect(focus).toHaveBeenCalledTimes(1);
-				expect(setExpanded.mock.calls).toEqual([[expect.any(Function)]]);
+				expect(setExpanded.mock.calls).toEqual([[anyFunction]]);
 				expect(setExpanded.mock.calls[0][0](false)).toBe(true);
 			});
 
@@ -45,7 +48,7 @@ describe('useMenuHandler', () => {
 				onMouseDown(event);
 
 				expect(event.preventDefault).toHaveBeenCalledTimes(1);
-				expect(setExpanded.mock.calls).toEqual([[expect.any(Function)]]);
+				expect(setExpanded.mock.calls).toEqual([[anyFunction]]);
 				expect(setExpanded.mock.calls[0][0](true)).toBe(false);
 				expect(setCurrent.mock.calls).toEqual([[-1]]);
 			});
@@ -278,7 +281,7 @@ describe('useMenuHandler', () => {
 
 				onKeyDown({keyCode: 38, preventDefault});
 
-				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
+				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
 				expect(setCurrent.mock.calls[0][0](-1)).toBe(2);
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 			});
@@ -293,7 +296,7 @@ describe('useMenuHandler', () => {
 
 				onKeyDown({keyCode: 38, preventDefault});
 
-				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
+				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
 				expect(setCurrent.mock.calls[0][0](0)).toBe(2);
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 			});
@@ -325,7 +328,7 @@ describe('useMenuHandler', () => {
 
 				onKeyDown({keyCode: 38, preventDefault});
 
-				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
+				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
 				expect(setCurrent.mock.calls[0][0](1)).toBe(0);
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 			});
@@ -371,7 +374,7 @@ describe('useMenuHandler', () => {
 
 				onKeyDown({keyCode: 40, preventDefault});
 
-				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
+				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
 				expect(setCurrent.mock.calls[0][0](-1)).toBe(0);
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 			});
@@ -386,7 +389,7 @@ describe('useMenuHandler', () => {
 
 				onKeyDown({keyCode: 40, preventDefault});
 
-				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
+				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
 				expect(setCurrent.mock.calls[0][0](2)).toBe(0);
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 			});
@@ -418,7 +421,7 @@ describe('useMenuHandler', () => {
 
 				onKeyDown({keyCode: 40, preventDefault});
 
-				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
+				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
 				expect(setCurrent.mock.calls[0][0](1)).toBe(2);
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 			});
@@ -460,7 +463,9 @@ describe('useMenuHandler', () => {
 				const preventDefault = jest.fn();
 				const stopImmediatePropagation = jest.fn();
 				const setCurrent = jest.fn();
+				const find = jest.fn().mockReturnValue(2);
 				useState.mockReturnValue([1, setCurrent]);
+				useStringFinder.mockReturnValue(find);
 				const {
 					buttonProps: {onKeyDown},
 				} = useMenuHandler(true, null, [{text: 'a'}, {text: 'b'}, {text: 'c'}]);
@@ -470,82 +475,18 @@ describe('useMenuHandler', () => {
 				expect(setCurrent.mock.calls).toEqual([[2]]);
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 				expect(stopImmediatePropagation).toHaveBeenCalledTimes(1);
-			});
+				expect(find.mock.calls).toEqual([[67, 1, 3, anyFunction]]);
 
-			it('calls setCurrent with the found item index when a character key is pressed and the first match is disabled', () => {
-				const preventDefault = jest.fn();
-				const stopImmediatePropagation = jest.fn();
-				const setCurrent = jest.fn();
-				const match = {text: 'c'};
-				const isItemDisabled = jest.fn((item) => item === match);
-				useState.mockReturnValue([1, setCurrent]);
-				const {
-					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{text: 'a'}, {text: 'b'}, match, {text: 'c'}], {isItemDisabled});
-
-				onKeyDown({keyCode: 67, preventDefault, nativeEvent: {stopImmediatePropagation}});
-
-				expect(setCurrent.mock.calls).toEqual([[3]]);
-				expect(preventDefault).toHaveBeenCalledTimes(1);
-				expect(stopImmediatePropagation).toHaveBeenCalledTimes(1);
-			});
-
-			it('calls setCurrent with the found item index when a character key is pressed and the search wraps around', () => {
-				const preventDefault = jest.fn();
-				const stopImmediatePropagation = jest.fn();
-				const setCurrent = jest.fn();
-				useState.mockReturnValue([1, setCurrent]);
-				const {
-					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{text: 'a'}, {text: 'b'}, {text: 'c'}]);
-
-				onKeyDown({keyCode: 65, preventDefault, nativeEvent: {stopImmediatePropagation}});
-
-				expect(setCurrent.mock.calls).toEqual([[0]]);
-				expect(preventDefault).toHaveBeenCalledTimes(1);
-				expect(stopImmediatePropagation).toHaveBeenCalledTimes(1);
-			});
-
-			it('calls setCurrent with the found item index when two character keys are pressed', () => {
-				const preventDefault = jest.fn();
-				const stopImmediatePropagation = jest.fn();
-				const setCurrent = jest.fn();
-				useState.mockReturnValue([0, setCurrent]);
-				const {
-					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{text: 'a'}, {text: 'bc'}, {text: 'ba'}]);
-
-				onKeyDown({keyCode: 66, preventDefault, nativeEvent: {stopImmediatePropagation}});
-				onKeyDown({keyCode: 65, preventDefault, nativeEvent: {stopImmediatePropagation}});
-
-				expect(setCurrent.mock.calls).toEqual([[1], [2]]);
-				expect(preventDefault).toHaveBeenCalledTimes(2);
-				expect(stopImmediatePropagation).toHaveBeenCalledTimes(2);
-			});
-
-			it('calls setCurrent with the found item index when two character keys are pressed after the timer goes off', () => {
-				const preventDefault = jest.fn();
-				const stopImmediatePropagation = jest.fn();
-				const setCurrent = jest.fn();
-				useState.mockReturnValue([1, setCurrent]);
-				const {
-					buttonProps: {onKeyDown},
-				} = useMenuHandler(true, null, [{text: 'a'}, {text: 'bc'}, {text: 'ba'}]);
-
-				onKeyDown({keyCode: 66, preventDefault, nativeEvent: {stopImmediatePropagation}});
-				jest.runAllTimers();
-				onKeyDown({keyCode: 65, preventDefault, nativeEvent: {stopImmediatePropagation}});
-
-				expect(setCurrent.mock.calls).toEqual([[2], [0]]);
-				expect(preventDefault).toHaveBeenCalledTimes(2);
-				expect(stopImmediatePropagation).toHaveBeenCalledTimes(2);
+				expect(find.mock.calls[0][3](1)).toBe('B');
 			});
 
 			it('does not call setCurrent when a character key is pressed and no item is found', () => {
 				const preventDefault = jest.fn();
 				const stopImmediatePropagation = jest.fn();
 				const setCurrent = jest.fn();
+				const find = jest.fn().mockReturnValue(-1);
 				useState.mockReturnValue([1, setCurrent]);
+				useStringFinder.mockReturnValue(find);
 				const {
 					buttonProps: {onKeyDown},
 				} = useMenuHandler(true, null, [{text: 'a'}, {text: 'b'}, {text: 'c'}]);
@@ -555,6 +496,7 @@ describe('useMenuHandler', () => {
 				expect(setCurrent).not.toHaveBeenCalled();
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 				expect(stopImmediatePropagation).toHaveBeenCalledTimes(1);
+				expect(find.mock.calls).toEqual([[68, 1, 3, anyFunction]]);
 			});
 
 			it('ignores the event when a character key is pressed and expanded is false', () => {

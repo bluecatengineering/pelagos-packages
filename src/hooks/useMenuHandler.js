@@ -1,4 +1,6 @@
-import {useCallback, useMemo, useRef, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
+
+import useStringFinder from './useStringFinder';
 
 const defaultGetItemText = (item) => item.text;
 const defaultIsItemDisabled = () => false;
@@ -15,15 +17,6 @@ const checkEnabled = (index, increment, items, isItemDisabled) => {
 		}
 	} while (isItemDisabled(items[index]));
 	return index;
-};
-
-const findInRange = (string, texts, start, end) => {
-	for (let i = start; i < end; ++i) {
-		if (texts[i].startsWith(string)) {
-			return i;
-		}
-	}
-	return -1;
 };
 
 /**
@@ -46,10 +39,6 @@ export default (expanded, setExpanded, items, options) => {
 		...options,
 	};
 
-	const searchString = useRef(null);
-	const searchIndex = useRef(-1);
-	const keyTimer = useRef(null);
-
 	const [current, setCurrent] = useState(-1);
 
 	const hasEnabledItems = useMemo(() => items.some((item) => !isItemDisabled(item)), [items, isItemDisabled]);
@@ -58,32 +47,7 @@ export default (expanded, setExpanded, items, options) => {
 		[items, getItemText, isItemDisabled]
 	);
 
-	const findItemToFocus = useCallback(
-		(keyCode) => {
-			const char = String.fromCharCode(keyCode);
-			if (!searchString.current) {
-				searchString.current = char;
-				searchIndex.current = current;
-			} else {
-				searchString.current += char;
-			}
-
-			if (keyTimer.current) {
-				clearTimeout(keyTimer.current);
-			}
-			keyTimer.current = setTimeout(() => {
-				searchString.current = null;
-				keyTimer.current = null;
-			}, 500);
-
-			let result = findInRange(searchString.current, texts, searchIndex.current + 1, texts.length);
-			if (result === -1) {
-				result = findInRange(searchString.current, texts, 0, searchIndex.current);
-			}
-			return result;
-		},
-		[current, texts]
-	);
+	const findItemToFocus = useStringFinder();
 
 	const handleMouseDown = useCallback(
 		(event) => (
@@ -151,7 +115,7 @@ export default (expanded, setExpanded, items, options) => {
 							if (expanded && keyCode >= 48 && keyCode <= 90) {
 								event.preventDefault();
 								event.nativeEvent.stopImmediatePropagation();
-								const i = findItemToFocus(keyCode);
+								const i = findItemToFocus(keyCode, current, texts.length, (i) => texts[i]);
 								if (i !== -1) {
 									setCurrent(i);
 								}
@@ -160,7 +124,7 @@ export default (expanded, setExpanded, items, options) => {
 					}
 			}
 		},
-		[hasEnabledItems, expanded, current, setExpanded, items, isItemDisabled, onItemSelected, findItemToFocus]
+		[hasEnabledItems, setExpanded, expanded, current, items, isItemDisabled, onItemSelected, findItemToFocus, texts]
 	);
 
 	const handleBlur = useCallback(() => (setCurrent(-1), setExpanded(false)), [setExpanded]);

@@ -1,3 +1,4 @@
+export const animate = jest.fn();
 export const buildHighlighter = jest.fn();
 export const scrollIntoView = jest.fn();
 export const scrollToItem = jest.fn();
