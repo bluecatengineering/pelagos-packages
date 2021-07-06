@@ -45,8 +45,16 @@ msgstr ""
 msgid "member"
 msgstr ""
 
+#: 8ab
+msgid "Next month"
+msgstr ""
+
 #: 187
 msgid "Press Enter to add item(s) to the list."
+msgstr ""
+
+#: 46a
+msgid "Previous month"
 msgstr ""
 
 #: df7
@@ -59,4 +67,8 @@ msgstr ""
 
 #: 299
 msgid "Scroll right"
+msgstr ""
+
+#: ea2
+msgid "Use cursor keys to select date"
 msgstr ""

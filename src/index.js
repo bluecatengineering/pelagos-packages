@@ -3,6 +3,7 @@ export * from './Colors';
 export {default as timesThin} from './icons/timesThin';
 
 export {default as Button} from './components/Button';
+export {default as Calendar} from './components/Calendar';
 export {default as CheckBox} from './components/CheckBox';
 export {default as ComboBox} from './components/ComboBox';
 export {default as DataTable} from './components/DataTable';

@@ -1,0 +1,54 @@
+@import '../../less/focus';
+@import '../../less/fonts';
+@import '../../less/spacing';
+
+.Calendar__monthHeader {
+	height: @sp-40;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.Calendar__monthLabel {
+	width: 9em;
+	margin-left: @sp-08;
+	margin-right: @sp-08;
+}
+
+.Calendar__cell,
+.Calendar__dayLabel {
+	text-align: center;
+}
+
+.Calendar__dayLabel {
+	@font-10-600-uc();
+	color: var(--font-color-2);
+}
+
+.Calendar__cell {
+	@focus-visible();
+	color: var(--font-color-1);
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	outline: none;
+}
+
+.Calendar__cell:not(.Calendar__cell--disabled):hover {
+	color: var(--font-color-1);
+	background-color: var(--secondary-button-hover);
+}
+
+.Calendar__cell--dateRange {
+	background-color: var(--selection-bg);
+}
+
+.Calendar__cell--selected {
+	color: var(--font-color-i1);
+	background-color: var(--action-color);
+}
+
+.Calendar__cell--disabled {
+	cursor: default;
+}
