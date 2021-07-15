@@ -65,12 +65,13 @@ describe('Calendar', () => {
 
 		it('sets live text on focus', () => {
 			const contains = jest.fn();
-			const currentTarget = {contains};
+			const current = {contains};
 			const relatedTarget = {};
+			useRef.mockReturnValueOnce({current});
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('focus', {currentTarget, relatedTarget});
+			wrapper.find('#test').prop('onFocusCapture')({relatedTarget});
 
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(setLiveText.mock.calls).toEqual([['Use cursor keys to select date']]);
@@ -78,12 +79,13 @@ describe('Calendar', () => {
 
 		it('does not set live text on focus if the related target is inside the table', () => {
 			const contains = jest.fn().mockReturnValue(true);
-			const currentTarget = {contains};
+			const current = {contains};
 			const relatedTarget = {};
+			useRef.mockReturnValueOnce({current});
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('focus', {currentTarget, relatedTarget});
+			wrapper.find('#test').prop('onFocusCapture')({relatedTarget});
 
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(setLiveText).not.toHaveBeenCalled();
@@ -93,7 +95,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('blur');
+			wrapper.find('#test').prop('onBlurCapture')();
 
 			expect(setLiveText.mock.calls).toEqual([[null]]);
 		});

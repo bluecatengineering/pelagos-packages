@@ -160,7 +160,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 	);
 
 	const handleFocus = useCallback((event) => {
-		if (!event.currentTarget.contains(event.relatedTarget)) {
+		if (!tableRef.current.contains(event.relatedTarget)) {
 			setLiveText(t`Use cursor keys to select date`);
 		}
 	}, []);
@@ -213,8 +213,8 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 				onKeyDown={handleKeyDown}
 				onMouseOver={handleMouseOver}
 				onMouseUp={handleMouseUp}
-				onFocus={handleFocus}
-				onBlur={handleBlur}>
+				onFocusCapture={handleFocus}
+				onBlurCapture={handleBlur}>
 				<thead>
 					<tr>
 						{do {
