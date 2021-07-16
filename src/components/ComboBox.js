@@ -149,14 +149,16 @@ const ComboBox = ({
 
 	const listId = `${id}-list`;
 	return (
-		<div className="ComboBox" role="combobox" aria-haspopup="listbox" aria-expanded={open} ref={buttonRef}>
+		<div className="ComboBox" ref={buttonRef}>
 			<input
 				{...props}
 				id={id}
 				className={`ComboBox__input${error ? ' ComboBox--error' : ''}`}
 				autoComplete="off"
+				role="combobox"
+				aria-expanded={open}
 				aria-autocomplete="list"
-				aria-controls={open ? listId : null}
+				aria-controls={listId}
 				aria-activedescendant={selected === -1 ? null : `${id}-${selected}`}
 				value={text}
 				onKeyDown={handleKeyDown}
@@ -174,30 +176,29 @@ const ComboBox = ({
 					onClick={handleAddClick}
 				/>
 			)}
-			{open &&
-				createPortal(
-					<div
-						id={listId}
-						className="ComboBox__list"
-						role="listbox"
-						style={{display: 'none'}}
-						ref={listRef}
-						onMouseDown={handleListMouseDown}
-						onMouseUp={handleListMouseUp}>
-						{suggestions.map((item, index) => {
-							const element = renderSuggestion(item, index);
-							return cloneElement(element, {
-								key: index,
-								id: `${id}-${index}`,
-								role: 'option',
-								className: `ComboBox__option ${element.props.className}`,
-								'aria-selected': selected === index,
-								'data-index': index,
-							});
-						})}
-					</div>,
-					document.body
-				)}
+			{createPortal(
+				<div
+					id={listId}
+					className="ComboBox__list"
+					role="listbox"
+					style={{display: 'none'}}
+					ref={listRef}
+					onMouseDown={handleListMouseDown}
+					onMouseUp={handleListMouseUp}>
+					{suggestions.map((item, index) => {
+						const element = renderSuggestion(item, index);
+						return cloneElement(element, {
+							key: index,
+							id: `${id}-${index}`,
+							role: 'option',
+							className: `ComboBox__option ${element.props.className}`,
+							'aria-selected': selected === index,
+							'data-index': index,
+						});
+					})}
+				</div>,
+				document.body
+			)}
 		</div>
 	);
 };

@@ -146,7 +146,7 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([[null]])
 				.mockReturnValueOnce([false])
 				.mockReturnValueOnce([0]);
-			shallow(<ComboBox id="test" text="x" />);
+			shallow(<ComboBox id="test" text="x" renderSuggestion={() => <div />} />);
 			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [false]]);
 			expect(() => useEffect.mock.calls[1][0]()).not.toThrow();
 		});

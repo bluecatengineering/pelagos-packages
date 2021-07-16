@@ -2,15 +2,13 @@
 
 exports[`ComboBox rendering renders expected elements 1`] = `
 <div
-  aria-expanded={false}
-  aria-haspopup="listbox"
   className="ComboBox"
-  role="combobox"
 >
   <input
     aria-activedescendant={null}
     aria-autocomplete="list"
-    aria-controls={null}
+    aria-controls="test-list"
+    aria-expanded={false}
     autoComplete="off"
     className="ComboBox__input ComboBox--error"
     id="test"
@@ -19,6 +17,7 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     placeholder="test placeholder"
+    role="combobox"
     value="test text"
   />
   <IconButton
@@ -37,20 +36,32 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     size="medium"
     tooltipPlacement="right"
   />
+  <React.Portal>
+    <div
+      className="ComboBox__list"
+      id="test-list"
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="listbox"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    />
+  </React.Portal>
 </div>
 `;
 
 exports[`ComboBox rendering renders expected elements when error is not set 1`] = `
 <div
-  aria-expanded={false}
-  aria-haspopup="listbox"
   className="ComboBox"
-  role="combobox"
 >
   <input
     aria-activedescendant={null}
     aria-autocomplete="list"
-    aria-controls={null}
+    aria-controls="test-list"
+    aria-expanded={false}
     autoComplete="off"
     className="ComboBox__input"
     id="test"
@@ -59,6 +70,7 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     onFocus={[Function]}
     onKeyDown={[Function]}
     placeholder="test placeholder"
+    role="combobox"
     value="test text"
   />
   <IconButton
@@ -77,20 +89,32 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     size="medium"
     tooltipPlacement="right"
   />
+  <React.Portal>
+    <div
+      className="ComboBox__list"
+      id="test-list"
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="listbox"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    />
+  </React.Portal>
 </div>
 `;
 
 exports[`ComboBox rendering renders expected elements when the suggestions are displayed 1`] = `
 <div
-  aria-expanded={true}
-  aria-haspopup="listbox"
   className="ComboBox"
-  role="combobox"
 >
   <input
     aria-activedescendant="test-0"
     aria-autocomplete="list"
     aria-controls="test-list"
+    aria-expanded={true}
     autoComplete="off"
     className="ComboBox__input"
     id="test"
@@ -99,6 +123,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     onFocus={[Function]}
     onKeyDown={[Function]}
     placeholder="test placeholder"
+    role="combobox"
     value="x"
   />
   <IconButton
