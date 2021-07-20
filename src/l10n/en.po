@@ -49,6 +49,10 @@ msgstr ""
 msgid "Next month"
 msgstr ""
 
+#: 6bf
+msgid "Options"
+msgstr ""
+
 #: 187
 msgid "Press Enter to add item(s) to the list."
 msgstr ""

@@ -135,7 +135,6 @@ describe('ComboBox', () => {
 			shallow(<ComboBox id="test" text="x" renderSuggestion={() => <div />} />);
 			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [true]]);
 			useEffect.mock.calls[1][0]();
-			expect(list.style.display).toBe('');
 			expect(list.style.top).toBe('100px');
 			expect(list.style.left).toBe('200px');
 			expect(list.style.width).toBe('400px');

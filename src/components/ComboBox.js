@@ -140,7 +140,6 @@ const ComboBox = ({
 			const {bottom, left, width} = buttonRef.current.getBoundingClientRect();
 
 			const list = listRef.current;
-			list.style.display = '';
 			list.style.top = `${bottom}px`;
 			list.style.left = `${left}px`;
 			list.style.width = `${width}px`;
@@ -181,7 +180,8 @@ const ComboBox = ({
 					id={listId}
 					className="ComboBox__list"
 					role="listbox"
-					style={{display: 'none'}}
+					aria-label={t`Options`}
+					style={{display: open ? null : 'none'}}
 					ref={listRef}
 					onMouseDown={handleListMouseDown}
 					onMouseUp={handleListMouseUp}>

@@ -38,6 +38,7 @@ exports[`ComboBox rendering renders expected elements 1`] = `
   />
   <React.Portal>
     <div
+      aria-label="Options"
       className="ComboBox__list"
       id="test-list"
       onMouseDown={[Function]}
@@ -91,6 +92,7 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
   />
   <React.Portal>
     <div
+      aria-label="Options"
       className="ComboBox__list"
       id="test-list"
       onMouseDown={[Function]}
@@ -144,6 +146,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
   />
   <React.Portal>
     <div
+      aria-label="Options"
       className="ComboBox__list"
       id="test-list"
       onMouseDown={[Function]}
@@ -151,7 +154,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
       role="listbox"
       style={
         Object {
-          "display": "none",
+          "display": null,
         }
       }
     >
