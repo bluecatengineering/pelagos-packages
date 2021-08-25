@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchField rendering renders expected elements 1`] = `
+<div
+  className="SearchField TestClass"
+>
+  <input
+    className="SearchField__input"
+    id="test"
+    onChange={[Function]}
+    role="searchbox"
+    type="text"
+    value="foo"
+  />
+  <span
+    aria-label="Clear"
+    className="SearchField__icon"
+    onClick={[Function]}
+    onKeyDown={[MockFunction]}
+    role="button"
+    tabIndex="0"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+        }
+      }
+    />
+  </span>
+</div>
+`;

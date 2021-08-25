@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb rendering renders expected elements 1`] = `
+<div
+  className="Breadcrumb"
+>
+  <IconButton
+    aria-label="Back"
+    className="Breadcrumb__back"
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "chevron-left",
+        "prefix": "fas",
+      }
+    }
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+  />
+  <nav
+    aria-label="Breadcrumb"
+    className="Breadcrumb__crumbs"
+  >
+    <ol
+      className="Breadcrumb__list"
+    >
+      <li
+        className="Breadcrumb__link"
+      >
+        <Link
+          page={[MockFunction]}
+        />
+      </li>
+      <li
+        className="Breadcrumb__link"
+      >
+        <Link
+          page={[MockFunction]}
+        />
+      </li>
+      <li
+        className="Breadcrumb__current"
+      >
+        Test
+      </li>
+    </ol>
+  </nav>
+</div>
+`;

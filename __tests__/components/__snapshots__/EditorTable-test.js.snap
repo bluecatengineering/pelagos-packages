@@ -1,0 +1,903 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditorTable rendering disables add button and indicates data is being fetched if loading is true 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={true}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Retrieving items..."
+        />
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={null}
+      data={Array []}
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={true}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+</div>
+`;
+
+exports[`EditorTable rendering disables add button if user is not administrator 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={null}
+      data={
+        Array [
+          Object {},
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. "
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+</div>
+`;
+
+exports[`EditorTable rendering renders delete dialog when itemToDelete is set 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={null}
+      data={
+        Array [
+          Object {},
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+  <ConfirmDialog
+    body="Deleting this item will remove it permanently."
+    confirmText="Delete Item"
+    onClose={[Function]}
+    onConfirm={[Function]}
+    title="Delete item \\"Test\\"?"
+  />
+</div>
+`;
+
+exports[`EditorTable rendering renders dialog when specified 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={null}
+      data={
+        Array [
+          Object {},
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+  <div />
+</div>
+`;
+
+exports[`EditorTable rendering renders expected elements when both filters are set 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+        <div>
+          Button
+        </div>
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={null}
+      data={
+        Array [
+          Object {
+            "id": "i2",
+          },
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="There are no items that match your filter."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+</div>
+`;
+
+exports[`EditorTable rendering renders expected elements when externalFilter is set 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+        <div>
+          Button
+        </div>
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={null}
+      data={
+        Array [
+          Object {
+            "id": "i1",
+          },
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+</div>
+`;
+
+exports[`EditorTable rendering renders expected elements when filterText is set 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+        <div>
+          Button
+        </div>
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={null}
+      data={
+        Array [
+          Object {
+            "id": "i1",
+          },
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="There are no items that match your filter."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+</div>
+`;
+
+exports[`EditorTable rendering renders expected elements when selectedId and optional detail functions are set 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main EditorTable--narrow"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+        <div>
+          Button
+        </div>
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={
+        Array [
+          0,
+          1,
+        ]
+      }
+      data={
+        Array [
+          Object {
+            "name": "Test",
+          },
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+      selectedId="id"
+    />
+  </main>
+  <EditorDetailsPanel
+    disableDelete={true}
+    id="editor-details"
+    item={
+      Object {
+        "name": "Test",
+      }
+    }
+    onDelete={[MockFunction]}
+    showButtons={true}
+  >
+    <Details
+      item={
+        Object {
+          "name": "Test",
+        }
+      }
+    />
+  </EditorDetailsPanel>
+</div>
+`;
+
+exports[`EditorTable rendering renders expected elements when selectedId is set 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main EditorTable--narrow"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+        <div>
+          Button
+        </div>
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={
+        Array [
+          0,
+          1,
+        ]
+      }
+      data={
+        Array [
+          Object {
+            "name": "Test",
+          },
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+      selectedId="id"
+    />
+  </main>
+  <EditorDetailsPanel
+    id="editor-details"
+    item={
+      Object {
+        "name": "Test",
+      }
+    }
+    onDelete={null}
+  >
+    <Details
+      item={
+        Object {
+          "name": "Test",
+        }
+      }
+    />
+  </EditorDetailsPanel>
+</div>
+`;
+
+exports[`EditorTable rendering renders expected elements when user is administrator and not loading 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+        <div>
+          Button
+        </div>
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <div>
+      Controls
+    </div>
+    <DataTable
+      columns={null}
+      data={
+        Array [
+          Object {},
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+</div>
+`;
+
+exports[`EditorTable rendering renders spinner when busy is true 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <ToolbarButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+        />
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={null}
+      data={
+        Array [
+          Object {},
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+    />
+  </main>
+  <ModalSpinner
+    id="editor-spinner"
+  />
+</div>
+`;

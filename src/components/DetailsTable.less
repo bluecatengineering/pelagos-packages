@@ -1,0 +1,37 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+@import '../../less/utils';
+
+.DetailsTable {
+	margin-top: @sp-16;
+}
+
+.DetailsTable__headRow,
+.DetailsTable__row {
+	display: -ms-grid;
+	display: grid;
+	grid-gap: @sp-16 @sp-24;
+	-ms-grid-columns: 1fr @sp-24 1fr @sp-24 1fr;
+	.details-grid(columns; 1fr; repeat(2, 1fr) ; repeat(3, 1fr) ; repeat(4, 1fr));
+	-ms-grid-rows: min-content;
+	grid-auto-rows: min-content;
+}
+
+.DetailsTable__headRow {
+	@font-10-600-uc();
+	color: var(--font-color-2);
+	margin-top: @sp-08;
+
+	@media (max-width: 959px) {
+		display: none;
+	}
+}
+
+.DetailsTable__row {
+	margin-top: @sp-04;
+}
+
+.DetailsTable__row:not(:last-child) {
+	padding-bottom: @sp-04;
+	border-bottom: 1px solid var(--separator-color);
+}

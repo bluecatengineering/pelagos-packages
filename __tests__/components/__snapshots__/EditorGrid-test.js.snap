@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditorGrid rendering renders expected elements 1`] = `
+<div
+  className="EditorGrid TestClass"
+  id="test"
+>
+  <div />
+</div>
+`;

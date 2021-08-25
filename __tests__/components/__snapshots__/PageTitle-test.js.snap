@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageTitle rendering renders expected elements 1`] = `
+<div
+  aria-level="1"
+  className="PageTitle"
+  id="pageTitle"
+  role="heading"
+>
+  Test
+</div>
+`;

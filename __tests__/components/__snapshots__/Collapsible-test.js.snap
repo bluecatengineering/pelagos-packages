@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapsible rendering renders expected elements when className is set 1`] = `
+<div
+  className="Collapsible TestClass"
+  id="test"
+>
+  <div
+    aria-controls="test-content"
+    aria-expanded={true}
+    className="Collapsible__header Collapsible--l1"
+    id="test-header"
+    onKeyDown={[MockFunction]}
+    role="button"
+    tabIndex={0}
+  >
+    <span
+      className="Collapsible__arrowBox"
+    >
+      <SvgIcon
+        className="Collapsible__arrow Collapsible__arrow--open"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "angle-right",
+            "prefix": "fas",
+          }
+        }
+      />
+    </span>
+    Test
+  </div>
+  <div
+    aria-labelledby="test-header"
+    className="TestClass Collapsible__body"
+    id="test-content"
+    role="region"
+  />
+</div>
+`;
+
+exports[`Collapsible rendering renders expected elements when open is true and id is set 1`] = `
+<div
+  className="Collapsible"
+  id="test"
+>
+  <div
+    aria-controls="test-content"
+    aria-expanded={true}
+    className="Collapsible__header Collapsible--l1"
+    id="test-header"
+    onKeyDown={[MockFunction]}
+    role="button"
+    tabIndex={0}
+  >
+    <span
+      className="Collapsible__arrowBox"
+    >
+      <SvgIcon
+        className="Collapsible__arrow Collapsible__arrow--open"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "angle-right",
+            "prefix": "fas",
+          }
+        }
+      />
+    </span>
+    Test
+  </div>
+  <div
+    aria-labelledby="test-header"
+    className="TestClass Collapsible__body"
+    id="test-content"
+    role="region"
+  />
+</div>
+`;
+
+exports[`Collapsible rendering sets a random id if not provided 1`] = `
+<div
+  className="Collapsible"
+  id="e1"
+>
+  <div
+    aria-controls="e1-content"
+    aria-expanded={false}
+    className="Collapsible__header Collapsible--l1"
+    id="e1-header"
+    onKeyDown={[MockFunction]}
+    role="button"
+    tabIndex={0}
+  >
+    <span
+      className="Collapsible__arrowBox"
+    >
+      <SvgIcon
+        className="Collapsible__arrow"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "angle-right",
+            "prefix": "fas",
+          }
+        }
+      />
+    </span>
+    Test
+  </div>
+  <div
+    aria-labelledby="e1-header"
+    className="TestClass Collapsible__body"
+    id="e1-content"
+    role="region"
+  />
+</div>
+`;

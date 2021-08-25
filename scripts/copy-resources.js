@@ -7,25 +7,12 @@ const {
 	statSync,
 	writeFileSync,
 } = require('fs');
-const {dirname, join} = require('path');
+const {join} = require('path');
 
 const converter = require('@bluecat/l10n-icu2obj');
 
 const EXTENSIONS = /\.(less|po|yaml)$/;
 const PO = /\.po$/;
-
-const mkdirs = (path) => {
-	try {
-		mkdirSync(path);
-	} catch (err) {
-		if (err.code === 'ENOENT') {
-			mkdirs(dirname(path));
-			mkdirSync(path);
-		} else if (err.code !== 'EEXIST') {
-			throw err;
-		}
-	}
-};
 
 const copyDir = (from, to) =>
 	readdirSync(from).forEach((name) => {
@@ -35,7 +22,7 @@ const copyDir = (from, to) =>
 		if (stats.isDirectory()) {
 			copyDir(subFrom, subTo);
 		} else if (stats.isFile() && EXTENSIONS.test(name)) {
-			mkdirs(to);
+			mkdirSync(to, {recursive: true});
 			if (PO.test(name)) {
 				writeFileSync(`${subTo}.js`, converter(readFileSync(subFrom, 'utf8'), 'es'));
 			} else {

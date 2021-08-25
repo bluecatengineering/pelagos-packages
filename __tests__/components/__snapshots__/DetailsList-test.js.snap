@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailsList rendering renders expected elements 1`] = `
+<div
+  className="DetailsList TestClass"
+>
+  <Label
+    text="Test Label"
+  />
+  <div
+    className="DetailsList__grid"
+    id="test"
+  >
+    <div
+      className="DetailsList__item"
+    >
+      site1
+    </div>
+    <div
+      className="DetailsList__item"
+    >
+      site2
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockHeader rendering renders expected elements when configured is false 1`] = `
+<div
+  className="BlockHeader"
+>
+  <div
+    className="BlockHeader__indicator"
+  >
+    (optional)
+  </div>
+</div>
+`;
+
+exports[`BlockHeader rendering renders expected elements when configured is true 1`] = `
+<div
+  className="BlockHeader"
+>
+  <div
+    className="BlockHeader__indicator BlockHeader--configured"
+  >
+    (configured)
+  </div>
+</div>
+`;

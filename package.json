@@ -39,6 +39,9 @@
     "es6",
     "less"
   ],
+  "peerDependencies": {
+    "@bluecat/redux-navigation": ">=2"
+  },
   "dependencies": {
     "@bluecat/helpers": "^0.7.1",
     "@bluecat/l10n-core": "^0.1.1",
@@ -63,6 +66,7 @@
     "@bluecat/l10n-jest": "^0.1.1",
     "@bluecat/l10n-loader": "^0.1.1",
     "@bluecat/l10n.macro": "^0.1.1",
+    "@bluecat/redux-navigation": "^2.0.0",
     "@bluecat/stylelint-config": "^2.0.0",
     "@bluecateng/eslint-config-react": "^2.1.0",
     "@bluecateng/git-checks": "^1.0.0",
@@ -84,6 +88,7 @@
     "raw-loader": "^4.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "storybook-addon-themes": "^6.1.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",

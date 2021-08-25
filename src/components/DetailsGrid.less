@@ -1,0 +1,12 @@
+@import '../../less/spacing';
+@import '../../less/utils';
+
+.DetailsGrid {
+	display: -ms-grid;
+	display: grid;
+	grid-column-gap: @sp-24;
+	-ms-grid-columns: 1fr @sp-24 1fr @sp-24 1fr;
+	.details-grid(columns; 1fr; repeat(2, 1fr) ; repeat(3, 1fr) ; repeat(4, 1fr));
+	-ms-grid-rows: min-content;
+	grid-auto-rows: min-content;
+}

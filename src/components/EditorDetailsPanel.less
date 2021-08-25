@@ -1,0 +1,54 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+
+.EditorDetailsPanel {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 50px;
+	bottom: 0;
+	right: 0;
+	width: 45vw;
+	border-left: 1px solid var(--separator-color);
+	will-change: transform;
+	transform: translateX(100%);
+
+	@media print {
+		bottom: initial;
+	}
+}
+
+.EditorDetailsPanel__close {
+	position: absolute;
+	right: 4px;
+	top: 9px;
+}
+
+.EditorDetailsPanel__title {
+	@font-16-600();
+	padding: @sp-12 @sp-24;
+	margin-right: @sp-24;
+	word-break: break-all;
+}
+
+.EditorDetailsPanel__body {
+	flex: 1;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 0 @sp-24 @sp-24;
+	margin-right: @sp-04;
+}
+
+.EditorDetailsPanel__buttons {
+	flex-direction: row;
+	padding: @sp-12 @sp-24 @sp-24;
+	justify-content: flex-end;
+
+	@media print {
+		display: none;
+	}
+}
+
+.EditorDetailsPanel__buttons :not(:last-child) {
+	margin-right: @sp-12;
+}

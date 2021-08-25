@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmDialog rendering renders expected elements 1`] = `
+<Dialog
+  role="alertdialog"
+  title="Title"
+>
+  <div
+    className="ConfirmDialog__body"
+  >
+    <SvgIcon
+      className="ConfirmDialog__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "exclamation-triangle",
+          "prefix": "fas",
+        }
+      }
+    />
+    Body
+  </div>
+  <div>
+    <Button
+      id="closeDialogBtn"
+      size="medium"
+      text="Cancel"
+      type="secondary"
+    />
+    <Button
+      id="confirmBtn"
+      size="medium"
+      text="Confirm"
+      type="primary"
+    />
+  </div>
+</Dialog>
+`;
