@@ -53,7 +53,7 @@ orange:
   palette: 7
 burnt:
   value: '#da6900'
-  tags: [dark]
+  tags: [dark, light]
   palette: 8
 goldenrod:
   value: '#ccaf00'
