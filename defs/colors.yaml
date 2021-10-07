@@ -2,179 +2,238 @@
 # it will be processed on commit, to generate manually run `npm run update-colors`
 
 crystal:
-  value: '#71c4ff'
+  value: '#99daff'
   tags: [dark]
 iceberg:
-  value: '#4ebdff'
+  value: '#57beff'
   tags: [dark]
 azure:
-  value: '#01b5ff'
+  value: '#33b1ff'
   tags: [dark]
-  palette: 1
 ocean:
-  value: '#006297'
+  value: '#00539a'
   tags: [dark]
-  palette: 0
 oxford:
-  value: '#001c32'
+  value: '#061727'
   tags: [dark]
 sky:
-  value: '#aed3e7'
+  value: '#bae6ff'
   tags: [dark]
-  palette: 2
 bondi:
-  value: '#258cac'
+  value: '#1192e8'
   tags: [dark]
-  palette: 3
 emerald:
-  value: '#00dfa0'
+  value: '#6fdc8c'
   tags: [dark]
-  palette: 4
 dartmouth:
-  value: '#0f6244'
+  value: '#0e6027'
   tags: [dark]
-  palette: 6
 persian:
-  value: '#009688'
+  value: '#009d9a'
   tags: [dark]
-  palette: 5
 neon:
-  value: '#90ea00'
+  value: '#6fdc8c'
   tags: [dark]
 violet:
-  value: '#a728ee'
+  value: '#8a3ffc'
   tags: [dark]
-red:
-  value: '#ff0000'
-  tags: [dark, light]
-orange:
-  value: '#ffa500'
-  tags: [dark, light]
-  palette: 7
 burnt:
-  value: '#da6900'
+  value: '#d47300'
   tags: [dark, light]
-  palette: 8
 goldenrod:
-  value: '#ccaf00'
+  value: '#d2a106'
   tags: [dark]
-  palette: 9
 battleship:
-  value: '#666666'
+  value: '#525252'
   tags: [dark]
 prussian:
-  value: '#22314e'
+  value: '#012749'
   tags: [dark]
 fiord:
-  value: '#3f485e'
+  value: '#4d5358'
   tags: [dark]
 slate:
-  value: '#676d7e'
+  value: '#697077'
   tags: [dark]
 silver:
-  value: '#a5a9b4'
+  value: '#a2a9b0'
   tags: [dark]
 black:
   value: '#000000'
-  tags: [dark, light]
+  tags: [dark, light, global]
 white:
   value: '#ffffff'
-  tags: [dark, light]
+  tags: [dark, light, global]
 
 bg-01:
-  value: '#0e263c'
+  value: '#001f38'
   tags: [dark, background]
 bg-02:
-  value: '#132a40'
+  value: '#00213b'
   tags: [dark, background]
 bg-03:
-  value: '#162c42'
+  value: '#05233c'
   tags: [dark, background]
 bg-04:
-  value: '#182f45'
+  value: '#05263e'
   tags: [dark, background]
 bg-06:
-  value: '#1d3349'
+  value: '#08283f'
   tags: [dark, background]
 bg-08:
-  value: '#1f354c'
+  value: '#0a2942'
   tags: [dark, background]
 bg-12:
-  value: '#233951'
+  value: '#0d2c46'
   tags: [dark, background]
 bg-16:
-  value: '#263c53'
+  value: '#102e47'
   tags: [dark, background]
 bg-24:
-  value: '#283e56'
+  value: '#13304a'
   tags: [dark, background]
 
 federal:
-  value: '#00497e'
+  value: '#00539a'
   tags: [light]
 cobalt:
-  value: '#0073ae'
+  value: '#0072c3'
   tags: [light]
 pacific:
-  value: '#058cc8'
+  value: '#1192e8'
   tags: [light]
 maya:
-  value: '#0da5e2'
+  value: '#33b1ff'
   tags: [light]
 capri:
-  value: '#51bfea'
+  value: '#82cfff'
   tags: [light]
 baby:
-  value: '#b1e4f6'
+  value: '#bae6ff'
   tags: [light]
 marian:
-  value: '#e0f4fb'
+  value: '#e5f6ff'
   tags: [light]
 brunswick:
-  value: '#092734'
+  value: '#022b30'
   tags: [light]
 hunter:
-  value: '#007e64'
+  value: '#007d79'
   tags: [light]
 jade:
-  value: '#00ae91'
+  value: '#009d9a'
   tags: [light]
 celadon:
-  value: '#bbddd9'
-  tags: [light]
-yellow:
-  value: '#ffff00'
+  value: '#9ef0f0'
   tags: [light]
 cream:
-  value: '#ffffcc'
+  value: '#fcf4d6'
   tags: [light]
 duke:
-  value: '#00007d'
-  tags: [light]
-blue:
-  value: '#021cae'
+  value: '#001d6c'
   tags: [light]
 periwinkle:
-  value: '#c2c2f4'
+  value: '#d4bbff'
   tags: [light]
 mulberry:
-  value: '#cc79a7'
+  value: '#ff7eb6'
   tags: [light]
 palepink:
-  value: '#ffcccc'
+  value: '#ffd7d9'
   tags: [light]
 gray5:
-  value: '#424242'
+  value: '#393939'
   tags: [light]
 gray4:
-  value: '#757575'
+  value: '#6f6f6f'
   tags: [light]
 gray3:
-  value: '#bdbdbd'
+  value: '#c6c6c6'
   tags: [light]
 gray2:
-  value: '#eeeeee'
+  value: '#e0e0e0'
   tags: [light]
 gray1:
-  value: '#fafafa'
+  value: '#f4f4f4'
   tags: [light]
+
+yellow:
+  palette:
+    ['#fcf4d6', '#fddc69', '#f1c21b', '#d2a106', '#b28600', '#8e6a00', '#684e00', '#483700', '#302400', '#1c1500']
+  value: '#fddc69'
+  tags: [light]
+orange:
+  palette:
+    ['#fcf3e7', '#f9dcbb', '#f3bd7d', '#ec9008', '#d47300', '#a85b00', '#7c4200', '#543000', '#381e00', '#201200']
+  value: '#ec9008'
+  tags: [dark, light]
+red:
+  palette:
+    ['#fff1f1', '#ffd7d9', '#ffb3b8', '#ff8389', '#fa4d56', '#da1e28', '#a2191f', '#750e13', '#520408', '#2d0709']
+  value: '#da1e28'
+  tags: [dark, light]
+magenta:
+  palette:
+    ['#fff0f7', '#ffd6e8', '#ffafd2', '#ff7eb6', '#ee5396', '#d02670', '#9f1853', '#740937', '#510224', '#2a0a18']
+purple:
+  palette:
+    ['#f6f2ff', '#e8daff', '#d4bbff', '#be95ff', '#a56eff', '#8a3ffc', '#6929c4', '#491d8b', '#31135e', '#1c0f30']
+blue:
+  palette:
+    ['#edf5ff', '#d0e2ff', '#a6c8ff', '#78a9ff', '#4589ff', '#0f62fe', '#0043ce', '#002d9c', '#001d6c', '#001141']
+  value: '#002d9c'
+  tags: [light]
+cyan:
+  palette:
+    ['#e5f6ff', '#bae6ff', '#82cfff', '#33b1ff', '#1192e8', '#0072c3', '#00539a', '#003a6d', '#012749', '#061727']
+teal:
+  palette:
+    ['#d9fbfb', '#9ef0f0', '#3ddbd9', '#08bdba', '#009d9a', '#007d79', '#005d5d', '#004144', '#022b30', '#081a1c']
+green:
+  palette:
+    ['#defbe6', '#a7f0ba', '#6fdc8c', '#42be65', '#24a148', '#198038', '#0e6027', '#044317', '#022d0d', '#071908']
+coolGray:
+  palette:
+    ['#f2f4f8', '#dde1e6', '#c1c7cd', '#a2a9b0', '#878d96', '#697077', '#4d5358', '#343a3f', '#21272a', '#121619']
+gray:
+  palette:
+    ['#f4f4f4', '#e0e0e0', '#c6c6c6', '#a8a8a8', '#8d8d8d', '#6f6f6f', '#525252', '#393939', '#262626', '#161616']
+warmGray:
+  palette:
+    ['#f7f3f2', '#e5e0df', '#cac5c4', '#ada8a8', '#8f8b8b', '#726e6e', '#565151', '#3c3838', '#272525', '#171414']
+yellowHover:
+  palette:
+    ['#f8e6a0', '#fccd27', '#ddb00e', '#bc9005', '#9e7700', '#755800', '#806000', '#5c4600', '#3d2e00', '#332600']
+orangeHover:
+  palette:
+    ['#fae4ca', '#f6ca99', '#efa64a', '#e27b00', '#b86401', '#8e4e01', '#975101', '#693b01', '#492800', '#3b2200']
+redHover:
+  palette:
+    ['#ffe0e0', '#ffc2c5', '#ff99a0', '#ff6168', '#ee0713', '#b81922', '#c21e25', '#921118', '#66050a', '#540d11']
+magentaHover:
+  palette:
+    ['#ffe0ef', '#ffbdda', '#ff94c3', '#ff57a0', '#e3176f', '#b0215f', '#bf1d63', '#8e0b43', '#68032e', '#53142f']
+purpleHover:
+  palette:
+    ['#ede5ff', '#dcc7ff', '#c5a3ff', '#ae7aff', '#9352ff', '#7822fb', '#7c3dd6', '#5b24ad', '#40197b', '#341c59']
+blueHover:
+  palette:
+    ['#dbebff', '#b8d3ff', '#8ab6ff', '#5c97ff', '#1f70ff', '#0050e6', '#0053ff', '#0039c7', '#00258a', '#001f75']
+cyanHover:
+  palette:
+    ['#cceeff', '#99daff', '#57beff', '#059fff', '#0f7ec8', '#005fa3', '#0066bd', '#00498a', '#013360', '#0b2947']
+tealHover:
+  palette:
+    ['#acf6f6', '#57e5e5', '#25cac8', '#07aba9', '#008a87', '#006b68', '#007070', '#005357', '#033940', '#0f3034']
+greenHover:
+  palette:
+    ['#b6f6c8', '#74e792', '#36ce5e', '#3bab5a', '#208e3f', '#166f31', '#11742f', '#05521c', '#033b11', '#0d300f']
+coolGrayHover:
+  palette:
+    ['#e4e9f1', '#cdd3da', '#adb5bd', '#9199a1', '#757b85', '#585e64', '#5d646a', '#434a51', '#2b3236', '#222a2f']
+grayHover:
+  palette:
+    ['#e8e8e8', '#d1d1d1', '#b5b5b5', '#999999', '#7a7a7a', '#5e5e5e', '#636363', '#474747', '#333333', '#292929']
+warmGrayHover:
+  palette:
+    ['#f0e8e6', '#d8d0cf', '#b9b3b1', '#9c9696', '#7f7b7b', '#605d5d', '#696363', '#4c4848', '#343232', '#2c2626']

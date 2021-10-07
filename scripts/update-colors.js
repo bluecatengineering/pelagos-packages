@@ -6,6 +6,7 @@ const IN = 'defs/colors.yaml';
 const JS = 'src/Colors.js';
 const LESS_DARK = 'less/colors-dark.less';
 const LESS_LIGHT = 'less/colors-light.less';
+const LESS = 'less/colors.less';
 
 const HEADER = [
 	'// This file was generated from defs/colors.yaml',
@@ -14,6 +15,8 @@ const HEADER = [
 ];
 
 const colors = Object.entries(load(readFileSync(IN, 'utf8')));
+
+const toLess = ([key, {value}]) => `@${key}: ${value};`;
 
 writeFileSync(
 	JS,
@@ -27,16 +30,22 @@ writeFileSync(
 
 writeFileSync(
 	LESS_DARK,
-	HEADER.concat(
-		colors.filter(([, {tags}]) => tags && tags.includes('dark')).map(([key, {value}]) => `@${key}: ${value};`),
-		''
-	).join('\n')
+	HEADER.concat(colors.filter(([, {tags}]) => tags && tags.includes('dark')).map(toLess), '').join('\n')
 );
 
 writeFileSync(
 	LESS_LIGHT,
+	HEADER.concat(colors.filter(([, {tags}]) => tags && tags.includes('light')).map(toLess), '').join('\n')
+);
+
+writeFileSync(
+	LESS,
 	HEADER.concat(
-		colors.filter(([, {tags}]) => tags && tags.includes('light')).map(([key, {value}]) => `@${key}: ${value};`),
+		colors.filter(([, {tags}]) => tags && tags.includes('global')).map(toLess),
+		colors
+			.filter(([, {palette}]) => palette)
+			.flatMap(([key, {palette}]) => palette.map((value, index) => `@${key}${10 + index * 10}: ${value};`)),
+		colors.filter(([, {tags}]) => tags && tags.includes('background')).map(toLess),
 		''
 	).join('\n')
 );

@@ -1,60 +1,69 @@
+@import 'colors';
+
 // Based on https://github.com/lukehaas/css-loaders
-.spinner(@color) {
-	.CssSpinner {
-		width: 1em;
-		height: 1em;
-		border-radius: 50%;
-		animation: spinner 0.8s infinite ease;
+
+.css-spinner() {
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	animation: 0.8s infinite ease;
+}
+
+.spinner-keyframes(@color) {
+	0%,
+	100% {
+		box-shadow: 0 -2.2em 0 0 fade(@color, 95%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 15%),
+			1.5em 1.5em 0 0 fade(@color, 15%), 0 2.2em 0 0 fade(@color, 15%), -1.5em 1.5em 0 0 fade(@color, 35%),
+			-2.2em 0 0 0 fade(@color, 55%), -1.5em -1.5em 0 0 fade(@color, 75%);
 	}
 
-	@keyframes spinner {
-		0%,
-		100% {
-			box-shadow: 0 -2.2em 0 0 fade(@color, 95%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 15%),
-				1.5em 1.5em 0 0 fade(@color, 15%), 0 2.2em 0 0 fade(@color, 15%), -1.5em 1.5em 0 0 fade(@color, 35%),
-				-2.2em 0 0 0 fade(@color, 55%), -1.5em -1.5em 0 0 fade(@color, 75%);
-		}
-
-		12.5% {
-			box-shadow: 0 -2.2em 0 0 fade(@color, 75%), 1.5em -1.5em 0 0 fade(@color, 95%), 2.2em 0 0 0 fade(@color, 15%),
-				1.5em 1.5em 0 0 fade(@color, 15%), 0 2.2em 0 0 fade(@color, 15%), -1.5em 1.5em 0 0 fade(@color, 15%),
-				-2.2em 0 0 0 fade(@color, 35%), -1.5em -1.5em 0 0 fade(@color, 55%);
-		}
-
-		25% {
-			box-shadow: 0 -2.2em 0 0 fade(@color, 55%), 1.5em -1.5em 0 0 fade(@color, 75%), 2.2em 0 0 0 fade(@color, 95%),
-				1.5em 1.5em 0 0 fade(@color, 15%), 0 2.2em 0 0 fade(@color, 15%), -1.5em 1.5em 0 0 fade(@color, 15%),
-				-2.2em 0 0 0 fade(@color, 15%), -1.5em -1.5em 0 0 fade(@color, 35%);
-		}
-
-		37.5% {
-			box-shadow: 0 -2.2em 0 0 fade(@color, 35%), 1.5em -1.5em 0 0 fade(@color, 55%), 2.2em 0 0 0 fade(@color, 75%),
-				1.5em 1.5em 0 0 fade(@color, 95%), 0 2.2em 0 0 fade(@color, 15%), -1.5em 1.5em 0 0 fade(@color, 15%),
-				-2.2em 0 0 0 fade(@color, 15%), -1.5em -1.5em 0 0 fade(@color, 15%);
-		}
-
-		50% {
-			box-shadow: 0 -2.2em 0 0 fade(@color, 15%), 1.5em -1.5em 0 0 fade(@color, 35%), 2.2em 0 0 0 fade(@color, 55%),
-				1.5em 1.5em 0 0 fade(@color, 75%), 0 2.2em 0 0 fade(@color, 95%), -1.5em 1.5em 0 0 fade(@color, 15%),
-				-2.2em 0 0 0 fade(@color, 15%), -1.5em -1.5em 0 0 fade(@color, 15%);
-		}
-
-		62.5% {
-			box-shadow: 0 -2.2em 0 0 fade(@color, 15%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 35%),
-				1.5em 1.5em 0 0 fade(@color, 55%), 0 2.2em 0 0 fade(@color, 75%), -1.5em 1.5em 0 0 fade(@color, 95%),
-				-2.2em 0 0 0 fade(@color, 15%), -1.5em -1.5em 0 0 fade(@color, 15%);
-		}
-
-		75% {
-			box-shadow: 0 -2.2em 0 0 fade(@color, 15%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 15%),
-				1.5em 1.5em 0 0 fade(@color, 35%), 0 2.2em 0 0 fade(@color, 55%), -1.5em 1.5em 0 0 fade(@color, 75%),
-				-2.2em 0 0 0 fade(@color, 95%), -1.5em -1.5em 0 0 fade(@color, 15%);
-		}
-
-		87.5% {
-			box-shadow: 0 -2.2em 0 0 fade(@color, 15%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 15%),
-				1.5em 1.5em 0 0 fade(@color, 15%), 0 2.2em 0 0 fade(@color, 35%), -1.5em 1.5em 0 0 fade(@color, 55%),
-				-2.2em 0 0 0 fade(@color, 75%), -1.5em -1.5em 0 0 fade(@color, 95%);
-		}
+	12.5% {
+		box-shadow: 0 -2.2em 0 0 fade(@color, 75%), 1.5em -1.5em 0 0 fade(@color, 95%), 2.2em 0 0 0 fade(@color, 15%),
+			1.5em 1.5em 0 0 fade(@color, 15%), 0 2.2em 0 0 fade(@color, 15%), -1.5em 1.5em 0 0 fade(@color, 15%),
+			-2.2em 0 0 0 fade(@color, 35%), -1.5em -1.5em 0 0 fade(@color, 55%);
 	}
+
+	25% {
+		box-shadow: 0 -2.2em 0 0 fade(@color, 55%), 1.5em -1.5em 0 0 fade(@color, 75%), 2.2em 0 0 0 fade(@color, 95%),
+			1.5em 1.5em 0 0 fade(@color, 15%), 0 2.2em 0 0 fade(@color, 15%), -1.5em 1.5em 0 0 fade(@color, 15%),
+			-2.2em 0 0 0 fade(@color, 15%), -1.5em -1.5em 0 0 fade(@color, 35%);
+	}
+
+	37.5% {
+		box-shadow: 0 -2.2em 0 0 fade(@color, 35%), 1.5em -1.5em 0 0 fade(@color, 55%), 2.2em 0 0 0 fade(@color, 75%),
+			1.5em 1.5em 0 0 fade(@color, 95%), 0 2.2em 0 0 fade(@color, 15%), -1.5em 1.5em 0 0 fade(@color, 15%),
+			-2.2em 0 0 0 fade(@color, 15%), -1.5em -1.5em 0 0 fade(@color, 15%);
+	}
+
+	50% {
+		box-shadow: 0 -2.2em 0 0 fade(@color, 15%), 1.5em -1.5em 0 0 fade(@color, 35%), 2.2em 0 0 0 fade(@color, 55%),
+			1.5em 1.5em 0 0 fade(@color, 75%), 0 2.2em 0 0 fade(@color, 95%), -1.5em 1.5em 0 0 fade(@color, 15%),
+			-2.2em 0 0 0 fade(@color, 15%), -1.5em -1.5em 0 0 fade(@color, 15%);
+	}
+
+	62.5% {
+		box-shadow: 0 -2.2em 0 0 fade(@color, 15%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 35%),
+			1.5em 1.5em 0 0 fade(@color, 55%), 0 2.2em 0 0 fade(@color, 75%), -1.5em 1.5em 0 0 fade(@color, 95%),
+			-2.2em 0 0 0 fade(@color, 15%), -1.5em -1.5em 0 0 fade(@color, 15%);
+	}
+
+	75% {
+		box-shadow: 0 -2.2em 0 0 fade(@color, 15%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 15%),
+			1.5em 1.5em 0 0 fade(@color, 35%), 0 2.2em 0 0 fade(@color, 55%), -1.5em 1.5em 0 0 fade(@color, 75%),
+			-2.2em 0 0 0 fade(@color, 95%), -1.5em -1.5em 0 0 fade(@color, 15%);
+	}
+
+	87.5% {
+		box-shadow: 0 -2.2em 0 0 fade(@color, 15%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 15%),
+			1.5em 1.5em 0 0 fade(@color, 15%), 0 2.2em 0 0 fade(@color, 35%), -1.5em 1.5em 0 0 fade(@color, 55%),
+			-2.2em 0 0 0 fade(@color, 75%), -1.5em -1.5em 0 0 fade(@color, 95%);
+	}
+}
+
+@keyframes spinner-dark {
+	.spinner-keyframes(@white);
+}
+
+@keyframes spinner-light {
+	.spinner-keyframes(@cyan60);
 }

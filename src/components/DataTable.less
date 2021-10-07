@@ -61,12 +61,27 @@
 	outline: none;
 }
 
-.DataTable__row,
-.DataTable__row:nth-child(even) {
-	@secondary-button-effects();
+.DataTable__row {
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: var(--table-hover);
+	}
+
+	&:active {
+		background-color: var(--table-active);
+	}
 }
 .DataTable__row:nth-child(even) {
 	background-color: var(--table-alt-bg);
+
+	&:hover {
+		background-color: var(--table-hover);
+	}
+
+	&:active {
+		background-color: var(--table-active);
+	}
 }
 .DataTable__row--focused,
 .DataTable__row--focused:nth-child(even) {

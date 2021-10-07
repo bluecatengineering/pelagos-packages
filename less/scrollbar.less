@@ -1,8 +1,3 @@
-::-webkit-scrollbar-thumb {
-	background-color: var(--scrollbar-face);
-	border-radius: 8px;
-}
-
 ::-webkit-scrollbar {
 	width: 8px;
 	height: 8px;
@@ -12,16 +7,26 @@
 	}
 }
 
+::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-face);
+	border-radius: 8px;
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: var(--scrollbar-hover);
+	}
+}
+
 // For IE
 html {
-	scrollbar-base-color: var(--scrollbar-face);
-	scrollbar-shadow-color: var(--scrollbar-face);
+	scrollbar-base-color: var(--scrollbar-hover);
+	scrollbar-shadow-color: var(--scrollbar-hover);
 	scrollbar-arrow-color: var(--scrollbar-arrow);
 	scrollbar-track-color: var(--page-bg);
 }
 
 // For Firefox
 * {
-	scrollbar-color: var(--scrollbar-face) transparent;
+	scrollbar-color: var(--scrollbar-hover) transparent;
 	scrollbar-width: thin;
 }

@@ -2,10 +2,20 @@
 @import '../less/inputs';
 @import '../less/scrollbar';
 @import '../less/spacing';
+@import '../less/spinner';
+@import '../less/themes';
 
 :root {
 	@root-font();
 	transition: background-color 0.15s ease-out;
+
+	&[data-theme='dark'] {
+		.theme-dark();
+	}
+
+	&[data-theme='light'] {
+		.theme-light();
+	}
 }
 
 #root {
@@ -31,4 +41,16 @@
 .Story__stretch {
 	width: 100vw;
 	height: 100vh;
+}
+
+.CssSpinner {
+	.css-spinner();
+
+	[data-theme='dark'] & {
+		animation-name: spinner-dark;
+	}
+
+	[data-theme='light'] & {
+		animation-name: spinner-light;
+	}
 }
