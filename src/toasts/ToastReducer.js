@@ -7,11 +7,11 @@ export default (state, {type, payload, meta}) => {
 		state = [];
 	}
 	switch (type) {
-		case removeToast.toString():
+		case removeToast.type:
 			return state.filter((m) => m !== payload);
-		case removeToastType.toString():
+		case removeToastType.type:
 			return state.filter((m) => m.type !== payload);
-		case removeAllToasts.toString():
+		case removeAllToasts.type:
 			return [];
 		default:
 			if (!hasFatalError(state) && meta?.toasts) {

@@ -9,12 +9,12 @@ jest.unmock('../../src/toasts/ToastActions');
 describe('ToastReducer', () => {
 	describe('basic behaviour', () => {
 		it('returns default state when state is undefined', () => {
-			expect(reducer(undefined, {type: 'TEST'})).toEqual([]);
+			expect(reducer(undefined, {type: 'test'})).toEqual([]);
 		});
 
 		it('returns same state for unknown actions', () => {
 			const state = {};
-			expect(reducer(state, {type: 'TEST'})).toBe(state);
+			expect(reducer(state, {type: 'test'})).toBe(state);
 		});
 	});
 

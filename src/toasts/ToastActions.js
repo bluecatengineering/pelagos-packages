@@ -1,6 +1,6 @@
-import {createAction} from 'redux-actions';
+import {createAction} from '@bluecat/redux-utils';
 
-export const addToast = createAction('TOAST/ADD', (type, text, onClick) => ({type, text, onClick}));
-export const removeToast = createAction('TOAST/REMOVE');
-export const removeToastType = createAction('TOAST/REMOVE_TYPE');
-export const removeAllToasts = createAction('TOAST/REMOVE_ALL');
+export const addToast = createAction('toast/add', (type, text, onClick) => ({payload: {type, text, onClick}}));
+export const removeToast = createAction('toast/remove');
+export const removeToastType = createAction('toast/removeType');
+export const removeAllToasts = createAction('toast/removeAll');
