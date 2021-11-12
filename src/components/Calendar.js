@@ -21,9 +21,16 @@ const getInitialDate = () => {
 	return date;
 };
 
-const offsetUTC = (time) => time - new Date(time).getTimezoneOffset() * 60000;
+const addTime = (date, time) => {
+	if (!time) {
+		return date;
+	}
 
-const addTime = (date, time) => (time ? offsetUTC(date + (time % 8.64e7)) : date);
+	const d = new Date(date);
+	const t = new Date(time);
+	d.setHours(t.getHours(), t.getMinutes(), t.getSeconds(), t.getMilliseconds());
+	return d.getTime();
+};
 
 const extractDate = (value) => (value ? new Date(value).setHours(0, 0, 0, 0) : null);
 
@@ -52,6 +59,22 @@ const curHighlight = (time, rangeStart, rangeEnd) => {
 	const afterStartTime = !rangeStart || time > rangeStart;
 	const beforeEndTime = !rangeEnd || time < rangeEnd;
 	return afterStartTime && beforeEndTime ? ' Calendar__cell--dateRange' : '';
+};
+
+const updateDayOfMonth = (focused, dayOfMonth) => {
+	const date = new Date(focused);
+	date.setDate(dayOfMonth);
+	return date;
+};
+
+const updateMonth = (focused, month) => {
+	const date = new Date(focused);
+	date.setMonth(month);
+	// check if the new month is shorter and adjust the date
+	if (date.getMonth() !== month) {
+		date.setDate(0);
+	}
+	return date;
 };
 
 const Calendar = ({id, className, value, onChange, ...props}) => {
@@ -91,11 +114,11 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 	);
 
 	const selectPrevMonth = useCallback(() => {
-		setFocused((focused) => new Date(focused.setMonth(focused.getMonth() - 1)));
+		setFocused((focused) => updateMonth(focused, focused.getMonth() - 1));
 	}, []);
 
 	const selectNextMonth = useCallback(() => {
-		setFocused((focused) => new Date(focused.setMonth(focused.getMonth() + 1)));
+		setFocused((focused) => updateMonth(focused, focused.getMonth() + 1));
 	}, []);
 
 	const handleKeyDown = useCallback(
@@ -118,19 +141,19 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 						break;
 					case 37: // left
 						event.preventDefault();
-						setFocused((focused) => new Date(focused.setDate(focused.getDate() - 1)));
+						setFocused((focused) => updateDayOfMonth(focused, focused.getDate() - 1));
 						break;
 					case 38: // up
 						event.preventDefault();
-						setFocused((focused) => new Date(focused.setDate(focused.getDate() - 7)));
+						setFocused((focused) => updateDayOfMonth(focused, focused.getDate() - 7));
 						break;
 					case 39: // right
 						event.preventDefault();
-						setFocused((focused) => new Date(focused.setDate(focused.getDate() + 1)));
+						setFocused((focused) => updateDayOfMonth(focused, focused.getDate() + 1));
 						break;
 					case 40: // down
 						event.preventDefault();
-						setFocused((focused) => new Date(focused.setDate(focused.getDate() + 7)));
+						setFocused((focused) => updateDayOfMonth(focused, focused.getDate() + 7));
 						break;
 				}
 			}
@@ -214,7 +237,8 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 				onMouseOver={handleMouseOver}
 				onMouseUp={handleMouseUp}
 				onFocusCapture={handleFocus}
-				onBlurCapture={handleBlur}>
+				onBlurCapture={handleBlur}
+			>
 				<thead>
 					<tr>
 						{do {
@@ -257,7 +281,8 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 													}`}
 													tabIndex={isSelected ? 0 : -1}
 													aria-selected={isSelected}
-													data-time={isCurMonth ? time : null}>
+													data-time={isCurMonth ? time : null}
+												>
 													{isCurMonth ? day.getDate() : ''}
 												</td>
 											);

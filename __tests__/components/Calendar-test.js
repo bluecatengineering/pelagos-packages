@@ -144,6 +144,20 @@ describe('Calendar', () => {
 			expect(setFocused.mock.calls[0][0](focused)).toEqual(new Date(2019, 7, 15));
 		});
 
+		it('selects previous month when page up is pressed and the last day needs fixing', () => {
+			const focused = new Date(2019, 2, 31);
+			const setFocused = jest.fn();
+			const preventDefault = jest.fn();
+			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
+
+			const wrapper = shallow(<Calendar />);
+			wrapper.find('#test').simulate('keydown', {keyCode: 33, preventDefault});
+
+			expect(preventDefault).toHaveBeenCalledTimes(1);
+			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
+			expect(setFocused.mock.calls[0][0](focused)).toEqual(new Date(2019, 1, 28));
+		});
+
 		it('selects next month when page down is pressed', () => {
 			const focused = new Date(2019, 8, 15);
 			const setFocused = jest.fn();
@@ -156,6 +170,20 @@ describe('Calendar', () => {
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
 			expect(setFocused.mock.calls[0][0](focused)).toEqual(new Date(2019, 9, 15));
+		});
+
+		it('selects next month when page down is pressed and the last day needs fixing', () => {
+			const focused = new Date(2019, 2, 31);
+			const setFocused = jest.fn();
+			const preventDefault = jest.fn();
+			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
+
+			const wrapper = shallow(<Calendar />);
+			wrapper.find('#test').simulate('keydown', {keyCode: 34, preventDefault});
+
+			expect(preventDefault).toHaveBeenCalledTimes(1);
+			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
+			expect(setFocused.mock.calls[0][0](focused)).toEqual(new Date(2019, 3, 30));
 		});
 
 		it('selects previous day when left is pressed', () => {
