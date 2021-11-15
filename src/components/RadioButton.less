@@ -3,7 +3,7 @@
 @import '../../less/utils';
 
 .RadioButton {
-	@secondary-button-effects();
+	@layer-hover-effects();
 	display: inline-block;
 	position: relative;
 	padding-left: @sp-24;
@@ -25,39 +25,41 @@
 	left: 0;
 	width: 18px;
 	height: 18px;
-	border: 2px solid var(--check-border);
-}
-.RadioButton[aria-checked='true']::before {
-	background-color: var(--check-bg);
-	border-color: var(--check-bg);
+	border: 1px solid var(--icon-primary);
 
 	@media print {
-		background-color: transparent;
-		border-color: var(--print-medium);
+		border-color: var(--print-color);
 	}
 }
 
-.RadioButton--error::before {
-	border-color: var(--check-error);
+.RadioButton[aria-checked='true']::before {
+	border-color: var(--interactive);
 }
+
+.RadioButton--error::before,
 .RadioButton--error[aria-checked='true']::before {
-	background-color: var(--check-error);
-	border-color: var(--check-error);
+	border-color: var(--support-error);
 }
 
 .RadioButton:focus::before {
 	@focus-ring();
+	outline-offset: 1px;
 }
 .RadioButton--error:focus::before {
 	@focus-ring-error();
+	outline-offset: 1px;
 }
 
 .RadioButton[aria-checked='true']::after {
 	top: 7px;
 	left: 5px;
-	border: 4px solid var(--check-color);
+	border: 4px solid var(--interactive);
 
 	@media print {
 		border-color: var(--print-color);
 	}
+}
+
+.RadioButton--error[aria-checked='true']::after {
+	border-color: var(--support-error);
 }

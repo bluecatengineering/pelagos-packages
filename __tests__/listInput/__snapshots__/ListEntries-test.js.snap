@@ -5,7 +5,6 @@ exports[`ListEntries rendering renders expected elements 1`] = `
   className="ListEntries"
   id="test"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -13,13 +12,12 @@ exports[`ListEntries rendering renders expected elements 1`] = `
     data-testid="list-item"
     role="listitem"
   >
-    <div
+    <button
       aria-label="Remove test"
       className="ListEntries__icon"
       data-index={0}
       data-testid="remove-item"
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -28,7 +26,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
           }
         }
       />
-    </div>
+    </button>
     <div
       className="ListEntries__name"
     >
@@ -43,7 +41,6 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
   className="ListEntries"
   id="test"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -51,13 +48,12 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
     data-testid="list-item"
     role="listitem"
   >
-    <div
+    <button
       aria-label="Remove test"
       className="ListEntries__icon"
       data-index={0}
       data-testid="remove-item"
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -66,7 +62,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
           }
         }
       />
-    </div>
+    </button>
     <div
       className="ListEntries__name"
     >
@@ -81,7 +77,6 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
   className="ListEntries"
   id="test"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -89,13 +84,12 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
     data-testid="list-item"
     role="listitem"
   >
-    <div
+    <button
       aria-label="Remove test"
       className="ListEntries__icon"
       data-index={0}
       data-testid="remove-item"
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -104,7 +98,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
           }
         }
       />
-    </div>
+    </button>
     <div
       className="ListEntries__name"
     >
@@ -119,7 +113,6 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
   className="ListEntries"
   id="test"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -127,13 +120,12 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
     data-testid="list-item"
     role="listitem"
   >
-    <div
+    <button
       aria-label="Remove test"
       className="ListEntries__icon"
       data-index={0}
       data-testid="remove-item"
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -142,7 +134,7 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
           }
         }
       />
-    </div>
+    </button>
     <div
       className="ListEntries__name"
     >
@@ -157,7 +149,6 @@ exports[`ListEntries rendering renders expected elements when the item has class
   className="ListEntries"
   id="test"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
   role="list"
 >
   <div
@@ -165,13 +156,12 @@ exports[`ListEntries rendering renders expected elements when the item has class
     data-testid="list-item"
     role="listitem"
   >
-    <div
+    <button
       aria-label="Remove test"
       className="ListEntries__icon"
       data-index={0}
       data-testid="remove-item"
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -180,7 +170,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
           }
         }
       />
-    </div>
+    </button>
     <div
       className="TestClass ListEntries__name"
     >

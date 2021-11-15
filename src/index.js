@@ -1,5 +1,6 @@
 export * from './Colors';
 
+export {default as exclamationRhombus} from './icons/exclamationRhombus';
 export {default as timesThin} from './icons/timesThin';
 
 export {default as BlockHeader} from './components/BlockHeader';
@@ -25,6 +26,7 @@ export {default as IconButton} from './components/IconButton';
 export {default as Label} from './components/Label';
 export {default as LabeledIcon} from './components/LabeledIcon';
 export {default as LabelLine} from './components/LabelLine';
+export {default as Layer} from './components/Layer';
 export {default as ModalSpinner} from './components/ModalSpinner';
 export {default as MultiColumn} from './components/MultiColumn';
 export {default as PageTitle} from './components/PageTitle';
@@ -43,6 +45,7 @@ export {default as ToolbarButton} from './components/ToolbarButton';
 
 export {default as DropDownField} from './formFields/DropDownField';
 export {default as FieldError} from './formFields/FieldError';
+export {default as FieldHelper} from './formFields/FieldHelper';
 export {default as OutputField} from './formFields/OutputField';
 export {default as TagInputField} from './formFields/TagInputField';
 export {default as TextAreaField} from './formFields/TextAreaField';

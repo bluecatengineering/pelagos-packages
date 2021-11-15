@@ -11,7 +11,7 @@ import EditorDetailsPanel from './EditorDetailsPanel';
 import ModalSpinner from './ModalSpinner';
 import PageTitle from './PageTitle';
 import SearchField from './SearchField';
-import ToolbarButton from './ToolbarButton';
+import IconButton from './IconButton';
 
 import './EditorTable.less';
 
@@ -23,7 +23,8 @@ const renderDetails = (id, item, Details, showButtons, disableDelete, onClose, o
 		disableDelete={disableDelete && disableDelete(item)}
 		onClose={onClose}
 		onEdit={onEdit}
-		onDelete={onDelete}>
+		onDelete={onDelete}
+	>
 		<Details item={item} />
 	</EditorDetailsPanel>
 );
@@ -118,8 +119,9 @@ const EditorTable = ({
 				<div className="EditorTable__buttons">
 					{canEdit && (
 						<>
-							<ToolbarButton
+							<IconButton
 								id="addBtn"
+								type="primary"
 								icon={faPlus}
 								aria-label={t`Add`}
 								tooltipText={tooltipText}

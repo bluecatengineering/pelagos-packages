@@ -16,6 +16,7 @@ describe('TagInputField', () => {
 					label="Label"
 					optional
 					tags={['foo']}
+					helperText="Helper text"
 					validate={jest.fn()}
 					onChange={jest.fn()}
 					onError={jest.fn()}
@@ -46,6 +47,23 @@ describe('TagInputField', () => {
 					label="Label"
 					optional
 					tags={[]}
+					validate={jest.fn()}
+					onChange={jest.fn()}
+					onError={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements if error is set', () => {
+			const wrapper = shallow(
+				<TagInputField
+					id="test"
+					label="Label"
+					optional
+					tags={['foo']}
+					helperText="Helper text"
+					error="Error"
 					validate={jest.fn()}
 					onChange={jest.fn()}
 					onError={jest.fn()}

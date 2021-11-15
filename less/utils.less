@@ -11,40 +11,108 @@
 	display: block;
 };
 
-@primary-button-effects: {
-	transition: border-color 0.15s ease-out, background-color 0.15s ease-out;
+@layer-hover-effects: {
+	transition: background-color 0.15s ease-out;
 
 	&:hover {
-		border-color: var(--primary-button-hover);
-		background-color: var(--primary-button-hover);
+		background-color: var(--layer-hover);
 	}
 
 	&:active {
-		border-color: var(--primary-button-active);
-		background-color: var(--primary-button-active);
+		background-color: var(--layer-active);
 	}
 };
 
+@primary-button-effects: {
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: var(--button-primary-hover);
+	}
+
+	&:active {
+		background-color: var(--button-primary-active);
+	}
+};
+
+/* for now secondary and tertiary buttons look the same to avoid a breaking change
 @secondary-button-effects: {
 	transition: background-color 0.15s ease-out;
 
 	&:hover {
-		background-color: var(--secondary-button-hover);
+		background-color: var(--button-secondary-hover);
 	}
 
 	&:active {
-		background-color: var(--secondary-button-active);
+		background-color: var(--button-secondary-active);
+	}
+};
+*/
+
+@secondary-button-effects: {
+	transition: color 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out;
+
+	&:focus {
+		color: var(--text-on-color);
+		background-color: var(--button-tertiary-hover);
+		border-color: var(--button-tertiary-hover);
+	}
+
+	&:hover {
+		color: var(--text-on-color);
+		background-color: var(--button-tertiary-hover);
+		border-color: var(--button-tertiary-hover);
+	}
+
+	&:active {
+		color: var(--text-on-color);
+		background-color: var(--button-tertiary-active);
+		border-color: var(--button-tertiary-active);
+	}
+};
+
+@tertiary-button-effects: {
+	transition: color 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out;
+
+	&:focus {
+		color: var(--text-on-color);
+		background-color: var(--button-tertiary-hover);
+		border-color: var(--button-tertiary-hover);
+	}
+
+	&:hover {
+		color: var(--text-on-color);
+		background-color: var(--button-tertiary-hover);
+		border-color: var(--button-tertiary-hover);
+	}
+
+	&:active {
+		color: var(--text-on-color);
+		background-color: var(--button-tertiary-active);
+		border-color: var(--button-tertiary-active);
 	}
 };
 
 @icon-button: {
 	@focus-visible();
-	@secondary-button-effects();
 	cursor: pointer;
-	color: var(--action-color);
+	color: var(--icon-primary);
+	background-color: transparent;
+	border: none;
+	border-radius: 3px;
+	transition: background-color 0.15s ease-out;
 
+	&:hover {
+		background-color: var(--layer-hover);
+	}
+
+	&:active {
+		background-color: var(--layer-active);
+	}
+
+	&:disabled,
 	&[aria-disabled='true'] {
-		color: var(--disabled-color);
+		color: var(--icon-disabled);
 		background-color: transparent;
 		cursor: not-allowed;
 	}

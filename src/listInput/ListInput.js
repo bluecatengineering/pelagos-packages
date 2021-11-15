@@ -5,6 +5,7 @@ import {t} from '@bluecat/l10n.macro';
 import LabelLine from '../components/LabelLine';
 import ComboBox from '../components/ComboBox';
 import FieldError from '../formFields/FieldError';
+import FieldHelper from '../formFields/FieldHelper';
 import setLiveText from '../functions/setLiveText';
 
 import ListEntries from './ListEntries';
@@ -19,6 +20,7 @@ const ListInput = ({
 	notice,
 	emptyText,
 	list,
+	helperText,
 	error,
 	column,
 	getSuggestions,
@@ -143,6 +145,8 @@ const ListInput = ({
 	const handleHighlightClear = useCallback(() => setHighlightKey(null), []);
 
 	const empty = !list?.length;
+	const helperId = `${id}-helper`;
+	const errorId = `${id}-error`;
 	return (
 		<div className="ListInput">
 			<LabelLine htmlFor={id} text={label} optional={optional && empty} notice={notice} />
@@ -154,11 +158,12 @@ const ListInput = ({
 				error={!!error}
 				getSuggestions={handleGetSuggestions}
 				renderSuggestion={renderSuggestion}
+				aria-describedby={error ? errorId : helperId}
 				onChange={handleChange}
 				onEnter={handleEnter}
 				onTextChange={handleTextChange}
 			/>
-			<FieldError id={id + '-error'} text={error} />
+			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
 			{empty ? (
 				<div className="ListInput__empty" id={id + '-empty'}>
 					{emptyText}
@@ -195,6 +200,8 @@ ListInput.propTypes = {
 	emptyText: PropTypes.string,
 	/** The entries for the list. */
 	list: PropTypes.array,
+	/** Additional information for the field. */
+	helperText: PropTypes.string,
 	/** The error text. */
 	error: PropTypes.string,
 	/** Whether the list should be displayed as columns. */

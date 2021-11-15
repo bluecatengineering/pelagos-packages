@@ -18,8 +18,10 @@ exports[`Calendar rendering renders expected elements 1`] = `
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
     <div
       aria-live="polite"
@@ -39,8 +41,10 @@ exports[`Calendar rendering renders expected elements 1`] = `
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
   </div>
   <table
@@ -479,8 +483,10 @@ exports[`Calendar rendering renders expected elements when className is set 1`] 
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
     <div
       aria-live="polite"
@@ -500,8 +506,10 @@ exports[`Calendar rendering renders expected elements when className is set 1`] 
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
   </div>
   <table
@@ -940,8 +948,10 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
     <div
       aria-live="polite"
@@ -961,8 +971,10 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
   </div>
   <table
@@ -1401,8 +1413,10 @@ exports[`Calendar rendering renders expected elements when focused is later than
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
     <div
       aria-live="polite"
@@ -1422,8 +1436,10 @@ exports[`Calendar rendering renders expected elements when focused is later than
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
   </div>
   <table
@@ -1862,8 +1878,10 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
     <div
       aria-live="polite"
@@ -1883,8 +1901,10 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         }
       }
       onClick={[Function]}
+      onMouseDown={[Function]}
       size="medium"
       tooltipPlacement="right"
+      type="ghost"
     />
   </div>
   <table

@@ -1,6 +1,7 @@
 @import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .Calendar__monthHeader {
 	height: @sp-40;
@@ -12,8 +13,6 @@
 
 .Calendar__monthLabel {
 	width: 9em;
-	margin-left: @sp-08;
-	margin-right: @sp-08;
 }
 
 .Calendar__cell,
@@ -22,33 +21,36 @@
 }
 
 .Calendar__dayLabel {
-	@font-10-600-uc();
-	color: var(--font-color-2);
+	@font-10-600();
+	color: var(--text-secondary);
 }
 
 .Calendar__cell {
 	@focus-visible();
-	color: var(--font-color-1);
+	@layer-hover-effects();
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
-	outline: none;
-}
 
-.Calendar__cell:not(.Calendar__cell--disabled):hover {
-	color: var(--font-color-i1);
-	background-color: var(--primary-button-hover);
-}
+	&:focus {
+		box-shadow: inset 0 0 0 3px var(--focus-inset);
+	}
 
-.Calendar__cell--dateRange {
-	background-color: var(--selection-bg);
-}
+	&--dateRange {
+		background-color: var(--layer-selected);
+	}
 
-.Calendar__cell--selected {
-	color: var(--font-color-i1);
-	background-color: var(--action-color);
-}
+	&--selected,
+	&--selected:hover,
+	&--selected:active {
+		color: var(--text-on-color);
+		background-color: var(--background-brand);
+	}
 
-.Calendar__cell--disabled {
-	cursor: default;
+	&--disabled,
+	&--disabled:hover,
+	&--disabled:active {
+		background-color: transparent;
+		cursor: default;
+	}
 }

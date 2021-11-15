@@ -34,7 +34,7 @@ describe('SearchField', () => {
 			useRef.mockReturnValue({current: {focus}});
 			useState.mockReturnValueOnce(['foo', setText]);
 			const wrapper = shallow(<SearchField onChange={onChange} />);
-			wrapper.find('[role="button"]').simulate('click');
+			wrapper.find('button').simulate('click');
 			expect(focus.mock.calls).toEqual([[]]);
 			expect(setText.mock.calls).toEqual([['']]);
 			expect(onChange.mock.calls).toEqual([['']]);

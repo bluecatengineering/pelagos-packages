@@ -1,35 +1,31 @@
 @focus-ring: {
-	box-shadow: 0 0 0 1px var(--focus-normal-border), 0 0 4px 1px var(--focus-normal-shadow);
-	outline: none;
+	outline: 2px solid var(--focus);
+	outline-offset: -2px;
 };
 
 @focus-ring-error: {
-	box-shadow: 0 0 0 1px var(--focus-error-border), 0 0 4px 1px var(--focus-error-shadow);
-	outline: none;
+	outline: 2px solid var(--focus);
+	outline-offset: -2px;
 };
 
 @focus-visible: {
-	outline: none;
-
 	&:focus {
 		@focus-ring();
 	}
 
 	// workaround for browsers that don't support :focus-visible
 	&:focus:not(:focus-visible) {
-		box-shadow: none;
+		outline: none;
 	}
 };
 
 @focus-visible-error: {
-	outline: none;
-
 	&:focus {
 		@focus-ring-error();
 	}
 
 	// workaround for browsers that don't support :focus-visible
 	&:focus:not(:focus-visible) {
-		box-shadow: none;
+		outline: none;
 	}
 };

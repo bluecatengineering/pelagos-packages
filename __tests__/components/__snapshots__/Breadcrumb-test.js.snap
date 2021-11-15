@@ -17,6 +17,7 @@ exports[`Breadcrumb rendering renders expected elements 1`] = `
     onClick={[Function]}
     size="medium"
     tooltipPlacement="right"
+    type="ghost"
   />
   <nav
     aria-label="Breadcrumb"

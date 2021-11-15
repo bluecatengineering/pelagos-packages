@@ -16,25 +16,37 @@
 	outline: none;
 
 	&:not(:first-child) {
-		border-left: 1px solid var(--separator-color);
+		border-left: 1px solid var(--border-subtle);
 	}
 }
 
 .MultiColumn__item {
-	@secondary-button-effects();
 	flex-direction: row;
 	align-items: center;
 	padding: @sp-04 @sp-08;
 	cursor: pointer;
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: var(--background-hover);
+	}
+
+	&:active {
+		background-color: var(--background-active);
+	}
 
 	&[aria-selected='true'] {
 		@focus-ring();
-		background-color: var(--multi-selected-bg);
+		background-color: var(--layer-selected);
 	}
 }
 
 .MultiColumn__selected {
-	background-color: var(--multi-path-bg);
+	background-color: var(--layer-accent);
+
+	&:hover {
+		background-color: var(--layer-accent-hover);
+	}
 }
 
 .MultiColumn__text {
@@ -49,7 +61,7 @@
 
 .MultiColumn__empty {
 	@font-16-400();
-	color: var(--font-color-3);
+	color: var(--text-helper);
 	white-space: pre-line;
 	justify-content: center;
 	align-items: center;

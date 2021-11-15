@@ -50,12 +50,16 @@ export default (expanded, setExpanded, items, options) => {
 	const findItemToFocus = useStringFinder();
 
 	const handleMouseDown = useCallback(
-		(event) => (
-			event.preventDefault(),
-			event.target.closest('[role="button"]').focus(),
-			setExpanded((expanded) => (expanded ? setCurrent(-1) : null, !expanded))
-		),
-		[setExpanded]
+		(event) => {
+			event.preventDefault();
+			const target = event.target;
+			const button = target.closest('button') || target.closest('[role="button"]');
+			if (!button.disabled) {
+				button.focus();
+				setExpanded((expanded) => (setCurrent(expanded ? -1 : checkEnabled(-1, 1, items, isItemDisabled)), !expanded));
+			}
+		},
+		[setExpanded, items, isItemDisabled]
 	);
 
 	const handleKeyDown = useCallback(
@@ -72,6 +76,7 @@ export default (expanded, setExpanded, items, options) => {
 						case 32: // space
 							event.preventDefault();
 							if (!expanded) {
+								setCurrent(checkEnabled(-1, 1, items, isItemDisabled));
 								setExpanded(true);
 							} else if (current === -1) {
 								setExpanded(false);

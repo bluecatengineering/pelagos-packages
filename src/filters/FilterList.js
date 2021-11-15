@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import {t} from '@bluecat/l10n.macro';
 
-import handleButtonKeyDown from '../functions/handleButtonKeyDown';
+import Layer from '../components/Layer';
 import ScrollBox from '../components/ScrollBox';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
@@ -36,37 +36,38 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 	);
 
 	return (
-		<div className="FilterList">
+		<Layer className="FilterList">
 			<ScrollBox trackId="filterListTrack">
-				<div className="FilterList__items" onClick={handleClick} onKeyDown={handleButtonKeyDown}>
+				<div className="FilterList__items" onClick={handleClick}>
 					{filters &&
 						Object.entries(filters).map(([key, v]) =>
 							!excludedKeys.includes(key)
 								? do {
 										const name = getFilterTitle(key);
-										<div
-											key={key}
-											id={`filter-${key}`}
-											className="FilterList__item"
-											tabIndex="0"
-											role="button"
-											aria-haspopup="dialog"
-											aria-expanded={key === filterName}
-											aria-controls={key === filterName ? 'filterListDropDown' : null}
-											data-kind="item"
-											data-key={key}>
-											<span className="FilterList__filterTitle">{name}</span>
-											{getValues(key, v)}
-											<span
+										<div key={key} className="FilterList__item">
+											<button
+												id={`filter-${key}`}
+												className="FilterList__button"
+												type="button"
+												aria-haspopup="dialog"
+												aria-expanded={key === filterName}
+												aria-controls={key === filterName ? 'filterListDropDown' : null}
+												data-kind="item"
+												data-key={key}
+											>
+												<span className="FilterList__filterTitle">{name}</span>
+												{getValues(key, v)}
+											</button>
+											<button
 												id={`filter-${key}-remove`}
 												className="FilterList__remove"
-												tabIndex="0"
-												role="button"
+												type="button"
 												aria-label={t`Remove ${name}`}
 												data-kind="remove"
-												data-key={key}>
+												data-key={key}
+											>
 												<SvgIcon icon={timesThin} />
-											</span>
+											</button>
 										</div>;
 								  }
 								: null
@@ -85,7 +86,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 					/>,
 					document.body
 				)}
-		</div>
+		</Layer>
 	);
 };
 

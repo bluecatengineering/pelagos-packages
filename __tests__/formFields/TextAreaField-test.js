@@ -19,6 +19,7 @@ describe('TextAreaField', () => {
 					placeholder="placeholder"
 					optional
 					maxLength={10}
+					helperText="Helper text"
 					onChange={jest.fn()}
 				/>
 			);
@@ -78,6 +79,7 @@ describe('TextAreaField', () => {
 					value="value"
 					placeholder="placeholder"
 					maxLength={10}
+					helperText="Helper text"
 					error="Error"
 					onChange={jest.fn()}
 				/>

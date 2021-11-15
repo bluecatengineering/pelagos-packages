@@ -1,25 +1,23 @@
 import PropTypes from 'prop-types';
 
-import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import useTooltip from '../hooks/useTooltip';
 
 import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
 /** An icon button. */
-const IconButton = ({id, icon, className, size, tooltipText, tooltipPlacement, disabled, onClick, ...props}) => (
-	<span
+const IconButton = ({id, icon, className, size, type, tooltipText, tooltipPlacement, disabled, onClick, ...props}) => (
+	<button
 		{...props}
 		id={id}
-		role="button"
-		aria-disabled={disabled}
-		tabIndex={disabled ? -1 : 0}
-		className={'IconButton IconButton--' + size + (className ? ' ' + className : '')}
+		type="button"
+		disabled={disabled}
+		className={`IconButton IconButton--${size} IconButton--${type}${className ? ' ' + className : ''}`}
 		ref={useTooltip(tooltipText, tooltipPlacement)}
 		onClick={disabled ? null : onClick}
-		onKeyDown={disabled ? null : handleButtonKeyDown}>
+	>
 		<SvgIcon icon={icon} />
-	</span>
+	</button>
 );
 
 IconButton.propTypes = {
@@ -31,6 +29,8 @@ IconButton.propTypes = {
 	className: PropTypes.string,
 	/** The component size. */
 	size: PropTypes.oneOf(['medium', 'large']),
+	/** The button type. */
+	type: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'ghost']),
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
@@ -43,6 +43,7 @@ IconButton.propTypes = {
 
 IconButton.defaultProps = {
 	size: 'medium',
+	type: 'ghost',
 	tooltipPlacement: 'right',
 };
 

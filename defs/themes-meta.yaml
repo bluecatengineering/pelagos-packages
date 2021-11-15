@@ -1,0 +1,480 @@
+background:
+  group: background
+  set: base
+  properties: [background]
+background-inverse:
+  group: background
+  set: base
+  properties: [background]
+background-brand:
+  group: background
+  set: base
+  properties: [background]
+background-active:
+  group: background
+  set: base
+  properties: [background]
+background-hover:
+  group: background
+  set: base
+  properties: [background]
+background-inverse-hover:
+  group: background
+  set: base
+  properties: [background]
+background-selected:
+  group: background
+  set: base
+  properties: [background]
+background-selected-hover:
+  group: background
+  set: base
+  properties: [background]
+layer-01:
+  group: layer
+  set: layer-01
+  properties: [background]
+layer-active-01:
+  group: layer
+  set: layer-01
+  properties: [background]
+layer-hover-01:
+  group: layer
+  set: layer-01
+  properties: [background]
+layer-selected-01:
+  group: layer
+  set: layer-01
+  properties: [background]
+layer-selected-hover-01:
+  group: layer
+  set: layer-01
+  properties: [background]
+layer-02:
+  group: layer
+  set: layer-02
+  properties: [background]
+layer-active-02:
+  group: layer
+  set: layer-02
+  properties: [background]
+layer-hover-02:
+  group: layer
+  set: layer-02
+  properties: [background]
+layer-selected-02:
+  group: layer
+  set: layer-02
+  properties: [background]
+layer-selected-hover-02:
+  group: layer
+  set: layer-02
+  properties: [background]
+layer-03:
+  group: layer
+  set: layer-03
+  properties: [background]
+layer-active-03:
+  group: layer
+  set: layer-03
+  properties: [background]
+layer-hover-03:
+  group: layer
+  set: layer-03
+  properties: [background]
+layer-selected-03:
+  group: layer
+  set: layer-03
+  properties: [background]
+layer-selected-hover-03:
+  group: layer
+  set: layer-03
+  properties: [background]
+layer-disabled:
+  group: layer
+  set: base
+  properties: [background]
+layer-selected-inverse:
+  group: layer
+  set: base
+  properties: [background]
+layer-selected-disabled:
+  group: layer
+  set: base
+  properties: [background]
+layer-accent-01:
+  group: layer
+  set: layer-01
+  properties: [background]
+layer-accent-active-01:
+  group: layer
+  set: layer-01
+  properties: [background]
+layer-accent-hover-01:
+  group: layer
+  set: layer-01
+  properties: [background]
+layer-accent-02:
+  group: layer
+  set: layer-02
+  properties: [background]
+layer-accent-active-02:
+  group: layer
+  set: layer-02
+  properties: [background]
+layer-accent-hover-02:
+  group: layer
+  set: layer-02
+  properties: [background]
+layer-accent-03:
+  group: layer
+  set: layer-03
+  properties: [background]
+layer-accent-active-03:
+  group: layer
+  set: layer-03
+  properties: [background]
+layer-accent-hover-03:
+  group: layer
+  set: layer-03
+  properties: [background]
+field-01:
+  group: field
+  set: layer-01
+  properties: [background]
+field-hover-01:
+  group: field
+  set: layer-01
+  properties: [background]
+field-02:
+  group: field
+  set: layer-02
+  properties: [background]
+field-hover-02:
+  group: field
+  set: layer-02
+  properties: [background]
+field-03:
+  group: field
+  set: layer-03
+  properties: [background]
+field-hover-03:
+  group: field
+  set: layer-03
+  properties: [background]
+field-disabled:
+  group: field
+  set: base
+  properties: [background]
+border-subtle-00:
+  group: border
+  set: base
+  properties: [border]
+border-subtle-01:
+  group: border
+  set: layer-01
+  properties: [border]
+border-subtle-selected-01:
+  group: border
+  set: layer-01
+  properties: [border]
+border-subtle-02:
+  group: border
+  set: layer-02
+  properties: [border]
+border-subtle-selected-02:
+  group: border
+  set: layer-02
+  properties: [border]
+border-subtle-03:
+  group: border
+  set: layer-03
+  properties: [border]
+border-subtle-selected-03:
+  group: border
+  set: layer-03
+  properties: [border]
+border-strong-01:
+  group: border
+  set: layer-01
+  properties: [border]
+border-strong-02:
+  group: border
+  set: layer-02
+  properties: [border]
+border-strong-03:
+  group: border
+  set: layer-03
+  properties: [border]
+border-inverse:
+  group: border
+  set: base
+  properties: [border]
+border-interactive:
+  group: border
+  set: base
+  properties: [border]
+border-disabled:
+  group: border
+  set: base
+  properties: [border]
+text-primary:
+  group: text
+  set: base
+  properties: [color]
+text-secondary:
+  group: text
+  set: base
+  properties: [color]
+text-placeholder:
+  group: text
+  set: base
+  properties: [color]
+text-helper:
+  group: text
+  set: base
+  properties: [color]
+text-error:
+  group: text
+  set: base
+  properties: [color]
+text-inverse:
+  group: text
+  set: base
+  properties: [color]
+text-on-color:
+  group: text
+  set: base
+  properties: [color]
+text-on-color-disabled:
+  group: text
+  set: base
+  properties: [color]
+text-disabled:
+  group: text
+  set: base
+  properties: [color]
+link-primary:
+  group: link
+  set: base
+  properties: [color]
+link-primary-hover:
+  group: link
+  set: base
+  properties: [color]
+link-secondary:
+  group: link
+  set: base
+  properties: [color]
+link-inverse:
+  group: link
+  set: base
+  properties: [color]
+link-visited:
+  group: link
+  set: base
+  properties: [color]
+icon-primary:
+  group: icon
+  set: base
+  properties: []
+icon-secondary:
+  group: icon
+  set: base
+  properties: []
+icon-inverse:
+  group: icon
+  set: base
+  properties: []
+icon-on-color:
+  group: icon
+  set: base
+  properties: []
+icon-on-color-disabled:
+  group: icon
+  set: base
+  properties: []
+icon-disabled:
+  group: icon
+  set: base
+  properties: []
+support-error:
+  group: support
+  set: base
+  properties: []
+support-success:
+  group: support
+  set: base
+  properties: []
+support-warning:
+  group: support
+  set: base
+  properties: []
+support-info:
+  group: support
+  set: base
+  properties: []
+support-error-inverse:
+  group: support
+  set: base
+  properties: []
+support-success-inverse:
+  group: support
+  set: base
+  properties: []
+support-warning-inverse:
+  group: support
+  set: base
+  properties: []
+support-info-inverse:
+  group: support
+  set: base
+  properties: []
+support-caution-minor:
+  group: support
+  set: base
+  properties: []
+support-caution-major:
+  group: support
+  set: base
+  properties: []
+support-caution-undefined:
+  group: support
+  set: base
+  properties: []
+focus:
+  group: focus
+  set: base
+  properties: [outline]
+focus-inset:
+  group: focus
+  set: base
+  properties: [outline]
+focus-inverse:
+  group: focus
+  set: base
+  properties: [outline]
+skeleton-background:
+  group: skeleton
+  set: base
+  properties: [background]
+skeleton-element:
+  group: skeleton
+  set: base
+  properties: [background]
+interactive:
+  group: other
+  set: base
+  properties: [background, color]
+highlight:
+  group: other
+  set: base
+  properties: []
+overlay:
+  group: other
+  set: base
+  properties: [background]
+button-primary:
+  group: button
+  set: base
+  properties: []
+button-primary-hover:
+  group: button
+  set: base
+  properties: []
+button-primary-active:
+  group: button
+  set: base
+  properties: []
+button-secondary:
+  group: button
+  set: base
+  properties: []
+button-secondary-hover:
+  group: button
+  set: base
+  properties: []
+button-secondary-active:
+  group: button
+  set: base
+  properties: []
+button-tertiary:
+  group: button
+  set: base
+  properties: []
+button-tertiary-hover:
+  group: button
+  set: base
+  properties: []
+button-tertiary-active:
+  group: button
+  set: base
+  properties: []
+button-disabled:
+  group: button
+  set: base
+  properties: []
+toggle-off:
+  group: toggle
+  set: base
+  properties: []
+toggle-off-active:
+  group: toggle
+  set: base
+  properties: []
+toggle-off-hover:
+  group: toggle
+  set: base
+  properties: []
+toggle-on-active:
+  group: toggle
+  set: base
+  properties: []
+toggle-on-hover:
+  group: toggle
+  set: base
+  properties: []
+notification-background-success:
+  group: notification
+  set: base
+  properties: []
+notification-background-info:
+  group: notification
+  set: base
+  properties: []
+notification-background-warning:
+  group: notification
+  set: base
+  properties: []
+notification-background-error:
+  group: notification
+  set: base
+  properties: []
+notification-close-hover:
+  group: notification
+  set: base
+  properties: []
+notification-close-active:
+  group: notification
+  set: base
+  properties: []
+text-value:
+  group: custom
+  set: base
+  properties: [color]
+status-true:
+  group: custom
+  set: base
+  properties: [background]
+status-false:
+  group: custom
+  set: base
+  properties: [background]
+scrollbar-face:
+  group: custom
+  set: base
+  properties: []
+scrollbar-hover:
+  group: custom
+  set: base
+  properties: []

@@ -5,12 +5,17 @@ exports[`FieldError rendering renders expected elements 1`] = `
   aria-live="polite"
   className="FieldError"
   id="test"
-  style={
-    Object {
-      "textAlign": "right",
-    }
-  }
 >
   Test
+</div>
+`;
+
+exports[`FieldError rendering renders expected elements when text is not set 1`] = `
+<div
+  aria-live="polite"
+  className="FieldError"
+  id="test"
+>
+   
 </div>
 `;

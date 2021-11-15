@@ -195,7 +195,7 @@ describe('Tabs', () => {
 			);
 
 			wrapper.find('[role="tablist"]').simulate('click', event);
-			expect(closest.mock.calls).toEqual([['[role="button"]']]);
+			expect(closest.mock.calls).toEqual([['button']]);
 			expect(event.preventDefault.mock.calls).toEqual([[]]);
 			expect(focus.mock.calls).toEqual([[]]);
 			expect(onTabClose.mock.calls).toEqual([['1']]);
@@ -205,7 +205,7 @@ describe('Tabs', () => {
 			const onTabClick = jest.fn();
 			const getAttribute = jest.fn().mockReturnValue('false');
 			const element = {getAttribute, dataset: {key: '1'}};
-			const closest = jest.fn().mockReturnValueOnce(null).mockReturnValueOnce(element);
+			const closest = jest.fn().mockReturnValueOnce(null).mockReturnValueOnce(null).mockReturnValueOnce(element);
 			const event = {target: {closest}, preventDefault: jest.fn()};
 			const wrapper = shallow(
 				<Tabs
@@ -220,7 +220,7 @@ describe('Tabs', () => {
 			);
 
 			wrapper.find('[role="tablist"]').simulate('click', event);
-			expect(closest.mock.calls).toEqual([['[role="button"]'], ['[role="tab"]']]);
+			expect(closest.mock.calls).toEqual([['button'], ['[role="button"]'], ['[role="tab"]']]);
 			expect(event.preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-selected']]);
 			expect(onTabClick.mock.calls).toEqual([['1']]);
@@ -230,7 +230,7 @@ describe('Tabs', () => {
 			const onTabClick = jest.fn();
 			const getAttribute = jest.fn().mockReturnValue('true');
 			const element = {getAttribute, dataset: {key: '1'}};
-			const closest = jest.fn().mockReturnValueOnce(null).mockReturnValueOnce(element);
+			const closest = jest.fn().mockReturnValueOnce(null).mockReturnValueOnce(null).mockReturnValueOnce(element);
 			const event = {target: {closest}, preventDefault: jest.fn()};
 			const wrapper = shallow(
 				<Tabs
@@ -245,7 +245,7 @@ describe('Tabs', () => {
 			);
 
 			wrapper.find('[role="tablist"]').simulate('click', event);
-			expect(closest.mock.calls).toEqual([['[role="button"]'], ['[role="tab"]']]);
+			expect(closest.mock.calls).toEqual([['button'], ['[role="button"]'], ['[role="tab"]']]);
 			expect(event.preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-selected']]);
 			expect(onTabClick).not.toHaveBeenCalled();
@@ -268,7 +268,7 @@ describe('Tabs', () => {
 
 			wrapper.find('[role="tablist"]').simulate('click', event);
 
-			expect(closest.mock.calls).toEqual([['[role="button"]'], ['[role="tab"]']]);
+			expect(closest.mock.calls).toEqual([['button'], ['[role="button"]'], ['[role="tab"]']]);
 			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
 

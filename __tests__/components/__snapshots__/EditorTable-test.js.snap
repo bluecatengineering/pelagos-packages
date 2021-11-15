@@ -24,7 +24,7 @@ exports[`EditorTable rendering disables add button and indicates data is being f
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={true}
           icon={
@@ -36,8 +36,10 @@ exports[`EditorTable rendering disables add button and indicates data is being f
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Retrieving items..."
+          type="primary"
         />
       </React.Fragment>
       <SearchField
@@ -67,6 +69,7 @@ exports[`EditorTable rendering disables add button and indicates data is being f
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
 </div>
@@ -126,6 +129,7 @@ exports[`EditorTable rendering disables add button if user is not administrator 
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
 </div>
@@ -155,7 +159,7 @@ exports[`EditorTable rendering renders delete dialog when itemToDelete is set 1`
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -167,8 +171,10 @@ exports[`EditorTable rendering renders delete dialog when itemToDelete is set 1`
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
       </React.Fragment>
       <SearchField
@@ -201,6 +207,7 @@ exports[`EditorTable rendering renders delete dialog when itemToDelete is set 1`
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
   <ConfirmDialog
@@ -237,7 +244,7 @@ exports[`EditorTable rendering renders dialog when specified 1`] = `
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -249,8 +256,10 @@ exports[`EditorTable rendering renders dialog when specified 1`] = `
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
       </React.Fragment>
       <SearchField
@@ -284,6 +293,7 @@ exports[`EditorTable rendering renders dialog when specified 1`] = `
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
   <div />
@@ -314,7 +324,7 @@ exports[`EditorTable rendering renders expected elements when both filters are s
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -326,8 +336,10 @@ exports[`EditorTable rendering renders expected elements when both filters are s
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
         <div>
           Button
@@ -365,6 +377,7 @@ exports[`EditorTable rendering renders expected elements when both filters are s
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
 </div>
@@ -394,7 +407,7 @@ exports[`EditorTable rendering renders expected elements when externalFilter is 
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -406,8 +419,10 @@ exports[`EditorTable rendering renders expected elements when externalFilter is 
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
         <div>
           Button
@@ -446,6 +461,7 @@ exports[`EditorTable rendering renders expected elements when externalFilter is 
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
 </div>
@@ -475,7 +491,7 @@ exports[`EditorTable rendering renders expected elements when filterText is set 
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -487,8 +503,10 @@ exports[`EditorTable rendering renders expected elements when filterText is set 
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
         <div>
           Button
@@ -526,6 +544,7 @@ exports[`EditorTable rendering renders expected elements when filterText is set 
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
 </div>
@@ -555,7 +574,7 @@ exports[`EditorTable rendering renders expected elements when selectedId and opt
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -567,8 +586,10 @@ exports[`EditorTable rendering renders expected elements when selectedId and opt
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
         <div>
           Button
@@ -612,6 +633,7 @@ exports[`EditorTable rendering renders expected elements when selectedId and opt
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
       selectedId="id"
     />
   </main>
@@ -661,7 +683,7 @@ exports[`EditorTable rendering renders expected elements when selectedId is set 
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -673,8 +695,10 @@ exports[`EditorTable rendering renders expected elements when selectedId is set 
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
         <div>
           Button
@@ -718,6 +742,7 @@ exports[`EditorTable rendering renders expected elements when selectedId is set 
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
       selectedId="id"
     />
   </main>
@@ -765,7 +790,7 @@ exports[`EditorTable rendering renders expected elements when user is administra
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -777,8 +802,10 @@ exports[`EditorTable rendering renders expected elements when user is administra
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
         <div>
           Button
@@ -818,6 +845,7 @@ exports[`EditorTable rendering renders expected elements when user is administra
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
 </div>
@@ -847,7 +875,7 @@ exports[`EditorTable rendering renders spinner when busy is true 1`] = `
       className="EditorTable__buttons"
     >
       <React.Fragment>
-        <ToolbarButton
+        <IconButton
           aria-label="Add"
           disabled={false}
           icon={
@@ -859,8 +887,10 @@ exports[`EditorTable rendering renders spinner when busy is true 1`] = `
           }
           id="addBtn"
           onClick={[MockFunction]}
+          size="medium"
           tooltipPlacement="top"
           tooltipText="Create a new item."
+          type="primary"
         />
       </React.Fragment>
       <SearchField
@@ -894,6 +924,7 @@ exports[`EditorTable rendering renders spinner when busy is true 1`] = `
         ]
       }
       onRowClick={[Function]}
+      rowMode="line"
     />
   </main>
   <ModalSpinner

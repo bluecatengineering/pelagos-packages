@@ -1,85 +1,90 @@
-@import '../../less/elevations';
 @import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 .Select {
 	position: relative;
-	margin: @sp-02;
 	white-space: nowrap;
 	cursor: pointer;
 }
 
 .Select__text {
-	display: inline-block;
-	width: 100%;
-	height: 31px;
-	padding: @sp-04 @sp-24 @sp-04 @sp-12;
-	background-color: var(--form-field-bg);
-	border: 1px solid var(--form-field-border);
-	border-radius: 3px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	height: 32px;
+	padding: 0 @sp-16;
+	background-color: var(--field);
+	border: none;
+	border-bottom: 1px solid var(--border-strong);
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 
 	&:hover {
-		background-color: var(--form-field-hover);
+		background-color: var(--field-hover);
 	}
 
 	&:focus {
 		@focus-ring();
 	}
 
-	.Dialog & {
-		background-color: var(--form-field-dialog-bg);
+	&--empty::before {
+		@font-12-400();
+		color: var(--text-placeholder);
+		content: attr(data-placeholder);
 	}
-}
-.Select__text--empty::before {
-	@font-12-400();
-	color: var(--form-field-hint);
-	content: attr(data-placeholder);
-}
-.Select__text--error {
-	border-color: var(--form-field-error);
-}
-.Select__text--error:focus {
-	@focus-ring-error();
-}
-.Select__text[aria-disabled='true'] {
-	cursor: default;
-	color: var(--font-color-3);
-	border-color: var(--disabled-color);
-	background-color: var(--form-field-disabled-bg);
-}
-.Select__text[aria-disabled='true']::before {
-	color: var(--disabled-color);
+
+	&--error {
+		outline: 2px solid var(--support-error);
+		outline-offset: -2px;
+	}
+
+	&--error:focus {
+		@focus-ring-error();
+	}
+
+	&:disabled {
+		cursor: default;
+		color: var(--text-disabled);
+		border-color: transparent;
+	}
+
+	&:disabled::before {
+		color: var(--text-disabled);
+	}
 }
 
 .Select__icon {
-	position: absolute;
-	top: 8px;
-	right: 8px;
+	font-size: 16px;
+	margin-left: @sp-16;
 }
 
 .Select__list {
-	@elv-04();
 	position: absolute;
 	max-height: 15em;
 	border-radius: 3px;
 	padding: @sp-04 0;
 	overflow-x: hidden;
 	overflow-y: auto;
+	background-color: var(--layer);
+	box-shadow: var(--shadow-04);
 	z-index: 1000;
 }
 
 .Select__option {
+	@layer-hover-effects();
 	display: block;
 	padding: @sp-04 @sp-12;
+	cursor: pointer;
 
-	&:hover {
-		background-color: var(--menu-hover);
+	&[aria-selected='true'] {
+		background-color: var(--layer-selected);
 	}
 
-	&--focused,
-	&--focused:hover {
-		background-color: var(--menu-current);
+	&[aria-selected='true']:hover {
+		background-color: var(--layer-selected-hover);
 	}
 }
 

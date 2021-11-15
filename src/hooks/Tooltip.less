@@ -31,8 +31,8 @@
 
 .Tooltip__body {
 	@font-12-400();
-	color: var(--tooltip-color);
-	background-color: var(--tooltip-bg);
+	color: var(--text-inverse);
+	background-color: var(--background-inverse);
 	max-width: 400px;
 	padding: @sp-04 @sp-12;
 	border-radius: 3px;
@@ -50,23 +50,23 @@
 	right: 0;
 	margin-top: -@tooltip-arrow-width;
 	border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
-	border-left-color: var(--tooltip-bg);
+	border-left-color: var(--background-inverse);
 }
 .Tooltip--right > .Tooltip__arrow {
 	left: 0;
 	margin-top: -@tooltip-arrow-width;
 	border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
-	border-right-color: var(--tooltip-bg);
+	border-right-color: var(--background-inverse);
 }
 .Tooltip--top > .Tooltip__arrow {
 	bottom: 0;
 	margin-left: -@tooltip-arrow-width;
 	border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-	border-top-color: var(--tooltip-bg);
+	border-top-color: var(--background-inverse);
 }
 .Tooltip--bottom > .Tooltip__arrow {
 	top: 0;
 	margin-left: -@tooltip-arrow-width;
 	border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-	border-bottom-color: var(--tooltip-bg);
+	border-bottom-color: var(--background-inverse);
 }

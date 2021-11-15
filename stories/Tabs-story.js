@@ -1,12 +1,24 @@
 import {Tabs} from '../src';
 
 const getTabKey = ({id}) => id;
-const renderTab = ({id, text}, current, focused) => (
+const renderLineTab = ({id, text}, current, focused) => (
 	<div
 		key={id}
 		id={`tabs-${id}`}
 		className="Tabs__tab"
-		style={{padding: '4px 12px'}}
+		style={{height: '40px', padding: '0 16px', justifyContent: 'center'}}
+		aria-selected={current}
+		data-focused={focused}
+	>
+		{text}
+	</div>
+);
+const renderContainedTab = ({id, text}, current, focused) => (
+	<div
+		key={id}
+		id={`tabs-${id}`}
+		className="Tabs__containedTab"
+		style={{height: '40px', padding: '0 16px', justifyContent: 'center'}}
 		aria-selected={current}
 		data-focused={focused}
 	>
@@ -22,8 +34,11 @@ const items = [
 
 const Template = (args) => <Tabs {...args} />;
 
-export const Normal = Template.bind({});
-Normal.args = {id: 'tabs', currentTab: 'foo', items, getTabKey, renderTab};
+export const Line = Template.bind({});
+Line.args = {id: 'tabs', currentTab: 'foo', items, getTabKey, renderTab: renderLineTab};
+
+export const Contained = Template.bind({});
+Contained.args = {id: 'tabs', currentTab: 'foo', items, getTabKey, renderTab: renderContainedTab};
 
 export default {
 	title: 'Tabs',

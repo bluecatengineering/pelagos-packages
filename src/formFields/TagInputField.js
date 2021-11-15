@@ -5,17 +5,27 @@ import LabelLine from '../components/LabelLine';
 import useRandomId from '../hooks/useRandomId';
 
 import FieldError from './FieldError';
+import FieldHelper from './FieldHelper';
 import './TagInputField.less';
 
 /** A tag input field. */
-const TagInputField = ({id, className, label, optional, tags, error, ...props}) => {
+const TagInputField = ({id, className, label, optional, tags, helperText, error, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
+	const helperId = `${id}-helper`;
+	const errorId = `${id}-error`;
 	return (
 		<div className={`TagInputField${className ? ' ' + className : ''}`}>
 			<LabelLine id={labelId} htmlFor={id} text={label} optional={optional && tags.length === 0} />
-			<TagInput {...props} id={id} tags={tags} error={error} aria-labelledby={labelId} />
-			<FieldError text={error} />
+			<TagInput
+				{...props}
+				id={id}
+				tags={tags}
+				error={error}
+				aria-labelledby={labelId}
+				aria-describedby={error ? errorId : helperId}
+			/>
+			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
 		</div>
 	);
 };
@@ -35,6 +45,8 @@ TagInputField.propTypes = {
 	defaultTags: PropTypes.array,
 	/** The tooltip for default tags. */
 	defaultTooltipText: PropTypes.string,
+	/** Additional information for the field. */
+	helperText: PropTypes.string,
 	/** The error text. */
 	error: PropTypes.string,
 	/** Function invoked to validate each tag. */

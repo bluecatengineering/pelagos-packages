@@ -20,8 +20,8 @@ describe('TextInputField', () => {
 					value="value"
 					placeholder="placeholder"
 					maxLength={10}
-					disabled={false}
 					optional
+					helperText="Helper text"
 					onChange={jest.fn()}
 				/>
 			);
@@ -75,6 +75,7 @@ describe('TextInputField', () => {
 					placeholder="placeholder"
 					maxLength={10}
 					disabled={false}
+					helperText="Helper text"
 					error="Error"
 					onChange={jest.fn()}
 				/>

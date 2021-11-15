@@ -1,115 +1,180 @@
-@import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
 @import '../../less/utils';
 
 .DataTable {
 	flex: 1;
-	overflow: hidden;
 	position: relative;
 	margin-top: @sp-16;
-}
-
-.DataTable__table {
-	width: calc(100% - 4px);
-	margin: @sp-02;
-}
-
-.DataTable__header {
-	// stylelint-disable-next-line @bluecat/selector-bem
-	.no-hiddenscroll & {
-		padding-right: 8px; // stylelint-disable-line @bluecat/property-strict-value
-	}
-}
-
-.DataTable__printHeader {
-	display: none;
-}
-
-.DataTable__th {
-	@font-12-600-uc();
-	@base-ellipsis();
-	color: var(--font-color-2);
-	text-align: left;
-	vertical-align: bottom;
-	padding: @sp-02 @sp-08;
-	max-width: 0;
-}
-
-.DataTable__hw {
-	@focus-visible();
-}
-
-.DataTable__sort {
-	@icon-button();
-	display: inline-block;
-	margin-left: @sp-12;
-	color: var(--disabled-color);
-	font-size: 14px;
-	vertical-align: -2px;
-	cursor: pointer;
-}
-.DataTable__sort--active {
-	color: var(--action-color);
-}
-
-.DataTable__body {
-	margin-top: @sp-08;
-	flex: 1;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	outline: none;
-}
+	background-color: var(--layer);
 
-.DataTable__row {
-	transition: background-color 0.15s ease-out;
-
-	&:hover {
-		background-color: var(--table-hover);
-	}
-
-	&:active {
-		background-color: var(--table-active);
+	@media print {
+		background-color: transparent;
 	}
 }
-.DataTable__row:nth-child(even) {
-	background-color: var(--table-alt-bg);
 
-	&:hover {
-		background-color: var(--table-hover);
+.DataTable__table {
+	width: 100%;
+}
+
+.DataTable__table thead {
+	@font-12-600();
+	top: 0;
+	position: sticky;
+	color: var(--text-secondary);
+	background-color: var(--layer-accent);
+
+	@media print {
+		color: var(--print-medium);
+		background-color: transparent;
 	}
-
-	&:active {
-		background-color: var(--table-active);
-	}
-}
-.DataTable__row--focused,
-.DataTable__row--focused:nth-child(even) {
-	@focus-ring();
-}
-.DataTable__row[aria-selected='true'],
-.DataTable__row[aria-selected='true']:nth-child(even) {
-	background-color: var(--table-selected-bg);
 }
 
-.DataTable__row--highlight {
-	animation: highlight-fade 2s ease-out;
+.DataTable__table tr,
+.DataTable__sort {
+	height: 32px;
 }
 
-.DataTable__row--clickable {
+.DataTable--clickable tbody tr {
 	cursor: pointer;
 }
 
-.DataTable__td {
-	@base-ellipsis();
+.DataTable--line tbody tr {
+	border-bottom: 1px solid var(--border-subtle);
+
+	@media print {
+		border-bottom-color: transparent;
+	}
+}
+
+.DataTable--zebra tbody tr {
+	border-bottom: 1px solid transparent;
+}
+
+.DataTable__table tbody tr {
+	@focus-visible();
+	@layer-hover-effects();
+
+	&[aria-selected='true'],
+	&[aria-selected='true']:nth-child(even) {
+		background-color: var(--layer-selected);
+
+		@media print {
+			background-color: transparent;
+		}
+	}
+	&[aria-selected='true']:hover,
+	&[aria-selected='true']:nth-child(even):hover {
+		background-color: var(--layer-selected-hover);
+	}
+}
+
+.DataTable--zebra tbody tr:nth-child(even) {
+	background-color: var(--layer-accent);
+
+	&:hover {
+		background-color: var(--layer-accent-hover);
+	}
+
+	&:active {
+		background-color: var(--layer-accent-active);
+	}
+
+	@media print {
+		background-color: transparent;
+	}
+}
+
+.DataTable--highlight {
+	animation: highlight-fade 2s ease-out;
+}
+
+.DataTable__table th,
+.DataTable__table td {
 	vertical-align: middle;
-	padding: @sp-02 @sp-08;
+	padding: 0 @sp-16;
+}
+
+.DataTable__table th {
+	@base-ellipsis();
+	text-align: left;
+	max-width: 0;
+}
+
+.DataTable__table th[aria-sort] {
+	padding: 0;
+}
+
+.DataTable__sort {
+	@focus-visible();
+	display: flex;
+	width: 100%;
+	align-items: center;
+	background-color: transparent;
+	border: none;
+	border-radius: 3px;
+	padding: 0 0 0 @sp-16;
+	font: inherit;
+	text-transform: inherit;
+	cursor: pointer;
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: var(--layer-accent-hover);
+	}
+
+	&:active {
+		color: var(--text-primary);
+		background-color: var(--layer-accent-active);
+	}
+
+	&--active {
+		color: var(--text-primary);
+		background-color: var(--layer-accent-hover);
+	}
+}
+
+.DataTable__sortLabel {
+	@ellipsis();
+	flex: 1;
+	text-align: left;
+}
+
+.DataTable__sortIcon {
+	margin: 0 @sp-04;
+	color: var(--icon-secondary);
+	font-size: 14px;
+	vertical-align: -2px;
+	cursor: pointer;
+	opacity: 0.2;
+	transition: opacity 0.15s ease-out;
+
+	.DataTable__sort--active > & {
+		color: var(--icon-primary);
+		opacity: 1;
+	}
+
+	.DataTable__sort:hover &,
+	.DataTable__sort:focus & {
+		opacity: 1;
+	}
+
+	@media print {
+		display: none;
+	}
+}
+
+.DataTable__table td {
+	@base-ellipsis();
 	max-width: 0;
 }
 
 .DataTable__message {
 	@font-16-400();
-	color: var(--font-color-3);
+	color: var(--text-helper);
 	white-space: pre-line;
 	position: absolute;
 	text-align: center;
@@ -120,27 +185,4 @@
 
 .DataTable__spinner {
 	position: relative;
-	height: 26px;
-}
-
-@media print {
-	.DataTable__header {
-		display: none;
-	}
-
-	.DataTable__printHeader {
-		display: table-header-group;
-	}
-
-	.DataTable__row:nth-child(even) {
-		background-color: transparent;
-	}
-
-	.DataTable__th {
-		color: var(--print-color);
-	}
-
-	.DataTable__sortable::after {
-		display: none;
-	}
 }

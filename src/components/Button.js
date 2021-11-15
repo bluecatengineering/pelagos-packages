@@ -7,22 +7,16 @@ import './Button.less';
 /** A button. */
 const Button = ({id, text, className, tooltipText, size, type, disabled, onClick, ...props}) => {
 	const tooltip = useTooltip(tooltipText, 'top');
-	return disabled ? (
-		<span
-			id={id}
-			className={`Button Button--${size}${className ? ' ' + className : ''}`}
-			aria-disabled="true"
-			ref={tooltip}>
-			{text}
-		</span>
-	) : (
+	return (
 		<button
 			{...props}
 			type={onClick ? 'button' : 'submit'}
 			id={id}
 			className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
+			disabled={disabled}
 			ref={tooltip}
-			onClick={onClick}>
+			onClick={onClick}
+		>
 			{text}
 		</button>
 	);
@@ -40,7 +34,7 @@ Button.propTypes = {
 	/** The size of the button. */
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	/** The button type. */
-	type: PropTypes.oneOf(['primary', 'secondary']),
+	type: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'ghost']),
 	/** Whether the button is disabled. */
 	disabled: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
@@ -49,7 +43,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
 	size: 'medium',
-	type: 'secondary',
+	type: 'tertiary',
 };
 
 export default Button;

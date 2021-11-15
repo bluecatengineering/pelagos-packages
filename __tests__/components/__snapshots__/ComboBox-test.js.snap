@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ComboBox rendering renders expected elements 1`] = `
-<div
+<Layer
   className="ComboBox"
 >
   <input
@@ -35,6 +35,7 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     onClick={[Function]}
     size="medium"
     tooltipPlacement="right"
+    type="ghost"
   />
   <React.Portal>
     <div
@@ -51,11 +52,11 @@ exports[`ComboBox rendering renders expected elements 1`] = `
       }
     />
   </React.Portal>
-</div>
+</Layer>
 `;
 
 exports[`ComboBox rendering renders expected elements when error is not set 1`] = `
-<div
+<Layer
   className="ComboBox"
 >
   <input
@@ -89,6 +90,7 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     onClick={[Function]}
     size="medium"
     tooltipPlacement="right"
+    type="ghost"
   />
   <React.Portal>
     <div
@@ -105,11 +107,11 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
       }
     />
   </React.Portal>
-</div>
+</Layer>
 `;
 
 exports[`ComboBox rendering renders expected elements when the suggestions are displayed 1`] = `
-<div
+<Layer
   className="ComboBox"
 >
   <input
@@ -143,6 +145,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     onClick={[Function]}
     size="medium"
     tooltipPlacement="right"
+    type="ghost"
   />
   <React.Portal>
     <div
@@ -180,5 +183,5 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
       </div>
     </div>
   </React.Portal>
-</div>
+</Layer>
 `;

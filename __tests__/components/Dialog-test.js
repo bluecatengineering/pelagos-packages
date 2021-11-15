@@ -60,7 +60,7 @@ describe('Dialog', () => {
 					<div />
 				</Dialog>
 			);
-			wrapper.find('form').simulate('submit', event);
+			wrapper.find('Layer').simulate('submit', event);
 			expect(onSubmit.mock.calls).toEqual([[]]);
 			expect(event.preventDefault.mock.calls).toEqual([[]]);
 		});

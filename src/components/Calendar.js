@@ -78,6 +78,8 @@ const updateMonth = (focused, month) => {
 	return date;
 };
 
+const preventDefault = (event) => event.preventDefault();
+
 const Calendar = ({id, className, value, onChange, ...props}) => {
 	id = useRandomId(id);
 
@@ -216,6 +218,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 					className="Calendar__previous"
 					icon={faChevronLeft}
 					aria-label={t`Previous month`}
+					onMouseDown={preventDefault}
 					onClick={selectPrevMonth}
 				/>
 				<div id={labelId} className="Calendar__monthLabel" aria-live="polite">
@@ -225,6 +228,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 					className="Calendar__next"
 					icon={faChevronRight}
 					aria-label={t`Next month`}
+					onMouseDown={preventDefault}
 					onClick={selectNextMonth}
 				/>
 			</div>

@@ -26,10 +26,10 @@ const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClo
 
 	const [focused, setFocused] = useState(null);
 
-	const getTabIndex = useCallback((tabKey) => items.findIndex((item) => getTabKey(item) === tabKey), [
-		getTabKey,
-		items,
-	]);
+	const getTabIndex = useCallback(
+		(tabKey) => items.findIndex((item) => getTabKey(item) === tabKey),
+		[getTabKey, items]
+	);
 
 	const handleFocus = useCallback(() => {
 		const tabs = tabsRef.current;
@@ -44,7 +44,7 @@ const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClo
 		(event) => {
 			const target = event.target;
 			let element;
-			if ((element = target.closest('[role="button"]'))) {
+			if ((element = target.closest('button') || target.closest('[role="button"]'))) {
 				event.preventDefault();
 				onTabClose(element.dataset.key);
 				event.currentTarget.focus();
@@ -153,7 +153,8 @@ const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClo
 				onClick={handleClick}
 				onMouseDown={handleMouseDown}
 				onMouseUp={handleMouseUp}
-				onKeyDown={handleKeyDown}>
+				onKeyDown={handleKeyDown}
+			>
 				{items.map((item, index) => renderTab(item, getTabKey(item) === currentTab, index === currentFocused))}
 			</div>
 		</ScrollBox>

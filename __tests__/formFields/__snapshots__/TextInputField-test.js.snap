@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextInputField rendering adds the error class if the error is set 1`] = `
-<div
+<Layer
   className="TextInputField"
 >
   <LabelLine
@@ -9,6 +9,7 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
     text="Label"
   />
   <input
+    aria-describedby="test-id-error"
     className="TextInputField__input TextInputField--error"
     disabled={false}
     id="test-id"
@@ -20,14 +21,14 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
     value="value"
   />
   <FieldError
-    alignment="right"
+    id="test-id-error"
     text="Error"
   />
-</div>
+</Layer>
 `;
 
 exports[`TextInputField rendering renders expected elements 1`] = `
-<div
+<Layer
   className="TextInputField"
 >
   <LabelLine
@@ -36,8 +37,8 @@ exports[`TextInputField rendering renders expected elements 1`] = `
     text="Label"
   />
   <input
+    aria-describedby="test-id-helper"
     className="TextInputField__input"
-    disabled={false}
     id="test-id"
     maxLength={10}
     name="name"
@@ -46,14 +47,15 @@ exports[`TextInputField rendering renders expected elements 1`] = `
     type="text"
     value="value"
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-id-helper"
+    text="Helper text"
   />
-</div>
+</Layer>
 `;
 
 exports[`TextInputField rendering renders expected elements when className is set 1`] = `
-<div
+<Layer
   className="TextInputField TestClass"
 >
   <LabelLine
@@ -61,6 +63,7 @@ exports[`TextInputField rendering renders expected elements when className is se
     text="Label"
   />
   <input
+    aria-describedby="test-id-helper"
     className="TextInputField__input"
     disabled={false}
     id="test-id"
@@ -71,14 +74,14 @@ exports[`TextInputField rendering renders expected elements when className is se
     type="text"
     value="value"
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-id-helper"
   />
-</div>
+</Layer>
 `;
 
 exports[`TextInputField rendering renders expected elements when value is empty 1`] = `
-<div
+<Layer
   className="TextInputField"
 >
   <LabelLine
@@ -87,6 +90,7 @@ exports[`TextInputField rendering renders expected elements when value is empty 
     text="Label"
   />
   <input
+    aria-describedby="test-id-helper"
     className="TextInputField__input"
     disabled={false}
     id="test-id"
@@ -97,8 +101,8 @@ exports[`TextInputField rendering renders expected elements when value is empty 
     type="text"
     value=""
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-id-helper"
   />
-</div>
+</Layer>
 `;

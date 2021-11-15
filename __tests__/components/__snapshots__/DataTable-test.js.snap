@@ -4,403 +4,219 @@ exports[`DataTable rendering renders clickable row 1`] = `
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line DataTable--clickable"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+    >
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={0}
+        id="r0"
+        tabIndex={-1}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className={null}
+          title=""
         >
-          <tr>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row DataTable__row--clickable"
-            data-index={0}
-            id="r0"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              2
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site4"
-            >
-              site4
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row DataTable__row--clickable"
-            data-index={1}
-            id="r1"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a10
-            </td>
-            <td
-              className="DataTable__td TestClass1"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site3"
-            >
-              site3
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row DataTable__row--clickable"
-            data-index={2}
-            id="r2"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              b10
-            </td>
-            <td
-              className="DataTable__td TestClass2"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site5"
-            >
-              site5
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row DataTable__row--clickable"
-            data-index={3}
-            id="r3"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              4
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass3"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site2"
-            >
-              site2
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row DataTable__row--clickable"
-            data-index={4}
-            id="r4"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              3
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              A1
-            </td>
-            <td
-              className="DataTable__td TestClass4"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site1"
-            >
-              site1
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          2
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass0"
+          title="site4"
+        >
+          site4
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={1}
+        id="r1"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a10
+        </td>
+        <td
+          className="TestClass1"
+          title="site3"
+        >
+          site3
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={2}
+        id="r2"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          b10
+        </td>
+        <td
+          className="TestClass2"
+          title="site5"
+        >
+          site5
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={3}
+        id="r3"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          4
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass3"
+          title="site2"
+        >
+          site2
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={4}
+        id="r4"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          3
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          A1
+        </td>
+        <td
+          className="TestClass4"
+          title="site1"
+        >
+          site1
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -408,243 +224,115 @@ exports[`DataTable rendering renders focused row 1`] = `
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant="id"
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={0}
+        id="id"
+        tabIndex={0}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className={null}
+          title=""
         >
-          <tr>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row DataTable__row--focused"
-            data-index={0}
-            id="id"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              10
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a4
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site"
-            >
-              site
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          10
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a4
+        </td>
+        <td
+          className="TestClass0"
+          title="site"
+        >
+          site
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -652,243 +340,115 @@ exports[`DataTable rendering renders highlighted row 1`] = `
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr
+        aria-selected={false}
+        className="DataTable--highlight"
+        data-index={0}
+        id="id"
+        tabIndex={-1}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className={null}
+          title=""
         >
-          <tr>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row DataTable__row--highlight"
-            data-index={0}
-            id="id"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              10
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a4
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site"
-            >
-              site
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          10
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a4
+        </td>
+        <td
+          className="TestClass0"
+          title="site"
+        >
+          site
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -896,210 +456,92 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
-                }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={null}
-    onKeyDown={null}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
-      >
-        <thead
-          className="DataTable__printHeader"
-        >
-          <tr>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
                 Object {
-                  "width": "10px",
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
               }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody />
-      </table>
-      <div
-        className="DataTable__loadingSpinner"
-        id="test-nextSpinner"
-      >
-        <Spinner
-          size="large"
-        />
-      </div>
-    </React.Fragment>
-  </div>
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    />
+  </table>
+  <Spinner
+    id="test-loading"
+    size="large"
+  />
 </div>
 `;
 
@@ -1107,411 +549,229 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={0}
+        id="r0"
+        tabIndex={-1}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className={null}
+          title=""
         >
-          <tr>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={0}
-            id="r0"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              2
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site4"
-            >
-              site4
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={1}
-            id="r1"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a10
-            </td>
-            <td
-              className="DataTable__td TestClass1"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site3"
-            >
-              site3
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={2}
-            id="r2"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              b10
-            </td>
-            <td
-              className="DataTable__td TestClass2"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site5"
-            >
-              site5
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={3}
-            id="r3"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              4
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass3"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site2"
-            >
-              site2
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={4}
-            id="r4"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              3
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              A1
-            </td>
-            <td
-              className="DataTable__td TestClass4"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site1"
-            >
-              site1
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div
-        className="DataTable__spinner"
-        id="test-nextSpinner"
+          2
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass0"
+          title="site4"
+        >
+          site4
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={1}
+        id="r1"
+        tabIndex={-1}
       >
-        <Spinner
-          size="tiny"
-        />
-      </div>
-    </React.Fragment>
-  </div>
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a10
+        </td>
+        <td
+          className="TestClass1"
+          title="site3"
+        >
+          site3
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={2}
+        id="r2"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          b10
+        </td>
+        <td
+          className="TestClass2"
+          title="site5"
+        >
+          site5
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={3}
+        id="r3"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          4
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass3"
+          title="site2"
+        >
+          site2
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={4}
+        id="r4"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          3
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          A1
+        </td>
+        <td
+          className="TestClass4"
+          title="site1"
+        >
+          site1
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="DataTable__spinner"
+          colSpan={3}
+        >
+          <Spinner
+            size="tiny"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -1519,411 +779,229 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <div
-        className="DataTable__spinner"
-        id="test-prevSpinner"
-      >
-        <Spinner
-          size="tiny"
-        />
-      </div>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
-      >
-        <thead
-          className="DataTable__printHeader"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr>
+        <td
+          className="DataTable__spinner"
+          colSpan={3}
         >
-          <tr>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={0}
-            id="r0"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              2
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site4"
-            >
-              site4
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={1}
-            id="r1"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a10
-            </td>
-            <td
-              className="DataTable__td TestClass1"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site3"
-            >
-              site3
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={2}
-            id="r2"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              b10
-            </td>
-            <td
-              className="DataTable__td TestClass2"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site5"
-            >
-              site5
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={3}
-            id="r3"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              4
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass3"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site2"
-            >
-              site2
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={4}
-            id="r4"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              3
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              A1
-            </td>
-            <td
-              className="DataTable__td TestClass4"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site1"
-            >
-              site1
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          <Spinner
+            size="tiny"
+          />
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={0}
+        id="r0"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          2
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass0"
+          title="site4"
+        >
+          site4
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={1}
+        id="r1"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a10
+        </td>
+        <td
+          className="TestClass1"
+          title="site3"
+        >
+          site3
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={2}
+        id="r2"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          b10
+        </td>
+        <td
+          className="TestClass2"
+          title="site5"
+        >
+          site5
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={3}
+        id="r3"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          4
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass3"
+          title="site2"
+        >
+          site2
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={4}
+        id="r4"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          3
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          A1
+        </td>
+        <td
+          className="TestClass4"
+          title="site1"
+        >
+          site1
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -1931,243 +1009,115 @@ exports[`DataTable rendering renders selected row 1`] = `
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr
+        aria-selected={true}
+        className=""
+        data-index={0}
+        id="id"
+        tabIndex={-1}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className={null}
+          title=""
         >
-          <tr>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={true}
-            className="DataTable__row"
-            data-index={0}
-            id="id"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              10
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a4
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site"
-            >
-              site
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          10
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a4
+        </td>
+        <td
+          className="TestClass0"
+          title="site"
+        >
+          site
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -2175,115 +1125,93 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    />
+  </table>
   <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={null}
-    onKeyDown={null}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
+    className="DataTable__message"
+    id="test-tableMessage"
   >
-    <div
-      className="DataTable__message"
-      id="test-tableMessage"
-    >
-      Empty text
-    </div>
+    Empty text
   </div>
 </div>
 `;
@@ -2292,403 +1220,219 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
 <div
   className="DataTable TestClass"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="ascending"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="ascending"
+        >
+          <button
+            className="DataTable__sort DataTable__sort--active"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort DataTable__sort--active"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort-up",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort-up",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={0}
+        id="r1"
+        tabIndex={-1}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className={null}
+          title=""
         >
-          <tr>
-            <th
-              aria-sort="ascending"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort DataTable__sort--active"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort-up",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={0}
-            id="r1"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a10
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site3"
-            >
-              site3
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={1}
-            id="r2"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              b10
-            </td>
-            <td
-              className="DataTable__td TestClass1"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site5"
-            >
-              site5
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={2}
-            id="r0"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              2
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass2"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site4"
-            >
-              site4
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={3}
-            id="r4"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              3
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              A1
-            </td>
-            <td
-              className="DataTable__td TestClass3"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site1"
-            >
-              site1
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={4}
-            id="r3"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              4
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass4"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site2"
-            >
-              site2
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a10
+        </td>
+        <td
+          className="TestClass0"
+          title="site3"
+        >
+          site3
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={1}
+        id="r2"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          b10
+        </td>
+        <td
+          className="TestClass1"
+          title="site5"
+        >
+          site5
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={2}
+        id="r0"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          2
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass2"
+          title="site4"
+        >
+          site4
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={3}
+        id="r4"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          3
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          A1
+        </td>
+        <td
+          className="TestClass3"
+          title="site1"
+        >
+          site1
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={4}
+        id="r3"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          4
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass4"
+          title="site2"
+        >
+          site2
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -2696,403 +1440,219 @@ exports[`DataTable rendering renders the expected elements in descending order 1
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="descending"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="descending"
+        >
+          <button
+            className="DataTable__sort DataTable__sort--active"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort DataTable__sort--active"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort-down",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort-down",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={0}
+        id="r3"
+        tabIndex={-1}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className={null}
+          title=""
         >
-          <tr>
-            <th
-              aria-sort="descending"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort DataTable__sort--active"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort-down",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={0}
-            id="r3"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              4
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site2"
-            >
-              site2
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={1}
-            id="r4"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              3
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              A1
-            </td>
-            <td
-              className="DataTable__td TestClass1"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site1"
-            >
-              site1
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={2}
-            id="r0"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              2
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass2"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site4"
-            >
-              site4
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={3}
-            id="r1"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a10
-            </td>
-            <td
-              className="DataTable__td TestClass3"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site3"
-            >
-              site3
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={4}
-            id="r2"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              b10
-            </td>
-            <td
-              className="DataTable__td TestClass4"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site5"
-            >
-              site5
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          4
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass0"
+          title="site2"
+        >
+          site2
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={1}
+        id="r4"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          3
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          A1
+        </td>
+        <td
+          className="TestClass1"
+          title="site1"
+        >
+          site1
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={2}
+        id="r0"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          2
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass2"
+          title="site4"
+        >
+          site4
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={3}
+        id="r1"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a10
+        </td>
+        <td
+          className="TestClass3"
+          title="site3"
+        >
+          site3
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={4}
+        id="r2"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          b10
+        </td>
+        <td
+          className="TestClass4"
+          title="site5"
+        >
+          site5
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -3100,403 +1660,219 @@ exports[`DataTable rendering renders the expected elements using a secondary key
 <div
   className="DataTable"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="time"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               TIME
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort="ascending"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
+            />
+          </button>
+        </th>
+        <th
+          aria-sort="ascending"
+        >
+          <button
+            className="DataTable__sort DataTable__sort--active"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort DataTable__sort--active"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort-up",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort-up",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
               }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+            />
+          </button>
+        </th>
+        <th>
+          SITE
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={0}
+        id="r0"
+        tabIndex={-1}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className={null}
+          title=""
         >
-          <tr>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                TIME
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort="ascending"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort DataTable__sort--active"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort-up",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={0}
-            id="r0"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              2
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site4"
-            >
-              site4
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={1}
-            id="r4"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              3
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              A1
-            </td>
-            <td
-              className="DataTable__td TestClass1"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site1"
-            >
-              site1
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={2}
-            id="r3"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              4
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-            <td
-              className="DataTable__td TestClass2"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site2"
-            >
-              site2
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={3}
-            id="r1"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a10
-            </td>
-            <td
-              className="DataTable__td TestClass3"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site3"
-            >
-              site3
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={4}
-            id="r2"
-          >
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              b10
-            </td>
-            <td
-              className="DataTable__td TestClass4"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site5"
-            >
-              site5
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          2
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass0"
+          title="site4"
+        >
+          site4
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={1}
+        id="r4"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          3
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          A1
+        </td>
+        <td
+          className="TestClass1"
+          title="site1"
+        >
+          site1
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={2}
+        id="r3"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          4
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+        <td
+          className="TestClass2"
+          title="site2"
+        >
+          site2
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={3}
+        id="r1"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a10
+        </td>
+        <td
+          className="TestClass3"
+          title="site3"
+        >
+          site3
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={4}
+        id="r2"
+        tabIndex={-1}
+      >
+        <td
+          className={null}
+          title=""
+        >
+          1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          b10
+        </td>
+        <td
+          className="TestClass4"
+          title="site5"
+        >
+          site5
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
@@ -3504,289 +1880,160 @@ exports[`DataTable rendering renders the expected elements when columns is set 1
 <div
   className="DataTable TestClass"
   id="test"
+  tabIndex="-1"
 >
-  <div
-    className="DataTable__header"
-    id="test-tableHeader"
+  <table
+    className="DataTable__table DataTable--line"
+    id="test-table"
+    role="grid"
   >
-    <table
-      className="DataTable__table"
+    <col
+      width="10px"
+    />
+    <col
+      width="10px"
+    />
+    <thead
+      onClick={[Function]}
     >
-      <thead>
-        <tr>
-          <th
-            aria-sort={null}
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
+      <tr>
+        <th>
+          SITE
+        </th>
+        <th
+          aria-sort="none"
+        >
+          <button
+            className="DataTable__sort"
+            data-column="source"
+            type="button"
           >
-            <span
-              className="DataTable__hw"
-              onClick={null}
-              onKeyDown={null}
-              role={null}
-              tabIndex={-1}
-            >
-              SITE
-            </span>
-          </th>
-          <th
-            aria-sort="none"
-            className="DataTable__th"
-            style={
-              Object {
-                "width": "10px",
-              }
-            }
-          >
-            <span
-              className="DataTable__hw"
-              onClick={[Function]}
-              onKeyDown={[MockFunction]}
-              role="button"
-              tabIndex={0}
+            <div
+              className="DataTable__sortLabel"
             >
               SOURCE
-              <SvgIcon
-                className="DataTable__sort"
-                icon={
-                  Object {
-                    "icon": Array [],
-                    "iconName": "sort",
-                    "prefix": "fas",
-                  }
+            </div>
+            <SvgIcon
+              className="DataTable__sortIcon"
+              icon={
+                Object {
+                  "icon": Array [],
+                  "iconName": "sort",
+                  "prefix": "fas",
                 }
-              />
-            </span>
-          </th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div
-    aria-activedescendant={null}
-    className="DataTable__body"
-    id="test-tableBody"
-    onBlur={[Function]}
-    onClick={null}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={null}
-    onMouseDown={[Function]}
-    tabIndex="0"
-  >
-    <React.Fragment>
-      <table
-        className="DataTable__table"
-        id="test-table"
-        role="grid"
+              }
+            />
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      onClick={null}
+      onKeyDown={null}
+      onKeyUp={null}
+      onMouseDown={null}
+    >
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={0}
+        id="r1"
+        tabIndex={-1}
       >
-        <thead
-          className="DataTable__printHeader"
+        <td
+          className="TestClass0"
+          title="site3"
         >
-          <tr>
-            <th
-              aria-sort={null}
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={null}
-                onKeyDown={null}
-                role={null}
-                tabIndex={-1}
-              >
-                SITE
-              </span>
-            </th>
-            <th
-              aria-sort="none"
-              className="DataTable__th"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-            >
-              <span
-                className="DataTable__hw"
-                onClick={[Function]}
-                onKeyDown={[MockFunction]}
-                role="button"
-                tabIndex={0}
-              >
-                SOURCE
-                <SvgIcon
-                  className="DataTable__sort"
-                  icon={
-                    Object {
-                      "icon": Array [],
-                      "iconName": "sort",
-                      "prefix": "fas",
-                    }
-                  }
-                />
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={0}
-            id="r1"
-          >
-            <td
-              className="DataTable__td TestClass0"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site3"
-            >
-              site3
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a10
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={1}
-            id="r2"
-          >
-            <td
-              className="DataTable__td TestClass1"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site5"
-            >
-              site5
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              b10
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={2}
-            id="r0"
-          >
-            <td
-              className="DataTable__td TestClass2"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site4"
-            >
-              site4
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={3}
-            id="r4"
-          >
-            <td
-              className="DataTable__td TestClass3"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site1"
-            >
-              site1
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              A1
-            </td>
-          </tr>
-          <tr
-            aria-selected={false}
-            className="DataTable__row"
-            data-index={4}
-            id="r3"
-          >
-            <td
-              className="DataTable__td TestClass4"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title="site2"
-            >
-              site2
-            </td>
-            <td
-              className="DataTable__td"
-              style={
-                Object {
-                  "width": "10px",
-                }
-              }
-              title=""
-            >
-              a1
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  </div>
+          site3
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a10
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={1}
+        id="r2"
+        tabIndex={-1}
+      >
+        <td
+          className="TestClass1"
+          title="site5"
+        >
+          site5
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          b10
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={2}
+        id="r0"
+        tabIndex={-1}
+      >
+        <td
+          className="TestClass2"
+          title="site4"
+        >
+          site4
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={3}
+        id="r4"
+        tabIndex={-1}
+      >
+        <td
+          className="TestClass3"
+          title="site1"
+        >
+          site1
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          A1
+        </td>
+      </tr>
+      <tr
+        aria-selected={false}
+        className=""
+        data-index={4}
+        id="r3"
+        tabIndex={-1}
+      >
+        <td
+          className="TestClass4"
+          title="site2"
+        >
+          site2
+        </td>
+        <td
+          className={null}
+          title=""
+        >
+          a1
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;

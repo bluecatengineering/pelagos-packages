@@ -1,58 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterMenu rendering renders expected elements 1`] = `
-<div
+<Layer
   className="FilterMenu"
 >
-  <div
+  <IconButton
     aria-activedescendant={null}
     aria-controls={null}
     aria-expanded={false}
     aria-haspopup="true"
     aria-label="Add filter"
     className="FilterMenu__button"
-    id="filterButton"
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "filter",
-          "prefix": "fas",
-        }
+    disabled={false}
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "filter",
+        "prefix": "fas",
       }
-    />
-  </div>
-</div>
+    }
+    id="filterButton"
+    size="medium"
+    tooltipPlacement="top"
+    tooltipText="Add filter"
+    type="ghost"
+  />
+</Layer>
 `;
 
 exports[`FilterMenu rendering renders expected elements when filter is not null 1`] = `
-<div
+<Layer
   className="FilterMenu"
 >
-  <div
+  <IconButton
     aria-activedescendant={null}
     aria-controls={null}
     aria-expanded={false}
     aria-haspopup="true"
     aria-label="Add filter"
     className="FilterMenu__button"
-    id="filterButton"
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "filter",
-          "prefix": "fas",
-        }
+    disabled={false}
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "filter",
+        "prefix": "fas",
       }
-    />
-  </div>
+    }
+    id="filterButton"
+    size="medium"
+    tooltipPlacement="top"
+    tooltipText="Add filter"
+    type="ghost"
+  />
   <React.Portal>
     <FilterEditor
       buttonId="filterButton"
@@ -61,72 +61,67 @@ exports[`FilterMenu rendering renders expected elements when filter is not null 
       onSave={[Function]}
     />
   </React.Portal>
-</div>
+</Layer>
 `;
 
 exports[`FilterMenu rendering renders expected elements when filters is set 1`] = `
-<div
+<Layer
   className="FilterMenu"
 >
-  <div
+  <IconButton
     aria-activedescendant={null}
     aria-controls={null}
     aria-expanded={false}
     aria-haspopup="true"
     aria-label="Add filter"
     className="FilterMenu__button"
-    id="filterButton"
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "filter",
-          "prefix": "fas",
-        }
+    disabled={false}
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "filter",
+        "prefix": "fas",
       }
-    />
-  </div>
-</div>
+    }
+    id="filterButton"
+    size="medium"
+    tooltipPlacement="top"
+    tooltipText="Add filter"
+    type="ghost"
+  />
+</Layer>
 `;
 
 exports[`FilterMenu rendering renders expected elements when menuVisible is true 1`] = `
-<div
+<Layer
   className="FilterMenu"
 >
-  <div
+  <IconButton
     aria-activedescendant="filterMenu-a"
     aria-controls="filterMenu"
     aria-expanded={true}
     aria-haspopup="true"
     aria-label="Add filter"
     className="FilterMenu__button"
-    id="filterButton"
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "filter",
-          "prefix": "fas",
-        }
+    disabled={false}
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "filter",
+        "prefix": "fas",
       }
-    />
-  </div>
+    }
+    id="filterButton"
+    size="medium"
+    tooltipPlacement="top"
+    tooltipText="Add filter"
+    type="ghost"
+  />
   <React.Portal>
     <div
       className="FilterMenu__menu"
       id="filterMenu"
       role="menu"
-      style={
-        Object {
-          "display": "none",
-        }
-      }
     >
       <div
         className="FilterMenu__option FilterMenu__option--current"
@@ -142,5 +137,5 @@ exports[`FilterMenu rendering renders expected elements when menuVisible is true
       />
     </div>
   </React.Portal>
-</div>
+</Layer>
 `;

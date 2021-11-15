@@ -5,13 +5,11 @@ import stableSort from 'stable';
 import {buildHighlighter, scrollToItem, smoothScroll} from '@bluecat/helpers';
 import {faSort, faSortDown, faSortUp} from '@fortawesome/free-solid-svg-icons';
 
-import handleButtonKeyDown from '../functions/handleButtonKeyDown';
-
 import SvgIcon from './SvgIcon';
 import Spinner from './Spinner';
 import './DataTable.less';
 
-const getRow = (element, index) => element.querySelector('table').tBodies[0].children[index];
+const getRow = (element, index) => element.firstChild.tBodies[0].childNodes[index];
 
 const sortData = (data, metadata, dataSort, defaultSortColumnId) => {
 	if (!dataSort) {
@@ -41,48 +39,57 @@ const sortData = (data, metadata, dataSort, defaultSortColumnId) => {
 
 const mapColumns = (metadata, columns, f) => (columns ? columns.map((c) => f(metadata[c])) : metadata.map(f));
 
-const renderHeaders = (metadata, columns, dataSort, onClick) =>
-	mapColumns(metadata, columns, ({id, sortable, style, width, header}) => {
-		const sortOrder = dataSort && dataSort.columnId === id ? dataSort.order : null;
-		const ariaSort = !sortable ? null : sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none';
-		return (
-			<th key={id} style={{...style, width}} className="DataTable__th" aria-sort={ariaSort}>
-				<span
-					className="DataTable__hw"
-					tabIndex={sortable ? 0 : -1}
-					role={sortable ? 'button' : null}
-					onClick={sortable ? () => onClick(id) : null}
-					onKeyDown={sortable ? handleButtonKeyDown : null}>
+const renderHeaders = (metadata, columns, dataSort) =>
+	mapColumns(metadata, columns, ({id, sortable, style, header}) => {
+		if (!sortable) {
+			return (
+				<th key={id} style={style}>
 					{header}
-					{sortable && (
-						<SvgIcon
-							className={'DataTable__sort' + (sortOrder ? ' DataTable__sort--active' : '')}
-							icon={sortOrder === 'a' ? faSortUp : sortOrder === 'd' ? faSortDown : faSort}
-						/>
-					)}
-				</span>
+				</th>
+			);
+		}
+
+		const sortOrder = dataSort && dataSort.columnId === id ? dataSort.order : null;
+		const ariaSort = sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none';
+		return (
+			<th key={id} aria-sort={ariaSort}>
+				<button
+					className={`DataTable__sort${sortOrder ? ' DataTable__sort--active' : ''}`}
+					type="button"
+					data-column={id}
+				>
+					<div className="DataTable__sortLabel" style={style}>
+						{header}
+					</div>
+					<SvgIcon
+						className="DataTable__sortIcon"
+						icon={sortOrder === 'a' ? faSortUp : sortOrder === 'd' ? faSortDown : faSort}
+					/>
+				</button>
 			</th>
 		);
 	});
 
-const renderRows = (data, metadata, columns, selectedId, highlightId, focused, getRowId, onRowClick) =>
+const renderRows = (data, metadata, columns, selectedId, highlightId, focused, getRowId) =>
 	data.map((row, rowIndex) => {
 		const rowId = getRowId(row, rowIndex);
-		const className =
-			'DataTable__row' +
-			(rowId === highlightId ? ' DataTable__row--highlight' : '') +
-			(onRowClick ? ' DataTable__row--clickable' : '') +
-			(focused === rowIndex ? ' DataTable__row--focused' : '');
-
 		return (
-			<tr key={rowIndex} id={rowId} className={className} aria-selected={selectedId === rowId} data-index={rowIndex}>
-				{mapColumns(metadata, columns, (col) => (
+			<tr
+				key={rowIndex}
+				id={rowId}
+				className={rowId === highlightId ? 'DataTable--highlight' : ''}
+				tabIndex={focused === rowIndex ? 0 : -1}
+				aria-selected={selectedId === rowId}
+				data-index={rowIndex}
+			>
+				{mapColumns(metadata, columns, ({id, style, hoverValue, className, value}) => (
 					<td
-						key={col.id}
-						style={{...col.style, width: col.width}}
-						title={col.hoverValue ? col.value(row, rowIndex) : ''}
-						className={'DataTable__td' + (col.className ? ' ' + col.className(row, rowIndex) : '')}>
-						{col.value(row, rowIndex)}
+						key={id}
+						style={style}
+						title={hoverValue ? value(row, rowIndex) : ''}
+						className={className ? className(row, rowIndex) : null}
+					>
+						{value(row, rowIndex)}
 					</td>
 				))}
 			</tr>
@@ -100,6 +107,7 @@ const DataTable = ({
 	metadata,
 	columns,
 	defaultSort,
+	rowMode,
 	data,
 	addedCount,
 	emptyTableText,
@@ -114,9 +122,8 @@ const DataTable = ({
 	onRowClick,
 }) => {
 	const [dataSort, setDataSort] = useState(defaultSort);
-	const [focused, setFocused] = useState(-1);
 
-	const tableBody = useRef(null);
+	const containerRef = useRef(null);
 	const isLoadingNextData = useRef(false);
 	const isLoadingPrevData = useRef(false);
 	const defaultSortColumnId = useRef(defaultSort ? defaultSort.columnId : null);
@@ -126,10 +133,23 @@ const DataTable = ({
 		[data, metadata, dataSort]
 	);
 
+	const [focused, setFocused] = useState(() => {
+		if (selectedId) {
+			const index = sortedData.findIndex((item, index) => getRowId(item, index) === selectedId);
+			if (index !== -1) {
+				return index;
+			}
+		}
+		return onRowClick ? 0 : -1;
+	});
+
 	const updateFocused = useCallback((index) => {
 		setFocused(index);
-		const element = tableBody.current;
-		scrollToItem(element, getRow(element, index));
+		const container = containerRef.current;
+		const element = getRow(container, index);
+		const headerHeight = container.firstChild.tHead.clientHeight;
+		scrollToItem(container, element, {headerHeight});
+		element.focus();
 	}, []);
 
 	const updateSortColumn = useCallback(
@@ -149,7 +169,7 @@ const DataTable = ({
 					return;
 				}
 
-				const element = tableBody.current;
+				const element = containerRef.current;
 				if (element.clientHeight + element.scrollTop + 75 >= element.scrollHeight) {
 					isLoadingNextData.current = requestNextPage();
 					isLoadingPrevData.current = false;
@@ -161,8 +181,18 @@ const DataTable = ({
 		[data, fetchingNextPage, fetchingPrevPage, requestNextPage, requestPrevPage]
 	);
 
+	const handleHeaderClick = useCallback(
+		(event) => {
+			const sort = event.target.closest('.DataTable__sort');
+			if (sort) {
+				updateSortColumn(sort.dataset.column);
+			}
+		},
+		[updateSortColumn]
+	);
+
 	const handleMouseDown = useCallback((event) => {
-		const element = event.target.closest('.DataTable__row');
+		const element = event.target.closest('tr');
 		if (element) {
 			setFocused(+element.dataset.index);
 		}
@@ -170,35 +200,15 @@ const DataTable = ({
 
 	const handleClick = useCallback(
 		(event) => {
-			const element = event.target.closest('.DataTable__row');
+			const element = event.target.closest('tr');
 			if (element) {
 				event.preventDefault();
 				event.nativeEvent.stopImmediatePropagation();
-				tableBody.current.focus();
 				onRowClick(sortedData[+element.dataset.index]);
 			}
 		},
 		[sortedData, onRowClick]
 	);
-
-	const handleFocus = useCallback(() => {
-		if (focused === -1) {
-			let index;
-			if (selectedId) {
-				index = sortedData.findIndex((item, index) => getRowId(item, index) === selectedId);
-				if (index === -1) {
-					index = 0;
-				}
-			} else {
-				index = 0;
-			}
-			setFocused(index);
-			const element = tableBody.current;
-			scrollToItem(element, getRow(element, index));
-		}
-	}, [focused, sortedData, selectedId, getRowId]);
-
-	const handleBlur = useCallback(() => setFocused(-1), []);
 
 	const handleKeyDown = useCallback(
 		(event) => {
@@ -214,7 +224,7 @@ const DataTable = ({
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
 						let i;
-						const element = tableBody.current;
+						const element = containerRef.current;
 						const listHeight = element.clientHeight;
 						const scrollTop = element.scrollTop;
 						if (scrollTop > 0) {
@@ -227,6 +237,7 @@ const DataTable = ({
 							i = 0;
 						}
 						setFocused(i);
+						getRow(element, i).focus();
 						break;
 					}
 					case 34: {
@@ -234,7 +245,7 @@ const DataTable = ({
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
 						let i;
-						const element = tableBody.current;
+						const element = containerRef.current;
 						const listHeight = element.clientHeight;
 						const scrollTop = element.scrollTop;
 						const scrollMax = element.scrollHeight - listHeight;
@@ -248,6 +259,7 @@ const DataTable = ({
 							i = sortedData.length - 1;
 						}
 						setFocused(i);
+						getRow(element, i).focus();
 						break;
 					}
 					case 35: // end
@@ -298,7 +310,7 @@ const DataTable = ({
 
 	useEffect(() => {
 		if (requestNextPage && requestPrevPage) {
-			const element = tableBody.current;
+			const element = containerRef.current;
 			element.addEventListener('scroll', handleScroll, /Trident\//.test(navigator.userAgent) ? false : {passive: true});
 			return () => element.removeEventListener('scroll', handleScroll);
 		}
@@ -313,15 +325,20 @@ const DataTable = ({
 
 	useEffect(() => {
 		if (isLoadingNextData.current && !fetchingNextPage) {
-			const element = tableBody.current;
-			element.scrollTop = (element.scrollHeight / data.length) * (data.length - addedCount) - element.clientHeight;
+			const element = containerRef.current;
+			const headerHeight = element.firstChild.tHead.clientHeight;
+			element.scrollTop =
+				((element.scrollHeight - headerHeight) / data.length) * (data.length - addedCount) -
+				element.clientHeight +
+				headerHeight;
 			isLoadingNextData.current = false;
 			if (focused !== -1) {
 				setFocused(Math.max(0, focused - addedCount));
 			}
 		} else if (isLoadingPrevData.current && !fetchingPrevPage) {
-			const element = tableBody.current;
-			element.scrollTop = (element.scrollHeight / data.length) * addedCount;
+			const element = containerRef.current;
+			const headerHeight = element.firstChild.tHead.clientHeight;
+			element.scrollTop = ((element.scrollHeight - headerHeight) / data.length) * addedCount;
 			isLoadingPrevData.current = false;
 			if (focused !== -1) {
 				setFocused(Math.min(data.length - 1, focused + addedCount));
@@ -329,61 +346,54 @@ const DataTable = ({
 		}
 	}, [data, addedCount, fetchingNextPage, fetchingPrevPage, focused]);
 
+	const columnCount = columns?.length ?? metadata.length;
 	const empty = data.length === 0;
-	const showLoadingSpinner = fetchingNextPage && empty;
-	const displayTableMessage = !showLoadingSpinner && emptyTableText && empty;
-
-	const headers = renderHeaders(metadata, columns, dataSort, updateSortColumn);
 	return (
-		<div id={id} className={'DataTable' + (className ? ' ' + className : '')}>
-			<div id={id + '-tableHeader'} className="DataTable__header">
-				<table className="DataTable__table">
-					<thead>
-						<tr>{headers}</tr>
-					</thead>
-				</table>
-			</div>
-			<div
-				id={id + '-tableBody'}
-				className="DataTable__body"
-				tabIndex="0"
-				aria-activedescendant={focused === -1 || !sortedData[focused] ? null : getRowId(sortedData[focused], focused)}
-				onMouseDown={handleMouseDown}
-				onClick={onRowClick ? handleClick : null}
-				onFocus={empty ? null : handleFocus}
-				onBlur={handleBlur}
-				onKeyDown={empty ? null : handleKeyDown}
-				onKeyUp={onRowClick && !empty ? handleKeyUp : null}
-				ref={tableBody}>
-				{!displayTableMessage ? (
-					<>
-						{fetchingPrevPage && (
-							<div id={id + '-prevSpinner'} className="DataTable__spinner">
-								<Spinner size="tiny" />
-							</div>
-						)}
-						<table id={id + '-table'} className="DataTable__table" role="grid">
-							<thead className="DataTable__printHeader">
-								<tr>{headers}</tr>
-							</thead>
-							<tbody>
-								{renderRows(sortedData, metadata, columns, selectedId, highlightId, focused, getRowId, onRowClick)}
-							</tbody>
-						</table>
-						{fetchingNextPage && (
-							<div
-								id={id + '-nextSpinner'}
-								className={showLoadingSpinner ? 'DataTable__loadingSpinner' : 'DataTable__spinner'}>
-								<Spinner size={showLoadingSpinner ? 'large' : 'tiny'} />
-							</div>
-						)}
-					</>
-				) : (
-					<div id={id + '-tableMessage'} className="DataTable__message">
+		<div id={id} className={`DataTable${className ? ` ${className}` : ''}`} tabIndex="-1" ref={containerRef}>
+			<table
+				id={`${id}-table`}
+				className={`DataTable__table DataTable--${rowMode}${onRowClick ? ' DataTable--clickable' : ''}`}
+				role="grid"
+			>
+				{mapColumns(metadata, columns, ({width}) => (
+					<col width={width} />
+				))}
+				<thead onClick={handleHeaderClick}>
+					<tr>{renderHeaders(metadata, columns, dataSort)}</tr>
+				</thead>
+				<tbody
+					onMouseDown={onRowClick ? handleMouseDown : null}
+					onClick={onRowClick ? handleClick : null}
+					onKeyDown={onRowClick && !empty ? handleKeyDown : null}
+					onKeyUp={onRowClick && !empty ? handleKeyUp : null}
+				>
+					{!empty && [
+						fetchingPrevPage && (
+							<tr>
+								<td className="DataTable__spinner" colSpan={columnCount}>
+									<Spinner size="tiny" />
+								</td>
+							</tr>
+						),
+						renderRows(sortedData, metadata, columns, selectedId, highlightId, focused, getRowId),
+						fetchingNextPage && (
+							<tr>
+								<td className="DataTable__spinner" colSpan={columnCount}>
+									<Spinner size="tiny" />
+								</td>
+							</tr>
+						),
+					]}
+				</tbody>
+			</table>
+			{empty &&
+				(fetchingNextPage ? (
+					<Spinner id={`${id}-loading`} size="large" />
+				) : emptyTableText ? (
+					<div id={`${id}-tableMessage`} className="DataTable__message">
 						{emptyTableText}
 					</div>
-				)}
-			</div>
+				) : null)}
 		</div>
 	);
 };
@@ -414,6 +424,8 @@ DataTable.propTypes = {
 		columnId: PropTypes.string,
 		order: PropTypes.string,
 	}),
+	/** The mode rows are displayed. */
+	rowMode: PropTypes.oneOf(['line', 'zebra']),
 	/** The data to display. */
 	data: PropTypes.array.isRequired,
 	/** The number of rows added in most recent update. */
@@ -438,6 +450,10 @@ DataTable.propTypes = {
 	onHighlightClear: PropTypes.func,
 	/** Function invoked when a given row is clicked. */
 	onRowClick: PropTypes.func,
+};
+
+DataTable.defaultProps = {
+	rowMode: 'line',
 };
 
 export default DataTable;

@@ -1,16 +1,14 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import FilterMenu from '../../src/filters/FilterMenu';
 import useMenuHandler from '../../src/hooks/useMenuHandler';
-import useTooltip from '../../src/hooks/useTooltip';
 
 jest.unmock('../../src/filters/FilterMenu');
 
 const FilterEditor = () => <></>;
 
-const getElementById = jest.fn();
-global.document = {getElementById};
+global.document = {};
 
 describe('FilterMenu', () => {
 	describe('rendering', () => {
@@ -20,7 +18,6 @@ describe('FilterMenu', () => {
 			useMenuHandler.mockReturnValue({current: -1});
 			const wrapper = shallow(<FilterMenu getOptionText={getOptionText} options={options} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(useTooltip.mock.calls).toEqual([['Add filter', 'top']]);
 		});
 
 		it('renders expected elements when menuVisible is true', () => {
@@ -69,17 +66,19 @@ describe('FilterMenu', () => {
 			useMenuHandler.mockReturnValue({current: -1});
 			const getOptionText = jest.fn();
 			const options = ['a', 'b'];
-			const menu = {style: {}};
+			const menu = {style: {}, dataset: {}};
+			const button = {
+				dataset: {layer: '2'},
+				getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200}),
+				closest: jest.fn(),
+			};
+			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([null]);
-			const button = {getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200})};
-			getElementById.mockReturnValueOnce(button).mockReturnValueOnce(menu);
 			shallow(<FilterMenu getOptionText={getOptionText} options={options} />);
 			useEffect.mock.calls[0][0]();
 			expect(useEffect).toHaveBeenCalledTimes(1);
-			expect(getElementById.mock.calls).toEqual([['filterButton'], ['filterMenu']]);
-			expect(menu.style.display).toBe('');
-			expect(menu.style.top).toBe('103px');
-			expect(menu.style.left).toBe('200px');
+			expect(menu.style).toEqual({top: '100px', left: '200px'});
+			expect(menu.dataset).toEqual({layer: '2'});
 		});
 
 		it('handles the a menu option click correctly', () => {

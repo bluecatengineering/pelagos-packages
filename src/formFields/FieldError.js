@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './FieldError.less';
 
 /** An error message. */
-const FieldError = ({text, alignment, ...props}) => (
-	<div {...props} className="FieldError" style={{textAlign: alignment}} aria-live="polite">
-		{text}
+const FieldError = ({text, ...props}) => (
+	<div {...props} className="FieldError" aria-live="polite">
+		{text || '\u00a0'}
 	</div>
 );
 
@@ -14,12 +14,8 @@ FieldError.propTypes = {
 	id: PropTypes.string,
 	/** The error text. */
 	text: PropTypes.string,
-	/** The text alignment. */
+	/** @deprecated error messages are now always aligned to the left. */
 	alignment: PropTypes.oneOf(['left', 'right']),
-};
-
-FieldError.defaultProps = {
-	alignment: 'right',
 };
 
 export default FieldError;

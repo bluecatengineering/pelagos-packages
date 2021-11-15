@@ -11,8 +11,9 @@ exports[`ListInput rendering renders expected elements 1`] = `
     text="Test"
   />
   <ComboBox
+    aria-describedby="test-helper"
     autoSelect={true}
-    error={true}
+    error={false}
     getSuggestions={[Function]}
     id="test"
     onChange={[Function]}
@@ -21,10 +22,9 @@ exports[`ListInput rendering renders expected elements 1`] = `
     placeholder="test placeholder"
     text=""
   />
-  <FieldError
-    alignment="right"
-    id="test-error"
-    text="test error"
+  <FieldHelper
+    id="test-helper"
+    text="Helper text"
   />
   <ListEntries
     highlightKey={null}
@@ -53,8 +53,9 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
     text="Test"
   />
   <ComboBox
+    aria-describedby="test-helper"
     autoSelect={true}
-    error={true}
+    error={false}
     getSuggestions={[Function]}
     id="test"
     onChange={[Function]}
@@ -63,10 +64,8 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
     placeholder="test placeholder"
     text=""
   />
-  <FieldError
-    alignment="right"
-    id="test-error"
-    text="test error"
+  <FieldHelper
+    id="test-helper"
   />
   <ListEntries
     column={true}
@@ -86,7 +85,7 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
 </div>
 `;
 
-exports[`ListInput rendering renders expected elements when error is not set 1`] = `
+exports[`ListInput rendering renders expected elements when error is set 1`] = `
 <div
   className="ListInput"
 >
@@ -96,8 +95,9 @@ exports[`ListInput rendering renders expected elements when error is not set 1`]
     text="Test"
   />
   <ComboBox
+    aria-describedby="test-error"
     autoSelect={true}
-    error={false}
+    error={true}
     getSuggestions={[Function]}
     id="test"
     onChange={[Function]}
@@ -107,8 +107,8 @@ exports[`ListInput rendering renders expected elements when error is not set 1`]
     text=""
   />
   <FieldError
-    alignment="right"
     id="test-error"
+    text="Error"
   />
   <ListEntries
     highlightKey={null}
@@ -138,8 +138,9 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
     text="Test"
   />
   <ComboBox
+    aria-describedby="test-helper"
     autoSelect={true}
-    error={true}
+    error={false}
     getSuggestions={[Function]}
     id="test"
     onChange={[Function]}
@@ -148,10 +149,8 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
     placeholder="test placeholder"
     text=""
   />
-  <FieldError
-    alignment="right"
-    id="test-error"
-    text="test error"
+  <FieldHelper
+    id="test-helper"
   />
   <div
     className="ListInput__empty"

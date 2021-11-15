@@ -8,7 +8,7 @@
     "set-token": "npm config set //artifactory.bluecatlabs.net/api/npm/bcn-npm-dev-local/:_authToken ${NPM_TOKEN}",
     "build:es5": "rm -rf es5 && BABEL_ENV=es5 babel -d es5 src && npm run copy-resources es5",
     "build:es6": "rm -rf es6 && BABEL_ENV=es6 babel -d es6 src && npm run copy-resources es6",
-    "build": "npm run update-colors && npm run update-elevations && npm run update-fonts && npm run update-shadows && npm run update-spacing && npm run build:es5 && npm run build:es6",
+    "build": "npm run update-colors && npm run update-elevations && npm run update-fonts && npm run update-shadows && npm run update-spacing && npm run update-themes && npm run build:es5 && npm run build:es6",
     "test": "jest --verbose",
     "test-ci": "jest --ci --silent --reporters=jest-junit",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -21,6 +21,7 @@
     "update-fonts": "node scripts/update-fonts",
     "update-shadows": "node scripts/update-shadows",
     "update-spacing": "node scripts/update-spacing",
+    "update-themes": "node scripts/update-themes",
     "copy-resources": "node scripts/copy-resources",
     "prepack": "npm t && npm run build",
     "prepare": "husky install"
@@ -43,7 +44,7 @@
     "@bluecat/redux-navigation": ">=2"
   },
   "dependencies": {
-    "@bluecat/helpers": "^0.9.1",
+    "@bluecat/helpers": "^0.9.2",
     "@bluecat/l10n-core": "^0.1.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "focus-trap": "^6.7.1",
@@ -91,7 +92,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
-    "storybook-addon-themes": "^6.1.0",
     "stylelint": "^14.1.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^23.0.0",

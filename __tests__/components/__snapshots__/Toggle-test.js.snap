@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Toggle rendering renders expected elements 1`] = `
-<span
+<Layer
   aria-checked={true}
   aria-label="Test"
+  as="span"
   className="Toggle TestClass"
   id="test"
   onClick={[MockFunction]}
@@ -14,10 +15,11 @@ exports[`Toggle rendering renders expected elements 1`] = `
 `;
 
 exports[`Toggle rendering renders expected elements when disabled is true 1`] = `
-<span
+<Layer
   aria-checked={true}
   aria-disabled={true}
   aria-label="Test"
+  as="span"
   className="Toggle TestClass"
   id="test"
   role="checkbox"

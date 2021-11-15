@@ -4,7 +4,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
 <div
   className="Dialog__backdrop"
 >
-  <div
+  <Layer
     aria-labelledby="dialogTitle"
     aria-modal={true}
     className="Dialog TestClass"
@@ -30,11 +30,11 @@ exports[`Dialog rendering renders expected elements 1`] = `
           id="a"
           size="medium"
           text="A"
-          type="secondary"
+          type="tertiary"
         />
       </div>
     </React.Fragment>
-  </div>
+  </Layer>
 </div>
 `;
 
@@ -42,7 +42,7 @@ exports[`Dialog rendering renders expected elements when child has no className 
 <div
   className="Dialog__backdrop"
 >
-  <div
+  <Layer
     aria-labelledby="dialogTitle"
     aria-modal={true}
     className="Dialog"
@@ -68,11 +68,11 @@ exports[`Dialog rendering renders expected elements when child has no className 
           id="a"
           size="medium"
           text="A"
-          type="secondary"
+          type="tertiary"
         />
       </div>
     </React.Fragment>
-  </div>
+  </Layer>
 </div>
 `;
 
@@ -80,9 +80,10 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
 <div
   className="Dialog__backdrop"
 >
-  <form
+  <Layer
     aria-labelledby="dialogTitle"
     aria-modal={true}
+    as="form"
     className="Dialog"
     id="test-dialog"
     onSubmit={[Function]}
@@ -107,10 +108,10 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
           id="a"
           size="medium"
           text="A"
-          type="secondary"
+          type="tertiary"
         />
       </div>
     </React.Fragment>
-  </form>
+  </Layer>
 </div>
 `;

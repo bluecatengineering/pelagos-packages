@@ -380,6 +380,22 @@ describe('Calendar', () => {
 			]);
 		});
 
+		it('calls preventDefault on mouse down on the left arrow', () => {
+			const preventDefault = jest.fn();
+			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
+			const wrapper = shallow(<Calendar />);
+			wrapper.find('IconButton').first().simulate('mousedown', {preventDefault});
+			expect(preventDefault.mock.calls).toEqual([[]]);
+		});
+
+		it('calls preventDefault on mouse down on the right arrow', () => {
+			const preventDefault = jest.fn();
+			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
+			const wrapper = shallow(<Calendar />);
+			wrapper.find('IconButton').last().simulate('mousedown', {preventDefault});
+			expect(preventDefault.mock.calls).toEqual([[]]);
+		});
+
 		it('adds an effect which calls focus', () => {
 			const focused = new Date(2019, 8, 15);
 			const activeElement = {};

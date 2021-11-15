@@ -1,9 +1,10 @@
 @import 'focus';
+@import 'layers';
 @import 'spacing';
 
 :root {
-	color: var(--font-color-1);
-	background-color: var(--page-bg);
+	color: var(--text-primary);
+	background-color: var(--background);
 
 	@media print {
 		height: auto;
@@ -29,24 +30,28 @@ footer {
 }
 
 a {
-	@focus-visible();
-	color: var(--action-color);
+	color: var(--link-primary);
 	text-decoration: none;
-	padding: 0 @sp-02;
-	margin: @sp-02;
 	cursor: pointer;
+	border-radius: 3px;
 
 	&:hover {
+		color: var(--link-primary-hover);
 		text-decoration: underline;
 	}
 
+	&:active {
+		color: var(--text-primary);
+	}
+
 	&:focus {
-		text-decoration: underline;
+		outline: 1px solid var(--focus);
+		outline-offset: 0;
 	}
 
 	// workaround for browsers that don't support :focus-visible
 	&:focus:not(:focus-visible) {
-		text-decoration: none;
+		outline: none;
 	}
 
 	@media print {
@@ -73,6 +78,6 @@ table {
 
 @keyframes highlight-fade {
 	0% {
-		background-color: var(--highlight-bg);
+		background-color: var(--interactive);
 	}
 }

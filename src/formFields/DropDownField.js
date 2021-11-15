@@ -5,19 +5,29 @@ import Select from '../components/Select';
 import useRandomId from '../hooks/useRandomId';
 
 import FieldError from './FieldError';
+import FieldHelper from './FieldHelper';
 import './DropDownField.less';
 
 /** A dropdown field. */
-const DropDownField = ({id, className, label, error, ...props}) => {
+const DropDownField = ({id, className, label, helperText, error, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
+	const helperId = `${id}-helper`;
+	const errorId = `${id}-error`;
 	return (
 		<div className={'DropDownField' + (className ? ' ' + className : '')}>
 			<div className="DropDownField__label">
 				<Label id={labelId} text={label} />
 			</div>
-			<Select {...props} id={id} error={!!error} className="DropDownField__select" aria-labelledby={labelId} />
-			<FieldError text={error} />
+			<Select
+				{...props}
+				id={id}
+				error={!!error}
+				className="DropDownField__select"
+				aria-labelledby={labelId}
+				aria-describedby={error ? errorId : helperId}
+			/>
+			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
 		</div>
 	);
 };
@@ -37,6 +47,8 @@ DropDownField.propTypes = {
 	placeholder: PropTypes.string,
 	/** Whether the field is disabled. */
 	disabled: PropTypes.bool,
+	/** Additional information for the field. */
+	helperText: PropTypes.string,
 	/** The error text. */
 	error: PropTypes.string,
 	/** Function invoked to get the key of each option. */

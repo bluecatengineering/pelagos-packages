@@ -1,8 +1,10 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecat/l10n.macro';
+import {faCheckCircle, faExclamationTriangle, faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 
 import ToastTypes from '../toasts/ToastTypes';
+import exclamationRhombus from '../icons/exclamationRhombus';
 import timesThin from '../icons/timesThin';
 
 import Button from './Button';
@@ -12,6 +14,14 @@ import './ToastMessage.less';
 const SHORT_DURATION = 3000;
 const DEFAULT_DURATION = 8000;
 const REQUIRES_CLOSE = [ToastTypes.INFO, ToastTypes.WARNING, ToastTypes.ERROR];
+
+const icons = {
+	success: faCheckCircle,
+	info: faInfoCircle,
+	warning: faExclamationTriangle,
+	error: exclamationRhombus,
+	fatal: exclamationRhombus,
+};
 
 const ToastMessage = ({message, onRemove}) => {
 	const progressRef = useRef(null);
@@ -36,38 +46,37 @@ const ToastMessage = ({message, onRemove}) => {
 		return undefined;
 	}, [message, onRemove]);
 
-	const {id, type, text, actionText} = message;
+	const {id, type: tmp, text, actionText} = message;
+	const type = tmp === ToastTypes.ACTION ? ToastTypes.INFO : tmp;
 	const requiresClose = REQUIRES_CLOSE.includes(type);
 	return (
 		<div id={`toast-${id}`} className={`ToastMessage ToastMessage--${type}`} role="alert" data-testid={`toast-${type}`}>
-			<div
-				data-testid="message"
-				className={`ToastMessage__text${requiresClose ? ' ToastMessage__text--closeable' : ''}`}>
+			<SvgIcon className="ToastMessage__icon" icon={icons[type]} />
+			<div data-testid="message" className="ToastMessage__text">
 				{text}
 			</div>
-			{type === ToastTypes.ACTION && (
+			{actionText && (
 				<Button
 					className="ToastMessage__button"
 					text={actionText}
 					size="small"
-					type="primary"
+					type="ghost"
 					data-testid="toast-button"
 					onClick={handleActionClick}
 				/>
 			)}
 			{requiresClose && (
-				<div
+				<button
 					className="ToastMessage__close"
-					role="button"
+					type="button"
 					aria-label={t`Dismiss`}
 					data-testid="toast-close"
-					onClick={handleCloseClick}>
+					onClick={handleCloseClick}
+				>
 					<SvgIcon icon={timesThin} />
-				</div>
+				</button>
 			)}
-			{type !== ToastTypes.FATAL && type !== ToastTypes.ACTION && (
-				<div className="ToastMessage__time" ref={progressRef} />
-			)}
+			{type !== ToastTypes.FATAL && !actionText && <div className="ToastMessage__time" ref={progressRef} />}
 		</div>
 	);
 };

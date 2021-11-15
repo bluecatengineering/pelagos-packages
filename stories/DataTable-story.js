@@ -12,22 +12,29 @@ const metadata = [
 	{
 		id: 'value',
 		header: 'Value',
-		width: '40%',
+		width: '15%',
+		style: {textAlign: 'right'},
 		sortable: true,
 		value: (row) => row.value,
 		sortComparator: (a, b) => a.value - b.value,
+	},
+	{
+		id: 'other',
+		header: 'Other',
+		width: '25%',
+		value: (row) => row.other,
 	},
 ];
 
 const defaultSort = {columnId: 'name', order: 'a'};
 
 const data = [
-	{id: '1', name: 'One', value: 1},
-	{id: '2', name: 'Two', value: 2},
-	{id: '3', name: 'Three', value: 3},
-	{id: '4', name: 'Four', value: 4},
-	{id: '5', name: 'Five', value: 5},
-	{id: '6', name: 'Six', value: 6},
+	{id: '1', name: 'One', value: 1, other: 'foo'},
+	{id: '2', name: 'Two', value: 2, other: 'baz'},
+	{id: '3', name: 'Three', value: 3, other: 'foo'},
+	{id: '4', name: 'Four', value: 4, other: 'bar'},
+	{id: '5', name: 'Five', value: 5, other: 'bar'},
+	{id: '6', name: 'Six', value: 6, other: 'baz'},
 ];
 
 const emptyTableText = 'This table is empty';

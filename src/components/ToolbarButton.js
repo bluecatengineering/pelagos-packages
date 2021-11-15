@@ -2,12 +2,8 @@ import PropTypes from 'prop-types';
 
 import IconButton from './IconButton';
 
-import './ToolbarButton.less';
-
-/** A toolbar button. */
-const ToolbarButton = ({className, ...props}) => (
-	<IconButton {...props} className={`ToolbarButton${className ? ' ' + className : ''}`} />
-);
+/** @deprecated use IconButton instead. */
+const ToolbarButton = ({...props}) => <IconButton {...props} type="primary" />;
 
 ToolbarButton.propTypes = {
 	/** The component ID. */

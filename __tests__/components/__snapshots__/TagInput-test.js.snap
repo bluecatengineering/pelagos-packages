@@ -1,22 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TagInput rendering renders expected elements 1`] = `
-<div
+<Layer
   className="TagInput"
   id="test-tags"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
 >
   <span
     className="TagInput__tag"
   >
     foo
-    <span
+    <button
       aria-label="Remove foo"
       className="TagInput__remove"
       data-index={0}
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -25,18 +23,17 @@ exports[`TagInput rendering renders expected elements 1`] = `
           }
         }
       />
-    </span>
+    </button>
   </span>
   <span
     className="TagInput__tag"
   >
     bar
-    <span
+    <button
       aria-label="Remove bar"
       className="TagInput__remove"
       data-index={1}
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -45,7 +42,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
           }
         }
       />
-    </span>
+    </button>
   </span>
   <input
     className="TagInput__input"
@@ -56,26 +53,24 @@ exports[`TagInput rendering renders expected elements 1`] = `
     type="text"
     value=""
   />
-</div>
+</Layer>
 `;
 
 exports[`TagInput rendering renders expected elements when error is set 1`] = `
-<div
+<Layer
   className="TagInput TagInput--error"
   id="test-tags"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
 >
   <span
     className="TagInput__tag"
   >
     foo
-    <span
+    <button
       aria-label="Remove foo"
       className="TagInput__remove"
       data-index={0}
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -84,18 +79,17 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
           }
         }
       />
-    </span>
+    </button>
   </span>
   <span
     className="TagInput__tag"
   >
     bar
-    <span
+    <button
       aria-label="Remove bar"
       className="TagInput__remove"
       data-index={1}
-      role="button"
-      tabIndex="0"
+      type="button"
     >
       <SvgIcon
         icon={
@@ -104,7 +98,7 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
           }
         }
       />
-    </span>
+    </button>
   </span>
   <input
     className="TagInput__input"
@@ -115,15 +109,14 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
     type="text"
     value=""
   />
-</div>
+</Layer>
 `;
 
 exports[`TagInput rendering renders expected elements when tags is empty and defaultTags is not set 1`] = `
-<div
+<Layer
   className="TagInput"
   id="test-tags"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
 >
   <input
     className="TagInput__input"
@@ -134,15 +127,14 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
     type="text"
     value=""
   />
-</div>
+</Layer>
 `;
 
 exports[`TagInput rendering renders expected elements when tags is empty and defaultTags is set 1`] = `
-<div
+<Layer
   className="TagInput"
   id="test-tags"
   onClick={[Function]}
-  onKeyDown={[MockFunction]}
 >
   <span
     className="TagInput__defaultTag"
@@ -163,5 +155,5 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
     type="text"
     value=""
   />
-</div>
+</Layer>
 `;

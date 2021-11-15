@@ -129,14 +129,6 @@ msgstr ""
 msgid "Retrieving {pluralName}..."
 msgstr ""
 
-#: 2c9
-msgid "Scroll left"
-msgstr ""
-
-#: 299
-msgid "Scroll right"
-msgstr ""
-
 #: 7f9
 msgid "There are no {pluralName} that match your filter."
 msgstr ""

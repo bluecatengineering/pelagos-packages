@@ -1,18 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button rendering renders expected elements when both size is small and disabled is true 1`] = `
-<span
-  aria-disabled="true"
-  className="Button Button--small"
-  id="test"
->
-  Test
-</span>
-`;
-
 exports[`Button rendering renders expected elements when className is set 1`] = `
 <button
-  className="Button Button--medium Button--secondary testClass"
+  className="Button Button--medium Button--tertiary testClass"
   id="test"
   type="submit"
 >
@@ -21,28 +11,19 @@ exports[`Button rendering renders expected elements when className is set 1`] = 
 `;
 
 exports[`Button rendering renders expected elements when disabled is true 1`] = `
-<span
-  aria-disabled="true"
-  className="Button Button--medium"
+<button
+  className="Button Button--medium Button--tertiary"
+  disabled={true}
   id="test"
+  type="submit"
 >
   Test
-</span>
-`;
-
-exports[`Button rendering renders expected elements when disabled is true and className is set 1`] = `
-<span
-  aria-disabled="true"
-  className="Button Button--medium testClass"
-  id="test"
->
-  Test
-</span>
+</button>
 `;
 
 exports[`Button rendering renders expected elements when onClick is not specified 1`] = `
 <button
-  className="Button Button--medium Button--secondary"
+  className="Button Button--medium Button--tertiary"
   id="test"
   type="submit"
 >
@@ -52,7 +33,7 @@ exports[`Button rendering renders expected elements when onClick is not specifie
 
 exports[`Button rendering renders expected elements when onClick is specified 1`] = `
 <button
-  className="Button Button--medium Button--secondary"
+  className="Button Button--medium Button--tertiary"
   id="test"
   onClick={[MockFunction]}
   type="button"
@@ -63,7 +44,7 @@ exports[`Button rendering renders expected elements when onClick is specified 1`
 
 exports[`Button rendering renders expected elements when size is small 1`] = `
 <button
-  className="Button Button--small Button--secondary"
+  className="Button Button--small Button--tertiary"
   id="test"
   type="submit"
 >
@@ -73,7 +54,7 @@ exports[`Button rendering renders expected elements when size is small 1`] = `
 
 exports[`Button rendering renders expected elements when tooltipText is set 1`] = `
 <button
-  className="Button Button--medium Button--secondary"
+  className="Button Button--medium Button--tertiary"
   id="test"
   type="submit"
 >

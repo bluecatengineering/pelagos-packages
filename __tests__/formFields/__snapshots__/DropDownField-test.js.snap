@@ -13,6 +13,7 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     />
   </div>
   <Select
+    aria-describedby="test-helper"
     aria-labelledby="test-label"
     className="DropDownField__select"
     error={false}
@@ -28,8 +29,9 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     renderOption={[Function]}
     value="o0"
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-helper"
+    text="Helper text"
   />
 </div>
 `;
@@ -47,6 +49,7 @@ exports[`DropDownField rendering renders expected elements when className is set
     />
   </div>
   <Select
+    aria-describedby="test-helper"
     aria-labelledby="test-label"
     className="DropDownField__select"
     error={false}
@@ -62,8 +65,8 @@ exports[`DropDownField rendering renders expected elements when className is set
     renderOption={[Function]}
     value="o0"
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-helper"
   />
 </div>
 `;
@@ -81,6 +84,7 @@ exports[`DropDownField rendering renders expected elements when error is set 1`]
     />
   </div>
   <Select
+    aria-describedby="test-error"
     aria-labelledby="test-label"
     className="DropDownField__select"
     error={true}
@@ -103,7 +107,7 @@ exports[`DropDownField rendering renders expected elements when error is set 1`]
     value="o0"
   />
   <FieldError
-    alignment="right"
+    id="test-error"
     text="Error"
   />
 </div>

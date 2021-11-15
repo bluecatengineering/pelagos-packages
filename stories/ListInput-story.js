@@ -21,6 +21,7 @@ Grid.args = {
 	autoFocus,
 	list,
 	text: '1.1',
+	helperText: 'Helper text',
 	getSuggestions,
 	getItemName,
 	getItemKey,

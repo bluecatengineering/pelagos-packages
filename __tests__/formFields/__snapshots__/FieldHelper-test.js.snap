@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldHelper rendering renders expected elements 1`] = `
+<div
+  className="FieldHelper"
+  id="test"
+>
+  Test
+</div>
+`;
+
+exports[`FieldHelper rendering renders expected elements when text is not set 1`] = `
+<div
+  className="FieldHelper"
+  id="test"
+>
+   
+</div>
+`;

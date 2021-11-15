@@ -11,7 +11,7 @@
 
 .ListEntries__item {
 	flex-direction: row;
-	align-items: flex-start;
+	align-items: center;
 	padding: @sp-04 @sp-08;
 	width: 100%;
 }
@@ -22,16 +22,17 @@
 
 .ListEntries__icon {
 	@icon-button-nested();
-	font-size: 19px;
+	font-size: 16px;
 	padding: @sp-02;
-}
-.ListEntries__item--highlight > .ListEntries__icon {
-	color: var(--font-color-1);
+
+	.ListEntries__item--highlight > & {
+		color: var(--icon-primary);
+	}
 }
 
 .ListEntries__name {
 	flex: 1;
-	padding-left: @sp-08;
+	padding-left: @sp-04;
 }
 
 @media (min-width: 768px) {

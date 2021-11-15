@@ -4,7 +4,6 @@ import debounce from 'lodash-es/debounce';
 import {scrollIntoView} from '@bluecat/helpers';
 import {t} from '@bluecat/l10n.macro';
 
-import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import renderListItem from '../listItems/renderListItem';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
@@ -52,7 +51,7 @@ const ListEntries = ({
 	}, [highlightKey, clearHighlight]);
 
 	return (
-		<div id={id} className="ListEntries" role="list" onClick={handleClick} onKeyDown={handleButtonKeyDown}>
+		<div id={id} className="ListEntries" role="list" onClick={handleClick}>
 			{list.map((item, i) => {
 				const name = getItemName(item);
 				const element = renderItem ? renderItem(item) : renderListItem(name);
@@ -68,16 +67,17 @@ const ListEntries = ({
 							(column ? '' : ' ListEntries__gridItem')
 						}
 						role="listitem"
-						data-testid="list-item">
-						<div
-							data-testid="remove-item"
+						data-testid="list-item"
+					>
+						<button
 							className="ListEntries__icon"
-							tabIndex="0"
-							role="button"
+							type="button"
 							aria-label={t`Remove ${name}`}
-							data-index={i}>
+							data-testid="remove-item"
+							data-index={i}
+						>
 							<SvgIcon icon={timesThin} />
-						</div>
+						</button>
 						{cloneElement(element, {className})}
 					</div>
 				);

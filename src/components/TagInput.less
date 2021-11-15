@@ -6,14 +6,15 @@
 	flex-flow: row wrap;
 	align-items: center;
 	align-content: space-between;
-	background-color: var(--form-field-bg);
-	border: 1px solid var(--form-field-border);
-	padding: @sp-04 @sp-12 0;
-	margin: @sp-02;
-	border-radius: 3px;
+	height: 32px;
+	background-color: var(--field);
+	border-bottom: 1px solid var(--border-strong);
+	padding: 0 @sp-16;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 
 	&:hover {
-		background-color: var(--form-field-hover);
+		background-color: var(--field-hover);
 	}
 
 	&:focus-within {
@@ -27,7 +28,8 @@
 }
 
 .TagInput--error {
-	border-color: var(--form-field-error);
+	outline: 2px solid var(--support-error);
+	outline-offset: -2px;
 
 	&:focus-within {
 		@focus-ring-error();
@@ -38,13 +40,12 @@
 .TagInput__defaultTag {
 	padding: @sp-02 @sp-04;
 	margin-right: @sp-08;
-	margin-bottom: @sp-02;
 	border-radius: 3px;
 	white-space: nowrap;
 }
 
 .TagInput__tag {
-	background-color: var(--tag-added);
+	background-color: var(--layer-selected);
 
 	@media print {
 		background-color: transparent;
@@ -52,8 +53,7 @@
 }
 
 .TagInput__defaultTag {
-	color: var(--font-color-2);
-	background-color: var(--tag-default);
+	background-color: var(--layer-accent);
 
 	@media print {
 		color: var(--print-medium);
@@ -63,18 +63,15 @@
 
 .TagInput__remove {
 	@icon-button-nested();
-	display: inline-block;
+	font-size: 16px;
 	padding: @sp-02;
 	margin-left: @sp-04;
 	vertical-align: text-bottom;
-
-	@media print {
-		display: none;
-	}
 }
 
 .TagInput__input[type='text'] {
 	flex: 1;
+	height: 26px;
 	padding: 0;
 	margin: @sp-02 0 @sp-04;
 	border: none;
@@ -86,5 +83,5 @@
 }
 
 .TagInput__input[type='text']:focus {
-	box-shadow: none;
+	outline: none;
 }

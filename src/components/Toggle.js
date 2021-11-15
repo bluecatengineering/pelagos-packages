@@ -1,6 +1,7 @@
 import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
+import Layer from './Layer';
 import './Toggle.less';
 
 /** A toggle button. */
@@ -10,8 +11,9 @@ const Toggle = ({className, checked, disabled, onChange, ...props}) => {
 		[onChange]
 	);
 	return (
-		<span
+		<Layer
 			{...props}
+			as="span"
 			className={'Toggle ' + className}
 			role="checkbox"
 			aria-checked={!!checked}

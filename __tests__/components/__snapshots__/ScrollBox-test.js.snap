@@ -4,25 +4,23 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
 <div
   className="ScrollBox"
 >
-  <div
-    aria-label="Scroll left"
+  <IconButton
+    aria-hidden="true"
     className="ScrollBox__btn"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "chevron-left",
+        "prefix": "fas",
       }
-    />
-  </div>
+    }
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    size="medium"
+    tabIndex="-1"
+    tooltipPlacement="right"
+    type="ghost"
+  />
   <div
     className="ScrollBox__track"
   >
@@ -30,25 +28,23 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
       Test
     </div>
   </div>
-  <div
-    aria-label="Scroll right"
+  <IconButton
+    aria-hidden="true"
     className="ScrollBox__btn"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "chevron-right",
+        "prefix": "fas",
       }
-    />
-  </div>
+    }
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    size="medium"
+    tabIndex="-1"
+    tooltipPlacement="right"
+    type="ghost"
+  />
 </div>
 `;
 
@@ -56,25 +52,23 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
 <div
   className="ScrollBox TestClass"
 >
-  <div
-    aria-label="Scroll left"
+  <IconButton
+    aria-hidden="true"
     className="ScrollBox__btn"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "chevron-left",
+        "prefix": "fas",
       }
-    />
-  </div>
+    }
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    size="medium"
+    tabIndex="-1"
+    tooltipPlacement="right"
+    type="ghost"
+  />
   <div
     className="ScrollBox__track"
   >
@@ -82,24 +76,22 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
       Test
     </div>
   </div>
-  <div
-    aria-label="Scroll right"
+  <IconButton
+    aria-hidden="true"
     className="ScrollBox__btn"
-    onClick={[Function]}
-    onKeyDown={[MockFunction]}
-    onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
-  >
-    <SvgIcon
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "chevron-right",
+        "prefix": "fas",
       }
-    />
-  </div>
+    }
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    size="medium"
+    tabIndex="-1"
+    tooltipPlacement="right"
+    type="ghost"
+  />
 </div>
 `;

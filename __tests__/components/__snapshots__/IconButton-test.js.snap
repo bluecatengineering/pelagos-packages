@@ -1,78 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IconButton rendering renders the expected elements 1`] = `
-<span
+<button
   aria-label="Test"
-  className="IconButton IconButton--medium TestClass"
+  className="IconButton IconButton--medium IconButton--ghost TestClass"
   id="test"
-  onKeyDown={[MockFunction]}
-  role="button"
-  tabIndex={0}
+  type="button"
 >
   <SvgIcon
     icon={Object {}}
   />
-</span>
+</button>
 `;
 
 exports[`IconButton rendering renders the expected elements if disabled is true 1`] = `
-<span
-  aria-disabled={true}
+<button
   aria-label="Test"
-  className="IconButton IconButton--medium"
+  className="IconButton IconButton--medium IconButton--ghost"
+  disabled={true}
   id="test"
   onClick={null}
-  onKeyDown={null}
-  role="button"
-  tabIndex={-1}
+  type="button"
 >
   <SvgIcon
     icon={Object {}}
   />
-</span>
+</button>
 `;
 
 exports[`IconButton rendering renders the expected elements when className is not set 1`] = `
-<span
+<button
   aria-label="Test"
-  className="IconButton IconButton--medium"
+  className="IconButton IconButton--medium IconButton--ghost"
   id="test"
-  onKeyDown={[MockFunction]}
-  role="button"
-  tabIndex={0}
+  type="button"
 >
   <SvgIcon
     icon={Object {}}
   />
-</span>
+</button>
 `;
 
 exports[`IconButton rendering renders the expected elements when size and tooltipPlacement are set 1`] = `
-<span
+<button
   aria-label="Test"
-  className="IconButton IconButton--large"
+  className="IconButton IconButton--large IconButton--ghost"
   id="test"
-  onKeyDown={[MockFunction]}
-  role="button"
-  tabIndex={0}
+  type="button"
 >
   <SvgIcon
     icon={Object {}}
   />
-</span>
+</button>
 `;
 
 exports[`IconButton rendering renders the expected elements when tooltipText is not set 1`] = `
-<span
+<button
   aria-label="Test"
-  className="IconButton IconButton--medium TestClass"
+  className="IconButton IconButton--medium IconButton--ghost TestClass"
   id="test"
-  onKeyDown={[MockFunction]}
-  role="button"
-  tabIndex={0}
+  type="button"
 >
   <SvgIcon
     icon={Object {}}
   />
-</span>
+</button>
 `;

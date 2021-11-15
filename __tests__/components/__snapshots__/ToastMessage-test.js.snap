@@ -7,6 +7,14 @@ exports[`ToastMessage rendering does not render close button if type is fatal 1`
   id="toast-0"
   role="alert"
 >
+  <SvgIcon
+    className="ToastMessage__icon"
+    icon={
+      Object {
+        "icon": Array [],
+      }
+    }
+  />
   <div
     className="ToastMessage__text"
     data-testid="message"
@@ -18,11 +26,21 @@ exports[`ToastMessage rendering does not render close button if type is fatal 1`
 
 exports[`ToastMessage rendering renders action button if type is action 1`] = `
 <div
-  className="ToastMessage ToastMessage--action"
-  data-testid="toast-action"
+  className="ToastMessage ToastMessage--info"
+  data-testid="toast-info"
   id="toast-0"
   role="alert"
 >
+  <SvgIcon
+    className="ToastMessage__icon"
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "info-circle",
+        "prefix": "fas",
+      }
+    }
+  />
   <div
     className="ToastMessage__text"
     data-testid="message"
@@ -35,8 +53,23 @@ exports[`ToastMessage rendering renders action button if type is action 1`] = `
     onClick={[Function]}
     size="small"
     text="Action"
-    type="primary"
+    type="ghost"
   />
+  <button
+    aria-label="Dismiss"
+    className="ToastMessage__close"
+    data-testid="toast-close"
+    onClick={[Function]}
+    type="button"
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+        }
+      }
+    />
+  </button>
 </div>
 `;
 
@@ -47,18 +80,26 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
   id="toast-0"
   role="alert"
 >
+  <SvgIcon
+    className="ToastMessage__icon"
+    icon={
+      Object {
+        "icon": Array [],
+      }
+    }
+  />
   <div
-    className="ToastMessage__text ToastMessage__text--closeable"
+    className="ToastMessage__text"
     data-testid="message"
   >
     This is a test
   </div>
-  <div
+  <button
     aria-label="Dismiss"
     className="ToastMessage__close"
     data-testid="toast-close"
     onClick={[Function]}
-    role="button"
+    type="button"
   >
     <SvgIcon
       icon={
@@ -67,7 +108,7 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
         }
       }
     />
-  </div>
+  </button>
   <div
     className="ToastMessage__time"
   />

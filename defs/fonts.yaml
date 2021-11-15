@@ -7,6 +7,11 @@ font-10-400:
   styles:
     font-size: 10px
     font-weight: 400
+font-10-600:
+  use: calendar
+  styles:
+    font-size: 10px
+    font-weight: 600
 font-10-600-uc:
   use: error/label
   styles:
@@ -18,6 +23,11 @@ font-12-400:
   styles:
     font-size: 12px
     font-weight: 400
+font-12-600:
+  use: button-small
+  styles:
+    font-size: 12px
+    font-weight: 600
 font-12-600-uc:
   use: button-small
   styles:

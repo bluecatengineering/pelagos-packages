@@ -23,6 +23,7 @@ describe('DropDownField', () => {
 					label="Test"
 					value="o0"
 					options={options}
+					helperText="Helper text"
 					renderOption={renderOption}
 					onChange={jest.fn()}
 				/>
@@ -56,6 +57,7 @@ describe('DropDownField', () => {
 					label="Test"
 					value="o0"
 					options={options}
+					helperText="Helper text"
 					error="Error"
 					renderOption={renderOption}
 					onChange={jest.fn()}

@@ -5,7 +5,7 @@ import {TextInputField} from '../src';
 const Template = (args) => <TextInputField {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {label: 'Normal', value: 'Alpha'};
+Normal.args = {label: 'Normal', value: 'Alpha', helperText: 'Helper text'};
 
 export const Empty = Template.bind({});
 Empty.args = {label: 'Empty', placeholder: 'Placeholder'};
@@ -24,7 +24,7 @@ Error.args = {label: 'Error', value: 'Alpha', error: 'Error message'};
 
 export const AllStates = () => (
 	<div className="Story__group">
-		<TextInputField label="Normal" value="Alpha" onChange={identity} />
+		<TextInputField label="Normal" value="Alpha" helperText="Helper text" onChange={identity} />
 		<TextInputField label="Empty" placeholder="Placeholder" onChange={identity} />
 		<TextInputField label="Optional" optional onChange={identity} />
 		<TextInputField label="Disabled" value="Alpha" disabled onChange={identity} />

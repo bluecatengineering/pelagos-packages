@@ -117,17 +117,19 @@ describe('Select', () => {
 
 	describe('behaviour', () => {
 		it('places the list under the button', () => {
-			const button = {getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400})};
-			const list = {style: {}};
+			const button = {
+				dataset: {layer: '2'},
+				getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400}),
+				closest: jest.fn(),
+			};
+			const list = {style: {}, dataset: {}};
 			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
 			shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [true]]);
 			useEffect.mock.calls[0][0]();
-			expect(list.style.display).toBe('');
-			expect(list.style.top).toBe('102px');
-			expect(list.style.left).toBe('200px');
-			expect(list.style.width).toBe('400px');
+			expect(list.style).toEqual({top: '101px', left: '200px', width: '400px'});
+			expect(list.dataset).toEqual({layer: '2'});
 		});
 
 		it('does not place the list when open is false', () => {
@@ -166,18 +168,11 @@ describe('Select', () => {
 		it('shows the list when it is hidden and the button receives mouse down', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
-			const focus = jest.fn();
-			const element = {focus};
-			const closest = jest.fn().mockReturnValue(element);
-			const event = {preventDefault: jest.fn(), target: {closest}};
 			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('mousedown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
-			expect(closest.mock.calls).toEqual([['[role="button"]']]);
-			expect(focus).toHaveBeenCalledTimes(1);
+			wrapper.find('button').simulate('mousedown');
 			expect(setOpen.mock.calls).toEqual([[true]]);
 			expect(setFocused.mock.calls).toEqual([[2]]);
 		});
@@ -185,13 +180,11 @@ describe('Select', () => {
 		it('hides the list when it is visible and the button receives mouse down', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
-			const event = {preventDefault: jest.fn()};
 			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('mousedown', event);
-			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			wrapper.find('button').simulate('mousedown');
 			expect(setOpen.mock.calls).toEqual([[false]]);
 			expect(setFocused.mock.calls).toEqual([[-1]]);
 		});
@@ -206,7 +199,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(pageUp.mock.calls).toEqual([[list, 2]]);
@@ -217,7 +210,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
 
@@ -231,7 +224,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[2]]);
 			expect(pageDown.mock.calls).toEqual([[list, 0]]);
@@ -242,7 +235,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
 
@@ -261,7 +254,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[2]]);
 			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
@@ -272,7 +265,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
 
@@ -291,7 +284,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
@@ -302,7 +295,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
 
@@ -320,7 +313,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
@@ -341,7 +334,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[2]]);
 			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
@@ -352,7 +345,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 		});
 
@@ -370,7 +363,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="two" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[2]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
@@ -390,7 +383,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
@@ -404,7 +397,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[true]]);
@@ -431,7 +424,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[1]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
@@ -460,7 +453,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused).not.toHaveBeenCalled();
 			expect(smoothScroll).not.toHaveBeenCalled();
@@ -472,7 +465,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const button = wrapper.find('[role="button"]');
+			const button = wrapper.find('button');
 
 			button.simulate('keydown', {keyCode: 47, preventDefault});
 			button.simulate('keydown', {keyCode: 91, preventDefault});
@@ -485,7 +478,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			const button = wrapper.find('[role="button"]');
+			const button = wrapper.find('button');
 
 			button.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
 			button.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
@@ -504,7 +497,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={onChange} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[false]]);
 			expect(setFocused.mock.calls).toEqual([[-1]]);
@@ -519,7 +512,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[true]]);
@@ -532,7 +525,7 @@ describe('Select', () => {
 			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
 			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[true]]);
@@ -548,7 +541,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={onChange} />
 			);
-			wrapper.find('[role="button"]').simulate('keydown', event);
+			wrapper.find('button').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setOpen.mock.calls).toEqual([[false]]);
 			expect(setFocused.mock.calls).toEqual([[-1]]);
@@ -563,7 +556,7 @@ describe('Select', () => {
 			const wrapper = shallow(
 				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={onChange} />
 			);
-			wrapper.find('[role="button"]').simulate('blur');
+			wrapper.find('button').simulate('blur');
 			expect(setOpen.mock.calls).toEqual([[false]]);
 			expect(setFocused.mock.calls).toEqual([[-1]]);
 			expect(onChange).not.toHaveBeenCalled();

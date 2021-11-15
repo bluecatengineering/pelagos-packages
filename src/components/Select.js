@@ -9,6 +9,7 @@ import useStringFinder from '../hooks/useStringFinder';
 import pageUp from '../functions/pageUp';
 import pageDown from '../functions/pageDown';
 
+import Layer from './Layer';
 import SvgIcon from './SvgIcon';
 import './Select.less';
 
@@ -67,18 +68,13 @@ const Select = ({
 
 	const findItemToFocus = useStringFinder();
 
-	const handleMouseDown = useCallback(
-		(event) => {
-			event.preventDefault();
-			if (open) {
-				hideList();
-			} else {
-				showList();
-				event.target.closest('[role="button"]').focus();
-			}
-		},
-		[open, hideList, showList]
-	);
+	const handleMouseDown = useCallback(() => {
+		if (open) {
+			hideList();
+		} else {
+			showList();
+		}
+	}, [open, hideList, showList]);
 
 	const handleKeyDown = useCallback(
 		(event) => {
@@ -184,13 +180,14 @@ const Select = ({
 
 	useEffect(() => {
 		if (open) {
-			const {bottom, left, width} = buttonRef.current.getBoundingClientRect();
+			const button = buttonRef.current;
+			const {bottom, left, width} = button.getBoundingClientRect();
 
 			const list = listRef.current;
-			list.style.display = '';
-			list.style.top = `${bottom + 2}px`;
+			list.style.top = `${bottom + 1}px`;
 			list.style.left = `${left}px`;
 			list.style.width = `${width}px`;
+			list.dataset.layer = button.dataset.layer;
 		}
 	}, [open]);
 
@@ -203,50 +200,51 @@ const Select = ({
 	const listId = `${id}-list`;
 	const selected = value && renderedOptions.find((o) => o.value === value);
 	return (
-		<div className={`Select${className ? ` ${className}` : ''}`} ref={buttonRef}>
-			<div
+		<Layer className={`Select${className ? ` ${className}` : ''}`} ref={buttonRef}>
+			<button
 				{...props}
 				id={id}
 				className={`Select__text${selected ? '' : ' Select__text--empty'}${error ? ' Select__text--error' : ''}`}
-				tabIndex={disabled ? undefined : '0'}
-				role="button"
+				type="button"
+				disabled={disabled}
 				aria-haspopup="listbox"
 				aria-expanded={open}
-				aria-disabled={disabled}
 				aria-owns={open ? listId : null}
 				aria-activedescendant={focused === -1 ? null : `${id}-${focused}`}
 				data-placeholder={placeholder}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
-				onBlur={handleBlur}>
+				onBlur={handleBlur}
+			>
 				{selected ? selected.element : ''}
 				<SvgIcon icon={open ? faCaretUp : faCaretDown} className="Select__icon" />
-			</div>
+			</button>
 			{open &&
 				createPortal(
 					<div
 						id={listId}
 						className="Select__list"
 						role="listbox"
-						style={{display: 'none'}}
 						ref={listRef}
 						onMouseDown={handleListMouseDown}
-						onMouseUp={handleListMouseUp}>
+						onMouseUp={handleListMouseUp}
+					>
 						{renderedOptions.map((o, index) => (
 							<div
 								key={o.key}
 								id={`${id}-${index}`}
-								className={`Select__option${index === focused ? ' Select__option--focused' : ''}`}
+								className="Select__option"
 								role="option"
-								aria-selected={o.value === value}
-								data-index={index}>
+								aria-selected={index === focused}
+								data-index={index}
+							>
 								{o.element}
 							</div>
 						))}
 					</div>,
 					document.body
 				)}
-		</div>
+		</Layer>
 	);
 };
 

@@ -38,14 +38,29 @@ writeFileSync(
 	HEADER.concat(colors.filter(([, {tags}]) => tags && tags.includes('light')).map(toLess), '').join('\n')
 );
 
+const normalColors = colors.filter(([, {normal}]) => normal);
+
+const hoverColors = colors.filter(([, {hover}]) => hover);
+
 writeFileSync(
 	LESS,
 	HEADER.concat(
 		colors.filter(([, {tags}]) => tags && tags.includes('global')).map(toLess),
+		normalColors.flatMap(([key, {css, normal}]) =>
+			normal.map((value, index) => `@${css || key}-${10 + index * 10}: ${value};`)
+		),
+		hoverColors.flatMap(([key, {css, hover}]) =>
+			hover.map((value, index) => `@${css || key}-${10 + index * 10}-hover: ${value};`)
+		),
+		normalColors.flatMap(([key, {normal}]) =>
+			normal.map((value, index) => `// @deprecated\n@${key}${10 + index * 10}: ${value};`)
+		),
+		hoverColors.flatMap(([key, {hover}]) =>
+			hover.map((value, index) => `// @deprecated\n@${key}Hover${10 + index * 10}: ${value};`)
+		),
 		colors
-			.filter(([, {palette}]) => palette)
-			.flatMap(([key, {palette}]) => palette.map((value, index) => `@${key}${10 + index * 10}: ${value};`)),
-		colors.filter(([, {tags}]) => tags && tags.includes('background')).map(toLess),
+			.filter(([, {tags}]) => tags && tags.includes('background'))
+			.map(([key, {value}]) => `// @deprecated\n@${key}: ${value};`),
 		''
 	).join('\n')
 );

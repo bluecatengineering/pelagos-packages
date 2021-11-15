@@ -5,31 +5,29 @@ exports[`Collapsible rendering renders expected elements when className is set 1
   className="Collapsible TestClass"
   id="test"
 >
-  <div
+  <button
     aria-controls="test-content"
     aria-expanded={true}
     className="Collapsible__header Collapsible--l1"
     id="test-header"
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex={0}
+    type="button"
   >
-    <span
-      className="Collapsible__arrowBox"
+    <div
+      className="Collapsible__title"
     >
-      <SvgIcon
-        className="Collapsible__arrow Collapsible__arrow--open"
-        icon={
-          Object {
-            "icon": Array [],
-            "iconName": "angle-right",
-            "prefix": "fas",
-          }
+      Test
+    </div>
+    <SvgIcon
+      className="Collapsible__arrow Collapsible__arrow--open"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "angle-down",
+          "prefix": "fas",
         }
-      />
-    </span>
-    Test
-  </div>
+      }
+    />
+  </button>
   <div
     aria-labelledby="test-header"
     className="TestClass Collapsible__body"
@@ -44,31 +42,29 @@ exports[`Collapsible rendering renders expected elements when open is true and i
   className="Collapsible"
   id="test"
 >
-  <div
+  <button
     aria-controls="test-content"
     aria-expanded={true}
     className="Collapsible__header Collapsible--l1"
     id="test-header"
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex={0}
+    type="button"
   >
-    <span
-      className="Collapsible__arrowBox"
+    <div
+      className="Collapsible__title"
     >
-      <SvgIcon
-        className="Collapsible__arrow Collapsible__arrow--open"
-        icon={
-          Object {
-            "icon": Array [],
-            "iconName": "angle-right",
-            "prefix": "fas",
-          }
+      Test
+    </div>
+    <SvgIcon
+      className="Collapsible__arrow Collapsible__arrow--open"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "angle-down",
+          "prefix": "fas",
         }
-      />
-    </span>
-    Test
-  </div>
+      }
+    />
+  </button>
   <div
     aria-labelledby="test-header"
     className="TestClass Collapsible__body"
@@ -83,31 +79,29 @@ exports[`Collapsible rendering sets a random id if not provided 1`] = `
   className="Collapsible"
   id="e1"
 >
-  <div
+  <button
     aria-controls="e1-content"
     aria-expanded={false}
     className="Collapsible__header Collapsible--l1"
     id="e1-header"
-    onKeyDown={[MockFunction]}
-    role="button"
-    tabIndex={0}
+    type="button"
   >
-    <span
-      className="Collapsible__arrowBox"
+    <div
+      className="Collapsible__title"
     >
-      <SvgIcon
-        className="Collapsible__arrow"
-        icon={
-          Object {
-            "icon": Array [],
-            "iconName": "angle-right",
-            "prefix": "fas",
-          }
+      Test
+    </div>
+    <SvgIcon
+      className="Collapsible__arrow"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "angle-down",
+          "prefix": "fas",
         }
-      />
-    </span>
-    Test
-  </div>
+      }
+    />
+  </button>
   <div
     aria-labelledby="e1-header"
     className="TestClass Collapsible__body"

@@ -5,7 +5,7 @@ import {TextAreaField} from '../src';
 const Template = (args) => <TextAreaField {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {label: 'Normal', value: 'Alpha'};
+Normal.args = {label: 'Normal', value: 'Alpha', helperText: 'Helper text'};
 
 export const Empty = Template.bind({});
 Empty.args = {label: 'Empty', placeholder: 'Placeholder'};
@@ -18,7 +18,7 @@ Error.args = {label: 'Error', value: 'Alpha', error: 'Error message'};
 
 export const AllStates = () => (
 	<div className="Story__group">
-		<TextAreaField label="Normal" value="Alpha" onChange={identity} />
+		<TextAreaField label="Normal" value="Alpha" helperText="Helper text" onChange={identity} />
 		<TextAreaField label="Empty" placeholder="Placeholder" onChange={identity} />
 		<TextAreaField label="Optional" optional onChange={identity} />
 		<TextAreaField label="Error" value="Alpha" error="Error message" onChange={identity} />

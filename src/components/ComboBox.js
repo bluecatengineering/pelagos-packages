@@ -6,8 +6,8 @@ import {scrollToItem} from '@bluecat/helpers';
 import {t} from '@bluecat/l10n.macro';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
+import Layer from './Layer';
 import IconButton from './IconButton';
-
 import './ComboBox.less';
 
 /** A combination box of a text field and an autocomplete list. */
@@ -137,18 +137,20 @@ const ComboBox = ({
 
 	useEffect(() => {
 		if (open) {
-			const {bottom, left, width} = buttonRef.current.getBoundingClientRect();
+			const button = buttonRef.current;
+			const {bottom, left, width} = button.getBoundingClientRect();
 
 			const list = listRef.current;
 			list.style.top = `${bottom}px`;
 			list.style.left = `${left}px`;
 			list.style.width = `${width}px`;
+			list.dataset.layer = button.dataset.layer;
 		}
 	}, [open]);
 
 	const listId = `${id}-list`;
 	return (
-		<div className="ComboBox" ref={buttonRef}>
+		<Layer className="ComboBox" ref={buttonRef}>
 			<input
 				{...props}
 				id={id}
@@ -184,7 +186,8 @@ const ComboBox = ({
 					style={{display: open ? null : 'none'}}
 					ref={listRef}
 					onMouseDown={handleListMouseDown}
-					onMouseUp={handleListMouseUp}>
+					onMouseUp={handleListMouseUp}
+				>
 					{suggestions.map((item, index) => {
 						const element = renderSuggestion(item, index);
 						return cloneElement(element, {
@@ -199,7 +202,7 @@ const ComboBox = ({
 				</div>,
 				document.body
 			)}
-		</div>
+		</Layer>
 	);
 };
 

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterList rendering renders expected elements 1`] = `
-<div
+<Layer
   className="FilterList"
 >
   <ScrollBox
@@ -10,14 +10,13 @@ exports[`FilterList rendering renders expected elements 1`] = `
     <div
       className="FilterList__items"
       onClick={[Function]}
-      onKeyDown={[MockFunction]}
     />
   </ScrollBox>
-</div>
+</Layer>
 `;
 
 exports[`FilterList rendering renders expected elements when filter is set 1`] = `
-<div
+<Layer
   className="FilterList"
 >
   <ScrollBox
@@ -26,32 +25,33 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
     <div
       className="FilterList__items"
       onClick={[Function]}
-      onKeyDown={[MockFunction]}
     >
       <div
-        aria-controls="filterListDropDown"
-        aria-expanded={true}
-        aria-haspopup="dialog"
         className="FilterList__item"
-        data-key="view"
-        data-kind="item"
-        id="filter-view"
-        role="button"
-        tabIndex="0"
       >
-        <span
-          className="FilterList__filterTitle"
+        <button
+          aria-controls="filterListDropDown"
+          aria-expanded={true}
+          aria-haspopup="dialog"
+          className="FilterList__button"
+          data-key="view"
+          data-kind="item"
+          id="filter-view"
+          type="button"
         >
-          view
-        </span>
-        <span
+          <span
+            className="FilterList__filterTitle"
+          >
+            view
+          </span>
+        </button>
+        <button
           aria-label="Remove view"
           className="FilterList__remove"
           data-key="view"
           data-kind="remove"
           id="filter-view-remove"
-          role="button"
-          tabIndex="0"
+          type="button"
         >
           <SvgIcon
             icon={
@@ -60,7 +60,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
               }
             }
           />
-        </span>
+        </button>
       </div>
     </div>
   </ScrollBox>
@@ -80,11 +80,11 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
       }
     />
   </React.Portal>
-</div>
+</Layer>
 `;
 
 exports[`FilterList rendering renders expected elements when filter key is excluded 1`] = `
-<div
+<Layer
   className="FilterList"
 >
   <ScrollBox
@@ -93,7 +93,6 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
     <div
       className="FilterList__items"
       onClick={[Function]}
-      onKeyDown={[MockFunction]}
     />
   </ScrollBox>
   <React.Portal
@@ -112,11 +111,11 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
       }
     />
   </React.Portal>
-</div>
+</Layer>
 `;
 
 exports[`FilterList rendering renders expected elements when filters are set 1`] = `
-<div
+<Layer
   className="FilterList"
 >
   <ScrollBox
@@ -125,32 +124,33 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
     <div
       className="FilterList__items"
       onClick={[Function]}
-      onKeyDown={[MockFunction]}
     >
       <div
-        aria-controls={null}
-        aria-expanded={false}
-        aria-haspopup="dialog"
         className="FilterList__item"
-        data-key="view"
-        data-kind="item"
-        id="filter-view"
-        role="button"
-        tabIndex="0"
       >
-        <span
-          className="FilterList__filterTitle"
+        <button
+          aria-controls={null}
+          aria-expanded={false}
+          aria-haspopup="dialog"
+          className="FilterList__button"
+          data-key="view"
+          data-kind="item"
+          id="filter-view"
+          type="button"
         >
-          view
-        </span>
-        <span
+          <span
+            className="FilterList__filterTitle"
+          >
+            view
+          </span>
+        </button>
+        <button
           aria-label="Remove view"
           className="FilterList__remove"
           data-key="view"
           data-kind="remove"
           id="filter-view-remove"
-          role="button"
-          tabIndex="0"
+          type="button"
         >
           <SvgIcon
             icon={
@@ -159,32 +159,34 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
               }
             }
           />
-        </span>
+        </button>
       </div>
       <div
-        aria-controls={null}
-        aria-expanded={false}
-        aria-haspopup="dialog"
         className="FilterList__item"
-        data-key="zoneName"
-        data-kind="item"
-        id="filter-zoneName"
-        role="button"
-        tabIndex="0"
       >
-        <span
-          className="FilterList__filterTitle"
+        <button
+          aria-controls={null}
+          aria-expanded={false}
+          aria-haspopup="dialog"
+          className="FilterList__button"
+          data-key="zoneName"
+          data-kind="item"
+          id="filter-zoneName"
+          type="button"
         >
-          zoneName
-        </span>
-        <span
+          <span
+            className="FilterList__filterTitle"
+          >
+            zoneName
+          </span>
+        </button>
+        <button
           aria-label="Remove zoneName"
           className="FilterList__remove"
           data-key="zoneName"
           data-kind="remove"
           id="filter-zoneName-remove"
-          role="button"
-          tabIndex="0"
+          type="button"
         >
           <SvgIcon
             icon={
@@ -193,9 +195,9 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
               }
             }
           />
-        </span>
+        </button>
       </div>
     </div>
   </ScrollBox>
-</div>
+</Layer>
 `;

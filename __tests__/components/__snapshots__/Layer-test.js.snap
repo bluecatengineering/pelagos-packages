@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layer rendering renders expected elements 1`] = `
+<Context.Provider
+  value={2}
+>
+  <div
+    data-layer={2}
+  >
+    child
+  </div>
+</Context.Provider>
+`;
+
+exports[`Layer rendering renders expected elements when previous layer is 3 1`] = `
+<Context.Provider
+  value={3}
+>
+  <div
+    data-layer={3}
+  >
+    child
+  </div>
+</Context.Provider>
+`;

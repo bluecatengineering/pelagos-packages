@@ -17,6 +17,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when disableEdit
     size="large"
     tooltipPlacement="left"
     tooltipText="Close"
+    type="ghost"
   />
   <div
     aria-level="2"
@@ -39,7 +40,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when disableEdit
       size="medium"
       text="Delete"
       tooltipText="Disable Delete"
-      type="secondary"
+      type="tertiary"
     />
     <Button
       disabled={true}
@@ -71,6 +72,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when onDelete is
     size="large"
     tooltipPlacement="left"
     tooltipText="Close"
+    type="ghost"
   />
   <div
     aria-level="2"
@@ -115,6 +117,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     size="large"
     tooltipPlacement="left"
     tooltipText="Close"
+    type="ghost"
   />
   <div
     aria-level="2"
@@ -147,6 +150,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     size="large"
     tooltipPlacement="left"
     tooltipText="Close"
+    type="ghost"
   />
   <div
     aria-level="2"
@@ -168,7 +172,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
       onClick={[Function]}
       size="medium"
       text="Delete"
-      type="secondary"
+      type="tertiary"
     />
     <Button
       disabled={false}
@@ -199,6 +203,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when the body ha
     size="large"
     tooltipPlacement="left"
     tooltipText="Close"
+    type="ghost"
   />
   <div
     aria-level="2"
@@ -220,7 +225,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when the body ha
       onClick={[Function]}
       size="medium"
       text="Delete"
-      type="secondary"
+      type="tertiary"
     />
     <Button
       disabled={false}

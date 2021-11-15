@@ -3,7 +3,7 @@
 @import '../../less/utils';
 
 .CheckBox {
-	@secondary-button-effects();
+	@layer-hover-effects();
 	display: inline-block;
 	position: relative;
 	padding-left: @sp-24;
@@ -22,14 +22,18 @@
 .CheckBox::before {
 	top: @sp-02;
 	left: 0;
-	width: 18px;
-	height: 18px;
-	border: 2px solid var(--check-border);
+	width: 16px;
+	height: 16px;
+	border: 1px solid var(--icon-primary);
 	border-radius: 2px;
+
+	@media print {
+		border-color: var(--print-color);
+	}
 }
 .CheckBox[aria-checked='true']::before {
-	background-color: var(--check-bg);
-	border-color: var(--check-bg);
+	background-color: var(--interactive);
+	border-color: var(--interactive);
 
 	@media print {
 		background-color: transparent;
@@ -38,26 +42,28 @@
 }
 
 .CheckBox--error::before {
-	border-color: var(--check-error);
+	border-color: var(--support-error);
 }
 .CheckBox--error[aria-checked='true']::before {
-	background-color: var(--check-error);
-	border-color: var(--check-error);
+	background-color: var(--support-error);
+	border-color: var(--support-error);
 }
 
 .CheckBox:focus::before {
 	@focus-ring();
+	outline-offset: 1px;
 }
 .CheckBox--error:focus::before {
 	@focus-ring-error();
+	outline-offset: 1px;
 }
 
 .CheckBox[aria-checked='true']::after {
 	top: 3px;
-	left: 6px;
+	left: 5px;
 	width: 7px;
-	height: 13px;
-	border: solid var(--check-color);
+	height: 12px;
+	border: solid var(--text-inverse);
 	border-width: 0 3px 3px 0;
 	transform: rotate(45deg);
 
@@ -67,16 +73,13 @@
 }
 
 .CheckBox[aria-disabled='true'] {
-	color: var(--disabled-color);
-	cursor: default;
+	color: var(--text-disabled);
+	cursor: not-allowed;
 	pointer-events: none;
 }
 .CheckBox[aria-disabled='true']::before {
-	border-color: var(--disabled-color);
+	border-color: var(--icon-disabled);
 }
 .CheckBox[aria-disabled='true'][aria-checked='true']::before {
-	background-color: var(--disabled-color);
-}
-.CheckBox[aria-disabled='true']::after {
-	border-color: var(--font-color-3);
+	background-color: var(--icon-disabled);
 }

@@ -2,28 +2,33 @@ import {useCallback, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 
+import Layer from '../components/Layer';
 import LabelLine from '../components/LabelLine';
 import useRandomId from '../hooks/useRandomId';
 
 import FieldError from './FieldError';
+import FieldHelper from './FieldHelper';
 import './TextInputField.less';
 
 /** A text input field. */
-const TextInputField = ({id, className, label, value, optional, error, onChange, ...props}) => {
+const TextInputField = ({id, className, label, value, optional, helperText, error, onChange, ...props}) => {
 	id = useRandomId(id);
+	const helperId = `${id}-helper`;
+	const errorId = `${id}-error`;
 	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
-		<div className={'TextInputField' + (className ? ' ' + className : '')}>
+		<Layer className={'TextInputField' + (className ? ' ' + className : '')}>
 			<LabelLine htmlFor={id} text={label} optional={optional && !value} />
 			<input
 				{...props}
 				id={id}
 				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				value={value}
+				aria-describedby={error ? errorId : helperId}
 				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
 			/>
-			<FieldError text={error} />
-		</div>
+			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
+		</Layer>
 	);
 };
 
@@ -52,6 +57,8 @@ TextInputField.propTypes = {
 	disabled: PropTypes.bool,
 	/** Whether the field is optional. */
 	optional: PropTypes.bool,
+	/** Additional information for the field. */
+	helperText: PropTypes.string,
 	/** The error text. */
 	error: PropTypes.string,
 	/** Function invoked when the value changes. */

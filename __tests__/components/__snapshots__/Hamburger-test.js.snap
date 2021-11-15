@@ -1,27 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Hamburger rendering renders expected elements 1`] = `
-<div
+<button
   className="Hamburger"
-  onKeyDown={[MockFunction]}
-  role="button"
-  tabIndex="0"
+  type="button"
 >
-  <div
+  <span
     className="Hamburger__inner Hamburger--active"
   />
-</div>
+</button>
 `;
 
 exports[`Hamburger rendering renders expected elements when active is not set 1`] = `
-<div
+<button
   className="Hamburger"
-  onKeyDown={[MockFunction]}
-  role="button"
-  tabIndex="0"
+  type="button"
 >
-  <div
+  <span
     className="Hamburger__inner"
   />
-</div>
+</button>
 `;

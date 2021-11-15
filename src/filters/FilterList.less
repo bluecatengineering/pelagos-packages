@@ -5,7 +5,7 @@
 .FilterList {
 	flex-direction: row;
 	flex: 1;
-	margin-left: @sp-16;
+	margin-left: @sp-08;
 	overflow: hidden;
 }
 
@@ -15,7 +15,7 @@
 
 .FilterList__filterTitle {
 	margin-right: @sp-08;
-	color: var(--font-color-2);
+	color: var(--text-secondary);
 
 	@media print {
 		color: var(--print-medium);
@@ -24,21 +24,8 @@
 
 .FilterList__item {
 	flex-direction: row;
-	margin: @sp-02;
-	border-radius: 3px;
-	padding: @sp-04 @sp-08;
-	cursor: pointer;
-	background-color: var(--form-field-bg);
-	color: var(--current-value-color);
-	transition: background-color 0.15s ease-out;
-
-	&:focus {
-		@focus-ring();
-	}
-
-	&:hover {
-		background-color: var(--form-field-hover);
-	}
+	background-color: var(--layer);
+	color: var(--text-value);
 
 	@media print {
 		color: var(--print-color);
@@ -50,13 +37,18 @@
 	margin-left: @sp-16;
 }
 
-.FilterList__remove {
-	@icon-button-nested();
-	font-size: 19px;
-	padding: @sp-02;
-	margin-left: @sp-08;
+.FilterList__button {
+	@focus-visible();
+	@layer-hover-effects();
+	background-color: transparent;
+	border: none;
+	border-radius: 3px;
+	padding: @sp-04 @sp-08;
+	cursor: pointer;
+}
 
-	@media print {
-		display: none;
-	}
+.FilterList__remove {
+	@icon-button();
+	font-size: 16px;
+	padding: @sp-02;
 }

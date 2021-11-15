@@ -18,7 +18,7 @@ describe('ListInput', () => {
 					placeholder="test placeholder"
 					emptyText="Test empty"
 					list={[{id: '0', name: 'test'}]}
-					error="test error"
+					helperText="Helper text"
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -34,13 +34,12 @@ describe('ListInput', () => {
 					placeholder="test placeholder"
 					emptyText="Test empty"
 					list={[]}
-					error="test error"
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when error is not set', () => {
+		it('renders expected elements when error is set', () => {
 			const wrapper = shallow(
 				<ListInput
 					id="test"
@@ -49,6 +48,8 @@ describe('ListInput', () => {
 					placeholder="test placeholder"
 					emptyText="Test empty"
 					list={[{id: '0', name: 'test'}]}
+					helperText="Helper text"
+					error="Error"
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -63,7 +64,6 @@ describe('ListInput', () => {
 					placeholder="test placeholder"
 					emptyText="Test empty"
 					list={[{id: '0', name: 'test'}]}
-					error="test error"
 					column
 				/>
 			);

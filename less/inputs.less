@@ -16,12 +16,12 @@ button::-moz-focus-inner {
 
 :-ms-input-placeholder {
 	@font-12-400();
-	color: var(--form-field-hint);
+	color: var(--text-placeholder);
 }
 
 ::placeholder {
 	@font-12-400();
-	color: var(--form-field-hint);
+	color: var(--text-placeholder);
 }
 
 input:not([type]),
@@ -30,49 +30,45 @@ input[type='password'],
 input[type='search'],
 input[type='email'],
 textarea {
-	padding: @sp-04 @sp-12;
-	margin: @sp-02;
-	background-color: var(--form-field-bg);
-	border: 1px solid var(--form-field-border);
-	border-radius: 3px;
+	height: 32px;
+	padding: @sp-04 @sp-16;
+	background-color: var(--field);
+	border: none;
+	border-bottom: 1px solid var(--border-strong);
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 	transition: background-color 0.15s ease-out;
 
 	&:hover {
-		background-color: var(--form-field-hover);
+		background-color: var(--field-hover);
 	}
 
 	&:focus {
 		@focus-ring();
 	}
 
-	.Dialog & {
-		background-color: var(--form-field-dialog-bg);
+	&:read-only {
+		color: var(--text-secondary);
 	}
 
 	&:disabled {
-		border-color: var(--disabled-color);
-		background-color: var(--form-field-disabled-bg);
+		color: var(--text-disabled);
+		background-color: var(--field);
+		border-color: transparent;
+	}
+
+	&:disabled:-ms-input-placeholder {
+		color: var(--text-disabled);
+	}
+
+	&disabled::placeholder {
+		color: var(--text-disabled);
 	}
 
 	@media print {
 		background-color: transparent;
 		border-color: transparent;
 	}
-}
-// Looks like a bug in stylelint
-// stylelint-disable no-descending-specificity
-input:read-only,
-textarea:read-only {
-	color: var(--font-color-2);
-}
-input[disabled] {
-	color: var(--font-color-3);
-}
-input[disabled]:-ms-input-placeholder {
-	color: var(--font-color-3);
-}
-input[disabled]::placeholder {
-	color: var(--font-color-3);
 }
 
 @media print {
@@ -82,9 +78,5 @@ input[disabled]::placeholder {
 
 	::placeholder {
 		color: var(--print-medium);
-	}
-
-	input[disabled] {
-		border-color: transparent;
 	}
 }

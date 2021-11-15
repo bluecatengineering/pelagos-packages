@@ -3,25 +3,13 @@
 exports[`ToolbarButton rendering renders the expected elements 1`] = `
 <IconButton
   aria-label="Test"
-  className="ToolbarButton TestClass"
+  className="TestClass"
   disabled={true}
   icon={Object {}}
   id="test"
   size="medium"
   tooltipPlacement="right"
   tooltipText="This is a test"
-/>
-`;
-
-exports[`ToolbarButton rendering renders the expected elements when className is not set 1`] = `
-<IconButton
-  aria-label="Test"
-  className="ToolbarButton"
-  disabled={true}
-  icon={Object {}}
-  id="test"
-  size="medium"
-  tooltipPlacement="right"
-  tooltipText="This is a test"
+  type="primary"
 />
 `;

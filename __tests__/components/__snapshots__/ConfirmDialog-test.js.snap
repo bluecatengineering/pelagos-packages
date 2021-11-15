@@ -25,7 +25,7 @@ exports[`ConfirmDialog rendering renders expected elements 1`] = `
       id="closeDialogBtn"
       size="medium"
       text="Cancel"
-      type="secondary"
+      type="tertiary"
     />
     <Button
       id="confirmBtn"

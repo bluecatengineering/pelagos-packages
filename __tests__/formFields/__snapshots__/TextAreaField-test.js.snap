@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextAreaField rendering adds the error class if the error is set 1`] = `
-<div
+<Layer
   className="TextAreaField"
 >
   <LabelLine
@@ -9,6 +9,7 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
     text="Label"
   />
   <textarea
+    aria-describedby="test-id-error"
     className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
     id="test-id"
     maxLength={10}
@@ -17,14 +18,14 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
     value="value"
   />
   <FieldError
-    alignment="right"
+    id="test-id-error"
     text="Error"
   />
-</div>
+</Layer>
 `;
 
 exports[`TextAreaField rendering does not add the resize class if the resize is true 1`] = `
-<div
+<Layer
   className="TextAreaField"
 >
   <LabelLine
@@ -32,6 +33,7 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
     text="Label"
   />
   <textarea
+    aria-describedby="test-id-helper"
     className="TextAreaField__area"
     id="test-id"
     maxLength={10}
@@ -39,14 +41,14 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
     placeholder="placeholder"
     value="value"
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-id-helper"
   />
-</div>
+</Layer>
 `;
 
 exports[`TextAreaField rendering renders expected elements 1`] = `
-<div
+<Layer
   className="TextAreaField"
 >
   <LabelLine
@@ -55,6 +57,7 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
     text="Label"
   />
   <textarea
+    aria-describedby="test-id-helper"
     className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
@@ -62,14 +65,15 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
     placeholder="placeholder"
     value="value"
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-id-helper"
+    text="Helper text"
   />
-</div>
+</Layer>
 `;
 
 exports[`TextAreaField rendering renders expected elements when className is set 1`] = `
-<div
+<Layer
   className="TextAreaField TestClass"
 >
   <LabelLine
@@ -77,6 +81,7 @@ exports[`TextAreaField rendering renders expected elements when className is set
     text="Label"
   />
   <textarea
+    aria-describedby="test-id-helper"
     className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
@@ -84,14 +89,14 @@ exports[`TextAreaField rendering renders expected elements when className is set
     placeholder="placeholder"
     value="value"
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-id-helper"
   />
-</div>
+</Layer>
 `;
 
 exports[`TextAreaField rendering renders expected elements when value is empty 1`] = `
-<div
+<Layer
   className="TextAreaField"
 >
   <LabelLine
@@ -100,6 +105,7 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
     text="Label"
   />
   <textarea
+    aria-describedby="test-id-helper"
     className="TextAreaField__area TextAreaField--noresize"
     id="test-id"
     maxLength={10}
@@ -107,8 +113,8 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
     placeholder="placeholder"
     value=""
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-id-helper"
   />
-</div>
+</Layer>
 `;

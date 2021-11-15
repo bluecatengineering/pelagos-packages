@@ -47,8 +47,9 @@ describe('ToastMessage', () => {
 			const onClick = jest.fn();
 			const onRemove = jest.fn();
 			const message = {
-				type: ToastTypes.ACTION,
+				type: ToastTypes.INFO,
 				text: 'This is a test',
+				actionText: 'Action',
 				onClick,
 			};
 			const wrapper = shallow(<ToastMessage message={message} onRemove={onRemove} />);
@@ -64,7 +65,7 @@ describe('ToastMessage', () => {
 				text: 'This is a test',
 			};
 			const wrapper = shallow(<ToastMessage message={message} onRemove={onRemove} />);
-			wrapper.find('[role="button"]').simulate('click');
+			wrapper.find('button').simulate('click');
 			expect(onRemove.mock.calls).toEqual([[message]]);
 		});
 

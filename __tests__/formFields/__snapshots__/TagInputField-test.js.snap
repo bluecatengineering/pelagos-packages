@@ -11,6 +11,7 @@ exports[`TagInputField rendering renders expected elements 1`] = `
     text="Label"
   />
   <TagInput
+    aria-describedby="test-helper"
     aria-labelledby="test-label"
     id="test"
     onChange={[MockFunction]}
@@ -22,8 +23,40 @@ exports[`TagInputField rendering renders expected elements 1`] = `
     }
     validate={[MockFunction]}
   />
+  <FieldHelper
+    id="test-helper"
+    text="Helper text"
+  />
+</div>
+`;
+
+exports[`TagInputField rendering renders expected elements if error is set 1`] = `
+<div
+  className="TagInputField"
+>
+  <LabelLine
+    htmlFor="test"
+    id="test-label"
+    optional={false}
+    text="Label"
+  />
+  <TagInput
+    aria-describedby="test-error"
+    aria-labelledby="test-label"
+    error="Error"
+    id="test"
+    onChange={[MockFunction]}
+    onError={[MockFunction]}
+    tags={
+      Array [
+        "foo",
+      ]
+    }
+    validate={[MockFunction]}
+  />
   <FieldError
-    alignment="right"
+    id="test-error"
+    text="Error"
   />
 </div>
 `;
@@ -38,6 +71,7 @@ exports[`TagInputField rendering renders expected elements when className is set
     text="Label"
   />
   <TagInput
+    aria-describedby="test-helper"
     aria-labelledby="test-label"
     id="test"
     onChange={[MockFunction]}
@@ -49,8 +83,8 @@ exports[`TagInputField rendering renders expected elements when className is set
     }
     validate={[MockFunction]}
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-helper"
   />
 </div>
 `;
@@ -66,6 +100,7 @@ exports[`TagInputField rendering shows optional text if tags is empty 1`] = `
     text="Label"
   />
   <TagInput
+    aria-describedby="test-helper"
     aria-labelledby="test-label"
     id="test"
     onChange={[MockFunction]}
@@ -73,8 +108,8 @@ exports[`TagInputField rendering shows optional text if tags is empty 1`] = `
     tags={Array []}
     validate={[MockFunction]}
   />
-  <FieldError
-    alignment="right"
+  <FieldHelper
+    id="test-helper"
   />
 </div>
 `;

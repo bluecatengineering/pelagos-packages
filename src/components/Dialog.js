@@ -2,6 +2,7 @@ import {cloneElement, useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {createFocusTrap} from 'focus-trap';
 
+import Layer from './Layer';
 import './Dialog.less';
 
 /** A modal dialog box. */
@@ -43,20 +44,22 @@ const Dialog = ({id, className, title, role, initialFocus, children: [body, butt
 	return (
 		<div className="Dialog__backdrop">
 			{onSubmit ? (
-				<form
+				<Layer
+					as="form"
 					id={id}
 					className={fullClassName}
 					role={role}
 					aria-modal
 					aria-labelledby="dialogTitle"
 					ref={element}
-					onSubmit={handleSubmit}>
+					onSubmit={handleSubmit}
+				>
 					{content}
-				</form>
+				</Layer>
 			) : (
-				<div id={id} className={fullClassName} role={role} aria-modal aria-labelledby="dialogTitle" ref={element}>
+				<Layer id={id} className={fullClassName} role={role} aria-modal aria-labelledby="dialogTitle" ref={element}>
 					{content}
-				</div>
+				</Layer>
 			)}
 		</div>
 	);

@@ -1,4 +1,5 @@
 @import '../less/core';
+@import '../less/elevations';
 @import '../less/inputs';
 @import '../less/scrollbar';
 @import '../less/spacing';
@@ -9,12 +10,26 @@
 	@root-font();
 	transition: background-color 0.15s ease-out;
 
-	&[data-theme='dark'] {
-		.theme-dark();
+	&[data-theme='white'] {
+		.theme-white();
 	}
 
-	&[data-theme='light'] {
-		.theme-light();
+	&[data-theme='cg00'] {
+		.theme-cg00();
+	}
+
+	&[data-theme='yg100'] {
+		.theme-yg100();
+	}
+
+	&[data-theme='g100'] {
+		.theme-g100();
+	}
+
+	&[data-layer='1'],
+	&[data-layer='2'],
+	&[data-layer='3'] {
+		background-color: var(--layer);
 	}
 }
 
@@ -25,17 +40,13 @@
 .Story__row {
 	flex-direction: row;
 	align-self: stretch;
-}
-.Story__row > :not(:first-child) {
-	margin-left: @sp-24;
+	gap: @sp-24;
 }
 
 .Story__group {
 	align-self: flex-start;
-}
-
-.Story__group > :not(:first-child) {
-	margin-top: @sp-12;
+	align-items: flex-start;
+	gap: @sp-12;
 }
 
 .Story__stretch {
@@ -46,11 +57,13 @@
 .CssSpinner {
 	.css-spinner();
 
-	[data-theme='dark'] & {
+	[data-theme='g100'] &,
+	[data-theme='yg100'] & {
 		animation-name: spinner-dark;
 	}
 
-	[data-theme='light'] & {
+	[data-theme='cg00'] &,
+	[data-theme='white'] & {
 		animation-name: spinner-light;
 	}
 }

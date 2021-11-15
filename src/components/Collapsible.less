@@ -1,40 +1,40 @@
 @import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
+@import '../../less/utils';
 
-.Collapsible__arrowBox {
-	color: var(--action-color);
-	font-size: 21px;
-	width: 16px;
-	padding: @sp-02;
-	margin-right: @sp-08;
-	transition: background-color 0.15s ease-out;
-
-	@media print {
-		display: none;
-	}
-}
-
-.Collapsible__arrow {
-	transition: transform 0.15s ease-out;
-}
-
-.Collapsible__arrow--open {
-	transform: rotate(90deg);
+.Collapsible {
+	border-top: 1px solid var(--border-subtle);
 }
 
 .Collapsible__header {
 	@focus-visible();
-	cursor: pointer;
+	@layer-hover-effects();
+	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin: @sp-02;
+	background-color: transparent;
+	border: none;
+	padding: @sp-04 @sp-16;
+	cursor: pointer;
+}
 
-	&:hover > .Collapsible__arrowBox {
-		background-color: var(--secondary-button-hover);
+.Collapsible__title {
+	flex: 1;
+	text-align: left;
+}
+
+.Collapsible__arrow {
+	color: var(--icon-primary);
+	font-size: 16px;
+	transition: transform 0.15s ease-out;
+
+	&--open {
+		transform: rotate(180deg);
 	}
-	&:active > .Collapsible__arrowBox {
-		background-color: var(--secondary-button-active);
+
+	@media print {
+		display: none;
 	}
 }
 
@@ -51,18 +51,16 @@
 }
 
 .Collapsible--l4 {
-	@font-12-600-uc();
-	color: var(--font-color-2);
-	margin-top: @sp-16;
+	@font-12-600();
+	color: var(--text-secondary);
 }
 
 .Collapsible--l5 {
-	@font-10-600-uc();
-	color: var(--font-color-2);
-	margin-top: @sp-08;
+	@font-10-600();
+	color: var(--text-secondary);
 }
 
 .Collapsible__body {
-	margin-bottom: @sp-16;
+	margin: @sp-08 @sp-16 @sp-24 @sp-16;
 	overflow: hidden;
 }

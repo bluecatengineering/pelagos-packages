@@ -1,14 +1,12 @@
 import PropTypes from 'prop-types';
 
-import handleButtonKeyDown from '../functions/handleButtonKeyDown';
-
 import './Hamburger.less';
 
 /** A hamburger menu. */
 const Hamburger = ({active, onClick, ...props}) => (
-	<div {...props} className="Hamburger" role="button" tabIndex="0" onClick={onClick} onKeyDown={handleButtonKeyDown}>
-		<div className={'Hamburger__inner' + (active ? ' Hamburger--active' : '')} />
-	</div>
+	<button {...props} className="Hamburger" type="button" onClick={onClick}>
+		<span className={`Hamburger__inner${active ? ' Hamburger--active' : ''}`} />
+	</button>
 );
 
 Hamburger.propTypes = {

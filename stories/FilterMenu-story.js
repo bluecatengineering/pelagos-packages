@@ -16,6 +16,9 @@ const Template = (args) => <FilterMenu {...args} />;
 export const Normal = Template.bind({});
 Normal.args = {options, getOptionText: identity, filterEditor: Editor};
 
+export const Empty = Template.bind({});
+Empty.args = {options: [], getOptionText: identity, filterEditor: Editor};
+
 export default {
 	title: 'FilterMenu',
 	component: FilterMenu,

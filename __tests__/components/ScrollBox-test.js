@@ -32,7 +32,7 @@ describe('ScrollBox', () => {
 			const current = {scrollLeft: 500};
 			useRef.mockReturnValue({current});
 			const wrapper = shallow(<ScrollBox />);
-			wrapper.find('[role="button"]').first().simulate('click');
+			wrapper.find('IconButton').first().simulate('click');
 			expect(current.scrollLeft).toBe(340);
 		});
 
@@ -40,21 +40,21 @@ describe('ScrollBox', () => {
 			const current = {scrollLeft: 500};
 			useRef.mockReturnValue({current});
 			const wrapper = shallow(<ScrollBox />);
-			wrapper.find('[role="button"]').last().simulate('click');
+			wrapper.find('IconButton').last().simulate('click');
 			expect(current.scrollLeft).toBe(660);
 		});
 
 		it('calls preventDefault on mouse down on the left arrow', () => {
 			const preventDefault = jest.fn();
 			const wrapper = shallow(<ScrollBox />);
-			wrapper.find('[role="button"]').first().simulate('mousedown', {preventDefault});
+			wrapper.find('IconButton').first().simulate('mousedown', {preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 		});
 
 		it('calls preventDefault on mouse down on the right arrow', () => {
 			const preventDefault = jest.fn();
 			const wrapper = shallow(<ScrollBox />);
-			wrapper.find('[role="button"]').last().simulate('mousedown', {preventDefault});
+			wrapper.find('IconButton').last().simulate('mousedown', {preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 		});
 

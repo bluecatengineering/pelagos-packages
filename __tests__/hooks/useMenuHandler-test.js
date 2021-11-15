@@ -26,7 +26,7 @@ describe('useMenuHandler', () => {
 				onMouseDown(event);
 
 				expect(preventDefault).toHaveBeenCalledTimes(1);
-				expect(closest.mock.calls).toEqual([['[role="button"]']]);
+				expect(closest.mock.calls).toEqual([['button']]);
 				expect(focus).toHaveBeenCalledTimes(1);
 				expect(setExpanded.mock.calls).toEqual([[anyFunction]]);
 				expect(setExpanded.mock.calls[0][0](false)).toBe(true);
@@ -51,6 +51,25 @@ describe('useMenuHandler', () => {
 				expect(setExpanded.mock.calls).toEqual([[anyFunction]]);
 				expect(setExpanded.mock.calls[0][0](true)).toBe(false);
 				expect(setCurrent.mock.calls).toEqual([[-1]]);
+			});
+
+			it('does not call setExpanded when the button is disabled', () => {
+				const setExpanded = jest.fn();
+				const preventDefault = jest.fn();
+				const focus = jest.fn();
+				const element = {disabled: true, focus};
+				const closest = jest.fn().mockReturnValueOnce(null).mockReturnValueOnce(element);
+				const event = {preventDefault, target: {closest}};
+				const {
+					buttonProps: {onMouseDown},
+				} = useMenuHandler(false, setExpanded, []);
+
+				onMouseDown(event);
+
+				expect(preventDefault).toHaveBeenCalledTimes(1);
+				expect(closest.mock.calls).toEqual([['button'], ['[role="button"]']]);
+				expect(focus.mock.calls).toEqual([]);
+				expect(setExpanded.mock.calls).toEqual([]);
 			});
 		});
 

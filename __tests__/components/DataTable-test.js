@@ -9,6 +9,8 @@ jest.unmock('stable');
 
 global.navigator = {};
 
+const anyFunction = expect.any(Function);
+
 const metadata = [
 	{
 		id: 'time',
@@ -273,6 +275,43 @@ describe('DataTable', () => {
 	describe('behaviour', () => {
 		beforeEach(() => (navigator.userAgent = ''));
 
+		it('initializes focused to the selected row index when selectedId is set', () => {
+			shallow(
+				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} selectedId="r3" getRowId={getRowId} />
+			);
+			expect(useState.mock.calls[1]).toEqual([anyFunction]);
+			expect(useState.mock.calls[1][0]()).toBe(3);
+		});
+
+		it('initializes focused to -1 when selectedId is set and not found', () => {
+			shallow(
+				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} selectedId="x" getRowId={getRowId} />
+			);
+			expect(useState.mock.calls[1]).toEqual([anyFunction]);
+			expect(useState.mock.calls[1][0]()).toBe(-1);
+		});
+
+		it('initializes focused to 0 when selectedId is not set and onRowClick is set', () => {
+			shallow(
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
+			);
+			expect(useState.mock.calls[1]).toEqual([anyFunction]);
+			expect(useState.mock.calls[1][0]()).toBe(0);
+		});
+
+		it('initializes focused to -1 when selectedId is not set and onRowClick is not set', () => {
+			shallow(<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />);
+			expect(useState.mock.calls[1]).toEqual([anyFunction]);
+			expect(useState.mock.calls[1][0]()).toBe(-1);
+		});
+
 		it('adds a scroll listener to the table body on mount if both requestNextPage and requestPrevPage are set', () => {
 			const addEventListener = jest.fn();
 			const removeEventListener = jest.fn();
@@ -287,7 +326,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			const result = useEffect.mock.calls[0][0]();
-			expect(addEventListener.mock.calls).toEqual([['scroll', expect.any(Function), {passive: true}]]);
+			expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true}]]);
 
 			result();
 			expect(removeEventListener.mock.calls).toEqual([['scroll', addEventListener.mock.calls[0][1]]]);
@@ -308,7 +347,7 @@ describe('DataTable', () => {
 
 			navigator.userAgent = 'Trident/0';
 			useEffect.mock.calls[0][0]();
-			expect(addEventListener.mock.calls).toEqual([['scroll', expect.any(Function), false]]);
+			expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, false]]);
 		});
 
 		it('does not add a scroll listener to the table body on mount if neither requestNextPage and requestPrevPage are set', () => {
@@ -345,7 +384,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[0][0]();
-			expect(addEventListener.mock.calls).toEqual([['scroll', expect.any(Function), {passive: true}]]);
+			expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true}]]);
 
 			addEventListener.mock.calls[0][1]();
 			jest.runOnlyPendingTimers();
@@ -372,7 +411,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[0][0]();
-			expect(addEventListener.mock.calls).toEqual([['scroll', expect.any(Function), {passive: true}]]);
+			expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true}]]);
 
 			addEventListener.mock.calls[0][1]();
 			jest.runOnlyPendingTimers();
@@ -399,7 +438,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[0][0]();
-			expect(addEventListener.mock.calls).toEqual([['scroll', expect.any(Function), {passive: true}]]);
+			expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true}]]);
 
 			addEventListener.mock.calls[0][1]();
 			jest.runOnlyPendingTimers();
@@ -425,7 +464,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[0][0]();
-			expect(addEventListener.mock.calls).toEqual([['scroll', expect.any(Function), {passive: true}]]);
+			expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true}]]);
 
 			addEventListener.mock.calls[0][1]();
 			jest.runOnlyPendingTimers();
@@ -439,15 +478,17 @@ describe('DataTable', () => {
 				clientHeight: 100,
 				scrollHeight: 1000,
 				scrollTop: 900,
+				firstChild: {tHead: {clientHeight: 20}},
 			};
 			const isLoadingNextData = {current: true};
 			const isLoadingPrevData = {current: false};
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1]);
 			initTable(2, isLoadingNextData, isLoadingPrevData, tableBody, jest.fn(), jest.fn());
 
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[2][0]();
-			expect(tableBody.scrollTop).toBe(500);
+			expect(tableBody.scrollTop).toBe(508);
 			expect(isLoadingNextData.current).toBe(false);
 			expect(isLoadingPrevData.current).toBe(false);
 		});
@@ -458,6 +499,7 @@ describe('DataTable', () => {
 				clientHeight: 100,
 				scrollHeight: 1000,
 				scrollTop: 900,
+				firstChild: {tHead: {clientHeight: 20}},
 			};
 			const isLoadingNextData = {current: true};
 			const isLoadingPrevData = {current: false};
@@ -467,7 +509,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[2][0]();
-			expect(tableBody.scrollTop).toBe(500);
+			expect(tableBody.scrollTop).toBe(508);
 			expect(isLoadingNextData.current).toBe(false);
 			expect(isLoadingPrevData.current).toBe(false);
 			expect(setFocused.mock.calls).toEqual([[2]]);
@@ -479,6 +521,7 @@ describe('DataTable', () => {
 				clientHeight: 100,
 				scrollHeight: 1000,
 				scrollTop: 900,
+				firstChild: {tHead: {clientHeight: 20}},
 			};
 			const isLoadingNextData = {current: true};
 			const isLoadingPrevData = {current: false};
@@ -488,7 +531,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[2][0]();
-			expect(tableBody.scrollTop).toBe(500);
+			expect(tableBody.scrollTop).toBe(508);
 			expect(isLoadingNextData.current).toBe(false);
 			expect(isLoadingPrevData.current).toBe(false);
 			expect(setFocused.mock.calls).toEqual([[0]]);
@@ -499,15 +542,17 @@ describe('DataTable', () => {
 				clientHeight: 100,
 				scrollHeight: 1000,
 				scrollTop: 0,
+				firstChild: {tHead: {clientHeight: 20}},
 			};
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: true};
+			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1]);
 			initTable(2, isLoadingNextData, isLoadingPrevData, tableBody, jest.fn(), jest.fn());
 
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[2][0]();
-			expect(tableBody.scrollTop).toBe(400);
+			expect(tableBody.scrollTop).toBe(392);
 			expect(isLoadingNextData.current).toBe(false);
 			expect(isLoadingPrevData.current).toBe(false);
 		});
@@ -518,6 +563,7 @@ describe('DataTable', () => {
 				clientHeight: 100,
 				scrollHeight: 1000,
 				scrollTop: 0,
+				firstChild: {tHead: {clientHeight: 20}},
 			};
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: true};
@@ -527,7 +573,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[2][0]();
-			expect(tableBody.scrollTop).toBe(400);
+			expect(tableBody.scrollTop).toBe(392);
 			expect(isLoadingNextData.current).toBe(false);
 			expect(isLoadingPrevData.current).toBe(false);
 			expect(setFocused.mock.calls).toEqual([[4]]);
@@ -539,6 +585,7 @@ describe('DataTable', () => {
 				clientHeight: 100,
 				scrollHeight: 1000,
 				scrollTop: 0,
+				firstChild: {tHead: {clientHeight: 20}},
 			};
 			const isLoadingNextData = {current: false};
 			const isLoadingPrevData = {current: true};
@@ -548,7 +595,7 @@ describe('DataTable', () => {
 			expect(useEffect).toHaveBeenCalledTimes(3);
 
 			useEffect.mock.calls[2][0]();
-			expect(tableBody.scrollTop).toBe(400);
+			expect(tableBody.scrollTop).toBe(392);
 			expect(isLoadingNextData.current).toBe(false);
 			expect(isLoadingPrevData.current).toBe(false);
 			expect(setFocused.mock.calls).toEqual([[4]]);
@@ -579,13 +626,18 @@ describe('DataTable', () => {
 			const event = {target: {closest}};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
+			wrapper.find('tbody').simulate('mousedown', event);
 
-			table.simulate('mousedown', event);
-
-			expect(closest.mock.calls).toEqual([['.DataTable__row']]);
+			expect(closest.mock.calls).toEqual([['tr']]);
 			expect(setFocused.mock.calls).toEqual([[1]]);
 		});
 
@@ -595,24 +647,27 @@ describe('DataTable', () => {
 			const event = {target: {closest}};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
+			wrapper.find('tbody').simulate('mousedown', event);
 
-			table.simulate('mousedown', event);
-
-			expect(closest.mock.calls).toEqual([['.DataTable__row']]);
+			expect(closest.mock.calls).toEqual([['tr']]);
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 
 		it('calls onRowClick when user clicks on a row', () => {
-			const focus = jest.fn();
-			const tableBody = {focus};
 			const element = {dataset: {index: '1'}};
 			const closest = jest.fn().mockReturnValue(element);
 			const event = {target: {closest}, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const onRowClick = jest.fn();
-			useRef.mockReturnValueOnce({current: tableBody});
+			useRef.mockReturnValueOnce({});
 			const wrapper = shallow(
 				<DataTable
 					id="test"
@@ -623,14 +678,11 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody');
+			wrapper.find('tbody').simulate('click', event);
 
-			table.simulate('click', event);
-
-			expect(closest.mock.calls).toEqual([['.DataTable__row']]);
+			expect(closest.mock.calls).toEqual([['tr']]);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(event.nativeEvent.stopImmediatePropagation).toHaveBeenCalledTimes(1);
-			expect(focus).toHaveBeenCalledTimes(1);
 			expect(onRowClick.mock.calls).toEqual([[testData[1]]]);
 		});
 
@@ -648,263 +700,233 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody');
+			wrapper.find('tbody').simulate('click', event);
 
-			table.simulate('click', event);
-
-			expect(closest.mock.calls).toEqual([['.DataTable__row']]);
+			expect(closest.mock.calls).toEqual([['tr']]);
 			expect(event.preventDefault).not.toHaveBeenCalled();
 			expect(event.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
 			expect(onRowClick).not.toHaveBeenCalled();
-		});
-
-		it('sets focused to 0 on focus when focused is -1 and selectedId is not set', () => {
-			const setFocused = jest.fn();
-			const child = {};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
-			const tableBody = {querySelector};
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1, setFocused]);
-			useRef.mockReturnValueOnce({current: tableBody});
-			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
-			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('focus');
-
-			expect(setFocused.mock.calls).toEqual([[0]]);
-			expect(querySelector.mock.calls).toEqual([['table']]);
-			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
-		});
-
-		it('sets focused to the selected item index on focus when focused is -1 and selectedId is set', () => {
-			const setFocused = jest.fn();
-			const child = {};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [null, null, child]}]});
-			const tableBody = {querySelector};
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1, setFocused]);
-			useRef.mockReturnValueOnce({current: tableBody});
-			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} selectedId="r2" getRowId={getRowId} />
-			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('focus');
-
-			expect(setFocused.mock.calls).toEqual([[2]]);
-			expect(querySelector.mock.calls).toEqual([['table']]);
-			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
-		});
-
-		it('sets focused to 0 on focus when focused is -1, selectedId is set and the selected item is not found', () => {
-			const setFocused = jest.fn();
-			const child = {};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
-			const tableBody = {querySelector};
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([-1, setFocused]);
-			useRef.mockReturnValueOnce({current: tableBody});
-			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} selectedId="r9" getRowId={getRowId} />
-			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('focus');
-
-			expect(setFocused.mock.calls).toEqual([[0]]);
-			expect(querySelector.mock.calls).toEqual([['table']]);
-			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
-		});
-
-		it('does not set focused on focus when focused is not -1', () => {
-			const setFocused = jest.fn();
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([1, setFocused]);
-			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
-			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('focus');
-
-			expect(setFocused).not.toHaveBeenCalled();
-		});
-
-		it('sets focused to -1 on blur', () => {
-			const setFocused = jest.fn();
-			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
-			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
-			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('blur');
-
-			expect(setFocused.mock.calls).toEqual([[-1]]);
 		});
 
 		it('prevents event default when enter or space are pressed', () => {
 			const preventDefault = jest.fn();
 			const nativeEvent = {stopImmediatePropagation: jest.fn()};
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
+			const tbody = wrapper.find('tbody');
 
-			table.simulate('keydown', {keyCode: 13, preventDefault, nativeEvent});
-			table.simulate('keydown', {keyCode: 32, preventDefault, nativeEvent});
+			tbody.simulate('keydown', {keyCode: 13, preventDefault, nativeEvent});
+			tbody.simulate('keydown', {keyCode: 32, preventDefault, nativeEvent});
 
 			expect(preventDefault).toHaveBeenCalledTimes(2);
 		});
 
 		it('scrolls the table up when page up is pressed', () => {
+			const focus = jest.fn();
 			const setFocused = jest.fn();
 			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const child = {offsetHeight: 25};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
+			const child = {offsetHeight: 25, focus};
 			const tableBody = {
 				clientHeight: 50,
 				scrollTop: 25,
-				querySelector,
+				firstChild: {tBodies: [{childNodes: [child]}]},
 			};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([2, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
+			expect(focus.mock.calls).toEqual([[]]);
 			expect(smoothScroll.mock.calls).toEqual([[tableBody, 25, -25, 150]]);
 		});
 
 		it('focuses the first row when page up is pressed and the table cannot be scrolled up', () => {
+			const focus = jest.fn();
 			const setFocused = jest.fn();
 			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const tableBody = {
 				clientHeight: 50,
 				scrollTop: 0,
+				firstChild: {tBodies: [{childNodes: [{focus}]}]},
 			};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([1, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
+			expect(focus.mock.calls).toEqual([[]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
 		it('scrolls the table down when page down is pressed', () => {
+			const focus = jest.fn();
 			const setFocused = jest.fn();
 			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const child = {offsetHeight: 25};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
 			const tableBody = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 125,
-				querySelector,
+				firstChild: {tBodies: [{childNodes: [child, null, null, null, {focus}]}]},
 			};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([2, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[4]]);
+			expect(focus.mock.calls).toEqual([[]]);
 			expect(smoothScroll.mock.calls).toEqual([[tableBody, 0, 50, 150]]);
 		});
 
 		it('focuses the last row when page down is pressed and the table cannot be scrolled down', () => {
+			const focus = jest.fn();
 			const setFocused = jest.fn();
 			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const tableBody = {
 				clientHeight: 50,
 				scrollTop: 75,
 				scrollHeight: 125,
+				firstChild: {tBodies: [{childNodes: [null, null, null, null, {focus}]}]},
 			};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([1, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[4]]);
+			expect(focus.mock.calls).toEqual([[]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
 		it('focuses the last row when end is pressed', () => {
+			const focus = jest.fn();
 			const setFocused = jest.fn();
 			const event = {keyCode: 35, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const child = {};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [null, null, null, null, child]}]});
-			const tableBody = {querySelector};
+			const child = {focus};
+			const tableBody = {
+				firstChild: {tHead: {clientHeight: 20}, tBodies: [{childNodes: [null, null, null, null, child]}]},
+			};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([2, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[4]]);
-			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
+			expect(focus.mock.calls).toEqual([[]]);
+			expect(scrollToItem.mock.calls).toEqual([[tableBody, child, {headerHeight: 20}]]);
 		});
 
 		it('focuses the first row when home is pressed', () => {
+			const focus = jest.fn();
 			const setFocused = jest.fn();
 			const event = {keyCode: 36, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const child = {};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [child]}]});
-			const tableBody = {querySelector};
+			const child = {focus};
+			const tableBody = {firstChild: {tHead: {clientHeight: 20}, tBodies: [{childNodes: [child]}]}};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([2, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
-			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
+			expect(focus.mock.calls).toEqual([[]]);
+			expect(scrollToItem.mock.calls).toEqual([[tableBody, child, {headerHeight: 20}]]);
 		});
 
 		it('focuses the previous row when up is pressed', () => {
+			const focus = jest.fn();
 			const setFocused = jest.fn();
 			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const child = {};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [null, child]}]});
-			const tableBody = {querySelector};
+			const child = {focus};
+			const tableBody = {firstChild: {tHead: {clientHeight: 20}, tBodies: [{childNodes: [null, child]}]}};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([2, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[1]]);
-			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
+			expect(focus.mock.calls).toEqual([[]]);
+			expect(scrollToItem.mock.calls).toEqual([[tableBody, child, {headerHeight: 20}]]);
 		});
 
 		it('does not set focused when up is pressed and the first option is focused', () => {
@@ -912,34 +934,45 @@ describe('DataTable', () => {
 			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 
 		it('focuses the next row when down is pressed', () => {
+			const focus = jest.fn();
 			const setFocused = jest.fn();
 			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
-			const child = {};
-			const querySelector = jest.fn().mockReturnValue({tBodies: [{children: [null, null, null, child]}]});
-			const tableBody = {querySelector};
+			const child = {focus};
+			const tableBody = {firstChild: {tHead: {clientHeight: 20}, tBodies: [{childNodes: [null, null, null, child]}]}};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([2, setFocused]);
 			useRef.mockReturnValueOnce({current: tableBody});
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[3]]);
-			expect(scrollToItem.mock.calls).toEqual([[tableBody, child]]);
+			expect(focus.mock.calls).toEqual([[]]);
+			expect(scrollToItem.mock.calls).toEqual([[tableBody, child, {headerHeight: 20}]]);
 		});
 
 		it('does not set focused when down is pressed and the last option is focused', () => {
@@ -947,11 +980,16 @@ describe('DataTable', () => {
 			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			useState.mockReturnValueOnce([]).mockReturnValueOnce([4, setFocused]);
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keydown', event);
+			wrapper.find('tbody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused).not.toHaveBeenCalled();
@@ -960,14 +998,21 @@ describe('DataTable', () => {
 		it('ignores the event when a key is pressed and any modifier is set', () => {
 			const preventDefault = jest.fn();
 			const wrapper = shallow(
-				<DataTable id="test" metadata={metadata} data={testData} addedCount={0} getRowId={getRowId} />
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					addedCount={0}
+					getRowId={getRowId}
+					onRowClick={jest.fn()}
+				/>
 			);
-			const table = wrapper.find('#test-tableBody');
+			const tbody = wrapper.find('tbody');
 
-			table.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
-			table.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
-			table.simulate('keydown', {keyCode: 13, altKey: true, preventDefault});
-			table.simulate('keydown', {keyCode: 13, metaKey: true, preventDefault});
+			tbody.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
+			tbody.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
+			tbody.simulate('keydown', {keyCode: 13, altKey: true, preventDefault});
+			tbody.simulate('keydown', {keyCode: 13, metaKey: true, preventDefault});
 
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
@@ -986,9 +1031,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keyup', event);
+			wrapper.find('tbody').simulate('keyup', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(onRowClick.mock.calls).toEqual([[testData[2]]]);
@@ -1008,9 +1051,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody');
-
-			table.simulate('keyup', event);
+			wrapper.find('tbody').simulate('keyup', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(onRowClick.mock.calls).toEqual([[testData[2]]]);
@@ -1028,12 +1069,12 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			const table = wrapper.find('#test-tableBody');
+			const tbody = wrapper.find('tbody');
 
-			table.simulate('keyup', {keyCode: 13, shiftKey: true, preventDefault});
-			table.simulate('keyup', {keyCode: 13, ctrlKey: true, preventDefault});
-			table.simulate('keyup', {keyCode: 13, altKey: true, preventDefault});
-			table.simulate('keyup', {keyCode: 13, metaKey: true, preventDefault});
+			tbody.simulate('keyup', {keyCode: 13, shiftKey: true, preventDefault});
+			tbody.simulate('keyup', {keyCode: 13, ctrlKey: true, preventDefault});
+			tbody.simulate('keyup', {keyCode: 13, altKey: true, preventDefault});
+			tbody.simulate('keyup', {keyCode: 13, metaKey: true, preventDefault});
 
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
@@ -1075,6 +1116,8 @@ describe('DataTable', () => {
 		});
 
 		it('updates the sort column when the order is asc the sorted header is clicked', () => {
+			const closest = jest.fn().mockReturnValue({dataset: {column: 'time'}});
+			const target = {closest};
 			const dataSort = {columnId: 'time', order: 'a'};
 			const setDataSort = jest.fn();
 			useState.mockReturnValueOnce([dataSort, setDataSort]);
@@ -1089,12 +1132,14 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('th > span').at(0).simulate('click');
-			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
+			wrapper.find('thead').simulate('click', {target});
+			expect(setDataSort.mock.calls).toEqual([[anyFunction]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'd'});
 		});
 
 		it('updates the sort column when the order is desc the sorted header is clicked', () => {
+			const closest = jest.fn().mockReturnValue({dataset: {column: 'time'}});
+			const target = {closest};
 			const dataSort = {columnId: 'time', order: 'd'};
 			const setDataSort = jest.fn();
 			useState.mockReturnValueOnce([dataSort, setDataSort]);
@@ -1109,12 +1154,14 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('th > span').at(0).simulate('click');
-			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
+			wrapper.find('thead').simulate('click', {target});
+			expect(setDataSort.mock.calls).toEqual([[anyFunction]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'a'});
 		});
 
 		it('updates the sort column when a different header is clicked', () => {
+			const closest = jest.fn().mockReturnValue({dataset: {column: 'source'}});
+			const target = {closest};
 			const dataSort = {columnId: 'time', order: 'a'};
 			const setDataSort = jest.fn();
 			useState.mockReturnValueOnce([dataSort, setDataSort]);
@@ -1129,9 +1176,30 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('th > span').at(1).simulate('click');
-			expect(setDataSort.mock.calls).toEqual([[expect.any(Function)]]);
+			wrapper.find('thead').simulate('click', {target});
+			expect(setDataSort.mock.calls).toEqual([[anyFunction]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'source', order: 'a'});
+		});
+
+		it('does not update the sort column when a not sortable header is clicked', () => {
+			const closest = jest.fn().mockReturnValue();
+			const target = {closest};
+			const dataSort = {columnId: 'time', order: 'a'};
+			const setDataSort = jest.fn();
+			useState.mockReturnValueOnce([dataSort, setDataSort]);
+			const wrapper = shallow(
+				<DataTable
+					id="test"
+					metadata={metadata}
+					data={testData}
+					defaultSort={dataSort}
+					addedCount={0}
+					getRowId={getRowId}
+				/>
+			);
+
+			wrapper.find('thead').simulate('click', {target});
+			expect(setDataSort.mock.calls).toEqual([]);
 		});
 	});
 });

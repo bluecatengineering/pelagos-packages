@@ -1,8 +1,7 @@
 import {cloneElement, useMemo} from 'react';
 import PropTypes from 'prop-types';
-import {faAngleRight} from '@fortawesome/free-solid-svg-icons';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
-import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import useCollapse from '../hooks/useCollapse';
 
 import SvgIcon from './SvgIcon';
@@ -15,20 +14,17 @@ const Collapsible = ({id, className, open, header, level, children, onHeaderClic
 	const contentId = id + '-content';
 	return (
 		<div id={id} className={`Collapsible${className ? ` ${className}` : ''}`}>
-			<div
+			<button
 				id={headerId}
 				className={`Collapsible__header Collapsible--l${level}`}
-				tabIndex={0}
-				role="button"
+				type="button"
 				aria-expanded={open}
 				aria-controls={contentId}
 				onClick={onHeaderClick}
-				onKeyDown={handleButtonKeyDown}>
-				<span className="Collapsible__arrowBox">
-					<SvgIcon className={`Collapsible__arrow${open ? ' Collapsible__arrow--open' : ''}`} icon={faAngleRight} />
-				</span>
-				{header}
-			</div>
+			>
+				<div className="Collapsible__title">{header}</div>
+				<SvgIcon className={`Collapsible__arrow${open ? ' Collapsible__arrow--open' : ''}`} icon={faAngleDown} />
+			</button>
 			{cloneElement(children, {
 				id: contentId,
 				className: `${children.props.className ? children.props.className + ' ' : ''}Collapsible__body`,

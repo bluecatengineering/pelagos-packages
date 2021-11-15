@@ -1,12 +1,10 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecat/l10n.macro';
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
-import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import addResizeObserver from '../functions/addResizeObserver';
 
-import SvgIcon from './SvgIcon';
+import IconButton from './IconButton';
 import './ScrollBox.less';
 
 const preventDefault = (event) => event.preventDefault();
@@ -32,35 +30,30 @@ const ScrollBox = ({className, trackId, children, onResize}) => {
 
 	useEffect(() => addResizeObserver(trackRef.current, () => showChevrons(trackRef.current, onResize)), [onResize]);
 	useEffect(() => {
-		const track = trackRef.current;
-		showChevrons(track, onResize);
+		showChevrons(trackRef.current, onResize);
 	});
 
 	return (
 		<div className={`ScrollBox${className ? ` ${className}` : ''}`}>
-			<div
+			<IconButton
 				className="ScrollBox__btn"
-				tabIndex="0"
-				role="button"
-				aria-label={t`Scroll left`}
+				icon={faChevronLeft}
+				tabIndex="-1"
+				aria-hidden="true"
 				onMouseDown={preventDefault}
 				onClick={handleClickLeft}
-				onKeyDown={handleButtonKeyDown}>
-				<SvgIcon icon={faChevronLeft} />
-			</div>
+			/>
 			<div id={trackId} className="ScrollBox__track" ref={trackRef}>
 				{children}
 			</div>
-			<div
+			<IconButton
 				className="ScrollBox__btn"
-				tabIndex="0"
-				role="button"
-				aria-label={t`Scroll right`}
+				icon={faChevronRight}
+				tabIndex="-1"
+				aria-hidden="true"
 				onMouseDown={preventDefault}
 				onClick={handleClickRight}
-				onKeyDown={handleButtonKeyDown}>
-				<SvgIcon icon={faChevronRight} />
-			</div>
+			/>
 		</div>
 	);
 };

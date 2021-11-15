@@ -1,7 +1,6 @@
 import {shallow} from 'enzyme';
 
 import IconButton from '../../src/components/IconButton';
-import handleButtonKeyDown from '../../src/functions/handleButtonKeyDown';
 import useTooltip from '../../src/hooks/useTooltip';
 
 jest.unmock('../../src/components/IconButton');
@@ -54,13 +53,6 @@ describe('IconButton', () => {
 			const wrapper = shallow(<IconButton id="test" icon={{}} onClick={onClick} />);
 			wrapper.find('#test').simulate('click');
 			expect(onClick).toHaveBeenCalled();
-		});
-
-		it('calls the key handler when a key is pressed', () => {
-			const event = {keyCode: 13};
-			const wrapper = shallow(<IconButton id="test" icon={{}} />);
-			wrapper.find('#test').simulate('keydown', event);
-			expect(handleButtonKeyDown.mock.calls).toEqual([[event]]);
 		});
 	});
 });

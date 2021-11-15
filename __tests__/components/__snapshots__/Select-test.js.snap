@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select rendering renders expected elements 1`] = `
-<div
+<Layer
   className="Select Test"
 >
-  <div
+  <button
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
@@ -15,8 +15,7 @@ exports[`Select rendering renders expected elements 1`] = `
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
+    type="button"
   >
     Two
     <SvgIcon
@@ -29,15 +28,15 @@ exports[`Select rendering renders expected elements 1`] = `
         }
       }
     />
-  </div>
-</div>
+  </button>
+</Layer>
 `;
 
 exports[`Select rendering renders expected elements when className is not set 1`] = `
-<div
+<Layer
   className="Select"
 >
-  <div
+  <button
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
@@ -48,8 +47,7 @@ exports[`Select rendering renders expected elements when className is not set 1`
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
+    type="button"
   >
     Two
     <SvgIcon
@@ -62,25 +60,25 @@ exports[`Select rendering renders expected elements when className is not set 1`
         }
       }
     />
-  </div>
-</div>
+  </button>
+</Layer>
 `;
 
 exports[`Select rendering renders expected elements when disabled is true 1`] = `
-<div
+<Layer
   className="Select Test"
 >
-  <div
+  <button
     aria-activedescendant={null}
-    aria-disabled={true}
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
     className="Select__text"
     data-placeholder="Testing"
+    disabled={true}
     id="test"
     onBlur={[Function]}
-    role="button"
+    type="button"
   >
     Two
     <SvgIcon
@@ -93,15 +91,15 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
         }
       }
     />
-  </div>
-</div>
+  </button>
+</Layer>
 `;
 
 exports[`Select rendering renders expected elements when error is true 1`] = `
-<div
+<Layer
   className="Select Test"
 >
-  <div
+  <button
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
@@ -112,8 +110,7 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
+    type="button"
   >
     Two
     <SvgIcon
@@ -126,15 +123,15 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
         }
       }
     />
-  </div>
-</div>
+  </button>
+</Layer>
 `;
 
 exports[`Select rendering renders expected elements when open is true 1`] = `
-<div
+<Layer
   className="Select Test"
 >
-  <div
+  <button
     aria-activedescendant="test-1"
     aria-expanded={true}
     aria-haspopup="listbox"
@@ -145,8 +142,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
+    type="button"
   >
     Two
     <SvgIcon
@@ -159,7 +155,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
         }
       }
     />
-  </div>
+  </button>
   <React.Portal>
     <div
       className="Select__list"
@@ -167,11 +163,6 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       role="listbox"
-      style={
-        Object {
-          "display": "none",
-        }
-      }
     >
       <div
         aria-selected={false}
@@ -184,7 +175,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       </div>
       <div
         aria-selected={true}
-        className="Select__option Select__option--focused"
+        className="Select__option"
         data-index={1}
         id="test-1"
         role="option"
@@ -202,14 +193,14 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       </div>
     </div>
   </React.Portal>
-</div>
+</Layer>
 `;
 
 exports[`Select rendering renders expected elements when value is not set 1`] = `
-<div
+<Layer
   className="Select Test"
 >
-  <div
+  <button
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
@@ -220,8 +211,7 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
-    role="button"
-    tabIndex="0"
+    type="button"
   >
     
     <SvgIcon
@@ -234,6 +224,6 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
         }
       }
     />
-  </div>
-</div>
+  </button>
+</Layer>
 `;

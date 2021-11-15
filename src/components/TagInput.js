@@ -4,10 +4,10 @@ import debounce from 'lodash-es/debounce';
 import {t} from '@bluecat/l10n.macro';
 
 import setLiveText from '../functions/setLiveText';
-import handleButtonKeyDown from '../functions/handleButtonKeyDown';
 import useTooltip from '../hooks/useTooltip';
 import timesThin from '../icons/timesThin';
 
+import Layer from './Layer';
 import SvgIcon from './SvgIcon';
 import './TagInput.less';
 
@@ -32,7 +32,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 
 	const handleTagClick = useCallback(
 		(event) => {
-			const button = event.target.closest('[role="button"]');
+			const button = event.target.closest('button');
 			if (button) {
 				const index = +button.dataset.index;
 				const name = tags[index];
@@ -109,23 +109,14 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 
 	const length = tags.length;
 	return (
-		<div
-			id={`${id}-tags`}
-			className={`TagInput${error ? ' TagInput--error' : ''}`}
-			onClick={handleTagClick}
-			onKeyDown={handleButtonKeyDown}>
+		<Layer id={`${id}-tags`} className={`TagInput${error ? ' TagInput--error' : ''}`} onClick={handleTagClick}>
 			{length
 				? tags.map((name, i) => (
 						<span key={name} className="TagInput__tag">
 							{name}
-							<span
-								className="TagInput__remove"
-								tabIndex="0"
-								role="button"
-								aria-label={t`Remove ${name}`}
-								data-index={i}>
+							<button className="TagInput__remove" type="button" aria-label={t`Remove ${name}`} data-index={i}>
 								<SvgIcon icon={timesThin} />
-							</span>
+							</button>
 						</span>
 				  ))
 				: defaultTags?.length
@@ -146,7 +137,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 				onBlur={handleBlur}
 				ref={inputRef}
 			/>
-		</div>
+		</Layer>
 	);
 };
 
