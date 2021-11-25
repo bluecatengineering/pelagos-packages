@@ -1,8 +1,15 @@
 import {Tabs} from '../src';
 
 const getTabKey = ({id}) => id;
-const renderTab = ({text}) => (
-	<div className="Tabs__tab" style={{padding: '4px 12px'}}>
+const renderTab = ({id, text}, current, focused) => (
+	<div
+		key={id}
+		id={`tabs-${id}`}
+		className="Tabs__tab"
+		style={{padding: '4px 12px'}}
+		aria-selected={current}
+		data-focused={focused}
+	>
 		{text}
 	</div>
 );
