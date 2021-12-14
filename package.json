@@ -67,7 +67,7 @@
     "@bluecat/l10n-loader": "^0.1.1",
     "@bluecat/l10n.macro": "^0.1.1",
     "@bluecat/redux-navigation": "^2.0.0",
-    "@bluecat/stylelint-config": "^2.1.0",
+    "@bluecat/stylelint-config": "^3.0.1",
     "@bluecateng/eslint-config-react": "^3.0.1",
     "@bluecateng/git-checks": "^1.0.0",
     "@storybook/addon-a11y": "^6.3.12",
@@ -84,15 +84,17 @@
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
     "lint-staged": "^11.2.6",
+    "postcss": "^8.4.5",
+    "postcss-less": "^5.0.0",
     "prettier": "^2.4.1",
     "raw-loader": "^4.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "storybook-addon-themes": "^6.1.0",
-    "stylelint": "^13.13.1",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-standard": "^22.0.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^23.0.0",
     "yaml-loader": "^0.6.0"
   },
   "eslintConfig": {
@@ -103,7 +105,8 @@
   "stylelint": {
     "extends": [
       "@bluecat/stylelint-config"
-    ]
+    ],
+    "customSyntax": "postcss-less"
   },
   "jest": {
     "automock": true,

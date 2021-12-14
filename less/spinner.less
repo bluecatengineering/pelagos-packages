@@ -9,7 +9,7 @@
 	animation: 0.8s infinite ease;
 }
 
-.spinner-keyframes(@color) {
+.spinner-kf(@color) {
 	0%,
 	100% {
 		box-shadow: 0 -2.2em 0 0 fade(@color, 95%), 1.5em -1.5em 0 0 fade(@color, 15%), 2.2em 0 0 0 fade(@color, 15%),
@@ -61,9 +61,9 @@
 }
 
 @keyframes spinner-dark {
-	.spinner-keyframes(@white);
+	.spinner-kf(@white);
 }
 
 @keyframes spinner-light {
-	.spinner-keyframes(@cyan60);
+	.spinner-kf(@cyan60);
 }
