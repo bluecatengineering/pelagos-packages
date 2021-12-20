@@ -71,7 +71,8 @@ const updateMonth = (focused, month) => {
 	const date = new Date(focused);
 	date.setMonth(month);
 	// check if the new month is shorter and adjust the date
-	if (date.getMonth() !== month) {
+	const expected = month === -1 ? 11 : month === 12 ? 0 : month;
+	if (date.getMonth() !== expected) {
 		date.setDate(0);
 	}
 	return date;
