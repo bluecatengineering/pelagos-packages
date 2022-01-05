@@ -31,7 +31,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'CheckBox',
+	title: 'Components/CheckBox',
 	component: CheckBox,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

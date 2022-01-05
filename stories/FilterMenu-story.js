@@ -20,7 +20,7 @@ export const Empty = Template.bind({});
 Empty.args = {options: [], getOptionText: identity, filterEditor: Editor};
 
 export default {
-	title: 'FilterMenu',
+	title: 'Components/FilterMenu',
 	component: FilterMenu,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

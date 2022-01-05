@@ -9,7 +9,7 @@ export const Range = Template.bind({});
 Range.args = {value: []};
 
 export default {
-	title: 'Calendar',
+	title: 'Components/Calendar',
 	component: Calendar,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

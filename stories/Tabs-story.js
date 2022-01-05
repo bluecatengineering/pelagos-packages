@@ -41,7 +41,7 @@ export const Contained = Template.bind({});
 Contained.args = {id: 'tabs', currentTab: 'foo', items, getTabKey, renderTab: renderContainedTab};
 
 export default {
-	title: 'Tabs',
+	title: 'Components/Tabs',
 	component: Tabs,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

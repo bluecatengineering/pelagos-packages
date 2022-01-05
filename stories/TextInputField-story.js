@@ -35,7 +35,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'TextInputField',
+	title: 'Components/TextInputField',
 	component: TextInputField,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

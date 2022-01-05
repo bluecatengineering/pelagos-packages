@@ -21,7 +21,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'OutputField',
+	title: 'Components/OutputField',
 	component: OutputField,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

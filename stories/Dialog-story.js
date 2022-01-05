@@ -19,7 +19,7 @@ Normal.args = {
 };
 
 export default {
-	title: 'Dialog',
+	title: 'Components/Dialog',
 	component: Dialog,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

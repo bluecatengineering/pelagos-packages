@@ -8,6 +8,6 @@ export const Normal = Template.bind({});
 Normal.args = {label: 'Test', list: ['one', 'two', 'three'], renderItem};
 
 export default {
-	title: 'DetailsList',
+	title: 'Components/DetailsList',
 	component: DetailsList,
 };

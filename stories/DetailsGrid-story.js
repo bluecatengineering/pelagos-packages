@@ -8,6 +8,6 @@ Normal.args = {
 };
 
 export default {
-	title: 'DetailsGrid',
+	title: 'Components/DetailsGrid',
 	component: DetailsGrid,
 };

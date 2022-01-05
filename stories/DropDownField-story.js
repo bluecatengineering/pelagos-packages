@@ -59,7 +59,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'DropDownField',
+	title: 'Components/DropDownField',
 	component: DropDownField,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

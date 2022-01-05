@@ -8,7 +8,7 @@ export const Normal = Template.bind({});
 Normal.args = {icon: faCat, label: 'Normal'};
 
 export default {
-	title: 'LabeledIcon',
+	title: 'Components/LabeledIcon',
 	component: LabeledIcon,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

@@ -14,7 +14,7 @@ export const Normal = Template.bind({});
 Normal.args = {messages};
 
 export default {
-	title: 'Toast',
+	title: 'Components/Toast',
 	component: Toast,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

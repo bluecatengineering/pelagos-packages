@@ -9,6 +9,6 @@ export const Configured = Template.bind({});
 Configured.args = {header: 'Test', configured: true};
 
 export default {
-	title: 'BlockHeader',
+	title: 'Components/BlockHeader',
 	component: BlockHeader,
 };

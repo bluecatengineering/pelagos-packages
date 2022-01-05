@@ -19,7 +19,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'ToolbarButton',
+	title: 'Components/ToolbarButton',
 	component: ToolbarButton,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

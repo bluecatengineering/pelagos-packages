@@ -10,7 +10,7 @@ Normal.args = {
 };
 
 export default {
-	title: 'ConfirmDialog',
+	title: 'Components/ConfirmDialog',
 	component: ConfirmDialog,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

@@ -27,7 +27,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'TextAreaField',
+	title: 'Components/TextAreaField',
 	component: TextAreaField,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

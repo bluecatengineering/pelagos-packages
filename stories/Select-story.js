@@ -38,7 +38,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'Select',
+	title: 'Components/Select',
 	component: Select,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

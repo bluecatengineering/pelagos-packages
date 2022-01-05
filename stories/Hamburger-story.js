@@ -17,7 +17,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'Hamburger',
+	title: 'Components/Hamburger',
 	component: Hamburger,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

@@ -69,7 +69,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'ComboBox',
+	title: 'Components/ComboBox',
 	component: ComboBox,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

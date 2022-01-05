@@ -8,7 +8,7 @@ export const Normal = Template.bind({});
 Normal.args = {id: 'test', item, showButtons: true, children: <div>Some details.</div>};
 
 export default {
-	title: 'EditorDetailsPanel',
+	title: 'Components/EditorDetailsPanel',
 	component: EditorDetailsPanel,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

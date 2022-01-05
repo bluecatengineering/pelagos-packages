@@ -9,7 +9,7 @@ export const Defaults = Template.bind({});
 Defaults.args = {label: 'Defaults', defaultTags: ['Alpha'], tags: []};
 
 export default {
-	title: 'TagInputField',
+	title: 'Components/TagInputField',
 	component: TagInputField,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

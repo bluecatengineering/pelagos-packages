@@ -21,7 +21,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'Toggle',
+	title: 'Components/Toggle',
 	component: Toggle,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

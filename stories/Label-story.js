@@ -6,7 +6,7 @@ export const Normal = Template.bind({});
 Normal.args = {text: 'Normal'};
 
 export default {
-	title: 'Label',
+	title: 'Components/Label',
 	component: Label,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

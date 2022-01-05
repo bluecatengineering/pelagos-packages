@@ -15,7 +15,7 @@ export const Normal = Template.bind({});
 Normal.args = {children};
 
 export default {
-	title: 'ScrollBox',
+	title: 'Components/ScrollBox',
 	component: ScrollBox,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

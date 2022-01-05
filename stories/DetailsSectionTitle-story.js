@@ -6,6 +6,6 @@ export const Normal = Template.bind({});
 Normal.args = {title: 'Test'};
 
 export default {
-	title: 'DetailsSectionTitle',
+	title: 'Components/DetailsSectionTitle',
 	component: DetailsSectionTitle,
 };

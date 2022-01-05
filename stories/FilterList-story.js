@@ -19,7 +19,7 @@ export const Normal = Template.bind({});
 Normal.args = {filters, getFilterTitle: identity, getValues, filterEditor: Editor};
 
 export default {
-	title: 'FilterList',
+	title: 'Components/FilterList',
 	component: FilterList,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

@@ -59,7 +59,7 @@ export const Empty = Template.bind({});
 Empty.args = {id: 'empty', metadata, data: [], emptyTableText, getRowId};
 
 export default {
-	title: 'DataTable',
+	title: 'Components/DataTable',
 	component: DataTable,
 	parameters: {layout: 'fullscreen', actions: {argTypesRegex: '^on.*'}},
 	decorators: [(story) => <div className="Story__stretch">{story()}</div>],

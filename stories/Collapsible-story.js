@@ -15,7 +15,7 @@ export const Normal = Template.bind({});
 Normal.args = {open: true, header: 'Test', children};
 
 export default {
-	title: 'Collapsible',
+	title: 'Components/Collapsible',
 	component: Collapsible,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

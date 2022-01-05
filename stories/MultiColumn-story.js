@@ -22,7 +22,7 @@ export const Empty = Template.bind({});
 Empty.args = {path: [], emptyText: 'No data available'};
 
 export default {
-	title: 'MultiColumn',
+	title: 'Components/MultiColumn',
 	component: MultiColumn,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

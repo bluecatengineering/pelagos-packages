@@ -16,6 +16,6 @@ export const Normal = Template.bind({});
 Normal.args = {title: 'Test', list, columns};
 
 export default {
-	title: 'DetailsTable',
+	title: 'Components/DetailsTable',
 	component: DetailsTable,
 };

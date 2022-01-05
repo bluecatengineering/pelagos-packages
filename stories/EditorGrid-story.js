@@ -8,6 +8,6 @@ Normal.args = {
 };
 
 export default {
-	title: 'EditorGrid',
+	title: 'Components/EditorGrid',
 	component: EditorGrid,
 };

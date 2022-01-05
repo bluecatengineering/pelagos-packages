@@ -62,7 +62,7 @@ Empty.args = {
 };
 
 export default {
-	title: 'ListInput',
+	title: 'Components/ListInput',
 	component: ListInput,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

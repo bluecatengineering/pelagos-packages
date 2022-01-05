@@ -6,6 +6,6 @@ export const Normal = Template.bind({});
 Normal.args = {label: 'Label', value: 'value'};
 
 export default {
-	title: 'DetailEntry',
+	title: 'Components/DetailEntry',
 	component: DetailEntry,
 };

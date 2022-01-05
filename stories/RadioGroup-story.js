@@ -11,7 +11,7 @@ export const Normal = Template.bind({});
 Normal.args = {id: 'normal', value: 'Alpha', options, renderLabel};
 
 export default {
-	title: 'RadioGroup',
+	title: 'Components/RadioGroup',
 	component: RadioGroup,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

@@ -6,7 +6,7 @@ export const Normal = Template.bind({});
 Normal.args = {};
 
 export default {
-	title: 'Spinner',
+	title: 'Components/Spinner',
 	component: Spinner,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

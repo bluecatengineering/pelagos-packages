@@ -65,7 +65,7 @@ Normal.args = {
 };
 
 export default {
-	title: 'EditorTable',
+	title: 'Components/EditorTable',
 	component: EditorTable,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

@@ -22,7 +22,7 @@ export const AllStates = () => (
 AllStates.storyName = 'All states';
 
 export default {
-	title: 'RadioButton',
+	title: 'Components/RadioButton',
 	component: RadioButton,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

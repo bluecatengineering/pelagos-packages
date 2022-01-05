@@ -6,7 +6,7 @@ export const Normal = Template.bind({});
 Normal.args = {};
 
 export default {
-	title: 'SearchField',
+	title: 'Components/SearchField',
 	component: SearchField,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

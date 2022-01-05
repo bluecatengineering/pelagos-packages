@@ -24,6 +24,6 @@ Normal.decorators = [
 ];
 
 export default {
-	title: 'Breadcrumb',
+	title: 'Components/Breadcrumb',
 	component: Breadcrumb,
 };
