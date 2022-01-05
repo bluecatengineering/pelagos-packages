@@ -48,7 +48,7 @@ const createTooltip = (text, placement) => {
 
 	const animation = tooltip.animate([{opacity: 0}, {opacity: 1}], {duration: 150, fill: 'both', easing: 'ease-out'});
 	animation.onfinish = ({currentTime}) => {
-		if (currentTime === 0) {
+		if (currentTime === 0 && tooltip.parentNode) {
 			document.body.removeChild(tooltip);
 		}
 	};
