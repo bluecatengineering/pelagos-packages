@@ -1,10 +1,81 @@
-javascript:
-  stage: test
+stages:
+  - build
+  - test
+  - publish
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+variables:
+  DOCKER_PROXY: docker-ext.artifactory.bluecatlabs.net
+  NODE_IMAGE: $DOCKER_PROXY/node:lts-alpine
+
+install:
+  stage: .pre
+  image: $NODE_IMAGE
   script:
-    - 'npm run init-scope && npm run set-token && npm ci && npm run test-ci'
-  image: docker-ext.artifactory.bluecatlabs.net/node:lts-alpine
+    - npm run init-scope
+    - npm run set-token
+    - npm run fix-auth
+    - npm ci --cache .npm --prefer-offline
+  artifacts:
+    expire_in: 30 mins
+    paths:
+      - node_modules/
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+
+login:aws:
+  stage: .pre
+  image: docker-dev.artifactory.bluecatlabs.net/ui/aws-credentials:1.0.0
+  script:
+    - get-aws-credentials aws/dev/v1/sts/dev_sdp_ui_deploy
+  artifacts:
+    reports:
+      dotenv: build.env
+
+build:
+  stage: build
+  image: $NODE_IMAGE
+  script:
+    - npm run build-storybook
+  needs:
+    - install
+  artifacts:
+    when: always
+    paths:
+      - .out/
+
+test:unit:
+  stage: test
+  image: $NODE_IMAGE
+  script:
+    - npm run test-ci
+  variables:
+    TZ: America/Toronto
+  needs:
+    - install
+  allow_failure:
+    exit_codes: 1
   artifacts:
     when: always
     reports:
-      junit:
-        - build/junit.xml
+      junit: build/junit.xml
+      cobertura: coverage/cobertura-coverage.xml
+
+publish:ui:
+  stage: publish
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  environment:
+    name: storybook
+    url: https://storybook.dnsedge.tools
+  script:
+    - aws s3 sync .out s3://storybook.dnsedge.tools
+  needs:
+    - login:aws
+    - build
