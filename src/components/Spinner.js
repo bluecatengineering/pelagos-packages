@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {t} from '@bluecat/l10n.macro';
 
 import './Spinner.less';
 
@@ -16,6 +17,8 @@ Spinner.propTypes = {
 
 Spinner.defaultProps = {
 	size: 'medium',
+	role: 'status',
+	'aria-label': t`Loading`,
 };
 
 export default Spinner;

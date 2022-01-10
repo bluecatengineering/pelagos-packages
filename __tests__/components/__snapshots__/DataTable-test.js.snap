@@ -539,7 +539,9 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
     />
   </table>
   <Spinner
+    aria-label="Loading"
     id="test-loading"
+    role="status"
     size="large"
   />
 </div>
@@ -766,6 +768,8 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
           colSpan={3}
         >
           <Spinner
+            aria-label="Loading"
+            role="status"
             size="tiny"
           />
         </td>
@@ -866,6 +870,8 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
           colSpan={3}
         >
           <Spinner
+            aria-label="Loading"
+            role="status"
             size="tiny"
           />
         </td>

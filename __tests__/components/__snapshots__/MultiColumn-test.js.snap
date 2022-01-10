@@ -76,6 +76,8 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
     tabIndex={-1}
   >
     <Spinner
+      aria-label="Loading"
+      role="status"
       size="tiny"
     />
   </div>
@@ -145,6 +147,8 @@ exports[`MultiColumn rendering renders expected elements when className is set 1
     tabIndex={-1}
   >
     <Spinner
+      aria-label="Loading"
+      role="status"
       size="tiny"
     />
   </div>
@@ -214,6 +218,8 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
     tabIndex={-1}
   >
     <Spinner
+      aria-label="Loading"
+      role="status"
       size="tiny"
     />
   </div>
