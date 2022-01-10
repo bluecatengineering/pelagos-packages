@@ -14,6 +14,9 @@ Disabled.args = {label: 'Disabled', disabled: true};
 export const Error = Template.bind({});
 Error.args = {label: 'Error', error: true};
 
+export const Indeterminate = Template.bind({});
+Indeterminate.args = {label: 'Indeterminate', indeterminate: true};
+
 export const AllStates = () => (
 	<div className="Story__group">
 		<CheckBox label="Option 1" />
@@ -22,6 +25,7 @@ export const AllStates = () => (
 		<CheckBox label="Option 4" checked disabled />
 		<CheckBox label="Option 5" error />
 		<CheckBox label="Option 6" checked error />
+		<CheckBox label="Option 7" indeterminate />
 	</div>
 );
 AllStates.storyName = 'All states';

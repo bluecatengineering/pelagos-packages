@@ -11,6 +11,13 @@ describe('CheckBox', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when indeterminate is true', () => {
+			const wrapper = shallow(
+				<CheckBox id="test" className="TestClass" label="Test" indeterminate onChange={jest.fn()} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when disabled is true', () => {
 			const wrapper = shallow(
 				<CheckBox id="test" className="TestClass" label="Test" checked disabled onChange={jest.fn()} />

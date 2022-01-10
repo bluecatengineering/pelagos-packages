@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './CheckBox.less';
 
 /* A checkbox. */
-const CheckBox = ({id, className, label, checked, disabled, error, onChange}) => {
+const CheckBox = ({id, className, label, checked, indeterminate, disabled, error, onChange}) => {
 	const handleClick = useCallback((event) => (disabled ? null : onChange(event)), [disabled, onChange]);
 
 	const handleKeyDown = useCallback(
@@ -18,10 +18,11 @@ const CheckBox = ({id, className, label, checked, disabled, error, onChange}) =>
 			className={'CheckBox ' + className + (!disabled && error ? ' CheckBox--error' : '')}
 			role="checkbox"
 			aria-disabled={disabled}
-			aria-checked={!!checked}
+			aria-checked={indeterminate ? 'mixed' : !!checked}
 			tabIndex={disabled ? -1 : 0}
 			onClick={handleClick}
-			onKeyDown={handleKeyDown}>
+			onKeyDown={handleKeyDown}
+		>
 			{label}
 		</span>
 	);
@@ -36,6 +37,8 @@ CheckBox.propTypes = {
 	label: PropTypes.string,
 	/** Whether the box is checked. */
 	checked: PropTypes.bool,
+	/** Whether the box state is indeterminate. */
+	indeterminate: PropTypes.bool,
 	/** Whether the box is disabled. */
 	disabled: PropTypes.bool,
 	/** Whether the box is in error. */

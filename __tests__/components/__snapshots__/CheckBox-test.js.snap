@@ -42,3 +42,17 @@ exports[`CheckBox rendering renders expected elements when error is true 1`] = `
   Test
 </span>
 `;
+
+exports[`CheckBox rendering renders expected elements when indeterminate is true 1`] = `
+<span
+  aria-checked="mixed"
+  className="CheckBox TestClass"
+  id="test"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="checkbox"
+  tabIndex={0}
+>
+  Test
+</span>
+`;
