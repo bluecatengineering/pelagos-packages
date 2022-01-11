@@ -56,7 +56,7 @@ white:
   border-disabled: gray-10
   text-primary: gray-100
   text-secondary: gray-70
-  text-placeholder: gray-40
+  text-placeholder: gray-60
   text-helper: gray-60
   text-error: red-60
   text-inverse: white
@@ -178,7 +178,7 @@ cg00:
   border-disabled: gray-10
   text-primary: gray-100
   text-secondary: gray-70
-  text-placeholder: gray-40
+  text-placeholder: gray-60
   text-helper: gray-60
   text-error: red-60
   text-inverse: white
@@ -300,7 +300,7 @@ yg100:
   border-disabled: gray-90
   text-primary: gray-10
   text-secondary: gray-30
-  text-placeholder: gray-60
+  text-placeholder: gray-50
   text-helper: gray-40
   text-error: red-30
   text-inverse: gray-100
@@ -422,7 +422,7 @@ g100:
   border-disabled: gray-90
   text-primary: gray-10
   text-secondary: gray-30
-  text-placeholder: gray-60
+  text-placeholder: gray-50
   text-helper: gray-40
   text-error: red-30
   text-inverse: gray-100
