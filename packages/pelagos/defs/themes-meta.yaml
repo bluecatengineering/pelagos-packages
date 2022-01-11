@@ -206,6 +206,18 @@ border-strong-03:
   group: border
   set: layer-03
   properties: [border]
+border-tile-01:
+  group: border
+  set: layer-01
+  properties: [border]
+border-tile-02:
+  group: border
+  set: layer-02
+  properties: [border]
+border-tile-03:
+  group: border
+  set: layer-03
+  properties: [border]
 border-inverse:
   group: border
   set: base
@@ -270,6 +282,14 @@ link-inverse:
   group: link
   set: base
   properties: [color]
+link-inverse-active:
+  group: link
+  set: base
+  properties: [color]
+link-inverse-hover:
+  group: link
+  set: base
+  properties: [color]
 link-visited:
   group: link
   set: base
@@ -295,6 +315,10 @@ icon-on-color-disabled:
   set: base
   properties: []
 icon-disabled:
+  group: icon
+  set: base
+  properties: []
+icon-interactive:
   group: icon
   set: base
   properties: []
@@ -407,6 +431,22 @@ button-tertiary-hover:
   set: base
   properties: []
 button-tertiary-active:
+  group: button
+  set: base
+  properties: []
+button-danger-primary:
+  group: button
+  set: base
+  properties: []
+button-danger-secondary:
+  group: button
+  set: base
+  properties: []
+button-danger-hover:
+  group: button
+  set: base
+  properties: []
+button-danger-active:
   group: button
   set: base
   properties: []
