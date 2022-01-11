@@ -38,6 +38,21 @@ describe('Select', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when options are booleans', () => {
+			const wrapper = shallow(
+				<Select
+					id="test"
+					className="Test"
+					value={false}
+					options={[true, false]}
+					placeholder="Testing"
+					renderOption={(v) => (v ? 'Yes' : 'No')}
+					onChange={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when className is not set', () => {
 			const wrapper = shallow(
 				<Select

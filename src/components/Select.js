@@ -198,7 +198,7 @@ const Select = ({
 	}, [open, focused]);
 
 	const listId = `${id}-list`;
-	const selected = value && renderedOptions.find((o) => o.value === value);
+	const selected = renderedOptions.find((o) => o.value === value);
 	return (
 		<Layer className={`Select${className ? ` ${className}` : ''}`} ref={buttonRef}>
 			<button

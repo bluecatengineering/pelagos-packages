@@ -196,6 +196,38 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
 </Layer>
 `;
 
+exports[`Select rendering renders expected elements when options are booleans 1`] = `
+<Layer
+  className="Select Test"
+>
+  <button
+    aria-activedescendant={null}
+    aria-expanded={false}
+    aria-haspopup="listbox"
+    aria-owns={null}
+    className="Select__text"
+    data-placeholder="Testing"
+    id="test"
+    onBlur={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    type="button"
+  >
+    No
+    <SvgIcon
+      className="Select__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "caret-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+</Layer>
+`;
+
 exports[`Select rendering renders expected elements when value is not set 1`] = `
 <Layer
   className="Select Test"
