@@ -22,6 +22,7 @@ export {default as EditorDetailsPanel} from './components/EditorDetailsPanel';
 export {default as EditorGrid} from './components/EditorGrid';
 export {default as EditorTable} from './components/EditorTable';
 export {default as Hamburger} from './components/Hamburger';
+export {default as HeaderIcon} from './components/HeaderIcon';
 export {default as IconButton} from './components/IconButton';
 export {default as Label} from './components/Label';
 export {default as LabeledIcon} from './components/LabeledIcon';

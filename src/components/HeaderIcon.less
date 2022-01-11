@@ -1,23 +1,22 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
-@import '../../less/utils';
 
-.LabeledIcon {
-	@icon-button();
+.HeaderIcon {
 	align-items: center;
 	padding: @sp-04;
+	border-radius: 3px;
 }
 
-.LabeledIcon__icon {
+.HeaderIcon__icon {
 	font-size: 16px;
 }
 
-.LabeledIcon__label {
+.HeaderIcon__label {
 	@font-12-600();
 	margin-top: @sp-02;
 	white-space: nowrap;
 }
 
-.LabeledIcon--underlined::first-letter {
+.HeaderIcon--underlined::first-letter {
 	text-decoration: underline;
 }

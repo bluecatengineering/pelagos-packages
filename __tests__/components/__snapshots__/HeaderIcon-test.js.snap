@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderIcon rendering renders expected elements 1`] = `
+<div
+  className="HeaderIcon"
+>
+  <SvgIcon
+    className="HeaderIcon__icon"
+    icon={
+      Object {
+        "icon": "test",
+      }
+    }
+  />
+  <span
+    className="HeaderIcon__label"
+  >
+    test
+  </span>
+</div>
+`;
+
+exports[`HeaderIcon rendering renders expected elements when className is set 1`] = `
+<div
+  className="HeaderIcon Test"
+>
+  <SvgIcon
+    className="HeaderIcon__icon"
+    icon={
+      Object {
+        "icon": "test",
+      }
+    }
+  />
+  <span
+    className="HeaderIcon__label"
+  >
+    test
+  </span>
+</div>
+`;
+
+exports[`HeaderIcon rendering renders expected elements when underline is set 1`] = `
+<div
+  className="HeaderIcon"
+>
+  <SvgIcon
+    className="HeaderIcon__icon"
+    icon={
+      Object {
+        "icon": "test",
+      }
+    }
+  />
+  <span
+    className="HeaderIcon__label HeaderIcon--underlined"
+  >
+    test
+  </span>
+</div>
+`;

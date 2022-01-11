@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SvgIcon from './SvgIcon';
 import './LabeledIcon.less';
 
-/** An icon with a label underneath. */
+/** @deprecated use HeaderIcon instead. */
 const LabeledIcon = ({className, icon, label, underline, ...props}) => (
 	<div {...props} className={'LabeledIcon' + (className ? ` ${className}` : '')} role="button">
 		<SvgIcon className="LabeledIcon__icon" icon={icon} />
