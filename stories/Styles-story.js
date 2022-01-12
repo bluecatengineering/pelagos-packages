@@ -41,7 +41,7 @@ const renderPalette = (title, field) => (
 				.filter(([, v]) => field in v)
 				.map(([key, value]) => (
 					<div key={key} className="Palette__color">
-						<div className="Palette__name">{key}</div>
+						<div className="Palette__name">{value.css || key}</div>
 						{value[field].map((hex, index) => (
 							<div
 								key={hex}
