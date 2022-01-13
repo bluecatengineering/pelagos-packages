@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx --no-install check-git-commits
+npx @bluecateng/git-check-push "$1"
