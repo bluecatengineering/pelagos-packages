@@ -11,7 +11,8 @@ const DetailEntry = ({id, className, label, value, direction, valueClass, valueT
 			{...props}
 			id={id}
 			className={`DetailEntry__value DetailEntry--${direction}${valueClass ? ` ${valueClass}` : ''}`}
-			title={valueTitle}>
+			title={valueTitle}
+		>
 			{children || value}
 		</div>
 	</div>

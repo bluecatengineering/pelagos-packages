@@ -18,7 +18,8 @@ const RadioButton = ({id, className, label, checked, error, tabIndex, onChange, 
 			aria-checked={!!checked}
 			tabIndex={tabIndex}
 			onClick={onChange}
-			onKeyDown={handleKeyDown}>
+			onKeyDown={handleKeyDown}
+		>
 			{label}
 		</span>
 	);

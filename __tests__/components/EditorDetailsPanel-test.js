@@ -54,7 +54,8 @@ describe('EditorDetailsPanel', () => {
 					disableEdit="Disable Edit"
 					disableDelete="Disable Delete"
 					onEdit={jest.fn()}
-					onDelete={jest.fn()}>
+					onDelete={jest.fn()}
+				>
 					<div />
 				</EditorDetailsPanel>
 			);
