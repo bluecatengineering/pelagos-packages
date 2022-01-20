@@ -30,15 +30,6 @@ install:
     paths:
       - .npm/
 
-login:aws:
-  stage: .pre
-  image: docker-dev.artifactory.bluecatlabs.net/ui/aws-credentials:1.0.0
-  script:
-    - get-aws-credentials aws/dev/v1/sts/dev_sdp_ui_deploy
-  artifacts:
-    reports:
-      dotenv: build.env
-
 build:
   stage: build
   image: $NODE_IMAGE
@@ -70,12 +61,13 @@ test:unit:
 
 publish:ui:
   stage: publish
-  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  image: docker-dev.artifactory.bluecatlabs.net/ui/aws-s3:1.0.0
   environment:
     name: storybook
     url: https://storybook.dnsedge.tools
   script:
-    - aws s3 sync .out s3://storybook.dnsedge.tools
+    - aws-s3 -r aws/user/sts/ui-storybook sync -c cache-rules.json .out s3://storybook.dnsedge.tools
+  variables:
+    AWS_REGION: us-west-2
   needs:
-    - login:aws
     - build
