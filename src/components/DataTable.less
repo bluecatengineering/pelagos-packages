@@ -102,10 +102,21 @@
 	@base-ellipsis();
 	text-align: left;
 	max-width: 0;
+
+	&:not(:first-child) {
+		border-left: 1px solid var(--border-strong);
+	}
 }
 
 .DataTable__table th[aria-sort] {
 	padding: 0;
+}
+
+.DataTable__table th[aria-sort='ascending'],
+.DataTable__table th[aria-sort='descending'],
+.DataTable__table th[aria-sort='ascending'] + th,
+.DataTable__table th[aria-sort='descending'] + th {
+	border-left-color: var(--layer-accent);
 }
 
 .DataTable__sort {
