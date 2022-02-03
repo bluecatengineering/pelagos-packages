@@ -2,7 +2,7 @@
 
 exports[`ListEntries rendering renders expected elements 1`] = `
 <div
-  className="ListEntries"
+  className="ListEntries TestClass"
   id="test"
   onClick={[Function]}
   role="list"

@@ -27,6 +27,7 @@ exports[`ListInput rendering renders expected elements 1`] = `
     text="Helper text"
   />
   <ListEntries
+    className="ListInput__list"
     highlightKey={null}
     id="test-grid"
     list={
@@ -68,6 +69,7 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
     id="test-helper"
   />
   <ListEntries
+    className="ListInput__list"
     column={true}
     highlightKey={null}
     id="test-grid"
@@ -111,6 +113,7 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
     text="Error"
   />
   <ListEntries
+    className="ListInput__list"
     highlightKey={null}
     id="test-grid"
     list={

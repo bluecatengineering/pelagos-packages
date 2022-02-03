@@ -23,6 +23,7 @@ describe('ListEntries', () => {
 			const wrapper = shallow(
 				<ListEntries
 					id="test"
+					className="TestClass"
 					list={[{id: '0', name: 'test'}]}
 					getItemKey={getId}
 					getItemName={getName}

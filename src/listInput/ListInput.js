@@ -171,6 +171,7 @@ const ListInput = ({
 			) : (
 				<ListEntries
 					id={id + '-grid'}
+					className="ListInput__list"
 					highlightKey={highlightKey}
 					list={list}
 					column={column}

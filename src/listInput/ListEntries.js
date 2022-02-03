@@ -14,6 +14,7 @@ import './ListEntries.less';
 /** A list of entries. */
 const ListEntries = ({
 	id,
+	className,
 	highlightKey,
 	list,
 	column,
@@ -51,7 +52,7 @@ const ListEntries = ({
 	}, [highlightKey, clearHighlight]);
 
 	return (
-		<div id={id} className="ListEntries" role="list" onClick={handleClick}>
+		<div id={id} className={`ListEntries${className ? ` ${className}` : ''}`} role="list" onClick={handleClick}>
 			{list.map((item, i) => {
 				const name = getItemName(item);
 				const element = renderItem ? renderItem(item) : renderListItem(name);
@@ -89,6 +90,8 @@ const ListEntries = ({
 ListEntries.propTypes = {
 	/** The component id. */
 	id: PropTypes.string,
+	/** The component class name(s). */
+	className: PropTypes.string,
 	/** The key of the highlighted row. */
 	highlightKey: PropTypes.string,
 	/** The data for the list. */
