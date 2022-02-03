@@ -13,17 +13,15 @@ const Template = (args) => <Breadcrumb {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {breadcrumb: [homePage], title: 'Test'};
-Normal.decorators = [
-	(Story) => (
-		<Provider store={store}>
-			<div style={{marginLeft: '24px'}}>
-				<Story />
-			</div>
-		</Provider>
-	),
-];
 
 export default {
 	title: 'Components/Breadcrumb',
 	component: Breadcrumb,
+	decorators: [
+		(story) => (
+			<Provider store={store}>
+				<div style={{marginLeft: '24px'}}>{story()}</div>
+			</Provider>
+		),
+	],
 };
