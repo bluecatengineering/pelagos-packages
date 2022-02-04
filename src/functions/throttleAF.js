@@ -4,7 +4,11 @@ export default (f) => {
 		const args = lastArgs;
 		lastArgs = null;
 		frame = null;
-		f(...args);
+		// args is null sometimes in IE
+		// istanbul ignore next
+		if (args) {
+			f(...args);
+		}
 	};
 	const handler = (...args) => {
 		lastArgs = args;
