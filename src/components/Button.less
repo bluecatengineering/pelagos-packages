@@ -32,7 +32,7 @@
 		background-color: var(--button-primary);
 		border: 1px solid transparent;
 
-		&:disabled {
+		&[aria-disabled='true'] {
 			color: var(--text-on-color-disabled);
 			background-color: var(--button-disabled);
 		}
@@ -45,7 +45,7 @@
 		background-color: var(--button-secondary);
 		border: 1px solid transparent;
 
-		&:disabled {
+		&[aria-disabled='true'] {
 			color: var(--text-on-color-disabled);
 			background-color: var(--button-disabled);
 		}
@@ -59,7 +59,7 @@
 		background-color: transparent;
 		border: 1px solid var(--button-tertiary);
 
-		&:disabled {
+		&[aria-disabled='true'] {
 			color: var(--text-on-color-disabled);
 			background-color: transparent;
 			border-color: var(--button-disabled);
@@ -72,13 +72,13 @@
 		background-color: transparent;
 		border: 1px solid transparent;
 
-		&:disabled {
+		&[aria-disabled='true'] {
 			color: var(--text-disabled);
 			background-color: transparent;
 		}
 	}
 
-	&:disabled {
+	&[aria-disabled='true'] {
 		cursor: not-allowed;
 	}
 

@@ -37,6 +37,16 @@ describe('Button', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when both size is small and disabled is true', () => {
+			const wrapper = shallow(<Button id="test" text="Test" size="small" disabled />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when disabled is true and className is set', () => {
+			const wrapper = shallow(<Button id="test" text="Test" disabled className="testClass" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when tooltipText is set', () => {
 			const wrapper = shallow(<Button id="test" text="Test" tooltipText="Tooltip" />);
 			expect(wrapper.getElement()).toMatchSnapshot();

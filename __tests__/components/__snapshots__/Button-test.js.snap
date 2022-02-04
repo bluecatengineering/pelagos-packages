@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button rendering renders expected elements when both size is small and disabled is true 1`] = `
+<span
+  aria-disabled="true"
+  className="Button Button--small Button--tertiary"
+  id="test"
+>
+  Test
+</span>
+`;
+
 exports[`Button rendering renders expected elements when className is set 1`] = `
 <button
   className="Button Button--medium Button--tertiary testClass"
@@ -11,14 +21,23 @@ exports[`Button rendering renders expected elements when className is set 1`] = 
 `;
 
 exports[`Button rendering renders expected elements when disabled is true 1`] = `
-<button
+<span
+  aria-disabled="true"
   className="Button Button--medium Button--tertiary"
-  disabled={true}
   id="test"
-  type="submit"
 >
   Test
-</button>
+</span>
+`;
+
+exports[`Button rendering renders expected elements when disabled is true and className is set 1`] = `
+<span
+  aria-disabled="true"
+  className="Button Button--medium Button--tertiary testClass"
+  id="test"
+>
+  Test
+</span>
 `;
 
 exports[`Button rendering renders expected elements when onClick is not specified 1`] = `

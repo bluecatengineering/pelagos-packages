@@ -7,13 +7,21 @@ import './Button.less';
 /** A button. */
 const Button = ({id, text, className, tooltipText, size, type, disabled, onClick, ...props}) => {
 	const tooltip = useTooltip(tooltipText, 'top');
-	return (
+	return disabled ? (
+		<span
+			id={id}
+			className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
+			aria-disabled="true"
+			ref={tooltip}
+		>
+			{text}
+		</span>
+	) : (
 		<button
 			{...props}
 			type={onClick ? 'button' : 'submit'}
 			id={id}
 			className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
-			disabled={disabled}
 			ref={tooltip}
 			onClick={onClick}
 		>
