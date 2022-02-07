@@ -100,10 +100,16 @@
 
 .DataTable__table th {
 	@base-ellipsis();
+	position: relative;
 	text-align: left;
 	max-width: 0;
 
-	&:not(:first-child) {
+	&:not(:first-child)::before {
+		content: '';
+		position: absolute;
+		top: 20%;
+		left: 0;
+		height: 60%;
 		border-left: 1px solid var(--border-strong);
 	}
 }
@@ -112,11 +118,11 @@
 	padding: 0;
 }
 
-.DataTable__table th[aria-sort='ascending'],
-.DataTable__table th[aria-sort='descending'],
-.DataTable__table th[aria-sort='ascending'] + th,
-.DataTable__table th[aria-sort='descending'] + th {
-	border-left-color: var(--layer-accent);
+.DataTable__table th[aria-sort='ascending']::before,
+.DataTable__table th[aria-sort='descending']::before,
+.DataTable__table th[aria-sort='ascending'] + th::before,
+.DataTable__table th[aria-sort='descending'] + th::before {
+	display: none;
 }
 
 .DataTable__sort {
