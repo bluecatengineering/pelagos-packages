@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.6.3](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.6.2...v6.6.3) (2022-02-07)
+
+### Bug Fixes
+
+- improve table header separators ([0d31b45](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/0d31b450fec233a18375e327db93c077339c5662))
+- replace redux-actions with @bluecat/redux-utils ([3a2defa](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/3a2defaa8f087d8453cd7d5cf11c2e4ef355d6ef))
+- use a span for disabled buttons again ([37a6f24](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/37a6f24f7898187f6e3abfc9e11fc60c05a31521))
+- workaround for bug in throttleAF in IE ([4956c0f](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/4956c0fd37784c877420f38ba300bfd37a8baff5))
+
 ### [6.6.2](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.6.1...v6.6.2) (2022-01-26)
 
 ### Bug Fixes
