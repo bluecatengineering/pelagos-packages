@@ -32,6 +32,20 @@ describe('IconButton', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders the expected elements if disabled is true and className is set', () => {
+			const wrapper = shallow(
+				<IconButton
+					id="test"
+					className="TestClass"
+					icon={{}}
+					aria-label="Test"
+					tooltipText="This is a test"
+					disabled={true}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders the expected elements when size and tooltipPlacement are set', () => {
 			const wrapper = shallow(
 				<IconButton

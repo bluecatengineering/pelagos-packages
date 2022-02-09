@@ -6,19 +6,31 @@ import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
 /** An icon button. */
-const IconButton = ({id, icon, className, size, type, tooltipText, tooltipPlacement, disabled, onClick, ...props}) => (
-	<button
-		{...props}
-		id={id}
-		type="button"
-		disabled={disabled}
-		className={`IconButton IconButton--${size} IconButton--${type}${className ? ' ' + className : ''}`}
-		ref={useTooltip(tooltipText, tooltipPlacement)}
-		onClick={disabled ? null : onClick}
-	>
-		<SvgIcon icon={icon} />
-	</button>
-);
+const IconButton = ({id, icon, className, size, type, tooltipText, tooltipPlacement, disabled, onClick, ...props}) => {
+	const tooltip = useTooltip(tooltipText, tooltipPlacement);
+	return disabled ? (
+		<span
+			{...props}
+			id={id}
+			className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
+			aria-disabled="true"
+			ref={tooltip}
+		>
+			<SvgIcon icon={icon} />
+		</span>
+	) : (
+		<button
+			{...props}
+			id={id}
+			className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
+			type="button"
+			ref={tooltip}
+			onClick={onClick}
+		>
+			<SvgIcon icon={icon} />
+		</button>
+	);
+};
 
 IconButton.propTypes = {
 	/** The component id. */

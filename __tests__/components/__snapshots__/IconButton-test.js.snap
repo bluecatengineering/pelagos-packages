@@ -14,18 +14,29 @@ exports[`IconButton rendering renders the expected elements 1`] = `
 `;
 
 exports[`IconButton rendering renders the expected elements if disabled is true 1`] = `
-<button
+<span
+  aria-disabled="true"
   aria-label="Test"
   className="IconButton IconButton--medium IconButton--ghost"
-  disabled={true}
   id="test"
-  onClick={null}
-  type="button"
 >
   <SvgIcon
     icon={Object {}}
   />
-</button>
+</span>
+`;
+
+exports[`IconButton rendering renders the expected elements if disabled is true and className is set 1`] = `
+<span
+  aria-disabled="true"
+  aria-label="Test"
+  className="IconButton IconButton--medium IconButton--ghost TestClass"
+  id="test"
+>
+  <SvgIcon
+    icon={Object {}}
+  />
+</span>
 `;
 
 exports[`IconButton rendering renders the expected elements when className is not set 1`] = `
