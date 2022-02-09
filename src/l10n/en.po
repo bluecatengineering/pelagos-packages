@@ -61,6 +61,18 @@ msgstr ""
 msgid "Column {0} of {columnCount}"
 msgstr ""
 
+#: 8e3
+msgid "Copied"
+msgstr ""
+
+#: af7
+msgid "Copy"
+msgstr ""
+
+#: 54c
+msgid "Copy failed: {message}"
+msgstr ""
+
 #: c96
 msgid "Create a new {singularName}."
 msgstr ""

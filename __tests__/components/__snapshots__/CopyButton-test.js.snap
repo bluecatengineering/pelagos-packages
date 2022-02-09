@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CopyButton rendering renders expected elements 1`] = `
+<button
+  aria-label="Copy"
+  className="CopyButton TestClass"
+  id="test-id"
+  onClick={[Function]}
+  onFocus={[Function]}
+  onMouseEnter={[Function]}
+>
+  <SvgIcon
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "copy",
+        "prefix": "far",
+      }
+    }
+  />
+</button>
+`;
+
+exports[`CopyButton rendering renders expected elements when className is not set 1`] = `
+<button
+  aria-label="Copy"
+  className="CopyButton"
+  id="test-id"
+  onClick={[Function]}
+  onFocus={[Function]}
+  onMouseEnter={[Function]}
+>
+  <SvgIcon
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "copy",
+        "prefix": "far",
+      }
+    }
+  />
+</button>
+`;

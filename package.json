@@ -48,6 +48,7 @@
     "@bluecat/helpers": "^0.9.2",
     "@bluecat/l10n-core": "^0.1.1",
     "@bluecat/redux-utils": "^1.0.0",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "focus-trap": "^6.7.1",
     "lodash-es": "^4.17.21",

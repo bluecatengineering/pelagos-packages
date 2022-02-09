@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useTooltip shows tooltip on mouse over and removes it on mouse leave 1`] = `
+exports[`useTooltipBase show shows tooltip 1`] = `
 Object {
   "className": "Tooltip Tooltip--top",
   "firstChild": Object {
@@ -23,7 +23,7 @@ Object {
 }
 `;
 
-exports[`useTooltip shows tooltip on mouse over when placement is bottom 1`] = `
+exports[`useTooltipBase show shows tooltip on mouse over when placement is bottom 1`] = `
 Object {
   "className": "Tooltip Tooltip--bottom",
   "firstChild": Object {
@@ -46,7 +46,7 @@ Object {
 }
 `;
 
-exports[`useTooltip shows tooltip on mouse over when placement is left 1`] = `
+exports[`useTooltipBase show shows tooltip on mouse over when placement is left 1`] = `
 Object {
   "className": "Tooltip Tooltip--left",
   "firstChild": Object {
@@ -69,7 +69,7 @@ Object {
 }
 `;
 
-exports[`useTooltip shows tooltip on mouse over when placement is right 1`] = `
+exports[`useTooltipBase show shows tooltip on mouse over when placement is right 1`] = `
 Object {
   "className": "Tooltip Tooltip--right",
   "firstChild": Object {
@@ -92,7 +92,7 @@ Object {
 }
 `;
 
-exports[`useTooltip shows tooltip on mouse over when the tooltip position exceeds the window width 1`] = `
+exports[`useTooltipBase show shows tooltip on mouse over when the tooltip position exceeds the window width 1`] = `
 Object {
   "className": "Tooltip Tooltip--top",
   "firstChild": Object {
@@ -115,7 +115,7 @@ Object {
 }
 `;
 
-exports[`useTooltip shows tooltip on mouse over when the tooltip position is negative 1`] = `
+exports[`useTooltipBase show shows tooltip on mouse over when the tooltip position is negative 1`] = `
 Object {
   "className": "Tooltip Tooltip--top",
   "firstChild": Object {
