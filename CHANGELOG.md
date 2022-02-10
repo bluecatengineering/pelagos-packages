@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.7.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.6.3...v6.7.0) (2022-02-10)
+
+### Features
+
+- add CopyButton component ([489c8f0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/489c8f03021d224a7708f71d3b87dcbd47266434))
+- add DropZone component ([a3642a3](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/a3642a3923816d03b447315a8b9718ef4f71f64b))
+
+### Bug Fixes
+
+- avoid error running Jest in users of this library ([658c327](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/658c327666eebacdd6d00a99d290c50927142328))
+- use a span for disabled icon buttons ([48d1486](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/48d148638bd95a479d3af3c20bfee387409c3d86))
+
 ### [6.6.3](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.6.2...v6.6.3) (2022-02-07)
 
 ### Bug Fixes
