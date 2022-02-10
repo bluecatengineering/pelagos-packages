@@ -46,6 +46,7 @@ export {default as Toggle} from './components/Toggle';
 export {default as ToolbarButton} from './components/ToolbarButton';
 
 export {default as DropDownField} from './formFields/DropDownField';
+export {default as DropZone} from './formFields/DropZone';
 export {default as FieldError} from './formFields/FieldError';
 export {default as FieldHelper} from './formFields/FieldHelper';
 export {default as OutputField} from './formFields/OutputField';

@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropZone rendering renders expected elements when editing is true 1`] = `
+<div
+  className="DropZone"
+>
+  <LabelLine
+    htmlFor="test"
+  />
+  <div
+    className="DropZone__content"
+    id="test"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <input
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <div
+      className="DropZone__uploaded"
+    >
+      <div>
+        Editing hint
+      </div>
+      <SvgIcon
+        className="DropZone__icon DropZone__icon--uploaded"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "file-alt",
+            "prefix": "far",
+          }
+        }
+      />
+      <div
+        className="DropZone__hint"
+      >
+        Uploaded hint
+      </div>
+    </div>
+  </div>
+  <FieldError />
+</div>
+`;
+
+exports[`DropZone rendering renders expected elements when error is set 1`] = `
+<div
+  className="DropZone"
+>
+  <LabelLine
+    htmlFor="test"
+  />
+  <div
+    className="DropZone__content DropZone__content--error"
+    id="test"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <input
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <div
+      className="DropZone__uploaded"
+    >
+      <div>
+        "test-file.txt" attached.
+      </div>
+      <SvgIcon
+        className="DropZone__icon DropZone__icon--uploaded"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "file-alt",
+            "prefix": "far",
+          }
+        }
+      />
+      <div
+        className="DropZone__hint"
+      >
+        Uploaded hint
+      </div>
+    </div>
+  </div>
+  <FieldError
+    text="Drop error"
+  />
+</div>
+`;
+
+exports[`DropZone rendering renders expected elements when fileName is not set 1`] = `
+<div
+  className="DropZone TestClass"
+>
+  <LabelLine
+    htmlFor="test"
+    optional={true}
+    text="Test"
+  />
+  <div
+    className="DropZone__content"
+    id="test"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <input
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <div
+      className="DropZone__empty"
+    >
+      <div
+        className="DropZone__hint"
+      >
+        Empty hint
+      </div>
+      <SvgIcon
+        className="DropZone__icon DropZone__icon--empty"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "cloud-upload-alt",
+            "prefix": "fas",
+          }
+        }
+      />
+    </div>
+  </div>
+  <FieldError />
+</div>
+`;
+
+exports[`DropZone rendering renders expected elements when fileName is set 1`] = `
+<div
+  className="DropZone"
+>
+  <LabelLine
+    htmlFor="test"
+  />
+  <div
+    className="DropZone__content"
+    id="test"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <input
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <div
+      className="DropZone__uploaded"
+    >
+      <div>
+        "test-file.txt" attached.
+      </div>
+      <SvgIcon
+        className="DropZone__icon DropZone__icon--uploaded"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "file-alt",
+            "prefix": "far",
+          }
+        }
+      />
+      <div
+        className="DropZone__hint"
+      >
+        Uploaded hint
+      </div>
+    </div>
+  </div>
+  <FieldError />
+</div>
+`;

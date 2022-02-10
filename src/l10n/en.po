@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: f93
+msgid "\"{fileName}\" attached."
+msgstr ""
+
 #: 048
 msgid "(configured)"
 msgstr ""
