@@ -1,7 +1,6 @@
 import ToastTypes from './ToastTypes';
 import {addToast} from './ToastActions';
 
-const ADD_TOAST_TYPE = addToast.toString();
 const toasts = {};
 
 export const hasFatalError = (messages) => messages.some((m) => m.type === ToastTypes.FATAL);
@@ -17,7 +16,7 @@ export const registerActionToast = (action, text, type = ToastTypes.FATAL) => {
 export const toaster = (store) => (next) => (action) => {
 	const actionType = action.type;
 	const dispatch = store.dispatch;
-	if (actionType === ADD_TOAST_TYPE) {
+	if (actionType === addToast.type) {
 		processMessage(action.payload, action);
 	} else {
 		const list = toasts[actionType];
