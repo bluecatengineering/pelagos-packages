@@ -19,6 +19,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
   aria-label="Test"
   className="IconButton IconButton--medium IconButton--ghost"
   id="test"
+  role="button"
 >
   <SvgIcon
     icon={Object {}}
@@ -32,6 +33,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
   aria-label="Test"
   className="IconButton IconButton--medium IconButton--ghost TestClass"
   id="test"
+  role="button"
 >
   <SvgIcon
     icon={Object {}}

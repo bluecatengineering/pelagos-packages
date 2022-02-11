@@ -13,6 +13,7 @@ const IconButton = ({id, icon, className, size, type, tooltipText, tooltipPlacem
 			{...props}
 			id={id}
 			className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
+			role="button"
 			aria-disabled="true"
 			ref={tooltip}
 		>
