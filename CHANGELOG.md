@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.7.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.7.0...v6.7.1) (2022-02-11)
+
+### Bug Fixes
+
+- fix a11y violation in disabled icon buttons ([ae1dc7e](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/ae1dc7e29bbece436493427402a37be5188d4275))
+
 ## [6.7.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.6.3...v6.7.0) (2022-02-10)
 
 ### Features
