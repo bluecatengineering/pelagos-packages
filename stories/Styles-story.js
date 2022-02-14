@@ -93,6 +93,14 @@ ThemesFilter.propTypes = {
 	onChange: PropTypes.func,
 };
 
+const carbonThemes = ['white', 'g100'];
+const themeNames = {
+	white: 'White',
+	cg00: 'Cool Gray 00',
+	yg100: 'Cyan Gray 100',
+	g100: 'Gray 100',
+};
+
 export const Themes = () => {
 	const themeList = Object.entries(themes);
 	const metaList = Object.entries(themesMeta);
@@ -115,6 +123,7 @@ export const Themes = () => {
 	const [currentGroup, setCurrentGroup] = useState('All');
 	const [currentSet, setCurrentSet] = useState('All');
 	const [currentProperty, setCurrentProperty] = useState('All');
+	const [showCarbonTokens, setShowCarbonTokens] = useState(false);
 	const filtered = useMemo(
 		() =>
 			currentGroup === 'All' && currentSet === 'All' && currentProperty === 'All'
@@ -127,11 +136,19 @@ export const Themes = () => {
 				  ),
 		[currentGroup, currentSet, currentProperty, metaList]
 	);
+	const filteredThemes = useMemo(
+		() => (showCarbonTokens ? themeList : themeList.filter(([key]) => !carbonThemes.includes(key))),
+		[themeList, showCarbonTokens]
+	);
+	const handleCarbonTokensClick = useCallback((event) => setShowCarbonTokens(event.target.checked), []);
 	return (
 		<>
 			<div className="Themes__header">
 				<h2>{`Themes (${filtered.length}/${metaList.length} tokens)`}</h2>
 				<div className="Themes__filters">
+					<label className="Themes__check">
+						<input type="checkbox" checked={showCarbonTokens} onClick={handleCarbonTokensClick} /> Show Carbon themes
+					</label>
 					<ThemesFilter label="Group" options={groups} value={currentGroup} onChange={setCurrentGroup} />
 					<ThemesFilter label="Set" options={sets} value={currentSet} onChange={setCurrentSet} />
 					<ThemesFilter label="Property" options={properties} value={currentProperty} onChange={setCurrentProperty} />
@@ -141,8 +158,8 @@ export const Themes = () => {
 				<thead>
 					<tr>
 						<th>Token</th>
-						{themeList.map(([key]) => (
-							<th key={key}>{key}</th>
+						{filteredThemes.map(([key]) => (
+							<th key={key}>{`${themeNames[key]} (${key})`}</th>
 						))}
 						<th>Properties</th>
 					</tr>
@@ -151,7 +168,7 @@ export const Themes = () => {
 					{filtered.map(([token, {properties}]) => (
 						<tr key={token}>
 							<td>{token}</td>
-							{themeList.map(([key, theme]) => {
+							{filteredThemes.map(([key, theme]) => {
 								const name = theme[token];
 								const color = parseColor(name);
 								return (
