@@ -201,7 +201,7 @@ cg00:
   support-warning: yellow-30
   support-info: blue-70
   support-error-inverse: red-50
-  support-success-inverse: green-40
+  support-success-inverse: green-50
   support-warning-inverse: yellow-30
   support-info-inverse: blue-50
   support-caution-minor: yellow-30
@@ -323,7 +323,7 @@ yg100:
   support-warning: yellow-30
   support-info: blue-50
   support-error-inverse: red-60
-  support-success-inverse: green-50
+  support-success-inverse: green-60
   support-warning-inverse: yellow-30
   support-info-inverse: blue-60
   support-caution-minor: yellow-30
