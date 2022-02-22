@@ -8,6 +8,7 @@ import LabelLine from '../components/LabelLine';
 import SvgIcon from '../components/SvgIcon';
 
 import FieldError from './FieldError';
+import FieldHelper from './FieldHelper';
 import './DropZone.less';
 
 const handleClick = (event) => {
@@ -47,6 +48,7 @@ const DropZone = ({
 	editingHint,
 	uploadedHint,
 	fileName,
+	helperText,
 	error,
 	editing,
 	onDrop,
@@ -76,6 +78,8 @@ const DropZone = ({
 		},
 		[readFile]
 	);
+	const helperId = `${id}-helper`;
+	const errorId = `${id}-error`;
 	return (
 		<div className={`DropZone${className ? ` ${className}` : ''}`}>
 			<LabelLine htmlFor={id} text={label} optional={optional && !fileName && !editing} />
@@ -84,6 +88,7 @@ const DropZone = ({
 				className={'DropZone__content' + (error ? ' DropZone__content--error' : '')}
 				tabIndex={0}
 				role="button"
+				aria-describedby={error ? errorId : helperId}
 				onClick={handleClick}
 				onDragOver={handleDragOver}
 				onDragEnter={handleDragEnter}
@@ -110,7 +115,7 @@ const DropZone = ({
 					</div>
 				)}
 			</div>
-			<FieldError text={error} />
+			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
 		</div>
 	);
 };
@@ -132,6 +137,8 @@ DropZone.propTypes = {
 	uploadedHint: PropTypes.string,
 	/** The name of the selected file. */
 	fileName: PropTypes.string,
+	/** Additional information for the field. */
+	helperText: PropTypes.string,
 	/** The error text. */
 	error: PropTypes.string,
 	/** Whether the field is in edit mode (changes optional and empty messages). */

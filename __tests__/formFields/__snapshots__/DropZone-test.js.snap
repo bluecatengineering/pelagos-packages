@@ -8,6 +8,7 @@ exports[`DropZone rendering renders expected elements when editing is true 1`] =
     htmlFor="test"
   />
   <div
+    aria-describedby="test-helper"
     className="DropZone__content"
     id="test"
     onClick={[Function]}
@@ -50,7 +51,9 @@ exports[`DropZone rendering renders expected elements when editing is true 1`] =
       </div>
     </div>
   </div>
-  <FieldError />
+  <FieldHelper
+    id="test-helper"
+  />
 </div>
 `;
 
@@ -62,6 +65,7 @@ exports[`DropZone rendering renders expected elements when error is set 1`] = `
     htmlFor="test"
   />
   <div
+    aria-describedby="test-error"
     className="DropZone__content DropZone__content--error"
     id="test"
     onClick={[Function]}
@@ -105,6 +109,7 @@ exports[`DropZone rendering renders expected elements when error is set 1`] = `
     </div>
   </div>
   <FieldError
+    id="test-error"
     text="Drop error"
   />
 </div>
@@ -120,6 +125,7 @@ exports[`DropZone rendering renders expected elements when fileName is not set 1
     text="Test"
   />
   <div
+    aria-describedby="test-helper"
     className="DropZone__content"
     id="test"
     onClick={[Function]}
@@ -159,7 +165,10 @@ exports[`DropZone rendering renders expected elements when fileName is not set 1
       />
     </div>
   </div>
-  <FieldError />
+  <FieldHelper
+    id="test-helper"
+    text="Helper text"
+  />
 </div>
 `;
 
@@ -171,6 +180,7 @@ exports[`DropZone rendering renders expected elements when fileName is set 1`] =
     htmlFor="test"
   />
   <div
+    aria-describedby="test-helper"
     className="DropZone__content"
     id="test"
     onClick={[Function]}
@@ -213,6 +223,8 @@ exports[`DropZone rendering renders expected elements when fileName is set 1`] =
       </div>
     </div>
   </div>
-  <FieldError />
+  <FieldHelper
+    id="test-helper"
+  />
 </div>
 `;

@@ -8,7 +8,14 @@ describe('DropZone', () => {
 	describe('rendering', () => {
 		it('renders expected elements when fileName is not set', () => {
 			const wrapper = shallow(
-				<DropZone id="test" className="TestClass" label="Test" optional emptyHint="Empty hint" />
+				<DropZone
+					id="test"
+					className="TestClass"
+					label="Test"
+					optional
+					emptyHint="Empty hint"
+					helperText="Helper text"
+				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
