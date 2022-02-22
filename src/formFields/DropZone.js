@@ -83,11 +83,10 @@ const DropZone = ({
 	return (
 		<div className={`DropZone${className ? ` ${className}` : ''}`}>
 			<LabelLine htmlFor={id} text={label} optional={optional && !fileName && !editing} />
-			<div
+			<button
 				id={id}
 				className={'DropZone__content' + (error ? ' DropZone__content--error' : '')}
-				tabIndex={0}
-				role="button"
+				type="button"
 				aria-describedby={error ? errorId : helperId}
 				onClick={handleClick}
 				onDragOver={handleDragOver}
@@ -114,7 +113,7 @@ const DropZone = ({
 						<SvgIcon icon={faCloudUploadAlt} className="DropZone__icon DropZone__icon--empty" />
 					</div>
 				)}
-			</div>
+			</button>
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
 		</div>
 	);

@@ -8,12 +8,17 @@
 
 .DropZone__content {
 	@focus-visible();
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
 	height: 155px;
 	padding: @sp-08 @sp-12;
 	background-color: var(--field);
+	border: none;
 	border-bottom: 1px solid var(--border-strong);
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
+	text-align: left;
 	cursor: pointer;
 	transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
 
