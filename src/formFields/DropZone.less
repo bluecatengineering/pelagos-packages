@@ -25,6 +25,12 @@
 	&:hover {
 		background-color: var(--field-hover);
 	}
+
+	&:disabled {
+		color: var(--text-disabled);
+		background-color: var(--field);
+		border-color: transparent;
+	}
 }
 
 .DropZone__content--error {
@@ -52,6 +58,10 @@
 	.DropZone__content:hover & {
 		color: var(--layer-accent-hover);
 	}
+
+	.DropZone__content:disabled & {
+		color: var(--layer-accent);
+	}
 }
 .DropZone__icon--uploaded {
 	font-size: 50px;
@@ -64,6 +74,10 @@
 .DropZone__hint {
 	@font-12-400();
 	color: var(--text-placeholder);
+
+	.DropZone__content:disabled & {
+		color: var(--text-disabled);
+	}
 }
 
 @media print {

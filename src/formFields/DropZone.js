@@ -22,6 +22,13 @@ const handleDragOver = (event) => {
 	dt.dropEffect = 'copy';
 };
 
+const handleDragOverDisabled = (event) => {
+	event.preventDefault();
+	const dt = event.dataTransfer;
+	dt.effectAllowed = 'none';
+	dt.dropEffect = 'none';
+};
+
 const handleDragEnter = (event) => {
 	const relatedTarget = event.relatedTarget;
 	const currentTarget = event.currentTarget;
@@ -51,6 +58,7 @@ const DropZone = ({
 	helperText,
 	error,
 	editing,
+	disabled,
 	onDrop,
 }) => {
 	const readFile = useCallback(
@@ -87,9 +95,10 @@ const DropZone = ({
 				id={id}
 				className={'DropZone__content' + (error ? ' DropZone__content--error' : '')}
 				type="button"
+				disabled={disabled}
 				aria-describedby={error ? errorId : helperId}
 				onClick={handleClick}
-				onDragOver={handleDragOver}
+				onDragOver={disabled ? handleDragOverDisabled : handleDragOver}
 				onDragEnter={handleDragEnter}
 				onDragLeave={handleDragLeave}
 				onDrop={handleDrop}
@@ -142,6 +151,8 @@ DropZone.propTypes = {
 	error: PropTypes.string,
 	/** Whether the field is in edit mode (changes optional and empty messages). */
 	editing: PropTypes.bool,
+	/** Whether the field is disabled. */
+	disabled: PropTypes.bool,
 	/** Function invoked when a file is dropped. */
 	onDrop: PropTypes.func,
 };

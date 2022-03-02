@@ -133,6 +133,15 @@ describe('DropZone', () => {
 			expect(dataTransfer).toEqual({effectAllowed: 'copy', dropEffect: 'copy'});
 		});
 
+		it('calls preventDefault on dragover and disabled is set', () => {
+			const preventDefault = jest.fn();
+			const dataTransfer = {};
+			const wrapper = shallow(<DropZone id="test" disabled />);
+			wrapper.find('#test').prop('onDragOver')({preventDefault, dataTransfer});
+			expect(preventDefault.mock.calls).toEqual([[]]);
+			expect(dataTransfer).toEqual({effectAllowed: 'none', dropEffect: 'none'});
+		});
+
 		it('adds a class on dragenter', () => {
 			const relatedTarget = {};
 			const contains = jest.fn();
