@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.8.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.7.1...v6.8.0) (2022-03-02)
+
+### Features
+
+- add disabled property to DropZone ([3fbd876](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/3fbd876f01d720c82aac8d81ed5866980362741e))
+- add helperText property to DropZone ([b7d82cc](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/b7d82cc0c0892cad494832a5e0728605cb5e9321))
+- add option to specify custom detail buttons in EditorTable ([94f48ff](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/94f48ffdd0db3ce35d9a8e308bd80292538e8848))
+
+### Bug Fixes
+
+- fix contrast for support-success-inverse ([da6f8bc](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/da6f8bca5a1e38ff6f1a965b99f68e979dfe2686))
+- use a button element in DropZone ([f2ce36e](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/f2ce36e7216da72706f97cb7e242f4bf7f376b5e))
+- use correct fonts in DataTable ([b364a3a](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/b364a3aa819a919d152f3246f1532669d885b337))
+
 ### [6.7.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.7.0...v6.7.1) (2022-02-11)
 
 ### Bug Fixes
