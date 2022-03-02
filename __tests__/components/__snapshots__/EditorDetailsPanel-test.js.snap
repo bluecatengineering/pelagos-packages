@@ -27,31 +27,33 @@ exports[`EditorDetailsPanel rendering renders expected elements when disableEdit
   >
     Test
   </div>
-  <div
-    className="EditorDetailsPanel__body"
-  />
-  <div
-    className="EditorDetailsPanel__buttons"
-  >
-    <Button
-      disabled={true}
-      id="deleteBtn"
-      onClick={[Function]}
-      size="medium"
-      text="Delete"
-      tooltipText="Disable Delete"
-      type="tertiary"
+  <React.Fragment>
+    <div
+      className="EditorDetailsPanel__body"
     />
-    <Button
-      disabled={true}
-      id="editBtn"
-      onClick={[Function]}
-      size="medium"
-      text="Edit"
-      tooltipText="Disable Edit"
-      type="primary"
-    />
-  </div>
+    <div
+      className="EditorDetailsPanel__buttons"
+    >
+      <Button
+        disabled={true}
+        id="deleteBtn"
+        onClick={[Function]}
+        size="medium"
+        text="Delete"
+        tooltipText="Disable Delete"
+        type="tertiary"
+      />
+      <Button
+        disabled={true}
+        id="editBtn"
+        onClick={[Function]}
+        size="medium"
+        text="Edit"
+        tooltipText="Disable Edit"
+        type="primary"
+      />
+    </div>
+  </React.Fragment>
 </aside>
 `;
 
@@ -82,21 +84,23 @@ exports[`EditorDetailsPanel rendering renders expected elements when onDelete is
   >
     Test
   </div>
-  <div
-    className="EditorDetailsPanel__body"
-  />
-  <div
-    className="EditorDetailsPanel__buttons"
-  >
-    <Button
-      disabled={false}
-      id="editBtn"
-      onClick={[Function]}
-      size="medium"
-      text="Edit"
-      type="primary"
+  <React.Fragment>
+    <div
+      className="EditorDetailsPanel__body"
     />
-  </div>
+    <div
+      className="EditorDetailsPanel__buttons"
+    >
+      <Button
+        disabled={false}
+        id="editBtn"
+        onClick={[Function]}
+        size="medium"
+        text="Edit"
+        type="primary"
+      />
+    </div>
+  </React.Fragment>
 </aside>
 `;
 
@@ -127,9 +131,11 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
   >
     Test
   </div>
-  <div
-    className="EditorDetailsPanel__body"
-  />
+  <React.Fragment>
+    <div
+      className="EditorDetailsPanel__body"
+    />
+  </React.Fragment>
 </aside>
 `;
 
@@ -160,29 +166,31 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
   >
     Test
   </div>
-  <div
-    className="EditorDetailsPanel__body"
-  />
-  <div
-    className="EditorDetailsPanel__buttons"
-  >
-    <Button
-      disabled={false}
-      id="deleteBtn"
-      onClick={[Function]}
-      size="medium"
-      text="Delete"
-      type="tertiary"
+  <React.Fragment>
+    <div
+      className="EditorDetailsPanel__body"
     />
-    <Button
-      disabled={false}
-      id="editBtn"
-      onClick={[Function]}
-      size="medium"
-      text="Edit"
-      type="primary"
-    />
-  </div>
+    <div
+      className="EditorDetailsPanel__buttons"
+    >
+      <Button
+        disabled={false}
+        id="deleteBtn"
+        onClick={[Function]}
+        size="medium"
+        text="Delete"
+        type="tertiary"
+      />
+      <Button
+        disabled={false}
+        id="editBtn"
+        onClick={[Function]}
+        size="medium"
+        text="Edit"
+        type="primary"
+      />
+    </div>
+  </React.Fragment>
 </aside>
 `;
 
@@ -213,28 +221,103 @@ exports[`EditorDetailsPanel rendering renders expected elements when the body ha
   >
     Test
   </div>
-  <div
-    className="BodyClass EditorDetailsPanel__body"
+  <React.Fragment>
+    <div
+      className="BodyClass EditorDetailsPanel__body"
+    />
+    <div
+      className="EditorDetailsPanel__buttons"
+    >
+      <Button
+        disabled={false}
+        id="deleteBtn"
+        onClick={[Function]}
+        size="medium"
+        text="Delete"
+        type="tertiary"
+      />
+      <Button
+        disabled={false}
+        id="editBtn"
+        onClick={[Function]}
+        size="medium"
+        text="Edit"
+        type="primary"
+      />
+    </div>
+  </React.Fragment>
+</aside>
+`;
+
+exports[`EditorDetailsPanel rendering renders expected elements with two children 1`] = `
+<aside
+  className="EditorDetailsPanel"
+  id="test"
+>
+  <IconButton
+    aria-label="Close"
+    className="EditorDetailsPanel__close"
+    icon={
+      Object {
+        "icon": Array [],
+      }
+    }
+    id="closeDetailsPanelBtn"
+    size="large"
+    tooltipPlacement="left"
+    tooltipText="Close"
+    type="ghost"
   />
   <div
-    className="EditorDetailsPanel__buttons"
+    aria-level="2"
+    className="EditorDetailsPanel__title"
+    id="detailsPanelTitle"
+    role="heading"
   >
-    <Button
-      disabled={false}
-      id="deleteBtn"
-      onClick={[Function]}
-      size="medium"
-      text="Delete"
-      type="tertiary"
-    />
-    <Button
-      disabled={false}
-      id="editBtn"
-      onClick={[Function]}
-      size="medium"
-      text="Edit"
-      type="primary"
-    />
+    Test
   </div>
+  <React.Fragment>
+    <div
+      className="EditorDetailsPanel__body"
+    />
+    <div
+      className="EditorDetailsPanel__buttons"
+    />
+  </React.Fragment>
+</aside>
+`;
+
+exports[`EditorDetailsPanel rendering renders expected elements with two children when second child is null 1`] = `
+<aside
+  className="EditorDetailsPanel"
+  id="test"
+>
+  <IconButton
+    aria-label="Close"
+    className="EditorDetailsPanel__close"
+    icon={
+      Object {
+        "icon": Array [],
+      }
+    }
+    id="closeDetailsPanelBtn"
+    size="large"
+    tooltipPlacement="left"
+    tooltipText="Close"
+    type="ghost"
+  />
+  <div
+    aria-level="2"
+    className="EditorDetailsPanel__title"
+    id="detailsPanelTitle"
+    role="heading"
+  >
+    Test
+  </div>
+  <React.Fragment>
+    <div
+      className="EditorDetailsPanel__body"
+    />
+  </React.Fragment>
 </aside>
 `;

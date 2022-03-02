@@ -15,7 +15,7 @@ import IconButton from './IconButton';
 
 import './EditorTable.less';
 
-const renderDetails = (id, item, Details, showButtons, disableDelete, onClose, onEdit, onDelete) => (
+const renderDetails = (id, item, Details, DetailButtons, showButtons, disableDelete, onClose, onEdit, onDelete) => (
 	<EditorDetailsPanel
 		id={`${id}-details`}
 		item={item}
@@ -26,6 +26,7 @@ const renderDetails = (id, item, Details, showButtons, disableDelete, onClose, o
 		onDelete={onDelete}
 	>
 		<Details item={item} />
+		{DetailButtons && <DetailButtons item={item} />}
 	</EditorDetailsPanel>
 );
 
@@ -53,7 +54,8 @@ const EditorTable = ({
 	externalFilter,
 	buttons,
 	controls,
-	details: Details,
+	details,
+	detailButtons,
 	dialog,
 	showDetailsButtons,
 	disableDelete,
@@ -169,7 +171,8 @@ const EditorTable = ({
 				renderDetails(
 					id,
 					itemsById[selectedId],
-					Details,
+					details,
+					detailButtons,
 					showDetailsButtons,
 					disableDelete,
 					onDetailsClose,
@@ -231,6 +234,8 @@ EditorTable.propTypes = {
 	controls: PropTypes.element,
 	/** Component used to display item details. */
 	details: PropTypes.elementType,
+	/** Component used to display detail panel buttons, if specified overrides default buttons. */
+	detailButtons: PropTypes.elementType,
 	/** Dialog to display over the table. */
 	dialog: PropTypes.element,
 	/** Function which returns whether the detail buttons should be displayed. */

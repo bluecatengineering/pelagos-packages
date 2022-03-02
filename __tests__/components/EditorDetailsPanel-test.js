@@ -61,6 +61,26 @@ describe('EditorDetailsPanel', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements with two children', () => {
+			const wrapper = shallow(
+				<EditorDetailsPanel id="test" item={item}>
+					<div />
+					<div />
+				</EditorDetailsPanel>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements with two children when second child is null', () => {
+			const wrapper = shallow(
+				<EditorDetailsPanel id="test" item={item}>
+					<div />
+					{null}
+				</EditorDetailsPanel>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {

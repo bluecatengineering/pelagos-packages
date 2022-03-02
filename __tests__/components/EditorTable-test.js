@@ -7,6 +7,7 @@ import EditorTable from '../../src/components/EditorTable';
 jest.unmock('../../src/components/EditorTable');
 
 const Details = () => null;
+const DetailButtons = () => null;
 
 global.document = {};
 
@@ -213,6 +214,34 @@ describe('EditorTable', () => {
 					onAddClick={jest.fn()}
 					onClose={jest.fn()}
 					onDelete={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when detailButtons is set', () => {
+			const wrapper = shallow(
+				<EditorTable
+					id="editor"
+					className="TestClass"
+					breadcrumb={[jest.fn()]}
+					page={jest.fn()}
+					defaultSort={{headerId: 'test', sort: 'a'}}
+					titleName="Item"
+					singularName="item"
+					pluralName="items"
+					filterHint="Filter by foo"
+					metadata={[{}]}
+					itemsById={{id: {name: 'Test'}}}
+					loading={false}
+					canEdit={true}
+					selectedId="id"
+					getRowId={() => 'test'}
+					buttons={[<div key="0">Button</div>]}
+					details={Details}
+					detailButtons={DetailButtons}
+					onAddClick={jest.fn()}
+					onClose={jest.fn()}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();

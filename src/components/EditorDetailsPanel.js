@@ -10,7 +10,16 @@ import IconButton from './IconButton';
 
 import './EditorDetailsPanel.less';
 
-/** Details panel for the edit table. */
+const addClassName = (element, className) =>
+	cloneElement(element, {
+		className: element.props.className ? `${element.props.className} ${className}` : className,
+	});
+
+/**
+ * Details panel for the edit table.
+ * If a single child is provided a standard set of buttons will be added,
+ * if two children are provided the second child should contain all required buttons.
+ */
 const EditorDetailsPanel = ({
 	id,
 	item,
@@ -41,32 +50,36 @@ const EditorDetailsPanel = ({
 				{item.name}
 			</div>
 
-			{cloneElement(children, {
-				className: children.props.className
-					? `${children.props.className} EditorDetailsPanel__body`
-					: 'EditorDetailsPanel__body',
-			})}
-
-			{showButtons && (
-				<div className="EditorDetailsPanel__buttons">
-					{onDelete && (
-						<Button
-							id="deleteBtn"
-							text={t`Delete`}
-							tooltipText={disableDelete}
-							disabled={!!disableDelete}
-							onClick={handleDelete}
-						/>
+			{Array.isArray(children) ? (
+				<>
+					{addClassName(children[0], 'EditorDetailsPanel__body')}
+					{children[1] && addClassName(children[1], 'EditorDetailsPanel__buttons')}
+				</>
+			) : (
+				<>
+					{addClassName(children, 'EditorDetailsPanel__body')}
+					{showButtons && (
+						<div className="EditorDetailsPanel__buttons">
+							{onDelete && (
+								<Button
+									id="deleteBtn"
+									text={t`Delete`}
+									tooltipText={disableDelete}
+									disabled={!!disableDelete}
+									onClick={handleDelete}
+								/>
+							)}
+							<Button
+								id="editBtn"
+								text={t`Edit`}
+								tooltipText={disableEdit}
+								disabled={!!disableEdit}
+								type="primary"
+								onClick={handleEdit}
+							/>
+						</div>
 					)}
-					<Button
-						id="editBtn"
-						text={t`Edit`}
-						tooltipText={disableEdit}
-						disabled={!!disableEdit}
-						type="primary"
-						onClick={handleEdit}
-					/>
-				</div>
+				</>
 			)}
 		</aside>
 	);

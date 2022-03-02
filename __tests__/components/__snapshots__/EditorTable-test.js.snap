@@ -383,6 +383,120 @@ exports[`EditorTable rendering renders expected elements when both filters are s
 </div>
 `;
 
+exports[`EditorTable rendering renders expected elements when detailButtons is set 1`] = `
+<div
+  className="EditorTable TestClass"
+  id="editor-content"
+>
+  <Breadcrumb
+    breadcrumb={
+      Array [
+        [MockFunction],
+      ]
+    }
+    title="getPageTitle"
+  />
+  <main
+    aria-labelledby="pageTitle"
+    className="EditorTable__main EditorTable--narrow"
+  >
+    <PageTitle
+      title="getPageTitle"
+    />
+    <div
+      className="EditorTable__buttons"
+    >
+      <React.Fragment>
+        <IconButton
+          aria-label="Add"
+          disabled={false}
+          icon={
+            Object {
+              "icon": Array [],
+              "iconName": "plus",
+              "prefix": "fas",
+            }
+          }
+          id="addBtn"
+          onClick={[MockFunction]}
+          size="medium"
+          tooltipPlacement="top"
+          tooltipText="Create a new item."
+          type="primary"
+        />
+        <div>
+          Button
+        </div>
+      </React.Fragment>
+      <SearchField
+        aria-label="Filter"
+        className="EditorTable__filter"
+        initialText=""
+        onChange={[MockFunction]}
+        placeholder="Filter by foo"
+      />
+    </div>
+    <DataTable
+      columns={
+        Array [
+          0,
+          1,
+        ]
+      }
+      data={
+        Array [
+          Object {
+            "name": "Test",
+          },
+        ]
+      }
+      defaultSort={
+        Object {
+          "headerId": "test",
+          "sort": "a",
+        }
+      }
+      emptyTableText="No items have been created. To create one click the Add button."
+      fetchingNextPage={false}
+      getRowId={[Function]}
+      id="editor"
+      metadata={
+        Array [
+          Object {},
+        ]
+      }
+      onRowClick={[Function]}
+      rowMode="line"
+      selectedId="id"
+    />
+  </main>
+  <EditorDetailsPanel
+    id="editor-details"
+    item={
+      Object {
+        "name": "Test",
+      }
+    }
+    onDelete={null}
+  >
+    <Details
+      item={
+        Object {
+          "name": "Test",
+        }
+      }
+    />
+    <DetailButtons
+      item={
+        Object {
+          "name": "Test",
+        }
+      }
+    />
+  </EditorDetailsPanel>
+</div>
+`;
+
 exports[`EditorTable rendering renders expected elements when externalFilter is set 1`] = `
 <div
   className="EditorTable TestClass"
