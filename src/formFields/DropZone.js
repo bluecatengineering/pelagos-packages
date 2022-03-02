@@ -59,17 +59,22 @@ const DropZone = ({
 	error,
 	editing,
 	disabled,
+	asFile,
 	onDrop,
 }) => {
 	const readFile = useCallback(
 		(file) => {
 			if (file) {
-				const reader = new FileReader();
-				reader.onload = () => onDrop(file.name, reader.result);
-				reader.readAsText(file);
+				if (asFile) {
+					onDrop(file);
+				} else {
+					const reader = new FileReader();
+					reader.onload = () => onDrop(file.name, reader.result);
+					reader.readAsText(file);
+				}
 			}
 		},
-		[onDrop]
+		[asFile, onDrop]
 	);
 	const handleDrop = useCallback(
 		(event) => {
@@ -153,6 +158,8 @@ DropZone.propTypes = {
 	editing: PropTypes.bool,
 	/** Whether the field is disabled. */
 	disabled: PropTypes.bool,
+	/** Whether the dropped File object should be passed to onDrop rather than the name and content. */
+	asFile: PropTypes.bool,
 	/** Function invoked when a file is dropped. */
 	onDrop: PropTypes.func,
 };

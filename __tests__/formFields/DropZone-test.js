@@ -66,6 +66,26 @@ describe('DropZone', () => {
 			expect(onDrop.mock.calls).toEqual([[name, result]]);
 		});
 
+		it('calls onDrop when a file is dropped and asFile is set', () => {
+			const onDrop = jest.fn();
+			const preventDefault = jest.fn();
+			const remove = jest.fn();
+			const name = 'file.txt';
+			const file = {name};
+			global.FileReader = jest.fn();
+			const wrapper = shallow(<DropZone id="test" asFile onDrop={onDrop} />);
+
+			wrapper.find('#test').prop('onDrop')({
+				preventDefault,
+				currentTarget: {classList: {remove}},
+				dataTransfer: {files: [file]},
+			});
+			expect(preventDefault.mock.calls).toEqual([[]]);
+			expect(remove.mock.calls).toEqual([['DropZone__content--active']]);
+			expect(FileReader.mock.calls).toEqual([]);
+			expect(onDrop.mock.calls).toEqual([[file]]);
+		});
+
 		it('calls onDrop when a file is dropped and items is available', () => {
 			const onDrop = jest.fn();
 			const preventDefault = jest.fn();
