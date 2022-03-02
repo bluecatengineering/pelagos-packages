@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.9.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.8.0...v6.9.0) (2022-03-02)
+
+### Features
+
+- add asFile property to DropZone ([10e63e1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/10e63e1046c72ce26db7f86527edb07462e84b9f))
+
 ## [6.8.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.7.1...v6.8.0) (2022-03-02)
 
 ### Features
