@@ -477,7 +477,6 @@ exports[`EditorTable rendering renders expected elements when detailButtons is s
         "name": "Test",
       }
     }
-    onDelete={null}
   >
     <Details
       item={
@@ -752,15 +751,12 @@ exports[`EditorTable rendering renders expected elements when selectedId and opt
     />
   </main>
   <EditorDetailsPanel
-    disableDelete={true}
     id="editor-details"
     item={
       Object {
         "name": "Test",
       }
     }
-    onDelete={[MockFunction]}
-    showButtons={true}
   >
     <Details
       item={
@@ -768,6 +764,15 @@ exports[`EditorTable rendering renders expected elements when selectedId and opt
           "name": "Test",
         }
       }
+    />
+    <DefaultDetailsButtons
+      disableDelete={true}
+      item={
+        Object {
+          "name": "Test",
+        }
+      }
+      onDelete={[MockFunction]}
     />
   </EditorDetailsPanel>
 </div>
@@ -867,7 +872,6 @@ exports[`EditorTable rendering renders expected elements when selectedId is set 
         "name": "Test",
       }
     }
-    onDelete={null}
   >
     <Details
       item={

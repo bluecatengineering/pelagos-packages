@@ -12,21 +12,23 @@ import ModalSpinner from './ModalSpinner';
 import PageTitle from './PageTitle';
 import SearchField from './SearchField';
 import IconButton from './IconButton';
+import DefaultDetailsButtons from './DefaultDetailsButtons';
 
 import './EditorTable.less';
 
 const renderDetails = (id, item, Details, DetailButtons, showButtons, disableDelete, onClose, onEdit, onDelete) => (
-	<EditorDetailsPanel
-		id={`${id}-details`}
-		item={item}
-		showButtons={showButtons && showButtons(item)}
-		disableDelete={disableDelete && disableDelete(item)}
-		onClose={onClose}
-		onEdit={onEdit}
-		onDelete={onDelete}
-	>
+	<EditorDetailsPanel id={`${id}-details`} item={item} onClose={onClose}>
 		<Details item={item} />
-		{DetailButtons && <DetailButtons item={item} />}
+		{DetailButtons ? (
+			<DetailButtons item={item} />
+		) : showButtons && showButtons(item) ? (
+			<DefaultDetailsButtons
+				item={item}
+				disableDelete={disableDelete && disableDelete(item)}
+				onEdit={onEdit}
+				onDelete={onDelete}
+			/>
+		) : null}
 	</EditorDetailsPanel>
 );
 

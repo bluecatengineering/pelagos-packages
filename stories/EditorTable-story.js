@@ -35,7 +35,8 @@ const filter =
 	({name}) =>
 		name.toLowerCase().includes(text);
 
-const Details = () => <div>Some details.</div>;
+// eslint-disable-next-line react/prop-types
+const Details = ({className}) => <div className={className}>Some details.</div>;
 
 const homePage = () => null;
 const showHome = () => null;
@@ -62,6 +63,7 @@ Normal.args = {
 	getRowId: ({id}) => id,
 	filter,
 	details: Details,
+	showDetailsButtons: () => true,
 };
 
 export default {

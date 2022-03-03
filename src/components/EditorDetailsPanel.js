@@ -1,12 +1,12 @@
-import {cloneElement, useCallback} from 'react';
+import {cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecat/l10n.macro';
 
 import useSlidingPanel from '../hooks/useSlidingPanel';
 import timesThin from '../icons/timesThin';
 
-import Button from './Button';
 import IconButton from './IconButton';
+import DefaultDetailsButtons from './DefaultDetailsButtons';
 
 import './EditorDetailsPanel.less';
 
@@ -30,60 +30,45 @@ const EditorDetailsPanel = ({
 	onClose,
 	onEdit,
 	onDelete,
-}) => {
-	const handleEdit = useCallback(() => onEdit({id: item.id}), [item.id, onEdit]);
-	const handleDelete = useCallback(() => onDelete(item), [item, onDelete]);
-	return (
-		<aside id={id} className="EditorDetailsPanel">
-			<IconButton
-				id="closeDetailsPanelBtn"
-				className="EditorDetailsPanel__close"
-				icon={timesThin}
-				size="large"
-				aria-label={t`Close`}
-				tooltipText={t`Close`}
-				tooltipPlacement="left"
-				onClick={useSlidingPanel(id, onClose)}
-			/>
+}) => (
+	<aside id={id} className="EditorDetailsPanel">
+		<IconButton
+			id="closeDetailsPanelBtn"
+			className="EditorDetailsPanel__close"
+			icon={timesThin}
+			size="large"
+			aria-label={t`Close`}
+			tooltipText={t`Close`}
+			tooltipPlacement="left"
+			onClick={useSlidingPanel(id, onClose)}
+		/>
 
-			<div id="detailsPanelTitle" className="EditorDetailsPanel__title" role="heading" aria-level="2">
-				{item.name}
-			</div>
+		<div id="detailsPanelTitle" className="EditorDetailsPanel__title" role="heading" aria-level="2">
+			{item.name}
+		</div>
 
-			{Array.isArray(children) ? (
-				<>
-					{addClassName(children[0], 'EditorDetailsPanel__body')}
-					{children[1] && addClassName(children[1], 'EditorDetailsPanel__buttons')}
-				</>
-			) : (
-				<>
-					{addClassName(children, 'EditorDetailsPanel__body')}
-					{showButtons && (
-						<div className="EditorDetailsPanel__buttons">
-							{onDelete && (
-								<Button
-									id="deleteBtn"
-									text={t`Delete`}
-									tooltipText={disableDelete}
-									disabled={!!disableDelete}
-									onClick={handleDelete}
-								/>
-							)}
-							<Button
-								id="editBtn"
-								text={t`Edit`}
-								tooltipText={disableEdit}
-								disabled={!!disableEdit}
-								type="primary"
-								onClick={handleEdit}
-							/>
-						</div>
-					)}
-				</>
-			)}
-		</aside>
-	);
-};
+		{Array.isArray(children) ? (
+			<>
+				{addClassName(children[0], 'EditorDetailsPanel__body')}
+				{children[1] && addClassName(children[1], 'EditorDetailsPanel__buttons')}
+			</>
+		) : (
+			<>
+				{addClassName(children, 'EditorDetailsPanel__body')}
+				{showButtons && (
+					<DefaultDetailsButtons
+						className="EditorDetailsPanel__buttons"
+						item={item}
+						disableEdit={disableEdit}
+						disableDelete={disableDelete}
+						onEdit={onEdit}
+						onDelete={onDelete}
+					/>
+				)}
+			</>
+		)}
+	</aside>
+);
 
 EditorDetailsPanel.propTypes = {
 	/** The component ID. */

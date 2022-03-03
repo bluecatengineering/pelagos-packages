@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultDetailsButtons rendering renders expected elements 1`] = `
+<div
+  className="TestClass"
+>
+  <Button
+    disabled={false}
+    id="deleteBtn"
+    onClick={[Function]}
+    size="medium"
+    text="Delete"
+    type="tertiary"
+  />
+  <Button
+    disabled={false}
+    id="editBtn"
+    onClick={[Function]}
+    size="medium"
+    text="Edit"
+    type="primary"
+  />
+</div>
+`;
+
+exports[`DefaultDetailsButtons rendering renders expected elements when disableEdit and disableDelete are set 1`] = `
+<div>
+  <Button
+    disabled={true}
+    id="deleteBtn"
+    onClick={[Function]}
+    size="medium"
+    text="Delete"
+    tooltipText="Disable Delete"
+    type="tertiary"
+  />
+  <Button
+    disabled={true}
+    id="editBtn"
+    onClick={[Function]}
+    size="medium"
+    text="Edit"
+    tooltipText="Disable Edit"
+    type="primary"
+  />
+</div>
+`;
+
+exports[`DefaultDetailsButtons rendering renders expected elements when onDelete is not set 1`] = `
+<div>
+  <Button
+    disabled={false}
+    id="editBtn"
+    onClick={[Function]}
+    size="medium"
+    text="Edit"
+    type="primary"
+  />
+</div>
+`;
