@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.9.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.9.0...v6.9.1) (2022-03-03)
+
+### Bug Fixes
+
+- restore default buttons in EditorTable when detailButtons is not set ([6a01dfa](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/6a01dfaaad466684f280aa8ced7969f27029f214))
+
 ## [6.9.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.8.0...v6.9.0) (2022-03-02)
 
 ### Features
