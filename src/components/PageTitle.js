@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 
-import './PageTitle.less';
-
-/** The page title. */
+/** @deprecated use <h1> instead. */
 const PageTitle = ({title}) => (
-	<div id="pageTitle" className="PageTitle" role="heading" aria-level="1">
+	<h1 id="pageTitle" className="PageTitle">
 		{title}
-	</div>
+	</h1>
 );
 
 PageTitle.propTypes = {

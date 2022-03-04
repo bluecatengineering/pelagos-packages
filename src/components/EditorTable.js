@@ -9,7 +9,6 @@ import ConfirmDialog from './ConfirmDialog';
 import DataTable from './DataTable';
 import EditorDetailsPanel from './EditorDetailsPanel';
 import ModalSpinner from './ModalSpinner';
-import PageTitle from './PageTitle';
 import SearchField from './SearchField';
 import IconButton from './IconButton';
 import DefaultDetailsButtons from './DefaultDetailsButtons';
@@ -118,7 +117,7 @@ const EditorTable = ({
 			<Breadcrumb breadcrumb={breadcrumb} title={pageTitle} />
 
 			<main className={'EditorTable__main' + (selectedId ? ' EditorTable--narrow' : '')} aria-labelledby="pageTitle">
-				<PageTitle title={pageTitle} />
+				<h1>{pageTitle}</h1>
 
 				<div className="EditorTable__buttons">
 					{canEdit && (

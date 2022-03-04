@@ -1,7 +1,7 @@
-import {cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecat/l10n.macro';
 
+import cloneWithClassName from '../functions/cloneWithClassName';
 import useSlidingPanel from '../hooks/useSlidingPanel';
 import timesThin from '../icons/timesThin';
 
@@ -9,11 +9,6 @@ import IconButton from './IconButton';
 import DefaultDetailsButtons from './DefaultDetailsButtons';
 
 import './EditorDetailsPanel.less';
-
-const addClassName = (element, className) =>
-	cloneElement(element, {
-		className: element.props.className ? `${element.props.className} ${className}` : className,
-	});
 
 /**
  * Details panel for the edit table.
@@ -49,12 +44,12 @@ const EditorDetailsPanel = ({
 
 		{Array.isArray(children) ? (
 			<>
-				{addClassName(children[0], 'EditorDetailsPanel__body')}
-				{children[1] && addClassName(children[1], 'EditorDetailsPanel__buttons')}
+				{cloneWithClassName(children[0], 'EditorDetailsPanel__body')}
+				{children[1] && cloneWithClassName(children[1], 'EditorDetailsPanel__buttons')}
 			</>
 		) : (
 			<>
-				{addClassName(children, 'EditorDetailsPanel__body')}
+				{cloneWithClassName(children, 'EditorDetailsPanel__body')}
 				{showButtons && (
 					<DefaultDetailsButtons
 						className="EditorDetailsPanel__buttons"

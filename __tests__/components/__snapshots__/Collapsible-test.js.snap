@@ -8,12 +8,12 @@ exports[`Collapsible rendering renders expected elements when className is set 1
   <button
     aria-controls="test-content"
     aria-expanded={true}
-    className="Collapsible__header Collapsible--l1"
+    className="Collapsible__header"
     id="test-header"
     type="button"
   >
     <div
-      className="Collapsible__title"
+      className="Collapsible__title Collapsible--l1"
     >
       Test
     </div>
@@ -30,7 +30,7 @@ exports[`Collapsible rendering renders expected elements when className is set 1
   </button>
   <div
     aria-labelledby="test-header"
-    className="TestClass Collapsible__body"
+    className="addClassName"
     id="test-content"
     role="region"
   />
@@ -45,12 +45,12 @@ exports[`Collapsible rendering renders expected elements when open is true and i
   <button
     aria-controls="test-content"
     aria-expanded={true}
-    className="Collapsible__header Collapsible--l1"
+    className="Collapsible__header"
     id="test-header"
     type="button"
   >
     <div
-      className="Collapsible__title"
+      className="Collapsible__title Collapsible--l1"
     >
       Test
     </div>
@@ -67,7 +67,40 @@ exports[`Collapsible rendering renders expected elements when open is true and i
   </button>
   <div
     aria-labelledby="test-header"
-    className="TestClass Collapsible__body"
+    className="addClassName"
+    id="test-content"
+    role="region"
+  />
+</div>
+`;
+
+exports[`Collapsible rendering renders expected elements when two children are passed 1`] = `
+<div
+  className="Collapsible TestClass"
+  id="test"
+>
+  <button
+    aria-controls="test-content"
+    aria-expanded={true}
+    className="Collapsible__header"
+    id="test-header"
+    type="button"
+  >
+    cloneWithClassName
+    <SvgIcon
+      className="Collapsible__arrow Collapsible__arrow--open"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "angle-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+  <div
+    aria-labelledby="test-header"
+    className="addClassName"
     id="test-content"
     role="region"
   />
@@ -82,12 +115,12 @@ exports[`Collapsible rendering sets a random id if not provided 1`] = `
   <button
     aria-controls="e1-content"
     aria-expanded={false}
-    className="Collapsible__header Collapsible--l1"
+    className="Collapsible__header"
     id="e1-header"
     type="button"
   >
     <div
-      className="Collapsible__title"
+      className="Collapsible__title Collapsible--l1"
     >
       Test
     </div>
@@ -104,7 +137,7 @@ exports[`Collapsible rendering sets a random id if not provided 1`] = `
   </button>
   <div
     aria-labelledby="e1-header"
-    className="TestClass Collapsible__body"
+    className="addClassName"
     id="e1-content"
     role="region"
   />

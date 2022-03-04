@@ -28,9 +28,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     Test
   </div>
   <React.Fragment>
-    <div
-      className="EditorDetailsPanel__body"
-    />
+    cloneWithClassName
   </React.Fragment>
 </aside>
 `;
@@ -63,58 +61,11 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     Test
   </div>
   <React.Fragment>
-    <div
-      className="EditorDetailsPanel__body"
-    />
+    cloneWithClassName
     <DefaultDetailsButtons
       className="EditorDetailsPanel__buttons"
       disableDelete="Disable Delete"
       disableEdit="Disable Edit"
-      item={
-        Object {
-          "name": "Test",
-        }
-      }
-      onDelete={[MockFunction]}
-      onEdit={[MockFunction]}
-    />
-  </React.Fragment>
-</aside>
-`;
-
-exports[`EditorDetailsPanel rendering renders expected elements when the body has a className 1`] = `
-<aside
-  className="EditorDetailsPanel"
-  id="test"
->
-  <IconButton
-    aria-label="Close"
-    className="EditorDetailsPanel__close"
-    icon={
-      Object {
-        "icon": Array [],
-      }
-    }
-    id="closeDetailsPanelBtn"
-    size="large"
-    tooltipPlacement="left"
-    tooltipText="Close"
-    type="ghost"
-  />
-  <div
-    aria-level="2"
-    className="EditorDetailsPanel__title"
-    id="detailsPanelTitle"
-    role="heading"
-  >
-    Test
-  </div>
-  <React.Fragment>
-    <div
-      className="BodyClass EditorDetailsPanel__body"
-    />
-    <DefaultDetailsButtons
-      className="EditorDetailsPanel__buttons"
       item={
         Object {
           "name": "Test",
@@ -155,12 +106,8 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     Test
   </div>
   <React.Fragment>
-    <div
-      className="EditorDetailsPanel__body"
-    />
-    <div
-      className="EditorDetailsPanel__buttons"
-    />
+    cloneWithClassName
+    cloneWithClassName
   </React.Fragment>
 </aside>
 `;
@@ -193,9 +140,7 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     Test
   </div>
   <React.Fragment>
-    <div
-      className="EditorDetailsPanel__body"
-    />
+    cloneWithClassName
   </React.Fragment>
 </aside>
 `;

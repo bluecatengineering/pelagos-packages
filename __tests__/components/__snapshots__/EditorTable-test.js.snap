@@ -17,9 +17,9 @@ exports[`EditorTable rendering disables add button and indicates data is being f
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -92,9 +92,9 @@ exports[`EditorTable rendering disables add button if user is not administrator 
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -152,9 +152,9 @@ exports[`EditorTable rendering renders delete dialog when itemToDelete is set 1`
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -237,9 +237,9 @@ exports[`EditorTable rendering renders dialog when specified 1`] = `
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -317,9 +317,9 @@ exports[`EditorTable rendering renders expected elements when both filters are s
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -400,9 +400,9 @@ exports[`EditorTable rendering renders expected elements when detailButtons is s
     aria-labelledby="pageTitle"
     className="EditorTable__main EditorTable--narrow"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -513,9 +513,9 @@ exports[`EditorTable rendering renders expected elements when externalFilter is 
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -597,9 +597,9 @@ exports[`EditorTable rendering renders expected elements when filterText is set 
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -680,9 +680,9 @@ exports[`EditorTable rendering renders expected elements when selectedId and opt
     aria-labelledby="pageTitle"
     className="EditorTable__main EditorTable--narrow"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -795,9 +795,9 @@ exports[`EditorTable rendering renders expected elements when selectedId is set 
     aria-labelledby="pageTitle"
     className="EditorTable__main EditorTable--narrow"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -901,9 +901,9 @@ exports[`EditorTable rendering renders expected elements when user is administra
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >
@@ -986,9 +986,9 @@ exports[`EditorTable rendering renders spinner when busy is true 1`] = `
     aria-labelledby="pageTitle"
     className="EditorTable__main"
   >
-    <PageTitle
-      title="getPageTitle"
-    />
+    <h1>
+      getPageTitle
+    </h1>
     <div
       className="EditorTable__buttons"
     >

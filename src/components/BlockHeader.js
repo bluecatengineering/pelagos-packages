@@ -3,17 +3,21 @@ import {t} from '@bluecat/l10n.macro';
 
 import './BlockHeader.less';
 
-const BlockHeader = ({header, configured}) => (
-	<div className="BlockHeader">
+const BlockHeader = ({className, header, configured}) => (
+	<h2 className={`BlockHeader${className ? ` ${className}` : ''}`}>
 		{header}
-		<div className={'BlockHeader__indicator' + (configured ? ' BlockHeader--configured' : '')}>
+		<span className={`BlockHeader__indicator${configured ? ' BlockHeader--configured' : ''}`}>
 			{configured ? t`(configured)` : t`(optional)`}
-		</div>
-	</div>
+		</span>
+	</h2>
 );
 
 BlockHeader.propTypes = {
+	/** The component class name(s). */
+	className: PropTypes.string,
+	/** The header text. */
 	header: PropTypes.string,
+	/** Whether the value has been configured. */
 	configured: PropTypes.bool,
 };
 

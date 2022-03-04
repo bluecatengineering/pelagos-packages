@@ -7,7 +7,7 @@ jest.unmock('../../src/components/BlockHeader');
 describe('BlockHeader', () => {
 	describe('rendering', () => {
 		it('renders expected elements when configured is false', () => {
-			const wrapper = shallow(<BlockHeader />);
+			const wrapper = shallow(<BlockHeader className="TestClass" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 

@@ -9,6 +9,19 @@ import fonts from '../defs/fonts.yaml';
 import spacing from '../defs/spacing.yaml';
 import './Styles-story.less';
 
+const fontUsage = {
+	'font-10-400': 'BlockHeader__indicator',
+	'font-10-600': 'h6',
+	'font-12-400': 'input::placeholder, Label',
+	'font-12-600': 'h5',
+	'font-14-400': 'body',
+	'font-14-600': 'h4, Button',
+	'font-16-400': 'Toast',
+	'font-16-600': 'h3',
+	'font-18-400': 'h2',
+	'font-24-400': 'h1',
+};
+
 export const Fonts = () => (
 	<div className="Fonts">
 		<h2>Fonts</h2>
@@ -25,6 +38,7 @@ export const Fonts = () => (
 							>
 								{key}
 							</td>
+							<td>{key.endsWith('-uc') ? '(deprecated)' : fontUsage[key]}</td>
 						</tr>
 					))}
 			</tbody>
