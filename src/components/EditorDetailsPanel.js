@@ -82,7 +82,7 @@ EditorDetailsPanel.propTypes = {
 	/** If set the delete button is disabled and this text displayed as tooltip. */
 	disableDelete: PropTypes.string,
 	/** The panel content. */
-	children: PropTypes.element.isRequired,
+	children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]).isRequired,
 	/** Function invoked when the close button is clicked. */
 	onClose: PropTypes.func,
 	/** Function invoked when the edit button is clicked. */

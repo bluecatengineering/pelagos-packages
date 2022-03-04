@@ -11,15 +11,17 @@ exports[`DataTable rendering renders clickable row 1`] = `
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -231,15 +233,17 @@ exports[`DataTable rendering renders focused row 1`] = `
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -347,15 +351,17 @@ exports[`DataTable rendering renders highlighted row 1`] = `
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -463,15 +469,17 @@ exports[`DataTable rendering renders loading spinner when loading initial data 1
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -558,15 +566,17 @@ exports[`DataTable rendering renders next spinner when fetchingNextPage is true 
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -790,15 +800,17 @@ exports[`DataTable rendering renders previous spinner when fetchingPrevPage is t
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -1022,15 +1034,17 @@ exports[`DataTable rendering renders selected row 1`] = `
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -1138,15 +1152,17 @@ exports[`DataTable rendering renders the expected elements if the data is empty 
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -1233,15 +1249,17 @@ exports[`DataTable rendering renders the expected elements if there is data 1`] 
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -1453,15 +1471,17 @@ exports[`DataTable rendering renders the expected elements in descending order 1
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -1673,15 +1693,17 @@ exports[`DataTable rendering renders the expected elements using a secondary key
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >
@@ -1893,12 +1915,14 @@ exports[`DataTable rendering renders the expected elements when columns is set 1
     id="test-table"
     role="grid"
   >
-    <col
-      width="10px"
-    />
-    <col
-      width="10px"
-    />
+    <colgroup>
+      <col
+        width="10px"
+      />
+      <col
+        width="10px"
+      />
+    </colgroup>
     <thead
       onClick={[Function]}
     >

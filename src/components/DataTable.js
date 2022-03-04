@@ -355,9 +355,11 @@ const DataTable = ({
 				className={`DataTable__table DataTable--${rowMode}${onRowClick ? ' DataTable--clickable' : ''}`}
 				role="grid"
 			>
-				{mapColumns(metadata, columns, ({width}) => (
-					<col width={width} />
-				))}
+				<colgroup>
+					{mapColumns(metadata, columns, ({id, width}) => (
+						<col key={id} width={width} />
+					))}
+				</colgroup>
 				<thead onClick={handleHeaderClick}>
 					<tr>{renderHeaders(metadata, columns, dataSort)}</tr>
 				</thead>
