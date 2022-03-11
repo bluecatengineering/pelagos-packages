@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BreadcrumbItem rendering renders expected elements 1`] = `
+<li
+  className="Breadcrumb__item"
+>
+  Test
+</li>
+`;
+
+exports[`BreadcrumbItem rendering renders expected elements when href is set 1`] = `
+<li
+  className="Breadcrumb__item"
+>
+  <a
+    href="#"
+    other="foo"
+  >
+    Test
+  </a>
+</li>
+`;

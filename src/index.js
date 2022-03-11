@@ -5,6 +5,7 @@ export {default as timesThin} from './icons/timesThin';
 
 export {default as BlockHeader} from './components/BlockHeader';
 export {default as Breadcrumb} from './components/Breadcrumb';
+export {default as BreadcrumbItem} from './components/BreadcrumbItem';
 export {default as Button} from './components/Button';
 export {default as Calendar} from './components/Calendar';
 export {default as CheckBox} from './components/CheckBox';

@@ -26,20 +26,53 @@ exports[`Breadcrumb rendering renders expected elements 1`] = `
     <ol
       className="Breadcrumb__list"
     >
+      <BreadcrumbItem />
       <li
-        className="Breadcrumb__link"
+        className="Breadcrumb__current"
       >
+        Test
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`Breadcrumb rendering renders expected elements when breadcrumb is set 1`] = `
+<div
+  className="Breadcrumb"
+>
+  <IconButton
+    aria-label="Back"
+    className="Breadcrumb__back"
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "chevron-left",
+        "prefix": "fas",
+      }
+    }
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+  <nav
+    aria-label="Breadcrumb"
+    className="Breadcrumb__crumbs"
+  >
+    <ol
+      className="Breadcrumb__list"
+    >
+      <BreadcrumbItem>
         <Link
           page={[MockFunction]}
         />
-      </li>
-      <li
-        className="Breadcrumb__link"
-      >
+      </BreadcrumbItem>
+      <BreadcrumbItem>
         <Link
           page={[MockFunction]}
         />
-      </li>
+      </BreadcrumbItem>
       <li
         className="Breadcrumb__current"
       >

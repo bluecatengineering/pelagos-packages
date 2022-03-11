@@ -1,7 +1,7 @@
 import {Provider} from 'react-redux';
 import {registerPathActions} from '@bluecat/redux-navigation';
 
-import {Breadcrumb} from '../src';
+import {Breadcrumb, BreadcrumbItem} from '../src';
 
 const store = {getState() {}, subscribe() {}, dispatch() {}};
 const homePage = () => null;
@@ -12,7 +12,20 @@ registerPathActions('/', 'Home', showHome, homePage);
 const Template = (args) => <Breadcrumb {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {breadcrumb: [homePage], title: 'Test'};
+Normal.args = {
+	title: 'Test',
+	children: [
+		<BreadcrumbItem key="a" href="#">
+			First
+		</BreadcrumbItem>,
+		<BreadcrumbItem key="b">
+			<a href="#">Second</a>
+		</BreadcrumbItem>,
+	],
+};
+
+export const Legacy = Template.bind({});
+Legacy.args = {breadcrumb: [homePage], title: 'Test'};
 
 export default {
 	title: 'Components/Breadcrumb',

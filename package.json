@@ -160,6 +160,7 @@
       "enzyme",
       "intl-messageformat",
       "lodash-es",
+      "elementOfType",
       "prop-types",
       "react",
       "react-dom",
