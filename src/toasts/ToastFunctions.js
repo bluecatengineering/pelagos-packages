@@ -5,6 +5,7 @@ const toasts = {};
 
 export const hasFatalError = (messages) => messages.some((m) => m.type === ToastTypes.FATAL);
 
+/** @deprecated use `@bluecat/redux-toasts` instead. */
 export const registerActionToast = (action, text, type = ToastTypes.FATAL) => {
 	let list = toasts[action];
 	if (!list) {
@@ -13,6 +14,7 @@ export const registerActionToast = (action, text, type = ToastTypes.FATAL) => {
 	list.push(typeof text === 'object' ? text : {text, type});
 };
 
+/** @deprecated use `@bluecat/redux-toasts` instead. */
 export const toaster = (store) => (next) => (action) => {
 	const actionType = action.type;
 	const dispatch = store.dispatch;

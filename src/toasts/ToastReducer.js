@@ -2,6 +2,7 @@ import ToastTypes from './ToastTypes';
 import {removeAllToasts, removeToast, removeToastType} from './ToastActions';
 import {hasFatalError} from './ToastFunctions';
 
+/** @deprecated use `@bluecat/redux-toasts` instead. */
 export default (state, {type, payload, meta}) => {
 	if (!state) {
 		state = [];
