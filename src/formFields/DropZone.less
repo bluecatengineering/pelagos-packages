@@ -47,17 +47,9 @@
 }
 
 .DropZone__icon {
-	color: var(--layer-accent);
+	color: var(--interactive);
 	margin: @sp-12 0;
 	transition: color 0.15s ease-out;
-
-	.DropZone__content--active & {
-		color: var(--interactive);
-	}
-
-	.DropZone__content:hover & {
-		color: var(--layer-accent-hover);
-	}
 
 	.DropZone__content:disabled & {
 		color: var(--layer-accent);

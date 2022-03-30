@@ -13,7 +13,7 @@ Normal.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-	label: 'Normal',
+	label: 'Disabled',
 	emptyHint: 'No file',
 	uploadedHint: 'File uploaded',
 	editingHint: 'Editing',
