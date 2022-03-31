@@ -31,7 +31,7 @@ const renderDetails = (id, item, Details, DetailButtons, showButtons, disableDel
 	</EditorDetailsPanel>
 );
 
-/** Base component for editor tables. */
+/** @deprecated this component is application specific. */
 const EditorTable = ({
 	id,
 	className,
