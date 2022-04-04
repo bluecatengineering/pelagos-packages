@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.10.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.9.1...v6.10.0) (2022-04-04)
+
+### Features
+
+- add InlineNotification component ([2ec2809](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/2ec28097d6c694bee0d112695e2a3f23a5135d74))
+- allow using Breadcrumb without @bluecat/redux-navigation ([fe5bdd4](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/fe5bdd45ce7f54c2474691cb7aa68fdbd5b7e098))
+- define styles for h[1-6] elements ([3ee41da](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/3ee41daf6275257b45db75b0f10b2dcbe8c1ad5b))
+- deprecate EditorTable ([fcd19e5](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/fcd19e51ec99390df031187514b3c967f1c3e43a))
+- deprecate functions that were moved to @bluecat/redux-toasts ([334e70a](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/334e70a34176321b9340f6a0e1841a9e48430869))
+
+### Bug Fixes
+
+- fix React validation warnings ([c031c49](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/c031c49cc12627de4c48bc2e8e781c2272b228dc))
+- set styles for other input types ([0f4cf45](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/0f4cf45e5385164fd3c6b17e408c899589c04460))
+- use "interactive" for active/hover in the DropZone icon ([ced1345](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/ced1345f4e3419f43b1cb5a84ce3eb44be3a59a4))
+
 ### [6.9.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.9.0...v6.9.1) (2022-03-03)
 
 ### Bug Fixes
