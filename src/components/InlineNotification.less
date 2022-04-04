@@ -1,0 +1,66 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+
+.InlineNotification {
+	flex-direction: row;
+	align-items: flex-start;
+	border-left-width: 3px;
+	border-left-style: solid;
+	border-radius: 3px;
+
+	&__icon {
+		@icon-size: 20px;
+		width: (@icon-size * 1.125);
+		height: @icon-size;
+		margin: @sp-12 @sp-16;
+	}
+
+	&__wrapper {
+		display: block;
+		flex: 1;
+		line-height: 16px;
+		margin: @sp-12 @sp-16 @sp-12 0;
+		word-wrap: break-word;
+	}
+
+	&__title {
+		@font-14-600();
+		margin-right: @sp-04;
+	}
+
+	&--success {
+		background-color: var(--notification-background-success);
+		border-left-color: var(--support-success);
+
+		& > .InlineNotification__icon {
+			color: var(--support-success);
+		}
+	}
+
+	&--info {
+		background-color: var(--notification-background-info);
+		border-left-color: var(--support-info);
+
+		& > .InlineNotification__icon {
+			color: var(--support-info);
+		}
+	}
+
+	&--warning {
+		background-color: var(--notification-background-warning);
+		border-left-color: var(--support-warning);
+
+		& > .InlineNotification__icon {
+			color: var(--support-warning);
+		}
+	}
+
+	&--error {
+		background-color: var(--notification-background-error);
+		border-left-color: var(--support-error);
+
+		& > .InlineNotification__icon {
+			color: var(--support-error);
+		}
+	}
+}

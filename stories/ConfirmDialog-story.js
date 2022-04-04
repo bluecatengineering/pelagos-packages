@@ -1,11 +1,13 @@
 import {ConfirmDialog} from '../src';
 
+import body from './LoremIpsum';
+
 const Template = (args) => <ConfirmDialog {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
 	title: 'Title',
-	body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+	body,
 	confirmText: 'Confirm',
 };
 

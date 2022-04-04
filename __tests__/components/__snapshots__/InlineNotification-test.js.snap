@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineNotification rendering renders expected elements 1`] = `
+<div
+  className="InlineNotification InlineNotification--info"
+>
+  <SvgIcon
+    className="InlineNotification__icon"
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "info-circle",
+        "prefix": "fas",
+      }
+    }
+  />
+  <div
+    className="InlineNotification__wrapper"
+  >
+    <span>
+      Test of notification
+    </span>
+  </div>
+</div>
+`;
+
+exports[`InlineNotification rendering renders expected elements when title is set 1`] = `
+<div
+  className="InlineNotification InlineNotification--info"
+>
+  <SvgIcon
+    className="InlineNotification__icon"
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "info-circle",
+        "prefix": "fas",
+      }
+    }
+  />
+  <div
+    className="InlineNotification__wrapper"
+  >
+    <span
+      className="InlineNotification__title"
+    >
+      Test title
+    </span>
+    <span>
+      Test of notification
+    </span>
+  </div>
+</div>
+`;
