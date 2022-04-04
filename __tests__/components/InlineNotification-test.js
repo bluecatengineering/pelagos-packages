@@ -15,5 +15,10 @@ describe('InlineNotification', () => {
 			const wrapper = shallow(<InlineNotification type="info" title="Test title" text="Test of notification" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when className is set', () => {
+			const wrapper = shallow(<InlineNotification className="TestClass" type="info" text="Test of notification" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

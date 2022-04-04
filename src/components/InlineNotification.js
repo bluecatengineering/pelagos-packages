@@ -14,8 +14,9 @@ const icons = {
 	error: exclamationRhombus,
 };
 
-const InlineNotification = ({type, title, text}) => (
-	<div className={`InlineNotification InlineNotification--${type}`}>
+/** A notification to be used inside other components. */
+const InlineNotification = ({className, type, title, text, ...props}) => (
+	<div {...props} className={`InlineNotification InlineNotification--${type}${className ? ` ${className}` : ''}`}>
 		<SvgIcon className="InlineNotification__icon" icon={icons[type]} />
 		<div className="InlineNotification__wrapper">
 			{title && <span className="InlineNotification__title">{title}</span>}
@@ -25,8 +26,13 @@ const InlineNotification = ({type, title, text}) => (
 );
 
 InlineNotification.propTypes = {
+	/** The component class name(s). */
+	className: PropTypes.string,
+	/** The notification type. */
 	type: PropTypes.oneOf(['success', 'info', 'warning', 'error']),
+	/** The notification title. */
 	title: PropTypes.string,
+	/** The notification text. */
 	text: PropTypes.string,
 };
 
