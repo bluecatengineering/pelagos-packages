@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.10.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.10.0...v6.10.1) (2022-04-05)
+
+### Bug Fixes
+
+- add className property to InlineNotification ([adefae6](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/adefae69323d88a34584f4a27febd5cbb1b31497))
+
 ## [6.10.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.9.1...v6.10.0) (2022-04-04)
 
 ### Features
