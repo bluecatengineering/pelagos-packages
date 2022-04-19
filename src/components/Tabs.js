@@ -167,7 +167,7 @@ Tabs.propTypes = {
 	/** The tab items. */
 	items: PropTypes.array.isRequired,
 	/** The key of the current tab. */
-	currentTab: PropTypes.string.isRequired,
+	currentTab: PropTypes.any.isRequired,
 	/** Function invoked to get the key of each tab. */
 	getTabKey: PropTypes.func.isRequired,
 	/** Function invoked to render each tab. */
