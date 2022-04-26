@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.10.1...v7.0.0) (2022-04-26)
+
+### ⚠ BREAKING CHANGES
+
+- ListEntries now uses intrinsic height; components using it
+  can provide a className if they need to set a fixed height.
+- The exports option is more strict regarding imports,
+  only official exports can be imported in other packages.
+- All references to deprecated items must be replaced with
+  suggested alternatives before using this version.
+
+### Features
+
+- remove all deprecated items ([809180a](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/809180a3f8c46626558c4b358ce5f763f51cfca5))
+- remove hardcoded height from ListEntries ([5d3b095](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/5d3b095ee763706ad3089d9cbc4ba006406e03b0))
+- use exports in package.json ([e0c8308](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/e0c8308d03869b638a26a8113c3dd0d4361574d6))
+
+### Bug Fixes
+
+- allow values of any type in Tabs.currentTab ([cfcc23f](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/cfcc23feedb1970f01741201e85850801e0cb0e7))
+
 ### [6.10.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.10.0...v6.10.1) (2022-04-05)
 
 ### Bug Fixes
