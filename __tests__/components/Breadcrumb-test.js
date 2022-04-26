@@ -15,13 +15,6 @@ describe('Breadcrumb', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
-
-		it('renders expected elements when breadcrumb is set', () => {
-			const action0 = jest.fn();
-			const action1 = jest.fn();
-			const wrapper = shallow(<Breadcrumb title="Test" breadcrumb={[action0, action1]} />);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
 	});
 
 	describe('behaviour', () => {

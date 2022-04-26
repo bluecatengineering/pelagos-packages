@@ -1,12 +1,14 @@
 import {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 
-import {hasFatalError} from '../toasts/ToastFunctions';
+import ToastTypes from '../toasts/ToastTypes';
 
 import ToastMessage from './ToastMessage';
 import './Toast.less';
 
 const duration = 150;
+
+const hasFatalError = (messages) => messages.some((m) => m.type === ToastTypes.FATAL);
 
 const createAnimation = (id) =>
 	document.getElementById(`toast-${id}`).animate(

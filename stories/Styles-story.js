@@ -38,7 +38,7 @@ export const Fonts = () => (
 							>
 								{key}
 							</td>
-							<td>{key.endsWith('-uc') ? '(deprecated)' : fontUsage[key]}</td>
+							<td>{fontUsage[key]}</td>
 						</tr>
 					))}
 			</tbody>

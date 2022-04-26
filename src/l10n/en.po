@@ -77,24 +77,8 @@ msgstr ""
 msgid "Copy failed: {message}"
 msgstr ""
 
-#: c96
-msgid "Create a new {singularName}."
-msgstr ""
-
 #: f6f
 msgid "Delete"
-msgstr ""
-
-#: 053
-msgid "Delete {singularName} \"{name}\"?"
-msgstr ""
-
-#: 704
-msgid "Delete {titleName}"
-msgstr ""
-
-#: 4fd
-msgid "Deleting this {singularName} will remove it permanently."
 msgstr ""
 
 #: 70a
@@ -103,10 +87,6 @@ msgstr ""
 
 #: 530
 msgid "Edit"
-msgstr ""
-
-#: d7d
-msgid "Filter"
 msgstr ""
 
 #: 8f2
@@ -119,14 +99,6 @@ msgstr ""
 
 #: 8ab
 msgid "Next month"
-msgstr ""
-
-#: ecf
-msgid "No {pluralName} have been created. {canEdit, select, true {To create one click the Add button.} other {}}"
-msgstr ""
-
-#: 5c2
-msgid "Only an administrator can perform this action."
 msgstr ""
 
 #: 6bf
@@ -143,14 +115,6 @@ msgstr ""
 
 #: df7
 msgid "Remove {name}"
-msgstr ""
-
-#: 3c5
-msgid "Retrieving {pluralName}..."
-msgstr ""
-
-#: 7f9
-msgid "There are no {pluralName} that match your filter."
 msgstr ""
 
 #: ea2

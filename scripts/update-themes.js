@@ -11,7 +11,6 @@ const HEADER = [
 	'',
 	"@import 'colors';",
 	"@import 'shadows';",
-	"@import 'deprecated-color-tokens';",
 	'',
 ];
 
@@ -36,7 +35,6 @@ const themeFooter = (key) => {
 	return `${SHADOWS.map((n) => `\t--shadow-${n}: @shadow-${kind}-${n};`).join('\n')}
 \t--print-color: @black;
 \t--print-medium: fade(@black, 65%);
-\t.deprecated-color-tokens();
 `;
 };
 

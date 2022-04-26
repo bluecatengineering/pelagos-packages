@@ -1,177 +1,22 @@
-# This file is used to generate colors.less and Colors.js,
+# This file is used to generate colors.less
 # it will be processed on commit, to generate manually run `npm run update-colors`
 
-crystal:
-  value: '#99daff'
-  tags: [dark]
-iceberg:
-  value: '#57beff'
-  tags: [dark]
-azure:
-  value: '#33b1ff'
-  tags: [dark]
-ocean:
-  value: '#00539a'
-  tags: [dark]
-oxford:
-  value: '#061727'
-  tags: [dark]
-sky:
-  value: '#bae6ff'
-  tags: [dark]
-bondi:
-  value: '#1192e8'
-  tags: [dark]
-emerald:
-  value: '#6fdc8c'
-  tags: [dark]
-dartmouth:
-  value: '#0e6027'
-  tags: [dark]
-persian:
-  value: '#009d9a'
-  tags: [dark]
-neon:
-  value: '#6fdc8c'
-  tags: [dark]
-violet:
-  value: '#8a3ffc'
-  tags: [dark]
-burnt:
-  value: '#d47300'
-  tags: [dark, light]
-goldenrod:
-  value: '#d2a106'
-  tags: [dark]
-battleship:
-  value: '#525252'
-  tags: [dark]
-prussian:
-  value: '#012749'
-  tags: [dark]
-fiord:
-  value: '#4d5358'
-  tags: [dark]
-slate:
-  value: '#697077'
-  tags: [dark]
-silver:
-  value: '#a2a9b0'
-  tags: [dark]
 black:
   value: '#000000'
-  tags: [dark, light, global]
+  tags: [global]
 white:
   value: '#ffffff'
-  tags: [dark, light, global]
-
-bg-01:
-  value: '#001f38'
-  tags: [dark, background]
-bg-02:
-  value: '#00213b'
-  tags: [dark, background]
-bg-03:
-  value: '#05233c'
-  tags: [dark, background]
-bg-04:
-  value: '#05263e'
-  tags: [dark, background]
-bg-06:
-  value: '#08283f'
-  tags: [dark, background]
-bg-08:
-  value: '#0a2942'
-  tags: [dark, background]
-bg-12:
-  value: '#0d2c46'
-  tags: [dark, background]
-bg-16:
-  value: '#102e47'
-  tags: [dark, background]
-bg-24:
-  value: '#13304a'
-  tags: [dark, background]
-
-federal:
-  value: '#00539a'
-  tags: [light]
-cobalt:
-  value: '#0072c3'
-  tags: [light]
-pacific:
-  value: '#1192e8'
-  tags: [light]
-maya:
-  value: '#33b1ff'
-  tags: [light]
-capri:
-  value: '#82cfff'
-  tags: [light]
-baby:
-  value: '#bae6ff'
-  tags: [light]
-marian:
-  value: '#e5f6ff'
-  tags: [light]
-brunswick:
-  value: '#022b30'
-  tags: [light]
-hunter:
-  value: '#007d79'
-  tags: [light]
-jade:
-  value: '#009d9a'
-  tags: [light]
-celadon:
-  value: '#9ef0f0'
-  tags: [light]
-cream:
-  value: '#fcf4d6'
-  tags: [light]
-duke:
-  value: '#001d6c'
-  tags: [light]
-periwinkle:
-  value: '#d4bbff'
-  tags: [light]
-mulberry:
-  value: '#ff7eb6'
-  tags: [light]
-palepink:
-  value: '#ffd7d9'
-  tags: [light]
-gray5:
-  value: '#393939'
-  tags: [light]
-gray4:
-  value: '#6f6f6f'
-  tags: [light]
-gray3:
-  value: '#c6c6c6'
-  tags: [light]
-gray2:
-  value: '#e0e0e0'
-  tags: [light]
-gray1:
-  value: '#f4f4f4'
-  tags: [light]
+  tags: [global]
 
 yellow:
   normal: ['#fcf4d6', '#fddc69', '#f1c21b', '#d2a106', '#b28600', '#8e6a00', '#684e00', '#483700', '#302400', '#1c1500']
   hover: ['#f8e6a0', '#fccd27', '#ddb00e', '#bc9005', '#9e7700', '#755800', '#806000', '#5c4600', '#3d2e00', '#332600']
-  value: '#fddc69'
-  tags: [light]
 orange:
   normal: ['#fcf3e7', '#f9dcbb', '#f3bd7d', '#ec9008', '#d47300', '#a85b00', '#7c4200', '#543000', '#381e00', '#201200']
   hover: ['#fae4ca', '#f6ca99', '#efa64a', '#e27b00', '#b86401', '#8e4e01', '#975101', '#693b01', '#492800', '#3b2200']
-  value: '#ec9008'
-  tags: [dark, light]
 red:
   normal: ['#fff1f1', '#ffd7d9', '#ffb3b8', '#ff8389', '#fa4d56', '#da1e28', '#a2191f', '#750e13', '#520408', '#2d0709']
   hover: ['#ffe0e0', '#ffc2c5', '#ff99a0', '#ff6168', '#ee0713', '#b81922', '#c21e25', '#921118', '#66050a', '#540d11']
-  value: '#da1e28'
-  tags: [dark, light]
 magenta:
   normal: ['#fff0f7', '#ffd6e8', '#ffafd2', '#ff7eb6', '#ee5396', '#d02670', '#9f1853', '#740937', '#510224', '#2a0a18']
   hover: ['#ffe0ef', '#ffbdda', '#ff94c3', '#ff57a0', '#e3176f', '#b0215f', '#bf1d63', '#8e0b43', '#68032e', '#53142f']
@@ -181,8 +26,6 @@ purple:
 blue:
   normal: ['#edf5ff', '#d0e2ff', '#a6c8ff', '#78a9ff', '#4589ff', '#0f62fe', '#0043ce', '#002d9c', '#001d6c', '#001141']
   hover: ['#dbebff', '#b8d3ff', '#8ab6ff', '#5c97ff', '#1f70ff', '#0050e6', '#0053ff', '#0039c7', '#00258a', '#001f75']
-  value: '#002d9c'
-  tags: [light]
 cyan:
   normal: ['#e5f6ff', '#bae6ff', '#82cfff', '#33b1ff', '#1192e8', '#0072c3', '#00539a', '#003a6d', '#012749', '#061727']
   hover: ['#cceeff', '#99daff', '#57beff', '#059fff', '#0f7ec8', '#005fa3', '#0066bd', '#00498a', '#013360', '#0b2947']

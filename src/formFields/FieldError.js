@@ -14,8 +14,6 @@ FieldError.propTypes = {
 	id: PropTypes.string,
 	/** The error text. */
 	text: PropTypes.string,
-	/** @deprecated error messages are now always aligned to the left. */
-	alignment: PropTypes.oneOf(['left', 'right']),
 };
 
 export default FieldError;

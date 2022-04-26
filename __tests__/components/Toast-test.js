@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 
 import Toast from '../../src/components/Toast';
 import ToastMessage from '../../src/components/ToastMessage';
-import {hasFatalError} from '../../src/toasts/ToastFunctions';
+import ToastTypes from '../../src/toasts/ToastTypes';
 
 jest.unmock('../../src/components/Toast');
 
@@ -23,12 +23,10 @@ describe('Toast', () => {
 		});
 
 		it('renders modal backdrop when hasFatalError returns true', () => {
-			const messages = [{id: 'foo'}];
-			hasFatalError.mockReturnValue(true);
+			const messages = [{id: 'foo', type: ToastTypes.FATAL}];
 			useState.mockReturnValueOnce([[<div key="foo" />, <div key="bar" />]]);
 			const wrapper = shallow(<Toast messages={messages} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(hasFatalError.mock.calls).toEqual([[messages]]);
 		});
 	});
 
@@ -47,7 +45,7 @@ describe('Toast', () => {
 			const animationsRef = {};
 			useRef.mockReturnValueOnce(animationsRef).mockReturnValueOnce({}).mockReturnValueOnce({});
 			useState.mockReturnValueOnce([[{key: 'foo'}]]);
-			shallow(<Toast />);
+			shallow(<Toast messages={[]} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction]);
 
 			useEffect.mock.calls[0][0]();
@@ -68,7 +66,7 @@ describe('Toast', () => {
 		it('adds an effect which creates animations for new children', () => {
 			const enteringRef = {current: ['foo']};
 			useRef.mockReturnValueOnce({current: {}}).mockReturnValueOnce(enteringRef).mockReturnValueOnce({});
-			shallow(<Toast />);
+			shallow(<Toast messages={[]} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction]);
 
 			useEffect.mock.calls[0][0]();
@@ -94,7 +92,7 @@ describe('Toast', () => {
 			const setChildren = jest.fn();
 			useRef.mockReturnValueOnce({current: animations}).mockReturnValueOnce({}).mockReturnValueOnce(leavingRef);
 			useState.mockReturnValueOnce([[], setChildren]);
-			shallow(<Toast />);
+			shallow(<Toast messages={[]} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction]);
 
 			useEffect.mock.calls[0][0]();

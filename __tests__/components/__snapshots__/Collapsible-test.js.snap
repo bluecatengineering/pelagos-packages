@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Collapsible rendering renders expected elements when className is set 1`] = `
+exports[`Collapsible rendering renders expected elements 1`] = `
 <div
   className="Collapsible TestClass"
   id="test"
@@ -12,11 +12,7 @@ exports[`Collapsible rendering renders expected elements when className is set 1
     id="test-header"
     type="button"
   >
-    <div
-      className="Collapsible__title Collapsible--l1"
-    >
-      Test
-    </div>
+    cloneWithClassName
     <SvgIcon
       className="Collapsible__arrow Collapsible__arrow--open"
       icon={
@@ -37,44 +33,7 @@ exports[`Collapsible rendering renders expected elements when className is set 1
 </div>
 `;
 
-exports[`Collapsible rendering renders expected elements when open is true and id is set 1`] = `
-<div
-  className="Collapsible"
-  id="test"
->
-  <button
-    aria-controls="test-content"
-    aria-expanded={true}
-    className="Collapsible__header"
-    id="test-header"
-    type="button"
-  >
-    <div
-      className="Collapsible__title Collapsible--l1"
-    >
-      Test
-    </div>
-    <SvgIcon
-      className="Collapsible__arrow Collapsible__arrow--open"
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "angle-down",
-          "prefix": "fas",
-        }
-      }
-    />
-  </button>
-  <div
-    aria-labelledby="test-header"
-    className="addClassName"
-    id="test-content"
-    role="region"
-  />
-</div>
-`;
-
-exports[`Collapsible rendering renders expected elements when two children are passed 1`] = `
+exports[`Collapsible rendering renders expected elements when className is set 1`] = `
 <div
   className="Collapsible TestClass"
   id="test"
@@ -119,11 +78,7 @@ exports[`Collapsible rendering sets a random id if not provided 1`] = `
     id="e1-header"
     type="button"
   >
-    <div
-      className="Collapsible__title Collapsible--l1"
-    >
-      Test
-    </div>
+    cloneWithClassName
     <SvgIcon
       className="Collapsible__arrow"
       icon={
