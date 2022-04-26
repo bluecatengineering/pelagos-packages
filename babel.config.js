@@ -12,10 +12,7 @@ module.exports = {
 			sourceMaps: 'both',
 			presets: [['@babel/env', {loose: true, targets: {node: true}}]],
 		},
-		es5: {
-			presets: [['@babel/env', {loose: true, modules: false, useBuiltIns: 'usage', corejs: 3, targets: {ie: '11'}}]],
-		},
-		es6: {
+		production: {
 			presets: [['@babel/env', {loose: true, modules: false, targets: {chrome: '69', firefox: '61'}}]],
 		},
 	},

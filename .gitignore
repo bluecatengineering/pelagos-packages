@@ -2,6 +2,5 @@
 .out/
 build/
 coverage/
-es5/
-es6/
+dist/
 node_modules/

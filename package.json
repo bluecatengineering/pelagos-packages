@@ -3,13 +3,15 @@
   "version": "6.10.1",
   "description": "UI components",
   "license": "ISC",
+  "sideEffects": [
+    "*.less"
+  ],
   "scripts": {
     "init-scope": "npm config set @bluecat:registry https://artifactory.bluecatlabs.net/api/npm/bcn-npm-dev-local/",
     "fix-auth": "npm config set //artifactory.bluecatlabs.net/api/npm/bcn-npm-dev-local/:always-auth true",
     "set-token": "npm config set //artifactory.bluecatlabs.net/api/npm/bcn-npm-dev-local/:_authToken ${NPM_TOKEN}",
-    "build:es5": "rm -rf es5 && BABEL_ENV=es5 babel -d es5 src && npm run copy-resources es5",
-    "build:es6": "rm -rf es6 && BABEL_ENV=es6 babel -d es6 src && npm run copy-resources es6",
-    "build": "npm run update-colors && npm run update-elevations && npm run update-fonts && npm run update-shadows && npm run update-spacing && npm run update-themes && npm run build:es5 && npm run build:es6",
+    "build:dist": "rm -rf dist && babel -d dist --env-name production src && npm run copy-resources dist",
+    "build": "npm run update-colors && npm run update-elevations && npm run update-fonts && npm run update-shadows && npm run update-spacing && npm run update-themes && npm run build:dist",
     "test": "jest --verbose",
     "test-ci": "jest --ci --silent --reporters=jest-junit --coverageReporters=cobertura",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -35,12 +37,15 @@
     "react"
   ],
   "files": [
-    "index.js",
     "defs",
-    "es5",
-    "es6",
+    "dist",
     "less"
   ],
+  "exports": {
+    ".": "./dist",
+    "./defs/": "./defs/",
+    "./less/": "./less/"
+  },
   "dependencies": {
     "@bluecat/helpers": "^0.9.2",
     "@bluecat/l10n-core": "^0.1.1",
