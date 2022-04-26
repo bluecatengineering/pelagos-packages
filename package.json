@@ -96,11 +96,10 @@
     "raw-loader": "^4.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.6",
     "standard-version": "^9.3.2",
     "stylelint": "^14.2.0",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^24.0.0",
+    "stylelint-config-standard": "^25.0.0",
     "yaml-loader": "^0.6.0"
   },
   "eslintConfig": {
