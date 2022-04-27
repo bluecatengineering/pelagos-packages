@@ -67,7 +67,7 @@
     "@bluecat/jest-helpers": "^2.0.1",
     "@bluecat/l10n-cli": "^0.1.1",
     "@bluecat/l10n-icu2obj": "^0.1.1",
-    "@bluecat/l10n-jest": "^0.1.1",
+    "@bluecat/l10n-jest": "^0.2.0",
     "@bluecat/l10n-loader": "^0.1.1",
     "@bluecat/l10n.macro": "^0.1.1",
     "@bluecat/stylelint-config": "^3.0.1",
@@ -84,7 +84,7 @@
     "enzyme": "^3.11.0",
     "eslint": "^8.6.0",
     "husky": "^7.0.4",
-    "jest": "^27.4.7",
+    "jest": "^28.0.2",
     "jest-junit": "^13.0.0",
     "js-yaml": "^4.1.0",
     "less": "^4.1.2",
@@ -134,6 +134,9 @@
         "statements": 100
       }
     },
+    "fakeTimers": {
+      "enableGlobally": true
+    },
     "moduleNameMapper": {
       "^react$": "@bluecat/jest-helpers/mock-react",
       "^react-dom$": "@bluecat/jest-helpers/mock-react",
@@ -146,8 +149,6 @@
     "setupFilesAfterEnv": [
       "@bluecat/jest-helpers/setup-enzyme"
     ],
-    "testEnvironment": "node",
-    "timers": "fake",
     "transform": {
       "\\.js$": "babel-jest",
       "\\.po$": "@bluecat/l10n-jest"
