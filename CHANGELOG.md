@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.0.0...v7.0.1) (2022-04-27)
+
+### Bug Fixes
+
+- fix exports specification ([45e671f](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/45e671f897956771a5cdb6c748fbcd14e3879fcf))
+
 ## [7.0.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v6.10.1...v7.0.0) (2022-04-26)
 
 ### ⚠ BREAKING CHANGES
