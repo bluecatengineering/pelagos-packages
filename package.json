@@ -42,7 +42,7 @@
     "less"
   ],
   "exports": {
-    ".": "./dist",
+    ".": "./dist/index.js",
     "./defs/": "./defs/",
     "./less/": "./less/"
   },
