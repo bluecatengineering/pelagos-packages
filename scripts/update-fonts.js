@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const {load} = require('js-yaml');
+const {parse} = require('yaml');
 
 const IN = 'defs/fonts.yaml';
 const LESS = 'less/fonts.less';
@@ -13,7 +13,7 @@ const HEADER = [
 	'',
 ];
 
-const fonts = Object.entries(load(readFileSync(IN, 'utf8')));
+const fonts = Object.entries(parse(readFileSync(IN, 'utf8')));
 
 writeFileSync(
 	LESS,

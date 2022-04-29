@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const {load} = require('js-yaml');
+const {parse} = require('yaml');
 
 const IN = 'defs/spacing.yaml';
 const LESS = 'less/spacing.less';
@@ -11,7 +11,7 @@ const HEADER = [
 	'',
 ];
 
-const spacing = Object.entries(load(readFileSync(IN, 'utf8')));
+const spacing = Object.entries(parse(readFileSync(IN, 'utf8')));
 
 writeFileSync(
 	LESS,

@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const {load} = require('js-yaml');
+const {parse} = require('yaml');
 
 const IN = 'defs/themes.yaml';
 const LESS = 'less/themes.less';
@@ -18,7 +18,7 @@ const FOOTER = ['.theme-dark() {', '\t.theme-yg100();', '}', '', '.theme-light()
 
 const SHADOWS = ['01', '02', '03', '04', '06', '08', '12', '16', '24'];
 
-const themes = Object.entries(load(readFileSync(IN, 'utf8')));
+const themes = Object.entries(parse(readFileSync(IN, 'utf8')));
 
 const valueToLess = (value) => {
 	const match = /^(.+)\/(\d+%)$/.exec(value);

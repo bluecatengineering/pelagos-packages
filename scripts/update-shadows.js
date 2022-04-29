@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const {load} = require('js-yaml');
+const {parse} = require('yaml');
 
 const IN = 'defs/shadows.yaml';
 const LESS = 'less/shadows.less';
@@ -11,7 +11,7 @@ const HEADER = [
 	'',
 ];
 
-const {levels, base, dark, light} = load(readFileSync(IN, 'utf8'));
+const {levels, base, dark, light} = parse(readFileSync(IN, 'utf8'));
 
 const color = (alpha) => `rgba(0, 0, 0, ${alpha})`;
 

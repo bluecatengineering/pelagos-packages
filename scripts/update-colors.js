@@ -1,6 +1,6 @@
 const {readFileSync, writeFileSync} = require('fs');
 
-const {load} = require('js-yaml');
+const {parse} = require('yaml');
 
 const IN = 'defs/colors.yaml';
 const LESS = 'less/colors.less';
@@ -11,7 +11,7 @@ const HEADER = [
 	'',
 ];
 
-const colors = Object.entries(load(readFileSync(IN, 'utf8')));
+const colors = Object.entries(parse(readFileSync(IN, 'utf8')));
 
 const toLess = ([key, {value}]) => `@${key}: ${value};`;
 
