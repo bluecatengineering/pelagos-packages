@@ -6,7 +6,7 @@ export const Normal = Template.bind({});
 Normal.args = {text: 'Normal'};
 
 export const Optional = Template.bind({});
-Optional.args = {text: 'Optional', optional: '(optional)'};
+Optional.args = {text: 'Optional', optional: true};
 
 export const Notice = Template.bind({});
 Notice.args = {text: 'Notice', notice: '(notice)'};

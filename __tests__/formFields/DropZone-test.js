@@ -1,8 +1,11 @@
 import {shallow} from 'enzyme';
 
 import DropZone from '../../src/formFields/DropZone';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/formFields/DropZone');
+
+useRandomId.mockReturnValue('test');
 
 describe('DropZone', () => {
 	describe('rendering', () => {

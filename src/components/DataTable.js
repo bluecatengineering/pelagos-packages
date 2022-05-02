@@ -371,7 +371,7 @@ const DataTable = ({
 				>
 					{!empty && [
 						fetchingPrevPage && (
-							<tr>
+							<tr key="*loading-previous*">
 								<td className="DataTable__spinner" colSpan={columnCount}>
 									<Spinner size="tiny" />
 								</td>
@@ -379,7 +379,7 @@ const DataTable = ({
 						),
 						renderRows(sortedData, metadata, columns, selectedId, highlightId, focused, getRowId),
 						fetchingNextPage && (
-							<tr>
+							<tr key="*loading-next*">
 								<td className="DataTable__spinner" colSpan={columnCount}>
 									<Spinner size="tiny" />
 								</td>

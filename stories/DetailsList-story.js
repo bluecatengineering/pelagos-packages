@@ -1,6 +1,10 @@
 import {DetailsList} from '../src';
 
-const renderItem = (item, className) => <div className={className}>{item}</div>;
+const renderItem = (item, className) => (
+	<div key={item} className={className}>
+		{item}
+	</div>
+);
 
 const Template = (args) => <DetailsList {...args} />;
 

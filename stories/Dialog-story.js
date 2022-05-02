@@ -10,7 +10,7 @@ Normal.args = {
 	children: [
 		<div key="body">{body}</div>,
 		<div key="buttons">
-			<Button text="Button" active />
+			<Button text="Button" type="primary" />
 		</div>,
 	],
 };

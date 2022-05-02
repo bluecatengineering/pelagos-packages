@@ -4,10 +4,13 @@ import {shallow} from 'enzyme';
 import TagInput from '../../src/components/TagInput';
 import useTooltip from '../../src/hooks/useTooltip';
 import setLiveText from '../../src/functions/setLiveText';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/TagInput');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && (f.cancel = jest.fn()), f)));
+
+useRandomId.mockReturnValue('test');
 
 describe('TagInput', () => {
 	describe('rendering', () => {

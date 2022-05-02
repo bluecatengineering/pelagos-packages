@@ -6,6 +6,7 @@ import {faCloudUploadAlt} from '@fortawesome/free-solid-svg-icons';
 
 import LabelLine from '../components/LabelLine';
 import SvgIcon from '../components/SvgIcon';
+import useRandomId from '../hooks/useRandomId';
 
 import FieldError from './FieldError';
 import FieldHelper from './FieldHelper';
@@ -62,6 +63,7 @@ const DropZone = ({
 	asFile,
 	onDrop,
 }) => {
+	id = useRandomId(id);
 	const readFile = useCallback(
 		(file) => {
 			if (file) {
@@ -135,7 +137,7 @@ const DropZone = ({
 
 DropZone.propTypes = {
 	/** The component id. */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The label text. */

@@ -5,6 +5,7 @@ import {t} from '@bluecat/l10n.macro';
 
 import setLiveText from '../functions/setLiveText';
 import useTooltip from '../hooks/useTooltip';
+import useRandomId from '../hooks/useRandomId';
 import timesThin from '../icons/timesThin';
 
 import Layer from './Layer';
@@ -24,6 +25,7 @@ const hasTag = (tags, value) => {
 
 /** A component to enter tags. */
 const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, onChange, onError, ...props}) => {
+	id = useRandomId(id);
 	const inputRef = useRef(null);
 
 	const [text, setText] = useState('');
@@ -143,7 +145,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 
 TagInput.propTypes = {
 	/** The component id. */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/** The entered tags. */
 	tags: PropTypes.array.isRequired,
 	/** The default tags. */

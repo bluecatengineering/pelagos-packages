@@ -1,12 +1,14 @@
 import {TagInput} from '../src';
 
+const validate = () => true;
+
 const Template = (args) => <TagInput {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {'aria-label': 'Normal', tags: ['Alpha'], helperText: 'Helper text'};
+Normal.args = {'aria-label': 'Normal', tags: ['Alpha'], validate};
 
 export const Defaults = Template.bind({});
-Defaults.args = {'aria-label': 'Defaults', defaultTags: ['Alpha'], tags: []};
+Defaults.args = {'aria-label': 'Defaults', defaultTags: ['Alpha'], tags: [], validate};
 
 export default {
 	title: 'Components/TagInput',
