@@ -1,0 +1,25 @@
+@import '../../less/spacing';
+@import '../../less/utils';
+
+.DataTable {
+	position: relative;
+	margin-top: @sp-16;
+	outline: none;
+	background-color: var(--layer);
+
+	@media print {
+		background-color: transparent;
+	}
+}
+
+.DataTable--clickable tbody tr {
+	cursor: pointer;
+}
+
+.DataTable--highlight {
+	animation: highlight-fade 2s ease-out;
+}
+
+.DataTable__spinner {
+	position: relative;
+}

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectNative rendering renders expected elements 1`] = `
+<span
+  className="SelectNative"
+>
+  <select
+    className="SelectNative__select"
+    id="test"
+  >
+    <option />
+  </select>
+  <SelectArrow
+    className="SelectNative__arrow"
+  />
+</span>
+`;
+
+exports[`SelectNative rendering renders expected elements when className is set 1`] = `
+<span
+  className="SelectNative"
+>
+  <select
+    className="SelectNative__select TestClass"
+    id="test"
+  >
+    <option />
+  </select>
+  <SelectArrow
+    className="SelectNative__arrow"
+  />
+</span>
+`;

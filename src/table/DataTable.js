@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash-es/throttle';
 import stableSort from 'stable';
 import {buildHighlighter, scrollToItem, smoothScroll} from '@bluecat/helpers';
-import {faSort, faSortDown, faSortUp} from '@fortawesome/free-solid-svg-icons';
 
-import SvgIcon from './SvgIcon';
-import Spinner from './Spinner';
+import Spinner from '../components/Spinner';
+
+import TableScrollWrapper from './TableScrollWrapper';
+import Table from './Table';
+import TableHead from './TableHead';
+import TableBody from './TableBody';
+import TableRow from './TableRow';
+import TableHeader from './TableHeader';
+import TableCell from './TableCell';
 import './DataTable.less';
+import TableEmpty from './TableEmpty';
 
 const getRow = (element, index) => element.firstChild.tBodies[0].childNodes[index];
 
@@ -40,59 +47,42 @@ const sortData = (data, metadata, dataSort, defaultSortColumnId) => {
 const mapColumns = (metadata, columns, f) => (columns ? columns.map((c) => f(metadata[c])) : metadata.map(f));
 
 const renderHeaders = (metadata, columns, dataSort) =>
-	mapColumns(metadata, columns, ({id, sortable, style, header}) => {
-		if (!sortable) {
-			return (
-				<th key={id} style={style}>
-					{header}
-				</th>
-			);
-		}
-
-		const sortOrder = dataSort && dataSort.columnId === id ? dataSort.order : null;
-		const ariaSort = sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none';
-		return (
-			<th key={id} aria-sort={ariaSort}>
-				<button
-					className={`DataTable__sort${sortOrder ? ' DataTable__sort--active' : ''}`}
-					type="button"
-					data-column={id}
-				>
-					<div className="DataTable__sortLabel" style={style}>
-						{header}
-					</div>
-					<SvgIcon
-						className="DataTable__sortIcon"
-						icon={sortOrder === 'a' ? faSortUp : sortOrder === 'd' ? faSortDown : faSort}
-					/>
-				</button>
-			</th>
-		);
-	});
+	mapColumns(metadata, columns, ({id, width, sortable, align, style, header}) => (
+		<TableHeader
+			key={id}
+			align={align || style?.textAlign}
+			sortable={sortable}
+			sortOrder={dataSort && dataSort.columnId === id ? dataSort.order : null}
+			style={{width}}
+			data-column={id}
+		>
+			{header}
+		</TableHeader>
+	));
 
 const renderRows = (data, metadata, columns, selectedId, highlightId, focused, getRowId) =>
 	data.map((row, rowIndex) => {
 		const rowId = getRowId(row, rowIndex);
 		return (
-			<tr
+			<TableRow
 				key={rowIndex}
 				id={rowId}
 				className={rowId === highlightId ? 'DataTable--highlight' : ''}
 				tabIndex={focused === rowIndex ? 0 : -1}
-				aria-selected={selectedId === rowId}
+				selected={selectedId === rowId}
 				data-index={rowIndex}
 			>
-				{mapColumns(metadata, columns, ({id, style, hoverValue, className, value}) => (
-					<td
+				{mapColumns(metadata, columns, ({id, align, style, hoverValue, className, value}) => (
+					<TableCell
 						key={id}
-						style={style}
+						align={align || style?.textAlign}
 						title={hoverValue ? value(row, rowIndex) : ''}
 						className={className ? className(row, rowIndex) : null}
 					>
 						{value(row, rowIndex)}
-					</td>
+					</TableCell>
 				))}
-			</tr>
+			</TableRow>
 		);
 	});
 
@@ -183,7 +173,7 @@ const DataTable = ({
 
 	const handleHeaderClick = useCallback(
 		(event) => {
-			const sort = event.target.closest('.DataTable__sort');
+			const sort = event.target.closest('th');
 			if (sort) {
 				updateSortColumn(sort.dataset.column);
 			}
@@ -349,21 +339,24 @@ const DataTable = ({
 	const columnCount = columns?.length ?? metadata.length;
 	const empty = data.length === 0;
 	return (
-		<div id={id} className={`DataTable${className ? ` ${className}` : ''}`} tabIndex="-1" ref={containerRef}>
-			<table
+		<TableScrollWrapper
+			id={id}
+			className={`DataTable${className ? ` ${className}` : ''}`}
+			tabIndex="-1"
+			ref={containerRef}
+		>
+			<Table
 				id={`${id}-table`}
-				className={`DataTable__table DataTable--${rowMode}${onRowClick ? ' DataTable--clickable' : ''}`}
-				role="grid"
+				className={`DataTable__table${onRowClick ? ' DataTable--clickable' : ''}`}
+				role={onRowClick ? 'grid' : 'table'}
+				rowMode={rowMode}
+				stickyHeader
+				fixedLayout
 			>
-				<colgroup>
-					{mapColumns(metadata, columns, ({id, width}) => (
-						<col key={id} width={width} />
-					))}
-				</colgroup>
-				<thead onClick={handleHeaderClick}>
-					<tr>{renderHeaders(metadata, columns, dataSort)}</tr>
-				</thead>
-				<tbody
+				<TableHead onClick={handleHeaderClick}>
+					<TableRow>{renderHeaders(metadata, columns, dataSort)}</TableRow>
+				</TableHead>
+				<TableBody
 					onMouseDown={onRowClick ? handleMouseDown : null}
 					onClick={onRowClick ? handleClick : null}
 					onKeyDown={onRowClick && !empty ? handleKeyDown : null}
@@ -371,32 +364,30 @@ const DataTable = ({
 				>
 					{!empty && [
 						fetchingPrevPage && (
-							<tr key="*loading-previous*">
-								<td className="DataTable__spinner" colSpan={columnCount}>
+							<TableRow key="*loading-previous*">
+								<TableCell className="DataTable__spinner" colSpan={columnCount}>
 									<Spinner size="tiny" />
-								</td>
-							</tr>
+								</TableCell>
+							</TableRow>
 						),
-						renderRows(sortedData, metadata, columns, selectedId, highlightId, focused, getRowId),
+						...renderRows(sortedData, metadata, columns, selectedId, highlightId, focused, getRowId),
 						fetchingNextPage && (
-							<tr key="*loading-next*">
-								<td className="DataTable__spinner" colSpan={columnCount}>
+							<TableRow key="*loading-next*">
+								<TableCell className="DataTable__spinner" colSpan={columnCount}>
 									<Spinner size="tiny" />
-								</td>
-							</tr>
+								</TableCell>
+							</TableRow>
 						),
 					]}
-				</tbody>
-			</table>
+				</TableBody>
+			</Table>
 			{empty &&
 				(fetchingNextPage ? (
 					<Spinner id={`${id}-loading`} size="large" />
 				) : emptyTableText ? (
-					<div id={`${id}-tableMessage`} className="DataTable__message">
-						{emptyTableText}
-					</div>
+					<TableEmpty id={`${id}-tableMessage`}>{emptyTableText}</TableEmpty>
 				) : null)}
-		</div>
+		</TableScrollWrapper>
 	);
 };
 
@@ -412,8 +403,10 @@ DataTable.propTypes = {
 			header: PropTypes.any.isRequired,
 			value: PropTypes.func.isRequired,
 			width: PropTypes.string.isRequired,
+			align: PropTypes.oneOf(['left', 'center', 'right']),
 			className: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 			hoverValue: PropTypes.bool,
+			/** @deprecated use align instead. */
 			style: PropTypes.object,
 			sortable: PropTypes.bool,
 			sortComparator: PropTypes.func,

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableToolbar rendering renders expected elements 1`] = `
+<div
+  className="Table__toolbar"
+>
+  <TableToolbarDefault />
+</div>
+`;
+
+exports[`TableToolbar rendering renders expected elements when className is set 1`] = `
+<div
+  className="Table__toolbar TestClass"
+>
+  <TableToolbarDefault />
+</div>
+`;

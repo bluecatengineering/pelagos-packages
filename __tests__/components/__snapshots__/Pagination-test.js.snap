@@ -1,0 +1,349 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination rendering renders expected elements 1`] = `
+<div
+  className="Pagination"
+  id="test"
+>
+  <div
+    className="Pagination__start"
+  >
+    <div
+      className="Pagination__count"
+    >
+      11-20 items
+    </div>
+  </div>
+  <div
+    className="Pagination__end"
+  >
+    <div>
+      page 2
+    </div>
+    <div
+      className="Pagination__buttons"
+    >
+      <IconButton
+        disabled={false}
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "chevron-left",
+            "prefix": "fas",
+          }
+        }
+        id="test-prev"
+        onClick={[Function]}
+        size="medium"
+        tooltipPlacement="right"
+        type="ghost"
+      />
+      <IconButton
+        disabled={false}
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "chevron-right",
+            "prefix": "fas",
+          }
+        }
+        id="test-next"
+        onClick={[Function]}
+        size="medium"
+        tooltipPlacement="right"
+        type="ghost"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pagination rendering renders expected elements when className is set 1`] = `
+<div
+  className="Pagination TestClass"
+  id="test"
+>
+  <div
+    className="Pagination__start"
+  >
+    <div
+      className="Pagination__count"
+    >
+      11-20 items
+    </div>
+  </div>
+  <div
+    className="Pagination__end"
+  >
+    <div>
+      page 2
+    </div>
+    <div
+      className="Pagination__buttons"
+    >
+      <IconButton
+        disabled={false}
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "chevron-left",
+            "prefix": "fas",
+          }
+        }
+        id="test-prev"
+        onClick={[Function]}
+        size="medium"
+        tooltipPlacement="right"
+        type="ghost"
+      />
+      <IconButton
+        disabled={false}
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "chevron-right",
+            "prefix": "fas",
+          }
+        }
+        id="test-next"
+        onClick={[Function]}
+        size="medium"
+        tooltipPlacement="right"
+        type="ghost"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pagination rendering renders expected elements when pageSizes is set 1`] = `
+<div
+  className="Pagination"
+  id="test"
+>
+  <div
+    className="Pagination__start"
+  >
+    <div
+      className="Pagination__pageSize"
+    >
+      <label
+        htmlFor="test-pageSize"
+      >
+        Items per page
+      </label>
+      <SelectNative
+        id="test-pageSize"
+        onChange={[Function]}
+      >
+        <option
+          selected={true}
+          value={10}
+        >
+          10
+        </option>
+        <option
+          selected={false}
+          value={20}
+        >
+          20
+        </option>
+      </SelectNative>
+    </div>
+    <div
+      className="Pagination__count"
+    >
+      11-20 items
+    </div>
+  </div>
+  <div
+    className="Pagination__end"
+  >
+    <div>
+      page 2
+    </div>
+    <div
+      className="Pagination__buttons"
+    >
+      <IconButton
+        disabled={false}
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "chevron-left",
+            "prefix": "fas",
+          }
+        }
+        id="test-prev"
+        onClick={[Function]}
+        size="medium"
+        tooltipPlacement="right"
+        type="ghost"
+      />
+      <IconButton
+        disabled={false}
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "chevron-right",
+            "prefix": "fas",
+          }
+        }
+        id="test-next"
+        onClick={[Function]}
+        size="medium"
+        tooltipPlacement="right"
+        type="ghost"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pagination rendering renders expected elements when totalItems is set 1`] = `
+<div
+  className="Pagination"
+  id="test"
+>
+  <div
+    className="Pagination__start"
+  >
+    <div
+      className="Pagination__count"
+    >
+      11-20 of 123 items
+    </div>
+  </div>
+  <div
+    className="Pagination__end"
+  >
+    <React.Fragment>
+      <label
+        htmlFor="test-page"
+      >
+        page
+      </label>
+      <SelectNative
+        id="test-page"
+        onChange={[Function]}
+      >
+        <option
+          selected={false}
+          value={1}
+        >
+          1
+        </option>
+        <option
+          selected={true}
+          value={2}
+        >
+          2
+        </option>
+        <option
+          selected={false}
+          value={3}
+        >
+          3
+        </option>
+        <option
+          selected={false}
+          value={4}
+        >
+          4
+        </option>
+        <option
+          selected={false}
+          value={5}
+        >
+          5
+        </option>
+        <option
+          selected={false}
+          value={6}
+        >
+          6
+        </option>
+        <option
+          selected={false}
+          value={7}
+        >
+          7
+        </option>
+        <option
+          selected={false}
+          value={8}
+        >
+          8
+        </option>
+        <option
+          selected={false}
+          value={9}
+        >
+          9
+        </option>
+        <option
+          selected={false}
+          value={10}
+        >
+          10
+        </option>
+        <option
+          selected={false}
+          value={11}
+        >
+          11
+        </option>
+        <option
+          selected={false}
+          value={12}
+        >
+          12
+        </option>
+        <option
+          selected={false}
+          value={13}
+        >
+          13
+        </option>
+      </SelectNative>
+      <div>
+        of 13
+      </div>
+    </React.Fragment>
+    <div
+      className="Pagination__buttons"
+    >
+      <IconButton
+        disabled={false}
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "chevron-left",
+            "prefix": "fas",
+          }
+        }
+        id="test-prev"
+        onClick={[Function]}
+        size="medium"
+        tooltipPlacement="right"
+        type="ghost"
+      />
+      <IconButton
+        disabled={false}
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "chevron-right",
+            "prefix": "fas",
+          }
+        }
+        id="test-next"
+        onClick={[Function]}
+        size="medium"
+        tooltipPlacement="right"
+        type="ghost"
+      />
+    </div>
+  </div>
+</div>
+`;

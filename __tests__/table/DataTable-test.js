@@ -2,9 +2,9 @@ import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 import {buildHighlighter, scrollToItem, smoothScroll} from '@bluecat/helpers';
 
-import DataTable from '../../src/components/DataTable';
+import DataTable from '../../src/table/DataTable';
 
-jest.unmock('../../src/components/DataTable');
+jest.unmock('../../src/table/DataTable');
 jest.unmock('stable');
 
 global.navigator = {};
@@ -635,7 +635,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('mousedown', event);
+			wrapper.find('TableBody').simulate('mousedown', event);
 
 			expect(closest.mock.calls).toEqual([['tr']]);
 			expect(setFocused.mock.calls).toEqual([[1]]);
@@ -656,7 +656,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('mousedown', event);
+			wrapper.find('TableBody').simulate('mousedown', event);
 
 			expect(closest.mock.calls).toEqual([['tr']]);
 			expect(setFocused).not.toHaveBeenCalled();
@@ -678,7 +678,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			wrapper.find('tbody').simulate('click', event);
+			wrapper.find('TableBody').simulate('click', event);
 
 			expect(closest.mock.calls).toEqual([['tr']]);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
@@ -700,7 +700,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			wrapper.find('tbody').simulate('click', event);
+			wrapper.find('TableBody').simulate('click', event);
 
 			expect(closest.mock.calls).toEqual([['tr']]);
 			expect(event.preventDefault).not.toHaveBeenCalled();
@@ -721,7 +721,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			const tbody = wrapper.find('tbody');
+			const tbody = wrapper.find('TableBody');
 
 			tbody.simulate('keydown', {keyCode: 13, preventDefault, nativeEvent});
 			tbody.simulate('keydown', {keyCode: 32, preventDefault, nativeEvent});
@@ -751,7 +751,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
@@ -780,7 +780,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
@@ -811,7 +811,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[4]]);
@@ -841,7 +841,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[4]]);
@@ -869,7 +869,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[4]]);
@@ -895,7 +895,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[0]]);
@@ -921,7 +921,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[1]]);
@@ -943,7 +943,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused).not.toHaveBeenCalled();
@@ -967,7 +967,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[3]]);
@@ -989,7 +989,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			wrapper.find('tbody').simulate('keydown', event);
+			wrapper.find('TableBody').simulate('keydown', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused).not.toHaveBeenCalled();
@@ -1007,7 +1007,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			const tbody = wrapper.find('tbody');
+			const tbody = wrapper.find('TableBody');
 
 			tbody.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
 			tbody.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
@@ -1031,7 +1031,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			wrapper.find('tbody').simulate('keyup', event);
+			wrapper.find('TableBody').simulate('keyup', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(onRowClick.mock.calls).toEqual([[testData[2]]]);
@@ -1051,7 +1051,7 @@ describe('DataTable', () => {
 					onRowClick={onRowClick}
 				/>
 			);
-			wrapper.find('tbody').simulate('keyup', event);
+			wrapper.find('TableBody').simulate('keyup', event);
 
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(onRowClick.mock.calls).toEqual([[testData[2]]]);
@@ -1069,7 +1069,7 @@ describe('DataTable', () => {
 					onRowClick={jest.fn()}
 				/>
 			);
-			const tbody = wrapper.find('tbody');
+			const tbody = wrapper.find('TableBody');
 
 			tbody.simulate('keyup', {keyCode: 13, shiftKey: true, preventDefault});
 			tbody.simulate('keyup', {keyCode: 13, ctrlKey: true, preventDefault});
@@ -1132,7 +1132,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('thead').simulate('click', {target});
+			wrapper.find('TableHead').simulate('click', {target});
 			expect(setDataSort.mock.calls).toEqual([[anyFunction]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'd'});
 		});
@@ -1154,7 +1154,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('thead').simulate('click', {target});
+			wrapper.find('TableHead').simulate('click', {target});
 			expect(setDataSort.mock.calls).toEqual([[anyFunction]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'time', order: 'a'});
 		});
@@ -1176,7 +1176,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('thead').simulate('click', {target});
+			wrapper.find('TableHead').simulate('click', {target});
 			expect(setDataSort.mock.calls).toEqual([[anyFunction]]);
 			expect(setDataSort.mock.calls[0][0](dataSort)).toEqual({columnId: 'source', order: 'a'});
 		});
@@ -1198,7 +1198,7 @@ describe('DataTable', () => {
 				/>
 			);
 
-			wrapper.find('thead').simulate('click', {target});
+			wrapper.find('TableHead').simulate('click', {target});
 			expect(setDataSort.mock.calls).toEqual([]);
 		});
 	});

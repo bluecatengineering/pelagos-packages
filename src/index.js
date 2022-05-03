@@ -7,4 +7,5 @@ export * from './icons';
 export * from './listInput';
 export * from './listItems';
 export * from './suggestions';
+export * from './table';
 export * from './toasts';

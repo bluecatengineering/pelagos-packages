@@ -25,12 +25,24 @@ msgstr ""
 msgid "(optional)"
 msgstr ""
 
+#: e3e
+msgid "{min}-{max} items"
+msgstr ""
+
+#: 846
+msgid "{min}-{max} of {total} items"
+msgstr ""
+
 #: dae
 msgid "{name} added"
 msgstr ""
 
 #: c5f
 msgid "{name} removed"
+msgstr ""
+
+#: 1e6
+msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
 msgstr ""
 
 #: 61c
@@ -89,6 +101,10 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: 6a0
+msgid "Items per page"
+msgstr ""
+
 #: 8f2
 msgid "Loading"
 msgstr ""
@@ -103,6 +119,10 @@ msgstr ""
 
 #: 6bf
 msgid "Options"
+msgstr ""
+
+#: d14
+msgid "page {page}"
 msgstr ""
 
 #: 187

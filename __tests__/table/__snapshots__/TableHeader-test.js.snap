@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableHeader rendering renders expected elements when className is set 1`] = `
+<th
+  className="Table--left TestClass"
+  id="test"
+>
+  body
+</th>
+`;
+
+exports[`TableHeader rendering renders expected elements when radio is set 1`] = `
+<th
+  className="Table--left Table--radioHeader"
+  id="test"
+>
+  body
+</th>
+`;
+
+exports[`TableHeader rendering renders expected elements when sortable is not set 1`] = `
+<th
+  className="Table--left"
+  id="test"
+>
+  body
+</th>
+`;
+
+exports[`TableHeader rendering renders expected elements when sortable is true 1`] = `
+<th
+  aria-sort="ascending"
+  id="test"
+>
+  <button
+    className="Table__sort Table__sort--active"
+    type="button"
+  >
+    <div
+      className="Table__sortLabel Table--center"
+    >
+      body
+    </div>
+    <SvgIcon
+      className="Table__sortIcon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "sort-up",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+</th>
+`;
+
+exports[`TableHeader rendering renders expected elements when sortable is true and sortOrder is d 1`] = `
+<th
+  aria-sort="descending"
+  id="test"
+>
+  <button
+    className="Table__sort Table__sort--active"
+    type="button"
+  >
+    <div
+      className="Table__sortLabel Table--center"
+    >
+      body
+    </div>
+    <SvgIcon
+      className="Table__sortIcon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "sort-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+</th>
+`;
+
+exports[`TableHeader rendering renders expected elements when sortable is true and sortOrder is not set 1`] = `
+<th
+  aria-sort="none"
+  id="test"
+>
+  <button
+    className="Table__sort"
+    type="button"
+  >
+    <div
+      className="Table__sortLabel Table--center"
+    >
+      body
+    </div>
+    <SvgIcon
+      className="Table__sortIcon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "sort",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+</th>
+`;

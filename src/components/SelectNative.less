@@ -1,0 +1,52 @@
+@import '../../less/spacing';
+@import '../../less/utils';
+
+.SelectNative {
+	position: relative;
+
+	&__select {
+		position: relative;
+		height: 32px;
+		padding: 0 @sp-48 0 @sp-16;
+		background-color: var(--field);
+		border: none;
+		border-bottom: 1px solid var(--border-strong);
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		transition: background-color 0.15s ease-out;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+
+		&:hover {
+			background-color: var(--field-hover);
+		}
+
+		&:focus {
+			@focus-ring();
+		}
+
+		&:disabled {
+			color: var(--text-disabled);
+			background-color: var(--field);
+			border-color: transparent;
+		}
+
+		@media print {
+			background-color: transparent;
+			border-color: transparent;
+		}
+	}
+
+	& optgroup,
+	& option {
+		color: var(--text-primary);
+		background-color: var(--layer);
+	}
+
+	&__arrow {
+		position: absolute;
+		right: 16px;
+		top: calc(50% - 8px);
+	}
+}

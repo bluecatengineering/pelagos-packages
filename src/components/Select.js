@@ -3,14 +3,14 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
 import {scrollToItem} from '@bluecat/helpers';
-import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
 import useStringFinder from '../hooks/useStringFinder';
 import pageUp from '../functions/pageUp';
 import pageDown from '../functions/pageDown';
 
 import Layer from './Layer';
-import SvgIcon from './SvgIcon';
+import SelectArrow from './SelectArrow';
+
 import './Select.less';
 
 /** A select drop-down. */
@@ -217,7 +217,7 @@ const Select = ({
 				onBlur={handleBlur}
 			>
 				{selected ? selected.element : ''}
-				<SvgIcon icon={open ? faCaretUp : faCaretDown} className="Select__icon" />
+				<SelectArrow className={`Select__arrow${open ? ' Select__arrow--open' : ''}`} />
 			</button>
 			{open &&
 				createPortal(

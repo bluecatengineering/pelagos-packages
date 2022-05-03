@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableSelectRow rendering renders expected elements 1`] = `
+<td
+  className="Table--selectRow"
+>
+  <input
+    aria-label="Select all"
+    checked={true}
+    id="test"
+    type="checkbox"
+  />
+</td>
+`;
+
+exports[`TableSelectRow rendering renders expected elements when radio is set 1`] = `
+<td
+  className="Table--selectRow"
+>
+  <input
+    aria-label="Select all"
+    checked={true}
+    id="test"
+    type="radio"
+  />
+</td>
+`;

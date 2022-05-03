@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableScrollWrapper rendering renders expected elements 1`] = `
+<div
+  className="Table__wrapper"
+  id="test"
+>
+  body
+</div>
+`;
+
+exports[`TableScrollWrapper rendering renders expected elements when className is set 1`] = `
+<div
+  className="Table__wrapper TestClass"
+  id="test"
+>
+  body
+</div>
+`;

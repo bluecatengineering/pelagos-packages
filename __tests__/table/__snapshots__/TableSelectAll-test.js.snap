@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableSelectAll rendering renders expected elements 1`] = `
+<th
+  className="Table__selectAll"
+>
+  <input
+    aria-label="Select all"
+    checked={true}
+    id="test"
+    type="checkbox"
+  />
+</th>
+`;

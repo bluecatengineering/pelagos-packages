@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableHead rendering renders expected elements 1`] = `
+<thead
+  id="test"
+>
+  <TableRow />
+</thead>
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table rendering renders expected elements 1`] = `
+<table
+  className="Table Table--line"
+/>
+`;
+
+exports[`Table rendering renders expected elements when className is set 1`] = `
+<table
+  className="Table Table--line TestClass"
+/>
+`;
+
+exports[`Table rendering renders expected elements when fixedLayout is set 1`] = `
+<table
+  className="Table Table--line Table--fixed"
+/>
+`;
+
+exports[`Table rendering renders expected elements when stickyHeader is set 1`] = `
+<table
+  className="Table Table--line Table--sticky"
+/>
+`;

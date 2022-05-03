@@ -56,9 +56,13 @@
 	}
 }
 
-.Select__icon {
-	font-size: 16px;
-	margin-left: @sp-16;
+.Select__arrow {
+	margin-left: @sp-12;
+	transition: transform 0.15s ease-out;
+
+	&--open {
+		transform: rotate(180deg);
+	}
 }
 
 .Select__list {

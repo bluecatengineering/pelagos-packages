@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableRow rendering renders expected elements 1`] = `
+<tr
+  id="test"
+>
+  <TableCell
+    align="left"
+  />
+</tr>
+`;
+
+exports[`TableRow rendering renders expected elements when selected is set 1`] = `
+<tr
+  aria-selected={true}
+  id="test"
+>
+  <TableCell
+    align="left"
+  />
+</tr>
+`;

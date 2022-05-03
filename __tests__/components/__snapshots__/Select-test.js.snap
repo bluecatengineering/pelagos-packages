@@ -18,15 +18,8 @@ exports[`Select rendering renders expected elements 1`] = `
     type="button"
   >
     Two
-    <SvgIcon
-      className="Select__icon"
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "caret-down",
-          "prefix": "fas",
-        }
-      }
+    <SelectArrow
+      className="Select__arrow"
     />
   </button>
 </Layer>
@@ -50,15 +43,8 @@ exports[`Select rendering renders expected elements when className is not set 1`
     type="button"
   >
     Two
-    <SvgIcon
-      className="Select__icon"
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "caret-down",
-          "prefix": "fas",
-        }
-      }
+    <SelectArrow
+      className="Select__arrow"
     />
   </button>
 </Layer>
@@ -81,15 +67,8 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     type="button"
   >
     Two
-    <SvgIcon
-      className="Select__icon"
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "caret-down",
-          "prefix": "fas",
-        }
-      }
+    <SelectArrow
+      className="Select__arrow"
     />
   </button>
 </Layer>
@@ -113,15 +92,8 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     type="button"
   >
     Two
-    <SvgIcon
-      className="Select__icon"
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "caret-down",
-          "prefix": "fas",
-        }
-      }
+    <SelectArrow
+      className="Select__arrow"
     />
   </button>
 </Layer>
@@ -145,15 +117,8 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     type="button"
   >
     Two
-    <SvgIcon
-      className="Select__icon"
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "caret-up",
-          "prefix": "fas",
-        }
-      }
+    <SelectArrow
+      className="Select__arrow Select__arrow--open"
     />
   </button>
   <React.Portal>
@@ -214,15 +179,8 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     type="button"
   >
     No
-    <SvgIcon
-      className="Select__icon"
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "caret-down",
-          "prefix": "fas",
-        }
-      }
+    <SelectArrow
+      className="Select__arrow"
     />
   </button>
 </Layer>
@@ -246,15 +204,8 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     type="button"
   >
     
-    <SvgIcon
-      className="Select__icon"
-      icon={
-        Object {
-          "icon": Array [],
-          "iconName": "caret-down",
-          "prefix": "fas",
-        }
-      }
+    <SelectArrow
+      className="Select__arrow"
     />
   </button>
 </Layer>

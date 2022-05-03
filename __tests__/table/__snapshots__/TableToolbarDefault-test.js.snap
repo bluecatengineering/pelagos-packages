@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableToolbarDefault rendering renders expected elements 1`] = `
+<div
+  className="Table__toolbarDefault"
+>
+  <Button
+    size="medium"
+    type="tertiary"
+  />
+</div>
+`;
+
+exports[`TableToolbarDefault rendering renders expected elements when className is set 1`] = `
+<div
+  className="Table__toolbarDefault TestClass"
+>
+  <Button
+    size="medium"
+    type="tertiary"
+  />
+</div>
+`;
+
+exports[`TableToolbarDefault rendering renders expected elements when hidden is set 1`] = `
+<div
+  aria-hidden={true}
+  className="Table__toolbarDefault"
+>
+  <Button
+    key={0}
+    size="medium"
+    tabIndex={-1}
+    type="tertiary"
+  />
+</div>
+`;
+
+exports[`TableToolbarDefault rendering renders expected elements when hidden is set and children is a list 1`] = `
+<div
+  aria-hidden={true}
+  className="Table__toolbarDefault"
+>
+  <Button
+    key={0}
+    size="medium"
+    tabIndex={-1}
+    type="tertiary"
+  />
+  <Button
+    key={1}
+    size="medium"
+    tabIndex={-1}
+    type="tertiary"
+  />
+</div>
+`;

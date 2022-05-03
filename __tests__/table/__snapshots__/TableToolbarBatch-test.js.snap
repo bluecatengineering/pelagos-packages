@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableToolbarBatch rendering renders expected elements 1`] = `
+<div
+  aria-hidden={true}
+  className="Table__toolbarBatch"
+>
+  <div
+    className="Table__toolbarBatchCount"
+  >
+    0 items selected
+  </div>
+  <div
+    className="Table__toolbarBatchButtons"
+  >
+    <Button
+      key={0}
+      size="medium"
+      tabIndex={-1}
+      type="tertiary"
+    />
+    <Button
+      className="Table__toolbarBatchCancel"
+      size="medium"
+      tabIndex={-1}
+      text="Clear"
+      type="primary"
+    />
+  </div>
+</div>
+`;
+
+exports[`TableToolbarBatch rendering renders expected elements when children is a list 1`] = `
+<div
+  aria-hidden={true}
+  className="Table__toolbarBatch"
+>
+  <div
+    className="Table__toolbarBatchCount"
+  >
+    0 items selected
+  </div>
+  <div
+    className="Table__toolbarBatchButtons"
+  >
+    <Button
+      key={0}
+      size="medium"
+      tabIndex={-1}
+      type="tertiary"
+    />
+    <Button
+      key={1}
+      size="medium"
+      tabIndex={-1}
+      type="tertiary"
+    />
+    <Button
+      className="Table__toolbarBatchCancel"
+      size="medium"
+      tabIndex={-1}
+      text="Clear"
+      type="primary"
+    />
+  </div>
+</div>
+`;
+
+exports[`TableToolbarBatch rendering renders expected elements when className is set 1`] = `
+<div
+  aria-hidden={true}
+  className="Table__toolbarBatch TestClass"
+>
+  <div
+    className="Table__toolbarBatchCount"
+  >
+    0 items selected
+  </div>
+  <div
+    className="Table__toolbarBatchButtons"
+  >
+    <Button
+      key={0}
+      size="medium"
+      tabIndex={-1}
+      type="tertiary"
+    />
+    <Button
+      className="Table__toolbarBatchCancel"
+      size="medium"
+      tabIndex={-1}
+      text="Clear"
+      type="primary"
+    />
+  </div>
+</div>
+`;
+
+exports[`TableToolbarBatch rendering renders expected elements when selectedCount is not 0 1`] = `
+<div
+  aria-hidden={false}
+  className="Table__toolbarBatch Table__toolbarBatch--active"
+>
+  <div
+    className="Table__toolbarBatchCount"
+  >
+    one item selected
+  </div>
+  <div
+    className="Table__toolbarBatchButtons"
+  >
+    <Button
+      size="medium"
+      type="tertiary"
+    />
+    <Button
+      className="Table__toolbarBatchCancel"
+      size="medium"
+      tabIndex={0}
+      text="Clear"
+      type="primary"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableTitle rendering renders expected elements 1`] = `
+<div
+  className="Table__title"
+>
+  <h2
+    id="test"
+  >
+    Test title
+  </h2>
+  <div
+    className="Table__description"
+  >
+    Test description
+  </div>
+</div>
+`;

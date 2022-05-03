@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectArrow rendering renders expected elements 1`] = `
+<svg
+  aria-hidden="true"
+  className="SelectArrow TestClass"
+  viewBox="0 0 16 16"
+>
+  <path
+    d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"
+  />
+</svg>
+`;

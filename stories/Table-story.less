@@ -1,0 +1,21 @@
+@import '../less/spacing';
+
+.TableStory__wrapper {
+	flex: 1;
+	margin: @sp-24;
+	background-color: var(--layer);
+}
+
+.TableStory--default {
+	& > thead > tr > :nth-child(1) {
+		width: 60%;
+	}
+
+	& > thead > tr > :nth-child(2) {
+		width: 15%;
+	}
+
+	& > thead > tr > :nth-child(3) {
+		width: 25%;
+	}
+}
