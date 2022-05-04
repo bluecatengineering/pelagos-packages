@@ -5,6 +5,12 @@ jest.unmock('../../src/functions/elementOfType');
 describe('elementOfType', () => {
 	it('returns null when the property type matches', () => {
 		expect(elementOfType('foo')({bar: {type: 'foo'}}, 'bar')).toBeNull();
+		expect(elementOfType('foo').isRequired({bar: {type: 'foo'}}, 'bar')).toBeNull();
+	});
+
+	it('returns null when the property is null or undefined', () => {
+		expect(elementOfType('foo')({bar: null}, 'bar')).toBeNull();
+		expect(elementOfType('foo')({}, 'bar')).toBeNull();
 	});
 
 	it('returns an error when the property type does not match', () => {
@@ -40,6 +46,18 @@ describe('elementOfType', () => {
 		other.displayName = 'Other';
 		expect(elementOfType(type)({bar: {type: other}}, 'bar', 'Test', 'prop')).toEqual(
 			new Error('Invalid prop `bar` of type `Other` supplied to `Test`, expected instance of `Type`.')
+		);
+	});
+
+	it('returns an error when the property is required and the value is null', () => {
+		expect(elementOfType('foo').isRequired({bar: null}, 'bar', 'Test', 'prop')).toEqual(
+			new Error('The prop `bar` is marked as required in `Test`, but its value is `null`.')
+		);
+	});
+
+	it('returns an error when the property is required and the value is undefined', () => {
+		expect(elementOfType('foo').isRequired({}, 'bar', 'Test', 'prop')).toEqual(
+			new Error('The prop `bar` is marked as required in `Test`, but its value is `undefined`.')
 		);
 	});
 
