@@ -1,99 +1,11 @@
-@import '../../less/focus';
 @import '../../less/spacing';
 @import '../../less/utils';
 
 .CheckBox {
 	@layer-hover-effects();
-	display: inline-block;
-	position: relative;
-	padding-left: @sp-24;
 	margin-left: @sp-02;
-	cursor: pointer;
-	outline: none;
-}
 
-.CheckBox::before,
-.CheckBox::after {
-	display: block;
-	position: absolute;
-	content: '';
-}
-
-.CheckBox::before {
-	top: @sp-02;
-	left: 0;
-	width: 16px;
-	height: 16px;
-	border: 1px solid var(--icon-primary);
-	border-radius: 2px;
-
-	@media print {
-		border-color: var(--print-color);
+	& > input {
+		margin-right: @sp-04;
 	}
-}
-.CheckBox[aria-checked='true']::before,
-.CheckBox[aria-checked='mixed']::before {
-	background-color: var(--interactive);
-	border-color: var(--interactive);
-
-	@media print {
-		background-color: transparent;
-		border-color: var(--print-medium);
-	}
-}
-
-.CheckBox--error::before {
-	border-color: var(--support-error);
-}
-.CheckBox--error[aria-checked='true']::before,
-.CheckBox--error[aria-checked='mixed']::before {
-	background-color: var(--support-error);
-	border-color: var(--support-error);
-}
-
-.CheckBox:focus::before {
-	@focus-ring();
-	outline-offset: 1px;
-}
-.CheckBox--error:focus::before {
-	@focus-ring-error();
-	outline-offset: 1px;
-}
-
-.CheckBox[aria-checked='true']::after {
-	top: 3px;
-	left: 5px;
-	width: 7px;
-	height: 12px;
-	border: solid var(--text-inverse);
-	border-width: 0 3px 3px 0;
-	transform: rotate(45deg);
-
-	@media print {
-		border-color: var(--print-color);
-	}
-}
-
-.CheckBox[aria-checked='mixed']::after {
-	top: 8px;
-	left: 3px;
-	width: 10px;
-	border-bottom: 3px solid var(--text-inverse);
-
-	@media print {
-		border-color: var(--print-color);
-	}
-}
-
-.CheckBox[aria-disabled='true'] {
-	color: var(--text-disabled);
-	cursor: not-allowed;
-	pointer-events: none;
-}
-.CheckBox[aria-disabled='true']::before {
-	border-color: var(--icon-disabled);
-}
-.CheckBox[aria-disabled='true'][aria-checked='true']::before,
-.CheckBox[aria-disabled='true'][aria-checked='mixed']::before {
-	background-color: var(--icon-disabled);
 }

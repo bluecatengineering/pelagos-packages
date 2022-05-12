@@ -1,65 +1,11 @@
-@import '../../less/focus';
 @import '../../less/spacing';
 @import '../../less/utils';
 
 .RadioButton {
 	@layer-hover-effects();
-	display: inline-block;
-	position: relative;
-	padding-left: @sp-24;
 	margin-left: @sp-02;
-	cursor: pointer;
-	outline: none;
-}
 
-.RadioButton::before,
-.RadioButton::after {
-	display: block;
-	position: absolute;
-	border-radius: 50%;
-	content: '';
-}
-
-.RadioButton::before {
-	top: @sp-02;
-	left: 0;
-	width: 18px;
-	height: 18px;
-	border: 1px solid var(--icon-primary);
-
-	@media print {
-		border-color: var(--print-color);
+	& > input {
+		margin-right: @sp-04;
 	}
-}
-
-.RadioButton[aria-checked='true']::before {
-	border-color: var(--interactive);
-}
-
-.RadioButton--error::before,
-.RadioButton--error[aria-checked='true']::before {
-	border-color: var(--support-error);
-}
-
-.RadioButton:focus::before {
-	@focus-ring();
-	outline-offset: 1px;
-}
-.RadioButton--error:focus::before {
-	@focus-ring-error();
-	outline-offset: 1px;
-}
-
-.RadioButton[aria-checked='true']::after {
-	top: 7px;
-	left: 5px;
-	border: 4px solid var(--interactive);
-
-	@media print {
-		border-color: var(--print-color);
-	}
-}
-
-.RadioButton--error[aria-checked='true']::after {
-	border-color: var(--support-error);
 }

@@ -1,58 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckBox rendering renders expected elements 1`] = `
-<span
-  aria-checked={true}
-  className="CheckBox TestClass"
-  id="test"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  role="checkbox"
-  tabIndex={0}
+<label
+  className="CheckBox"
 >
+  <input
+    checked={true}
+    className=""
+    id="test"
+    onChange={[MockFunction]}
+    type="checkbox"
+  />
   Test
-</span>
+</label>
 `;
 
-exports[`CheckBox rendering renders expected elements when disabled is true 1`] = `
-<span
-  aria-checked={true}
-  aria-disabled={true}
+exports[`CheckBox rendering renders expected elements when clasName is set 1`] = `
+<label
   className="CheckBox TestClass"
-  id="test"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  role="checkbox"
-  tabIndex={-1}
 >
+  <input
+    checked={true}
+    className=""
+    id="test"
+    onChange={[MockFunction]}
+    type="checkbox"
+  />
   Test
-</span>
+</label>
 `;
 
 exports[`CheckBox rendering renders expected elements when error is true 1`] = `
-<span
-  aria-checked={true}
-  className="CheckBox TestClass CheckBox--error"
-  id="test"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  role="checkbox"
-  tabIndex={0}
->
-  Test
-</span>
-`;
-
-exports[`CheckBox rendering renders expected elements when indeterminate is true 1`] = `
-<span
-  aria-checked="mixed"
+<label
   className="CheckBox TestClass"
-  id="test"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  role="checkbox"
-  tabIndex={0}
 >
+  <input
+    checked={true}
+    className="error"
+    id="test"
+    onChange={[MockFunction]}
+    type="checkbox"
+  />
   Test
-</span>
+</label>
 `;

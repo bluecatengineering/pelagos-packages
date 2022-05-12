@@ -21,7 +21,7 @@ describe('RadioGroup', () => {
 			const wrapper = shallow(
 				<RadioGroup id="test" value="foo" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
-			wrapper.find('#test-bar').simulate('change', {target: {dataset: {value: 'bar'}}});
+			wrapper.find('#test-bar').simulate('change', {target: {value: 'bar'}});
 			expect(onChange.mock.calls).toEqual([['bar']]);
 		});
 

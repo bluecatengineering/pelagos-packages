@@ -1,29 +1,14 @@
-import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
 import './RadioButton.less';
 
 /** A radio button. */
-const RadioButton = ({id, className, label, checked, error, tabIndex, onChange, ...props}) => {
-	const handleKeyDown = useCallback(
-		(event) => (event.keyCode === 32 ? (event.preventDefault(), onChange(event)) : null),
-		[onChange]
-	);
-	return (
-		<span
-			{...props}
-			id={id}
-			className={'RadioButton ' + className + (error ? ' RadioButton--error' : '')}
-			role="radio"
-			aria-checked={!!checked}
-			tabIndex={tabIndex}
-			onClick={onChange}
-			onKeyDown={handleKeyDown}
-		>
-			{label}
-		</span>
-	);
-};
+const RadioButton = ({className, label, error, ...props}) => (
+	<label className={`RadioButton${className ? ` ${className}` : ''}`}>
+		<input {...props} className={error ? 'error' : ''} type="radio" />
+		{label}
+	</label>
+);
 
 RadioButton.propTypes = {
 	/** The component id. */
@@ -31,7 +16,7 @@ RadioButton.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The label text. */
-	label: PropTypes.string,
+	label: PropTypes.node,
 	/** Whether the radio button is checked */
 	checked: PropTypes.bool,
 	/** Whether the button is in error. */

@@ -7,7 +7,7 @@ import './RadioGroup.less';
 
 /** A group of radio buttons. */
 const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
-	const handleChange = useCallback((event) => onChange(event.target.dataset.value), [onChange]);
+	const handleChange = useCallback((event) => onChange(event.target.value), [onChange]);
 
 	const handleKeyDown = useCallback(
 		(event) => {
@@ -39,7 +39,7 @@ const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
 					label={renderLabel(option)}
 					checked={value === option}
 					tabIndex={value === option ? 0 : -1}
-					data-value={option}
+					value={option}
 					onChange={handleChange}
 				/>
 			))}

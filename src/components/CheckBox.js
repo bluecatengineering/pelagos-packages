@@ -1,30 +1,17 @@
-import {useCallback} from 'react';
+import {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
 import './CheckBox.less';
 
 /* A checkbox. */
-const CheckBox = ({id, className, label, checked, indeterminate, disabled, error, onChange}) => {
-	const handleClick = useCallback((event) => (disabled ? null : onChange(event)), [disabled, onChange]);
-
-	const handleKeyDown = useCallback(
-		(event) => (disabled || event.keyCode !== 32 ? null : (event.preventDefault(), onChange(event))),
-		[disabled, onChange]
-	);
-
+const CheckBox = ({className, label, indeterminate, error, ...props}) => {
+	const inputRef = useRef();
+	useEffect(() => (inputRef.current.indeterminate = indeterminate), [indeterminate]);
 	return (
-		<span
-			id={id}
-			className={'CheckBox ' + className + (!disabled && error ? ' CheckBox--error' : '')}
-			role="checkbox"
-			aria-disabled={disabled}
-			aria-checked={indeterminate ? 'mixed' : !!checked}
-			tabIndex={disabled ? -1 : 0}
-			onClick={handleClick}
-			onKeyDown={handleKeyDown}
-		>
+		<label className={`CheckBox${className ? ` ${className}` : ''}`}>
+			<input {...props} className={error ? 'error' : ''} type="checkbox" ref={inputRef} />
 			{label}
-		</span>
+		</label>
 	);
 };
 
@@ -34,7 +21,7 @@ CheckBox.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The check box label. */
-	label: PropTypes.string,
+	label: PropTypes.node,
 	/** Whether the box is checked. */
 	checked: PropTypes.bool,
 	/** Whether the box state is indeterminate. */

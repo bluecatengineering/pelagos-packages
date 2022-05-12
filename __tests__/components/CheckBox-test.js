@@ -1,3 +1,4 @@
+import {useEffect, useRef} from 'react';
 import {shallow} from 'enzyme';
 
 import CheckBox from '../../src/components/CheckBox';
@@ -7,21 +8,12 @@ jest.unmock('../../src/components/CheckBox');
 describe('CheckBox', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
+			const wrapper = shallow(<CheckBox id="test" label="Test" checked onChange={jest.fn()} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when clasName is set', () => {
 			const wrapper = shallow(<CheckBox id="test" className="TestClass" label="Test" checked onChange={jest.fn()} />);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when indeterminate is true', () => {
-			const wrapper = shallow(
-				<CheckBox id="test" className="TestClass" label="Test" indeterminate onChange={jest.fn()} />
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when disabled is true', () => {
-			const wrapper = shallow(
-				<CheckBox id="test" className="TestClass" label="Test" checked disabled onChange={jest.fn()} />
-			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
@@ -34,45 +26,22 @@ describe('CheckBox', () => {
 	});
 
 	describe('behaviour', () => {
-		it('calls onChange when clicked', () => {
+		it('calls onChange when changed', () => {
 			const onChange = jest.fn();
+			const event = {type: 'change'};
 			const wrapper = shallow(<CheckBox className="TestClass" label="Test" checked onChange={onChange} />);
-			wrapper.simulate('click');
-			expect(onChange).toHaveBeenCalled();
+			wrapper.find('input').simulate('change', event);
+			expect(onChange.mock.calls).toEqual([[event]]);
 		});
 
-		it('does not call onChange when clicked if disabled is true', () => {
-			const onChange = jest.fn();
-			const wrapper = shallow(<CheckBox className="TestClass" label="Test" checked disabled onChange={onChange} />);
-			wrapper.simulate('click');
-			expect(onChange).not.toHaveBeenCalled();
-		});
+		it('adds an effect which sets indeterminate', () => {
+			const element = {};
+			useRef.mockReturnValue({current: element});
+			shallow(<CheckBox indeterminate />);
+			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [true]]);
 
-		it('calls onChange when the space key is pressed', () => {
-			const onChange = jest.fn();
-			const event = {preventDefault: jest.fn(), keyCode: 32};
-			const wrapper = shallow(<CheckBox className="TestClass" label="Test" checked onChange={onChange} />);
-			wrapper.simulate('keydown', event);
-			expect(onChange).toHaveBeenCalled();
-			expect(event.preventDefault).toHaveBeenCalled();
-		});
-
-		it('does not calls onChange when the space key is pressed if disabled is true', () => {
-			const onChange = jest.fn();
-			const event = {preventDefault: jest.fn(), keyCode: 32};
-			const wrapper = shallow(<CheckBox className="TestClass" label="Test" checked disabled onChange={onChange} />);
-			wrapper.simulate('keydown', event);
-			expect(onChange).not.toHaveBeenCalled();
-			expect(event.preventDefault).not.toHaveBeenCalled();
-		});
-
-		it('does not call onChange when the any other key is pressed', () => {
-			const onChange = jest.fn();
-			const event = {preventDefault: jest.fn(), keyCode: 9};
-			const wrapper = shallow(<CheckBox className="TestClass" label="Test" checked onChange={onChange} />);
-			wrapper.simulate('keydown', event);
-			expect(onChange).not.toHaveBeenCalled();
-			expect(event.preventDefault).not.toHaveBeenCalled();
+			useEffect.mock.calls[0][0]();
+			expect(element).toEqual({indeterminate: true});
 		});
 	});
 });

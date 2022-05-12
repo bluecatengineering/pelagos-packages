@@ -74,6 +74,158 @@ textarea {
 	}
 }
 
+input[type='checkbox'] {
+	display: inline-block;
+	position: relative;
+	width: 16px;
+	height: 16px;
+	margin: 0;
+	border: 1px solid var(--icon-primary);
+	border-radius: 2px;
+	vertical-align: middle;
+	cursor: pointer;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&.error {
+		border-color: var(--support-error);
+	}
+
+	&:focus {
+		@focus-ring();
+		outline-offset: 1px;
+	}
+
+	&.error:focus {
+		@focus-ring-error();
+		outline-offset: 1px;
+	}
+
+	&:checked,
+	&:indeterminate {
+		background-color: var(--interactive);
+		border-color: var(--interactive);
+
+		@media print {
+			background-color: transparent;
+			border-color: var(--print-medium);
+		}
+	}
+
+	&.error:checked,
+	&.error:indeterminate {
+		background-color: var(--support-error);
+		border-color: var(--support-error);
+	}
+
+	&:disabled {
+		cursor: default;
+		border-color: var(--icon-disabled);
+	}
+
+	&:disabled:checked,
+	&:disabled:indeterminate {
+		background-color: var(--icon-disabled);
+	}
+
+	&::after {
+		display: block;
+		position: absolute;
+		content: '';
+	}
+
+	&:checked::after {
+		top: 0;
+		left: 4px;
+		width: 7px;
+		height: 12px;
+		border: solid var(--text-inverse);
+		border-width: 0 3px 3px 0;
+		transform: rotate(45deg);
+
+		@media print {
+			border-color: var(--print-color);
+		}
+	}
+
+	&:indeterminate::after {
+		top: 5px;
+		left: 2px;
+		width: 10px;
+		border-bottom: 3px solid var(--text-inverse);
+
+		@media print {
+			border-color: var(--print-color);
+		}
+	}
+
+	@media print {
+		border-color: var(--print-color);
+	}
+}
+
+input[type='radio'] {
+	display: inline-block;
+	position: relative;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	border: 1px solid var(--icon-primary);
+	border-radius: 50%;
+	vertical-align: middle;
+	cursor: pointer;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&:checked {
+		border-color: var(--interactive);
+	}
+
+	&.error,
+	&.error:checked {
+		border-color: var(--support-error);
+	}
+
+	&:focus {
+		@focus-ring();
+		outline-offset: 1px;
+	}
+
+	&.error:focus {
+		@focus-ring-error();
+		outline-offset: 1px;
+	}
+
+	&::after {
+		display: block;
+		position: absolute;
+		border-radius: 50%;
+		content: '';
+	}
+
+	&:checked::after {
+		top: 4px;
+		left: 4px;
+		border: 4px solid var(--interactive);
+
+		@media print {
+			border-color: var(--print-color);
+		}
+	}
+
+	&.error:checked::after {
+		border-color: var(--support-error);
+	}
+
+	@media print {
+		border-color: var(--print-color);
+	}
+}
+
 @media print {
 	:-ms-input-placeholder {
 		color: var(--print-medium);

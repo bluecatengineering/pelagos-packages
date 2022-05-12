@@ -1,43 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RadioButton rendering renders expected elements 1`] = `
-<span
-  aria-checked={true}
-  className="RadioButton TestClass"
-  id="test"
-  onClick={[MockFunction]}
-  onKeyDown={[Function]}
-  role="radio"
-  tabIndex={0}
+<label
+  className="RadioButton"
 >
+  <input
+    checked={true}
+    className=""
+    id="test"
+    onChange={[MockFunction]}
+    tabIndex={0}
+    type="radio"
+  />
   Test
-</span>
+</label>
+`;
+
+exports[`RadioButton rendering renders expected elements when className is set 1`] = `
+<label
+  className="RadioButton TestClass"
+>
+  <input
+    checked={true}
+    className=""
+    id="test"
+    onChange={[MockFunction]}
+    tabIndex={0}
+    type="radio"
+  />
+  Test
+</label>
 `;
 
 exports[`RadioButton rendering renders expected elements when error is true 1`] = `
-<span
-  aria-checked={true}
-  className="RadioButton TestClass RadioButton--error"
-  id="test"
-  onClick={[MockFunction]}
-  onKeyDown={[Function]}
-  role="radio"
-  tabIndex={0}
->
-  Test
-</span>
-`;
-
-exports[`RadioButton rendering renders expected elements when tabIndex is set 1`] = `
-<span
-  aria-checked={true}
+<label
   className="RadioButton TestClass"
-  id="test"
-  onClick={[MockFunction]}
-  onKeyDown={[Function]}
-  role="radio"
-  tabIndex={-1}
 >
+  <input
+    checked={true}
+    className="error"
+    id="test"
+    onChange={[MockFunction]}
+    tabIndex={0}
+    type="radio"
+  />
   Test
-</span>
+</label>
 `;

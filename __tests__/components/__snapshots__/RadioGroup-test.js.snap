@@ -9,29 +9,29 @@ exports[`RadioGroup rendering renders expected elements 1`] = `
   <RadioButton
     checked={true}
     className="RadioGroup__option"
-    data-value="foo"
     id="test-foo"
     label="FOO"
     onChange={[Function]}
     tabIndex={0}
+    value="foo"
   />
   <RadioButton
     checked={false}
     className="RadioGroup__option"
-    data-value="bar"
     id="test-bar"
     label="BAR"
     onChange={[Function]}
     tabIndex={-1}
+    value="bar"
   />
   <RadioButton
     checked={false}
     className="RadioGroup__option"
-    data-value="baz"
     id="test-baz"
     label="BAZ"
     onChange={[Function]}
     tabIndex={-1}
+    value="baz"
   />
 </div>
 `;
