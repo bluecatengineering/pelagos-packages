@@ -66,7 +66,7 @@ publish:ui:
     name: storybook
     url: https://storybook.dnsedge.tools
   script:
-    - aws-s3 -r aws/user/sts/ui-storybook sync -c cache-rules.json .out s3://storybook.dnsedge.tools
+    - aws-s3 -r aws/env/dev/sts/ui-infrastructure -a arn:aws:iam::236584345765:role/DevRole sync -c cache-rules.json .out s3://storybook.dnsedge.tools
   variables:
     AWS_REGION: us-west-2
   needs:
