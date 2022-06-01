@@ -3,38 +3,11 @@
 @import '../../less/utils';
 
 .FilterMenu {
-	position: relative;
 	margin-left: @sp-08;
-}
 
-.FilterMenu__button {
-	&[aria-expanded='true'] {
-		outline: none;
-	}
-}
-
-.FilterMenu__menu {
-	position: absolute;
-	padding-top: @sp-08;
-	padding-bottom: @sp-08;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
-	white-space: nowrap;
-	background-color: var(--layer);
-	box-shadow: var(--shadow-04);
-	z-index: 4;
-}
-
-.FilterMenu__option {
-	@layer-hover-effects();
-	padding: @sp-08 @sp-24;
-	cursor: pointer;
-
-	&--current {
-		background-color: var(--layer-selected);
-	}
-
-	&--current:hover {
-		background-color: var(--layer-selected-hover);
+	&--active {
+		border-radius: initial;
+		background-color: var(--layer);
+		box-shadow: var(--shadow-04);
 	}
 }

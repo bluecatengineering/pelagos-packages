@@ -7,7 +7,7 @@ export default (ref, buttonId, trackId) =>
 		const {bottom, left, right} = button.getBoundingClientRect();
 
 		editor.style.display = '';
-		editor.style.top = bottom + 1 + 'px';
+		editor.style.top = `${bottom}px`;
 
 		if (!trackId) {
 			editor.style.left = left + 'px';

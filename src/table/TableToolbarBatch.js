@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {t, plural} from '@bluecat/l10n.macro';
 
 import Button from '../components/Button';
-import elementOfType from '../functions/elementOfType';
 
 const hide = (child, index) => cloneElement(child, {tabIndex: -1, key: child.key || index});
 
@@ -41,7 +40,7 @@ TableToolbarBatch.propTypes = {
 	/** The count of selected items. */
 	selectedCount: PropTypes.number.isRequired,
 	/** The child elements. */
-	children: PropTypes.oneOfType([elementOfType(Button), PropTypes.arrayOf(elementOfType(Button))]),
+	children: PropTypes.node,
 	/** Function invoked when the cancel button is clicked. */
 	onCancel: PropTypes.func,
 };

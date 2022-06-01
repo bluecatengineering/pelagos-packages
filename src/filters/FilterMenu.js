@@ -1,78 +1,39 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import {createPortal} from 'react-dom';
 import {t} from '@bluecat/l10n.macro';
 import {faFilter} from '@fortawesome/free-solid-svg-icons';
 
-import useMenuHandler from '../hooks/useMenuHandler';
-import Layer from '../components/Layer';
-import IconButton from '../components/IconButton';
+import IconMenu from '../components/IconMenu';
+import IconMenuItem from '../components/IconMenuItem';
 
 import './FilterMenu.less';
 
 /** A menu for adding filters. */
 const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText, onApply}) => {
-	const buttonRef = useRef(null);
-	const menuRef = useRef(null);
-
-	const [menuVisible, setMenuVisible] = useState(false);
 	const [filterName, setFilterName] = useState(null);
 
 	const filteredOptions = !filters ? options : options.filter((key) => !filters[key]);
 
+	const handleOptionClick = useCallback((event) => setFilterName(event.target.dataset.key), []);
 	const handleClose = useCallback(() => setFilterName(null), []);
 	const handleSave = useCallback((value) => (setFilterName(null), onApply(filterName, value)), [filterName, onApply]);
 
-	const {current, buttonProps, listProps} = useMenuHandler(menuVisible, setMenuVisible, filteredOptions, {
-		getItemText: getOptionText,
-		onItemSelected: setFilterName,
-	});
-
-	useEffect(() => {
-		if (menuVisible) {
-			const button = buttonRef.current;
-			const {bottom, left} = button.getBoundingClientRect();
-
-			const menu = menuRef.current;
-			menu.style.top = `${bottom}px`;
-			menu.style.left = `${left}px`;
-			menu.dataset.layer = button.dataset.layer;
-		}
-	}, [menuVisible]);
-
 	return (
-		<Layer className="FilterMenu" ref={buttonRef}>
-			<IconButton
+		<>
+			<IconMenu
 				id="filterButton"
-				className="FilterMenu__button"
+				className={`FilterMenu${filterName ? ' FilterMenu--active' : ''}`}
 				icon={faFilter}
 				disabled={filteredOptions.length === 0}
 				tooltipText={t`Add filter`}
 				tooltipPlacement="top"
 				aria-label={t`Add filter`}
-				aria-controls={menuVisible ? 'filterMenu' : null}
-				aria-haspopup="true"
-				aria-expanded={menuVisible}
-				aria-activedescendant={current === -1 ? null : `filterMenu-${filteredOptions[current]}`}
-				{...buttonProps}
-			/>
-			{menuVisible &&
-				createPortal(
-					<div id="filterMenu" className="FilterMenu__menu" role="menu" {...listProps} ref={menuRef}>
-						{filteredOptions.map((key, index) => (
-							<div
-								key={key}
-								id={`filterMenu-${key}`}
-								className={`FilterMenu__option${current === index ? ' FilterMenu__option--current' : ''}`}
-								role="menuitem"
-								data-index={index}
-							>
-								{getOptionText(key)}
-							</div>
-						))}
-					</div>,
-					document.body
-				)}
+			>
+				{filteredOptions.map((key) => (
+					<IconMenuItem key={key} text={getOptionText(key)} data-key={key} onClick={handleOptionClick} />
+				))}
+			</IconMenu>
 			{filterName &&
 				createPortal(
 					<FilterEditor
@@ -84,7 +45,7 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 					/>,
 					document.body
 				)}
-		</Layer>
+		</>
 	);
 };
 

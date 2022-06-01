@@ -1,16 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterMenu rendering renders expected elements 1`] = `
-<Layer
-  className="FilterMenu"
->
-  <IconButton
-    aria-activedescendant={null}
-    aria-controls={null}
-    aria-expanded={false}
-    aria-haspopup="true"
+<React.Fragment>
+  <IconMenu
     aria-label="Add filter"
-    className="FilterMenu__button"
+    className="FilterMenu"
     disabled={false}
     icon={
       Object {
@@ -20,25 +14,26 @@ exports[`FilterMenu rendering renders expected elements 1`] = `
       }
     }
     id="filterButton"
-    size="medium"
     tooltipPlacement="top"
     tooltipText="Add filter"
-    type="ghost"
-  />
-</Layer>
+  >
+    <IconMenuItem
+      data-key="a"
+      onClick={[Function]}
+    />
+    <IconMenuItem
+      data-key="b"
+      onClick={[Function]}
+    />
+  </IconMenu>
+</React.Fragment>
 `;
 
 exports[`FilterMenu rendering renders expected elements when filter is not null 1`] = `
-<Layer
-  className="FilterMenu"
->
-  <IconButton
-    aria-activedescendant={null}
-    aria-controls={null}
-    aria-expanded={false}
-    aria-haspopup="true"
+<React.Fragment>
+  <IconMenu
     aria-label="Add filter"
-    className="FilterMenu__button"
+    className="FilterMenu FilterMenu--active"
     disabled={false}
     icon={
       Object {
@@ -48,11 +43,18 @@ exports[`FilterMenu rendering renders expected elements when filter is not null 
       }
     }
     id="filterButton"
-    size="medium"
     tooltipPlacement="top"
     tooltipText="Add filter"
-    type="ghost"
-  />
+  >
+    <IconMenuItem
+      data-key="a"
+      onClick={[Function]}
+    />
+    <IconMenuItem
+      data-key="b"
+      onClick={[Function]}
+    />
+  </IconMenu>
   <React.Portal>
     <FilterEditor
       buttonId="filterButton"
@@ -61,20 +63,14 @@ exports[`FilterMenu rendering renders expected elements when filter is not null 
       onSave={[Function]}
     />
   </React.Portal>
-</Layer>
+</React.Fragment>
 `;
 
 exports[`FilterMenu rendering renders expected elements when filters is set 1`] = `
-<Layer
-  className="FilterMenu"
->
-  <IconButton
-    aria-activedescendant={null}
-    aria-controls={null}
-    aria-expanded={false}
-    aria-haspopup="true"
+<React.Fragment>
+  <IconMenu
     aria-label="Add filter"
-    className="FilterMenu__button"
+    className="FilterMenu"
     disabled={false}
     icon={
       Object {
@@ -84,58 +80,17 @@ exports[`FilterMenu rendering renders expected elements when filters is set 1`] 
       }
     }
     id="filterButton"
-    size="medium"
     tooltipPlacement="top"
     tooltipText="Add filter"
-    type="ghost"
-  />
-</Layer>
-`;
-
-exports[`FilterMenu rendering renders expected elements when menuVisible is true 1`] = `
-<Layer
-  className="FilterMenu"
->
-  <IconButton
-    aria-activedescendant="filterMenu-a"
-    aria-controls="filterMenu"
-    aria-expanded={true}
-    aria-haspopup="true"
-    aria-label="Add filter"
-    className="FilterMenu__button"
-    disabled={false}
-    icon={
-      Object {
-        "icon": Array [],
-        "iconName": "filter",
-        "prefix": "fas",
-      }
-    }
-    id="filterButton"
-    size="medium"
-    tooltipPlacement="top"
-    tooltipText="Add filter"
-    type="ghost"
-  />
-  <React.Portal>
-    <div
-      className="FilterMenu__menu"
-      id="filterMenu"
-      role="menu"
-    >
-      <div
-        className="FilterMenu__option FilterMenu__option--current"
-        data-index={0}
-        id="filterMenu-a"
-        role="menuitem"
-      />
-      <div
-        className="FilterMenu__option"
-        data-index={1}
-        id="filterMenu-b"
-        role="menuitem"
-      />
-    </div>
-  </React.Portal>
-</Layer>
+  >
+    <IconMenuItem
+      data-key="a"
+      onClick={[Function]}
+    />
+    <IconMenuItem
+      data-key="b"
+      onClick={[Function]}
+    />
+  </IconMenu>
+</React.Fragment>
 `;

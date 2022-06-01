@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconMenuItem rendering renders expected elements 1`] = `
+<li
+  className="IconMenu__option"
+  role="menuitem"
+>
+  Test
+</li>
+`;
+
+exports[`IconMenuItem rendering renders expected elements when optional properties are set 1`] = `
+<li
+  className="IconMenu__option IconMenu--disabled IconMenu--divider TestClass"
+  role="menuitem"
+>
+  Test
+</li>
+`;

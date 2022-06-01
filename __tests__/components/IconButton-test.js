@@ -2,8 +2,11 @@ import {shallow} from 'enzyme';
 
 import IconButton from '../../src/components/IconButton';
 import useTooltip from '../../src/hooks/useTooltip';
+import setRefs from '../../src/functions/setRefs';
 
 jest.unmock('../../src/components/IconButton');
+
+useTooltip.mockReturnValue('useTooltip');
 
 describe('IconButton', () => {
 	describe('rendering', () => {
@@ -67,6 +70,12 @@ describe('IconButton', () => {
 			const wrapper = shallow(<IconButton id="test" icon={{}} onClick={onClick} />);
 			wrapper.find('#test').simulate('click');
 			expect(onClick).toHaveBeenCalled();
+		});
+
+		it('calls setRefs when ref is set', () => {
+			const ref = {foo: 'test'};
+			IconButton({}, ref); // ref doesn't seem to be passed any other way
+			expect(setRefs.mock.calls).toEqual([[ref, 'useTooltip']]);
 		});
 	});
 });

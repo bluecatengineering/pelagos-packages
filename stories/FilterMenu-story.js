@@ -1,15 +1,21 @@
+import {useRef} from 'react';
 import identity from 'lodash-es/identity';
 
-import {FilterMenu, IconButton, timesThin} from '../src';
+import {FilterMenu, IconButton, timesThin, useEditorPositioner} from '../src';
 
 const options = ['Foo', 'Bar', 'Baz'];
+const style = {position: 'absolute', flexDirection: 'row', alignItems: 'center', backgroundColor: 'var(--layer)'};
 
 // eslint-disable-next-line react/prop-types
-const Editor = ({name, onClose}) => (
-	<div style={{flexDirection: 'row'}}>
-		Mock Editor for {name} <IconButton icon={timesThin} tooltipText="Close" onClick={onClose} />
-	</div>
-);
+const Editor = ({name, buttonId, trackId, onClose}) => {
+	const editorRef = useRef(null);
+	useEditorPositioner(editorRef, buttonId, trackId);
+	return (
+		<div style={style} ref={editorRef}>
+			Mock Editor for {name} <IconButton icon={timesThin} tooltipText="Close" onClick={onClose} />
+		</div>
+	);
+};
 
 const Template = (args) => <FilterMenu {...args} />;
 

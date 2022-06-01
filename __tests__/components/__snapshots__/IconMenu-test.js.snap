@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconMenu rendering renders expected elements 1`] = `
+<Layer>
+  <IconButton
+    aria-activedescendant={null}
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    className="IconMenu"
+    disabled={false}
+    icon={
+      Object {
+        "foo": "test",
+      }
+    }
+    id="test"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;
+
+exports[`IconMenu rendering renders expected elements when all items are disabled 1`] = `
+<Layer>
+  <IconButton
+    aria-activedescendant={null}
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    className="IconMenu"
+    disabled={true}
+    icon={
+      Object {
+        "foo": "test",
+      }
+    }
+    id="test"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;
+
+exports[`IconMenu rendering renders expected elements when className is set 1`] = `
+<Layer>
+  <IconButton
+    aria-activedescendant={null}
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    className="IconMenu TestClass"
+    disabled={false}
+    icon={
+      Object {
+        "foo": "test",
+      }
+    }
+    id="test"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;
+
+exports[`IconMenu rendering renders expected elements when current is set 1`] = `
+<Layer>
+  <IconButton
+    aria-activedescendant="test-1"
+    aria-controls="test-menu"
+    aria-expanded={true}
+    aria-haspopup="true"
+    className="IconMenu"
+    disabled={false}
+    icon={
+      Object {
+        "foo": "test",
+      }
+    }
+    id="test"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+  <React.Portal>
+    <ul
+      className="IconMenu__menu"
+      id="test-menu"
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="menu"
+    >
+      <IconMenuItem
+        className=""
+        data-index={0}
+        id="test-0"
+        text="one"
+      />
+      <IconMenuItem
+        className=" IconMenu--current"
+        data-index={1}
+        id="test-1"
+        text="two"
+      />
+    </ul>
+  </React.Portal>
+</Layer>
+`;
+
+exports[`IconMenu rendering renders expected elements when disabled is set 1`] = `
+<Layer>
+  <IconButton
+    aria-activedescendant={null}
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    className="IconMenu"
+    disabled={true}
+    icon={
+      Object {
+        "foo": "test",
+      }
+    }
+    id="test"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;

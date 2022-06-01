@@ -21,7 +21,7 @@ describe('useEditorPositioner', () => {
 		useEffect.mock.calls[0][0]();
 		expect(getElementById.mock.calls).toEqual([['buttonId']]);
 		expect(editor.style.display).toBe('');
-		expect(editor.style.top).toBe('101px');
+		expect(editor.style.top).toBe('100px');
 		expect(editor.style.left).toBe('200px');
 	});
 
@@ -40,7 +40,7 @@ describe('useEditorPositioner', () => {
 		useEffect.mock.calls[0][0]();
 		expect(getElementById.mock.calls).toEqual([['buttonId'], ['trackId']]);
 		expect(editor.style.display).toBe('');
-		expect(editor.style.top).toBe('101px');
+		expect(editor.style.top).toBe('100px');
 		expect(editor.style.left).toBe('200px');
 	});
 
@@ -59,7 +59,7 @@ describe('useEditorPositioner', () => {
 		useEffect.mock.calls[0][0]();
 		expect(getElementById.mock.calls).toEqual([['buttonId'], ['trackId']]);
 		expect(editor.style.display).toBe('');
-		expect(editor.style.top).toBe('101px');
+		expect(editor.style.top).toBe('100px');
 		expect(editor.style.right).toBe('100px');
 	});
 });

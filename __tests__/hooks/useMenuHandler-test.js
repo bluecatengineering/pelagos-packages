@@ -11,23 +11,21 @@ const getItemText = () => '';
 
 describe('useMenuHandler', () => {
 	describe('buttonProps', () => {
-		describe('onMouseDown', () => {
+		describe('onClick', () => {
 			it('calls setExpanded with true when expanded is false', () => {
 				const setExpanded = jest.fn();
 				const preventDefault = jest.fn();
-				const focus = jest.fn();
-				const element = {focus};
+				const element = {};
 				const closest = jest.fn().mockReturnValue(element);
 				const event = {preventDefault, target: {closest}};
 				const {
-					buttonProps: {onMouseDown},
+					buttonProps: {onClick},
 				} = useMenuHandler(false, setExpanded, []);
 
-				onMouseDown(event);
+				onClick(event);
 
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 				expect(closest.mock.calls).toEqual([['button']]);
-				expect(focus).toHaveBeenCalledTimes(1);
 				expect(setExpanded.mock.calls).toEqual([[anyFunction]]);
 				expect(setExpanded.mock.calls[0][0](false)).toBe(true);
 			});
@@ -42,10 +40,10 @@ describe('useMenuHandler', () => {
 				const event = {preventDefault, target: {closest}};
 				useState.mockReturnValue([-1, setCurrent]);
 				const {
-					buttonProps: {onMouseDown},
+					buttonProps: {onClick},
 				} = useMenuHandler(true, setExpanded, []);
 
-				onMouseDown(event);
+				onClick(event);
 
 				expect(event.preventDefault).toHaveBeenCalledTimes(1);
 				expect(setExpanded.mock.calls).toEqual([[anyFunction]]);
@@ -61,10 +59,10 @@ describe('useMenuHandler', () => {
 				const closest = jest.fn().mockReturnValueOnce(null).mockReturnValueOnce(element);
 				const event = {preventDefault, target: {closest}};
 				const {
-					buttonProps: {onMouseDown},
+					buttonProps: {onClick},
 				} = useMenuHandler(false, setExpanded, []);
 
-				onMouseDown(event);
+				onClick(event);
 
 				expect(preventDefault).toHaveBeenCalledTimes(1);
 				expect(closest.mock.calls).toEqual([['button'], ['[role="button"]']]);
@@ -101,7 +99,7 @@ describe('useMenuHandler', () => {
 				expect(preventDefault).not.toHaveBeenCalled();
 			});
 
-			it('calls setExpanded with true when enter is pressed and expanded is false', () => {
+			it('ignores the event when enter is pressed and expanded is false', () => {
 				const preventDefault = jest.fn();
 				const setExpanded = jest.fn();
 				const {
@@ -110,8 +108,8 @@ describe('useMenuHandler', () => {
 
 				onKeyDown({keyCode: 13, preventDefault});
 
-				expect(setExpanded.mock.calls).toEqual([[true]]);
-				expect(preventDefault).toHaveBeenCalledTimes(1);
+				expect(preventDefault.mock.calls).toEqual([]);
+				expect(setExpanded.mock.calls).toEqual([]);
 			});
 
 			it('calls setExpanded with false when enter is pressed and expanded is true, current is -1', () => {

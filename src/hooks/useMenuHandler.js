@@ -49,13 +49,12 @@ export default (expanded, setExpanded, items, options) => {
 
 	const findItemToFocus = useStringFinder();
 
-	const handleMouseDown = useCallback(
+	const handleClick = useCallback(
 		(event) => {
 			event.preventDefault();
 			const target = event.target;
 			const button = target.closest('button') || target.closest('[role="button"]');
 			if (!button.disabled) {
-				button.focus();
 				setExpanded((expanded) => (setCurrent(expanded ? -1 : checkEnabled(-1, 1, items, isItemDisabled)), !expanded));
 			}
 		},
@@ -74,18 +73,17 @@ export default (expanded, setExpanded, items, options) => {
 					switch (keyCode) {
 						case 13: // enter
 						case 32: // space
-							event.preventDefault();
-							if (!expanded) {
-								setCurrent(checkEnabled(-1, 1, items, isItemDisabled));
-								setExpanded(true);
-							} else if (current === -1) {
-								setExpanded(false);
-							} else {
-								const item = items[current];
-								if (!isItemDisabled(item)) {
-									onItemSelected(item);
-									setCurrent(-1);
+							if (expanded) {
+								event.preventDefault();
+								if (current === -1) {
 									setExpanded(false);
+								} else {
+									const item = items[current];
+									if (!isItemDisabled(item)) {
+										onItemSelected(item);
+										setCurrent(-1);
+										setExpanded(false);
+									}
 								}
 							}
 							break;
@@ -155,7 +153,7 @@ export default (expanded, setExpanded, items, options) => {
 	return {
 		current,
 		buttonProps: {
-			onMouseDown: handleMouseDown,
+			onClick: handleClick,
 			onKeyDown: handleKeyDown,
 			onBlur: handleBlur,
 		},

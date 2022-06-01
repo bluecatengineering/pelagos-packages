@@ -1,9 +1,12 @@
 import {useCallback, useMemo, useState} from 'react';
-import {faCat} from '@fortawesome/free-solid-svg-icons';
+import {faCat, faCog, faEllipsisV} from '@fortawesome/free-solid-svg-icons';
+import {faEdit, faTrashAlt} from '@fortawesome/free-regular-svg-icons';
 
 import {
 	Button,
 	IconButton,
+	IconMenu,
+	IconMenuItem,
 	Layer,
 	Pagination,
 	Table,
@@ -236,6 +239,12 @@ export const DefaultToolbar = (args) => {
 				<TableToolbarDefault>
 					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
+					<IconMenu icon={faCog} flipped>
+						<IconMenuItem text="Option one" />
+						<IconMenuItem text="Option two" />
+						<IconMenuItem text="Option three" disabled />
+						<IconMenuItem text="Option four" hasDivider />
+					</IconMenu>
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
 			</TableToolbar>
@@ -300,10 +309,22 @@ export const BatchActions = (args) => {
 				<TableToolbarBatch selectedCount={selectedCount} onCancel={handleBatchCancel}>
 					<Button type="primary" text="Action 1" />
 					<Button type="primary" text="Action 2" />
+					<IconMenu icon={faCog} type="primary" flipped>
+						<IconMenuItem text="Batch option one" />
+						<IconMenuItem text="Batch option two" />
+						<IconMenuItem text="Batch option three" disabled />
+						<IconMenuItem text="Batch option four" hasDivider />
+					</IconMenu>
 				</TableToolbarBatch>
 				<TableToolbarDefault hidden={someSelected}>
 					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
+					<IconMenu icon={faCog} flipped>
+						<IconMenuItem text="Option one" />
+						<IconMenuItem text="Option two" />
+						<IconMenuItem text="Option three" disabled />
+						<IconMenuItem text="Option four" hasDivider />
+					</IconMenu>
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
 			</TableToolbar>
@@ -348,6 +369,88 @@ export const BatchActions = (args) => {
 BatchActions.args = {
 	id: 'batch-actions',
 	className: 'TableStory--selection',
+};
+
+export const InlineActions = (args) => (
+	<Layer className="TableStory__wrapper">
+		<TableTitle title="Table" description="With inline actions." />
+		<Table {...args}>
+			<TableHead>
+				<TableRow>
+					{columns.map(({id, header, align, sortable}) => (
+						<TableHeader key={id} align={align} sortable={sortable} sortOrder={id === sort.id ? sort.order : null}>
+							{header}
+						</TableHeader>
+					))}
+					<TableHeader />
+				</TableRow>
+			</TableHead>
+			<TableBody>
+				{data.map((row) => (
+					<TableRow key={row.id}>
+						{columns.map(({id, align}) => (
+							<TableCell key={id} align={align}>
+								{row[id]}
+							</TableCell>
+						))}
+						<TableCell>
+							<Layer className="TableStory__inlineButtons">
+								<IconButton icon={faEdit} />
+								<IconButton icon={faTrashAlt} />
+							</Layer>
+						</TableCell>
+					</TableRow>
+				))}
+			</TableBody>
+		</Table>
+	</Layer>
+);
+InlineActions.args = {
+	id: 'inlineActions',
+	className: 'TableStory--inlineActions',
+	fixedLayout: true,
+};
+
+export const InlineMenu = (args) => (
+	<Layer className="TableStory__wrapper">
+		<TableTitle title="Table" description="With inline menu." />
+		<Table {...args}>
+			<TableHead>
+				<TableRow>
+					{columns.map(({id, header, align, sortable}) => (
+						<TableHeader key={id} align={align} sortable={sortable} sortOrder={id === sort.id ? sort.order : null}>
+							{header}
+						</TableHeader>
+					))}
+					<TableHeader />
+				</TableRow>
+			</TableHead>
+			<TableBody>
+				{data.map((row) => (
+					<TableRow key={row.id}>
+						{columns.map(({id, align}) => (
+							<TableCell key={id} align={align}>
+								{row[id]}
+							</TableCell>
+						))}
+						<TableCell>
+							<IconMenu icon={faEllipsisV} flipped>
+								<IconMenuItem text="Option one" />
+								<IconMenuItem text="Option two" />
+								<IconMenuItem text="Option three" disabled />
+								<IconMenuItem text="Option four" hasDivider />
+							</IconMenu>
+						</TableCell>
+					</TableRow>
+				))}
+			</TableBody>
+		</Table>
+	</Layer>
+);
+InlineMenu.args = {
+	id: 'inlineMenu',
+	className: 'TableStory--inlineMenu',
+	fixedLayout: true,
 };
 
 export const WithPagination = (args) => {

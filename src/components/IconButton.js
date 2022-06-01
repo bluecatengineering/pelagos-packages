@@ -1,37 +1,44 @@
+import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+import setRefs from '../functions/setRefs';
 import useTooltip from '../hooks/useTooltip';
 
 import SvgIcon from './SvgIcon';
 import './IconButton.less';
 
 /** An icon button. */
-const IconButton = ({id, icon, className, size, type, tooltipText, tooltipPlacement, disabled, onClick, ...props}) => {
-	const tooltip = useTooltip(tooltipText, tooltipPlacement);
-	return disabled ? (
-		<span
-			{...props}
-			id={id}
-			className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
-			role="button"
-			aria-disabled="true"
-			ref={tooltip}
-		>
-			<SvgIcon icon={icon} />
-		</span>
-	) : (
-		<button
-			{...props}
-			id={id}
-			className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
-			type="button"
-			ref={tooltip}
-			onClick={onClick}
-		>
-			<SvgIcon icon={icon} />
-		</button>
-	);
-};
+const IconButton = forwardRef(
+	({id, icon, className, size, type, tooltipText, tooltipPlacement, disabled, onClick, ...props}, ref) => {
+		const tooltip = useTooltip(tooltipText, tooltipPlacement);
+		const refs = ref ? setRefs(ref, tooltip) : tooltip;
+		return disabled ? (
+			<span
+				{...props}
+				id={id}
+				className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
+				role="button"
+				aria-disabled="true"
+				ref={refs}
+			>
+				<SvgIcon icon={icon} />
+			</span>
+		) : (
+			<button
+				{...props}
+				id={id}
+				className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
+				type="button"
+				ref={refs}
+				onClick={onClick}
+			>
+				<SvgIcon icon={icon} />
+			</button>
+		);
+	}
+);
+
+IconButton.displayName = 'IconButton';
 
 IconButton.propTypes = {
 	/** The component id. */

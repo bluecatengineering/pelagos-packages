@@ -19,6 +19,8 @@ export {default as EditorGrid} from './EditorGrid';
 export {default as Hamburger} from './Hamburger';
 export {default as HeaderIcon} from './HeaderIcon';
 export {default as IconButton} from './IconButton';
+export {default as IconMenu} from './IconMenu';
+export {default as IconMenuItem} from './IconMenuItem';
 export {default as InlineNotification} from './InlineNotification';
 export {default as Label} from './Label';
 export {default as LabelLine} from './LabelLine';
