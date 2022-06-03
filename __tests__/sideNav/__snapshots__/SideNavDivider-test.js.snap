@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNavDivider rendering renders expected elements 1`] = `
+<li
+  className="SideNav__divider"
+/>
+`;
+
+exports[`SideNavDivider rendering renders expected elements when className is set 1`] = `
+<li
+  className="SideNav__divider TestClass"
+/>
+`;

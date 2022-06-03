@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNavItems rendering renders expected elements 1`] = `
+<ul
+  className="SideNav__items"
+>
+  passSideNavActive
+</ul>
+`;
+
+exports[`SideNavItems rendering renders expected elements when className is set 1`] = `
+<ul
+  className="SideNav__items TestClass"
+>
+  passSideNavActive
+</ul>
+`;

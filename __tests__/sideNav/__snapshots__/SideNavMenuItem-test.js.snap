@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNavMenuItem rendering renders expected elements 1`] = `
+<li
+  className="TestClass"
+>
+  <a
+    aria-current={null}
+    className="SideNav__link"
+    tabIndex={-1}
+  >
+    <span
+      className=""
+    >
+      child
+    </span>
+  </a>
+</li>
+`;
+
+exports[`SideNavMenuItem rendering renders expected elements when boolean properties are set 1`] = `
+<li>
+  <a
+    aria-current="page"
+    className="SideNav__link"
+    tabIndex={0}
+  >
+    <span
+      className="SideNav__text--shortcut"
+    >
+      child
+    </span>
+  </a>
+</li>
+`;

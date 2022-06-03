@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNavMenu rendering renders expected elements 1`] = `
+<li
+  className="TestClass"
+>
+  <button
+    className="SideNav__submenu"
+    tabIndex={-1}
+    type="button"
+  >
+    <div
+      className="SideNav__submenuTitle"
+    >
+      Test Title
+    </div>
+    <SvgIcon
+      className="SideNav__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "angle-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+  <ul
+    className="SideNav__menu"
+  >
+    passSideNavActive
+  </ul>
+</li>
+`;
+
+exports[`SideNavMenu rendering renders expected elements when a child element has current set 1`] = `
+<li>
+  <button
+    className="SideNav__submenu SideNav__submenu--current"
+    tabIndex={-1}
+    type="button"
+  >
+    <div
+      className="SideNav__submenuTitle"
+    >
+      Test Title
+    </div>
+    <SvgIcon
+      className="SideNav__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "angle-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+  <ul
+    className="SideNav__menu"
+  >
+    passSideNavActive
+  </ul>
+</li>
+`;
+
+exports[`SideNavMenu rendering renders expected elements when boolean properties are set 1`] = `
+<li>
+  <button
+    aria-expanded={true}
+    className="SideNav__submenu SideNav__submenu--active"
+    tabIndex={0}
+    type="button"
+  >
+    <div
+      className="SideNav__submenuTitle"
+    >
+      Test Title
+    </div>
+    <SvgIcon
+      className="SideNav__icon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "angle-down",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+  <ul
+    className="SideNav__menu"
+  >
+    passSideNavActive
+  </ul>
+</li>
+`;

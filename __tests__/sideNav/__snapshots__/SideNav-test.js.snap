@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNav rendering renders expected elements 1`] = `
+<nav
+  aria-hidden={false}
+  className="SideNav"
+>
+  passSideNavActive
+</nav>
+`;
+
+exports[`SideNav rendering renders expected elements when className is set 1`] = `
+<nav
+  aria-hidden={true}
+  className="SideNav TestClass"
+>
+  passSideNavActive
+</nav>
+`;
