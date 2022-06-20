@@ -57,7 +57,9 @@ test:unit:
     when: always
     reports:
       junit: build/junit.xml
-      cobertura: coverage/cobertura-coverage.xml
+      coverage_report:
+        path: coverage/cobertura-coverage.xml
+        coverage_format: cobertura
 
 publish:ui:
   stage: publish
