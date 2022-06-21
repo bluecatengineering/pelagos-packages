@@ -8,7 +8,7 @@
 .DetailsList__grid {
 	display: grid;
 	grid-gap: @sp-08 @sp-24;
-	.details-grid(columns; 1fr; repeat(2, 1fr) ; repeat(3, 1fr) ; repeat(4, 1fr));
+	.details-grid(columns; 1fr; repeat(2, minmax(0, 1fr)) ; repeat(3, minmax(0, 1fr)) ; repeat(4, minmax(0, 1fr)));
 	grid-auto-rows: min-content;
 	margin-top: @sp-04;
 }

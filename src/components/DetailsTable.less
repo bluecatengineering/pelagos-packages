@@ -12,7 +12,7 @@
 	display: grid;
 	grid-gap: @sp-16 @sp-24;
 	-ms-grid-columns: 1fr @sp-24 1fr @sp-24 1fr;
-	.details-grid(columns; 1fr; repeat(2, 1fr) ; repeat(3, 1fr) ; repeat(4, 1fr));
+	.details-grid(columns; 1fr; repeat(2, minmax(0, 1fr)) ; repeat(3, minmax(0, 1fr)) ; repeat(4, minmax(0, 1fr)));
 	-ms-grid-rows: min-content;
 	grid-auto-rows: min-content;
 }
