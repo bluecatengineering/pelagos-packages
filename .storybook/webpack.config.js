@@ -20,7 +20,7 @@ module.exports = ({config}) => ({
 				loader: '@bluecat/l10n-loader',
 			},
 			{
-				test: /(?<!\.strings)\.yaml$/,
+				test: /\.yaml$/,
 				type: 'json',
 				loader: 'yaml-loader',
 			},
