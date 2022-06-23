@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.0.1...v7.1.0) (2022-06-23)
+
+### Features
+
+- add IconMenu component ([4559d9d](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/4559d9d5daf78dd2ac2f2221fdf8348546cf12f1))
+- add SideNav and related components ([2fd60e3](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/2fd60e3768b6d5479858b456eb9e2869ec0f4011))
+- add Table and related components ([6ba7721](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/6ba772130d7a58a885188e38e8385cc0644541d3))
+- deprecate DataTable ([4dcc4b4](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/4dcc4b4c384539b0b54e3d3066e13d42c0c706b3))
+- use native inputs in CheckBox and RadioButton components ([15c4813](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/15c4813e14205788dab1c209d34c82d24d0c63a1))
+
+### Bug Fixes
+
+- ensure all grid columns are the same width ([9fe0499](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/9fe0499f843e9b718c56051723ef6fce08219659))
+- fix React warnings ([7a48a2c](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/7a48a2ca0ac27301cfa6fdd58fd274d405a80ab4))
+- fix validation error when prop value is null of undefined ([d6921fa](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/d6921faafb944cf21f3a01d27f641c526733c356))
+- remove extraneous semicolon ([150a7fe](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/150a7fe21573c4f9f1b1f11abe5a416c2fded4b6))
+
 ### [7.0.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.0.0...v7.0.1) (2022-04-27)
 
 ### Bug Fixes
