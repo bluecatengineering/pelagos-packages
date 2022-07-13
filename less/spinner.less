@@ -7,6 +7,16 @@
 	height: 1em;
 	border-radius: 50%;
 	animation: 0.8s infinite ease;
+
+	@media (prefers-reduced-motion) {
+		animation: none;
+
+		&::before {
+			content: attr(aria-label);
+			width: fit-content;
+			transform: translateX(-50%);
+		}
+	}
 }
 
 .spinner-kf(@color) {
