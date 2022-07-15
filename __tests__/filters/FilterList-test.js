@@ -5,7 +5,7 @@ import FilterList from '../../src/filters/FilterList';
 
 jest.unmock('../../src/filters/FilterList');
 
-const FilterEditor = () => <></>;
+const MockFilterEditor = () => <></>;
 const getFilterTitle = (name) => name;
 
 global.document = {body: {}};
@@ -14,6 +14,11 @@ describe('FilterList', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(<FilterList />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when className is set', () => {
+			const wrapper = shallow(<FilterList className="TestClass" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
@@ -35,10 +40,13 @@ describe('FilterList', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(getValues.mock.calls).toEqual([
+				['view', filters.view],
+				['zoneName', filters.zoneName],
+			]);
 		});
 
 		it('renders expected elements when filter is set', () => {
-			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const setFilter = jest.fn();
 			useState.mockReturnValue(['view', setFilter]);
@@ -47,15 +55,30 @@ describe('FilterList', () => {
 					filters={filters}
 					excludedKeys={[]}
 					getFilterTitle={getFilterTitle}
-					getValues={getValues}
-					filterEditor={FilterEditor}
+					getValues={jest.fn()}
+					getEditor={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when filter and filterEditor are set', () => {
+			const filters = {view: ['abc']};
+			const setFilter = jest.fn();
+			useState.mockReturnValue(['view', setFilter]);
+			const wrapper = shallow(
+				<FilterList
+					filters={filters}
+					excludedKeys={[]}
+					getFilterTitle={getFilterTitle}
+					getValues={jest.fn()}
+					filterEditor={MockFilterEditor}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when filter key is excluded', () => {
-			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const setFilter = jest.fn();
 			useState.mockReturnValue(['view', setFilter]);
@@ -64,8 +87,8 @@ describe('FilterList', () => {
 					filters={filters}
 					excludedKeys={['view']}
 					getFilterTitle={getFilterTitle}
-					getValues={getValues}
-					filterEditor={FilterEditor}
+					getValues={jest.fn()}
+					getEditor={jest.fn()}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -74,7 +97,6 @@ describe('FilterList', () => {
 
 	describe('behaviour', () => {
 		it('calls onApply with null when a remove button is clicked', () => {
-			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const onApply = jest.fn();
 			const remove = {dataset: {key: 'view'}};
@@ -90,8 +112,8 @@ describe('FilterList', () => {
 					onApply={onApply}
 					excludedKeys={[]}
 					getFilterTitle={getFilterTitle}
-					getValues={getValues}
-					filterEditor={FilterEditor}
+					getValues={jest.fn()}
+					getEditor={jest.fn()}
 				/>
 			);
 			wrapper.find('[onClick]').simulate('click', event);
@@ -142,7 +164,6 @@ describe('FilterList', () => {
 		});
 
 		it('calls setFilter when the editor is closed', () => {
-			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const setFilter = jest.fn();
 			useState.mockReturnValue(['view', setFilter]);
@@ -151,8 +172,8 @@ describe('FilterList', () => {
 					filters={filters}
 					excludedKeys={[]}
 					getFilterTitle={getFilterTitle}
-					getValues={getValues}
-					filterEditor={FilterEditor}
+					getValues={jest.fn()}
+					getEditor={jest.fn()}
 				/>
 			);
 			wrapper.find('FilterEditor').prop('onClose')();
@@ -160,7 +181,6 @@ describe('FilterList', () => {
 		});
 
 		it('calls onApply when the editor is saved', () => {
-			const getValues = jest.fn();
 			const filters = {view: ['abc']};
 			const values = ['x'];
 			const setFilter = jest.fn();
@@ -172,8 +192,8 @@ describe('FilterList', () => {
 					onApply={onApply}
 					excludedKeys={[]}
 					getFilterTitle={getFilterTitle}
-					getValues={getValues}
-					filterEditor={FilterEditor}
+					getValues={jest.fn()}
+					getEditor={jest.fn()}
 				/>
 			);
 			wrapper.find('FilterEditor').prop('onSave')(values);

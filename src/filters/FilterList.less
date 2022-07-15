@@ -5,12 +5,12 @@
 .FilterList {
 	flex-direction: row;
 	flex: 1;
-	margin-left: @sp-08;
 	overflow: hidden;
 }
 
 .FilterList__items {
 	flex-direction: row;
+	gap: @sp-08;
 }
 
 .FilterList__filterTitle {
@@ -31,10 +31,6 @@
 		color: var(--print-color);
 		background-color: transparent;
 	}
-}
-
-.FilterList__item:not(:first-child) {
-	margin-left: @sp-16;
 }
 
 .FilterList__button {

@@ -7,10 +7,11 @@ import {faFilter} from '@fortawesome/free-solid-svg-icons';
 import IconMenu from '../components/IconMenu';
 import IconMenuItem from '../components/IconMenuItem';
 
+import FilterEditor from './FilterEditor';
 import './FilterMenu.less';
 
 /** A menu for adding filters. */
-const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText, onApply}) => {
+const FilterMenu = ({flipped, options, filters, filterEditor: CustomEditor, getOptionText, getEditor, onApply}) => {
 	const [filterName, setFilterName] = useState(null);
 
 	const filteredOptions = !filters ? options : options.filter((key) => !filters[key]);
@@ -26,6 +27,7 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 				className={`FilterMenu${filterName ? ' FilterMenu--active' : ''}`}
 				icon={faFilter}
 				disabled={filteredOptions.length === 0}
+				flipped={flipped}
 				tooltipText={t`Add filter`}
 				tooltipPlacement="top"
 				aria-label={t`Add filter`}
@@ -36,13 +38,25 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 			</IconMenu>
 			{filterName &&
 				createPortal(
-					<FilterEditor
-						name={filterName}
-						value={filters?.[filterName]}
-						buttonId="filterButton"
-						onClose={handleClose}
-						onSave={handleSave}
-					/>,
+					getEditor ? (
+						<FilterEditor
+							name={filterName}
+							value={filters?.[filterName]}
+							buttonId="filterButton"
+							getLabel={getOptionText}
+							getEditor={getEditor}
+							onClose={handleClose}
+							onSave={handleSave}
+						/>
+					) : (
+						<CustomEditor
+							name={filterName}
+							value={filters?.[filterName]}
+							buttonId="filterButton"
+							onClose={handleClose}
+							onSave={handleSave}
+						/>
+					),
 					document.body
 				)}
 		</>
@@ -50,14 +64,18 @@ const FilterMenu = ({options, filters, filterEditor: FilterEditor, getOptionText
 };
 
 FilterMenu.propTypes = {
+	/** Whether the menu alignment should be flipped. */
+	flipped: PropTypes.bool,
 	/** The menu options. */
 	options: PropTypes.array.isRequired,
 	/** The current set of filters. */
 	filters: PropTypes.object,
-	/** The filter editor component. */
+	/** The filter editor component. @deprecated use getEditor instead. */
 	filterEditor: PropTypes.elementType,
 	/** Function returning the option text. */
 	getOptionText: PropTypes.func.isRequired,
+	/** Function returning the filter editor. */
+	getEditor: PropTypes.func,
 	/** Function invoked to apply changes. */
 	onApply: PropTypes.func,
 };

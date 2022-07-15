@@ -8,10 +8,20 @@ import ScrollBox from '../components/ScrollBox';
 import SvgIcon from '../components/SvgIcon';
 import timesThin from '../icons/timesThin';
 
+import FilterEditor from './FilterEditor';
 import './FilterList.less';
 
 /** Displays a list of filters. */
-const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilterTitle, getValues, onApply}) => {
+const FilterList = ({
+	className,
+	filters,
+	excludedKeys,
+	filterEditor: CustomEditor,
+	getFilterTitle,
+	getValues,
+	getEditor,
+	onApply,
+}) => {
 	const [filterName, setFilterName] = useState(null);
 
 	const handleClose = useCallback(() => setFilterName(null), []);
@@ -36,7 +46,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 	);
 
 	return (
-		<Layer className="FilterList">
+		<Layer className={`FilterList${className ? ` ${className}` : ''}`}>
 			<ScrollBox trackId="filterListTrack">
 				<div className="FilterList__items" onClick={handleClick}>
 					{filters &&
@@ -62,7 +72,7 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 												id={`filter-${key}-remove`}
 												className="FilterList__remove"
 												type="button"
-												aria-label={t`Remove ${name}`}
+												aria-label={t`Remove ${name} filter`}
 												data-kind="remove"
 												data-key={key}
 											>
@@ -76,14 +86,27 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 			</ScrollBox>
 			{filterName &&
 				createPortal(
-					<FilterEditor
-						name={filterName}
-						value={filters[filterName]}
-						buttonId={`filter-${filterName}`}
-						trackId="filterListTrack"
-						onClose={handleClose}
-						onSave={handleSave}
-					/>,
+					getEditor ? (
+						<FilterEditor
+							name={filterName}
+							value={filters[filterName]}
+							buttonId={`filter-${filterName}`}
+							trackId="filterListTrack"
+							getLabel={getFilterTitle}
+							getEditor={getEditor}
+							onClose={handleClose}
+							onSave={handleSave}
+						/>
+					) : (
+						<CustomEditor
+							name={filterName}
+							value={filters[filterName]}
+							buttonId={`filter-${filterName}`}
+							trackId="filterListTrack"
+							onClose={handleClose}
+							onSave={handleSave}
+						/>
+					),
 					document.body
 				)}
 		</Layer>
@@ -91,16 +114,20 @@ const FilterList = ({filters, excludedKeys, filterEditor: FilterEditor, getFilte
 };
 
 FilterList.propTypes = {
+	/** The component class name(s). */
+	className: PropTypes.string,
 	/** The filters to display. */
 	filters: PropTypes.object,
 	/** The filter keys to exclude. */
 	excludedKeys: PropTypes.array,
-	/** The editor component. */
+	/** The editor component. @deprecated use getEditor instead. */
 	filterEditor: PropTypes.elementType,
 	/** Function returning the filter title. */
 	getFilterTitle: PropTypes.func,
 	/** Function returning the filter values. */
 	getValues: PropTypes.func,
+	/** Function returning the filter editor. */
+	getEditor: PropTypes.func,
 	/** Function invoked to apply changes. */
 	onApply: PropTypes.func,
 };

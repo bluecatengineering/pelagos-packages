@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterEditor rendering renders expected elements 1`] = `
+<div
+  aria-label="Test Label"
+  className="FilterEditor"
+  id="filterListDropDown"
+  role="dialog"
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+>
+  <div
+    id="editor"
+  />
+  <Button
+    className="FilterEditor__save"
+    id="saveBtn"
+    onClick={[Function]}
+    size="small"
+    text="Save"
+    type="tertiary"
+  />
+</div>
+`;

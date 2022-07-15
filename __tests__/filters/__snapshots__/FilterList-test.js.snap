@@ -15,6 +15,89 @@ exports[`FilterList rendering renders expected elements 1`] = `
 </Layer>
 `;
 
+exports[`FilterList rendering renders expected elements when className is set 1`] = `
+<Layer
+  className="FilterList TestClass"
+>
+  <ScrollBox
+    trackId="filterListTrack"
+  >
+    <div
+      className="FilterList__items"
+      onClick={[Function]}
+    />
+  </ScrollBox>
+</Layer>
+`;
+
+exports[`FilterList rendering renders expected elements when filter and filterEditor are set 1`] = `
+<Layer
+  className="FilterList"
+>
+  <ScrollBox
+    trackId="filterListTrack"
+  >
+    <div
+      className="FilterList__items"
+      onClick={[Function]}
+    >
+      <div
+        className="FilterList__item"
+      >
+        <button
+          aria-controls="filterListDropDown"
+          aria-expanded={true}
+          aria-haspopup="dialog"
+          className="FilterList__button"
+          data-key="view"
+          data-kind="item"
+          id="filter-view"
+          type="button"
+        >
+          <span
+            className="FilterList__filterTitle"
+          >
+            view
+          </span>
+        </button>
+        <button
+          aria-label="Remove view filter"
+          className="FilterList__remove"
+          data-key="view"
+          data-kind="remove"
+          id="filter-view-remove"
+          type="button"
+        >
+          <SvgIcon
+            icon={
+              Object {
+                "icon": Array [],
+              }
+            }
+          />
+        </button>
+      </div>
+    </div>
+  </ScrollBox>
+  <React.Portal
+    container={Object {}}
+  >
+    <MockFilterEditor
+      buttonId="filter-view"
+      name="view"
+      onClose={[Function]}
+      onSave={[Function]}
+      trackId="filterListTrack"
+      value={
+        Array [
+          "abc",
+        ]
+      }
+    />
+  </React.Portal>
+</Layer>
+`;
+
 exports[`FilterList rendering renders expected elements when filter is set 1`] = `
 <Layer
   className="FilterList"
@@ -46,7 +129,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
           </span>
         </button>
         <button
-          aria-label="Remove view"
+          aria-label="Remove view filter"
           className="FilterList__remove"
           data-key="view"
           data-kind="remove"
@@ -69,6 +152,8 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
   >
     <FilterEditor
       buttonId="filter-view"
+      getEditor={[MockFunction]}
+      getLabel={[Function]}
       name="view"
       onClose={[Function]}
       onSave={[Function]}
@@ -100,6 +185,8 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
   >
     <FilterEditor
       buttonId="filter-view"
+      getEditor={[MockFunction]}
+      getLabel={[Function]}
       name="view"
       onClose={[Function]}
       onSave={[Function]}
@@ -145,7 +232,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
           </span>
         </button>
         <button
-          aria-label="Remove view"
+          aria-label="Remove view filter"
           className="FilterList__remove"
           data-key="view"
           data-kind="remove"
@@ -181,7 +268,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
           </span>
         </button>
         <button
-          aria-label="Remove zoneName"
+          aria-label="Remove zoneName filter"
           className="FilterList__remove"
           data-key="zoneName"
           data-kind="remove"

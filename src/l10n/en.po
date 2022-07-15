@@ -137,6 +137,14 @@ msgstr ""
 msgid "Remove {name}"
 msgstr ""
 
+#: 9e5
+msgid "Remove {name} filter"
+msgstr ""
+
+#: efc
+msgid "Save"
+msgstr ""
+
 #: ea2
 msgid "Use cursor keys to select date"
 msgstr ""

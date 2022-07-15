@@ -5,7 +5,7 @@ import FilterMenu from '../../src/filters/FilterMenu';
 
 jest.unmock('../../src/filters/FilterMenu');
 
-const FilterEditor = () => <></>;
+const MockFilterEditor = () => <></>;
 
 global.document = {};
 
@@ -18,12 +18,20 @@ describe('FilterMenu', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when filter is not null', () => {
+		it('renders expected elements when filter is set', () => {
+			const getOptionText = jest.fn();
+			const options = ['a', 'b'];
+			useState.mockReturnValueOnce(['value']);
+			const wrapper = shallow(<FilterMenu getOptionText={getOptionText} options={options} getEditor={jest.fn()} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when filter and filterEditor are set', () => {
 			const getOptionText = jest.fn();
 			const options = ['a', 'b'];
 			useState.mockReturnValueOnce(['value']);
 			const wrapper = shallow(
-				<FilterMenu getOptionText={getOptionText} options={options} filterEditor={FilterEditor} />
+				<FilterMenu getOptionText={getOptionText} options={options} filterEditor={MockFilterEditor} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
@@ -56,7 +64,7 @@ describe('FilterMenu', () => {
 			const setFilter = jest.fn();
 			useState.mockReturnValueOnce(['queryType', setFilter]);
 			const wrapper = shallow(
-				<FilterMenu filters={filters} getOptionText={getOptionText} options={options} filterEditor={FilterEditor} />
+				<FilterMenu filters={filters} getOptionText={getOptionText} options={options} getEditor={jest.fn()} />
 			);
 			wrapper.find('FilterEditor').prop('onClose')();
 			expect(setFilter.mock.calls).toEqual([[null]]);
@@ -76,7 +84,7 @@ describe('FilterMenu', () => {
 					onApply={onApply}
 					getOptionText={getOptionText}
 					options={options}
-					filterEditor={FilterEditor}
+					getEditor={jest.fn()}
 				/>
 			);
 			wrapper.find('FilterEditor').prop('onSave')(values);
