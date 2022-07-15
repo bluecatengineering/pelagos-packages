@@ -20,6 +20,11 @@ describe('TableToolbarSearch', () => {
 			const wrapper = shallow(<TableToolbarSearch id="test" className="TestClass" onChange={jest.fn()} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when initialText is set', () => {
+			const wrapper = shallow(<TableToolbarSearch id="test" initialText="bar" onChange={jest.fn()} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {

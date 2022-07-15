@@ -85,3 +85,46 @@ exports[`TableToolbarSearch rendering renders expected elements when className i
   </button>
 </div>
 `;
+
+exports[`TableToolbarSearch rendering renders expected elements when initialText is set 1`] = `
+<div
+  className="Table__search"
+>
+  <span
+    onClick={[Function]}
+  >
+    <SvgIcon
+      className="Table__searchIcon"
+      icon={
+        Object {
+          "icon": Array [],
+          "iconName": "search",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+  <input
+    className="Table__searchInput"
+    id="test"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    role="searchbox"
+    type="text"
+    value="bar"
+  />
+  <button
+    aria-label="Clear"
+    className="Table__searchClear"
+    onClick={[Function]}
+  >
+    <SvgIcon
+      icon={
+        Object {
+          "icon": Array [],
+        }
+      }
+    />
+  </button>
+</div>
+`;

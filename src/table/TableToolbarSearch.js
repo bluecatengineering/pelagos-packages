@@ -8,9 +8,9 @@ import timesThin from '../icons/timesThin';
 import SvgIcon from '../components/SvgIcon';
 
 /** Search input for a table toolbar. */
-const TableToolbarSearch = ({className, onChange, ...props}) => {
+const TableToolbarSearch = ({className, initialText, onChange, ...props}) => {
 	const inputRef = useRef(null);
-	const [text, setText] = useState('');
+	const [text, setText] = useState(initialText || '');
 	const debouncedOnChange = useMemo(() => debounce(onChange, 300), [onChange]);
 	const handleChange = useCallback(
 		(event) => {
@@ -58,7 +58,9 @@ const TableToolbarSearch = ({className, onChange, ...props}) => {
 TableToolbarSearch.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
-	/** Function invoked when the text changes. */
+	/** The initial search text. Must be in lowercase. */
+	initialText: PropTypes.string,
+	/** Function invoked when the text changes. The call is debounced with 300 ms delay. */
 	onChange: PropTypes.func.isRequired,
 };
 
