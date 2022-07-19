@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.1.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.1.0...v7.1.1) (2022-07-19)
+
+### Bug Fixes
+
+- allow setting an initial text in TableToolbarSearch ([864ebd8](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/864ebd8281339cb4611b9ea4a06395442d960019))
+- handle prefers-reduced-motion in Spinner ([07bf016](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/07bf01637d58945c278c43be434fbf46a86b5b03))
+- improve filters ([8f45d3c](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/8f45d3c088bec57ca9835c165bfe63889af28bcd))
+
 ## [7.1.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.0.1...v7.1.0) (2022-06-23)
 
 ### Features
