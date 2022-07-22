@@ -288,6 +288,21 @@ export const Breakpoints = () => (
 	</div>
 );
 
+export const AspectRatios = () => (
+	<div>
+		<h2>Aspect Ratios</h2>
+		<div className="AspectRatio__table">
+			{['2-1', '16-9', '3-2', '4-3', '1-1', '3-4', '2-3', '9-16', '1-2'].map((name) => (
+				<div key={name} className={`AspectRatio__row AspectRatio--r${name}`}>
+					{[1, 2, 3, 4].map((key) => (
+						<div key={key}>{name.replace('-', ':')}</div>
+					))}
+				</div>
+			))}
+		</div>
+	</div>
+);
+
 export default {
 	title: 'Styles',
 };
