@@ -7,7 +7,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
   <Layer
     aria-labelledby="dialogTitle"
     aria-modal={true}
-    className="Dialog TestClass"
+    className="Dialog Dialog--md TestClass"
     id="test-dialog"
     role="dialog"
   >
@@ -45,7 +45,7 @@ exports[`Dialog rendering renders expected elements when child has no className 
   <Layer
     aria-labelledby="dialogTitle"
     aria-modal={true}
-    className="Dialog"
+    className="Dialog Dialog--md"
     id="test-dialog"
     role="dialog"
   >
@@ -84,7 +84,7 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
     aria-labelledby="dialogTitle"
     aria-modal={true}
     as="form"
-    className="Dialog"
+    className="Dialog Dialog--md"
     id="test-dialog"
     onSubmit={[Function]}
     role="dialog"

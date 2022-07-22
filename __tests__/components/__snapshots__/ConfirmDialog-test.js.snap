@@ -3,6 +3,7 @@
 exports[`ConfirmDialog rendering renders expected elements 1`] = `
 <Dialog
   role="alertdialog"
+  size="sm"
   title="Title"
 >
   <div
@@ -18,7 +19,9 @@ exports[`ConfirmDialog rendering renders expected elements 1`] = `
         }
       }
     />
-    Body
+    <p>
+      Body
+    </p>
   </div>
   <div>
     <Button
