@@ -10,6 +10,13 @@ const renderLabel = (v) => v.toUpperCase();
 describe('RadioGroup', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
+			const wrapper = shallow(
+				<RadioGroup id="test" className="TestClass" value="foo" options={options} renderLabel={renderLabel} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when className is not set', () => {
 			const wrapper = shallow(<RadioGroup id="test" value="foo" options={options} renderLabel={renderLabel} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

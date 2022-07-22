@@ -6,7 +6,7 @@ import RadioButton from './RadioButton';
 import './RadioGroup.less';
 
 /** A group of radio buttons. */
-const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
+const RadioGroup = ({id, className, value, options, renderLabel, onChange, ...props}) => {
 	const handleChange = useCallback((event) => onChange(event.target.value), [onChange]);
 
 	const handleKeyDown = useCallback(
@@ -30,12 +30,17 @@ const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
 	);
 
 	return (
-		<div {...props} id={id} role="radiogroup" onKeyDown={handleKeyDown}>
+		<div
+			{...props}
+			id={id}
+			className={`RadioGroup${className ? ` ${className}` : ''}`}
+			role="radiogroup"
+			onKeyDown={handleKeyDown}
+		>
 			{options.map((option) => (
 				<RadioButton
 					key={option}
 					id={`${id}-${option}`}
-					className="RadioGroup__option"
 					label={renderLabel(option)}
 					checked={value === option}
 					tabIndex={value === option ? 0 : -1}
@@ -50,6 +55,8 @@ const RadioGroup = ({id, value, options, renderLabel, onChange, ...props}) => {
 RadioGroup.propTypes = {
 	/** The component ID. */
 	id: PropTypes.string.isRequired,
+	/** The component class name(s). */
+	className: PropTypes.string,
 	/** The value of the selected option. */
 	value: PropTypes.string,
 	/** The list of options. */
