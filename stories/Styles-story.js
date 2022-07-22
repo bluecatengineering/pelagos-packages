@@ -256,6 +256,38 @@ export const Spacing = () => (
 );
 Spacing.storyName = 'Spacing';
 
+export const Breakpoints = () => (
+	<div>
+		<h2>Breakpoints</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Breakpoint</th>
+					<th>min-width (px)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>md</td>
+					<td>672</td>
+				</tr>
+				<tr>
+					<td>lg</td>
+					<td>1056</td>
+				</tr>
+				<tr>
+					<td>xlg</td>
+					<td>1312</td>
+				</tr>
+				<tr>
+					<td>max</td>
+					<td>1584</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+);
+
 export default {
 	title: 'Styles',
 };

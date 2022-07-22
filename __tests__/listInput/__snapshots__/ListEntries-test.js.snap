@@ -2,13 +2,13 @@
 
 exports[`ListEntries rendering renders expected elements 1`] = `
 <div
-  className="ListEntries TestClass"
+  className="ListEntries ListEntries--grid TestClass"
   id="test"
   onClick={[Function]}
   role="list"
 >
   <div
-    className="ListEntries__item  ListEntries__gridItem"
+    className="ListEntries__item"
     data-testid="list-item"
     role="listitem"
   >
@@ -38,13 +38,13 @@ exports[`ListEntries rendering renders expected elements 1`] = `
 
 exports[`ListEntries rendering renders expected elements when column is set 1`] = `
 <div
-  className="ListEntries"
+  className="ListEntries ListEntries--column"
   id="test"
   onClick={[Function]}
   role="list"
 >
   <div
-    className="ListEntries__item "
+    className="ListEntries__item"
     data-testid="list-item"
     role="listitem"
   >
@@ -74,13 +74,13 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
 
 exports[`ListEntries rendering renders expected elements when highlightKey is set 1`] = `
 <div
-  className="ListEntries"
+  className="ListEntries ListEntries--grid"
   id="test"
   onClick={[Function]}
   role="list"
 >
   <div
-    className="ListEntries__item  ListEntries__item--highlight ListEntries__gridItem"
+    className="ListEntries__item ListEntries__item--highlight"
     data-testid="list-item"
     role="listitem"
   >
@@ -110,13 +110,13 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
 
 exports[`ListEntries rendering renders expected elements when renderItem is not set 1`] = `
 <div
-  className="ListEntries"
+  className="ListEntries ListEntries--grid"
   id="test"
   onClick={[Function]}
   role="list"
 >
   <div
-    className="ListEntries__item  ListEntries__gridItem"
+    className="ListEntries__item"
     data-testid="list-item"
     role="listitem"
   >
@@ -146,13 +146,13 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
 
 exports[`ListEntries rendering renders expected elements when the item has className 1`] = `
 <div
-  className="ListEntries"
+  className="ListEntries ListEntries--grid"
   id="test"
   onClick={[Function]}
   role="list"
 >
   <div
-    className="ListEntries__item  ListEntries__gridItem"
+    className="ListEntries__item"
     data-testid="list-item"
     role="listitem"
   >

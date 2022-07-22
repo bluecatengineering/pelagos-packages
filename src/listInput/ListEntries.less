@@ -1,17 +1,25 @@
+@import '../../less/breakpoints';
 @import '../../less/spacing';
 @import '../../less/utils';
 
 .ListEntries {
-	flex-flow: row wrap;
-	align-items: flex-start;
-	align-content: flex-start;
+	gap: @sp-08;
+
+	&--grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-auto-rows: min-content;
+
+		.breakpoint(md, {grid-template-columns: repeat(2, 1fr)});
+		.breakpoint(lg, {grid-template-columns: repeat(4, 1fr)});
+		.breakpoint(xlg, {grid-template-columns: repeat(8, 1fr)});
+	}
 }
 
 .ListEntries__item {
 	flex-direction: row;
 	align-items: center;
-	padding: @sp-04 @sp-08;
-	width: 100%;
+	overflow: hidden;
 }
 
 .ListEntries__item--highlight {
@@ -31,22 +39,4 @@
 .ListEntries__name {
 	flex: 1;
 	padding-left: @sp-04;
-}
-
-@media (min-width: 768px) {
-	.ListEntries__gridItem {
-		width: 50%;
-	}
-}
-
-@media (min-width: 992px) {
-	.ListEntries__gridItem {
-		width: 33.3333%;
-	}
-}
-
-@media (min-width: 1200px) {
-	.ListEntries__gridItem {
-		width: 25%;
-	}
 }

@@ -52,21 +52,22 @@ const ListEntries = ({
 	}, [highlightKey, clearHighlight]);
 
 	return (
-		<div id={id} className={`ListEntries${className ? ` ${className}` : ''}`} role="list" onClick={handleClick}>
+		<div
+			id={id}
+			className={`ListEntries ListEntries--${column ? 'column' : 'grid'}${className ? ` ${className}` : ''}`}
+			role="list"
+			onClick={handleClick}
+		>
 			{list.map((item, i) => {
 				const name = getItemName(item);
 				const element = renderItem ? renderItem(item) : renderListItem(name);
 				let className = element.props.className;
-				className = className ? className + ' ListEntries__name' : 'ListEntries__name';
+				className = className ? `${className} ListEntries__name` : 'ListEntries__name';
 				const itemKey = getItemKey(item, i);
 				return (
 					<div
 						key={itemKey}
-						className={
-							'ListEntries__item ' +
-							(itemKey === highlightKey ? ' ListEntries__item--highlight' : '') +
-							(column ? '' : ' ListEntries__gridItem')
-						}
+						className={`ListEntries__item${itemKey === highlightKey ? ' ListEntries__item--highlight' : ''}`}
 						role="listitem"
 						data-testid="list-item"
 					>

@@ -1,3 +1,4 @@
+@import './breakpoints';
 @import './focus';
 
 @base-ellipsis: {
@@ -132,35 +133,16 @@
 .editor-grid(@property; @value1; @value2; @value3; @value4; @value5) {
 	grid-template-@{property}: @value1;
 
-	@media (min-width: 640px) {
-		grid-template-@{property}: @value2;
-	}
-
-	@media (min-width: 960px) {
-		grid-template-@{property}: @value3;
-	}
-
-	@media (min-width: 1200px) {
-		grid-template-@{property}: @value4;
-	}
-
-	@media (min-width: 1600px) {
-		grid-template-@{property}: @value5;
-	}
+	.breakpoint(md, {grid-template-@{property}: @value2});
+	.breakpoint(lg, {grid-template-@{property}: @value3});
+	.breakpoint(xlg, {grid-template-@{property}: @value4});
+	.breakpoint(max, {grid-template-@{property}: @value5});
 }
 
 .details-grid(@property; @value1; @value2; @value3; @value4) {
 	grid-template-@{property}: @value1;
 
-	@media (min-width: 960px) {
-		grid-template-@{property}: @value2;
-	}
-
-	@media (min-width: 1200px) {
-		grid-template-@{property}: @value3;
-	}
-
-	@media (min-width: 1600px) {
-		grid-template-@{property}: @value4;
-	}
+	.breakpoint(lg, {grid-template-@{property}: @value2});
+	.breakpoint(xlg, {grid-template-@{property}: @value3});
+	.breakpoint(max, {grid-template-@{property}: @value4});
 }

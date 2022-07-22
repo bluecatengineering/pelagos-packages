@@ -1,3 +1,4 @@
+@import '../../less/breakpoints';
 @import '../../less/fonts';
 @import '../../less/spacing';
 @import '../../less/utils';
@@ -19,12 +20,13 @@
 
 .DetailsTable__headRow {
 	@font-12-600();
+	display: none;
 	color: var(--text-secondary);
 	margin-top: @sp-08;
 
-	@media (max-width: 959px) {
-		display: none;
-	}
+	.breakpoint(lg, {
+		display: grid;
+	});
 }
 
 .DetailsTable__row {
