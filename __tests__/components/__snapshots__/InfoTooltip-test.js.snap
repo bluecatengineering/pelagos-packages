@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoTooltip rendering renders expected elements 1`] = `
+<button
+  className="InfoTooltip"
+>
+  <SvgIcon
+    icon={
+      Object {
+        "icon": Array [],
+      }
+    }
+  />
+</button>
+`;
+
+exports[`InfoTooltip rendering renders expected elements when className is set 1`] = `
+<button
+  className="InfoTooltip TestClass"
+  id="test"
+>
+  <SvgIcon
+    icon={
+      Object {
+        "icon": Array [],
+      }
+    }
+  />
+</button>
+`;
