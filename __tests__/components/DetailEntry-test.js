@@ -20,6 +20,13 @@ describe('DetailEntry', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when infoText is set', () => {
+			const wrapper = shallow(
+				<DetailEntry id="test" label="Test Label" infoText="Test info" infoTextPlacement="bottom" value="test value" />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when children are specified', () => {
 			const wrapper = shallow(
 				<DetailEntry id="test" className="TestClass" label="Test Label" value="test value" valueClass="TestValueClass">

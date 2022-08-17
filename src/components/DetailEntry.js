@@ -1,12 +1,28 @@
 import PropTypes from 'prop-types';
 
 import Label from './Label';
+import InfoTooltip from './InfoTooltip';
 import './DetailEntry.less';
 
 /** An entry in the details panel. */
-const DetailEntry = ({id, className, label, value, direction, valueClass, valueTitle, children, ...props}) => (
+const DetailEntry = ({
+	id,
+	className,
+	label,
+	infoText,
+	infoTextPlacement,
+	value,
+	direction,
+	valueClass,
+	valueTitle,
+	children,
+	...props
+}) => (
 	<div className={`DetailEntry${className ? ` ${className}` : ''}`}>
-		<Label text={label} htmlFor={id} />
+		<div className="DetailEntry__label">
+			<Label text={label} htmlFor={id} />
+			{infoText && <InfoTooltip text={infoText} placement={infoTextPlacement} />}
+		</div>
 		<div
 			{...props}
 			id={id}
@@ -25,6 +41,10 @@ DetailEntry.propTypes = {
 	className: PropTypes.any,
 	/** The label text. */
 	label: PropTypes.string.isRequired,
+	/** The text of the info tooltip to display. */
+	infoText: PropTypes.string,
+	/** The placement of the info tooltip relative to the icon. */
+	infoTextPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
 	/** The value to be displayed. */
 	value: PropTypes.any,
 	/** The layout direction for the value. */

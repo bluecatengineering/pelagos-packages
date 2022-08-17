@@ -4,10 +4,14 @@ exports[`DetailEntry rendering renders expected elements 1`] = `
 <div
   className="DetailEntry TestClass"
 >
-  <Label
-    htmlFor="test"
-    text="Test Label"
-  />
+  <div
+    className="DetailEntry__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test Label"
+    />
+  </div>
   <div
     className="DetailEntry__value DetailEntry--column TestValueClass"
     id="test"
@@ -22,10 +26,14 @@ exports[`DetailEntry rendering renders expected elements when children are speci
 <div
   className="DetailEntry TestClass"
 >
-  <Label
-    htmlFor="test"
-    text="Test Label"
-  />
+  <div
+    className="DetailEntry__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test Label"
+    />
+  </div>
   <div
     className="DetailEntry__value DetailEntry--column TestValueClass"
     id="test"
@@ -39,10 +47,14 @@ exports[`DetailEntry rendering renders expected elements when className and valu
 <div
   className="DetailEntry"
 >
-  <Label
-    htmlFor="test"
-    text="Test Label"
-  />
+  <div
+    className="DetailEntry__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test Label"
+    />
+  </div>
   <div
     className="DetailEntry__value DetailEntry--column"
     id="test"
@@ -56,12 +68,41 @@ exports[`DetailEntry rendering renders expected elements when direction is row 1
 <div
   className="DetailEntry TestClass"
 >
-  <Label
-    htmlFor="test"
-    text="Test Label"
-  />
+  <div
+    className="DetailEntry__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test Label"
+    />
+  </div>
   <div
     className="DetailEntry__value DetailEntry--row TestValueClass"
+    id="test"
+  >
+    test value
+  </div>
+</div>
+`;
+
+exports[`DetailEntry rendering renders expected elements when infoText is set 1`] = `
+<div
+  className="DetailEntry"
+>
+  <div
+    className="DetailEntry__label"
+  >
+    <Label
+      htmlFor="test"
+      text="Test Label"
+    />
+    <InfoTooltip
+      placement="bottom"
+      text="Test info"
+    />
+  </div>
+  <div
+    className="DetailEntry__value DetailEntry--column"
     id="test"
   >
     test value

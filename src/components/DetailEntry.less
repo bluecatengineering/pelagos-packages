@@ -2,13 +2,19 @@
 
 .DetailEntry {
 	margin-top: @sp-16;
-}
 
-.DetailEntry--row {
-	flex-direction: row;
-}
+	&--row {
+		flex-direction: row;
+	}
 
-.DetailEntry__value {
-	position: relative;
-	margin-top: @sp-04;
+	&__label {
+		flex-direction: row;
+		align-items: center;
+		gap: @sp-08;
+	}
+
+	&__value {
+		position: relative;
+		margin-top: @sp-04;
+	}
 }
