@@ -8,19 +8,14 @@ const pause = jest.fn();
 const play = jest.fn();
 const animate = jest.fn().mockReturnValue({pause, play});
 const elementBoundingRect = jest.fn();
+const setProperty = jest.fn();
 const baseElement = {
 	animate,
 	getBoundingClientRect: elementBoundingRect,
-	appendChild(child) {
-		if (!this.firstChild) {
-			this.firstChild = child;
-		}
-		this.lastChild = child;
-	},
 };
 const createElement = jest.fn(() => {
 	const element = Object.create(baseElement);
-	element.style = {};
+	element.style = {setProperty};
 	return element;
 });
 const appendChild = jest.fn();

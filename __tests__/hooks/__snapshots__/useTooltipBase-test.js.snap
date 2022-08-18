@@ -3,137 +3,155 @@
 exports[`useTooltipBase show shows tooltip 1`] = `
 Object {
   "className": "Tooltip Tooltip--top",
-  "firstChild": Object {
-    "className": "Tooltip__body",
-    "style": Object {},
-    "textContent": "Test",
-  },
   "id": "tooltip-1",
-  "lastChild": Object {
-    "className": "Tooltip__arrow",
-    "style": Object {
-      "left": "50%",
-      "top": undefined,
-    },
-  },
   "style": Object {
     "left": "190px",
-    "top": "90px",
+    "setProperty": [MockFunction] {
+      "calls": Array [
+        Array [
+          "--arrow-position",
+          "50%",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
+    "top": "81px",
   },
+  "textContent": "Test",
 }
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when placement is bottom 1`] = `
 Object {
   "className": "Tooltip Tooltip--bottom",
-  "firstChild": Object {
-    "className": "Tooltip__body",
-    "style": Object {},
-    "textContent": "Test",
-  },
   "id": "tooltip-1",
-  "lastChild": Object {
-    "className": "Tooltip__arrow",
-    "style": Object {
-      "left": "50%",
-      "top": undefined,
-    },
-  },
   "style": Object {
     "left": "190px",
-    "top": "150px",
+    "setProperty": [MockFunction] {
+      "calls": Array [
+        Array [
+          "--arrow-position",
+          "50%",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
+    "top": "159px",
   },
+  "textContent": "Test",
 }
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when placement is left 1`] = `
 Object {
   "className": "Tooltip Tooltip--left",
-  "firstChild": Object {
-    "className": "Tooltip__body",
-    "style": Object {},
-    "textContent": "Test",
-  },
   "id": "tooltip-1",
-  "lastChild": Object {
-    "className": "Tooltip__arrow",
-    "style": Object {
-      "left": undefined,
-      "top": "50%",
-    },
-  },
   "style": Object {
-    "left": "80px",
+    "left": "71px",
+    "setProperty": [MockFunction] {
+      "calls": Array [
+        Array [
+          "--arrow-position",
+          "50%",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
     "top": "120px",
   },
+  "textContent": "Test",
 }
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when placement is right 1`] = `
 Object {
   "className": "Tooltip Tooltip--right",
-  "firstChild": Object {
-    "className": "Tooltip__body",
-    "style": Object {},
-    "textContent": "Test",
-  },
   "id": "tooltip-1",
-  "lastChild": Object {
-    "className": "Tooltip__arrow",
-    "style": Object {
-      "left": undefined,
-      "top": "50%",
-    },
-  },
   "style": Object {
-    "left": "300px",
+    "left": "309px",
+    "setProperty": [MockFunction] {
+      "calls": Array [
+        Array [
+          "--arrow-position",
+          "50%",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
     "top": "120px",
   },
+  "textContent": "Test",
 }
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when the tooltip position exceeds the window width 1`] = `
 Object {
   "className": "Tooltip Tooltip--top",
-  "firstChild": Object {
-    "className": "Tooltip__body",
-    "style": Object {},
-    "textContent": "Test",
-  },
   "id": "tooltip-1",
-  "lastChild": Object {
-    "className": "Tooltip__arrow",
-    "style": Object {
-      "left": "72%",
-      "top": undefined,
-    },
-  },
   "style": Object {
     "left": "224px",
-    "top": "90px",
+    "setProperty": [MockFunction] {
+      "calls": Array [
+        Array [
+          "--arrow-position",
+          "72%",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
+    "top": "81px",
   },
+  "textContent": "Test",
 }
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when the tooltip position is negative 1`] = `
 Object {
   "className": "Tooltip Tooltip--top",
-  "firstChild": Object {
-    "className": "Tooltip__body",
-    "style": Object {},
-    "textContent": "Test",
-  },
   "id": "tooltip-1",
-  "lastChild": Object {
-    "className": "Tooltip__arrow",
-    "style": Object {
-      "left": "25%",
-      "top": undefined,
-    },
-  },
   "style": Object {
     "left": "0px",
-    "top": "90px",
+    "setProperty": [MockFunction] {
+      "calls": Array [
+        Array [
+          "--arrow-position",
+          "25%",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
+    "top": "81px",
   },
+  "textContent": "Test",
 }
 `;
