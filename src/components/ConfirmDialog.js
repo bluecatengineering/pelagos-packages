@@ -11,7 +11,7 @@ const ConfirmDialog = ({title, body, confirmText, size, onClose, onConfirm}) => 
 	<Dialog title={title} role="alertdialog" size={size}>
 		<div className="ConfirmDialog__body">
 			<SvgIcon className="ConfirmDialog__icon" icon={faExclamationTriangle} />
-			<p>{body}</p>
+			<p className="ConfirmDialog__text">{body}</p>
 		</div>
 		<div>
 			<Button id="closeDialogBtn" text={t`Cancel`} onClick={onClose} />

@@ -19,7 +19,9 @@ exports[`ConfirmDialog rendering renders expected elements 1`] = `
         }
       }
     />
-    <p>
+    <p
+      className="ConfirmDialog__text"
+    >
       Body
     </p>
   </div>

@@ -2,13 +2,18 @@
 
 .ConfirmDialog__body {
 	flex-direction: row;
-	align-items: flex-start;
 }
 
 .ConfirmDialog__icon {
 	flex: none;
+	align-self: flex-start;
 	color: var(--support-warning);
-	margin-right: @sp-08;
+	margin-right: @sp-16;
 	margin-top: @sp-04;
 	font-size: 20px;
+}
+
+.ConfirmDialog__text {
+	overflow-x: hidden;
+	overflow-y: auto;
 }
