@@ -34,6 +34,9 @@ sp-64:
 sp-80:
   size: 80
   factor: 5
+sp-96:
+  size: 96
+  factor: 6
 sp-160:
   size: 160
   factor: 10
