@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.2.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.1.1...v7.2.0) (2022-08-22)
+
+### Features
+
+- add InfoTooltip component ([e1d3aa3](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/e1d3aa3d84d92c2414dc8c658c2253e3735916a4))
+- add option to display an InfoTooltip in DetailEntry ([4977552](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/49775521f39cb65aecc37047394000f55f5d5c5d))
+- add size property to Dialog ([950f4e1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/950f4e1529bf422f0b47b373f88f26931e5a3bc7))
+- add sp-96 ([aacfb14](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/aacfb14030f5a5cccfd220f4255ece6eac8b8a67))
+- define standard aspect ratios ([1402f38](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/1402f382a4efd6d57ff5c15b702e6343255316f8))
+- define standard breakpoints ([4c77963](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/4c77963ca7ed177a7f1ec5030f23ff6c8e5d3d28))
+
+### Bug Fixes
+
+- fix spacing in check boxes and radio buttons ([2c48f34](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/2c48f346d6f404c2eec769886b9df1e298cfd928))
+- improve ConfirmDialog layout ([a47eb0d](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/a47eb0dad2bae98a3196d62eda192a7202b2ce0e))
+- simplify Tooltip implementation ([22baed7](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/22baed749829de11c2c5a42f29d98cfa02b05465))
+
 ### [7.1.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.1.0...v7.1.1) (2022-07-19)
 
 ### Bug Fixes
