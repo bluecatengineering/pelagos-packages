@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hideChild returns expected element when key is not set 1`] = `
+<div
+  key={0}
+  tabIndex={-1}
+/>
+`;
+
+exports[`hideChild returns expected element when key is set 1`] = `
+<div
+  key="test"
+  tabIndex={-1}
+/>
+`;

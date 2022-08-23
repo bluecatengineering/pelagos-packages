@@ -2,8 +2,11 @@ import {shallow} from 'enzyme';
 
 import TableToolbarDefault from '../../src/table/TableToolbarDefault';
 import Button from '../../src/components/Button';
+import hideChild from '../../src/table/hideChild';
 
 jest.unmock('../../src/table/TableToolbarDefault');
+
+hideChild.mockReturnValue('hideChild');
 
 describe('TableToolbarDefault', () => {
 	describe('rendering', () => {
@@ -26,22 +29,20 @@ describe('TableToolbarDefault', () => {
 		});
 
 		it('renders expected elements when hidden is set', () => {
-			const wrapper = shallow(
-				<TableToolbarDefault hidden>
-					<Button />
-				</TableToolbarDefault>
-			);
+			const button = <Button />;
+			const wrapper = shallow(<TableToolbarDefault hidden>{button}</TableToolbarDefault>);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(hideChild.mock.calls).toEqual([[button, 0]]);
 		});
 
 		it('renders expected elements when hidden is set and children is a list', () => {
-			const wrapper = shallow(
-				<TableToolbarDefault hidden>
-					<Button />
-					<Button />
-				</TableToolbarDefault>
-			);
+			const buttons = [<Button key="a" />, <Button key="b" />];
+			const wrapper = shallow(<TableToolbarDefault hidden>{buttons}</TableToolbarDefault>);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(hideChild.mock.calls).toEqual([
+				[buttons[0], 0, buttons],
+				[buttons[1], 1, buttons],
+			]);
 		});
 	});
 });

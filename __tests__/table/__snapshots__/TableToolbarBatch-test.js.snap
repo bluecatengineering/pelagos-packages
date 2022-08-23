@@ -13,12 +13,7 @@ exports[`TableToolbarBatch rendering renders expected elements 1`] = `
   <div
     className="Table__toolbarBatchButtons"
   >
-    <Button
-      key={0}
-      size="medium"
-      tabIndex={-1}
-      type="tertiary"
-    />
+    hideChild
     <Button
       className="Table__toolbarBatchCancel"
       size="medium"
@@ -43,18 +38,8 @@ exports[`TableToolbarBatch rendering renders expected elements when children is 
   <div
     className="Table__toolbarBatchButtons"
   >
-    <Button
-      key={0}
-      size="medium"
-      tabIndex={-1}
-      type="tertiary"
-    />
-    <Button
-      key={1}
-      size="medium"
-      tabIndex={-1}
-      type="tertiary"
-    />
+    hideChild
+    hideChild
     <Button
       className="Table__toolbarBatchCancel"
       size="medium"
@@ -79,12 +64,7 @@ exports[`TableToolbarBatch rendering renders expected elements when className is
   <div
     className="Table__toolbarBatchButtons"
   >
-    <Button
-      key={0}
-      size="medium"
-      tabIndex={-1}
-      type="tertiary"
-    />
+    hideChild
     <Button
       className="Table__toolbarBatchCancel"
       size="medium"

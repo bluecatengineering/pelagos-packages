@@ -27,12 +27,7 @@ exports[`TableToolbarDefault rendering renders expected elements when hidden is 
   aria-hidden={true}
   className="Table__toolbarDefault"
 >
-  <Button
-    key={0}
-    size="medium"
-    tabIndex={-1}
-    type="tertiary"
-  />
+  hideChild
 </div>
 `;
 
@@ -41,17 +36,7 @@ exports[`TableToolbarDefault rendering renders expected elements when hidden is 
   aria-hidden={true}
   className="Table__toolbarDefault"
 >
-  <Button
-    key={0}
-    size="medium"
-    tabIndex={-1}
-    type="tertiary"
-  />
-  <Button
-    key={1}
-    size="medium"
-    tabIndex={-1}
-    type="tertiary"
-  />
+  hideChild
+  hideChild
 </div>
 `;

@@ -1,10 +1,10 @@
-import {cloneElement, forwardRef} from 'react';
+import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import {t, plural} from '@bluecat/l10n.macro';
 
 import Button from '../components/Button';
 
-const hide = (child, index) => cloneElement(child, {tabIndex: -1, key: child.key || index});
+import hideChild from './hideChild';
 
 /** Table toolbar for batch actions. */
 const TableToolbarBatch = forwardRef(({className, selectedCount, children, onCancel, ...props}, ref) => (
@@ -20,7 +20,7 @@ const TableToolbarBatch = forwardRef(({className, selectedCount, children, onCan
 			{plural(selectedCount, {one: 'one item selected', other: '# items selected'})}
 		</div>
 		<div className="Table__toolbarBatchButtons">
-			{selectedCount ? children : Array.isArray(children) ? children.map(hide) : hide(children, 0)}
+			{selectedCount ? children : Array.isArray(children) ? children.map(hideChild) : hideChild(children, 0)}
 			<Button
 				className="Table__toolbarBatchCancel"
 				type="primary"
