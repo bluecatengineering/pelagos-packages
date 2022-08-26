@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.2.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.2.0...v7.2.1) (2022-08-26)
+
+### Bug Fixes
+
+- fix error when toolbar child is null or undefined ([9df09ec](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/9df09ec0b6039cdaaf9053a55ecd9653a3b497f6))
+
 ## [7.2.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.1.1...v7.2.0) (2022-08-22)
 
 ### Features
