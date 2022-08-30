@@ -5,6 +5,15 @@
 	@layer-hover-effects();
 	margin-left: @sp-02;
 
+	&--disabled {
+		color: var(--text-disabled);
+
+		&:hover,
+		&:active {
+			background-color: transparent;
+		}
+	}
+
 	& > input {
 		margin-right: @sp-08;
 	}

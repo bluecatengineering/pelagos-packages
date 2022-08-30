@@ -30,6 +30,22 @@ exports[`CheckBox rendering renders expected elements when clasName is set 1`] =
 </label>
 `;
 
+exports[`CheckBox rendering renders expected elements when disabled is true 1`] = `
+<label
+  className="CheckBox CheckBox--disabled"
+>
+  <input
+    checked={true}
+    className=""
+    disabled={true}
+    id="test"
+    onChange={[MockFunction]}
+    type="checkbox"
+  />
+  Test
+</label>
+`;
+
 exports[`CheckBox rendering renders expected elements when error is true 1`] = `
 <label
   className="CheckBox TestClass"
