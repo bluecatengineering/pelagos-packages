@@ -2,12 +2,13 @@ import {DropZone} from '../src';
 
 const Template = (args) => <DropZone {...args} />;
 
-export const Normal = Template.bind({});
-Normal.args = {
-	label: 'Normal',
+export const Default = Template.bind({});
+Default.args = {
+	label: 'Default',
 	emptyHint: 'No file',
 	uploadedHint: 'File uploaded',
 	editingHint: 'Editing',
+	deleteTooltipText: 'Delete',
 	helperText: 'Helper text',
 };
 
@@ -25,4 +26,5 @@ export default {
 	title: 'Components/DropZone',
 	component: DropZone,
 	parameters: {actions: {argTypesRegex: '^on.*'}},
+	decorators: [(story) => <div style={{width: '50vw'}}>{story()}</div>],
 };

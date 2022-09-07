@@ -1,11 +1,12 @@
 import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecat/l10n.macro';
-import {faFileAlt} from '@fortawesome/free-regular-svg-icons';
+import {faFileAlt, faTrashAlt} from '@fortawesome/free-regular-svg-icons';
 import {faCloudUploadAlt} from '@fortawesome/free-solid-svg-icons';
 
 import LabelLine from '../components/LabelLine';
 import SvgIcon from '../components/SvgIcon';
+import IconButton from '../components/IconButton';
 import useRandomId from '../hooks/useRandomId';
 
 import FieldError from './FieldError';
@@ -55,6 +56,7 @@ const DropZone = ({
 	emptyHint,
 	editingHint,
 	uploadedHint,
+	deleteTooltipText,
 	fileName,
 	helperText,
 	error,
@@ -62,6 +64,7 @@ const DropZone = ({
 	disabled,
 	asFile,
 	onDrop,
+	onDelete,
 }) => {
 	id = useRandomId(id);
 	const readFile = useCallback(
@@ -130,6 +133,15 @@ const DropZone = ({
 					</div>
 				)}
 			</button>
+			{editing && onDelete && (
+				<IconButton
+					className="DropZone__delete"
+					icon={faTrashAlt}
+					tooltipText={deleteTooltipText}
+					tooltipPlacement="top"
+					disabled={disabled}
+				/>
+			)}
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
 		</div>
 	);
@@ -150,6 +162,8 @@ DropZone.propTypes = {
 	editingHint: PropTypes.string,
 	/** The text to display when a file has been selected. */
 	uploadedHint: PropTypes.string,
+	/** The text to display as tooltip in the delete button. */
+	deleteTooltipText: PropTypes.string,
 	/** The name of the selected file. */
 	fileName: PropTypes.string,
 	/** Additional information for the field. */
@@ -164,6 +178,8 @@ DropZone.propTypes = {
 	asFile: PropTypes.bool,
 	/** Function invoked when a file is dropped. */
 	onDrop: PropTypes.func,
+	/** Function invoked when the delete button is clicked. Setting this property enables the delete button. */
+	onDelete: PropTypes.func,
 };
 
 export default DropZone;

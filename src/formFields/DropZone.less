@@ -3,6 +3,7 @@
 @import '../../less/spacing';
 
 .DropZone {
+	position: relative;
 	margin-top: @sp-12;
 }
 
@@ -40,6 +41,12 @@
 }
 .DropZone__content--active {
 	background-color: var(--field-hover);
+}
+
+.DropZone__delete {
+	position: absolute;
+	right: 4px;
+	top: 28px;
 }
 
 .DropZone__uploaded {

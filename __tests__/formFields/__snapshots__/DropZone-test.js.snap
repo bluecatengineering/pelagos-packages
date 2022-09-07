@@ -224,3 +224,73 @@ exports[`DropZone rendering renders expected elements when fileName is set 1`] =
   />
 </div>
 `;
+
+exports[`DropZone rendering renders expected elements when onDelete is set 1`] = `
+<div
+  className="DropZone"
+>
+  <LabelLine
+    htmlFor="test"
+  />
+  <button
+    aria-describedby="test-helper"
+    className="DropZone__content"
+    id="test"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="button"
+  >
+    <input
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <div
+      className="DropZone__uploaded"
+    >
+      <div>
+        Editing hint
+      </div>
+      <SvgIcon
+        className="DropZone__icon DropZone__icon--uploaded"
+        icon={
+          Object {
+            "icon": Array [],
+            "iconName": "file-alt",
+            "prefix": "far",
+          }
+        }
+      />
+      <div
+        className="DropZone__hint"
+      >
+        Uploaded hint
+      </div>
+    </div>
+  </button>
+  <IconButton
+    className="DropZone__delete"
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "trash-alt",
+        "prefix": "far",
+      }
+    }
+    size="medium"
+    tooltipPlacement="top"
+    tooltipText="Delete"
+    type="ghost"
+  />
+  <FieldHelper
+    id="test-helper"
+  />
+</div>
+`;

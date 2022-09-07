@@ -35,6 +35,20 @@ describe('DropZone', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when onDelete is set', () => {
+			const wrapper = shallow(
+				<DropZone
+					id="test"
+					uploadedHint="Uploaded hint"
+					editingHint="Editing hint"
+					deleteTooltipText="Delete"
+					editing={true}
+					onDelete={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when error is set', () => {
 			const wrapper = shallow(
 				<DropZone id="test" uploadedHint="Uploaded hint" fileName="test-file.txt" error="Drop error" />
