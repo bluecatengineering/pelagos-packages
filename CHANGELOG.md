@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.3.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.2.1...v7.3.0) (2022-09-07)
+
+### Features
+
+- add disabled property to CopyButton ([c4cf316](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/c4cf316740129dd3e2a56f7cffc0c2bf68f14734))
+- add onDelete property to DropZone ([818d764](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/818d7643f4a1801f1d0b1d52d8a8545bf511e7ed))
+
+### Bug Fixes
+
+- fix label style when CheckBox is disabled ([b7573b4](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/b7573b4c93a3afbe2276d189c8bf2095037cf35c))
+
 ### [7.2.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.2.0...v7.2.1) (2022-08-26)
 
 ### Bug Fixes
