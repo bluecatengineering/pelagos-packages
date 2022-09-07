@@ -22,6 +22,28 @@ describe('CopyButton', () => {
 			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when disabled is true and className is not set', () => {
+			useTooltipBase.mockReturnValue([]);
+			const wrapper = shallow(
+				<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" disabled={true} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when disabled is true and className is set', () => {
+			useTooltipBase.mockReturnValue([]);
+			const wrapper = shallow(
+				<CopyButton
+					id="test-id"
+					className="TestClass"
+					tooltipText="Test tooltip"
+					tooltipPlacement="top"
+					disabled={true}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {
@@ -35,10 +57,32 @@ describe('CopyButton', () => {
 			expect(show.mock.calls).toEqual([['Test tooltip', 'top', target]]);
 		});
 
+		it('shows tooltip on mouseenter when disabled', () => {
+			const target = {};
+			const show = jest.fn();
+			useRef.mockReturnValue({current: target});
+			useTooltipBase.mockReturnValue([show]);
+			const wrapper = shallow(
+				<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" disabled={true} />
+			);
+			wrapper.find('#test-id').prop('onMouseEnter')();
+			expect(show.mock.calls).toEqual([['Test tooltip', 'top', target]]);
+		});
+
 		it('hides tooltip on mouseleave', () => {
 			const hide = jest.fn();
 			useTooltipBase.mockReturnValue([null, hide]);
 			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" />);
+			wrapper.find('#test-id').prop('onMouseLeave')();
+			expect(hide.mock.calls).toEqual([[]]);
+		});
+
+		it('hides tooltip on mouseleave when disabled', () => {
+			const hide = jest.fn();
+			useTooltipBase.mockReturnValue([null, hide]);
+			const wrapper = shallow(
+				<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" disabled={true} />
+			);
 			wrapper.find('#test-id').prop('onMouseLeave')();
 			expect(hide.mock.calls).toEqual([[]]);
 		});

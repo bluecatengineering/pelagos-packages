@@ -41,3 +41,43 @@ exports[`CopyButton rendering renders expected elements when className is not se
   />
 </button>
 `;
+
+exports[`CopyButton rendering renders expected elements when disabled is true and className is not set 1`] = `
+<span
+  aria-disabled="true"
+  aria-label="Copy"
+  className="CopyButton"
+  id="test-id"
+  onMouseEnter={[Function]}
+>
+  <SvgIcon
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "copy",
+        "prefix": "far",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`CopyButton rendering renders expected elements when disabled is true and className is set 1`] = `
+<span
+  aria-disabled="true"
+  aria-label="Copy"
+  className="CopyButton TestClass"
+  id="test-id"
+  onMouseEnter={[Function]}
+>
+  <SvgIcon
+    icon={
+      Object {
+        "icon": Array [],
+        "iconName": "copy",
+        "prefix": "far",
+      }
+    }
+  />
+</span>
+`;
