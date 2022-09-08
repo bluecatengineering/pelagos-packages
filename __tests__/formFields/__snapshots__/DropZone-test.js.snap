@@ -38,7 +38,7 @@ exports[`DropZone rendering renders expected elements when editing is true 1`] =
         icon={
           Object {
             "icon": Array [],
-            "iconName": "file-alt",
+            "iconName": "file-lines",
             "prefix": "far",
           }
         }
@@ -94,7 +94,7 @@ exports[`DropZone rendering renders expected elements when error is set 1`] = `
         icon={
           Object {
             "icon": Array [],
-            "iconName": "file-alt",
+            "iconName": "file-lines",
             "prefix": "far",
           }
         }
@@ -155,7 +155,7 @@ exports[`DropZone rendering renders expected elements when fileName is not set 1
         icon={
           Object {
             "icon": Array [],
-            "iconName": "cloud-upload-alt",
+            "iconName": "cloud-arrow-up",
             "prefix": "fas",
           }
         }
@@ -207,7 +207,7 @@ exports[`DropZone rendering renders expected elements when fileName is set 1`] =
         icon={
           Object {
             "icon": Array [],
-            "iconName": "file-alt",
+            "iconName": "file-lines",
             "prefix": "far",
           }
         }
@@ -263,7 +263,7 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
         icon={
           Object {
             "icon": Array [],
-            "iconName": "file-alt",
+            "iconName": "file-lines",
             "prefix": "far",
           }
         }
@@ -280,7 +280,7 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
     icon={
       Object {
         "icon": Array [],
-        "iconName": "trash-alt",
+        "iconName": "trash-can",
         "prefix": "far",
       }
     }

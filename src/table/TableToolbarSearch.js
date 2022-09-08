@@ -2,7 +2,7 @@ import {useCallback, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {t} from '@bluecat/l10n.macro';
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 
 import timesThin from '../icons/timesThin';
 import SvgIcon from '../components/SvgIcon';
@@ -34,7 +34,7 @@ const TableToolbarSearch = ({className, initialText, onChange, ...props}) => {
 	return (
 		<div className={`Table__search${className ? ` ${className}` : ''}`}>
 			<span onClick={handleSearchClick}>
-				<SvgIcon className="Table__searchIcon" icon={faSearch} />
+				<SvgIcon className="Table__searchIcon" icon={faMagnifyingGlass} />
 			</span>
 			<input
 				{...props}

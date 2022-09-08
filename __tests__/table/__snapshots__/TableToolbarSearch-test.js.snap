@@ -12,7 +12,7 @@ exports[`TableToolbarSearch rendering renders expected elements 1`] = `
       icon={
         Object {
           "icon": Array [],
-          "iconName": "search",
+          "iconName": "magnifying-glass",
           "prefix": "fas",
         }
       }
@@ -55,7 +55,7 @@ exports[`TableToolbarSearch rendering renders expected elements when className i
       icon={
         Object {
           "icon": Array [],
-          "iconName": "search",
+          "iconName": "magnifying-glass",
           "prefix": "fas",
         }
       }
@@ -98,7 +98,7 @@ exports[`TableToolbarSearch rendering renders expected elements when initialText
       icon={
         Object {
           "icon": Array [],
-          "iconName": "search",
+          "iconName": "magnifying-glass",
           "prefix": "fas",
         }
       }

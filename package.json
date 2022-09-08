@@ -49,8 +49,8 @@
   "dependencies": {
     "@bluecat/helpers": "^2.0.1",
     "@bluecat/l10n-core": "^0.1.1",
-    "@fortawesome/free-regular-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "focus-trap": "^6.7.1",
     "lodash-es": "^4.17.21",
     "prop-types": "^15.8.1"

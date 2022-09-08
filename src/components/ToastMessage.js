@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecat/l10n.macro';
-import {faCheckCircle, faExclamationTriangle, faInfoCircle} from '@fortawesome/free-solid-svg-icons';
+import {faCircleCheck, faTriangleExclamation, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
 
 import ToastTypes from '../toasts/ToastTypes';
 import exclamationRhombus from '../icons/exclamationRhombus';
@@ -16,9 +16,9 @@ const DEFAULT_DURATION = 8000;
 const REQUIRES_CLOSE = [ToastTypes.INFO, ToastTypes.WARNING, ToastTypes.ERROR];
 
 const icons = {
-	success: faCheckCircle,
-	info: faInfoCircle,
-	warning: faExclamationTriangle,
+	success: faCircleCheck,
+	info: faCircleInfo,
+	warning: faTriangleExclamation,
 	error: exclamationRhombus,
 	fatal: exclamationRhombus,
 };

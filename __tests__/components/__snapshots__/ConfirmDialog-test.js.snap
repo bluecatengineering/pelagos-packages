@@ -14,7 +14,7 @@ exports[`ConfirmDialog rendering renders expected elements 1`] = `
       icon={
         Object {
           "icon": Array [],
-          "iconName": "exclamation-triangle",
+          "iconName": "triangle-exclamation",
           "prefix": "fas",
         }
       }

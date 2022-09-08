@@ -1,8 +1,8 @@
 import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecat/l10n.macro';
-import {faFileAlt, faTrashAlt} from '@fortawesome/free-regular-svg-icons';
-import {faCloudUploadAlt} from '@fortawesome/free-solid-svg-icons';
+import {faFileLines, faTrashCan} from '@fortawesome/free-regular-svg-icons';
+import {faCloudArrowUp} from '@fortawesome/free-solid-svg-icons';
 
 import LabelLine from '../components/LabelLine';
 import SvgIcon from '../components/SvgIcon';
@@ -117,26 +117,26 @@ const DropZone = ({
 				{fileName ? (
 					<div className="DropZone__uploaded">
 						<div>{t`"${fileName}" attached.`}</div>
-						<SvgIcon icon={faFileAlt} className="DropZone__icon DropZone__icon--uploaded" />
+						<SvgIcon icon={faFileLines} className="DropZone__icon DropZone__icon--uploaded" />
 						<div className="DropZone__hint">{uploadedHint}</div>
 					</div>
 				) : editing ? (
 					<div className="DropZone__uploaded">
 						<div>{editingHint}</div>
-						<SvgIcon icon={faFileAlt} className="DropZone__icon DropZone__icon--uploaded" />
+						<SvgIcon icon={faFileLines} className="DropZone__icon DropZone__icon--uploaded" />
 						<div className="DropZone__hint">{uploadedHint}</div>
 					</div>
 				) : (
 					<div className="DropZone__empty">
 						<div className="DropZone__hint">{emptyHint}</div>
-						<SvgIcon icon={faCloudUploadAlt} className="DropZone__icon DropZone__icon--empty" />
+						<SvgIcon icon={faCloudArrowUp} className="DropZone__icon DropZone__icon--empty" />
 					</div>
 				)}
 			</button>
 			{editing && onDelete && (
 				<IconButton
 					className="DropZone__delete"
-					icon={faTrashAlt}
+					icon={faTrashCan}
 					tooltipText={deleteTooltipText}
 					tooltipPlacement="top"
 					disabled={disabled}

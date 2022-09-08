@@ -9,7 +9,7 @@ exports[`InlineNotification rendering renders expected elements 1`] = `
     icon={
       Object {
         "icon": Array [],
-        "iconName": "info-circle",
+        "iconName": "circle-info",
         "prefix": "fas",
       }
     }
@@ -33,7 +33,7 @@ exports[`InlineNotification rendering renders expected elements when className i
     icon={
       Object {
         "icon": Array [],
-        "iconName": "info-circle",
+        "iconName": "circle-info",
         "prefix": "fas",
       }
     }
@@ -57,7 +57,7 @@ exports[`InlineNotification rendering renders expected elements when title is se
     icon={
       Object {
         "icon": Array [],
-        "iconName": "info-circle",
+        "iconName": "circle-info",
         "prefix": "fas",
       }
     }

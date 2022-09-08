@@ -36,7 +36,7 @@ exports[`ToastMessage rendering renders action button if type is action 1`] = `
     icon={
       Object {
         "icon": Array [],
-        "iconName": "info-circle",
+        "iconName": "circle-info",
         "prefix": "fas",
       }
     }
