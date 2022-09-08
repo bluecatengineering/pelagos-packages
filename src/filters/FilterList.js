@@ -12,16 +12,7 @@ import FilterEditor from './FilterEditor';
 import './FilterList.less';
 
 /** Displays a list of filters. */
-const FilterList = ({
-	className,
-	filters,
-	excludedKeys,
-	filterEditor: CustomEditor,
-	getFilterTitle,
-	getValues,
-	getEditor,
-	onApply,
-}) => {
+const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues, getEditor, onApply}) => {
 	const [filterName, setFilterName] = useState(null);
 
 	const handleClose = useCallback(() => setFilterName(null), []);
@@ -86,27 +77,16 @@ const FilterList = ({
 			</ScrollBox>
 			{filterName &&
 				createPortal(
-					getEditor ? (
-						<FilterEditor
-							name={filterName}
-							value={filters[filterName]}
-							buttonId={`filter-${filterName}`}
-							trackId="filterListTrack"
-							getLabel={getFilterTitle}
-							getEditor={getEditor}
-							onClose={handleClose}
-							onSave={handleSave}
-						/>
-					) : (
-						<CustomEditor
-							name={filterName}
-							value={filters[filterName]}
-							buttonId={`filter-${filterName}`}
-							trackId="filterListTrack"
-							onClose={handleClose}
-							onSave={handleSave}
-						/>
-					),
+					<FilterEditor
+						name={filterName}
+						value={filters[filterName]}
+						buttonId={`filter-${filterName}`}
+						trackId="filterListTrack"
+						getLabel={getFilterTitle}
+						getEditor={getEditor}
+						onClose={handleClose}
+						onSave={handleSave}
+					/>,
 					document.body
 				)}
 		</Layer>
@@ -120,8 +100,6 @@ FilterList.propTypes = {
 	filters: PropTypes.object,
 	/** The filter keys to exclude. */
 	excludedKeys: PropTypes.array,
-	/** The editor component. @deprecated use getEditor instead. */
-	filterEditor: PropTypes.elementType,
 	/** Function returning the filter title. */
 	getFilterTitle: PropTypes.func,
 	/** Function returning the filter values. */

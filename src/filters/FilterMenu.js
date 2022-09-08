@@ -11,7 +11,7 @@ import FilterEditor from './FilterEditor';
 import './FilterMenu.less';
 
 /** A menu for adding filters. */
-const FilterMenu = ({flipped, options, filters, filterEditor: CustomEditor, getOptionText, getEditor, onApply}) => {
+const FilterMenu = ({flipped, options, filters, getOptionText, getEditor, onApply}) => {
 	const [filterName, setFilterName] = useState(null);
 
 	const filteredOptions = !filters ? options : options.filter((key) => !filters[key]);
@@ -38,25 +38,15 @@ const FilterMenu = ({flipped, options, filters, filterEditor: CustomEditor, getO
 			</IconMenu>
 			{filterName &&
 				createPortal(
-					getEditor ? (
-						<FilterEditor
-							name={filterName}
-							value={filters?.[filterName]}
-							buttonId="filterButton"
-							getLabel={getOptionText}
-							getEditor={getEditor}
-							onClose={handleClose}
-							onSave={handleSave}
-						/>
-					) : (
-						<CustomEditor
-							name={filterName}
-							value={filters?.[filterName]}
-							buttonId="filterButton"
-							onClose={handleClose}
-							onSave={handleSave}
-						/>
-					),
+					<FilterEditor
+						name={filterName}
+						value={filters?.[filterName]}
+						buttonId="filterButton"
+						getLabel={getOptionText}
+						getEditor={getEditor}
+						onClose={handleClose}
+						onSave={handleSave}
+					/>,
 					document.body
 				)}
 		</>
@@ -70,8 +60,6 @@ FilterMenu.propTypes = {
 	options: PropTypes.array.isRequired,
 	/** The current set of filters. */
 	filters: PropTypes.object,
-	/** The filter editor component. @deprecated use getEditor instead. */
-	filterEditor: PropTypes.elementType,
 	/** Function returning the option text. */
 	getOptionText: PropTypes.func.isRequired,
 	/** Function returning the filter editor. */

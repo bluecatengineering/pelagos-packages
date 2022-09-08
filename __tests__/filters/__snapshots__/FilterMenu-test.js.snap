@@ -29,43 +29,6 @@ exports[`FilterMenu rendering renders expected elements 1`] = `
 </React.Fragment>
 `;
 
-exports[`FilterMenu rendering renders expected elements when filter and filterEditor are set 1`] = `
-<React.Fragment>
-  <IconMenu
-    aria-label="Add filter"
-    className="FilterMenu FilterMenu--active"
-    disabled={false}
-    icon={
-      Object {
-        "icon": Array [],
-        "iconName": "filter",
-        "prefix": "fas",
-      }
-    }
-    id="filterButton"
-    tooltipPlacement="top"
-    tooltipText="Add filter"
-  >
-    <IconMenuItem
-      data-key="a"
-      onClick={[Function]}
-    />
-    <IconMenuItem
-      data-key="b"
-      onClick={[Function]}
-    />
-  </IconMenu>
-  <React.Portal>
-    <MockFilterEditor
-      buttonId="filterButton"
-      name="value"
-      onClose={[Function]}
-      onSave={[Function]}
-    />
-  </React.Portal>
-</React.Fragment>
-`;
-
 exports[`FilterMenu rendering renders expected elements when filter is set 1`] = `
 <React.Fragment>
   <IconMenu

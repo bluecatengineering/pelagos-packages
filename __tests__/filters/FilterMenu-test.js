@@ -5,8 +5,6 @@ import FilterMenu from '../../src/filters/FilterMenu';
 
 jest.unmock('../../src/filters/FilterMenu');
 
-const MockFilterEditor = () => <></>;
-
 global.document = {};
 
 describe('FilterMenu', () => {
@@ -23,16 +21,6 @@ describe('FilterMenu', () => {
 			const options = ['a', 'b'];
 			useState.mockReturnValueOnce(['value']);
 			const wrapper = shallow(<FilterMenu getOptionText={getOptionText} options={options} getEditor={jest.fn()} />);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when filter and filterEditor are set', () => {
-			const getOptionText = jest.fn();
-			const options = ['a', 'b'];
-			useState.mockReturnValueOnce(['value']);
-			const wrapper = shallow(
-				<FilterMenu getOptionText={getOptionText} options={options} filterEditor={MockFilterEditor} />
-			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 

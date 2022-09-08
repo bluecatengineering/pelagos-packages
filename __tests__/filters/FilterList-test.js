@@ -5,7 +5,6 @@ import FilterList from '../../src/filters/FilterList';
 
 jest.unmock('../../src/filters/FilterList');
 
-const MockFilterEditor = () => <></>;
 const getFilterTitle = (name) => name;
 
 global.document = {body: {}};
@@ -57,22 +56,6 @@ describe('FilterList', () => {
 					getFilterTitle={getFilterTitle}
 					getValues={jest.fn()}
 					getEditor={jest.fn()}
-				/>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when filter and filterEditor are set', () => {
-			const filters = {view: ['abc']};
-			const setFilter = jest.fn();
-			useState.mockReturnValue(['view', setFilter]);
-			const wrapper = shallow(
-				<FilterList
-					filters={filters}
-					excludedKeys={[]}
-					getFilterTitle={getFilterTitle}
-					getValues={jest.fn()}
-					filterEditor={MockFilterEditor}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();

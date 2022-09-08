@@ -53,8 +53,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "focus-trap": "^6.7.1",
     "lodash-es": "^4.17.21",
-    "prop-types": "^15.8.1",
-    "stable": "^0.1.8"
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
