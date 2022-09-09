@@ -9,23 +9,17 @@
 };
 
 @focus-visible: {
-	&:focus {
-		@focus-ring();
-	}
+	outline: none;
 
-	// workaround for browsers that don't support :focus-visible
-	&:focus:not(:focus-visible) {
-		outline: none;
+	&:focus-visible {
+		@focus-ring();
 	}
 };
 
 @focus-visible-error: {
-	&:focus {
-		@focus-ring-error();
-	}
+	outline: none;
 
-	// workaround for browsers that don't support :focus-visible
-	&:focus:not(:focus-visible) {
-		outline: none;
+	&:focus-visible {
+		@focus-ring-error();
 	}
 };

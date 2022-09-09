@@ -35,6 +35,7 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 	border-radius: 3px;
+	outline: none;
 
 	&:hover {
 		color: var(--link-primary-hover);
@@ -45,14 +46,9 @@ a {
 		color: var(--text-primary);
 	}
 
-	&:focus {
+	&:focus-visible {
 		outline: 1px solid var(--focus);
 		outline-offset: 0;
-	}
-
-	// workaround for browsers that don't support :focus-visible
-	&:focus:not(:focus-visible) {
-		outline: none;
 	}
 
 	@media print {

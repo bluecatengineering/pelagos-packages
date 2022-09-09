@@ -1,9 +1,7 @@
 jest.unmock('../../src/functions/addResizeObserver');
 
 describe('addResizeObserver', () => {
-	beforeEach(() => jest.resetModules());
-
-	it('uses ResizeObserver if available', () => {
+	it('uses ResizeObserver', () => {
 		const target = {};
 		const callback = jest.fn();
 		const observer = {observe: jest.fn(), disconnect: jest.fn()};
@@ -28,30 +26,5 @@ describe('addResizeObserver', () => {
 		remove();
 		expect(throttle.cancel).toHaveBeenCalledTimes(1);
 		expect(observer.disconnect).toHaveBeenCalledTimes(1);
-	});
-
-	it('uses resize events if ResizeObserver is not available', () => {
-		const rect = {test: 'foo'};
-		const target = {getBoundingClientRect: jest.fn().mockReturnValue(rect)};
-		const callback = jest.fn();
-		const throttle = Object.assign(jest.fn(), {cancel: jest.fn()});
-		global.ResizeObserver = null;
-		global.addEventListener = jest.fn();
-		global.removeEventListener = jest.fn();
-		const {default: addResizeObserver} = require('../../src/functions/addResizeObserver');
-		const {default: throttleAF} = require('../../src/functions/throttleAF');
-
-		throttleAF.mockReturnValue(throttle);
-		const remove = addResizeObserver(target, callback);
-		expect(remove).toEqual(expect.any(Function));
-		expect(throttleAF.mock.calls).toEqual([[expect.any(Function)]]);
-		expect(addEventListener.mock.calls).toEqual([['resize', expect.any(Function)]]);
-
-		throttleAF.mock.calls[0][0]();
-		expect(callback.mock.calls).toEqual([[rect]]);
-
-		remove();
-		expect(throttle.cancel).toHaveBeenCalledTimes(1);
-		expect(removeEventListener.mock.calls).toEqual([['resize', expect.any(Function)]]);
 	});
 });

@@ -95,13 +95,8 @@
 		cursor: not-allowed;
 	}
 
-	&:focus {
+	&:focus-visible {
 		box-shadow: inset 0 0 0 2px var(--focus-inset);
-	}
-
-	// workaround for browsers that don't support :focus-visible
-	&:focus:not(:focus-visible) {
-		box-shadow: none;
 	}
 
 	@media print {

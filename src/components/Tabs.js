@@ -94,7 +94,7 @@ const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClo
 					case 32: {
 						const target = event.target;
 						event.preventDefault();
-						// Must use getAttribute because IE
+						// Must use getAttribute because Firefox
 						(target.getAttribute('role') === 'tablist' ? getCurrentTab(target) : target).click();
 						break;
 					}

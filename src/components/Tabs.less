@@ -17,13 +17,9 @@
 		margin-left: 1px; // per spec
 	}
 
-	.Tabs:focus > &[data-focused='true'] {
+	.Tabs:focus-visible > &[data-focused='true'] {
 		outline: 2px solid var(--focus);
 		outline-offset: -2px;
-	}
-
-	.Tabs:focus:not(:focus-visible) > &[data-focused='true'] {
-		outline: none;
 	}
 
 	&:hover {
@@ -55,13 +51,9 @@
 		border-left: 1px solid var(--border-strong);
 	}
 
-	.Tabs:focus > &[data-focused='true'] {
+	.Tabs:focus-visible > &[data-focused='true'] {
 		outline: 2px solid var(--focus);
 		outline-offset: -2px;
-	}
-
-	.Tabs:focus:not(:focus-visible) > &[data-focused='true'] {
-		outline: none;
 	}
 
 	&:hover {

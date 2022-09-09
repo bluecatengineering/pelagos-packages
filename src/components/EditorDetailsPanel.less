@@ -41,14 +41,11 @@
 
 .EditorDetailsPanel__buttons {
 	flex-direction: row;
+	gap: @sp-12;
 	padding: @sp-12 @sp-24 @sp-24;
 	justify-content: flex-end;
 
 	@media print {
 		display: none;
 	}
-}
-
-.EditorDetailsPanel__buttons :not(:last-child) {
-	margin-right: @sp-12;
 }
