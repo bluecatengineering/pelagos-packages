@@ -11,7 +11,7 @@ exports[`TextFilterEditor rendering renders expected elements 1`] = `
   id="textFilterEditorInput"
   label="label"
   list={
-    Array [
+    [
       "a",
     ]
   }
@@ -36,7 +36,7 @@ exports[`TextFilterEditor rendering renders expected elements when list input re
   id="textFilterEditorInput"
   label="label"
   list={
-    Array [
+    [
       "a",
     ]
   }
@@ -60,7 +60,7 @@ exports[`TextFilterEditor rendering renders expected elements when list is null 
   getSuggestionText={[Function]}
   id="textFilterEditorInput"
   label="label"
-  list={Array []}
+  list={[]}
   onErrorChange={[MockFunction]}
   onListChange={[Function]}
   onTextChange={[MockFunction]}

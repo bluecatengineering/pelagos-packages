@@ -7,7 +7,7 @@ exports[`FilterEditor rendering renders expected elements 1`] = `
   id="filterListDropDown"
   role="dialog"
   style={
-    Object {
+    {
       "display": "none",
     }
   }

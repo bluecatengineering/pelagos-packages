@@ -70,8 +70,8 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
         >
           <SvgIcon
             icon={
-              Object {
-                "icon": Array [],
+              {
+                "icon": [],
                 "iconName": "xmark-thin",
               }
             }
@@ -81,7 +81,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
     </div>
   </ScrollBox>
   <React.Portal
-    container={Object {}}
+    container={{}}
   >
     <FilterEditor
       buttonId="filter-view"
@@ -92,7 +92,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
       onSave={[Function]}
       trackId="filterListTrack"
       value={
-        Array [
+        [
           "abc",
         ]
       }
@@ -114,7 +114,7 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
     />
   </ScrollBox>
   <React.Portal
-    container={Object {}}
+    container={{}}
   >
     <FilterEditor
       buttonId="filter-view"
@@ -125,7 +125,7 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
       onSave={[Function]}
       trackId="filterListTrack"
       value={
-        Array [
+        [
           "abc",
         ]
       }
@@ -174,8 +174,8 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
         >
           <SvgIcon
             icon={
-              Object {
-                "icon": Array [],
+              {
+                "icon": [],
                 "iconName": "xmark-thin",
               }
             }
@@ -211,8 +211,8 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
         >
           <SvgIcon
             icon={
-              Object {
-                "icon": Array [],
+              {
+                "icon": [],
                 "iconName": "xmark-thin",
               }
             }

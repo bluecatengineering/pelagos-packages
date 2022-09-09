@@ -21,7 +21,7 @@ exports[`DropZone rendering renders expected elements when editing is true 1`] =
     <input
       onChange={[Function]}
       style={
-        Object {
+        {
           "display": "none",
         }
       }
@@ -36,8 +36,8 @@ exports[`DropZone rendering renders expected elements when editing is true 1`] =
       <SvgIcon
         className="DropZone__icon DropZone__icon--uploaded"
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "file-lines",
             "prefix": "far",
           }
@@ -77,7 +77,7 @@ exports[`DropZone rendering renders expected elements when error is set 1`] = `
     <input
       onChange={[Function]}
       style={
-        Object {
+        {
           "display": "none",
         }
       }
@@ -92,8 +92,8 @@ exports[`DropZone rendering renders expected elements when error is set 1`] = `
       <SvgIcon
         className="DropZone__icon DropZone__icon--uploaded"
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "file-lines",
             "prefix": "far",
           }
@@ -136,7 +136,7 @@ exports[`DropZone rendering renders expected elements when fileName is not set 1
     <input
       onChange={[Function]}
       style={
-        Object {
+        {
           "display": "none",
         }
       }
@@ -153,8 +153,8 @@ exports[`DropZone rendering renders expected elements when fileName is not set 1
       <SvgIcon
         className="DropZone__icon DropZone__icon--empty"
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "cloud-arrow-up",
             "prefix": "fas",
           }
@@ -190,7 +190,7 @@ exports[`DropZone rendering renders expected elements when fileName is set 1`] =
     <input
       onChange={[Function]}
       style={
-        Object {
+        {
           "display": "none",
         }
       }
@@ -205,8 +205,8 @@ exports[`DropZone rendering renders expected elements when fileName is set 1`] =
       <SvgIcon
         className="DropZone__icon DropZone__icon--uploaded"
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "file-lines",
             "prefix": "far",
           }
@@ -246,7 +246,7 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
     <input
       onChange={[Function]}
       style={
-        Object {
+        {
           "display": "none",
         }
       }
@@ -261,8 +261,8 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
       <SvgIcon
         className="DropZone__icon DropZone__icon--uploaded"
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "file-lines",
             "prefix": "far",
           }
@@ -278,8 +278,8 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
   <IconButton
     className="DropZone__delete"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "trash-can",
         "prefix": "far",
       }

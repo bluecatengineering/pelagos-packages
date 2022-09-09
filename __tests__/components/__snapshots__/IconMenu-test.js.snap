@@ -10,7 +10,7 @@ exports[`IconMenu rendering renders expected elements 1`] = `
     className="IconMenu"
     disabled={false}
     icon={
-      Object {
+      {
         "foo": "test",
       }
     }
@@ -35,7 +35,7 @@ exports[`IconMenu rendering renders expected elements when all items are disable
     className="IconMenu"
     disabled={true}
     icon={
-      Object {
+      {
         "foo": "test",
       }
     }
@@ -60,7 +60,7 @@ exports[`IconMenu rendering renders expected elements when className is set 1`] 
     className="IconMenu TestClass"
     disabled={false}
     icon={
-      Object {
+      {
         "foo": "test",
       }
     }
@@ -85,7 +85,7 @@ exports[`IconMenu rendering renders expected elements when current is set 1`] = 
     className="IconMenu"
     disabled={false}
     icon={
-      Object {
+      {
         "foo": "test",
       }
     }
@@ -132,7 +132,7 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
     className="IconMenu"
     disabled={true}
     icon={
-      Object {
+      {
         "foo": "test",
       }
     }

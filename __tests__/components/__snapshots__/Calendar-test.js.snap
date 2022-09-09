@@ -11,8 +11,8 @@ exports[`Calendar rendering renders expected elements 1`] = `
       aria-label="Previous month"
       className="Calendar__previous"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-left",
           "prefix": "fas",
         }
@@ -34,8 +34,8 @@ exports[`Calendar rendering renders expected elements 1`] = `
       aria-label="Next month"
       className="Calendar__next"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-right",
           "prefix": "fas",
         }
@@ -476,8 +476,8 @@ exports[`Calendar rendering renders expected elements when className is set 1`] 
       aria-label="Previous month"
       className="Calendar__previous"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-left",
           "prefix": "fas",
         }
@@ -499,8 +499,8 @@ exports[`Calendar rendering renders expected elements when className is set 1`] 
       aria-label="Next month"
       className="Calendar__next"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-right",
           "prefix": "fas",
         }
@@ -941,8 +941,8 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
       aria-label="Previous month"
       className="Calendar__previous"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-left",
           "prefix": "fas",
         }
@@ -964,8 +964,8 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
       aria-label="Next month"
       className="Calendar__next"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-right",
           "prefix": "fas",
         }
@@ -1406,8 +1406,8 @@ exports[`Calendar rendering renders expected elements when focused is later than
       aria-label="Previous month"
       className="Calendar__previous"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-left",
           "prefix": "fas",
         }
@@ -1429,8 +1429,8 @@ exports[`Calendar rendering renders expected elements when focused is later than
       aria-label="Next month"
       className="Calendar__next"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-right",
           "prefix": "fas",
         }
@@ -1871,8 +1871,8 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
       aria-label="Previous month"
       className="Calendar__previous"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-left",
           "prefix": "fas",
         }
@@ -1894,8 +1894,8 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
       aria-label="Next month"
       className="Calendar__next"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "chevron-right",
           "prefix": "fas",
         }

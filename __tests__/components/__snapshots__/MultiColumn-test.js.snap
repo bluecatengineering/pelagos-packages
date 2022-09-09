@@ -18,7 +18,7 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
     data-index={0}
     role="listbox"
     style={
-      Object {
+      {
         "width": "12em",
       }
     }
@@ -39,8 +39,8 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
       <SvgIcon
         className="MultiColumn__arrow"
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "caret-right",
             "prefix": "fas",
           }
@@ -69,7 +69,7 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
     data-index={1}
     role="listbox"
     style={
-      Object {
+      {
         "width": "12em",
       }
     }
@@ -102,7 +102,7 @@ exports[`MultiColumn rendering renders expected elements when className is set 1
     data-index={0}
     role="listbox"
     style={
-      Object {
+      {
         "width": "12em",
       }
     }
@@ -123,8 +123,8 @@ exports[`MultiColumn rendering renders expected elements when className is set 1
       <SvgIcon
         className="MultiColumn__arrow"
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "caret-right",
             "prefix": "fas",
           }
@@ -140,7 +140,7 @@ exports[`MultiColumn rendering renders expected elements when className is set 1
     data-index={1}
     role="listbox"
     style={
-      Object {
+      {
         "width": "12em",
       }
     }
@@ -173,7 +173,7 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
     data-index={0}
     role="listbox"
     style={
-      Object {
+      {
         "width": "12em",
       }
     }
@@ -194,8 +194,8 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
       <SvgIcon
         className="MultiColumn__arrow"
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "caret-right",
             "prefix": "fas",
           }
@@ -211,7 +211,7 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
     data-index={1}
     role="listbox"
     style={
-      Object {
+      {
         "width": "12em",
       }
     }

@@ -5,7 +5,7 @@ exports[`SvgIcon rendering renders expected elements 1`] = `
   className="SvgIcon SvgIcon--spin TestClass"
   focusable="false"
   style={
-    Object {
+    {
       "width": "0.5em",
     }
   }
@@ -23,7 +23,7 @@ exports[`SvgIcon rendering renders expected elements when optional properties ar
   className="SvgIcon"
   focusable="false"
   style={
-    Object {
+    {
       "width": "0.5em",
     }
   }

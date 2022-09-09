@@ -10,8 +10,8 @@ exports[`TableToolbarSearch rendering renders expected elements 1`] = `
     <SvgIcon
       className="Table__searchIcon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "magnifying-glass",
           "prefix": "fas",
         }
@@ -34,8 +34,8 @@ exports[`TableToolbarSearch rendering renders expected elements 1`] = `
   >
     <SvgIcon
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "xmark-thin",
         }
       }
@@ -54,8 +54,8 @@ exports[`TableToolbarSearch rendering renders expected elements when className i
     <SvgIcon
       className="Table__searchIcon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "magnifying-glass",
           "prefix": "fas",
         }
@@ -78,8 +78,8 @@ exports[`TableToolbarSearch rendering renders expected elements when className i
   >
     <SvgIcon
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "xmark-thin",
         }
       }
@@ -98,8 +98,8 @@ exports[`TableToolbarSearch rendering renders expected elements when initialText
     <SvgIcon
       className="Table__searchIcon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "magnifying-glass",
           "prefix": "fas",
         }
@@ -122,8 +122,8 @@ exports[`TableToolbarSearch rendering renders expected elements when initialText
   >
     <SvgIcon
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "xmark-thin",
         }
       }

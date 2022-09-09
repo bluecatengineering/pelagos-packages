@@ -12,8 +12,8 @@ exports[`ConfirmDialog rendering renders expected elements 1`] = `
     <SvgIcon
       className="ConfirmDialog__icon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "triangle-exclamation",
           "prefix": "fas",
         }

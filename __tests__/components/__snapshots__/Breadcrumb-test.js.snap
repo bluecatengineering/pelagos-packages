@@ -8,8 +8,8 @@ exports[`Breadcrumb rendering renders expected elements 1`] = `
     aria-label="Back"
     className="Breadcrumb__back"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "chevron-left",
         "prefix": "fas",
       }

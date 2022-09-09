@@ -8,8 +8,8 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
     aria-hidden="true"
     className="ScrollBox__btn"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "chevron-left",
         "prefix": "fas",
       }
@@ -32,8 +32,8 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
     aria-hidden="true"
     className="ScrollBox__btn"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "chevron-right",
         "prefix": "fas",
       }
@@ -56,8 +56,8 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
     aria-hidden="true"
     className="ScrollBox__btn"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "chevron-left",
         "prefix": "fas",
       }
@@ -80,8 +80,8 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
     aria-hidden="true"
     className="ScrollBox__btn"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "chevron-right",
         "prefix": "fas",
       }

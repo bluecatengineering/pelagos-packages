@@ -7,7 +7,7 @@ exports[`HeaderIcon rendering renders expected elements 1`] = `
   <SvgIcon
     className="HeaderIcon__icon"
     icon={
-      Object {
+      {
         "icon": "test",
       }
     }
@@ -27,7 +27,7 @@ exports[`HeaderIcon rendering renders expected elements when className is set 1`
   <SvgIcon
     className="HeaderIcon__icon"
     icon={
-      Object {
+      {
         "icon": "test",
       }
     }
@@ -47,7 +47,7 @@ exports[`HeaderIcon rendering renders expected elements when underline is set 1`
   <SvgIcon
     className="HeaderIcon__icon"
     icon={
-      Object {
+      {
         "icon": "test",
       }
     }

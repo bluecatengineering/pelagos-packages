@@ -16,8 +16,8 @@ exports[`Collapsible rendering renders expected elements 1`] = `
     <SvgIcon
       className="Collapsible__arrow Collapsible__arrow--open"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "angle-down",
           "prefix": "fas",
         }
@@ -49,8 +49,8 @@ exports[`Collapsible rendering renders expected elements when className is set 1
     <SvgIcon
       className="Collapsible__arrow Collapsible__arrow--open"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "angle-down",
           "prefix": "fas",
         }
@@ -82,8 +82,8 @@ exports[`Collapsible rendering sets a random id if not provided 1`] = `
     <SvgIcon
       className="Collapsible__arrow"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "angle-down",
           "prefix": "fas",
         }

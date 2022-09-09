@@ -44,8 +44,8 @@ exports[`TableHeader rendering renders expected elements when sortable is true 1
     <SvgIcon
       className="Table__sortIcon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "sort-up",
           "prefix": "fas",
         }
@@ -72,8 +72,8 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
     <SvgIcon
       className="Table__sortIcon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "sort-down",
           "prefix": "fas",
         }
@@ -100,8 +100,8 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
     <SvgIcon
       className="Table__sortIcon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "sort",
           "prefix": "fas",
         }

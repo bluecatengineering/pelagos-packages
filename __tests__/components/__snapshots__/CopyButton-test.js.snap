@@ -11,8 +11,8 @@ exports[`CopyButton rendering renders expected elements 1`] = `
 >
   <SvgIcon
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "copy",
         "prefix": "far",
       }
@@ -32,8 +32,8 @@ exports[`CopyButton rendering renders expected elements when className is not se
 >
   <SvgIcon
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "copy",
         "prefix": "far",
       }
@@ -52,8 +52,8 @@ exports[`CopyButton rendering renders expected elements when disabled is true an
 >
   <SvgIcon
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "copy",
         "prefix": "far",
       }
@@ -72,8 +72,8 @@ exports[`CopyButton rendering renders expected elements when disabled is true an
 >
   <SvgIcon
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "copy",
         "prefix": "far",
       }

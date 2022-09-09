@@ -9,8 +9,8 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     aria-label="Close"
     className="EditorDetailsPanel__close"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "xmark-thin",
       }
     }
@@ -43,8 +43,8 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     aria-label="Close"
     className="EditorDetailsPanel__close"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "xmark-thin",
       }
     }
@@ -69,7 +69,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
       disableDelete="Disable Delete"
       disableEdit="Disable Edit"
       item={
-        Object {
+        {
           "name": "Test",
         }
       }
@@ -89,8 +89,8 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     aria-label="Close"
     className="EditorDetailsPanel__close"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "xmark-thin",
       }
     }
@@ -124,8 +124,8 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     aria-label="Close"
     className="EditorDetailsPanel__close"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "xmark-thin",
       }
     }

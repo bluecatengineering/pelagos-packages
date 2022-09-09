@@ -10,8 +10,8 @@ exports[`ToastMessage rendering does not render close button if type is fatal 1`
   <SvgIcon
     className="ToastMessage__icon"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "rhombus-exclamation",
       }
     }
@@ -35,8 +35,8 @@ exports[`ToastMessage rendering renders action button if type is action 1`] = `
   <SvgIcon
     className="ToastMessage__icon"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "circle-info",
         "prefix": "fas",
       }
@@ -65,8 +65,8 @@ exports[`ToastMessage rendering renders action button if type is action 1`] = `
   >
     <SvgIcon
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "xmark-thin",
         }
       }
@@ -85,8 +85,8 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
   <SvgIcon
     className="ToastMessage__icon"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "rhombus-exclamation",
       }
     }
@@ -106,8 +106,8 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
   >
     <SvgIcon
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "xmark-thin",
         }
       }

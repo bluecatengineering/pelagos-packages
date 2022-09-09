@@ -19,8 +19,8 @@ exports[`SearchField rendering renders expected elements 1`] = `
   >
     <SvgIcon
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "xmark-thin",
         }
       }

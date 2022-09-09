@@ -12,8 +12,8 @@ exports[`NameFilterEditor rendering renders expected elements 1`] = `
   id="nameFilterEditorInput"
   label="label"
   list={
-    Array [
-      Object {
+    [
+      {
         "name": "Alpha",
       },
     ]
@@ -41,8 +41,8 @@ exports[`NameFilterEditor rendering renders expected elements when list input re
   id="nameFilterEditorInput"
   label="label"
   list={
-    Array [
-      Object {
+    [
+      {
         "name": "Alpha",
       },
     ]
@@ -70,8 +70,8 @@ exports[`NameFilterEditor rendering renders expected elements when list input re
   id="nameFilterEditorInput"
   label="label"
   list={
-    Array [
-      Object {
+    [
+      {
         "name": "Alpha",
       },
     ]
@@ -98,7 +98,7 @@ exports[`NameFilterEditor rendering renders expected elements when list is null 
   getSuggestions={[Function]}
   id="nameFilterEditorInput"
   label="label"
-  list={Array []}
+  list={[]}
   onErrorChange={[MockFunction]}
   onListChange={[Function]}
   onTextChange={[MockFunction]}
@@ -122,8 +122,8 @@ exports[`NameFilterEditor rendering renders expected elements when sourceById do
   id="nameFilterEditorInput"
   label="label"
   list={
-    Array [
-      Object {
+    [
+      {
         "id": "a",
       },
     ]

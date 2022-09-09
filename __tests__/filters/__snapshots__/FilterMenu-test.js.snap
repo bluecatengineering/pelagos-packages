@@ -7,8 +7,8 @@ exports[`FilterMenu rendering renders expected elements 1`] = `
     className="FilterMenu"
     disabled={false}
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "filter",
         "prefix": "fas",
       }
@@ -36,8 +36,8 @@ exports[`FilterMenu rendering renders expected elements when filter is set 1`] =
     className="FilterMenu FilterMenu--active"
     disabled={false}
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "filter",
         "prefix": "fas",
       }
@@ -61,20 +61,20 @@ exports[`FilterMenu rendering renders expected elements when filter is set 1`] =
       getEditor={[MockFunction]}
       getLabel={
         [MockFunction] {
-          "calls": Array [
-            Array [
+          "calls": [
+            [
               "a",
             ],
-            Array [
+            [
               "b",
             ],
           ],
-          "results": Array [
-            Object {
+          "results": [
+            {
               "type": "return",
               "value": undefined,
             },
-            Object {
+            {
               "type": "return",
               "value": undefined,
             },
@@ -96,8 +96,8 @@ exports[`FilterMenu rendering renders expected elements when filters is set 1`] 
     className="FilterMenu"
     disabled={false}
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "filter",
         "prefix": "fas",
       }

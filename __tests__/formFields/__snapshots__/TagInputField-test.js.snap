@@ -17,7 +17,7 @@ exports[`TagInputField rendering renders expected elements 1`] = `
     onChange={[MockFunction]}
     onError={[MockFunction]}
     tags={
-      Array [
+      [
         "foo",
       ]
     }
@@ -48,7 +48,7 @@ exports[`TagInputField rendering renders expected elements if error is set 1`] =
     onChange={[MockFunction]}
     onError={[MockFunction]}
     tags={
-      Array [
+      [
         "foo",
       ]
     }
@@ -77,7 +77,7 @@ exports[`TagInputField rendering renders expected elements when className is set
     onChange={[MockFunction]}
     onError={[MockFunction]}
     tags={
-      Array [
+      [
         "foo",
       ]
     }
@@ -105,7 +105,7 @@ exports[`TagInputField rendering shows optional text if tags is empty 1`] = `
     id="test"
     onChange={[MockFunction]}
     onError={[MockFunction]}
-    tags={Array []}
+    tags={[]}
     validate={[MockFunction]}
   />
   <FieldHelper

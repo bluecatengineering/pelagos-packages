@@ -18,8 +18,8 @@ exports[`TagInput rendering renders expected elements 1`] = `
     >
       <SvgIcon
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "xmark-thin",
           }
         }
@@ -38,8 +38,8 @@ exports[`TagInput rendering renders expected elements 1`] = `
     >
       <SvgIcon
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "xmark-thin",
           }
         }
@@ -76,8 +76,8 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
     >
       <SvgIcon
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "xmark-thin",
           }
         }
@@ -96,8 +96,8 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
     >
       <SvgIcon
         icon={
-          Object {
-            "icon": Array [],
+          {
+            "icon": [],
             "iconName": "xmark-thin",
           }
         }

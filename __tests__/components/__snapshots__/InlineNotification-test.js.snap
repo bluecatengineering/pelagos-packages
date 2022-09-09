@@ -7,8 +7,8 @@ exports[`InlineNotification rendering renders expected elements 1`] = `
   <SvgIcon
     className="InlineNotification__icon"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "circle-info",
         "prefix": "fas",
       }
@@ -31,8 +31,8 @@ exports[`InlineNotification rendering renders expected elements when className i
   <SvgIcon
     className="InlineNotification__icon"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "circle-info",
         "prefix": "fas",
       }
@@ -55,8 +55,8 @@ exports[`InlineNotification rendering renders expected elements when title is se
   <SvgIcon
     className="InlineNotification__icon"
     icon={
-      Object {
-        "icon": Array [],
+      {
+        "icon": [],
         "iconName": "circle-info",
         "prefix": "fas",
       }

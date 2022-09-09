@@ -21,7 +21,7 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     id="test"
     onChange={[MockFunction]}
     options={
-      Array [
+      [
         "o0",
         "o1",
       ]
@@ -57,7 +57,7 @@ exports[`DropDownField rendering renders expected elements when className is set
     id="test"
     onChange={[MockFunction]}
     options={
-      Array [
+      [
         "o0",
         "o1",
       ]
@@ -92,12 +92,12 @@ exports[`DropDownField rendering renders expected elements when error is set 1`]
     id="test"
     onChange={[MockFunction]}
     options={
-      Array [
-        Object {
+      [
+        {
           "text": "Option 0",
           "value": "o0",
         },
-        Object {
+        {
           "text": "Option 1",
           "value": "o1",
         },

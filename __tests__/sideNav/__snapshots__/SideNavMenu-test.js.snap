@@ -17,8 +17,8 @@ exports[`SideNavMenu rendering renders expected elements 1`] = `
     <SvgIcon
       className="SideNav__icon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "angle-down",
           "prefix": "fas",
         }
@@ -48,8 +48,8 @@ exports[`SideNavMenu rendering renders expected elements when a child element ha
     <SvgIcon
       className="SideNav__icon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "angle-down",
           "prefix": "fas",
         }
@@ -80,8 +80,8 @@ exports[`SideNavMenu rendering renders expected elements when boolean properties
     <SvgIcon
       className="SideNav__icon"
       icon={
-        Object {
-          "icon": Array [],
+        {
+          "icon": [],
           "iconName": "angle-down",
           "prefix": "fas",
         }

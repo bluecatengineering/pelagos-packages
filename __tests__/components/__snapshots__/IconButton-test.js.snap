@@ -8,7 +8,7 @@ exports[`IconButton rendering renders the expected elements 1`] = `
   type="button"
 >
   <SvgIcon
-    icon={Object {}}
+    icon={{}}
   />
 </button>
 `;
@@ -22,7 +22,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
   role="button"
 >
   <SvgIcon
-    icon={Object {}}
+    icon={{}}
   />
 </span>
 `;
@@ -36,7 +36,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
   role="button"
 >
   <SvgIcon
-    icon={Object {}}
+    icon={{}}
   />
 </span>
 `;
@@ -49,7 +49,7 @@ exports[`IconButton rendering renders the expected elements when className is no
   type="button"
 >
   <SvgIcon
-    icon={Object {}}
+    icon={{}}
   />
 </button>
 `;
@@ -62,7 +62,7 @@ exports[`IconButton rendering renders the expected elements when size and toolti
   type="button"
 >
   <SvgIcon
-    icon={Object {}}
+    icon={{}}
   />
 </button>
 `;
@@ -75,7 +75,7 @@ exports[`IconButton rendering renders the expected elements when tooltipText is 
   type="button"
 >
   <SvgIcon
-    icon={Object {}}
+    icon={{}}
   />
 </button>
 `;

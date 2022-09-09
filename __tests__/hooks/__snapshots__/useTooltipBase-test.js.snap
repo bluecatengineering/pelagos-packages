@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`useTooltipBase show shows tooltip 1`] = `
-Object {
+{
   "className": "Tooltip Tooltip--top",
   "id": "tooltip-1",
-  "style": Object {
+  "style": {
     "left": "190px",
     "setProperty": [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           "--arrow-position",
           "50%",
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -27,20 +27,20 @@ Object {
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when placement is bottom 1`] = `
-Object {
+{
   "className": "Tooltip Tooltip--bottom",
   "id": "tooltip-1",
-  "style": Object {
+  "style": {
     "left": "190px",
     "setProperty": [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           "--arrow-position",
           "50%",
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -53,20 +53,20 @@ Object {
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when placement is left 1`] = `
-Object {
+{
   "className": "Tooltip Tooltip--left",
   "id": "tooltip-1",
-  "style": Object {
+  "style": {
     "left": "71px",
     "setProperty": [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           "--arrow-position",
           "50%",
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -79,20 +79,20 @@ Object {
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when placement is right 1`] = `
-Object {
+{
   "className": "Tooltip Tooltip--right",
   "id": "tooltip-1",
-  "style": Object {
+  "style": {
     "left": "309px",
     "setProperty": [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           "--arrow-position",
           "50%",
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -105,20 +105,20 @@ Object {
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when the tooltip position exceeds the window width 1`] = `
-Object {
+{
   "className": "Tooltip Tooltip--top",
   "id": "tooltip-1",
-  "style": Object {
+  "style": {
     "left": "224px",
     "setProperty": [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           "--arrow-position",
           "72%",
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -131,20 +131,20 @@ Object {
 `;
 
 exports[`useTooltipBase show shows tooltip on mouse over when the tooltip position is negative 1`] = `
-Object {
+{
   "className": "Tooltip Tooltip--top",
   "id": "tooltip-1",
-  "style": Object {
+  "style": {
     "left": "0px",
     "setProperty": [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           "--arrow-position",
           "25%",
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
