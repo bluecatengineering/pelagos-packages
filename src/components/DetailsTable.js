@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 
-import DetailsSectionTitle from './DetailsSectionTitle';
 import './DetailsTable.less';
 
 /** A table for the details panel. */
 const DetailsTable = ({className, rowClassName, title, list, columns}) => (
 	<div className={`DetailsTable ${className}`}>
-		<DetailsSectionTitle title={title} />
+		<h5>{title}</h5>
 		<div className={`DetailsTable__headRow ${rowClassName}`}>
 			{columns.map(({key, headerClassName, header}) => (
 				<div key={key} className={headerClassName}>

@@ -4,9 +4,9 @@ exports[`DetailsTable rendering renders expected elements 1`] = `
 <div
   className="DetailsTable TestClass"
 >
-  <DetailsSectionTitle
-    title="Title"
-  />
+  <h5>
+    Title
+  </h5>
   <div
     className="DetailsTable__headRow TestRowClass"
   >

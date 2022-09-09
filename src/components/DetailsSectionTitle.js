@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 
-import './DetailsSectionTitle.less';
-
-const DetailsSectionTitle = ({title}) => <div className="DetailsSectionTitle">{title}</div>;
+/** @deprecated use <h5> instead. */
+const DetailsSectionTitle = ({title}) => <h5 className="DetailsSectionTitle">{title}</h5>;
 
 DetailsSectionTitle.propTypes = {
 	title: PropTypes.string,
