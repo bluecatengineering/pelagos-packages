@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.3.0...v8.0.0) (2022-09-12)
+
+### ⚠ BREAKING CHANGES
+
+- Secondary buttons look now as specified in Carbon
+  and different from tertiary buttons.
+- Users relying on FontAwesome to v5 may need to update their local version.
+- Internet Explorer is no longer supported.
+- All references to deprecated items must be replaced with
+  suggested alternatives before using this version.
+
+### Features
+
+- follow specification for secondary buttons ([444970f](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/444970f735a12c65e21f7653a1d51a875a9dee61))
+- remove all deprecated items ([3f601d5](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/3f601d584c4086529dac73185e831d42f3ea8f7b))
+- remove support for Internet Explorer ([72f89bf](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/72f89bf0c6ab516e7c8655ea7a1d4a5dbabf308f))
+- rename icons ([8ab1f96](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/8ab1f9687a823a59d66c7363ecb218c76c4a9ed1))
+
+### Bug Fixes
+
+- deprecate DetailsSectionTitle in favour of h5 ([fd5a793](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/fd5a79366f2d00af622f81daffc2ee361db96f96))
+
+- update FontAwesome to v6 ([d5da901](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/d5da901f9088c7c81fda2dff590db74d60f74327))
+
 ## [7.3.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.2.1...v7.3.0) (2022-09-07)
 
 ### Features
