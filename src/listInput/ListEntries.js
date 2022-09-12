@@ -6,7 +6,7 @@ import {t} from '@bluecat/l10n.macro';
 
 import renderListItem from '../listItems/renderListItem';
 import SvgIcon from '../components/SvgIcon';
-import timesThin from '../icons/timesThin';
+import xmarkThin from '../icons/xmarkThin';
 import setLiveText from '../functions/setLiveText';
 
 import './ListEntries.less';
@@ -78,7 +78,7 @@ const ListEntries = ({
 							data-testid="remove-item"
 							data-index={i}
 						>
-							<SvgIcon icon={timesThin} />
+							<SvgIcon icon={xmarkThin} />
 						</button>
 						{cloneElement(element, {className})}
 					</div>

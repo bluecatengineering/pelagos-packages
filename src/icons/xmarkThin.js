@@ -1,4 +1,5 @@
 export default {
+	iconName: 'xmark-thin',
 	icon: [
 		512,
 		512,

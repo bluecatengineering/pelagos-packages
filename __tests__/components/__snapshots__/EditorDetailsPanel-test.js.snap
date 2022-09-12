@@ -11,6 +11,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     icon={
       Object {
         "icon": Array [],
+        "iconName": "xmark-thin",
       }
     }
     id="closeDetailsPanelBtn"
@@ -44,6 +45,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     icon={
       Object {
         "icon": Array [],
+        "iconName": "xmark-thin",
       }
     }
     id="closeDetailsPanelBtn"
@@ -89,6 +91,7 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     icon={
       Object {
         "icon": Array [],
+        "iconName": "xmark-thin",
       }
     }
     id="closeDetailsPanelBtn"
@@ -123,6 +126,7 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     icon={
       Object {
         "icon": Array [],
+        "iconName": "xmark-thin",
       }
     }
     id="closeDetailsPanelBtn"

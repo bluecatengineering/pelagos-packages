@@ -23,6 +23,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />
@@ -59,6 +60,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />
@@ -95,6 +97,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />
@@ -131,6 +134,7 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />
@@ -167,6 +171,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />

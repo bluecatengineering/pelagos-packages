@@ -4,7 +4,7 @@ import debounce from 'lodash-es/debounce';
 import {t} from '@bluecat/l10n.macro';
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 
-import timesThin from '../icons/timesThin';
+import xmarkThin from '../icons/xmarkThin';
 import SvgIcon from '../components/SvgIcon';
 
 /** Search input for a table toolbar. */
@@ -48,7 +48,7 @@ const TableToolbarSearch = ({className, initialText, onChange, ...props}) => {
 			/>
 			{text && (
 				<button className="Table__searchClear" aria-label={t`Clear`} onClick={handleClearClick}>
-					<SvgIcon icon={timesThin} />
+					<SvgIcon icon={xmarkThin} />
 				</button>
 			)}
 		</div>

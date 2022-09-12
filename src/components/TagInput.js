@@ -6,7 +6,7 @@ import {t} from '@bluecat/l10n.macro';
 import setLiveText from '../functions/setLiveText';
 import useTooltip from '../hooks/useTooltip';
 import useRandomId from '../hooks/useRandomId';
-import timesThin from '../icons/timesThin';
+import xmarkThin from '../icons/xmarkThin';
 
 import Layer from './Layer';
 import SvgIcon from './SvgIcon';
@@ -117,7 +117,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 						<span key={name} className="TagInput__tag">
 							{name}
 							<button className="TagInput__remove" type="button" aria-label={t`Remove ${name}`} data-index={i}>
-								<SvgIcon icon={timesThin} />
+								<SvgIcon icon={xmarkThin} />
 							</button>
 						</span>
 				  ))

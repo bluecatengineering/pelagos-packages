@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import infoCircleOutline from '../icons/infoCircleOutline';
+import circleInfoOutline from '../icons/circleInfoOutline';
 import useTooltip from '../hooks/useTooltip';
 
 import SvgIcon from './SvgIcon';
@@ -9,7 +9,7 @@ import './InfoTooltip.less';
 /** A component displaying an informational tooltip. */
 const InfoTooltip = ({className, text, placement, ...props}) => (
 	<button {...props} className={`InfoTooltip${className ? ` ${className}` : ''}`} ref={useTooltip(text, placement)}>
-		<SvgIcon icon={infoCircleOutline} />
+		<SvgIcon icon={circleInfoOutline} />
 	</button>
 );
 

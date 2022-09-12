@@ -20,6 +20,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />
@@ -39,6 +40,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />
@@ -76,6 +78,7 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />
@@ -95,6 +98,7 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
         icon={
           Object {
             "icon": Array [],
+            "iconName": "xmark-thin",
           }
         }
       />

@@ -3,7 +3,7 @@ import {t} from '@bluecat/l10n.macro';
 
 import cloneWithClassName from '../functions/cloneWithClassName';
 import useSlidingPanel from '../hooks/useSlidingPanel';
-import timesThin from '../icons/timesThin';
+import xmarkThin from '../icons/xmarkThin';
 
 import IconButton from './IconButton';
 import DefaultDetailsButtons from './DefaultDetailsButtons';
@@ -30,7 +30,7 @@ const EditorDetailsPanel = ({
 		<IconButton
 			id="closeDetailsPanelBtn"
 			className="EditorDetailsPanel__close"
-			icon={timesThin}
+			icon={xmarkThin}
 			size="large"
 			aria-label={t`Close`}
 			tooltipText={t`Close`}

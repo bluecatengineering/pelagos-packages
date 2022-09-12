@@ -1,4 +1,5 @@
 export default {
+	iconName: 'circle-info-outline',
 	icon: [
 		512,
 		512,

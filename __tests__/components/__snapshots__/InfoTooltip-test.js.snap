@@ -8,6 +8,7 @@ exports[`InfoTooltip rendering renders expected elements 1`] = `
     icon={
       Object {
         "icon": Array [],
+        "iconName": "circle-info-outline",
       }
     }
   />
@@ -23,6 +24,7 @@ exports[`InfoTooltip rendering renders expected elements when className is set 1
     icon={
       Object {
         "icon": Array [],
+        "iconName": "circle-info-outline",
       }
     }
   />

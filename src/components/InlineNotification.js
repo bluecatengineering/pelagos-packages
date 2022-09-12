@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {faCircleCheck, faCircleInfo, faTriangleExclamation} from '@fortawesome/free-solid-svg-icons';
 
-import exclamationRhombus from '../icons/exclamationRhombus';
+import rhombusExclamation from '../icons/rhombusExclamation';
 
 import SvgIcon from './SvgIcon';
 
@@ -11,7 +11,7 @@ const icons = {
 	success: faCircleCheck,
 	info: faCircleInfo,
 	warning: faTriangleExclamation,
-	error: exclamationRhombus,
+	error: rhombusExclamation,
 };
 
 /** A notification to be used inside other components. */

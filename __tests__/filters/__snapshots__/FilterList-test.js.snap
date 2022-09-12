@@ -72,6 +72,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
             icon={
               Object {
                 "icon": Array [],
+                "iconName": "xmark-thin",
               }
             }
           />
@@ -175,6 +176,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
             icon={
               Object {
                 "icon": Array [],
+                "iconName": "xmark-thin",
               }
             }
           />
@@ -211,6 +213,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
             icon={
               Object {
                 "icon": Array [],
+                "iconName": "xmark-thin",
               }
             }
           />

@@ -4,8 +4,8 @@ import {t} from '@bluecat/l10n.macro';
 import {faCircleCheck, faTriangleExclamation, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
 
 import ToastTypes from '../toasts/ToastTypes';
-import exclamationRhombus from '../icons/exclamationRhombus';
-import timesThin from '../icons/timesThin';
+import rhombusExclamation from '../icons/rhombusExclamation';
+import xmarkThin from '../icons/xmarkThin';
 
 import Button from './Button';
 import SvgIcon from './SvgIcon';
@@ -19,8 +19,8 @@ const icons = {
 	success: faCircleCheck,
 	info: faCircleInfo,
 	warning: faTriangleExclamation,
-	error: exclamationRhombus,
-	fatal: exclamationRhombus,
+	error: rhombusExclamation,
+	fatal: rhombusExclamation,
 };
 
 const ToastMessage = ({message, onRemove}) => {
@@ -73,7 +73,7 @@ const ToastMessage = ({message, onRemove}) => {
 					data-testid="toast-close"
 					onClick={handleCloseClick}
 				>
-					<SvgIcon icon={timesThin} />
+					<SvgIcon icon={xmarkThin} />
 				</button>
 			)}
 			{type !== ToastTypes.FATAL && !actionText && <div className="ToastMessage__time" ref={progressRef} />}

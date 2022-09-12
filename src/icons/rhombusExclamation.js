@@ -1,4 +1,5 @@
 export default {
+	iconName: 'rhombus-exclamation',
 	icon: [
 		512,
 		512,

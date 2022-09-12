@@ -21,6 +21,7 @@ exports[`SearchField rendering renders expected elements 1`] = `
       icon={
         Object {
           "icon": Array [],
+          "iconName": "xmark-thin",
         }
       }
     />

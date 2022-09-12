@@ -6,7 +6,7 @@ import {t} from '@bluecat/l10n.macro';
 import Layer from '../components/Layer';
 import ScrollBox from '../components/ScrollBox';
 import SvgIcon from '../components/SvgIcon';
-import timesThin from '../icons/timesThin';
+import xmarkThin from '../icons/xmarkThin';
 
 import FilterEditor from './FilterEditor';
 import './FilterList.less';
@@ -67,7 +67,7 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 												data-kind="remove"
 												data-key={key}
 											>
-												<SvgIcon icon={timesThin} />
+												<SvgIcon icon={xmarkThin} />
 											</button>
 										</div>;
 								  }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {t} from '@bluecat/l10n.macro';
 
-import timesThin from '../icons/timesThin';
+import xmarkThin from '../icons/xmarkThin';
 
 import Layer from './Layer';
 import SvgIcon from './SvgIcon';
@@ -36,7 +36,7 @@ const SearchField = ({className, initialText, onChange, ...props}) => {
 			/>
 			{text && (
 				<button className="SearchField__icon" aria-label={t`Clear`} onClick={handleClick}>
-					<SvgIcon icon={timesThin} />
+					<SvgIcon icon={xmarkThin} />
 				</button>
 			)}
 		</Layer>

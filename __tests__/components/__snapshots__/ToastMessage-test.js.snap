@@ -12,6 +12,7 @@ exports[`ToastMessage rendering does not render close button if type is fatal 1`
     icon={
       Object {
         "icon": Array [],
+        "iconName": "rhombus-exclamation",
       }
     }
   />
@@ -66,6 +67,7 @@ exports[`ToastMessage rendering renders action button if type is action 1`] = `
       icon={
         Object {
           "icon": Array [],
+          "iconName": "xmark-thin",
         }
       }
     />
@@ -85,6 +87,7 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
     icon={
       Object {
         "icon": Array [],
+        "iconName": "rhombus-exclamation",
       }
     }
   />
@@ -105,6 +108,7 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
       icon={
         Object {
           "icon": Array [],
+          "iconName": "xmark-thin",
         }
       }
     />
