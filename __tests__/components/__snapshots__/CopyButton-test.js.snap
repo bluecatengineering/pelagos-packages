@@ -8,6 +8,7 @@ exports[`CopyButton rendering renders expected elements 1`] = `
   onClick={[Function]}
   onFocus={[Function]}
   onMouseEnter={[Function]}
+  type="button"
 >
   <SvgIcon
     icon={
@@ -29,6 +30,7 @@ exports[`CopyButton rendering renders expected elements when className is not se
   onClick={[Function]}
   onFocus={[Function]}
   onMouseEnter={[Function]}
+  type="button"
 >
   <SvgIcon
     icon={

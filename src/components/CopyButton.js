@@ -47,6 +47,7 @@ const CopyButton = ({id, className, data, tooltipText, tooltipPlacement, disable
 		<button
 			id={id}
 			className={`CopyButton${className ? ` ${className}` : ''}`}
+			type="button"
 			aria-label={t`Copy`}
 			ref={targetRef}
 			onMouseEnter={show}
