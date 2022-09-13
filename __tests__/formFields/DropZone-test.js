@@ -218,5 +218,12 @@ describe('DropZone', () => {
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(remove.mock.calls).toEqual([]);
 		});
+
+		it('calls onDelete when the delete button is clicked', () => {
+			const onDelete = jest.fn();
+			const wrapper = shallow(<DropZone id="test" editing onDelete={onDelete} />);
+			wrapper.find('#test-delete').simulate('click');
+			expect(onDelete.mock.calls).toEqual([[]]);
+		});
 	});
 });

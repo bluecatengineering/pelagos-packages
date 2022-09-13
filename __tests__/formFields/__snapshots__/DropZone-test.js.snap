@@ -284,6 +284,8 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
         "prefix": "far",
       }
     }
+    id="test-delete"
+    onClick={[MockFunction]}
     size="medium"
     tooltipPlacement="top"
     tooltipText="Delete"

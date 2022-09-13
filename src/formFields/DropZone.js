@@ -98,6 +98,7 @@ const DropZone = ({
 	);
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
+	const deleteId = `${id}-delete`;
 	return (
 		<div className={`DropZone${className ? ` ${className}` : ''}`}>
 			<LabelLine htmlFor={id} text={label} optional={optional && !fileName && !editing} />
@@ -135,11 +136,13 @@ const DropZone = ({
 			</button>
 			{editing && onDelete && (
 				<IconButton
+					id={deleteId}
 					className="DropZone__delete"
 					icon={faTrashCan}
 					tooltipText={deleteTooltipText}
 					tooltipPlacement="top"
 					disabled={disabled}
+					onClick={onDelete}
 				/>
 			)}
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
