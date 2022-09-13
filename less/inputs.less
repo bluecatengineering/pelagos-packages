@@ -23,17 +23,7 @@ button::-moz-focus-inner {
 	}
 }
 
-input:not([type]),
-input[type='text'],
-input[type='password'],
-input[type='number'],
-input[type='search'],
-input[type='email'],
-input[type='tel'],
-input[type='url'],
-textarea {
-	height: 32px;
-	padding: @sp-04 @sp-16;
+@base-field-styles: {
 	background-color: var(--field);
 	border: none;
 	border-bottom: 1px solid var(--border-strong);
@@ -67,6 +57,24 @@ textarea {
 		background-color: transparent;
 		border-color: transparent;
 	}
+};
+
+input:not([type]),
+input[type='text'],
+input[type='password'],
+input[type='number'],
+input[type='search'],
+input[type='email'],
+input[type='tel'],
+input[type='url'] {
+	@base-field-styles();
+	height: 32px;
+	padding: @sp-04 @sp-16;
+}
+
+textarea {
+	@base-field-styles();
+	padding: @sp-12 @sp-16;
 }
 
 input[type='checkbox'] {
