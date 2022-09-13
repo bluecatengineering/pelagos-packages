@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.0...v8.0.1) (2022-09-13)
+
+### Bug Fixes
+
+- call onDelete when the delete button is clicked ([b8b491c](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/b8b491c4f1a90b3cdd200c6c3c256f871ec07a71))
+
 ## [8.0.0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v7.3.0...v8.0.0) (2022-09-12)
 
 ### ⚠ BREAKING CHANGES
