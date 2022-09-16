@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.2](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.1...v8.0.2) (2022-09-16)
+
+### Bug Fixes
+
+- add line under Dialog title and adjust spacing ([151bdd0](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/151bdd01aaf7538f0a24169003a884b164b35d0e))
+- fix textarea padding ([3fb614e](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/3fb614ef227cb3a453e577a32fd1da1d4ef30783))
+- set button type in CopyButton ([93d35b4](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/93d35b4ab19b1a239dc94aebdb7cb3d1d604db35))
+
 ### [8.0.1](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.0...v8.0.1) (2022-09-13)
 
 ### Bug Fixes
