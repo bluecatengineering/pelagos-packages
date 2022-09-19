@@ -4,6 +4,7 @@ import SelectArrow from './SelectArrow';
 
 import './SelectNative.less';
 
+/** Native select component. */
 const SelectNative = ({className, children, ...props}) => (
 	<span className="SelectNative">
 		<select {...props} className={`SelectNative__select${className ? ` ${className}` : ''}`}>

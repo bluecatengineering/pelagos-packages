@@ -1,9 +1,15 @@
 import {useEffect} from 'react';
 import {createFocusTrap} from 'focus-trap';
 
-export default (ref, initialFocus, onClose) =>
+/**
+ * Adds an effect which creates a focus trap.
+ * @param {{current: Element}} ref React reference to the target element.
+ * @param {string} [initialFocus] the ID of the element which receives the focus when the trap is activated.
+ * @param {function(): void} [onDeactivate] invoked when the trap is deactivated.
+ */
+export default (ref, initialFocus, onDeactivate) =>
 	useEffect(() => {
-		const trap = createFocusTrap(ref.current, {initialFocus, clickOutsideDeactivates: true, onDeactivate: onClose});
+		const trap = createFocusTrap(ref.current, {initialFocus, clickOutsideDeactivates: true, onDeactivate});
 		trap.activate();
 		return trap.deactivate;
-	}, [ref, initialFocus, onClose]);
+	}, [ref, initialFocus, onDeactivate]);

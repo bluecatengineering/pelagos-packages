@@ -47,6 +47,10 @@ const createTooltip = () => {
 	return [tooltip, animation];
 };
 
+/**
+ * Returns a tuple with two functions to show and hide a tooltip.
+ * @returns {[(function(string, string, Element): void),(function(): void)]}
+ */
 export default () => {
 	const targetRef = useRef(null);
 	const [tooltip, animation] = useMemo(() => createTooltip(), []);

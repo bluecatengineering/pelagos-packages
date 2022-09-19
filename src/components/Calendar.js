@@ -80,6 +80,7 @@ const updateMonth = (focused, month) => {
 
 const preventDefault = (event) => event.preventDefault();
 
+/** A component which allows selecting either a single date or a date range. Passing an array in `value` enables range selection. */
 const Calendar = ({id, className, value, onChange, ...props}) => {
 	id = useRandomId(id);
 
@@ -307,9 +308,13 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 };
 
 Calendar.propTypes = {
+	/** The component id. */
 	id: PropTypes.string,
+	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The current value, either a single date or an array with two dates. */
 	value: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),
+	/** Function invoked when the selection changes. */
 	onChange: PropTypes.func,
 };
 

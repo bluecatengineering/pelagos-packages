@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import './Hamburger.less';
 
-/** A hamburger menu. */
+/** A hamburger button. */
 const Hamburger = ({active, onClick, ...props}) => (
 	<button {...props} className="Hamburger" type="button" onClick={onClick}>
 		<span className={`Hamburger__inner${active ? ' Hamburger--active' : ''}`} />

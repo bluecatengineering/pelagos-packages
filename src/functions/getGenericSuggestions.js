@@ -2,6 +2,14 @@ import {t} from '@bluecat/l10n.macro';
 
 import compareSuggestions from './compareSuggestions';
 
+/**
+ * Returns suggestions from a list.
+ * @param {string} text the text to search in the list.
+ * @param {{id: *}[]} list the list of options already selected.
+ * @param {{id: *, name: string}[]} sourceList the list where options are searched.
+ * @param {string} errorMessage the error message to show if no suggestions are found.
+ * @returns {{error: string}|{suggestions: {id: *, name: string, description: string, order: number}[]}} the suggestions.
+ */
 export default (text, list, sourceList, errorMessage) => {
 	text = text.toLowerCase();
 	const suggestions = sourceList.filter((item) => item.name.toLowerCase().includes(text));

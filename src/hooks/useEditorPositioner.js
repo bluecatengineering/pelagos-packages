@@ -1,5 +1,11 @@
 import {useEffect} from 'react';
 
+/**
+ * Adds an effect which positions an editor.
+ * @param {{current: Element}} ref React reference to the editor.
+ * @param {string} buttonId the ID of the editor trigger button.
+ * @param {string} trackId the ID of the track element.
+ */
 export default (ref, buttonId, trackId) =>
 	useEffect(() => {
 		const editor = ref.current;

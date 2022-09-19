@@ -1,5 +1,11 @@
 import identity from 'lodash-es/identity';
 
+/**
+ * Builds a parser for simple suggestions.
+ * @param {function(*): (string|null)} validate validates each entry returning either an error message or `null`.
+ * @param {function(string): *} transform transforms the input text.
+ * @returns {function(string, *[]): ({error: string}|{entries: *[]})} a function returning suggestions.
+ */
 export default (validate, transform = identity) =>
 	(text, list) => {
 		const allEntries = text
@@ -7,10 +13,9 @@ export default (validate, transform = identity) =>
 			.map((entry) => transform(entry.trim()))
 			.filter(Boolean);
 		const entries = [];
-		let error;
 		for (let i = 0; i < allEntries.length; ++i) {
 			const entry = allEntries[i];
-			error = validate(entry);
+			const error = validate(entry);
 			if (error) {
 				return {error};
 			}

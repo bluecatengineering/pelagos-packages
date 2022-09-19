@@ -3,7 +3,7 @@ import identity from 'lodash-es/identity';
 
 /**
  * Returns a stateful boolean and a function to toggle it.
- * Additionally adds an effect which set the state to true if any errors are found.
+ * Additionally, adds an effect which sets the state to true if any errors are found.
  * @param {boolean} initialState the initial state.
  * @param {any[]} errors the array of errors.
  * @return {[boolean, (function(): void)]} tuple which can be used to control a collapsible.

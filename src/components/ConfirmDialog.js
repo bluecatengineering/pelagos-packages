@@ -7,6 +7,7 @@ import SvgIcon from './SvgIcon';
 import Button from './Button';
 import './ConfirmDialog.less';
 
+/** A confirmation dialog. */
 const ConfirmDialog = ({title, body, confirmText, size, onClose, onConfirm}) => (
 	<Dialog title={title} role="alertdialog" size={size}>
 		<div className="ConfirmDialog__body">

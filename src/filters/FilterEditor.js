@@ -10,6 +10,7 @@ import './FilterEditor.less';
 
 const trueFn = () => true;
 
+/** Wrapper for filter editors. */
 const FilterEditor = ({name, value: initialValue, buttonId, trackId, getLabel, getEditor, onClose, onSave}) => {
 	const [value, setValue] = useState(initialValue);
 
@@ -44,13 +45,21 @@ const FilterEditor = ({name, value: initialValue, buttonId, trackId, getLabel, g
 };
 
 FilterEditor.propTypes = {
+	/** The filter name. */
 	name: PropTypes.string,
+	/** The initial filter value. */
 	value: PropTypes.any,
+	/** The ID of the button which triggered the editor. */
 	buttonId: PropTypes.string,
+	/** The ID of the track which contains the trigger button. */
 	trackId: PropTypes.string,
+	/** Function returning the editor aria label. */
 	getLabel: PropTypes.func,
+	/** Function returning the editor body. */
 	getEditor: PropTypes.func,
+	/** Function invoked when the close button is clicked. */
 	onClose: PropTypes.func,
+	/** Function invoked when the save button is clicked. */
 	onSave: PropTypes.func,
 };
 

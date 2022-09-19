@@ -1,6 +1,7 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+/** An item in IconMenu. */
 const IconMenuItem = forwardRef(({className, text, disabled, hasDivider, ...props}, ref) => (
 	<li
 		{...props}

@@ -3,7 +3,7 @@ import {useCallback, useEffect, useRef} from 'react';
 /**
  * Adds a "slide" animation to the specified element.
  * @param {string} id the ID of the element to animate.
- * @param {function(): void} onFinish the function to call when the animation finishes.
+ * @param {function(): void} onFinish invoked when the animation finishes.
  * @return {function(): void} function to use as event handler.
  */
 export default (id, onFinish) => {

@@ -1,3 +1,8 @@
+/**
+ * Throttles calls to the specified function using `requestAnimationFrame`.
+ * @param {function} f the function to throttle.
+ * @returns {{(): function, cancel: function(): void, flush: function(): void}} a wrapping function.
+ */
 export default (f) => {
 	let frame, lastArgs;
 	const apply = () => {

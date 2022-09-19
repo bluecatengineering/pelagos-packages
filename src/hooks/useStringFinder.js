@@ -9,6 +9,10 @@ const findInRange = (string, start, end, getUpperCaseText) => {
 	return -1;
 };
 
+/**
+ * Returns a React callback to search a string in a range.
+ * @returns {function(number, number, number, function(number): string): number} search function.
+ */
 export default () => {
 	const searchString = useRef(null);
 	const searchIndex = useRef(-1);

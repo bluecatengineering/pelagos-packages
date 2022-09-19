@@ -10,4 +10,9 @@ const getLiveElement = () => {
 	return element;
 };
 
+/**
+ * Sets the specified text on an element marked as aria-live="assertive".
+ * The element is created as required and reused in subsequent calls.
+ * @param {string} text the text.
+ */
 export default (text) => (getLiveElement().textContent = text);

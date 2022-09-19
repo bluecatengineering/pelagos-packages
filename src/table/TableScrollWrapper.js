@@ -1,6 +1,7 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+/** Scrolling wrapper element for a table component. */
 const TableScrollWrapper = forwardRef(({className, children, ...props}, ref) => (
 	<div {...props} className={`Table__wrapper${className ? ` ${className}` : ''}`} ref={ref}>
 		{children}

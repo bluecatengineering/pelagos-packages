@@ -96,6 +96,7 @@ export const useDataLoader = (path, getItemCount, isLeaf) => {
 	return columns;
 };
 
+/** A component which presents a tree path as multiple columns. */
 const MultiColumn = ({
 	id,
 	className,
@@ -316,7 +317,7 @@ MultiColumn.propTypes = {
 	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
-	/** The the selected path. */
+	/** The selected path. */
 	path: PropTypes.array.isRequired,
 	/** The column width (css length). */
 	colWidth: PropTypes.string,

@@ -3,6 +3,7 @@ import {t} from '@bluecat/l10n.macro';
 
 import './BlockHeader.less';
 
+/** Header for a form section. */
 const BlockHeader = ({className, header, configured}) => (
 	<h2 className={`BlockHeader${className ? ` ${className}` : ''}`}>
 		{header}

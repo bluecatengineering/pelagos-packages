@@ -4,6 +4,7 @@ import {t} from '@bluecat/l10n.macro';
 
 import Button from './Button';
 
+/** Default buttons for the details panel. */
 const DefaultDetailsButtons = ({className, item, disableEdit, disableDelete, onEdit, onDelete}) => {
 	const handleEdit = useCallback(() => onEdit(item), [item, onEdit]);
 	const handleDelete = useCallback(() => onDelete(item), [item, onDelete]);

@@ -2,6 +2,12 @@ import {useCallback, useRef} from 'react';
 
 import useTooltipBase from './useTooltipBase';
 
+/**
+ * Returns a callback ref to show a tooltip over the target element.
+ * @param {string} text the tooltip text.
+ * @param {'left'|'right'|'top'|'bottom'} placement the tooltip placement.
+ * @returns {(function(Element): void)} callback ref.
+ */
 export default (text, placement) => {
 	const targetRef = useRef(null);
 	const [showTooltip, hide] = useTooltipBase();
