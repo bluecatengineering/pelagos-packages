@@ -47,7 +47,6 @@
     "./less/": "./less/"
   },
   "dependencies": {
-    "@bluecat/helpers": "^2.0.1",
     "@bluecat/l10n-core": "^0.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",

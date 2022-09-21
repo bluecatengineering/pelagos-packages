@@ -1,11 +1,12 @@
 import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
-import {smoothScroll, scrollToItem} from '@bluecat/helpers';
 
 import Select from '../../src/components/Select';
 import useStringFinder from '../../src/hooks/useStringFinder';
 import pageDown from '../../src/functions/pageDown';
 import pageUp from '../../src/functions/pageUp';
+import scrollToItem from '../../src/functions/scrollToItem';
+import smoothScroll from '../../src/functions/smoothScroll';
 
 jest.unmock('../../src/components/Select');
 

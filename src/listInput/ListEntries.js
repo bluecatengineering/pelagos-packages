@@ -1,13 +1,13 @@
 import {cloneElement, useCallback, useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
-import {scrollIntoView} from '@bluecat/helpers';
 import {t} from '@bluecat/l10n.macro';
 
 import renderListItem from '../listItems/renderListItem';
 import SvgIcon from '../components/SvgIcon';
 import xmarkThin from '../icons/xmarkThin';
 import setLiveText from '../functions/setLiveText';
+import scrollIntoView from '../functions/scrollIntoView';
 
 import './ListEntries.less';
 

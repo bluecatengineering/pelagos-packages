@@ -1,9 +1,9 @@
 import {useRef, useEffect, useState} from 'react';
 import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
-import {scrollToItem} from '@bluecat/helpers';
 
 import ComboBox from '../../src/components/ComboBox';
+import scrollToItem from '../../src/functions/scrollToItem';
 
 jest.unmock('../../src/components/ComboBox');
 

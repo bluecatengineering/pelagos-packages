@@ -1,11 +1,11 @@
 import {useEffect} from 'react';
 import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
-import {scrollIntoView} from '@bluecat/helpers';
 
 import ListEntries from '../../src/listInput/ListEntries';
 import renderListItem from '../../src/listItems/renderListItem';
 import setLiveText from '../../src/functions/setLiveText';
+import scrollIntoView from '../../src/functions/scrollIntoView';
 
 jest.unmock('../../src/listInput/ListEntries');
 

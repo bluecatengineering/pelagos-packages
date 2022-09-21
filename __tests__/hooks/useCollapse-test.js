@@ -1,7 +1,8 @@
 import {useRef} from 'react';
-import {animate, scrollIntoView} from '@bluecat/helpers';
 
 import useCollapse from '../../src/hooks/useCollapse';
+import animate from '../../src/functions/animate';
+import scrollIntoView from '../../src/functions/scrollIntoView';
 
 jest.unmock('../../src/hooks/useCollapse');
 

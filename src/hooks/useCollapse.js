@@ -1,5 +1,7 @@
 import {useCallback, useRef} from 'react';
-import {animate, scrollIntoView} from '@bluecat/helpers';
+
+import animate from '../functions/animate';
+import scrollIntoView from '../functions/scrollIntoView';
 
 /**
  * Returns a React ref which collapses the element. The element must have overflow: hidden.

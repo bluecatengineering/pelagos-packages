@@ -1,13 +1,14 @@
 import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
-import {animate, scrollToItem} from '@bluecat/helpers';
 
 import MultiColumn, {useDataLoader} from '../../src/components/MultiColumn';
 import useRandomId from '../../src/hooks/useRandomId';
 import useStringFinder from '../../src/hooks/useStringFinder';
+import animate from '../../src/functions/animate';
 import pageUp from '../../src/functions/pageUp';
 import pageDown from '../../src/functions/pageDown';
 import addResizeObserver from '../../src/functions/addResizeObserver';
+import scrollToItem from '../../src/functions/scrollToItem';
 
 jest.unmock('../../src/components/MultiColumn');
 

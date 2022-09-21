@@ -2,9 +2,10 @@ import {cloneElement, useRef, useCallback, useEffect, useState, useMemo} from 'r
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
-import {scrollToItem} from '@bluecat/helpers';
 import {t} from '@bluecat/l10n.macro';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
+
+import scrollToItem from '../functions/scrollToItem';
 
 import Layer from './Layer';
 import IconButton from './IconButton';

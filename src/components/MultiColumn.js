@@ -1,14 +1,15 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {animate, scrollToItem} from '@bluecat/helpers';
 import {t} from '@bluecat/l10n.macro';
 import {faCaretRight} from '@fortawesome/free-solid-svg-icons';
 
 import useStringFinder from '../hooks/useStringFinder';
 import useRandomId from '../hooks/useRandomId';
 import addResizeObserver from '../functions/addResizeObserver';
+import animate from '../functions/animate';
 import pageUp from '../functions/pageUp';
 import pageDown from '../functions/pageDown';
+import scrollToItem from '../functions/scrollToItem';
 
 import SvgIcon from './SvgIcon';
 import Spinner from './Spinner';

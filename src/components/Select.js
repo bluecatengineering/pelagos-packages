@@ -2,11 +2,11 @@ import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
-import {scrollToItem} from '@bluecat/helpers';
 
 import useStringFinder from '../hooks/useStringFinder';
 import pageUp from '../functions/pageUp';
 import pageDown from '../functions/pageDown';
+import scrollToItem from '../functions/scrollToItem';
 
 import Layer from './Layer';
 import SelectArrow from './SelectArrow';

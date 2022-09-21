@@ -1,4 +1,4 @@
-import {smoothScroll} from '@bluecat/helpers';
+import smoothScroll from './smoothScroll';
 
 const {floor, min} = Math;
 

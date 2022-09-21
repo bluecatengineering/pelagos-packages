@@ -1,6 +1,5 @@
-import {smoothScroll} from '@bluecat/helpers';
-
 import pageUp from '../../src/functions/pageUp';
+import smoothScroll from '../../src/functions/smoothScroll';
 
 jest.unmock('../../src/functions/pageUp');
 
