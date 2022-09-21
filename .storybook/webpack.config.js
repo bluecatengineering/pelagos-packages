@@ -21,7 +21,6 @@ module.exports = ({config}) => ({
 			},
 			{
 				test: /\.yaml$/,
-				type: 'json',
 				loader: 'yaml-loader',
 			},
 			{
