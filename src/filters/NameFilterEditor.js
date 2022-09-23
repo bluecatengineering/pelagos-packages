@@ -1,6 +1,6 @@
 import {useCallback, useMemo, useState} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import ListInput from '../listInput/ListInput';
 import getGenericSuggestions from '../functions/getGenericSuggestions';

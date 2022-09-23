@@ -9,7 +9,7 @@ const {
 } = require('fs');
 const {join} = require('path');
 
-const converter = require('@bluecat/l10n-icu2obj');
+const converter = require('@bluecateng/l10n-icu2obj');
 
 const EXTENSIONS = /\.(less|po|yaml)$/;
 const PO = /\.po$/;

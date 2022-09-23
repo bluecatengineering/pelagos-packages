@@ -1,7 +1,7 @@
 import {useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import ListInput from '../listInput/ListInput';
 import renderSuggestion from '../suggestions/renderSuggestion';

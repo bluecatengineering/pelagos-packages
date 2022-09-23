@@ -2,7 +2,7 @@ import {cloneElement, useRef, useCallback, useEffect, useState, useMemo} from 'r
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 import scrollToItem from '../functions/scrollToItem';

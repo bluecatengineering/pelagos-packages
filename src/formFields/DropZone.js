@@ -1,6 +1,6 @@
 import {useCallback} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 import {faFileLines, faTrashCan} from '@fortawesome/free-regular-svg-icons';
 import {faCloudArrowUp} from '@fortawesome/free-solid-svg-icons';
 

@@ -1,7 +1,7 @@
 import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import {createPortal} from 'react-dom';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 import {faFilter} from '@fortawesome/free-solid-svg-icons';
 
 import IconMenu from '../components/IconMenu';

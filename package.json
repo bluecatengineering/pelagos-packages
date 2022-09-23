@@ -47,7 +47,7 @@
     "./less/": "./less/"
   },
   "dependencies": {
-    "@bluecat/l10n-core": "^0.1.1",
+    "@bluecateng/l10n-core": "^0.1.4",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "focus-trap": "^7.0.0",
@@ -63,15 +63,15 @@
     "@babel/preset-react": "^7.16.7",
     "@bluecat/analyze-imports": "^0.1.4",
     "@bluecat/jest-helpers": "^2.0.1",
-    "@bluecat/l10n-cli": "^0.1.1",
-    "@bluecat/l10n-icu2obj": "^0.1.1",
-    "@bluecat/l10n-jest": "^0.2.0",
-    "@bluecat/l10n-loader": "^0.1.1",
-    "@bluecat/l10n.macro": "^0.1.1",
     "@bluecat/stylelint-config": "^3.0.1",
     "@bluecateng/commitlint-config-bluecateng": "^1.0.1",
     "@bluecateng/eslint-config-react": "^3.0.1",
     "@bluecateng/git-check-push": "^1.0.0",
+    "@bluecateng/l10n-cli": "^0.1.5",
+    "@bluecateng/l10n-icu2obj": "^0.1.5",
+    "@bluecateng/l10n-jest": "^0.3.0",
+    "@bluecateng/l10n-loader": "^0.1.5",
+    "@bluecateng/l10n.macro": "^0.1.6",
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
     "@storybook/addon-a11y": "^6.5.12",
@@ -149,10 +149,10 @@
     ],
     "transform": {
       "\\.js$": "babel-jest",
-      "\\.po$": "@bluecat/l10n-jest"
+      "\\.po$": "@bluecateng/l10n-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(lodash-es|@bluecat)/)"
+      "node_modules/(?!(lodash-es|@bluecateng)/)"
     ],
     "unmockedModulePathPatterns": [
       "enzyme",

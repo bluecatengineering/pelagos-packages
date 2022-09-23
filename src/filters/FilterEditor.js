@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {createFocusTrap} from 'focus-trap';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import Button from '../components/Button';
 import useEditorPositioner from '../hooks/useEditorPositioner';

@@ -17,7 +17,7 @@ module.exports = ({config}) => ({
 			},
 			{
 				test: /\.po$/,
-				loader: '@bluecat/l10n-loader',
+				loader: '@bluecateng/l10n-loader',
 			},
 			{
 				test: /\.yaml$/,

@@ -1,4 +1,4 @@
-import l10nLoad from '@bluecat/l10n-core';
+import l10nLoad from '@bluecateng/l10n-core';
 
 import en from './en.po';
 

@@ -1,7 +1,7 @@
 import {cloneElement, useCallback, useEffect, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import renderListItem from '../listItems/renderListItem';
 import SvgIcon from '../components/SvgIcon';

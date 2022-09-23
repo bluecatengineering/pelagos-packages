@@ -1,7 +1,7 @@
 import {useCallback, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import xmarkThin from '../icons/xmarkThin';
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import cloneWithClassName from '../functions/cloneWithClassName';
 import useSlidingPanel from '../hooks/useSlidingPanel';

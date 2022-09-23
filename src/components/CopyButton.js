@@ -1,7 +1,7 @@
 import {useCallback, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {faCopy} from '@fortawesome/free-regular-svg-icons';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import useTooltipBase from '../hooks/useTooltipBase';
 import copyToClipboard from '../functions/copyToClipboard';

@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
 import l10n from '../l10n';

@@ -1,7 +1,7 @@
 import {useCallback, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import Layer from '../components/Layer';
 import ScrollBox from '../components/ScrollBox';

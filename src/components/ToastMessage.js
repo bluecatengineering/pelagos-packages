@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 import {faCircleCheck, faTriangleExclamation, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
 
 import ToastTypes from '../toasts/ToastTypes';

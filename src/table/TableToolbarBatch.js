@@ -1,6 +1,6 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
-import {t, plural} from '@bluecat/l10n.macro';
+import {t, plural} from '@bluecateng/l10n.macro';
 
 import Button from '../components/Button';
 

@@ -1,4 +1,4 @@
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import {Suggestion} from './Suggestion';
 

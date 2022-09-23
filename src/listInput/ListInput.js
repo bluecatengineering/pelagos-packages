@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecat/l10n.macro';
+import {t} from '@bluecateng/l10n.macro';
 
 import LabelLine from '../components/LabelLine';
 import ComboBox from '../components/ComboBox';
