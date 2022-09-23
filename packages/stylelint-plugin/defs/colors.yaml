@@ -1,0 +1,13 @@
+color:
+  value: '#fff'
+  palette: ['', '']
+  normal: ['', '']
+  hover: ['', '']
+
+mixedCase:
+  css: mixed-case
+  normal: ['', '']
+  hover: ['', '']
+
+black:
+  value: '#000'

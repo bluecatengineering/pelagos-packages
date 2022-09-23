@@ -1,0 +1,171 @@
+@import '../less/aspect-ratios';
+@import '../less/colors';
+@import '../less/spacing';
+
+// stylelint-disable @bluecateng/property-strict-value
+
+.Fonts tr:not(:last-child) {
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+.Fonts th {
+	text-align: left;
+}
+
+.Fonts td {
+	vertical-align: baseline;
+}
+
+.Palette {
+	align-self: stretch;
+}
+
+.Palette__grid {
+	display: grid;
+	grid-gap: @sp-24;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	padding: @sp-24;
+}
+
+.Palette__name {
+	margin: 0 @sp-12 @sp-12;
+}
+
+.Palette__patch {
+	flex-direction: row;
+	padding: @sp-12 @sp-16;
+}
+
+.Palette__hex {
+	margin-left: auto;
+}
+
+.Themes__header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 68px;
+	padding: 0 1rem;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: var(--background);
+}
+
+.Themes__filters {
+	flex-direction: row;
+	gap: @sp-12;
+
+	& select {
+		color: var(--text-primary);
+		background-color: var(--layer-accent);
+	}
+}
+
+.Themes__check {
+	margin-top: 1.5em;
+}
+
+.Themes__table {
+	margin-top: calc(68px - 1rem);
+	width: 100%;
+
+	& thead {
+		position: sticky;
+		top: 68px;
+		background-color: var(--layer-accent);
+	}
+
+	& tr:not(:last-child) {
+		border-bottom: 1px solid var(--border-subtle);
+	}
+
+	& th {
+		height: 32px;
+		text-align: left;
+	}
+}
+
+.Themes__preview {
+	flex-direction: row;
+	align-items: flex-end;
+}
+
+.Themes__swatch {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	outline: 1px solid purple;
+}
+
+.Themes__detail {
+	display: inline-block;
+	margin-left: @sp-08;
+}
+
+.Themes__hex {
+	color: var(--text-secondary);
+}
+
+.Elevations {
+	align-self: stretch;
+}
+
+.Elevations__grid {
+	display: grid;
+	grid-gap: @sp-64;
+	grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+	padding: @sp-64;
+}
+
+.Elevations__card {
+	width: 100px;
+	height: 100px;
+	align-items: center;
+	justify-content: center;
+}
+
+.Spacing th {
+	text-align: left;
+}
+
+.Spacing__sample {
+	height: 12px;
+	background-color: var(--background-brand);
+}
+
+.AspectRatio {
+	//noinspection CssUnknownProperty
+	@ratios: {
+		r2-1: @ratio-2-1;
+		r16-9: @ratio-16-9;
+		r3-2: @ratio-3-2;
+		r4-3: @ratio-4-3;
+		r1-1: @ratio-1-1;
+		r3-4: @ratio-3-4;
+		r2-3: @ratio-2-3;
+		r9-16: @ratio-9-16;
+		r1-2: @ratio-1-2;
+	};
+	each(@ratios, {
+		&--@{key} > * {
+			aspect-ratio: @value;
+		}
+	});
+
+	&__table {
+		gap: @sp-16;
+		margin-top: @sp-24;
+	}
+
+	&__row {
+		flex-direction: row;
+	}
+
+	&__row > * {
+		width: 160px;
+		background-color: var(--layer);
+		outline: 1px solid var(--border-strong);
+		padding: @sp-16;
+	}
+}

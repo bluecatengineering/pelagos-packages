@@ -1,0 +1,29 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+
+.OutputField {
+	margin-top: @sp-12;
+}
+
+.OutputField__label {
+	margin-bottom: @sp-08;
+}
+
+.OutputField__value {
+	@font-14-400();
+	color: var(--text-secondary);
+	// stylelint-disable-next-line @bluecateng/property-strict-value
+	padding: 5px 0; // to match height of text field
+
+	@media print {
+		color: var(--print-color);
+	}
+}
+
+.OutputField--alignRight {
+	text-align: right;
+}
+
+.OutputField--active {
+	color: var(--text-primary);
+}

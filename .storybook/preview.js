@@ -1,4 +1,4 @@
-import {LayerContext} from '../src/components/Layer';
+import {LayerContext} from '../packages/pelagos/src/components/Layer';
 
 import './preview.less';
 

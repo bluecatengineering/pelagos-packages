@@ -1,0 +1,29 @@
+{
+  "name": "@bluecateng/analyze-imports",
+  "version": "0.1.4",
+  "description": "Analyze internal imports",
+  "license": "ISC",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.bluecatlabs.net:bluecat-uiux/pelagos.git",
+    "directory": "packages/analyze-imports"
+  },
+  "bin": {
+    "analyze-imports": "bin/analyze-imports.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "dependencies": {
+    "@babel/parser": "^7.13.16"
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-console": "off",
+      "strict": "off"
+    }
+  }
+}

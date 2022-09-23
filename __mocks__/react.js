@@ -6,6 +6,7 @@ module.exports = {
 	useEffect: jest.fn(),
 	useLayoutEffect: jest.fn(),
 	useMemo: jest.fn((f) => f()),
+	useReducer: jest.fn((reducer, initial) => [initial, jest.fn()]),
 	useRef: jest.fn((current) => ({current})),
 	Children: {
 		toArray(children) {

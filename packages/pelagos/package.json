@@ -1,0 +1,47 @@
+{
+  "name": "@bluecateng/pelagos",
+  "version": "8.0.5",
+  "description": "UI components",
+  "license": "ISC",
+  "sideEffects": [
+    "*.less"
+  ],
+  "scripts": {
+    "build:dist": "rm -rf dist && babel -d dist --env-name production --root-mode upward src && npm run copy-resources dist",
+    "build": "npm run update-colors && npm run update-elevations && npm run update-fonts && npm run update-shadows && npm run update-spacing && npm run update-themes && npm run build:dist",
+    "update-colors": "node scripts/update-colors",
+    "update-elevations": "node scripts/update-elevations",
+    "update-fonts": "node scripts/update-fonts",
+    "update-shadows": "node scripts/update-shadows",
+    "update-spacing": "node scripts/update-spacing",
+    "update-themes": "node scripts/update-themes",
+    "copy-resources": "node scripts/copy-resources",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.bluecatlabs.net:bluecat-uiux/pelagos.git",
+    "directory": "packages/pelagos"
+  },
+  "keywords": [
+    "react"
+  ],
+  "files": [
+    "defs",
+    "dist",
+    "less"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./defs/*": "./defs/*",
+    "./less/*": "./less/*"
+  },
+  "dependencies": {
+    "@bluecateng/l10n-core": "^0.1.4",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "focus-trap": "^7.0.0",
+    "lodash-es": "^4.17.21",
+    "prop-types": "^15.8.1"
+  }
+}

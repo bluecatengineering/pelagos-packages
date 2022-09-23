@@ -1,0 +1,25 @@
+@focus-ring: {
+	outline: 2px solid var(--focus);
+	outline-offset: -2px;
+};
+
+@focus-ring-error: {
+	outline: 2px solid var(--focus);
+	outline-offset: -2px;
+};
+
+@focus-visible: {
+	outline: none;
+
+	&:focus-visible {
+		@focus-ring();
+	}
+};
+
+@focus-visible-error: {
+	outline: none;
+
+	&:focus-visible {
+		@focus-ring-error();
+	}
+}; ; ; ;

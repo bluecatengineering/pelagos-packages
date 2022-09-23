@@ -1,7 +1,7 @@
 #! /bin/sh
-git diff --quiet --cached defs/colors.yaml || (npm run update-colors && git add less/colors.less)
-git diff --quiet --cached defs/elevations.yaml || (npm run update-elevations && git add less/elevations.less)
-git diff --quiet --cached defs/fonts.yaml || (npm run update-fonts && git add less/fonts.less)
-git diff --quiet --cached defs/shadows.yaml || (npm run update-shadows && git add less/shadows.less)
-git diff --quiet --cached defs/spacing.yaml || (npm run update-spacing && git add less/spacing.less)
-git diff --quiet --cached defs/themes.yaml || (npm run update-themes && git add less/themes.less)
+git diff --quiet --cached packages/pelagos/defs/colors.yaml || (npm -w packages/pelagos run update-colors && git add packages/pelagos/less/colors.less)
+git diff --quiet --cached packages/pelagos/defs/elevations.yaml || (npm -w packages/pelagos run update-elevations && git add packages/pelagos/less/elevations.less)
+git diff --quiet --cached packages/pelagos/defs/fonts.yaml || (npm -w packages/pelagos run update-fonts && git add packages/pelagos/less/fonts.less)
+git diff --quiet --cached packages/pelagos/defs/shadows.yaml || (npm -w packages/pelagos run update-shadows && git add packages/pelagos/less/shadows.less)
+git diff --quiet --cached packages/pelagos/defs/spacing.yaml || (npm -w packages/pelagos run update-spacing && git add packages/pelagos/less/spacing.less)
+git diff --quiet --cached packages/pelagos/defs/themes.yaml || (npm -w packages/pelagos run update-themes && git add packages/pelagos/less/themes.less)

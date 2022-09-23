@@ -1,0 +1,30 @@
+{
+  "name": "@bluecateng/stylelint-config",
+  "version": "3.1.1",
+  "license": "ISC",
+  "scripts": {
+    "prepack": "esbuild src/index.js --bundle --minify --platform=node --outfile=dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.bluecatlabs.net:bluecat-uiux/pelagos.git",
+    "directory": "packages/stylelint-config"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist",
+  "peerDependencies": {
+    "stylelint": ">=14",
+    "stylelint-config-prettier": ">=9",
+    "stylelint-config-standard": ">=23"
+  },
+  "dependencies": {
+    "@bluecateng/stylelint-plugin": "^3.1.1"
+  },
+  "eslintConfig": {
+    "rules": {
+      "strict": "off"
+    }
+  }
+}

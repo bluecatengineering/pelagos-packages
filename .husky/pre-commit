@@ -1,4 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-scripts/pre-commit-updates && npx lint-staged && npx @bluecat/analyze-imports src && npx @bluecateng/l10n-cli
+scripts/pre-commit-updates
+npx lint-staged
+packages/analyze-imports/bin/analyze-imports.js packages/pelagos/src
+npx @bluecateng/l10n-cli

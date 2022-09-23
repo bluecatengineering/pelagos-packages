@@ -1,0 +1,22 @@
+{
+  "name": "@bluecateng/jest-helpers",
+  "version": "2.0.1",
+  "description": "Helper scripts for Jest",
+  "license": "ISC",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.bluecatlabs.net:bluecat-uiux/pelagos.git",
+    "directory": "packages/jest-helpers"
+  },
+  "files": [
+    "*.js",
+    "README.md"
+  ],
+  "eslintConfig": {
+    "rules": {
+      "strict": "off"
+    }
+  }
+}
