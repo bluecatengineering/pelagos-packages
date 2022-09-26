@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form rendering renders expected elements 1`] = `
+<Context.Provider
+  value={
+    {
+      "dispatch": [MockFunction],
+      "reset": [Function],
+      "rules": {},
+      "state": {
+        "initialExtras": {},
+        "initialValues": {
+          "test": "foo",
+        },
+      },
+      "submit": [Function],
+    }
+  }
+>
+  <form
+    id="test"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <div />
+  </form>
+</Context.Provider>
+`;
