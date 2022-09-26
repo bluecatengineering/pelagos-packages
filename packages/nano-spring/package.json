@@ -1,0 +1,26 @@
+{
+  "name": "@bluecateng/nano-spring",
+  "version": "2.0.0",
+  "description": "Tiny implementation of spring animation",
+  "license": "ISC",
+  "exports": "./dist/index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --minify --format=esm --outfile=dist/index.js",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bluecatengineering/pelagos-packages.git",
+    "directory": "packages/nano-spring"
+  },
+  "keywords": [
+    "spring",
+    "nano",
+    "vanilla"
+  ],
+  "files": [
+    "dist",
+    "index.d.ts"
+  ]
+}
