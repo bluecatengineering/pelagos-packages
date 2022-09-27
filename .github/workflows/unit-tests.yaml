@@ -1,0 +1,42 @@
+name: Jest
+
+on: push
+
+permissions: read-all
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
+
+      - name: Setup node
+        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3.5.1
+        with:
+          node-version: 16
+
+      - name: Run tests
+        run: |
+          npm ci
+          npx lerna run prepack
+          npm run test-ci
+        env:
+          TZ: America/Toronto
+
+      - name: Publish test report
+        uses: mikepenz/action-junit-report@ab07dd7abefd456d92ecbeb22f81392fafe3d528 # tag=v3.5.2
+        if: always()
+        with:
+          report_paths: build/test-results/unit.xml
+
+      - name: Publish coverage report
+        uses: 5monkeys/cobertura-action@4157521550018abbbd29dfdf1b5963e907ea37f0 # tag=v13
+        with:
+          path: coverage/cobertura-coverage.xml
+          minimum_coverage: 100
+          fail_below_threshold: true
