@@ -1,0 +1,29 @@
+{
+  "name": "@bluecateng/smooth-reorder",
+  "version": "2.0.0",
+  "description": "Smooth list reordering in vanilla JS",
+  "license": "ISC",
+  "exports": "./dist/index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --minify --format=esm --outfile=dist/index.js --external:@bluecateng/nano-spring",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bluecatengineering/pelagos-packages.git",
+    "directory": "packages/smooth-reorder"
+  },
+  "keywords": [
+    "reorder",
+    "dnd",
+    "vanilla"
+  ],
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "@bluecateng/nano-spring": "^2.0.0"
+  }
+}
