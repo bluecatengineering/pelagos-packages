@@ -1,6 +1,7 @@
 {
   "name": "@bluecateng/stylelint-config",
   "version": "3.1.1",
+  "description": "Stylelint configuration for BlueCat Engineering",
   "license": "ISC",
   "scripts": {
     "prepack": "esbuild src/index.js --bundle --minify --platform=node --outfile=dist/index.js"

@@ -1,6 +1,7 @@
 {
   "name": "@bluecateng/stylelint-plugin",
   "version": "3.1.1",
+  "description": "Custom Stylelint rule definitions for BlueCat Engineering",
   "license": "ISC",
   "scripts": {
     "prepack": "esbuild src/index.js --bundle --minify --platform=node --outfile=dist/index.js --external:stylelint --external:yaml --external:@bluecateng/pelagos --define:process.env.NODE_ENV=\\'production\\'"

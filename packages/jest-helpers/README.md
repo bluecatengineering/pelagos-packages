@@ -1,6 +1,12 @@
-# @bluecateng/jest-helpers
+# @bluecateng/jest-helpers [![GitHub license](https://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/bluecatengineering/pelagos-packages/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@bluecateng/jest-helpers.svg?style=flat)](https://www.npmjs.com/package/@bluecateng/jest-helpers)
 
-Helper scripts for Jest
+Helper scripts for Jest.
+
+## Installation
+
+```bash
+npm i -D @bluecateng/jest-helpers
+```
 
 ## Usage
 
