@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.3](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.2...v8.0.3) (2022-09-29)
+
+### Bug Fixes
+
+- fix issues with variable height content in Collapsible ([c933ffa](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/c933ffab51bd4c5ea718dfeeb0bf9cd6ad19f8ed))
+
 ### [8.0.2](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.1...v8.0.2) (2022-09-16)
 
 ### Bug Fixes
