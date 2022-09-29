@@ -1,5 +1,5 @@
 import {useCallback, useRef} from 'react';
-import {scrollIntoView} from '@bluecat/helpers';
+import {animate, scrollIntoView} from '@bluecat/helpers';
 
 /**
  * Returns a React ref which collapses the element. The element must have overflow: hidden.
@@ -18,20 +18,20 @@ export default (open) => {
 				} else if (open !== prevOpenRef.current) {
 					if (open) {
 						element.style.display = '';
+						const h = element.scrollHeight;
+						animate(
+							150,
+							(current) => (element.style.height = `${h * current}px`),
+							() => scrollIntoView(element.parentNode, {smooth: true, done: () => (element.style.height = '')})
+						);
+					} else {
+						const h = element.scrollHeight;
+						animate(
+							150,
+							(current) => (element.style.height = `${h * (1 - current)}px`),
+							() => ((element.style.height = '0'), (element.style.display = 'none'))
+						);
 					}
-					const animation = element.animate([{height: '0'}, {height: `${element.scrollHeight}px`}], {
-						duration: 250,
-						fill: 'both',
-						easing: 'ease-out',
-						direction: open ? 'normal' : 'reverse',
-					});
-					animation.onfinish = () => {
-						if (prevOpenRef.current) {
-							scrollIntoView(element.parentNode, {smooth: true});
-						} else {
-							element.style.display = 'none';
-						}
-					};
 				}
 				prevOpenRef.current = open;
 			}

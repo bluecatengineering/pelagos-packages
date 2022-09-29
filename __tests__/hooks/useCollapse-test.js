@@ -1,9 +1,11 @@
 import {useRef} from 'react';
-import {scrollIntoView} from '@bluecat/helpers';
+import {animate, scrollIntoView} from '@bluecat/helpers';
 
 import useCollapse from '../../src/hooks/useCollapse';
 
 jest.unmock('../../src/hooks/useCollapse');
+
+const anyFunction = expect.any(Function);
 
 describe('useCollapse', () => {
 	it('sets display to none when prevOpenRef.current is null and open is false', () => {
@@ -24,54 +26,37 @@ describe('useCollapse', () => {
 		const prevOpenRef = {current: false};
 		const style = {};
 		const parentNode = {};
-		const animation = {};
-		const animate = jest.fn().mockReturnValue(animation);
 		useRef.mockReturnValue(prevOpenRef);
-		useCollapse(true)({style, parentNode, animate, scrollHeight: 100});
+		useCollapse(true)({style, parentNode, scrollHeight: 100});
 		expect(prevOpenRef.current).toBe(true);
 		expect(style).toEqual({display: ''});
-		expect(animate.mock.calls).toEqual([
-			[
-				[{height: '0'}, {height: '100px'}],
-				{
-					duration: 250,
-					fill: 'both',
-					easing: 'ease-out',
-					direction: 'normal',
-				},
-			],
-		]);
+		expect(animate.mock.calls).toEqual([[150, anyFunction, anyFunction]]);
 
-		animation.onfinish();
-		expect(scrollIntoView.mock.calls).toEqual([[parentNode, {smooth: true}]]);
-		expect(style).toEqual({display: ''});
+		animate.mock.calls[0][1](0.25);
+		expect(style).toEqual({display: '', height: '25px'});
+
+		animate.mock.calls[0][2]();
+		expect(scrollIntoView.mock.calls).toEqual([[parentNode, {smooth: true, done: anyFunction}]]);
+		scrollIntoView.mock.calls[0][1].done();
+		expect(style).toEqual({height: '', display: ''});
 	});
 
 	it('does not call scrollIntoView when open changes to false', () => {
 		const prevOpenRef = {current: true};
 		const style = {};
 		const parentNode = {};
-		const animation = {};
-		const animate = jest.fn().mockReturnValue(animation);
 		useRef.mockReturnValue(prevOpenRef);
-		useCollapse(false)({style, parentNode, animate, scrollHeight: 100});
+		useCollapse(false)({style, parentNode, scrollHeight: 100});
 		expect(prevOpenRef.current).toBe(false);
 		expect(style).toEqual({});
-		expect(animate.mock.calls).toEqual([
-			[
-				[{height: '0'}, {height: '100px'}],
-				{
-					duration: 250,
-					fill: 'both',
-					easing: 'ease-out',
-					direction: 'reverse',
-				},
-			],
-		]);
+		expect(animate.mock.calls).toEqual([[150, anyFunction, anyFunction]]);
 
-		animation.onfinish();
+		animate.mock.calls[0][1](0.25);
+		expect(style).toEqual({height: '75px'});
+
+		animate.mock.calls[0][2]();
 		expect(scrollIntoView.mock.calls).toEqual([]);
-		expect(style).toEqual({display: 'none'});
+		expect(style).toEqual({height: '0', display: 'none'});
 	});
 
 	it('does not change anything when open does not change', () => {
