@@ -7,7 +7,7 @@ export default (Component, mapState) => {
 	const Wrapper = ({name, ...props}) => {
 		const state = useFormField(name);
 		const newProps = {name, ...props, ...mapState(state)};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps -- the values array contains the actual dependencies
 		return useMemo(() => <Component {...newProps} />, Object.values(newProps));
 	};
 	Wrapper.displayName = `Form(${Component.displayName || Component.name})`;

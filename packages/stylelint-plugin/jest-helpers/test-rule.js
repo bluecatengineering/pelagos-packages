@@ -2,7 +2,7 @@ import {join} from 'path';
 
 import {lint} from 'stylelint';
 
-/* eslint-disable jest/no-standalone-expect */
+/* eslint-disable jest/no-standalone-expect -- actual tests are generated from inputs */
 
 module.exports = (rule, {ruleName, config: ruleConfig, syntax, accept, reject}) => {
 	const config = {
@@ -12,7 +12,7 @@ module.exports = (rule, {ruleName, config: ruleConfig, syntax, accept, reject}) 
 		},
 	};
 
-	// eslint-disable-next-line jest/valid-title
+	// eslint-disable-next-line jest/valid-title -- actual tests are generated from inputs
 	describe(ruleName, () => {
 		if (accept && accept.length) {
 			describe('accept', () => {

@@ -6,7 +6,7 @@ import ListItem from './ListItem';
  * @param {string} [className] the class name(s).
  * @returns {JSX.Element}
  */
-// eslint-disable-next-line react/display-name,react/prop-types
+// eslint-disable-next-line react/display-name -- false positive, this is not a component
 export default (item, className) => (
 	<ListItem
 		key={item.id}

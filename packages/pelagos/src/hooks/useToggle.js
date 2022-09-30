@@ -12,7 +12,7 @@ export default (initialState, errors) => {
 	const [value, setValue] = useState(initialState);
 	const toggle = useCallback(() => setValue((value) => !value), []);
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// eslint-disable-next-line react-hooks/exhaustive-deps -- the errors array contains the actual dependencies
 	useEffect(() => (!value && errors.some(identity) ? setValue(true) : undefined), errors);
 
 	return [value, toggle];
