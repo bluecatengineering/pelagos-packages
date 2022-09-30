@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 /** Header element for a checkbox selection column. */
 const TableSelectAll = ({indeterminate, ...props}) => {
 	const ref = useRef(null);
-	useEffect(() => (ref.current.indeterminate = indeterminate), [indeterminate]);
+	useEffect(() => {
+		ref.current.indeterminate = indeterminate;
+	}, [indeterminate]);
 	return (
 		<th className="Table__selectAll">
 			<input {...props} type="checkbox" ref={ref} />
