@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.4](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.3...v8.0.4) (2022-09-30)
+
+### Bug Fixes
+
+- fix incorrect return value in useEffect ([ff9c9a9](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/ff9c9a9f95618aea9a41d84d3b5931d9ff70f044))
+
 ### [8.0.3](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.2...v8.0.3) (2022-09-29)
 
 ### Bug Fixes
