@@ -1,6 +1,8 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+import './Table.less';
+
 /** Title for a table. */
 const TableTitle = forwardRef(({id, title, description}, ref) => (
 	<div className="Table__title" ref={ref}>

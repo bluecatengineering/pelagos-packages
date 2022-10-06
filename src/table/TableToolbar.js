@@ -1,6 +1,8 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+import './Table.less';
+
 /** Table toolbar container. Must contain an optional TableToolbarBatch and/or a TableToolbarDefault in that order. */
 const TableToolbar = forwardRef(({className, children}, ref) => (
 	<div className={`Table__toolbar${className ? ` ${className}` : ''}`} ref={ref}>
