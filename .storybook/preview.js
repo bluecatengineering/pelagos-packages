@@ -2,7 +2,7 @@ import {LayerContext} from '../packages/pelagos/src/components/Layer';
 
 import './preview.less';
 
-const initialTheme = sessionStorage.getItem('theme') || 'white';
+const initialTheme = sessionStorage.getItem('theme') || 'cg00';
 const initialLayer = sessionStorage.getItem('layer') || '0';
 const setTheme = (theme) => (sessionStorage.setItem('theme', theme), (document.documentElement.dataset.theme = theme));
 const setLayer = (layer) => (sessionStorage.setItem('layer', layer), (document.documentElement.dataset.layer = layer));
