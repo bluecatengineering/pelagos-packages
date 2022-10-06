@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.5](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.4...v8.0.5) (2022-10-06)
+
+### Bug Fixes
+
+- fix styles when using TableTitle and TableToolbar without Table ([ad76e6f](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/ad76e6f92d0ec9295f9db7e3a64d92ac9940fa8d))
+- fix table search alignment ([234a1a4](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/commit/234a1a41835e2dee17366460c3c09988b34b7360))
+
 ### [8.0.4](https://gitlab.bluecatlabs.net/bluecat-uiux/pelagos/compare/v8.0.3...v8.0.4) (2022-09-30)
 
 ### Bug Fixes
