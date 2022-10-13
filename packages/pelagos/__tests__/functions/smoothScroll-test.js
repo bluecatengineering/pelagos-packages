@@ -14,11 +14,11 @@ describe('smoothScroll', () => {
 
 		const callback = animate.mock.calls[0][1];
 		callback(0);
-		expect(element.scrollTop).toEqual(0);
+		expect(element.scrollTop).toBe(0);
 		callback(0.5);
-		expect(element.scrollTop).toEqual(5);
+		expect(element.scrollTop).toBe(5);
 		callback(1);
-		expect(element.scrollTop).toEqual(10);
+		expect(element.scrollTop).toBe(10);
 
 		const done = animate.mock.calls[0][2];
 		done();

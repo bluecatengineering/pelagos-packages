@@ -67,7 +67,7 @@ describe('TextFilterEditor', () => {
 			const ref = {};
 			shallow(<TextFilterEditor label="label" list={['a']} placeholder="placeholder" validateSaveRef={ref} />);
 			expect(ref).not.toEqual({});
-			expect(ref.current()).toEqual(true);
+			expect(ref.current()).toBe(true);
 		});
 
 		it('does not set an error when no text is set', () => {
@@ -77,7 +77,7 @@ describe('TextFilterEditor', () => {
 
 			shallow(<TextFilterEditor label="label" list={['a']} placeholder="placeholder" validateSaveRef={ref} />);
 			expect(ref).not.toEqual({});
-			expect(ref.current()).toEqual(false);
+			expect(ref.current()).toBe(false);
 			expect(setError.mock.calls).toEqual([['Press Enter to add item(s) to the list.']]);
 		});
 	});

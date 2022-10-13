@@ -322,7 +322,7 @@ describe('Calendar', () => {
 
 			expect(setFocused.mock.calls).toEqual([[new Date(2019, 8, 5)]]);
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
-			expect(setHighlighted.mock.calls[0][0](null)).toEqual(1567656000000);
+			expect(setHighlighted.mock.calls[0][0](null)).toBe(1567656000000);
 		});
 
 		it('calls onChange when a day is clicked in range mode', () => {

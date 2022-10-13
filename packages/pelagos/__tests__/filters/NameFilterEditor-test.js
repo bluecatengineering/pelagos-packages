@@ -145,7 +145,7 @@ describe('NameFilterEditor', () => {
 				/>
 			);
 			expect(ref).not.toEqual({});
-			expect(ref.current()).toEqual(true);
+			expect(ref.current()).toBe(true);
 		});
 
 		it('does not set an error when no text is set', () => {
@@ -164,7 +164,7 @@ describe('NameFilterEditor', () => {
 				/>
 			);
 			expect(ref).not.toEqual({});
-			expect(ref.current()).toEqual(false);
+			expect(ref.current()).toBe(false);
 			expect(setError.mock.calls).toEqual([['Press Enter to add item(s) to the list.']]);
 		});
 	});

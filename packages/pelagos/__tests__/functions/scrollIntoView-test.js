@@ -27,7 +27,7 @@ describe('scrollIntoView', () => {
 		};
 		scrollIntoView(element);
 		expect(smoothScroll).not.toHaveBeenCalled();
-		expect(parentNode.scrollTop).toEqual(10);
+		expect(parentNode.scrollTop).toBe(10);
 		expect(CustomEvent.mock.calls).toEqual([['scroll']]);
 		expect(dispatchEvent.mock.calls).toEqual([[CustomEvent.mock.instances[0]]]);
 	});
@@ -50,7 +50,7 @@ describe('scrollIntoView', () => {
 		};
 		scrollIntoView(element);
 		expect(smoothScroll).not.toHaveBeenCalled();
-		expect(parentNode.scrollTop).toEqual(10);
+		expect(parentNode.scrollTop).toBe(10);
 	});
 
 	it('scrolls up to the maximum top', () => {
@@ -71,7 +71,7 @@ describe('scrollIntoView', () => {
 		};
 		scrollIntoView(element);
 		expect(smoothScroll).not.toHaveBeenCalled();
-		expect(parentNode.scrollTop).toEqual(20);
+		expect(parentNode.scrollTop).toBe(20);
 	});
 
 	it('calls smoothScroll when smooth is true', () => {
@@ -131,7 +131,7 @@ describe('scrollIntoView', () => {
 		};
 		scrollIntoView(element, {alignBottom: true});
 		expect(smoothScroll).not.toHaveBeenCalled();
-		expect(parentNode.scrollTop).toEqual(5);
+		expect(parentNode.scrollTop).toBe(5);
 	});
 
 	it('scrolls backwards when alignBottom is true', () => {
@@ -152,7 +152,7 @@ describe('scrollIntoView', () => {
 		};
 		scrollIntoView(element, {alignBottom: true});
 		expect(smoothScroll).not.toHaveBeenCalled();
-		expect(parentNode.scrollTop).toEqual(5);
+		expect(parentNode.scrollTop).toBe(5);
 	});
 
 	it('scrolls down to 0 when alignBottom is true', () => {
@@ -173,7 +173,7 @@ describe('scrollIntoView', () => {
 		};
 		scrollIntoView(element, {alignBottom: true});
 		expect(smoothScroll).not.toHaveBeenCalled();
-		expect(parentNode.scrollTop).toEqual(0);
+		expect(parentNode.scrollTop).toBe(0);
 	});
 
 	it('calls smoothScroll when smooth is true and alignBottom is true', () => {
@@ -218,8 +218,8 @@ describe('scrollIntoView', () => {
 			},
 		};
 		scrollIntoView(element);
-		expect(intermediateParent.scrollTop).toEqual(0);
-		expect(parentNode.scrollTop).toEqual(10);
+		expect(intermediateParent.scrollTop).toBe(0);
+		expect(parentNode.scrollTop).toBe(10);
 	});
 
 	it('does not scroll the element if not necessary', () => {
@@ -239,7 +239,7 @@ describe('scrollIntoView', () => {
 		};
 		scrollIntoView(element);
 		expect(smoothScroll).not.toHaveBeenCalled();
-		expect(parentNode.scrollTop).toEqual(0);
+		expect(parentNode.scrollTop).toBe(0);
 	});
 
 	it('calls done on scroll', () => {
@@ -282,7 +282,7 @@ describe('scrollIntoView', () => {
 		const done = jest.fn();
 		scrollIntoView(element, {done});
 		expect(smoothScroll).not.toHaveBeenCalled();
-		expect(parentNode.scrollTop).toEqual(0);
+		expect(parentNode.scrollTop).toBe(0);
 		expect(done.mock.calls).toEqual([[]]);
 	});
 });
