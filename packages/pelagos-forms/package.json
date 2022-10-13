@@ -1,6 +1,6 @@
 {
   "name": "@bluecateng/pelagos-forms",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Form components",
   "license": "ISC",
   "sideEffects": false,
@@ -21,7 +21,7 @@
   ],
   "exports": "./dist/index.js",
   "peerDependencies": {
-    "@bluecateng/pelagos": ">= 7",
-    "@bluecateng/auto-forms": ">= 0"
+    "@bluecateng/auto-forms": ">= 0",
+    "@bluecateng/pelagos": ">= 9"
   }
 }
