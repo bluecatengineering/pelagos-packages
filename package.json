@@ -157,7 +157,7 @@
       "stylelint",
       "prettier --write"
     ],
-    "*.{json,md,yaml}": [
+    "*.{json,md,yaml,yml}": [
       "prettier --write"
     ]
   }
