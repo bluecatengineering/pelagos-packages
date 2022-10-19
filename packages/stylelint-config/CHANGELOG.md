@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/stylelint-config@4.0.0...@bluecateng/stylelint-config@4.0.1) (2022-10-19)
+
+### Bug Fixes
+
+- set import-notation rule to string ([0efb03b](https://github.com/bluecatengineering/pelagos-packages/commit/0efb03be6a704bc6125ca4ec27b92995735a0bef))
+
 ## 4.0.0 (2022-10-13)
 
 ### BREAKING CHANGES
