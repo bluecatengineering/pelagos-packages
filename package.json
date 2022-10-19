@@ -79,10 +79,7 @@
     "extends": [
       "./packages/stylelint-config"
     ],
-    "customSyntax": "postcss-less",
-    "rules": {
-      "import-notation": "string"
-    }
+    "customSyntax": "postcss-less"
   },
   "commitlint": {
     "extends": [

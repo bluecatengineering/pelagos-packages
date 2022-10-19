@@ -9,6 +9,7 @@ module.exports = {
 		'declaration-empty-line-before': null,
 		'declaration-no-important': true,
 		'function-no-unknown': null,
+		'import-notation': 'string',
 		'property-no-vendor-prefix': null,
 		'rule-empty-line-before': null,
 		'selector-class-pattern': null,
