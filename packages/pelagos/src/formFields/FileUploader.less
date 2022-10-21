@@ -1,0 +1,102 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+@import '../../less/utils';
+
+.FileUploader {
+	margin-top: @sp-12;
+
+	&__description {
+		color: var(--text-secondary);
+
+		&--disabled {
+			color: var(--text-disabled);
+		}
+	}
+
+	&__dropZone {
+		@focus-visible();
+		display: flex;
+		height: @sp-96;
+		max-width: 20rem;
+		margin-top: @sp-16;
+		padding: @sp-16;
+		color: var(--link-primary);
+		background-color: transparent;
+		border: 1px dashed var(--border-strong);
+		text-align: start;
+
+		&:hover,
+		&--active {
+			outline: 2px solid var(--focus);
+			outline-offset: -2px;
+		}
+
+		&:disabled {
+			color: var(--text-disabled);
+			border: 1px dashed var(--border-disabled);
+			outline: none;
+			cursor: no-drop;
+		}
+
+		&--error {
+			outline: 2px solid var(--support-error);
+			outline-offset: -2px;
+		}
+	}
+
+	&__input {
+		display: none;
+	}
+
+	&__files {
+		margin-top: @sp-16;
+		gap: @sp-08;
+		max-width: 20rem;
+	}
+
+	&__file {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: @sp-12;
+		align-items: center;
+		min-height: 32px;
+		background-color: var(--field);
+
+		&--error {
+			outline: 2px solid var(--support-error);
+			outline-offset: -2px;
+			padding: @sp-12 0;
+		}
+	}
+
+	&__fileName {
+		@ellipsis();
+		margin-left: @sp-16;
+	}
+
+	&__fileIcons {
+		flex-direction: row;
+		align-items: center;
+		margin-right: @sp-12;
+	}
+
+	&__fileRemove {
+		@icon-button();
+		font-size: 16px;
+		padding: @sp-04;
+	}
+
+	&__errorIcon {
+		color: var(--support-error);
+		font-size: 16px;
+	}
+
+	&__fileError {
+		@font-12-400();
+		color: var(--text-error);
+		border-top: 1px solid var(--border-subtle);
+		padding-top: @sp-12;
+		margin: 0 @sp-16;
+		grid-column: span 2;
+	}
+}
