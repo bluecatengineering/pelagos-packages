@@ -1,6 +1,6 @@
 root-font:
   styles:
-    font: 400 14px/1.5 'Open Sans', Helvetica, Arial, sans-serif
+    font: 400 16px/1.5 'Open Sans', Helvetica, Arial, sans-serif
 
 font-10-400:
   use: footer
