@@ -73,7 +73,10 @@
   "eslintConfig": {
     "extends": [
       "@bluecateng/react"
-    ]
+    ],
+    "globals": {
+      "showOpenFilePicker": false
+    }
   },
   "stylelint": {
     "extends": [
