@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@9.0.0...@bluecateng/pelagos@10.0.0) (2022-10-25)
+
+### Bug Fixes
+
+- fix vertical alignment in LabelLine ([6672d51](https://github.com/bluecatengineering/pelagos-packages/commit/6672d514abcf270d0e96d43f51b1539cc8a3822f))
+- make the root font 16px ([ea9b301](https://github.com/bluecatengineering/pelagos-packages/commit/ea9b301f55c0cd1e69796f52e4aa4141ead7d5a2))
+- set left margin for CheckBox and RadioButton to 3px ([1b54e60](https://github.com/bluecatengineering/pelagos-packages/commit/1b54e60bdcebc0836413e3d624194b2ae36b73f4))
+
+### Features
+
+- add FileUploader component ([c1848ee](https://github.com/bluecatengineering/pelagos-packages/commit/c1848eede048d6eef6fea944213020824a8d67a6))
+- deprecate DropZone component ([c0d94aa](https://github.com/bluecatengineering/pelagos-packages/commit/c0d94aad7c356fb6e1c5b342e47800301920934d))
+
+### BREAKING CHANGES
+
+- Users should set the body font to `font-14-400`
+  to compensate for the root font change.
+
 ## 9.0.0 (2022-10-13)
 
 ### BREAKING CHANGES
