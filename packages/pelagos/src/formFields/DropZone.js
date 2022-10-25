@@ -47,7 +47,7 @@ const handleDragLeave = (event) => {
 	}
 };
 
-/** Input component which accepts a dropped file. */
+/** @deprecated use FileUploader instead. */
 const DropZone = ({
 	id,
 	className,
@@ -112,8 +112,7 @@ const DropZone = ({
 				onDragOver={disabled ? handleDragOverDisabled : handleDragOver}
 				onDragEnter={handleDragEnter}
 				onDragLeave={handleDragLeave}
-				onDrop={handleDrop}
-			>
+				onDrop={handleDrop}>
 				<input style={{display: 'none'}} type="file" onChange={handleChange} />
 				{fileName ? (
 					<div className="DropZone__uploaded">
