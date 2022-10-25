@@ -22,6 +22,6 @@
   "exports": "./dist/index.js",
   "peerDependencies": {
     "@bluecateng/auto-forms": ">= 0",
-    "@bluecateng/pelagos": ">= 9"
+    "@bluecateng/pelagos": ">= 10"
   }
 }

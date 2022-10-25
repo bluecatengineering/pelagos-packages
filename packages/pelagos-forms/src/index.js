@@ -1,6 +1,7 @@
 export {default as FormCheckBox} from './components/FormCheckBox';
 export {default as FormDropDown} from './components/FormDropDown';
 export {default as FormDropZone} from './components/FormDropZone';
+export {default as FormFileUploader} from './components/FormFileUploader';
 export {default as FormTagInput} from './components/FormTagInput';
 export {default as FormTextArea} from './components/FormTextArea';
 export {default as FormTextInput} from './components/FormTextInput';
