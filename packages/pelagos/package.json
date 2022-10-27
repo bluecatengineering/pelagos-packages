@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@bluecateng/l10n-core": "^0.1.4",
+    "@bluecateng/smooth-reorder": "^2.0.0",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "focus-trap": "^7.0.0",

@@ -4,6 +4,7 @@
   "description": "Tiny implementation of spring animation",
   "license": "ISC",
   "exports": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "index.d.ts",
   "scripts": {
     "build": "esbuild src/index.js --bundle --minify --format=esm --outfile=dist/index.js",
