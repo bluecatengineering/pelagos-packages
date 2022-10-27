@@ -25,6 +25,22 @@ msgstr ""
 msgid "(optional)"
 msgstr ""
 
+#: 027
+msgid "{0} dropped. Final position in list: {1} of {count}."
+msgstr ""
+
+#: b2b
+msgid "{0} grabbed. Current position in list: {1} of {count}. Press up or down arrow keys to change position, space bar to drop, Escape key to cancel."
+msgstr ""
+
+#: f7b
+msgid "{0} reorder cancelled."
+msgstr ""
+
+#: 607
+msgid "{0}. Current position in list: {1} of {count}."
+msgstr ""
+
 #: e3e
 msgid "{min}-{max} items"
 msgstr ""
