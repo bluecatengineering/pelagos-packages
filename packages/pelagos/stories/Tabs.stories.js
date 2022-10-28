@@ -8,8 +8,7 @@ const renderLineTab = ({id, text}, current, focused) => (
 		className="Tabs__tab"
 		style={{height: '40px', padding: '0 16px', justifyContent: 'center'}}
 		aria-selected={current}
-		data-focused={focused}
-	>
+		data-focused={focused}>
 		{text}
 	</div>
 );
@@ -20,8 +19,7 @@ const renderContainedTab = ({id, text}, current, focused) => (
 		className="Tabs__containedTab"
 		style={{height: '40px', padding: '0 16px', justifyContent: 'center'}}
 		aria-selected={current}
-		data-focused={focused}
-	>
+		data-focused={focused}>
 		{text}
 	</div>
 );

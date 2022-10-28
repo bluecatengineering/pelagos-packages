@@ -7,7 +7,7 @@ import themesMeta from '../defs/themes-meta.yaml';
 import elevations from '../defs/elevations.yaml';
 import fonts from '../defs/fonts.yaml';
 import spacing from '../defs/spacing.yaml';
-import './Styles-story.less';
+import './Styles-stories.less';
 
 const fontUsage = {
 	'font-10-400': 'BlockHeader__indicator',
@@ -34,8 +34,7 @@ export const Fonts = () => (
 							<td
 								style={Object.fromEntries(
 									Object.entries(styles).map(([k, v]) => [k, k === 'line-height' ? `${v}em` : v])
-								)}
-							>
+								)}>
 								{key}
 							</td>
 							<td>{fontUsage[key]}</td>
@@ -60,8 +59,7 @@ const renderPalette = (title, field) => (
 							<div
 								key={hex}
 								className="Palette__patch"
-								style={{color: index < 5 ? 'black' : 'white', backgroundColor: hex}}
-							>
+								style={{color: index < 5 ? 'black' : 'white', backgroundColor: hex}}>
 								<div className="Palette__number">{10 + index * 10}</div>
 								<div className="Palette__hex">{hex}</div>
 							</div>
@@ -219,8 +217,7 @@ export const Elevations = () => (
 				<div
 					key={k}
 					className="Elevations__card"
-					style={{backgroundColor: `var(--${bg})`, boxShadow: `var(--${shadow})`}}
-				>
+					style={{backgroundColor: `var(--${bg})`, boxShadow: `var(--${shadow})`}}>
 					{k}
 				</div>
 			))}
