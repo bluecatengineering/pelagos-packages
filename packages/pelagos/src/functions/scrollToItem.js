@@ -8,8 +8,17 @@ import smoothScroll from './smoothScroll';
  * @param {number} [options.headerHeight] the height of the header.
  * @param {number} [options.duration] the duration of the animation, default: 150ms.
  * @param {function(): void} [options.done] invoked after scrolling.
+ *
+ * @example
+ * import {useCallback} from 'react';
+ * import {scrollToItem} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const handleClick = useCallback(() => scrollToItem(document.getElementById('container'), document.getElementById('other')), []);
+ *   return <button onClick={handleClick}>...</button>;
+ * }
  */
-export default (container, element, options = {}) => {
+const scrollToItem = (container, element, options = {}) => {
 	const {headerHeight, duration, done} = {headerHeight: 0, duration: 150, ...options};
 	const listHeight = container.clientHeight;
 	if (container.scrollHeight > listHeight) {
@@ -28,3 +37,5 @@ export default (container, element, options = {}) => {
 		done();
 	}
 };
+
+export default scrollToItem;

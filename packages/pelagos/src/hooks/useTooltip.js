@@ -7,8 +7,13 @@ import useTooltipBase from './useTooltipBase';
  * @param {string} text the tooltip text.
  * @param {'left'|'right'|'top'|'bottom'} placement the tooltip placement.
  * @returns {(function(Element): void)} callback ref.
+ *
+ * @example
+ * import {useTooltip} from '@bluecateng/pelagos';
+ *
+ * const Example = () => <div ref={useTooltip('Example tooltip', 'top')}>...</div>
  */
-export default (text, placement) => {
+const useTooltip = (text, placement) => {
 	const targetRef = useRef(null);
 	const [showTooltip, hide] = useTooltipBase();
 
@@ -36,3 +41,5 @@ export default (text, placement) => {
 		[hide, show, targetRef]
 	);
 };
+
+export default useTooltip;

@@ -4,9 +4,19 @@ import identity from 'lodash-es/identity';
  * Builds a parser for simple suggestions.
  * @param {function(*): (string|null)} validate validates each entry returning either an error message or `null`.
  * @param {function(string): *} transform transforms the input text.
- * @returns {function(string, *[]): ({error: string}|{entries: *[]})} a function returning suggestions.
+ * @returns {function(string, any[]): ({error: string}|{entries: any[]})} a function returning suggestions.
+ *
+ * @example
+ * import {ListInput, buildSimpleSuggestionsParser} from '@bluecateng/pelagos';
+ *
+ * const validateInput = (input) => {
+ *   // validate input
+ * }
+ * const parseInput = buildSimpleSuggestionsParser(validateInput);
+ * const Example = () => <ListInput parseInput={parseInput} />
  */
-export default (validate, transform = identity) =>
+const buildSimpleSuggestionsParser =
+	(validate, transform = identity) =>
 	(text, list) => {
 		const allEntries = text
 			.split(',')
@@ -25,3 +35,5 @@ export default (validate, transform = identity) =>
 		}
 		return {entries};
 	};
+
+export default buildSimpleSuggestionsParser;

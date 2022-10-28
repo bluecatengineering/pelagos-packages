@@ -6,8 +6,21 @@ const easing = (t) => (t < 0.5 ? t ** 4 * 8 : 1 - (--t) ** 4 * 8);
  * @param {function(number): void} f invoked on each step of the animation.
  * @param {function(): void} [done] invoked when the animation is done.
  * @returns {{cancel: (function(): void)}}
+ *
+ * @example
+ * import {useCallback} from 'react';
+ * import {animate} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const handleClick = useCallback(() => {
+ *     animate(150, t => {
+ *       // handle animation step
+ *     });
+ *   }, []);
+ *   return <button onClick={handleClick}>...</button>;
+ * }
  */
-export default (duration, f, done) => {
+const animate = (duration, f, done) => {
 	let frame;
 	const startTime = performance.now();
 	const nextStep = () => {
@@ -25,3 +38,5 @@ export default (duration, f, done) => {
 	nextStep();
 	return {cancel: () => cancelAnimationFrame(frame)};
 };
+
+export default animate;

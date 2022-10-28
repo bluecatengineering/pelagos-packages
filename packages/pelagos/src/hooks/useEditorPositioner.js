@@ -5,8 +5,18 @@ import {useEffect} from 'react';
  * @param {{current: Element}} ref React reference to the editor.
  * @param {string} buttonId the ID of the editor trigger button.
  * @param {string} trackId the ID of the track element.
+ *
+ * @example
+ * import {useRef} from 'react';
+ * import {useEditorPositioner} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const editorRef = useRef(null);
+ *   useEditorPositioner(editorRef, 'button', 'track');
+ *   return <div ref={editorRef}>...</div>;
+ * }
  */
-export default (ref, buttonId, trackId) =>
+const useEditorPositioner = (ref, buttonId, trackId) =>
 	useEffect(() => {
 		const editor = ref.current;
 		const button = document.getElementById(buttonId);
@@ -31,3 +41,5 @@ export default (ref, buttonId, trackId) =>
 			}
 		}
 	}, [ref, buttonId, trackId]);
+
+export default useEditorPositioner;

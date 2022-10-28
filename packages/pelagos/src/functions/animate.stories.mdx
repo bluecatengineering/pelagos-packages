@@ -1,0 +1,37 @@
+<!-- DO NOT EDIT, generated from animate.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/animate" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# animate
+
+Invokes the specified function using an easing curve.
+
+## Parameters
+
+| Param    | Type       | Description                            |
+| -------- | ---------- | -------------------------------------- |
+| duration | `number`   | the duration of the animation.         |
+| f        | `function` | invoked on each step of the animation. |
+| done     | `function` | invoked when the animation is done.    |
+
+## Returns
+
+`Object`
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {animate} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => {
+		animate(150, (t) => {
+			// handle animation step
+		});
+	}, []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

@@ -5,3 +5,5 @@ git diff --quiet --cached packages/pelagos/defs/fonts.yaml || (npm -w packages/p
 git diff --quiet --cached packages/pelagos/defs/shadows.yaml || (npm -w packages/pelagos run update-shadows && git add packages/pelagos/less/shadows.less)
 git diff --quiet --cached packages/pelagos/defs/spacing.yaml || (npm -w packages/pelagos run update-spacing && git add packages/pelagos/less/spacing.less)
 git diff --quiet --cached packages/pelagos/defs/themes.yaml || (npm -w packages/pelagos run update-themes && git add packages/pelagos/less/themes.less)
+
+npm run -w packages/pelagos update-docs

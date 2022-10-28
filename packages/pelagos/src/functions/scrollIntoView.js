@@ -8,8 +8,17 @@ import smoothScroll from './smoothScroll';
  * @param {boolean} [options.smooth] whether to animate the scrolling.
  * @param {number} [options.duration] the duration of the animation, default: 150ms.
  * @param {function(): void} [options.done] invoked after scrolling.
+ *
+ * @example
+ * import {useCallback} from 'react';
+ * import {scrollIntoView} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const handleClick = useCallback(() => scrollIntoView(document.getElementById('other')), []);
+ *   return <button onClick={handleClick}>...</button>;
+ * }
  */
-export default (element, options = {}) => {
+const scrollIntoView = (element, options = {}) => {
 	const {alignBottom, smooth, duration, done} = {duration: 150, ...options};
 	let parent = element.parentNode;
 	// find an element that can scroll
@@ -39,3 +48,5 @@ export default (element, options = {}) => {
 		done();
 	}
 };
+
+export default scrollIntoView;

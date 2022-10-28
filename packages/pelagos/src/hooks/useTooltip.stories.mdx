@@ -1,0 +1,28 @@
+<!-- DO NOT EDIT, generated from useTooltip.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/useTooltip" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# useTooltip
+
+Returns a callback ref to show a tooltip over the target element.
+
+## Parameters
+
+| Param     | Type                                  | Description            |
+| --------- | ------------------------------------- | ---------------------- |
+| text      | `string`                              | the tooltip text.      |
+| placement | `'left' / 'right' / 'top' / 'bottom'` | the tooltip placement. |
+
+## Returns
+
+`function` - callback ref.
+
+## Example
+
+```js
+import {useTooltip} from '@bluecateng/pelagos';
+
+const Example = () => <div ref={useTooltip('Example tooltip', 'top')}>...</div>;
+```

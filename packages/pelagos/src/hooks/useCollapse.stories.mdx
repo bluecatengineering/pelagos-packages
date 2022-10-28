@@ -1,0 +1,31 @@
+<!-- DO NOT EDIT, generated from useCollapse.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/useCollapse" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# useCollapse
+
+Returns a React ref which collapses the element. The element must have `overflow: hidden`.
+
+## Parameters
+
+| Param | Type      | Description                        |
+| ----- | --------- | ---------------------------------- |
+| open  | `boolean` | whether the component is expanded. |
+
+## Returns
+
+`function` - React ref.
+
+## Example
+
+```js
+import {useCollapse} from '@bluecateng/pelagos';
+
+const Example = ({open}) => (
+	<div style={{overflow: hidden}} ref={useCollapse(open)}>
+		...
+	</div>
+);
+```

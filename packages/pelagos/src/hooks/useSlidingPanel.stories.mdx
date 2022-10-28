@@ -1,0 +1,39 @@
+<!-- DO NOT EDIT, generated from useSlidingPanel.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/useSlidingPanel" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# useSlidingPanel
+
+Adds a "slide" animation to the specified element.
+
+## Parameters
+
+| Param    | Type       | Description                          |
+| -------- | ---------- | ------------------------------------ |
+| id       | `string`   | the ID of the element to animate.    |
+| onFinish | `function` | invoked when the animation finishes. |
+
+## Returns
+
+`function` - function to use as event handler.
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {useSlidingPanel} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleFinish = useCallback(() => {
+		// handle finish
+	});
+	const handleCloseClick = useSlidingPanel('example', handleFinish);
+	return (
+		<div id="example">
+			<button onClick={handleCloseClick}>Close</button>...
+		</div>
+	);
+};
+```

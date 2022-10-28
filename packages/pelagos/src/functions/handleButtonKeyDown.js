@@ -1,5 +1,6 @@
 /**
  * @deprecated use a button element instead.
+ * @private
  */
 export default (event) =>
 	!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey && (event.keyCode === 13 || event.keyCode === 32)

@@ -1,0 +1,55 @@
+<!-- DO NOT EDIT, generated from useMenuHandler.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/useMenuHandler" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# useMenuHandler
+
+Returns properties to be added to the button which displays a menu and to the menu item list element.
+Rendered menu items must have `role="menuitem"` and `data-index={<index>}`.
+
+## Parameters
+
+| Param                  | Type          | Description                                    |
+| ---------------------- | ------------- | ---------------------------------------------- |
+| expanded               | `boolean`     | whether the menu is expanded.                  |
+| setExpanded            | `function`    | function invoked to change `expanded`.         |
+| items                  | `Array.<any>` | the menu items.                                |
+| options                | `Object`      | the options.                                   |
+| options.getItemText    | `function`    | returns the item text.                         |
+| options.isItemDisabled | `function`    | returns whether the item is disabled.          |
+| options.onItemSelected | `function`    | invoked when the item is selected by the user. |
+
+## Returns
+
+`Object`
+
+## Example
+
+```js
+import {useCallback, useState} from 'react';
+import {useMenuHandler} from '@bluecateng/pelagos';
+
+const items = ['item0'];
+const getItemText = (item) => ''; // return text for item
+
+const Example = () => {
+	const [expanded, setExpanded] = useState(false);
+	const handleItemSelected = useCallback((item) => {
+		// handle menu item selection
+	}, []);
+	const {current, buttonProps, listProps} = useMenuHandler(expanded, setExpanded, items, {
+		getItemText,
+		onItemSelected: handleItemSelected,
+	});
+	return (
+		<div>
+			<button {...buttonProps}>...</button>
+			<ul {...listProps} role="menu">
+				...
+			</ul>
+		</div>
+	);
+};
+```

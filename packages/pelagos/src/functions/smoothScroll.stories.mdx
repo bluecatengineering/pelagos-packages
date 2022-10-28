@@ -1,0 +1,38 @@
+<!-- DO NOT EDIT, generated from smoothScroll.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/smoothScroll" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# smoothScroll
+
+Scrolls the specified element using an animation.
+
+## Parameters
+
+| Param      | Type       | Description                     |
+| ---------- | ---------- | ------------------------------- |
+| element    | `Element`  | the element to scroll.          |
+| initialTop | `number`   | the initial scroll top.         |
+| offset     | `number`   | the number of pixels to scroll. |
+| duration   | `number`   | the duration of the animation.  |
+| done       | `function` | invoked after scrolling.        |
+
+## Returns
+
+`Object`
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {smoothScroll} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => {
+		const element = document.getElementById('other');
+		smoothScroll(element, element.scrollTop, 100, 66);
+	}, []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

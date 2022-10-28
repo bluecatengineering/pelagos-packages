@@ -1,0 +1,41 @@
+<!-- DO NOT EDIT, generated from useReorder.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/useReorder" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# useReorder
+
+Returns a React ref which enables reordering child nodes using drag and drop.
+
+## Parameters
+
+| Param          | Type       | Description                                                                                                                      |
+| -------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| selector       | `string`   | CSS selector for elements to reorder.                                                                                            |
+| handleSelector | `string`   | CSS selector for reorder handle.                                                                                                 |
+| count          | `number`   | the number of elements.                                                                                                          |
+| getElementName | `function` | returns the name of the specified element.                                                                                       |
+| onChange       | `function` | invoked when the list is changed, the first argument is the original index of the element moved, the second is the target index. |
+
+## Returns
+
+`MutableRefObject.<Element>` - React ref.
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {useReorder} from '@bluecateng/pelagos';
+
+const Example = ({list}) => {
+	const getElementName = useCallback((element) => {
+		// return name for element
+	}, []);
+	const onChange = useCallback((fromIndex, toIndex) => {
+		// move item
+	}, []);
+	const reorder = useReorder('.Child', '.Handle', list.length, getElementName, onChange);
+	return <ol ref={reorder}>...</ol>;
+};
+```
