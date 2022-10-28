@@ -9,6 +9,11 @@ const setLayer = (layer) => (sessionStorage.setItem('layer', layer), (document.d
 
 export const parameters = {
 	controls: {expanded: true, hideNoControlsWarning: true},
+	options: {
+		storySort: {
+			order: ['Welcome', 'Styles', 'Icons', 'Components', 'hooks', 'functions'],
+		},
+	},
 };
 
 export const globalTypes = {

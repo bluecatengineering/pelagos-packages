@@ -1,0 +1,19 @@
+import {Meta} from '@storybook/addon-docs';
+
+import * as icons from '../src/icons';
+import SvgIcon from '../src/components/SvgIcon';
+
+import './Icons-stories.less';
+
+<Meta title="Icons" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# Icons
+
+<div className="Icons">
+	{Object.entries(icons).map(([key, icon]) => (
+		<div key={key} className="Icons__card">
+			<SvgIcon className="Icons__icon" icon={icon} />
+			<div>{key}</div>
+		</div>
+	))}
+</div>
