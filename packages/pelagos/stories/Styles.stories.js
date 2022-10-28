@@ -24,8 +24,14 @@ const fontUsage = {
 
 export const Fonts = () => (
 	<div className="Fonts">
-		<h2>Fonts</h2>
+		<h1>Fonts</h1>
 		<table>
+			<thead>
+				<tr>
+					<th>Token</th>
+					<th>Usage</th>
+				</tr>
+			</thead>
 			<tbody>
 				{Object.entries(fonts)
 					.filter(([k]) => k !== 'root-font')
@@ -48,7 +54,7 @@ Fonts.storyName = 'Fonts';
 
 const renderPalette = (title, field) => (
 	<div className="Palette">
-		<h2>{title}</h2>
+		<h1>{title}</h1>
 		<div className="Palette__grid">
 			{Object.entries(colors)
 				.filter(([, v]) => field in v)
@@ -156,7 +162,7 @@ export const Themes = () => {
 	return (
 		<>
 			<div className="Themes__header">
-				<h2>{`Themes (${filtered.length}/${metaList.length} tokens)`}</h2>
+				<h1>{`Themes (${filtered.length}/${metaList.length} tokens)`}</h1>
 				<div className="Themes__filters">
 					<label className="Themes__check">
 						<input type="checkbox" checked={showCarbonTokens} onClick={handleCarbonTokensClick} /> Show Carbon themes
@@ -211,7 +217,7 @@ Themes.storyName = 'Themes';
 
 export const Elevations = () => (
 	<div className="Elevations">
-		<h2>Elevations</h2>
+		<h1>Elevations</h1>
 		<div className="Elevations__grid">
 			{Object.entries(elevations).map(([k, {bg, shadow}]) => (
 				<div
@@ -228,7 +234,7 @@ Elevations.storyName = 'Elevations';
 
 export const Spacing = () => (
 	<div className="Spacing">
-		<h2>Spacing</h2>
+		<h1>Spacing</h1>
 		<table>
 			<thead>
 				<tr>
@@ -255,7 +261,7 @@ Spacing.storyName = 'Spacing';
 
 export const Breakpoints = () => (
 	<div>
-		<h2>Breakpoints</h2>
+		<h1>Breakpoints</h1>
 		<table>
 			<thead>
 				<tr>
@@ -287,7 +293,7 @@ export const Breakpoints = () => (
 
 export const AspectRatios = () => (
 	<div>
-		<h2>Aspect Ratios</h2>
+		<h1>Aspect Ratios</h1>
 		<div className="AspectRatio__table">
 			{['2-1', '16-9', '3-2', '4-3', '1-1', '3-4', '2-3', '9-16', '1-2'].map((name) => (
 				<div key={name} className={`AspectRatio__row AspectRatio--r${name}`}>
@@ -302,4 +308,9 @@ export const AspectRatios = () => (
 
 export default {
 	title: 'Styles',
+	parameters: {
+		options: {showPanel: false},
+		previewTabs: {'storybook/docs/panel': {hidden: true}},
+		viewMode: 'story',
+	},
 };
