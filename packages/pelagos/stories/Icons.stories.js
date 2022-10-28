@@ -1,7 +1,7 @@
 import * as icons from '../src/icons';
 import SvgIcon from '../src/components/SvgIcon';
 
-import './Icons-story.less';
+import './Icons-stories.less';
 
 export const Icons = () => (
 	<div>

@@ -26,7 +26,7 @@ import {
 	TableToolbarSearch,
 } from '../src';
 
-import './Table-story.less';
+import './Table-stories.less';
 
 const columns = [
 	{
