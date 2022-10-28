@@ -1,0 +1,36 @@
+<!-- DO NOT EDIT, generated from getGenericSuggestions.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/getGenericSuggestions" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# getGenericSuggestions
+
+Returns suggestions from a list.
+
+## Parameters
+
+| Param        | Type                            | Description                                            |
+| ------------ | ------------------------------- | ------------------------------------------------------ |
+| text         | `string`                        | the text to search in the list.                        |
+| list         | `Array.<{id: *}>`               | the list of options already selected.                  |
+| sourceList   | `Array.<{id: *, name: string}>` | the list where options are searched.                   |
+| errorMessage | `string`                        | the error message to show if no suggestions are found. |
+
+## Returns
+
+`Object / Object` - the suggestions.
+
+## Example
+
+```js
+import {ListInput, getGenericSuggestions} from '@bluecateng/pelagos';
+
+const Example = ({items}) => {
+	const getSuggestions = useCallback(
+		(text, list) => getGenericSuggestions(text, list, items, t`No matching items found`),
+		[items]
+	);
+	return <ListInput getSuggestions={getSuggestions} />;
+};
+```

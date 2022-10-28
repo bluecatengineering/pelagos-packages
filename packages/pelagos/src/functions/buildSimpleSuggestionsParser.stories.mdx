@@ -1,0 +1,32 @@
+<!-- DO NOT EDIT, generated from buildSimpleSuggestionsParser.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/buildSimpleSuggestionsParser" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# buildSimpleSuggestionsParser
+
+Builds a parser for simple suggestions.
+
+## Parameters
+
+| Param     | Type       | Description                                                       |
+| --------- | ---------- | ----------------------------------------------------------------- |
+| validate  | `function` | validates each entry returning either an error message or `null`. |
+| transform | `function` | transforms the input text.                                        |
+
+## Returns
+
+`function` - a function returning suggestions.
+
+## Example
+
+```js
+import {ListInput, buildSimpleSuggestionsParser} from '@bluecateng/pelagos';
+
+const validateInput = (input) => {
+	// validate input
+};
+const parseInput = buildSimpleSuggestionsParser(validateInput);
+const Example = () => <ListInput parseInput={parseInput} />;
+```

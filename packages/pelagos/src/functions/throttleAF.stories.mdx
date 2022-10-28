@@ -1,0 +1,37 @@
+<!-- DO NOT EDIT, generated from throttleAF.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/throttleAF" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# throttleAF
+
+Throttles calls to the specified function using `requestAnimationFrame`.
+
+## Parameters
+
+| Param | Type       | Description               |
+| ----- | ---------- | ------------------------- |
+| f     | `function` | the function to throttle. |
+
+## Returns
+
+`Object` - a wrapping function.
+
+## Example
+
+```js
+import {useMemo} from 'react';
+import {throttleAF} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleChange = useMemo(
+		() =>
+			throttleAF(() => {
+				// a task that may take some time
+			}),
+		[]
+	);
+	return <input onChange={handleChange} />;
+};
+```

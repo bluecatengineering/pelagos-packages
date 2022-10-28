@@ -4,11 +4,16 @@ import animate from '../functions/animate';
 import scrollIntoView from '../functions/scrollIntoView';
 
 /**
- * Returns a React ref which collapses the element. The element must have overflow: hidden.
+ * Returns a React ref which collapses the element. The element must have `overflow: hidden`.
  * @param {boolean} open whether the component is expanded.
- * @return {function(*=): void} React ref.
+ * @return {function(Element): void} React ref.
+ *
+ * @example
+ * import {useCollapse} from '@bluecateng/pelagos';
+ *
+ * const Example = ({open}) => <div style={{overflow: hidden}} ref={useCollapse(open)}>...</div>;
  */
-export default (open) => {
+const useCollapse = (open) => {
 	const prevOpenRef = useRef(null);
 	return useCallback(
 		(element) => {
@@ -41,3 +46,5 @@ export default (open) => {
 		[open]
 	);
 };
+
+export default useCollapse;

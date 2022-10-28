@@ -5,8 +5,20 @@ import {useCallback, useEffect, useRef} from 'react';
  * @param {string} id the ID of the element to animate.
  * @param {function(): void} onFinish invoked when the animation finishes.
  * @return {function(): void} function to use as event handler.
+ *
+ * @example
+ * import {useCallback} from 'react';
+ * import {useSlidingPanel} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const handleFinish = useCallback(() => {
+ *     // handle finish
+ *   });
+ *   const handleCloseClick = useSlidingPanel('example', handleFinish);
+ *   return <div id="example"><button onClick={handleCloseClick}>Close</button>...</div>;
+ * };
  */
-export default (id, onFinish) => {
+const useSlidingPanel = (id, onFinish) => {
 	const animationRef = useRef(null);
 
 	useEffect(() => {
@@ -25,3 +37,5 @@ export default (id, onFinish) => {
 		animation.reverse();
 	}, [onFinish]);
 };
+
+export default useSlidingPanel;

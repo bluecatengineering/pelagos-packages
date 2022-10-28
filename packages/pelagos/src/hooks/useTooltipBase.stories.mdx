@@ -1,0 +1,45 @@
+<!-- DO NOT EDIT, generated from useTooltipBase.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/useTooltipBase" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# useTooltipBase
+
+Returns a tuple with two functions to show and hide a tooltip.
+
+## Returns
+
+`useTooltipBase~Return` - tuple with show and hide functions.
+
+## Example
+
+```js
+import {useCallback, useRef} from 'react';
+import {useTooltipBase} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const [show, hide] = useTooltipBase();
+	const ref = useRef(null);
+	const handleClick = useCallback(() => show('Example tooltip', 'top', ref.current), [show]);
+	return (
+		<div ref={ref}>
+			<button onClick={handleClick}>Show</button>
+			<button onClick={hide}>Hide</button>
+		</div>
+	);
+};
+```
+
+## Other types
+
+### useTooltipBase~Return
+
+`Array` - return type for `useTooltipBase`.
+
+#### Properties
+
+| Name | Type       | Description               |
+| ---- | ---------- | ------------------------- |
+| 0    | `function` | function to show tooltip. |
+| 1    | `function` | function to hide tooltip. |

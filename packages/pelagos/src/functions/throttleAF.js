@@ -2,8 +2,19 @@
  * Throttles calls to the specified function using `requestAnimationFrame`.
  * @param {function} f the function to throttle.
  * @returns {{(): function, cancel: function(): void, flush: function(): void}} a wrapping function.
+ *
+ * @example
+ * import {useMemo} from 'react';
+ * import {throttleAF} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const handleChange = useMemo(() => throttleAF(() => {
+ *     // a task that may take some time
+ *   }), []);
+ *   return <input onChange={handleChange} />;
+ * }
  */
-export default (f) => {
+const throttleAF = (f) => {
 	let frame, lastArgs;
 	const apply = () => {
 		const args = lastArgs;
@@ -32,3 +43,5 @@ export default (f) => {
 	};
 	return handler;
 };
+
+export default throttleAF;

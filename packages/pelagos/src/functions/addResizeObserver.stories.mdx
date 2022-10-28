@@ -1,0 +1,36 @@
+<!-- DO NOT EDIT, generated from addResizeObserver.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/addResizeObserver" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# addResizeObserver
+
+Adds a resize observer to the specified target element.
+
+## Parameters
+
+| Param    | Type       | Description                                      |
+| -------- | ---------- | ------------------------------------------------ |
+| target   | `Element`  | the target element.                              |
+| callback | `function` | the function called when the element is resized. |
+
+## Returns
+
+`function` - a function to disconnect the observer.
+
+## Example
+
+```js
+import {useCallback, useEffect, useRef} from 'react';
+import {addResizeObserver} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const ref = useRef(null);
+	const handleResize = useCallback((r) => {
+		// handle resize
+	}, []);
+	useEffect(() => addResizeObserver(ref.current, handleResize), [handleResize]);
+	return <div ref={ref}>...</div>;
+};
+```

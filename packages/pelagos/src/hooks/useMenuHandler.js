@@ -24,14 +24,38 @@ const checkEnabled = (index, increment, items, isItemDisabled) => {
  * Rendered menu items must have `role="menuitem"` and `data-index={<index>}`.
  * @param {boolean} expanded whether the menu is expanded.
  * @param {function(boolean): void} setExpanded function invoked to change `expanded`.
- * @param {*[]} items the menu items.
+ * @param {any[]} items the menu items.
  * @param {Object} [options] the options.
  * @param {function(*): string} options.getItemText returns the item text.
- * @param {function(*): string} options.isItemDisabled returns whether the item is disabled.
+ * @param {function(*): boolean} [options.isItemDisabled] returns whether the item is disabled.
  * @param {function(*): void} options.onItemSelected invoked when the item is selected by the user.
  * @return {{current: number, buttonProps: Object, listProps: Object}}
+ *
+ * @example
+ * import {useCallback, useState} from 'react';
+ * import {useMenuHandler} from '@bluecateng/pelagos';
+ *
+ * const items = ['item0'];
+ * const getItemText = (item) => ''; // return text for item
+ *
+ * const Example = () => {
+ *   const [expanded, setExpanded] = useState(false);
+ *   const handleItemSelected = useCallback((item) => {
+ *     // handle menu item selection
+ *   }, []);
+ *   const {current, buttonProps, listProps} = useMenuHandler(expanded, setExpanded, items, {
+ *     getItemText,
+ *     onItemSelected: handleItemSelected,
+ *   });
+ *   return (
+ *     <div>
+ *       <button {...buttonProps}>...</button>
+ *       <ul {...listProps} role="menu">...</ul>
+ *     </div>
+ *   );
+ * };
  */
-export default (expanded, setExpanded, items, options) => {
+const useMenuHandler = (expanded, setExpanded, items, options) => {
 	const {getItemText, isItemDisabled, onItemSelected} = {
 		getItemText: defaultGetItemText,
 		isItemDisabled: defaultIsItemDisabled,
@@ -163,3 +187,5 @@ export default (expanded, setExpanded, items, options) => {
 		},
 	};
 };
+
+export default useMenuHandler;

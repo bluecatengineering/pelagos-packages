@@ -1,0 +1,31 @@
+<!-- DO NOT EDIT, generated from copyToClipboard.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/copyToClipboard" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# copyToClipboard
+
+Copies the specified text to the clipboard.
+
+## Parameters
+
+| Param | Type     | Description       |
+| ----- | -------- | ----------------- |
+| text  | `string` | the text to copy. |
+
+## Returns
+
+`Promise.<void>` - a `Promise` which is resolved once the clipboard's contents have been updated.
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {copyToClipboard} from '@bluecateng/pelagos';
+
+const Example = ({text}) => {
+	const handleClick = useCallback(() => copyToClipboard(text).catch(), [text]);
+	return <button onClick={handleClick}>...</button>;
+};
+```

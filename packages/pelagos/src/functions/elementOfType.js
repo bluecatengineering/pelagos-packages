@@ -3,6 +3,7 @@
  *
  * @param {function|string} type The expected component type.
  * @returns {function}
+ * @private
  */
 export default (type) => {
 	if (process.env.NODE_ENV === 'production') {

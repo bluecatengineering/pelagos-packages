@@ -11,8 +11,19 @@ const getLiveElement = () => {
 };
 
 /**
- * Sets the specified text on an element marked as aria-live="assertive".
+ * Sets the specified text on an element marked as `aria-live="assertive"`.
  * The element is created as required and reused in subsequent calls.
  * @param {string} text the text.
+ *
+ * @example
+ * import {useCallback} from 'react';
+ * import {setLiveText} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const handleClick = useCallback(() => setLiveText('Example text'), []);
+ *   return <button onClick={handleClick}>...</button>;
+ * }
  */
-export default (text) => (getLiveElement().textContent = text);
+const setLiveText = (text) => (getLiveElement().textContent = text);
+
+export default setLiveText;

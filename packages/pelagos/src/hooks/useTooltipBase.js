@@ -48,10 +48,33 @@ const createTooltip = () => {
 };
 
 /**
- * Returns a tuple with two functions to show and hide a tooltip.
- * @returns {[(function(string, string, Element): void),(function(): void)]}
+ * return type for `useTooltipBase`.
+ * @typedef {Array} useTooltipBase~Return
+ * @property {function(string, string, Element): void} 0 function to show tooltip.
+ * @property {function(): void} 1 function to hide tooltip.
  */
-export default () => {
+
+/**
+ * Returns a tuple with two functions to show and hide a tooltip.
+ * @returns {useTooltipBase~Return} tuple with show and hide functions.
+ *
+ * @example
+ * import {useCallback, useRef} from 'react';
+ * import {useTooltipBase} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const [show, hide] = useTooltipBase();
+ *   const ref = useRef(null);
+ *   const handleClick = useCallback(() => show('Example tooltip', 'top', ref.current), [show]);
+ *   return (
+ *     <div ref={ref}>
+ *       <button onClick={handleClick}>Show</button>
+ *       <button onClick={hide}>Hide</button>
+ *     </div>
+ *   )
+ * }
+ */
+const useTooltipBase = () => {
 	const targetRef = useRef(null);
 	const [tooltip, animation] = useMemo(() => createTooltip(), []);
 	const show = useCallback(
@@ -81,3 +104,5 @@ export default () => {
 	}, [tooltip, animation]);
 	return [show, hide];
 };
+
+export default useTooltipBase;

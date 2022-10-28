@@ -1,0 +1,28 @@
+<!-- DO NOT EDIT, generated from setLiveText.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/setLiveText" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# setLiveText
+
+Sets the specified text on an element marked as `aria-live="assertive"`.
+The element is created as required and reused in subsequent calls.
+
+## Parameters
+
+| Param | Type     | Description |
+| ----- | -------- | ----------- |
+| text  | `string` | the text.   |
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {setLiveText} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => setLiveText('Example text'), []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

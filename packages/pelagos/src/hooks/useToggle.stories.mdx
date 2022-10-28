@@ -1,0 +1,49 @@
+<!-- DO NOT EDIT, generated from useToggle.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/useToggle" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# useToggle
+
+Returns a stateful boolean and a function to toggle it.
+Additionally, adds an effect which sets the state to true if any errors are found.
+
+## Parameters
+
+| Param        | Type          | Description          |
+| ------------ | ------------- | -------------------- |
+| initialState | `boolean`     | the initial state.   |
+| errors       | `Array.<any>` | the array of errors. |
+
+## Returns
+
+`useToggle~Return` - tuple which can be used to control a collapsible.
+
+## Example
+
+```js
+import {Collapsible, useToggle} from '@bluecateng/pelagos';
+
+const Example = ({errors}) => {
+	const [open, toggleOpen] = useToggle(false, errors);
+	return (
+		<Collapsible open={open} onHeaderClick={toggleOpen}>
+			...
+		</Collapsible>
+	);
+};
+```
+
+## Other types
+
+### useToggle~Return
+
+`Array` - return type for `useToggle`.
+
+#### Properties
+
+| Name | Type       | Description                   |
+| ---- | ---------- | ----------------------------- |
+| 0    | `boolean`  | the current value.            |
+| 1    | `function` | function to toggle the value. |
