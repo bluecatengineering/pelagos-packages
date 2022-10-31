@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.0.0...@bluecateng/pelagos@10.1.0) (2022-10-31)
+
+### Features
+
+- add useReorder hook ([2e212b2](https://github.com/bluecatengineering/pelagos-packages/commit/2e212b25e5d7f9ae534f718811e7b27fc16ff08e))
+
 # [10.0.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@9.0.0...@bluecateng/pelagos@10.0.0) (2022-10-25)
 
 ### Bug Fixes

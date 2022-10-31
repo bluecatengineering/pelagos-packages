@@ -1,6 +1,6 @@
 {
   "name": "@bluecateng/smooth-reorder",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Smooth list reordering in vanilla JS",
   "license": "ISC",
   "exports": "./dist/index.js",
@@ -25,6 +25,6 @@
     "index.d.ts"
   ],
   "dependencies": {
-    "@bluecateng/nano-spring": "^2.0.0"
+    "@bluecateng/nano-spring": "^2.1.0"
   }
 }
