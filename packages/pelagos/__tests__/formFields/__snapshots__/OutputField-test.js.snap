@@ -8,13 +8,13 @@ exports[`OutputField rendering renders expected elements 1`] = `
     className="OutputField__label"
   >
     <Label
-      htmlFor="test"
+      htmlFor="random-id"
       text="Test"
     />
   </div>
   <output
     className="OutputField__value"
-    id="test"
+    id="random-id"
   >
     This is a test
   </output>
@@ -29,13 +29,13 @@ exports[`OutputField rendering renders expected elements when active is true 1`]
     className="OutputField__label"
   >
     <Label
-      htmlFor="test"
+      htmlFor="random-id"
       text="Test"
     />
   </div>
   <output
     className="OutputField__value OutputField--active"
-    id="test"
+    id="random-id"
   >
     This is a test
   </output>
@@ -50,13 +50,13 @@ exports[`OutputField rendering renders expected elements when alignRight is true
     className="OutputField__label"
   >
     <Label
-      htmlFor="test"
+      htmlFor="random-id"
       text="Test"
     />
   </div>
   <output
     className="OutputField__value"
-    id="test"
+    id="random-id"
   >
     This is a test
   </output>
@@ -71,13 +71,13 @@ exports[`OutputField rendering renders expected elements when className is set 1
     className="OutputField__label"
   >
     <Label
-      htmlFor="test"
+      htmlFor="random-id"
       text="Test"
     />
   </div>
   <output
     className="OutputField__value"
-    id="test"
+    id="random-id"
   >
     This is a test
   </output>

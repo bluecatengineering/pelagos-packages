@@ -3,7 +3,7 @@
 exports[`TagInput rendering renders expected elements 1`] = `
 <Layer
   className="TagInput"
-  id="test-tags"
+  id="random-id-tags"
   onClick={[Function]}
 >
   <span
@@ -48,7 +48,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
   </span>
   <input
     className="TagInput__input"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onChange={[Function]}
     onKeyDown={[Function]}
@@ -61,7 +61,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
 exports[`TagInput rendering renders expected elements when error is set 1`] = `
 <Layer
   className="TagInput TagInput--error"
-  id="test-tags"
+  id="random-id-tags"
   onClick={[Function]}
 >
   <span
@@ -106,7 +106,7 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
   </span>
   <input
     className="TagInput__input"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onChange={[Function]}
     onKeyDown={[Function]}
@@ -119,12 +119,12 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
 exports[`TagInput rendering renders expected elements when tags is empty and defaultTags is not set 1`] = `
 <Layer
   className="TagInput"
-  id="test-tags"
+  id="random-id-tags"
   onClick={[Function]}
 >
   <input
     className="TagInput__input"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onChange={[Function]}
     onKeyDown={[Function]}
@@ -137,7 +137,7 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
 exports[`TagInput rendering renders expected elements when tags is empty and defaultTags is set 1`] = `
 <Layer
   className="TagInput"
-  id="test-tags"
+  id="random-id-tags"
   onClick={[Function]}
 >
   <span
@@ -152,7 +152,7 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
   </span>
   <input
     className="TagInput__input"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onChange={[Function]}
     onKeyDown={[Function]}

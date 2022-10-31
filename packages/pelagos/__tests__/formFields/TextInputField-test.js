@@ -6,14 +6,14 @@ import useRandomId from '../../src/hooks/useRandomId';
 jest.unmock('../../src/formFields/TextInputField');
 jest.mock('lodash-es/debounce', () => jest.fn((f) => f));
 
-useRandomId.mockReturnValue('test-id');
+useRandomId.mockReturnValue('random-id');
 
 describe('TextInputField', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<TextInputField
-					id="test-id"
+					id="test"
 					label="Label"
 					type="text"
 					name="name"
@@ -26,12 +26,13 @@ describe('TextInputField', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when value is empty', () => {
 			const wrapper = shallow(
 				<TextInputField
-					id="test-id"
+					id="test"
 					label="Label"
 					type="text"
 					name="name"
@@ -49,7 +50,7 @@ describe('TextInputField', () => {
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
 				<TextInputField
-					id="test-id"
+					id="test"
 					className="TestClass"
 					label="Label"
 					type="text"
@@ -67,7 +68,7 @@ describe('TextInputField', () => {
 		it('adds the error class if the error is set', () => {
 			const wrapper = shallow(
 				<TextInputField
-					id="test-id"
+					id="test"
 					label="Label"
 					type="text"
 					name="name"

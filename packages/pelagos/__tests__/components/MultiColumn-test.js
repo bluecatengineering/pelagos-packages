@@ -14,13 +14,14 @@ jest.unmock('../../src/components/MultiColumn');
 
 const anyFunction = expect.any(Function);
 
+useRandomId.mockReturnValue('random-id');
+
 describe('MultiColumn', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const path = [0];
 			const isLeaf = jest.fn().mockReturnValueOnce(false).mockReturnValueOnce(true);
 			const renderItem = jest.fn().mockReturnValueOnce('item00').mockReturnValueOnce('item01');
-			useRandomId.mockReturnValue('test');
 			useRef
 				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [2, -1]})
@@ -29,26 +30,25 @@ describe('MultiColumn', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when className is set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			const path = [0];
 			const isLeaf = jest.fn().mockReturnValueOnce(false);
 			const renderItem = jest.fn().mockReturnValueOnce('item00');
-			useRandomId.mockReturnValue('test');
 			useRef
 				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, -1]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(
-				<MultiColumn className="TestClass" path={path} isLeaf={isLeaf} renderItem={renderItem} />
+				<MultiColumn id="test" className="TestClass" path={path} isLeaf={isLeaf} renderItem={renderItem} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when focused is true', () => {
 			const path = [0];
 			const isLeaf = jest.fn().mockReturnValueOnce(false);
 			const renderItem = jest.fn().mockReturnValueOnce('item00');
-			useRandomId.mockReturnValue('test');
 			useRef
 				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, -1]})

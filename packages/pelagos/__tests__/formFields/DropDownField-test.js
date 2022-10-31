@@ -12,7 +12,7 @@ const values = {
 const options = Object.keys(values);
 const renderOption = (o) => values[o];
 
-useRandomId.mockReturnValue('test');
+useRandomId.mockReturnValue('random-id');
 
 describe('DropDownField', () => {
 	describe('rendering', () => {
@@ -29,6 +29,7 @@ describe('DropDownField', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when className is set', () => {

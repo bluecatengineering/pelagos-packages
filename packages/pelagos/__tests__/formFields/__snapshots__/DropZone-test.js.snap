@@ -5,12 +5,12 @@ exports[`DropZone rendering renders expected elements when editing is true 1`] =
   className="DropZone"
 >
   <LabelLine
-    htmlFor="test"
+    htmlFor="random-id"
   />
   <button
-    aria-describedby="test-helper"
+    aria-describedby="random-id-helper"
     className="DropZone__content"
-    id="test"
+    id="random-id"
     onClick={[Function]}
     onDragEnter={[Function]}
     onDragLeave={[Function]}
@@ -51,7 +51,7 @@ exports[`DropZone rendering renders expected elements when editing is true 1`] =
     </div>
   </button>
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
   />
 </div>
 `;
@@ -61,12 +61,12 @@ exports[`DropZone rendering renders expected elements when error is set 1`] = `
   className="DropZone"
 >
   <LabelLine
-    htmlFor="test"
+    htmlFor="random-id"
   />
   <button
-    aria-describedby="test-error"
+    aria-describedby="random-id-error"
     className="DropZone__content DropZone__content--error"
-    id="test"
+    id="random-id"
     onClick={[Function]}
     onDragEnter={[Function]}
     onDragLeave={[Function]}
@@ -107,7 +107,7 @@ exports[`DropZone rendering renders expected elements when error is set 1`] = `
     </div>
   </button>
   <FieldError
-    id="test-error"
+    id="random-id-error"
     text="Drop error"
   />
 </div>
@@ -118,14 +118,14 @@ exports[`DropZone rendering renders expected elements when fileName is not set 1
   className="DropZone TestClass"
 >
   <LabelLine
-    htmlFor="test"
+    htmlFor="random-id"
     optional={true}
     text="Test"
   />
   <button
-    aria-describedby="test-helper"
+    aria-describedby="random-id-helper"
     className="DropZone__content"
-    id="test"
+    id="random-id"
     onClick={[Function]}
     onDragEnter={[Function]}
     onDragLeave={[Function]}
@@ -163,7 +163,7 @@ exports[`DropZone rendering renders expected elements when fileName is not set 1
     </div>
   </button>
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
     text="Helper text"
   />
 </div>
@@ -174,12 +174,12 @@ exports[`DropZone rendering renders expected elements when fileName is set 1`] =
   className="DropZone"
 >
   <LabelLine
-    htmlFor="test"
+    htmlFor="random-id"
   />
   <button
-    aria-describedby="test-helper"
+    aria-describedby="random-id-helper"
     className="DropZone__content"
-    id="test"
+    id="random-id"
     onClick={[Function]}
     onDragEnter={[Function]}
     onDragLeave={[Function]}
@@ -220,7 +220,7 @@ exports[`DropZone rendering renders expected elements when fileName is set 1`] =
     </div>
   </button>
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
   />
 </div>
 `;
@@ -230,12 +230,12 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
   className="DropZone"
 >
   <LabelLine
-    htmlFor="test"
+    htmlFor="random-id"
   />
   <button
-    aria-describedby="test-helper"
+    aria-describedby="random-id-helper"
     className="DropZone__content"
-    id="test"
+    id="random-id"
     onClick={[Function]}
     onDragEnter={[Function]}
     onDragLeave={[Function]}
@@ -284,7 +284,7 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
         "prefix": "far",
       }
     }
-    id="test-delete"
+    id="random-id-delete"
     onClick={[MockFunction]}
     size="medium"
     tooltipPlacement="top"
@@ -292,7 +292,7 @@ exports[`DropZone rendering renders expected elements when onDelete is set 1`] =
     type="ghost"
   />
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
   />
 </div>
 `;

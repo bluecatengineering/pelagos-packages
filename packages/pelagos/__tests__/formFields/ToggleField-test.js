@@ -5,7 +5,7 @@ import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/formFields/ToggleField');
 
-useRandomId.mockReturnValue('test');
+useRandomId.mockReturnValue('random-id');
 
 describe('ToggleField', () => {
 	describe('rendering', () => {
@@ -14,6 +14,7 @@ describe('ToggleField', () => {
 				<ToggleField id="test" label="Test" icons={false} value={true} disabled={true} onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when className is set', () => {

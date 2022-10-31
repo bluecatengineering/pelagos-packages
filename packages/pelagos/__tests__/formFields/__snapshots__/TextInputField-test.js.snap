@@ -5,14 +5,14 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
   className="TextInputField"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     text="Label"
   />
   <input
-    aria-describedby="test-id-error"
+    aria-describedby="random-id-error"
     className="TextInputField__input TextInputField--error"
     disabled={false}
-    id="test-id"
+    id="random-id"
     maxLength={10}
     name="name"
     onChange={[Function]}
@@ -21,7 +21,7 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
     value="value"
   />
   <FieldError
-    id="test-id-error"
+    id="random-id-error"
     text="Error"
   />
 </Layer>
@@ -32,14 +32,14 @@ exports[`TextInputField rendering renders expected elements 1`] = `
   className="TextInputField"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     optional={false}
     text="Label"
   />
   <input
-    aria-describedby="test-id-helper"
+    aria-describedby="random-id-helper"
     className="TextInputField__input"
-    id="test-id"
+    id="random-id"
     maxLength={10}
     name="name"
     onChange={[Function]}
@@ -48,7 +48,7 @@ exports[`TextInputField rendering renders expected elements 1`] = `
     value="value"
   />
   <FieldHelper
-    id="test-id-helper"
+    id="random-id-helper"
     text="Helper text"
   />
 </Layer>
@@ -59,14 +59,14 @@ exports[`TextInputField rendering renders expected elements when className is se
   className="TextInputField TestClass"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     text="Label"
   />
   <input
-    aria-describedby="test-id-helper"
+    aria-describedby="random-id-helper"
     className="TextInputField__input"
     disabled={false}
-    id="test-id"
+    id="random-id"
     maxLength={10}
     name="name"
     onChange={[Function]}
@@ -75,7 +75,7 @@ exports[`TextInputField rendering renders expected elements when className is se
     value="value"
   />
   <FieldHelper
-    id="test-id-helper"
+    id="random-id-helper"
   />
 </Layer>
 `;
@@ -85,15 +85,15 @@ exports[`TextInputField rendering renders expected elements when value is empty 
   className="TextInputField"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     optional={true}
     text="Label"
   />
   <input
-    aria-describedby="test-id-helper"
+    aria-describedby="random-id-helper"
     className="TextInputField__input"
     disabled={false}
-    id="test-id"
+    id="random-id"
     maxLength={10}
     name="name"
     onChange={[Function]}
@@ -102,7 +102,7 @@ exports[`TextInputField rendering renders expected elements when value is empty 
     value=""
   />
   <FieldHelper
-    id="test-id-helper"
+    id="random-id-helper"
   />
 </Layer>
 `;

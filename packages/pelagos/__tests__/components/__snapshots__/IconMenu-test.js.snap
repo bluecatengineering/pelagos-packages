@@ -14,7 +14,7 @@ exports[`IconMenu rendering renders expected elements 1`] = `
         "foo": "test",
       }
     }
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -39,32 +39,7 @@ exports[`IconMenu rendering renders expected elements when all items are disable
         "foo": "test",
       }
     }
-    id="test"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
-  />
-</Layer>
-`;
-
-exports[`IconMenu rendering renders expected elements when className is set 1`] = `
-<Layer>
-  <IconButton
-    aria-activedescendant={null}
-    aria-controls={null}
-    aria-expanded={false}
-    aria-haspopup="true"
-    className="IconMenu TestClass"
-    disabled={false}
-    icon={
-      {
-        "foo": "test",
-      }
-    }
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -78,8 +53,8 @@ exports[`IconMenu rendering renders expected elements when className is set 1`] 
 exports[`IconMenu rendering renders expected elements when current is set 1`] = `
 <Layer>
   <IconButton
-    aria-activedescendant="test-1"
-    aria-controls="test-menu"
+    aria-activedescendant="random-id-1"
+    aria-controls="random-id-menu"
     aria-expanded={true}
     aria-haspopup="true"
     className="IconMenu"
@@ -89,7 +64,7 @@ exports[`IconMenu rendering renders expected elements when current is set 1`] = 
         "foo": "test",
       }
     }
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -100,7 +75,7 @@ exports[`IconMenu rendering renders expected elements when current is set 1`] = 
   <React.Portal>
     <ul
       className="IconMenu__menu"
-      id="test-menu"
+      id="random-id-menu"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       role="menu"
@@ -108,13 +83,13 @@ exports[`IconMenu rendering renders expected elements when current is set 1`] = 
       <IconMenuItem
         className=""
         data-index={0}
-        id="test-0"
+        id="random-id-0"
         text="one"
       />
       <IconMenuItem
         className=" IconMenu--current"
         data-index={1}
-        id="test-1"
+        id="random-id-1"
         text="two"
       />
     </ul>
@@ -136,7 +111,32 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
         "foo": "test",
       }
     }
-    id="test"
+    id="random-id"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;
+
+exports[`IconMenu rendering renders expected elements when optional properties are set 1`] = `
+<Layer>
+  <IconButton
+    aria-activedescendant={null}
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    className="IconMenu TestClass"
+    disabled={false}
+    icon={
+      {
+        "foo": "test",
+      }
+    }
+    id="random-id"
     onBlur={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}

@@ -8,16 +8,16 @@ exports[`ToggleField rendering renders expected elements 1`] = `
     className="ToggleField__label"
   >
     <Label
-      id="test-label"
+      id="random-id-label"
       text="Test"
     />
   </div>
   <Toggle
-    aria-labelledby="test-label"
+    aria-labelledby="random-id-label"
     checked={true}
     className="ToggleField__field"
     disabled={true}
-    id="test"
+    id="random-id"
     onChange={[Function]}
   />
 </div>
@@ -31,15 +31,15 @@ exports[`ToggleField rendering renders expected elements when className is set 1
     className="ToggleField__label"
   >
     <Label
-      id="test-label"
+      id="random-id-label"
       text="Test"
     />
   </div>
   <Toggle
-    aria-labelledby="test-label"
+    aria-labelledby="random-id-label"
     checked={true}
     className="ToggleField__field"
-    id="test"
+    id="random-id"
     onChange={[Function]}
   />
 </div>
