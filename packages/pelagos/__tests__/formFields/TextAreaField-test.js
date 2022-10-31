@@ -6,14 +6,14 @@ import useRandomId from '../../src/hooks/useRandomId';
 jest.unmock('../../src/formFields/TextAreaField');
 jest.mock('lodash-es/debounce', () => jest.fn((f) => f));
 
-useRandomId.mockReturnValue('test-id');
+useRandomId.mockReturnValue('random-id');
 
 describe('TextAreaField', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<TextAreaField
-					id="test-id"
+					id="test"
 					label="Label"
 					value="value"
 					placeholder="placeholder"
@@ -24,12 +24,13 @@ describe('TextAreaField', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when value is empty', () => {
 			const wrapper = shallow(
 				<TextAreaField
-					id="test-id"
+					id="test"
 					label="Label"
 					value=""
 					placeholder="placeholder"
@@ -44,7 +45,7 @@ describe('TextAreaField', () => {
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
 				<TextAreaField
-					id="test-id"
+					id="test"
 					className="TestClass"
 					label="Label"
 					value="value"
@@ -59,7 +60,7 @@ describe('TextAreaField', () => {
 		it('does not add the resize class if the resize is true', () => {
 			const wrapper = shallow(
 				<TextAreaField
-					id="test-id"
+					id="test"
 					label="Label"
 					value="value"
 					placeholder="placeholder"
@@ -74,7 +75,7 @@ describe('TextAreaField', () => {
 		it('adds the error class if the error is set', () => {
 			const wrapper = shallow(
 				<TextAreaField
-					id="test-id"
+					id="test"
 					label="Label"
 					value="value"
 					placeholder="placeholder"

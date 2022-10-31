@@ -3,7 +3,7 @@
 exports[`MultiColumn rendering renders expected elements 1`] = `
 <div
   className="MultiColumn"
-  id="test"
+  id="random-id"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -11,7 +11,7 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
   role="group"
 >
   <div
-    aria-activedescendant="test-0-0"
+    aria-activedescendant="random-id-0-0"
     aria-hidden={false}
     aria-label="Column 1 of 2"
     className="MultiColumn__column"
@@ -28,7 +28,7 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
       aria-selected={false}
       className="MultiColumn__item MultiColumn__selected"
       data-index={0}
-      id="test-0-0"
+      id="random-id-0-0"
       role="option"
     >
       <div
@@ -51,7 +51,7 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
       aria-selected={false}
       className="MultiColumn__item"
       data-index={1}
-      id="test-0-1"
+      id="random-id-0-1"
       role="option"
     >
       <div
@@ -84,10 +84,10 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
 </div>
 `;
 
-exports[`MultiColumn rendering renders expected elements when className is set 1`] = `
+exports[`MultiColumn rendering renders expected elements when focused is true 1`] = `
 <div
-  className="MultiColumn TestClass"
-  id="test"
+  className="MultiColumn"
+  id="random-id"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -95,7 +95,7 @@ exports[`MultiColumn rendering renders expected elements when className is set 1
   role="group"
 >
   <div
-    aria-activedescendant="test-0-0"
+    aria-activedescendant="random-id-0-0"
     aria-hidden={false}
     aria-label="Column 1 of 2"
     className="MultiColumn__column"
@@ -109,10 +109,10 @@ exports[`MultiColumn rendering renders expected elements when className is set 1
     tabIndex={0}
   >
     <div
-      aria-selected={false}
+      aria-selected={true}
       className="MultiColumn__item MultiColumn__selected"
       data-index={0}
-      id="test-0-0"
+      id="random-id-0-0"
       role="option"
     >
       <div
@@ -155,10 +155,10 @@ exports[`MultiColumn rendering renders expected elements when className is set 1
 </div>
 `;
 
-exports[`MultiColumn rendering renders expected elements when focused is true 1`] = `
+exports[`MultiColumn rendering renders expected elements when optional properties are set 1`] = `
 <div
-  className="MultiColumn"
-  id="test"
+  className="MultiColumn TestClass"
+  id="random-id"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -166,7 +166,7 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
   role="group"
 >
   <div
-    aria-activedescendant="test-0-0"
+    aria-activedescendant="random-id-0-0"
     aria-hidden={false}
     aria-label="Column 1 of 2"
     className="MultiColumn__column"
@@ -180,10 +180,10 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
     tabIndex={0}
   >
     <div
-      aria-selected={true}
+      aria-selected={false}
       className="MultiColumn__item MultiColumn__selected"
       data-index={0}
-      id="test-0-0"
+      id="random-id-0-0"
       role="option"
     >
       <div

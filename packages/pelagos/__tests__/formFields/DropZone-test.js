@@ -5,7 +5,7 @@ import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/formFields/DropZone');
 
-useRandomId.mockReturnValue('test');
+useRandomId.mockReturnValue('random-id');
 
 describe('DropZone', () => {
 	describe('rendering', () => {
@@ -21,6 +21,7 @@ describe('DropZone', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when fileName is set', () => {
@@ -70,7 +71,7 @@ describe('DropZone', () => {
 			global.FileReader = jest.fn(() => reader);
 			const wrapper = shallow(<DropZone id="test" onDrop={onDrop} />);
 
-			wrapper.find('#test').prop('onDrop')({
+			wrapper.find('#random-id').prop('onDrop')({
 				preventDefault,
 				currentTarget: {classList: {remove}},
 				dataTransfer: {files: [file]},
@@ -92,7 +93,7 @@ describe('DropZone', () => {
 			global.FileReader = jest.fn();
 			const wrapper = shallow(<DropZone id="test" asFile onDrop={onDrop} />);
 
-			wrapper.find('#test').prop('onDrop')({
+			wrapper.find('#random-id').prop('onDrop')({
 				preventDefault,
 				currentTarget: {classList: {remove}},
 				dataTransfer: {files: [file]},
@@ -116,7 +117,7 @@ describe('DropZone', () => {
 			getAsFile.mockReturnValue(file);
 			const wrapper = shallow(<DropZone id="test" onDrop={onDrop} />);
 
-			wrapper.find('#test').prop('onDrop')({
+			wrapper.find('#random-id').prop('onDrop')({
 				preventDefault,
 				currentTarget: {classList: {remove}},
 				dataTransfer: {items: [{getAsFile}]},
@@ -157,7 +158,7 @@ describe('DropZone', () => {
 		it('clicks the input element when the container is clicked', () => {
 			const click = jest.fn();
 			const wrapper = shallow(<DropZone id="test" />);
-			wrapper.find('#test').simulate('click', {currentTarget: {firstChild: {click}}});
+			wrapper.find('#random-id').simulate('click', {currentTarget: {firstChild: {click}}});
 			expect(click.mock.calls).toEqual([[]]);
 		});
 
@@ -165,7 +166,7 @@ describe('DropZone', () => {
 			const preventDefault = jest.fn();
 			const dataTransfer = {};
 			const wrapper = shallow(<DropZone id="test" />);
-			wrapper.find('#test').prop('onDragOver')({preventDefault, dataTransfer});
+			wrapper.find('#random-id').prop('onDragOver')({preventDefault, dataTransfer});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(dataTransfer).toEqual({effectAllowed: 'copy', dropEffect: 'copy'});
 		});
@@ -174,7 +175,7 @@ describe('DropZone', () => {
 			const preventDefault = jest.fn();
 			const dataTransfer = {};
 			const wrapper = shallow(<DropZone id="test" disabled />);
-			wrapper.find('#test').prop('onDragOver')({preventDefault, dataTransfer});
+			wrapper.find('#random-id').prop('onDragOver')({preventDefault, dataTransfer});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(dataTransfer).toEqual({effectAllowed: 'none', dropEffect: 'none'});
 		});
@@ -184,7 +185,7 @@ describe('DropZone', () => {
 			const contains = jest.fn();
 			const add = jest.fn();
 			const wrapper = shallow(<DropZone id="test" />);
-			wrapper.find('#test').prop('onDragEnter')({relatedTarget, currentTarget: {contains, classList: {add}}});
+			wrapper.find('#random-id').prop('onDragEnter')({relatedTarget, currentTarget: {contains, classList: {add}}});
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(add.mock.calls).toEqual([['DropZone__content--active']]);
 		});
@@ -194,7 +195,7 @@ describe('DropZone', () => {
 			const contains = jest.fn().mockReturnValue(true);
 			const add = jest.fn();
 			const wrapper = shallow(<DropZone id="test" />);
-			wrapper.find('#test').prop('onDragEnter')({relatedTarget, currentTarget: {contains, classList: {add}}});
+			wrapper.find('#random-id').prop('onDragEnter')({relatedTarget, currentTarget: {contains, classList: {add}}});
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(add.mock.calls).toEqual([]);
 		});
@@ -204,7 +205,7 @@ describe('DropZone', () => {
 			const contains = jest.fn();
 			const remove = jest.fn();
 			const wrapper = shallow(<DropZone id="test" />);
-			wrapper.find('#test').prop('onDragLeave')({relatedTarget, currentTarget: {contains, classList: {remove}}});
+			wrapper.find('#random-id').prop('onDragLeave')({relatedTarget, currentTarget: {contains, classList: {remove}}});
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(remove.mock.calls).toEqual([['DropZone__content--active']]);
 		});
@@ -214,7 +215,7 @@ describe('DropZone', () => {
 			const contains = jest.fn().mockReturnValue(true);
 			const remove = jest.fn();
 			const wrapper = shallow(<DropZone id="test" />);
-			wrapper.find('#test').prop('onDragLeave')({relatedTarget, currentTarget: {contains, classList: {remove}}});
+			wrapper.find('#random-id').prop('onDragLeave')({relatedTarget, currentTarget: {contains, classList: {remove}}});
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(remove.mock.calls).toEqual([]);
 		});
@@ -222,7 +223,7 @@ describe('DropZone', () => {
 		it('calls onDelete when the delete button is clicked', () => {
 			const onDelete = jest.fn();
 			const wrapper = shallow(<DropZone id="test" editing onDelete={onDelete} />);
-			wrapper.find('#test-delete').simulate('click');
+			wrapper.find('#random-id-delete').simulate('click');
 			expect(onDelete.mock.calls).toEqual([[]]);
 		});
 	});

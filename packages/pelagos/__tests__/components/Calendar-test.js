@@ -10,7 +10,7 @@ jest.unmock('../../src/components/Calendar');
 const anyFunction = expect.any(Function);
 const offsetUTC = (time) => time - new Date(time).getTimezoneOffset() * 60000;
 
-useRandomId.mockReturnValue('test');
+useRandomId.mockReturnValue('random-id');
 
 describe('Calendar', () => {
 	describe('rendering', () => {
@@ -21,11 +21,12 @@ describe('Calendar', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when className is set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
-			const wrapper = shallow(<Calendar className="TestClass" />);
+			const wrapper = shallow(<Calendar id="test" className="TestClass" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when focused is later than highlighted', () => {
@@ -71,7 +72,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').prop('onFocusCapture')({relatedTarget});
+			wrapper.find('#random-id').prop('onFocusCapture')({relatedTarget});
 
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(setLiveText.mock.calls).toEqual([['Use cursor keys to select date']]);
@@ -85,7 +86,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').prop('onFocusCapture')({relatedTarget});
+			wrapper.find('#random-id').prop('onFocusCapture')({relatedTarget});
 
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(setLiveText).not.toHaveBeenCalled();
@@ -95,7 +96,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').prop('onBlurCapture')();
+			wrapper.find('#random-id').prop('onBlurCapture')();
 
 			expect(setLiveText.mock.calls).toEqual([[null]]);
 		});
@@ -105,7 +106,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			const grid = wrapper.find('#test');
+			const grid = wrapper.find('#random-id');
 			grid.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
 			grid.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
 			grid.simulate('keydown', {keyCode: 13, altKey: true, preventDefault});
@@ -121,7 +122,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused]).mockReturnValueOnce([null, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[]} />);
-			const grid = wrapper.find('#test');
+			const grid = wrapper.find('#random-id');
 			grid.simulate('keydown', {keyCode: 13, preventDefault});
 			grid.simulate('keydown', {keyCode: 32, preventDefault});
 
@@ -137,7 +138,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 33, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 33, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -151,7 +152,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 33, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 33, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -165,7 +166,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 33, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 33, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -179,7 +180,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 34, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 34, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -193,7 +194,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 34, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 34, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -207,7 +208,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 34, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 34, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -221,7 +222,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 37, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 37, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -235,7 +236,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 38, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 38, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -249,7 +250,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 39, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 39, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -263,7 +264,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
-			wrapper.find('#test').simulate('keydown', {keyCode: 40, preventDefault});
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 40, preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[anyFunction]]);
@@ -276,7 +277,7 @@ describe('Calendar', () => {
 
 			const wrapper = shallow(<Calendar />);
 
-			wrapper.find('#test').simulate('mouseover', {target: {dataset: {time: '1567656000000'}}});
+			wrapper.find('#random-id').simulate('mouseover', {target: {dataset: {time: '1567656000000'}}});
 			expect(setFocused.mock.calls).toEqual([[new Date(2019, 8, 5)]]);
 		});
 
@@ -286,7 +287,7 @@ describe('Calendar', () => {
 
 			const wrapper = shallow(<Calendar />);
 
-			wrapper.find('#test').simulate('mouseover', {target: {dataset: {}}});
+			wrapper.find('#random-id').simulate('mouseover', {target: {dataset: {}}});
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 
@@ -296,7 +297,7 @@ describe('Calendar', () => {
 
 			const wrapper = shallow(<Calendar />);
 
-			wrapper.find('#test').simulate('mouseup', {target: {dataset: {}}});
+			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {}}});
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 
@@ -306,7 +307,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15), setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar onChange={onChange} />);
-			wrapper.find('#test').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
 
 			expect(setFocused.mock.calls).toEqual([[new Date(2019, 8, 5)]]);
 			expect(onChange.mock.calls).toEqual([[1567656000000]]);
@@ -318,7 +319,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15), setFocused]).mockReturnValueOnce([null, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[]} />);
-			wrapper.find('#test').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
 
 			expect(setFocused.mock.calls).toEqual([[new Date(2019, 8, 5)]]);
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
@@ -335,7 +336,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([highlighted, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[]} onChange={onChange} />);
-			wrapper.find('#test').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
 
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
 			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();
@@ -352,7 +353,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([highlighted, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[]} onChange={onChange} />);
-			wrapper.find('#test').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
 
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
 			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();
@@ -371,7 +372,7 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([highlighted, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[startTime, endTime]} onChange={onChange} />);
-			wrapper.find('#test').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
 
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
 			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();

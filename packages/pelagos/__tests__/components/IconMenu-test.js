@@ -12,7 +12,7 @@ const anyFunction = expect.any(Function);
 
 global.document = {};
 
-useRandomId.mockReturnValue('test');
+useRandomId.mockReturnValue('random-id');
 
 describe('IconMenu', () => {
 	describe('rendering', () => {
@@ -25,13 +25,14 @@ describe('IconMenu', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when className is set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
-				<IconMenu className="TestClass" icon={{foo: 'test'}}>
+				<IconMenu id="test" className="TestClass" icon={{foo: 'test'}}>
 					<IconMenuItem text="one" />
 				</IconMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when disabled is set', () => {
@@ -75,7 +76,7 @@ describe('IconMenu', () => {
 						<IconMenuItem text="two" />
 					</IconMenu>
 				);
-				wrapper.find('#test').simulate('click');
+				wrapper.find('#random-id').simulate('click');
 
 				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
 				expect(setCurrent.mock.calls[0][0](-1)).toBe(1);
@@ -89,7 +90,7 @@ describe('IconMenu', () => {
 						<IconMenuItem text="one" />
 					</IconMenu>
 				);
-				wrapper.find('#test').simulate('click');
+				wrapper.find('#random-id').simulate('click');
 
 				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
 				expect(setCurrent.mock.calls[0][0](1)).toBe(-1);
@@ -105,7 +106,7 @@ describe('IconMenu', () => {
 						<IconMenuItem text="one" />
 					</IconMenu>
 				);
-				wrapper.find('#test').simulate('keydown', {keyCode: 13, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 13, preventDefault});
 
 				expect(preventDefault).not.toHaveBeenCalled();
 			});
@@ -117,7 +118,7 @@ describe('IconMenu', () => {
 						<IconMenuItem text="one" />
 					</IconMenu>
 				);
-				const button = wrapper.find('#test');
+				const button = wrapper.find('#random-id');
 				button.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
 				button.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
 				button.simulate('keydown', {keyCode: 13, altKey: true, preventDefault});
@@ -138,7 +139,7 @@ describe('IconMenu', () => {
 						<IconMenuItem text="one" />
 					</IconMenu>
 				);
-				const button = wrapper.find('#test');
+				const button = wrapper.find('#random-id');
 				button.simulate('keydown', {keyCode: 13, preventDefault});
 				button.simulate('keydown', {keyCode: 32, preventDefault});
 
@@ -159,7 +160,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 27, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 27, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[-1]]);
@@ -176,7 +177,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 35, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 35, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[1]]);
@@ -194,7 +195,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 35, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 35, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[1]]);
@@ -211,7 +212,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 36, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 36, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[0]]);
@@ -229,7 +230,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 36, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 36, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[1]]);
@@ -246,7 +247,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 38, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 38, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
@@ -265,7 +266,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 38, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 38, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
@@ -283,7 +284,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 38, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 38, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
@@ -302,7 +303,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 38, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 38, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
@@ -320,7 +321,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 40, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 40, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
@@ -339,7 +340,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 40, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 40, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
@@ -357,7 +358,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 40, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 40, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[anyFunction]]);
@@ -376,7 +377,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 40, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 40, preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 				expect(setCurrent.mock.calls).toEqual([[expect.any(Function)]]);
@@ -392,7 +393,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test').simulate('keydown', {keyCode: 47, preventDefault});
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 47, preventDefault});
 
 				expect(preventDefault).not.toHaveBeenCalled();
 			});
@@ -407,7 +408,7 @@ describe('IconMenu', () => {
 						<IconMenuItem text="one" />
 					</IconMenu>
 				);
-				wrapper.find('#test').simulate('blur');
+				wrapper.find('#random-id').simulate('blur');
 
 				expect(setCurrent.mock.calls).toEqual([[-1]]);
 			});
@@ -422,7 +423,7 @@ describe('IconMenu', () => {
 						<IconMenuItem text="one" />
 					</IconMenu>
 				);
-				wrapper.find('#test-menu').simulate('mousedown', {preventDefault});
+				wrapper.find('#random-id-menu').simulate('mousedown', {preventDefault});
 
 				expect(preventDefault.mock.calls).toEqual([[]]);
 			});
@@ -442,7 +443,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test-menu').simulate('mouseup', {preventDefault, target: {closest}});
+				wrapper.find('#random-id-menu').simulate('mouseup', {preventDefault, target: {closest}});
 
 				expect(closest.mock.calls).toEqual([['li']]);
 				expect(preventDefault.mock.calls).toEqual([[]]);
@@ -463,7 +464,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test-menu').simulate('mouseup', {preventDefault, target: {closest}});
+				wrapper.find('#random-id-menu').simulate('mouseup', {preventDefault, target: {closest}});
 
 				expect(closest.mock.calls).toEqual([['li']]);
 				expect(preventDefault.mock.calls).toEqual([[]]);
@@ -481,7 +482,7 @@ describe('IconMenu', () => {
 					</IconMenu>
 				);
 
-				wrapper.find('#test-menu').simulate('mouseup', {preventDefault, target: {closest}});
+				wrapper.find('#random-id-menu').simulate('mouseup', {preventDefault, target: {closest}});
 
 				expect(closest.mock.calls).toEqual([['li']]);
 				expect(preventDefault).not.toHaveBeenCalled();

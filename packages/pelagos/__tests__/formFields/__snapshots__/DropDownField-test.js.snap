@@ -8,17 +8,17 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     className="DropDownField__label"
   >
     <Label
-      id="test-label"
+      id="random-id-label"
       text="Test"
     />
   </div>
   <Select
-    aria-describedby="test-helper"
-    aria-labelledby="test-label"
+    aria-describedby="random-id-helper"
+    aria-labelledby="random-id-label"
     className="DropDownField__select"
     error={false}
     getOptionKey={[MockFunction]}
-    id="test"
+    id="random-id"
     onChange={[MockFunction]}
     options={
       [
@@ -30,7 +30,7 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     value="o0"
   />
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
     text="Helper text"
   />
 </div>
@@ -44,17 +44,17 @@ exports[`DropDownField rendering renders expected elements when className is set
     className="DropDownField__label"
   >
     <Label
-      id="test-label"
+      id="random-id-label"
       text="Test"
     />
   </div>
   <Select
-    aria-describedby="test-helper"
-    aria-labelledby="test-label"
+    aria-describedby="random-id-helper"
+    aria-labelledby="random-id-label"
     className="DropDownField__select"
     error={false}
     getOptionKey={[MockFunction]}
-    id="test"
+    id="random-id"
     onChange={[MockFunction]}
     options={
       [
@@ -66,7 +66,7 @@ exports[`DropDownField rendering renders expected elements when className is set
     value="o0"
   />
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
   />
 </div>
 `;
@@ -79,17 +79,17 @@ exports[`DropDownField rendering renders expected elements when error is set 1`]
     className="DropDownField__label"
   >
     <Label
-      id="test-label"
+      id="random-id-label"
       text="Test"
     />
   </div>
   <Select
-    aria-describedby="test-error"
-    aria-labelledby="test-label"
+    aria-describedby="random-id-error"
+    aria-labelledby="random-id-label"
     className="DropDownField__select"
     error={true}
     getOptionKey={[MockFunction]}
-    id="test"
+    id="random-id"
     onChange={[MockFunction]}
     options={
       [
@@ -107,7 +107,7 @@ exports[`DropDownField rendering renders expected elements when error is set 1`]
     value="o0"
   />
   <FieldError
-    id="test-error"
+    id="random-id-error"
     text="Error"
   />
 </div>

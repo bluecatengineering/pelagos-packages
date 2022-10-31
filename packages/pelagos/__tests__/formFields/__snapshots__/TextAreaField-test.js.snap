@@ -5,20 +5,20 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
   className="TextAreaField"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     text="Label"
   />
   <textarea
-    aria-describedby="test-id-error"
+    aria-describedby="random-id-error"
     className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
-    id="test-id"
+    id="random-id"
     maxLength={10}
     onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
   <FieldError
-    id="test-id-error"
+    id="random-id-error"
     text="Error"
   />
 </Layer>
@@ -29,20 +29,20 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
   className="TextAreaField"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     text="Label"
   />
   <textarea
-    aria-describedby="test-id-helper"
+    aria-describedby="random-id-helper"
     className="TextAreaField__area"
-    id="test-id"
+    id="random-id"
     maxLength={10}
     onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
   <FieldHelper
-    id="test-id-helper"
+    id="random-id-helper"
   />
 </Layer>
 `;
@@ -52,21 +52,21 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
   className="TextAreaField"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     optional={false}
     text="Label"
   />
   <textarea
-    aria-describedby="test-id-helper"
+    aria-describedby="random-id-helper"
     className="TextAreaField__area TextAreaField--noresize"
-    id="test-id"
+    id="random-id"
     maxLength={10}
     onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
   <FieldHelper
-    id="test-id-helper"
+    id="random-id-helper"
     text="Helper text"
   />
 </Layer>
@@ -77,20 +77,20 @@ exports[`TextAreaField rendering renders expected elements when className is set
   className="TextAreaField TestClass"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     text="Label"
   />
   <textarea
-    aria-describedby="test-id-helper"
+    aria-describedby="random-id-helper"
     className="TextAreaField__area TextAreaField--noresize"
-    id="test-id"
+    id="random-id"
     maxLength={10}
     onChange={[Function]}
     placeholder="placeholder"
     value="value"
   />
   <FieldHelper
-    id="test-id-helper"
+    id="random-id-helper"
   />
 </Layer>
 `;
@@ -100,21 +100,21 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
   className="TextAreaField"
 >
   <LabelLine
-    htmlFor="test-id"
+    htmlFor="random-id"
     optional={true}
     text="Label"
   />
   <textarea
-    aria-describedby="test-id-helper"
+    aria-describedby="random-id-helper"
     className="TextAreaField__area TextAreaField--noresize"
-    id="test-id"
+    id="random-id"
     maxLength={10}
     onChange={[Function]}
     placeholder="placeholder"
     value=""
   />
   <FieldHelper
-    id="test-id-helper"
+    id="random-id-helper"
   />
 </Layer>
 `;

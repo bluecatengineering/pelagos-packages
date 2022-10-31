@@ -5,13 +5,14 @@ import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/Pagination');
 
-useRandomId.mockReturnValue('test');
+useRandomId.mockReturnValue('random-id');
 
 describe('Pagination', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(<Pagination id="test" page={2} pageSize={10} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when className is set', () => {
@@ -36,21 +37,21 @@ describe('Pagination', () => {
 			const wrapper = shallow(
 				<Pagination id="test" page={2} pageSize={10} totalItems={123} onPageChange={onPageChange} />
 			);
-			wrapper.find('#test-page').simulate('change', {target: {value: '5'}});
+			wrapper.find('#random-id-page').simulate('change', {target: {value: '5'}});
 			expect(onPageChange.mock.calls).toEqual([[5]]);
 		});
 
 		it('calls onPageChange when previous is clicked', () => {
 			const onPageChange = jest.fn();
 			const wrapper = shallow(<Pagination id="test" page={2} pageSize={10} onPageChange={onPageChange} />);
-			wrapper.find('#test-prev').simulate('click');
+			wrapper.find('#random-id-prev').simulate('click');
 			expect(onPageChange.mock.calls).toEqual([[1]]);
 		});
 
 		it('calls onPageChange when next is clicked', () => {
 			const onPageChange = jest.fn();
 			const wrapper = shallow(<Pagination id="test" page={2} pageSize={10} onPageChange={onPageChange} />);
-			wrapper.find('#test-next').simulate('click');
+			wrapper.find('#random-id-next').simulate('click');
 			expect(onPageChange.mock.calls).toEqual([[3]]);
 		});
 
@@ -59,7 +60,7 @@ describe('Pagination', () => {
 			const wrapper = shallow(
 				<Pagination id="test" page={2} pageSize={10} pageSizes={[5, 10]} onPageSizeChange={onPageSizeChange} />
 			);
-			wrapper.find('#test-pageSize').simulate('change', {target: {value: '5'}});
+			wrapper.find('#random-id-pageSize').simulate('change', {target: {value: '5'}});
 			expect(onPageSizeChange.mock.calls).toEqual([[5]]);
 		});
 	});

@@ -5,13 +5,14 @@ import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/formFields/OutputField');
 
-useRandomId.mockReturnValue('test');
+useRandomId.mockReturnValue('random-id');
 
 describe('OutputField', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(<OutputField id="test" label="Test" value="This is a test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when className is set', () => {

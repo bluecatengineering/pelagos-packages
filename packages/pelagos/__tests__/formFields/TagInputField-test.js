@@ -5,7 +5,7 @@ import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/formFields/TagInputField');
 
-useRandomId.mockReturnValue('test');
+useRandomId.mockReturnValue('random-id');
 
 describe('TagInputField', () => {
 	describe('rendering', () => {
@@ -23,6 +23,7 @@ describe('TagInputField', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when className is set', () => {
