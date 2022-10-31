@@ -21,6 +21,7 @@ jobs:
       - name: Build storybook
         run: |
           npm ci
+          npx lerna run prepack
           npm run build-storybook
 
       - name: Upload artifact
