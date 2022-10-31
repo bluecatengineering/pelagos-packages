@@ -18,7 +18,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3.5.1
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Run ESLint
         run: |
