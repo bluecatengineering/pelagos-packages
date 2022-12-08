@@ -6,7 +6,7 @@
 	flex-flow: row wrap;
 	align-items: center;
 	align-content: space-between;
-	height: 32px;
+	column-gap: @sp-08;
 	background-color: var(--field);
 	border-bottom: 1px solid var(--border-strong);
 	padding: 0 @sp-16;
@@ -25,63 +25,66 @@
 		background-color: transparent;
 		border-color: transparent;
 	}
-}
 
-.TagInput--error {
-	outline: 2px solid var(--support-error);
-	outline-offset: -2px;
-
-	&:focus-within {
-		@focus-ring-error();
+	& > * {
+		// stylelint-disable-next-line @bluecateng/property-strict-value
+		margin: @sp-02 0 (@sp-04 - 1px); // minus 1px for the border
 	}
-}
 
-.TagInput__tag,
-.TagInput__defaultTag {
-	padding: @sp-02 @sp-04;
-	margin-right: @sp-08;
-	border-radius: 3px;
-	white-space: nowrap;
-}
+	&--error {
+		outline: 2px solid var(--support-error);
+		outline-offset: -2px;
 
-.TagInput__tag {
-	background-color: var(--layer-selected);
+		&:focus-within {
+			@focus-ring-error();
+		}
+	}
 
-	@media print {
+	&__tag,
+	&__defaultTag {
+		padding: @sp-02 @sp-04;
+		border-radius: 3px;
+		white-space: nowrap;
+	}
+
+	&__tag {
+		background-color: var(--layer-selected);
+
+		@media print {
+			background-color: transparent;
+		}
+	}
+
+	&__defaultTag {
+		background-color: var(--layer-accent);
+
+		@media print {
+			color: var(--print-medium);
+			background-color: transparent;
+		}
+	}
+
+	&__remove {
+		@icon-button-nested();
+		font-size: 16px;
+		padding: @sp-02;
+		margin-left: @sp-04;
+		vertical-align: text-bottom;
+	}
+
+	&__input[type='text'] {
+		flex: 1;
+		height: 26px;
+		padding: 0;
+		border: none;
 		background-color: transparent;
+
+		&:hover {
+			background-color: transparent;
+		}
+
+		&:focus {
+			outline: none;
+		}
 	}
-}
-
-.TagInput__defaultTag {
-	background-color: var(--layer-accent);
-
-	@media print {
-		color: var(--print-medium);
-		background-color: transparent;
-	}
-}
-
-.TagInput__remove {
-	@icon-button-nested();
-	font-size: 16px;
-	padding: @sp-02;
-	margin-left: @sp-04;
-	vertical-align: text-bottom;
-}
-
-.TagInput__input[type='text'] {
-	flex: 1;
-	height: 26px;
-	padding: 0;
-	margin: @sp-02 0 @sp-04;
-	border: none;
-	background-color: transparent;
-
-	&:hover {
-		background-color: transparent;
-	}
-}
-
-.TagInput__input[type='text']:focus {
-	outline: none;
 }
