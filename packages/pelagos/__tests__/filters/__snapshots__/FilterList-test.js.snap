@@ -1,85 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterList rendering renders expected elements 1`] = `
-<Layer
-  className="FilterList"
->
-  <ScrollBox
-    trackId="filterListTrack"
+<React.Fragment>
+  <Layer
+    className="FilterList"
   >
-    <div
-      className="FilterList__items"
-      onClick={[Function]}
-    />
-  </ScrollBox>
-</Layer>
+    <ScrollBox
+      trackId="filterListTrack"
+    >
+      <div
+        className="FilterList__items"
+        onClick={[Function]}
+      />
+    </ScrollBox>
+  </Layer>
+</React.Fragment>
 `;
 
 exports[`FilterList rendering renders expected elements when className is set 1`] = `
-<Layer
-  className="FilterList TestClass"
->
-  <ScrollBox
-    trackId="filterListTrack"
+<React.Fragment>
+  <Layer
+    className="FilterList TestClass"
   >
-    <div
-      className="FilterList__items"
-      onClick={[Function]}
-    />
-  </ScrollBox>
-</Layer>
+    <ScrollBox
+      trackId="filterListTrack"
+    >
+      <div
+        className="FilterList__items"
+        onClick={[Function]}
+      />
+    </ScrollBox>
+  </Layer>
+</React.Fragment>
 `;
 
 exports[`FilterList rendering renders expected elements when filter is set 1`] = `
-<Layer
-  className="FilterList"
->
-  <ScrollBox
-    trackId="filterListTrack"
+<React.Fragment>
+  <Layer
+    className="FilterList"
   >
-    <div
-      className="FilterList__items"
-      onClick={[Function]}
+    <ScrollBox
+      trackId="filterListTrack"
     >
       <div
-        className="FilterList__item"
+        className="FilterList__items"
+        onClick={[Function]}
       >
-        <button
-          aria-controls="filterListDropDown"
-          aria-expanded={true}
-          aria-haspopup="dialog"
-          className="FilterList__button"
-          data-key="view"
-          data-kind="item"
-          id="filter-view"
-          type="button"
+        <div
+          className="FilterList__item"
         >
-          <span
-            className="FilterList__filterTitle"
+          <button
+            aria-controls="filterListDropDown"
+            aria-expanded={true}
+            aria-haspopup="dialog"
+            className="FilterList__button"
+            data-key="view"
+            data-kind="item"
+            id="filter-view"
+            type="button"
           >
-            view
-          </span>
-        </button>
-        <button
-          aria-label="Remove view filter"
-          className="FilterList__remove"
-          data-key="view"
-          data-kind="remove"
-          id="filter-view-remove"
-          type="button"
-        >
-          <SvgIcon
-            icon={
-              {
-                "icon": [],
-                "iconName": "xmark-thin",
+            <span
+              className="FilterList__filterTitle"
+            >
+              view
+            </span>
+          </button>
+          <button
+            aria-label="Remove view filter"
+            className="FilterList__remove"
+            data-key="view"
+            data-kind="remove"
+            id="filter-view-remove"
+            type="button"
+          >
+            <SvgIcon
+              icon={
+                {
+                  "icon": [],
+                  "iconName": "xmark-thin",
+                }
               }
-            }
-          />
-        </button>
+            />
+          </button>
+        </div>
       </div>
-    </div>
-  </ScrollBox>
+    </ScrollBox>
+  </Layer>
   <React.Portal
     container={{}}
   >
@@ -98,21 +104,23 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
       }
     />
   </React.Portal>
-</Layer>
+</React.Fragment>
 `;
 
 exports[`FilterList rendering renders expected elements when filter key is excluded 1`] = `
-<Layer
-  className="FilterList"
->
-  <ScrollBox
-    trackId="filterListTrack"
+<React.Fragment>
+  <Layer
+    className="FilterList"
   >
-    <div
-      className="FilterList__items"
-      onClick={[Function]}
-    />
-  </ScrollBox>
+    <ScrollBox
+      trackId="filterListTrack"
+    >
+      <div
+        className="FilterList__items"
+        onClick={[Function]}
+      />
+    </ScrollBox>
+  </Layer>
   <React.Portal
     container={{}}
   >
@@ -131,95 +139,97 @@ exports[`FilterList rendering renders expected elements when filter key is exclu
       }
     />
   </React.Portal>
-</Layer>
+</React.Fragment>
 `;
 
 exports[`FilterList rendering renders expected elements when filters are set 1`] = `
-<Layer
-  className="FilterList"
->
-  <ScrollBox
-    trackId="filterListTrack"
+<React.Fragment>
+  <Layer
+    className="FilterList"
   >
-    <div
-      className="FilterList__items"
-      onClick={[Function]}
+    <ScrollBox
+      trackId="filterListTrack"
     >
       <div
-        className="FilterList__item"
+        className="FilterList__items"
+        onClick={[Function]}
       >
-        <button
-          aria-controls={null}
-          aria-expanded={false}
-          aria-haspopup="dialog"
-          className="FilterList__button"
-          data-key="view"
-          data-kind="item"
-          id="filter-view"
-          type="button"
+        <div
+          className="FilterList__item"
         >
-          <span
-            className="FilterList__filterTitle"
+          <button
+            aria-controls={null}
+            aria-expanded={false}
+            aria-haspopup="dialog"
+            className="FilterList__button"
+            data-key="view"
+            data-kind="item"
+            id="filter-view"
+            type="button"
           >
-            view
-          </span>
-        </button>
-        <button
-          aria-label="Remove view filter"
-          className="FilterList__remove"
-          data-key="view"
-          data-kind="remove"
-          id="filter-view-remove"
-          type="button"
-        >
-          <SvgIcon
-            icon={
-              {
-                "icon": [],
-                "iconName": "xmark-thin",
-              }
-            }
-          />
-        </button>
-      </div>
-      <div
-        className="FilterList__item"
-      >
-        <button
-          aria-controls={null}
-          aria-expanded={false}
-          aria-haspopup="dialog"
-          className="FilterList__button"
-          data-key="zoneName"
-          data-kind="item"
-          id="filter-zoneName"
-          type="button"
-        >
-          <span
-            className="FilterList__filterTitle"
+            <span
+              className="FilterList__filterTitle"
+            >
+              view
+            </span>
+          </button>
+          <button
+            aria-label="Remove view filter"
+            className="FilterList__remove"
+            data-key="view"
+            data-kind="remove"
+            id="filter-view-remove"
+            type="button"
           >
-            zoneName
-          </span>
-        </button>
-        <button
-          aria-label="Remove zoneName filter"
-          className="FilterList__remove"
-          data-key="zoneName"
-          data-kind="remove"
-          id="filter-zoneName-remove"
-          type="button"
-        >
-          <SvgIcon
-            icon={
-              {
-                "icon": [],
-                "iconName": "xmark-thin",
+            <SvgIcon
+              icon={
+                {
+                  "icon": [],
+                  "iconName": "xmark-thin",
+                }
               }
-            }
-          />
-        </button>
+            />
+          </button>
+        </div>
+        <div
+          className="FilterList__item"
+        >
+          <button
+            aria-controls={null}
+            aria-expanded={false}
+            aria-haspopup="dialog"
+            className="FilterList__button"
+            data-key="zoneName"
+            data-kind="item"
+            id="filter-zoneName"
+            type="button"
+          >
+            <span
+              className="FilterList__filterTitle"
+            >
+              zoneName
+            </span>
+          </button>
+          <button
+            aria-label="Remove zoneName filter"
+            className="FilterList__remove"
+            data-key="zoneName"
+            data-kind="remove"
+            id="filter-zoneName-remove"
+            type="button"
+          >
+            <SvgIcon
+              icon={
+                {
+                  "icon": [],
+                  "iconName": "xmark-thin",
+                }
+              }
+            />
+          </button>
+        </div>
       </div>
-    </div>
-  </ScrollBox>
-</Layer>
+    </ScrollBox>
+  </Layer>
+</React.Fragment>
 `;

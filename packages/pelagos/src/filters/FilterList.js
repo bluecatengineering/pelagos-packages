@@ -37,44 +37,44 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 	);
 
 	return (
-		<Layer className={`FilterList${className ? ` ${className}` : ''}`}>
-			<ScrollBox trackId="filterListTrack">
-				<div className="FilterList__items" onClick={handleClick}>
-					{filters &&
-						Object.entries(filters).map(([key, v]) =>
-							!excludedKeys.includes(key)
-								? do {
-										const name = getFilterTitle(key);
-										<div key={key} className="FilterList__item">
-											<button
-												id={`filter-${key}`}
-												className="FilterList__button"
-												type="button"
-												aria-haspopup="dialog"
-												aria-expanded={key === filterName}
-												aria-controls={key === filterName ? 'filterListDropDown' : null}
-												data-kind="item"
-												data-key={key}
-											>
-												<span className="FilterList__filterTitle">{name}</span>
-												{getValues(key, v)}
-											</button>
-											<button
-												id={`filter-${key}-remove`}
-												className="FilterList__remove"
-												type="button"
-												aria-label={t`Remove ${name} filter`}
-												data-kind="remove"
-												data-key={key}
-											>
-												<SvgIcon icon={xmarkThin} />
-											</button>
-										</div>;
-								  }
-								: null
-						)}
-				</div>
-			</ScrollBox>
+		<>
+			<Layer className={`FilterList${className ? ` ${className}` : ''}`}>
+				<ScrollBox trackId="filterListTrack">
+					<div className="FilterList__items" onClick={handleClick}>
+						{filters &&
+							Object.entries(filters).map(([key, v]) =>
+								!excludedKeys.includes(key)
+									? do {
+											const name = getFilterTitle(key);
+											<div key={key} className="FilterList__item">
+												<button
+													id={`filter-${key}`}
+													className="FilterList__button"
+													type="button"
+													aria-haspopup="dialog"
+													aria-expanded={key === filterName}
+													aria-controls={key === filterName ? 'filterListDropDown' : null}
+													data-kind="item"
+													data-key={key}>
+													<span className="FilterList__filterTitle">{name}</span>
+													{getValues(key, v)}
+												</button>
+												<button
+													id={`filter-${key}-remove`}
+													className="FilterList__remove"
+													type="button"
+													aria-label={t`Remove ${name} filter`}
+													data-kind="remove"
+													data-key={key}>
+													<SvgIcon icon={xmarkThin} />
+												</button>
+											</div>;
+									  }
+									: null
+							)}
+					</div>
+				</ScrollBox>
+			</Layer>
 			{filterName &&
 				createPortal(
 					<FilterEditor
@@ -89,7 +89,7 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 					/>,
 					document.body
 				)}
-		</Layer>
+		</>
 	);
 };
 

@@ -4,6 +4,7 @@ import {createFocusTrap} from 'focus-trap';
 import {t} from '@bluecateng/l10n.macro';
 
 import Button from '../components/Button';
+import Layer from '../components/Layer';
 import useEditorPositioner from '../hooks/useEditorPositioner';
 
 import './FilterEditor.less';
@@ -30,17 +31,16 @@ const FilterEditor = ({name, value: initialValue, buttonId, trackId, getLabel, g
 	}, [onClose]);
 
 	return (
-		<div
+		<Layer
 			id="filterListDropDown"
 			className="FilterEditor"
 			style={{display: 'none'}}
 			role="dialog"
 			aria-label={getLabel(name)}
-			ref={editorRef}
-		>
+			ref={editorRef}>
 			{getEditor(name, value, setValue, validateSaveRef)}
 			<Button id="saveBtn" className="FilterEditor__save" size="small" text={t`Save`} onClick={handleSave} />
-		</div>
+		</Layer>
 	);
 };
 

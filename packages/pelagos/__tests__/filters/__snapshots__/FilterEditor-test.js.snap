@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterEditor rendering renders expected elements 1`] = `
-<div
+<Layer
   aria-label="Test Label"
   className="FilterEditor"
   id="filterListDropDown"
@@ -23,5 +23,5 @@ exports[`FilterEditor rendering renders expected elements 1`] = `
     text="Save"
     type="tertiary"
   />
-</div>
+</Layer>
 `;
