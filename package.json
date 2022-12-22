@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --verbose",
     "test-ci": "jest --ci --silent --reporters=jest-junit --coverageReporters=cobertura",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 9001 -c .storybook",
     "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook -c .storybook -o .out",
     "lint": "eslint .",
     "lint-ci": "eslint . -f @microsoft/eslint-formatter-sarif -o build/eslint-results.sarif",
