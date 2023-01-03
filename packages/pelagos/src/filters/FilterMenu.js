@@ -26,6 +26,7 @@ const FilterMenu = ({flipped, options, filters, getOptionText, getEditor, onAppl
 				id="filterButton"
 				className={`FilterMenu${filterName ? ' FilterMenu--active' : ''}`}
 				icon={faFilter}
+				arrow
 				disabled={filteredOptions.length === 0}
 				flipped={flipped}
 				tooltipText={t`Add filter`}

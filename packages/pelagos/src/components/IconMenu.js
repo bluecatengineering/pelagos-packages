@@ -1,4 +1,14 @@
-import {cloneElement, forwardRef, useCallback, useLayoutEffect, useRef, useState, Children, useMemo} from 'react';
+import {
+	Children,
+	cloneElement,
+	forwardRef,
+	useCallback,
+	useEffect,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 
@@ -9,9 +19,20 @@ import useRandomId from '../hooks/useRandomId';
 import Layer from './Layer';
 import IconButton from './IconButton';
 import IconMenuItem from './IconMenuItem';
+import MenuArrow from './MenuArrow';
 import './IconMenu.less';
 
-const checkEnabled = (index, increment, children) => {
+const findCurrent = (children) => {
+	const n = children.length;
+	for (let i = 0; i < n; ++i) {
+		if (children[i] === document.activeElement) {
+			return i;
+		}
+	}
+	return -1;
+};
+
+const setFocus = (index, increment, children) => {
 	const last = children.length - 1;
 	do {
 		index += increment;
@@ -20,82 +41,69 @@ const checkEnabled = (index, increment, children) => {
 		} else if (index > last) {
 			index = 0;
 		}
-	} while (children[index].props.disabled);
-	return index;
+	} while (children[index].getAttribute('aria-disabled') === 'true');
+	children[index].focus();
 };
 
 /** An icon button with a pop-up menu. */
-const IconMenu = forwardRef(({id, className, icon, disabled, flipped, children, ...props}, ref) => {
+const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, children, ...props}, ref) => {
 	id = useRandomId(id);
 	const menuId = `${id}-menu`;
 	const buttonRef = useRef(null);
 	const menuRef = useRef(null);
-	const [current, setCurrent] = useState(-1);
+	const [menuVisible, setMenuVisible] = useState(false);
 
-	const menuVisible = current !== -1;
+	const allDisabled = useMemo(() => Children.toArray(children).every((child) => child.props.disabled), [children]);
 
-	const childArray = useMemo(() => Children.toArray(children), [children]);
-	const allDisabled = useMemo(() => childArray.every((child) => child.props.disabled), [childArray]);
+	const handleButtonClick = useCallback(() => setMenuVisible((value) => !value), []);
 
-	const handleButtonClick = useCallback(
-		() => setCurrent((current) => (current === -1 ? checkEnabled(-1, 1, childArray) : -1)),
-		[childArray]
-	);
-
-	const handleButtonKeyDown = useCallback(
-		(event) => {
-			if (menuVisible && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-				const keyCode = event.keyCode;
-				switch (keyCode) {
-					case 13: // enter
-					case 32: // space
-						event.preventDefault();
-						setCurrent((current) => (menuRef.current.childNodes[current].click(), -1));
-						break;
-					case 27: // escape
-						event.preventDefault();
-						setCurrent(-1);
-						break;
-					case 35: // end
-						event.preventDefault();
-						setCurrent(checkEnabled(childArray.length, -1, childArray));
-						break;
-					case 36: // home
-						event.preventDefault();
-						setCurrent(checkEnabled(-1, 1, childArray));
-						break;
-					case 38: // up
-						event.preventDefault();
-						setCurrent((current) => checkEnabled(current, -1, childArray));
-						break;
-					case 40: // down
-						event.preventDefault();
-						setCurrent((current) => checkEnabled(current, 1, childArray));
-						break;
-				}
+	const handleMenuKeyDown = useCallback((event) => {
+		if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+			const menuChildren = menuRef.current.childNodes;
+			switch (event.keyCode) {
+				case 13: // enter
+				case 32: // space
+					event.preventDefault();
+					document.activeElement.click();
+					setMenuVisible(false);
+					buttonRef.current.focus();
+					break;
+				case 27: // escape
+					event.preventDefault();
+					setMenuVisible(false);
+					buttonRef.current.focus();
+					break;
+				case 35: // end
+					event.preventDefault();
+					setFocus(menuChildren.length, -1, menuChildren);
+					break;
+				case 36: // home
+					event.preventDefault();
+					setFocus(-1, 1, menuChildren);
+					break;
+				case 38: // up
+					event.preventDefault();
+					setFocus(findCurrent(menuChildren), -1, menuChildren);
+					break;
+				case 40: // down
+					event.preventDefault();
+					setFocus(findCurrent(menuChildren), 1, menuChildren);
+					break;
 			}
-		},
-		[childArray, menuVisible]
-	);
+		}
+	}, []);
 
-	const handleButtonBlur = useCallback(() => setCurrent(-1), []);
+	const handleMenuClick = useCallback((event) => {
+		if (event.target.closest('li')) {
+			setMenuVisible(false);
+			buttonRef.current.focus();
+		}
+	}, []);
 
-	const handleMenuMouseDown = useCallback((event) => event.preventDefault(), []);
-
-	const handleMenuMouseUp = useCallback(
-		(event) => {
-			const element = event.target.closest('li');
-			if (element) {
-				event.preventDefault();
-				const item = childArray[+element.dataset.index];
-				if (!item.props.disabled) {
-					element.click();
-					setCurrent(-1);
-				}
-			}
-		},
-		[childArray]
-	);
+	const handleGuardFocus = useCallback(() => {
+		setMenuVisible(false);
+		buttonRef.current.focus();
+	}, []);
 
 	useLayoutEffect(() => {
 		if (menuVisible) {
@@ -103,11 +111,27 @@ const IconMenu = forwardRef(({id, className, icon, disabled, flipped, children, 
 			const {bottom, left, right} = button.getBoundingClientRect();
 
 			const menu = menuRef.current;
-			menu.style.top = `${bottom}px`;
-			menu.style.left = flipped ? `${right - menu.offsetWidth}px` : `${left}px`;
-			menu.dataset.layer = button.parentNode.dataset.layer;
+			const wrapper = menu.parentNode;
+			wrapper.style.top = `${bottom}px`;
+			wrapper.style.left = flipped ? `${right - wrapper.offsetWidth + 1}px` : `${left}px`;
+			wrapper.dataset.layer = button.parentNode.dataset.layer;
+			setFocus(-1, 1, menu.childNodes);
 		}
 	}, [menuVisible, flipped]);
+
+	useEffect(() => {
+		const handler = ({target}) => {
+			if (
+				buttonRef.current.getAttribute('aria-expanded') === 'true' &&
+				!buttonRef.current.contains(target) &&
+				!menuRef.current.contains(target)
+			) {
+				setMenuVisible(false);
+			}
+		};
+		window.addEventListener('mousedown', handler, true);
+		return () => window.removeEventListener('mousedown', handler, true);
+	}, []);
 
 	return (
 		<Layer>
@@ -116,33 +140,35 @@ const IconMenu = forwardRef(({id, className, icon, disabled, flipped, children, 
 				id={id}
 				className={`IconMenu${className ? ` ${className}` : ''}`}
 				icon={icon}
+				overlay={arrow && <MenuArrow className="IconMenu__overlay" />}
 				disabled={disabled || allDisabled}
 				aria-controls={menuVisible ? menuId : null}
 				aria-haspopup="true"
 				aria-expanded={menuVisible}
-				aria-activedescendant={menuVisible ? `${id}-${current}` : null}
 				ref={ref ? setRefs(ref, buttonRef) : buttonRef}
 				onClick={handleButtonClick}
-				onKeyDown={handleButtonKeyDown}
-				onBlur={handleButtonBlur}
 			/>
 			{menuVisible &&
 				createPortal(
-					<ul
-						id={menuId}
-						className="IconMenu__menu"
-						role="menu"
-						ref={menuRef}
-						onMouseDown={handleMenuMouseDown}
-						onMouseUp={handleMenuMouseUp}>
-						{Children.map(children, (child, index) =>
-							cloneElement(child, {
-								id: `${id}-${index}`,
-								className: `${child.props.className || ''}${index === current ? ' IconMenu--current' : ''}`,
-								'data-index': index,
-							})
-						)}
-					</ul>,
+					<div className="IconMenu__wrapper">
+						<div tabIndex={0} onFocus={handleGuardFocus} />
+						<ul
+							id={menuId}
+							className="IconMenu__menu"
+							role="menu"
+							aria-labelledby={id}
+							ref={menuRef}
+							onKeyDown={handleMenuKeyDown}
+							onClick={handleMenuClick}>
+							{Children.map(children, (child, index) =>
+								cloneElement(child, {
+									id: `${id}-${index}`,
+									'data-index': index,
+								})
+							)}
+						</ul>
+						<div tabIndex={0} onFocus={handleGuardFocus} />
+					</div>,
 					document.body
 				)}
 		</Layer>
@@ -162,6 +188,8 @@ IconMenu.propTypes = {
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
 	tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+	/** Whether to show an arrow. */
+	arrow: PropTypes.bool,
 	/** Whether the button is disabled. */
 	disabled: PropTypes.bool,
 	/** Whether the menu alignment should be flipped. */

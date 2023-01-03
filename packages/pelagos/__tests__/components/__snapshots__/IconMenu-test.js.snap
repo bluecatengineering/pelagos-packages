@@ -3,7 +3,6 @@
 exports[`IconMenu rendering renders expected elements 1`] = `
 <Layer>
   <IconButton
-    aria-activedescendant={null}
     aria-controls={null}
     aria-expanded={false}
     aria-haspopup="true"
@@ -15,9 +14,7 @@ exports[`IconMenu rendering renders expected elements 1`] = `
       }
     }
     id="random-id"
-    onBlur={[Function]}
     onClick={[Function]}
-    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -28,7 +25,6 @@ exports[`IconMenu rendering renders expected elements 1`] = `
 exports[`IconMenu rendering renders expected elements when all items are disabled 1`] = `
 <Layer>
   <IconButton
-    aria-activedescendant={null}
     aria-controls={null}
     aria-expanded={false}
     aria-haspopup="true"
@@ -40,9 +36,7 @@ exports[`IconMenu rendering renders expected elements when all items are disable
       }
     }
     id="random-id"
-    onBlur={[Function]}
     onClick={[Function]}
-    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -50,10 +44,31 @@ exports[`IconMenu rendering renders expected elements when all items are disable
 </Layer>
 `;
 
-exports[`IconMenu rendering renders expected elements when current is set 1`] = `
+exports[`IconMenu rendering renders expected elements when disabled is set 1`] = `
 <Layer>
   <IconButton
-    aria-activedescendant="random-id-1"
+    aria-controls={null}
+    aria-expanded={false}
+    aria-haspopup="true"
+    className="IconMenu"
+    disabled={true}
+    icon={
+      {
+        "foo": "test",
+      }
+    }
+    id="random-id"
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;
+
+exports[`IconMenu rendering renders expected elements when menuVisible is true 1`] = `
+<Layer>
+  <IconButton
     aria-controls="random-id-menu"
     aria-expanded={true}
     aria-haspopup="true"
@@ -65,67 +80,50 @@ exports[`IconMenu rendering renders expected elements when current is set 1`] = 
       }
     }
     id="random-id"
-    onBlur={[Function]}
     onClick={[Function]}
-    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
   />
   <React.Portal>
-    <ul
-      className="IconMenu__menu"
-      id="random-id-menu"
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      role="menu"
+    <div
+      className="IconMenu__wrapper"
     >
-      <IconMenuItem
-        className=""
-        data-index={0}
-        id="random-id-0"
-        text="one"
+      <div
+        onFocus={[Function]}
+        tabIndex={0}
       />
-      <IconMenuItem
-        className=" IconMenu--current"
-        data-index={1}
-        id="random-id-1"
-        text="two"
+      <ul
+        aria-labelledby="random-id"
+        className="IconMenu__menu"
+        id="random-id-menu"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="menu"
+      >
+        <IconMenuItem
+          data-index={0}
+          id="random-id-0"
+          text="one"
+        />
+        <IconMenuItem
+          data-index={1}
+          id="random-id-1"
+          text="two"
+        />
+      </ul>
+      <div
+        onFocus={[Function]}
+        tabIndex={0}
       />
-    </ul>
+    </div>
   </React.Portal>
-</Layer>
-`;
-
-exports[`IconMenu rendering renders expected elements when disabled is set 1`] = `
-<Layer>
-  <IconButton
-    aria-activedescendant={null}
-    aria-controls={null}
-    aria-expanded={false}
-    aria-haspopup="true"
-    className="IconMenu"
-    disabled={true}
-    icon={
-      {
-        "foo": "test",
-      }
-    }
-    id="random-id"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
-  />
 </Layer>
 `;
 
 exports[`IconMenu rendering renders expected elements when optional properties are set 1`] = `
 <Layer>
   <IconButton
-    aria-activedescendant={null}
     aria-controls={null}
     aria-expanded={false}
     aria-haspopup="true"
@@ -137,9 +135,12 @@ exports[`IconMenu rendering renders expected elements when optional properties a
       }
     }
     id="random-id"
-    onBlur={[Function]}
     onClick={[Function]}
-    onKeyDown={[Function]}
+    overlay={
+      <MenuArrow
+        className="IconMenu__overlay"
+      />
+    }
     size="medium"
     tooltipPlacement="right"
     type="ghost"
