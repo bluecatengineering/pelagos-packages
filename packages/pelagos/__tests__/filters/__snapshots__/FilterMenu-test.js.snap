@@ -4,6 +4,7 @@ exports[`FilterMenu rendering renders expected elements 1`] = `
 <React.Fragment>
   <IconMenu
     aria-label="Add filter"
+    arrow={true}
     className="FilterMenu"
     disabled={false}
     icon={
@@ -33,6 +34,7 @@ exports[`FilterMenu rendering renders expected elements when filter is set 1`] =
 <React.Fragment>
   <IconMenu
     aria-label="Add filter"
+    arrow={true}
     className="FilterMenu FilterMenu--active"
     disabled={false}
     icon={
@@ -93,6 +95,7 @@ exports[`FilterMenu rendering renders expected elements when filters is set 1`] 
 <React.Fragment>
   <IconMenu
     aria-label="Add filter"
+    arrow={true}
     className="FilterMenu"
     disabled={false}
     icon={

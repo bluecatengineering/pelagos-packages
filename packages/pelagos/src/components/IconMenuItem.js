@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 const IconMenuItem = forwardRef(({className, text, disabled, hasDivider, ...props}, ref) => (
 	<li
 		{...props}
-		className={`IconMenu__option${disabled ? ' IconMenu--disabled' : ''}${hasDivider ? ' IconMenu--divider' : ''}${
-			className ? ` ${className}` : ''
-		}`}
+		className={`IconMenu__option${hasDivider ? ' IconMenu--divider' : ''}${className ? ` ${className}` : ''}`}
+		tabIndex={-1}
 		role="menuitem"
+		aria-disabled={disabled}
 		ref={ref}>
 		{text}
 	</li>

@@ -1,3 +1,4 @@
+@import '../../less/elevations';
 @import '../../less/focus';
 @import '../../less/spacing';
 @import '../../less/utils';
@@ -7,14 +8,21 @@
 		outline: none;
 	}
 
-	&__menu {
+	&__overlay {
 		position: absolute;
+		right: 2px;
+		bottom: 2px;
+	}
+
+	&__wrapper {
+		@elv-04();
+		position: absolute;
+	}
+
+	&__menu {
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		background-color: var(--layer);
-		box-shadow: var(--shadow-04);
-		z-index: 4;
 	}
 
 	&__option {
@@ -31,21 +39,22 @@
 		&:active {
 			color: var(--text-primary);
 		}
-	}
 
-	&--disabled,
-	&--disabled:hover,
-	&--disabled:active {
-		color: var(--text-disabled);
-		background-color: transparent;
+		&:focus-visible {
+			@focus-ring();
+			color: var(--text-primary);
+		}
+
+		&[aria-disabled='true'],
+		&[aria-disabled='true']:hover,
+		&[aria-disabled='true']:active {
+			color: var(--text-disabled);
+			background-color: transparent;
+			pointer-events: none;
+		}
 	}
 
 	&--divider {
 		border-top: 1px solid var(--border-subtle);
-	}
-
-	&--current {
-		@focus-ring();
-		color: var(--text-primary);
 	}
 }

@@ -239,7 +239,7 @@ export const DefaultToolbar = (args) => {
 				<TableToolbarDefault>
 					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
-					<IconMenu icon={faCog} flipped>
+					<IconMenu icon={faCog} arrow flipped>
 						<IconMenuItem text="Option one" />
 						<IconMenuItem text="Option two" />
 						<IconMenuItem text="Option three" disabled />
@@ -309,7 +309,7 @@ export const BatchActions = (args) => {
 				<TableToolbarBatch selectedCount={selectedCount} onCancel={handleBatchCancel}>
 					<Button type="primary" text="Action 1" />
 					<Button type="primary" text="Action 2" />
-					<IconMenu icon={faCog} type="primary" flipped>
+					<IconMenu icon={faCog} type="primary" arrow flipped>
 						<IconMenuItem text="Batch option one" />
 						<IconMenuItem text="Batch option two" />
 						<IconMenuItem text="Batch option three" disabled />
@@ -319,7 +319,7 @@ export const BatchActions = (args) => {
 				<TableToolbarDefault hidden={someSelected}>
 					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
-					<IconMenu icon={faCog} flipped>
+					<IconMenu icon={faCog} arrow flipped>
 						<IconMenuItem text="Option one" />
 						<IconMenuItem text="Option two" />
 						<IconMenuItem text="Option three" disabled />
