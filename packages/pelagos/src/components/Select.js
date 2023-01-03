@@ -214,8 +214,7 @@ const Select = ({
 				data-placeholder={placeholder}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
-				onBlur={handleBlur}
-			>
+				onBlur={handleBlur}>
 				{selected ? selected.element : ''}
 				<SelectArrow className={`Select__arrow${open ? ' Select__arrow--open' : ''}`} />
 			</button>
@@ -227,8 +226,7 @@ const Select = ({
 						role="listbox"
 						ref={listRef}
 						onMouseDown={handleListMouseDown}
-						onMouseUp={handleListMouseUp}
-					>
+						onMouseUp={handleListMouseUp}>
 						{renderedOptions.map((o, index) => (
 							<div
 								key={o.key}
@@ -236,8 +234,7 @@ const Select = ({
 								className="Select__option"
 								role="option"
 								aria-selected={index === focused}
-								data-index={index}
-							>
+								data-index={index}>
 								{o.element}
 							</div>
 						))}

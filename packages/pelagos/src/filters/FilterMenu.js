@@ -30,8 +30,7 @@ const FilterMenu = ({flipped, options, filters, getOptionText, getEditor, onAppl
 				flipped={flipped}
 				tooltipText={t`Add filter`}
 				tooltipPlacement="top"
-				aria-label={t`Add filter`}
-			>
+				aria-label={t`Add filter`}>
 				{filteredOptions.map((key) => (
 					<IconMenuItem key={key} text={getOptionText(key)} data-key={key} onClick={handleOptionClick} />
 				))}

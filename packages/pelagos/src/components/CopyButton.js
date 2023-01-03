@@ -39,8 +39,7 @@ const CopyButton = ({id, className, data, tooltipText, tooltipPlacement, disable
 			ref={targetRef}
 			aria-disabled="true"
 			onMouseEnter={show}
-			onMouseLeave={hide}
-		>
+			onMouseLeave={hide}>
 			<SvgIcon icon={faCopy} />
 		</span>
 	) : (
@@ -54,8 +53,7 @@ const CopyButton = ({id, className, data, tooltipText, tooltipPlacement, disable
 			onMouseLeave={hide}
 			onFocus={show}
 			onBlur={hide}
-			onClick={handleClick}
-		>
+			onClick={handleClick}>
 			<SvgIcon icon={faCopy} />
 		</button>
 	);

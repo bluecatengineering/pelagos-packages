@@ -11,8 +11,7 @@ const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, c
 			{...props}
 			className={className}
 			aria-sort={sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none'}
-			ref={ref}
-		>
+			ref={ref}>
 			<button className={`Table__sort${sortOrder ? ' Table__sort--active' : ''}`} type="button">
 				<div className={`Table__sortLabel Table--${align}`}>{children}</div>
 				<SvgIcon
@@ -24,8 +23,7 @@ const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, c
 	) : (
 		<th
 			{...props}
-			className={`Table--${align}${radio ? ' Table--radioHeader' : ''}${className ? ` ${className}` : ''}`}
-		>
+			className={`Table--${align}${radio ? ' Table--radioHeader' : ''}${className ? ` ${className}` : ''}`}>
 			{children}
 		</th>
 	)

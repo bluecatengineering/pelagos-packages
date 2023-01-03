@@ -21,8 +21,7 @@ const SideNavMenu = forwardRef(({className, title, expanded, sideNavActive, chil
 			type="button"
 			tabIndex={sideNavActive ? 0 : -1}
 			aria-expanded={expanded}
-			ref={ref}
-		>
+			ref={ref}>
 			<div className="SideNav__submenuTitle">{title}</div>
 			<SvgIcon className="SideNav__icon" icon={faAngleDown} />
 		</button>

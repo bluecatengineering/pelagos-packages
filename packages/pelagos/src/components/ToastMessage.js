@@ -71,8 +71,7 @@ const ToastMessage = ({message, onRemove}) => {
 					type="button"
 					aria-label={t`Dismiss`}
 					data-testid="toast-close"
-					onClick={handleCloseClick}
-				>
+					onClick={handleCloseClick}>
 					<SvgIcon icon={xmarkThin} />
 				</button>
 			)}

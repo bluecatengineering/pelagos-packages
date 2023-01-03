@@ -35,8 +35,7 @@ const RadioGroup = ({id, className, value, options, renderLabel, onChange, ...pr
 			id={id}
 			className={`RadioGroup${className ? ` ${className}` : ''}`}
 			role="radiogroup"
-			onKeyDown={handleKeyDown}
-		>
+			onKeyDown={handleKeyDown}>
 			{options.map((option) => (
 				<RadioButton
 					key={option}

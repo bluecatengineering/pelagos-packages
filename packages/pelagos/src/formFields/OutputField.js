@@ -10,8 +10,7 @@ const OutputField = ({id, className, label, value, alignRight, active}) => {
 	id = useRandomId(id);
 	return (
 		<div
-			className={'OutputField' + (alignRight ? ' OutputField--alignRight' : '') + (className ? ' ' + className : '')}
-		>
+			className={'OutputField' + (alignRight ? ' OutputField--alignRight' : '') + (className ? ' ' + className : '')}>
 			<div className="OutputField__label">
 				<Label text={label} htmlFor={id} />
 			</div>

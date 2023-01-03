@@ -11,8 +11,7 @@ const SideNavLink = forwardRef(({className, current, shortcut, sideNavActive, ch
 			className="SideNav__link"
 			tabIndex={sideNavActive ? 0 : -1}
 			aria-current={current ? 'page' : null}
-			ref={ref}
-		>
+			ref={ref}>
 			<span className={shortcut ? 'SideNav__text--shortcut' : ''}>{children}</span>
 		</a>
 	</li>

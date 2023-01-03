@@ -15,8 +15,7 @@ const Table = forwardRef(({className, rowMode, stickyHeader, fixedLayout, childr
 		className={`Table Table--${rowMode}${stickyHeader ? ' Table--sticky' : ''}${fixedLayout ? ' Table--fixed' : ''}${
 			className ? ` ${className}` : ''
 		}`}
-		ref={ref}
-	>
+		ref={ref}>
 		{children}
 	</table>
 ));

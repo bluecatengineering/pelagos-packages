@@ -243,8 +243,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 				onMouseOver={handleMouseOver}
 				onMouseUp={handleMouseUp}
 				onFocusCapture={handleFocus}
-				onBlurCapture={handleBlur}
-			>
+				onBlurCapture={handleBlur}>
 				<thead>
 					<tr>
 						{do {
@@ -287,8 +286,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 													}`}
 													tabIndex={isSelected ? 0 : -1}
 													aria-selected={isSelected}
-													data-time={isCurMonth ? time : null}
-												>
+													data-time={isCurMonth ? time : null}>
 													{isCurMonth ? day.getDate() : ''}
 												</td>
 											);

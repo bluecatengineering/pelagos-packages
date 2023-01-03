@@ -56,8 +56,7 @@ const ListEntries = ({
 			id={id}
 			className={`ListEntries ListEntries--${column ? 'column' : 'grid'}${className ? ` ${className}` : ''}`}
 			role="list"
-			onClick={handleClick}
-		>
+			onClick={handleClick}>
 			{list.map((item, i) => {
 				const name = getItemName(item);
 				const element = renderItem ? renderItem(item) : renderListItem(name);
@@ -69,15 +68,13 @@ const ListEntries = ({
 						key={itemKey}
 						className={`ListEntries__item${itemKey === highlightKey ? ' ListEntries__item--highlight' : ''}`}
 						role="listitem"
-						data-testid="list-item"
-					>
+						data-testid="list-item">
 						<button
 							className="ListEntries__icon"
 							type="button"
 							aria-label={t`Remove ${name}`}
 							data-testid="remove-item"
-							data-index={i}
-						>
+							data-index={i}>
 							<SvgIcon icon={xmarkThin} />
 						</button>
 						{cloneElement(element, {className})}

@@ -268,8 +268,7 @@ const MultiColumn = ({
 			onKeyDown={handleKeyDown}
 			onFocus={handleFocus}
 			onBlur={handleBlur}
-			ref={rootRef}
-		>
+			ref={rootRef}>
 			{columns.map((count, colIndex) => (
 				<div
 					key={colIndex}
@@ -280,8 +279,7 @@ const MultiColumn = ({
 					aria-hidden={colIndex !== colCurr}
 					aria-label={t`Column ${colIndex + 1} of ${columnCount}`}
 					aria-activedescendant={count !== -1 && pathLength > colIndex ? `${id}-${colIndex}-${path[colIndex]}` : null}
-					data-index={colIndex}
-				>
+					data-index={colIndex}>
 					{count === -1 ? (
 						<Spinner size="tiny" />
 					) : (
@@ -297,8 +295,7 @@ const MultiColumn = ({
 										className={`MultiColumn__item${itmIndex === path[colIndex] ? ' MultiColumn__selected' : ''}`}
 										role="option"
 										aria-selected={focused && colIndex === colCurr && itmIndex === itmCurr}
-										data-index={itmIndex}
-									>
+										data-index={itmIndex}>
 										<div className="MultiColumn__text">{renderItem(itmPath)}</div>
 										{!isLeaf(itmPath) && <SvgIcon className="MultiColumn__arrow" icon={faCaretRight} />}
 									</div>

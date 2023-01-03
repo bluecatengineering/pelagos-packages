@@ -12,8 +12,7 @@ const Button = ({id, text, className, tooltipText, size, type, disabled, onClick
 			id={id}
 			className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
 			aria-disabled="true"
-			ref={tooltip}
-		>
+			ref={tooltip}>
 			{text}
 		</span>
 	) : (
@@ -23,8 +22,7 @@ const Button = ({id, text, className, tooltipText, size, type, disabled, onClick
 			id={id}
 			className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
 			ref={tooltip}
-			onClick={onClick}
-		>
+			onClick={onClick}>
 			{text}
 		</button>
 	);

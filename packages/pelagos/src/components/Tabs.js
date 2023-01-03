@@ -153,8 +153,7 @@ const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClo
 				onClick={handleClick}
 				onMouseDown={handleMouseDown}
 				onMouseUp={handleMouseUp}
-				onKeyDown={handleKeyDown}
-			>
+				onKeyDown={handleKeyDown}>
 				{items.map((item, index) => renderTab(item, getTabKey(item) === currentTab, index === currentFocused))}
 			</div>
 		</ScrollBox>

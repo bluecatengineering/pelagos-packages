@@ -9,8 +9,7 @@ const IconMenuItem = forwardRef(({className, text, disabled, hasDivider, ...prop
 			className ? ` ${className}` : ''
 		}`}
 		role="menuitem"
-		ref={ref}
-	>
+		ref={ref}>
 		{text}
 	</li>
 ));

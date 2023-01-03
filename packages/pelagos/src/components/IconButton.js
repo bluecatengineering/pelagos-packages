@@ -19,8 +19,7 @@ const IconButton = forwardRef(
 				className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
 				role="button"
 				aria-disabled="true"
-				ref={refs}
-			>
+				ref={refs}>
 				<SvgIcon icon={icon} />
 			</span>
 		) : (
@@ -30,8 +29,7 @@ const IconButton = forwardRef(
 				className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
 				type="button"
 				ref={refs}
-				onClick={onClick}
-			>
+				onClick={onClick}>
 				<SvgIcon icon={icon} />
 			</button>
 		);

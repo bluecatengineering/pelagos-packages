@@ -187,8 +187,7 @@ const ComboBox = ({
 					style={{display: open ? null : 'none'}}
 					ref={listRef}
 					onMouseDown={handleListMouseDown}
-					onMouseUp={handleListMouseUp}
-				>
+					onMouseUp={handleListMouseUp}>
 					{suggestions.map((item, index) => {
 						const element = renderSuggestion(item, index);
 						return cloneElement(element, {

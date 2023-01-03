@@ -134,8 +134,7 @@ const IconMenu = forwardRef(({id, className, icon, disabled, flipped, children, 
 						role="menu"
 						ref={menuRef}
 						onMouseDown={handleMenuMouseDown}
-						onMouseUp={handleMenuMouseUp}
-					>
+						onMouseUp={handleMenuMouseUp}>
 						{Children.map(children, (child, index) =>
 							cloneElement(child, {
 								id: `${id}-${index}`,

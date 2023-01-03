@@ -14,8 +14,7 @@ const TableToolbarBatch = forwardRef(({className, selectedCount, children, onCan
 			className ? ` ${className}` : ''
 		}`}
 		aria-hidden={!selectedCount}
-		ref={ref}
-	>
+		ref={ref}>
 		<div className="Table__toolbarBatchCount">
 			{plural(selectedCount, {one: 'one item selected', other: '# items selected'})}
 		</div>

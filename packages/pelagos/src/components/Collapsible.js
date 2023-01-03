@@ -24,8 +24,7 @@ const Collapsible = ({id, className, open, children, onHeaderClick}) => {
 				type="button"
 				aria-expanded={open}
 				aria-controls={contentId}
-				onClick={onHeaderClick}
-			>
+				onClick={onHeaderClick}>
 				{headerElement}
 				<SvgIcon className={`Collapsible__arrow${open ? ' Collapsible__arrow--open' : ''}`} icon={faAngleDown} />
 			</button>
