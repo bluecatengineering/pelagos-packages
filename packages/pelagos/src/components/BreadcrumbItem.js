@@ -10,6 +10,9 @@ const BreadcrumbItem = ({href, children, ...props}) => (
 		) : (
 			children
 		)}
+		<span className="Breadcrumb__separator" aria-hidden="true">
+			-
+		</span>
 	</li>
 );
 

@@ -5,6 +5,12 @@ exports[`BreadcrumbItem rendering renders expected elements 1`] = `
   className="Breadcrumb__item"
 >
   Test
+  <span
+    aria-hidden="true"
+    className="Breadcrumb__separator"
+  >
+    -
+  </span>
 </li>
 `;
 
@@ -18,5 +24,11 @@ exports[`BreadcrumbItem rendering renders expected elements when href is set 1`]
   >
     Test
   </a>
+  <span
+    aria-hidden="true"
+    className="Breadcrumb__separator"
+  >
+    -
+  </span>
 </li>
 `;
