@@ -37,12 +37,6 @@ font-16-400:
   styles:
     font-size: 16px
     font-weight: 400
-font-16-400-sp2:
-  use: product
-  styles:
-    font-size: 16px
-    font-weight: 400
-    letter-spacing: 2px
 font-16-600:
   use: h3
   styles:
