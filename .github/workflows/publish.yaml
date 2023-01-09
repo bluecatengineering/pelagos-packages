@@ -23,6 +23,7 @@ jobs:
           npm ci
           npx lerna run prepack
           npm run build-storybook
+          scripts/generate-figma-tokens.js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@4506126207ed04f7c31e67d0b20154fc373f2505 # tag=v1.0.5
