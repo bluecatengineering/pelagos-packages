@@ -28,10 +28,10 @@ const plugin = (actual) => (root, result) => {
 			if (
 				part &&
 				part.charAt(0) === '.' &&
-				!/^.[A-Z][A-Za-z0-9]+(:|\[|$)/.test(part) &&
-				!/^.[A-Z][A-Za-z0-9]+__[a-z][A-Za-z0-9]+(:|\[|$)/.test(part) &&
-				!/^.[A-Z][A-Za-z0-9]+--[a-z][A-Za-z0-9]+(:|\[|$)/.test(part) &&
-				!/^.[A-Z][A-Za-z0-9]+__[a-z][A-Za-z0-9]+--[a-z][A-Za-z0-9]+(:|\[|$)/.test(part)
+				!/^.[A-Z][A-Za-z\d]+(:|\[|$)/.test(part) &&
+				!/^.[A-Z][A-Za-z\d]+__[a-z][A-Za-z\d]+(:|\[|$)/.test(part) &&
+				!/^.[A-Z][A-Za-z\d]+--[a-z][A-Za-z\d]+(:|\[|$)/.test(part) &&
+				!/^.[A-Z][A-Za-z\d]+__[a-z][A-Za-z\d]+--[a-z][A-Za-z\d]+(:|\[|$)/.test(part)
 			) {
 				report({
 					index: rule.lastEach,
