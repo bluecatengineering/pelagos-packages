@@ -9,19 +9,6 @@ import fonts from '../defs/fonts.yaml';
 import spacing from '../defs/spacing.yaml';
 import './Styles-stories.less';
 
-const fontUsage = {
-	'font-10-400': 'BlockHeader__indicator',
-	'font-10-600': 'h6',
-	'font-12-400': 'input::placeholder, Label',
-	'font-12-600': 'h5',
-	'font-14-400': 'body',
-	'font-14-600': 'h4, Button',
-	'font-16-400': 'Toast',
-	'font-16-600': 'h3',
-	'font-18-400': 'h2',
-	'font-24-400': 'h1',
-};
-
 export const Fonts = () => (
 	<div className="Fonts">
 		<h1>Fonts</h1>
@@ -35,7 +22,7 @@ export const Fonts = () => (
 			<tbody>
 				{Object.entries(fonts)
 					.filter(([k]) => k !== 'root-font')
-					.map(([key, {styles}]) => (
+					.map(([key, {use, styles}]) => (
 						<tr key={key}>
 							<td
 								style={Object.fromEntries(
@@ -43,7 +30,7 @@ export const Fonts = () => (
 								)}>
 								{key}
 							</td>
-							<td>{fontUsage[key]}</td>
+							<td>{use}</td>
 						</tr>
 					))}
 			</tbody>
@@ -305,6 +292,37 @@ export const AspectRatios = () => (
 		</div>
 	</div>
 );
+
+export const Figma = () => {
+	const {href} = new URL('/figma-tokens.json', location.href);
+	return (
+		<div className="Figma">
+			<h1>Figma</h1>
+			<p>
+				Pelagos styles can be used in Figma by loading them with the{' '}
+				<a
+					href="https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens"
+					target="_blank"
+					rel="noreferrer">
+					Tokens Studio plugin
+				</a>
+				.
+			</p>
+			<p>
+				Please follow the{' '}
+				<a href="https://docs.tokens.studio/sync/url" target="_blank" rel="noreferrer">
+					URL synchronization documentation
+				</a>{' '}
+				using the name "Pelagos" and the URL "
+				<a href={href} target="_blank" rel="noreferrer">
+					{href}
+				</a>
+				"
+			</p>
+			<p>To get theme tokens to work properly select only one of "cg00" or "yg100" at a time.</p>
+		</div>
+	);
+};
 
 export default {
 	title: 'Styles',
