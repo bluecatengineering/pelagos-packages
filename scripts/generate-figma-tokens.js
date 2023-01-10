@@ -78,9 +78,26 @@ const loadFonts = () =>
 		)
 	);
 
-Promise.all([loadColors(), loadThemes(), loadSpacing(), loadFonts()])
-	.then(([colors, {cg00, yg100}, spacing, fonts]) =>
-		writeFile('.out/figma-tokens.json', JSON.stringify({global: {colors}, cg00, yg100, spacing, fonts}))
+const shadowNames = ['umbra', 'penumbra', 'ambient'];
+const generateShadow = (values, index) => {
+	const [x, y, blur, spread] = values.split(' ');
+	return {type: 'dropShadow', color: `{shadow-${shadowNames[index]}}`, x, y, blur, spread};
+};
+
+const loadShadows = () =>
+	readFile('packages/pelagos/defs/shadows.yaml', 'utf8').then((text) => {
+		const {levels, umbra, penumbra, ambient} = parse(text);
+		return Object.fromEntries(
+			levels.map((l) => [
+				`shadow-${`${l}`.padStart(2, '0')}`,
+				{type: 'boxShadow', value: [umbra[l], penumbra[l], ambient[l]].map(generateShadow)},
+			])
+		);
+	});
+
+Promise.all([loadColors(), loadThemes(), loadSpacing(), loadFonts(), loadShadows()])
+	.then(([colors, {cg00, yg100}, spacing, fonts, shadows]) =>
+		writeFile('.out/figma-tokens.json', JSON.stringify({global: {colors}, cg00, yg100, spacing, fonts, shadows}))
 	)
 	// eslint-disable-next-line no-console
 	.catch((error) => (console.error(error), process.exit(1)));

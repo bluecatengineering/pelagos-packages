@@ -119,6 +119,9 @@ white:
   status-false: gray-20
   scrollbar-face: gray-40
   scrollbar-hover: gray-40-hover
+  shadow-umbra: black/20%
+  shadow-penumbra: black/14%
+  shadow-ambient: black/12%
 
 cg00:
   background: white
@@ -241,6 +244,9 @@ cg00:
   status-false: gray-20
   scrollbar-face: cool-gray-40
   scrollbar-hover: cool-gray-40-hover
+  shadow-umbra: black/20%
+  shadow-penumbra: black/14%
+  shadow-ambient: black/12%
 
 yg100:
   background: cyan-gray-100
@@ -363,6 +369,9 @@ yg100:
   status-false: gray-70
   scrollbar-face: cyan-gray-70
   scrollbar-hover: cyan-gray-70-hover
+  shadow-umbra: black/30%
+  shadow-penumbra: black/21%
+  shadow-ambient: black/18%
 
 g100:
   background: gray-100
@@ -485,3 +494,6 @@ g100:
   status-false: gray-70
   scrollbar-face: gray-70
   scrollbar-hover: gray-70-hover
+  shadow-umbra: black/30%
+  shadow-penumbra: black/21%
+  shadow-ambient: black/18%

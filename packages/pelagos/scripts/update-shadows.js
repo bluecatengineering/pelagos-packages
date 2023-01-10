@@ -11,16 +11,14 @@ const HEADER = [
 	'',
 ];
 
-const {levels, base, dark, light} = parse(readFileSync(IN, 'utf8'));
+const {levels, umbra, penumbra, ambient} = parse(readFileSync(IN, 'utf8'));
 
-const color = (alpha) => `rgba(0, 0, 0, ${alpha})`;
-
-const generate = (name, {umbra, penumbra, ambient}) =>
+const generate = () =>
 	levels.map(
 		(key) =>
-			`@shadow-${name}-${`${key}`.padStart(2, '0')}: ${base.umbra[key]} ${color(umbra)}, ${base.penumbra[key]} ${color(
-				penumbra
-			)}, ${base.ambient[key]} ${color(ambient)};`
+			`@shadow-${`${key}`.padStart(2, '0')}: ${umbra[key]} var(--shadow-umbra), ${
+				penumbra[key]
+			} var(--shadow-penumbra), ${ambient[key]} var(--shadow-ambient);`
 	);
 
-writeFileSync(LESS, HEADER.concat(generate('dark', dark), generate('light', light), '').join('\n'));
+writeFileSync(LESS, HEADER.concat(generate(), '').join('\n'));
