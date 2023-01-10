@@ -31,7 +31,15 @@ const loadThemes = () =>
 		Object.fromEntries(
 			Object.entries(parse(text)).map(([k, v]) => [
 				k,
-				Object.fromEntries(Object.entries(v).map(([k, v]) => [k, {type: 'color', value: `{colors.${v}}`}])),
+				Object.fromEntries(
+					Object.entries(v).map(([k, v]) => {
+						const parts = v.split('/');
+						return [
+							k,
+							{type: 'color', value: parts.length === 1 ? `{colors.${v}}` : `rgba($colors.${parts[0]},${parts[1]})`},
+						];
+					})
+				),
 			])
 		)
 	);
@@ -50,11 +58,21 @@ const loadFonts = () =>
 					([
 						k,
 						{
+							use,
 							styles: {'font-size': fontSize, 'font-weight': fontWeight, 'line-height': lineHeight},
 						},
 					]) => [
 						k,
-						{type: 'typography', value: {fontFamily: 'Open Sans', fontWeight, fontSize, lineHeight: lineHeight || 1.5}},
+						{
+							type: 'typography',
+							value: {
+								fontFamily: 'Open Sans',
+								fontWeight,
+								fontSize,
+								lineHeight: `${(lineHeight || 1.5) * parseInt(fontSize)}px`,
+							},
+							description: use,
+						},
 					]
 				)
 		)
