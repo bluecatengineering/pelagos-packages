@@ -306,6 +306,37 @@ export const AspectRatios = () => (
 	</div>
 );
 
+export const Figma = () => {
+	const {href} = new URL('/figma-tokens.json', location.href);
+	return (
+		<div className="Figma">
+			<h1>Figma</h1>
+			<p>
+				Pelagos styles can be used in Figma by loading them with the{' '}
+				<a
+					href="https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens"
+					target="_blank"
+					rel="noreferrer">
+					Tokens Studio plugin
+				</a>
+				.
+			</p>
+			<p>
+				Please follow the{' '}
+				<a href="https://docs.tokens.studio/sync/url" target="_blank" rel="noreferrer">
+					URL synchronization documentation
+				</a>{' '}
+				using the name "Pelagos" and the URL "
+				<a href={href} target="_blank" rel="noreferrer">
+					{href}
+				</a>
+				"
+			</p>
+			<p>To get theme tokens to work properly select only one of "cg00" or "yg100" at a time.</p>
+		</div>
+	);
+};
+
 export default {
 	title: 'Styles',
 	parameters: {
