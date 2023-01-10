@@ -15,8 +15,6 @@ export {default as DetailRegion} from './DetailRegion';
 export {default as DetailsGrid} from './DetailsGrid';
 export {default as DetailsList} from './DetailsList';
 export {default as DetailsListItem} from './DetailsListItem';
-export {default as DetailsSectionTitle} from './DetailsSectionTitle';
-export {default as DetailsTable} from './DetailsTable';
 export {default as Dialog} from './Dialog';
 export {default as EditorDetailsPanel} from './EditorDetailsPanel';
 export {default as EditorGrid} from './EditorGrid';

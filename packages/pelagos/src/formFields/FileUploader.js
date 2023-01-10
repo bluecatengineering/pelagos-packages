@@ -67,7 +67,6 @@ const FileUploader = ({
 	className,
 	label,
 	optional,
-	description,
 	dropZoneText,
 	files,
 	helperText,
@@ -124,11 +123,6 @@ const FileUploader = ({
 		<div className={`FileUploader${className ? ` ${className}` : ''}`}>
 			<div className="assistive-text" aria-live="polite" ref={liveRef} />
 			<LabelLine htmlFor={id} text={label} optional={optional && !files?.length} />
-			{description && (
-				<div className={`FileUploader__description${disabled ? ' FileUploader__description--disabled' : ''}`}>
-					{description}
-				</div>
-			)}
 			<button
 				id={id}
 				className={`FileUploader__dropZone${error ? ' FileUploader__dropZone--error' : ''}`}
@@ -189,8 +183,6 @@ FileUploader.propTypes = {
 	label: PropTypes.string,
 	/** Whether the field is optional. */
 	optional: PropTypes.bool,
-	/** @deprecated use helperText instead. */
-	description: PropTypes.string,
 	/** The text to display in the drop zone. */
 	dropZoneText: PropTypes.string,
 	/** The accepted file types. */

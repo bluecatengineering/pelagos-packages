@@ -1,5 +1,4 @@
 export {default as DropDownField} from './DropDownField';
-export {default as DropZone} from './DropZone';
 export {default as FieldError} from './FieldError';
 export {default as FieldHelper} from './FieldHelper';
 export {default as FileUploader} from './FileUploader';

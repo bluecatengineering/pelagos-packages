@@ -4,10 +4,8 @@ export {default as buildSimpleSuggestionsParser} from './buildSimpleSuggestionsP
 export {default as compareSuggestions} from './compareSuggestions';
 export {default as copyToClipboard} from './copyToClipboard';
 export {default as getGenericSuggestions} from './getGenericSuggestions';
-export {default as handleButtonKeyDown} from './handleButtonKeyDown';
 export {default as scrollIntoView} from './scrollIntoView';
 export {default as scrollToItem} from './scrollToItem';
-export {default as setLiveText} from './setLiveText';
 export {default as setLocale} from './setLocale';
 export {default as smoothScroll} from './smoothScroll';
 export {default as throttleAF} from './throttleAF';
