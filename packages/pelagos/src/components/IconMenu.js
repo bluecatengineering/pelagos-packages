@@ -108,12 +108,16 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 	useLayoutEffect(() => {
 		if (menuVisible) {
 			const button = buttonRef.current;
-			const {bottom, left, right} = button.getBoundingClientRect();
+			const {top, bottom, left, right} = button.getBoundingClientRect();
 
 			const menu = menuRef.current;
 			const wrapper = menu.parentNode;
-			wrapper.style.top = `${bottom}px`;
-			wrapper.style.left = flipped ? `${right - wrapper.offsetWidth + 1}px` : `${left}px`;
+			const {width: menuWidth, height: menuHeight} = wrapper.getBoundingClientRect();
+			const scrollTop = document.scrollingElement.scrollTop;
+			wrapper.style.top = `${
+				(bottom + menuHeight < innerHeight ? bottom : top - menuHeight >= 0 ? top - menuHeight : 0) + scrollTop
+			}px`;
+			wrapper.style.left = flipped ? `${right - menuWidth}px` : `${left}px`;
 			wrapper.dataset.layer = button.parentNode.dataset.layer;
 			setFocus(-1, 1, menu.childNodes);
 		}
