@@ -29,7 +29,6 @@ describe('FileUploader', () => {
 					className="TestClass"
 					label="Test"
 					optional
-					description="Test description"
 					dropZoneText="Test drop zone"
 					types={types}
 					multiple
@@ -43,28 +42,14 @@ describe('FileUploader', () => {
 		});
 
 		it('renders expected elements when files is not set', () => {
-			const wrapper = shallow(
-				<FileUploader
-					label="Test"
-					optional
-					description="Test description"
-					dropZoneText="Test drop zone"
-					types={types}
-				/>
-			);
+			const wrapper = shallow(<FileUploader label="Test" optional dropZoneText="Test drop zone" types={types} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when showOpenFilePicker is present', () => {
 			global.showOpenFilePicker = true;
 			const wrapper = shallow(
-				<FileUploader
-					label="Test"
-					description="Test description"
-					dropZoneText="Test drop zone"
-					types={types}
-					files={[{name: 'foo.txt'}]}
-				/>
+				<FileUploader label="Test" dropZoneText="Test drop zone" types={types} files={[{name: 'foo.txt'}]} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

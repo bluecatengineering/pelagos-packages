@@ -6,7 +6,7 @@ import DetailRegion from './DetailRegion';
 import './DetailsList.less';
 
 /** A list for the details panel. */
-const DetailsList = ({id, className, level, label, infoText, infoTextPlacement, list, renderItem, children}) => {
+const DetailsList = ({id, className, level, label, infoText, infoTextPlacement, children}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	return (
@@ -18,7 +18,7 @@ const DetailsList = ({id, className, level, label, infoText, infoTextPlacement, 
 			infoText={infoText}
 			infoTextPlacement={infoTextPlacement}>
 			<ul id={id} className="DetailsList__grid" aria-labelledby={labelId}>
-				{children || list.map((item, index) => <li key={index}>{renderItem(item, 'DetailsList__item', index)}</li>)}
+				{children}
 			</ul>
 		</DetailRegion>
 	);
@@ -37,10 +37,6 @@ DetailsList.propTypes = {
 	infoText: PropTypes.string,
 	/** The placement of the info tooltip relative to the icon. */
 	infoTextPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-	/** @deprecated use children instead. */
-	list: PropTypes.array,
-	/** @deprecated use children instead. */
-	renderItem: PropTypes.func,
 	/** The child elements. */
 	children: PropTypes.node,
 };

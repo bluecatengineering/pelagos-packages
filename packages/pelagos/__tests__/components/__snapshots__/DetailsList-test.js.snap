@@ -28,21 +28,6 @@ exports[`DetailsList rendering renders expected elements when optional propertie
     aria-labelledby="random-id-label"
     className="DetailsList__grid"
     id="random-id"
-  >
-    <li>
-      <div
-        className="DetailsList__item"
-      >
-        site1
-      </div>
-    </li>
-    <li>
-      <div
-        className="DetailsList__item"
-      >
-        site2
-      </div>
-    </li>
-  </ul>
+  />
 </DetailRegion>
 `;

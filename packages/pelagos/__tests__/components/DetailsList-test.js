@@ -27,12 +27,6 @@ describe('DetailsList', () => {
 					label="Test Label"
 					infoText="Test info"
 					infoTextPlacement="bottom"
-					list={['site1', 'site2']}
-					renderItem={(item, className) => (
-						<div key={item} className={className}>
-							{item}
-						</div>
-					)}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();

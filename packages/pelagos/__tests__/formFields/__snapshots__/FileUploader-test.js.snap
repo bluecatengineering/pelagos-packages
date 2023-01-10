@@ -86,11 +86,6 @@ exports[`FileUploader rendering renders expected elements when files is not set 
     optional={true}
     text="Test"
   />
-  <div
-    className="FileUploader__description"
-  >
-    Test description
-  </div>
   <button
     aria-describedby="random-id-helper"
     aria-label="Test. Test drop zone"
@@ -130,11 +125,6 @@ exports[`FileUploader rendering renders expected elements when optional properti
     optional={false}
     text="Test"
   />
-  <div
-    className="FileUploader__description FileUploader__description--disabled"
-  >
-    Test description
-  </div>
   <button
     aria-describedby="random-id-error"
     aria-label="Test. Test drop zone"
@@ -225,11 +215,6 @@ exports[`FileUploader rendering renders expected elements when showOpenFilePicke
     htmlFor="random-id"
     text="Test"
   />
-  <div
-    className="FileUploader__description"
-  >
-    Test description
-  </div>
   <button
     aria-describedby="random-id-helper"
     aria-label="Test. Test drop zone"
