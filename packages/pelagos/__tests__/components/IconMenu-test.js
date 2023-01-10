@@ -10,7 +10,8 @@ jest.unmock('../../src/components/IconMenu');
 
 const anyFunction = expect.any(Function);
 
-global.document = {};
+global.document = {scrollingElement: {}};
+global.innerHeight = 400;
 global.addEventListener = jest.fn();
 global.removeEventListener = jest.fn();
 
@@ -516,7 +517,7 @@ describe('IconMenu', () => {
 			it('sets the menu position', () => {
 				const getAttribute = jest.fn();
 				const focus = jest.fn();
-				const wrapper = {style: {}, dataset: {}};
+				const wrapper = {style: {}, dataset: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 100})};
 				const menu = {parentNode: wrapper, childNodes: [{getAttribute, focus}]};
 				const button = {
 					parentNode: {dataset: {layer: '2'}},
@@ -524,6 +525,7 @@ describe('IconMenu', () => {
 				};
 				useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
 				useState.mockReturnValueOnce([true]);
+				document.scrollingElement.scrollTop = 0;
 				shallow(
 					<IconMenu icon={{}}>
 						<IconMenuItem text="one" />
@@ -541,7 +543,11 @@ describe('IconMenu', () => {
 			it('sets the menu position when flipped is true', () => {
 				const getAttribute = jest.fn();
 				const focus = jest.fn();
-				const wrapper = {offsetWidth: 100, style: {}, dataset: {}};
+				const wrapper = {
+					style: {},
+					dataset: {},
+					getBoundingClientRect: jest.fn().mockReturnValue({height: 100, width: 100}),
+				};
 				const menu = {parentNode: wrapper, childNodes: [{getAttribute, focus}]};
 				const button = {
 					parentNode: {dataset: {layer: '2'}},
@@ -549,6 +555,7 @@ describe('IconMenu', () => {
 				};
 				useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
 				useState.mockReturnValueOnce([true]);
+				document.scrollingElement.scrollTop = 0;
 				shallow(
 					<IconMenu icon={{}} flipped>
 						<IconMenuItem text="one" />
@@ -557,7 +564,85 @@ describe('IconMenu', () => {
 				expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, true]]);
 
 				useLayoutEffect.mock.calls[0][0]();
-				expect(wrapper.style).toEqual({top: '100px', left: '101px'});
+				expect(wrapper.style).toEqual({top: '100px', left: '100px'});
+				expect(wrapper.dataset).toEqual({layer: '2'});
+				expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
+				expect(focus.mock.calls).toEqual([[]]);
+			});
+
+			it('sets the menu position when the menu goes beyond the page height', () => {
+				const getAttribute = jest.fn();
+				const focus = jest.fn();
+				const wrapper = {style: {}, dataset: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 100})};
+				const menu = {parentNode: wrapper, childNodes: [{getAttribute, focus}]};
+				const button = {
+					parentNode: {dataset: {layer: '2'}},
+					getBoundingClientRect: jest.fn().mockReturnValue({top: 280, bottom: 300, left: 200}),
+				};
+				useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
+				useState.mockReturnValueOnce([true]);
+				document.scrollingElement.scrollTop = 0;
+				shallow(
+					<IconMenu icon={{}}>
+						<IconMenuItem text="one" />
+					</IconMenu>
+				);
+				expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, undefined]]);
+
+				useLayoutEffect.mock.calls[0][0]();
+				expect(wrapper.style).toEqual({top: '180px', left: '200px'});
+				expect(wrapper.dataset).toEqual({layer: '2'});
+				expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
+				expect(focus.mock.calls).toEqual([[]]);
+			});
+
+			it('sets the menu position when the menu does not fit in the page', () => {
+				const getAttribute = jest.fn();
+				const focus = jest.fn();
+				const wrapper = {style: {}, dataset: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 200})};
+				const menu = {parentNode: wrapper, childNodes: [{getAttribute, focus}]};
+				const button = {
+					parentNode: {dataset: {layer: '2'}},
+					getBoundingClientRect: jest.fn().mockReturnValue({top: 180, bottom: 200, left: 200}),
+				};
+				useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
+				useState.mockReturnValueOnce([true]);
+				document.scrollingElement.scrollTop = 0;
+				shallow(
+					<IconMenu icon={{}}>
+						<IconMenuItem text="one" />
+					</IconMenu>
+				);
+				expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, undefined]]);
+
+				useLayoutEffect.mock.calls[0][0]();
+				expect(wrapper.style).toEqual({top: '0px', left: '200px'});
+				expect(wrapper.dataset).toEqual({layer: '2'});
+				expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
+				expect(focus.mock.calls).toEqual([[]]);
+			});
+
+			it('sets the menu position when scrollTop is not 0', () => {
+				const getAttribute = jest.fn();
+				const focus = jest.fn();
+				const wrapper = {style: {}, dataset: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 100})};
+				const menu = {parentNode: wrapper, childNodes: [{getAttribute, focus}]};
+				const button = {
+					parentNode: {dataset: {layer: '2'}},
+					getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200}),
+				};
+				useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
+				useState.mockReturnValueOnce([true]);
+				document.scrollingElement.scrollTop = 10;
+				shallow(
+					<IconMenu icon={{}}>
+						<IconMenuItem text="one" />
+					</IconMenu>
+				);
+				expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, undefined]]);
+
+				useLayoutEffect.mock.calls[0][0]();
+				expect(wrapper.style).toEqual({top: '110px', left: '200px'});
 				expect(wrapper.dataset).toEqual({layer: '2'});
 				expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
 				expect(focus.mock.calls).toEqual([[]]);
