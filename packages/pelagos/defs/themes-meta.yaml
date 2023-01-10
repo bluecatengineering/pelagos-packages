@@ -478,3 +478,15 @@ scrollbar-hover:
   group: custom
   set: base
   properties: []
+shadow-umbra:
+  group: shadow
+  set: base
+  properties: []
+shadow-penumbra:
+  group: shadow
+  set: base
+  properties: []
+shadow-ambient:
+  group: shadow
+  set: base
+  properties: []

@@ -16,7 +16,7 @@ const HEADER = [
 
 const FOOTER = ['.theme-dark() {', '\t.theme-yg100();', '}', '', '.theme-light() {', '\t.theme-cg00();', '}', ''];
 
-const SHADOWS = ['01', '02', '03', '04', '06', '08', '12', '16', '24'];
+const SHADOWS = parse(readFileSync('defs/shadows.yaml', 'utf8')).levels.map((l) => `${l}`.padStart(2, '0'));
 
 const themes = Object.entries(parse(readFileSync(IN, 'utf8')));
 
@@ -30,13 +30,11 @@ const entriesToLess = (value) =>
 		.map(([key, value]) => `\t--${key}: ${valueToLess(value)};`)
 		.join('\n');
 
-const themeFooter = (key) => {
-	const kind = /100$/.test(key) ? 'dark' : 'light';
-	return `${SHADOWS.map((n) => `\t--shadow-${n}: @shadow-${kind}-${n};`).join('\n')}
+const themeFooter = () =>
+	`${SHADOWS.map((n) => `\t--shadow-${n}: @shadow-${n};`).join('\n')}
 \t--print-color: @black;
 \t--print-medium: fade(@black, 65%);
 `;
-};
 
 writeFileSync(
 	LESS,
