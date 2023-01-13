@@ -47,7 +47,7 @@ const TableToolbarSearch = ({className, initialText, onChange, ...props}) => {
 				onKeyDown={handleKeyDown}
 			/>
 			{text && (
-				<button className="Table__searchClear" aria-label={t`Clear`} onClick={handleClearClick}>
+				<button className="Table__searchClear" aria-label={t`Clear search`} onClick={handleClearClick}>
 					<SvgIcon icon={xmarkThin} />
 				</button>
 			)}

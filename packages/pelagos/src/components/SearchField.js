@@ -35,7 +35,7 @@ const SearchField = ({className, initialText, onChange, ...props}) => {
 				onChange={handleChange}
 			/>
 			{text && (
-				<button className="SearchField__icon" aria-label={t`Clear`} onClick={handleClick}>
+				<button className="SearchField__icon" aria-label={t`Clear search`} onClick={handleClick}>
 					<SvgIcon icon={xmarkThin} />
 				</button>
 			)}

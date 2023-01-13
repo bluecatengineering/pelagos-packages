@@ -13,7 +13,7 @@ exports[`SearchField rendering renders expected elements 1`] = `
     value="foo"
   />
   <button
-    aria-label="Clear"
+    aria-label="Clear search"
     className="SearchField__icon"
     onClick={[Function]}
   >

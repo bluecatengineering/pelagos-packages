@@ -28,7 +28,7 @@ exports[`TableToolbarSearch rendering renders expected elements 1`] = `
     value="foo"
   />
   <button
-    aria-label="Clear"
+    aria-label="Clear search"
     className="Table__searchClear"
     onClick={[Function]}
   >
@@ -72,7 +72,7 @@ exports[`TableToolbarSearch rendering renders expected elements when className i
     value="foo"
   />
   <button
-    aria-label="Clear"
+    aria-label="Clear search"
     className="Table__searchClear"
     onClick={[Function]}
   >
@@ -116,7 +116,7 @@ exports[`TableToolbarSearch rendering renders expected elements when initialText
     value="bar"
   />
   <button
-    aria-label="Clear"
+    aria-label="Clear search"
     className="Table__searchClear"
     onClick={[Function]}
   >

@@ -85,6 +85,10 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
+#: 673
+msgid "Clear search"
+msgstr ""
+
 #: bbf
 msgid "Close"
 msgstr ""
