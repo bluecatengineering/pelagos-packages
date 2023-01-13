@@ -14,7 +14,6 @@
 }
 
 .FilterList__filterTitle {
-	margin-right: @sp-08;
 	color: var(--text-secondary);
 
 	@media print {
@@ -36,6 +35,9 @@
 .FilterList__button {
 	@focus-visible();
 	@layer-hover-effects();
+	display: flex;
+	align-items: center;
+	gap: @sp-08;
 	background-color: transparent;
 	border: none;
 	border-radius: 3px;

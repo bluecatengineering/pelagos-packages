@@ -6,6 +6,7 @@ import {t} from '@bluecateng/l10n.macro';
 import Layer from '../components/Layer';
 import ScrollBox from '../components/ScrollBox';
 import SvgIcon from '../components/SvgIcon';
+import MenuArrow from '../components/MenuArrow';
 import xmarkThin from '../icons/xmarkThin';
 
 import FilterEditor from './FilterEditor';
@@ -58,6 +59,7 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 													data-key={key}>
 													<span className="FilterList__filterTitle">{name}</span>
 													{getValues(key, v)}
+													<MenuArrow />
 												</button>
 												<button
 													id={`filter-${key}-remove`}

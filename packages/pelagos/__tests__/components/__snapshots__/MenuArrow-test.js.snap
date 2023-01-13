@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuArrow rendering renders expected elements 1`] = `
+<svg
+  className="MenuArrow"
+  viewBox="0 0 7 5"
+>
+  <path
+    d="m 0 1.5 l 1.1 -1.1 l 2.4 2.4 l 2.4 -2.4 l 1.1 1.1 l -3.5 3.5 z"
+  />
+</svg>
+`;
+
+exports[`MenuArrow rendering renders expected elements when optional properties are set 1`] = `
+<svg
+  className="MenuArrow TestClass"
+  viewBox="0 0 7 5"
+>
+  <path
+    d="m 0 1.5 l 1.1 -1.1 l 2.4 2.4 l 2.4 -2.4 l 1.1 1.1 l -3.5 3.5 z"
+  />
+</svg>
+`;

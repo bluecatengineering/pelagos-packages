@@ -64,6 +64,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
             >
               view
             </span>
+            <MenuArrow />
           </button>
           <button
             aria-label="Remove view filter"
@@ -172,6 +173,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
             >
               view
             </span>
+            <MenuArrow />
           </button>
           <button
             aria-label="Remove view filter"
@@ -209,6 +211,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
             >
               zoneName
             </span>
+            <MenuArrow />
           </button>
           <button
             aria-label="Remove zoneName filter"
