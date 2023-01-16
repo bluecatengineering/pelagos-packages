@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentSwitcher rendering renders expected elements 1`] = `
+<div
+  aria-orientation="horizontal"
+  className="ContentSwitcher"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="tablist"
+>
+  <ContentSwitcherButton
+    className="Foo"
+    data-index={0}
+    selected={true}
+    tabIndex={0}
+  />
+  <ContentSwitcherButton
+    className="Bar"
+    data-index={1}
+    selected={false}
+    tabIndex={-1}
+  />
+</div>
+`;
+
+exports[`ContentSwitcher rendering renders expected elements when optional properties are set 1`] = `
+<div
+  aria-orientation="horizontal"
+  className="ContentSwitcher TestClass"
+  id="test"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="tablist"
+>
+  <ContentSwitcherButton
+    className="Foo"
+    data-index={0}
+    selected={true}
+    tabIndex={0}
+  />
+  <ContentSwitcherButton
+    className="Bar"
+    data-index={1}
+    selected={false}
+    tabIndex={-1}
+  />
+</div>
+`;
