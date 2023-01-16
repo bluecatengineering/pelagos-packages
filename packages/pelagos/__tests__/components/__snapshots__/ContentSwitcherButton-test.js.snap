@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentSwitcherButton rendering renders expected elements 1`] = `
+<button
+  className="ContentSwitcher__button"
+  role="tab"
+>
+  Test
+</button>
+`;
+
+exports[`ContentSwitcherButton rendering renders expected elements when optional properties are set 1`] = `
+<button
+  aria-selected={true}
+  className="ContentSwitcher__button TestClass"
+  id="test"
+  role="tab"
+>
+  Test
+</button>
+`;

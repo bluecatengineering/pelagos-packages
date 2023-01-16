@@ -7,6 +7,8 @@ export {default as CheckBox} from './CheckBox';
 export {default as Collapsible} from './Collapsible';
 export {default as ComboBox} from './ComboBox';
 export {default as ConfirmDialog} from './ConfirmDialog';
+export {default as ContentSwitcher} from './ContentSwitcher';
+export {default as ContentSwitcherButton} from './ContentSwitcherButton';
 export {default as CopyButton} from './CopyButton';
 export {default as DetailEntry} from './DetailEntry';
 export {default as DetailsGrid} from './DetailsGrid';
