@@ -41,13 +41,13 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 		<>
 			<Layer className={`FilterList${className ? ` ${className}` : ''}`}>
 				<ScrollBox trackId="filterListTrack">
-					<div className="FilterList__items" onClick={handleClick}>
+					<ul className="FilterList__items" onClick={handleClick}>
 						{filters &&
 							Object.entries(filters).map(([key, v]) =>
 								!excludedKeys.includes(key)
 									? do {
 											const name = getFilterTitle(key);
-											<div key={key} className="FilterList__item">
+											<li key={key} className="FilterList__item">
 												<button
 													id={`filter-${key}`}
 													className="FilterList__button"
@@ -70,11 +70,11 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 													data-key={key}>
 													<SvgIcon icon={xmarkThin} />
 												</button>
-											</div>;
+											</li>;
 									  }
 									: null
 							)}
-					</div>
+					</ul>
 				</ScrollBox>
 			</Layer>
 			{filterName &&

@@ -4,6 +4,10 @@ exports[`ListInput rendering renders expected elements 1`] = `
 <div
   className="ListInput"
 >
+  <div
+    aria-live="assertive"
+    className="assistive-text"
+  />
   <LabelLine
     htmlFor="test"
     notice="Notice"
@@ -48,6 +52,10 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
 <div
   className="ListInput"
 >
+  <div
+    aria-live="assertive"
+    className="assistive-text"
+  />
   <LabelLine
     htmlFor="test"
     notice="Notice"
@@ -91,6 +99,10 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
 <div
   className="ListInput"
 >
+  <div
+    aria-live="assertive"
+    className="assistive-text"
+  />
   <LabelLine
     htmlFor="test"
     notice="Notice"
@@ -134,6 +146,10 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
 <div
   className="ListInput"
 >
+  <div
+    aria-live="assertive"
+    className="assistive-text"
+  />
   <LabelLine
     htmlFor="test"
     notice="Notice"
@@ -156,6 +172,7 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
     id="test-helper"
   />
   <div
+    aria-live="polite"
     className="ListInput__empty"
     id="test-empty"
   >

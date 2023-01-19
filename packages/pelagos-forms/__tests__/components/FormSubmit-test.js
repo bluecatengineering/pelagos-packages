@@ -9,7 +9,6 @@ describe('FormSubmit', () => {
 	it('renders expected elements', () => {
 		useFormState.mockReturnValue({
 			isChanged: jest.fn().mockReturnValue(true),
-			hasErrors: jest.fn().mockReturnValue(false),
 		});
 		const wrapper = shallow(<FormSubmit id="test" />);
 		expect(wrapper.getElement()).toMatchSnapshot();
@@ -18,7 +17,6 @@ describe('FormSubmit', () => {
 	it('renders expected elements when is changed returns false', () => {
 		useFormState.mockReturnValue({
 			isChanged: jest.fn().mockReturnValue(false),
-			hasErrors: jest.fn().mockReturnValue(true),
 		});
 		const wrapper = shallow(<FormSubmit id="test" />);
 		expect(wrapper.getElement()).toMatchSnapshot();

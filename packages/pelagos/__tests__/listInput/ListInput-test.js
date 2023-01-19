@@ -1,8 +1,7 @@
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import ListInput from '../../src/listInput/ListInput';
-import setLiveText from '../../src/functions/setLiveText';
 
 jest.unmock('../../src/listInput/ListInput');
 
@@ -122,6 +121,8 @@ describe('ListInput', () => {
 			const getHighlightKey = jest.fn();
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<ListInput
 					id="test"
@@ -137,7 +138,7 @@ describe('ListInput', () => {
 			expect(getHighlightKey.mock.calls).toEqual([[suggestion]]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[['Text', 'Foo']]]);
-			expect(setLiveText.mock.calls).toEqual([['Text added']]);
+			expect(live.textContent).toBe('Text added');
 		});
 
 		it('calls onListChange when the combo-box value changes and both parseInput and getSuggestionValue are set', () => {
@@ -147,6 +148,8 @@ describe('ListInput', () => {
 			const getItemName = jest.fn().mockReturnValue('Name');
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<ListInput
 					id="test"
@@ -165,7 +168,7 @@ describe('ListInput', () => {
 			expect(getItemName.mock.calls).toEqual([['Value']]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[['Value', 'Foo']]]);
-			expect(setLiveText.mock.calls).toEqual([['Name added']]);
+			expect(live.textContent).toBe('Name added');
 		});
 
 		it('calls onErrorChange when the combo-box value changes and validateSuggestion returns an error', () => {
@@ -203,6 +206,8 @@ describe('ListInput', () => {
 			const validateSuggestion = jest.fn();
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<ListInput
 					id="test"
@@ -220,7 +225,7 @@ describe('ListInput', () => {
 			expect(validateSuggestion.mock.calls).toEqual([[suggestion]]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[[suggestion, item]]]);
-			expect(setLiveText.mock.calls).toEqual([['Text added']]);
+			expect(live.textContent).toBe('Text added');
 		});
 
 		it('calls onListChange when the combo-box value changes, getSuggestionValue is set and validateSuggestion returns null', () => {
@@ -233,6 +238,8 @@ describe('ListInput', () => {
 			const getItemName = jest.fn().mockReturnValue('Name');
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<ListInput
 					id="test"
@@ -253,7 +260,7 @@ describe('ListInput', () => {
 			expect(validateSuggestion.mock.calls).toEqual([[suggestion]]);
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[[value, item]]]);
-			expect(setLiveText.mock.calls).toEqual([['Name added']]);
+			expect(live.textContent).toBe('Name added');
 		});
 
 		it('calls onListChange with an empty list when enter is pressed and text is /clear', () => {
@@ -290,6 +297,8 @@ describe('ListInput', () => {
 			const onListChange = jest.fn();
 			const onTextChange = jest.fn();
 			const onErrorChange = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
 			useState.mockReturnValueOnce(['', setText]).mockReturnValueOnce([null]);
 			const wrapper = shallow(
 				<ListInput
@@ -308,7 +317,7 @@ describe('ListInput', () => {
 			expect(onTextChange.mock.calls).toEqual([[false]]);
 			expect(onListChange.mock.calls).toEqual([[[...entries, ...list]]]);
 			expect(onErrorChange.mock.calls).toEqual([[null]]);
-			expect(setLiveText.mock.calls).toEqual([['Foo, Bar added']]);
+			expect(live.textContent).toBe('Foo, Bar added');
 		});
 
 		it('ignores input when enter is pressed and parseInput is not set', () => {

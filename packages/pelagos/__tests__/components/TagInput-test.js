@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 
 import TagInput from '../../src/components/TagInput';
 import useTooltip from '../../src/hooks/useTooltip';
-import setLiveText from '../../src/functions/setLiveText';
 import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/TagInput');
@@ -65,14 +64,15 @@ describe('TagInput', () => {
 			const onChange = jest.fn();
 			const focus = jest.fn();
 			const button = {dataset: {index: '0'}};
-			useRef.mockReturnValue({current: {focus}});
+			const live = {};
+			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
 			wrapper.simulate('click', {target: {closest: jest.fn().mockReturnValue(button)}});
 			expect(onChange.mock.calls).toEqual([[['bar']]]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(setLiveText.mock.calls).toEqual([['foo removed']]);
+			expect(live.textContent).toBe('foo removed');
 		});
 
 		it('does not call onChange when the container is clicked but not on a remove button', () => {
@@ -88,7 +88,8 @@ describe('TagInput', () => {
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
 			const focus = jest.fn();
-			useRef.mockReturnValue({current: {focus}});
+			const live = {};
+			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
@@ -96,7 +97,7 @@ describe('TagInput', () => {
 			expect(onChange.mock.calls).toEqual([[['foo', 'bar', 'baz']]]);
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(setLiveText.mock.calls).toEqual([['baz added']]);
+			expect(live.textContent).toBe('baz added');
 		});
 
 		it('does not call onChange when enter is pressed and the input text is empty', () => {
@@ -113,12 +114,15 @@ describe('TagInput', () => {
 		it('does not call onChange when enter is pressed and the input text is already in tags', () => {
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
+			const focus = jest.fn();
+			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({});
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
 			wrapper.find('#random-id').simulate('keydown', {keyCode: 13, preventDefault, target: {value: 'bar'}});
 			expect(onChange).not.toHaveBeenCalled();
 			expect(preventDefault.mock.calls).toEqual([[]]);
+			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls onError when enter is pressed and validate returns en error', () => {
@@ -126,6 +130,8 @@ describe('TagInput', () => {
 			const onChange = jest.fn();
 			const onError = jest.fn();
 			const preventDefault = jest.fn();
+			const focus = jest.fn();
+			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({});
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={validate} onChange={onChange} onError={onError} />
 			);
@@ -133,18 +139,21 @@ describe('TagInput', () => {
 			expect(onChange).not.toHaveBeenCalled();
 			expect(onError.mock.calls).toEqual([['error']]);
 			expect(preventDefault.mock.calls).toEqual([[]]);
+			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls onChange when backspace is pressed', () => {
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
 			wrapper.find('#random-id').simulate('keydown', {keyCode: 8, preventDefault, target: {value: ''}});
 			expect(onChange.mock.calls).toEqual([[['foo']]]);
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(setLiveText.mock.calls).toEqual([['bar removed']]);
+			expect(live.textContent).toBe('bar removed');
 		});
 
 		it('does not call onChange when backspace is pressed and the text is not empty', () => {
@@ -183,12 +192,14 @@ describe('TagInput', () => {
 
 		it('calls onChange on blur', () => {
 			const onChange = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
 			wrapper.find('#random-id').simulate('blur', {target: {value: 'baz'}});
 			expect(onChange.mock.calls).toEqual([[['foo', 'bar', 'baz']]]);
-			expect(setLiveText.mock.calls).toEqual([['baz added']]);
+			expect(live.textContent).toBe('baz added');
 		});
 
 		it('does not call onChange on blur if the input text is empty', () => {

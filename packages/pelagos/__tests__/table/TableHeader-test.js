@@ -33,6 +33,15 @@ describe('TableHeader', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when sortable is true and className is set', () => {
+			const wrapper = shallow(
+				<TableHeader id="test" className="TestClass" sortable align="center">
+					body
+				</TableHeader>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when sortable is not set', () => {
 			const wrapper = shallow(<TableHeader id="test">body</TableHeader>);
 			expect(wrapper.getElement()).toMatchSnapshot();

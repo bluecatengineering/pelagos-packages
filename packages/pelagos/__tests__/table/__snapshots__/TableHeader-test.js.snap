@@ -30,6 +30,7 @@ exports[`TableHeader rendering renders expected elements when sortable is not se
 exports[`TableHeader rendering renders expected elements when sortable is true 1`] = `
 <th
   aria-sort="ascending"
+  className="Table--sortable"
   id="test"
 >
   <button
@@ -55,9 +56,39 @@ exports[`TableHeader rendering renders expected elements when sortable is true 1
 </th>
 `;
 
+exports[`TableHeader rendering renders expected elements when sortable is true and className is set 1`] = `
+<th
+  aria-sort={null}
+  className="Table--sortable TestClass"
+  id="test"
+>
+  <button
+    className="Table__sort"
+    type="button"
+  >
+    <div
+      className="Table__sortLabel Table--center"
+    >
+      body
+    </div>
+    <SvgIcon
+      className="Table__sortIcon"
+      icon={
+        {
+          "icon": [],
+          "iconName": "sort",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+</th>
+`;
+
 exports[`TableHeader rendering renders expected elements when sortable is true and sortOrder is d 1`] = `
 <th
   aria-sort="descending"
+  className="Table--sortable"
   id="test"
 >
   <button
@@ -85,7 +116,8 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
 
 exports[`TableHeader rendering renders expected elements when sortable is true and sortOrder is not set 1`] = `
 <th
-  aria-sort="none"
+  aria-sort={null}
+  className="Table--sortable"
   id="test"
 >
   <button

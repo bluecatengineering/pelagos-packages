@@ -2,14 +2,14 @@
 
 exports[`CheckBoxFilterEditor rendering renders expected elements 1`] = `
 [
-  <React.Fragment>
-    <div
-      className="CheckBoxFilterEditor__label"
+  <fieldset
+    className="CheckBoxFilterEditor"
+  >
+    <legend
+      className="CheckBoxFilterEditor__legend"
     >
-      <Label
-        text="label"
-      />
-    </div>
+      label
+    </legend>
     <CheckBox
       checked={true}
       className="CheckBoxFilterEditor__option"
@@ -24,6 +24,6 @@ exports[`CheckBoxFilterEditor rendering renders expected elements 1`] = `
       label="b"
       onChange={[Function]}
     />
-  </React.Fragment>,
+  </fieldset>,
 ]
 `;

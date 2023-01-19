@@ -6,6 +6,7 @@ import useTooltipBase from './useTooltipBase';
  * Returns a callback ref to show a tooltip over the target element.
  * @param {string} text the tooltip text.
  * @param {'left'|'right'|'top'|'bottom'} placement the tooltip placement.
+ * @param {'describedby'|'labelledby'} [aria] the aria attribute to set on the target.
  * @returns {(function(Element): void)} callback ref.
  *
  * @example
@@ -13,11 +14,14 @@ import useTooltipBase from './useTooltipBase';
  *
  * const Example = () => <div ref={useTooltip('Example tooltip', 'top')}>...</div>
  */
-const useTooltip = (text, placement) => {
+const useTooltip = (text, placement, aria) => {
 	const targetRef = useRef(null);
 	const [showTooltip, hide] = useTooltipBase();
 
-	const show = useCallback(() => showTooltip(text, placement, targetRef.current), [text, placement, showTooltip]);
+	const show = useCallback(
+		() => showTooltip(text, placement, targetRef.current, aria),
+		[text, placement, showTooltip, aria]
+	);
 
 	return useCallback(
 		(element) => {

@@ -1,17 +1,23 @@
 import PropTypes from 'prop-types';
 
+import useRandomId from '../hooks/useRandomId';
+
 import Label from './Label';
 import './DetailsList.less';
 
 /** A list for the details panel. */
-const DetailsList = ({id, className, label, list, renderItem}) => (
-	<div className={`DetailsList ${className}`}>
-		<Label text={label} />
-		<div id={id} className="DetailsList__grid">
-			{list.map((item, index) => renderItem(item, 'DetailsList__item', index))}
+const DetailsList = ({id, className, label, list, renderItem}) => {
+	id = useRandomId(id);
+	const labelId = `${id}-label`;
+	return (
+		<div className={`DetailsList ${className}`} role="region" aria-labelledby={labelId}>
+			<Label id={labelId} text={label} />
+			<div id={id} className="DetailsList__grid">
+				{list.map((item, index) => renderItem(item, 'DetailsList__item', index))}
+			</div>
 		</div>
-	</div>
-);
+	);
+};
 
 DetailsList.propTypes = {
 	/** The component id. */

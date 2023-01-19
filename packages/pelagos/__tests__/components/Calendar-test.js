@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 
 import Calendar from '../../src/components/Calendar';
 import useRandomId from '../../src/hooks/useRandomId';
-import setLiveText from '../../src/functions/setLiveText';
 
 jest.unmock('../../src/components/Calendar');
 
@@ -67,38 +66,42 @@ describe('Calendar', () => {
 		it('sets live text on focus', () => {
 			const contains = jest.fn();
 			const current = {contains};
+			const live = {};
 			const relatedTarget = {};
-			useRef.mockReturnValueOnce({current});
+			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: live});
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
 			wrapper.find('#random-id').prop('onFocusCapture')({relatedTarget});
 
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
-			expect(setLiveText.mock.calls).toEqual([['Use cursor keys to select date']]);
+			expect(live.textContent).toBe('Use cursor keys to select date');
 		});
 
 		it('does not set live text on focus if the related target is inside the table', () => {
 			const contains = jest.fn().mockReturnValue(true);
 			const current = {contains};
+			const live = {};
 			const relatedTarget = {};
-			useRef.mockReturnValueOnce({current});
+			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: live});
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
 			wrapper.find('#random-id').prop('onFocusCapture')({relatedTarget});
 
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
-			expect(setLiveText).not.toHaveBeenCalled();
+			expect(live.textContent).toBeUndefined();
 		});
 
 		it('clears live text on blur', () => {
+			const live = {};
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: live});
 			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
 			wrapper.find('#random-id').prop('onBlurCapture')();
 
-			expect(setLiveText.mock.calls).toEqual([[null]]);
+			expect(live.textContent).toBeNull();
 		});
 
 		it('ignores the event when a key is pressed and any modifier is set', () => {

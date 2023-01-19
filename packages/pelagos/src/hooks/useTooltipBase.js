@@ -50,7 +50,7 @@ const createTooltip = () => {
 /**
  * return type for `useTooltipBase`.
  * @typedef {Array} useTooltipBase~Return
- * @property {function(string, string, Element): void} 0 function to show tooltip.
+ * @property {function(string, string, Element, string?): void} 0 function to show tooltip.
  * @property {function(): void} 1 function to hide tooltip.
  */
 
@@ -76,9 +76,10 @@ const createTooltip = () => {
  */
 const useTooltipBase = () => {
 	const targetRef = useRef(null);
+	const attributeRef = useRef(null);
 	const [tooltip, animation] = useMemo(() => createTooltip(), []);
 	const show = useCallback(
-		(text, placement, target) => {
+		(text, placement, target, aria) => {
 			if (text) {
 				tooltip.className = `Tooltip Tooltip--${placement}`;
 				tooltip.textContent = text;
@@ -87,7 +88,9 @@ const useTooltipBase = () => {
 				animation.playbackRate = 1;
 				animation.play();
 
-				target.setAttribute('aria-describedby', tooltip.id);
+				const attribute = `aria-${aria || 'describedby'}`;
+				target.setAttribute(attribute, tooltip.id);
+				attributeRef.current = attribute;
 				updatePosition(target, tooltip, placement);
 				targetRef.current = target;
 			}
@@ -96,7 +99,7 @@ const useTooltipBase = () => {
 	);
 	const hide = useCallback(() => {
 		if (tooltip.parentNode) {
-			targetRef.current.removeAttribute('aria-describedby');
+			targetRef.current.removeAttribute(attributeRef.current);
 			animation.pause();
 			animation.playbackRate = -1;
 			animation.play();

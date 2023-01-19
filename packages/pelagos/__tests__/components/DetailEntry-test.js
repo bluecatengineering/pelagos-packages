@@ -1,8 +1,11 @@
 import {shallow} from 'enzyme';
 
 import DetailEntry from '../../src/components/DetailEntry';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/DetailEntry');
+
+useRandomId.mockReturnValue('random-id');
 
 describe('DetailEntry', () => {
 	describe('rendering', () => {
@@ -18,6 +21,7 @@ describe('DetailEntry', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when infoText is set', () => {
