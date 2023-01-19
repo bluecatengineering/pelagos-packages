@@ -1,8 +1,11 @@
 import {shallow} from 'enzyme';
 
 import DetailsList from '../../src/components/DetailsList';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/DetailsList');
+
+useRandomId.mockReturnValue('random-id');
 
 describe('DetailsList', () => {
 	describe('rendering', () => {
@@ -21,6 +24,7 @@ describe('DetailsList', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 	});
 });

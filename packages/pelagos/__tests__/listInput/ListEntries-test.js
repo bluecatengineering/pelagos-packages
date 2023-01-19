@@ -1,10 +1,9 @@
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
 
 import ListEntries from '../../src/listInput/ListEntries';
 import renderListItem from '../../src/listItems/renderListItem';
-import setLiveText from '../../src/functions/setLiveText';
 import scrollIntoView from '../../src/functions/scrollIntoView';
 
 jest.unmock('../../src/listInput/ListEntries');
@@ -88,6 +87,8 @@ describe('ListEntries', () => {
 		it('calls onRemoveClick when the remove button is clicked', () => {
 			const onRemoveClick = jest.fn();
 			const item = {id: '0', name: 'test'};
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
 			const wrapper = shallow(
 				<ListEntries
 					id="test"
@@ -98,9 +99,9 @@ describe('ListEntries', () => {
 					onRemoveClick={onRemoveClick}
 				/>
 			);
-			wrapper.find('[role="list"]').simulate('click', {target: {closest: () => ({dataset: {index: '0'}})}});
+			wrapper.find('ul').simulate('click', {target: {closest: () => ({dataset: {index: '0'}})}});
 			expect(onRemoveClick.mock.calls).toEqual([[item, 0]]);
-			expect(setLiveText.mock.calls).toEqual([['test removed']]);
+			expect(live.textContent).toBe('test removed');
 		});
 
 		it('does not call onRemoveClick when the list is clicked outside', () => {
@@ -116,7 +117,7 @@ describe('ListEntries', () => {
 					onRemoveClick={onRemoveClick}
 				/>
 			);
-			wrapper.find('[role="list"]').simulate('click', {target: {closest: () => null}});
+			wrapper.find('ul').simulate('click', {target: {closest: () => null}});
 			expect(onRemoveClick.mock.calls).toEqual([]);
 		});
 

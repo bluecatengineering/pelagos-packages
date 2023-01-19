@@ -5,6 +5,10 @@ exports[`Calendar rendering renders expected elements 1`] = `
   className="Calendar"
 >
   <div
+    aria-live="polite"
+    className="assistive-text"
+  />
+  <div
     className="Calendar__monthHeader"
   >
     <IconButton
@@ -469,6 +473,10 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
 <div
   className="Calendar"
 >
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
   <div
     className="Calendar__monthHeader"
   >
@@ -935,6 +943,10 @@ exports[`Calendar rendering renders expected elements when focused is later than
   className="Calendar"
 >
   <div
+    aria-live="polite"
+    className="assistive-text"
+  />
+  <div
     className="Calendar__monthHeader"
   >
     <IconButton
@@ -1400,6 +1412,10 @@ exports[`Calendar rendering renders expected elements when optional properties a
   className="Calendar TestClass"
 >
   <div
+    aria-live="polite"
+    className="assistive-text"
+  />
+  <div
     className="Calendar__monthHeader"
   >
     <IconButton
@@ -1864,6 +1880,10 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
 <div
   className="Calendar"
 >
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
   <div
     className="Calendar__monthHeader"
   >

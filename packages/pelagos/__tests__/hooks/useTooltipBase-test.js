@@ -105,6 +105,20 @@ describe('useTooltipBase', () => {
 			expect(createElement.mock.results[0].value).toMatchSnapshot();
 		});
 
+		it('shows tooltip when aria is labelledby', () => {
+			const setAttribute = jest.fn();
+			const removeAttribute = jest.fn();
+			const getBoundingClientRect = jest.fn().mockReturnValue({top: 100, left: 100, width: 200, height: 50});
+			const [show, hide] = useTooltipBase();
+			elementBoundingRect.mockReturnValue({width: 20, height: 10});
+
+			show('Test', 'top', {setAttribute, removeAttribute, getBoundingClientRect}, 'labelledby');
+			createElement.mock.results[0].value.parentNode = document.body;
+			hide();
+			expect(setAttribute.mock.calls).toEqual([['aria-labelledby', 'tooltip-1']]);
+			expect(removeAttribute.mock.calls).toEqual([['aria-labelledby']]);
+		});
+
 		it('does not show tooltip on mouse over if text is null', () => {
 			const [show] = useTooltipBase();
 

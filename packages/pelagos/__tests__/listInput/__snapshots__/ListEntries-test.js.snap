@@ -1,186 +1,206 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListEntries rendering renders expected elements 1`] = `
-<div
-  className="ListEntries ListEntries--grid TestClass"
-  id="test"
-  onClick={[Function]}
-  role="list"
->
+<React.Fragment>
   <div
-    className="ListEntries__item"
-    data-testid="list-item"
-    role="listitem"
+    aria-live="polite"
+    className="assistive-text"
+  />
+  <ul
+    className="ListEntries ListEntries--grid TestClass"
+    id="test"
+    onClick={[Function]}
   >
-    <button
-      aria-label="Remove test"
-      className="ListEntries__icon"
-      data-index={0}
-      data-testid="remove-item"
-      type="button"
+    <li
+      className="ListEntries__item"
+      data-testid="list-item"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
+      <button
+        aria-label="Remove test"
+        className="ListEntries__icon"
+        data-index={0}
+        data-testid="remove-item"
+        type="button"
+      >
+        <SvgIcon
+          icon={
+            {
+              "icon": [],
+              "iconName": "xmark-thin",
+            }
           }
-        }
-      />
-    </button>
-    <div
-      className="ListEntries__name"
-    >
-      test
-    </div>
-  </div>
-</div>
+        />
+      </button>
+      <div
+        className="ListEntries__name"
+      >
+        test
+      </div>
+    </li>
+  </ul>
+</React.Fragment>
 `;
 
 exports[`ListEntries rendering renders expected elements when column is set 1`] = `
-<div
-  className="ListEntries ListEntries--column"
-  id="test"
-  onClick={[Function]}
-  role="list"
->
+<React.Fragment>
   <div
-    className="ListEntries__item"
-    data-testid="list-item"
-    role="listitem"
+    aria-live="polite"
+    className="assistive-text"
+  />
+  <ul
+    className="ListEntries ListEntries--column"
+    id="test"
+    onClick={[Function]}
   >
-    <button
-      aria-label="Remove test"
-      className="ListEntries__icon"
-      data-index={0}
-      data-testid="remove-item"
-      type="button"
+    <li
+      className="ListEntries__item"
+      data-testid="list-item"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
+      <button
+        aria-label="Remove test"
+        className="ListEntries__icon"
+        data-index={0}
+        data-testid="remove-item"
+        type="button"
+      >
+        <SvgIcon
+          icon={
+            {
+              "icon": [],
+              "iconName": "xmark-thin",
+            }
           }
-        }
-      />
-    </button>
-    <div
-      className="ListEntries__name"
-    >
-      test
-    </div>
-  </div>
-</div>
+        />
+      </button>
+      <div
+        className="ListEntries__name"
+      >
+        test
+      </div>
+    </li>
+  </ul>
+</React.Fragment>
 `;
 
 exports[`ListEntries rendering renders expected elements when highlightKey is set 1`] = `
-<div
-  className="ListEntries ListEntries--grid"
-  id="test"
-  onClick={[Function]}
-  role="list"
->
+<React.Fragment>
   <div
-    className="ListEntries__item ListEntries__item--highlight"
-    data-testid="list-item"
-    role="listitem"
+    aria-live="polite"
+    className="assistive-text"
+  />
+  <ul
+    className="ListEntries ListEntries--grid"
+    id="test"
+    onClick={[Function]}
   >
-    <button
-      aria-label="Remove test"
-      className="ListEntries__icon"
-      data-index={0}
-      data-testid="remove-item"
-      type="button"
+    <li
+      className="ListEntries__item ListEntries__item--highlight"
+      data-testid="list-item"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
+      <button
+        aria-label="Remove test"
+        className="ListEntries__icon"
+        data-index={0}
+        data-testid="remove-item"
+        type="button"
+      >
+        <SvgIcon
+          icon={
+            {
+              "icon": [],
+              "iconName": "xmark-thin",
+            }
           }
-        }
-      />
-    </button>
-    <div
-      className="ListEntries__name"
-    >
-      test
-    </div>
-  </div>
-</div>
+        />
+      </button>
+      <div
+        className="ListEntries__name"
+      >
+        test
+      </div>
+    </li>
+  </ul>
+</React.Fragment>
 `;
 
 exports[`ListEntries rendering renders expected elements when renderItem is not set 1`] = `
-<div
-  className="ListEntries ListEntries--grid"
-  id="test"
-  onClick={[Function]}
-  role="list"
->
+<React.Fragment>
   <div
-    className="ListEntries__item"
-    data-testid="list-item"
-    role="listitem"
+    aria-live="polite"
+    className="assistive-text"
+  />
+  <ul
+    className="ListEntries ListEntries--grid"
+    id="test"
+    onClick={[Function]}
   >
-    <button
-      aria-label="Remove test"
-      className="ListEntries__icon"
-      data-index={0}
-      data-testid="remove-item"
-      type="button"
+    <li
+      className="ListEntries__item"
+      data-testid="list-item"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
+      <button
+        aria-label="Remove test"
+        className="ListEntries__icon"
+        data-index={0}
+        data-testid="remove-item"
+        type="button"
+      >
+        <SvgIcon
+          icon={
+            {
+              "icon": [],
+              "iconName": "xmark-thin",
+            }
           }
-        }
-      />
-    </button>
-    <div
-      className="ListEntries__name"
-    >
-      test
-    </div>
-  </div>
-</div>
+        />
+      </button>
+      <div
+        className="ListEntries__name"
+      >
+        test
+      </div>
+    </li>
+  </ul>
+</React.Fragment>
 `;
 
 exports[`ListEntries rendering renders expected elements when the item has className 1`] = `
-<div
-  className="ListEntries ListEntries--grid"
-  id="test"
-  onClick={[Function]}
-  role="list"
->
+<React.Fragment>
   <div
-    className="ListEntries__item"
-    data-testid="list-item"
-    role="listitem"
+    aria-live="polite"
+    className="assistive-text"
+  />
+  <ul
+    className="ListEntries ListEntries--grid"
+    id="test"
+    onClick={[Function]}
   >
-    <button
-      aria-label="Remove test"
-      className="ListEntries__icon"
-      data-index={0}
-      data-testid="remove-item"
-      type="button"
+    <li
+      className="ListEntries__item"
+      data-testid="list-item"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
+      <button
+        aria-label="Remove test"
+        className="ListEntries__icon"
+        data-index={0}
+        data-testid="remove-item"
+        type="button"
+      >
+        <SvgIcon
+          icon={
+            {
+              "icon": [],
+              "iconName": "xmark-thin",
+            }
           }
-        }
-      />
-    </button>
-    <div
-      className="TestClass ListEntries__name"
-    >
-      test
-    </div>
-  </div>
-</div>
+        />
+      </button>
+      <div
+        className="TestClass ListEntries__name"
+      >
+        test
+      </div>
+    </li>
+  </ul>
+</React.Fragment>
 `;

@@ -2,7 +2,6 @@
 
 exports[`FormSubmit renders expected elements 1`] = `
 <Button
-  disabled={false}
   id="test"
   size="medium"
   type="primary"
@@ -11,7 +10,6 @@ exports[`FormSubmit renders expected elements 1`] = `
 
 exports[`FormSubmit renders expected elements when is changed returns false 1`] = `
 <Button
-  disabled={true}
   id="test"
   size="medium"
   type="tertiary"

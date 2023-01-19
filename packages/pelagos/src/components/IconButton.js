@@ -10,7 +10,7 @@ import './IconButton.less';
 /** An icon button. */
 const IconButton = forwardRef(
 	({id, icon, className, size, type, tooltipText, tooltipPlacement, overlay, disabled, onClick, ...props}, ref) => {
-		const tooltip = useTooltip(tooltipText, tooltipPlacement);
+		const tooltip = useTooltip(tooltipText, tooltipPlacement, 'labelledby');
 		const refs = ref ? setRefs(ref, tooltip) : tooltip;
 		return disabled ? (
 			<span

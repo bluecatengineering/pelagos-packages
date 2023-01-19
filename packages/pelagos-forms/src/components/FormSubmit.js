@@ -3,8 +3,8 @@ import {Button} from '@bluecateng/pelagos';
 import {useFormState} from '@bluecateng/auto-forms';
 
 const FormSubmit = ({...props}) => {
-	const {isChanged, hasErrors} = useFormState();
-	return <Button {...props} type={isChanged() ? 'primary' : 'tertiary'} disabled={hasErrors()} />;
+	const {isChanged} = useFormState();
+	return <Button {...props} type={isChanged() ? 'primary' : 'tertiary'} />;
 };
 
 FormSubmit.propTypes = {

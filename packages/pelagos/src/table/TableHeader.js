@@ -9,8 +9,8 @@ const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, c
 	sortable ? (
 		<th
 			{...props}
-			className={className}
-			aria-sort={sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : 'none'}
+			className={`Table--sortable${className ? ` ${className}` : ''}`}
+			aria-sort={sortOrder === 'a' ? 'ascending' : sortOrder === 'd' ? 'descending' : null}
 			ref={ref}>
 			<button className={`Table__sort${sortOrder ? ' Table__sort--active' : ''}`} type="button">
 				<div className={`Table__sortLabel Table--${align}`}>{children}</div>

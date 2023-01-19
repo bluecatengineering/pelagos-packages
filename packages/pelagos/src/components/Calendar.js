@@ -5,7 +5,6 @@ import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
 import l10n from '../l10n';
 import useRandomId from '../hooks/useRandomId';
-import setLiveText from '../functions/setLiveText';
 
 import IconButton from './IconButton';
 import './Calendar.less';
@@ -85,6 +84,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 	id = useRandomId(id);
 
 	const tableRef = useRef();
+	const liveRef = useRef();
 
 	const [focused, setFocused] = useState(getInitialDate);
 	const [highlighted, setHighlighted] = useState(null);
@@ -188,11 +188,11 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 
 	const handleFocus = useCallback((event) => {
 		if (!tableRef.current.contains(event.relatedTarget)) {
-			setLiveText(t`Use cursor keys to select date`);
+			liveRef.current.textContent = t`Use cursor keys to select date`;
 		}
 	}, []);
 
-	const handleBlur = useCallback(() => setLiveText(null), []);
+	const handleBlur = useCallback(() => (liveRef.current.textContent = null), []);
 
 	useEffect(() => {
 		const table = tableRef.current;
@@ -214,6 +214,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 
 	return (
 		<div {...props} className={`Calendar${className ? ` ${className}` : ''}`}>
+			<div className="assistive-text" aria-live="polite" ref={liveRef} />
 			<div className="Calendar__monthHeader">
 				<IconButton
 					className="Calendar__previous"

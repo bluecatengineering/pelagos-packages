@@ -1,34 +1,42 @@
 import PropTypes from 'prop-types';
 
+import useRandomId from '../hooks/useRandomId';
+
 import './DetailsTable.less';
 
 /** A table for the details panel. */
-const DetailsTable = ({className, rowClassName, title, list, columns}) => (
-	<div className={`DetailsTable ${className}`}>
-		<h5>{title}</h5>
-		<div className={`DetailsTable__headRow ${rowClassName}`}>
-			{columns.map(({key, headerClassName, header}) => (
-				<div key={key} className={headerClassName}>
-					{header}
+const DetailsTable = ({id, className, rowClassName, title, list, columns}) => {
+	id = useRandomId(id);
+	const titleId = `${id}-label`;
+	return (
+		<div className={`DetailsTable ${className}`} role="region" aria-labelledby={titleId}>
+			<h5 id={titleId}>{title}</h5>
+			<div className={`DetailsTable__headRow ${rowClassName}`}>
+				{columns.map(({key, headerClassName, header}) => (
+					<div key={key} className={headerClassName}>
+						{header}
+					</div>
+				))}
+			</div>
+			{list.map((item, index) => (
+				<div key={index} className={`DetailsTable__row ${rowClassName}`}>
+					{columns.map(({key, valueClassName, valueLong, renderValue}) => {
+						const value = renderValue(item, index);
+						return (
+							<div key={key} className={valueClassName} title={valueLong && value}>
+								{value}
+							</div>
+						);
+					})}
 				</div>
 			))}
 		</div>
-		{list.map((item, index) => (
-			<div key={index} className={`DetailsTable__row ${rowClassName}`}>
-				{columns.map(({key, valueClassName, valueLong, renderValue}) => {
-					const value = renderValue(item, index);
-					return (
-						<div key={key} className={valueClassName} title={valueLong && value}>
-							{value}
-						</div>
-					);
-				})}
-			</div>
-		))}
-	</div>
-);
+	);
+};
 
 DetailsTable.propTypes = {
+	/** The component id. */
+	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The row class name(s). */

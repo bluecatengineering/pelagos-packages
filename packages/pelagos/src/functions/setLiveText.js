@@ -11,6 +11,7 @@ const getLiveElement = () => {
 };
 
 /**
+ * @deprecated use a live area inside the component.
  * Sets the specified text on an element marked as `aria-live="assertive"`.
  * The element is created as required and reused in subsequent calls.
  * @param {string} text the text.

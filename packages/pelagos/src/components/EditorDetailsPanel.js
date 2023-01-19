@@ -26,7 +26,7 @@ const EditorDetailsPanel = ({
 	onEdit,
 	onDelete,
 }) => (
-	<aside id={id} className="EditorDetailsPanel">
+	<aside id={id} className="EditorDetailsPanel" aria-labelledby="detailsPanelTitle">
 		<IconButton
 			id="closeDetailsPanelBtn"
 			className="EditorDetailsPanel__close"

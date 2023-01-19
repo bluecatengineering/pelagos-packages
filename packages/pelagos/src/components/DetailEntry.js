@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import useRandomId from '../hooks/useRandomId';
+
 import Label from './Label';
 import InfoTooltip from './InfoTooltip';
 import './DetailEntry.less';
@@ -17,21 +19,25 @@ const DetailEntry = ({
 	valueTitle,
 	children,
 	...props
-}) => (
-	<div className={`DetailEntry${className ? ` ${className}` : ''}`}>
-		<div className="DetailEntry__label">
-			<Label text={label} htmlFor={id} />
-			{infoText && <InfoTooltip text={infoText} placement={infoTextPlacement} />}
+}) => {
+	id = useRandomId(id);
+	const labelId = `${id}-label`;
+	return (
+		<div className={`DetailEntry${className ? ` ${className}` : ''}`} role="region" aria-labelledby={labelId}>
+			<div className="DetailEntry__label">
+				<Label id={labelId} text={label} htmlFor={id} />
+				{infoText && <InfoTooltip text={infoText} placement={infoTextPlacement} />}
+			</div>
+			<div
+				{...props}
+				id={id}
+				className={`DetailEntry__value DetailEntry--${direction}${valueClass ? ` ${valueClass}` : ''}`}
+				title={valueTitle}>
+				{children || value}
+			</div>
 		</div>
-		<div
-			{...props}
-			id={id}
-			className={`DetailEntry__value DetailEntry--${direction}${valueClass ? ` ${valueClass}` : ''}`}
-			title={valueTitle}>
-			{children || value}
-		</div>
-	</div>
-);
+	);
+};
 
 DetailEntry.propTypes = {
 	/** The component id. */

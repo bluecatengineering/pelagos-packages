@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
 
-import setLiveText from '../functions/setLiveText';
 import useTooltip from '../hooks/useTooltip';
 import useRandomId from '../hooks/useRandomId';
 import xmarkThin from '../icons/xmarkThin';
@@ -27,6 +26,7 @@ const hasTag = (tags, value) => {
 const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, onChange, onError, ...props}) => {
 	id = useRandomId(id);
 	const inputRef = useRef(null);
+	const liveRef = useRef(null);
 
 	const [text, setText] = useState('');
 
@@ -38,7 +38,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 			if (button) {
 				const index = +button.dataset.index;
 				const name = tags[index];
-				setLiveText(t`${name} removed`);
+				liveRef.current.textContent = t`${name} removed`;
 				onChange(removeTag(tags, index));
 				inputRef.current.focus();
 			}
@@ -54,7 +54,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 					onError(error);
 				} else {
 					debChange.cancel();
-					setLiveText(t`${name} added`);
+					liveRef.current.textContent = t`${name} added`;
 					onChange([...tags, name]);
 					setText('');
 				}
@@ -85,7 +85,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 						if (length) {
 							const index = length - 1;
 							const name = tags[index];
-							setLiveText(t`${name} removed`);
+							liveRef.current.textContent = t`${name} removed`;
 							onChange(removeTag(tags, index));
 						}
 					}
@@ -112,6 +112,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 	const length = tags.length;
 	return (
 		<Layer id={`${id}-tags`} className={`TagInput${error ? ' TagInput--error' : ''}`} onClick={handleTagClick}>
+			<span className="assistive-text" aria-live="assertive" ref={liveRef} />
 			{length
 				? tags.map((name, i) => (
 						<span key={name} className="TagInput__tag">

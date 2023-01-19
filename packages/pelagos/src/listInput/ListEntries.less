@@ -4,6 +4,14 @@
 
 .ListEntries {
 	gap: @sp-08;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	&--column {
+		display: flex;
+		flex-direction: column;
+	}
 
 	&--grid {
 		display: grid;
@@ -17,6 +25,7 @@
 }
 
 .ListEntries__item {
+	display: flex;
 	flex-direction: row;
 	align-items: center;
 	overflow: hidden;

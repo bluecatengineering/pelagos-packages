@@ -1,4 +1,4 @@
-import {cloneElement, useCallback, useEffect, useMemo} from 'react';
+import {cloneElement, useCallback, useEffect, useMemo, useRef} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
@@ -6,7 +6,6 @@ import {t} from '@bluecateng/l10n.macro';
 import renderListItem from '../listItems/renderListItem';
 import SvgIcon from '../components/SvgIcon';
 import xmarkThin from '../icons/xmarkThin';
-import setLiveText from '../functions/setLiveText';
 import scrollIntoView from '../functions/scrollIntoView';
 
 import './ListEntries.less';
@@ -24,6 +23,8 @@ const ListEntries = ({
 	onRemoveClick,
 	onHighlightClear,
 }) => {
+	const liveRef = useRef(null);
+
 	const clearHighlight = useMemo(() => onHighlightClear && debounce(onHighlightClear, 1000), [onHighlightClear]);
 
 	const handleClick = useCallback(
@@ -33,7 +34,7 @@ const ListEntries = ({
 				const index = +target.dataset.index;
 				const item = list[index];
 				const name = getItemName(item);
-				setLiveText(t`${name} removed`);
+				liveRef.current.textContent = t`${name} removed`;
 				onRemoveClick(item, index);
 			}
 		},
@@ -52,36 +53,37 @@ const ListEntries = ({
 	}, [highlightKey, clearHighlight]);
 
 	return (
-		<div
-			id={id}
-			className={`ListEntries ListEntries--${column ? 'column' : 'grid'}${className ? ` ${className}` : ''}`}
-			role="list"
-			onClick={handleClick}>
-			{list.map((item, i) => {
-				const name = getItemName(item);
-				const element = renderItem ? renderItem(item) : renderListItem(name);
-				let className = element.props.className;
-				className = className ? `${className} ListEntries__name` : 'ListEntries__name';
-				const itemKey = getItemKey(item, i);
-				return (
-					<div
-						key={itemKey}
-						className={`ListEntries__item${itemKey === highlightKey ? ' ListEntries__item--highlight' : ''}`}
-						role="listitem"
-						data-testid="list-item">
-						<button
-							className="ListEntries__icon"
-							type="button"
-							aria-label={t`Remove ${name}`}
-							data-testid="remove-item"
-							data-index={i}>
-							<SvgIcon icon={xmarkThin} />
-						</button>
-						{cloneElement(element, {className})}
-					</div>
-				);
-			})}
-		</div>
+		<>
+			<div className="assistive-text" aria-live="polite" ref={liveRef} />
+			<ul
+				id={id}
+				className={`ListEntries ListEntries--${column ? 'column' : 'grid'}${className ? ` ${className}` : ''}`}
+				onClick={handleClick}>
+				{list.map((item, i) => {
+					const name = getItemName(item);
+					const element = renderItem ? renderItem(item) : renderListItem(name);
+					let className = element.props.className;
+					className = className ? `${className} ListEntries__name` : 'ListEntries__name';
+					const itemKey = getItemKey(item, i);
+					return (
+						<li
+							key={itemKey}
+							className={`ListEntries__item${itemKey === highlightKey ? ' ListEntries__item--highlight' : ''}`}
+							data-testid="list-item">
+							<button
+								className="ListEntries__icon"
+								type="button"
+								aria-label={t`Remove ${name}`}
+								data-testid="remove-item"
+								data-index={i}>
+								<SvgIcon icon={xmarkThin} />
+							</button>
+							{cloneElement(element, {className})}
+						</li>
+					);
+				})}
+			</ul>
+		</>
 	);
 };
 

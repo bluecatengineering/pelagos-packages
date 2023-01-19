@@ -1,16 +1,13 @@
 import PropTypes from 'prop-types';
 
-import Label from '../components/Label';
 import CheckBox from '../components/CheckBox';
 
 import './CheckBoxFilterEditor.less';
 
 /** Filter editor where options are presented as check boxes. */
 const CheckBoxFilterEditor = ({label, options, list, getLabel, onListChange}) => (
-	<>
-		<div className="CheckBoxFilterEditor__label">
-			<Label text={label} />
-		</div>
+	<fieldset className="CheckBoxFilterEditor">
+		<legend className="CheckBoxFilterEditor__legend">{label}</legend>
 		{options.map((opt) => (
 			<CheckBox
 				key={opt}
@@ -31,7 +28,7 @@ const CheckBoxFilterEditor = ({label, options, list, getLabel, onListChange}) =>
 				}
 			/>
 		))}
-	</>
+	</fieldset>
 );
 
 CheckBoxFilterEditor.propTypes = {

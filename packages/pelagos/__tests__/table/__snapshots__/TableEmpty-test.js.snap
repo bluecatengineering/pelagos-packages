@@ -2,6 +2,7 @@
 
 exports[`TableEmpty rendering renders expected elements 1`] = `
 <div
+  aria-live="polite"
   className="Table__empty"
   id="test"
 >
@@ -11,6 +12,7 @@ exports[`TableEmpty rendering renders expected elements 1`] = `
 
 exports[`TableEmpty rendering renders expected elements when className is set 1`] = `
 <div
+  aria-live="polite"
   className="Table__empty TestClass"
   id="test"
 >

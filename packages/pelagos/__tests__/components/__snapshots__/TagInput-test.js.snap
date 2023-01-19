@@ -7,6 +7,10 @@ exports[`TagInput rendering renders expected elements 1`] = `
   onClick={[Function]}
 >
   <span
+    aria-live="assertive"
+    className="assistive-text"
+  />
+  <span
     className="TagInput__tag"
   >
     foo
@@ -65,6 +69,10 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
   onClick={[Function]}
 >
   <span
+    aria-live="assertive"
+    className="assistive-text"
+  />
+  <span
     className="TagInput__tag"
   >
     foo
@@ -122,6 +130,10 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
   id="random-id-tags"
   onClick={[Function]}
 >
+  <span
+    aria-live="assertive"
+    className="assistive-text"
+  />
   <input
     className="TagInput__input"
     id="random-id"
@@ -140,6 +152,10 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
   id="random-id-tags"
   onClick={[Function]}
 >
+  <span
+    aria-live="assertive"
+    className="assistive-text"
+  />
   <span
     className="TagInput__defaultTag"
   >

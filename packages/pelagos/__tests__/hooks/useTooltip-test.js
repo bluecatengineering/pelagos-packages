@@ -25,6 +25,25 @@ describe('useTooltip', () => {
 		expect(show.mock.calls).toEqual([['Test', 'top', element]]);
 	});
 
+	it('shows tooltip on mouse over when aria is set', () => {
+		const addEventListener = jest.fn();
+		const show = jest.fn();
+		const hide = jest.fn();
+		const element = {addEventListener};
+		useTooltipBase.mockReturnValue([show, hide]);
+		const tooltip = useTooltip('Test', 'top', 'labelledby');
+		tooltip(element);
+		expect(addEventListener.mock.calls).toEqual([
+			['mouseenter', anyFunction],
+			['mouseleave', hide],
+			['focus', anyFunction],
+			['blur', hide],
+		]);
+
+		addEventListener.mock.calls[0][1]();
+		expect(show.mock.calls).toEqual([['Test', 'top', element, 'labelledby']]);
+	});
+
 	it('removes listeners from previous target when target changes', () => {
 		const addEventListener = jest.fn();
 		const removeEventListener = jest.fn();

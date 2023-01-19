@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 
@@ -6,7 +6,6 @@ import LabelLine from '../components/LabelLine';
 import ComboBox from '../components/ComboBox';
 import FieldError from '../formFields/FieldError';
 import FieldHelper from '../formFields/FieldHelper';
-import setLiveText from '../functions/setLiveText';
 
 import ListEntries from './ListEntries';
 
@@ -38,6 +37,8 @@ const ListInput = ({
 	onErrorChange,
 	...props
 }) => {
+	const liveRef = useRef(null);
+
 	const [text, setText] = useState('');
 	const [highlightKey, setHighlightKey] = useState(null);
 
@@ -69,7 +70,7 @@ const ListInput = ({
 				} else {
 					item = name = getSuggestionText(suggestion);
 				}
-				setLiveText(t`${name} added`);
+				liveRef.current.textContent = t`${name} added`;
 				setText('');
 				onTextChange(false);
 				onListChange([item, ...list]);
@@ -82,7 +83,7 @@ const ListInput = ({
 					onTextChange(!!name);
 					onErrorChange(error);
 				} else {
-					setLiveText(t`${name} added`);
+					liveRef.current.textContent = t`${name} added`;
 					setText('');
 					onTextChange(false);
 					onListChange([item, ...list]);
@@ -115,7 +116,7 @@ const ListInput = ({
 					onErrorChange(error);
 				} else {
 					const name = entries.map(getItemName).join(', ');
-					setLiveText(t`${name} added`);
+					liveRef.current.textContent = t`${name} added`;
 					setText('');
 					onTextChange(false);
 					onListChange([...entries, ...list]);
@@ -149,6 +150,7 @@ const ListInput = ({
 	const errorId = `${id}-error`;
 	return (
 		<div className="ListInput">
+			<div className="assistive-text" aria-live="assertive" ref={liveRef} />
 			<LabelLine htmlFor={id} text={label} optional={optional && empty} notice={notice} />
 			<ComboBox
 				{...props}
@@ -165,7 +167,7 @@ const ListInput = ({
 			/>
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
 			{empty ? (
-				<div className="ListInput__empty" id={id + '-empty'}>
+				<div className="ListInput__empty" id={id + '-empty'} aria-live="polite">
 					{emptyText}
 				</div>
 			) : (

@@ -2,9 +2,13 @@
 
 exports[`DetailsTable rendering renders expected elements 1`] = `
 <div
+  aria-labelledby="random-id-label"
   className="DetailsTable TestClass"
+  role="region"
 >
-  <h5>
+  <h5
+    id="random-id-label"
+  >
     Title
   </h5>
   <div
