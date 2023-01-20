@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkButton rendering renders expected elements when both size is small and disabled is true 1`] = `
+<span
+  aria-disabled="true"
+  className="Button Button--small Button--tertiary"
+  id="test"
+>
+  Test
+</span>
+`;
+
+exports[`LinkButton rendering renders expected elements when className is set 1`] = `
+<a
+  className="Button Button--medium Button--tertiary testClass"
+  id="test"
+  onKeyDown={[Function]}
+>
+  Test
+</a>
+`;
+
+exports[`LinkButton rendering renders expected elements when disabled is true 1`] = `
+<span
+  aria-disabled="true"
+  className="Button Button--medium Button--tertiary"
+  id="test"
+>
+  Test
+</span>
+`;
+
+exports[`LinkButton rendering renders expected elements when disabled is true and className is set 1`] = `
+<span
+  aria-disabled="true"
+  className="Button Button--medium Button--tertiary testClass"
+  id="test"
+>
+  Test
+</span>
+`;
+
+exports[`LinkButton rendering renders expected elements when size is small 1`] = `
+<a
+  className="Button Button--small Button--tertiary"
+  id="test"
+  onKeyDown={[Function]}
+>
+  Test
+</a>
+`;
+
+exports[`LinkButton rendering renders expected elements when tooltipText is set 1`] = `
+<a
+  className="Button Button--medium Button--tertiary"
+  id="test"
+  onKeyDown={[Function]}
+>
+  Test
+</a>
+`;
+
+exports[`LinkButton rendering renders expected elements when type is primary 1`] = `
+<a
+  className="Button Button--medium Button--primary"
+  id="test"
+  onKeyDown={[Function]}
+>
+  Test
+</a>
+`;
