@@ -27,7 +27,7 @@ exports[`FileUploader rendering renders expected elements 1`] = `
     Test drop zone
   </button>
   <input
-    accept="text/x-foo,.foo,application/x-foo,text/x-bar,.bar1,.bar2,text/x-baz,.baz"
+    accept={null}
     className="FileUploader__input"
     onChange={[Function]}
     type="file"
