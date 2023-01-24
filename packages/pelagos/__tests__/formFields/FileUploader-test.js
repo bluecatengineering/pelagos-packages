@@ -22,7 +22,6 @@ describe('FileUploader', () => {
 					label="Test"
 					description="Test description"
 					dropZoneText="Test drop zone"
-					types={types}
 					files={[{name: 'foo.txt'}]}
 				/>
 			);

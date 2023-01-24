@@ -51,7 +51,9 @@ const invokeOnChange = (onChange, multiple, files, selectedFiles) => {
 };
 
 const convertToAccept = (types) =>
-	Array.from(new Set(types.flatMap(({accept}) => Object.entries(accept).flatMap(([k, v]) => [k, ...v])))).join(',');
+	types
+		? Array.from(new Set(types.flatMap(({accept}) => Object.entries(accept).flatMap(([k, v]) => [k, ...v])))).join(',')
+		: null;
 
 /** Accepts one or more files to upload. */
 const FileUploader = ({
