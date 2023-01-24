@@ -2,6 +2,8 @@ import {faCat} from '@fortawesome/free-solid-svg-icons';
 
 import {IconButton} from '../src';
 
+import './IconButton.stories.less';
+
 const Template = (args) => <IconButton {...args} />;
 
 export const Primary = Template.bind({});
@@ -18,6 +20,15 @@ Ghost.args = {icon: faCat, type: 'ghost', tooltipText: 'Ghost', 'aria-label': 'G
 
 export const Disabled = Template.bind({});
 Disabled.args = {icon: faCat, tooltipText: 'Disabled', 'aria-label': 'Disabled', disabled: true};
+
+export const Overlay = Template.bind({});
+Overlay.args = {
+	icon: faCat,
+	type: 'primary',
+	tooltipText: 'Overlay',
+	overlay: <div className="IconButtonStory__overlay">42</div>,
+	'aria-label': 'Overlay',
+};
 
 export const AllStates = () => (
 	<div className="Story__row">

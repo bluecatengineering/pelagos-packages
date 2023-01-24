@@ -54,6 +54,20 @@ exports[`IconButton rendering renders the expected elements when className is no
 </button>
 `;
 
+exports[`IconButton rendering renders the expected elements when overlay is set 1`] = `
+<button
+  aria-label="Test"
+  className="IconButton IconButton--medium IconButton--ghost TestClass"
+  id="test"
+  type="button"
+>
+  <SvgIcon
+    icon={{}}
+  />
+  overlay
+</button>
+`;
+
 exports[`IconButton rendering renders the expected elements when size and tooltipPlacement are set 1`] = `
 <button
   aria-label="Test"

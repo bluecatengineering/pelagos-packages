@@ -62,6 +62,20 @@ describe('IconButton', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders the expected elements when overlay is set', () => {
+			const wrapper = shallow(
+				<IconButton
+					id="test"
+					icon={{}}
+					className="TestClass"
+					aria-label="Test"
+					tooltipText="This is a test"
+					overlay="overlay"
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {

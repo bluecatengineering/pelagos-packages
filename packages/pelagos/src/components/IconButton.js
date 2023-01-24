@@ -9,7 +9,7 @@ import './IconButton.less';
 
 /** An icon button. */
 const IconButton = forwardRef(
-	({id, icon, className, size, type, tooltipText, tooltipPlacement, disabled, onClick, ...props}, ref) => {
+	({id, icon, className, size, type, tooltipText, tooltipPlacement, overlay, disabled, onClick, ...props}, ref) => {
 		const tooltip = useTooltip(tooltipText, tooltipPlacement);
 		const refs = ref ? setRefs(ref, tooltip) : tooltip;
 		return disabled ? (
@@ -21,6 +21,7 @@ const IconButton = forwardRef(
 				aria-disabled="true"
 				ref={refs}>
 				<SvgIcon icon={icon} />
+				{overlay}
 			</span>
 		) : (
 			<button
@@ -31,6 +32,7 @@ const IconButton = forwardRef(
 				ref={refs}
 				onClick={onClick}>
 				<SvgIcon icon={icon} />
+				{overlay}
 			</button>
 		);
 	}
@@ -53,6 +55,8 @@ IconButton.propTypes = {
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
 	tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+	/** An overlay element. */
+	overlay: PropTypes.node,
 	/** Whether the button is disabled. */
 	disabled: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
