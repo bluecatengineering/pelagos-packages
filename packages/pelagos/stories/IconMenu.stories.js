@@ -1,9 +1,9 @@
+import {action} from '@storybook/addon-actions';
 import {faCat} from '@fortawesome/free-solid-svg-icons';
 
 import {IconMenu, IconMenuItem} from '../src';
 
-// eslint-disable-next-line no-console
-const handleClick = (event) => console.log(event.target);
+const handleClick = action('onClick');
 
 const Template = (args) => <IconMenu {...args} />;
 
