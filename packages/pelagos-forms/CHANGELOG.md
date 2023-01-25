@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@4.1.0...@bluecateng/pelagos-forms@4.1.1) (2023-01-25)
+
+### Bug Fixes
+
+- improve accessibility ([9643fb9](https://github.com/bluecatengineering/pelagos-packages/commit/9643fb902759b568c22538da553274e70d2cbd0f))
+
 # [4.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@4.0.0...@bluecateng/pelagos-forms@4.1.0) (2022-10-25)
 
 ### Features

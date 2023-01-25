@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.1.0...@bluecateng/pelagos@10.2.0) (2023-01-25)
+
+### Bug Fixes
+
+- add an arrow to the filter list items ([4d5ddf4](https://github.com/bluecatengineering/pelagos-packages/commit/4d5ddf4f897d438d241e3e9c422028ce5246847e))
+- allow TagInput height to increase when tags wrap ([74fae6d](https://github.com/bluecatengineering/pelagos-packages/commit/74fae6df94df53db23c0b126aea0562d8b594600))
+- allow unset types property in FileUploader ([ecaf9cd](https://github.com/bluecatengineering/pelagos-packages/commit/ecaf9cd54d9b39e000a37beb4ce8b0aa628407b5))
+- display FilterEditor as a new layer ([a1fa36c](https://github.com/bluecatengineering/pelagos-packages/commit/a1fa36c6670e191eaa8ae246692d72209d528941))
+- handle cases where the menu is not visible ([d7929f5](https://github.com/bluecatengineering/pelagos-packages/commit/d7929f5c509bd9eacf2bdda701434388264a586d))
+- hide breadcrumb separators from screen readers ([8819f03](https://github.com/bluecatengineering/pelagos-packages/commit/8819f03899ca0587914e6fe4200b1d0da77daa2d))
+- improve accessibility ([9643fb9](https://github.com/bluecatengineering/pelagos-packages/commit/9643fb902759b568c22538da553274e70d2cbd0f))
+- improve search a11y ([fca56c4](https://github.com/bluecatengineering/pelagos-packages/commit/fca56c40b4ea140be718f58dd96203a55e41580e))
+- set focus on menu items ([5546bf1](https://github.com/bluecatengineering/pelagos-packages/commit/5546bf1d84b9d5279981a1bc4dacba4215bc6207))
+
+### Features
+
+- add ContentSwitcher component ([279c672](https://github.com/bluecatengineering/pelagos-packages/commit/279c6720028b90f1e91061fe244dc4f9df9fe9da))
+- add LinkButton component ([ad9e8b6](https://github.com/bluecatengineering/pelagos-packages/commit/ad9e8b677a54757d434eea56ee26d69a90a96bac))
+- add overlay property to IconButton ([90837f0](https://github.com/bluecatengineering/pelagos-packages/commit/90837f088e0983e50b6900492116d03190fdf469))
+
 # [10.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.0.0...@bluecateng/pelagos@10.1.0) (2022-10-31)
 
 ### Features

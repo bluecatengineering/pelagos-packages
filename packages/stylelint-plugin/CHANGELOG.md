@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/stylelint-plugin@4.0.0...@bluecateng/stylelint-plugin@4.0.1) (2023-01-25)
+
+**Note:** Version bump only for package @bluecateng/stylelint-plugin
+
 ## 4.0.0 (2022-10-13)
 
 ### BREAKING CHANGES
