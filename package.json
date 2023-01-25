@@ -8,6 +8,7 @@
     "test-ci": "jest --ci --silent --reporters=jest-junit --coverageReporters=cobertura",
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 9001 -c .storybook",
     "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook -c .storybook -o .out",
+    "start": "lerna run prepack && npm run storybook",
     "lint": "eslint .",
     "lint-ci": "eslint . -f @microsoft/eslint-formatter-sarif -o build/eslint-results.sarif",
     "lint-styles": "stylelint **/*.less",
