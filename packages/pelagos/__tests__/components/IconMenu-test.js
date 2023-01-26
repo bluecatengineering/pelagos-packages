@@ -69,14 +69,60 @@ describe('IconMenu', () => {
 	});
 
 	describe('behaviour', () => {
+		describe('handleButtonKeyDown', () => {
+			it('calls click on the target when down is pressed', () => {
+				const preventDefault = jest.fn();
+				const click = jest.fn();
+				useState.mockReturnValueOnce([false]);
+				const wrapper = shallow(
+					<IconMenu icon={{}}>
+						<IconMenuItem text="one" />
+					</IconMenu>
+				);
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 40, preventDefault, target: {click}});
+
+				expect(preventDefault.mock.calls).toEqual([[]]);
+				expect(click.mock.calls).toEqual([[]]);
+			});
+
+			it('ignores event if any modifier is set', () => {
+				const preventDefault = jest.fn();
+				useState.mockReturnValueOnce([false]);
+				const wrapper = shallow(
+					<IconMenu icon={{}}>
+						<IconMenuItem text="one" />
+					</IconMenu>
+				);
+				const button = wrapper.find('#random-id');
+				button.simulate('keydown', {keyCode: 40, shiftKey: true, preventDefault});
+				button.simulate('keydown', {keyCode: 40, ctrlKey: true, preventDefault});
+				button.simulate('keydown', {keyCode: 40, altKey: true, preventDefault});
+				button.simulate('keydown', {keyCode: 40, metaKey: true, preventDefault});
+
+				expect(preventDefault.mock.calls).toEqual([]);
+			});
+
+			it('ignores event if an unknown key is pressed', () => {
+				const preventDefault = jest.fn();
+				useState.mockReturnValueOnce([false]);
+				const wrapper = shallow(
+					<IconMenu icon={{}}>
+						<IconMenuItem text="one" />
+					</IconMenu>
+				);
+				wrapper.find('#random-id').simulate('keydown', {keyCode: 32, preventDefault});
+
+				expect(preventDefault.mock.calls).toEqual([]);
+			});
+		});
+
 		describe('handleButtonClick', () => {
 			it('calls setMenuVisible', () => {
 				const setMenuVisible = jest.fn();
 				useState.mockReturnValueOnce([false, setMenuVisible]);
 				const wrapper = shallow(
 					<IconMenu icon={{}}>
-						<IconMenuItem text="one" disabled />
-						<IconMenuItem text="two" />
+						<IconMenuItem text="one" />
 					</IconMenu>
 				);
 				wrapper.find('#random-id').simulate('click');

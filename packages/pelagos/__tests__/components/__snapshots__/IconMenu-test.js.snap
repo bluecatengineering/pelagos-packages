@@ -15,6 +15,7 @@ exports[`IconMenu rendering renders expected elements 1`] = `
     }
     id="random-id"
     onClick={[Function]}
+    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -37,6 +38,7 @@ exports[`IconMenu rendering renders expected elements when all items are disable
     }
     id="random-id"
     onClick={[Function]}
+    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -59,6 +61,7 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
     }
     id="random-id"
     onClick={[Function]}
+    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -81,6 +84,7 @@ exports[`IconMenu rendering renders expected elements when menuVisible is true 1
     }
     id="random-id"
     onClick={[Function]}
+    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -136,6 +140,7 @@ exports[`IconMenu rendering renders expected elements when optional properties a
     }
     id="random-id"
     onClick={[Function]}
+    onKeyDown={[Function]}
     overlay={
       <MenuArrow
         className="IconMenu__overlay"

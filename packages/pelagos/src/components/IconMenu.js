@@ -55,6 +55,13 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 
 	const allDisabled = useMemo(() => Children.toArray(children).every((child) => child.props.disabled), [children]);
 
+	const handleButtonKeyDown = useCallback((event) => {
+		if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey && event.keyCode === 40) {
+			event.preventDefault();
+			event.target.click();
+		}
+	}, []);
+
 	const handleButtonClick = useCallback(() => setMenuVisible((value) => !value), []);
 
 	const handleMenuKeyDown = useCallback((event) => {
@@ -150,6 +157,7 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 				aria-haspopup="true"
 				aria-expanded={menuVisible}
 				ref={ref ? setRefs(ref, buttonRef) : buttonRef}
+				onKeyDown={handleButtonKeyDown}
 				onClick={handleButtonClick}
 			/>
 			{menuVisible &&
