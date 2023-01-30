@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.2.0...@bluecateng/pelagos@10.2.1) (2023-01-30)
+
+### Bug Fixes
+
+- set nowrap on the filter list items ([6566206](https://github.com/bluecatengineering/pelagos-packages/commit/6566206492760cfddf6a31f894d8a7efebefe4b5))
+- show the menu when down is pressed on the button ([a5ddce5](https://github.com/bluecatengineering/pelagos-packages/commit/a5ddce5d2e0255b149b0c448c8ac26fdcf871824))
+
 # [10.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.1.0...@bluecateng/pelagos@10.2.0) (2023-01-25)
 
 ### Bug Fixes
