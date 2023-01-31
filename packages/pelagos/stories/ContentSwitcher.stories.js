@@ -13,5 +13,6 @@ Default.args = {selected: 0};
 export default {
 	title: 'Components/ContentSwitcher',
 	component: ContentSwitcher,
+	subcomponents: {ContentSwitcherButton},
 	parameters: {actions: {argTypesRegex: '^on.*'}},
 };

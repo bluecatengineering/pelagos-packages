@@ -18,5 +18,6 @@ Normal.args = {
 export default {
 	title: 'Components/Breadcrumb',
 	component: Breadcrumb,
+	subcomponents: {BreadcrumbItem},
 	decorators: [(story) => <div style={{marginLeft: '24px'}}>{story()}</div>],
 };
