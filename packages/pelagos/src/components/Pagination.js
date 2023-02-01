@@ -63,7 +63,7 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 					<div>{t`page ${page}`}</div>
 				) : (
 					<>
-						<label htmlFor={pageId}>{`page`}</label>
+						<label htmlFor={pageId}>{t`page`}</label>
 						<SelectNative id={pageId} onChange={handlePageChange}>
 							{pages.map((n) => (
 								<option key={n} value={n} selected={n === page}>
@@ -71,7 +71,7 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 								</option>
 							))}
 						</SelectNative>
-						<div>{`of ${totalPages}`}</div>
+						<div>{t`of ${totalPages}`}</div>
 					</>
 				)}
 				<div className="Pagination__buttons">

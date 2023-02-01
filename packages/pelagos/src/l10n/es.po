@@ -5,7 +5,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @bluecateng/l10n-cli\n"
-"Language: en\n"
+"Language: es\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: \n"
@@ -15,63 +15,63 @@ msgstr ""
 
 #: f93
 msgid "\"{fileName}\" attached."
-msgstr ""
+msgstr "\"{fileName}\" anexado."
 
 #: 048
 msgid "(configured)"
-msgstr ""
+msgstr "(configurado)"
 
 #: b16
 msgid "(optional)"
-msgstr ""
+msgstr "(opcional)"
 
 #: 027
 msgid "{0} dropped. Final position in list: {1} of {count}."
-msgstr ""
+msgstr "{0} soltado. Posición final en la lista: {1} de {count}."
 
 #: b2b
 msgid "{0} grabbed. Current position in list: {1} of {count}. Press up or down arrow keys to change position, space bar to drop, Escape key to cancel."
-msgstr ""
+msgstr "{0} tomado. Posición actual en la lista: {1} de {count}. Presione las teclas arriba o abajo para cambiar posición, barra espaciadora para soltar, Escape para cancelar."
 
 #: f7b
 msgid "{0} reorder cancelled."
-msgstr ""
+msgstr "Reorganización de {0} cancelada."
 
 #: 607
 msgid "{0}. Current position in list: {1} of {count}."
-msgstr ""
+msgstr "{0}. Posición actual en la lista: {1} de {count}."
 
 #: e3e
 msgid "{min}-{max} items"
-msgstr ""
+msgstr "Elementos {min}-{max}"
 
 #: 846
 msgid "{min}-{max} of {total} items"
-msgstr ""
+msgstr "Elementos {min}-{max} de {total}"
 
 #: dae
 msgid "{name} added"
-msgstr ""
+msgstr "{name} añadido"
 
 #: c5f
 msgid "{name} removed"
-msgstr ""
+msgstr "{name} removido"
 
 #: 1e6
 msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
-msgstr ""
+msgstr "{selectedCount, plural, one {un elemento seleccionado} other {# elementos seleccionados}}"
 
 #: 61c
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: 854
 msgid "Add filter"
-msgstr ""
+msgstr "Añadir filtro"
 
 #: b52
 msgid "Back"
-msgstr ""
+msgstr "Atrás"
 
 #: c76
 msgid "Breadcrumb"
@@ -79,100 +79,100 @@ msgstr ""
 
 #: 77d
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: 719
 msgid "Clear"
-msgstr ""
+msgstr "Limpiar"
 
 #: 673
 msgid "Clear search"
-msgstr ""
+msgstr "Limpiar búsqueda"
 
 #: bbf
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: 076
 msgid "Column {0} of {columnCount}"
-msgstr ""
+msgstr "Columna {0} de {columnCount}"
 
 #: 8e3
 msgid "Copied"
-msgstr ""
+msgstr "Copiado"
 
 #: af7
 msgid "Copy"
-msgstr ""
+msgstr "Copiar"
 
 #: 54c
 msgid "Copy failed: {message}"
-msgstr ""
+msgstr "Fallo en copia: {message}"
 
 #: f6f
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: 70a
 msgid "Dismiss"
-msgstr ""
+msgstr "Descartar"
 
 #: 530
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: 6a0
 msgid "Items per page"
-msgstr ""
+msgstr "Elementos por página"
 
 #: 8f2
 msgid "Loading"
-msgstr ""
+msgstr "Cargando"
 
 #: 646
 msgid "member"
-msgstr ""
+msgstr "miembro"
 
 #: 8ab
 msgid "Next month"
-msgstr ""
+msgstr "Mes siguiente"
 
 #: 350
 msgid "of {totalPages}"
-msgstr ""
+msgstr "de {totalPages}"
 
 #: 6bf
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: 767
 msgid "page"
-msgstr ""
+msgstr "página"
 
 #: d14
 msgid "page {page}"
-msgstr ""
+msgstr "página {page}"
 
 #: 187
 msgid "Press Enter to add item(s) to the list."
-msgstr ""
+msgstr "Presione Entrar para añadir elemento(s) a la lista."
 
 #: 46a
 msgid "Previous month"
-msgstr ""
+msgstr "Mes anterior"
 
 #: df7
 msgid "Remove {name}"
-msgstr ""
+msgstr "Eliminar {name}"
 
 #: 9e5
 msgid "Remove {name} filter"
-msgstr ""
+msgstr "Eliminar filtro {name}"
 
 #: efc
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: ea2
 msgid "Use cursor keys to select date"
-msgstr ""
+msgstr "Use las teclas de cursor para seleccionar una fecha"

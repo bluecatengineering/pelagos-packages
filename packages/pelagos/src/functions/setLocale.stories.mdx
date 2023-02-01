@@ -1,0 +1,32 @@
+<!-- DO NOT EDIT, generated from setLocale.js -->
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/setLocale" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+
+# setLocale
+
+Sets the locale for Pelagos. The default language is English,
+there is no need to call this function unless the selected language is different.
+This function should be called as early as possible,
+the caller must catch the returned promise and handle any errors.
+
+## Parameters
+
+| Param  | Type          | Description         |
+| ------ | ------------- | ------------------- |
+| locale | `'en' / 'es'` | the locale to load. |
+
+## Returns
+
+`* / Promise.<never>`
+
+## Example
+
+```js
+import {setLocale} from '@bluecateng/pelagos';
+
+setLocale('es').catch((error) => {
+	// handle error
+});
+```

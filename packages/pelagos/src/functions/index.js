@@ -8,5 +8,6 @@ export {default as handleButtonKeyDown} from './handleButtonKeyDown';
 export {default as scrollIntoView} from './scrollIntoView';
 export {default as scrollToItem} from './scrollToItem';
 export {default as setLiveText} from './setLiveText';
+export {default as setLocale} from './setLocale';
 export {default as smoothScroll} from './smoothScroll';
 export {default as throttleAF} from './throttleAF';
