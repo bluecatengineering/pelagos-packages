@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +8,6 @@ import useRandomId from '../hooks/useRandomId';
 
 import IconButton from './IconButton';
 import './Calendar.less';
-
-const locale = l10n.locale;
-const monthFmt = new Intl.DateTimeFormat(locale, {year: 'numeric', month: 'long'});
-const weekDayFmtLong = new Intl.DateTimeFormat(locale, {weekday: 'long'});
-const weekDayFmtNarrow = new Intl.DateTimeFormat(locale, {weekday: 'narrow'});
 
 const getInitialDate = () => {
 	const date = new Date();
@@ -88,6 +83,15 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 
 	const [focused, setFocused] = useState(getInitialDate);
 	const [highlighted, setHighlighted] = useState(null);
+
+	const [monthFmt, weekDayFmtLong, weekDayFmtNarrow] = useMemo(() => {
+		const locale = l10n.locale;
+		return [
+			new Intl.DateTimeFormat(locale, {year: 'numeric', month: 'long'}),
+			new Intl.DateTimeFormat(locale, {weekday: 'long'}),
+			new Intl.DateTimeFormat(locale, {weekday: 'narrow'}),
+		];
+	}, []);
 
 	const handleHighlight = useCallback(
 		(time) => {
