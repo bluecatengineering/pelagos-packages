@@ -5,6 +5,7 @@ exports[`TableToolbarSearch rendering renders expected elements 1`] = `
   className="Table__search"
 >
   <span
+    aria-hidden={true}
     onClick={[Function]}
   >
     <SvgIcon
@@ -49,6 +50,7 @@ exports[`TableToolbarSearch rendering renders expected elements when className i
   className="Table__search TestClass"
 >
   <span
+    aria-hidden={true}
     onClick={[Function]}
   >
     <SvgIcon
@@ -93,6 +95,7 @@ exports[`TableToolbarSearch rendering renders expected elements when initialText
   className="Table__search"
 >
   <span
+    aria-hidden={true}
     onClick={[Function]}
   >
     <SvgIcon

@@ -2,18 +2,16 @@
 
 exports[`DetailEntry rendering renders expected elements 1`] = `
 <div
-  aria-labelledby="random-id-label"
   className="DetailEntry TestClass"
-  role="region"
 >
   <div
     className="DetailEntry__label"
   >
-    <Label
-      htmlFor="random-id"
-      id="random-id-label"
-      text="Test Label"
-    />
+    <h3
+      className="DetailEntry__title"
+    >
+      Test Label
+    </h3>
   </div>
   <div
     className="DetailEntry__value DetailEntry--column TestValueClass"
@@ -27,18 +25,16 @@ exports[`DetailEntry rendering renders expected elements 1`] = `
 
 exports[`DetailEntry rendering renders expected elements when children are specified 1`] = `
 <div
-  aria-labelledby="random-id-label"
   className="DetailEntry TestClass"
-  role="region"
 >
   <div
     className="DetailEntry__label"
   >
-    <Label
-      htmlFor="random-id"
-      id="random-id-label"
-      text="Test Label"
-    />
+    <h3
+      className="DetailEntry__title"
+    >
+      Test Label
+    </h3>
   </div>
   <div
     className="DetailEntry__value DetailEntry--column TestValueClass"
@@ -51,18 +47,16 @@ exports[`DetailEntry rendering renders expected elements when children are speci
 
 exports[`DetailEntry rendering renders expected elements when className and valueClass are not set 1`] = `
 <div
-  aria-labelledby="random-id-label"
   className="DetailEntry"
-  role="region"
 >
   <div
     className="DetailEntry__label"
   >
-    <Label
-      htmlFor="random-id"
-      id="random-id-label"
-      text="Test Label"
-    />
+    <h3
+      className="DetailEntry__title"
+    >
+      Test Label
+    </h3>
   </div>
   <div
     className="DetailEntry__value DetailEntry--column"
@@ -75,18 +69,16 @@ exports[`DetailEntry rendering renders expected elements when className and valu
 
 exports[`DetailEntry rendering renders expected elements when direction is row 1`] = `
 <div
-  aria-labelledby="random-id-label"
   className="DetailEntry TestClass"
-  role="region"
 >
   <div
     className="DetailEntry__label"
   >
-    <Label
-      htmlFor="random-id"
-      id="random-id-label"
-      text="Test Label"
-    />
+    <h3
+      className="DetailEntry__title"
+    >
+      Test Label
+    </h3>
   </div>
   <div
     className="DetailEntry__value DetailEntry--row TestValueClass"
@@ -99,18 +91,16 @@ exports[`DetailEntry rendering renders expected elements when direction is row 1
 
 exports[`DetailEntry rendering renders expected elements when infoText is set 1`] = `
 <div
-  aria-labelledby="random-id-label"
   className="DetailEntry"
-  role="region"
 >
   <div
     className="DetailEntry__label"
   >
-    <Label
-      htmlFor="random-id"
-      id="random-id-label"
-      text="Test Label"
-    />
+    <h3
+      className="DetailEntry__title"
+    >
+      Test Label
+    </h3>
     <InfoTooltip
       placement="bottom"
       text="Test info"

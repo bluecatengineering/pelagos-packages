@@ -2,28 +2,33 @@
 
 exports[`DetailsList rendering renders expected elements 1`] = `
 <div
-  aria-labelledby="random-id-label"
   className="DetailsList TestClass"
-  role="region"
 >
-  <Label
+  <h3
+    className="DetailsList__title"
     id="random-id-label"
-    text="Test Label"
-  />
-  <div
+  >
+    Test Label
+  </h3>
+  <ul
+    aria-labelledby="random-id-label"
     className="DetailsList__grid"
     id="random-id"
   >
-    <div
-      className="DetailsList__item"
-    >
-      site1
-    </div>
-    <div
-      className="DetailsList__item"
-    >
-      site2
-    </div>
-  </div>
+    <li>
+      <div
+        className="DetailsList__item"
+      >
+        site1
+      </div>
+    </li>
+    <li>
+      <div
+        className="DetailsList__item"
+      >
+        site2
+      </div>
+    </li>
+  </ul>
 </div>
 `;
