@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailRegion rendering renders expected elements 1`] = `
+<div
+  className="DetailRegion"
+>
+  <div
+    className="DetailRegion__header"
+  >
+    <h3
+      className="DetailRegion__title"
+    >
+      Test Label
+    </h3>
+  </div>
+  <div />
+</div>
+`;
+
+exports[`DetailRegion rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="DetailRegion TestClass"
+>
+  <div
+    className="DetailRegion__header"
+  >
+    <h3
+      className="DetailRegion__title"
+      id="test"
+    >
+      Test Label
+    </h3>
+    <InfoTooltip
+      placement="bottom"
+      text="Test info"
+    />
+  </div>
+  <div />
+</div>
+`;

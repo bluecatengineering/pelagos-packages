@@ -12,6 +12,21 @@ describe('DetailsList', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<DetailsList
+					label="Test Label"
+					list={['site1', 'site2']}
+					renderItem={(item, className) => (
+						<div key={item} className={className}>
+							{item}
+						</div>
+					)}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when optional properties are set', () => {
+			const wrapper = shallow(
+				<DetailsList
 					id="test"
 					className="TestClass"
 					label="Test Label"

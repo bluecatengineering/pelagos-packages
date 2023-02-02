@@ -1,15 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DetailsList rendering renders expected elements 1`] = `
-<div
-  className="DetailsList TestClass"
+<DetailRegion
+  id="random-id-label"
+  label="Test Label"
 >
-  <h3
-    className="DetailsList__title"
-    id="random-id-label"
-  >
-    Test Label
-  </h3>
   <ul
     aria-labelledby="random-id-label"
     className="DetailsList__grid"
@@ -30,5 +25,34 @@ exports[`DetailsList rendering renders expected elements 1`] = `
       </div>
     </li>
   </ul>
-</div>
+</DetailRegion>
+`;
+
+exports[`DetailsList rendering renders expected elements when optional properties are set 1`] = `
+<DetailRegion
+  className="TestClass"
+  id="random-id-label"
+  label="Test Label"
+>
+  <ul
+    aria-labelledby="random-id-label"
+    className="DetailsList__grid"
+    id="random-id"
+  >
+    <li>
+      <div
+        className="DetailsList__item"
+      >
+        site1
+      </div>
+    </li>
+    <li>
+      <div
+        className="DetailsList__item"
+      >
+        site2
+      </div>
+    </li>
+  </ul>
+</DetailRegion>
 `;
