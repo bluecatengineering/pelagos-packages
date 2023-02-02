@@ -1,18 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DetailEntry rendering renders expected elements 1`] = `
-<div
-  className="DetailEntry TestClass"
+<DetailRegion
+  label="Test Label"
 >
   <div
-    className="DetailEntry__label"
+    className="DetailEntry__value DetailEntry--column"
+    id="random-id"
   >
-    <h3
-      className="DetailEntry__title"
-    >
-      Test Label
-    </h3>
+    test value
   </div>
+</DetailRegion>
+`;
+
+exports[`DetailEntry rendering renders expected elements when children are specified 1`] = `
+<DetailRegion
+  label="Test Label"
+>
+  <div
+    className="DetailEntry__value DetailEntry--column"
+    id="random-id"
+  >
+    Test Children
+  </div>
+</DetailRegion>
+`;
+
+exports[`DetailEntry rendering renders expected elements when direction is row 1`] = `
+<DetailRegion
+  label="Test Label"
+>
+  <div
+    className="DetailEntry__value DetailEntry--row"
+    id="random-id"
+  >
+    test value
+  </div>
+</DetailRegion>
+`;
+
+exports[`DetailEntry rendering renders expected elements when optional properties are set 1`] = `
+<DetailRegion
+  className="TestClass"
+  infoText="Test info"
+  infoTextPlacement="bottom"
+  label="Test Label"
+>
   <div
     className="DetailEntry__value DetailEntry--column TestValueClass"
     id="random-id"
@@ -20,97 +53,5 @@ exports[`DetailEntry rendering renders expected elements 1`] = `
   >
     test value
   </div>
-</div>
-`;
-
-exports[`DetailEntry rendering renders expected elements when children are specified 1`] = `
-<div
-  className="DetailEntry TestClass"
->
-  <div
-    className="DetailEntry__label"
-  >
-    <h3
-      className="DetailEntry__title"
-    >
-      Test Label
-    </h3>
-  </div>
-  <div
-    className="DetailEntry__value DetailEntry--column TestValueClass"
-    id="random-id"
-  >
-    Test Children
-  </div>
-</div>
-`;
-
-exports[`DetailEntry rendering renders expected elements when className and valueClass are not set 1`] = `
-<div
-  className="DetailEntry"
->
-  <div
-    className="DetailEntry__label"
-  >
-    <h3
-      className="DetailEntry__title"
-    >
-      Test Label
-    </h3>
-  </div>
-  <div
-    className="DetailEntry__value DetailEntry--column"
-    id="random-id"
-  >
-    test value
-  </div>
-</div>
-`;
-
-exports[`DetailEntry rendering renders expected elements when direction is row 1`] = `
-<div
-  className="DetailEntry TestClass"
->
-  <div
-    className="DetailEntry__label"
-  >
-    <h3
-      className="DetailEntry__title"
-    >
-      Test Label
-    </h3>
-  </div>
-  <div
-    className="DetailEntry__value DetailEntry--row TestValueClass"
-    id="random-id"
-  >
-    test value
-  </div>
-</div>
-`;
-
-exports[`DetailEntry rendering renders expected elements when infoText is set 1`] = `
-<div
-  className="DetailEntry"
->
-  <div
-    className="DetailEntry__label"
-  >
-    <h3
-      className="DetailEntry__title"
-    >
-      Test Label
-    </h3>
-    <InfoTooltip
-      placement="bottom"
-      text="Test info"
-    />
-  </div>
-  <div
-    className="DetailEntry__value DetailEntry--column"
-    id="random-id"
-  >
-    test value
-  </div>
-</div>
+</DetailRegion>
 `;

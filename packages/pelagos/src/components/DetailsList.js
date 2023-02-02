@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import useRandomId from '../hooks/useRandomId';
 
+import DetailRegion from './DetailRegion';
 import './DetailsList.less';
 
 /** A list for the details panel. */
@@ -9,16 +10,13 @@ const DetailsList = ({id, className, label, list, renderItem}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	return (
-		<div className={`DetailsList ${className}`}>
-			<h3 id={labelId} className="DetailsList__title">
-				{label}
-			</h3>
+		<DetailRegion id={labelId} className={className} label={label}>
 			<ul id={id} className="DetailsList__grid" aria-labelledby={labelId}>
 				{list.map((item, index) => (
 					<li key={index}>{renderItem(item, 'DetailsList__item', index)}</li>
 				))}
 			</ul>
-		</div>
+		</DetailRegion>
 	);
 };
 

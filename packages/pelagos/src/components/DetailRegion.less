@@ -1,0 +1,18 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+
+.DetailRegion {
+	margin-top: @sp-16;
+
+	&__header {
+		flex-direction: row;
+		align-items: center;
+		gap: @sp-08;
+		margin-bottom: @sp-04;
+	}
+
+	&__title {
+		@font-12-400();
+		color: var(--text-secondary);
+	}
+}

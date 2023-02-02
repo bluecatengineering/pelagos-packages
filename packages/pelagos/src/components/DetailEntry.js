@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import useRandomId from '../hooks/useRandomId';
 
-import InfoTooltip from './InfoTooltip';
+import DetailRegion from './DetailRegion';
 import './DetailEntry.less';
 
 /** An entry in the details panel. */
@@ -21,11 +21,7 @@ const DetailEntry = ({
 }) => {
 	id = useRandomId(id);
 	return (
-		<div className={`DetailEntry${className ? ` ${className}` : ''}`}>
-			<div className="DetailEntry__label">
-				<h3 className="DetailEntry__title">{label}</h3>
-				{infoText && <InfoTooltip text={infoText} placement={infoTextPlacement} />}
-			</div>
+		<DetailRegion className={className} label={label} infoText={infoText} infoTextPlacement={infoTextPlacement}>
 			<div
 				{...props}
 				id={id}
@@ -33,7 +29,7 @@ const DetailEntry = ({
 				title={valueTitle}>
 				{children || value}
 			</div>
-		</div>
+		</DetailRegion>
 	);
 };
 
