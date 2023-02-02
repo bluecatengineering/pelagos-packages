@@ -33,7 +33,7 @@ const TableToolbarSearch = ({className, initialText, onChange, ...props}) => {
 	const handleClearClick = useCallback(() => (inputRef.current.focus(), setText(''), onChange('')), [onChange]);
 	return (
 		<div className={`Table__search${className ? ` ${className}` : ''}`}>
-			<span onClick={handleSearchClick}>
+			<span onClick={handleSearchClick} aria-hidden>
 				<SvgIcon className="Table__searchIcon" icon={faMagnifyingGlass} />
 			</span>
 			<input

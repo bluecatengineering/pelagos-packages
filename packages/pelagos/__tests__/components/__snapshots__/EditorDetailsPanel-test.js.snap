@@ -21,14 +21,12 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     tooltipText="Close"
     type="ghost"
   />
-  <div
-    aria-level="2"
+  <h2
     className="EditorDetailsPanel__title"
     id="detailsPanelTitle"
-    role="heading"
   >
     Test
-  </div>
+  </h2>
   <React.Fragment>
     cloneWithClassName
   </React.Fragment>
@@ -56,14 +54,12 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     tooltipText="Close"
     type="ghost"
   />
-  <div
-    aria-level="2"
+  <h2
     className="EditorDetailsPanel__title"
     id="detailsPanelTitle"
-    role="heading"
   >
     Test
-  </div>
+  </h2>
   <React.Fragment>
     cloneWithClassName
     <DefaultDetailsButtons
@@ -103,14 +99,12 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     tooltipText="Close"
     type="ghost"
   />
-  <div
-    aria-level="2"
+  <h2
     className="EditorDetailsPanel__title"
     id="detailsPanelTitle"
-    role="heading"
   >
     Test
-  </div>
+  </h2>
   <React.Fragment>
     cloneWithClassName
     cloneWithClassName
@@ -139,14 +133,12 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     tooltipText="Close"
     type="ghost"
   />
-  <div
-    aria-level="2"
+  <h2
     className="EditorDetailsPanel__title"
     id="detailsPanelTitle"
-    role="heading"
   >
     Test
-  </div>
+  </h2>
   <React.Fragment>
     cloneWithClassName
   </React.Fragment>

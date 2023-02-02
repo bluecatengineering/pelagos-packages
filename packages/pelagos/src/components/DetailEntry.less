@@ -1,3 +1,4 @@
+@import '../../less/fonts';
 @import '../../less/spacing';
 
 .DetailEntry {
@@ -11,6 +12,11 @@
 		flex-direction: row;
 		align-items: center;
 		gap: @sp-08;
+	}
+
+	&__title {
+		@font-12-400();
+		color: var(--text-secondary);
 	}
 
 	&__value {

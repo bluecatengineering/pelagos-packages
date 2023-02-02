@@ -38,9 +38,9 @@ const EditorDetailsPanel = ({
 			onClick={useSlidingPanel(id, onClose)}
 		/>
 
-		<div id="detailsPanelTitle" className="EditorDetailsPanel__title" role="heading" aria-level="2">
+		<h2 id="detailsPanelTitle" className="EditorDetailsPanel__title">
 			{item.name}
-		</div>
+		</h2>
 
 		{Array.isArray(children) ? (
 			<>

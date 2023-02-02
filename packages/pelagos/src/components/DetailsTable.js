@@ -7,11 +7,10 @@ import './DetailsTable.less';
 /** A table for the details panel. */
 const DetailsTable = ({id, className, rowClassName, title, list, columns}) => {
 	id = useRandomId(id);
-	const titleId = `${id}-label`;
 	return (
-		<div className={`DetailsTable ${className}`} role="region" aria-labelledby={titleId}>
-			<h5 id={titleId}>{title}</h5>
-			<div className={`DetailsTable__headRow ${rowClassName}`}>
+		<div className={`DetailsTable ${className}`}>
+			<h3 className="DetailsTable__title">{title}</h3>
+			<div id={id} className={`DetailsTable__headRow ${rowClassName}`}>
 				{columns.map(({key, headerClassName, header}) => (
 					<div key={key} className={headerClassName}>
 						{header}
