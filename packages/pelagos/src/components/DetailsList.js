@@ -6,13 +6,14 @@ import DetailRegion from './DetailRegion';
 import './DetailsList.less';
 
 /** A list for the details panel. */
-const DetailsList = ({id, className, label, infoText, infoTextPlacement, list, renderItem}) => {
+const DetailsList = ({id, className, level, label, infoText, infoTextPlacement, list, renderItem}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	return (
 		<DetailRegion
 			id={labelId}
 			className={className}
+			level={level}
 			label={label}
 			infoText={infoText}
 			infoTextPlacement={infoTextPlacement}>
@@ -30,6 +31,8 @@ DetailsList.propTypes = {
 	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The header level. */
+	level: PropTypes.oneOf(['h3', 'h4', 'h5', 'h6']),
 	/** The label text. */
 	label: PropTypes.string.isRequired,
 	/** The text of the info tooltip to display. */

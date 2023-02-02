@@ -24,12 +24,12 @@ exports[`DetailRegion rendering renders expected elements when optional properti
   <div
     className="DetailRegion__header"
   >
-    <h3
+    <h4
       className="DetailRegion__title"
       id="test"
     >
       Test Label
-    </h3>
+    </h4>
     <InfoTooltip
       placement="bottom"
       text="Test info"

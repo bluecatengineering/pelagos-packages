@@ -35,6 +35,7 @@ exports[`DetailsList rendering renders expected elements when optional propertie
   infoText="Test info"
   infoTextPlacement="bottom"
   label="Test Label"
+  level="h4"
 >
   <ul
     aria-labelledby="random-id-label"

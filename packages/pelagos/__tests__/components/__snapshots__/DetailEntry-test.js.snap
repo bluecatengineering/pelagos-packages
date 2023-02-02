@@ -45,6 +45,7 @@ exports[`DetailEntry rendering renders expected elements when optional propertie
   infoText="Test info"
   infoTextPlacement="bottom"
   label="Test Label"
+  level="h4"
 >
   <div
     className="DetailEntry__value DetailEntry--column TestValueClass"
