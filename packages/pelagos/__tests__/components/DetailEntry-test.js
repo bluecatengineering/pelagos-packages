@@ -34,6 +34,7 @@ describe('DetailEntry', () => {
 				<DetailEntry
 					id="test"
 					className="TestClass"
+					level="h4"
 					label="Test Label"
 					infoText="Test info"
 					infoTextPlacement="bottom"

@@ -9,6 +9,7 @@ import './DetailEntry.less';
 const DetailEntry = ({
 	id,
 	className,
+	level,
 	label,
 	infoText,
 	infoTextPlacement,
@@ -21,7 +22,12 @@ const DetailEntry = ({
 }) => {
 	id = useRandomId(id);
 	return (
-		<DetailRegion className={className} label={label} infoText={infoText} infoTextPlacement={infoTextPlacement}>
+		<DetailRegion
+			className={className}
+			level={level}
+			label={label}
+			infoText={infoText}
+			infoTextPlacement={infoTextPlacement}>
 			<div
 				{...props}
 				id={id}
@@ -38,6 +44,8 @@ DetailEntry.propTypes = {
 	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.any,
+	/** The header level. */
+	level: PropTypes.oneOf(['h3', 'h4', 'h5', 'h6']),
 	/** The label text. */
 	label: PropTypes.string.isRequired,
 	/** The text of the info tooltip to display. */
