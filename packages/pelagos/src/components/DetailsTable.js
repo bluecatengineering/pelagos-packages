@@ -4,7 +4,7 @@ import useRandomId from '../hooks/useRandomId';
 
 import './DetailsTable.less';
 
-/** A table for the details panel. */
+/** @deprecated use a Table component inside a DetailRegion. */
 const DetailsTable = ({id, className, rowClassName, title, list, columns}) => {
 	id = useRandomId(id);
 	return (
