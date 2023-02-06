@@ -1,17 +1,18 @@
-import {DetailsList} from '../src';
+import {DetailsList, DetailsListItem} from '../src';
 
-const renderItem = (item, className) => (
-	<div key={item} className={className}>
-		{item}
-	</div>
+const Template = (args) => (
+	<DetailsList {...args}>
+		<DetailsListItem>one</DetailsListItem>
+		<DetailsListItem>two</DetailsListItem>
+		<DetailsListItem>three</DetailsListItem>
+	</DetailsList>
 );
 
-const Template = (args) => <DetailsList {...args} />;
-
 export const Normal = Template.bind({});
-Normal.args = {label: 'Test', list: ['one', 'two', 'three'], renderItem};
+Normal.args = {label: 'Test'};
 
 export default {
 	title: 'Components/DetailsList',
 	component: DetailsList,
+	subcomponents: {DetailsListItem},
 };

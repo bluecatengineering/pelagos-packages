@@ -11,15 +11,9 @@ describe('DetailsList', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<DetailsList
-					label="Test Label"
-					list={['site1', 'site2']}
-					renderItem={(item, className) => (
-						<div key={item} className={className}>
-							{item}
-						</div>
-					)}
-				/>
+				<DetailsList label="Test Label">
+					<div />
+				</DetailsList>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
