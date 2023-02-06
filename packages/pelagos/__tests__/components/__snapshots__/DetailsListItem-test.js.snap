@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailsListItem rendering renders expected elements 1`] = `
+<li
+  className="DetailsList__item"
+>
+  Test
+</li>
+`;
+
+exports[`DetailsListItem rendering renders expected elements when optional properties are set 1`] = `
+<li
+  className="DetailsList__item TestClass"
+  id="test"
+>
+  Test
+</li>
+`;

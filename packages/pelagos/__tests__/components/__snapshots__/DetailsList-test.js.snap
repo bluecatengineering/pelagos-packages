@@ -10,20 +10,7 @@ exports[`DetailsList rendering renders expected elements 1`] = `
     className="DetailsList__grid"
     id="random-id"
   >
-    <li>
-      <div
-        className="DetailsList__item"
-      >
-        site1
-      </div>
-    </li>
-    <li>
-      <div
-        className="DetailsList__item"
-      >
-        site2
-      </div>
-    </li>
+    <div />
   </ul>
 </DetailRegion>
 `;
