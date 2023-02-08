@@ -30,6 +30,8 @@ describe('DetailsList', () => {
 					id="test"
 					className="TestClass"
 					label="Test Label"
+					infoText="Test info"
+					infoTextPlacement="bottom"
 					list={['site1', 'site2']}
 					renderItem={(item, className) => (
 						<div key={item} className={className}>
