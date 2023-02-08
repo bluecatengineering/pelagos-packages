@@ -32,6 +32,8 @@ exports[`DetailsList rendering renders expected elements when optional propertie
 <DetailRegion
   className="TestClass"
   id="random-id-label"
+  infoText="Test info"
+  infoTextPlacement="bottom"
   label="Test Label"
 >
   <ul
