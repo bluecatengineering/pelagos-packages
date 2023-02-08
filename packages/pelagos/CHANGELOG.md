@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.3.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.2.1...@bluecateng/pelagos@10.3.0) (2023-02-08)
+
+### Bug Fixes
+
+- deprecate DetailsTable ([254120f](https://github.com/bluecatengineering/pelagos-packages/commit/254120f7e6ed25cbb4559730234755aa66b79d9c))
+- fix alignment in CheckBox and RadioButton ([2620f3a](https://github.com/bluecatengineering/pelagos-packages/commit/2620f3a0589d7115e984b0af9926d7a164806504))
+- improve accessibility ([acead6e](https://github.com/bluecatengineering/pelagos-packages/commit/acead6ebb2dc97dbfd6fd6f5581d8d387583c350))
+- reduce gap in RadioGroup to 4px ([67ff1a4](https://github.com/bluecatengineering/pelagos-packages/commit/67ff1a45bf614f7a5f69c4702515c955ea8af503))
+
+### Features
+
+- add DetailRegion component ([bc3fde6](https://github.com/bluecatengineering/pelagos-packages/commit/bc3fde6032203f9f8b572634645d2ca08bc7794e))
+- add DetailsListItem component ([e1f5893](https://github.com/bluecatengineering/pelagos-packages/commit/e1f5893ec67959c228780abb323fd49b215a000f))
+- add function to set the library locale ([23b3719](https://github.com/bluecatengineering/pelagos-packages/commit/23b37195e1f717b980c0485b2db23e43602a09f9))
+- add info text properties to DetailsList ([54eb7de](https://github.com/bluecatengineering/pelagos-packages/commit/54eb7dede41780fc5bff9cea086be73b1992d770))
+- allow specifying level in detail components ([cc996df](https://github.com/bluecatengineering/pelagos-packages/commit/cc996dfd6f9da6e15df857e9f09dfa1671910cba))
+
 ## [10.2.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.2.0...@bluecateng/pelagos@10.2.1) (2023-01-30)
 
 ### Bug Fixes
