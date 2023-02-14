@@ -11,8 +11,6 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
   role="group"
 >
   <div
-    aria-activedescendant="random-id-0-0"
-    aria-hidden={false}
     aria-label="Column 1 of 2"
     className="MultiColumn__column"
     data-index={0}
@@ -22,14 +20,16 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
         "width": "12em",
       }
     }
-    tabIndex={0}
+    tabIndex={-1}
   >
     <div
-      aria-selected={false}
-      className="MultiColumn__item MultiColumn__selected"
+      aria-label="item00, column 1, group"
+      aria-selected={true}
+      className="MultiColumn__item"
       data-index={0}
       id="random-id-0-0"
       role="option"
+      tabIndex={0}
     >
       <div
         className="MultiColumn__text"
@@ -48,11 +48,13 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
       />
     </div>
     <div
+      aria-label="item01, column 1, leaf"
       aria-selected={false}
       className="MultiColumn__item"
       data-index={1}
       id="random-id-0-1"
       role="option"
+      tabIndex={-1}
     >
       <div
         className="MultiColumn__text"
@@ -62,8 +64,6 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
     </div>
   </div>
   <div
-    aria-activedescendant={null}
-    aria-hidden={true}
     aria-label="Column 2 of 2"
     className="MultiColumn__column"
     data-index={1}
@@ -76,11 +76,16 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
     tabIndex={-1}
   >
     <Spinner
+      aria-hidden={true}
       aria-label="Loading"
       role="status"
       size="tiny"
     />
   </div>
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
 </div>
 `;
 
@@ -95,8 +100,6 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
   role="group"
 >
   <div
-    aria-activedescendant="random-id-0-0"
-    aria-hidden={false}
     aria-label="Column 1 of 2"
     className="MultiColumn__column"
     data-index={0}
@@ -106,14 +109,16 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
         "width": "12em",
       }
     }
-    tabIndex={0}
+    tabIndex={-1}
   >
     <div
+      aria-label="item00, column 1, group"
       aria-selected={true}
-      className="MultiColumn__item MultiColumn__selected"
+      className="MultiColumn__item"
       data-index={0}
       id="random-id-0-0"
       role="option"
+      tabIndex={0}
     >
       <div
         className="MultiColumn__text"
@@ -133,8 +138,6 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
     </div>
   </div>
   <div
-    aria-activedescendant={null}
-    aria-hidden={true}
     aria-label="Column 2 of 2"
     className="MultiColumn__column"
     data-index={1}
@@ -147,11 +150,16 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
     tabIndex={-1}
   >
     <Spinner
+      aria-hidden={true}
       aria-label="Loading"
       role="status"
       size="tiny"
     />
   </div>
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
 </div>
 `;
 
@@ -166,8 +174,6 @@ exports[`MultiColumn rendering renders expected elements when optional propertie
   role="group"
 >
   <div
-    aria-activedescendant="random-id-0-0"
-    aria-hidden={false}
     aria-label="Column 1 of 2"
     className="MultiColumn__column"
     data-index={0}
@@ -177,14 +183,16 @@ exports[`MultiColumn rendering renders expected elements when optional propertie
         "width": "12em",
       }
     }
-    tabIndex={0}
+    tabIndex={-1}
   >
     <div
-      aria-selected={false}
-      className="MultiColumn__item MultiColumn__selected"
+      aria-label="item00, column 1, group"
+      aria-selected={true}
+      className="MultiColumn__item"
       data-index={0}
       id="random-id-0-0"
       role="option"
+      tabIndex={0}
     >
       <div
         className="MultiColumn__text"
@@ -204,8 +212,6 @@ exports[`MultiColumn rendering renders expected elements when optional propertie
     </div>
   </div>
   <div
-    aria-activedescendant={null}
-    aria-hidden={true}
     aria-label="Column 2 of 2"
     className="MultiColumn__column"
     data-index={1}
@@ -218,11 +224,16 @@ exports[`MultiColumn rendering renders expected elements when optional propertie
     tabIndex={-1}
   >
     <Spinner
+      aria-hidden={true}
       aria-label="Loading"
       role="status"
       size="tiny"
     />
   </div>
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
 </div>
 `;
 

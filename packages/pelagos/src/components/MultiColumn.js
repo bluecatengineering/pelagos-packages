@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecateng/l10n.macro';
+import {select, t} from '@bluecateng/l10n.macro';
 import {faCaretRight} from '@fortawesome/free-solid-svg-icons';
 
 import useStringFinder from '../hooks/useStringFinder';
@@ -112,6 +112,7 @@ const MultiColumn = ({
 }) => {
 	id = useRandomId(id);
 	const rootRef = useRef();
+	const liveRef = useRef();
 	const [focused, setFocused] = useState(false);
 
 	const columns = useDataLoader(path, getItemCount, isLeaf);
@@ -124,7 +125,6 @@ const MultiColumn = ({
 			if (element) {
 				event.preventDefault();
 				const column = element.parentNode;
-				column.focus();
 				const newPath = path.slice(0, +column.dataset.index);
 				newPath.push(+element.dataset.index);
 				onChange(newPath);
@@ -227,15 +227,26 @@ const MultiColumn = ({
 		[columns, findItemToFocus, onChange, path]
 	);
 
-	const handleFocus = useCallback(() => setFocused(true), []);
-	const handleBlur = useCallback(() => setFocused(false), []);
+	const handleFocus = useCallback((event) => {
+		if (!rootRef.current.contains(event.relatedTarget)) {
+			liveRef.current.textContent = t`Use cursor keys to select an item`;
+			setFocused(true);
+		}
+	}, []);
+	const handleBlur = useCallback((event) => {
+		if (!rootRef.current.contains(event.relatedTarget)) {
+			liveRef.current.textContent = null;
+			setFocused(false);
+		}
+	}, []);
 
 	useEffect(() => {
 		if (focused) {
 			const pathLength = path.length;
-			const children = rootRef.current.children;
+			const children = rootRef.current.childNodes;
 			if (pathLength !== 0 && pathLength <= children.length) {
-				children[pathLength - 1].focus();
+				const column = pathLength - 1;
+				children[column].childNodes[path[column]].focus();
 			}
 		}
 	}, [path, focused]);
@@ -269,43 +280,49 @@ const MultiColumn = ({
 			onFocus={handleFocus}
 			onBlur={handleBlur}
 			ref={rootRef}>
-			{columns.map((count, colIndex) => (
-				<div
-					key={colIndex}
-					className="MultiColumn__column"
-					style={{width: colWidth}}
-					tabIndex={colIndex === colCurr ? 0 : -1}
-					role="listbox"
-					aria-hidden={colIndex !== colCurr}
-					aria-label={t`Column ${colIndex + 1} of ${columnCount}`}
-					aria-activedescendant={count !== -1 && pathLength > colIndex ? `${id}-${colIndex}-${path[colIndex]}` : null}
-					data-index={colIndex}>
-					{count === -1 ? (
-						<Spinner size="tiny" />
-					) : (
-						do {
-							const itmPath = path.slice(0, colIndex);
-							const elements = [];
-							for (let itmIndex = 0; itmIndex < count; ++itmIndex) {
-								itmPath[colIndex] = itmIndex;
-								elements.push(
-									<div
-										key={itmIndex}
-										id={`${id}-${colIndex}-${itmIndex}`}
-										className={`MultiColumn__item${itmIndex === path[colIndex] ? ' MultiColumn__selected' : ''}`}
-										role="option"
-										aria-selected={focused && colIndex === colCurr && itmIndex === itmCurr}
-										data-index={itmIndex}>
-										<div className="MultiColumn__text">{renderItem(itmPath)}</div>
-										{!isLeaf(itmPath) && <SvgIcon className="MultiColumn__arrow" icon={faCaretRight} />}
-									</div>
-								);
+			{columns.map((count, colIndex) => {
+				const column = colIndex + 1;
+				return (
+					<div
+						key={colIndex}
+						className="MultiColumn__column"
+						style={{width: colWidth}}
+						tabIndex={-1}
+						role="listbox"
+						aria-label={t`Column ${column} of ${columnCount}`}
+						data-index={colIndex}>
+						{count === -1 ? (
+							<Spinner size="tiny" aria-hidden />
+						) : (
+							do {
+								const itmPath = path.slice(0, colIndex);
+								const elements = [];
+								for (let itmIndex = 0; itmIndex < count; ++itmIndex) {
+									itmPath[colIndex] = itmIndex;
+									const leaf = isLeaf(itmPath);
+									const text = renderItem(itmPath);
+									elements.push(
+										<div
+											key={itmIndex}
+											id={`${id}-${colIndex}-${itmIndex}`}
+											className="MultiColumn__item"
+											tabIndex={colIndex === colCurr && itmIndex === itmCurr ? 0 : -1}
+											role="option"
+											aria-label={t`${text}, column ${column}, ${select(leaf, {true: 'leaf', other: 'group'})}`}
+											aria-selected={itmIndex === path[colIndex]}
+											data-index={itmIndex}>
+											<div className="MultiColumn__text">{text}</div>
+											{!leaf && <SvgIcon className="MultiColumn__arrow" icon={faCaretRight} />}
+										</div>
+									);
+								}
+								elements;
 							}
-							elements;
-						}
-					)}
-				</div>
-			))}
+						)}
+					</div>
+				);
+			})}
+			<div className="assistive-text" aria-live="polite" ref={liveRef} />
 		</div>
 	);
 };

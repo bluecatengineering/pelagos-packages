@@ -84,12 +84,13 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 	const [focused, setFocused] = useState(getInitialDate);
 	const [highlighted, setHighlighted] = useState(null);
 
-	const [monthFmt, weekDayFmtLong, weekDayFmtNarrow] = useMemo(() => {
+	const [monthFmt, weekDayFmtLong, weekDayFmtNarrow, dateFmt] = useMemo(() => {
 		const locale = l10n.locale;
 		return [
 			new Intl.DateTimeFormat(locale, {year: 'numeric', month: 'long'}),
 			new Intl.DateTimeFormat(locale, {weekday: 'long'}),
 			new Intl.DateTimeFormat(locale, {weekday: 'narrow'}),
+			new Intl.DateTimeFormat(locale, {dateStyle: 'full'}),
 		];
 	}, []);
 
@@ -290,6 +291,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 															: curHighlight(time, rangeStart, rangeEnd)
 													}`}
 													tabIndex={isSelected ? 0 : -1}
+													aria-label={dateFmt.format(day)}
 													aria-selected={isSelected}
 													data-time={isCurMonth ? time : null}>
 													{isCurMonth ? day.getDate() : ''}

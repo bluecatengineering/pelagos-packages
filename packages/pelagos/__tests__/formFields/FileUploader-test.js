@@ -1,3 +1,4 @@
+import {useRef} from 'react';
 import {shallow} from 'enzyme';
 
 import FileUploader from '../../src/formFields/FileUploader';
@@ -76,6 +77,8 @@ describe('FileUploader', () => {
 			const remove = jest.fn();
 			const name = 'file.txt';
 			const files = [{name}];
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
 			const wrapper = shallow(<FileUploader id="test" types={[]} onChange={onChange} />);
 
 			wrapper.find('#random-id').prop('onDrop')({
@@ -86,6 +89,7 @@ describe('FileUploader', () => {
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(remove.mock.calls).toEqual([['FileUploader__dropZone--active']]);
 			expect(onChange.mock.calls).toEqual([[files]]);
+			expect(live.textContent).toBe('File file.txt uploaded');
 		});
 
 		it('clicks the input element when the drop zone is clicked', () => {
@@ -97,6 +101,8 @@ describe('FileUploader', () => {
 
 		it('calls onChange when the drop zone is clicked and showOpenFilePicker is available', () => {
 			const onChange = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
 			global.showOpenFilePicker = jest
 				.fn()
 				.mockResolvedValue([
@@ -112,6 +118,7 @@ describe('FileUploader', () => {
 				.then(() => {
 					expect(showOpenFilePicker.mock.calls).toEqual([[{multiple: true, types: []}]]);
 					expect(onChange.mock.calls).toEqual([[[{name: 'foo.txt'}, {name: 'bar.txt'}, {name: 'baz.txt'}]]]);
+					expect(live.textContent).toBe('Files bar.txt, baz.txt uploaded');
 				});
 		});
 
@@ -130,12 +137,15 @@ describe('FileUploader', () => {
 			const onChange = jest.fn();
 			const name = 'file.txt';
 			const files = [{name}];
-			const wrapper = shallow(<FileUploader id="test" types={[]} onChange={onChange} />);
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
+			const wrapper = shallow(<FileUploader id="test" types={[]} multiple files={[]} onChange={onChange} />);
 
 			wrapper.find('input').prop('onChange')({
 				target: {files},
 			});
 			expect(onChange.mock.calls).toEqual([[files]]);
+			expect(live.textContent).toBe('File file.txt uploaded');
 		});
 
 		it('calls preventDefault on dragover', () => {

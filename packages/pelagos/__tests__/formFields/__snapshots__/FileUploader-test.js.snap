@@ -4,12 +4,17 @@ exports[`FileUploader rendering renders expected elements 1`] = `
 <div
   className="FileUploader"
 >
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
   <LabelLine
     htmlFor="random-id"
     text="Test"
   />
   <button
     aria-describedby="random-id-helper"
+    aria-label="Test. Test drop zone"
     className="FileUploader__dropZone"
     id="random-id"
     onClick={[Function]}
@@ -72,6 +77,10 @@ exports[`FileUploader rendering renders expected elements when files is not set 
 <div
   className="FileUploader"
 >
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
   <LabelLine
     htmlFor="random-id"
     optional={true}
@@ -84,6 +93,7 @@ exports[`FileUploader rendering renders expected elements when files is not set 
   </div>
   <button
     aria-describedby="random-id-helper"
+    aria-label="Test. Test drop zone"
     className="FileUploader__dropZone"
     id="random-id"
     onClick={[Function]}
@@ -111,6 +121,10 @@ exports[`FileUploader rendering renders expected elements when optional properti
 <div
   className="FileUploader TestClass"
 >
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
   <LabelLine
     htmlFor="random-id"
     optional={false}
@@ -123,6 +137,7 @@ exports[`FileUploader rendering renders expected elements when optional properti
   </div>
   <button
     aria-describedby="random-id-error"
+    aria-label="Test. Test drop zone"
     className="FileUploader__dropZone FileUploader__dropZone--error"
     disabled={true}
     id="random-id"
@@ -202,6 +217,10 @@ exports[`FileUploader rendering renders expected elements when showOpenFilePicke
 <div
   className="FileUploader"
 >
+  <div
+    aria-live="polite"
+    className="assistive-text"
+  />
   <LabelLine
     htmlFor="random-id"
     text="Test"
@@ -213,6 +232,7 @@ exports[`FileUploader rendering renders expected elements when showOpenFilePicke
   </div>
   <button
     aria-describedby="random-id-helper"
+    aria-label="Test. Test drop zone"
     className="FileUploader__dropZone"
     id="random-id"
     onClick={[Function]}

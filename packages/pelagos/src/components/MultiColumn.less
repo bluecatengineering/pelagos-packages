@@ -36,16 +36,16 @@
 	}
 
 	&[aria-selected='true'] {
+		background-color: var(--layer-accent);
+
+		&:hover {
+			background-color: var(--layer-accent-hover);
+		}
+	}
+
+	&:focus {
 		@focus-ring();
 		background-color: var(--layer-selected);
-	}
-}
-
-.MultiColumn__selected {
-	background-color: var(--layer-accent);
-
-	&:hover {
-		background-color: var(--layer-accent-hover);
 	}
 }
 
