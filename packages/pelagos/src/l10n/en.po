@@ -61,6 +61,10 @@ msgstr ""
 msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
 msgstr ""
 
+#: 13f
+msgid "{text}, column {column}, {leaf, select, true {leaf} other {group}}"
+msgstr ""
+
 #: 61c
 msgid "Add"
 msgstr ""
@@ -93,8 +97,8 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: 076
-msgid "Column {0} of {columnCount}"
+#: 4df
+msgid "Column {column} of {columnCount}"
 msgstr ""
 
 #: 8e3
@@ -119,6 +123,14 @@ msgstr ""
 
 #: 530
 msgid "Edit"
+msgstr ""
+
+#: 63a
+msgid "File {0} uploaded"
+msgstr ""
+
+#: 7ec
+msgid "Files {0} uploaded"
 msgstr ""
 
 #: 6a0
@@ -171,6 +183,10 @@ msgstr ""
 
 #: efc
 msgid "Save"
+msgstr ""
+
+#: 67a
+msgid "Use cursor keys to select an item"
 msgstr ""
 
 #: ea2

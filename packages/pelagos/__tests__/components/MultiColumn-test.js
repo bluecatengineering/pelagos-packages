@@ -24,6 +24,7 @@ describe('MultiColumn', () => {
 			const renderItem = jest.fn().mockReturnValueOnce('item00').mockReturnValueOnce('item01');
 			useRef
 				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [2, -1]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={isLeaf} renderItem={renderItem} />);
@@ -35,6 +36,7 @@ describe('MultiColumn', () => {
 			const isLeaf = jest.fn().mockReturnValueOnce(false);
 			const renderItem = jest.fn().mockReturnValueOnce('item00');
 			useRef
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, -1]})
 				.mockReturnValueOnce({current: path});
@@ -50,6 +52,7 @@ describe('MultiColumn', () => {
 			const isLeaf = jest.fn().mockReturnValueOnce(false);
 			const renderItem = jest.fn().mockReturnValueOnce('item00');
 			useRef
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, -1]})
 				.mockReturnValueOnce({current: path});
@@ -73,17 +76,19 @@ describe('MultiColumn', () => {
 		it('calls onChange when an option is clicked', () => {
 			const path = [1, 2, 3];
 			const onChange = jest.fn();
-			const focus = jest.fn();
-			const parentNode = {focus, dataset: {index: '1'}};
+			const parentNode = {dataset: {index: '1'}};
 			const element = {parentNode, dataset: {index: '4'}};
 			const closest = jest.fn().mockReturnValueOnce(element);
 			const preventDefault = jest.fn();
 			const event = {target: {closest}, preventDefault};
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			wrapper.simulate('mousedown', event);
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(focus.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[1, 4]]]);
 		});
 
@@ -92,7 +97,11 @@ describe('MultiColumn', () => {
 			const closest = jest.fn();
 			const preventDefault = jest.fn();
 			const event = {target: {closest}, preventDefault};
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} />);
 			wrapper.simulate('mousedown', event);
 			expect(preventDefault).not.toHaveBeenCalled();
@@ -101,7 +110,11 @@ describe('MultiColumn', () => {
 		it('ignores the event when a key is pressed and any modifier is set', () => {
 			const path = [0];
 			const preventDefault = jest.fn();
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} />);
 
 			wrapper.simulate('keydown', {shiftKey: true, preventDefault});
@@ -118,7 +131,11 @@ describe('MultiColumn', () => {
 			const preventDefault = jest.fn();
 			const child1 = {};
 			const current = {children: [null, child1]};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			pageUp.mockReturnValue(2);
 			wrapper.simulate('keydown', {keyCode: 33, preventDefault});
@@ -133,7 +150,11 @@ describe('MultiColumn', () => {
 			const preventDefault = jest.fn();
 			const child1 = {};
 			const current = {children: [null, child1]};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			pageDown.mockReturnValue(2);
 			wrapper.simulate('keydown', {keyCode: 34, preventDefault});
@@ -148,6 +169,7 @@ describe('MultiColumn', () => {
 			const preventDefault = jest.fn();
 			useRef
 				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, 3]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
@@ -160,7 +182,11 @@ describe('MultiColumn', () => {
 			const path = [0, 1];
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			wrapper.simulate('keydown', {keyCode: 36, preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -171,7 +197,11 @@ describe('MultiColumn', () => {
 			const path = [0, 1];
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			wrapper.simulate('keydown', {keyCode: 37, preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -182,7 +212,11 @@ describe('MultiColumn', () => {
 			const path = [0];
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			wrapper.simulate('keydown', {keyCode: 37, preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -193,7 +227,11 @@ describe('MultiColumn', () => {
 			const path = [0, 1];
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			wrapper.simulate('keydown', {keyCode: 38, preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -205,6 +243,7 @@ describe('MultiColumn', () => {
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
 			useRef
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, 3]})
 				.mockReturnValueOnce({current: path});
@@ -220,6 +259,7 @@ describe('MultiColumn', () => {
 			const preventDefault = jest.fn();
 			useRef
 				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, 2]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
@@ -233,6 +273,7 @@ describe('MultiColumn', () => {
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
 			useRef
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1]})
 				.mockReturnValueOnce({current: path});
@@ -248,6 +289,7 @@ describe('MultiColumn', () => {
 			const preventDefault = jest.fn();
 			useRef
 				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, 3]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
@@ -261,6 +303,7 @@ describe('MultiColumn', () => {
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();
 			useRef
+				.mockReturnValueOnce(null)
 				.mockReturnValueOnce(null)
 				.mockReturnValueOnce({current: [1, 3]})
 				.mockReturnValueOnce({current: path});
@@ -278,7 +321,11 @@ describe('MultiColumn', () => {
 			const textContent = 'foo';
 			const children = [{textContent}];
 			const current = {children: [null, {children}]};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			useStringFinder.mockReturnValue(findItemToFocus);
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			wrapper.simulate('keydown', {keyCode: 48, preventDefault});
@@ -296,7 +343,11 @@ describe('MultiColumn', () => {
 			const findItemToFocus = jest.fn().mockReturnValue(-1);
 			const children = [];
 			const current = {children: [null, {children}]};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			useStringFinder.mockReturnValue(findItemToFocus);
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			wrapper.simulate('keydown', {keyCode: 48, preventDefault});
@@ -307,7 +358,11 @@ describe('MultiColumn', () => {
 		it('ignores the event when an unknown key is pressed', () => {
 			const path = [0, 2];
 			const preventDefault = jest.fn();
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} />);
 
 			wrapper.simulate('keydown', {keyCode: 47, preventDefault});
@@ -319,28 +374,88 @@ describe('MultiColumn', () => {
 		it('calls setFocused on focus', () => {
 			const path = [0];
 			const setFocused = jest.fn();
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			const contains = jest.fn();
+			const live = {};
+			const relatedTarget = {test: 'foo'};
+			useRef
+				.mockReturnValueOnce({current: {contains}})
+				.mockReturnValueOnce({current: live})
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			useState.mockReturnValueOnce([false, setFocused]).mockReturnValueOnce([0]);
 			const wrapper = shallow(<MultiColumn path={path} />);
-			wrapper.simulate('focus');
+			wrapper.simulate('focus', {relatedTarget});
+			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(setFocused.mock.calls).toEqual([[true]]);
+			expect(live.textContent).toBe('Use cursor keys to select an item');
+		});
+
+		it('does not call setFocused on focus when root contains relatedTarget', () => {
+			const path = [0];
+			const setFocused = jest.fn();
+			const contains = jest.fn().mockReturnValue(true);
+			const live = {};
+			const relatedTarget = {test: 'foo'};
+			useRef
+				.mockReturnValueOnce({current: {contains}})
+				.mockReturnValueOnce({current: live})
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
+			useState.mockReturnValueOnce([false, setFocused]).mockReturnValueOnce([0]);
+			const wrapper = shallow(<MultiColumn path={path} />);
+			wrapper.simulate('focus', {relatedTarget});
+			expect(contains.mock.calls).toEqual([[relatedTarget]]);
+			expect(setFocused.mock.calls).toEqual([]);
+			expect(live.textContent).toBeUndefined();
 		});
 
 		it('calls setFocused on blur', () => {
 			const path = [0];
 			const setFocused = jest.fn();
-			useRef.mockReturnValueOnce(null).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			const contains = jest.fn();
+			const live = {};
+			const relatedTarget = {test: 'foo'};
+			useRef
+				.mockReturnValueOnce({current: {contains}})
+				.mockReturnValueOnce({current: live})
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			useState.mockReturnValueOnce([false, setFocused]).mockReturnValueOnce([0]);
 			const wrapper = shallow(<MultiColumn path={path} />);
-			wrapper.simulate('blur');
+			wrapper.simulate('blur', {relatedTarget});
+			expect(contains.mock.calls).toEqual([[relatedTarget]]);
 			expect(setFocused.mock.calls).toEqual([[false]]);
+			expect(live.textContent).toBeNull();
+		});
+
+		it('does not call setFocused on blur when root contains relatedTarget', () => {
+			const path = [0];
+			const setFocused = jest.fn();
+			const contains = jest.fn().mockReturnValue(true);
+			const live = {};
+			const relatedTarget = {test: 'foo'};
+			useRef
+				.mockReturnValueOnce({current: {contains}})
+				.mockReturnValueOnce({current: live})
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
+			useState.mockReturnValueOnce([false, setFocused]).mockReturnValueOnce([0]);
+			const wrapper = shallow(<MultiColumn path={path} />);
+			wrapper.simulate('blur', {relatedTarget});
+			expect(contains.mock.calls).toEqual([[relatedTarget]]);
+			expect(setFocused.mock.calls).toEqual([]);
+			expect(live.textContent).toBeUndefined();
 		});
 
 		it('adds an effect which calls focus', () => {
 			const path = [0];
 			const focus = jest.fn();
-			const current = {children: [{focus}]};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			const current = {childNodes: [{childNodes: [{focus}]}]};
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
 			shallow(<MultiColumn path={path} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [path, true]]);
@@ -353,7 +468,11 @@ describe('MultiColumn', () => {
 			const path = [0];
 			const focus = jest.fn();
 			const current = {children: [{focus}]};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			useState.mockReturnValueOnce([false]).mockReturnValueOnce([0]);
 			shallow(<MultiColumn path={path} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [path, false]]);
@@ -366,7 +485,11 @@ describe('MultiColumn', () => {
 			const path = [];
 			const focus = jest.fn();
 			const current = {children: [{focus}]};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
 			shallow(<MultiColumn path={path} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [path, true]]);
@@ -385,7 +508,11 @@ describe('MultiColumn', () => {
 				children: [col0],
 				getBoundingClientRect: () => ({right: 200, width: 100}),
 			};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			shallow(<MultiColumn path={path} />);
 			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [path]]);
 
@@ -404,7 +531,11 @@ describe('MultiColumn', () => {
 		it('adds an effect which does not scroll horizontally if busy is true', () => {
 			const path = [0];
 			const current = {busy: true, children: []};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			shallow(<MultiColumn path={path} />);
 			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [path]]);
 
@@ -416,7 +547,11 @@ describe('MultiColumn', () => {
 			const path = [0];
 			const col0 = {children: [], getBoundingClientRect: () => ({right: 200, width: 50})};
 			const current = {children: [col0], getBoundingClientRect: () => ({right: 200, width: 100})};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			shallow(<MultiColumn path={path} />);
 			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [path]]);
 
@@ -429,7 +564,11 @@ describe('MultiColumn', () => {
 			const child0 = {};
 			const col0 = {children: [child0]};
 			const current = {busy: true, children: [col0]};
-			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({current: []}).mockReturnValueOnce({current: path});
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
 			shallow(<MultiColumn path={path} />);
 			expect(useEffect.mock.calls[2]).toEqual([anyFunction, [path]]);
 

@@ -1,4 +1,4 @@
-import {useCallback} from 'react';
+import {useCallback, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 
@@ -37,16 +37,22 @@ const handleDragLeave = (event) => {
 	}
 };
 
-const invokeOnChange = (onChange, multiple, files, selectedFiles) => {
+const invokeOnChange = (onChange, multiple, files, selectedFiles, liveRef) => {
 	if (multiple) {
 		const tmp = files.slice();
+		const nameList = [];
 		// only safe way to iterate the "list" of files which is not a JS array in most cases
 		for (const file of selectedFiles) {
 			tmp.push(file);
+			nameList.push(file.name);
 		}
+		liveRef.current.textContent =
+			nameList.length === 1 ? t`File ${nameList[0]} uploaded` : t`Files ${nameList.join(', ')} uploaded`;
 		onChange(tmp);
 	} else {
-		onChange([selectedFiles[0]]);
+		const file = selectedFiles[0];
+		liveRef.current.textContent = t`File ${file.name} uploaded`;
+		onChange([file]);
 	}
 };
 
@@ -75,12 +81,14 @@ const FileUploader = ({
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
 
+	const liveRef = useRef();
+
 	const handleClick = useCallback(
 		(event) =>
 			window.showOpenFilePicker
 				? showOpenFilePicker({multiple, types})
 						.then((handles) => Promise.all(handles.map((handle) => handle.getFile())))
-						.then((selectedFiles) => invokeOnChange(onChange, multiple, files, selectedFiles))
+						.then((selectedFiles) => invokeOnChange(onChange, multiple, files, selectedFiles, liveRef))
 						.catch(() => {
 							/* ignore all errors */
 						})
@@ -91,13 +99,13 @@ const FileUploader = ({
 		(event) => {
 			event.preventDefault();
 			event.currentTarget.classList.remove('FileUploader__dropZone--active');
-			invokeOnChange(onChange, multiple, files, event.dataTransfer.files);
+			invokeOnChange(onChange, multiple, files, event.dataTransfer.files, liveRef);
 		},
 		[files, multiple, onChange]
 	);
 	const handleChange = useCallback(
 		(event) => {
-			invokeOnChange(onChange, multiple, files, event.target.files);
+			invokeOnChange(onChange, multiple, files, event.target.files, liveRef);
 		},
 		[files, multiple, onChange]
 	);
@@ -114,6 +122,7 @@ const FileUploader = ({
 
 	return (
 		<div className={`FileUploader${className ? ` ${className}` : ''}`}>
+			<div className="assistive-text" aria-live="polite" ref={liveRef} />
 			<LabelLine htmlFor={id} text={label} optional={optional && !files?.length} />
 			{description && (
 				<div className={`FileUploader__description${disabled ? ' FileUploader__description--disabled' : ''}`}>
@@ -125,6 +134,7 @@ const FileUploader = ({
 				className={`FileUploader__dropZone${error ? ' FileUploader__dropZone--error' : ''}`}
 				type="button"
 				disabled={disabled}
+				aria-label={`${label}. ${dropZoneText}`}
 				aria-describedby={error ? errorId : helperId}
 				onClick={handleClick}
 				onDragOver={disabled ? null : handleDragOver}

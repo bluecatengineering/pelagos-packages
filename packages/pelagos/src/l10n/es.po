@@ -61,6 +61,10 @@ msgstr "{name} removido"
 msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
 msgstr "{selectedCount, plural, one {un elemento seleccionado} other {# elementos seleccionados}}"
 
+#: 13f
+msgid "{text}, column {column}, {leaf, select, true {leaf} other {group}}"
+msgstr "{text}, columna {column}, {leaf, select, true {terminal} other {grupo}}"
+
 #: 61c
 msgid "Add"
 msgstr "Añadir"
@@ -93,9 +97,9 @@ msgstr "Limpiar búsqueda"
 msgid "Close"
 msgstr "Cerrar"
 
-#: 076
-msgid "Column {0} of {columnCount}"
-msgstr "Columna {0} de {columnCount}"
+#: 4df
+msgid "Column {column} of {columnCount}"
+msgstr "Columna {column} de {columnCount}"
 
 #: 8e3
 msgid "Copied"
@@ -120,6 +124,14 @@ msgstr "Descartar"
 #: 530
 msgid "Edit"
 msgstr "Editar"
+
+#: 63a
+msgid "File {0} uploaded"
+msgstr "Archivo {0} subido"
+
+#: 7ec
+msgid "Files {0} uploaded"
+msgstr "Archivos {0} subidos"
 
 #: 6a0
 msgid "Items per page"
@@ -172,6 +184,10 @@ msgstr "Eliminar filtro {name}"
 #: efc
 msgid "Save"
 msgstr "Guardar"
+
+#: 67a
+msgid "Use cursor keys to select an item"
+msgstr "Use las teclas de cursor para seleccionar un elemento"
 
 #: ea2
 msgid "Use cursor keys to select date"
