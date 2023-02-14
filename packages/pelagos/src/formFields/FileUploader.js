@@ -115,9 +115,11 @@ const FileUploader = ({
 	return (
 		<div className={`FileUploader${className ? ` ${className}` : ''}`}>
 			<LabelLine htmlFor={id} text={label} optional={optional && !files?.length} />
-			<div className={`FileUploader__description${disabled ? ' FileUploader__description--disabled' : ''}`}>
-				{description}
-			</div>
+			{description && (
+				<div className={`FileUploader__description${disabled ? ' FileUploader__description--disabled' : ''}`}>
+					{description}
+				</div>
+			)}
 			<button
 				id={id}
 				className={`FileUploader__dropZone${error ? ' FileUploader__dropZone--error' : ''}`}
@@ -177,7 +179,7 @@ FileUploader.propTypes = {
 	label: PropTypes.string,
 	/** Whether the field is optional. */
 	optional: PropTypes.bool,
-	/** Description of the field's purpose. */
+	/** @deprecated use helperText instead. */
 	description: PropTypes.string,
 	/** The text to display in the drop zone. */
 	dropZoneText: PropTypes.string,

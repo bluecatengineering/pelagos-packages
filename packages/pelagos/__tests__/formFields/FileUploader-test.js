@@ -17,14 +17,7 @@ describe('FileUploader', () => {
 
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(
-				<FileUploader
-					label="Test"
-					description="Test description"
-					dropZoneText="Test drop zone"
-					files={[{name: 'foo.txt'}]}
-				/>
-			);
+			const wrapper = shallow(<FileUploader label="Test" dropZoneText="Test drop zone" files={[{name: 'foo.txt'}]} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
