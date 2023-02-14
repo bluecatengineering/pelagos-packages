@@ -8,11 +8,6 @@ exports[`FileUploader rendering renders expected elements 1`] = `
     htmlFor="random-id"
     text="Test"
   />
-  <div
-    className="FileUploader__description"
-  >
-    Test description
-  </div>
   <button
     aria-describedby="random-id-helper"
     className="FileUploader__dropZone"
