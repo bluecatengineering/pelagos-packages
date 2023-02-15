@@ -1,0 +1,30 @@
+@import '~@bluecateng/pelagos/less/focus';
+@import '~@bluecateng/pelagos/less/spacing';
+@import '~@bluecateng/pelagos/less/utils';
+
+.Menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	white-space: nowrap;
+
+	&__item {
+		@layer-hover-effects();
+		display: flex;
+		align-items: center;
+		height: 32px;
+		color: var(--text-secondary);
+		padding: 0 @sp-16;
+		cursor: pointer;
+
+		&:hover,
+		&:active {
+			color: var(--text-primary);
+		}
+
+		&:focus-visible {
+			@focus-ring();
+			color: var(--text-primary);
+		}
+	}
+}

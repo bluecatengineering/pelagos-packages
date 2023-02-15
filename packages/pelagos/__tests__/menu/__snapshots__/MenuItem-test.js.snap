@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItem rendering renders expected elements 1`] = `
+<li
+  className="Menu__item"
+  role="menuitem"
+  tabIndex={-1}
+/>
+`;
+
+exports[`MenuItem rendering renders expected elements when optional properties are set 1`] = `
+<li
+  className="Menu__item TestClass"
+  id="test"
+  role="menuitem"
+  tabIndex={-1}
+/>
+`;
