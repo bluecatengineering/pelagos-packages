@@ -6,20 +6,14 @@ import {Meta} from '@storybook/addon-docs';
 
 # useMenuHandler
 
-Returns properties to be added to the button which displays a menu and to the menu item list element.
-Rendered menu items must have `role="menuitem"` and `data-index={<index>}`.
+Returns properties to be added to the button which displays a menu and to the menu elements.
+The menu should be rendered using the Menu and MenuItem components.
 
 ## Parameters
 
-| Param                  | Type          | Description                                    |
-| ---------------------- | ------------- | ---------------------------------------------- |
-| expanded               | `boolean`     | whether the menu is expanded.                  |
-| setExpanded            | `function`    | function invoked to change `expanded`.         |
-| items                  | `Array.<any>` | the menu items.                                |
-| options                | `Object`      | the options.                                   |
-| options.getItemText    | `function`    | returns the item text.                         |
-| options.isItemDisabled | `function`    | returns whether the item is disabled.          |
-| options.onItemSelected | `function`    | invoked when the item is selected by the user. |
+| Param            | Type       | Description                                  |
+| ---------------- | ---------- | -------------------------------------------- |
+| setPopUpPosition | `function` | function invoked to set the pop-up position. |
 
 ## Returns
 
@@ -28,27 +22,22 @@ Rendered menu items must have `role="menuitem"` and `data-index={<index>}`.
 ## Example
 
 ```js
-import {useCallback, useState} from 'react';
-import {useMenuHandler} from '@bluecateng/pelagos';
+import {useMenuHandler, Menu, MenuItem} from '@bluecateng/pelagos';
 
-const items = ['item0'];
-const getItemText = (item) => ''; // return text for item
+const setPopUpPosition = (button, menu) => {
+	// set pop-up position
+};
 
 const Example = () => {
-	const [expanded, setExpanded] = useState(false);
-	const handleItemSelected = useCallback((item) => {
-		// handle menu item selection
-	}, []);
-	const {current, buttonProps, listProps} = useMenuHandler(expanded, setExpanded, items, {
-		getItemText,
-		onItemSelected: handleItemSelected,
-	});
+	const {expanded, buttonProps, menuProps, guardProps} = useMenuHandler(setPopUpPosition);
 	return (
 		<div>
 			<button {...buttonProps}>...</button>
-			<ul {...listProps} role="menu">
-				...
-			</ul>
+			<div>
+				<div tabIndex={0} {...guardProps} />
+				<Menu {...menuProps}>...</Menu>
+				<div tabIndex={0} {...guardProps} />
+			</div>
 		</div>
 	);
 };

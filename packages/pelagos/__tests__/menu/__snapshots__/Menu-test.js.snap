@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu rendering renders expected elements 1`] = `
+<ul
+  className="Menu"
+  role="menu"
+>
+  <MenuItem />
+</ul>
+`;
+
+exports[`Menu rendering renders expected elements when optional properties are set 1`] = `
+<ul
+  className="Menu TestClass"
+  id="test"
+  role="menu"
+>
+  <MenuItem />
+</ul>
+`;
