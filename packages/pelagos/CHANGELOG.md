@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.3.0...@bluecateng/pelagos@10.3.1) (2023-02-15)
+
+### Bug Fixes
+
+- deprecate FileUploader.description ([6c1d585](https://github.com/bluecatengineering/pelagos-packages/commit/6c1d585ae38a7de5006f8e810aadefab708d9e7a))
+- improve accessibility ([2eb0978](https://github.com/bluecatengineering/pelagos-packages/commit/2eb0978209316898d7cb5aa67e3b73b3171776ff))
+
 # [10.3.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.2.1...@bluecateng/pelagos@10.3.0) (2023-02-08)
 
 ### Bug Fixes
