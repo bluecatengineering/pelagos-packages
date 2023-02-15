@@ -4,7 +4,6 @@ exports[`IconMenu rendering renders expected elements 1`] = `
 <Layer>
   <IconButton
     aria-controls={null}
-    aria-expanded={false}
     aria-haspopup="true"
     className="IconMenu"
     disabled={false}
@@ -14,8 +13,6 @@ exports[`IconMenu rendering renders expected elements 1`] = `
       }
     }
     id="random-id"
-    onClick={[Function]}
-    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -27,7 +24,6 @@ exports[`IconMenu rendering renders expected elements when all items are disable
 <Layer>
   <IconButton
     aria-controls={null}
-    aria-expanded={false}
     aria-haspopup="true"
     className="IconMenu"
     disabled={true}
@@ -37,8 +33,6 @@ exports[`IconMenu rendering renders expected elements when all items are disable
       }
     }
     id="random-id"
-    onClick={[Function]}
-    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -50,7 +44,6 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
 <Layer>
   <IconButton
     aria-controls={null}
-    aria-expanded={false}
     aria-haspopup="true"
     className="IconMenu"
     disabled={true}
@@ -60,8 +53,6 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
       }
     }
     id="random-id"
-    onClick={[Function]}
-    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -69,7 +60,7 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
 </Layer>
 `;
 
-exports[`IconMenu rendering renders expected elements when menuVisible is true 1`] = `
+exports[`IconMenu rendering renders expected elements when expanded is true 1`] = `
 <Layer>
   <IconButton
     aria-controls="random-id-menu"
@@ -83,8 +74,6 @@ exports[`IconMenu rendering renders expected elements when menuVisible is true 1
       }
     }
     id="random-id"
-    onClick={[Function]}
-    onKeyDown={[Function]}
     size="medium"
     tooltipPlacement="right"
     type="ghost"
@@ -94,15 +83,12 @@ exports[`IconMenu rendering renders expected elements when menuVisible is true 1
       className="IconMenu__wrapper"
     >
       <div
-        onFocus={[Function]}
         tabIndex={0}
       />
       <ul
         aria-labelledby="random-id"
         className="IconMenu__menu"
         id="random-id-menu"
-        onClick={[Function]}
-        onKeyDown={[Function]}
         role="menu"
       >
         <IconMenuItem
@@ -117,7 +103,6 @@ exports[`IconMenu rendering renders expected elements when menuVisible is true 1
         />
       </ul>
       <div
-        onFocus={[Function]}
         tabIndex={0}
       />
     </div>
@@ -129,7 +114,6 @@ exports[`IconMenu rendering renders expected elements when optional properties a
 <Layer>
   <IconButton
     aria-controls={null}
-    aria-expanded={false}
     aria-haspopup="true"
     className="IconMenu TestClass"
     disabled={false}
@@ -139,8 +123,6 @@ exports[`IconMenu rendering renders expected elements when optional properties a
       }
     }
     id="random-id"
-    onClick={[Function]}
-    onKeyDown={[Function]}
     overlay={
       <MenuArrow
         className="IconMenu__overlay"
