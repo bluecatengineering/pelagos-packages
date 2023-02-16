@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.3.1...@bluecateng/pelagos@11.0.0) (2023-02-16)
+
+### ⚠ BREAKING CHANGES
+
+- All references to deprecated items must be replaced with
+  suggested alternatives before using this version.
+- All existing links must be checked to ensure appearance is still correct.
+- Users must accept second ref and add a live element close to the list.
+- Users will need to modify existing code to the new interface.
+- Users should replace dark/light shadow names with simplified names.
+- Users should use `font-16-400` instead.
+
+### Features
+
+- improve behaviour of useMenuHandler ([636c61a](https://github.com/bluecatengineering/pelagos-packages/commit/636c61a1572b54edbda4adea722c746d162a5c23))
+- leave links underlined ([a689953](https://github.com/bluecatengineering/pelagos-packages/commit/a689953685cf05dcbf7f5b5e95078645dd6eb9b6))
+- remove all deprecated items ([d2a7ce5](https://github.com/bluecatengineering/pelagos-packages/commit/d2a7ce54b1bdafe20038adf70c20e0ab035cd970))
+- remove font-16-400-sp2 ([bd14daa](https://github.com/bluecatengineering/pelagos-packages/commit/bd14daa38dd4903a91b3ff330b398a6c85042ed2))
+- simplify shadow names ([41f1d63](https://github.com/bluecatengineering/pelagos-packages/commit/41f1d63b805405d10ec1839e10bffff5a0e6f838))
+
+### Bug Fixes
+
+- use a local live element in useReorder ([3eb68d1](https://github.com/bluecatengineering/pelagos-packages/commit/3eb68d1789960d0200cb39b070917724a61d0443))
+
 ## [10.3.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.3.0...@bluecateng/pelagos@10.3.1) (2023-02-15)
 
 ### Bug Fixes

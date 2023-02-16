@@ -1,6 +1,6 @@
 {
   "name": "@bluecateng/pelagos-forms",
-  "version": "4.1.1",
+  "version": "5.0.0",
   "description": "Form components",
   "license": "ISC",
   "sideEffects": false,

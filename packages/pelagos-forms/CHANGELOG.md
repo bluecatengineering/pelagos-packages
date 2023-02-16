@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@4.1.1...@bluecateng/pelagos-forms@5.0.0) (2023-02-16)
+
+### ⚠ BREAKING CHANGES
+
+- All references to deprecated items must be replaced with
+  suggested alternatives before using this version.
+
+### Features
+
+- remove all deprecated items ([d2a7ce5](https://github.com/bluecatengineering/pelagos-packages/commit/d2a7ce54b1bdafe20038adf70c20e0ab035cd970))
+
 ## [4.1.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@4.1.0...@bluecateng/pelagos-forms@4.1.1) (2023-01-25)
 
 ### Bug Fixes
