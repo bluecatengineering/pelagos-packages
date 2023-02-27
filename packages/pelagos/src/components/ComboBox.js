@@ -16,6 +16,7 @@ const ComboBox = ({
 	id,
 	autoSelect,
 	text,
+	disabled,
 	error,
 	getSuggestions,
 	renderSuggestion,
@@ -163,6 +164,7 @@ const ComboBox = ({
 				aria-controls={listId}
 				aria-activedescendant={selected === -1 ? null : `${id}-${selected}`}
 				value={text}
+				disabled={disabled}
 				onKeyDown={handleKeyDown}
 				onChange={handleChange}
 				onFocus={handleFocus}
@@ -174,7 +176,7 @@ const ComboBox = ({
 					className="ComboBox__add"
 					icon={faPlus}
 					aria-label={t`Add`}
-					disabled={!text}
+					disabled={disabled || !text}
 					onClick={handleAddClick}
 				/>
 			)}

@@ -46,9 +46,10 @@
 	}
 
 	&:disabled {
-		cursor: default;
 		color: var(--text-disabled);
+		background-color: var(--field-disabled);
 		border-color: transparent;
+		cursor: not-allowed;
 	}
 
 	&:disabled::before {
@@ -62,6 +63,10 @@
 
 	&--open {
 		transform: rotate(180deg);
+	}
+
+	:disabled > & {
+		fill: var(--icon-disabled);
 	}
 }
 

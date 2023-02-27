@@ -28,8 +28,9 @@
 
 		&:disabled {
 			color: var(--text-disabled);
-			background-color: var(--field);
+			background-color: var(--field-disabled);
 			border-color: transparent;
+			cursor: not-allowed;
 		}
 
 		@media print {
@@ -48,5 +49,9 @@
 		position: absolute;
 		right: 16px;
 		top: calc(50% - 8px);
+
+		:disabled + & {
+			fill: var(--icon-disabled);
+		}
 	}
 }

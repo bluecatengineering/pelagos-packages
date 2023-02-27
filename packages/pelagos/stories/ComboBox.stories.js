@@ -19,7 +19,7 @@ Disabled.args = {
 	text: 'Disabled',
 	'aria-label': 'Disabled',
 	disabled: true,
-	getSuggestions,
+	getSuggestions: () => [],
 	renderSuggestion,
 };
 
