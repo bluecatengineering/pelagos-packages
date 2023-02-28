@@ -36,12 +36,12 @@
 		content: attr(data-placeholder);
 	}
 
-	&--error {
+	&[aria-invalid='true'] {
 		outline: 2px solid var(--support-error);
 		outline-offset: -2px;
 	}
 
-	&--error:focus {
+	&[aria-invalid='true']:focus {
 		@focus-ring-error();
 	}
 

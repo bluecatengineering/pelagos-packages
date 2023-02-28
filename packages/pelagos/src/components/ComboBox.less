@@ -11,12 +11,12 @@
 .ComboBox__input {
 	flex: 1;
 
-	&.ComboBox--error {
+	&[aria-invalid='true'] {
 		outline: 2px solid var(--support-error);
 		outline-offset: -2px;
 	}
 
-	&:focus.ComboBox--error {
+	&:focus[aria-invalid='true'] {
 		@focus-ring-error();
 	}
 

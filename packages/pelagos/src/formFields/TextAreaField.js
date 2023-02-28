@@ -27,6 +27,7 @@ const TextAreaField = ({id, className, label, value, optional, resize, helperTex
 				}
 				value={value}
 				aria-describedby={error ? errorId : helperId}
+				aria-invalid={!!error}
 				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
 			/>
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}

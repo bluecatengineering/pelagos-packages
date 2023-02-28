@@ -10,6 +10,7 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
   />
   <textarea
     aria-describedby="random-id-error"
+    aria-invalid={true}
     className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
     id="random-id"
     maxLength={10}
@@ -34,6 +35,7 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
   />
   <textarea
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     className="TextAreaField__area"
     id="random-id"
     maxLength={10}
@@ -58,6 +60,7 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
   />
   <textarea
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     className="TextAreaField__area TextAreaField--noresize"
     id="random-id"
     maxLength={10}
@@ -82,6 +85,7 @@ exports[`TextAreaField rendering renders expected elements when className is set
   />
   <textarea
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     className="TextAreaField__area TextAreaField--noresize"
     id="random-id"
     maxLength={10}
@@ -106,6 +110,7 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
   />
   <textarea
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     className="TextAreaField__area TextAreaField--noresize"
     id="random-id"
     maxLength={10}

@@ -51,6 +51,7 @@ exports[`CheckBox rendering renders expected elements when error is true 1`] = `
   className="CheckBox TestClass"
 >
   <input
+    aria-invalid={true}
     checked={true}
     className="error"
     id="test"

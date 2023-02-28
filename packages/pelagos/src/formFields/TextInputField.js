@@ -25,6 +25,7 @@ const TextInputField = ({id, className, label, value, optional, helperText, erro
 				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				value={value}
 				aria-describedby={error ? errorId : helperId}
+				aria-invalid={!!error}
 				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
 			/>
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}

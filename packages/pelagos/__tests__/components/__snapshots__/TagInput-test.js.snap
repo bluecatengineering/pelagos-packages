@@ -51,6 +51,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
     </button>
   </span>
   <input
+    aria-invalid={false}
     className="TagInput__input"
     id="random-id"
     onBlur={[Function]}
@@ -113,6 +114,7 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
     </button>
   </span>
   <input
+    aria-invalid={true}
     className="TagInput__input"
     id="random-id"
     onBlur={[Function]}
@@ -135,6 +137,7 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
     className="assistive-text"
   />
   <input
+    aria-invalid={false}
     className="TagInput__input"
     id="random-id"
     onBlur={[Function]}
@@ -167,6 +170,7 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
     bar
   </span>
   <input
+    aria-invalid={false}
     className="TagInput__input"
     id="random-id"
     onBlur={[Function]}

@@ -37,6 +37,7 @@ exports[`RadioButton rendering renders expected elements when error is true 1`] 
   className="RadioButton TestClass"
 >
   <input
+    aria-invalid={true}
     checked={true}
     className="error"
     id="test"

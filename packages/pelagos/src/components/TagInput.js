@@ -135,6 +135,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 				type="text"
 				className="TagInput__input"
 				value={text}
+				aria-invalid={!!error}
 				onKeyDown={handleKeyDown}
 				onChange={handleChange}
 				onBlur={handleBlur}

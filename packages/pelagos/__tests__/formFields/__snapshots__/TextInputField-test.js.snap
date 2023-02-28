@@ -10,6 +10,7 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
   />
   <input
     aria-describedby="random-id-error"
+    aria-invalid={true}
     className="TextInputField__input TextInputField--error"
     disabled={false}
     id="random-id"
@@ -38,6 +39,7 @@ exports[`TextInputField rendering renders expected elements 1`] = `
   />
   <input
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     className="TextInputField__input"
     id="random-id"
     maxLength={10}
@@ -64,6 +66,7 @@ exports[`TextInputField rendering renders expected elements when className is se
   />
   <input
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     className="TextInputField__input"
     disabled={false}
     id="random-id"
@@ -91,6 +94,7 @@ exports[`TextInputField rendering renders expected elements when value is empty 
   />
   <input
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     className="TextInputField__input"
     disabled={false}
     id="random-id"

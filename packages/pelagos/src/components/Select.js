@@ -204,13 +204,14 @@ const Select = ({
 			<button
 				{...props}
 				id={id}
-				className={`Select__text${selected ? '' : ' Select__text--empty'}${error ? ' Select__text--error' : ''}`}
+				className={`Select__text${selected ? '' : ' Select__text--empty'}`}
 				type="button"
 				disabled={disabled}
 				aria-haspopup="listbox"
 				aria-expanded={open}
 				aria-owns={open ? listId : null}
 				aria-activedescendant={focused === -1 ? null : `${id}-${focused}`}
+				aria-invalid={error}
 				data-placeholder={placeholder}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
