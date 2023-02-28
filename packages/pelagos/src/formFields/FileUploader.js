@@ -125,11 +125,12 @@ const FileUploader = ({
 			<LabelLine htmlFor={id} text={label} optional={optional && !files?.length} />
 			<button
 				id={id}
-				className={`FileUploader__dropZone${error ? ' FileUploader__dropZone--error' : ''}`}
+				className="FileUploader__dropZone"
 				type="button"
 				disabled={disabled}
 				aria-label={`${label}. ${dropZoneText}`}
 				aria-describedby={error ? errorId : helperId}
+				aria-invalid={!!error}
 				onClick={handleClick}
 				onDragOver={disabled ? null : handleDragOver}
 				onDragEnter={disabled ? null : handleDragEnter}

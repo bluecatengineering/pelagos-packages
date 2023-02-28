@@ -156,13 +156,14 @@ const ComboBox = ({
 			<input
 				{...props}
 				id={id}
-				className={`ComboBox__input${error ? ' ComboBox--error' : ''}`}
+				className="ComboBox__input"
 				autoComplete="off"
 				role="combobox"
 				aria-expanded={open}
 				aria-autocomplete="list"
 				aria-controls={listId}
 				aria-activedescendant={selected === -1 ? null : `${id}-${selected}`}
+				aria-invalid={error}
 				value={text}
 				disabled={disabled}
 				onKeyDown={handleKeyDown}

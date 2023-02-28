@@ -5,7 +5,7 @@ import './RadioButton.less';
 /** A radio button. */
 const RadioButton = ({className, label, error, ...props}) => (
 	<label className={`RadioButton${className ? ` ${className}` : ''}`}>
-		<input {...props} className={error ? 'error' : ''} type="radio" />
+		<input {...props} className={error ? 'error' : ''} type="radio" aria-invalid={error} />
 		{label}
 	</label>
 );

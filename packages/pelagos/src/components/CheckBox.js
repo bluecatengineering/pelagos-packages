@@ -9,7 +9,14 @@ const CheckBox = ({className, label, indeterminate, disabled, error, ...props}) 
 	useEffect(() => (inputRef.current.indeterminate = indeterminate), [indeterminate]);
 	return (
 		<label className={`CheckBox${disabled ? ' CheckBox--disabled' : ''}${className ? ` ${className}` : ''}`}>
-			<input {...props} className={error ? 'error' : ''} type="checkbox" disabled={disabled} ref={inputRef} />
+			<input
+				{...props}
+				className={error ? 'error' : ''}
+				type="checkbox"
+				disabled={disabled}
+				aria-invalid={error}
+				ref={inputRef}
+			/>
 			{label}
 		</label>
 	);
@@ -20,7 +27,7 @@ CheckBox.propTypes = {
 	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
-	/** The check box label. */
+	/** The checkbox label. */
 	label: PropTypes.node,
 	/** Whether the box is checked. */
 	checked: PropTypes.bool,

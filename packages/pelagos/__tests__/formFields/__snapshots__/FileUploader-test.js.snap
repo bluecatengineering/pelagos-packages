@@ -14,6 +14,7 @@ exports[`FileUploader rendering renders expected elements 1`] = `
   />
   <button
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     aria-label="Test. Test drop zone"
     className="FileUploader__dropZone"
     id="random-id"
@@ -88,6 +89,7 @@ exports[`FileUploader rendering renders expected elements when files is not set 
   />
   <button
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     aria-label="Test. Test drop zone"
     className="FileUploader__dropZone"
     id="random-id"
@@ -127,8 +129,9 @@ exports[`FileUploader rendering renders expected elements when optional properti
   />
   <button
     aria-describedby="random-id-error"
+    aria-invalid={true}
     aria-label="Test. Test drop zone"
-    className="FileUploader__dropZone FileUploader__dropZone--error"
+    className="FileUploader__dropZone"
     disabled={true}
     id="random-id"
     onClick={[Function]}
@@ -217,6 +220,7 @@ exports[`FileUploader rendering renders expected elements when showOpenFilePicke
   />
   <button
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     aria-label="Test. Test drop zone"
     className="FileUploader__dropZone"
     id="random-id"
