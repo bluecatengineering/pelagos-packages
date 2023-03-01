@@ -54,7 +54,7 @@ const ListEntries = ({
 
 	return (
 		<>
-			<div className="assistive-text" aria-live="polite" ref={liveRef} />
+			<div className="sr-only" aria-live="polite" ref={liveRef} />
 			<ul
 				id={id}
 				className={`ListEntries ListEntries--${column ? 'column' : 'grid'}${className ? ` ${className}` : ''}`}

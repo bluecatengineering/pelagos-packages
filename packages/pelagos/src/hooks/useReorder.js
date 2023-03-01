@@ -29,7 +29,7 @@ const setLiveText = (ref, text) => (ref.current.textContent = text);
  *   const [reorderRef, liveRef] = useReorder('.Child', '.Handle', list.length, getElementName, onChange);
  *   return (
  *     <div>
- *       <div className="assistive-text" aria-live="polite" ref={liveRef} />
+ *       <div className="sr-only" aria-live="polite" ref={liveRef} />
  *       <ol ref={reorderRef}>...</ol>
  *     </div>
  *   );

@@ -121,7 +121,7 @@ const FileUploader = ({
 
 	return (
 		<div className={`FileUploader${className ? ` ${className}` : ''}`}>
-			<div className="assistive-text" aria-live="polite" ref={liveRef} />
+			<div className="sr-only" aria-live="polite" ref={liveRef} />
 			<LabelLine htmlFor={id} text={label} optional={optional && !files?.length} />
 			<button
 				id={id}

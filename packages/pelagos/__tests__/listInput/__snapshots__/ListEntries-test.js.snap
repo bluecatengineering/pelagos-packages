@@ -4,7 +4,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
 <React.Fragment>
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <ul
     className="ListEntries ListEntries--grid TestClass"
@@ -45,7 +45,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
 <React.Fragment>
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <ul
     className="ListEntries ListEntries--column"
@@ -86,7 +86,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
 <React.Fragment>
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <ul
     className="ListEntries ListEntries--grid"
@@ -127,7 +127,7 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
 <React.Fragment>
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <ul
     className="ListEntries ListEntries--grid"
@@ -168,7 +168,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
 <React.Fragment>
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <ul
     className="ListEntries ListEntries--grid"

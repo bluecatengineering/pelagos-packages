@@ -8,7 +8,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
 >
   <span
     aria-live="assertive"
-    className="assistive-text"
+    className="sr-only"
   />
   <span
     className="TagInput__tag"
@@ -71,7 +71,7 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
 >
   <span
     aria-live="assertive"
-    className="assistive-text"
+    className="sr-only"
   />
   <span
     className="TagInput__tag"
@@ -134,7 +134,7 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
 >
   <span
     aria-live="assertive"
-    className="assistive-text"
+    className="sr-only"
   />
   <input
     aria-invalid={false}
@@ -157,7 +157,7 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
 >
   <span
     aria-live="assertive"
-    className="assistive-text"
+    className="sr-only"
   />
   <span
     className="TagInput__defaultTag"
