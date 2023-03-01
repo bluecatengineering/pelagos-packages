@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@11.0.0...@bluecateng/pelagos@11.0.1) (2023-03-01)
+
+### Bug Fixes
+
+- fix look of disabled fields ([45906ff](https://github.com/bluecatengineering/pelagos-packages/commit/45906ff16ba6b056f2a156648e4e385fa486c80d))
+- rename assistive-text to sr-only ([b32b336](https://github.com/bluecatengineering/pelagos-packages/commit/b32b3362a4f48bbadd85c0bbce89a75c0f29d248))
+- use aria-invalid to mark fields with errors ([de48a69](https://github.com/bluecatengineering/pelagos-packages/commit/de48a691fff68d70352f99d07fbce9a4625926a9))
+
 ## [11.0.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@10.3.1...@bluecateng/pelagos@11.0.0) (2023-02-16)
 
 ### ⚠ BREAKING CHANGES
