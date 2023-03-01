@@ -93,7 +93,10 @@
     "extends": [
       "./packages/stylelint-config"
     ],
-    "customSyntax": "postcss-less"
+    "customSyntax": "postcss-less",
+    "rules": {
+      "no-invalid-double-slash-comments": null
+    }
   },
   "commitlint": {
     "extends": [

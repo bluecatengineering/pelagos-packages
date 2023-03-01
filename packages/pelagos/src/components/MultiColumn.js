@@ -322,7 +322,7 @@ const MultiColumn = ({
 					</div>
 				);
 			})}
-			<div className="assistive-text" aria-live="polite" ref={liveRef} />
+			<div className="sr-only" aria-live="polite" ref={liveRef} />
 		</div>
 	);
 };

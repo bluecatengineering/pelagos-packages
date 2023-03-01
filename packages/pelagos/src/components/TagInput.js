@@ -112,7 +112,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 	const length = tags.length;
 	return (
 		<Layer id={`${id}-tags`} className={`TagInput${error ? ' TagInput--error' : ''}`} onClick={handleTagClick}>
-			<span className="assistive-text" aria-live="assertive" ref={liveRef} />
+			<span className="sr-only" aria-live="assertive" ref={liveRef} />
 			{length
 				? tags.map((name, i) => (
 						<span key={name} className="TagInput__tag">

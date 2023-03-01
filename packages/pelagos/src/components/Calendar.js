@@ -219,7 +219,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 
 	return (
 		<div {...props} className={`Calendar${className ? ` ${className}` : ''}`}>
-			<div className="assistive-text" aria-live="polite" ref={liveRef} />
+			<div className="sr-only" aria-live="polite" ref={liveRef} />
 			<div className="Calendar__monthHeader">
 				<IconButton
 					className="Calendar__previous"

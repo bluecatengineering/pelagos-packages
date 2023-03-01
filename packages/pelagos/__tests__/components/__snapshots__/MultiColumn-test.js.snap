@@ -84,7 +84,7 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
   </div>
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
 </div>
 `;
@@ -158,7 +158,7 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
   </div>
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
 </div>
 `;
@@ -232,7 +232,7 @@ exports[`MultiColumn rendering renders expected elements when optional propertie
   </div>
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
 </div>
 `;

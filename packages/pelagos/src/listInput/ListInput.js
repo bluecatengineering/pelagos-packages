@@ -150,7 +150,7 @@ const ListInput = ({
 	const errorId = `${id}-error`;
 	return (
 		<div className="ListInput">
-			<div className="assistive-text" aria-live="assertive" ref={liveRef} />
+			<div className="sr-only" aria-live="assertive" ref={liveRef} />
 			<LabelLine htmlFor={id} text={label} optional={optional && empty} notice={notice} />
 			<ComboBox
 				{...props}

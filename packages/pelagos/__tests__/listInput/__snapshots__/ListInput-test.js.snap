@@ -6,7 +6,7 @@ exports[`ListInput rendering renders expected elements 1`] = `
 >
   <div
     aria-live="assertive"
-    className="assistive-text"
+    className="sr-only"
   />
   <LabelLine
     htmlFor="test"
@@ -54,7 +54,7 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
 >
   <div
     aria-live="assertive"
-    className="assistive-text"
+    className="sr-only"
   />
   <LabelLine
     htmlFor="test"
@@ -101,7 +101,7 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
 >
   <div
     aria-live="assertive"
-    className="assistive-text"
+    className="sr-only"
   />
   <LabelLine
     htmlFor="test"
@@ -148,7 +148,7 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
 >
   <div
     aria-live="assertive"
-    className="assistive-text"
+    className="sr-only"
   />
   <LabelLine
     htmlFor="test"

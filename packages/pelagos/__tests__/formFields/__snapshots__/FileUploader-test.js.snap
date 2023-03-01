@@ -6,7 +6,7 @@ exports[`FileUploader rendering renders expected elements 1`] = `
 >
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <LabelLine
     htmlFor="random-id"
@@ -80,7 +80,7 @@ exports[`FileUploader rendering renders expected elements when files is not set 
 >
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <LabelLine
     htmlFor="random-id"
@@ -120,7 +120,7 @@ exports[`FileUploader rendering renders expected elements when optional properti
 >
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <LabelLine
     htmlFor="random-id"
@@ -212,7 +212,7 @@ exports[`FileUploader rendering renders expected elements when showOpenFilePicke
 >
   <div
     aria-live="polite"
-    className="assistive-text"
+    className="sr-only"
   />
   <LabelLine
     htmlFor="random-id"
