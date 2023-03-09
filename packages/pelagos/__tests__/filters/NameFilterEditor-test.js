@@ -165,7 +165,7 @@ describe('NameFilterEditor', () => {
 			);
 			expect(ref).not.toEqual({});
 			expect(ref.current()).toBe(false);
-			expect(setError.mock.calls).toEqual([['Press Enter to add item(s) to the list.']]);
+			expect(setError.mock.calls).toEqual([['Press Enter to add items to the list.']]);
 		});
 	});
 });

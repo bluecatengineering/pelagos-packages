@@ -165,9 +165,9 @@ msgstr "página"
 msgid "page {page}"
 msgstr "página {page}"
 
-#: 187
-msgid "Press Enter to add item(s) to the list."
-msgstr "Presione Entrar para añadir elemento(s) a la lista."
+#: 036
+msgid "Press Enter to add items to the list."
+msgstr "Presione Entrar para añadir elementos a la lista."
 
 #: 46a
 msgid "Previous month"

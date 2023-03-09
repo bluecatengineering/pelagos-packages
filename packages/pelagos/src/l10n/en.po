@@ -161,8 +161,8 @@ msgstr ""
 msgid "page {page}"
 msgstr ""
 
-#: 187
-msgid "Press Enter to add item(s) to the list."
+#: 036
+msgid "Press Enter to add items to the list."
 msgstr ""
 
 #: 46a

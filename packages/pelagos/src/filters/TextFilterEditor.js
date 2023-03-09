@@ -18,7 +18,7 @@ const TextFilterEditor = ({label, placeholder, list, getSuggestions, parseInput,
 
 	validateSaveRef.current = useCallback(() => {
 		if (text) {
-			setError(t`Press Enter to add item(s) to the list.`);
+			setError(t`Press Enter to add items to the list.`);
 			return false;
 		}
 		return true;
