@@ -162,7 +162,8 @@
     "module": "packages/pelagos/src/l10n",
     "catalogPath": "packages/pelagos/src/l10n/{locale}",
     "locales": [
-      "en"
+      "en",
+      "es"
     ]
   },
   "lint-staged": {
