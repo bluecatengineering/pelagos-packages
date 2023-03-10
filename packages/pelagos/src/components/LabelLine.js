@@ -5,11 +5,10 @@ import Label from './Label';
 import './LabelLine.less';
 
 /** The standard form input label line. */
-const LabelLine = ({text, optional, notice, ...props}) => (
+const LabelLine = ({text, optional, ...props}) => (
 	<div className="LabelLine__label">
 		<Label {...props} text={text} />
 		{optional && <span className="LabelLine__optional">{t`(optional)`}</span>}
-		{notice && <span className="LabelLine__notice">{notice}</span>}
 	</div>
 );
 
@@ -18,8 +17,6 @@ LabelLine.propTypes = {
 	text: PropTypes.string,
 	/** Whether to mark the field as optional. */
 	optional: PropTypes.bool,
-	/** @deprecated there's no replacement. */
-	notice: PropTypes.string,
 };
 
 export default LabelLine;

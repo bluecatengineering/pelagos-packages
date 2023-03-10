@@ -7,12 +7,12 @@ jest.unmock('../../src/components/LabelLine');
 describe('LabelLine', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" optional notice="Notice" />);
+			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" optional />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when notice is not set', () => {
-			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" notice="Notice" />);
+		it('renders expected elements when optional is not set', () => {
+			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});
