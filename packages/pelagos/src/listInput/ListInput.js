@@ -16,7 +16,6 @@ const ListInput = ({
 	id,
 	label,
 	optional,
-	notice,
 	emptyText,
 	list,
 	helperText,
@@ -151,7 +150,7 @@ const ListInput = ({
 	return (
 		<div className="ListInput">
 			<div className="sr-only" aria-live="assertive" ref={liveRef} />
-			<LabelLine htmlFor={id} text={label} optional={optional && empty} notice={notice} />
+			<LabelLine htmlFor={id} text={label} optional={optional && empty} />
 			<ComboBox
 				{...props}
 				id={id}
@@ -195,8 +194,6 @@ ListInput.propTypes = {
 	label: PropTypes.string,
 	/** Whether the field is optional. */
 	optional: PropTypes.bool,
-	/** @deprecated there's no replacement. */
-	notice: PropTypes.string,
 	/** The placeholder text in the input box. */
 	placeholder: PropTypes.string,
 	/** The text below input box when list is empty. */

@@ -13,15 +13,10 @@ exports[`LabelLine rendering renders expected elements 1`] = `
   >
     (optional)
   </span>
-  <span
-    className="LabelLine__notice"
-  >
-    Notice
-  </span>
 </div>
 `;
 
-exports[`LabelLine rendering renders expected elements when notice is not set 1`] = `
+exports[`LabelLine rendering renders expected elements when optional is not set 1`] = `
 <div
   className="LabelLine__label"
 >
@@ -29,10 +24,5 @@ exports[`LabelLine rendering renders expected elements when notice is not set 1`
     htmlFor="test-id"
     text="Test"
   />
-  <span
-    className="LabelLine__notice"
-  >
-    Notice
-  </span>
 </div>
 `;
