@@ -37,6 +37,18 @@ describe('Dialog', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when stretch is set', () => {
+			const wrapper = shallow(
+				<Dialog id="test-dialog" className="TestClass" title="Test" stretch>
+					<div className="TestClass">This is a test</div>
+					<div>
+						<Button id="a" text="A" />
+					</div>
+				</Dialog>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when onSubmit is set', () => {
 			const wrapper = shallow(
 				<Dialog id="test-dialog" title="Test" onSubmit={jest.fn()}>

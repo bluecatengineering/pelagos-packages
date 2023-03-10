@@ -6,7 +6,7 @@ import Layer from './Layer';
 import './Dialog.less';
 
 /** A modal dialog box. */
-const Dialog = ({id, className, title, role, size, initialFocus, children: [body, buttons], onSubmit}) => {
+const Dialog = ({id, className, title, role, size, stretch, initialFocus, children: [body, buttons], onSubmit}) => {
 	const previousActive = useRef(document.activeElement);
 	const element = useRef(null);
 
@@ -40,7 +40,7 @@ const Dialog = ({id, className, title, role, size, initialFocus, children: [body
 		};
 	}, [initialFocus]);
 
-	const fullClassName = `Dialog Dialog--${size}${className ? ' ' + className : ''}`;
+	const fullClassName = `Dialog Dialog--${size}${stretch ? ' Dialog--stretch' : ''}${className ? ` ${className}` : ''}`;
 	return (
 		<div className="Dialog__backdrop">
 			{onSubmit ? (
@@ -75,6 +75,8 @@ Dialog.propTypes = {
 	role: PropTypes.oneOf(['dialog', 'alertdialog']),
 	/** The dialog size. */
 	size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+	/** Whether the dialog should use the maximum height for the size. */
+	stretch: PropTypes.bool,
 	/** The ID of the component to focus. */
 	initialFocus: PropTypes.string,
 	/** The dialog children. */

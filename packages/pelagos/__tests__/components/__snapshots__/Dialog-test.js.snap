@@ -76,6 +76,44 @@ exports[`Dialog rendering renders expected elements when child has no className 
 </div>
 `;
 
+exports[`Dialog rendering renders expected elements when stretch is set 1`] = `
+<div
+  className="Dialog__backdrop"
+>
+  <Layer
+    aria-labelledby="dialogTitle"
+    aria-modal={true}
+    className="Dialog Dialog--md Dialog--stretch TestClass"
+    id="test-dialog"
+    role="dialog"
+  >
+    <React.Fragment>
+      <div
+        className="Dialog__title"
+        id="dialogTitle"
+      >
+        Test
+      </div>
+      <div
+        className="TestClass Dialog__body"
+      >
+        This is a test
+      </div>
+      <div
+        className="Dialog__buttons"
+      >
+        <Button
+          id="a"
+          size="medium"
+          text="A"
+          type="tertiary"
+        />
+      </div>
+    </React.Fragment>
+  </Layer>
+</div>
+`;
+
 exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
 <div
   className="Dialog__backdrop"
