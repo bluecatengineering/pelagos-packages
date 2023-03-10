@@ -17,7 +17,7 @@ describe('TextAreaField', () => {
 					label="Label"
 					value="value"
 					placeholder="placeholder"
-					optional
+					required
 					maxLength={10}
 					helperText="Helper text"
 					onChange={jest.fn()}
@@ -29,15 +29,7 @@ describe('TextAreaField', () => {
 
 		it('renders expected elements when value is empty', () => {
 			const wrapper = shallow(
-				<TextAreaField
-					id="test"
-					label="Label"
-					value=""
-					placeholder="placeholder"
-					optional
-					maxLength={10}
-					onChange={jest.fn()}
-				/>
+				<TextAreaField id="test" label="Label" value="" placeholder="placeholder" maxLength={10} onChange={jest.fn()} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

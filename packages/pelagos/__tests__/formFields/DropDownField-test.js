@@ -32,7 +32,7 @@ describe('DropDownField', () => {
 			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
-		it('renders expected elements when className is set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
 				<DropDownField
 					id="test"
@@ -40,24 +40,8 @@ describe('DropDownField', () => {
 					label="Test"
 					value="o0"
 					options={options}
-					renderOption={renderOption}
-					onChange={jest.fn()}
-				/>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when error is set', () => {
-			const options = [
-				{value: 'o0', text: 'Option 0'},
-				{value: 'o1', text: 'Option 1'},
-			];
-			const wrapper = shallow(
-				<DropDownField
-					id="test"
-					label="Test"
-					value="o0"
-					options={options}
+					disabled
+					required
 					helperText="Helper text"
 					error="Error"
 					renderOption={renderOption}

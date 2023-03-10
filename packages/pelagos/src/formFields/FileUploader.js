@@ -1,6 +1,6 @@
 import {useCallback, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecateng/l10n.macro';
+import {select, t} from '@bluecateng/l10n.macro';
 
 import LabelLine from '../components/LabelLine';
 import SvgIcon from '../components/SvgIcon';
@@ -66,7 +66,7 @@ const FileUploader = ({
 	id,
 	className,
 	label,
-	optional,
+	required,
 	dropZoneText,
 	files,
 	helperText,
@@ -122,13 +122,13 @@ const FileUploader = ({
 	return (
 		<div className={`FileUploader${className ? ` ${className}` : ''}`}>
 			<div className="sr-only" aria-live="polite" ref={liveRef} />
-			<LabelLine htmlFor={id} text={label} optional={optional && !files?.length} />
+			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
 			<button
 				id={id}
 				className="FileUploader__dropZone"
 				type="button"
 				disabled={disabled}
-				aria-label={`${label}. ${dropZoneText}`}
+				aria-label={select(required, {true: `${label}, required. ${dropZoneText}`, other: `${label}. ${dropZoneText}`})}
 				aria-describedby={error ? errorId : helperId}
 				aria-invalid={!!error}
 				onClick={handleClick}
@@ -182,8 +182,8 @@ FileUploader.propTypes = {
 	className: PropTypes.string,
 	/** The label text. */
 	label: PropTypes.string,
-	/** Whether the field is optional. */
-	optional: PropTypes.bool,
+	/** Whether the field is required. */
+	required: PropTypes.bool,
 	/** The text to display in the drop zone. */
 	dropZoneText: PropTypes.string,
 	/** The accepted file types. */

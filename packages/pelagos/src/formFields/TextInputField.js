@@ -11,20 +11,21 @@ import FieldHelper from './FieldHelper';
 import './TextInputField.less';
 
 /** A text input field. */
-const TextInputField = ({id, className, label, value, optional, helperText, error, onChange, ...props}) => {
+const TextInputField = ({id, className, label, value, required, helperText, error, onChange, ...props}) => {
 	id = useRandomId(id);
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
 	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
 		<Layer className={'TextInputField' + (className ? ' ' + className : '')}>
-			<LabelLine htmlFor={id} text={label} optional={optional && !value} />
+			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
 			<input
 				{...props}
 				id={id}
 				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
 				value={value}
 				aria-describedby={error ? errorId : helperId}
+				aria-required={required}
 				aria-invalid={!!error}
 				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
 			/>
@@ -56,8 +57,8 @@ TextInputField.propTypes = {
 	autoFocus: PropTypes.bool,
 	/** Whether the field is disabled. */
 	disabled: PropTypes.bool,
-	/** Whether the field is optional. */
-	optional: PropTypes.bool,
+	/** Whether the field is required. */
+	required: PropTypes.bool,
 	/** Additional information for the field. */
 	helperText: PropTypes.string,
 	/** The error text. */

@@ -5,6 +5,7 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
   className="TextInputField"
 >
   <LabelLine
+    error={true}
     htmlFor="random-id"
     text="Label"
   />
@@ -33,13 +34,15 @@ exports[`TextInputField rendering renders expected elements 1`] = `
   className="TextInputField"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
-    optional={false}
+    required={true}
     text="Label"
   />
   <input
     aria-describedby="random-id-helper"
     aria-invalid={false}
+    aria-required={true}
     className="TextInputField__input"
     id="random-id"
     maxLength={10}
@@ -61,6 +64,7 @@ exports[`TextInputField rendering renders expected elements when className is se
   className="TextInputField TestClass"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
     text="Label"
   />
@@ -88,8 +92,8 @@ exports[`TextInputField rendering renders expected elements when value is empty 
   className="TextInputField"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
-    optional={true}
     text="Label"
   />
   <input

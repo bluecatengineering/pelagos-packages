@@ -5,6 +5,7 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
   className="TextAreaField"
 >
   <LabelLine
+    error={true}
     htmlFor="random-id"
     text="Label"
   />
@@ -30,6 +31,7 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
   className="TextAreaField"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
     text="Label"
   />
@@ -54,13 +56,15 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
   className="TextAreaField"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
-    optional={false}
+    required={true}
     text="Label"
   />
   <textarea
     aria-describedby="random-id-helper"
     aria-invalid={false}
+    aria-required={true}
     className="TextAreaField__area TextAreaField--noresize"
     id="random-id"
     maxLength={10}
@@ -80,6 +84,7 @@ exports[`TextAreaField rendering renders expected elements when className is set
   className="TextAreaField TestClass"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
     text="Label"
   />
@@ -104,8 +109,8 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
   className="TextAreaField"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
-    optional={true}
     text="Label"
   />
   <textarea

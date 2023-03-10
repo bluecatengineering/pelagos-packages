@@ -5,14 +5,16 @@ exports[`TagInputField rendering renders expected elements 1`] = `
   className="TagInputField"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
     id="random-id-label"
-    optional={false}
+    required={true}
     text="Label"
   />
   <TagInput
     aria-describedby="random-id-helper"
     aria-labelledby="random-id-label"
+    aria-required={true}
     id="random-id"
     onChange={[MockFunction]}
     onError={[MockFunction]}
@@ -35,9 +37,9 @@ exports[`TagInputField rendering renders expected elements if error is set 1`] =
   className="TagInputField"
 >
   <LabelLine
+    error={true}
     htmlFor="random-id"
     id="random-id-label"
-    optional={false}
     text="Label"
   />
   <TagInput
@@ -66,6 +68,7 @@ exports[`TagInputField rendering renders expected elements when className is set
   className="TagInputField TestClass"
 >
   <LabelLine
+    error={false}
     htmlFor="random-id"
     id="random-id-label"
     text="Label"
@@ -81,31 +84,6 @@ exports[`TagInputField rendering renders expected elements when className is set
         "foo",
       ]
     }
-    validate={[MockFunction]}
-  />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
-`;
-
-exports[`TagInputField rendering shows optional text if tags is empty 1`] = `
-<div
-  className="TagInputField"
->
-  <LabelLine
-    htmlFor="random-id"
-    id="random-id-label"
-    optional={true}
-    text="Label"
-  />
-  <TagInput
-    aria-describedby="random-id-helper"
-    aria-labelledby="random-id-label"
-    id="random-id"
-    onChange={[MockFunction]}
-    onError={[MockFunction]}
-    tags={[]}
     validate={[MockFunction]}
   />
   <FieldHelper

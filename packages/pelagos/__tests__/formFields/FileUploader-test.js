@@ -28,7 +28,7 @@ describe('FileUploader', () => {
 					id="test"
 					className="TestClass"
 					label="Test"
-					optional
+					required
 					dropZoneText="Test drop zone"
 					types={types}
 					multiple
@@ -42,7 +42,7 @@ describe('FileUploader', () => {
 		});
 
 		it('renders expected elements when files is not set', () => {
-			const wrapper = shallow(<FileUploader label="Test" optional dropZoneText="Test drop zone" types={types} />);
+			const wrapper = shallow(<FileUploader label="Test" dropZoneText="Test drop zone" types={types} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 

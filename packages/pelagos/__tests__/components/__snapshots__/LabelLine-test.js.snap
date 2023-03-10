@@ -8,15 +8,10 @@ exports[`LabelLine rendering renders expected elements 1`] = `
     htmlFor="test-id"
     text="Test"
   />
-  <span
-    className="LabelLine__optional"
-  >
-    (optional)
-  </span>
 </div>
 `;
 
-exports[`LabelLine rendering renders expected elements when optional is not set 1`] = `
+exports[`LabelLine rendering renders expected elements when error is set 1`] = `
 <div
   className="LabelLine__label"
 >
@@ -24,5 +19,28 @@ exports[`LabelLine rendering renders expected elements when optional is not set 
     htmlFor="test-id"
     text="Test"
   />
+  <span
+    aria-hidden={true}
+    className="LabelLine__required LabelLine--error"
+  >
+    *
+  </span>
+</div>
+`;
+
+exports[`LabelLine rendering renders expected elements when required is set 1`] = `
+<div
+  className="LabelLine__label"
+>
+  <Label
+    htmlFor="test-id"
+    text="Test"
+  />
+  <span
+    aria-hidden={true}
+    className="LabelLine__required"
+  >
+    *
+  </span>
 </div>
 `;

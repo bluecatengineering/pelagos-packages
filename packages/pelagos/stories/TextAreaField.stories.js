@@ -10,8 +10,8 @@ Normal.args = {label: 'Normal', value: 'Alpha', helperText: 'Helper text'};
 export const Empty = Template.bind({});
 Empty.args = {label: 'Empty', placeholder: 'Placeholder'};
 
-export const Optional = Template.bind({});
-Optional.args = {label: 'Optional', optional: true};
+export const Required = Template.bind({});
+Required.args = {label: 'Required', required: true};
 
 export const Error = Template.bind({});
 Error.args = {label: 'Error', value: 'Alpha', error: 'Error message'};
@@ -20,7 +20,7 @@ export const AllStates = () => (
 	<div className="Story__group">
 		<TextAreaField label="Normal" value="Alpha" helperText="Helper text" onChange={identity} />
 		<TextAreaField label="Empty" placeholder="Placeholder" onChange={identity} />
-		<TextAreaField label="Optional" optional onChange={identity} />
+		<TextAreaField label="Required" required onChange={identity} />
 		<TextAreaField label="Error" value="Alpha" error="Error message" onChange={identity} />
 	</div>
 );
