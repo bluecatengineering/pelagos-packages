@@ -18,7 +18,7 @@ LabelLine.propTypes = {
 	text: PropTypes.string,
 	/** Whether to mark the field as optional. */
 	optional: PropTypes.bool,
-	/** The notice/warning text. */
+	/** @deprecated there's no replacement. */
 	notice: PropTypes.string,
 };
 

@@ -195,7 +195,7 @@ ListInput.propTypes = {
 	label: PropTypes.string,
 	/** Whether the field is optional. */
 	optional: PropTypes.bool,
-	/** The notice/warning text. */
+	/** @deprecated there's no replacement. */
 	notice: PropTypes.string,
 	/** The placeholder text in the input box. */
 	placeholder: PropTypes.string,
