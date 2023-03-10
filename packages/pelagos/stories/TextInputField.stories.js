@@ -10,8 +10,8 @@ Normal.args = {label: 'Normal', value: 'Alpha', helperText: 'Helper text'};
 export const Empty = Template.bind({});
 Empty.args = {label: 'Empty', placeholder: 'Placeholder'};
 
-export const Optional = Template.bind({});
-Optional.args = {label: 'Optional', optional: true};
+export const Required = Template.bind({});
+Required.args = {label: 'Required', required: true};
 
 export const Disabled = Template.bind({});
 Disabled.args = {label: 'Disabled', value: 'Alpha', disabled: true};
@@ -20,16 +20,16 @@ export const ReadOnly = Template.bind({});
 ReadOnly.args = {label: 'Read-Only', value: 'Alpha', readOnly: true};
 
 export const Error = Template.bind({});
-Error.args = {label: 'Error', value: 'Alpha', error: 'Error message'};
+Error.args = {label: 'Error', value: 'Alpha', required: true, error: 'Error message'};
 
 export const AllStates = () => (
 	<div className="Story__group">
 		<TextInputField label="Normal" value="Alpha" helperText="Helper text" onChange={identity} />
 		<TextInputField label="Empty" placeholder="Placeholder" onChange={identity} />
-		<TextInputField label="Optional" optional onChange={identity} />
+		<TextInputField label="Required" required onChange={identity} />
 		<TextInputField label="Disabled" value="Alpha" disabled onChange={identity} />
 		<TextInputField label="Read-Only" value="Alpha" readOnly onChange={identity} />
-		<TextInputField label="Error" value="Alpha" error="Error message" onChange={identity} />
+		<TextInputField label="Error" value="Alpha" required error="Error message" onChange={identity} />
 	</div>
 );
 AllStates.storyName = 'All states';

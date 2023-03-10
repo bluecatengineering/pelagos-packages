@@ -9,12 +9,14 @@ exports[`ListInput rendering renders expected elements 1`] = `
     className="sr-only"
   />
   <LabelLine
+    error={false}
     htmlFor="test"
-    optional={false}
+    required={true}
     text="Test"
   />
   <ComboBox
     aria-describedby="test-helper"
+    aria-required={true}
     autoSelect={true}
     error={false}
     getSuggestions={[Function]}
@@ -56,6 +58,7 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
     className="sr-only"
   />
   <LabelLine
+    error={false}
     htmlFor="test"
     text="Test"
   />
@@ -102,6 +105,7 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
     className="sr-only"
   />
   <LabelLine
+    error={true}
     htmlFor="test"
     text="Test"
   />
@@ -148,8 +152,8 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
     className="sr-only"
   />
   <LabelLine
+    error={false}
     htmlFor="test"
-    optional={true}
     text="Test"
   />
   <ComboBox

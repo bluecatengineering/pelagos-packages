@@ -4,16 +4,14 @@ exports[`DropDownField rendering renders expected elements 1`] = `
 <div
   className="DropDownField"
 >
-  <div
-    className="DropDownField__label"
-  >
-    <Label
-      id="random-id-label"
-      text="Test"
-    />
-  </div>
+  <LabelLine
+    error={false}
+    id="random-id-label"
+    text="Test"
+  />
   <Select
     aria-describedby="random-id-helper"
+    aria-invalid={false}
     aria-labelledby="random-id-label"
     className="DropDownField__select"
     error={false}
@@ -36,23 +34,24 @@ exports[`DropDownField rendering renders expected elements 1`] = `
 </div>
 `;
 
-exports[`DropDownField rendering renders expected elements when className is set 1`] = `
+exports[`DropDownField rendering renders expected elements when optional properties are set 1`] = `
 <div
   className="DropDownField TestClass"
 >
-  <div
-    className="DropDownField__label"
-  >
-    <Label
-      id="random-id-label"
-      text="Test"
-    />
-  </div>
+  <LabelLine
+    error={true}
+    id="random-id-label"
+    required={true}
+    text="Test"
+  />
   <Select
-    aria-describedby="random-id-helper"
+    aria-describedby="random-id-error"
+    aria-invalid={true}
     aria-labelledby="random-id-label"
+    aria-required={true}
     className="DropDownField__select"
-    error={false}
+    disabled={true}
+    error={true}
     getOptionKey={[MockFunction]}
     id="random-id"
     onChange={[MockFunction]}
@@ -60,47 +59,6 @@ exports[`DropDownField rendering renders expected elements when className is set
       [
         "o0",
         "o1",
-      ]
-    }
-    renderOption={[Function]}
-    value="o0"
-  />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
-`;
-
-exports[`DropDownField rendering renders expected elements when error is set 1`] = `
-<div
-  className="DropDownField"
->
-  <div
-    className="DropDownField__label"
-  >
-    <Label
-      id="random-id-label"
-      text="Test"
-    />
-  </div>
-  <Select
-    aria-describedby="random-id-error"
-    aria-labelledby="random-id-label"
-    className="DropDownField__select"
-    error={true}
-    getOptionKey={[MockFunction]}
-    id="random-id"
-    onChange={[MockFunction]}
-    options={
-      [
-        {
-          "text": "Option 0",
-          "value": "o0",
-        },
-        {
-          "text": "Option 1",
-          "value": "o1",
-        },
       ]
     }
     renderOption={[Function]}

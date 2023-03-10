@@ -11,14 +11,14 @@ import FieldHelper from './FieldHelper';
 import './TextAreaField.less';
 
 /** A text area field. */
-const TextAreaField = ({id, className, label, value, optional, resize, helperText, error, onChange, ...props}) => {
+const TextAreaField = ({id, className, label, value, required, resize, helperText, error, onChange, ...props}) => {
 	id = useRandomId(id);
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
 	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
 		<Layer className={'TextAreaField' + (className ? ' ' + className : '')}>
-			<LabelLine htmlFor={id} text={label} optional={optional && !value} />
+			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
 			<textarea
 				{...props}
 				id={id}
@@ -27,6 +27,7 @@ const TextAreaField = ({id, className, label, value, optional, resize, helperTex
 				}
 				value={value}
 				aria-describedby={error ? errorId : helperId}
+				aria-required={required}
 				aria-invalid={!!error}
 				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
 			/>
@@ -46,8 +47,8 @@ TextAreaField.propTypes = {
 	value: PropTypes.string,
 	/** The placeholder text. */
 	placeholder: PropTypes.string,
-	/** Whether the field is optional. */
-	optional: PropTypes.bool,
+	/** Whether the field is required. */
+	required: PropTypes.bool,
 	/** Whether the field can be resized. */
 	resize: PropTypes.bool,
 	/** The maximum text length. */

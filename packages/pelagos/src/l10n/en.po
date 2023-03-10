@@ -53,6 +53,10 @@ msgstr ""
 msgid "{name} removed"
 msgstr ""
 
+#: 791
+msgid "{required, select, true {{label}, required. {dropZoneText}} other {{label}. {dropZoneText}}}"
+msgstr ""
+
 #: 1e6
 msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
 msgstr ""

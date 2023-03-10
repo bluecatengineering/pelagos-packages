@@ -15,7 +15,7 @@ import './ListInput.less';
 const ListInput = ({
 	id,
 	label,
-	optional,
+	required,
 	emptyText,
 	list,
 	helperText,
@@ -150,7 +150,7 @@ const ListInput = ({
 	return (
 		<div className="ListInput">
 			<div className="sr-only" aria-live="assertive" ref={liveRef} />
-			<LabelLine htmlFor={id} text={label} optional={optional && empty} />
+			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
 			<ComboBox
 				{...props}
 				id={id}
@@ -160,6 +160,7 @@ const ListInput = ({
 				getSuggestions={handleGetSuggestions}
 				renderSuggestion={renderSuggestion}
 				aria-describedby={error ? errorId : helperId}
+				aria-required={required}
 				onChange={handleChange}
 				onEnter={handleEnter}
 				onTextChange={handleTextChange}
@@ -192,8 +193,8 @@ ListInput.propTypes = {
 	id: PropTypes.string.isRequired,
 	/** The label text. */
 	label: PropTypes.string,
-	/** Whether the field is optional. */
-	optional: PropTypes.bool,
+	/** Whether the field is required. */
+	required: PropTypes.bool,
 	/** The placeholder text in the input box. */
 	placeholder: PropTypes.string,
 	/** The text below input box when list is empty. */

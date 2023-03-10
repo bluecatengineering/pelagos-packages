@@ -9,6 +9,7 @@ exports[`FileUploader rendering renders expected elements 1`] = `
     className="sr-only"
   />
   <LabelLine
+    error={false}
     htmlFor="random-id"
     text="Test"
   />
@@ -83,8 +84,8 @@ exports[`FileUploader rendering renders expected elements when files is not set 
     className="sr-only"
   />
   <LabelLine
+    error={false}
     htmlFor="random-id"
-    optional={true}
     text="Test"
   />
   <button
@@ -123,14 +124,15 @@ exports[`FileUploader rendering renders expected elements when optional properti
     className="sr-only"
   />
   <LabelLine
+    error={true}
     htmlFor="random-id"
-    optional={false}
+    required={true}
     text="Test"
   />
   <button
     aria-describedby="random-id-error"
     aria-invalid={true}
-    aria-label="Test. Test drop zone"
+    aria-label="Test, required. Test drop zone"
     className="FileUploader__dropZone"
     disabled={true}
     id="random-id"
@@ -215,6 +217,7 @@ exports[`FileUploader rendering renders expected elements when showOpenFilePicke
     className="sr-only"
   />
   <LabelLine
+    error={false}
     htmlFor="random-id"
     text="Test"
   />

@@ -9,19 +9,20 @@ import FieldHelper from './FieldHelper';
 import './TagInputField.less';
 
 /** A tag input field. */
-const TagInputField = ({id, className, label, optional, tags, helperText, error, ...props}) => {
+const TagInputField = ({id, className, label, required, tags, helperText, error, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
 	return (
 		<div className={`TagInputField${className ? ' ' + className : ''}`}>
-			<LabelLine id={labelId} htmlFor={id} text={label} optional={optional && tags.length === 0} />
+			<LabelLine id={labelId} htmlFor={id} text={label} required={required} error={!!error} />
 			<TagInput
 				{...props}
 				id={id}
 				tags={tags}
 				error={error}
+				aria-required={required}
 				aria-labelledby={labelId}
 				aria-describedby={error ? errorId : helperId}
 			/>
@@ -37,8 +38,8 @@ TagInputField.propTypes = {
 	className: PropTypes.string,
 	/** The label text. */
 	label: PropTypes.string.isRequired,
-	/** Whether the field is optional. */
-	optional: PropTypes.bool,
+	/** Whether the field is required. */
+	required: PropTypes.bool,
 	/** The entered tags. */
 	tags: PropTypes.array.isRequired,
 	/** The default tags. */

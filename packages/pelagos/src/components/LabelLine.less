@@ -1,14 +1,20 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
 
-.LabelLine__label {
-	flex-direction: row;
-	margin-bottom: @sp-08;
-	align-items: baseline;
-}
+.LabelLine {
+	&__label {
+		flex-direction: row;
+		margin-bottom: @sp-08;
+		align-items: baseline;
+	}
 
-.LabelLine__optional {
-	@font-10-400();
-	color: var(--text-helper);
-	margin-left: @sp-12;
+	&__required {
+		@font-12-600();
+		color: var(--text-helper);
+		margin-left: @sp-02;
+	}
+
+	&--error {
+		color: var(--support-error);
+	}
 }

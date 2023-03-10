@@ -12,7 +12,7 @@ describe('ListInput', () => {
 				<ListInput
 					id="test"
 					label="Test"
-					optional
+					required
 					placeholder="test placeholder"
 					emptyText="Test empty"
 					list={[{id: '0', name: 'test'}]}
@@ -24,7 +24,7 @@ describe('ListInput', () => {
 
 		it('renders expected elements when the list is empty', () => {
 			const wrapper = shallow(
-				<ListInput id="test" label="Test" optional placeholder="test placeholder" emptyText="Test empty" list={[]} />
+				<ListInput id="test" label="Test" placeholder="test placeholder" emptyText="Test empty" list={[]} />
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
