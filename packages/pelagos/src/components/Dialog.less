@@ -21,7 +21,6 @@
 	overflow: hidden;
 
 	.breakpoint(md, {
-		width: 84%;
 		height: auto;
 		max-height: 90%;
 
@@ -29,15 +28,6 @@
 			// stylelint-disable-next-line @bluecateng/property-strict-value
 			padding-right: calc(20% - @sp-32);
 		}
-	});
-
-	.breakpoint(lg, {
-		width: 60%;
-		max-height: 84%;
-	});
-
-	.breakpoint(xlg, {
-		width: 48%;
 	});
 
 	&--xs {
@@ -83,19 +73,38 @@
 		});
 	}
 
+	&--md {
+		.breakpoint(md, {
+			width: 84%;
+		});
+
+		.breakpoint(lg, {
+			width: 60%;
+			max-height: 84%;
+		});
+
+		.breakpoint(xlg, {
+			width: 48%;
+		});
+	}
+
 	&--lg {
 		.breakpoint(md, {
 			width: 96%;
+			max-height: 96%;
 		});
 
 		.breakpoint(lg, {
 			width: 84%;
-			max-height: 96%;
 		});
 
 		.breakpoint(xlg, {
 			width: 72%;
 		});
+	}
+
+	&--stretch {
+		height: 100%;
 	}
 
 	&__title {
