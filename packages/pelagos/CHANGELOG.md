@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@11.0.1...@bluecateng/pelagos@11.1.0) (2023-03-13)
+
+### Features
+
+- add stretch property to Dialog ([43641f5](https://github.com/bluecatengineering/pelagos-packages/commit/43641f55b4579ed5114c083ff3f1e14a429fae67))
+
+### Bug Fixes
+
+- change "item(s)" to "items" ([9eb470f](https://github.com/bluecatengineering/pelagos-packages/commit/9eb470fd2166458b9e2a14ad3bf31d0e86c6a901))
+- deprecate notice property in LabelLine ([c2c7ef2](https://github.com/bluecatengineering/pelagos-packages/commit/c2c7ef27970caac31a109197e1739b7e9b7fe4ec))
+- remove forced line height from notification components ([fb84c08](https://github.com/bluecatengineering/pelagos-packages/commit/fb84c0897091d37b2cdab870def03e03b8b08d16))
+
 ## [11.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@11.0.0...@bluecateng/pelagos@11.0.1) (2023-03-01)
 
 ### Bug Fixes
