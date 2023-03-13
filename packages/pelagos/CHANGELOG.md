@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@11.1.0...@bluecateng/pelagos@12.0.0) (2023-03-13)
+
+### ⚠ BREAKING CHANGES
+
+- All fields should be reviewed and mark as required where appropriate.
+- All references to deprecated items must be replaced with
+  suggested alternatives before using this version.
+
+### Features
+
+- remove all deprecated items ([238546c](https://github.com/bluecatengineering/pelagos-packages/commit/238546c1a75c37809990b0c2135809dbb43c4dbb))
+- replace optional property with required ([59b76d5](https://github.com/bluecatengineering/pelagos-packages/commit/59b76d58c847a4de7548bb5983bc0ad1c2581693))
+
+### Bug Fixes
+
+- wrap all styles in a layer ([ae09355](https://github.com/bluecatengineering/pelagos-packages/commit/ae09355d87f4b2f1aa2cdb1ef3081e9f298ecf4b))
+
 ## [11.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@11.0.1...@bluecateng/pelagos@11.1.0) (2023-03-13)
 
 ### Features
