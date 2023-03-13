@@ -1,19 +1,21 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
 
-.ListInput {
-	margin-top: @sp-12;
-}
+@layer pelagos {
+	.ListInput {
+		margin-top: @sp-12;
+	}
 
-.ListInput__empty {
-	@font-16-400();
-	color: var(--text-helper);
-	white-space: pre-line;
-	height: 145px;
-	text-align: center;
-}
+	.ListInput__empty {
+		@font-16-400();
+		color: var(--text-helper);
+		white-space: pre-line;
+		height: 145px;
+		text-align: center;
+	}
 
-.ListInput__list {
-	height: 145px;
-	overflow-y: auto;
+	.ListInput__list {
+		height: 145px;
+		overflow-y: auto;
+	}
 }

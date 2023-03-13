@@ -1,29 +1,31 @@
 @import '../../less/spacing';
 
-.ScrollBox {
-	flex-direction: row;
-	flex: 1;
-	overflow: hidden;
-	align-items: center;
-}
-
-.ScrollBox__track {
-	flex-direction: row;
-	flex: 1;
-	overflow: hidden;
-	scroll-behavior: smooth;
-}
-
-.ScrollBox__btn {
-	display: none;
-
-	.ScrollBox--overflow > & {
-		display: inherit;
+@layer pelagos {
+	.ScrollBox {
+		flex-direction: row;
+		flex: 1;
+		overflow: hidden;
+		align-items: center;
 	}
 
-	@media print {
+	.ScrollBox__track {
+		flex-direction: row;
+		flex: 1;
+		overflow: hidden;
+		scroll-behavior: smooth;
+	}
+
+	.ScrollBox__btn {
+		display: none;
+
 		.ScrollBox--overflow > & {
-			display: none;
+			display: inherit;
+		}
+
+		@media print {
+			.ScrollBox--overflow > & {
+				display: none;
+			}
 		}
 	}
 }

@@ -2,50 +2,58 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.ListEntries {
-	gap: @sp-08;
-	margin: 0;
-	padding: 0;
-	list-style: none;
+@layer pelagos {
+	.ListEntries {
+		gap: @sp-08;
+		margin: 0;
+		padding: 0;
+		list-style: none;
 
-	&--column {
+		&--column {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&--grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-auto-rows: min-content;
+
+			.breakpoint(md, {
+				grid-template-columns: repeat(2, 1fr)
+			});
+			.breakpoint(lg, {
+				grid-template-columns: repeat(4, 1fr)
+			});
+			.breakpoint(xlg, {
+				grid-template-columns: repeat(8, 1fr)
+			});
+		}
+	}
+
+	.ListEntries__item {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		align-items: center;
+		overflow: hidden;
 	}
 
-	&--grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-auto-rows: min-content;
-
-		.breakpoint(md, {grid-template-columns: repeat(2, 1fr)});
-		.breakpoint(lg, {grid-template-columns: repeat(4, 1fr)});
-		.breakpoint(xlg, {grid-template-columns: repeat(8, 1fr)});
+	.ListEntries__item--highlight {
+		animation: highlight-fade 2s ease-out;
 	}
-}
 
-.ListEntries__item {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	overflow: hidden;
-}
+	.ListEntries__icon {
+		@icon-button-nested();
+		font-size: 16px;
+		padding: @sp-02;
 
-.ListEntries__item--highlight {
-	animation: highlight-fade 2s ease-out;
-}
-
-.ListEntries__icon {
-	@icon-button-nested();
-	font-size: 16px;
-	padding: @sp-02;
-
-	.ListEntries__item--highlight > & {
-		color: var(--link-primary);
+		.ListEntries__item--highlight > & {
+			color: var(--link-primary);
+		}
 	}
-}
 
-.ListEntries__name {
-	flex: 1;
-	padding-left: @sp-04;
+	.ListEntries__name {
+		flex: 1;
+		padding-left: @sp-04;
+	}
 }

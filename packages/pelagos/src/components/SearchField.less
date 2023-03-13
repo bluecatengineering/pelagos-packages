@@ -1,19 +1,21 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.SearchField {
-	position: relative;
-}
+@layer pelagos {
+	.SearchField {
+		position: relative;
+	}
 
-.SearchField__input[type='text'] {
-	padding-right: @sp-24;
-}
+	.SearchField__input[type='text'] {
+		padding-right: @sp-24;
+	}
 
-.SearchField__icon {
-	@icon-button-nested();
-	position: absolute;
-	top: 4px;
-	right: 2px;
-	font-size: 16px;
-	padding: @sp-04;
+	.SearchField__icon {
+		@icon-button-nested();
+		position: absolute;
+		top: 4px;
+		right: 2px;
+		font-size: 16px;
+		padding: @sp-04;
+	}
 }

@@ -2,67 +2,69 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.MultiColumn {
-	flex-direction: row;
-	overflow-x: auto;
-	overflow-y: hidden;
-}
-
-.MultiColumn__column {
-	position: relative;
-	padding: @sp-02;
-	overflow-x: hidden;
-	overflow-y: auto;
-	outline: none;
-
-	&:not(:first-child) {
-		border-left: 1px solid var(--border-subtle);
-	}
-}
-
-.MultiColumn__item {
-	flex-direction: row;
-	align-items: center;
-	padding: @sp-04 @sp-08;
-	cursor: pointer;
-	transition: background-color 0.15s ease-out;
-
-	&:hover {
-		background-color: var(--background-hover);
+@layer pelagos {
+	.MultiColumn {
+		flex-direction: row;
+		overflow-x: auto;
+		overflow-y: hidden;
 	}
 
-	&:active {
-		background-color: var(--background-active);
-	}
+	.MultiColumn__column {
+		position: relative;
+		padding: @sp-02;
+		overflow-x: hidden;
+		overflow-y: auto;
+		outline: none;
 
-	&[aria-selected='true'] {
-		background-color: var(--layer-accent);
-
-		&:hover {
-			background-color: var(--layer-accent-hover);
+		&:not(:first-child) {
+			border-left: 1px solid var(--border-subtle);
 		}
 	}
 
-	&:focus {
-		@focus-ring();
-		background-color: var(--layer-selected);
+	.MultiColumn__item {
+		flex-direction: row;
+		align-items: center;
+		padding: @sp-04 @sp-08;
+		cursor: pointer;
+		transition: background-color 0.15s ease-out;
+
+		&:hover {
+			background-color: var(--background-hover);
+		}
+
+		&:active {
+			background-color: var(--background-active);
+		}
+
+		&[aria-selected='true'] {
+			background-color: var(--layer-accent);
+
+			&:hover {
+				background-color: var(--layer-accent-hover);
+			}
+		}
+
+		&:focus {
+			@focus-ring();
+			background-color: var(--layer-selected);
+		}
 	}
-}
 
-.MultiColumn__text {
-	@ellipsis();
-	flex: 1;
-}
+	.MultiColumn__text {
+		@ellipsis();
+		flex: 1;
+	}
 
-.MultiColumn__arrow {
-	font-size: 14px;
-	opacity: 0.4;
-}
+	.MultiColumn__arrow {
+		font-size: 14px;
+		opacity: 0.4;
+	}
 
-.MultiColumn__empty {
-	@font-16-400();
-	color: var(--text-helper);
-	white-space: pre-line;
-	justify-content: center;
-	align-items: center;
+	.MultiColumn__empty {
+		@font-16-400();
+		color: var(--text-helper);
+		white-space: pre-line;
+		justify-content: center;
+		align-items: center;
+	}
 }

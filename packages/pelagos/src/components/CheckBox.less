@@ -1,23 +1,25 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.CheckBox {
-	@layer-hover-effects();
-	display: inline-flex;
-	align-items: center;
-	// stylelint-disable-next-line @bluecateng/property-strict-value -- minimum space to fit focus ring
-	margin-left: 3px;
+@layer pelagos {
+	.CheckBox {
+		@layer-hover-effects();
+		display: inline-flex;
+		align-items: center;
+		// stylelint-disable-next-line @bluecateng/property-strict-value -- minimum space to fit focus ring
+		margin-left: 3px;
 
-	&--disabled {
-		color: var(--text-disabled);
+		&--disabled {
+			color: var(--text-disabled);
 
-		&:hover,
-		&:active {
-			background-color: transparent;
+			&:hover,
+			&:active {
+				background-color: transparent;
+			}
 		}
-	}
 
-	& > input {
-		margin-right: @sp-08;
+		& > input {
+			margin-right: @sp-08;
+		}
 	}
 }

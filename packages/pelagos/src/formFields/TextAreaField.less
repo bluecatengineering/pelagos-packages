@@ -2,23 +2,25 @@
 @import '../../less/focus';
 @import '../../less/spacing';
 
-.TextAreaField {
-	margin-top: @sp-12;
-}
+@layer pelagos {
+	.TextAreaField {
+		margin-top: @sp-12;
+	}
 
-.TextAreaField__area {
-	height: 65px;
-}
+	.TextAreaField__area {
+		height: 65px;
+	}
 
-.TextAreaField--error {
-	outline: 2px solid var(--support-error);
-	outline-offset: -2px;
-}
+	.TextAreaField--error {
+		outline: 2px solid var(--support-error);
+		outline-offset: -2px;
+	}
 
-.TextAreaField--error:focus {
-	@focus-ring-error();
-}
+	.TextAreaField--error:focus {
+		@focus-ring-error();
+	}
 
-.TextAreaField--noresize {
-	resize: none;
+	.TextAreaField--noresize {
+		resize: none;
+	}
 }

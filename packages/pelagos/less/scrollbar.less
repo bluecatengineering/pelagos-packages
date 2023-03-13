@@ -1,24 +1,26 @@
-::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
+@layer pelagos {
+	::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
 
-	@media print {
-		display: none;
+		@media print {
+			display: none;
+		}
 	}
-}
 
-::-webkit-scrollbar-thumb {
-	background-color: var(--scrollbar-face);
-	border-radius: 8px;
-	transition: background-color 0.15s ease-out;
+	::-webkit-scrollbar-thumb {
+		background-color: var(--scrollbar-face);
+		border-radius: 8px;
+		transition: background-color 0.15s ease-out;
 
-	&:hover {
-		background-color: var(--scrollbar-hover);
+		&:hover {
+			background-color: var(--scrollbar-hover);
+		}
 	}
-}
 
-// For Firefox
-* {
-	scrollbar-color: var(--scrollbar-hover) transparent;
-	scrollbar-width: thin;
+	// For Firefox
+	* {
+		scrollbar-color: var(--scrollbar-hover) transparent;
+		scrollbar-width: thin;
+	}
 }

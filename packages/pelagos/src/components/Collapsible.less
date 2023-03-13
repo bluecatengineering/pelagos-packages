@@ -3,42 +3,44 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.Collapsible {
-	border-top: 1px solid var(--border-subtle);
-}
-
-.Collapsible__header {
-	@focus-visible();
-	@layer-hover-effects();
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	background-color: transparent;
-	border: none;
-	padding: @sp-04 @sp-16;
-	cursor: pointer;
-}
-
-.Collapsible__title {
-	flex: 1;
-	text-align: left;
-}
-
-.Collapsible__arrow {
-	color: var(--link-primary);
-	font-size: 16px;
-	transition: transform 0.15s ease-out;
-
-	&--open {
-		transform: rotate(180deg);
+@layer pelagos {
+	.Collapsible {
+		border-top: 1px solid var(--border-subtle);
 	}
 
-	@media print {
-		display: none;
+	.Collapsible__header {
+		@focus-visible();
+		@layer-hover-effects();
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		background-color: transparent;
+		border: none;
+		padding: @sp-04 @sp-16;
+		cursor: pointer;
 	}
-}
 
-.Collapsible__body {
-	margin: @sp-08 @sp-16 @sp-24 @sp-16;
-	overflow: hidden;
+	.Collapsible__title {
+		flex: 1;
+		text-align: left;
+	}
+
+	.Collapsible__arrow {
+		color: var(--link-primary);
+		font-size: 16px;
+		transition: transform 0.15s ease-out;
+
+		&--open {
+			transform: rotate(180deg);
+		}
+
+		@media print {
+			display: none;
+		}
+	}
+
+	.Collapsible__body {
+		margin: @sp-08 @sp-16 @sp-24 @sp-16;
+		overflow: hidden;
+	}
 }

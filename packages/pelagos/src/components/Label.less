@@ -1,10 +1,12 @@
 @import '../../less/fonts';
 
-.Label {
-	@font-12-400();
-	color: var(--text-secondary);
+@layer pelagos {
+	.Label {
+		@font-12-400();
+		color: var(--text-secondary);
 
-	@media print {
-		color: var(--print-medium);
+		@media print {
+			color: var(--print-medium);
+		}
 	}
 }

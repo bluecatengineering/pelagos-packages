@@ -1,18 +1,20 @@
-.SvgIcon {
-	display: block;
-	height: 1em;
-	flex: none;
-}
-
-.SvgIcon--spin {
-	animation: spin 2s infinite linear;
-}
-
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
+@layer pelagos {
+	.SvgIcon {
+		display: block;
+		height: 1em;
+		flex: none;
 	}
-	100% {
-		transform: rotate(360deg);
+
+	.SvgIcon--spin {
+		animation: spin 2s infinite linear;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 }

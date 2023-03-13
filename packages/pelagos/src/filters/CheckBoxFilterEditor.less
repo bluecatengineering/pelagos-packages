@@ -1,21 +1,23 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
 
-.CheckBoxFilterEditor {
-	border: none;
-	display: flex;
-	flex-direction: column;
-	margin: 0;
-	padding: 0;
-
-	&__legend {
-		@font-12-400();
-		color: var(--text-secondary);
-		margin: 0 0 @sp-08;
+@layer pelagos {
+	.CheckBoxFilterEditor {
+		border: none;
+		display: flex;
+		flex-direction: column;
+		margin: 0;
 		padding: 0;
-	}
 
-	&__option {
-		margin-bottom: @sp-04;
+		&__legend {
+			@font-12-400();
+			color: var(--text-secondary);
+			margin: 0 0 @sp-08;
+			padding: 0;
+		}
+
+		&__option {
+			margin-bottom: @sp-04;
+		}
 	}
 }

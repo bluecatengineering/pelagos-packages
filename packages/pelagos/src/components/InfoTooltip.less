@@ -1,20 +1,22 @@
 @import '../../less/focus';
 
-.InfoTooltip {
-	@focus-visible();
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 16px;
-	height: 16px;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	color: var(--icon-secondary);
-	background-color: transparent;
+@layer pelagos {
+	.InfoTooltip {
+		@focus-visible();
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 16px;
+		height: 16px;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		color: var(--icon-secondary);
+		background-color: transparent;
 
-	&:hover,
-	&:active {
-		color: var(--icon-primary);
+		&:hover,
+		&:active {
+			color: var(--icon-primary);
+		}
 	}
 }

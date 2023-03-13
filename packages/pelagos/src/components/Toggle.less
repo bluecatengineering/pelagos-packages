@@ -1,65 +1,67 @@
 @import '../../less/spacing';
 @import '../../less/focus';
 
-.Toggle {
-	@focus-visible();
-	display: inline-block;
-	position: relative;
-	width: 48px;
-	height: 24px;
-	margin: @sp-04;
-	cursor: pointer;
-	background-color: var(--toggle-off);
-	border-radius: 12px;
-	transition: background-color 0.15s ease-out;
+@layer pelagos {
+	.Toggle {
+		@focus-visible();
+		display: inline-block;
+		position: relative;
+		width: 48px;
+		height: 24px;
+		margin: @sp-04;
+		cursor: pointer;
+		background-color: var(--toggle-off);
+		border-radius: 12px;
+		transition: background-color 0.15s ease-out;
 
-	&:focus {
-		outline-offset: 1px;
-	}
+		&:focus {
+			outline-offset: 1px;
+		}
 
-	&:hover {
-		background-color: var(--toggle-off-hover);
-	}
+		&:hover {
+			background-color: var(--toggle-off-hover);
+		}
 
-	&:active {
-		background-color: var(--toggle-off-active);
-	}
+		&:active {
+			background-color: var(--toggle-off-active);
+		}
 
-	&[aria-checked='true'] {
-		background-color: var(--support-success);
-	}
+		&[aria-checked='true'] {
+			background-color: var(--support-success);
+		}
 
-	&[aria-checked='true']:hover {
-		background-color: var(--toggle-on-hover);
-	}
+		&[aria-checked='true']:hover {
+			background-color: var(--toggle-on-hover);
+		}
 
-	&[aria-checked='true']:active {
-		background-color: var(--toggle-on-active);
-	}
+		&[aria-checked='true']:active {
+			background-color: var(--toggle-on-active);
+		}
 
-	&[aria-disabled='true'] {
-		background-color: var(--icon-disabled);
-		cursor: not-allowed;
-		pointer-events: none;
-	}
+		&[aria-disabled='true'] {
+			background-color: var(--icon-disabled);
+			cursor: not-allowed;
+			pointer-events: none;
+		}
 
-	&::after {
-		position: absolute;
-		content: '';
-		top: 3px;
-		left: 3px;
-		width: 18px;
-		height: 18px;
-		border-radius: 50%;
-		background-color: var(--icon-on-color);
-		transition: transform 0.15s ease-out;
-	}
+		&::after {
+			position: absolute;
+			content: '';
+			top: 3px;
+			left: 3px;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			background-color: var(--icon-on-color);
+			transition: transform 0.15s ease-out;
+		}
 
-	&[aria-checked='true']::after {
-		transform: translateX(24px);
-	}
+		&[aria-checked='true']::after {
+			transform: translateX(24px);
+		}
 
-	&[aria-disabled='true']::after {
-		background-color: var(--icon-on-color-disabled);
+		&[aria-disabled='true']::after {
+			background-color: var(--icon-on-color-disabled);
+		}
 	}
 }

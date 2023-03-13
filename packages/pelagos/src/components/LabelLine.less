@@ -1,20 +1,22 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
 
-.LabelLine {
-	&__label {
-		flex-direction: row;
-		margin-bottom: @sp-08;
-		align-items: baseline;
-	}
+@layer pelagos {
+	.LabelLine {
+		&__label {
+			flex-direction: row;
+			margin-bottom: @sp-08;
+			align-items: baseline;
+		}
 
-	&__required {
-		@font-12-600();
-		color: var(--text-helper);
-		margin-left: @sp-02;
-	}
+		&__required {
+			@font-12-600();
+			color: var(--text-helper);
+			margin-left: @sp-02;
+		}
 
-	&--error {
-		color: var(--support-error);
+		&--error {
+			color: var(--support-error);
+		}
 	}
 }

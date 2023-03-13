@@ -2,50 +2,82 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-:root {
-	--table-row-height: 32px;
-}
-
-.Table {
-	&--fixed {
-		table-layout: fixed;
+@layer pelagos {
+	:root {
+		--table-row-height: 32px;
 	}
 
-	&--left {
-		text-align: left;
-	}
+	.Table {
+		&--fixed {
+			table-layout: fixed;
+		}
 
-	&--center {
-		text-align: center;
-	}
+		&--left {
+			text-align: left;
+		}
 
-	&--right {
-		text-align: right;
-	}
+		&--center {
+			text-align: center;
+		}
 
-	& tr {
-		height: var(--table-row-height);
-	}
+		&--right {
+			text-align: right;
+		}
 
-	&--sticky > thead {
-		top: 0;
-		position: sticky;
-		z-index: 1;
-	}
+		& tr {
+			height: var(--table-row-height);
+		}
 
-	& > tbody > tr {
-		@layer-hover-effects();
-		@focus-visible();
-		border-top: 1px solid transparent;
-		border-bottom: 1px solid transparent;
+		&--sticky > thead {
+			top: 0;
+			position: sticky;
+			z-index: 1;
+		}
 
-		&[aria-selected='true'],
-		&[aria-selected='true']:nth-child(even) {
-			background-color: var(--layer-selected);
-			border-bottom-color: var(--border-subtle-selected);
+		& > tbody > tr {
+			@layer-hover-effects();
+			@focus-visible();
+			border-top: 1px solid transparent;
+			border-bottom: 1px solid transparent;
+
+			&[aria-selected='true'],
+			&[aria-selected='true']:nth-child(even) {
+				background-color: var(--layer-selected);
+				border-bottom-color: var(--border-subtle-selected);
+
+				&:hover {
+					background-color: var(--layer-selected-hover);
+				}
+
+				@media print {
+					background-color: transparent;
+				}
+			}
+
+			// bug in stylelint: no matter the order this selector will always conflict with the one above
+			// stylelint-disable-next-line no-descending-specificity
+			&[aria-selected='true']:first-child {
+				border-top-color: var(--border-subtle-selected);
+			}
+		}
+
+		&--line > tbody > tr {
+			border-bottom: 1px solid var(--border-subtle);
+
+			@media print {
+				border-bottom-color: transparent;
+			}
+		}
+
+		&--zebra > tbody > tr:nth-child(even) {
+			background-color: var(--layer-accent);
 
 			&:hover {
-				background-color: var(--layer-selected-hover);
+				background-color: var(--layer-accent-hover);
+			}
+
+			&:active {
+				background-color: var(--layer-accent-active);
 			}
 
 			@media print {
@@ -53,278 +85,248 @@
 			}
 		}
 
-		// bug in stylelint: no matter the order this selector will always conflict with the one above
-		// stylelint-disable-next-line no-descending-specificity
-		&[aria-selected='true']:first-child {
-			border-top-color: var(--border-subtle-selected);
-		}
-	}
+		& > thead {
+			@font-12-600();
+			color: var(--text-secondary);
+			background-color: var(--layer-accent);
 
-	&--line > tbody > tr {
-		border-bottom: 1px solid var(--border-subtle);
-
-		@media print {
-			border-bottom-color: transparent;
-		}
-	}
-
-	&--zebra > tbody > tr:nth-child(even) {
-		background-color: var(--layer-accent);
-
-		&:hover {
-			background-color: var(--layer-accent-hover);
+			@media print {
+				color: var(--print-medium);
+				background-color: transparent;
+			}
 		}
 
-		&:active {
-			background-color: var(--layer-accent-active);
+		& th,
+		& td {
+			vertical-align: middle;
+			padding: 0 @sp-16;
+			font: inherit;
 		}
 
-		@media print {
-			background-color: transparent;
-		}
-	}
+		& th {
+			@base-ellipsis();
+			position: relative;
 
-	& > thead {
-		@font-12-600();
-		color: var(--text-secondary);
-		background-color: var(--layer-accent);
+			&.Table--sortable {
+				padding: 0;
+			}
 
-		@media print {
-			color: var(--print-medium);
-			background-color: transparent;
-		}
-	}
-
-	& th,
-	& td {
-		vertical-align: middle;
-		padding: 0 @sp-16;
-		font: inherit;
-	}
-
-	& th {
-		@base-ellipsis();
-		position: relative;
-
-		&.Table--sortable {
-			padding: 0;
+			&:not(:first-child)::before {
+				content: '';
+				position: absolute;
+				top: 25%;
+				left: 0;
+				height: 50%;
+				border-left: 1px solid var(--border-strong);
+			}
 		}
 
-		&:not(:first-child)::before {
-			content: '';
-			position: absolute;
-			top: 25%;
-			left: 0;
-			height: 50%;
-			border-left: 1px solid var(--border-strong);
-		}
-	}
-
-	& th[aria-sort='ascending']::before,
-	& th[aria-sort='descending']::before,
-	& th[aria-sort='ascending'] + th::before,
-	& th[aria-sort='descending'] + th::before {
-		display: none;
-	}
-
-	& td {
-		@base-ellipsis();
-		max-width: 0;
-	}
-
-	&__sort {
-		@focus-visible();
-		display: flex;
-		width: 100%;
-		height: var(--table-row-height);
-		align-items: center;
-		background-color: transparent;
-		border: none;
-		border-radius: 3px;
-		padding: 0 0 0 @sp-16;
-		font: inherit;
-		text-transform: inherit;
-		cursor: pointer;
-		transition: background-color 0.15s ease-out;
-
-		&:hover {
-			background-color: var(--layer-accent-hover);
-		}
-
-		&:active {
-			color: var(--text-primary);
-			background-color: var(--layer-accent-active);
-		}
-
-		&--active {
-			color: var(--text-primary);
-			background-color: var(--layer-accent-hover);
-		}
-	}
-
-	&__sortLabel {
-		@ellipsis();
-		flex: 1;
-	}
-
-	&__sortIcon {
-		margin: 0 @sp-04;
-		color: var(--icon-secondary);
-		font-size: 14px;
-		vertical-align: -2px;
-		cursor: pointer;
-		opacity: 0.25;
-		transition: opacity 0.15s ease-out;
-
-		.Table__sort--active > & {
-			color: var(--link-primary);
-			opacity: 1;
-		}
-
-		.Table__sort:hover &,
-		.Table__sort:focus & {
-			opacity: 1;
-		}
-
-		@media print {
+		& th[aria-sort='ascending']::before,
+		& th[aria-sort='descending']::before,
+		& th[aria-sort='ascending'] + th::before,
+		& th[aria-sort='descending'] + th::before {
 			display: none;
 		}
-	}
 
-	&__title {
-		margin: @sp-16 @sp-16 @sp-24 @sp-16;
-	}
+		& td {
+			@base-ellipsis();
+			max-width: 0;
+		}
 
-	&__description {
-		color: var(--text-secondary);
-	}
-
-	&__toolbar {
-		position: relative;
-		height: var(--table-row-height);
-		contain: content;
-		overflow: hidden;
-
-		& .Button {
+		&__sort {
+			@focus-visible();
+			display: flex;
+			width: 100%;
 			height: var(--table-row-height);
+			align-items: center;
+			background-color: transparent;
+			border: none;
+			border-radius: 3px;
+			padding: 0 0 0 @sp-16;
+			font: inherit;
+			text-transform: inherit;
+			cursor: pointer;
+			transition: background-color 0.15s ease-out;
+
+			&:hover {
+				background-color: var(--layer-accent-hover);
+			}
+
+			&:active {
+				color: var(--text-primary);
+				background-color: var(--layer-accent-active);
+			}
+
+			&--active {
+				color: var(--text-primary);
+				background-color: var(--layer-accent-hover);
+			}
 		}
-	}
 
-	&__toolbarBatch {
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		flex-direction: row;
-		align-items: center;
-		background-color: var(--background-brand);
-		transition: transform 0.15s ease-out;
-		transform: translateY(var(--table-row-height));
-		will-change: transform;
-
-		&--active {
-			transform: translateY(0);
+		&__sortLabel {
+			@ellipsis();
+			flex: 1;
 		}
-	}
 
-	&__toolbarBatchCount {
-		@ellipsis();
-		flex: 1;
-		color: var(--text-on-color);
-		margin: 0 @sp-16;
-	}
-
-	&__toolbarBatchButtons {
-		flex-direction: row;
-	}
-
-	&__toolbarBatchCancel {
-		position: relative;
-
-		&::before {
-			content: '';
-			position: absolute;
-			top: 25%;
-			left: 0;
-			height: 50%;
-			border-left: 1px solid var(--text-on-color);
+		&__sortIcon {
+			margin: 0 @sp-04;
+			color: var(--icon-secondary);
+			font-size: 14px;
+			vertical-align: -2px;
+			cursor: pointer;
+			opacity: 0.25;
 			transition: opacity 0.15s ease-out;
+
+			.Table__sort--active > & {
+				color: var(--link-primary);
+				opacity: 1;
+			}
+
+			.Table__sort:hover &,
+			.Table__sort:focus & {
+				opacity: 1;
+			}
+
+			@media print {
+				display: none;
+			}
 		}
 
-		&:hover::before,
-		&:focus::before,
-		:hover + &::before,
-		:focus + &::before,
-		:focus-within + &::before {
-			opacity: 0;
+		&__title {
+			margin: @sp-16 @sp-16 @sp-24 @sp-16;
 		}
-	}
 
-	&__toolbarDefault {
-		flex-direction: row;
-		justify-content: flex-end;
-		transition: transform 0.15s ease-out;
+		&__description {
+			color: var(--text-secondary);
+		}
 
-		.Table__toolbarBatch--active + & {
+		&__toolbar {
+			position: relative;
+			height: var(--table-row-height);
+			contain: content;
+			overflow: hidden;
+
+			& .Button {
+				height: var(--table-row-height);
+			}
+		}
+
+		&__toolbarBatch {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			flex-direction: row;
+			align-items: center;
+			background-color: var(--background-brand);
+			transition: transform 0.15s ease-out;
 			transform: translateY(var(--table-row-height));
+			will-change: transform;
+
+			&--active {
+				transform: translateY(0);
+			}
+		}
+
+		&__toolbarBatchCount {
+			@ellipsis();
+			flex: 1;
+			color: var(--text-on-color);
+			margin: 0 @sp-16;
+		}
+
+		&__toolbarBatchButtons {
+			flex-direction: row;
+		}
+
+		&__toolbarBatchCancel {
+			position: relative;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 25%;
+				left: 0;
+				height: 50%;
+				border-left: 1px solid var(--text-on-color);
+				transition: opacity 0.15s ease-out;
+			}
+
+			&:hover::before,
+			&:focus::before,
+			:hover + &::before,
+			:focus + &::before,
+			:focus-within + &::before {
+				opacity: 0;
+			}
+		}
+
+		&__toolbarDefault {
+			flex-direction: row;
+			justify-content: flex-end;
+			transition: transform 0.15s ease-out;
+
+			.Table__toolbarBatch--active + & {
+				transform: translateY(var(--table-row-height));
+			}
+		}
+
+		&__search {
+			position: relative;
+			flex-direction: row;
+			flex: 1;
+		}
+
+		&__searchInput[type='text'] {
+			flex: 1;
+			border-bottom: none;
+			padding: 0 @sp-48;
+			background-color: transparent;
+		}
+
+		&__searchIcon {
+			position: absolute;
+			top: @sp-08;
+			left: @sp-16;
+			font-size: 16px;
+			color: var(--icon-secondary);
+		}
+
+		&__searchClear {
+			@icon-button();
+			position: absolute;
+			display: inline-flex;
+			top: 0;
+			right: 0;
+			width: var(--table-row-height);
+			height: var(--table-row-height);
+			font-size: 16px;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&__wrapper {
+			flex: 1;
+			overflow-x: hidden;
+			overflow-y: scroll;
+			contain: strict;
+		}
+
+		&__empty {
+			color: var(--text-helper);
+			margin-top: @sp-32;
+			white-space: pre-line;
+			text-align: center;
 		}
 	}
 
-	&__search {
-		position: relative;
-		flex-direction: row;
-		flex: 1;
+	th.Table__selectAll,
+	th.Table--radioHeader,
+	td.Table--selectRow {
+		width: 40px;
+		min-width: 40px;
+		padding: 0 @sp-04 0 @sp-16;
+		text-align: left;
 	}
-
-	&__searchInput[type='text'] {
-		flex: 1;
-		border-bottom: none;
-		padding: 0 @sp-48;
-		background-color: transparent;
-	}
-
-	&__searchIcon {
-		position: absolute;
-		top: @sp-08;
-		left: @sp-16;
-		font-size: 16px;
-		color: var(--icon-secondary);
-	}
-
-	&__searchClear {
-		@icon-button();
-		position: absolute;
-		display: inline-flex;
-		top: 0;
-		right: 0;
-		width: var(--table-row-height);
-		height: var(--table-row-height);
-		font-size: 16px;
-		align-items: center;
-		justify-content: center;
-	}
-
-	&__wrapper {
-		flex: 1;
-		overflow-x: hidden;
-		overflow-y: scroll;
-		contain: strict;
-	}
-
-	&__empty {
-		color: var(--text-helper);
-		margin-top: @sp-32;
-		white-space: pre-line;
-		text-align: center;
-	}
-}
-
-th.Table__selectAll,
-th.Table--radioHeader,
-td.Table--selectRow {
-	width: 40px;
-	min-width: 40px;
-	padding: 0 @sp-04 0 @sp-16;
-	text-align: left;
 }

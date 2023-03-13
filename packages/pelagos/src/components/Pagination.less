@@ -1,49 +1,51 @@
 @import '../../less/spacing';
 
-.Pagination {
-	flex-direction: row;
-	justify-content: space-between;
-	border-top: 1px solid var(--border-subtle);
-
-	&__start,
-	&__end {
+@layer pelagos {
+	.Pagination {
 		flex-direction: row;
-		align-items: center;
-	}
+		justify-content: space-between;
+		border-top: 1px solid var(--border-subtle);
 
-	&__start {
-		margin: 0 @sp-16;
-	}
+		&__start,
+		&__end {
+			flex-direction: row;
+			align-items: center;
+		}
 
-	&__end {
-		padding-left: @sp-16;
-		border-left: 1px solid var(--border-subtle);
-	}
+		&__start {
+			margin: 0 @sp-16;
+		}
 
-	&__pageSize {
-		flex-direction: row;
-		align-items: center;
-		border-right: 1px solid var(--border-subtle);
-		margin-right: @sp-16;
-	}
+		&__end {
+			padding-left: @sp-16;
+			border-left: 1px solid var(--border-subtle);
+		}
 
-	&__count {
-		color: var(--text-secondary);
-	}
+		&__pageSize {
+			flex-direction: row;
+			align-items: center;
+			border-right: 1px solid var(--border-subtle);
+			margin-right: @sp-16;
+		}
 
-	&__buttons {
-		flex-direction: row;
-		border-left: 1px solid var(--border-subtle);
-		margin-left: @sp-16;
-	}
+		&__count {
+			color: var(--text-secondary);
+		}
 
-	& label {
-		margin-right: @sp-02;
-	}
+		&__buttons {
+			flex-direction: row;
+			border-left: 1px solid var(--border-subtle);
+			margin-left: @sp-16;
+		}
 
-	& select {
-		background-color: transparent;
-		border: none;
-		padding: 0 @sp-40 0 @sp-16;
+		& label {
+			margin-right: @sp-02;
+		}
+
+		& select {
+			background-color: transparent;
+			border: none;
+			padding: 0 @sp-40 0 @sp-16;
+		}
 	}
 }

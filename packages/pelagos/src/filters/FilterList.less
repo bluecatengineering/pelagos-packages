@@ -2,57 +2,59 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.FilterList {
-	flex-direction: row;
-	flex: 1;
-	overflow: hidden;
-}
-
-.FilterList__items {
-	display: flex;
-	flex-direction: row;
-	gap: @sp-08;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.FilterList__filterTitle {
-	color: var(--text-secondary);
-
-	@media print {
-		color: var(--print-medium);
+@layer pelagos {
+	.FilterList {
+		flex-direction: row;
+		flex: 1;
+		overflow: hidden;
 	}
-}
 
-.FilterList__item {
-	display: flex;
-	flex-direction: row;
-	background-color: var(--layer);
-	color: var(--text-value);
+	.FilterList__items {
+		display: flex;
+		flex-direction: row;
+		gap: @sp-08;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 
-	@media print {
-		color: var(--print-color);
+	.FilterList__filterTitle {
+		color: var(--text-secondary);
+
+		@media print {
+			color: var(--print-medium);
+		}
+	}
+
+	.FilterList__item {
+		display: flex;
+		flex-direction: row;
+		background-color: var(--layer);
+		color: var(--text-value);
+
+		@media print {
+			color: var(--print-color);
+			background-color: transparent;
+		}
+	}
+
+	.FilterList__button {
+		@focus-visible();
+		@layer-hover-effects();
+		display: flex;
+		align-items: center;
+		gap: @sp-08;
 		background-color: transparent;
+		border: none;
+		border-radius: 3px;
+		padding: @sp-04 @sp-08;
+		white-space: nowrap;
+		cursor: pointer;
 	}
-}
 
-.FilterList__button {
-	@focus-visible();
-	@layer-hover-effects();
-	display: flex;
-	align-items: center;
-	gap: @sp-08;
-	background-color: transparent;
-	border: none;
-	border-radius: 3px;
-	padding: @sp-04 @sp-08;
-	white-space: nowrap;
-	cursor: pointer;
-}
-
-.FilterList__remove {
-	@icon-button();
-	font-size: 16px;
-	padding: @sp-02;
+	.FilterList__remove {
+		@icon-button();
+		font-size: 16px;
+		padding: @sp-02;
+	}
 }

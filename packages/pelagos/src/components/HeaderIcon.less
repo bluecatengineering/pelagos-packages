@@ -1,22 +1,24 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
 
-.HeaderIcon {
-	align-items: center;
-	padding: @sp-04;
-	border-radius: 3px;
-}
+@layer pelagos {
+	.HeaderIcon {
+		align-items: center;
+		padding: @sp-04;
+		border-radius: 3px;
+	}
 
-.HeaderIcon__icon {
-	font-size: 16px;
-}
+	.HeaderIcon__icon {
+		font-size: 16px;
+	}
 
-.HeaderIcon__label {
-	@font-12-600();
-	margin-top: @sp-02;
-	white-space: nowrap;
-}
+	.HeaderIcon__label {
+		@font-12-600();
+		margin-top: @sp-02;
+		white-space: nowrap;
+	}
 
-.HeaderIcon--underlined::first-letter {
-	text-decoration: underline;
+	.HeaderIcon--underlined::first-letter {
+		text-decoration: underline;
+	}
 }

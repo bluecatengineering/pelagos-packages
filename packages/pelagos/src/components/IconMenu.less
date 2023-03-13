@@ -3,58 +3,60 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.IconMenu {
-	&[aria-expanded='true'] {
-		outline: none;
-	}
-
-	&__overlay {
-		position: absolute;
-		right: 2px;
-		bottom: 2px;
-	}
-
-	&__wrapper {
-		@elv-04();
-		position: absolute;
-	}
-
-	&__menu {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	&__option {
-		@layer-hover-effects();
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		height: 32px;
-		color: var(--text-secondary);
-		padding: 0 @sp-16;
-		cursor: pointer;
-
-		&:hover,
-		&:active {
-			color: var(--text-primary);
+@layer pelagos {
+	.IconMenu {
+		&[aria-expanded='true'] {
+			outline: none;
 		}
 
-		&:focus-visible {
-			@focus-ring();
-			color: var(--text-primary);
+		&__overlay {
+			position: absolute;
+			right: 2px;
+			bottom: 2px;
 		}
 
-		&[aria-disabled='true'],
-		&[aria-disabled='true']:hover,
-		&[aria-disabled='true']:active {
-			color: var(--text-disabled);
-			background-color: transparent;
-			pointer-events: none;
+		&__wrapper {
+			@elv-04();
+			position: absolute;
 		}
-	}
 
-	&--divider {
-		border-top: 1px solid var(--border-subtle);
+		&__menu {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		&__option {
+			@layer-hover-effects();
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			height: 32px;
+			color: var(--text-secondary);
+			padding: 0 @sp-16;
+			cursor: pointer;
+
+			&:hover,
+			&:active {
+				color: var(--text-primary);
+			}
+
+			&:focus-visible {
+				@focus-ring();
+				color: var(--text-primary);
+			}
+
+			&[aria-disabled='true'],
+			&[aria-disabled='true']:hover,
+			&[aria-disabled='true']:active {
+				color: var(--text-disabled);
+				background-color: transparent;
+				pointer-events: none;
+			}
+		}
+
+		&--divider {
+			border-top: 1px solid var(--border-subtle);
+		}
 	}
 }

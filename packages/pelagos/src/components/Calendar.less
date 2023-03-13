@@ -3,54 +3,56 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.Calendar__monthHeader {
-	height: @sp-40;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-}
-
-.Calendar__monthLabel {
-	width: 9em;
-}
-
-.Calendar__cell,
-.Calendar__dayLabel {
-	text-align: center;
-}
-
-.Calendar__dayLabel {
-	@font-10-600();
-	color: var(--text-secondary);
-}
-
-.Calendar__cell {
-	@focus-visible();
-	@layer-hover-effects();
-	width: 40px;
-	height: 40px;
-	cursor: pointer;
-
-	&:focus {
-		box-shadow: inset 0 0 0 3px var(--focus-inset);
+@layer pelagos {
+	.Calendar__monthHeader {
+		height: @sp-40;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
 	}
 
-	&--dateRange {
-		background-color: var(--layer-selected);
+	.Calendar__monthLabel {
+		width: 9em;
 	}
 
-	&--selected,
-	&--selected:hover,
-	&--selected:active {
-		color: var(--text-on-color);
-		background-color: var(--background-brand);
+	.Calendar__cell,
+	.Calendar__dayLabel {
+		text-align: center;
 	}
 
-	&--disabled,
-	&--disabled:hover,
-	&--disabled:active {
-		background-color: transparent;
-		cursor: default;
+	.Calendar__dayLabel {
+		@font-10-600();
+		color: var(--text-secondary);
+	}
+
+	.Calendar__cell {
+		@focus-visible();
+		@layer-hover-effects();
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+
+		&:focus {
+			box-shadow: inset 0 0 0 3px var(--focus-inset);
+		}
+
+		&--dateRange {
+			background-color: var(--layer-selected);
+		}
+
+		&--selected,
+		&--selected:hover,
+		&--selected:active {
+			color: var(--text-on-color);
+			background-color: var(--background-brand);
+		}
+
+		&--disabled,
+		&--disabled:hover,
+		&--disabled:active {
+			background-color: transparent;
+			cursor: default;
+		}
 	}
 }

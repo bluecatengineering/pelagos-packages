@@ -1,9 +1,11 @@
 @import '../../less/spacing';
 @import '../../less/utils';
 
-.DetailsGrid {
-	display: grid;
-	grid-column-gap: @sp-24;
-	.details-grid(columns; 1fr; repeat(2, minmax(0, 1fr)) ; repeat(3, minmax(0, 1fr)) ; repeat(4, minmax(0, 1fr)));
-	grid-auto-rows: min-content;
+@layer pelagos {
+	.DetailsGrid {
+		display: grid;
+		grid-column-gap: @sp-24;
+		.details-grid(columns; 1fr; repeat(2, minmax(0, 1fr)); repeat(3, minmax(0, 1fr)); repeat(4, minmax(0, 1fr)));
+		grid-auto-rows: min-content;
+	}
 }

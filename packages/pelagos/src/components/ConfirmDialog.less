@@ -1,19 +1,21 @@
 @import '../../less/spacing';
 
-.ConfirmDialog__body {
-	flex-direction: row;
-}
+@layer pelagos {
+	.ConfirmDialog__body {
+		flex-direction: row;
+	}
 
-.ConfirmDialog__icon {
-	flex: none;
-	align-self: flex-start;
-	color: var(--support-warning);
-	margin-right: @sp-16;
-	margin-top: @sp-04;
-	font-size: 20px;
-}
+	.ConfirmDialog__icon {
+		flex: none;
+		align-self: flex-start;
+		color: var(--support-warning);
+		margin-right: @sp-16;
+		margin-top: @sp-04;
+		font-size: 20px;
+	}
 
-.ConfirmDialog__text {
-	overflow-x: hidden;
-	overflow-y: auto;
+	.ConfirmDialog__text {
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
 }

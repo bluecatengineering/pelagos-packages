@@ -1,62 +1,64 @@
 @import '../../less/focus';
 @import '../../less/utils';
 
-.Hamburger {
-	@icon-button();
-	display: inline-flex;
-	position: relative;
-	width: 44px;
-	height: 44px;
-	justify-content: center;
-}
+@layer pelagos {
+	.Hamburger {
+		@icon-button();
+		display: inline-flex;
+		position: relative;
+		width: 44px;
+		height: 44px;
+		justify-content: center;
+	}
 
-.Hamburger__inner,
-.Hamburger__inner::before,
-.Hamburger__inner::after {
-	position: absolute;
-	width: 20px;
-	height: 3px;
-	transition: transform 0.15s ease;
-	border-radius: 3px;
-	background-color: currentcolor;
-}
+	.Hamburger__inner,
+	.Hamburger__inner::before,
+	.Hamburger__inner::after {
+		position: absolute;
+		width: 20px;
+		height: 3px;
+		transition: transform 0.15s ease;
+		border-radius: 3px;
+		background-color: currentcolor;
+	}
 
-.Hamburger__inner::before,
-.Hamburger__inner::after {
-	display: block;
-	content: '';
-}
+	.Hamburger__inner::before,
+	.Hamburger__inner::after {
+		display: block;
+		content: '';
+	}
 
-.Hamburger__inner {
-	top: 50%;
-	display: block;
-	margin-top: -2px;
-}
+	.Hamburger__inner {
+		top: 50%;
+		display: block;
+		margin-top: -2px;
+	}
 
-.Hamburger__inner::before {
-	top: -7px;
-	transition: top 75ms ease 0.12s, opacity 75ms ease;
-}
+	.Hamburger__inner::before {
+		top: -7px;
+		transition: top 75ms ease 0.12s, opacity 75ms ease;
+	}
 
-.Hamburger__inner::after {
-	bottom: -7px;
-	transition: bottom 75ms ease 0.12s, transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
+	.Hamburger__inner::after {
+		bottom: -7px;
+		transition: bottom 75ms ease 0.12s, transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	}
 
-.Hamburger--active {
-	transition-delay: 0.12s;
-	transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-	transform: rotate(45deg);
-}
+	.Hamburger--active {
+		transition-delay: 0.12s;
+		transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+		transform: rotate(45deg);
+	}
 
-.Hamburger--active::before {
-	top: 0;
-	transition: top 75ms ease, opacity 75ms ease 0.12s;
-	opacity: 0;
-}
+	.Hamburger--active::before {
+		top: 0;
+		transition: top 75ms ease, opacity 75ms ease 0.12s;
+		opacity: 0;
+	}
 
-.Hamburger--active::after {
-	bottom: 0;
-	transition: bottom 75ms ease, transform 75ms cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
-	transform: rotate(-90deg);
+	.Hamburger--active::after {
+		bottom: 0;
+		transition: bottom 75ms ease, transform 75ms cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+		transform: rotate(-90deg);
+	}
 }

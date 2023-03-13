@@ -1,17 +1,19 @@
 @import '../../less/focus';
 @import '../../less/spacing';
 
-.TextInputField {
-	margin-top: @sp-12;
-}
-
-.TextInputField__input {
-	&.TextInputField--error {
-		outline: 2px solid var(--support-error);
-		outline-offset: -2px;
+@layer pelagos {
+	.TextInputField {
+		margin-top: @sp-12;
 	}
 
-	&:focus.TextInputField--error {
-		@focus-ring-error();
+	.TextInputField__input {
+		&.TextInputField--error {
+			outline: 2px solid var(--support-error);
+			outline-offset: -2px;
+		}
+
+		&:focus.TextInputField--error {
+			@focus-ring-error();
+		}
 	}
 }

@@ -2,22 +2,24 @@
 @import '../../less/modal';
 @import '../../less/spacing';
 
-.Toast__messages {
-	@font-16-400();
-	position: fixed;
-	z-index: @zindex-toast;
-	top: @sp-16;
-	left: 25vw;
-	width: 50vw;
-	gap: @sp-12;
-}
+@layer pelagos {
+	.Toast__messages {
+		@font-16-400();
+		position: fixed;
+		z-index: @zindex-toast;
+		top: @sp-16;
+		left: 25vw;
+		width: 50vw;
+		gap: @sp-12;
+	}
 
-.Toast__backdrop {
-	@modal-backdrop();
-}
+	.Toast__backdrop {
+		@modal-backdrop();
+	}
 
-@media print {
-	.Toast {
-		display: none;
+	@media print {
+		.Toast {
+			display: none;
+		}
 	}
 }
