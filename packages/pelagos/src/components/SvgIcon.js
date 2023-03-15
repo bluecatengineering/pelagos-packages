@@ -9,8 +9,10 @@ const SvgIcon = ({
 	},
 	className,
 	animation,
+	...props
 }) => (
 	<svg
+		{...props}
 		className={'SvgIcon' + (animation ? ' SvgIcon--' + animation : '') + (className ? ' ' + className : '')}
 		style={{width: width / height + 'em'}}
 		focusable="false"

@@ -9,12 +9,12 @@ const icon = {icon: [10, 20, null, null, 'test path']};
 describe('SvgIcon', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<SvgIcon icon={icon} className="TestClass" animation="spin" />);
+			const wrapper = shallow(<SvgIcon icon={icon} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when optional properties are not set', () => {
-			const wrapper = shallow(<SvgIcon icon={icon} />);
+		it('renders expected elements when optional properties are set', () => {
+			const wrapper = shallow(<SvgIcon icon={icon} className="TestClass" animation="spin" aria-hidden />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});
