@@ -1,21 +1,19 @@
 import {CheckBox} from '../src';
 
-const Template = (args) => <CheckBox {...args} />;
+export default {
+	title: 'Components/CheckBox',
+	component: CheckBox,
+};
 
-export const Normal = Template.bind({});
-Normal.args = {label: 'Normal'};
+export const Default = {args: {label: 'Default'}};
 
-export const Checked = Template.bind({});
-Checked.args = {label: 'Checked', checked: true};
+export const Checked = {args: {label: 'Checked', checked: true}};
 
-export const Disabled = Template.bind({});
-Disabled.args = {label: 'Disabled', disabled: true};
+export const Disabled = {args: {label: 'Disabled', disabled: true}};
 
-export const Error = Template.bind({});
-Error.args = {label: 'Error', error: true};
+export const Error = {args: {label: 'Error', error: true}};
 
-export const Indeterminate = Template.bind({});
-Indeterminate.args = {label: 'Indeterminate', indeterminate: true};
+export const Indeterminate = {args: {label: 'Indeterminate', indeterminate: true}};
 
 export const AllStates = () => (
 	<div className="Story__group">
@@ -29,9 +27,3 @@ export const AllStates = () => (
 	</div>
 );
 AllStates.storyName = 'All states';
-
-export default {
-	title: 'Components/CheckBox',
-	component: CheckBox,
-	parameters: {actions: {argTypesRegex: '^on.*'}},
-};

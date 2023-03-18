@@ -4,30 +4,39 @@ import {IconButton} from '../src';
 
 import './IconButton.stories.less';
 
-const Template = (args) => <IconButton {...args} />;
+export default {
+	title: 'Components/IconButton',
+	component: IconButton,
+};
 
-export const Primary = Template.bind({});
-Primary.args = {icon: faCat, type: 'primary', tooltipText: 'Primary', 'aria-label': 'Primary'};
+export const Primary = {
+	args: {icon: faCat, type: 'primary', tooltipText: 'Primary', 'aria-label': 'Primary'},
+};
 
-export const Secondary = Template.bind({});
-Secondary.args = {icon: faCat, type: 'secondary', tooltipText: 'Secondary', 'aria-label': 'Secondary'};
+export const Secondary = {
+	args: {icon: faCat, type: 'secondary', tooltipText: 'Secondary', 'aria-label': 'Secondary'},
+};
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {icon: faCat, type: 'tertiary', tooltipText: 'Tertiary', 'aria-label': 'Tertiary'};
+export const Tertiary = {
+	args: {icon: faCat, type: 'tertiary', tooltipText: 'Tertiary', 'aria-label': 'Tertiary'},
+};
 
-export const Ghost = Template.bind({});
-Ghost.args = {icon: faCat, type: 'ghost', tooltipText: 'Ghost', 'aria-label': 'Ghost'};
+export const Ghost = {
+	args: {icon: faCat, type: 'ghost', tooltipText: 'Ghost', 'aria-label': 'Ghost'},
+};
 
-export const Disabled = Template.bind({});
-Disabled.args = {icon: faCat, tooltipText: 'Disabled', 'aria-label': 'Disabled', disabled: true};
+export const Disabled = {
+	args: {icon: faCat, tooltipText: 'Disabled', 'aria-label': 'Disabled', disabled: true},
+};
 
-export const Overlay = Template.bind({});
-Overlay.args = {
-	icon: faCat,
-	type: 'primary',
-	tooltipText: 'Overlay',
-	overlay: <div className="IconButtonStory__overlay">42</div>,
-	'aria-label': 'Overlay',
+export const Overlay = {
+	args: {
+		icon: faCat,
+		type: 'primary',
+		tooltipText: 'Overlay',
+		overlay: <div className="IconButtonStory__overlay">42</div>,
+		'aria-label': 'Overlay',
+	},
 };
 
 export const AllStates = () => (
@@ -55,9 +64,3 @@ export const AllStates = () => (
 	</div>
 );
 AllStates.storyName = 'All states';
-
-export default {
-	title: 'Components/IconButton',
-	component: IconButton,
-	parameters: {actions: {argTypesRegex: '^on.*'}},
-};

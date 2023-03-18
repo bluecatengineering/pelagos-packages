@@ -1,0 +1,68 @@
+{/* DO NOT EDIT, generated from scrollToItem.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/scrollToItem" />
+
+# scrollToItem
+
+Scrolls to the specified element inside the container.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>container</td>
+			<td>`Element`</td>
+			<td>the containing element.</td>
+		</tr>
+		<tr>
+			<td>element</td>
+			<td>`Element`</td>
+			<td>the element to scroll.</td>
+		</tr>
+		<tr>
+			<td>options</td>
+			<td>`Object`</td>
+			<td>the scroll options.</td>
+		</tr>
+		<tr>
+			<td>options.headerHeight</td>
+			<td>`number`</td>
+			<td>the height of the header.</td>
+		</tr>
+		<tr>
+			<td>options.duration</td>
+			<td>`number`</td>
+			<td>the duration of the animation, default: 150ms.</td>
+		</tr>
+		<tr>
+			<td>options.done</td>
+			<td>`function`</td>
+			<td>invoked after scrolling.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {scrollToItem} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(
+		() => scrollToItem(document.getElementById('container'), document.getElementById('other')),
+		[]
+	);
+	return <button onClick={handleClick}>...</button>;
+};
+```

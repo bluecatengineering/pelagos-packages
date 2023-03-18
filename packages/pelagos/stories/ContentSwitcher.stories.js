@@ -1,18 +1,19 @@
 import {ContentSwitcher, ContentSwitcherButton} from '../src';
 
-export const Default = (args) => (
-	<ContentSwitcher {...args}>
-		<ContentSwitcherButton text="First" />
-		<ContentSwitcherButton text="Second" />
-		<ContentSwitcherButton text="Third" />
-		<ContentSwitcherButton text="Fourth" />
-	</ContentSwitcher>
-);
-Default.args = {selected: 0};
-
 export default {
 	title: 'Components/ContentSwitcher',
 	component: ContentSwitcher,
 	subcomponents: {ContentSwitcherButton},
-	parameters: {actions: {argTypesRegex: '^on.*'}},
+};
+
+export const Default = {
+	args: {
+		selected: 0,
+		children: [
+			<ContentSwitcherButton key="0" text="First" />,
+			<ContentSwitcherButton key="1" text="Second" />,
+			<ContentSwitcherButton key="2" text="Third" />,
+			<ContentSwitcherButton key="3" text="Fourth" />,
+		],
+	},
 };

@@ -1,6 +1,11 @@
 import {Layer} from '../src';
 
-export const Normal = () => (
+export default {
+	title: 'Components/Layer',
+	component: Layer,
+};
+
+export const Default = () => (
 	<Layer style={{alignSelf: 'stretch', backgroundColor: 'var(--layer)'}}>
 		<div style={{padding: '16px'}}>Layer</div>
 		<Layer style={{backgroundColor: 'var(--layer)'}}>
@@ -11,9 +16,3 @@ export const Normal = () => (
 		</Layer>
 	</Layer>
 );
-
-export default {
-	title: 'Components/Layer',
-	component: Layer,
-	parameters: {actions: {argTypesRegex: '^on.*'}},
-};

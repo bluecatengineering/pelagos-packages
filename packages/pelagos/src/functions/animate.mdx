@@ -1,0 +1,58 @@
+{/* DO NOT EDIT, generated from animate.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/animate" />
+
+# animate
+
+Invokes the specified function using an easing curve.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>duration</td>
+			<td>`number`</td>
+			<td>the duration of the animation.</td>
+		</tr>
+		<tr>
+			<td>f</td>
+			<td>`function`</td>
+			<td>invoked on each step of the animation.</td>
+		</tr>
+		<tr>
+			<td>done</td>
+			<td>`function`</td>
+			<td>invoked when the animation is done.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Returns
+
+`Object`
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {animate} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => {
+		animate(150, (t) => {
+			// handle animation step
+		});
+	}, []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

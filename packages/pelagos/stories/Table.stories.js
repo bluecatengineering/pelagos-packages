@@ -72,6 +72,33 @@ for (let i = 0; i < 300; ++i) {
 	largeData.push(item);
 }
 
+export default {
+	title: 'Components/Table',
+	component: Table,
+	subcomponents: {
+		TableBody,
+		TableCell,
+		TableHead,
+		TableHeader,
+		TableRow,
+		TableSelectAll,
+		TableSelectRow,
+		TableTitle,
+		TableToolbar,
+		TableToolbarBatch,
+		TableToolbarDefault,
+		TableToolbarSearch,
+	},
+	parameters: {layout: 'fullscreen'},
+	decorators: [
+		(Story) => (
+			<div className="Story__stretch">
+				<Story />
+			</div>
+		),
+	],
+};
+
 export const Default = (args) => (
 	<Layer className="TableStory__wrapper">
 		<Table {...args}>
@@ -508,25 +535,4 @@ WithPagination.args = {
 	id: 'pagination',
 	className: 'TableStory--default',
 	fixedLayout: true,
-};
-
-export default {
-	title: 'Components/Table',
-	component: Table,
-	subcomponents: {
-		TableBody,
-		TableCell,
-		TableHead,
-		TableHeader,
-		TableRow,
-		TableSelectAll,
-		TableSelectRow,
-		TableTitle,
-		TableToolbar,
-		TableToolbarBatch,
-		TableToolbarDefault,
-		TableToolbarSearch,
-	},
-	parameters: {layout: 'fullscreen', actions: {argTypesRegex: '^on.*'}},
-	decorators: [(story) => <div className="Story__stretch">{story()}</div>],
 };

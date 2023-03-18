@@ -1,16 +1,11 @@
 import {Menu, MenuItem} from '../src';
 
-export const Default = (args) => (
-	<Menu {...args}>
-		<MenuItem>Option 1</MenuItem>
-		<MenuItem>Option 2</MenuItem>
-	</Menu>
-);
-Default.args = {};
-
 export default {
 	title: 'Components/Menu',
 	component: Menu,
 	subcomponents: {MenuItem},
-	parameters: {actions: {argTypesRegex: '^on.*'}},
+};
+
+export const Default = {
+	args: {children: [<MenuItem key="0">Option 1</MenuItem>, <MenuItem key="1">Option 2</MenuItem>]},
 };

@@ -1,0 +1,28 @@
+@import '../../less/layers';
+@import '../../less/spacing';
+
+.Palettes {
+	&__switch {
+		align-self: flex-start;
+	}
+
+	&__grid {
+		display: grid;
+		grid-gap: @sp-24;
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+		margin-top: @sp-16;
+	}
+
+	&__name {
+		margin: 0 @sp-12 @sp-12;
+	}
+
+	&__patch {
+		flex-direction: row;
+		padding: @sp-12 @sp-16;
+	}
+
+	&__hex {
+		margin-left: auto;
+	}
+}

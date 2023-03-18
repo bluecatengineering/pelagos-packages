@@ -1,15 +1,15 @@
 import {RadioButton} from '../src';
 
-const Template = (args) => <RadioButton {...args} />;
+export default {
+	title: 'Components/RadioButton',
+	component: RadioButton,
+};
 
-export const Normal = Template.bind({});
-Normal.args = {label: 'Normal'};
+export const Default = {args: {label: 'Default'}};
 
-export const Checked = Template.bind({});
-Checked.args = {label: 'Checked', checked: true};
+export const Checked = {args: {label: 'Checked', checked: true}};
 
-export const Error = Template.bind({});
-Error.args = {label: 'Error', error: true};
+export const Error = {args: {label: 'Error', error: true}};
 
 export const AllStates = () => (
 	<div className="Story__group">
@@ -20,9 +20,3 @@ export const AllStates = () => (
 	</div>
 );
 AllStates.storyName = 'All states';
-
-export default {
-	title: 'Components/RadioButton',
-	component: RadioButton,
-	parameters: {actions: {argTypesRegex: '^on.*'}},
-};

@@ -1,0 +1,50 @@
+{/* DO NOT EDIT, generated from useTooltip.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/useTooltip" />
+
+# useTooltip
+
+Returns a callback ref to show a tooltip over the target element.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>text</td>
+			<td>`string`</td>
+			<td>the tooltip text.</td>
+		</tr>
+		<tr>
+			<td>placement</td>
+			<td>`'left' / 'right' / 'top' / 'bottom'`</td>
+			<td>the tooltip placement.</td>
+		</tr>
+		<tr>
+			<td>aria</td>
+			<td>`'describedby' / 'labelledby'`</td>
+			<td>the aria attribute to set on the target.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Returns
+
+`function` - callback ref.
+
+## Example
+
+```js
+import {useTooltip} from '@bluecateng/pelagos';
+
+const Example = () => <div ref={useTooltip('Example tooltip', 'top')}>...</div>;
+```

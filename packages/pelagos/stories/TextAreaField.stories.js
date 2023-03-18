@@ -1,33 +1,22 @@
-import identity from 'lodash-es/identity';
-
 import {TextAreaField} from '../src';
-
-const Template = (args) => <TextAreaField {...args} />;
-
-export const Normal = Template.bind({});
-Normal.args = {label: 'Normal', value: 'Alpha', helperText: 'Helper text'};
-
-export const Empty = Template.bind({});
-Empty.args = {label: 'Empty', placeholder: 'Placeholder'};
-
-export const Required = Template.bind({});
-Required.args = {label: 'Required', required: true};
-
-export const Error = Template.bind({});
-Error.args = {label: 'Error', value: 'Alpha', error: 'Error message'};
-
-export const AllStates = () => (
-	<div className="Story__group">
-		<TextAreaField label="Normal" value="Alpha" helperText="Helper text" onChange={identity} />
-		<TextAreaField label="Empty" placeholder="Placeholder" onChange={identity} />
-		<TextAreaField label="Required" required onChange={identity} />
-		<TextAreaField label="Error" value="Alpha" error="Error message" onChange={identity} />
-	</div>
-);
-AllStates.storyName = 'All states';
 
 export default {
 	title: 'Components/TextAreaField',
 	component: TextAreaField,
-	parameters: {actions: {argTypesRegex: '^on.*'}},
+};
+
+export const Default = {
+	args: {label: 'Default', value: 'Alpha', helperText: 'Helper text'},
+};
+
+export const Empty = {
+	args: {label: 'Empty', placeholder: 'Placeholder'},
+};
+
+export const Required = {
+	args: {label: 'Required', required: true},
+};
+
+export const Error = {
+	args: {label: 'Error', value: 'Alpha', error: 'Error message'},
 };

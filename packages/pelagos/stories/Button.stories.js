@@ -1,21 +1,19 @@
 import {Button} from '../src';
 
-const Template = (args) => <Button {...args} />;
+export default {
+	title: 'Components/Button',
+	component: Button,
+};
 
-export const Primary = Template.bind({});
-Primary.args = {text: 'Primary', type: 'primary'};
+export const Primary = {args: {text: 'Primary', type: 'primary'}};
 
-export const Secondary = Template.bind({});
-Secondary.args = {text: 'Secondary', type: 'secondary'};
+export const Secondary = {args: {text: 'Secondary', type: 'secondary'}};
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {text: 'Tertiary', type: 'tertiary'};
+export const Tertiary = {args: {text: 'Tertiary', type: 'tertiary'}};
 
-export const Ghost = Template.bind({});
-Ghost.args = {text: 'Ghost', type: 'ghost'};
+export const Ghost = {args: {text: 'Ghost', type: 'ghost'}};
 
-export const Disabled = Template.bind({});
-Disabled.args = {text: 'Disabled', disabled: true};
+export const Disabled = {args: {text: 'Disabled', disabled: true}};
 
 export const AllStates = () => (
 	<div className="Story__row">
@@ -46,9 +44,3 @@ export const AllStates = () => (
 	</div>
 );
 AllStates.storyName = 'All states';
-
-export default {
-	title: 'Components/Button',
-	component: Button,
-	parameters: {actions: {argTypesRegex: '^on.*'}},
-};
