@@ -6,25 +6,25 @@
 @import '../packages/pelagos/less/spinner';
 @import '../packages/pelagos/less/themes';
 
+[data-theme='white'] {
+	.theme-white();
+}
+
+[data-theme='cg00'] {
+	.theme-cg00();
+}
+
+[data-theme='yg100'] {
+	.theme-yg100();
+}
+
+[data-theme='g100'] {
+	.theme-g100();
+}
+
 :root {
 	@root-font();
 	transition: background-color 0.15s ease-out;
-
-	&[data-theme='white'] {
-		.theme-white();
-	}
-
-	&[data-theme='cg00'] {
-		.theme-cg00();
-	}
-
-	&[data-theme='yg100'] {
-		.theme-yg100();
-	}
-
-	&[data-theme='g100'] {
-		.theme-g100();
-	}
 
 	&[data-layer='1'],
 	&[data-layer='2'],
@@ -37,7 +37,7 @@ body {
 	@font-14-400();
 }
 
-#root {
+#storybook-root {
 	align-items: flex-start;
 }
 

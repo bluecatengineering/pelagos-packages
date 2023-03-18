@@ -1,6 +1,6 @@
-const {spawn} = require('child_process');
-const {opendir, writeFile} = require('fs/promises');
-const {join} = require('path');
+const {spawn} = require('node:child_process');
+const {writeFile, readdir} = require('node:fs/promises');
+const {join} = require('node:path');
 
 const {explain} = require('jsdoc-api');
 const jsdocParse = require('jsdoc-parse');
@@ -25,9 +25,14 @@ const renderParams = (params) =>
 
 ## Parameters
 
-| Param | Type | Description |
-| --- | --- | --- |
-${params.map(({name, type, description}) => `| ${name} | ${renderType(type)} | ${description} |`).join('\n')}`
+<table>
+<thead><tr><th>Param</th><th>Type</th><th>Description</th></tr></thead>
+<tbody>
+${params
+	.map(({name, type, description}) => `<tr><td>${name}</td><td>${renderType(type)}</td><td>${description}</td></tr>`)
+	.join('\n')}
+</tbody>
+</table>`
 		: '';
 
 const renderReturns = (returns) =>
@@ -56,9 +61,14 @@ const renderProperties = (props) =>
 
 #### Properties
 
-| Name | Type | Description |
-| --- | --- | --- |
-${props.map(({name, type, description}) => `| ${name} | ${renderType(type)} | ${description} |`).join('\n')}`
+<table>
+<thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+<tbody>
+${props
+	.map(({name, type, description}) => `<tr><td>${name}</td><td>${renderType(type)}</td><td>${description}</td></tr>`)
+	.join('\n')}
+</tbody>
+</table>`
 		: '';
 
 const otherRenderers = {
@@ -83,11 +93,11 @@ const renderOthers = (others) =>
 const renderMD = (
 	group,
 	[{id, description, params, returns, examples, meta}, ...others]
-) => `<!-- DO NOT EDIT, generated from ${meta.filename} -->
+) => `{/* DO NOT EDIT, generated from ${meta.filename} */}
 
 import {Meta} from '@storybook/addon-docs';
 
-<Meta title="${group}/${id}" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+<Meta title="${group}/${id}" />
 
 # ${id}
 
@@ -95,7 +105,7 @@ ${description}${renderParams(params)}${renderReturns(returns)}${renderExamples(e
 `;
 
 const generateDoc = (group, path) => {
-	const outputPath = `${path.slice(0, -2)}stories.mdx`;
+	const outputPath = `${path.slice(0, -2)}mdx`;
 	return explain({files: path})
 		.then(jsdocParse)
 		.then((result) =>
@@ -109,24 +119,16 @@ const processFile = (group, path) =>
 	force ? generateDoc(group, path) : checkDiff(path).then((code) => (code === 1 ? generateDoc(group, path) : null));
 
 const scan = (group, basePath) =>
-	opendir(basePath).then((dir) => {
-		const process = (entry) => {
-			if (!entry) {
-				return dir.close();
-			}
-
-			const name = entry.name;
-			return (
-				entry.isFile() && name !== 'index.js' && /\.js$/.test(name)
+	readdir(basePath, {encoding: 'utf8', withFileTypes: true}).then((entries) =>
+		Promise.all(
+			entries.map((entry) => {
+				const name = entry.name;
+				return entry.isFile() && name !== 'index.js' && /\.js$/.test(name)
 					? processFile(group, `${basePath}/${name}`)
-					: Promise.resolve()
-			)
-				.then(() => dir.read())
-				.then(process);
-		};
-
-		return dir.read().then(process);
-	});
+					: Promise.resolve();
+			})
+		)
+	);
 
 Promise.all(['functions', 'hooks'].map((group) => scan(group, join(__dirname, '../src', group)))).catch(
 	(error) => (console.error(error), process.exit(1))

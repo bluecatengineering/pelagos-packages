@@ -1,0 +1,71 @@
+@import '../../less/colors';
+@import '../../less/spacing';
+
+// stylelint-disable @bluecateng/property-strict-value
+
+.Themes {
+	width: 100vw;
+
+	&__header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 68px;
+		padding: 0 1rem;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		background-color: white;
+	}
+
+	&__filters {
+		flex-direction: row;
+		gap: @sp-12;
+	}
+
+	&__check {
+		margin-top: 1.5em;
+	}
+
+	&__table {
+		margin-top: 4px;
+		width: 100%;
+
+		& thead {
+			position: sticky;
+			top: 68px;
+			background-color: white;
+		}
+
+		& tr:not(:last-child) {
+			border-bottom: 1px solid @cool-gray-20;
+		}
+
+		& th {
+			height: 32px;
+			text-align: left;
+		}
+	}
+
+	&__preview {
+		flex-direction: row;
+		align-items: flex-end;
+	}
+
+	&__swatch {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		outline: 1px solid purple;
+	}
+
+	&__detail {
+		display: inline-block;
+		margin-left: @sp-08;
+	}
+
+	&__hex {
+		color: @gray-70;
+	}
+}

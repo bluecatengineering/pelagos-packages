@@ -1,8 +1,8 @@
-<!-- DO NOT EDIT, generated from useToggle.js -->
+{/* DO NOT EDIT, generated from useToggle.js */}
 
 import {Meta} from '@storybook/addon-docs';
 
-<Meta title="hooks/useToggle" parameters={{previewTabs: {canvas: {hidden: true}}}} />
+<Meta title="hooks/useToggle" />
 
 # useToggle
 
@@ -11,10 +11,13 @@ Additionally, adds an effect which sets the state to true if any errors are foun
 
 ## Parameters
 
-| Param        | Type          | Description          |
-| ------------ | ------------- | -------------------- |
-| initialState | `boolean`     | the initial state.   |
-| errors       | `Array.<any>` | the array of errors. |
+<table>
+<thead><tr><th>Param</th><th>Type</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>initialState</td><td>`boolean`</td><td>the initial state.</td></tr>
+<tr><td>errors</td><td>`Array.<any>`</td><td>the array of errors.</td></tr>
+</tbody>
+</table>
 
 ## Returns
 
@@ -43,7 +46,24 @@ const Example = ({errors}) => {
 
 #### Properties
 
-| Name | Type       | Description                   |
-| ---- | ---------- | ----------------------------- |
-| 0    | `boolean`  | the current value.            |
-| 1    | `function` | function to toggle the value. |
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0</td>
+			<td>`boolean`</td>
+			<td>the current value.</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>`function`</td>
+			<td>function to toggle the value.</td>
+		</tr>
+	</tbody>
+</table>

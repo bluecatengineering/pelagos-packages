@@ -1,0 +1,67 @@
+{/* DO NOT EDIT, generated from smoothScroll.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/smoothScroll" />
+
+# smoothScroll
+
+Scrolls the specified element using an animation.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>element</td>
+			<td>`Element`</td>
+			<td>the element to scroll.</td>
+		</tr>
+		<tr>
+			<td>initialTop</td>
+			<td>`number`</td>
+			<td>the initial scroll top.</td>
+		</tr>
+		<tr>
+			<td>offset</td>
+			<td>`number`</td>
+			<td>the number of pixels to scroll.</td>
+		</tr>
+		<tr>
+			<td>duration</td>
+			<td>`number`</td>
+			<td>the duration of the animation.</td>
+		</tr>
+		<tr>
+			<td>done</td>
+			<td>`function`</td>
+			<td>invoked after scrolling.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Returns
+
+`Object`
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {smoothScroll} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => {
+		const element = document.getElementById('other');
+		smoothScroll(element, element.scrollTop, 100, 66);
+	}, []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

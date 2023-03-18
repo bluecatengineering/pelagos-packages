@@ -1,0 +1,65 @@
+{/* DO NOT EDIT, generated from scrollIntoView.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/scrollIntoView" />
+
+# scrollIntoView
+
+Scrolls the specified element into view.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>element</td>
+			<td>`Element`</td>
+			<td>the element to scroll.</td>
+		</tr>
+		<tr>
+			<td>options</td>
+			<td>`Object`</td>
+			<td>the scroll options.</td>
+		</tr>
+		<tr>
+			<td>options.alignBottom</td>
+			<td>`boolean`</td>
+			<td>whether the element should be aligned to the bottom of its container.</td>
+		</tr>
+		<tr>
+			<td>options.smooth</td>
+			<td>`boolean`</td>
+			<td>whether to animate the scrolling.</td>
+		</tr>
+		<tr>
+			<td>options.duration</td>
+			<td>`number`</td>
+			<td>the duration of the animation, default: 150ms.</td>
+		</tr>
+		<tr>
+			<td>options.done</td>
+			<td>`function`</td>
+			<td>invoked after scrolling.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Example
+
+```js
+import {useCallback} from 'react';
+import {scrollIntoView} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => scrollIntoView(document.getElementById('other')), []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

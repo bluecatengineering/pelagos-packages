@@ -1,0 +1,15 @@
+import {Meta} from '@storybook/addon-docs';
+import elevations from '../../defs/elevations.yaml';
+import './Elevations.less';
+
+<Meta title="Styles/Elevations" />
+
+# Elevations
+
+<div className="Elevations__grid sb-unstyled" data-theme="cg00" data-layer="1">
+	{Object.entries(elevations).map(([k, {bg, shadow}]) => (
+		<div key={k} className="Elevations__card" style={{backgroundColor: `var(--${bg})`, boxShadow: `var(--${shadow})`}}>
+			{k}
+		</div>
+	))}
+</div>

@@ -97,7 +97,10 @@ const loadShadows = () =>
 
 Promise.all([loadColors(), loadThemes(), loadSpacing(), loadFonts(), loadShadows()])
 	.then(([colors, {cg00, yg100}, spacing, fonts, shadows]) =>
-		writeFile('.out/figma-tokens.json', JSON.stringify({global: {colors}, cg00, yg100, spacing, fonts, shadows}))
+		writeFile(
+			'build/storybook/figma-tokens.json',
+			JSON.stringify({global: {colors}, cg00, yg100, spacing, fonts, shadows})
+		)
 	)
 	// eslint-disable-next-line no-console
 	.catch((error) => (console.error(error), process.exit(1)));

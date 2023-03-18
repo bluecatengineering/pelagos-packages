@@ -1,41 +1,30 @@
-import identity from 'lodash-es/identity';
-
 import {TextInputField} from '../src';
-
-const Template = (args) => <TextInputField {...args} />;
-
-export const Normal = Template.bind({});
-Normal.args = {label: 'Normal', value: 'Alpha', helperText: 'Helper text'};
-
-export const Empty = Template.bind({});
-Empty.args = {label: 'Empty', placeholder: 'Placeholder'};
-
-export const Required = Template.bind({});
-Required.args = {label: 'Required', required: true};
-
-export const Disabled = Template.bind({});
-Disabled.args = {label: 'Disabled', value: 'Alpha', disabled: true};
-
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {label: 'Read-Only', value: 'Alpha', readOnly: true};
-
-export const Error = Template.bind({});
-Error.args = {label: 'Error', value: 'Alpha', required: true, error: 'Error message'};
-
-export const AllStates = () => (
-	<div className="Story__group">
-		<TextInputField label="Normal" value="Alpha" helperText="Helper text" onChange={identity} />
-		<TextInputField label="Empty" placeholder="Placeholder" onChange={identity} />
-		<TextInputField label="Required" required onChange={identity} />
-		<TextInputField label="Disabled" value="Alpha" disabled onChange={identity} />
-		<TextInputField label="Read-Only" value="Alpha" readOnly onChange={identity} />
-		<TextInputField label="Error" value="Alpha" required error="Error message" onChange={identity} />
-	</div>
-);
-AllStates.storyName = 'All states';
 
 export default {
 	title: 'Components/TextInputField',
 	component: TextInputField,
-	parameters: {actions: {argTypesRegex: '^on.*'}},
+};
+
+export const Default = {
+	args: {label: 'Default', value: 'Alpha', helperText: 'Helper text'},
+};
+
+export const Empty = {
+	args: {label: 'Empty', placeholder: 'Placeholder'},
+};
+
+export const Required = {
+	args: {label: 'Required', required: true},
+};
+
+export const Disabled = {
+	args: {label: 'Disabled', value: 'Alpha', disabled: true},
+};
+
+export const ReadOnly = {
+	args: {label: 'Read-Only', value: 'Alpha', readOnly: true},
+};
+
+export const Error = {
+	args: {label: 'Error', value: 'Alpha', required: true, error: 'Error message'},
 };

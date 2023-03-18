@@ -30,16 +30,11 @@ const items = [
 	{id: 'baz', text: 'Baz'},
 ];
 
-const Template = (args) => <Tabs {...args} />;
-
-export const Line = Template.bind({});
-Line.args = {id: 'tabs', currentTab: 'foo', items, getTabKey, renderTab: renderLineTab};
-
-export const Contained = Template.bind({});
-Contained.args = {id: 'tabs', currentTab: 'foo', items, getTabKey, renderTab: renderContainedTab};
-
 export default {
 	title: 'Components/Tabs',
 	component: Tabs,
-	parameters: {actions: {argTypesRegex: '^on.*'}},
 };
+
+export const Line = {args: {id: 'tabs', currentTab: 'foo', items, getTabKey, renderTab: renderLineTab}};
+
+export const Contained = {args: {id: 'tabs', currentTab: 'foo', items, getTabKey, renderTab: renderContainedTab}};

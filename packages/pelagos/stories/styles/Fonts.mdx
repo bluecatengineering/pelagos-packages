@@ -1,0 +1,28 @@
+import {Meta} from '@storybook/addon-docs';
+import fonts from '../../defs/fonts.yaml';
+
+<Meta title="Styles/Fonts" />
+
+# Fonts
+
+<table>
+	<thead>
+		<tr>
+			<th>Token</th>
+			<th>Usage</th>
+		</tr>
+	</thead>
+	<tbody>
+		{Object.entries(fonts)
+			.filter(([k]) => k !== 'root-font')
+			.map(([key, {use, styles}]) => (
+				<tr key={key}>
+					<td
+						style={Object.fromEntries(Object.entries(styles).map(([k, v]) => [k, k === 'line-height' ? `${v}em` : v]))}>
+						{key}
+					</td>
+					<td>{use}</td>
+				</tr>
+			))}
+	</tbody>
+</table>
