@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.0.0...@bluecateng/pelagos@12.0.1) (2023-03-22)
+
+### Bug Fixes
+
+- pass additional properties in SvgIcon to the svg element ([9ec24e3](https://github.com/bluecatengineering/pelagos-packages/commit/9ec24e30cd6d7087b20480e374a30d92370fb47a))
+
 ## [12.0.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@11.1.0...@bluecateng/pelagos@12.0.0) (2023-03-13)
 
 ### ⚠ BREAKING CHANGES
