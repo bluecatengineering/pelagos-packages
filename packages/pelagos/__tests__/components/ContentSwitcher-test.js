@@ -166,6 +166,20 @@ describe('ContentSwitcher', () => {
 			expect(onChange.mock.calls).toEqual([[1]]);
 		});
 
+		it('does not call onChange on blur when current is not set', () => {
+			const relatedTarget = {foo: 'test'};
+			const onChange = jest.fn();
+			useRef.mockReturnValue({});
+			useState.mockReturnValueOnce([1]);
+			const wrapper = shallow(
+				<ContentSwitcher id="test" selected={0} onChange={onChange}>
+					<ContentSwitcherButton />
+				</ContentSwitcher>
+			);
+			wrapper.find('#test').simulate('blur', {relatedTarget});
+			expect(onChange.mock.calls).toEqual([]);
+		});
+
 		it('does not call onChange on blur when relatedTarget is inside container', () => {
 			const relatedTarget = {foo: 'test'};
 			const contains = jest.fn().mockReturnValue(true);

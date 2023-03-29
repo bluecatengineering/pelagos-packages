@@ -47,7 +47,7 @@ const ContentSwitcher = ({className, selected, children, onChange, ...props}) =>
 
 	const handleBlur = useCallback(
 		(event) => {
-			if (!ref.current.contains(event.relatedTarget) && focused !== selected) {
+			if (ref.current && !ref.current.contains(event.relatedTarget) && focused !== selected) {
 				onChange(focused);
 			}
 		},
