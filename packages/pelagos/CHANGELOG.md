@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.0.1...@bluecateng/pelagos@12.0.2) (2023-04-05)
+
+### Bug Fixes
+
+- fix error in ContentSwitcher when current is not set on blur ([b158d5c](https://github.com/bluecatengineering/pelagos-packages/commit/b158d5c9261afa1f620779d55a4f3c5c5608fc8e))
+- remove obsolete defaultProps in Collapsible ([cda3c30](https://github.com/bluecatengineering/pelagos-packages/commit/cda3c3029b733bb430bb3b7e419b463e04122d76))
+
 ## [12.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.0.0...@bluecateng/pelagos@12.0.1) (2023-03-22)
 
 ### Bug Fixes
