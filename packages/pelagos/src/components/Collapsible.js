@@ -51,8 +51,5 @@ Collapsible.propTypes = {
 	/** Function invoked when the header is clicked. */
 	onHeaderClick: PropTypes.func,
 };
-Collapsible.defaultProps = {
-	level: '1',
-};
 
 export default Collapsible;
