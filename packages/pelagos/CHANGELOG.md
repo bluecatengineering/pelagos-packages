@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.3](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.0.2...@bluecateng/pelagos@12.0.3) (2023-04-13)
+
+### Bug Fixes
+
+- set flex none on all headers ([1b147b1](https://github.com/bluecatengineering/pelagos-packages/commit/1b147b1a5ba80028c592a9866b959b0838db3036))
+
 ## [12.0.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.0.1...@bluecateng/pelagos@12.0.2) (2023-04-05)
 
 ### Bug Fixes
