@@ -1,0 +1,33 @@
+name: Chromatic
+
+on:
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+
+permissions: read-all
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # tag=v3.3.0
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # tag=v3.6.0
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx lerna run prepack
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@d51b84e79d164fbe8fc5bb7175695d88ddd04b72 # tag=v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitOnceUploaded: true

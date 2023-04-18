@@ -75,7 +75,9 @@ const ToastMessage = ({message, onRemove}) => {
 					<SvgIcon icon={xmarkThin} />
 				</button>
 			)}
-			{type !== ToastTypes.FATAL && !actionText && <div className="ToastMessage__time" ref={progressRef} />}
+			{type !== ToastTypes.FATAL && !actionText && (
+				<div className="ToastMessage__time" data-chromatic="ignore" ref={progressRef} />
+			)}
 		</div>
 	);
 };
