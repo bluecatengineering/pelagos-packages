@@ -115,6 +115,7 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
   </button>
   <div
     className="ToastMessage__time"
+    data-chromatic="ignore"
   />
 </div>
 `;
