@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {forwardRef, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
@@ -9,8 +9,14 @@ import useRandomId from '../hooks/useRandomId';
 import IconButton from './IconButton';
 import './Calendar.less';
 
-const getInitialDate = () => {
-	const date = new Date();
+const getInitialDate = (current) => {
+	const date = current
+		? Array.isArray(current)
+			? current[1]
+				? new Date(current[1])
+				: new Date()
+			: new Date(current)
+		: new Date();
 	date.setHours(0, 0, 0, 0);
 	return date;
 };
@@ -75,22 +81,21 @@ const updateMonth = (focused, month) => {
 const preventDefault = (event) => event.preventDefault();
 
 /** A component which allows selecting either a single date or a date range. Passing an array in `value` enables range selection. */
-const Calendar = ({id, className, value, onChange, ...props}) => {
+const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) => {
 	id = useRandomId(id);
 
 	const tableRef = useRef();
 	const liveRef = useRef();
 
-	const [focused, setFocused] = useState(getInitialDate);
+	const [focused, setFocused] = useState(() => getInitialDate(value));
 	const [highlighted, setHighlighted] = useState(null);
 
-	const [monthFmt, weekDayFmtLong, weekDayFmtNarrow, dateFmt] = useMemo(() => {
+	const [monthFmt, weekDayFmtLong, weekDayFmtNarrow] = useMemo(() => {
 		const locale = l10n.locale;
 		return [
 			new Intl.DateTimeFormat(locale, {year: 'numeric', month: 'long'}),
 			new Intl.DateTimeFormat(locale, {weekday: 'long'}),
 			new Intl.DateTimeFormat(locale, {weekday: 'narrow'}),
-			new Intl.DateTimeFormat(locale, {dateStyle: 'full'}),
 		];
 	}, []);
 
@@ -197,7 +202,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 		}
 	}, []);
 
-	const handleBlur = useCallback(() => (liveRef.current.textContent = null), []);
+	const handleBlur = useCallback(() => (liveRef.current ? (liveRef.current.textContent = null) : null), []);
 
 	useEffect(() => {
 		const table = tableRef.current;
@@ -218,7 +223,7 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 	const rangeEnd = extractDate(singleMode ? value : value[1]);
 
 	return (
-		<div {...props} className={`Calendar${className ? ` ${className}` : ''}`}>
+		<div {...props} className={`Calendar${className ? ` ${className}` : ''}`} ref={ref}>
 			<div className="sr-only" aria-live="polite" ref={liveRef} />
 			<div className="Calendar__monthHeader">
 				<IconButton
@@ -291,7 +296,6 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 															: curHighlight(time, rangeStart, rangeEnd)
 													}`}
 													tabIndex={isSelected ? 0 : -1}
-													aria-label={dateFmt.format(day)}
 													aria-selected={isSelected}
 													data-time={isCurMonth ? time : null}>
 													{isCurMonth ? day.getDate() : ''}
@@ -310,7 +314,9 @@ const Calendar = ({id, className, value, onChange, ...props}) => {
 			</table>
 		</div>
 	);
-};
+});
+
+Calendar.displayName = 'Calendar';
 
 Calendar.propTypes = {
 	/** The component id. */

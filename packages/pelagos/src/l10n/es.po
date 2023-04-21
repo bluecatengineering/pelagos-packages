@@ -85,6 +85,14 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancelar"
 
+#: 7bd
+msgid "Change date, {value}"
+msgstr "Cambiar fecha, {value}"
+
+#: e78
+msgid "Choose date"
+msgstr "Escoger fecha"
+
 #: 719
 msgid "Clear"
 msgstr "Limpiar"
