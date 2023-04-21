@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateInput rendering renders expected elements 1`] = `
+<Layer
+  className="TimeInput"
+>
+  <input
+    className="TimeInput__input"
+    onChange={[Function]}
+    type="text"
+  />
+  <IconButton
+    aria-label="Choose date"
+    className="TimeInput__icon"
+    icon={
+      {
+        "icon": [],
+        "iconName": "calendar",
+        "prefix": "far",
+      }
+    }
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;
+
+exports[`DateInput rendering renders expected elements when calendarTime is set 1`] = `
+<Layer
+  className="TimeInput"
+>
+  <input
+    className="TimeInput__input"
+    onChange={[Function]}
+    type="text"
+  />
+  <IconButton
+    aria-label="Choose date"
+    className="TimeInput__icon"
+    icon={
+      {
+        "icon": [],
+        "iconName": "calendar",
+        "prefix": "far",
+      }
+    }
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+  <React.Portal
+    container={
+      {
+        "tag": "body",
+      }
+    }
+  >
+    <Calendar
+      className="TimeInput__calendar"
+      onChange={[Function]}
+      value={1000}
+    />
+  </React.Portal>
+</Layer>
+`;
+
+exports[`DateInput rendering renders expected elements when className is set 1`] = `
+<Layer
+  className="TimeInput TestClass"
+>
+  <input
+    className="TimeInput__input"
+    onChange={[Function]}
+    type="text"
+  />
+  <IconButton
+    aria-label="Choose date"
+    className="TimeInput__icon"
+    icon={
+      {
+        "icon": [],
+        "iconName": "calendar",
+        "prefix": "far",
+      }
+    }
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;
+
+exports[`DateInput rendering renders expected elements when value is set 1`] = `
+<Layer
+  className="TimeInput"
+>
+  <input
+    className="TimeInput__input"
+    onChange={[Function]}
+    type="text"
+    value="foo"
+  />
+  <IconButton
+    aria-label="Change date, foo"
+    className="TimeInput__icon"
+    icon={
+      {
+        "icon": [],
+        "iconName": "calendar",
+        "prefix": "far",
+      }
+    }
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+</Layer>
+`;

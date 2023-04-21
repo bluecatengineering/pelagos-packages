@@ -10,6 +10,7 @@ export {default as ConfirmDialog} from './ConfirmDialog';
 export {default as ContentSwitcher} from './ContentSwitcher';
 export {default as ContentSwitcherButton} from './ContentSwitcherButton';
 export {default as CopyButton} from './CopyButton';
+export {default as DateInput} from './DateInput';
 export {default as DetailEntry} from './DetailEntry';
 export {default as DetailRegion} from './DetailRegion';
 export {default as DetailsGrid} from './DetailsGrid';

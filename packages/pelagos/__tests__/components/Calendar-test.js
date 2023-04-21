@@ -57,10 +57,34 @@ describe('Calendar', () => {
 			shallow(<Calendar />);
 			expect(useState.mock.calls).toEqual([[anyFunction], [null]]);
 			const date = useState.mock.calls[0][0]();
-			expect(date.getHours()).toBe(0);
-			expect(date.getMinutes()).toBe(0);
-			expect(date.getSeconds()).toBe(0);
-			expect(date.getMilliseconds()).toBe(0);
+			expect(date.getTime()).toBe(new Date().setHours(0, 0, 0, 0));
+		});
+
+		it('initializes focused to the specified date', () => {
+			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
+
+			shallow(<Calendar value={1682375555250} />);
+			expect(useState.mock.calls).toEqual([[anyFunction], [null]]);
+			const date = useState.mock.calls[0][0]();
+			expect(date.getTime()).toBe(1682308800000);
+		});
+
+		it('initializes focused to the specified date when value is an array', () => {
+			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
+
+			shallow(<Calendar value={[0, 1682375555250]} />);
+			expect(useState.mock.calls).toEqual([[anyFunction], [null]]);
+			const date = useState.mock.calls[0][0]();
+			expect(date.getTime()).toBe(1682308800000);
+		});
+
+		it('initializes focused to the current date when value is an empty array', () => {
+			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
+
+			shallow(<Calendar value={[]} />);
+			expect(useState.mock.calls).toEqual([[anyFunction], [null]]);
+			const date = useState.mock.calls[0][0]();
+			expect(date.getTime()).toBe(new Date().setHours(0, 0, 0, 0));
 		});
 
 		it('sets live text on focus', () => {
@@ -102,6 +126,14 @@ describe('Calendar', () => {
 			wrapper.find('#random-id').prop('onBlurCapture')();
 
 			expect(live.textContent).toBeNull();
+		});
+
+		it('does not throw on blur when liveRef.current is null', () => {
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: null});
+			useState.mockReturnValueOnce([new Date(2019, 8, 15)]).mockReturnValueOnce([null]);
+
+			const wrapper = shallow(<Calendar />);
+			expect(() => wrapper.find('#random-id').prop('onBlurCapture')()).not.toThrow();
 		});
 
 		it('ignores the event when a key is pressed and any modifier is set', () => {
