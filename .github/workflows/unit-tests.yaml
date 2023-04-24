@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # tag=v3.3.0
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # tag=v3.5.2
 
       - name: Setup node
         uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # tag=v3.6.0
@@ -29,7 +29,7 @@ jobs:
           TZ: America/Toronto
 
       - name: Publish test report
-        uses: mikepenz/action-junit-report@7210fead7f92f6395c37241964df3b0f730f5e4e # tag=v3.7.1
+        uses: mikepenz/action-junit-report@c0e4b81aaa0067314a2d0d06e19b512c9d8af4f5 # tag=v3.7.7
         if: always()
         with:
           report_paths: build/test-results/unit.xml
