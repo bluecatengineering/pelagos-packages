@@ -6,7 +6,9 @@ import './CheckBox.less';
 /* A checkbox. */
 const CheckBox = ({className, label, indeterminate, disabled, error, ...props}) => {
 	const inputRef = useRef();
-	useEffect(() => (inputRef.current.indeterminate = indeterminate), [indeterminate]);
+	useEffect(() => {
+		inputRef.current.indeterminate = indeterminate;
+	}, [indeterminate]);
 	return (
 		<label className={`CheckBox${disabled ? ' CheckBox--disabled' : ''}${className ? ` ${className}` : ''}`}>
 			<input
