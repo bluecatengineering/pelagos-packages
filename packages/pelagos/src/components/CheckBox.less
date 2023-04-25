@@ -1,13 +1,13 @@
 @import '../../less/spacing';
-@import '../../less/utils';
 
 @layer pelagos {
 	.CheckBox {
-		@layer-hover-effects();
 		display: inline-flex;
 		align-items: center;
+		gap: @sp-08;
 		// stylelint-disable-next-line @bluecateng/property-strict-value -- minimum space to fit focus ring
 		margin-left: 3px;
+		cursor: pointer;
 
 		&--disabled {
 			color: var(--text-disabled);
@@ -16,10 +16,6 @@
 			&:active {
 				background-color: transparent;
 			}
-		}
-
-		& > input {
-			margin-right: @sp-08;
 		}
 	}
 }
