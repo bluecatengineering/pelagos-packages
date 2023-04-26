@@ -68,9 +68,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.0.0",
-    "stylelint": "^15.1.0",
+    "stylelint": "^14.16.1",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^30.0.1",
+    "stylelint-config-standard": "^29.0.0",
     "yaml": "^2.0.1",
     "yaml-loader": "^0.8.0"
   },
