@@ -54,10 +54,10 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 	}, [calendarTime]);
 
 	return (
-		<Layer className={`TimeInput${className ? ` ${className}` : ''}`}>
+		<Layer className={`DateInput${className ? ` ${className}` : ''}`}>
 			<input
 				{...props}
-				className="TimeInput__input"
+				className="DateInput__input"
 				type="text"
 				value={value}
 				disabled={disabled}
@@ -65,7 +65,7 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 				onChange={handleInputChange}
 			/>
 			<IconButton
-				className="TimeInput__icon"
+				className="DateInput__icon"
 				icon={faCalendar}
 				disabled={disabled}
 				aria-label={value ? t`Change date, ${value}` : t`Choose date`}
@@ -75,7 +75,7 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 			{calendarTime !== null &&
 				createPortal(
 					<Calendar
-						className="TimeInput__calendar"
+						className="DateInput__calendar"
 						value={calendarTime}
 						ref={popUpRef}
 						onChange={handleCalendarChange}
