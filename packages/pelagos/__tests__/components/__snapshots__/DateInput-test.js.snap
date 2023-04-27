@@ -2,16 +2,16 @@
 
 exports[`DateInput rendering renders expected elements 1`] = `
 <Layer
-  className="TimeInput"
+  className="DateInput"
 >
   <input
-    className="TimeInput__input"
+    className="DateInput__input"
     onChange={[Function]}
     type="text"
   />
   <IconButton
     aria-label="Choose date"
-    className="TimeInput__icon"
+    className="DateInput__icon"
     icon={
       {
         "icon": [],
@@ -29,16 +29,16 @@ exports[`DateInput rendering renders expected elements 1`] = `
 
 exports[`DateInput rendering renders expected elements when calendarTime is set 1`] = `
 <Layer
-  className="TimeInput"
+  className="DateInput"
 >
   <input
-    className="TimeInput__input"
+    className="DateInput__input"
     onChange={[Function]}
     type="text"
   />
   <IconButton
     aria-label="Choose date"
-    className="TimeInput__icon"
+    className="DateInput__icon"
     icon={
       {
         "icon": [],
@@ -59,7 +59,7 @@ exports[`DateInput rendering renders expected elements when calendarTime is set 
     }
   >
     <Calendar
-      className="TimeInput__calendar"
+      className="DateInput__calendar"
       onChange={[Function]}
       value={1000}
     />
@@ -69,16 +69,16 @@ exports[`DateInput rendering renders expected elements when calendarTime is set 
 
 exports[`DateInput rendering renders expected elements when className is set 1`] = `
 <Layer
-  className="TimeInput TestClass"
+  className="DateInput TestClass"
 >
   <input
-    className="TimeInput__input"
+    className="DateInput__input"
     onChange={[Function]}
     type="text"
   />
   <IconButton
     aria-label="Choose date"
-    className="TimeInput__icon"
+    className="DateInput__icon"
     icon={
       {
         "icon": [],
@@ -96,17 +96,17 @@ exports[`DateInput rendering renders expected elements when className is set 1`]
 
 exports[`DateInput rendering renders expected elements when value is set 1`] = `
 <Layer
-  className="TimeInput"
+  className="DateInput"
 >
   <input
-    className="TimeInput__input"
+    className="DateInput__input"
     onChange={[Function]}
     type="text"
     value="foo"
   />
   <IconButton
     aria-label="Change date, foo"
-    className="TimeInput__icon"
+    className="DateInput__icon"
     icon={
       {
         "icon": [],

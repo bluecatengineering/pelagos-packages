@@ -2,35 +2,37 @@
 @import '~@bluecateng/pelagos/less/focus';
 @import '~@bluecateng/pelagos/less/spacing';
 
-.TimeInput {
-	position: relative;
-	flex-direction: row;
-	overflow: hidden;
+@layer pelagos {
+	.DateInput {
+		position: relative;
+		flex-direction: row;
+		overflow: hidden;
 
-	&__input {
-		width: 0;
-		flex: 1;
-		padding-right: @sp-48;
+		&__input {
+			width: 0;
+			flex: 1;
+			padding-right: @sp-48;
 
-		&[aria-invalid='true'] {
-			outline: 2px solid var(--support-error);
-			outline-offset: -2px;
+			&[aria-invalid='true'] {
+				outline: 2px solid var(--support-error);
+				outline-offset: -2px;
 
-			&:focus {
-				@focus-ring-error();
+				&:focus {
+					@focus-ring-error();
+				}
 			}
 		}
-	}
 
-	&__icon {
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
+		&__icon {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
 
-	&__calendar {
-		@elv-04();
-		position: absolute;
-		z-index: 1000;
+		&__calendar {
+			@elv-04();
+			position: absolute;
+			z-index: 1000;
+		}
 	}
 }
