@@ -1,4 +1,5 @@
 export * from './components';
+export * from './fileUploader';
 export * from './filters';
 export * from './formFields';
 export * from './functions';

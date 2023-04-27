@@ -53,9 +53,9 @@ msgstr "{name} añadido"
 msgid "{name} removed"
 msgstr "{name} removido"
 
-#: 791
-msgid "{required, select, true {{label}, required. {dropZoneText}} other {{label}. {dropZoneText}}}"
-msgstr "{required, select, true {{label}, obligatorio. {dropZoneText}} other {{label}. {dropZoneText}}}"
+#: 990
+msgid "{required, select, true {{label}, required. {text}} other {{label}. {text}}}"
+msgstr "{required, select, true {{label}, obligatorio. {text}} other {{label}. {text}}}"
 
 #: 1e6
 msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
@@ -124,6 +124,10 @@ msgstr "Fallo en copia: {message}"
 #: f6f
 msgid "Delete"
 msgstr "Borrar"
+
+#: 116
+msgid "Delete {name}"
+msgstr "Borrar {name}"
 
 #: 70a
 msgid "Dismiss"

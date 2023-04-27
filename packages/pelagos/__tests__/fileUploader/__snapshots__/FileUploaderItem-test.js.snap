@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploaderItem rendering renders expected elements 1`] = `
+<Layer
+  as="li"
+  className="FileUploader__file"
+>
+  <p
+    className="FileUploader__fileName"
+    title="foo.txt"
+  >
+    foo.txt
+  </p>
+  <div
+    className="FileUploader__fileIcons"
+  >
+    <button
+      aria-label="Delete foo.txt"
+      className="FileUploader__fileRemove"
+      type="button"
+    >
+      <SvgIcon
+        icon={
+          {
+            "icon": [],
+            "iconName": "xmark-thin",
+          }
+        }
+      />
+    </button>
+  </div>
+</Layer>
+`;
+
+exports[`FileUploaderItem rendering renders expected elements when optional properties are set 1`] = `
+<Layer
+  as="li"
+  className="FileUploader__file FileUploader__file--error TestClass"
+>
+  <p
+    className="FileUploader__fileName"
+    title="foo.txt"
+  >
+    foo.txt
+  </p>
+  <div
+    className="FileUploader__fileIcons"
+  >
+    <SvgIcon
+      className="FileUploader__errorIcon"
+      icon={
+        {
+          "icon": [],
+          "iconName": "rhombus-exclamation",
+        }
+      }
+    />
+    <button
+      aria-label="Delete foo.txt"
+      className="FileUploader__fileRemove"
+      disabled={true}
+      type="button"
+    >
+      <SvgIcon
+        icon={
+          {
+            "icon": [],
+            "iconName": "xmark-thin",
+          }
+        }
+      />
+    </button>
+  </div>
+  <div
+    className="FileUploader__fileError"
+  >
+    Test error
+  </div>
+</Layer>
+`;

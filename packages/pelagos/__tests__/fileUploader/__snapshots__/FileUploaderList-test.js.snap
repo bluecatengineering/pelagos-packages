@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploaderList rendering renders expected elements 1`] = `
+<ul
+  className="FileUploader__files"
+>
+  <li />
+</ul>
+`;
+
+exports[`FileUploaderList rendering renders expected elements when optional properties are set 1`] = `
+<ul
+  className="FileUploader__files TestClass"
+>
+  <li />
+</ul>
+`;

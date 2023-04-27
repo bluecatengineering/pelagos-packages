@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploader rendering renders expected elements 1`] = `
+<div
+  className="FileUploader"
+>
+  <LabelLine
+    error={false}
+    htmlFor="random-id"
+    text="Test"
+  />
+  <FileUploaderDropZone
+    aria-describedby="random-id-helper"
+    error={false}
+    id="random-id"
+    label="Test"
+    onAddFiles={[Function]}
+    text="Test drop zone"
+  />
+  <FileUploaderList
+    onClick={[Function]}
+  >
+    <FileUploaderItem
+      data-index={0}
+      data-testid="remove-file"
+      name="foo.txt"
+    />
+  </FileUploaderList>
+  <FieldHelper
+    id="random-id-helper"
+  />
+</div>
+`;
+
+exports[`FileUploader rendering renders expected elements when files is not set 1`] = `
+<div
+  className="FileUploader"
+>
+  <LabelLine
+    error={false}
+    htmlFor="random-id"
+    text="Test"
+  />
+  <FileUploaderDropZone
+    aria-describedby="random-id-helper"
+    error={false}
+    id="random-id"
+    label="Test"
+    onAddFiles={[Function]}
+    text="Test drop zone"
+  />
+  <FieldHelper
+    id="random-id-helper"
+  />
+</div>
+`;
+
+exports[`FileUploader rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="FileUploader TestClass"
+>
+  <LabelLine
+    error={true}
+    htmlFor="random-id"
+    required={true}
+    text="Test"
+  />
+  <FileUploaderDropZone
+    aria-describedby="random-id-error"
+    disabled={true}
+    error={true}
+    id="random-id"
+    label="Test"
+    multiple={true}
+    onAddFiles={[Function]}
+    required={true}
+    text="Test drop zone"
+    types="test-types"
+  />
+  <FileUploaderList
+    onClick={[Function]}
+  >
+    <FileUploaderItem
+      data-index={0}
+      data-testid="remove-file"
+      error="Test file error"
+      name="foo.txt"
+    />
+  </FileUploaderList>
+  <FieldError
+    id="random-id-error"
+    text="Test error"
+  />
+</div>
+`;
