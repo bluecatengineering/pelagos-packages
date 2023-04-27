@@ -19,7 +19,11 @@ import {createFocusTrap} from 'focus-trap';
  */
 const useFocusTrap = (ref, initialFocus, onDeactivate) =>
 	useEffect(() => {
-		const trap = createFocusTrap(ref.current, {initialFocus, clickOutsideDeactivates: true, onDeactivate});
+		const trap = createFocusTrap(ref.current, {
+			initialFocus,
+			clickOutsideDeactivates: (event) => !event.target.closest('[role="listbox"]'),
+			onDeactivate,
+		});
 		trap.activate();
 		return trap.deactivate;
 	}, [ref, initialFocus, onDeactivate]);
