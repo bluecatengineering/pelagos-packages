@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploaderDropZone rendering renders expected elements 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <button
+    aria-label="Test. Test drop zone"
+    className="FileUploader__dropZone"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="button"
+  >
+    Test drop zone
+  </button>
+  <input
+    accept={null}
+    className="FileUploader__input"
+    onChange={[Function]}
+    type="file"
+  />
+</div>
+`;
+
+exports[`FileUploaderDropZone rendering renders expected elements when optional properties are set 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <button
+    aria-invalid={true}
+    aria-label="Test, required. Test drop zone"
+    className="FileUploader__dropZone"
+    disabled={true}
+    id="test"
+    onClick={[Function]}
+    onDragEnter={null}
+    onDragLeave={null}
+    onDragOver={null}
+    onDrop={null}
+    type="button"
+  >
+    Test drop zone
+  </button>
+  <input
+    accept="text/x-foo,.foo,application/x-foo,text/x-bar,.bar1,.bar2,text/x-baz,.baz"
+    className="FileUploader__input"
+    multiple={true}
+    onChange={[Function]}
+    type="file"
+  />
+</div>
+`;
+
+exports[`FileUploaderDropZone rendering renders expected elements when showOpenFilePicker is present 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <button
+    aria-label="Test. Test drop zone"
+    className="FileUploader__dropZone"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="button"
+  >
+    Test drop zone
+  </button>
+</div>
+`;

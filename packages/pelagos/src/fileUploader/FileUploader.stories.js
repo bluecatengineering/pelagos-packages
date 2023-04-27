@@ -1,4 +1,4 @@
-import {FileUploader} from '../src';
+import FileUploader from './FileUploader';
 
 export default {
 	title: 'Components/FileUploader',

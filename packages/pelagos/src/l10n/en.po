@@ -53,8 +53,8 @@ msgstr ""
 msgid "{name} removed"
 msgstr ""
 
-#: 791
-msgid "{required, select, true {{label}, required. {dropZoneText}} other {{label}. {dropZoneText}}}"
+#: 990
+msgid "{required, select, true {{label}, required. {text}} other {{label}. {text}}}"
 msgstr ""
 
 #: 1e6
@@ -123,6 +123,10 @@ msgstr ""
 
 #: f6f
 msgid "Delete"
+msgstr ""
+
+#: 116
+msgid "Delete {name}"
 msgstr ""
 
 #: 70a
