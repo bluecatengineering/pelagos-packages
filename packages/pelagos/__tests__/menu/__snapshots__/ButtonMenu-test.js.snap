@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonMenu rendering renders expected elements 1`] = `
+<React.Fragment>
+  <Button
+    aria-controls={null}
+    aria-haspopup="true"
+    className="ButtonMenu"
+    data-layer={null}
+    disabled={false}
+    id="random-id"
+    size="small"
+    text="Test"
+    type="ghost"
+  />
+</React.Fragment>
+`;
+
+exports[`ButtonMenu rendering renders expected elements when expanded is true 1`] = `
+<React.Fragment>
+  <Button
+    aria-controls="random-id-menu"
+    aria-expanded={true}
+    aria-haspopup="true"
+    className="ButtonMenu"
+    data-layer={2}
+    disabled={false}
+    id="random-id"
+    size="small"
+    text="Test"
+    type="ghost"
+  />
+  <React.Portal
+    container="body"
+  >
+    <Layer
+      className="ButtonMenu__popUp"
+      level={2}
+    >
+      <div
+        tabIndex={0}
+      />
+      <Menu
+        aria-labelledby="random-id"
+        id="random-id-menu"
+      >
+        <li
+          data-index={0}
+          id="random-id-0"
+        />
+      </Menu>
+      <div
+        tabIndex={0}
+      />
+    </Layer>
+  </React.Portal>
+</React.Fragment>
+`;
+
+exports[`ButtonMenu rendering renders expected elements when optional properties are set 1`] = `
+<React.Fragment>
+  <Button
+    aria-controls={null}
+    aria-haspopup="true"
+    className="ButtonMenu TestClass"
+    data-layer={null}
+    disabled={true}
+    id="random-id"
+    size="small"
+    text="Test"
+    type="ghost"
+  />
+</React.Fragment>
+`;

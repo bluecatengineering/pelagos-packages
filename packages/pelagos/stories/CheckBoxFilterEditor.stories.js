@@ -1,6 +1,6 @@
 import identity from 'lodash-es/identity';
 
-import {CheckBoxFilterEditor} from '../src';
+import {CheckBoxFilterEditor, Button} from '../src';
 
 const options = ['foo', 'bar', 'baz'];
 const list = ['foo', 'baz'];
@@ -12,3 +12,15 @@ export default {
 };
 
 export const Default = {args: {label: 'Default', options, list, getLabel}};
+
+export const ForArea = {
+	args: {label: 'For area', options, list, getLabel, chipId: 'chip', forArea: true},
+	decorators: [
+		(Story) => (
+			<>
+				<Button id="chip" text="Button" size="small" />
+				<Story />
+			</>
+		),
+	],
+};

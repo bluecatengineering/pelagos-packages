@@ -70,7 +70,7 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
     aria-expanded={true}
     aria-haspopup="true"
     className="IconMenu"
-    data-layer={NaN}
+    data-layer={2}
     disabled={false}
     icon={
       {
@@ -82,10 +82,12 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
     tooltipPlacement="right"
     type="ghost"
   />
-  <React.Portal>
+  <React.Portal
+    container="body"
+  >
     <Layer
       className="IconMenu__popUp"
-      level={NaN}
+      level={2}
     >
       <div
         tabIndex={0}

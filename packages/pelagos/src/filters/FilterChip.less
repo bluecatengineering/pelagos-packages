@@ -1,0 +1,52 @@
+@import '../../less/focus';
+@import '../../less/spacing';
+@import '../../less/utils';
+
+@layer pelagos {
+	.FilterChip {
+		display: flex;
+		flex-direction: row;
+		background-color: var(--layer);
+		color: var(--text-value);
+		height: 32px;
+		overflow: hidden;
+
+		@media print {
+			color: var(--print-color);
+			background-color: transparent;
+		}
+
+		&__button {
+			@focus-visible();
+			@layer-hover-effects();
+			display: flex;
+			align-items: center;
+			gap: @sp-08;
+			background-color: transparent;
+			border: none;
+			border-radius: 3px;
+			padding: @sp-04 @sp-08;
+			white-space: nowrap;
+			cursor: pointer;
+			overflow: hidden;
+		}
+
+		&__title {
+			color: var(--text-secondary);
+
+			@media print {
+				color: var(--print-medium);
+			}
+		}
+
+		&__values {
+			@ellipsis();
+		}
+
+		&__remove {
+			@icon-button();
+			font-size: 16px;
+			padding: @sp-02;
+		}
+	}
+}

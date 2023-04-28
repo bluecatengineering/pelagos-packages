@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterChip rendering renders expected elements 1`] = `
+<Layer
+  as="li"
+  className="FilterChip"
+>
+  <button
+    aria-haspopup="dialog"
+    className="FilterChip__button"
+    id="test"
+    type="button"
+  >
+    <span
+      className="FilterChip__title"
+    >
+      Test
+    </span>
+    <span
+      className="FilterChip__values"
+    >
+      test value
+    </span>
+    <MenuArrow />
+  </button>
+  <button
+    aria-label="Remove Test filter"
+    className="FilterChip__remove"
+    id="test-remove"
+    type="button"
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "xmark-thin",
+        }
+      }
+    />
+  </button>
+</Layer>
+`;

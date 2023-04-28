@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckBoxFilterEditor rendering renders expected elements 1`] = `
-[
+exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected elements 1`] = `
+<FilterEditor
+  chipId="button"
+  id="test"
+  onSave={[Function]}
+>
   <fieldset
     className="CheckBoxFilterEditor"
   >
@@ -13,17 +17,95 @@ exports[`CheckBoxFilterEditor rendering renders expected elements 1`] = `
     <CheckBox
       checked={true}
       className="CheckBoxFilterEditor__option"
-      id="checkBoxOption-a"
+      id="test-a"
       label="a"
       onChange={[Function]}
+      value={0}
     />
     <CheckBox
       checked={false}
       className="CheckBoxFilterEditor__option"
-      id="checkBoxOption-b"
+      id="test-b"
       label="b"
       onChange={[Function]}
+      value={1}
     />
-  </fieldset>,
-]
+  </fieldset>
+</FilterEditor>
+`;
+
+exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected elements when list is not set 1`] = `
+<FilterEditor
+  chipId="button"
+  id="test"
+  onSave={[Function]}
+>
+  <fieldset
+    className="CheckBoxFilterEditor"
+  >
+    <legend
+      className="CheckBoxFilterEditor__legend"
+    >
+      label
+    </legend>
+    <CheckBox
+      checked={false}
+      className="CheckBoxFilterEditor__option"
+      id="test-a"
+      label="a"
+      onChange={[Function]}
+      value={0}
+    />
+    <CheckBox
+      checked={false}
+      className="CheckBoxFilterEditor__option"
+      id="test-b"
+      label="b"
+      onChange={[Function]}
+      value={1}
+    />
+  </fieldset>
+</FilterEditor>
+`;
+
+exports[`CheckBoxFilterEditor OldCheckBoxFilterEditor rendering renders expected elements 1`] = `
+<fieldset
+  className="CheckBoxFilterEditor"
+>
+  <legend
+    className="CheckBoxFilterEditor__legend"
+  >
+    label
+  </legend>
+  <CheckBox
+    checked={true}
+    className="CheckBoxFilterEditor__option"
+    id="checkBoxOption-a"
+    label="a"
+    onChange={[Function]}
+  />
+  <CheckBox
+    checked={false}
+    className="CheckBoxFilterEditor__option"
+    id="checkBoxOption-b"
+    label="b"
+    onChange={[Function]}
+  />
+</fieldset>
+`;
+
+exports[`CheckBoxFilterEditor rendering renders expected elements when forArea is not set 1`] = `
+<OldCheckBoxFilterEditor
+  getLabel={[MockFunction]}
+  label="label"
+  options={[]}
+/>
+`;
+
+exports[`CheckBoxFilterEditor rendering renders expected elements when forArea is set 1`] = `
+<NewCheckBoxFilterEditor
+  getLabel={[MockFunction]}
+  label="label"
+  options={[]}
+/>
 `;

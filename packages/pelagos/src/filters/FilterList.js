@@ -9,10 +9,10 @@ import SvgIcon from '../components/SvgIcon';
 import MenuArrow from '../components/MenuArrow';
 import xmarkThin from '../icons/xmarkThin';
 
-import FilterEditor from './FilterEditor';
+import FilterEditor from './LegacyFilterEditor';
 import './FilterList.less';
 
-/** Displays a list of filters. */
+/** @deprecated use FilterArea instead. */
 const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues, getEditor, onApply}) => {
 	const [filterName, setFilterName] = useState(null);
 

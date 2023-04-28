@@ -1,6 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextFilterEditor rendering renders expected elements 1`] = `
+exports[`TextFilterEditor NewTextFilterEditor rendering renders expected elements 1`] = `
+<FilterEditor
+  id="test"
+  onSave={[Function]}
+>
+  <ListInput
+    column={true}
+    error={null}
+    getHighlightKey={[Function]}
+    getItemKey={[Function]}
+    getItemName={[Function]}
+    getSuggestionText={[Function]}
+    id="textFilterEditorInput"
+    label="label"
+    list={
+      [
+        "a",
+      ]
+    }
+    onErrorChange={[MockFunction]}
+    onListChange={[MockFunction]}
+    onTextChange={[MockFunction]}
+    placeholder="placeholder"
+    renderSuggestion={[MockFunction]}
+    type="text"
+    value=""
+  />
+</FilterEditor>
+`;
+
+exports[`TextFilterEditor NewTextFilterEditor rendering renders expected elements when list is null 1`] = `
+<FilterEditor
+  id="test"
+  onSave={[Function]}
+>
+  <ListInput
+    column={true}
+    error={null}
+    getHighlightKey={[Function]}
+    getItemKey={[Function]}
+    getItemName={[Function]}
+    getSuggestionText={[Function]}
+    id="textFilterEditorInput"
+    label="label"
+    list={[]}
+    onErrorChange={[MockFunction]}
+    onListChange={[MockFunction]}
+    onTextChange={[MockFunction]}
+    placeholder="placeholder"
+    renderSuggestion={[MockFunction]}
+    type="text"
+    value=""
+  />
+</FilterEditor>
+`;
+
+exports[`TextFilterEditor OldTextFilterEditor rendering renders expected elements 1`] = `
 <ListInput
   column={true}
   error={null}
@@ -25,7 +81,7 @@ exports[`TextFilterEditor rendering renders expected elements 1`] = `
 />
 `;
 
-exports[`TextFilterEditor rendering renders expected elements when list input requests suggestions text 1`] = `
+exports[`TextFilterEditor OldTextFilterEditor rendering renders expected elements when list input requests suggestions text 1`] = `
 <ListInput
   column={true}
   error={null}
@@ -50,7 +106,7 @@ exports[`TextFilterEditor rendering renders expected elements when list input re
 />
 `;
 
-exports[`TextFilterEditor rendering renders expected elements when list is null 1`] = `
+exports[`TextFilterEditor OldTextFilterEditor rendering renders expected elements when list is null 1`] = `
 <ListInput
   column={true}
   error={null}
@@ -68,5 +124,17 @@ exports[`TextFilterEditor rendering renders expected elements when list is null 
   renderSuggestion={[MockFunction]}
   type="text"
   value=""
+/>
+`;
+
+exports[`TextFilterEditor rendering renders expected elements when forArea is not set 1`] = `
+<OldTextFilterEditor
+  label="label"
+/>
+`;
+
+exports[`TextFilterEditor rendering renders expected elements when forArea is set 1`] = `
+<NewTextFilterEditor
+  label="label"
 />
 `;

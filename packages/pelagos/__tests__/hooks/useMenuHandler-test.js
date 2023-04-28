@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect, useRef, useState} from 'react';
+import {useLayoutEffect, useRef, useState} from 'react';
 
 import useMenuHandler from '../../src/hooks/useMenuHandler';
 
@@ -6,9 +6,7 @@ jest.unmock('../../src/hooks/useMenuHandler');
 
 const anyFunction = expect.any(Function);
 
-global.document = {};
-global.addEventListener = jest.fn();
-global.removeEventListener = jest.fn();
+global.document = {addEventListener: jest.fn(), removeEventListener: jest.fn()};
 
 describe('useMenuHandler', () => {
 	describe('handleButtonKeyDown', () => {
@@ -350,16 +348,48 @@ describe('useMenuHandler', () => {
 		it('sets the menu position', () => {
 			const getAttribute = jest.fn();
 			const focus = jest.fn();
-			const menu = {childNodes: [{getAttribute, focus}]};
-			const button = {};
+			const contains = jest
+				.fn()
+				.mockReturnValueOnce(true)
+				.mockReturnValueOnce(false)
+				.mockReturnValueOnce(true)
+				.mockReturnValueOnce(false)
+				.mockReturnValueOnce(false);
+			const menu = {contains, childNodes: [{getAttribute, focus}]};
+			const button = {contains};
+			const target = {foo: 'test'};
+			const setExpanded = jest.fn();
+			const setPopUpPosition = jest.fn();
 			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
-			useState.mockReturnValueOnce([true]);
-			useMenuHandler();
-			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, undefined]]);
+			useState.mockReturnValueOnce([true, setExpanded]);
+			useMenuHandler(setPopUpPosition);
+			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, setPopUpPosition]]);
 
-			useLayoutEffect.mock.calls[0][0]();
+			const remove = useLayoutEffect.mock.calls[0][0]();
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
 			expect(focus.mock.calls).toEqual([[]]);
+			expect(document.addEventListener.mock.calls).toEqual([
+				['mousedown', anyFunction, true],
+				['scroll', anyFunction, {passive: true, capture: true}],
+			]);
+
+			const onMouseDown = document.addEventListener.mock.calls[0][1];
+			for (let i = 0; i < 3; ++i) {
+				onMouseDown({target});
+			}
+			expect(contains.mock.calls).toEqual(Array(5).fill([target]));
+			expect(setExpanded.mock.calls).toEqual([[false]]);
+
+			const onScroll = document.addEventListener.mock.calls[1][1];
+			onScroll();
+
+			expect(setPopUpPosition.mock.calls).toEqual([
+				[button, menu],
+				[button, menu],
+			]);
+
+			remove();
+			expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
 		});
 
 		it('does nothing when menuVisible is false', () => {
@@ -371,44 +401,6 @@ describe('useMenuHandler', () => {
 
 			useLayoutEffect.mock.calls[0][0]();
 			expect(menu).toEqual({});
-		});
-	});
-
-	describe('effect 0', () => {
-		it('adds a mousedown listener to window', () => {
-			const target = {foo: 'test'};
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce()
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('true');
-			const contains = jest
-				.fn()
-				.mockReturnValueOnce(true)
-				.mockReturnValueOnce(false)
-				.mockReturnValueOnce(true)
-				.mockReturnValueOnce(false)
-				.mockReturnValueOnce(false);
-			const setMenuVisible = jest.fn();
-			useRef.mockReturnValueOnce({current: {getAttribute, contains}}).mockReturnValueOnce({current: {contains}});
-			useState.mockReturnValueOnce([true, setMenuVisible]);
-			useMenuHandler();
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, []]);
-
-			const remove = useEffect.mock.calls[0][0]();
-			expect(addEventListener.mock.calls).toEqual([['mousedown', anyFunction, true]]);
-
-			const handler = addEventListener.mock.calls[0][1];
-			for (let i = 0; i < 4; ++i) {
-				handler({target});
-			}
-			expect(getAttribute.mock.calls).toEqual(Array(4).fill(['aria-expanded']));
-			expect(contains.mock.calls).toEqual(Array(5).fill([target]));
-			expect(setMenuVisible.mock.calls).toEqual([[false]]);
-
-			remove();
-			expect(removeEventListener.mock.calls).toEqual([['mousedown', handler, true]]);
 		});
 	});
 });

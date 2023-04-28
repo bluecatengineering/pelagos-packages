@@ -1,26 +1,25 @@
 import {shallow} from 'enzyme';
 
-import IconMenu from '../../src/components/IconMenu';
-import MenuItem from '../../src/menu/MenuItem';
+import ButtonMenu from '../../src/menu/ButtonMenu';
 import useRandomId from '../../src/hooks/useRandomId';
-import setRefs from '../../src/functions/setRefs';
 import useMenuHandler from '../../src/hooks/useMenuHandler';
 import useLayer from '../../src/hooks/useLayer';
+import setRefs from '../../src/functions/setRefs';
 
-jest.unmock('../../src/components/IconMenu');
+jest.unmock('../../src/menu/ButtonMenu');
 
 global.document = {body: 'body'};
 
 useRandomId.mockReturnValue('random-id');
 
-describe('IconMenu', () => {
+describe('ButtonMenu', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}}>
-					<MenuItem>one</MenuItem>
-				</IconMenu>
+				<ButtonMenu text="Test">
+					<li />
+				</ButtonMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
@@ -28,42 +27,21 @@ describe('IconMenu', () => {
 		it('renders expected elements when optional properties are set', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
-				<IconMenu id="test" className="TestClass" icon={{foo: 'test'}} arrow>
-					<MenuItem>one</MenuItem>
-				</IconMenu>
+				<ButtonMenu id="test" className="TestClass" text="Test" disabled flipped>
+					<li />
+				</ButtonMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 			expect(useRandomId.mock.calls).toEqual([['test']]);
-		});
-
-		it('renders expected elements when disabled is set', () => {
-			useMenuHandler.mockReturnValueOnce({});
-			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}} disabled>
-					<MenuItem>one</MenuItem>
-				</IconMenu>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when all items are disabled', () => {
-			useMenuHandler.mockReturnValueOnce({});
-			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}}>
-					<MenuItem disabled>one</MenuItem>
-				</IconMenu>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when expanded is true', () => {
 			useMenuHandler.mockReturnValueOnce({expanded: true});
 			useLayer.mockReturnValue(1);
 			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}}>
-					<MenuItem>one</MenuItem>
-					<MenuItem>two</MenuItem>
-				</IconMenu>
+				<ButtonMenu text="Test">
+					<li />
+				</ButtonMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
@@ -74,7 +52,7 @@ describe('IconMenu', () => {
 			const ref = {foo: 'test'};
 			const buttonRef = {bar: 'test'};
 			useMenuHandler.mockReturnValueOnce({buttonRef});
-			IconMenu({children: []}, ref); // ref doesn't seem to be passed any other way
+			ButtonMenu({children: []}, ref); // ref doesn't seem to be passed any other way
 			expect(setRefs.mock.calls).toEqual([[ref, buttonRef]]);
 		});
 	});

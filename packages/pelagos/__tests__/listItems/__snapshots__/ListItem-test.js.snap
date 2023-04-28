@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListItem rendering renders expected elements when className is set 1`] = `
+exports[`ListItem rendering renders expected elements 1`] = `
 <span
-  className="ListItem TestClass"
+  className="ListItem"
   data-testid="name"
   title="Test"
 >
@@ -10,9 +10,9 @@ exports[`ListItem rendering renders expected elements when className is set 1`] 
 </span>
 `;
 
-exports[`ListItem rendering renders expected elements when unresolved is false 1`] = `
+exports[`ListItem rendering renders expected elements when optional properties are set 1`] = `
 <span
-  className="ListItem"
+  className="ListItem ListItem--unresolved TestClass"
   data-testid="name"
   title="Test"
 >

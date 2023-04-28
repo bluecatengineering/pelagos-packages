@@ -1,0 +1,41 @@
+{/* DO NOT EDIT, generated from useMenuPositioner.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="hooks/module.exports" />
+
+# module.exports
+
+Returns a callback which positions a menu. Typically used with `useMenuHandler`.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>flipped</td>
+			<td>`boolean`</td>
+			<td>whether the menu alignment should be flipped.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Example
+
+```js
+import {useRef} from 'react';
+import {useMenuPositioner} from '@bluecateng/pelagos';
+
+const Example = () => {
+  const editorRef = useRef(null);
+  const setPopUpPosition = useMenuPositioner();
+  const {...} = useMenuHandler(setPopUpPosition);
+}
+```

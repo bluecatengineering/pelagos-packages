@@ -1,15 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilterEditor rendering renders expected elements 1`] = `
+exports[`LegacyFilterEditor rendering renders expected elements 1`] = `
 <Layer
+  aria-label="Test Label"
   className="FilterEditor"
-  id="random-id"
+  id="filterListDropDown"
   role="dialog"
+  style={
+    {
+      "display": "none",
+    }
+  }
 >
-  editor
+  <div
+    id="editor"
+  />
   <Button
     className="FilterEditor__save"
     id="saveBtn"
+    onClick={[Function]}
     size="small"
     text="Save"
     type="tertiary"

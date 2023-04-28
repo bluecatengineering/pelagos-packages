@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterArea rendering renders expected elements 1`] = `
+<ul
+  className="FilterArea"
+>
+  <li />
+</ul>
+`;
+
+exports[`FilterArea rendering renders expected elements when optional properties are set 1`] = `
+<ul
+  className="FilterArea TestClass"
+>
+  <li />
+</ul>
+`;

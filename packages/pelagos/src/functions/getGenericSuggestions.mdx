@@ -14,7 +14,7 @@ Returns suggestions from a list.
 <thead><tr><th>Param</th><th>Type</th><th>Description</th></tr></thead>
 <tbody>
 <tr><td>text</td><td>`string`</td><td>the text to search in the list.</td></tr>
-<tr><td>list</td><td>`Array.<{id: *}>`</td><td>the list of options already selected.</td></tr>
+<tr><td>selected</td><td>`Array.<{id: *}> / function`</td><td>the list of options already selected or a function to check if already selected.</td></tr>
 <tr><td>sourceList</td><td>`Array.<{id: *, name: string}>`</td><td>the list where options are searched.</td></tr>
 <tr><td>errorMessage</td><td>`string`</td><td>the error message to show if no suggestions are found.</td></tr>
 </tbody>

@@ -1,5 +1,7 @@
+import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+import setRefs from '../functions/setRefs';
 import useTooltip from '../hooks/useTooltip';
 
 import SvgIcon from './SvgIcon';
@@ -7,30 +9,35 @@ import SvgIcon from './SvgIcon';
 import './Button.less';
 
 /** A button. */
-const Button = ({id, className, text, icon, tooltipText, size, type, disabled, onClick, ...props}) => {
-	const tooltip = useTooltip(tooltipText, 'top');
-	return disabled ? (
-		<span
-			id={id}
-			className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
-			aria-disabled="true"
-			ref={tooltip}>
-			{text}
-			{icon && <SvgIcon className="Button__icon" icon={icon} />}
-		</span>
-	) : (
-		<button
-			{...props}
-			type={onClick ? 'button' : 'submit'}
-			id={id}
-			className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
-			ref={tooltip}
-			onClick={onClick}>
-			{text}
-			{icon && <SvgIcon className="Button__icon" icon={icon} />}
-		</button>
-	);
-};
+const Button = forwardRef(
+	({id, className, text, children, icon, tooltipText, size, type, disabled, onClick, ...props}, ref) => {
+		const tooltip = useTooltip(tooltipText, 'top');
+		const refs = ref ? setRefs(ref, tooltip) : tooltip;
+		return disabled ? (
+			<span
+				id={id}
+				className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
+				aria-disabled="true"
+				ref={refs}>
+				{children || text}
+				{icon && <SvgIcon className="Button__icon" icon={icon} />}
+			</span>
+		) : (
+			<button
+				{...props}
+				type={onClick ? 'button' : 'submit'}
+				id={id}
+				className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
+				ref={refs}
+				onClick={onClick}>
+				{children || text}
+				{icon && <SvgIcon className="Button__icon" icon={icon} />}
+			</button>
+		);
+	}
+);
+
+Button.displayName = 'Button';
 
 Button.propTypes = {
 	/** The component id. */
@@ -39,6 +46,8 @@ Button.propTypes = {
 	className: PropTypes.string,
 	/** The text to display. */
 	text: PropTypes.string,
+	/** The child elements, can be provided instead of text. */
+	children: PropTypes.node,
 	/** The object representing the icon. (using FontAwesome, etc.) */
 	icon: PropTypes.object,
 	/** The tooltip text to display. */
