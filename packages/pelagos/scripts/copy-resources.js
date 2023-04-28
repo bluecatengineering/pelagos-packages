@@ -6,12 +6,13 @@ const {
 	readFileSync,
 	statSync,
 	writeFileSync,
-} = require('fs');
-const {join} = require('path');
+} = require('node:fs');
+const {join} = require('node:path');
 
 const converter = require('@bluecateng/l10n-icu2obj');
 
 const EXTENSIONS = /\.(less|po|yaml)$/;
+const EXCLUDED = /\.stories\.less$/;
 const PO = /\.po$/;
 
 const copyDir = (from, to) =>
@@ -21,7 +22,7 @@ const copyDir = (from, to) =>
 		const stats = statSync(subFrom);
 		if (stats.isDirectory()) {
 			copyDir(subFrom, subTo);
-		} else if (stats.isFile() && EXTENSIONS.test(name)) {
+		} else if (stats.isFile() && EXTENSIONS.test(name) && !EXCLUDED.test(name)) {
 			mkdirSync(to, {recursive: true});
 			if (PO.test(name)) {
 				writeFileSync(`${subTo}.js`, converter(readFileSync(subFrom, 'utf8'), 'es'));
