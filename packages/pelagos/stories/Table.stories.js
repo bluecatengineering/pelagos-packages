@@ -6,8 +6,8 @@ import {
 	Button,
 	IconButton,
 	IconMenu,
-	IconMenuItem,
 	Layer,
+	MenuItem,
 	Pagination,
 	Table,
 	TableBody,
@@ -267,10 +267,10 @@ export const DefaultToolbar = (args) => {
 					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
 					<IconMenu icon={faCog} arrow flipped>
-						<IconMenuItem text="Option one" />
-						<IconMenuItem text="Option two" />
-						<IconMenuItem text="Option three" disabled />
-						<IconMenuItem text="Option four" hasDivider />
+						<MenuItem>Option one</MenuItem>
+						<MenuItem>Option two</MenuItem>
+						<MenuItem disabled>Option three</MenuItem>
+						<MenuItem hasDivider>Option four</MenuItem>
 					</IconMenu>
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
@@ -337,20 +337,20 @@ export const BatchActions = (args) => {
 					<Button type="primary" text="Action 1" />
 					<Button type="primary" text="Action 2" />
 					<IconMenu icon={faCog} type="primary" arrow flipped>
-						<IconMenuItem text="Batch option one" />
-						<IconMenuItem text="Batch option two" />
-						<IconMenuItem text="Batch option three" disabled />
-						<IconMenuItem text="Batch option four" hasDivider />
+						<MenuItem>Batch option one</MenuItem>
+						<MenuItem>Batch option two</MenuItem>
+						<MenuItem disabled>Batch option three</MenuItem>
+						<MenuItem hasDivider>Batch option four</MenuItem>
 					</IconMenu>
 				</TableToolbarBatch>
 				<TableToolbarDefault hidden={someSelected}>
 					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
 					<IconMenu icon={faCog} arrow flipped>
-						<IconMenuItem text="Option one" />
-						<IconMenuItem text="Option two" />
-						<IconMenuItem text="Option three" disabled />
-						<IconMenuItem text="Option four" hasDivider />
+						<MenuItem>Option one</MenuItem>
+						<MenuItem>Option two</MenuItem>
+						<MenuItem disabled>Option three</MenuItem>
+						<MenuItem hasDivider>Option four</MenuItem>
 					</IconMenu>
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
@@ -462,10 +462,10 @@ export const InlineMenu = (args) => (
 						))}
 						<TableCell>
 							<IconMenu icon={faEllipsisV} flipped>
-								<IconMenuItem text="Option one" />
-								<IconMenuItem text="Option two" />
-								<IconMenuItem text="Option three" disabled />
-								<IconMenuItem text="Option four" hasDivider />
+								<MenuItem>Option one</MenuItem>
+								<MenuItem>Option two</MenuItem>
+								<MenuItem disabled>Option three</MenuItem>
+								<MenuItem hasDivider>Option four</MenuItem>
 							</IconMenu>
 						</TableCell>
 					</TableRow>

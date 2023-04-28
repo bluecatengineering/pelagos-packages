@@ -18,11 +18,11 @@ exports[`FilterMenu rendering renders expected elements 1`] = `
     tooltipPlacement="top"
     tooltipText="Add filter"
   >
-    <IconMenuItem
+    <MenuItem
       data-key="a"
       onClick={[Function]}
     />
-    <IconMenuItem
+    <MenuItem
       data-key="b"
       onClick={[Function]}
     />
@@ -48,11 +48,11 @@ exports[`FilterMenu rendering renders expected elements when filter is set 1`] =
     tooltipPlacement="top"
     tooltipText="Add filter"
   >
-    <IconMenuItem
+    <MenuItem
       data-key="a"
       onClick={[Function]}
     />
-    <IconMenuItem
+    <MenuItem
       data-key="b"
       onClick={[Function]}
     />
@@ -109,11 +109,11 @@ exports[`FilterMenu rendering renders expected elements when filters is set 1`] 
     tooltipPlacement="top"
     tooltipText="Add filter"
   >
-    <IconMenuItem
+    <MenuItem
       data-key="a"
       onClick={[Function]}
     />
-    <IconMenuItem
+    <MenuItem
       data-key="b"
       onClick={[Function]}
     />

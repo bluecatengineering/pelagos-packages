@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 
 import IconMenu from '../../src/components/IconMenu';
-import IconMenuItem from '../../src/components/IconMenuItem';
+import MenuItem from '../../src/menu/MenuItem';
 import useRandomId from '../../src/hooks/useRandomId';
 import setRefs from '../../src/functions/setRefs';
 import useMenuHandler from '../../src/hooks/useMenuHandler';
@@ -21,7 +21,7 @@ describe('IconMenu', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
 				<IconMenu icon={{foo: 'test'}}>
-					<IconMenuItem text="one" />
+					<MenuItem>one</MenuItem>
 				</IconMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -31,7 +31,7 @@ describe('IconMenu', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
 				<IconMenu id="test" className="TestClass" icon={{foo: 'test'}} arrow>
-					<IconMenuItem text="one" />
+					<MenuItem>one</MenuItem>
 				</IconMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('IconMenu', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
 				<IconMenu icon={{foo: 'test'}} disabled>
-					<IconMenuItem text="one" />
+					<MenuItem>one</MenuItem>
 				</IconMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -52,7 +52,7 @@ describe('IconMenu', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
 				<IconMenu icon={{foo: 'test'}}>
-					<IconMenuItem text="one" disabled />
+					<MenuItem disabled>one</MenuItem>
 				</IconMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -62,8 +62,8 @@ describe('IconMenu', () => {
 			useMenuHandler.mockReturnValueOnce({expanded: true});
 			const wrapper = shallow(
 				<IconMenu icon={{foo: 'test'}}>
-					<IconMenuItem text="one" />
-					<IconMenuItem text="two" />
+					<MenuItem>one</MenuItem>
+					<MenuItem>two</MenuItem>
 				</IconMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -83,7 +83,7 @@ describe('IconMenu', () => {
 				document.scrollingElement.scrollTop = 0;
 				shallow(
 					<IconMenu icon={{}}>
-						<IconMenuItem text="one" />
+						<MenuItem>one</MenuItem>
 					</IconMenu>
 				);
 				expect(useMenuHandler.mock.calls).toEqual([[anyFunction]]);
@@ -108,7 +108,7 @@ describe('IconMenu', () => {
 				document.scrollingElement.scrollTop = 0;
 				shallow(
 					<IconMenu icon={{}} flipped>
-						<IconMenuItem text="one" />
+						<MenuItem>one</MenuItem>
 					</IconMenu>
 				);
 				expect(useMenuHandler.mock.calls).toEqual([[anyFunction]]);
@@ -129,7 +129,7 @@ describe('IconMenu', () => {
 				document.scrollingElement.scrollTop = 0;
 				shallow(
 					<IconMenu icon={{}}>
-						<IconMenuItem text="one" />
+						<MenuItem>one</MenuItem>
 					</IconMenu>
 				);
 				expect(useMenuHandler.mock.calls).toEqual([[anyFunction]]);
@@ -150,7 +150,7 @@ describe('IconMenu', () => {
 				document.scrollingElement.scrollTop = 0;
 				shallow(
 					<IconMenu icon={{}}>
-						<IconMenuItem text="one" />
+						<MenuItem>one</MenuItem>
 					</IconMenu>
 				);
 				expect(useMenuHandler.mock.calls).toEqual([[anyFunction]]);
@@ -171,7 +171,7 @@ describe('IconMenu', () => {
 				document.scrollingElement.scrollTop = 10;
 				shallow(
 					<IconMenu icon={{}}>
-						<IconMenuItem text="one" />
+						<MenuItem>one</MenuItem>
 					</IconMenu>
 				);
 				expect(useMenuHandler.mock.calls).toEqual([[anyFunction]]);

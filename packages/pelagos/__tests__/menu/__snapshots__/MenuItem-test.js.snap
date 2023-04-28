@@ -10,7 +10,8 @@ exports[`MenuItem rendering renders expected elements 1`] = `
 
 exports[`MenuItem rendering renders expected elements when optional properties are set 1`] = `
 <li
-  className="Menu__item TestClass"
+  aria-disabled={true}
+  className="Menu__item Menu--divider TestClass"
   id="test"
   role="menuitem"
   tabIndex={-1}
