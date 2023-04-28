@@ -91,16 +91,18 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
         id="random-id-menu"
         role="menu"
       >
-        <IconMenuItem
+        <MenuItem
           data-index={0}
           id="random-id-0"
-          text="one"
-        />
-        <IconMenuItem
+        >
+          one
+        </MenuItem>
+        <MenuItem
           data-index={1}
           id="random-id-1"
-          text="two"
-        />
+        >
+          two
+        </MenuItem>
       </ul>
       <div
         tabIndex={0}

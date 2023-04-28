@@ -12,6 +12,7 @@
 		&__item {
 			@layer-hover-effects();
 			display: flex;
+			flex-direction: row;
 			align-items: center;
 			height: 32px;
 			color: var(--text-secondary);
@@ -27,6 +28,18 @@
 				@focus-ring();
 				color: var(--text-primary);
 			}
+
+			&[aria-disabled='true'],
+			&[aria-disabled='true']:hover,
+			&[aria-disabled='true']:active {
+				color: var(--text-disabled);
+				background-color: transparent;
+				pointer-events: none;
+			}
+		}
+
+		&--divider {
+			border-top: 1px solid var(--border-subtle);
 		}
 	}
 }

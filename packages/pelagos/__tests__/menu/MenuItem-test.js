@@ -12,7 +12,7 @@ describe('MenuItem', () => {
 		});
 
 		it('renders expected elements when optional properties are set', () => {
-			const wrapper = shallow(<MenuItem id="test" className="TestClass" />);
+			const wrapper = shallow(<MenuItem id="test" className="TestClass" disabled hasDivider />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});

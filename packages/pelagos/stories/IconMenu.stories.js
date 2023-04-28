@@ -1,14 +1,14 @@
 import {action} from '@storybook/addon-actions';
 import {faCat} from '@fortawesome/free-solid-svg-icons';
 
-import {IconMenu, IconMenuItem} from '../src';
+import {IconMenu, MenuItem} from '../src';
 
 const handleClick = action('onClick');
 
 export default {
 	title: 'Components/IconMenu',
 	component: IconMenu,
-	subcomponents: {IconMenuItem},
+	subcomponents: {MenuItem},
 };
 
 export const Default = {
@@ -17,10 +17,18 @@ export const Default = {
 		arrow: true,
 		'aria-label': 'Cat actions',
 		children: [
-			<IconMenuItem key="1" text="Action 1" onClick={handleClick} />,
-			<IconMenuItem key="2" text="Action 2" onClick={handleClick} />,
-			<IconMenuItem key="3" text="Action 3" disabled onClick={handleClick} />,
-			<IconMenuItem key="4" text="Action 4" hasDivider onClick={handleClick} />,
+			<MenuItem key="1" onClick={handleClick}>
+				Option 1
+			</MenuItem>,
+			<MenuItem key="2" onClick={handleClick}>
+				Option 2
+			</MenuItem>,
+			<MenuItem key="3" disabled onClick={handleClick}>
+				Option 3
+			</MenuItem>,
+			<MenuItem key="4" hasDivider onClick={handleClick}>
+				Option 4
+			</MenuItem>,
 		],
 	},
 };

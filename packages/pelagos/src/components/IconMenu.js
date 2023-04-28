@@ -3,13 +3,11 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 
 import setRefs from '../functions/setRefs';
-import elementOfType from '../functions/elementOfType';
 import useRandomId from '../hooks/useRandomId';
 import useMenuHandler from '../hooks/useMenuHandler';
 
 import Layer from './Layer';
 import IconButton from './IconButton';
-import IconMenuItem from './IconMenuItem';
 import MenuArrow from './MenuArrow';
 import './IconMenu.less';
 
@@ -93,7 +91,7 @@ IconMenu.propTypes = {
 	/** Whether the menu alignment should be flipped. */
 	flipped: PropTypes.bool,
 	/** The menu items. */
-	children: PropTypes.arrayOf(elementOfType(IconMenuItem)).isRequired,
+	children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 
 export default IconMenu;

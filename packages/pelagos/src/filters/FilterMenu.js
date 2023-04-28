@@ -5,7 +5,7 @@ import {t} from '@bluecateng/l10n.macro';
 import {faFilter} from '@fortawesome/free-solid-svg-icons';
 
 import IconMenu from '../components/IconMenu';
-import IconMenuItem from '../components/IconMenuItem';
+import MenuItem from '../menu/MenuItem';
 
 import FilterEditor from './FilterEditor';
 import './FilterMenu.less';
@@ -33,7 +33,9 @@ const FilterMenu = ({flipped, options, filters, getOptionText, getEditor, onAppl
 				tooltipPlacement="top"
 				aria-label={t`Add filter`}>
 				{filteredOptions.map((key) => (
-					<IconMenuItem key={key} text={getOptionText(key)} data-key={key} onClick={handleOptionClick} />
+					<MenuItem key={key} data-key={key} onClick={handleOptionClick}>
+						{getOptionText(key)}
+					</MenuItem>
 				))}
 			</IconMenu>
 			{filterName &&
