@@ -7,10 +7,10 @@ import {faFilter} from '@fortawesome/free-solid-svg-icons';
 import IconMenu from '../components/IconMenu';
 import MenuItem from '../menu/MenuItem';
 
-import FilterEditor from './FilterEditor';
+import FilterEditor from './LegacyFilterEditor';
 import './FilterMenu.less';
 
-/** A menu for adding filters. */
+/** @deprecated use ButtonMenu inside FilterArea instead. */
 const FilterMenu = ({flipped, options, filters, getOptionText, getEditor, onApply}) => {
 	const [filterName, setFilterName] = useState(null);
 

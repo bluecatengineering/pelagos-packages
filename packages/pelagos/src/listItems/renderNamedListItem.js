@@ -8,9 +8,5 @@ import ListItem from './ListItem';
  */
 // eslint-disable-next-line react/display-name -- false positive, this is not a component
 export default (item, className) => (
-	<ListItem
-		key={item.id}
-		item={item.name || item.id}
-		className={(className ? className : '') + (item.name ? '' : ' ListItem--unresolved')}
-	/>
+	<ListItem key={item.id} className={className} item={item.name || item.id} unresolved={!item.name} />
 );

@@ -7,14 +7,15 @@ import useRandomId from '../hooks/useRandomId';
 import useMenuHandler from '../hooks/useMenuHandler';
 import useLayer from '../hooks/useLayer';
 import useMenuPositioner from '../hooks/useMenuPositioner';
+import Button from '../components/Button';
+import Layer from '../components/Layer';
 
-import IconButton from './IconButton';
-import MenuArrow from './MenuArrow';
-import Layer from './Layer';
-import './IconMenu.less';
+import Menu from './Menu';
 
-/** An icon button with a pop-up menu. */
-const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, children, ...props}, ref) => {
+import './ButtonMenu.less';
+
+/** A button with a pop-up menu. */
+const ButtonMenu = forwardRef(({id, className, disabled, flipped, children, ...props}, ref) => {
 	id = useRandomId(id);
 	const menuId = `${id}-menu`;
 
@@ -28,13 +29,12 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 
 	return (
 		<>
-			<IconButton
+			<Button
 				{...buttonProps}
 				{...props}
 				id={id}
-				className={`IconMenu${className ? ` ${className}` : ''}`}
-				icon={icon}
-				overlay={arrow && <MenuArrow className="IconMenu__overlay" />}
+				className={`ButtonMenu${className ? ` ${className}` : ''}`}
+				type="ghost"
 				disabled={disabled || allDisabled}
 				aria-controls={expanded ? menuId : null}
 				aria-haspopup="true"
@@ -44,16 +44,16 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 			/>
 			{expanded &&
 				createPortal(
-					<Layer className="IconMenu__popUp" level={level}>
+					<Layer className="ButtonMenu__popUp" level={level}>
 						<div {...guardProps} tabIndex={0} />
-						<ul {...menuProps} id={menuId} className="IconMenu__menu" role="menu" aria-labelledby={id}>
+						<Menu {...menuProps} id={menuId} aria-labelledby={id}>
 							{Children.map(children, (child, index) =>
 								cloneElement(child, {
 									id: `${id}-${index}`,
 									'data-index': index,
 								})
 							)}
-						</ul>
+						</Menu>
 						<div {...guardProps} tabIndex={0} />
 					</Layer>,
 					document.body
@@ -62,21 +62,25 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 	);
 });
 
-IconMenu.displayName = 'IconMenu';
+ButtonMenu.displayName = 'ButtonMenu';
 
-IconMenu.propTypes = {
+ButtonMenu.propTypes = {
 	/** The component id. */
 	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The text to display. */
+	text: PropTypes.string,
 	/** The object representing the icon. (using FontAwesome, etc.) */
-	icon: PropTypes.object.isRequired,
+	icon: PropTypes.object,
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
 	tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-	/** Whether to show an arrow. */
-	arrow: PropTypes.bool,
+	/** The size of the button. */
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
+	/** The button type. */
+	type: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'ghost']),
 	/** Whether the button is disabled. */
 	disabled: PropTypes.bool,
 	/** Whether the menu alignment should be flipped. */
@@ -85,4 +89,8 @@ IconMenu.propTypes = {
 	children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 
-export default IconMenu;
+ButtonMenu.defaultProps = {
+	size: 'small',
+};
+
+export default ButtonMenu;

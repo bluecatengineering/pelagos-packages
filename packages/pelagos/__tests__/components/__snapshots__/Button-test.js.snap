@@ -10,6 +10,16 @@ exports[`Button rendering renders expected elements when both size is small and 
 </span>
 `;
 
+exports[`Button rendering renders expected elements when children are set 1`] = `
+<button
+  className="Button Button--medium Button--tertiary"
+  id="test"
+  type="submit"
+>
+  Test
+</button>
+`;
+
 exports[`Button rendering renders expected elements when className is set 1`] = `
 <button
   className="Button Button--medium Button--tertiary testClass"
@@ -21,6 +31,16 @@ exports[`Button rendering renders expected elements when className is set 1`] = 
 `;
 
 exports[`Button rendering renders expected elements when disabled is true 1`] = `
+<span
+  aria-disabled="true"
+  className="Button Button--medium Button--tertiary"
+  id="test"
+>
+  Test
+</span>
+`;
+
+exports[`Button rendering renders expected elements when disabled is true and children are set 1`] = `
 <span
   aria-disabled="true"
   className="Button Button--medium Button--tertiary"

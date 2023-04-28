@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
+import {useCallback, useLayoutEffect, useRef, useState} from 'react';
 
 const findCurrent = (children) => {
 	const n = children.length;
@@ -114,27 +114,25 @@ const useMenuHandler = (setPopUpPosition) => {
 	}, []);
 
 	useLayoutEffect(() => {
-		if (expanded) {
-			const button = buttonRef.current;
-			const menu = menuRef.current;
-			setPopUpPosition?.(button, menu);
-			setFocus(-1, 1, menu.childNodes);
-		}
-	}, [expanded, setPopUpPosition]);
-
-	useEffect(() => {
-		const handler = ({target}) => {
-			if (
-				buttonRef.current.getAttribute('aria-expanded') === 'true' &&
-				!buttonRef.current.contains(target) &&
-				!menuRef.current.contains(target)
-			) {
+		const button = buttonRef.current;
+		const menu = menuRef.current;
+		const handleMouseDown = ({target}) => {
+			if (!button.contains(target) && !menu.contains(target)) {
 				setExpanded(false);
 			}
 		};
-		window.addEventListener('mousedown', handler, true);
-		return () => window.removeEventListener('mousedown', handler, true);
-	}, []);
+		const handleScroll = () => setPopUpPosition?.(button, menu);
+		if (expanded) {
+			setPopUpPosition?.(button, menu);
+			setFocus(-1, 1, menu.childNodes);
+			document.addEventListener('mousedown', handleMouseDown, true);
+			document.addEventListener('scroll', handleScroll, {passive: true, capture: true});
+		}
+		return () => {
+			document.removeEventListener('mousedown', handleMouseDown, true);
+			document.removeEventListener('scroll', handleScroll, {passive: true, capture: true});
+		};
+	}, [expanded, setPopUpPosition]);
 
 	return {
 		expanded,

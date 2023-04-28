@@ -51,6 +51,10 @@
 			background-color: var(--button-secondary);
 			border: 1px solid transparent;
 
+			&[aria-expanded='true'] {
+				background-color: var(--button-secondary-active);
+			}
+
 			&[aria-disabled='true'] {
 				color: var(--text-on-color-disabled);
 				background-color: var(--button-disabled);

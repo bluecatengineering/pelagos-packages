@@ -1,6 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NameFilterEditor rendering renders expected elements 1`] = `
+exports[`NameFilterEditor NewNameFilterEditor rendering renders expected elements 1`] = `
+<FilterEditor
+  chipId="button"
+  id="test"
+  onSave={[Function]}
+>
+  <ListInput
+    column={true}
+    error={null}
+    getHighlightKey={[Function]}
+    getItemKey={[Function]}
+    getItemName={[Function]}
+    getSuggestionValue={[Function]}
+    getSuggestions={[Function]}
+    id="nameFilterEditorInput"
+    label="label"
+    list={
+      [
+        "a",
+      ]
+    }
+    onErrorChange={[MockFunction]}
+    onListChange={[MockFunction]}
+    onTextChange={[MockFunction]}
+    placeholder="placeholder"
+    renderItem={[Function]}
+    renderSuggestion={[MockFunction]}
+    value=""
+  />
+</FilterEditor>
+`;
+
+exports[`NameFilterEditor NewNameFilterEditor rendering renders expected elements when list is not set 1`] = `
+<FilterEditor
+  chipId="button"
+  id="test"
+  onSave={[Function]}
+>
+  <ListInput
+    column={true}
+    error={null}
+    getHighlightKey={[Function]}
+    getItemKey={[Function]}
+    getItemName={[Function]}
+    getSuggestionValue={[Function]}
+    getSuggestions={[Function]}
+    id="nameFilterEditorInput"
+    label="label"
+    list={[]}
+    onErrorChange={[MockFunction]}
+    onListChange={[MockFunction]}
+    onTextChange={[MockFunction]}
+    placeholder="placeholder"
+    renderItem={[Function]}
+    renderSuggestion={[MockFunction]}
+    value=""
+  />
+</FilterEditor>
+`;
+
+exports[`NameFilterEditor OldNameFilterEditor rendering renders expected elements 1`] = `
 <ListInput
   column={true}
   error={null}
@@ -24,12 +84,11 @@ exports[`NameFilterEditor rendering renders expected elements 1`] = `
   placeholder="placeholder"
   renderItem={[MockFunction]}
   renderSuggestion={[MockFunction]}
-  type="text"
   value=""
 />
 `;
 
-exports[`NameFilterEditor rendering renders expected elements when list input requests suggestion highlight key 1`] = `
+exports[`NameFilterEditor OldNameFilterEditor rendering renders expected elements when list input requests suggestion highlight key 1`] = `
 <ListInput
   column={true}
   error={null}
@@ -53,12 +112,11 @@ exports[`NameFilterEditor rendering renders expected elements when list input re
   placeholder="placeholder"
   renderItem={[MockFunction]}
   renderSuggestion={[MockFunction]}
-  type="text"
   value=""
 />
 `;
 
-exports[`NameFilterEditor rendering renders expected elements when list input requests suggestions text 1`] = `
+exports[`NameFilterEditor OldNameFilterEditor rendering renders expected elements when list input requests suggestions text 1`] = `
 <ListInput
   column={true}
   error={null}
@@ -82,12 +140,11 @@ exports[`NameFilterEditor rendering renders expected elements when list input re
   placeholder="placeholder"
   renderItem={[MockFunction]}
   renderSuggestion={[MockFunction]}
-  type="text"
   value=""
 />
 `;
 
-exports[`NameFilterEditor rendering renders expected elements when list is null 1`] = `
+exports[`NameFilterEditor OldNameFilterEditor rendering renders expected elements when list is null 1`] = `
 <ListInput
   column={true}
   error={null}
@@ -105,12 +162,11 @@ exports[`NameFilterEditor rendering renders expected elements when list is null 
   placeholder="placeholder"
   renderItem={[MockFunction]}
   renderSuggestion={[MockFunction]}
-  type="text"
   value=""
 />
 `;
 
-exports[`NameFilterEditor rendering renders expected elements when sourceById does not have list id 1`] = `
+exports[`NameFilterEditor OldNameFilterEditor rendering renders expected elements when sourceById does not have list id 1`] = `
 <ListInput
   column={true}
   error={null}
@@ -134,7 +190,18 @@ exports[`NameFilterEditor rendering renders expected elements when sourceById do
   placeholder="placeholder"
   renderItem={[MockFunction]}
   renderSuggestion={[MockFunction]}
-  type="text"
   value=""
+/>
+`;
+
+exports[`NameFilterEditor rendering renders expected elements when forArea is not set 1`] = `
+<OldNameFilterEditor
+  label="label"
+/>
+`;
+
+exports[`NameFilterEditor rendering renders expected elements when forArea is set 1`] = `
+<NewNameFilterEditor
+  label="label"
 />
 `;

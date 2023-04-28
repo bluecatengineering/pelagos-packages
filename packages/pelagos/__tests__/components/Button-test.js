@@ -2,8 +2,11 @@ import {shallow} from 'enzyme';
 
 import Button from '../../src/components/Button';
 import useTooltip from '../../src/hooks/useTooltip';
+import setRefs from '../../src/functions/setRefs';
 
 jest.unmock('../../src/components/Button');
+
+useTooltip.mockReturnValue('useTooltip');
 
 describe('Button', () => {
 	describe('rendering', () => {
@@ -19,6 +22,11 @@ describe('Button', () => {
 
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(<Button id="test" text="Test" className="testClass" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when children are set', () => {
+			const wrapper = shallow(<Button id="test">Test</Button>);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
@@ -57,6 +65,15 @@ describe('Button', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when disabled is true and children are set', () => {
+			const wrapper = shallow(
+				<Button id="test" disabled>
+					Test
+				</Button>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when tooltipText is set', () => {
 			const wrapper = shallow(<Button id="test" text="Test" tooltipText="Tooltip" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -72,18 +89,10 @@ describe('Button', () => {
 			expect(onClick).toHaveBeenCalled();
 		});
 
-		it('calls onFocus when the button receives the focus', () => {
-			const onFocus = jest.fn();
-			const wrapper = shallow(<Button id="test" text="Test" onFocus={onFocus} />);
-			wrapper.simulate('focus');
-			expect(onFocus).toHaveBeenCalled();
-		});
-
-		it('calls onBlur when the button loses the focus', () => {
-			const onBlur = jest.fn();
-			const wrapper = shallow(<Button id="test" text="Test" onBlur={onBlur} />);
-			wrapper.simulate('blur');
-			expect(onBlur).toHaveBeenCalled();
+		it('calls setRefs when ref is set', () => {
+			const ref = {foo: 'test'};
+			Button({}, ref); // ref doesn't seem to be passed any other way
+			expect(setRefs.mock.calls).toEqual([[ref, 'useTooltip']]);
 		});
 	});
 });
