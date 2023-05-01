@@ -5,6 +5,6 @@ export default {
 	component: Calendar,
 };
 
-export const Default = {};
+export const Default = {args: {value: 1680667200000}};
 
-export const Range = {args: {value: []}};
+export const Range = {args: {value: [0, 1680667200000]}};
