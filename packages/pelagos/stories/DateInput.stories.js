@@ -1,4 +1,5 @@
 import {DateInput} from '../src';
+import WithLayers from '../templates/WithLayers';
 
 import './DateInput.stories.less';
 
@@ -29,4 +30,13 @@ export const Disabled = {
 
 export const Error = {
 	args: {className: 'DateInputStory', value: '', error: true, format, parse},
+};
+
+export const _WithLayers = {
+	render: () => (
+		<WithLayers>{() => <DateInput className="DateInputStory" value="" format={format} parse={parse} />}</WithLayers>
+	),
+	parameters: {
+		controls: {hideNoControlsWarning: true},
+	},
 };

@@ -76,7 +76,6 @@ describe('IconMenu', () => {
 				const wrapper = {style: {}, dataset: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 100})};
 				const menu = {parentNode: wrapper};
 				const button = {
-					parentNode: {dataset: {layer: '2'}},
 					getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200}),
 				};
 				useMenuHandler.mockReturnValueOnce({});
@@ -90,7 +89,6 @@ describe('IconMenu', () => {
 
 				useMenuHandler.mock.calls[0][0](button, menu);
 				expect(wrapper.style).toEqual({top: '100px', left: '200px'});
-				expect(wrapper.dataset).toEqual({layer: '2'});
 			});
 
 			it('sets the menu position when flipped is true', () => {
@@ -101,7 +99,6 @@ describe('IconMenu', () => {
 				};
 				const menu = {parentNode: wrapper};
 				const button = {
-					parentNode: {dataset: {layer: '2'}},
 					getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, right: 200}),
 				};
 				useMenuHandler.mockReturnValueOnce({});
@@ -115,14 +112,12 @@ describe('IconMenu', () => {
 
 				useMenuHandler.mock.calls[0][0](button, menu);
 				expect(wrapper.style).toEqual({top: '100px', left: '100px'});
-				expect(wrapper.dataset).toEqual({layer: '2'});
 			});
 
 			it('sets the menu position when the menu goes beyond the page height', () => {
 				const wrapper = {style: {}, dataset: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 100})};
 				const menu = {parentNode: wrapper};
 				const button = {
-					parentNode: {dataset: {layer: '2'}},
 					getBoundingClientRect: jest.fn().mockReturnValue({top: 280, bottom: 300, left: 200}),
 				};
 				useMenuHandler.mockReturnValueOnce({});
@@ -136,14 +131,12 @@ describe('IconMenu', () => {
 
 				useMenuHandler.mock.calls[0][0](button, menu);
 				expect(wrapper.style).toEqual({top: '180px', left: '200px'});
-				expect(wrapper.dataset).toEqual({layer: '2'});
 			});
 
 			it('sets the menu position when the menu does not fit in the page', () => {
 				const wrapper = {style: {}, dataset: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 200})};
 				const menu = {parentNode: wrapper};
 				const button = {
-					parentNode: {dataset: {layer: '2'}},
 					getBoundingClientRect: jest.fn().mockReturnValue({top: 180, bottom: 200, left: 200}),
 				};
 				useMenuHandler.mockReturnValueOnce({});
@@ -157,14 +150,12 @@ describe('IconMenu', () => {
 
 				useMenuHandler.mock.calls[0][0](button, menu);
 				expect(wrapper.style).toEqual({top: '0px', left: '200px'});
-				expect(wrapper.dataset).toEqual({layer: '2'});
 			});
 
 			it('sets the menu position when scrollTop is not 0', () => {
 				const wrapper = {style: {}, dataset: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 100})};
 				const menu = {parentNode: wrapper};
 				const button = {
-					parentNode: {dataset: {layer: '2'}},
 					getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200}),
 				};
 				useMenuHandler.mockReturnValueOnce({});
@@ -178,7 +169,6 @@ describe('IconMenu', () => {
 
 				useMenuHandler.mock.calls[0][0](button, menu);
 				expect(wrapper.style).toEqual({top: '110px', left: '200px'});
-				expect(wrapper.dataset).toEqual({layer: '2'});
 			});
 		});
 

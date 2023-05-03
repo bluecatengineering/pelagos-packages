@@ -4,12 +4,13 @@ exports[`SelectNative rendering renders expected elements 1`] = `
 <span
   className="SelectNative"
 >
-  <select
+  <Layer
+    as="select"
     className="SelectNative__select"
     id="test"
   >
     <option />
-  </select>
+  </Layer>
   <SelectArrow
     className="SelectNative__arrow"
   />
@@ -20,12 +21,13 @@ exports[`SelectNative rendering renders expected elements when className is set 
 <span
   className="SelectNative"
 >
-  <select
+  <Layer
+    as="select"
     className="SelectNative__select TestClass"
     id="test"
   >
     <option />
-  </select>
+  </Layer>
   <SelectArrow
     className="SelectNative__arrow"
   />

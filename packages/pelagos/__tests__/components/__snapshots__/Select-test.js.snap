@@ -1,15 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select rendering renders expected elements 1`] = `
-<Layer
-  className="Select Test"
->
-  <button
+<React.Fragment>
+  <Layer
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    className="Select__text"
+    as="button"
+    className="Select__text Test"
     data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
@@ -21,19 +20,18 @@ exports[`Select rendering renders expected elements 1`] = `
     <SelectArrow
       className="Select__arrow"
     />
-  </button>
-</Layer>
+  </Layer>
+</React.Fragment>
 `;
 
 exports[`Select rendering renders expected elements when className is not set 1`] = `
-<Layer
-  className="Select"
->
-  <button
+<React.Fragment>
+  <Layer
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
+    as="button"
     className="Select__text"
     data-placeholder="Testing"
     id="test"
@@ -46,20 +44,19 @@ exports[`Select rendering renders expected elements when className is not set 1`
     <SelectArrow
       className="Select__arrow"
     />
-  </button>
-</Layer>
+  </Layer>
+</React.Fragment>
 `;
 
 exports[`Select rendering renders expected elements when disabled is true 1`] = `
-<Layer
-  className="Select Test"
->
-  <button
+<React.Fragment>
+  <Layer
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    className="Select__text"
+    as="button"
+    className="Select__text Test"
     data-placeholder="Testing"
     disabled={true}
     id="test"
@@ -70,21 +67,20 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     <SelectArrow
       className="Select__arrow"
     />
-  </button>
-</Layer>
+  </Layer>
+</React.Fragment>
 `;
 
 exports[`Select rendering renders expected elements when error is true 1`] = `
-<Layer
-  className="Select Test"
->
-  <button
+<React.Fragment>
+  <Layer
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-invalid={true}
     aria-owns={null}
-    className="Select__text"
+    as="button"
+    className="Select__text Test"
     data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
@@ -96,20 +92,44 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     <SelectArrow
       className="Select__arrow"
     />
-  </button>
-</Layer>
+  </Layer>
+</React.Fragment>
+`;
+
+exports[`Select rendering renders expected elements when noLayer is true 1`] = `
+<React.Fragment>
+  <Layer
+    aria-activedescendant={null}
+    aria-expanded={false}
+    aria-haspopup="listbox"
+    aria-owns={null}
+    as="button"
+    className="Select__text Test"
+    data-placeholder="Testing"
+    id="test"
+    noLayer={true}
+    onBlur={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    type="button"
+  >
+    Two
+    <SelectArrow
+      className="Select__arrow"
+    />
+  </Layer>
+</React.Fragment>
 `;
 
 exports[`Select rendering renders expected elements when open is true 1`] = `
-<Layer
-  className="Select Test"
->
-  <button
+<React.Fragment>
+  <Layer
     aria-activedescendant="test-1"
     aria-expanded={true}
     aria-haspopup="listbox"
     aria-owns="test-list"
-    className="Select__text"
+    as="button"
+    className="Select__text Test"
     data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
@@ -121,11 +141,12 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     <SelectArrow
       className="Select__arrow Select__arrow--open"
     />
-  </button>
+  </Layer>
   <React.Portal>
-    <div
+    <Layer
       className="Select__list"
       id="test-list"
+      level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       role="listbox"
@@ -157,21 +178,20 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       >
         Three
       </div>
-    </div>
+    </Layer>
   </React.Portal>
-</Layer>
+</React.Fragment>
 `;
 
 exports[`Select rendering renders expected elements when options are booleans 1`] = `
-<Layer
-  className="Select Test"
->
-  <button
+<React.Fragment>
+  <Layer
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    className="Select__text"
+    as="button"
+    className="Select__text Test"
     data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
@@ -183,20 +203,19 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     <SelectArrow
       className="Select__arrow"
     />
-  </button>
-</Layer>
+  </Layer>
+</React.Fragment>
 `;
 
 exports[`Select rendering renders expected elements when value is not set 1`] = `
-<Layer
-  className="Select Test"
->
-  <button
+<React.Fragment>
+  <Layer
     aria-activedescendant={null}
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    className="Select__text Select__text--empty"
+    as="button"
+    className="Select__text Select__text--empty Test"
     data-placeholder="Testing"
     id="test"
     onBlur={[Function]}
@@ -208,6 +227,6 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     <SelectArrow
       className="Select__arrow"
     />
-  </button>
-</Layer>
+  </Layer>
+</React.Fragment>
 `;

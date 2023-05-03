@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextInputField rendering adds the error class if the error is set 1`] = `
-<Layer
+<div
   className="TextInputField"
 >
   <LabelLine
@@ -9,9 +9,10 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
     htmlFor="random-id"
     text="Label"
   />
-  <input
+  <Layer
     aria-describedby="random-id-error"
     aria-invalid={true}
+    as="input"
     className="TextInputField__input TextInputField--error"
     disabled={false}
     id="random-id"
@@ -26,11 +27,11 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
     id="random-id-error"
     text="Error"
   />
-</Layer>
+</div>
 `;
 
 exports[`TextInputField rendering renders expected elements 1`] = `
-<Layer
+<div
   className="TextInputField"
 >
   <LabelLine
@@ -39,10 +40,11 @@ exports[`TextInputField rendering renders expected elements 1`] = `
     required={true}
     text="Label"
   />
-  <input
+  <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
     aria-required={true}
+    as="input"
     className="TextInputField__input"
     id="random-id"
     maxLength={10}
@@ -56,11 +58,11 @@ exports[`TextInputField rendering renders expected elements 1`] = `
     id="random-id-helper"
     text="Helper text"
   />
-</Layer>
+</div>
 `;
 
 exports[`TextInputField rendering renders expected elements when className is set 1`] = `
-<Layer
+<div
   className="TextInputField TestClass"
 >
   <LabelLine
@@ -68,9 +70,10 @@ exports[`TextInputField rendering renders expected elements when className is se
     htmlFor="random-id"
     text="Label"
   />
-  <input
+  <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
+    as="input"
     className="TextInputField__input"
     disabled={false}
     id="random-id"
@@ -84,11 +87,11 @@ exports[`TextInputField rendering renders expected elements when className is se
   <FieldHelper
     id="random-id-helper"
   />
-</Layer>
+</div>
 `;
 
 exports[`TextInputField rendering renders expected elements when value is empty 1`] = `
-<Layer
+<div
   className="TextInputField"
 >
   <LabelLine
@@ -96,9 +99,10 @@ exports[`TextInputField rendering renders expected elements when value is empty 
     htmlFor="random-id"
     text="Label"
   />
-  <input
+  <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
+    as="input"
     className="TextInputField__input"
     disabled={false}
     id="random-id"
@@ -112,5 +116,5 @@ exports[`TextInputField rendering renders expected elements when value is empty 
   <FieldHelper
     id="random-id-helper"
   />
-</Layer>
+</div>
 `;

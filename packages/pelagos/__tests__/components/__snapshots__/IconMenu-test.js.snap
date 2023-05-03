@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IconMenu rendering renders expected elements 1`] = `
-<Layer>
+<React.Fragment>
   <IconButton
     aria-controls={null}
     aria-haspopup="true"
     className="IconMenu"
+    data-layer={null}
     disabled={false}
     icon={
       {
@@ -17,15 +18,16 @@ exports[`IconMenu rendering renders expected elements 1`] = `
     tooltipPlacement="right"
     type="ghost"
   />
-</Layer>
+</React.Fragment>
 `;
 
 exports[`IconMenu rendering renders expected elements when all items are disabled 1`] = `
-<Layer>
+<React.Fragment>
   <IconButton
     aria-controls={null}
     aria-haspopup="true"
     className="IconMenu"
+    data-layer={null}
     disabled={true}
     icon={
       {
@@ -37,15 +39,16 @@ exports[`IconMenu rendering renders expected elements when all items are disable
     tooltipPlacement="right"
     type="ghost"
   />
-</Layer>
+</React.Fragment>
 `;
 
 exports[`IconMenu rendering renders expected elements when disabled is set 1`] = `
-<Layer>
+<React.Fragment>
   <IconButton
     aria-controls={null}
     aria-haspopup="true"
     className="IconMenu"
+    data-layer={null}
     disabled={true}
     icon={
       {
@@ -57,16 +60,17 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
     tooltipPlacement="right"
     type="ghost"
   />
-</Layer>
+</React.Fragment>
 `;
 
 exports[`IconMenu rendering renders expected elements when expanded is true 1`] = `
-<Layer>
+<React.Fragment>
   <IconButton
     aria-controls="random-id-menu"
     aria-expanded={true}
     aria-haspopup="true"
     className="IconMenu"
+    data-layer={NaN}
     disabled={false}
     icon={
       {
@@ -79,8 +83,9 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
     type="ghost"
   />
   <React.Portal>
-    <div
-      className="IconMenu__wrapper"
+    <Layer
+      className="IconMenu__popUp"
+      level={NaN}
     >
       <div
         tabIndex={0}
@@ -107,17 +112,18 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
       <div
         tabIndex={0}
       />
-    </div>
+    </Layer>
   </React.Portal>
-</Layer>
+</React.Fragment>
 `;
 
 exports[`IconMenu rendering renders expected elements when optional properties are set 1`] = `
-<Layer>
+<React.Fragment>
   <IconButton
     aria-controls={null}
     aria-haspopup="true"
     className="IconMenu TestClass"
+    data-layer={null}
     disabled={false}
     icon={
       {
@@ -134,5 +140,5 @@ exports[`IconMenu rendering renders expected elements when optional properties a
     tooltipPlacement="right"
     type="ghost"
   />
-</Layer>
+</React.Fragment>
 `;

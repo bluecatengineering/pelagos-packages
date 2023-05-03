@@ -48,6 +48,7 @@ const Dialog = ({id, className, title, role, size, stretch, initialFocus, childr
 					as="form"
 					id={id}
 					className={fullClassName}
+					level={1}
 					role={role}
 					aria-modal
 					aria-labelledby="dialogTitle"
@@ -56,7 +57,14 @@ const Dialog = ({id, className, title, role, size, stretch, initialFocus, childr
 					{content}
 				</Layer>
 			) : (
-				<Layer id={id} className={fullClassName} role={role} aria-modal aria-labelledby="dialogTitle" ref={element}>
+				<Layer
+					id={id}
+					className={fullClassName}
+					level={1}
+					role={role}
+					aria-modal
+					aria-labelledby="dialogTitle"
+					ref={element}>
 					{content}
 				</Layer>
 			)}

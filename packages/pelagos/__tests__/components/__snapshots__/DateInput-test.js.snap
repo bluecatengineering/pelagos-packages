@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateInput rendering renders expected elements 1`] = `
-<Layer
+<div
   className="DateInput"
 >
-  <input
+  <Layer
+    as="input"
     className="DateInput__input"
     onChange={[Function]}
     type="text"
@@ -24,14 +25,15 @@ exports[`DateInput rendering renders expected elements 1`] = `
     tooltipPlacement="right"
     type="ghost"
   />
-</Layer>
+</div>
 `;
 
 exports[`DateInput rendering renders expected elements when calendarTime is set 1`] = `
-<Layer
+<div
   className="DateInput"
 >
-  <input
+  <Layer
+    as="input"
     className="DateInput__input"
     onChange={[Function]}
     type="text"
@@ -58,20 +60,25 @@ exports[`DateInput rendering renders expected elements when calendarTime is set 
       }
     }
   >
-    <Calendar
-      className="DateInput__calendar"
-      onChange={[Function]}
-      value={1000}
-    />
+    <Layer
+      className="DateInput__popUp"
+      level={NaN}
+    >
+      <Calendar
+        onChange={[Function]}
+        value={1000}
+      />
+    </Layer>
   </React.Portal>
-</Layer>
+</div>
 `;
 
 exports[`DateInput rendering renders expected elements when className is set 1`] = `
-<Layer
+<div
   className="DateInput TestClass"
 >
-  <input
+  <Layer
+    as="input"
     className="DateInput__input"
     onChange={[Function]}
     type="text"
@@ -91,14 +98,15 @@ exports[`DateInput rendering renders expected elements when className is set 1`]
     tooltipPlacement="right"
     type="ghost"
   />
-</Layer>
+</div>
 `;
 
 exports[`DateInput rendering renders expected elements when value is set 1`] = `
-<Layer
+<div
   className="DateInput"
 >
-  <input
+  <Layer
+    as="input"
     className="DateInput__input"
     onChange={[Function]}
     type="text"
@@ -119,5 +127,5 @@ exports[`DateInput rendering renders expected elements when value is set 1`] = `
     tooltipPlacement="right"
     type="ghost"
   />
-</Layer>
+</div>
 `;

@@ -1,15 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ComboBox rendering renders expected elements 1`] = `
-<Layer
+<div
   className="ComboBox"
 >
-  <input
+  <Layer
     aria-activedescendant={null}
     aria-autocomplete="list"
     aria-controls="test-list"
     aria-expanded={false}
     aria-invalid={true}
+    as="input"
     autoComplete="off"
     className="ComboBox__input"
     id="test"
@@ -19,6 +20,7 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     onKeyDown={[Function]}
     placeholder="test placeholder"
     role="combobox"
+    type="text"
     value="test text"
   />
   <IconButton
@@ -39,10 +41,11 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     type="ghost"
   />
   <React.Portal>
-    <div
+    <Layer
       aria-label="Options"
       className="ComboBox__list"
       id="test-list"
+      level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       role="listbox"
@@ -53,18 +56,19 @@ exports[`ComboBox rendering renders expected elements 1`] = `
       }
     />
   </React.Portal>
-</Layer>
+</div>
 `;
 
 exports[`ComboBox rendering renders expected elements when error is not set 1`] = `
-<Layer
+<div
   className="ComboBox"
 >
-  <input
+  <Layer
     aria-activedescendant={null}
     aria-autocomplete="list"
     aria-controls="test-list"
     aria-expanded={false}
+    as="input"
     autoComplete="off"
     className="ComboBox__input"
     id="test"
@@ -74,6 +78,7 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     onKeyDown={[Function]}
     placeholder="test placeholder"
     role="combobox"
+    type="text"
     value="test text"
   />
   <IconButton
@@ -94,10 +99,11 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     type="ghost"
   />
   <React.Portal>
-    <div
+    <Layer
       aria-label="Options"
       className="ComboBox__list"
       id="test-list"
+      level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       role="listbox"
@@ -108,18 +114,79 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
       }
     />
   </React.Portal>
-</Layer>
+</div>
+`;
+
+exports[`ComboBox rendering renders expected elements when noLayer is true 1`] = `
+<div
+  className="ComboBox"
+>
+  <Layer
+    aria-activedescendant={null}
+    aria-autocomplete="list"
+    aria-controls="test-list"
+    aria-expanded={false}
+    aria-invalid={true}
+    as="input"
+    autoComplete="off"
+    className="ComboBox__input"
+    id="test"
+    noLayer={true}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="test placeholder"
+    role="combobox"
+    type="text"
+    value="test text"
+  />
+  <IconButton
+    aria-label="Add"
+    className="ComboBox__add"
+    disabled={false}
+    icon={
+      {
+        "icon": [],
+        "iconName": "plus",
+        "prefix": "fas",
+      }
+    }
+    id="test-add"
+    onClick={[Function]}
+    size="medium"
+    tooltipPlacement="right"
+    type="ghost"
+  />
+  <React.Portal>
+    <Layer
+      aria-label="Options"
+      className="ComboBox__list"
+      id="test-list"
+      level={NaN}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="listbox"
+      style={
+        {
+          "display": "none",
+        }
+      }
+    />
+  </React.Portal>
+</div>
 `;
 
 exports[`ComboBox rendering renders expected elements when the suggestions are displayed 1`] = `
-<Layer
+<div
   className="ComboBox"
 >
-  <input
+  <Layer
     aria-activedescendant="test-0"
     aria-autocomplete="list"
     aria-controls="test-list"
     aria-expanded={true}
+    as="input"
     autoComplete="off"
     className="ComboBox__input"
     id="test"
@@ -129,6 +196,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     onKeyDown={[Function]}
     placeholder="test placeholder"
     role="combobox"
+    type="text"
     value="x"
   />
   <IconButton
@@ -149,10 +217,11 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     type="ghost"
   />
   <React.Portal>
-    <div
+    <Layer
       aria-label="Options"
       className="ComboBox__list"
       id="test-list"
+      level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       role="listbox"
@@ -182,7 +251,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
       >
         Test suggestion 1
       </div>
-    </div>
+    </Layer>
   </React.Portal>
-</Layer>
+</div>
 `;

@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import setRefs from '../functions/setRefs';
 import useRandomId from '../hooks/useRandomId';
 import useMenuHandler from '../hooks/useMenuHandler';
+import useLayer from '../hooks/useLayer';
 
-import Layer from './Layer';
 import IconButton from './IconButton';
 import MenuArrow from './MenuArrow';
+import Layer from './Layer';
 import './IconMenu.less';
 
 /** An icon button with a pop-up menu. */
@@ -17,6 +18,8 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 	const menuId = `${id}-menu`;
 
 	const allDisabled = useMemo(() => Children.toArray(children).every((child) => child.props.disabled), [children]);
+
+	const level = useLayer() + 1;
 
 	const setPopUpPosition = useCallback(
 		(button, menu) => {
@@ -29,7 +32,6 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 				(bottom + menuHeight < innerHeight ? bottom : top - menuHeight >= 0 ? top - menuHeight : 0) + scrollTop
 			}px`;
 			wrapper.style.left = flipped ? `${right - menuWidth}px` : `${left}px`;
-			wrapper.dataset.layer = button.parentNode.dataset.layer;
 		},
 		[flipped]
 	);
@@ -37,7 +39,7 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 	const {expanded, buttonProps, menuProps, guardProps, buttonRef} = useMenuHandler(setPopUpPosition);
 
 	return (
-		<Layer>
+		<>
 			<IconButton
 				{...buttonProps}
 				{...props}
@@ -49,11 +51,12 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 				aria-controls={expanded ? menuId : null}
 				aria-haspopup="true"
 				aria-expanded={expanded}
+				data-layer={expanded ? level : null}
 				ref={ref ? setRefs(ref, buttonRef) : buttonRef}
 			/>
 			{expanded &&
 				createPortal(
-					<div className="IconMenu__wrapper">
+					<Layer className="IconMenu__popUp" level={level}>
 						<div {...guardProps} tabIndex={0} />
 						<ul {...menuProps} id={menuId} className="IconMenu__menu" role="menu" aria-labelledby={id}>
 							{Children.map(children, (child, index) =>
@@ -64,10 +67,10 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 							)}
 						</ul>
 						<div {...guardProps} tabIndex={0} />
-					</div>,
+					</Layer>,
 					document.body
 				)}
-		</Layer>
+		</>
 	);
 });
 

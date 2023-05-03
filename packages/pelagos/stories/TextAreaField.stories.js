@@ -1,4 +1,9 @@
+import {action} from '@storybook/addon-actions';
+
 import {TextAreaField} from '../src';
+import WithLayers from '../templates/WithLayers';
+
+const handleChange = action('onChange');
 
 export default {
 	title: 'Components/TextAreaField',
@@ -19,4 +24,15 @@ export const Required = {
 
 export const Error = {
 	args: {label: 'Error', value: 'Alpha', error: 'Error message'},
+};
+
+export const _WithLayers = {
+	render: () => (
+		<WithLayers>
+			{() => <TextAreaField label="Label" value="Alpha" helperText="Helper text" onChange={handleChange} />}
+		</WithLayers>
+	),
+	parameters: {
+		controls: {hideNoControlsWarning: true},
+	},
 };

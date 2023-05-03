@@ -3,6 +3,7 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
 
+import useLayer from '../hooks/useLayer';
 import useStringFinder from '../hooks/useStringFinder';
 import pageUp from '../functions/pageUp';
 import pageDown from '../functions/pageDown';
@@ -42,6 +43,8 @@ const Select = ({
 
 	const buttonRef = useRef(null);
 	const listRef = useRef(null);
+
+	const level = useLayer();
 
 	const showList = useCallback(() => {
 		setOpen(true);
@@ -187,7 +190,6 @@ const Select = ({
 			list.style.top = `${bottom + 1}px`;
 			list.style.left = `${left}px`;
 			list.style.width = `${width}px`;
-			list.dataset.layer = button.dataset.layer;
 		}
 	}, [open]);
 
@@ -200,11 +202,12 @@ const Select = ({
 	const listId = `${id}-list`;
 	const selected = renderedOptions.find((o) => o.value === value);
 	return (
-		<Layer className={`Select${className ? ` ${className}` : ''}`} ref={buttonRef}>
-			<button
+		<>
+			<Layer
 				{...props}
+				as="button"
 				id={id}
-				className={`Select__text${selected ? '' : ' Select__text--empty'}`}
+				className={`Select__text${selected ? '' : ' Select__text--empty'}${className ? ` ${className}` : ''}`}
 				type="button"
 				disabled={disabled}
 				aria-haspopup="listbox"
@@ -213,17 +216,19 @@ const Select = ({
 				aria-activedescendant={focused === -1 ? null : `${id}-${focused}`}
 				aria-invalid={error}
 				data-placeholder={placeholder}
+				ref={buttonRef}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
 				onBlur={handleBlur}>
 				{selected ? selected.element : ''}
 				<SelectArrow className={`Select__arrow${open ? ' Select__arrow--open' : ''}`} />
-			</button>
+			</Layer>
 			{open &&
 				createPortal(
-					<div
+					<Layer
 						id={listId}
 						className="Select__list"
+						level={level + 1}
 						role="listbox"
 						ref={listRef}
 						onMouseDown={handleListMouseDown}
@@ -239,10 +244,10 @@ const Select = ({
 								{o.element}
 							</div>
 						))}
-					</div>,
+					</Layer>,
 					document.body
 				)}
-		</Layer>
+		</>
 	);
 };
 

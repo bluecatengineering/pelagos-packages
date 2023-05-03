@@ -1,4 +1,4 @@
-import {cloneElement, useRef, useCallback, useEffect, useState, useMemo} from 'react';
+import {cloneElement, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
@@ -6,6 +6,7 @@ import {t} from '@bluecateng/l10n.macro';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 import scrollToItem from '../functions/scrollToItem';
+import useLayer from '../hooks/useLayer';
 
 import Layer from './Layer';
 import IconButton from './IconButton';
@@ -33,6 +34,8 @@ const ComboBox = ({
 	const [selected, setSelected] = useState(-1);
 
 	const debouncedChange = useMemo(() => debounce(onTextChange, 33), [onTextChange]);
+
+	const level = useLayer();
 
 	const hideList = useCallback(() => (setSuggestions([]), setOpen(false), setSelected(-1)), []);
 
@@ -146,17 +149,18 @@ const ComboBox = ({
 			list.style.top = `${bottom}px`;
 			list.style.left = `${left}px`;
 			list.style.width = `${width}px`;
-			list.dataset.layer = button.dataset.layer;
 		}
 	}, [open]);
 
 	const listId = `${id}-list`;
 	return (
-		<Layer className="ComboBox" ref={buttonRef}>
-			<input
+		<div className="ComboBox" ref={buttonRef}>
+			<Layer
 				{...props}
+				as="input"
 				id={id}
 				className="ComboBox__input"
+				type="text"
 				autoComplete="off"
 				role="combobox"
 				aria-expanded={open}
@@ -182,9 +186,10 @@ const ComboBox = ({
 				/>
 			)}
 			{createPortal(
-				<div
+				<Layer
 					id={listId}
 					className="ComboBox__list"
+					level={level + 1}
 					role="listbox"
 					aria-label={t`Options`}
 					style={{display: open ? null : 'none'}}
@@ -202,10 +207,10 @@ const ComboBox = ({
 							'data-index': index,
 						});
 					})}
-				</div>,
+				</Layer>,
 				document.body
 			)}
-		</Layer>
+		</div>
 	);
 };
 

@@ -1,4 +1,3 @@
-import {LayerContext} from '../packages/pelagos/src/components/Layer';
 import {setLocale as setPelagosLocale} from '../packages/pelagos/src';
 
 import './preview.less';
@@ -6,7 +5,6 @@ import './preview.less';
 /* eslint-disable no-console -- not production code */
 
 const setTheme = (theme) => (document.documentElement.dataset.theme = theme);
-const setLayer = (layer) => (document.documentElement.dataset.layer = layer);
 const setLocale = (locale) => setPelagosLocale(locale).catch(console.error);
 
 export default {
@@ -34,20 +32,6 @@ export default {
 				],
 			},
 		},
-		layer: {
-			name: 'Layer',
-			description: 'Background layer',
-			defaultValue: '0',
-			toolbar: {
-				icon: 'listunordered',
-				items: [
-					{value: '0', title: 'Layer 00'},
-					{value: '1', title: 'Layer 01'},
-					{value: '2', title: 'Layer 02'},
-					{value: '3', title: 'Layer 03'},
-				],
-			},
-		},
 		locale: {
 			name: 'Locale',
 			description: 'Locale',
@@ -62,16 +46,5 @@ export default {
 		},
 	},
 
-	decorators: [
-		(Story, {globals: {theme, layer, locale}}) => (
-			setTheme(theme),
-			setLayer(layer),
-			setLocale(locale),
-			(
-				<LayerContext.Provider value={+layer}>
-					<Story />
-				</LayerContext.Provider>
-			)
-		),
-	],
+	decorators: [(Story, {globals: {theme, locale}}) => (setTheme(theme), setLocale(locale), (<Story />))],
 };

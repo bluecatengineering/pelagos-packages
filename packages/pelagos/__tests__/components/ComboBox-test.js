@@ -24,6 +24,11 @@ describe('ComboBox', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when noLayer is true', () => {
+			const wrapper = shallow(<ComboBox id="test" placeholder="test placeholder" text="test text" noLayer error />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when the suggestions are displayed', () => {
 			useState
 				.mockReturnValueOnce([[{name: 'Test suggestion 0'}, {name: 'Test suggestion 1'}], jest.fn()])
@@ -126,11 +131,9 @@ describe('ComboBox', () => {
 
 		it('places the list under the button', () => {
 			const button = {
-				dataset: {layer: '2'},
 				getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400}),
-				closest: jest.fn(),
 			};
-			const list = {style: {}, dataset: {}};
+			const list = {style: {}};
 			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
 			useState
 				.mockReturnValueOnce([[null]])
@@ -140,7 +143,6 @@ describe('ComboBox', () => {
 			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [true]]);
 			useEffect.mock.calls[1][0]();
 			expect(list.style).toEqual({top: '100px', left: '200px', width: '400px'});
-			expect(list.dataset).toEqual({layer: '2'});
 		});
 
 		it('does not place the list when open is false', () => {
@@ -161,7 +163,7 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([true, jest.fn()])
 				.mockReturnValueOnce([0, jest.fn()]);
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} onChange={onChange} />);
-			wrapper.find('input').simulate('keydown', {keyCode: 13, preventDefault: jest.fn()});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 13, preventDefault: jest.fn()});
 			expect(onChange.mock.calls).toEqual([[suggestion]]);
 		});
 
@@ -182,7 +184,9 @@ describe('ComboBox', () => {
 					onEnter={onEnter}
 				/>
 			);
-			wrapper.find('input').simulate('keydown', {keyCode: 13, target: {value: 'test'}, preventDefault: jest.fn()});
+			wrapper
+				.find('[as="input"]')
+				.simulate('keydown', {keyCode: 13, target: {value: 'test'}, preventDefault: jest.fn()});
 			expect(onEnter.mock.calls).toEqual([['test']]);
 			expect(onTextChange.flush.mock.calls).toEqual([[]]);
 		});
@@ -190,14 +194,14 @@ describe('ComboBox', () => {
 		it('ignores input when enter is pressed, no item is selected and onEnter is not set', () => {
 			const preventDefault = jest.fn();
 			const wrapper = shallow(<ComboBox id="test" text="Test" />);
-			wrapper.find('input').simulate('keydown', {keyCode: 13, preventDefault});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 13, preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 		});
 
 		it('hides the list and clears the text when escape is pressed', () => {
 			const onTextChange = jest.fn();
 			const wrapper = shallow(<ComboBox id="test" onTextChange={onTextChange} />);
-			wrapper.find('input').simulate('keydown', {keyCode: 27, preventDefault: jest.fn()});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 27, preventDefault: jest.fn()});
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
@@ -213,7 +217,7 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([true, jest.fn()])
 				.mockReturnValueOnce([1, jest.fn()]);
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
-			wrapper.find('input').simulate('keydown', {keyCode: 38, preventDefault: jest.fn()});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 38, preventDefault: jest.fn()});
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[0]]);
 			expect(scrollToItem.mock.calls).toEqual([[listElement, child]]);
 		});
@@ -227,14 +231,14 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([true, jest.fn()])
 				.mockReturnValueOnce([0, jest.fn()]);
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
-			wrapper.find('input').simulate('keydown', {keyCode: 38, preventDefault: jest.fn()});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 38, preventDefault: jest.fn()});
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[1]]);
 			expect(scrollToItem.mock.calls).toEqual([[listElement, child]]);
 		});
 
 		it('ignores the key when up is pressed and visible is false', () => {
 			const wrapper = shallow(<ComboBox id="test" />);
-			wrapper.find('input').simulate('keydown', {keyCode: 38, preventDefault: jest.fn()});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 38, preventDefault: jest.fn()});
 			expect(scrollToItem).not.toHaveBeenCalled();
 		});
 
@@ -247,7 +251,7 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([true, jest.fn()])
 				.mockReturnValueOnce([0, jest.fn()]);
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
-			wrapper.find('input').simulate('keydown', {keyCode: 40, preventDefault: jest.fn()});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 40, preventDefault: jest.fn()});
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[1]]);
 			expect(scrollToItem.mock.calls).toEqual([[listElement, child]]);
 		});
@@ -261,14 +265,14 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([true, jest.fn()])
 				.mockReturnValueOnce([1, jest.fn()]);
 			const wrapper = shallow(<ComboBox id="test" renderSuggestion={() => <div />} />);
-			wrapper.find('input').simulate('keydown', {keyCode: 40, preventDefault: jest.fn()});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 40, preventDefault: jest.fn()});
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[0]]);
 			expect(scrollToItem.mock.calls).toEqual([[listElement, child]]);
 		});
 
 		it('ignores the key when down is pressed and visible is false', () => {
 			const wrapper = shallow(<ComboBox id="test" />);
-			wrapper.find('input').simulate('keydown', {keyCode: 40, preventDefault: jest.fn()});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 40, preventDefault: jest.fn()});
 			expect(scrollToItem).not.toHaveBeenCalled();
 		});
 
@@ -276,7 +280,7 @@ describe('ComboBox', () => {
 			const value = 'test';
 			const onTextChange = jest.fn();
 			const wrapper = shallow(<ComboBox id="test" onTextChange={onTextChange} />);
-			wrapper.find('input').simulate('change', {target: {value}});
+			wrapper.find('[as="input"]').simulate('change', {target: {value}});
 			expect(onTextChange.mock.calls).toEqual([[value]]);
 		});
 
@@ -286,7 +290,7 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([true, jest.fn()])
 				.mockReturnValueOnce([1, jest.fn()]);
 			const wrapper = shallow(<ComboBox id="test" parseInput={jest.fn()} renderSuggestion={() => <div />} />);
-			wrapper.find('input').simulate('focus');
+			wrapper.find('[as="input"]').simulate('focus');
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[true]]);
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
 		});
@@ -297,20 +301,20 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([true, jest.fn()])
 				.mockReturnValueOnce([1, jest.fn()]);
 			const wrapper = shallow(<ComboBox id="test" autoSelect renderSuggestion={() => <div />} />);
-			wrapper.find('input').simulate('focus');
+			wrapper.find('[as="input"]').simulate('focus');
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[true]]);
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[0]]);
 		});
 
 		it('does not expand the list on focus if suggestions is empty', () => {
 			const wrapper = shallow(<ComboBox id="test" />);
-			wrapper.find('input').simulate('focus');
+			wrapper.find('[as="input"]').simulate('focus');
 			expect(useState.mock.results[1].value[1]).not.toHaveBeenCalled();
 		});
 
 		it('collapses the list on blur', () => {
 			const wrapper = shallow(<ComboBox id="test" />);
-			wrapper.find('input').simulate('blur');
+			wrapper.find('[as="input"]').simulate('blur');
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
 		});
 

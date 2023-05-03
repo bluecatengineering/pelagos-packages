@@ -39,7 +39,7 @@ describe('DateInput', () => {
 		it('calls onChange when the input changes', () => {
 			const onChange = jest.fn();
 			const wrapper = shallow(<DateInput onChange={onChange} />);
-			wrapper.find('input').simulate('change', {target: {value: 'foo'}});
+			wrapper.find('[as="input"]').simulate('change', {target: {value: 'foo'}});
 			expect(onChange.mock.calls).toEqual([['foo']]);
 		});
 
@@ -81,21 +81,20 @@ describe('DateInput', () => {
 
 		it('adds an effect which creates and activates a focus trap', () => {
 			const wrapper = {
-				dataset: {layer: '2'},
+				closest: jest.fn().mockReturnValue({dataset: {layer: '2'}}),
 				getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200}),
 			};
-			const button = {parentNode: wrapper};
-			const popUp = {style: {}, dataset: {}};
+			const popUp = {style: {}};
 			const setCalendarTime = jest.fn();
 			const activate = jest.fn();
 			const deactivate = jest.fn();
-			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: popUp});
+			useRef.mockReturnValueOnce({current: wrapper}).mockReturnValueOnce({current: popUp});
 			useState.mockReturnValueOnce([1000, setCalendarTime]);
 			createFocusTrap.mockReturnValue({activate, deactivate});
 			shallow(<DateInput className="TestClass" />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [1000]]);
 			expect(useEffect.mock.calls[0][0]()).toBe(deactivate);
-			expect(popUp).toEqual({style: {top: '100px', left: '200px'}, dataset: {layer: '2'}});
+			expect(popUp).toEqual({style: {top: '100px', left: '200px'}});
 			expect(activate.mock.calls).toEqual([[]]);
 			expect(createFocusTrap.mock.calls).toEqual([
 				[
