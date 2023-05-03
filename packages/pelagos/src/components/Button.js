@@ -2,10 +2,12 @@ import PropTypes from 'prop-types';
 
 import useTooltip from '../hooks/useTooltip';
 
+import SvgIcon from './SvgIcon';
+
 import './Button.less';
 
 /** A button. */
-const Button = ({id, text, className, tooltipText, size, type, disabled, onClick, ...props}) => {
+const Button = ({id, className, text, icon, tooltipText, size, type, disabled, onClick, ...props}) => {
 	const tooltip = useTooltip(tooltipText, 'top');
 	return disabled ? (
 		<span
@@ -14,6 +16,7 @@ const Button = ({id, text, className, tooltipText, size, type, disabled, onClick
 			aria-disabled="true"
 			ref={tooltip}>
 			{text}
+			{icon && <SvgIcon className="Button__icon" icon={icon} />}
 		</span>
 	) : (
 		<button
@@ -24,6 +27,7 @@ const Button = ({id, text, className, tooltipText, size, type, disabled, onClick
 			ref={tooltip}
 			onClick={onClick}>
 			{text}
+			{icon && <SvgIcon className="Button__icon" icon={icon} />}
 		</button>
 	);
 };
@@ -31,10 +35,12 @@ const Button = ({id, text, className, tooltipText, size, type, disabled, onClick
 Button.propTypes = {
 	/** The component id. */
 	id: PropTypes.string,
-	/** The text to display. */
-	text: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
+	/** The text to display. */
+	text: PropTypes.string,
+	/** The object representing the icon. (using FontAwesome, etc.) */
+	icon: PropTypes.object,
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The size of the button. */

@@ -32,6 +32,11 @@ describe('Button', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when icon is set', () => {
+			const wrapper = shallow(<Button id="test" text="Test" icon={{}} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when disabled is true', () => {
 			const wrapper = shallow(<Button id="test" text="Test" disabled />);
 			expect(wrapper.getElement()).toMatchSnapshot();
@@ -44,6 +49,11 @@ describe('Button', () => {
 
 		it('renders expected elements when disabled is true and className is set', () => {
 			const wrapper = shallow(<Button id="test" text="Test" disabled className="testClass" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when disabled is true and icon is set', () => {
+			const wrapper = shallow(<Button id="test" text="Test" icon={{}} disabled />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
