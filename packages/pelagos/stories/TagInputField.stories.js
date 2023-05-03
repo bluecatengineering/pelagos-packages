@@ -1,6 +1,11 @@
+import {action} from '@storybook/addon-actions';
+
 import {TagInputField} from '../src';
+import WithLayers from '../templates/WithLayers';
 
 const validate = () => true;
+const handleChange = action('onChange');
+const handleError = () => null;
 
 export default {
 	title: 'Components/TagInputField',
@@ -13,4 +18,24 @@ export const Default = {
 
 export const Defaults = {
 	args: {label: 'Defaults', defaultTags: ['Alpha'], tags: [], validate},
+};
+
+export const _WithLayers = {
+	render: () => (
+		<WithLayers>
+			{() => (
+				<TagInputField
+					label="Label"
+					tags={['Alpha']}
+					helperText="Helper text"
+					validate={validate}
+					onChange={handleChange}
+					onError={handleError}
+				/>
+			)}
+		</WithLayers>
+	),
+	parameters: {
+		controls: {hideNoControlsWarning: true},
+	},
 };

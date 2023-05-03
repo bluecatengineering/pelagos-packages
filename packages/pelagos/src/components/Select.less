@@ -4,13 +4,8 @@
 @import '../../less/utils';
 
 @layer pelagos {
-	.Select {
-		position: relative;
-		white-space: nowrap;
-		cursor: pointer;
-	}
-
 	.Select__text {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -22,6 +17,8 @@
 		border-bottom: 1px solid var(--border-strong);
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
+		white-space: nowrap;
+		cursor: pointer;
 
 		&:hover {
 			background-color: var(--field-hover);

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextAreaField rendering adds the error class if the error is set 1`] = `
-<Layer
+<div
   className="TextAreaField"
 >
   <LabelLine
@@ -9,9 +9,10 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
     htmlFor="random-id"
     text="Label"
   />
-  <textarea
+  <Layer
     aria-describedby="random-id-error"
     aria-invalid={true}
+    as="textarea"
     className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
     id="random-id"
     maxLength={10}
@@ -23,11 +24,11 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
     id="random-id-error"
     text="Error"
   />
-</Layer>
+</div>
 `;
 
 exports[`TextAreaField rendering does not add the resize class if the resize is true 1`] = `
-<Layer
+<div
   className="TextAreaField"
 >
   <LabelLine
@@ -35,9 +36,10 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
     htmlFor="random-id"
     text="Label"
   />
-  <textarea
+  <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
+    as="textarea"
     className="TextAreaField__area"
     id="random-id"
     maxLength={10}
@@ -48,11 +50,11 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
   <FieldHelper
     id="random-id-helper"
   />
-</Layer>
+</div>
 `;
 
 exports[`TextAreaField rendering renders expected elements 1`] = `
-<Layer
+<div
   className="TextAreaField"
 >
   <LabelLine
@@ -61,10 +63,11 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
     required={true}
     text="Label"
   />
-  <textarea
+  <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
     aria-required={true}
+    as="textarea"
     className="TextAreaField__area TextAreaField--noresize"
     id="random-id"
     maxLength={10}
@@ -76,11 +79,11 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
     id="random-id-helper"
     text="Helper text"
   />
-</Layer>
+</div>
 `;
 
 exports[`TextAreaField rendering renders expected elements when className is set 1`] = `
-<Layer
+<div
   className="TextAreaField TestClass"
 >
   <LabelLine
@@ -88,9 +91,10 @@ exports[`TextAreaField rendering renders expected elements when className is set
     htmlFor="random-id"
     text="Label"
   />
-  <textarea
+  <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
+    as="textarea"
     className="TextAreaField__area TextAreaField--noresize"
     id="random-id"
     maxLength={10}
@@ -101,11 +105,11 @@ exports[`TextAreaField rendering renders expected elements when className is set
   <FieldHelper
     id="random-id-helper"
   />
-</Layer>
+</div>
 `;
 
 exports[`TextAreaField rendering renders expected elements when value is empty 1`] = `
-<Layer
+<div
   className="TextAreaField"
 >
   <LabelLine
@@ -113,9 +117,10 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
     htmlFor="random-id"
     text="Label"
   />
-  <textarea
+  <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
+    as="textarea"
     className="TextAreaField__area TextAreaField--noresize"
     id="random-id"
     maxLength={10}
@@ -126,5 +131,5 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
   <FieldHelper
     id="random-id-helper"
   />
-</Layer>
+</div>
 `;

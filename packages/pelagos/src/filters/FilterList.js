@@ -39,7 +39,7 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 
 	return (
 		<>
-			<Layer className={`FilterList${className ? ` ${className}` : ''}`}>
+			<div className={`FilterList${className ? ` ${className}` : ''}`}>
 				<ScrollBox trackId="filterListTrack">
 					<ul className="FilterList__items" onClick={handleClick}>
 						{filters &&
@@ -47,7 +47,7 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 								!excludedKeys.includes(key)
 									? do {
 											const name = getFilterTitle(key);
-											<li key={key} className="FilterList__item">
+											<Layer key={key} as="li" className="FilterList__item">
 												<button
 													id={`filter-${key}`}
 													className="FilterList__button"
@@ -70,13 +70,13 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 													data-key={key}>
 													<SvgIcon icon={xmarkThin} />
 												</button>
-											</li>;
+											</Layer>;
 									  }
 									: null
 							)}
 					</ul>
 				</ScrollBox>
-			</Layer>
+			</div>
 			{filterName &&
 				createPortal(
 					<FilterEditor

@@ -86,7 +86,7 @@ describe('TextAreaField', () => {
 			const onChange = jest.fn();
 			const event = {target: {value: 'test'}};
 			const wrapper = shallow(<TextAreaField label="Label" value="" onChange={onChange} />);
-			wrapper.find('textarea').simulate('change', event);
+			wrapper.find('[as="textarea"]').simulate('change', event);
 			expect(onChange.mock.calls).toEqual([['test']]);
 		});
 	});

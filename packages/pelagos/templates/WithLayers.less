@@ -1,0 +1,33 @@
+@import '../less/colors';
+@import '../less/fonts';
+@import '../less/spacing';
+
+.WithLayers {
+	position: relative;
+	align-self: stretch;
+	border: 1px dashed @purple-50;
+
+	& & {
+		background-color: var(--layer);
+		margin-top: @sp-32;
+	}
+
+	&__label {
+		@font-12-400();
+		flex-direction: row;
+		align-items: center;
+		align-self: flex-start;
+		padding: @sp-04;
+		color: var(--tag-color-purple);
+		background-color: var(--tag-background-purple);
+		column-gap: @sp-04;
+	}
+
+	&__content {
+		padding: @sp-16;
+	}
+
+	&--start {
+		align-items: flex-start;
+	}
+}

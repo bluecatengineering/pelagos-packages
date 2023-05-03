@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+import Layer from './Layer';
 import SelectArrow from './SelectArrow';
 
 import './SelectNative.less';
@@ -7,9 +8,9 @@ import './SelectNative.less';
 /** Native select component. */
 const SelectNative = ({className, children, ...props}) => (
 	<span className="SelectNative">
-		<select {...props} className={`SelectNative__select${className ? ` ${className}` : ''}`}>
+		<Layer {...props} as="select" className={`SelectNative__select${className ? ` ${className}` : ''}`}>
 			{children}
-		</select>
+		</Layer>
 		<SelectArrow className="SelectNative__arrow" />
 	</span>
 );

@@ -5,6 +5,7 @@ import {t} from '@bluecateng/l10n.macro';
 
 import Button from '../components/Button';
 import Layer from '../components/Layer';
+import useLayer from '../hooks/useLayer';
 import useEditorPositioner from '../hooks/useEditorPositioner';
 
 import './FilterEditor.less';
@@ -14,6 +15,8 @@ const trueFn = () => true;
 /** Wrapper for filter editors. */
 const FilterEditor = ({name, value: initialValue, buttonId, trackId, getLabel, getEditor, onClose, onSave}) => {
 	const [value, setValue] = useState(initialValue);
+
+	const level = useLayer();
 
 	const handleSave = useCallback(() => (validateSaveRef.current() ? onSave(value) : null), [value, onSave]);
 
@@ -35,6 +38,7 @@ const FilterEditor = ({name, value: initialValue, buttonId, trackId, getLabel, g
 			id="filterListDropDown"
 			className="FilterEditor"
 			style={{display: 'none'}}
+			level={level}
 			role="dialog"
 			aria-label={getLabel(name)}
 			ref={editorRef}>

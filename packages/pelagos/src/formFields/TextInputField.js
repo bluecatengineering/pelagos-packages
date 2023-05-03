@@ -17,12 +17,13 @@ const TextInputField = ({id, className, label, value, required, helperText, erro
 	const errorId = `${id}-error`;
 	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
-		<Layer className={'TextInputField' + (className ? ' ' + className : '')}>
+		<div className={`TextInputField${className ? ` ${className}` : ''}`}>
 			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
-			<input
+			<Layer
 				{...props}
+				as="input"
 				id={id}
-				className={'TextInputField__input' + (error ? ' TextInputField--error' : '')}
+				className={`TextInputField__input${error ? ' TextInputField--error' : ''}`}
 				value={value}
 				aria-describedby={error ? errorId : helperId}
 				aria-required={required}
@@ -30,7 +31,7 @@ const TextInputField = ({id, className, label, value, required, helperText, erro
 				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
 			/>
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
-		</Layer>
+		</div>
 	);
 };
 

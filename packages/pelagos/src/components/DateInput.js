@@ -2,15 +2,21 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import {createFocusTrap} from 'focus-trap';
-import {Calendar, IconButton, Layer} from '@bluecateng/pelagos';
+import {Calendar, IconButton} from '@bluecateng/pelagos';
 import {t} from '@bluecateng/l10n.macro';
 import {faCalendar} from '@fortawesome/free-regular-svg-icons';
+
+import useLayer from '../hooks/useLayer';
+
+import Layer from './Layer';
 
 import './DateInput.less';
 
 const DateInput = ({className, value, disabled, error, format, parse, onChange, ...props}) => {
-	const buttonRef = useRef(null);
+	const wrapperRef = useRef(null);
 	const popUpRef = useRef(null);
+
+	const level = useLayer();
 
 	const [calendarTime, setCalendarTime] = useState(null);
 	const handleInputChange = useCallback((event) => onChange(event.target.value), [onChange]);
@@ -31,13 +37,12 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 			return undefined;
 		}
 
-		const wrapper = buttonRef.current.parentNode;
+		const wrapper = wrapperRef.current;
 		const {bottom, left} = wrapper.getBoundingClientRect();
 
 		const popUp = popUpRef.current;
 		popUp.style.top = `${bottom}px`;
 		popUp.style.left = `${left}px`;
-		popUp.dataset.layer = wrapper.dataset.layer;
 
 		const trap = createFocusTrap(popUp, {
 			initialFocus: '.Calendar [aria-selected="true"]',
@@ -54,9 +59,10 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 	}, [calendarTime]);
 
 	return (
-		<Layer className={`DateInput${className ? ` ${className}` : ''}`}>
-			<input
+		<div className={`DateInput${className ? ` ${className}` : ''}`} ref={wrapperRef}>
+			<Layer
 				{...props}
+				as="input"
 				className="DateInput__input"
 				type="text"
 				value={value}
@@ -69,20 +75,16 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 				icon={faCalendar}
 				disabled={disabled}
 				aria-label={value ? t`Change date, ${value}` : t`Choose date`}
-				ref={buttonRef}
 				onClick={handleButtonClick}
 			/>
 			{calendarTime !== null &&
 				createPortal(
-					<Calendar
-						className="DateInput__calendar"
-						value={calendarTime}
-						ref={popUpRef}
-						onChange={handleCalendarChange}
-					/>,
+					<Layer className="DateInput__popUp" level={level + 1} ref={popUpRef}>
+						<Calendar value={calendarTime} onChange={handleCalendarChange} />
+					</Layer>,
 					document.body
 				)}
-		</Layer>
+		</div>
 	);
 };
 

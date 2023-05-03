@@ -17,14 +17,15 @@ const TextAreaField = ({id, className, label, value, required, resize, helperTex
 	const errorId = `${id}-error`;
 	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
-		<Layer className={'TextAreaField' + (className ? ' ' + className : '')}>
+		<div className={`TextAreaField${className ? ` ${className}` : ''}`}>
 			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
-			<textarea
+			<Layer
 				{...props}
+				as="textarea"
 				id={id}
-				className={
-					'TextAreaField__area' + (resize ? '' : ' TextAreaField--noresize') + (error ? ' TextAreaField--error' : '')
-				}
+				className={`TextAreaField__area${resize ? '' : ' TextAreaField--noresize'}${
+					error ? ' TextAreaField--error' : ''
+				}`}
 				value={value}
 				aria-describedby={error ? errorId : helperId}
 				aria-required={required}
@@ -32,7 +33,7 @@ const TextAreaField = ({id, className, label, value, required, resize, helperTex
 				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
 			/>
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
-		</Layer>
+		</div>
 	);
 };
 

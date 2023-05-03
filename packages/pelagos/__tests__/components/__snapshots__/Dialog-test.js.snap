@@ -9,6 +9,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
     aria-modal={true}
     className="Dialog Dialog--md TestClass"
     id="test-dialog"
+    level={1}
     role="dialog"
   >
     <React.Fragment>
@@ -47,6 +48,7 @@ exports[`Dialog rendering renders expected elements when child has no className 
     aria-modal={true}
     className="Dialog Dialog--md"
     id="test-dialog"
+    level={1}
     role="dialog"
   >
     <React.Fragment>
@@ -76,15 +78,18 @@ exports[`Dialog rendering renders expected elements when child has no className 
 </div>
 `;
 
-exports[`Dialog rendering renders expected elements when stretch is set 1`] = `
+exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
 <div
   className="Dialog__backdrop"
 >
   <Layer
     aria-labelledby="dialogTitle"
     aria-modal={true}
-    className="Dialog Dialog--md Dialog--stretch TestClass"
+    as="form"
+    className="Dialog Dialog--md"
     id="test-dialog"
+    level={1}
+    onSubmit={[Function]}
     role="dialog"
   >
     <React.Fragment>
@@ -114,17 +119,16 @@ exports[`Dialog rendering renders expected elements when stretch is set 1`] = `
 </div>
 `;
 
-exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
+exports[`Dialog rendering renders expected elements when stretch is set 1`] = `
 <div
   className="Dialog__backdrop"
 >
   <Layer
     aria-labelledby="dialogTitle"
     aria-modal={true}
-    as="form"
-    className="Dialog Dialog--md"
+    className="Dialog Dialog--md Dialog--stretch TestClass"
     id="test-dialog"
-    onSubmit={[Function]}
+    level={1}
     role="dialog"
   >
     <React.Fragment>

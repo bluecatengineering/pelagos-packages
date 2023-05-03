@@ -421,10 +421,10 @@ export const InlineActions = (args) => (
 							</TableCell>
 						))}
 						<TableCell>
-							<Layer className="TableStory__inlineButtons">
+							<div className="TableStory__inlineButtons">
 								<IconButton icon={faEdit} />
 								<IconButton icon={faTrashAlt} />
-							</Layer>
+							</div>
 						</TableCell>
 					</TableRow>
 				))}

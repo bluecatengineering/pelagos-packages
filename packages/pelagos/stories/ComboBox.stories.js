@@ -1,7 +1,12 @@
+import {action} from '@storybook/addon-actions';
+
 import {ComboBox} from '../src';
+import WithLayers from '../templates/WithLayers';
 
 const getSuggestions = () => ['Alpha', 'Beta', 'Gamma'];
 const renderSuggestion = (text) => <div>{text}</div>;
+const handleChange = action('onChange');
+const handleTextChange = action('onTextChange');
 
 export default {
 	title: 'Components/ComboBox',
@@ -29,4 +34,25 @@ export const Disabled = {
 
 export const Error = {
 	args: {id: 'error', text: 'Error', 'aria-label': 'Error', error: true, getSuggestions, renderSuggestion},
+};
+
+export const _WithLayers = {
+	render: () => (
+		<WithLayers>
+			{(level) => (
+				<ComboBox
+					id={`level-${level}`}
+					text="Alpha"
+					aria-label="Default"
+					getSuggestions={getSuggestions}
+					renderSuggestion={renderSuggestion}
+					onChange={handleChange}
+					onTextChange={handleTextChange}
+				/>
+			)}
+		</WithLayers>
+	),
+	parameters: {
+		controls: {hideNoControlsWarning: true},
+	},
 };

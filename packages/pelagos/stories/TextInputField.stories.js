@@ -1,4 +1,9 @@
+import {action} from '@storybook/addon-actions';
+
 import {TextInputField} from '../src';
+import WithLayers from '../templates/WithLayers';
+
+const handleChange = action('onChange');
 
 export default {
 	title: 'Components/TextInputField',
@@ -27,4 +32,15 @@ export const ReadOnly = {
 
 export const Error = {
 	args: {label: 'Error', value: 'Alpha', required: true, error: 'Error message'},
+};
+
+export const _WithLayers = {
+	render: () => (
+		<WithLayers>
+			{() => <TextInputField label="Label" value="Alpha" helperText="Helper text" onChange={handleChange} />}
+		</WithLayers>
+	),
+	parameters: {
+		controls: {hideNoControlsWarning: true},
+	},
 };
