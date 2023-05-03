@@ -1,29 +1,19 @@
-import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
-import Layer from './Layer';
 import './Toggle.less';
 
 /** A toggle button. */
-const Toggle = ({className, checked, disabled, onChange, ...props}) => {
-	const handleKeyDown = useCallback(
-		(event) => (event.keyCode === 32 ? (event.preventDefault(), onChange(event)) : null),
-		[onChange]
-	);
-	return (
-		<Layer
-			{...props}
-			as="span"
-			className={'Toggle ' + className}
-			role="checkbox"
-			aria-checked={!!checked}
-			aria-disabled={disabled}
-			tabIndex={disabled ? -1 : 0}
-			onClick={disabled ? undefined : onChange}
-			onKeyDown={disabled ? undefined : handleKeyDown}
-		/>
-	);
-};
+const Toggle = ({className, checked, disabled, onChange, ...props}) => (
+	<button
+		{...props}
+		className={`Toggle${className ? ` ${className}` : ''}`}
+		type="button"
+		role="switch"
+		aria-checked={!!checked}
+		disabled={disabled}
+		onClick={onChange}
+	/>
+);
 
 Toggle.propTypes = {
 	/** The component ID. */

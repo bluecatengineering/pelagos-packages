@@ -13,6 +13,11 @@ describe('Toggle', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when className is not set', () => {
+			const wrapper = shallow(<Toggle id="test" aria-label="Test" checked onChange={jest.fn()} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when disabled is true', () => {
 			const wrapper = shallow(
 				<Toggle id="test" className="TestClass" aria-label="Test" checked disabled onChange={jest.fn()} />
@@ -27,24 +32,6 @@ describe('Toggle', () => {
 			const wrapper = shallow(<Toggle className="TestClass" aria-label="Test" checked onChange={onChange} />);
 			wrapper.simulate('click');
 			expect(onChange).toHaveBeenCalled();
-		});
-
-		it('calls onChange when the space key is pressed', () => {
-			const onChange = jest.fn();
-			const event = {preventDefault: jest.fn(), keyCode: 32};
-			const wrapper = shallow(<Toggle className="TestClass" aria-label="Test" checked onChange={onChange} />);
-			wrapper.simulate('keydown', event);
-			expect(onChange).toHaveBeenCalled();
-			expect(event.preventDefault).toHaveBeenCalled();
-		});
-
-		it('does not call onChange when the any other key is pressed', () => {
-			const onChange = jest.fn();
-			const event = {preventDefault: jest.fn(), keyCode: 9};
-			const wrapper = shallow(<Toggle className="TestClass" aria-label="Test" checked onChange={onChange} />);
-			wrapper.simulate('keydown', event);
-			expect(onChange).not.toHaveBeenCalled();
-			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
 	});
 });

@@ -1,28 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Toggle rendering renders expected elements 1`] = `
-<Layer
+<button
   aria-checked={true}
   aria-label="Test"
-  as="span"
   className="Toggle TestClass"
   id="test"
   onClick={[MockFunction]}
-  onKeyDown={[Function]}
-  role="checkbox"
-  tabIndex={0}
+  role="switch"
+  type="button"
+/>
+`;
+
+exports[`Toggle rendering renders expected elements when className is not set 1`] = `
+<button
+  aria-checked={true}
+  aria-label="Test"
+  className="Toggle"
+  id="test"
+  onClick={[MockFunction]}
+  role="switch"
+  type="button"
 />
 `;
 
 exports[`Toggle rendering renders expected elements when disabled is true 1`] = `
-<Layer
+<button
   aria-checked={true}
-  aria-disabled={true}
   aria-label="Test"
-  as="span"
   className="Toggle TestClass"
+  disabled={true}
   id="test"
-  role="checkbox"
-  tabIndex={-1}
+  onClick={[MockFunction]}
+  role="switch"
+  type="button"
 />
 `;
