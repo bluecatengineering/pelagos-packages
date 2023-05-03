@@ -1,7 +1,7 @@
 'use strict';
 
-const {opendirSync, readFileSync} = require('fs');
-const {basename, join} = require('path');
+const {opendirSync, readFileSync} = require('node:fs');
+const {basename, join} = require('node:path');
 
 const parser = require('@babel/parser');
 
@@ -42,7 +42,7 @@ const scanDir = (map, basePath, shortPath) => {
 		const name = entry.name;
 		if (entry.isDirectory()) {
 			scanDir(map, `${basePath}/${name}`, `${shortPath}/${name}`);
-		} else if (entry.isFile() && /\.js$/.test(name)) {
+		} else if (entry.isFile() && /\.js$/.test(name) && !/\.stories\.js$/.test(name)) {
 			for (const i of parseJS(`${basePath}/${name}`, shortPath)) {
 				imports.set(i, (imports.get(i) || 0) + 1);
 			}
