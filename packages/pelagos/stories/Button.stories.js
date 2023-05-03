@@ -1,3 +1,5 @@
+import {faCat} from '@fortawesome/free-solid-svg-icons';
+
 import {Button} from '../src';
 
 export default {
@@ -14,6 +16,8 @@ export const Tertiary = {args: {text: 'Tertiary', type: 'tertiary'}};
 export const Ghost = {args: {text: 'Ghost', type: 'ghost'}};
 
 export const Disabled = {args: {text: 'Disabled', disabled: true}};
+
+export const WithIcon = {args: {text: 'Primary', icon: faCat, type: 'primary'}};
 
 export const AllStates = () => (
 	<div className="Story__row">

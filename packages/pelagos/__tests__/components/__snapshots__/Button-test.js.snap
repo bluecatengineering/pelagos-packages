@@ -40,6 +40,34 @@ exports[`Button rendering renders expected elements when disabled is true and cl
 </span>
 `;
 
+exports[`Button rendering renders expected elements when disabled is true and icon is set 1`] = `
+<span
+  aria-disabled="true"
+  className="Button Button--medium Button--tertiary"
+  id="test"
+>
+  Test
+  <SvgIcon
+    className="Button__icon"
+    icon={{}}
+  />
+</span>
+`;
+
+exports[`Button rendering renders expected elements when icon is set 1`] = `
+<button
+  className="Button Button--medium Button--tertiary"
+  id="test"
+  type="submit"
+>
+  Test
+  <SvgIcon
+    className="Button__icon"
+    icon={{}}
+  />
+</button>
+`;
+
 exports[`Button rendering renders expected elements when onClick is not specified 1`] = `
 <button
   className="Button Button--medium Button--tertiary"
