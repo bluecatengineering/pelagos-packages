@@ -9,7 +9,7 @@ import Layer from './Layer';
 import SvgIcon from './SvgIcon';
 import './SearchField.less';
 
-/** A search field. */
+/** @deprecated use `TableToolbarSearch` instead. */
 const SearchField = ({className, initialText, onChange, ...props}) => {
 	const inputRef = useRef(null);
 	const [text, setText] = useState(initialText);
