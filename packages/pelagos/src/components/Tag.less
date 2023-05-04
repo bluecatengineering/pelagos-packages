@@ -1,0 +1,121 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+
+@layer pelagos {
+	.Tag {
+		@font-12-400();
+		flex-direction: row;
+		align-items: center;
+		padding: 0 @sp-08;
+		transition: background-color 0.15s ease-out;
+
+		&--sm {
+			height: 18px;
+			border-radius: 9px;
+		}
+
+		&--md {
+			height: 24px;
+			border-radius: 12px;
+		}
+
+		&--red {
+			color: var(--tag-color-red);
+			background-color: var(--tag-background-red);
+
+			&:hover {
+				background-color: var(--tag-hover-red);
+			}
+		}
+
+		&--magenta {
+			color: var(--tag-color-magenta);
+			background-color: var(--tag-background-magenta);
+
+			&:hover {
+				background-color: var(--tag-hover-magenta);
+			}
+		}
+
+		&--purple {
+			color: var(--tag-color-purple);
+			background-color: var(--tag-background-purple);
+
+			&:hover {
+				background-color: var(--tag-hover-purple);
+			}
+		}
+
+		&--blue {
+			color: var(--tag-color-blue);
+			background-color: var(--tag-background-blue);
+
+			&:hover {
+				background-color: var(--tag-hover-blue);
+			}
+		}
+
+		&--cyan {
+			color: var(--tag-color-cyan);
+			background-color: var(--tag-background-cyan);
+
+			&:hover {
+				background-color: var(--tag-hover-cyan);
+			}
+		}
+
+		&--teal {
+			color: var(--tag-color-teal);
+			background-color: var(--tag-background-teal);
+
+			&:hover {
+				background-color: var(--tag-hover-teal);
+			}
+		}
+
+		&--green {
+			color: var(--tag-color-green);
+			background-color: var(--tag-background-green);
+
+			&:hover {
+				background-color: var(--tag-hover-green);
+			}
+		}
+
+		&--gray {
+			color: var(--tag-color-gray);
+			background-color: var(--tag-background-gray);
+
+			&:hover {
+				background-color: var(--tag-hover-gray);
+			}
+		}
+
+		&--cool-gray {
+			color: var(--tag-color-cool-gray);
+			background-color: var(--tag-background-cool-gray);
+
+			&:hover {
+				background-color: var(--tag-hover-cool-gray);
+			}
+		}
+
+		&--warm-gray {
+			color: var(--tag-color-warm-gray);
+			background-color: var(--tag-background-warm-gray);
+
+			&:hover {
+				background-color: var(--tag-hover-warm-gray);
+			}
+		}
+
+		&--cyan-gray {
+			color: var(--tag-color-cyan-gray);
+			background-color: var(--tag-background-cyan-gray);
+
+			&:hover {
+				background-color: var(--tag-hover-cyan-gray);
+			}
+		}
+	}
+}

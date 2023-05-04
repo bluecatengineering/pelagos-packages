@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag rendering renders expected elements 1`] = `
+<div
+  className="Tag Tag--sm Tag--red"
+>
+  red
+</div>
+`;
+
+exports[`Tag rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Tag Tag--sm Tag--red TestClass"
+  id="test"
+>
+  red
+</div>
+`;
