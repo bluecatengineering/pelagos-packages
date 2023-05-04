@@ -458,6 +458,138 @@ notification-close-active:
   group: notification
   set: base
   properties: []
+tag-background-red:
+  group: tags
+  set: base
+  properties: []
+tag-color-red:
+  group: tags
+  set: base
+  properties: []
+tag-hover-red:
+  group: tags
+  set: base
+  properties: []
+tag-background-magenta:
+  group: tags
+  set: base
+  properties: []
+tag-color-magenta:
+  group: tags
+  set: base
+  properties: []
+tag-hover-magenta:
+  group: tags
+  set: base
+  properties: []
+tag-background-purple:
+  group: tags
+  set: base
+  properties: []
+tag-color-purple:
+  group: tags
+  set: base
+  properties: []
+tag-hover-purple:
+  group: tags
+  set: base
+  properties: []
+tag-background-blue:
+  group: tags
+  set: base
+  properties: []
+tag-color-blue:
+  group: tags
+  set: base
+  properties: []
+tag-hover-blue:
+  group: tags
+  set: base
+  properties: []
+tag-background-cyan:
+  group: tags
+  set: base
+  properties: []
+tag-color-cyan:
+  group: tags
+  set: base
+  properties: []
+tag-hover-cyan:
+  group: tags
+  set: base
+  properties: []
+tag-background-teal:
+  group: tags
+  set: base
+  properties: []
+tag-color-teal:
+  group: tags
+  set: base
+  properties: []
+tag-hover-teal:
+  group: tags
+  set: base
+  properties: []
+tag-background-green:
+  group: tags
+  set: base
+  properties: []
+tag-color-green:
+  group: tags
+  set: base
+  properties: []
+tag-hover-green:
+  group: tags
+  set: base
+  properties: []
+tag-background-gray:
+  group: tags
+  set: base
+  properties: []
+tag-color-gray:
+  group: tags
+  set: base
+  properties: []
+tag-hover-gray:
+  group: tags
+  set: base
+  properties: []
+tag-background-cool-gray:
+  group: tags
+  set: base
+  properties: []
+tag-color-cool-gray:
+  group: tags
+  set: base
+  properties: []
+tag-hover-cool-gray:
+  group: tags
+  set: base
+  properties: []
+tag-background-warm-gray:
+  group: tags
+  set: base
+  properties: []
+tag-color-warm-gray:
+  group: tags
+  set: base
+  properties: []
+tag-hover-warm-gray:
+  group: tags
+  set: base
+  properties: []
+tag-background-cyan-gray:
+  group: tags
+  set: base
+  properties: []
+tag-color-cyan-gray:
+  group: tags
+  set: base
+  properties: []
+tag-hover-cyan-gray:
+  group: tags
+  set: base
+  properties: []
 text-value:
   group: custom
   set: base

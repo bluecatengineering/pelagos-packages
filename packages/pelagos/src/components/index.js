@@ -42,6 +42,7 @@ export {default as Select} from './Select';
 export {default as Spinner} from './Spinner';
 export {default as SvgIcon} from './SvgIcon';
 export {default as Tabs} from './Tabs';
+export {default as Tag} from './Tag';
 export {default as TagInput} from './TagInput';
 export {default as Toast} from './Toast';
 export {default as Toggle} from './Toggle';
