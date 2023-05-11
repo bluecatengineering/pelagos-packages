@@ -14,14 +14,22 @@ export const types = [
 	'cool-gray',
 	'warm-gray',
 	'cyan-gray',
+	'high-contrast',
 ];
 
 /** A tag. */
-const Tag = ({className, size, type, children, ...props}) => (
-	<div {...props} className={`Tag Tag--${size} Tag--${type}${className ? ` ${className}` : ''}`}>
-		{children}
-	</div>
-);
+const Tag = ({className, size, type, children, onClick, ...props}) => {
+	const fullClassName = `Tag Tag--${size} Tag--${type}${className ? ` ${className}` : ''}`;
+	return onClick ? (
+		<button {...props} className={fullClassName} onClick={onClick}>
+			{children}
+		</button>
+	) : (
+		<div {...props} className={fullClassName}>
+			{children}
+		</div>
+	);
+};
 
 Tag.propTypes = {
 	/** The component class name(s). */
@@ -32,6 +40,13 @@ Tag.propTypes = {
 	type: PropTypes.oneOf(types),
 	/** The child elements. */
 	children: PropTypes.node,
+	/** Function invoked when the tag is clicked. */
+	onClick: PropTypes.func,
+};
+
+Tag.defaultProps = {
+	size: 'md',
+	type: 'gray',
 };
 
 export default Tag;
