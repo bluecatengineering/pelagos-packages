@@ -2,17 +2,18 @@
 
 exports[`Tag rendering renders expected elements 1`] = `
 <div
-  className="Tag Tag--sm Tag--red"
+  className="Tag Tag--md Tag--gray"
 >
-  red
+  gray
 </div>
 `;
 
 exports[`Tag rendering renders expected elements when optional properties are set 1`] = `
-<div
+<button
   className="Tag Tag--sm Tag--red TestClass"
   id="test"
+  onClick={[MockFunction]}
 >
   red
-</div>
+</button>
 `;

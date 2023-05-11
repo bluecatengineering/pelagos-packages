@@ -1,13 +1,26 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
 
+.tag-styles(@color; @background; @hover) {
+	color: var(@color);
+	background-color: var(@background);
+
+	&:is(button):hover {
+		background-color: var(@hover);
+	}
+}
+
 @layer pelagos {
 	.Tag {
 		@font-12-400();
 		flex-direction: row;
 		align-items: center;
 		padding: 0 @sp-08;
-		transition: background-color 0.15s ease-out;
+		transition: all 0.15s ease-out;
+
+		&:is(button) {
+			border: none;
+		}
 
 		&--sm {
 			height: 18px;
@@ -20,102 +33,51 @@
 		}
 
 		&--red {
-			color: var(--tag-color-red);
-			background-color: var(--tag-background-red);
-
-			&:hover {
-				background-color: var(--tag-hover-red);
-			}
+			.tag-styles(--tag-color-red, --tag-background-red, --tag-hover-red);
 		}
 
 		&--magenta {
-			color: var(--tag-color-magenta);
-			background-color: var(--tag-background-magenta);
-
-			&:hover {
-				background-color: var(--tag-hover-magenta);
-			}
+			.tag-styles(--tag-color-magenta, --tag-background-magenta, --tag-hover-magenta);
 		}
 
 		&--purple {
-			color: var(--tag-color-purple);
-			background-color: var(--tag-background-purple);
-
-			&:hover {
-				background-color: var(--tag-hover-purple);
-			}
+			.tag-styles(--tag-color-purple, --tag-background-purple, --tag-hover-purple);
 		}
 
 		&--blue {
-			color: var(--tag-color-blue);
-			background-color: var(--tag-background-blue);
-
-			&:hover {
-				background-color: var(--tag-hover-blue);
-			}
+			.tag-styles(--tag-color-blue, --tag-background-blue, --tag-hover-blue);
 		}
 
 		&--cyan {
-			color: var(--tag-color-cyan);
-			background-color: var(--tag-background-cyan);
-
-			&:hover {
-				background-color: var(--tag-hover-cyan);
-			}
+			.tag-styles(--tag-color-cyan, --tag-background-cyan, --tag-hover-cyan);
 		}
 
 		&--teal {
-			color: var(--tag-color-teal);
-			background-color: var(--tag-background-teal);
-
-			&:hover {
-				background-color: var(--tag-hover-teal);
-			}
+			.tag-styles(--tag-color-teal, --tag-background-teal, --tag-hover-teal);
 		}
 
 		&--green {
-			color: var(--tag-color-green);
-			background-color: var(--tag-background-green);
-
-			&:hover {
-				background-color: var(--tag-hover-green);
-			}
+			.tag-styles(--tag-color-green, --tag-background-green, --tag-hover-green);
 		}
 
 		&--gray {
-			color: var(--tag-color-gray);
-			background-color: var(--tag-background-gray);
-
-			&:hover {
-				background-color: var(--tag-hover-gray);
-			}
+			.tag-styles(--tag-color-gray, --tag-background-gray, --tag-hover-gray);
 		}
 
 		&--cool-gray {
-			color: var(--tag-color-cool-gray);
-			background-color: var(--tag-background-cool-gray);
-
-			&:hover {
-				background-color: var(--tag-hover-cool-gray);
-			}
+			.tag-styles(--tag-color-cool-gray, --tag-background-cool-gray, --tag-hover-cool-gray);
 		}
 
 		&--warm-gray {
-			color: var(--tag-color-warm-gray);
-			background-color: var(--tag-background-warm-gray);
-
-			&:hover {
-				background-color: var(--tag-hover-warm-gray);
-			}
+			.tag-styles(--tag-color-warm-gray, --tag-background-warm-gray, --tag-hover-warm-gray);
 		}
 
 		&--cyan-gray {
-			color: var(--tag-color-cyan-gray);
-			background-color: var(--tag-background-cyan-gray);
+			.tag-styles(--tag-color-cyan-gray, --tag-background-cyan-gray, --tag-hover-cyan-gray);
+		}
 
-			&:hover {
-				background-color: var(--tag-hover-cyan-gray);
-			}
+		&--high-contrast {
+			.tag-styles(--text-inverse, --background-inverse, --background-inverse-hover);
 		}
 	}
 }
