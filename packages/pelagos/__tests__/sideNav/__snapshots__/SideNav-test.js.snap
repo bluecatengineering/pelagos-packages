@@ -1,21 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SideNav rendering renders expected elements 1`] = `
-<Layer
+<nav
   aria-hidden={false}
-  as="nav"
   className="SideNav"
 >
   passSideNavActive
-</Layer>
+</nav>
 `;
 
 exports[`SideNav rendering renders expected elements when className is set 1`] = `
-<Layer
+<nav
   aria-hidden={true}
-  as="nav"
   className="SideNav TestClass"
 >
   passSideNavActive
-</Layer>
+</nav>
 `;

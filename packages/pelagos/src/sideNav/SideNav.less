@@ -8,7 +8,7 @@
 	.SideNav {
 		display: flex;
 		flex-direction: column;
-		background-color: var(--layer);
+		background-color: var(--background);
 
 		&__items {
 			flex: 1;
@@ -20,7 +20,6 @@
 
 		&__submenu {
 			@font-14-600();
-			@layer-hover-effects();
 			@focus-visible();
 			position: relative;
 			display: flex;
@@ -33,6 +32,15 @@
 			border: none;
 			padding: 0 @sp-16;
 			cursor: pointer;
+			transition: color 0.15s ease-out, background-color 0.15s ease-out;
+
+			&:hover {
+				background-color: var(--background-hover);
+			}
+
+			&:active {
+				background-color: var(--background-active);
+			}
 
 			&--active,
 			&:hover,
@@ -42,7 +50,7 @@
 
 			&--current {
 				color: var(--text-primary);
-				background-color: var(--layer-selected);
+				background-color: var(--background-selected);
 			}
 
 			&--current::before {
@@ -85,17 +93,17 @@
 			color: var(--text-secondary);
 			padding: 0 @sp-16;
 			text-decoration: none;
-			transition: background-color 0.15s ease-out;
+			transition: color 0.15s ease-out, background-color 0.15s ease-out;
 
 			&:hover {
 				color: var(--text-primary);
-				background-color: var(--layer-hover);
+				background-color: var(--background-hover);
 				text-decoration: none;
 			}
 
 			&:active {
 				color: var(--text-primary);
-				background-color: var(--layer-active);
+				background-color: var(--background-active);
 			}
 
 			&:focus {
@@ -105,7 +113,7 @@
 
 			&[aria-current] {
 				color: var(--text-primary);
-				background-color: var(--layer-selected);
+				background-color: var(--background-selected);
 			}
 
 			&[aria-current]::before {
@@ -134,8 +142,8 @@
 
 		&__divider {
 			height: 1px;
-			margin: @sp-08 @sp-16;
-			background-color: var(--border-strong);
+			margin: @sp-16;
+			background-color: var(--border-subtle);
 		}
 	}
 }
