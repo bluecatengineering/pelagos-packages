@@ -264,7 +264,7 @@ export const DefaultToolbar = (args) => {
 			<TableTitle title="Table" description="With default toolbar." />
 			<TableToolbar>
 				<TableToolbarDefault>
-					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
+					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
 					<IconMenu icon={faCog} arrow flipped>
 						<MenuItem>Option one</MenuItem>
@@ -344,7 +344,7 @@ export const BatchActions = (args) => {
 					</IconMenu>
 				</TableToolbarBatch>
 				<TableToolbarDefault hidden={someSelected}>
-					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
+					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
 					<IconMenu icon={faCog} arrow flipped>
 						<MenuItem>Option one</MenuItem>
@@ -493,7 +493,7 @@ export const WithPagination = (args) => {
 			<TableTitle title="Table" description="With pagination." />
 			<TableToolbar>
 				<TableToolbarDefault>
-					<TableToolbarSearch placeholder="Filter table" onChange={setSearch} />
+					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
 					<IconButton icon={faCat} />
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
