@@ -1,6 +1,96 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TableToolbarSearch rendering renders expected elements 1`] = `
+exports[`TableToolbarSearch NewTableToolbarSearch rendering renders expected elements 1`] = `
+<div
+  className="Table__search"
+>
+  <span
+    aria-hidden={true}
+    onClick={[Function]}
+  >
+    <SvgIcon
+      className="Table__searchIcon"
+      icon={
+        {
+          "icon": [],
+          "iconName": "magnifying-glass",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+  <input
+    className="Table__searchInput"
+    id="test"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    role="searchbox"
+    type="text"
+    value="test"
+  />
+  <button
+    aria-label="Clear search"
+    className="Table__searchClear"
+    onClick={[Function]}
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "xmark-thin",
+        }
+      }
+    />
+  </button>
+</div>
+`;
+
+exports[`TableToolbarSearch NewTableToolbarSearch rendering renders expected elements when className is set 1`] = `
+<div
+  className="Table__search TestClass"
+>
+  <span
+    aria-hidden={true}
+    onClick={[Function]}
+  >
+    <SvgIcon
+      className="Table__searchIcon"
+      icon={
+        {
+          "icon": [],
+          "iconName": "magnifying-glass",
+          "prefix": "fas",
+        }
+      }
+    />
+  </span>
+  <input
+    className="Table__searchInput"
+    id="test"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    role="searchbox"
+    type="text"
+    value="test"
+  />
+  <button
+    aria-label="Clear search"
+    className="Table__searchClear"
+    onClick={[Function]}
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "xmark-thin",
+        }
+      }
+    />
+  </button>
+</div>
+`;
+
+exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected elements 1`] = `
 <div
   className="Table__search"
 >
@@ -45,7 +135,7 @@ exports[`TableToolbarSearch rendering renders expected elements 1`] = `
 </div>
 `;
 
-exports[`TableToolbarSearch rendering renders expected elements when className is set 1`] = `
+exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected elements when className is set 1`] = `
 <div
   className="Table__search TestClass"
 >
@@ -90,7 +180,7 @@ exports[`TableToolbarSearch rendering renders expected elements when className i
 </div>
 `;
 
-exports[`TableToolbarSearch rendering renders expected elements when initialText is set 1`] = `
+exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected elements when initialText is set 1`] = `
 <div
   className="Table__search"
 >
@@ -133,4 +223,17 @@ exports[`TableToolbarSearch rendering renders expected elements when initialText
     />
   </button>
 </div>
+`;
+
+exports[`TableToolbarSearch rendering renders expected elements when value is not set 1`] = `
+<OldTableToolbarSearch
+  onChange={[MockFunction]}
+/>
+`;
+
+exports[`TableToolbarSearch rendering renders expected elements when value is set 1`] = `
+<NewTableToolbarSearch
+  onChange={[MockFunction]}
+  value="test"
+/>
 `;
