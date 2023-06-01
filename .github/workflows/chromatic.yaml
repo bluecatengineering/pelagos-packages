@@ -30,4 +30,5 @@ jobs:
         uses: chromaui/action@a2ed440e22f7d4e2c6b0710f7903aa2df70a1ecd # tag=v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
           exitOnceUploaded: true
