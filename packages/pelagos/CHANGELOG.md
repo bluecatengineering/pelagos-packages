@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.0.3...@bluecateng/pelagos@12.1.0) (2023-06-01)
+
+### Features
+
+- add DateInput component ([a9a2a50](https://github.com/bluecatengineering/pelagos-packages/commit/a9a2a5077b6e5205124b5afabf4a821167ef711f))
+- add FilterArea component ([0f77e34](https://github.com/bluecatengineering/pelagos-packages/commit/0f77e34e6ceaab976f8e6564fd9c1119d7ef0519))
+- add option to display an icon in Button ([4a92a91](https://github.com/bluecatengineering/pelagos-packages/commit/4a92a91e9f53253921b1fa1580d120ea4912c4c6))
+- add Tag component ([f0bfbe4](https://github.com/bluecatengineering/pelagos-packages/commit/f0bfbe4d0f222f8dda35786371f774005de11cdc))
+- allow TableToolbarSearch to have a controlled value ([dbf2a84](https://github.com/bluecatengineering/pelagos-packages/commit/dbf2a8448a53ae4fafa77d9b24e3e375d5885aff))
+- deprecate IconMenuItem in favour of MenuItem ([2562f7c](https://github.com/bluecatengineering/pelagos-packages/commit/2562f7c55a8a8886b41a5de25510f3472c951586))
+- deprecate SearchField in favour of TableToolbarSearch ([43b79ce](https://github.com/bluecatengineering/pelagos-packages/commit/43b79ced1a60e289f0ddd72de579f63920354251))
+- extract subcomponents from FileUploader ([277f0f0](https://github.com/bluecatengineering/pelagos-packages/commit/277f0f097b2cd7c1eb8ae07c730ad58bab3b6c38))
+
+### Bug Fixes
+
+- allow selection from popup list while focus trap is active ([6e91325](https://github.com/bluecatengineering/pelagos-packages/commit/6e913254e43443e1970392bf024cb9bbeef9c164))
+- fix class name for DateInput component ([adbf546](https://github.com/bluecatengineering/pelagos-packages/commit/adbf546090f3c6a30f78d78c0da910d8da8f8b40))
+- fix location of close button in details panel ([9ec6f13](https://github.com/bluecatengineering/pelagos-packages/commit/9ec6f13ff56d10f54a0d95ce15533ce591a2fb6c))
+- fix use of layers ([bae96d0](https://github.com/bluecatengineering/pelagos-packages/commit/bae96d0cad42ec85c83a47bca64715dd3a3ad6d4))
+- implement Toggle using a button element ([dc10f7d](https://github.com/bluecatengineering/pelagos-packages/commit/dc10f7d840356327dd1b80d38df7c8ccfc0ac965))
+- remove hover effects for CheckBox and RadioButton ([7a3f45a](https://github.com/bluecatengineering/pelagos-packages/commit/7a3f45a4d1fdc8c34f9db5ec451e709af98590a3))
+- set Hamburger size to 48x48 ([eb69a31](https://github.com/bluecatengineering/pelagos-packages/commit/eb69a31081b98cd7eaf40ccc8c5fcd5c2e09a5be))
+- use a button element for interactive tags ([2309b6e](https://github.com/bluecatengineering/pelagos-packages/commit/2309b6edef03348a38ebf9a164af0c36927d6bfd))
+- use specified colours in SideNav ([acb0ccb](https://github.com/bluecatengineering/pelagos-packages/commit/acb0ccb8a5998ac570edf8ca3948532af28d52e6))
+
 ## [12.0.3](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.0.2...@bluecateng/pelagos@12.0.3) (2023-04-13)
 
 ### Bug Fixes
