@@ -5,7 +5,9 @@ export default {
 	component: Tag,
 };
 
-export const Default = {args: {size: 'md', type: 'red', children: 'red'}};
+export const Default = {args: {size: 'md', type: 'red', children: 'red', onRemove: null}};
+
+export const WithRemove = {args: {size: 'md', type: 'red', removeTitle: 'Remove tag', children: 'red', onClick: null}};
 
 export const All = {
 	render: () => (

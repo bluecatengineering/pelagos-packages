@@ -3,16 +3,44 @@
 exports[`Tag rendering renders expected elements 1`] = `
 <div
   className="Tag Tag--md Tag--gray"
+  id="random-id"
 >
   gray
+</div>
+`;
+
+exports[`Tag rendering renders expected elements when onRemove is ser 1`] = `
+<div
+  className="Tag Tag--md Tag--gray Tag--removable"
+  id="random-id"
+>
+  gray
+  <button
+    aria-labelledby="random-id"
+    className="Tag__remove"
+    onClick={[MockFunction]}
+    title="Remove title"
+    type="button"
+  >
+    <SvgIcon
+      aria-hidden={true}
+      icon={
+        {
+          "icon": [],
+          "iconName": "xmark-thin",
+        }
+      }
+    />
+  </button>
 </div>
 `;
 
 exports[`Tag rendering renders expected elements when optional properties are set 1`] = `
 <button
   className="Tag Tag--sm Tag--red TestClass"
-  id="test"
+  id="random-id"
   onClick={[MockFunction]}
+  type="button"
 >
   red
 </button>
