@@ -20,7 +20,7 @@ const scrollTabs = (track, tr, overflow) => {
 	}
 };
 
-/** Displays a row of tabs. */
+/** @deprecated use TabList instead. */
 const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClose}) => {
 	const tabsRef = useRef(null);
 
