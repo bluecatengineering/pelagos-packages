@@ -177,6 +177,10 @@ msgstr ""
 msgid "page {page}"
 msgstr ""
 
+#: ae7
+msgid "Press delete to remove tab"
+msgstr ""
+
 #: 036
 msgid "Press Enter to add items to the list."
 msgstr ""

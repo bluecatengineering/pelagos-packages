@@ -18,6 +18,7 @@ const handlerNames = {
 	mouseover: 'onMouseOver',
 	mouseup: 'onMouseUp',
 	paste: 'onPaste',
+	scroll: 'onScroll',
 	submit: 'onSubmit',
 };
 
