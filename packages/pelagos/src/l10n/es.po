@@ -177,6 +177,10 @@ msgstr "página"
 msgid "page {page}"
 msgstr "página {page}"
 
+#: ae7
+msgid "Press delete to remove tab"
+msgstr "Presione suprimir para eliminar la pestaña"
+
 #: 036
 msgid "Press Enter to add items to the list."
 msgstr "Presione Entrar para añadir elementos a la lista."

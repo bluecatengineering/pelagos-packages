@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabList rendering renders expected elements 1`] = `
+<div
+  className="TabList TabList--line"
+>
+  <button
+    aria-hidden={true}
+    className="TabList__scroll TabList--left"
+    hidden={true}
+    onClick={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+  <div
+    className="TabList__list"
+    onBlur={[Function]}
+    onKeyDown={[Function]}
+    onScroll={[Function]}
+    role="tablist"
+  >
+    <Context.Provider
+      value={
+        {
+          "focused": 0,
+          "hasSecondary": undefined,
+          "index": 0,
+          "onChange": undefined,
+          "selectedIndex": 0,
+        }
+      }
+    >
+      <Tab />
+    </Context.Provider>
+  </div>
+  <button
+    aria-hidden={true}
+    className="TabList__scroll TabList--right"
+    hidden={true}
+    onClick={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+</div>
+`;
+
+exports[`TabList rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="TabList TabList--contained TestClass"
+>
+  <button
+    aria-hidden={true}
+    className="TabList__scroll TabList--left"
+    hidden={true}
+    onClick={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+  <div
+    className="TabList__list"
+    onBlur={[Function]}
+    onKeyDown={[Function]}
+    onScroll={[Function]}
+    role="tablist"
+  >
+    <Context.Provider
+      value={
+        {
+          "focused": 0,
+          "hasSecondary": false,
+          "index": 0,
+          "onChange": undefined,
+          "selectedIndex": 0,
+        }
+      }
+    >
+      <Tab />
+    </Context.Provider>
+  </div>
+  <button
+    aria-hidden={true}
+    className="TabList__scroll TabList--right"
+    hidden={true}
+    onClick={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+</div>
+`;
+
+exports[`TabList rendering renders expected elements when tabs have secondary labels 1`] = `
+<div
+  className="TabList TabList--contained TabList--tall"
+>
+  <button
+    aria-hidden={true}
+    className="TabList__scroll TabList--left"
+    hidden={true}
+    onClick={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "chevron-left",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+  <div
+    className="TabList__list"
+    onBlur={[Function]}
+    onKeyDown={[Function]}
+    onScroll={[Function]}
+    role="tablist"
+  >
+    <Context.Provider
+      value={
+        {
+          "focused": 0,
+          "hasSecondary": true,
+          "index": 0,
+          "onChange": undefined,
+          "selectedIndex": 0,
+        }
+      }
+    >
+      <Tab
+        secondaryLabel="X"
+      />
+    </Context.Provider>
+  </div>
+  <button
+    aria-hidden={true}
+    className="TabList__scroll TabList--right"
+    hidden={true}
+    onClick={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <SvgIcon
+      icon={
+        {
+          "icon": [],
+          "iconName": "chevron-right",
+          "prefix": "fas",
+        }
+      }
+    />
+  </button>
+</div>
+`;

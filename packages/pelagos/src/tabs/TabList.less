@@ -1,0 +1,209 @@
+@import '../../less/focus';
+@import '../../less/fonts';
+@import '../../less/spacing';
+
+.TabList {
+	flex-direction: row;
+	flex: initial;
+	color: var(--text-secondary);
+	overflow: hidden;
+	position: relative;
+
+	&--line {
+		height: 40px;
+	}
+
+	&--contained {
+		height: 48px;
+	}
+
+	&--tall {
+		height: 64px;
+	}
+
+	&__list {
+		flex-direction: row;
+		flex: initial;
+		scroll-behavior: smooth;
+		overflow: hidden;
+
+		.TabList--line > & {
+			gap: 1px;
+		}
+	}
+
+	&__tab {
+		@focus-visible();
+		padding: @sp-08 @sp-16;
+		background-color: transparent;
+		border: none;
+		border-bottom: 2px solid var(--border-subtle);
+		justify-content: center;
+		text-align: left;
+		white-space: nowrap;
+		cursor: pointer;
+		transition: color 0.15s ease-out, border-color 0.15s ease-out, background-color 0.15s ease-out;
+
+		&:hover {
+			color: var(--text-primary);
+			border-bottom-color: var(--border-strong);
+		}
+
+		&[aria-selected='true'] {
+			@font-14-600();
+			color: var(--text-primary);
+			border-bottom-color: var(--border-interactive);
+		}
+
+		.TabList--contained & {
+			border-bottom: none;
+			border-top: 2px solid transparent;
+			background-color: var(--layer-accent);
+
+			&:not(:first-child) {
+				border-left: 1px solid var(--border-strong);
+			}
+
+			&:hover {
+				background-color: var(--layer-accent-hover);
+			}
+
+			&[aria-selected='true'] {
+				background-color: var(--layer);
+				border-top-color: var(--border-interactive);
+				border-left-color: transparent;
+			}
+		}
+
+		&[aria-selected='true'] + & {
+			border-left-color: transparent;
+		}
+	}
+
+	&__label {
+		flex-direction: row;
+		gap: @sp-08;
+	}
+
+	&__secondaryLabel {
+		@font-12-400();
+	}
+
+	&__remove {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 16px;
+		color: var(--link-primary);
+		padding: @sp-04;
+		cursor: pointer;
+		transition: background-color 0.15s ease-out;
+
+		.TabList--line & {
+			&:hover {
+				background-color: var(--background-hover);
+			}
+
+			&:active {
+				background-color: var(--background-active);
+			}
+		}
+
+		// stylelint-disable-next-line no-descending-specificity -- these two selectors are mutually exclusive
+		.TabList--contained & {
+			&:hover {
+				background-color: var(--layer-accent-hover);
+			}
+
+			&:active {
+				background-color: var(--layer-accent-active);
+			}
+		}
+	}
+
+	&__scroll {
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.15s ease-out;
+
+		&:not([hidden]) {
+			display: flex;
+		}
+
+		.TabList--line > & {
+			width: 40px;
+			color: var(--icon-primary);
+			background-color: var(--background);
+
+			&:hover {
+				background-color: var(--background-hover);
+			}
+
+			&:active {
+				background-color: var(--background-active);
+			}
+		}
+
+		// stylelint-disable-next-line no-descending-specificity -- these two selectors are mutually exclusive
+		.TabList--contained > & {
+			width: 48px;
+			color: var(--icon-secondary);
+			background-color: var(--layer-accent);
+
+			&:hover {
+				background-color: var(--layer-accent-hover);
+			}
+
+			&:active {
+				background-color: var(--layer-accent-active);
+			}
+		}
+	}
+
+	&--left {
+		left: 0;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: -8px;
+			width: 8px;
+
+			.TabList--line > & {
+				background-image: linear-gradient(to right, var(--background), transparent);
+			}
+
+			.TabList--contained > & {
+				background-image: linear-gradient(to right, var(--layer-accent), transparent);
+			}
+		}
+	}
+
+	&--right {
+		right: 0;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -8px;
+			width: 8px;
+
+			.TabList--line > & {
+				background-image: linear-gradient(to left, var(--background), transparent);
+			}
+
+			.TabList--contained > & {
+				background-image: linear-gradient(to left, var(--layer-accent), transparent);
+			}
+		}
+	}
+}

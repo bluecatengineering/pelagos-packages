@@ -11,4 +11,5 @@ export * from './menu';
 export * from './sideNav';
 export * from './suggestions';
 export * from './table';
+export * from './tabs';
 export * from './toasts';

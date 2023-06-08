@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab rendering renders expected elements 1`] = `
+<button
+  aria-selected={false}
+  className="TabList__tab"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onMouseUp={[Function]}
+  role="tab"
+  tabIndex={-1}
+  type="button"
+>
+  <div
+    className="TabList__label"
+  >
+    Test
+  </div>
+</button>
+`;
+
+exports[`Tab rendering renders expected elements when optional properties are set 1`] = `
+<button
+  aria-selected={true}
+  className="TabList__tab TestClass"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onMouseUp={[Function]}
+  role="tab"
+  tabIndex={0}
+  type="button"
+>
+  <div
+    className="TabList__label"
+  >
+    Test
+    <span
+      aria-hidden={true}
+      className="TabList__remove"
+      onClick={[Function]}
+      role="button"
+      tabIndex={-1}
+    >
+      <SvgIcon
+        icon={
+          {
+            "icon": [],
+            "iconName": "xmark-thin",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="TabList__secondaryLabel"
+  >
+    Test secondary
+  </div>
+  <div
+    className="sr-only"
+  >
+    Press delete to remove tab
+  </div>
+</button>
+`;
