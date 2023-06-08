@@ -1,5 +1,10 @@
 import PropTypes from 'prop-types';
 
+import useRandomId from '../hooks/useRandomId';
+import xmarkThin from '../icons/xmarkThin';
+
+import SvgIcon from './SvgIcon';
+
 import './Tag.less';
 
 export const types = [
@@ -18,30 +23,44 @@ export const types = [
 ];
 
 /** A tag. */
-const Tag = ({className, size, type, children, onClick, ...props}) => {
-	const fullClassName = `Tag Tag--${size} Tag--${type}${className ? ` ${className}` : ''}`;
+const Tag = ({id, className, size, type, removeTitle, children, onClick, onRemove, ...props}) => {
+	id = useRandomId(id);
+	const fullClassName = `Tag Tag--${size} Tag--${type}${onRemove ? ' Tag--removable' : ''}${
+		className ? ` ${className}` : ''
+	}`;
 	return onClick ? (
-		<button {...props} className={fullClassName} onClick={onClick}>
+		<button {...props} id={id} className={fullClassName} type="button" onClick={onClick}>
 			{children}
 		</button>
 	) : (
-		<div {...props} className={fullClassName}>
+		<div {...props} id={id} className={fullClassName}>
 			{children}
+			{onRemove && (
+				<button className="Tag__remove" type="button" title={removeTitle} aria-labelledby={id} onClick={onRemove}>
+					<SvgIcon icon={xmarkThin} aria-hidden />
+				</button>
+			)}
 		</div>
 	);
 };
 
 Tag.propTypes = {
+	/** The component id. */
+	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The tag size. */
 	size: PropTypes.oneOf(['sm', 'md']),
 	/** The tag type. */
 	type: PropTypes.oneOf(types),
+	/** The title for the remove button. */
+	removeTitle: PropTypes.string,
 	/** The child elements. */
 	children: PropTypes.node,
 	/** Function invoked when the tag is clicked. */
 	onClick: PropTypes.func,
+	/** Function invoked when the remove button is clicked. Can't be used at the same time as onClick. The remove button is displayed only when this property is not null. */
+	onRemove: PropTypes.func,
 };
 
 Tag.defaultProps = {

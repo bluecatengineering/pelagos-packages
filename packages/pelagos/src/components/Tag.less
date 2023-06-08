@@ -8,6 +8,10 @@
 	&:is(button):hover {
 		background-color: var(@hover);
 	}
+
+	& > .Tag__remove:hover {
+		background-color: var(@hover);
+	}
 }
 
 @layer pelagos {
@@ -16,10 +20,11 @@
 		flex-direction: row;
 		align-items: center;
 		padding: 0 @sp-08;
-		transition: all 0.15s ease-out;
+		transition: background-color 0.15s ease-out;
 
 		&:is(button) {
 			border: none;
+			cursor: pointer;
 		}
 
 		&--sm {
@@ -78,6 +83,45 @@
 
 		&--high-contrast {
 			.tag-styles(--text-inverse, --background-inverse, --background-inverse-hover);
+		}
+
+		&--removable {
+			padding-right: 0;
+		}
+
+		&__remove {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: transparent;
+			font-size: 16px;
+			padding: 0;
+			margin: 0 0 0 @sp-02;
+			border: none;
+			border-radius: 50%;
+			cursor: pointer;
+			outline: none;
+			transition: background-color 0.15s ease-out;
+
+			.Tag--sm > & {
+				width: 18px;
+				height: 18px;
+			}
+
+			.Tag--md > & {
+				width: 24px;
+				height: 24px;
+			}
+
+			&:focus-visible {
+				outline: 1px solid var(--focus);
+				outline-offset: -1px;
+			}
+
+			// stylelint-disable-next-line @bluecateng/selector-bem
+			.Tag--high-contrast > &:focus-visible {
+				outline: 1px solid var(--focus-inverse);
+			}
 		}
 	}
 }
