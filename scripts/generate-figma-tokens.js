@@ -27,21 +27,29 @@ const loadColors = () =>
 	});
 
 const loadThemes = () =>
-	readFile('packages/pelagos/defs/themes.yaml', 'utf8').then((text) =>
-		Object.fromEntries(
-			Object.entries(parse(text)).map(([k, v]) => [
-				k,
-				Object.fromEntries(
-					Object.entries(v).map(([k, v]) => {
-						const parts = v.split('/');
-						return [
-							k,
-							{type: 'color', value: parts.length === 1 ? `{colors.${v}}` : `rgba($colors.${parts[0]},${parts[1]})`},
-						];
-					})
-				),
-			])
-		)
+	Promise.all(['themes', 'themes-meta'].map((name) => readFile(`packages/pelagos/defs/${name}.yaml`, 'utf8'))).then(
+		([themes, metaText]) => {
+			const meta = parse(metaText);
+			return Object.fromEntries(
+				Object.entries(parse(themes))
+					.filter(([k]) => meta[k]?.group === 'deprecated')
+					.map(([k, v]) => [
+						k,
+						Object.fromEntries(
+							Object.entries(v).map(([k, v]) => {
+								const parts = v.split('/');
+								return [
+									k,
+									{
+										type: 'color',
+										value: parts.length === 1 ? `{colors.${v}}` : `rgba($colors.${parts[0]},${parts[1]})`,
+									},
+								];
+							})
+						),
+					])
+			);
+		}
 	);
 
 const loadSpacing = () =>
