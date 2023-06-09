@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.1.0...@bluecateng/pelagos@12.2.0) (2023-06-09)
+
+### Features
+
+- add onRemove property to Tag ([286f3a1](https://github.com/bluecatengineering/pelagos-packages/commit/286f3a17fb82e4d91ef48fe607400adb36f91468))
+- add TabList component ([c600d49](https://github.com/bluecatengineering/pelagos-packages/commit/c600d4913679a5435758cee7516c6639642b7420))
+- deprecate Tabs in favour of TabList ([faceb3f](https://github.com/bluecatengineering/pelagos-packages/commit/faceb3ffb44756b182873fa545fdc75ab28a6203))
+
+### Bug Fixes
+
+- change editor details panel top to match header height ([72234a2](https://github.com/bluecatengineering/pelagos-packages/commit/72234a2e038d80638b60ecb3c6d81ce2e6703839))
+
 ## [12.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.0.3...@bluecateng/pelagos@12.1.0) (2023-06-01)
 
 ### Features
