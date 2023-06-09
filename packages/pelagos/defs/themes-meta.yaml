@@ -595,11 +595,11 @@ text-value:
   set: base
   properties: [color]
 status-true:
-  group: custom
+  group: deprecated
   set: base
   properties: [background]
 status-false:
-  group: custom
+  group: deprecated
   set: base
   properties: [background]
 scrollbar-face:

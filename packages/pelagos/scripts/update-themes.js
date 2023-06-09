@@ -1,8 +1,9 @@
-const {readFileSync, writeFileSync} = require('fs');
+const {readFileSync, writeFileSync} = require('node:fs');
 
 const {parse} = require('yaml');
 
 const IN = 'defs/themes.yaml';
+const META = 'defs/themes-meta.yaml';
 const LESS = 'less/themes.less';
 
 const HEADER = [
@@ -19,6 +20,7 @@ const FOOTER = ['.theme-dark() {', '\t.theme-yg100();', '}', '', '.theme-light()
 const SHADOWS = parse(readFileSync('defs/shadows.yaml', 'utf8')).levels.map((l) => `${l}`.padStart(2, '0'));
 
 const themes = Object.entries(parse(readFileSync(IN, 'utf8')));
+const meta = parse(readFileSync(META, 'utf8'));
 
 const valueToLess = (value) => {
 	const match = /^(.+)\/(\d+%)$/.exec(value);
@@ -27,7 +29,10 @@ const valueToLess = (value) => {
 
 const entriesToLess = (value) =>
 	Object.entries(value)
-		.map(([key, value]) => `\t--${key}: ${valueToLess(value)};`)
+		.map(
+			([key, value]) =>
+				`${meta[key]?.group === 'deprecated' ? '\t// @deprecated\n' : ''}\t--${key}: ${valueToLess(value)};`
+		)
 		.join('\n');
 
 const themeFooter = () =>
