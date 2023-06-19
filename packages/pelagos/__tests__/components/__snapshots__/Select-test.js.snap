@@ -16,7 +16,11 @@ exports[`Select rendering renders expected elements 1`] = `
     onMouseDown={[Function]}
     type="button"
   >
-    Two
+    <div
+      className="Select__value"
+    >
+      Two
+    </div>
     <SelectArrow
       className="Select__arrow"
     />
@@ -40,7 +44,11 @@ exports[`Select rendering renders expected elements when className is not set 1`
     onMouseDown={[Function]}
     type="button"
   >
-    Two
+    <div
+      className="Select__value"
+    >
+      Two
+    </div>
     <SelectArrow
       className="Select__arrow"
     />
@@ -63,7 +71,11 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     onBlur={[Function]}
     type="button"
   >
-    Two
+    <div
+      className="Select__value"
+    >
+      Two
+    </div>
     <SelectArrow
       className="Select__arrow"
     />
@@ -88,7 +100,11 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     onMouseDown={[Function]}
     type="button"
   >
-    Two
+    <div
+      className="Select__value"
+    >
+      Two
+    </div>
     <SelectArrow
       className="Select__arrow"
     />
@@ -113,7 +129,11 @@ exports[`Select rendering renders expected elements when noLayer is true 1`] = `
     onMouseDown={[Function]}
     type="button"
   >
-    Two
+    <div
+      className="Select__value"
+    >
+      Two
+    </div>
     <SelectArrow
       className="Select__arrow"
     />
@@ -137,7 +157,11 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     onMouseDown={[Function]}
     type="button"
   >
-    Two
+    <div
+      className="Select__value"
+    >
+      Two
+    </div>
     <SelectArrow
       className="Select__arrow Select__arrow--open"
     />
@@ -199,7 +223,11 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     onMouseDown={[Function]}
     type="button"
   >
-    No
+    <div
+      className="Select__value"
+    >
+      No
+    </div>
     <SelectArrow
       className="Select__arrow"
     />
@@ -223,7 +251,11 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     onMouseDown={[Function]}
     type="button"
   >
-    
+    <div
+      className="Select__value"
+    >
+      
+    </div>
     <SelectArrow
       className="Select__arrow"
     />
