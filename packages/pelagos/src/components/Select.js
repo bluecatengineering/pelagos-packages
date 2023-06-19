@@ -220,7 +220,7 @@ const Select = ({
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
 				onBlur={handleBlur}>
-				{selected ? selected.element : ''}
+				<div className="Select__value">{selected ? selected.element : ''}</div>
 				<SelectArrow className={`Select__arrow${open ? ' Select__arrow--open' : ''}`} />
 			</Layer>
 			{open &&
