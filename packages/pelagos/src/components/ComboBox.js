@@ -101,7 +101,16 @@ const ComboBox = ({
 		[debouncedChange, hideList, onEnter, onTextChange, open, selectSuggestion, selected, suggestions.length]
 	);
 
-	const handleChange = useCallback((event) => debouncedChange(event.target.value), [debouncedChange]);
+	const handleChange = useCallback(
+		(event) => {
+			const text = event.target.value;
+			debouncedChange(text);
+			if (text && text[0] !== '/') {
+				updateSuggestions(text);
+			}
+		},
+		[debouncedChange, updateSuggestions]
+	);
 
 	const handleFocus = useCallback(
 		() => (suggestions.length !== 0 ? (setOpen(true), setSelected(autoSelect ? 0 : -1)) : null),
@@ -134,11 +143,10 @@ const ComboBox = ({
 		if (error || !text || text[0] === '/') {
 			hideList();
 			updateSuggestions.cancel();
-		} else {
-			updateSuggestions(text);
 		}
-		return updateSuggestions.cancel;
 	}, [hideList, updateSuggestions, text, error]);
+
+	useEffect(() => updateSuggestions.cancel, [updateSuggestions]);
 
 	useEffect(() => {
 		if (open) {
