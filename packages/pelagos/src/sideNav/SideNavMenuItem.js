@@ -12,7 +12,11 @@ const SideNavMenuItem = forwardRef(({className, shortcut, current, sideNavActive
 			tabIndex={sideNavActive ? 0 : -1}
 			aria-current={current ? 'page' : null}
 			ref={ref}>
-			<span className={shortcut ? 'SideNav__text--shortcut' : ''}>{children}</span>
+			<span
+				className={`SideNav__text${shortcut ? ' SideNav__text--shortcut' : ''}`}
+				title={typeof children === 'string' ? children : ''}>
+				{children}
+			</span>
 		</a>
 	</li>
 ));
