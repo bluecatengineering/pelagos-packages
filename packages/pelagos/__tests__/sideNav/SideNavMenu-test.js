@@ -1,12 +1,10 @@
+import {useContext} from 'react';
 import {shallow} from 'enzyme';
 
 import SideNavMenu from '../../src/sideNav/SideNavMenu';
 import SideNavMenuItem from '../../src/sideNav/SideNavMenuItem';
-import passSideNavActive from '../../src/sideNav/passSideNavActive';
 
 jest.unmock('../../src/sideNav/SideNavMenu');
-
-passSideNavActive.mockReturnValue('passSideNavActive');
 
 describe('SideNavMenu', () => {
 	describe('rendering', () => {
@@ -30,13 +28,13 @@ describe('SideNavMenu', () => {
 
 		it('renders expected elements when boolean properties are set', () => {
 			const child = <SideNavMenuItem current />;
+			useContext.mockReturnValueOnce(true);
 			const wrapper = shallow(
-				<SideNavMenu title="Test Title" expanded sideNavActive>
+				<SideNavMenu title="Test Title" expanded>
 					{child}
 				</SideNavMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(passSideNavActive.mock.calls).toEqual([[true, child]]);
 		});
 	});
 });
