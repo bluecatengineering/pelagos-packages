@@ -19,5 +19,14 @@ describe('SideNavLink', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when children is not a string', () => {
+			const wrapper = shallow(
+				<SideNavLink className="TestClass">
+					<span />
+				</SideNavLink>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

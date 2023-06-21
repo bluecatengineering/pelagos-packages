@@ -19,5 +19,14 @@ describe('SideNavMenuItem', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when children is not a string', () => {
+			const wrapper = shallow(
+				<SideNavMenuItem className="TestClass">
+					<span />
+				</SideNavMenuItem>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

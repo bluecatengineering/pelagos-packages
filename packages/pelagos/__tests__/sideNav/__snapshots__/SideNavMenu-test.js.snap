@@ -9,11 +9,12 @@ exports[`SideNavMenu rendering renders expected elements 1`] = `
     tabIndex={-1}
     type="button"
   >
-    <div
+    <span
       className="SideNav__submenuTitle"
+      title="Test Title"
     >
       Test Title
-    </div>
+    </span>
     <SvgIcon
       className="SideNav__icon"
       icon={
@@ -40,11 +41,12 @@ exports[`SideNavMenu rendering renders expected elements when a child element ha
     tabIndex={-1}
     type="button"
   >
-    <div
+    <span
       className="SideNav__submenuTitle"
+      title="Test Title"
     >
       Test Title
-    </div>
+    </span>
     <SvgIcon
       className="SideNav__icon"
       icon={
@@ -72,11 +74,12 @@ exports[`SideNavMenu rendering renders expected elements when boolean properties
     tabIndex={0}
     type="button"
   >
-    <div
+    <span
       className="SideNav__submenuTitle"
+      title="Test Title"
     >
       Test Title
-    </div>
+    </span>
     <SvgIcon
       className="SideNav__icon"
       icon={

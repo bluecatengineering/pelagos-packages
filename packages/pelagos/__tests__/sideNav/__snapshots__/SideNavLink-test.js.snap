@@ -10,7 +10,8 @@ exports[`SideNavLink rendering renders expected elements 1`] = `
     tabIndex={-1}
   >
     <span
-      className=""
+      className="SideNav__text"
+      title="child"
     >
       child
     </span>
@@ -26,9 +27,29 @@ exports[`SideNavLink rendering renders expected elements when boolean properties
     tabIndex={0}
   >
     <span
-      className="SideNav__text--shortcut"
+      className="SideNav__text SideNav__text--shortcut"
+      title="child"
     >
       child
+    </span>
+  </a>
+</li>
+`;
+
+exports[`SideNavLink rendering renders expected elements when children is not a string 1`] = `
+<li
+  className="TestClass"
+>
+  <a
+    aria-current={null}
+    className="SideNav__link"
+    tabIndex={-1}
+  >
+    <span
+      className="SideNav__text"
+      title=""
+    >
+      <span />
     </span>
   </a>
 </li>
