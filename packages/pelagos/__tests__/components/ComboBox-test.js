@@ -1,4 +1,4 @@
-import {useRef, useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
 
@@ -47,89 +47,56 @@ describe('ComboBox', () => {
 	});
 
 	describe('behaviour', () => {
-		it('hides the list when text is empty', () => {
+		it('adds an effect which hides the list when text is empty', () => {
 			shallow(<ComboBox id="test" />);
 			expect(useEffect.mock.calls[0]).toEqual([
 				expect.any(Function),
 				[expect.any(Function), expect.any(Function), undefined, undefined],
 			]);
 			const cancel = debounce.mock.results[1].value.cancel;
-			expect(useEffect.mock.calls[0][0]()).toBe(cancel);
+			useEffect.mock.calls[0][0]();
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
 			expect(cancel.mock.calls).toEqual([[]]);
 		});
 
-		it('hides the list when text starts with slash', () => {
+		it('adds an effect which hides the list when text starts with slash', () => {
 			shallow(<ComboBox id="test" text="/x" />);
 			expect(useEffect.mock.calls[0]).toEqual([
 				expect.any(Function),
 				[expect.any(Function), expect.any(Function), '/x', undefined],
 			]);
 			const cancel = debounce.mock.results[1].value.cancel;
-			expect(useEffect.mock.calls[0][0]()).toBe(cancel);
+			useEffect.mock.calls[0][0]();
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
 			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
 			expect(cancel.mock.calls).toEqual([[]]);
 		});
 
-		it('calls getSuggestions when text is not empty', () => {
-			const suggestions = [{}];
-			const promise = Promise.resolve(suggestions);
-			const getSuggestions = jest.fn().mockReturnValue(promise);
-			shallow(<ComboBox id="test" text="x" getSuggestions={getSuggestions} />);
+		it('adds an effect which does not hide the list when text does not start with slash', () => {
+			shallow(<ComboBox id="test" text="x" />);
 			expect(useEffect.mock.calls[0]).toEqual([
 				expect.any(Function),
 				[expect.any(Function), expect.any(Function), 'x', undefined],
 			]);
+			const cancel = debounce.mock.results[1].value.cancel;
 			useEffect.mock.calls[0][0]();
-			expect(getSuggestions.mock.calls).toEqual([['x']]);
-			return promise.then(() => {
-				expect(useState.mock.results[0].value[1].mock.calls).toEqual([[suggestions]]);
-				expect(useState.mock.results[1].value[1].mock.calls).toEqual([[true]]);
-				expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
-			});
+			expect(useState.mock.results[0].value[1].mock.calls).toEqual([]);
+			expect(useState.mock.results[1].value[1].mock.calls).toEqual([]);
+			expect(useState.mock.results[2].value[1].mock.calls).toEqual([]);
+			expect(cancel.mock.calls).toEqual([]);
 		});
 
-		it('calls getSuggestions and sets selection when text is not empty and autoSelect is set', () => {
-			const suggestions = [{}];
-			const promise = Promise.resolve(suggestions);
-			const getSuggestions = jest.fn().mockReturnValue(promise);
-			shallow(<ComboBox id="test" autoSelect text="x" getSuggestions={getSuggestions} />);
-			expect(useEffect.mock.calls[0]).toEqual([
-				expect.any(Function),
-				[expect.any(Function), expect.any(Function), 'x', undefined],
-			]);
-			useEffect.mock.calls[0][0]();
-			expect(getSuggestions.mock.calls).toEqual([['x']]);
-			return promise.then(() => {
-				expect(useState.mock.results[0].value[1].mock.calls).toEqual([[suggestions]]);
-				expect(useState.mock.results[1].value[1].mock.calls).toEqual([[true]]);
-				expect(useState.mock.results[2].value[1].mock.calls).toEqual([[0]]);
-			});
+		it('adds an effect which cancels call to updateSuggestions when it changes', () => {
+			shallow(<ComboBox id="test" />);
+			const updateSuggestions = debounce.mock.results[1].value;
+			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [updateSuggestions]]);
+			expect(useEffect.mock.calls[1][0]()).toBe(updateSuggestions.cancel);
 		});
 
-		it('calls getSuggestions and hides the list when text is not empty and suggestions is empty', () => {
-			const suggestions = [];
-			const promise = Promise.resolve(suggestions);
-			const getSuggestions = jest.fn().mockReturnValue(promise);
-			shallow(<ComboBox id="test" text="x" getSuggestions={getSuggestions} />);
-			expect(useEffect.mock.calls[0]).toEqual([
-				expect.any(Function),
-				[expect.any(Function), expect.any(Function), 'x', undefined],
-			]);
-			useEffect.mock.calls[0][0]();
-			expect(getSuggestions.mock.calls).toEqual([['x']]);
-			return promise.then(() => {
-				expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
-				expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
-				expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
-			});
-		});
-
-		it('places the list under the button', () => {
+		it('adds an effect which places the list under the button', () => {
 			const button = {
 				getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400}),
 			};
@@ -140,19 +107,19 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([true])
 				.mockReturnValueOnce([0]);
 			shallow(<ComboBox id="test" text="x" renderSuggestion={() => <div />} />);
-			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [true]]);
-			useEffect.mock.calls[1][0]();
+			expect(useEffect.mock.calls[2]).toEqual([expect.any(Function), [true]]);
+			useEffect.mock.calls[2][0]();
 			expect(list.style).toEqual({top: '100px', left: '200px', width: '400px'});
 		});
 
-		it('does not place the list when open is false', () => {
+		it('adds an effect which does not place the list when open is false', () => {
 			useState
 				.mockReturnValueOnce([[null]])
 				.mockReturnValueOnce([false])
 				.mockReturnValueOnce([0]);
 			shallow(<ComboBox id="test" text="x" renderSuggestion={() => <div />} />);
-			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [false]]);
-			expect(() => useEffect.mock.calls[1][0]()).not.toThrow();
+			expect(useEffect.mock.calls[2]).toEqual([expect.any(Function), [false]]);
+			expect(() => useEffect.mock.calls[2][0]()).not.toThrow();
 		});
 
 		it('calls onChange when enter is pressed and an item is selected', () => {
@@ -276,12 +243,112 @@ describe('ComboBox', () => {
 			expect(scrollToItem).not.toHaveBeenCalled();
 		});
 
-		it('calls onTextChange on change', () => {
+		it('calls onTextChange on change and getSuggestions when text is not empty', () => {
 			const value = 'test';
+			const suggestions = [{}];
+			const promise = Promise.resolve(suggestions);
+			const getSuggestions = jest.fn().mockReturnValue(promise);
 			const onTextChange = jest.fn();
-			const wrapper = shallow(<ComboBox id="test" onTextChange={onTextChange} />);
+			const setSuggestions = jest.fn();
+			const setOpen = jest.fn();
+			const setSelected = jest.fn();
+			useState
+				.mockReturnValueOnce([[], setSuggestions])
+				.mockReturnValueOnce([false, setOpen])
+				.mockReturnValueOnce([-1, setSelected]);
+			const wrapper = shallow(<ComboBox id="test" getSuggestions={getSuggestions} onTextChange={onTextChange} />);
 			wrapper.find('[as="input"]').simulate('change', {target: {value}});
 			expect(onTextChange.mock.calls).toEqual([[value]]);
+			expect(getSuggestions.mock.calls).toEqual([[value]]);
+			return promise.then(() => {
+				expect(setSuggestions.mock.calls).toEqual([[suggestions]]);
+				expect(setOpen.mock.calls).toEqual([[true]]);
+				expect(setSelected.mock.calls).toEqual([[-1]]);
+			});
+		});
+
+		it('calls onTextChange on change and getSuggestions when text is not empty and autoSelect is set', () => {
+			const value = 'test';
+			const suggestions = [{}];
+			const promise = Promise.resolve(suggestions);
+			const getSuggestions = jest.fn().mockReturnValue(promise);
+			const onTextChange = jest.fn();
+			const setSuggestions = jest.fn();
+			const setOpen = jest.fn();
+			const setSelected = jest.fn();
+			useState
+				.mockReturnValueOnce([[], setSuggestions])
+				.mockReturnValueOnce([false, setOpen])
+				.mockReturnValueOnce([-1, setSelected]);
+			const wrapper = shallow(
+				<ComboBox id="test" autoSelect getSuggestions={getSuggestions} onTextChange={onTextChange} />
+			);
+			wrapper.find('[as="input"]').simulate('change', {target: {value}});
+			expect(onTextChange.mock.calls).toEqual([[value]]);
+			expect(getSuggestions.mock.calls).toEqual([[value]]);
+			return promise.then(() => {
+				expect(setSuggestions.mock.calls).toEqual([[suggestions]]);
+				expect(setOpen.mock.calls).toEqual([[true]]);
+				expect(setSelected.mock.calls).toEqual([[0]]);
+			});
+		});
+
+		it('calls onTextChange on change and getSuggestions when text is not empty and hides the list when suggestions is empty', () => {
+			const value = 'test';
+			const suggestions = [];
+			const promise = Promise.resolve(suggestions);
+			const getSuggestions = jest.fn().mockReturnValue(promise);
+			const onTextChange = jest.fn();
+			const setSuggestions = jest.fn();
+			const setOpen = jest.fn();
+			const setSelected = jest.fn();
+			useState
+				.mockReturnValueOnce([[], setSuggestions])
+				.mockReturnValueOnce([false, setOpen])
+				.mockReturnValueOnce([-1, setSelected]);
+			const wrapper = shallow(<ComboBox id="test" getSuggestions={getSuggestions} onTextChange={onTextChange} />);
+			wrapper.find('[as="input"]').simulate('change', {target: {value}});
+			expect(onTextChange.mock.calls).toEqual([[value]]);
+			expect(getSuggestions.mock.calls).toEqual([[value]]);
+			return promise.then(() => {
+				expect(setSuggestions.mock.calls).toEqual([[[]]]);
+				expect(setOpen.mock.calls).toEqual([[false]]);
+				expect(setSelected.mock.calls).toEqual([[-1]]);
+			});
+		});
+
+		it('calls onTextChange on change but not getSuggestions when text is empty', () => {
+			const value = '';
+			const getSuggestions = jest.fn();
+			const onTextChange = jest.fn();
+			const setSuggestions = jest.fn();
+			const setOpen = jest.fn();
+			const setSelected = jest.fn();
+			useState
+				.mockReturnValueOnce([[], setSuggestions])
+				.mockReturnValueOnce([false, setOpen])
+				.mockReturnValueOnce([-1, setSelected]);
+			const wrapper = shallow(<ComboBox id="test" getSuggestions={getSuggestions} onTextChange={onTextChange} />);
+			wrapper.find('[as="input"]').simulate('change', {target: {value}});
+			expect(onTextChange.mock.calls).toEqual([[value]]);
+			expect(getSuggestions.mock.calls).toEqual([]);
+		});
+
+		it('calls onTextChange on change but not getSuggestions when text starts with slash', () => {
+			const value = '/x';
+			const getSuggestions = jest.fn();
+			const onTextChange = jest.fn();
+			const setSuggestions = jest.fn();
+			const setOpen = jest.fn();
+			const setSelected = jest.fn();
+			useState
+				.mockReturnValueOnce([[], setSuggestions])
+				.mockReturnValueOnce([false, setOpen])
+				.mockReturnValueOnce([-1, setSelected]);
+			const wrapper = shallow(<ComboBox id="test" getSuggestions={getSuggestions} onTextChange={onTextChange} />);
+			wrapper.find('[as="input"]').simulate('change', {target: {value}});
+			expect(onTextChange.mock.calls).toEqual([[value]]);
+			expect(getSuggestions.mock.calls).toEqual([]);
 		});
 
 		it('expands the list on focus', () => {
