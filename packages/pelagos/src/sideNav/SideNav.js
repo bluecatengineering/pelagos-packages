@@ -1,14 +1,17 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
-import passSideNavActive from './passSideNavActive';
+import SideNavContext from './SideNavContext';
+
 import './SideNav.less';
 
 /** Side navigation component. */
 const SideNav = forwardRef(({className, active, children, ...props}, ref) => (
-	<nav {...props} className={`SideNav${className ? ` ${className}` : ''}`} aria-hidden={!active} ref={ref}>
-		{passSideNavActive(active, children)}
-	</nav>
+	<SideNavContext.Provider value={active}>
+		<nav {...props} className={`SideNav${className ? ` ${className}` : ''}`} aria-hidden={!active} ref={ref}>
+			{children}
+		</nav>
+	</SideNavContext.Provider>
 ));
 
 SideNav.displayName = 'SideNav';

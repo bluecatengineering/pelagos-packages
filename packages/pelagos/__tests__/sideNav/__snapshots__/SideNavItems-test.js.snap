@@ -4,7 +4,7 @@ exports[`SideNavItems rendering renders expected elements 1`] = `
 <ul
   className="SideNav__items"
 >
-  passSideNavActive
+  child
 </ul>
 `;
 
@@ -12,6 +12,6 @@ exports[`SideNavItems rendering renders expected elements when className is set 
 <ul
   className="SideNav__items TestClass"
 >
-  passSideNavActive
+  child
 </ul>
 `;

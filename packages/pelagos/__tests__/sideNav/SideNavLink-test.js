@@ -1,3 +1,4 @@
+import {useContext} from 'react';
 import {shallow} from 'enzyme';
 
 import SideNavLink from '../../src/sideNav/SideNavLink';
@@ -12,8 +13,9 @@ describe('SideNavLink', () => {
 		});
 
 		it('renders expected elements when boolean properties are set', () => {
+			useContext.mockReturnValueOnce(true);
 			const wrapper = shallow(
-				<SideNavLink current shortcut sideNavActive>
+				<SideNavLink current shortcut>
 					child
 				</SideNavLink>
 			);

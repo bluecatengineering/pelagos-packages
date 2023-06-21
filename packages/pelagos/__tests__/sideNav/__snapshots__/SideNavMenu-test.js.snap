@@ -29,7 +29,7 @@ exports[`SideNavMenu rendering renders expected elements 1`] = `
   <ul
     className="SideNav__menu"
   >
-    passSideNavActive
+    child
   </ul>
 </li>
 `;
@@ -61,7 +61,9 @@ exports[`SideNavMenu rendering renders expected elements when a child element ha
   <ul
     className="SideNav__menu"
   >
-    passSideNavActive
+    <SideNavMenuItem
+      current={true}
+    />
   </ul>
 </li>
 `;
@@ -94,7 +96,9 @@ exports[`SideNavMenu rendering renders expected elements when boolean properties
   <ul
     className="SideNav__menu"
   >
-    passSideNavActive
+    <SideNavMenuItem
+      current={true}
+    />
   </ul>
 </li>
 `;
