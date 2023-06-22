@@ -148,26 +148,6 @@ describe('Select', () => {
 	});
 
 	describe('behaviour', () => {
-		it('places the list under the button', () => {
-			const button = {
-				getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400}),
-			};
-			const list = {style: {}};
-			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
-			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
-			shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [true]]);
-			useEffect.mock.calls[0][0]();
-			expect(list.style).toEqual({top: '101px', left: '200px', width: '400px'});
-		});
-
-		it('does not place the list when open is false', () => {
-			useState.mockReturnValueOnce([false]).mockReturnValueOnce([0]);
-			shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [false]]);
-			expect(() => useEffect.mock.calls[0][0]()).not.toThrow();
-		});
-
 		it('scrolls to current option when open changes from false to true', () => {
 			const child = {offsetTop: 50, offsetHeight: 25};
 			const list = {
@@ -180,17 +160,17 @@ describe('Select', () => {
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2]);
 			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [true, 2]]);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [true, 2]]);
 
-			useEffect.mock.calls[1][0]();
+			useEffect.mock.calls[0][0]();
 			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
 		});
 
 		it('does not scroll to current option when open changes from true to false', () => {
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [false, -1]]);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [false, -1]]);
 
-			useEffect.mock.calls[1][0]();
+			useEffect.mock.calls[0][0]();
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 

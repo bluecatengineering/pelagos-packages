@@ -96,32 +96,6 @@ describe('ComboBox', () => {
 			expect(useEffect.mock.calls[1][0]()).toBe(updateSuggestions.cancel);
 		});
 
-		it('adds an effect which places the list under the button', () => {
-			const button = {
-				getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200, width: 400}),
-			};
-			const list = {style: {}};
-			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
-			useState
-				.mockReturnValueOnce([[null]])
-				.mockReturnValueOnce([true])
-				.mockReturnValueOnce([0]);
-			shallow(<ComboBox id="test" text="x" renderSuggestion={() => <div />} />);
-			expect(useEffect.mock.calls[2]).toEqual([expect.any(Function), [true]]);
-			useEffect.mock.calls[2][0]();
-			expect(list.style).toEqual({top: '100px', left: '200px', width: '400px'});
-		});
-
-		it('adds an effect which does not place the list when open is false', () => {
-			useState
-				.mockReturnValueOnce([[null]])
-				.mockReturnValueOnce([false])
-				.mockReturnValueOnce([0]);
-			shallow(<ComboBox id="test" text="x" renderSuggestion={() => <div />} />);
-			expect(useEffect.mock.calls[2]).toEqual([expect.any(Function), [false]]);
-			expect(() => useEffect.mock.calls[2][0]()).not.toThrow();
-		});
-
 		it('calls onChange when enter is pressed and an item is selected', () => {
 			const suggestion = {name: 'Test suggestion'};
 			const onChange = jest.fn();

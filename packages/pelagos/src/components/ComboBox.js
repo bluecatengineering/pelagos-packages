@@ -7,6 +7,7 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 import scrollToItem from '../functions/scrollToItem';
 import useLayer from '../hooks/useLayer';
+import useSelectPositioner from '../hooks/useSelectPositioner';
 
 import Layer from './Layer';
 import IconButton from './IconButton';
@@ -148,17 +149,7 @@ const ComboBox = ({
 
 	useEffect(() => updateSuggestions.cancel, [updateSuggestions]);
 
-	useEffect(() => {
-		if (open) {
-			const button = buttonRef.current;
-			const {bottom, left, width} = button.getBoundingClientRect();
-
-			const list = listRef.current;
-			list.style.top = `${bottom}px`;
-			list.style.left = `${left}px`;
-			list.style.width = `${width}px`;
-		}
-	}, [open]);
+	useSelectPositioner(open, buttonRef, listRef);
 
 	const listId = `${id}-list`;
 	return (
