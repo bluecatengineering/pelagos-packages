@@ -5,6 +5,7 @@ import identity from 'lodash-es/identity';
 
 import useLayer from '../hooks/useLayer';
 import useStringFinder from '../hooks/useStringFinder';
+import useSelectPositioner from '../hooks/useSelectPositioner';
 import pageUp from '../functions/pageUp';
 import pageDown from '../functions/pageDown';
 import scrollToItem from '../functions/scrollToItem';
@@ -181,17 +182,7 @@ const Select = ({
 		[select, renderedOptions]
 	);
 
-	useEffect(() => {
-		if (open) {
-			const button = buttonRef.current;
-			const {bottom, left, width} = button.getBoundingClientRect();
-
-			const list = listRef.current;
-			list.style.top = `${bottom + 1}px`;
-			list.style.left = `${left}px`;
-			list.style.width = `${width}px`;
-		}
-	}, [open]);
+	useSelectPositioner(open, buttonRef, listRef);
 
 	useEffect(() => {
 		if (open) {
