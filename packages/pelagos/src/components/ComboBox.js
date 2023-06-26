@@ -34,8 +34,6 @@ const ComboBox = ({
 	const [open, setOpen] = useState(false);
 	const [selected, setSelected] = useState(-1);
 
-	const debouncedChange = useMemo(() => debounce(onTextChange, 33), [onTextChange]);
-
 	const level = useLayer();
 
 	const hideList = useCallback(() => (setSuggestions([]), setOpen(false), setSelected(-1)), []);
@@ -70,14 +68,12 @@ const ComboBox = ({
 					if (selected !== -1) {
 						selectSuggestion(selected);
 					} else if (onEnter) {
-						debouncedChange.flush();
 						hideList();
 						onEnter(event.target.value);
 					}
 					break;
 				case 27: // escape
 					event.preventDefault();
-					debouncedChange.cancel();
 					hideList();
 					onTextChange('');
 					break;
@@ -99,18 +95,18 @@ const ComboBox = ({
 					break;
 			}
 		},
-		[debouncedChange, hideList, onEnter, onTextChange, open, selectSuggestion, selected, suggestions.length]
+		[hideList, onEnter, onTextChange, open, selectSuggestion, selected, suggestions.length]
 	);
 
 	const handleChange = useCallback(
 		(event) => {
 			const text = event.target.value;
-			debouncedChange(text);
+			onTextChange(text);
 			if (text && text[0] !== '/') {
 				updateSuggestions(text);
 			}
 		},
-		[debouncedChange, updateSuggestions]
+		[onTextChange, updateSuggestions]
 	);
 
 	const handleFocus = useCallback(
@@ -123,9 +119,8 @@ const ComboBox = ({
 	const handleAddClick = useCallback(() => {
 		const input = document.getElementById(id);
 		input.focus();
-		debouncedChange.flush();
 		onEnter(input.value);
-	}, [debouncedChange, id, onEnter]);
+	}, [id, onEnter]);
 
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
 

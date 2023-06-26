@@ -1,6 +1,5 @@
-import {useCallback, useMemo} from 'react';
+import {useCallback} from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'lodash-es/debounce';
 
 import Layer from '../components/Layer';
 import LabelLine from '../components/LabelLine';
@@ -15,7 +14,6 @@ const TextAreaField = ({id, className, label, value, required, resize, helperTex
 	id = useRandomId(id);
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
-	const debounced = useMemo(() => debounce(onChange, 33), [onChange]);
 	return (
 		<div className={`TextAreaField${className ? ` ${className}` : ''}`}>
 			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
@@ -30,7 +28,7 @@ const TextAreaField = ({id, className, label, value, required, resize, helperTex
 				aria-describedby={error ? errorId : helperId}
 				aria-required={required}
 				aria-invalid={!!error}
-				onChange={useCallback((event) => debounced(event.target.value), [debounced])}
+				onChange={useCallback((event) => onChange(event.target.value), [onChange])}
 			/>
 			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
 		</div>
