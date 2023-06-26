@@ -34,7 +34,7 @@ jobs:
         uses: mikepenz/action-junit-report@c0e4b81aaa0067314a2d0d06e19b512c9d8af4f5 # tag=v3.7.7
         if: always()
         with:
-          report_paths: build/test-results/unit.xml
+          report_paths: build/junit.xml
 
       - name: Publish coverage report
         uses: 5monkeys/cobertura-action@4157521550018abbbd29dfdf1b5963e907ea37f0 # tag=v13
