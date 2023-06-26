@@ -1,6 +1,5 @@
-import {useCallback, useMemo, useRef, useState} from 'react';
+import {useCallback, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
 
 import useTooltip from '../hooks/useTooltip';
@@ -30,8 +29,6 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 
 	const [text, setText] = useState('');
 
-	const debChange = useMemo(() => debounce((text) => (onError(null), setText(text)), 33), [onError]);
-
 	const handleTagClick = useCallback(
 		(event) => {
 			const button = event.target.closest('button');
@@ -53,17 +50,15 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 				if (error) {
 					onError(error);
 				} else {
-					debChange.cancel();
 					liveRef.current.textContent = t`${name} added`;
 					onChange([...tags, name]);
 					setText('');
 				}
 			} else {
-				debChange.cancel();
 				setText('');
 			}
 		},
-		[tags, validate, onChange, onError, debChange]
+		[tags, validate, onChange, onError]
 	);
 
 	const handleKeyDown = useCallback(
@@ -95,7 +90,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 		[tags, onChange, addTag]
 	);
 
-	const handleChange = useCallback((event) => debChange(event.target.value), [debChange]);
+	const handleChange = useCallback((event) => (onError(null), setText(event.target.value)), [onError]);
 
 	const handleBlur = useCallback(
 		(event) => {

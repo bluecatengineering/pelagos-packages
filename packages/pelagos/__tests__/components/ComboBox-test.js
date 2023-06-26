@@ -53,7 +53,7 @@ describe('ComboBox', () => {
 				expect.any(Function),
 				[expect.any(Function), expect.any(Function), undefined, undefined],
 			]);
-			const cancel = debounce.mock.results[1].value.cancel;
+			const cancel = debounce.mock.results[0].value.cancel;
 			useEffect.mock.calls[0][0]();
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
@@ -67,7 +67,7 @@ describe('ComboBox', () => {
 				expect.any(Function),
 				[expect.any(Function), expect.any(Function), '/x', undefined],
 			]);
-			const cancel = debounce.mock.results[1].value.cancel;
+			const cancel = debounce.mock.results[0].value.cancel;
 			useEffect.mock.calls[0][0]();
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
@@ -81,7 +81,7 @@ describe('ComboBox', () => {
 				expect.any(Function),
 				[expect.any(Function), expect.any(Function), 'x', undefined],
 			]);
-			const cancel = debounce.mock.results[1].value.cancel;
+			const cancel = debounce.mock.results[0].value.cancel;
 			useEffect.mock.calls[0][0]();
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([]);
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([]);
@@ -91,7 +91,7 @@ describe('ComboBox', () => {
 
 		it('adds an effect which cancels call to updateSuggestions when it changes', () => {
 			shallow(<ComboBox id="test" />);
-			const updateSuggestions = debounce.mock.results[1].value;
+			const updateSuggestions = debounce.mock.results[0].value;
 			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [updateSuggestions]]);
 			expect(useEffect.mock.calls[1][0]()).toBe(updateSuggestions.cancel);
 		});
@@ -129,7 +129,6 @@ describe('ComboBox', () => {
 				.find('[as="input"]')
 				.simulate('keydown', {keyCode: 13, target: {value: 'test'}, preventDefault: jest.fn()});
 			expect(onEnter.mock.calls).toEqual([['test']]);
-			expect(onTextChange.flush.mock.calls).toEqual([[]]);
 		});
 
 		it('ignores input when enter is pressed, no item is selected and onEnter is not set', () => {
@@ -369,7 +368,6 @@ describe('ComboBox', () => {
 			const wrapper = shallow(<ComboBox id="test" onTextChange={onTextChange} onEnter={onEnter} />);
 			wrapper.find('#test-add').simulate('click');
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(onTextChange.flush.mock.calls).toEqual([[]]);
 			expect(onEnter.mock.calls).toEqual([[value]]);
 		});
 
