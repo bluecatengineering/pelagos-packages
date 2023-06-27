@@ -14,7 +14,7 @@ import {useCallback} from 'react';
  *   const {...} = useMenuHandler(setPopUpPosition);
  * }
  */
-export default (flipped) =>
+const useMenuPositioner = (flipped) =>
 	useCallback(
 		(button, menu) => {
 			const {top, bottom, left, right} = button.getBoundingClientRect();
@@ -29,3 +29,5 @@ export default (flipped) =>
 		},
 		[flipped]
 	);
+
+export default useMenuPositioner;
