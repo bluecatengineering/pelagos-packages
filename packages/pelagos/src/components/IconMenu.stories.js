@@ -1,15 +1,16 @@
 import {action} from '@storybook/addon-actions';
+import {faCat} from '@fortawesome/free-solid-svg-icons';
 
 import WithLayers from '../../templates/WithLayers';
+import MenuItem from '../menu/MenuItem';
 
-import ButtonMenu from './ButtonMenu';
-import MenuItem from './MenuItem';
+import IconMenu from './IconMenu';
 
 const handleClick = action('onClick');
 
 export default {
-	title: 'Components/ButtonMenu',
-	component: ButtonMenu,
+	title: 'Components/IconMenu',
+	component: IconMenu,
 };
 
 const children = [
@@ -26,11 +27,18 @@ const children = [
 		Option 4
 	</MenuItem>,
 ];
-
-export const Default = {args: {text: 'Actions', children}};
+export const Default = {args: {icon: faCat, arrow: true, 'aria-label': 'Cat actions', children}};
 
 export const _WithLayers = {
-	render: () => <WithLayers align="start">{() => <ButtonMenu text="Actions">{children}</ButtonMenu>}</WithLayers>,
+	render: () => (
+		<WithLayers>
+			{() => (
+				<IconMenu icon={faCat} arrow aria-label="Cat actions">
+					{children}
+				</IconMenu>
+			)}
+		</WithLayers>
+	),
 	parameters: {
 		controls: {hideNoControlsWarning: true},
 	},
