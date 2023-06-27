@@ -16,9 +16,8 @@
   ],
   "main": "dist",
   "peerDependencies": {
-    "stylelint": ">=14",
-    "stylelint-config-prettier": ">=9",
-    "stylelint-config-standard": ">=23"
+    "stylelint": ">=15",
+    "stylelint-config-standard": ">=33"
   },
   "dependencies": {
     "@bluecateng/stylelint-plugin": "^4.0.1"

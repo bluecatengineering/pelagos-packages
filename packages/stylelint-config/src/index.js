@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
+	extends: ['stylelint-config-standard'],
 	plugins: ['@bluecateng/stylelint-plugin'],
 	rules: {
 		'alpha-value-notation': 'number',
