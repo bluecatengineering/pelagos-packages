@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.2.0...@bluecateng/pelagos@12.3.0) (2023-06-27)
+
+### Features
+
+- deprecate status-\* tokens in favour of Tags ([8bf9fa4](https://github.com/bluecatengineering/pelagos-packages/commit/8bf9fa4672cdef2b0f0572a0737c1df4d2469d89))
+
+### Bug Fixes
+
+- in ComboBox get suggestions only when the input changes ([5a00a8e](https://github.com/bluecatengineering/pelagos-packages/commit/5a00a8e36e4be6d4bcc8502f7fe2aabc823f38b3))
+- remove unnecessary debounce of text changes ([a032d3d](https://github.com/bluecatengineering/pelagos-packages/commit/a032d3db608c1a71ff5457fca7e7bc6034d5c75e))
+- truncate long strings in the side nav components ([731be63](https://github.com/bluecatengineering/pelagos-packages/commit/731be63ff4708e8992a28e8a3797240f3c0cbcdc))
+- truncate the current value in Select ([c4a5deb](https://github.com/bluecatengineering/pelagos-packages/commit/c4a5debafa0493fc75965d8e806b5e1e045fc6ff))
+- update the ComboBox/Select pop-up position on scroll ([f7bb1f3](https://github.com/bluecatengineering/pelagos-packages/commit/f7bb1f3c3cebd4391911d6f8745e830ab1fbb68f))
+
 ## [12.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.1.0...@bluecateng/pelagos@12.2.0) (2023-06-09)
 
 ### Features
