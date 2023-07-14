@@ -1,0 +1,95 @@
+@import '../../less/spacing';
+@import '../../less/utils';
+
+@layer pelagos {
+	.TreeView {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		&__node {
+			outline: none;
+			cursor: pointer;
+		}
+
+		&__label {
+			flex-direction: row;
+			align-items: center;
+			height: 32px;
+			padding-right: @sp-16;
+			color: var(--text-secondary);
+			transition: color 0.15s ease-out, background-color 0.15s ease-out;
+
+			.TreeView--xs & {
+				height: 24px;
+			}
+
+			&:hover {
+				color: var(--text-primary);
+				background-color: var(--layer-hover);
+			}
+
+			:focus-visible > & {
+				@focus-ring();
+			}
+
+			[aria-selected='true'] > & {
+				position: relative;
+				color: var(--text-primary);
+				background-color: var(--layer-selected);
+
+				&:hover {
+					background-color: var(--layer-selected-hover);
+				}
+
+				&::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					bottom: 0;
+					width: 4px;
+					background-color: var(--border-interactive);
+				}
+			}
+		}
+
+		&__iconWrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 16px;
+			height: 16px;
+			margin-right: @sp-08;
+		}
+
+		&__icon {
+			font-size: 14px;
+			color: var(--icon-secondary);
+			transition: color 0.15s ease-out, transform 0.15s ease-out;
+
+			[aria-selected='true'] &,
+			.TreeView__label:hover & {
+				color: var(--icon-primary);
+			}
+		}
+
+		&__loading {
+			font-size: 2.5px;
+		}
+
+		&--expanded {
+			transform: rotate(90deg);
+		}
+
+		&__text {
+			@base-ellipsis();
+		}
+
+		&__children {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	}
+}
