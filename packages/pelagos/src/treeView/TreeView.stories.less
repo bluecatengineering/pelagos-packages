@@ -1,0 +1,32 @@
+@import '../../less/spacing';
+@import '../../less/utils';
+
+.TreeViewStories {
+	&__layer {
+		background-color: var(--layer);
+	}
+
+	&__label {
+		display: flex;
+		align-items: center;
+		gap: @sp-08;
+		width: 220px;
+	}
+
+	&__text {
+		@base-ellipsis();
+		flex: 1;
+	}
+
+	&__bar {
+		display: inline-flex;
+		flex: none;
+		width: 100px;
+		height: 16px;
+		border: 1px solid var(--border-strong);
+	}
+
+	&__barFill {
+		background-color: var(--highlight);
+	}
+}

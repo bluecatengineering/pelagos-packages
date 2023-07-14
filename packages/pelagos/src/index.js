@@ -13,3 +13,4 @@ export * from './suggestions';
 export * from './table';
 export * from './tabs';
 export * from './toasts';
+export * from './treeView';

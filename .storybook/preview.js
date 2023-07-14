@@ -12,7 +12,16 @@ export default {
 		actions: {argTypesRegex: '^on[A-Z].*'},
 		options: {
 			storySort: (a, b) => {
-				const order = {Welcome: 0, Figma: 1, Icons: 2, Styles: 3, Components: 4, hooks: 5, functions: 6};
+				const order = {
+					Welcome: 0,
+					Figma: 1,
+					Icons: 2,
+					Styles: 3,
+					Components: 4,
+					Experimental: 5,
+					hooks: 6,
+					functions: 7,
+				};
 				const [aGroup, aName = ''] = a.title.split('/');
 				const [bGroup, bName = ''] = b.title.split('/');
 				return order[aGroup] - order[bGroup] || aName.localeCompare(bName);

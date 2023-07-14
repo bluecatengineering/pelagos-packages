@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeNode rendering renders expected elements 1`] = `
+<li
+  aria-selected={false}
+  className="TreeView__node"
+  id="test-id"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="treeitem"
+  tabIndex={-1}
+>
+  <div
+    className="TreeView__label"
+    style={
+      {
+        "paddingLeft": "40px",
+      }
+    }
+  >
+    <span
+      className="TreeView__text"
+      title="Test"
+    >
+      Test
+    </span>
+  </div>
+</li>
+`;
+
+exports[`TreeNode rendering renders expected elements when expanded is false 1`] = `
+<li
+  aria-expanded={false}
+  aria-selected={false}
+  className="TreeView__node"
+  id="test-id"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="treeitem"
+  tabIndex={-1}
+>
+  <div
+    className="TreeView__label"
+    style={
+      {
+        "paddingLeft": "16px",
+      }
+    }
+  >
+    <span
+      className="TreeView__iconWrapper"
+      onClick={[Function]}
+    >
+      <SvgIcon
+        className="TreeView__icon"
+        icon={
+          {
+            "icon": [],
+            "iconName": "caret-right",
+            "prefix": "fas",
+          }
+        }
+      />
+    </span>
+    <span
+      className="TreeView__text"
+      title="Test"
+    >
+      Test
+    </span>
+  </div>
+</li>
+`;
+
+exports[`TreeNode rendering renders expected elements when focused equals id 1`] = `
+<li
+  aria-selected={false}
+  className="TreeView__node"
+  id="test-id"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="treeitem"
+  tabIndex={0}
+>
+  <div
+    className="TreeView__label"
+    style={
+      {
+        "paddingLeft": "40px",
+      }
+    }
+  >
+    <span
+      className="TreeView__text"
+      title="Test"
+    >
+      Test
+    </span>
+  </div>
+</li>
+`;
+
+exports[`TreeNode rendering renders expected elements when label is not a string 1`] = `
+<li
+  aria-selected={false}
+  className="TreeView__node"
+  id="test-id"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="treeitem"
+  tabIndex={-1}
+>
+  <div
+    className="TreeView__label"
+    style={
+      {
+        "paddingLeft": "40px",
+      }
+    }
+  >
+    <span
+      className="TreeView__text"
+      title={null}
+    >
+      <span />
+    </span>
+  </div>
+</li>
+`;
+
+exports[`TreeNode rendering renders expected elements when loading is set 1`] = `
+<li
+  aria-expanded={false}
+  aria-selected={false}
+  className="TreeView__node"
+  id="test-id"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="treeitem"
+  tabIndex={-1}
+>
+  <div
+    className="TreeView__label"
+    style={
+      {
+        "paddingLeft": "16px",
+      }
+    }
+  >
+    <span
+      className="TreeView__iconWrapper"
+      onClick={[Function]}
+    >
+      <span
+        className="CssSpinner TreeView__loading"
+      />
+    </span>
+    <span
+      className="TreeView__text"
+      title="Test"
+    >
+      Test
+    </span>
+  </div>
+</li>
+`;
+
+exports[`TreeNode rendering renders expected elements when optional properties are set 1`] = `
+<li
+  aria-expanded={true}
+  aria-selected={false}
+  className="TreeView__node"
+  id="test-id"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="treeitem"
+  tabIndex={-1}
+>
+  <div
+    className="TreeView__label"
+    style={
+      {
+        "paddingLeft": "24px",
+      }
+    }
+  >
+    <span
+      className="TreeView__iconWrapper"
+      onClick={[Function]}
+    >
+      <SvgIcon
+        className="TreeView__icon TreeView--expanded"
+        icon={
+          {
+            "icon": [],
+            "iconName": "caret-right",
+            "prefix": "fas",
+          }
+        }
+      />
+    </span>
+    <span
+      className="TreeView__iconWrapper"
+    >
+      <SvgIcon
+        className="TreeView__icon"
+        icon="test-icon"
+      />
+    </span>
+    <span
+      className="TreeView__text TestClass"
+      title="Test"
+    >
+      Test
+    </span>
+  </div>
+  <Context.Provider
+    value={
+      {
+        "hasIcon": true,
+        "level": 1,
+        "padding": 24,
+      }
+    }
+  >
+    <ul
+      className="TreeView__children"
+      role="group"
+    >
+      children
+    </ul>
+  </Context.Provider>
+</li>
+`;

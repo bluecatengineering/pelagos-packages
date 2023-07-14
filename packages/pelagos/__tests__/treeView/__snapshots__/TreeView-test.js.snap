@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeView rendering renders expected elements 1`] = `
+<Context.Provider
+  value={
+    {
+      "focused": [Function],
+      "onSelect": undefined,
+      "selected": undefined,
+      "setFocused": [MockFunction],
+    }
+  }
+>
+  <Context.Provider
+    value={
+      {
+        "level": 0,
+        "padding": 0,
+      }
+    }
+  >
+    <ul
+      className="TreeView TreeView--sm"
+      role="tree"
+    >
+      children
+    </ul>
+  </Context.Provider>
+</Context.Provider>
+`;
+
+exports[`TreeView rendering renders expected elements when optional properties are set 1`] = `
+<Context.Provider
+  value={
+    {
+      "focused": [Function],
+      "onSelect": undefined,
+      "selected": "test-id",
+      "setFocused": [MockFunction],
+    }
+  }
+>
+  <Context.Provider
+    value={
+      {
+        "level": 0,
+        "padding": 0,
+      }
+    }
+  >
+    <ul
+      className="TreeView TreeView--xs TestClass"
+      role="tree"
+    >
+      children
+    </ul>
+  </Context.Provider>
+</Context.Provider>
+`;
