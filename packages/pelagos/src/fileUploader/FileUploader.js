@@ -65,7 +65,14 @@ const FileUploader = ({
 			{files?.length ? (
 				<FileUploaderList onClick={handleRemoveClick}>
 					{files.map(({name, error}, index) => (
-						<FileUploaderItem key={index} name={name} error={error} data-testid="remove-file" data-index={index} />
+						<FileUploaderItem
+							key={index}
+							name={name}
+							error={error}
+							disableDelete={disabled}
+							data-testid="remove-file"
+							data-index={index}
+						/>
 					))}
 				</FileUploaderList>
 			) : null}
