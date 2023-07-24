@@ -83,6 +83,7 @@ exports[`FileUploader rendering renders expected elements when optional properti
     <FileUploaderItem
       data-index={0}
       data-testid="remove-file"
+      disableDelete={true}
       error="Test file error"
       name="foo.txt"
     />

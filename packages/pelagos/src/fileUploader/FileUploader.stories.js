@@ -39,6 +39,7 @@ export const Disabled = {
 	args: {
 		label: 'Disabled',
 		dropZoneText: 'Drag and drop files here or click to upload',
+		files: [{name: 'file-1.txt'}],
 		helperText: 'Only .txt files are supported.',
 		disabled: true,
 	},
