@@ -63,7 +63,7 @@
     "lint-staged": "^13.0.2",
     "postcss": "^8.4.5",
     "postcss-less": "^6.0.0",
-    "prettier": "^2.5.1",
+    "prettier": "^3.0.0",
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
