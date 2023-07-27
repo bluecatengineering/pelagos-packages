@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.3.0...@bluecateng/pelagos@12.3.1) (2023-07-27)
+
+### Bug Fixes
+
+- disable remove file icon when FileUploader is disabled ([11131a3](https://github.com/bluecatengineering/pelagos-packages/commit/11131a3eec63c1746106c78530c06ea399c7d72c))
+- move styles to the pelagos layer ([434c627](https://github.com/bluecatengineering/pelagos-packages/commit/434c627fe7c00ba0c2b011074ea3182ffafe5579))
+
 ## [12.3.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.2.0...@bluecateng/pelagos@12.3.0) (2023-06-27)
 
 ### Features
