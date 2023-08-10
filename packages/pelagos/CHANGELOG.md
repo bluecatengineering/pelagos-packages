@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.4.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.3.1...@bluecateng/pelagos@12.4.0) (2023-08-10)
+
+### Features
+
+- add TreeView component ([5c29538](https://github.com/bluecatengineering/pelagos-packages/commit/5c2953874deed787263c020bee8297a0b3ceb3ea))
+
 ## [12.3.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.3.0...@bluecateng/pelagos@12.3.1) (2023-07-27)
 
 ### Bug Fixes
