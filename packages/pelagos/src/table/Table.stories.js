@@ -74,14 +74,6 @@ for (let i = 0; i < 300; ++i) {
 export default {
 	title: 'Components/Table',
 	component: Table,
-	parameters: {layout: 'fullscreen'},
-	decorators: [
-		(Story) => (
-			<div className="Story__stretch">
-				<Story />
-			</div>
-		),
-	],
 };
 
 export const Default = (args) => (
@@ -138,36 +130,39 @@ Empty.args = {
 	fixedLayout: true,
 };
 
-export const ScrollWrapper = (args) => (
-	<Layer className="TableStory__wrapper">
-		<TableTitle title="Table" description="With scroll wrapper." />
-		<TableScrollWrapper>
-			<Table {...args}>
-				<TableHead>
-					<TableRow>
-						{largeColumns.map((header, j) => (
-							<TableHeader key={j}>{header}</TableHeader>
-						))}
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{largeData.map((row, i) => (
-						<TableRow key={i}>
-							{row.map((text, j) => (
-								<TableCell key={j}>{text}</TableCell>
+export const ScrollWrapper = {
+	parameters: {layout: 'fullscreen'},
+	args: {
+		id: 'default',
+		className: 'TableStory--scroll',
+		stickyHeader: true,
+		fixedLayout: true,
+	},
+	render: (args) => (
+		<Layer className="TableStory__wrapperScroll">
+			<TableTitle title="Table" description="With scroll wrapper." />
+			<TableScrollWrapper>
+				<Table {...args}>
+					<TableHead>
+						<TableRow>
+							{largeColumns.map((header, j) => (
+								<TableHeader key={j}>{header}</TableHeader>
 							))}
 						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableScrollWrapper>
-	</Layer>
-);
-ScrollWrapper.args = {
-	id: 'default',
-	className: 'TableStory--scroll',
-	stickyHeader: true,
-	fixedLayout: true,
+					</TableHead>
+					<TableBody>
+						{largeData.map((row, i) => (
+							<TableRow key={i}>
+								{row.map((text, j) => (
+									<TableCell key={j}>{text}</TableCell>
+								))}
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableScrollWrapper>
+		</Layer>
+	),
 };
 
 export const Selection = (args) => (
@@ -520,4 +515,76 @@ WithPagination.args = {
 	id: 'pagination',
 	className: 'TableStory--default',
 	fixedLayout: true,
+};
+
+export const ForFigma = {
+	argTypes: {
+		headers: {control: 'text', description: 'Column headers, comma separated'},
+		rows: {control: {type: 'number', min: 0, max: 1000}, description: 'Number of rows'},
+		cellText: {control: 'text', description: 'Text of generated cells'},
+		selection: {control: 'select', options: ['none', 'checkbox', 'radio'], description: 'Type of selection'},
+		actions: {control: 'select', options: ['none', 'icons', 'menu'], description: 'Type of actions'},
+		className: {table: {disable: true}},
+		stickyHeader: {table: {disable: true}},
+		fixedLayout: {table: {disable: true}},
+		children: {table: {disable: true}},
+	},
+	args: {
+		headers: 'Foo, Bar, Baz',
+		rows: 10,
+		cellText: 'Lorem ipsum',
+		selection: 'none',
+		actions: 'none',
+		rowMode: 'line',
+	},
+	render: ({headers, rows, cellText, selection, actions, rowMode}) => {
+		const headerList = headers.split(',').map((s) => s.trim());
+		return (
+			<Layer className="TableStory__wrapper">
+				<Table className="TableStory--figma" rowMode={rowMode}>
+					<TableHead>
+						<TableRow>
+							{selection === 'checkbox' ? (
+								<TableSelectAll aria-label="Select all rows" />
+							) : selection === 'radio' ? (
+								<TableHeader radio />
+							) : null}
+							{headerList.map((header) => (
+								<TableHeader key={header} className="TableStory__header">
+									{header}
+								</TableHeader>
+							))}
+							{actions === 'none' ? null : <TableHeader className={`TableStory__${actions}`} />}
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{Array.from({length: rows}).map((row) => (
+							<TableRow key={row}>
+								{selection === 'none' ? null : (
+									<TableSelectRow radio={selection === 'radio'} name="select" aria-label="Select row" />
+								)}
+								{headerList.map((header) => (
+									<TableCell key={header}>{cellText}</TableCell>
+								))}
+								{actions === 'none' ? null : (
+									<TableCell>
+										{actions === 'icons' ? (
+											<div className="TableStory__inlineButtons">
+												<IconButton icon={faEdit} />
+												<IconButton icon={faTrashAlt} />
+											</div>
+										) : (
+											<IconMenu icon={faEllipsisV} flipped>
+												<MenuItem>Option one</MenuItem>
+											</IconMenu>
+										)}
+									</TableCell>
+								)}
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</Layer>
+		);
+	},
 };

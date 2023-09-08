@@ -1,8 +1,15 @@
 @import '../../less/spacing';
 
 .TableStory__wrapper {
-	flex: 1;
-	margin: @sp-24;
+	align-self: stretch;
+	background-color: var(--layer);
+}
+
+.TableStory__wrapperScroll {
+	align-self: stretch;
+	height: calc(100vh - 2rem);
+	// stylelint-disable-next-line @bluecateng/property-strict-value -- to match other stories
+	margin: 1rem;
 	background-color: var(--layer);
 }
 
@@ -34,5 +41,19 @@
 .TableStory--inlineMenu {
 	& > thead > tr > :nth-child(4) {
 		width: 64px;
+	}
+}
+
+.TableStory--figma {
+	& > thead > tr > .TableStory__header {
+		min-width: 10em;
+	}
+
+	& > thead > tr > .TableStory__icons {
+		min-width: 96px;
+	}
+
+	& > thead > tr > .TableStory__menu {
+		min-width: 64px;
 	}
 }
