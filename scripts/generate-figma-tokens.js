@@ -32,7 +32,7 @@ const loadThemes = () =>
 			const meta = parse(metaText);
 			return Object.fromEntries(
 				Object.entries(parse(themes))
-					.filter(([k]) => meta[k]?.group === 'deprecated')
+					.filter(([k]) => meta[k]?.group !== 'deprecated')
 					.map(([k, v]) => [
 						k,
 						Object.fromEntries(
