@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # tag=v3.5.2
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # tag=v3.6.0
 
       - name: Setup node
-        uses: actions/setup-node@e33196f7422957bea03ed53f6fbb155025ffc7b8 # tag=v3.7.0
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # tag=v3.8.1
         with:
           node-version: 18
 
@@ -31,7 +31,7 @@ jobs:
           TZ: America/Toronto
 
       - name: Publish test report
-        uses: mikepenz/action-junit-report@150e2f992e4fad1379da2056d1d1c279f520e058 # tag=v3.8.0
+        uses: mikepenz/action-junit-report@75b84e78b3f0aaea7ed7cf8d1d100d7f97f963ec # tag=v4.0.0
         if: always()
         with:
           report_paths: build/junit.xml

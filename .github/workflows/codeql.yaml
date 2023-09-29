@@ -24,14 +24,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # tag=v3.5.2
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # tag=v3.6.0
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@6ca1aa8c195c3ca3e77c174fe0356db1bce3b319 # tag=v2.21.1
+        uses: github/codeql-action/init@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # tag=v2.21.9
         with:
           languages: ${{ matrix.language }}
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@6ca1aa8c195c3ca3e77c174fe0356db1bce3b319 # tag=v2.21.1
+        uses: github/codeql-action/analyze@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # tag=v2.21.9
         with:
           category: '/language:${{matrix.language}}'
