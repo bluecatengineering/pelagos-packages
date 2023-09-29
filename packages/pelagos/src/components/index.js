@@ -39,6 +39,7 @@ export {default as RadioGroup} from './RadioGroup';
 export {default as ScrollBox} from './ScrollBox';
 export {default as SearchField} from './SearchField';
 export {default as Select} from './Select';
+export {default as SelectArrow} from './SelectArrow';
 export {default as Spinner} from './Spinner';
 export {default as SvgIcon} from './SvgIcon';
 export {default as Tabs} from './Tabs';

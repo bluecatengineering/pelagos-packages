@@ -10,5 +10,10 @@ describe('SelectArrow', () => {
 			const wrapper = shallow(<SelectArrow className="TestClass" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when open is set', () => {
+			const wrapper = shallow(<SelectArrow className="TestClass" open />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

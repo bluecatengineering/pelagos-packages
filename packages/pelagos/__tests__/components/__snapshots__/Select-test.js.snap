@@ -23,6 +23,7 @@ exports[`Select rendering renders expected elements 1`] = `
     </div>
     <SelectArrow
       className="Select__arrow"
+      open={false}
     />
   </Layer>
 </React.Fragment>
@@ -51,6 +52,7 @@ exports[`Select rendering renders expected elements when className is not set 1`
     </div>
     <SelectArrow
       className="Select__arrow"
+      open={false}
     />
   </Layer>
 </React.Fragment>
@@ -78,6 +80,7 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     </div>
     <SelectArrow
       className="Select__arrow"
+      open={false}
     />
   </Layer>
 </React.Fragment>
@@ -107,6 +110,7 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     </div>
     <SelectArrow
       className="Select__arrow"
+      open={false}
     />
   </Layer>
 </React.Fragment>
@@ -136,6 +140,7 @@ exports[`Select rendering renders expected elements when noLayer is true 1`] = `
     </div>
     <SelectArrow
       className="Select__arrow"
+      open={false}
     />
   </Layer>
 </React.Fragment>
@@ -163,7 +168,8 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       Two
     </div>
     <SelectArrow
-      className="Select__arrow Select__arrow--open"
+      className="Select__arrow"
+      open={true}
     />
   </Layer>
   <React.Portal>
@@ -230,6 +236,7 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     </div>
     <SelectArrow
       className="Select__arrow"
+      open={false}
     />
   </Layer>
 </React.Fragment>
@@ -258,6 +265,7 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     </div>
     <SelectArrow
       className="Select__arrow"
+      open={false}
     />
   </Layer>
 </React.Fragment>

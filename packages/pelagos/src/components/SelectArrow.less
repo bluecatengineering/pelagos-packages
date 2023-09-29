@@ -5,5 +5,10 @@
 		flex: none;
 		fill: var(--icon-primary);
 		pointer-events: none;
+		transition: transform 0.15s ease-out;
+
+		&--open {
+			transform: rotate(180deg);
+		}
 	}
 }
