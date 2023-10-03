@@ -24,7 +24,7 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 
 	const setPopUpPosition = useMenuPositioner(flipped);
 
-	const {expanded, buttonProps, menuProps, guardProps, buttonRef} = useMenuHandler(setPopUpPosition);
+	const {expanded, buttonProps, menuProps, buttonRef} = useMenuHandler(setPopUpPosition);
 
 	return (
 		<>
@@ -45,7 +45,6 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 			{expanded &&
 				createPortal(
 					<Layer className="IconMenu__popUp" level={level}>
-						<div {...guardProps} tabIndex={0} />
 						<ul {...menuProps} id={menuId} className="IconMenu__menu" role="menu" aria-labelledby={id}>
 							{Children.map(children, (child, index) =>
 								cloneElement(child, {
@@ -54,7 +53,6 @@ const IconMenu = forwardRef(({id, className, icon, arrow, disabled, flipped, chi
 								})
 							)}
 						</ul>
-						<div {...guardProps} tabIndex={0} />
 					</Layer>,
 					document.body
 				)}

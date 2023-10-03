@@ -42,14 +42,12 @@ const setPopUpPosition = (button, menu) => {
 };
 
 const Example = () => {
-	const {expanded, buttonProps, menuProps, guardProps} = useMenuHandler(setPopUpPosition);
+	const {expanded, buttonProps, menuProps} = useMenuHandler(setPopUpPosition);
 	return (
 		<div>
 			<button {...buttonProps}>...</button>
 			<div>
-				<div tabIndex={0} {...guardProps} />
 				<Menu {...menuProps}>...</Menu>
-				<div tabIndex={0} {...guardProps} />
 			</div>
 		</div>
 	);

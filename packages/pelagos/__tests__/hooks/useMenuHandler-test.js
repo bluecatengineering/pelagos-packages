@@ -1,4 +1,5 @@
 import {useLayoutEffect, useRef, useState} from 'react';
+import {createFocusTrap} from 'focus-trap';
 
 import useMenuHandler from '../../src/hooks/useMenuHandler';
 
@@ -15,7 +16,7 @@ describe('useMenuHandler', () => {
 			const click = jest.fn();
 			useState.mockReturnValueOnce([true]);
 			const onKeyDown = useMenuHandler().buttonProps.onKeyDown;
-			onKeyDown({keyCode: 40, preventDefault, target: {click}});
+			onKeyDown({key: 'ArrowDown', preventDefault, target: {click}});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(click.mock.calls).toEqual([[]]);
@@ -25,10 +26,10 @@ describe('useMenuHandler', () => {
 			const preventDefault = jest.fn();
 			useState.mockReturnValueOnce([true]);
 			const onKeyDown = useMenuHandler().buttonProps.onKeyDown;
-			onKeyDown({keyCode: 40, shiftKey: true, preventDefault});
-			onKeyDown({keyCode: 40, ctrlKey: true, preventDefault});
-			onKeyDown({keyCode: 40, altKey: true, preventDefault});
-			onKeyDown({keyCode: 40, metaKey: true, preventDefault});
+			onKeyDown({key: 'ArrowDown', shiftKey: true, preventDefault});
+			onKeyDown({key: 'ArrowDown', ctrlKey: true, preventDefault});
+			onKeyDown({key: 'ArrowDown', altKey: true, preventDefault});
+			onKeyDown({key: 'ArrowDown', metaKey: true, preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([]);
 		});
@@ -37,7 +38,7 @@ describe('useMenuHandler', () => {
 			const preventDefault = jest.fn();
 			useState.mockReturnValueOnce([true]);
 			const onKeyDown = useMenuHandler().buttonProps.onKeyDown;
-			onKeyDown({keyCode: 32, preventDefault});
+			onKeyDown({key: ' ', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([]);
 		});
@@ -49,53 +50,57 @@ describe('useMenuHandler', () => {
 			useState.mockReturnValueOnce([false, setMenuVisible]);
 			useMenuHandler().buttonProps.onClick();
 
-			expect(setMenuVisible.mock.calls).toEqual([[anyFunction]]);
-			expect(setMenuVisible.mock.calls[0][0](false)).toBe(true);
+			expect(setMenuVisible.mock.calls).toEqual([[true]]);
 		});
 	});
 
 	describe('handleMenuKeyDown', () => {
 		it('ignores event if any modifier is set', () => {
 			const preventDefault = jest.fn();
-			useState.mockReturnValueOnce([true]);
 			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
-			onKeyDown({keyCode: 13, shiftKey: true, preventDefault});
-			onKeyDown({keyCode: 13, ctrlKey: true, preventDefault});
-			onKeyDown({keyCode: 13, altKey: true, preventDefault});
-			onKeyDown({keyCode: 13, metaKey: true, preventDefault});
+			onKeyDown({key: 'Enter', shiftKey: true, preventDefault});
+			onKeyDown({key: 'Enter', ctrlKey: true, preventDefault});
+			onKeyDown({key: 'Enter', altKey: true, preventDefault});
+			onKeyDown({key: 'Enter', metaKey: true, preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([]);
 		});
 
-		it('calls click on the focused element when enter or space are pressed', () => {
-			const setMenuVisible = jest.fn();
+		it('ignores event if any modifier except shift is set when key is Tab', () => {
 			const preventDefault = jest.fn();
-			const click = jest.fn();
-			const focus = jest.fn();
-			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({current: {}});
-			useState.mockReturnValueOnce([true, setMenuVisible]);
-			document.activeElement = {click};
 			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
-			onKeyDown({keyCode: 13, preventDefault});
-			onKeyDown({keyCode: 32, preventDefault});
+			onKeyDown({key: 'Tab', ctrlKey: true, preventDefault});
+			onKeyDown({key: 'Tab', altKey: true, preventDefault});
+			onKeyDown({key: 'Tab', metaKey: true, preventDefault});
 
-			expect(preventDefault.mock.calls).toEqual([[], []]);
-			expect(setMenuVisible.mock.calls).toEqual([[false], [false]]);
-			expect(click.mock.calls).toEqual([[], []]);
-			expect(focus.mock.calls).toEqual([[], []]);
+			expect(preventDefault.mock.calls).toEqual([]);
 		});
 
-		it('calls setMenuVisible with false when escape is pressed', () => {
+		it('calls deactivate when Tab is pressed', () => {
+			const deactivate = jest.fn();
 			const preventDefault = jest.fn();
-			const setMenuVisible = jest.fn();
-			const focus = jest.fn();
-			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({current: {}});
-			useState.mockReturnValueOnce([true, setMenuVisible]);
-			useMenuHandler().menuProps.onKeyDown({keyCode: 27, preventDefault});
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {}}).mockReturnValueOnce({current: {deactivate}});
+			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
+			onKeyDown({key: 'Tab', preventDefault});
+			onKeyDown({key: 'Tab', shiftKey: true, preventDefault});
 
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(setMenuVisible.mock.calls).toEqual([[false]]);
-			expect(focus.mock.calls).toEqual([[]]);
+			expect(preventDefault.mock.calls).toEqual([[], []]);
+			expect(deactivate.mock.calls).toEqual([[], []]);
+		});
+
+		it('calls click on the focused element when enter or space are pressed', () => {
+			const deactivate = jest.fn();
+			const preventDefault = jest.fn();
+			const click = jest.fn();
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {}}).mockReturnValueOnce({current: {deactivate}});
+			document.activeElement = {click};
+			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
+			onKeyDown({key: 'Enter', preventDefault});
+			onKeyDown({key: ' ', preventDefault});
+
+			expect(preventDefault.mock.calls).toEqual([[], []]);
+			expect(deactivate.mock.calls).toEqual([[], []]);
+			expect(click.mock.calls).toEqual([[], []]);
 		});
 
 		it('calls focus on last item when end is pressed', () => {
@@ -104,7 +109,7 @@ describe('useMenuHandler', () => {
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{}, {getAttribute, focus}]}});
 			useState.mockReturnValueOnce([true]);
-			useMenuHandler().menuProps.onKeyDown({keyCode: 35, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'End', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
@@ -119,7 +124,7 @@ describe('useMenuHandler', () => {
 				.mockReturnValueOnce({})
 				.mockReturnValueOnce({current: {childNodes: [{}, {getAttribute, focus}, {getAttribute}]}});
 			useState.mockReturnValueOnce([true]);
-			useMenuHandler().menuProps.onKeyDown({keyCode: 35, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'End', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled'], ['aria-disabled']]);
@@ -132,7 +137,7 @@ describe('useMenuHandler', () => {
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, {}]}});
 			useState.mockReturnValueOnce([true]);
-			useMenuHandler().menuProps.onKeyDown({keyCode: 36, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'Home', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
@@ -147,7 +152,7 @@ describe('useMenuHandler', () => {
 				.mockReturnValueOnce({})
 				.mockReturnValueOnce({current: {childNodes: [{getAttribute}, {getAttribute, focus}, {}]}});
 			useState.mockReturnValueOnce([true]);
-			useMenuHandler().menuProps.onKeyDown({keyCode: 36, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'Home', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled'], ['aria-disabled']]);
@@ -162,7 +167,7 @@ describe('useMenuHandler', () => {
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [item0, {getAttribute, focus}]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = item0;
-			useMenuHandler().menuProps.onKeyDown({keyCode: 38, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
@@ -179,7 +184,7 @@ describe('useMenuHandler', () => {
 				.mockReturnValueOnce({current: {childNodes: [{getAttribute}, item1, {getAttribute, focus}]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = item1;
-			useMenuHandler().menuProps.onKeyDown({keyCode: 38, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled'], ['aria-disabled']]);
@@ -194,7 +199,7 @@ describe('useMenuHandler', () => {
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, item1]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = item1;
-			useMenuHandler().menuProps.onKeyDown({keyCode: 38, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
@@ -211,7 +216,7 @@ describe('useMenuHandler', () => {
 				.mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, {getAttribute}, item2]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = item2;
-			useMenuHandler().menuProps.onKeyDown({keyCode: 38, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled'], ['aria-disabled']]);
@@ -226,7 +231,7 @@ describe('useMenuHandler', () => {
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, item1]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = item1;
-			useMenuHandler().menuProps.onKeyDown({keyCode: 40, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
@@ -240,7 +245,7 @@ describe('useMenuHandler', () => {
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, {}]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = {};
-			useMenuHandler().menuProps.onKeyDown({keyCode: 40, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
@@ -257,7 +262,7 @@ describe('useMenuHandler', () => {
 				.mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, item1, {getAttribute}]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = item1;
-			useMenuHandler().menuProps.onKeyDown({keyCode: 40, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled'], ['aria-disabled']]);
@@ -272,7 +277,7 @@ describe('useMenuHandler', () => {
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [item0, {getAttribute, focus}]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = item0;
-			useMenuHandler().menuProps.onKeyDown({keyCode: 40, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
@@ -289,7 +294,7 @@ describe('useMenuHandler', () => {
 				.mockReturnValueOnce({current: {childNodes: [item0, {getAttribute}, {getAttribute, focus}]}});
 			useState.mockReturnValueOnce([true]);
 			document.activeElement = item0;
-			useMenuHandler().menuProps.onKeyDown({keyCode: 40, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled'], ['aria-disabled']]);
@@ -300,24 +305,21 @@ describe('useMenuHandler', () => {
 			const preventDefault = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {}});
 			useState.mockReturnValueOnce([true]);
-			useMenuHandler().menuProps.onKeyDown({keyCode: 47, preventDefault});
+			useMenuHandler().menuProps.onKeyDown({key: 'Other', preventDefault});
 
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
 	});
 
 	describe('handleMenuClick', () => {
-		it('calls setMenuVisible when a menu item is found', () => {
-			const setMenuVisible = jest.fn();
-			const focus = jest.fn();
+		it('calls deactivate when a menu item is found', () => {
+			const deactivate = jest.fn();
 			const closest = jest.fn().mockReturnValue({});
-			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({});
-			useState.mockReturnValueOnce([true, setMenuVisible]);
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({}).mockReturnValueOnce({current: {deactivate}});
 			useMenuHandler().menuProps.onClick({target: {closest}});
 
 			expect(closest.mock.calls).toEqual([['li']]);
-			expect(setMenuVisible.mock.calls).toEqual([[false]]);
-			expect(focus.mock.calls).toEqual([[]]);
+			expect(deactivate.mock.calls).toEqual([[]]);
 		});
 
 		it('ignores the event when the menu item is not found', () => {
@@ -331,56 +333,45 @@ describe('useMenuHandler', () => {
 		});
 	});
 
-	describe('handleGuardFocus', () => {
-		it('calls setMenuVisible', () => {
-			const setMenuVisible = jest.fn();
-			const focus = jest.fn();
-			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({});
-			useState.mockReturnValueOnce([true, setMenuVisible]);
-			useMenuHandler().guardProps.onFocus();
-
-			expect(setMenuVisible.mock.calls).toEqual([[false]]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-	});
-
 	describe('layout effect 0', () => {
 		it('sets the menu position', () => {
 			const getAttribute = jest.fn();
-			const focus = jest.fn();
-			const contains = jest
-				.fn()
-				.mockReturnValueOnce(true)
-				.mockReturnValueOnce(false)
-				.mockReturnValueOnce(true)
-				.mockReturnValueOnce(false)
-				.mockReturnValueOnce(false);
-			const menu = {contains, childNodes: [{getAttribute, focus}]};
-			const button = {contains};
-			const target = {foo: 'test'};
+			const firstChild = {getAttribute};
+			const menu = {childNodes: [firstChild]};
+			const button = {};
+			const trapRef = {};
 			const setExpanded = jest.fn();
 			const setPopUpPosition = jest.fn();
-			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
+			const activate = jest.fn();
+			const deactivate = jest.fn();
+			const trap = {activate, deactivate};
+			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu}).mockReturnValueOnce(trapRef);
 			useState.mockReturnValueOnce([true, setExpanded]);
+			createFocusTrap.mockReturnValue(trap);
 			useMenuHandler(setPopUpPosition);
 			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, setPopUpPosition]]);
 
 			const remove = useLayoutEffect.mock.calls[0][0]();
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
-			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.addEventListener.mock.calls).toEqual([
-				['mousedown', anyFunction, true],
-				['scroll', anyFunction, {passive: true, capture: true}],
+			expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
+			expect(createFocusTrap.mock.calls).toEqual([
+				[menu, {initialFocus: firstChild, allowOutsideClick: anyFunction, onPostDeactivate: anyFunction}],
 			]);
+			expect(trapRef.current).toBe(trap);
+			expect(activate.mock.calls).toEqual([[]]);
 
-			const onMouseDown = document.addEventListener.mock.calls[0][1];
-			for (let i = 0; i < 3; ++i) {
-				onMouseDown({target});
-			}
-			expect(contains.mock.calls).toEqual(Array(5).fill([target]));
+			const {allowOutsideClick, onPostDeactivate} = createFocusTrap.mock.calls[0][1];
+
+			expect(allowOutsideClick({type: 'foo'})).toBe(false);
+			expect(deactivate.mock.calls).toEqual([]);
+
+			expect(allowOutsideClick({type: 'click'})).toBe(false);
+			expect(deactivate.mock.calls).toEqual([[]]);
+
+			onPostDeactivate();
 			expect(setExpanded.mock.calls).toEqual([[false]]);
 
-			const onScroll = document.addEventListener.mock.calls[1][1];
+			const onScroll = document.addEventListener.mock.calls[0][1];
 			onScroll();
 
 			expect(setPopUpPosition.mock.calls).toEqual([
