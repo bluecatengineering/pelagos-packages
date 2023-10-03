@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.5.0...@bluecateng/pelagos@12.5.1) (2023-10-03)
+
+### Bug Fixes
+
+- use a focus trap in useMenuHandler ([a55edc1](https://github.com/bluecatengineering/pelagos-packages/commit/a55edc13396ff7db270bd7ed0c689f44a38b98be))
+
 ## [12.5.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.4.0...@bluecateng/pelagos@12.5.0) (2023-09-29)
 
 ### Features
