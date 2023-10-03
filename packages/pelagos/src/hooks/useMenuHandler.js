@@ -1,4 +1,5 @@
 import {useCallback, useLayoutEffect, useRef, useState} from 'react';
+import {createFocusTrap} from 'focus-trap';
 
 const findCurrent = (children) => {
 	const n = children.length;
@@ -10,7 +11,7 @@ const findCurrent = (children) => {
 	return -1;
 };
 
-const setFocus = (index, increment, children) => {
+const findFocused = (index, increment, children) => {
 	const last = children.length - 1;
 	do {
 		index += increment;
@@ -20,14 +21,18 @@ const setFocus = (index, increment, children) => {
 			index = 0;
 		}
 	} while (children[index].getAttribute('aria-disabled') === 'true');
-	children[index].focus();
+	const child = children[index];
+	child.tabIndex = 0;
+	return child;
 };
+
+const setFocus = (index, increment, children) => findFocused(index, increment, children).focus();
 
 /**
  * Returns properties to be added to the button which displays a menu and to the menu elements.
  * The menu should be rendered using the Menu and MenuItem components.
  * @param {function(Element, Element): void} [setPopUpPosition] function invoked to set the pop-up position.
- * @return {{expanded: boolean, buttonProps: Object, menuProps: Object, guardProps: Object, buttonRef: MutableRefObject<Element>, menuRef: MutableRefObject<Element>}}
+ * @return {{expanded: boolean, buttonProps: Object, menuProps: Object, buttonRef: MutableRefObject<Element>, menuRef: MutableRefObject<Element>}}
  *
  * @example
  * import {useMenuHandler, Menu, MenuItem} from '@bluecateng/pelagos';
@@ -37,14 +42,12 @@ const setFocus = (index, increment, children) => {
  * };
  *
  * const Example = () => {
- *   const {expanded, buttonProps, menuProps, guardProps} = useMenuHandler(setPopUpPosition);
+ *   const {expanded, buttonProps, menuProps} = useMenuHandler(setPopUpPosition);
  *   return (
  *     <div>
  *       <button {...buttonProps}>...</button>
  *       <div>
- *         <div tabIndex={0} {...guardProps} />
  *         <Menu {...menuProps}>...</Menu>
- *         <div tabIndex={0} {...guardProps} />
  *       </div>
  *     </div>
  *   );
@@ -53,48 +56,52 @@ const setFocus = (index, increment, children) => {
 const useMenuHandler = (setPopUpPosition) => {
 	const buttonRef = useRef(null);
 	const menuRef = useRef(null);
+	const trapRef = useRef(null);
 
 	const [expanded, setExpanded] = useState(false);
 
 	const handleButtonKeyDown = useCallback((event) => {
-		if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey && event.keyCode === 40) {
+		if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey && event.key === 'ArrowDown') {
 			event.preventDefault();
 			event.target.click();
 		}
 	}, []);
 
-	const handleButtonClick = useCallback(() => setExpanded((value) => !value), []);
+	const handleButtonClick = useCallback(() => setExpanded(true), []);
 
 	const handleMenuKeyDown = useCallback((event) => {
-		if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+		if (event.key === 'Tab') {
+			if (!event.ctrlKey && !event.altKey && !event.metaKey) {
+				event.preventDefault();
+				trapRef.current.deactivate();
+			}
+		} else if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 			const menuChildren = menuRef.current.childNodes;
-			switch (event.keyCode) {
-				case 13: // enter
-				case 32: // space
+			switch (event.key) {
+				case 'Enter': // enter
+				case ' ': // space
 					event.preventDefault();
 					document.activeElement.click();
-					setExpanded(false);
-					buttonRef.current.focus();
+					trapRef.current.deactivate();
 					break;
-				case 27: // escape
+				case 'End': // end
 					event.preventDefault();
-					setExpanded(false);
-					buttonRef.current.focus();
-					break;
-				case 35: // end
-					event.preventDefault();
+					document.activeElement.tabIndex = -1;
 					setFocus(menuChildren.length, -1, menuChildren);
 					break;
-				case 36: // home
+				case 'Home': // home
 					event.preventDefault();
+					document.activeElement.tabIndex = -1;
 					setFocus(-1, 1, menuChildren);
 					break;
-				case 38: // up
+				case 'ArrowUp': // up
 					event.preventDefault();
+					document.activeElement.tabIndex = -1;
 					setFocus(findCurrent(menuChildren), -1, menuChildren);
 					break;
-				case 40: // down
+				case 'ArrowDown': // down
 					event.preventDefault();
+					document.activeElement.tabIndex = -1;
 					setFocus(findCurrent(menuChildren), 1, menuChildren);
 					break;
 			}
@@ -103,33 +110,30 @@ const useMenuHandler = (setPopUpPosition) => {
 
 	const handleMenuClick = useCallback((event) => {
 		if (event.target.closest('li')) {
-			setExpanded(false);
-			buttonRef.current.focus();
+			trapRef.current.deactivate();
 		}
-	}, []);
-
-	const handleGuardFocus = useCallback(() => {
-		setExpanded(false);
-		buttonRef.current.focus();
 	}, []);
 
 	useLayoutEffect(() => {
 		const button = buttonRef.current;
 		const menu = menuRef.current;
-		const handleMouseDown = ({target}) => {
-			if (!button.contains(target) && !menu.contains(target)) {
-				setExpanded(false);
-			}
-		};
 		const handleScroll = () => setPopUpPosition?.(button, menu);
 		if (expanded) {
 			setPopUpPosition?.(button, menu);
-			setFocus(-1, 1, menu.childNodes);
-			document.addEventListener('mousedown', handleMouseDown, true);
+			const trap = (trapRef.current = createFocusTrap(menu, {
+				initialFocus: findFocused(-1, 1, menu.childNodes),
+				allowOutsideClick: (event) => {
+					if (event.type === 'click') {
+						trap.deactivate();
+					}
+					return false;
+				},
+				onPostDeactivate: () => setExpanded(false),
+			}));
+			trap.activate();
 			document.addEventListener('scroll', handleScroll, {passive: true, capture: true});
 		}
 		return () => {
-			document.removeEventListener('mousedown', handleMouseDown, true);
 			document.removeEventListener('scroll', handleScroll, {passive: true, capture: true});
 		};
 	}, [expanded, setPopUpPosition]);
@@ -146,9 +150,7 @@ const useMenuHandler = (setPopUpPosition) => {
 			onKeyDown: handleMenuKeyDown,
 			onClick: handleMenuClick,
 		},
-		guardProps: {
-			onFocus: handleGuardFocus,
-		},
+		guardProps: {},
 		buttonRef,
 		menuRef,
 	};

@@ -89,9 +89,6 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
       className="IconMenu__popUp"
       level={2}
     >
-      <div
-        tabIndex={0}
-      />
       <ul
         aria-labelledby="random-id"
         className="IconMenu__menu"
@@ -111,9 +108,6 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
           two
         </MenuItem>
       </ul>
-      <div
-        tabIndex={0}
-      />
     </Layer>
   </React.Portal>
 </React.Fragment>

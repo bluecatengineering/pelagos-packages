@@ -37,9 +37,6 @@ exports[`ButtonMenu rendering renders expected elements when expanded is true 1`
       className="ButtonMenu__popUp"
       level={2}
     >
-      <div
-        tabIndex={0}
-      />
       <Menu
         aria-labelledby="random-id"
         id="random-id-menu"
@@ -49,9 +46,6 @@ exports[`ButtonMenu rendering renders expected elements when expanded is true 1`
           id="random-id-0"
         />
       </Menu>
-      <div
-        tabIndex={0}
-      />
     </Layer>
   </React.Portal>
 </React.Fragment>
