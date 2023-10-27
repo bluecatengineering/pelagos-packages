@@ -309,8 +309,10 @@ describe('TabList', () => {
 			useEffect.mock.calls[2][0]();
 			expect(addResizeObserver.mock.calls).toEqual([[list, anyFunction]]);
 
-			addResizeObserver.mock.calls[0][1]({width: 50});
-			expect(setCanScroll.mock.calls).toEqual([[true]]);
+			const observer = addResizeObserver.mock.calls[0][1];
+			observer({width: 199.5});
+			observer({width: 199.1});
+			expect(setCanScroll.mock.calls).toEqual([[false], [true]]);
 		});
 
 		it('adds an effect which calls setCanScroll when children change', () => {

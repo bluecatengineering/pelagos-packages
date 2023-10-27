@@ -72,7 +72,7 @@ const TabList = forwardRef(({className, selectedIndex, contained, children, onCh
 	}, [scrollLeft]);
 
 	useEffect(
-		() => addResizeObserver(listRef.current, ({width}) => setCanScroll(listRef.current.scrollWidth > width)),
+		() => addResizeObserver(listRef.current, ({width}) => setCanScroll(listRef.current.scrollWidth > round(width))),
 		[]
 	);
 
