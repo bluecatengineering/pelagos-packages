@@ -247,5 +247,19 @@ describe('ContentSwitcher', () => {
 			expect(contains.mock.calls).toEqual([[activeElement]]);
 			expect(focus.mock.calls).toEqual([]);
 		});
+
+		it('adds an effect which does not throw if ref.current is null', () => {
+			const activeElement = {foo: 'test'};
+			useRef.mockReturnValue({current: null});
+			document.activeElement = activeElement;
+			shallow(
+				<ContentSwitcher selected={0}>
+					<ContentSwitcherButton />
+				</ContentSwitcher>
+			);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [0]]);
+
+			expect(() => useEffect.mock.calls[0][0]()).not.toThrow();
+		});
 	});
 });

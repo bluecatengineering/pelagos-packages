@@ -56,7 +56,7 @@ const ContentSwitcher = ({className, selected, children, onChange, ...props}) =>
 
 	useEffect(() => {
 		const container = ref.current;
-		if (container.contains(document.activeElement)) {
+		if (container?.contains(document.activeElement)) {
 			container.childNodes[focused].focus();
 		}
 	}, [focused]);
