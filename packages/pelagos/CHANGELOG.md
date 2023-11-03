@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.5.1...@bluecateng/pelagos@12.5.2) (2023-11-03)
+
+### Bug Fixes
+
+- avoid unnecessary scrolling with fractional sizes ([f075a1f](https://github.com/bluecatengineering/pelagos-packages/commit/f075a1fcb7616124b78131c5919f4c5054e2a91a))
+- fix error in ContentSwitcher when the element is unmounted ([3f4f117](https://github.com/bluecatengineering/pelagos-packages/commit/3f4f1177796c129d9e4c7134ebd2fcf58878128c))
+
 ## [12.5.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.5.0...@bluecateng/pelagos@12.5.1) (2023-10-03)
 
 ### Bug Fixes
