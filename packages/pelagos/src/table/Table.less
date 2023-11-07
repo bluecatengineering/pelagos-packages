@@ -141,7 +141,6 @@
 			align-items: center;
 			background-color: transparent;
 			border: none;
-			border-radius: 3px;
 			padding: 0 0 0 @sp-16;
 			font: inherit;
 			text-transform: inherit;
@@ -213,10 +212,7 @@
 
 		&__toolbarBatch {
 			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
+			inset: 0;
 			flex-direction: row;
 			align-items: center;
 			background-color: var(--background-brand);
@@ -308,8 +304,7 @@
 
 		&__wrapper {
 			flex: 1;
-			overflow-x: hidden;
-			overflow-y: scroll;
+			overflow: hidden scroll;
 			contain: strict;
 		}
 
