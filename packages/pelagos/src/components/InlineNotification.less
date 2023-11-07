@@ -3,16 +3,24 @@
 
 @layer pelagos {
 	.InlineNotification {
+		position: relative;
 		flex-direction: row;
 		align-items: flex-start;
 		border-left-width: 3px;
 		border-left-style: solid;
-		border-radius: 3px;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			border-width: 1px 1px 1px 0;
+			border-style: solid;
+			opacity: 0.4;
+			pointer-events: none;
+		}
 
 		&__icon {
-			@icon-size: 20px;
-			width: (@icon-size * 1.125);
-			height: @icon-size;
+			font-size: 20px;
 			margin: @sp-12 @sp-16;
 		}
 
@@ -32,6 +40,10 @@
 			background-color: var(--notification-background-success);
 			border-left-color: var(--support-success);
 
+			&::before {
+				border-color: var(--support-success);
+			}
+
 			& > .InlineNotification__icon {
 				color: var(--support-success);
 			}
@@ -40,6 +52,10 @@
 		&--info {
 			background-color: var(--notification-background-info);
 			border-left-color: var(--support-info);
+
+			&::before {
+				border-color: var(--support-info);
+			}
 
 			& > .InlineNotification__icon {
 				color: var(--support-info);
@@ -50,6 +66,10 @@
 			background-color: var(--notification-background-warning);
 			border-left-color: var(--support-warning);
 
+			&::before {
+				border-color: var(--support-warning);
+			}
+
 			& > .InlineNotification__icon {
 				color: var(--support-warning);
 			}
@@ -58,6 +78,10 @@
 		&--error {
 			background-color: var(--notification-background-error);
 			border-left-color: var(--support-error);
+
+			&::before {
+				border-color: var(--support-error);
+			}
 
 			& > .InlineNotification__icon {
 				color: var(--support-error);

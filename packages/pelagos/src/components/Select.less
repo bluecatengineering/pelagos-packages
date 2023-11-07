@@ -15,8 +15,6 @@
 		background-color: var(--field);
 		border: none;
 		border-bottom: 1px solid var(--border-strong);
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
 		white-space: nowrap;
 		text-align: left;
 		cursor: pointer;
@@ -72,10 +70,8 @@
 	.Select__list {
 		position: absolute;
 		max-height: 15em;
-		border-radius: 3px;
 		padding: @sp-04 0;
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: hidden auto;
 		background-color: var(--layer);
 		box-shadow: var(--shadow-04);
 		z-index: 1000;
