@@ -35,7 +35,7 @@ export default {
 			description: 'Preview theme',
 			defaultValue: 'cg00',
 			toolbar: {
-				icon: 'photo',
+				icon: 'paintbrush',
 				items: [
 					{value: 'white', title: 'White'},
 					{value: 'cg00', title: 'Cool Gray 00'},
