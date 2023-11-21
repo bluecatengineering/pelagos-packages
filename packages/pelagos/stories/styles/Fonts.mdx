@@ -5,7 +5,7 @@ import fonts from '../../defs/fonts.yaml';
 
 # Fonts
 
-<table>
+<table style={fonts['root-font'].styles}>
 	<thead>
 		<tr>
 			<th>Token</th>
@@ -18,7 +18,9 @@ import fonts from '../../defs/fonts.yaml';
 			.map(([key, {use, styles}]) => (
 				<tr key={key}>
 					<td
-						style={Object.fromEntries(Object.entries(styles).map(([k, v]) => [k, k === 'line-height' ? `${v}em` : v]))}>
+						style={Object.fromEntries(
+							Object.entries(styles).map(([k, v]) => [k, k === 'line-height' && !/rem/.test(v) ? `${v}em` : `${v}`])
+						)}>
 						{key}
 					</td>
 					<td>{use}</td>
