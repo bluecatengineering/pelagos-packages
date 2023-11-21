@@ -64,6 +64,25 @@ describe('FileUploaderDropZone', () => {
 			expect(live.textContent).toBe('File file.txt uploaded');
 		});
 
+		it('does not call onAddFiles when something other than a file is dropped', () => {
+			const onAddFiles = jest.fn();
+			const preventDefault = jest.fn();
+			const remove = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({current: live});
+			const wrapper = shallow(<FileUploaderDropZone id="test" types={[]} onAddFiles={onAddFiles} />);
+
+			wrapper.find('#test').prop('onDrop')({
+				preventDefault,
+				currentTarget: {classList: {remove}},
+				dataTransfer: {},
+			});
+			expect(preventDefault.mock.calls).toEqual([[]]);
+			expect(remove.mock.calls).toEqual([['FileUploader__dropZone--active']]);
+			expect(onAddFiles.mock.calls).toEqual([]);
+			expect(live.textContent).toBeUndefined();
+		});
+
 		it('clicks the input element when the drop zone is clicked', () => {
 			const click = jest.fn();
 			const wrapper = shallow(<FileUploaderDropZone id="test" types={[]} />);
