@@ -5,9 +5,11 @@
 @layer pelagos {
 	.Menu {
 		margin: 0;
-		padding: 0;
+		padding: @sp-04 0;
 		list-style: none;
 		white-space: nowrap;
+		min-width: 160px;
+		max-width: 288px;
 
 		&__item {
 			@layer-hover-effects();
@@ -38,8 +40,22 @@
 			}
 		}
 
+		&--danger {
+			&:hover,
+			&:active,
+			&:focus-visible {
+				color: var(--text-on-color);
+				background-color: var(--support-error);
+			}
+		}
+
 		&--divider {
 			border-top: 1px solid var(--border-subtle);
+		}
+
+		&__divider {
+			border-top: 1px solid var(--border-subtle);
+			margin: @sp-04;
 		}
 	}
 }

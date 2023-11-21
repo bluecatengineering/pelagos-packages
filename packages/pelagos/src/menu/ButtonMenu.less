@@ -2,9 +2,12 @@
 
 @layer pelagos {
 	.ButtonMenu {
-		&[aria-expanded='true'] {
-			box-shadow: var(--shadow-04);
-			background-color: var(--layer);
+		& > .Button__icon {
+			transition: transform 0.15s ease-out;
+		}
+
+		&[aria-expanded='true'] > .Button__icon {
+			transform: rotate(180deg);
 		}
 
 		&__popUp {

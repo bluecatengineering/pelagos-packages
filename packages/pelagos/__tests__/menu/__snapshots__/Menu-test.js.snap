@@ -5,7 +5,9 @@ exports[`Menu rendering renders expected elements 1`] = `
   className="Menu"
   role="menu"
 >
-  <MenuItem />
+  <MenuItem
+    type="default"
+  />
 </ul>
 `;
 
@@ -15,6 +17,8 @@ exports[`Menu rendering renders expected elements when optional properties are s
   id="test"
   role="menu"
 >
-  <MenuItem />
+  <MenuItem
+    type="default"
+  />
 </ul>
 `;

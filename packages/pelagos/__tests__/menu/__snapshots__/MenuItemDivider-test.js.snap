@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItemDivider rendering renders expected elements 1`] = `
+<li
+  className="Menu__divider"
+  role="separator"
+/>
+`;
+
+exports[`MenuItemDivider rendering renders expected elements when optional properties are set 1`] = `
+<li
+  className="Menu__divider TestClass"
+  role="separator"
+/>
+`;
