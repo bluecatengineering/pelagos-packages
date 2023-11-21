@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import './Menu.less';
 
 /** A menu item. */
-const MenuItem = forwardRef(({className, children, disabled, hasDivider, ...props}, ref) => (
+const MenuItem = forwardRef(({className, text, type, children, disabled, hasDivider, ...props}, ref) => (
 	<li
 		{...props}
-		className={`Menu__item${hasDivider ? ' Menu--divider' : ''}${className ? ` ${className}` : ''}`}
+		className={`Menu__item Menu--${type}${hasDivider ? ' Menu--divider' : ''}${className ? ` ${className}` : ''}`}
 		tabIndex={-1}
 		role="menuitem"
 		aria-disabled={disabled}
 		ref={ref}>
-		{children}
+		{text || children}
 	</li>
 ));
 
@@ -22,11 +22,19 @@ MenuItem.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The menu item text. */
+	text: PropTypes.string,
+	/** The menu item type. */
+	type: PropTypes.oneOf(['default', 'danger']),
+	/** @deprecated use text instead. */
 	children: PropTypes.node,
 	/** Whether the item is disabled. */
 	disabled: PropTypes.bool,
-	/** Whether the item has a divider. */
+	/** @deprecated use MenuItemDivider instead. */
 	hasDivider: PropTypes.bool,
+};
+
+MenuItem.defaultProps = {
+	type: 'default',
 };
 
 export default MenuItem;

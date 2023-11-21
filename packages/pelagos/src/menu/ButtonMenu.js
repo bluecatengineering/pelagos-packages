@@ -1,6 +1,7 @@
 import {Children, cloneElement, forwardRef, useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
 
 import setRefs from '../functions/setRefs';
 import useRandomId from '../hooks/useRandomId';
@@ -34,7 +35,7 @@ const ButtonMenu = forwardRef(({id, className, disabled, flipped, children, ...p
 				{...props}
 				id={id}
 				className={`ButtonMenu${className ? ` ${className}` : ''}`}
-				type="ghost"
+				icon={faChevronDown}
 				disabled={disabled || allDisabled}
 				aria-controls={expanded ? menuId : null}
 				aria-haspopup="true"
@@ -69,8 +70,6 @@ ButtonMenu.propTypes = {
 	className: PropTypes.string,
 	/** The text to display. */
 	text: PropTypes.string,
-	/** The object representing the icon. (using FontAwesome, etc.) */
-	icon: PropTypes.object,
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
@@ -78,7 +77,7 @@ ButtonMenu.propTypes = {
 	/** The size of the button. */
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	/** The button type. */
-	type: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'ghost']),
+	type: PropTypes.oneOf(['primary', 'tertiary', 'ghost']),
 	/** Whether the button is disabled. */
 	disabled: PropTypes.bool,
 	/** Whether the menu alignment should be flipped. */
@@ -89,6 +88,7 @@ ButtonMenu.propTypes = {
 
 ButtonMenu.defaultProps = {
 	size: 'small',
+	type: 'ghost',
 };
 
 export default ButtonMenu;

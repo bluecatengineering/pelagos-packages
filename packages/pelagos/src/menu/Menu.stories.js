@@ -2,6 +2,7 @@ import {action} from '@storybook/addon-actions';
 
 import Menu from './Menu';
 import MenuItem from './MenuItem';
+import MenuItemDivider from './MenuItemDivider';
 
 const handleClick = action('onClick');
 
@@ -13,18 +14,11 @@ export default {
 export const Default = {
 	args: {
 		children: [
-			<MenuItem key="1" onClick={handleClick}>
-				Option 1
-			</MenuItem>,
-			<MenuItem key="2" onClick={handleClick}>
-				Option 2
-			</MenuItem>,
-			<MenuItem key="3" disabled onClick={handleClick}>
-				Option 3
-			</MenuItem>,
-			<MenuItem key="4" hasDivider onClick={handleClick}>
-				Option 4
-			</MenuItem>,
+			<MenuItem key="1" text="Option 1" onClick={handleClick} />,
+			<MenuItem key="2" text="Option 2" onClick={handleClick} />,
+			<MenuItem key="3" text="Option 3" disabled onClick={handleClick} />,
+			<MenuItemDivider key="d1" />,
+			<MenuItem key="4" text="Danger option" type="danger" onClick={handleClick} />,
 		],
 	},
 };

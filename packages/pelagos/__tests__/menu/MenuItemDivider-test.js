@@ -1,20 +1,18 @@
 import {shallow} from 'enzyme';
 
-import MenuItem from '../../src/menu/MenuItem';
+import MenuItemDivider from '../../src/menu/MenuItemDivider';
 
-jest.unmock('../../src/menu/MenuItem');
+jest.unmock('../../src/menu/MenuItemDivider');
 
-describe('MenuItem', () => {
+describe('MenuItemDivider', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<MenuItem />);
+			const wrapper = shallow(<MenuItemDivider />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when optional properties are set', () => {
-			const wrapper = shallow(
-				<MenuItem id="test" className="TestClass" text="Text" type="danger" disabled hasDivider />
-			);
+			const wrapper = shallow(<MenuItemDivider className="TestClass" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});

@@ -21,10 +21,12 @@ exports[`FilterMenu rendering renders expected elements 1`] = `
     <MenuItem
       data-key="a"
       onClick={[Function]}
+      type="default"
     />
     <MenuItem
       data-key="b"
       onClick={[Function]}
+      type="default"
     />
   </IconMenu>
 </React.Fragment>
@@ -51,10 +53,12 @@ exports[`FilterMenu rendering renders expected elements when filter is set 1`] =
     <MenuItem
       data-key="a"
       onClick={[Function]}
+      type="default"
     />
     <MenuItem
       data-key="b"
       onClick={[Function]}
+      type="default"
     />
   </IconMenu>
   <React.Portal>
@@ -112,10 +116,12 @@ exports[`FilterMenu rendering renders expected elements when filters is set 1`] 
     <MenuItem
       data-key="a"
       onClick={[Function]}
+      type="default"
     />
     <MenuItem
       data-key="b"
       onClick={[Function]}
+      type="default"
     />
   </IconMenu>
 </React.Fragment>

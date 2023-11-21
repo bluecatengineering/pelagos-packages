@@ -20,7 +20,10 @@ const findFocused = (index, increment, children) => {
 		} else if (index > last) {
 			index = 0;
 		}
-	} while (children[index].getAttribute('aria-disabled') === 'true');
+	} while (
+		children[index].getAttribute('role') !== 'menuitem' ||
+		children[index].getAttribute('aria-disabled') === 'true'
+	);
 	const child = children[index];
 	child.tabIndex = 0;
 	return child;
