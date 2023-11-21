@@ -60,7 +60,10 @@ const FileUploaderDropZone = ({id, label, text, types, required, multiple, error
 		(event) => {
 			event.preventDefault();
 			event.currentTarget.classList.remove('FileUploader__dropZone--active');
-			invokeOnAddFiles(onAddFiles, liveRef, Array.from(event.dataTransfer.files));
+			const files = event.dataTransfer.files;
+			if (files?.length) {
+				invokeOnAddFiles(onAddFiles, liveRef, Array.from(files));
+			}
 		},
 		[onAddFiles]
 	);
