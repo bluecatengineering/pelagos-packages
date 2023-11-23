@@ -2,9 +2,10 @@
 
 exports[`TableTitle rendering renders expected elements 1`] = `
 <div
-  className="Table__title"
+  className="Table__header"
 >
   <h2
+    className="Table__title"
     id="test"
   >
     Test title

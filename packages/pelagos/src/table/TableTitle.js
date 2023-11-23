@@ -5,8 +5,10 @@ import './Table.less';
 
 /** Title for a table. */
 const TableTitle = forwardRef(({id, title, description}, ref) => (
-	<div className="Table__title" ref={ref}>
-		<h2 id={id}>{title}</h2>
+	<div className="Table__header" ref={ref}>
+		<h2 id={id} className="Table__title">
+			{title}
+		</h2>
 		<div className="Table__description">{description}</div>
 	</div>
 ));
