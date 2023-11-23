@@ -1,6 +1,7 @@
-const {readFileSync, writeFileSync} = require('fs');
+const {readFile, writeFile} = require('node:fs/promises');
 
 const {parse} = require('yaml');
+const {resolveConfig, format} = require('prettier');
 
 const IN = 'defs/fonts.yaml';
 const LESS = 'less/fonts.less';
@@ -13,21 +14,25 @@ const HEADER = [
 	'',
 ];
 
-const fonts = Object.entries(parse(readFileSync(IN, 'utf8')));
-
-writeFileSync(
-	LESS,
-	HEADER.concat(
-		fonts.map(
-			([key, {styles}]) =>
-				'@' +
-				key +
-				': {\n' +
-				Object.entries(styles)
-					.map(([k, v]) => `\t${k}: ${v};`)
-					.join('\n') +
-				'\n};'
-		),
-		''
-	).join('\n')
-);
+Promise.all([readFile(IN, 'utf8'), resolveConfig(LESS)])
+	.then(([yamlText, options]) =>
+		format(
+			HEADER.concat(
+				Object.entries(parse(yamlText)).map(
+					([key, {styles}]) =>
+						(/^font-/.test(key) ? '\n/** @deprecated */\n' : '') +
+						'@' +
+						key +
+						': {\n' +
+						Object.entries(styles)
+							.map(([k, v]) => `\t${k}: ${v};`)
+							.join('\n') +
+						'\n};'
+				),
+				''
+			).join('\n'),
+			{...options, filepath: LESS}
+		)
+	)
+	.then((code) => writeFile(LESS, code))
+	.catch((error) => (console.error(error), process.exit(1)));
