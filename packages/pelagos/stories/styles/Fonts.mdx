@@ -14,7 +14,7 @@ import fonts from '../../defs/fonts.yaml';
 	</thead>
 	<tbody>
 		{Object.entries(fonts)
-			.filter(([k]) => k !== 'root-font')
+			.filter(([k]) => k !== 'root-font' && !/^font-/.test(k))
 			.map(([key, {use, styles}]) => (
 				<tr key={key}>
 					<td
