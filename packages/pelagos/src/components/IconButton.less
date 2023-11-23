@@ -8,11 +8,14 @@
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
-		position: relative;
 
 		&[aria-expanded='true'],
 		&[aria-expanded='true']:focus {
 			box-shadow: var(--shadow-04);
+		}
+
+		&--container {
+			position: relative;
 		}
 
 		&--medium {

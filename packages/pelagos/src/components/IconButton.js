@@ -12,25 +12,16 @@ const IconButton = forwardRef(
 	({id, icon, className, size, type, tooltipText, tooltipPlacement, overlay, disabled, onClick, ...props}, ref) => {
 		const tooltip = useTooltip(tooltipText, tooltipPlacement, 'labelledby');
 		const refs = ref ? setRefs(ref, tooltip) : tooltip;
+		const finalClassName = `IconButton IconButton--${size} IconButton--${type}${
+			overlay ? ' IconButton--container' : ''
+		}${className ? ` ${className}` : ''}`;
 		return disabled ? (
-			<span
-				{...props}
-				id={id}
-				className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
-				role="button"
-				aria-disabled="true"
-				ref={refs}>
+			<span {...props} id={id} className={finalClassName} role="button" aria-disabled="true" ref={refs}>
 				<SvgIcon icon={icon} />
 				{overlay}
 			</span>
 		) : (
-			<button
-				{...props}
-				id={id}
-				className={`IconButton IconButton--${size} IconButton--${type}${className ? ` ${className}` : ''}`}
-				type="button"
-				ref={refs}
-				onClick={onClick}>
+			<button {...props} id={id} className={finalClassName} type="button" ref={refs} onClick={onClick}>
 				<SvgIcon icon={icon} />
 				{overlay}
 			</button>
