@@ -57,7 +57,7 @@ exports[`IconButton rendering renders the expected elements when className is no
 exports[`IconButton rendering renders the expected elements when overlay is set 1`] = `
 <button
   aria-label="Test"
-  className="IconButton IconButton--medium IconButton--ghost TestClass"
+  className="IconButton IconButton--medium IconButton--ghost IconButton--container TestClass"
   id="test"
   type="button"
 >
