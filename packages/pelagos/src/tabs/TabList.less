@@ -54,7 +54,7 @@
 			}
 
 			&[aria-selected='true'] {
-				@font-14-600();
+				@heading-compact-01();
 				color: var(--text-primary);
 				border-bottom-color: var(--border-interactive);
 			}
@@ -86,11 +86,12 @@
 
 		&__label {
 			flex-direction: row;
+			align-items: center;
 			gap: @sp-08;
 		}
 
 		&__secondaryLabel {
-			@font-12-400();
+			@label-01();
 		}
 
 		&__remove {

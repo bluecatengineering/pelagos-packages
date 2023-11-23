@@ -19,23 +19,20 @@
 		}
 	}
 
-	.EditorDetailsPanel__close {
-		position: absolute;
-		right: 4px;
-		top: 0;
+	.EditorDetailsPanel__header {
+		flex-direction: row;
+		align-items: center;
 	}
 
 	.EditorDetailsPanel__title {
-		@font-16-600();
 		padding: @sp-12 @sp-24;
-		margin-right: @sp-24;
 		word-break: break-all;
+		flex: 1;
 	}
 
 	.EditorDetailsPanel__body {
 		flex: 1;
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: hidden auto;
 		padding: 0 @sp-24 @sp-24;
 		margin-right: @sp-04;
 	}

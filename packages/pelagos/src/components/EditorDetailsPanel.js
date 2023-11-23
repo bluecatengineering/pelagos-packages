@@ -27,20 +27,21 @@ const EditorDetailsPanel = ({
 	onDelete,
 }) => (
 	<aside id={id} className="EditorDetailsPanel" aria-labelledby="detailsPanelTitle">
-		<IconButton
-			id="closeDetailsPanelBtn"
-			className="EditorDetailsPanel__close"
-			icon={xmarkThin}
-			size="large"
-			aria-label={t`Close`}
-			tooltipText={t`Close`}
-			tooltipPlacement="left"
-			onClick={useSlidingPanel(id, onClose)}
-		/>
-
-		<h2 id="detailsPanelTitle" className="EditorDetailsPanel__title">
-			{item.name}
-		</h2>
+		<div className="EditorDetailsPanel__header">
+			<h2 id="detailsPanelTitle" className="EditorDetailsPanel__title">
+				{item.name}
+			</h2>
+			<IconButton
+				id="closeDetailsPanelBtn"
+				className="EditorDetailsPanel__close"
+				icon={xmarkThin}
+				size="large"
+				aria-label={t`Close`}
+				tooltipText={t`Close`}
+				tooltipPlacement="left"
+				onClick={useSlidingPanel(id, onClose)}
+			/>
+		</div>
 
 		{Array.isArray(children) ? (
 			<>

@@ -6,27 +6,31 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
   className="EditorDetailsPanel"
   id="test"
 >
-  <IconButton
-    aria-label="Close"
-    className="EditorDetailsPanel__close"
-    icon={
-      {
-        "icon": [],
-        "iconName": "xmark-thin",
-      }
-    }
-    id="closeDetailsPanelBtn"
-    size="large"
-    tooltipPlacement="left"
-    tooltipText="Close"
-    type="ghost"
-  />
-  <h2
-    className="EditorDetailsPanel__title"
-    id="detailsPanelTitle"
+  <div
+    className="EditorDetailsPanel__header"
   >
-    Test
-  </h2>
+    <h2
+      className="EditorDetailsPanel__title"
+      id="detailsPanelTitle"
+    >
+      Test
+    </h2>
+    <IconButton
+      aria-label="Close"
+      className="EditorDetailsPanel__close"
+      icon={
+        {
+          "icon": [],
+          "iconName": "xmark-thin",
+        }
+      }
+      id="closeDetailsPanelBtn"
+      size="large"
+      tooltipPlacement="left"
+      tooltipText="Close"
+      type="ghost"
+    />
+  </div>
   <React.Fragment>
     cloneWithClassName
   </React.Fragment>
@@ -39,27 +43,31 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
   className="EditorDetailsPanel"
   id="test"
 >
-  <IconButton
-    aria-label="Close"
-    className="EditorDetailsPanel__close"
-    icon={
-      {
-        "icon": [],
-        "iconName": "xmark-thin",
-      }
-    }
-    id="closeDetailsPanelBtn"
-    size="large"
-    tooltipPlacement="left"
-    tooltipText="Close"
-    type="ghost"
-  />
-  <h2
-    className="EditorDetailsPanel__title"
-    id="detailsPanelTitle"
+  <div
+    className="EditorDetailsPanel__header"
   >
-    Test
-  </h2>
+    <h2
+      className="EditorDetailsPanel__title"
+      id="detailsPanelTitle"
+    >
+      Test
+    </h2>
+    <IconButton
+      aria-label="Close"
+      className="EditorDetailsPanel__close"
+      icon={
+        {
+          "icon": [],
+          "iconName": "xmark-thin",
+        }
+      }
+      id="closeDetailsPanelBtn"
+      size="large"
+      tooltipPlacement="left"
+      tooltipText="Close"
+      type="ghost"
+    />
+  </div>
   <React.Fragment>
     cloneWithClassName
     <DefaultDetailsButtons
@@ -84,27 +92,31 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
   className="EditorDetailsPanel"
   id="test"
 >
-  <IconButton
-    aria-label="Close"
-    className="EditorDetailsPanel__close"
-    icon={
-      {
-        "icon": [],
-        "iconName": "xmark-thin",
-      }
-    }
-    id="closeDetailsPanelBtn"
-    size="large"
-    tooltipPlacement="left"
-    tooltipText="Close"
-    type="ghost"
-  />
-  <h2
-    className="EditorDetailsPanel__title"
-    id="detailsPanelTitle"
+  <div
+    className="EditorDetailsPanel__header"
   >
-    Test
-  </h2>
+    <h2
+      className="EditorDetailsPanel__title"
+      id="detailsPanelTitle"
+    >
+      Test
+    </h2>
+    <IconButton
+      aria-label="Close"
+      className="EditorDetailsPanel__close"
+      icon={
+        {
+          "icon": [],
+          "iconName": "xmark-thin",
+        }
+      }
+      id="closeDetailsPanelBtn"
+      size="large"
+      tooltipPlacement="left"
+      tooltipText="Close"
+      type="ghost"
+    />
+  </div>
   <React.Fragment>
     cloneWithClassName
     cloneWithClassName
@@ -118,27 +130,31 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
   className="EditorDetailsPanel"
   id="test"
 >
-  <IconButton
-    aria-label="Close"
-    className="EditorDetailsPanel__close"
-    icon={
-      {
-        "icon": [],
-        "iconName": "xmark-thin",
-      }
-    }
-    id="closeDetailsPanelBtn"
-    size="large"
-    tooltipPlacement="left"
-    tooltipText="Close"
-    type="ghost"
-  />
-  <h2
-    className="EditorDetailsPanel__title"
-    id="detailsPanelTitle"
+  <div
+    className="EditorDetailsPanel__header"
   >
-    Test
-  </h2>
+    <h2
+      className="EditorDetailsPanel__title"
+      id="detailsPanelTitle"
+    >
+      Test
+    </h2>
+    <IconButton
+      aria-label="Close"
+      className="EditorDetailsPanel__close"
+      icon={
+        {
+          "icon": [],
+          "iconName": "xmark-thin",
+        }
+      }
+      id="closeDetailsPanelBtn"
+      size="large"
+      tooltipPlacement="left"
+      tooltipText="Close"
+      type="ghost"
+    />
+  </div>
   <React.Fragment>
     cloneWithClassName
   </React.Fragment>

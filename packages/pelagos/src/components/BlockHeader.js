@@ -3,7 +3,7 @@ import {t} from '@bluecateng/l10n.macro';
 
 import './BlockHeader.less';
 
-/** Header for a form section. */
+/** Header for a form section, usually as a Collapsible title. */
 const BlockHeader = ({className, header, configured}) => (
 	<h2 className={`BlockHeader${className ? ` ${className}` : ''}`}>
 		{header}
