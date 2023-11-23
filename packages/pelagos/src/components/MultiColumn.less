@@ -5,15 +5,13 @@
 @layer pelagos {
 	.MultiColumn {
 		flex-direction: row;
-		overflow-x: auto;
-		overflow-y: hidden;
+		overflow: auto hidden;
 	}
 
 	.MultiColumn__column {
 		position: relative;
 		padding: @sp-02;
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: hidden auto;
 		outline: none;
 
 		&:not(:first-child) {
@@ -61,7 +59,7 @@
 	}
 
 	.MultiColumn__empty {
-		@font-16-400();
+		@helper-text-02();
 		color: var(--text-helper);
 		white-space: pre-line;
 		justify-content: center;

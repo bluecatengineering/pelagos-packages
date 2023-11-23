@@ -15,12 +15,11 @@
 			padding: @sp-16 0 0;
 			margin: 0;
 			list-style: none;
-			overflow-x: hidden;
-			overflow-y: auto;
+			overflow: hidden auto;
 		}
 
 		&__submenu {
-			@font-14-600();
+			@heading-compact-01();
 			@focus-visible();
 			position: relative;
 			display: flex;
@@ -88,7 +87,7 @@
 		}
 
 		&__link {
-			@font-14-600();
+			@heading-compact-01();
 			position: relative;
 			display: flex;
 			align-items: center;
@@ -133,12 +132,12 @@
 			}
 
 			.SideNav__menu & {
-				@font-14-400();
+				@body-compact-01();
 				padding-left: @sp-32;
 			}
 
 			.SideNav__menu &[aria-current] {
-				@font-14-600();
+				@heading-compact-01();
 			}
 		}
 

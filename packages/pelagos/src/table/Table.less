@@ -86,7 +86,7 @@
 		}
 
 		& > thead {
-			@font-12-600();
+			@heading-compact-01();
 			color: var(--text-secondary);
 			background-color: var(--layer-accent);
 
@@ -191,8 +191,12 @@
 			}
 		}
 
-		&__title {
+		&__header {
 			margin: @sp-16 @sp-16 @sp-24 @sp-16;
+		}
+
+		&__title {
+			@heading-03();
 		}
 
 		&__description {
