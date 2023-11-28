@@ -34,6 +34,7 @@ export {default as MenuArrow} from './MenuArrow';
 export {default as ModalSpinner} from './ModalSpinner';
 export {default as MultiColumn} from './MultiColumn';
 export {default as Pagination} from './Pagination';
+export {default as ProgressBar} from './ProgressBar';
 export {default as RadioButton} from './RadioButton';
 export {default as RadioGroup} from './RadioGroup';
 export {default as ScrollBox} from './ScrollBox';
