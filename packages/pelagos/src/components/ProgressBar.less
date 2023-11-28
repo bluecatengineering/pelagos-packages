@@ -1,0 +1,138 @@
+@import '../../less/fonts';
+@import '../../less/spacing';
+@import '../../less/utils';
+
+@layer pelagos {
+	.ProgressBar {
+		gap: @sp-08;
+
+		&__label {
+			@label-01();
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			gap: @sp-16;
+
+			.ProgressBar--inline > & {
+				justify-content: flex-start;
+			}
+
+			.ProgressBar--indented > & {
+				margin-left: @sp-16;
+			}
+		}
+
+		&__labelText {
+			@base-ellipsis();
+		}
+
+		&__icon {
+			font-size: 16px;
+
+			.ProgressBar--finished & {
+				color: var(--support-success);
+			}
+
+			.ProgressBar--error & {
+				color: var(--support-error);
+			}
+		}
+
+		&__track {
+			position: relative;
+			flex-direction: row;
+			background-color: var(--layer-accent);
+			overflow: hidden;
+
+			.ProgressBar--inline > & {
+				flex: 1;
+			}
+
+			.ProgressBar--big > & {
+				height: 8px;
+			}
+
+			.ProgressBar--small > & {
+				height: 4px;
+			}
+
+			.ProgressBar--indeterminate > &::after {
+				content: '';
+				position: absolute;
+				width: 25%;
+				height: 100%;
+				background-color: var(--interactive);
+				animation: progress-bar-indeterminate 1.5s linear infinite;
+				will-change: transform;
+
+				@media (prefers-reduced-motion) {
+					animation-duration: 6s;
+				}
+			}
+
+			// stylelint-disable-next-line @bluecateng/selector-bem -- currently doesn't support :is
+			.ProgressBar--inline:is(.ProgressBar--finished, .ProgressBar--error) > & {
+				position: absolute;
+				width: 0;
+				height: 0;
+				overflow: hidden;
+			}
+		}
+
+		&__bar {
+			width: 100%;
+			transform: scaleX(0);
+			transform-origin: 0;
+			transition: transform 0.15s ease-out;
+
+			.ProgressBar--active & {
+				background-color: var(--interactive);
+			}
+
+			.ProgressBar--finished & {
+				background-color: var(--support-success);
+				transform: scaleX(1);
+			}
+
+			.ProgressBar--error & {
+				background-color: var(--support-error);
+				transform: scaleX(1);
+			}
+		}
+
+		&__helper {
+			@helper-text-01();
+			color: var(--text-helper);
+
+			.ProgressBar--inline > & {
+				position: absolute;
+				width: 0;
+				height: 0;
+				overflow: hidden;
+			}
+
+			.ProgressBar--indented > & {
+				margin-left: @sp-16;
+			}
+
+			.ProgressBar--error > & {
+				color: var(--support-error);
+			}
+		}
+
+		&--inline {
+			flex-direction: row;
+			align-items: center;
+			gap: @sp-16;
+		}
+	}
+
+	@keyframes progress-bar-indeterminate {
+		0% {
+			transform: translateX(-100%);
+		}
+		100% {
+			transform: translateX(400%);
+		}
+	}
+}
