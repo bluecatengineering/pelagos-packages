@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.6.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.5.2...@bluecateng/pelagos@12.6.0) (2023-12-04)
+
+### Features
+
+- add ProgressBar component ([1fc66f6](https://github.com/bluecatengineering/pelagos-packages/commit/1fc66f6b7744ea96f8e7cfaa5f7143a653a585ed))
+- define font tokens per Carbon v11 ([c6269a4](https://github.com/bluecatengineering/pelagos-packages/commit/c6269a459694e5c65a04abcdc8015250ba20f0ce))
+- mark legacy font tokens as deprecated ([fb9294e](https://github.com/bluecatengineering/pelagos-packages/commit/fb9294e372058ef61ca1d662701039fe56042c91))
+- use Carbon font tokens ([df6a03b](https://github.com/bluecatengineering/pelagos-packages/commit/df6a03b630b672d9a079006c940daeaef1eb36d9))
+
+### Bug Fixes
+
+- avoid order dependent position between IconButton and EditorDetailsPanel ([ab2dde8](https://github.com/bluecatengineering/pelagos-packages/commit/ab2dde85f43e50914dd9211315195451f71552ff))
+- handle drops that are not files ([bf41448](https://github.com/bluecatengineering/pelagos-packages/commit/bf41448268939bd7fe10fcf4fc296ab44fdca36a))
+- remove custom border radius ([fcb0b1a](https://github.com/bluecatengineering/pelagos-packages/commit/fcb0b1a4ac9d3dbc3bf9cf5f5b130dd84216e1d8))
+- update colours and palettes from Carbon v11 ([ba327cb](https://github.com/bluecatengineering/pelagos-packages/commit/ba327cb9b645cdf01688269949a00fd9bed67bca))
+- update Menu and ButtonMenu per Carbon v11 ([3fc05e0](https://github.com/bluecatengineering/pelagos-packages/commit/3fc05e05ee429d24b324a20b57df254cdc6b7129))
+
 ## [12.5.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.5.1...@bluecateng/pelagos@12.5.2) (2023-11-03)
 
 ### Bug Fixes
