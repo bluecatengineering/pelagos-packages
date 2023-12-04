@@ -36,7 +36,13 @@ ThemesFilter.propTypes = {
 	onChange: PropTypes.func,
 };
 
-const carbonThemes = ['white', 'g100'];
+const families = ['All', 'Carbon', 'Pelagos', 'Light', 'Dark'];
+const familyThemes = {
+	Carbon: ['white', 'g100'],
+	Pelagos: ['cg00', 'yg100'],
+	Light: ['white', 'cg00'],
+	Dark: ['yg100', 'g100'],
+};
 const themeNames = {
 	white: 'White',
 	cg00: 'Cool Gray 00',
@@ -66,7 +72,7 @@ const Themes = () => {
 	const [currentGroup, setCurrentGroup] = useState('All');
 	const [currentSet, setCurrentSet] = useState('All');
 	const [currentProperty, setCurrentProperty] = useState('All');
-	const [showCarbonTokens, setShowCarbonTokens] = useState(false);
+	const [family, setFamily] = useState('All');
 	const filtered = useMemo(
 		() =>
 			currentGroup === 'All' && currentSet === 'All' && currentProperty === 'All'
@@ -80,18 +86,15 @@ const Themes = () => {
 		[currentGroup, currentSet, currentProperty, metaList]
 	);
 	const filteredThemes = useMemo(
-		() => (showCarbonTokens ? themeList : themeList.filter(([key]) => !carbonThemes.includes(key))),
-		[themeList, showCarbonTokens]
+		() => (family === 'All' ? themeList : themeList.filter(([key]) => familyThemes[family].includes(key))),
+		[themeList, family]
 	);
-	const handleCarbonTokensClick = useCallback((event) => setShowCarbonTokens(event.target.checked), []);
 	return (
 		<div className="Themes sb-unstyled" data-theme="cg00">
 			<div className="Themes__header">
 				<h1>{`Themes (${filtered.length}/${metaList.length} tokens)`}</h1>
 				<div className="Themes__filters">
-					<label className="Themes__check">
-						<input type="checkbox" checked={showCarbonTokens} onClick={handleCarbonTokensClick} /> Show Carbon themes
-					</label>
+					<ThemesFilter label="Family" options={families} value={family} onChange={setFamily} />
 					<ThemesFilter label="Group" options={groups} value={currentGroup} onChange={setCurrentGroup} />
 					<ThemesFilter label="Set" options={sets} value={currentSet} onChange={setCurrentSet} />
 					<ThemesFilter label="Property" options={properties} value={currentProperty} onChange={setCurrentProperty} />
