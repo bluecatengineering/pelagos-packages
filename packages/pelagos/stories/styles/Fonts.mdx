@@ -1,30 +1,45 @@
 import {Meta} from '@storybook/addon-docs';
-import fonts from '../../defs/fonts.yaml';
+import fontData from '../../defs/fonts.yaml';
 
 <Meta title="Styles/Fonts" />
 
 # Fonts
 
-<table style={fonts['root-font'].styles}>
+<table>
 	<thead>
 		<tr>
 			<th>Token</th>
 			<th>Usage</th>
+			<th>Specs</th>
 		</tr>
 	</thead>
 	<tbody>
-		{Object.entries(fonts)
-			.filter(([k]) => k !== 'root-font' && !/^font-/.test(k))
-			.map(([key, {use, styles}]) => (
-				<tr key={key}>
-					<td
-						style={Object.fromEntries(
-							Object.entries(styles).map(([k, v]) => [k, k === 'line-height' && !/rem/.test(v) ? `${v}em` : `${v}`])
-						)}>
-						{key}
-					</td>
-					<td>{use}</td>
-				</tr>
-			))}
+		{Object.entries(fontData.fonts)
+			.filter(([, v]) => !v.deprecated)
+			.map(
+				([
+					key,
+					{
+						use,
+						specs: {fontFamily, fontSize, lineHeight, fontWeight, letterSpacing},
+					},
+				]) => (
+					<tr key={key} style={{verticalAlign: 'top'}}>
+						<td style={{fontFamily, fontSize, lineHeight, fontWeight, letterSpacing}}>{key}</td>
+						<td>{use}</td>
+						<td style={{whiteSpace: 'nowrap'}}>
+							Family: {fontFamily}
+							<br />
+							Size: {parseFloat(fontSize) * 16}px / {fontSize}
+							<br />
+							Line height: {parseFloat(lineHeight) * 16}px / {lineHeight}
+							<br />
+							Weight: {fontWeight}
+							<br />
+							Letter spacing: {letterSpacing}
+						</td>
+					</tr>
+				)
+			)}
 	</tbody>
 </table>

@@ -60,29 +60,16 @@ const loadSpacing = () =>
 const loadFonts = () =>
 	readFile('packages/pelagos/defs/fonts.yaml', 'utf8').then((text) =>
 		Object.fromEntries(
-			Object.entries(parse(text))
-				.filter(([k]) => k !== 'root-font')
-				.map(
-					([
-						k,
-						{
-							use,
-							styles: {'font-size': fontSize, 'font-weight': fontWeight, 'line-height': lineHeight},
-						},
-					]) => [
-						k,
-						{
-							type: 'typography',
-							value: {
-								fontFamily: 'Open Sans',
-								fontWeight,
-								fontSize,
-								lineHeight: `${(lineHeight || 1.5) * parseInt(fontSize)}px`,
-							},
-							description: use,
-						},
-					]
-				)
+			Object.entries(parse(text).fonts)
+				.filter(([, v]) => !v.deprecated)
+				.map(([k, {use, specs}]) => [
+					k,
+					{
+						type: 'typography',
+						value: specs,
+						description: use,
+					},
+				])
 		)
 	);
 
@@ -104,10 +91,10 @@ const loadShadows = () =>
 	});
 
 Promise.all([loadColors(), loadThemes(), loadSpacing(), loadFonts(), loadShadows()])
-	.then(([colors, {cg00, yg100}, spacing, fonts, shadows]) =>
+	.then(([colors, themes, spacing, fonts, shadows]) =>
 		writeFile(
 			'build/storybook/figma-tokens.json',
-			JSON.stringify({global: {colors}, cg00, yg100, spacing, fonts, shadows})
+			JSON.stringify({global: {colors}, ...themes, spacing, fonts, shadows})
 		)
 	)
 	// eslint-disable-next-line no-console

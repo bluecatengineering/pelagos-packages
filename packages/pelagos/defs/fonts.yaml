@@ -1,217 +1,246 @@
-root-font:
-  styles:
-    font: 400 16px/1.375 'Open Sans', Helvetica, Arial, sans-serif
+rootFont: 400 16px/1.375 'Open Sans', Helvetica, Arial, sans-serif
+families:
+  Open Sans:
+    css: "'Open Sans', Helvetica, Arial, sans-serif"
+    default: true
+  Inconsolata:
+    css: "Inconsolata, Menlo, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace"
+fonts:
+  code-01:
+    use: inline code snippets and smaller code elements.
+    specs:
+      fontFamily: 'Inconsolata'
+      fontSize: '.75rem'
+      lineHeight: '1rem'
+      fontWeight: '400'
+      letterSpacing: '.32px'
+  code-02:
+    use: large code snippets and larger code elements.
+    specs:
+      fontFamily: 'Inconsolata'
+      fontSize: '.875rem'
+      lineHeight: '1.25rem'
+      fontWeight: '400'
+      letterSpacing: '.32px'
+  label-01:
+    use: field labels in components, error messages, and captions.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.75rem'
+      lineHeight: '1rem'
+      fontWeight: '400'
+      letterSpacing: '.32px'
+  label-02:
+    use: field labels in components, error messages, and captions.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.875rem'
+      lineHeight: '1.125rem'
+      fontWeight: '400'
+      letterSpacing: '.16px'
+  helper-text-01:
+    use: explanatory helper text that appears below a field title within a component.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.75rem'
+      lineHeight: '1rem'
+      fontWeight: '400'
+      letterSpacing: '.32px'
+  helper-text-02:
+    use: explanatory helper text that appears below a field title within a component.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.875rem'
+      lineHeight: '1.125rem'
+      fontWeight: '400'
+      letterSpacing: '.16px'
+  legal-01:
+    use: legal copy appearing in product pages.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.75rem'
+      lineHeight: '1rem'
+      fontWeight: '400'
+      letterSpacing: '.32px'
+  legal-02:
+    use: legal copy appearing in web pages.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.875rem'
+      lineHeight: '1.125rem'
+      fontWeight: '400'
+      letterSpacing: '.16px'
 
-code-01:
-  use: inline code snippets and smaller code elements.
-  styles:
-    font: 400 .75rem/1rem Inconsolata, Menlo, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace
-    letter-spacing: .32px
-code-02:
-  use: large code snippets and larger code elements.
-  styles:
-    font: 400 .875rem/1.25rem Inconsolata, Menlo, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace
-    letter-spacing: .32px
-label-01:
-  use: field labels in components, error messages, and captions.
-  styles:
-    font-size: .75rem
-    line-height: 1rem
-    font-weight: 400
-    letter-spacing: .32px
-label-02:
-  use: field labels in components, error messages, and captions.
-  styles:
-    font-size: .875rem
-    line-height: 1.125rem
-    font-weight: 400
-    letter-spacing: .16px
-helper-text-01:
-  use: explanatory helper text that appears below a field title within a component.
-  styles:
-    font-size: .75rem
-    line-height: 1rem
-    font-weight: 400
-    letter-spacing: .32px
-helper-text-02:
-  use: explanatory helper text that appears below a field title within a component.
-  styles:
-    font-size: .875rem
-    line-height: 1.125rem
-    font-weight: 400
-    letter-spacing: .16px
-legal-01:
-  use: legal copy appearing in product pages.
-  styles:
-    font-size: .75rem
-    line-height: 1rem
-    font-weight: 400
-    letter-spacing: .32px
-legal-02:
-  use: legal copy appearing in web pages.
-  styles:
-    font-size: .875rem
-    line-height: 1.125rem
-    font-weight: 400
-    letter-spacing: .16px
+  body-compact-01:
+    use: short paragraphs with no more than four lines and is commonly used in components.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.875rem'
+      lineHeight: '1.125rem'
+      fontWeight: '400'
+      letterSpacing: '.16px'
 
-body-compact-01:
-  use: short paragraphs with no more than four lines and is commonly used in components.
-  styles:
-    font-size: .875rem
-    line-height: 1.125rem
-    font-weight: 400
-    letter-spacing: .16px
+  body-compact-02:
+    use: short paragraphs with no more than four lines. Use in expressive components, such as button and link.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '1rem'
+      lineHeight: '1.375rem'
+      fontWeight: '400'
+      letterSpacing: '0'
 
-body-compact-02:
-  use: short paragraphs with no more than four lines. Use in expressive components, such as button and link.
-  styles:
-    font-size: 1rem
-    line-height: 1.375rem
-    font-weight: 400
-    letter-spacing: 0
+  body-01:
+    use: productive layouts for long paragraphs with more than four lines. Use also for longer body copy in components such as accordion or structured list. It is always left-aligned.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.875rem'
+      lineHeight: '1.25rem'
+      fontWeight: '400'
+      letterSpacing: '.16px'
 
-body-01:
-  use: productive layouts for long paragraphs with more than four lines. Use also for longer body copy in components such as accordion or structured list. It is always left-aligned.
-  styles:
-    font-size: .875rem
-    line-height: 1.25rem
-    font-weight: 400
-    letter-spacing: .16px
+  body-02:
+    use: expressive layouts for long paragraphs with four lines or more. It is always left-aligned.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '1rem'
+      lineHeight: '1.5rem'
+      fontWeight: '400'
+      letterSpacing: '0'
 
-body-02:
-  use: expressive layouts for long paragraphs with four lines or more. It is always left-aligned.
-  styles:
-    font-size: 1rem
-    line-height: 1.5rem
-    font-weight: 400
-    letter-spacing: 0
+  heading-compact-01:
+    use: component and layout headings. It pairs with body-compact-01.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.875rem'
+      lineHeight: '1.125rem'
+      fontWeight: '600'
+      letterSpacing: '.16px'
 
-heading-compact-01:
-  use: component and layout headings. It pairs with body-compact-01.
-  styles:
-    font-size: .875rem
-    line-height: 1.125rem
-    font-weight: 600
-    letter-spacing: .16px
+  heading-compact-02:
+    use: smaller layout headings. It pairs with body-compact-02.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '1rem'
+      lineHeight: '1.375rem'
+      fontWeight: '600'
+      letterSpacing: '0'
 
-heading-compact-02:
-  use: smaller layout headings. It pairs with body-compact-02.
-  styles:
-    font-size: 1rem
-    line-height: 1.375rem
-    font-weight: 600
-    letter-spacing: 0
+  heading-01:
+    use: component and layout headings. It pairs with body-01.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '.875rem'
+      lineHeight: '1.25rem'
+      fontWeight: '600'
+      letterSpacing: '.16px'
 
-heading-01:
-  use: component and layout headings. It pairs with body-01.
-  styles:
-    font-size: .875rem
-    line-height: 1.25rem
-    font-weight: 600
-    letter-spacing: .16px
+  heading-02:
+    use: smaller layout headings. It pairs with body-02.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '1rem'
+      lineHeight: '1.5rem'
+      fontWeight: '600'
+      letterSpacing: '0'
 
-heading-02:
-  use: smaller layout headings. It pairs with body-02.
-  styles:
-    font-size: 1rem
-    line-height: 1.5rem
-    font-weight: 600
-    letter-spacing: 0
+  heading-03:
+    use: component and layout headings.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '1.25rem'
+      lineHeight: '1.75rem'
+      fontWeight: '400'
+      letterSpacing: '0'
 
-heading-03:
-  use: component and layout headings.
-  styles:
-    font-size: 1.25rem
-    line-height: 1.75rem
-    font-weight: 400
-    letter-spacing: 0
+  heading-04:
+    use: layout headings.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '1.75rem'
+      lineHeight: '2.25rem'
+      fontWeight: '400'
+      letterSpacing: '0'
 
-heading-04:
-  use: layout headings.
-  styles:
-    font-size: 1.75rem
-    line-height: 2.25rem
-    font-weight: 400
-    letter-spacing: 0
+  heading-05:
+    use: layout headings.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '2rem'
+      lineHeight: '2.5rem'
+      fontWeight: '400'
+      letterSpacing: '0'
 
-heading-05:
-  use: layout headings.
-  styles:
-    font-size: 2rem
-    line-height: 2.5rem
-    font-weight: 400
-    letter-spacing: 0
+  heading-06:
+    use: layout headings.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '2.625rem'
+      lineHeight: '3.125rem'
+      fontWeight: '300'
+      letterSpacing: '0'
 
-heading-06:
-  use: layout headings.
-  styles:
-    font-size: 2.625rem
-    line-height: 3.125rem
-    font-weight: 300
-    letter-spacing: 0
+  heading-07:
+    use: layout headings.
+    specs:
+      fontFamily: 'Open Sans'
+      fontSize: '3.375rem'
+      lineHeight: '4rem'
+      fontWeight: '300'
+      letterSpacing: '0'
 
-heading-07:
-  use: layout headings.
-  styles:
-    font-size: 3.375rem
-    line-height: 4rem
-    font-weight: 300
-    letter-spacing: 0
-
-font-10-400:
-  use: indicator
-  styles:
-    font-size: 10px
-    font-weight: 400
-font-10-600:
-  use: h6
-  styles:
-    font-size: 10px
-    font-weight: 600
-font-12-400:
-  use: label
-  styles:
-    font-size: 12px
-    font-weight: 400
-font-12-600:
-  use: h5
-  styles:
-    font-size: 12px
-    font-weight: 600
-font-14-400:
-  use: body-medium
-  styles:
-    font-size: 14px
-    font-weight: 400
-font-14-600:
-  use: h4, button
-  styles:
-    font-size: 14px
-    font-weight: 600
-font-16-400:
-  use: body-large
-  styles:
-    font-size: 16px
-    font-weight: 400
-font-16-600:
-  use: h3
-  styles:
-    font-size: 16px
-    font-weight: 600
-font-18-400:
-  use: h2
-  styles:
-    font-size: 18px
-    font-weight: 400
-font-24-400:
-  use: h1
-  styles:
-    font-size: 24px
-    font-weight: 400
-font-68-300:
-  use: display-large
-  styles:
-    font-size: 68px
-    font-weight: 300
-    line-height: 1.25
+  font-10-400:
+    deprecated: true
+    specs:
+      fontSize: '10px'
+      fontWeight: '400'
+  font-10-600:
+    deprecated: true
+    specs:
+      fontSize: '10px'
+      fontWeight: '600'
+  font-12-400:
+    deprecated: true
+    specs:
+      fontSize: '12px'
+      fontWeight: '400'
+  font-12-600:
+    deprecated: true
+    specs:
+      fontSize: '12px'
+      fontWeight: '600'
+  font-14-400:
+    deprecated: true
+    specs:
+      fontSize: '14px'
+      fontWeight: '400'
+  font-14-600:
+    deprecated: true
+    specs:
+      fontSize: '14px'
+      fontWeight: '600'
+  font-16-400:
+    deprecated: true
+    specs:
+      fontSize: '16px'
+      fontWeight: '400'
+  font-16-600:
+    deprecated: true
+    specs:
+      fontSize: '16px'
+      fontWeight: '600'
+  font-18-400:
+    deprecated: true
+    specs:
+      fontSize: '18px'
+      fontWeight: '400'
+  font-24-400:
+    deprecated: true
+    specs:
+      fontSize: '24px'
+      fontWeight: '400'
+  font-68-300:
+    deprecated: true
+    specs:
+      fontSize: '68px'
+      fontWeight: '300'
+      lineHeight: '1.25'
