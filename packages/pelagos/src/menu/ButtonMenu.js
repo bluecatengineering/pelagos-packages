@@ -1,7 +1,7 @@
 import {Children, cloneElement, forwardRef, useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
-import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 import setRefs from '../functions/setRefs';
 import useRandomId from '../hooks/useRandomId';
@@ -35,7 +35,7 @@ const ButtonMenu = forwardRef(({id, className, disabled, flipped, children, ...p
 				{...props}
 				id={id}
 				className={`ButtonMenu${className ? ` ${className}` : ''}`}
-				icon={faChevronDown}
+				icon={faAngleDown}
 				disabled={disabled || allDisabled}
 				aria-controls={expanded ? menuId : null}
 				aria-haspopup="true"

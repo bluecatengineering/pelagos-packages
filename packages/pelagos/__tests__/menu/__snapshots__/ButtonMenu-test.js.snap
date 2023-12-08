@@ -11,7 +11,7 @@ exports[`ButtonMenu rendering renders expected elements 1`] = `
     icon={
       {
         "icon": [],
-        "iconName": "chevron-down",
+        "iconName": "angle-down",
         "prefix": "fas",
       }
     }
@@ -35,7 +35,7 @@ exports[`ButtonMenu rendering renders expected elements when expanded is true 1`
     icon={
       {
         "icon": [],
-        "iconName": "chevron-down",
+        "iconName": "angle-down",
         "prefix": "fas",
       }
     }
@@ -76,7 +76,7 @@ exports[`ButtonMenu rendering renders expected elements when optional properties
     icon={
       {
         "icon": [],
-        "iconName": "chevron-down",
+        "iconName": "angle-down",
         "prefix": "fas",
       }
     }
