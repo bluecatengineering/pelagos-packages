@@ -298,7 +298,8 @@ describe('TabList', () => {
 		it('adds an effect which calls addResizeObserver', () => {
 			const list = {scrollWidth: 200};
 			const setCanScroll = jest.fn();
-			useRef.mockReturnValueOnce({current: list});
+			const ref = {current: list};
+			useRef.mockReturnValueOnce(ref);
 			useState.mockReturnValueOnce([1]).mockReturnValueOnce([false, setCanScroll]).mockReturnValueOnce([50.5]);
 			shallow(
 				<TabList selectedIndex={0}>
@@ -312,6 +313,8 @@ describe('TabList', () => {
 			const observer = addResizeObserver.mock.calls[0][1];
 			observer({width: 199.5});
 			observer({width: 199.1});
+			ref.current = null;
+			observer({width: 200});
 			expect(setCanScroll.mock.calls).toEqual([[false], [true]]);
 		});
 

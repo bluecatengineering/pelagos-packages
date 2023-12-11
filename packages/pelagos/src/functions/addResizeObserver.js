@@ -1,5 +1,3 @@
-import throttleAF from './throttleAF';
-
 /**
  * Adds a resize observer to the specified target element.
  * @param {Element} target the target element.
@@ -20,11 +18,9 @@ import throttleAF from './throttleAF';
  * }
  */
 const addResizeObserver = (target, callback) => {
-	let rect;
-	const f = throttleAF(() => callback(rect));
-	const observer = new ResizeObserver((entries) => ((rect = entries[0].contentRect), f()));
+	const observer = new ResizeObserver((entries) => callback(entries[0].contentRect));
 	observer.observe(target);
-	return () => (f.cancel(), observer.disconnect());
+	return () => observer.disconnect();
 };
 
 export default addResizeObserver;
