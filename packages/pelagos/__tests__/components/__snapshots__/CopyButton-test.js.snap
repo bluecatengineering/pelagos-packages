@@ -3,28 +3,6 @@
 exports[`CopyButton rendering renders expected elements 1`] = `
 <button
   aria-label="Copy"
-  className="CopyButton TestClass"
-  id="test-id"
-  onClick={[Function]}
-  onFocus={[Function]}
-  onMouseEnter={[Function]}
-  type="button"
->
-  <SvgIcon
-    icon={
-      {
-        "icon": [],
-        "iconName": "copy",
-        "prefix": "far",
-      }
-    }
-  />
-</button>
-`;
-
-exports[`CopyButton rendering renders expected elements when className is not set 1`] = `
-<button
-  aria-label="Copy"
   className="CopyButton"
   id="test-id"
   onClick={[Function]}
@@ -64,7 +42,7 @@ exports[`CopyButton rendering renders expected elements when disabled is true an
 </span>
 `;
 
-exports[`CopyButton rendering renders expected elements when disabled is true and className is set 1`] = `
+exports[`CopyButton rendering renders expected elements when disabled is true and optional properties are set 1`] = `
 <span
   aria-disabled="true"
   aria-label="Copy"
@@ -73,13 +51,23 @@ exports[`CopyButton rendering renders expected elements when disabled is true an
   onMouseEnter={[Function]}
 >
   <SvgIcon
-    icon={
-      {
-        "icon": [],
-        "iconName": "copy",
-        "prefix": "far",
-      }
-    }
+    icon={{}}
   />
 </span>
+`;
+
+exports[`CopyButton rendering renders expected elements when optional properties are set 1`] = `
+<button
+  aria-label="Copy"
+  className="CopyButton TestClass"
+  id="test-id"
+  onClick={[Function]}
+  onFocus={[Function]}
+  onMouseEnter={[Function]}
+  type="button"
+>
+  <SvgIcon
+    icon={{}}
+  />
+</button>
 `;
