@@ -10,7 +10,7 @@ import SvgIcon from './SvgIcon';
 import './CopyButton.less';
 
 /** Button to copy data to the clipboard. */
-const CopyButton = ({id, className, data, tooltipText, tooltipPlacement, disabled}) => {
+const CopyButton = ({id, className, data, icon, tooltipText, tooltipPlacement, disabled}) => {
 	const targetRef = useRef(null);
 	const [showTooltip, hide] = useTooltipBase();
 	const show = useCallback(
@@ -40,7 +40,7 @@ const CopyButton = ({id, className, data, tooltipText, tooltipPlacement, disable
 			aria-disabled="true"
 			onMouseEnter={show}
 			onMouseLeave={hide}>
-			<SvgIcon icon={faCopy} />
+			<SvgIcon icon={icon || faCopy} />
 		</span>
 	) : (
 		<button
@@ -54,7 +54,7 @@ const CopyButton = ({id, className, data, tooltipText, tooltipPlacement, disable
 			onFocus={show}
 			onBlur={hide}
 			onClick={handleClick}>
-			<SvgIcon icon={faCopy} />
+			<SvgIcon icon={icon || faCopy} />
 		</button>
 	);
 };
@@ -66,6 +66,8 @@ CopyButton.propTypes = {
 	className: PropTypes.string,
 	/** The data to copy to the clipboard. */
 	data: PropTypes.string,
+	/** The object representing the icon. (using FontAwesome, etc.) */
+	icon: PropTypes.object,
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */

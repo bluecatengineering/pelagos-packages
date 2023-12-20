@@ -11,15 +11,15 @@ describe('CopyButton', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			useTooltipBase.mockReturnValue([]);
-			const wrapper = shallow(
-				<CopyButton id="test-id" className="TestClass" tooltipText="Test tooltip" tooltipPlacement="top" />
-			);
+			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when className is not set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			useTooltipBase.mockReturnValue([]);
-			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" />);
+			const wrapper = shallow(
+				<CopyButton id="test-id" className="TestClass" icon={{}} tooltipText="Test tooltip" tooltipPlacement="top" />
+			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
@@ -31,12 +31,13 @@ describe('CopyButton', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when disabled is true and className is set', () => {
+		it('renders expected elements when disabled is true and optional properties are set', () => {
 			useTooltipBase.mockReturnValue([]);
 			const wrapper = shallow(
 				<CopyButton
 					id="test-id"
 					className="TestClass"
+					icon={{}}
 					tooltipText="Test tooltip"
 					tooltipPlacement="top"
 					disabled={true}
