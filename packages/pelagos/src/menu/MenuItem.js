@@ -25,7 +25,7 @@ MenuItem.propTypes = {
 	text: PropTypes.string,
 	/** The menu item type. */
 	type: PropTypes.oneOf(['default', 'danger']),
-	/** @deprecated use text instead. */
+	/** The content if it's more than just text. */
 	children: PropTypes.node,
 	/** Whether the item is disabled. */
 	disabled: PropTypes.bool,

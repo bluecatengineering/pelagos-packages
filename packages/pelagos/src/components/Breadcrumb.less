@@ -1,5 +1,6 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 @layer pelagos {
 	.Breadcrumb {
@@ -21,12 +22,33 @@
 
 	.Breadcrumb__separator {
 		margin: 0 @sp-08;
+
+		:last-child > & {
+			display: none;
+		}
 	}
 
-	.Breadcrumb__back {
-		position: absolute;
-		left: -32px;
-		top: -7px;
+	.Breadcrumb__item {
+		display: flex;
+		align-items: center;
+
+		& > a {
+			@base-ellipsis();
+			max-width: 150px;
+		}
+
+		& > .IconMenu {
+			width: 20px;
+			height: 18px;
+
+			&:focus-visible {
+				outline: 1px solid var(--focus);
+			}
+
+			& > svg {
+				transform: translateY(4px);
+			}
+		}
 	}
 
 	@media print {

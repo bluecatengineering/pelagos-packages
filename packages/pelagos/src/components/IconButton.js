@@ -17,12 +17,12 @@ const IconButton = forwardRef(
 		}${className ? ` ${className}` : ''}`;
 		return disabled ? (
 			<span {...props} id={id} className={finalClassName} role="button" aria-disabled="true" ref={refs}>
-				<SvgIcon icon={icon} />
+				<SvgIcon icon={icon} aria-hidden />
 				{overlay}
 			</span>
 		) : (
 			<button {...props} id={id} className={finalClassName} type="button" ref={refs} onClick={onClick}>
-				<SvgIcon icon={icon} />
+				<SvgIcon icon={icon} aria-hidden />
 				{overlay}
 			</button>
 		);

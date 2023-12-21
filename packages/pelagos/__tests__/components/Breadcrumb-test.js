@@ -9,25 +9,20 @@ describe('Breadcrumb', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<Breadcrumb title="Test">
+				<Breadcrumb>
 					<BreadcrumbItem />
 				</Breadcrumb>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
-	});
 
-	describe('behaviour', () => {
-		it('calls history.go when back is clicked', () => {
-			const go = jest.fn();
-			global.history = {go};
+		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
 				<Breadcrumb title="Test">
 					<BreadcrumbItem />
 				</Breadcrumb>
 			);
-			wrapper.find('IconButton').simulate('click');
-			expect(go.mock.calls).toEqual([[-1]]);
+			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});
 });

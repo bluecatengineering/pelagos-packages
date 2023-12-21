@@ -18,7 +18,7 @@ describe('IconMenu', () => {
 		it('renders expected elements', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}}>
+				<IconMenu>
 					<MenuItem>one</MenuItem>
 				</IconMenu>
 			);

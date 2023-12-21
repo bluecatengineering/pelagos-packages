@@ -27,7 +27,9 @@ const children = [
 		Option 4
 	</MenuItem>,
 ];
-export const Default = {args: {icon: faCat, arrow: true, 'aria-label': 'Cat actions', children}};
+export const Default = {args: {'aria-label': 'Cat actions', children}};
+
+export const WithCustomIcon = {args: {icon: faCat, arrow: true, 'aria-label': 'Cat actions', children}};
 
 export const _WithLayers = {
 	render: () => (

@@ -10,7 +10,8 @@ exports[`IconMenu rendering renders expected elements 1`] = `
     disabled={false}
     icon={
       {
-        "foo": "test",
+        "icon": [],
+        "iconName": "ellipsis-v-thin",
       }
     }
     id="random-id"

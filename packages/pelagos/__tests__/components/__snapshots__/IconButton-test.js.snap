@@ -8,6 +8,7 @@ exports[`IconButton rendering renders the expected elements 1`] = `
   type="button"
 >
   <SvgIcon
+    aria-hidden={true}
     icon={{}}
   />
 </button>
@@ -22,6 +23,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
   role="button"
 >
   <SvgIcon
+    aria-hidden={true}
     icon={{}}
   />
 </span>
@@ -36,6 +38,7 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
   role="button"
 >
   <SvgIcon
+    aria-hidden={true}
     icon={{}}
   />
 </span>
@@ -49,6 +52,7 @@ exports[`IconButton rendering renders the expected elements when className is no
   type="button"
 >
   <SvgIcon
+    aria-hidden={true}
     icon={{}}
   />
 </button>
@@ -62,6 +66,7 @@ exports[`IconButton rendering renders the expected elements when overlay is set 
   type="button"
 >
   <SvgIcon
+    aria-hidden={true}
     icon={{}}
   />
   overlay
@@ -76,6 +81,7 @@ exports[`IconButton rendering renders the expected elements when size and toolti
   type="button"
 >
   <SvgIcon
+    aria-hidden={true}
     icon={{}}
   />
 </button>
@@ -89,6 +95,7 @@ exports[`IconButton rendering renders the expected elements when tooltipText is 
   type="button"
 >
   <SvgIcon
+    aria-hidden={true}
     icon={{}}
   />
 </button>

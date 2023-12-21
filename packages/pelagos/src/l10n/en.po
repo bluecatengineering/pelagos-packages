@@ -73,10 +73,6 @@ msgstr ""
 msgid "Add filter"
 msgstr ""
 
-#: b52
-msgid "Back"
-msgstr ""
-
 #: c76
 msgid "Breadcrumb"
 msgstr ""
