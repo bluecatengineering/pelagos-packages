@@ -9,7 +9,7 @@ exports[`BreadcrumbItem rendering renders expected elements 1`] = `
     aria-hidden="true"
     className="Breadcrumb__separator"
   >
-    -
+    /
   </span>
 </li>
 `;
@@ -21,6 +21,7 @@ exports[`BreadcrumbItem rendering renders expected elements when href is set 1`]
   <a
     href="#"
     other="foo"
+    title="Test"
   >
     Test
   </a>
@@ -28,7 +29,54 @@ exports[`BreadcrumbItem rendering renders expected elements when href is set 1`]
     aria-hidden="true"
     className="Breadcrumb__separator"
   >
-    -
+    /
+  </span>
+</li>
+`;
+
+exports[`BreadcrumbItem rendering renders expected elements when href is set and the child is not a string 1`] = `
+<li
+  className="Breadcrumb__item"
+>
+  <a
+    href="#"
+    other="foo"
+    title=""
+  >
+    <span>
+      Test
+    </span>
+  </a>
+  <span
+    aria-hidden="true"
+    className="Breadcrumb__separator"
+  >
+    /
+  </span>
+</li>
+`;
+
+exports[`BreadcrumbItem rendering renders expected elements when the child is an IconMenu 1`] = `
+<li
+  className="Breadcrumb__item"
+>
+  <IconMenu
+    icon={
+      {
+        "icon": [],
+        "iconName": "ellipsis-thin",
+      }
+    }
+  >
+    <MenuItem
+      type="default"
+    />
+  </IconMenu>
+  <span
+    aria-hidden="true"
+    className="Breadcrumb__separator"
+  >
+    /
   </span>
 </li>
 `;

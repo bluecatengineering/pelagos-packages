@@ -7,6 +7,7 @@ import useRandomId from '../hooks/useRandomId';
 import useMenuHandler from '../hooks/useMenuHandler';
 import useLayer from '../hooks/useLayer';
 import useMenuPositioner from '../hooks/useMenuPositioner';
+import ellipsisVThin from '../icons/ellipsisVThin';
 
 import IconButton from './IconButton';
 import MenuArrow from './MenuArrow';
@@ -68,7 +69,7 @@ IconMenu.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The object representing the icon. (using FontAwesome, etc.) */
-	icon: PropTypes.object.isRequired,
+	icon: PropTypes.object,
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
@@ -81,6 +82,10 @@ IconMenu.propTypes = {
 	flipped: PropTypes.bool,
 	/** The menu items. */
 	children: PropTypes.arrayOf(PropTypes.node).isRequired,
+};
+
+IconMenu.defaultProps = {
+	icon: ellipsisVThin,
 };
 
 export default IconMenu;

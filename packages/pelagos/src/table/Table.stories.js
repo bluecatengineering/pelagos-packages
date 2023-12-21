@@ -1,5 +1,5 @@
 import {useCallback, useMemo, useState} from 'react';
-import {faCat, faCog, faEllipsisV} from '@fortawesome/free-solid-svg-icons';
+import {faCat, faCog} from '@fortawesome/free-solid-svg-icons';
 import {faEdit, faTrashAlt} from '@fortawesome/free-regular-svg-icons';
 
 import Button from '../components/Button';
@@ -8,6 +8,7 @@ import IconMenu from '../components/IconMenu';
 import Layer from '../components/Layer';
 import Pagination from '../components/Pagination';
 import MenuItem from '../menu/MenuItem';
+import MenuItemDivider from '../menu/MenuItemDivider';
 
 import Table from './Table';
 import TableBody from './TableBody';
@@ -250,7 +251,8 @@ export const DefaultToolbar = (args) => {
 						<MenuItem>Option one</MenuItem>
 						<MenuItem>Option two</MenuItem>
 						<MenuItem disabled>Option three</MenuItem>
-						<MenuItem hasDivider>Option four</MenuItem>
+						<MenuItemDivider />
+						<MenuItem>Option four</MenuItem>
 					</IconMenu>
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
@@ -320,7 +322,8 @@ export const BatchActions = (args) => {
 						<MenuItem>Batch option one</MenuItem>
 						<MenuItem>Batch option two</MenuItem>
 						<MenuItem disabled>Batch option three</MenuItem>
-						<MenuItem hasDivider>Batch option four</MenuItem>
+						<MenuItemDivider />
+						<MenuItem>Batch option four</MenuItem>
 					</IconMenu>
 				</TableToolbarBatch>
 				<TableToolbarDefault hidden={someSelected}>
@@ -330,7 +333,8 @@ export const BatchActions = (args) => {
 						<MenuItem>Option one</MenuItem>
 						<MenuItem>Option two</MenuItem>
 						<MenuItem disabled>Option three</MenuItem>
-						<MenuItem hasDivider>Option four</MenuItem>
+						<MenuItemDivider />
+						<MenuItem>Option four</MenuItem>
 					</IconMenu>
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
@@ -441,11 +445,12 @@ export const InlineMenu = (args) => (
 							</TableCell>
 						))}
 						<TableCell>
-							<IconMenu icon={faEllipsisV} flipped>
+							<IconMenu flipped>
 								<MenuItem>Option one</MenuItem>
 								<MenuItem>Option two</MenuItem>
 								<MenuItem disabled>Option three</MenuItem>
-								<MenuItem hasDivider>Option four</MenuItem>
+								<MenuItemDivider />
+								<MenuItem>Option four</MenuItem>
 							</IconMenu>
 						</TableCell>
 					</TableRow>
@@ -574,7 +579,7 @@ export const ForFigma = {
 												<IconButton icon={faTrashAlt} />
 											</div>
 										) : (
-											<IconMenu icon={faEllipsisV} flipped>
+											<IconMenu flipped>
 												<MenuItem>Option one</MenuItem>
 											</IconMenu>
 										)}

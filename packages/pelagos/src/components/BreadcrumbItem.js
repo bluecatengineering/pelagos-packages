@@ -1,17 +1,22 @@
+import {cloneElement} from 'react';
 import PropTypes from 'prop-types';
+
+import ellipsisThin from '../icons/ellipsisThin';
 
 /** An item in a Breadcrumb. */
 const BreadcrumbItem = ({href, children, ...props}) => (
 	<li className="Breadcrumb__item">
 		{href ? (
-			<a href={href} {...props}>
+			<a href={href} title={typeof children === 'string' ? children : ''} {...props}>
 				{children}
 			</a>
+		) : children?.type?.displayName === 'IconMenu' ? (
+			cloneElement(children, {icon: ellipsisThin})
 		) : (
 			children
 		)}
 		<span className="Breadcrumb__separator" aria-hidden="true">
-			-
+			/
 		</span>
 	</li>
 );

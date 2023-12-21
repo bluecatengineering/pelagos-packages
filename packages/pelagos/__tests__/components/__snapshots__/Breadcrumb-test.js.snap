@@ -4,21 +4,23 @@ exports[`Breadcrumb rendering renders expected elements 1`] = `
 <div
   className="Breadcrumb"
 >
-  <IconButton
-    aria-label="Back"
-    className="Breadcrumb__back"
-    icon={
-      {
-        "icon": [],
-        "iconName": "chevron-left",
-        "prefix": "fas",
-      }
-    }
-    onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
-  />
+  <nav
+    aria-label="Breadcrumb"
+    className="Breadcrumb__crumbs"
+  >
+    <ol
+      className="Breadcrumb__list"
+    >
+      <BreadcrumbItem />
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`Breadcrumb rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Breadcrumb"
+>
   <nav
     aria-label="Breadcrumb"
     className="Breadcrumb__crumbs"
