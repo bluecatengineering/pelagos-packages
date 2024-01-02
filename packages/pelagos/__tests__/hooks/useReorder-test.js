@@ -71,6 +71,8 @@ describe('useReorder', () => {
 		expect(live.textContent).toBe('bar dropped. Final position in list: 1 of 2.');
 		onFinish(element3);
 		expect(live.textContent).toBe('foo dropped. Final position in list: 1 of 2.');
+		onStart(element1, 0);
+		onCancel(element1);
 		onCancel(element1);
 		expect(live.textContent).toBe('foo reorder cancelled.');
 		expect(updateList.mock.calls).toEqual([
@@ -80,13 +82,14 @@ describe('useReorder', () => {
 		expect(setAttribute.mock.calls).toEqual([
 			['aria-hidden', 'true'],
 			['aria-describedby', 'attribute-value'],
-			['aria-describedby', 'attribute-value'],
-			['aria-describedby', 'attribute-value'],
+			['aria-hidden', 'true'],
 			['aria-describedby', 'attribute-value'],
 		]);
 		jest.runOnlyPendingTimers();
 		expect(removeAttribute.mock.calls).toEqual([
 			['aria-describedby'],
+			['aria-describedby'],
+			['aria-hidden'],
 			['aria-hidden'],
 			['aria-hidden'],
 			['aria-hidden'],

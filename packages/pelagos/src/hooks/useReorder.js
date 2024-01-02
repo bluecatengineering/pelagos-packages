@@ -72,12 +72,18 @@ const useReorder = (selector, handleSelector, count, getElementName, onChange) =
 					liveRef,
 					t`${getElementName(element)} dropped. Final position in list: ${toIndex + 1} of ${count}.`
 				);
-				element.setAttribute('aria-describedby', describeId);
+				if (describeId) {
+					element.setAttribute('aria-describedby', describeId);
+					describeId = null;
+				}
 				removeAriaHidden(element);
 			},
 			onCancel: (element) => {
 				setLiveText(liveRef, t`${getElementName(element)} reorder cancelled.`);
-				element.setAttribute('aria-describedby', describeId);
+				if (describeId) {
+					element.setAttribute('aria-describedby', describeId);
+					describeId = null;
+				}
 				removeAriaHidden(element);
 			},
 		});
