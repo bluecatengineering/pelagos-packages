@@ -37,11 +37,13 @@
 		& > tbody > tr {
 			@layer-hover-effects();
 			@focus-visible();
+			color: var(--text-secondary);
 			border-top: 1px solid transparent;
 			border-bottom: 1px solid transparent;
 
 			&[aria-selected='true'],
 			&[aria-selected='true']:nth-child(even) {
+				color: var(--text-primary);
 				background-color: var(--layer-selected);
 				border-bottom-color: var(--border-subtle-selected);
 
@@ -59,6 +61,12 @@
 			&[aria-selected='true']:first-child {
 				border-top-color: var(--border-subtle-selected);
 			}
+
+			.IconButton {
+				&:hover {
+					background-color: var(--layer-selected-hover);
+				}
+			}
 		}
 
 		&--line > tbody > tr {
@@ -67,6 +75,10 @@
 			@media print {
 				border-bottom-color: transparent;
 			}
+		}
+
+		& > tbody > tr:hover {
+			color: var(--text-primary);
 		}
 
 		&--zebra > tbody > tr:nth-child(even) {
@@ -177,7 +189,7 @@
 			transition: opacity 0.15s ease-out;
 
 			.Table__sort--active > & {
-				color: var(--link-primary);
+				color: var(--icon-primary);
 				opacity: 1;
 			}
 
