@@ -48,7 +48,6 @@ exports[`TableHeader rendering renders expected elements when sortable is true 1
         {
           "icon": [],
           "iconName": "sort-up",
-          "prefix": "fas",
         }
       }
     />
@@ -77,7 +76,6 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
         {
           "icon": [],
           "iconName": "sort",
-          "prefix": "fas",
         }
       }
     />
@@ -106,7 +104,6 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
         {
           "icon": [],
           "iconName": "sort-down",
-          "prefix": "fas",
         }
       }
     />
@@ -135,7 +132,6 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
         {
           "icon": [],
           "iconName": "sort",
-          "prefix": "fas",
         }
       }
     />

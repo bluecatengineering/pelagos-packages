@@ -1,8 +1,10 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
-import {faSort, faSortDown, faSortUp} from '@fortawesome/free-solid-svg-icons';
 
 import SvgIcon from '../components/SvgIcon';
+import sort from '../icons/sort';
+import sortUp from '../icons/sortUp';
+import sortDown from '../icons/sortDown';
 
 /** Header element for a table component. */
 const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, children, ...props}, ref) =>
@@ -14,10 +16,7 @@ const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, c
 			ref={ref}>
 			<button className={`Table__sort${sortOrder ? ' Table__sort--active' : ''}`} type="button">
 				<div className={`Table__sortLabel Table--${align}`}>{children}</div>
-				<SvgIcon
-					className="Table__sortIcon"
-					icon={sortOrder === 'a' ? faSortUp : sortOrder === 'd' ? faSortDown : faSort}
-				/>
+				<SvgIcon className="Table__sortIcon" icon={sortOrder === 'a' ? sortUp : sortOrder === 'd' ? sortDown : sort} />
 			</button>
 		</th>
 	) : (
