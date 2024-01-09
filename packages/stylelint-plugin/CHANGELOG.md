@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/stylelint-plugin@4.0.1...@bluecateng/stylelint-plugin@4.0.2) (2024-01-09)
+
+### Bug Fixes
+
+- limit max version of stylelint to avoid error with v16 ([fba3013](https://github.com/bluecatengineering/pelagos-packages/commit/fba3013a800cbac23de19ba3bd86827250f30e38))
+
 ## [4.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/stylelint-plugin@4.0.0...@bluecateng/stylelint-plugin@4.0.1) (2023-01-25)
 
 **Note:** Version bump only for package @bluecateng/stylelint-plugin
