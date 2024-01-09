@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/stylelint-config@5.0.1...@bluecateng/stylelint-config@5.0.2) (2024-01-09)
+
+### Bug Fixes
+
+- set peer dependency of stylelint-config-standard to 34 ([4506257](https://github.com/bluecatengineering/pelagos-packages/commit/45062579ab6e74d0f2cac5891d33f575e27d5b56))
+
 ## [5.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/stylelint-config@5.0.0...@bluecateng/stylelint-config@5.0.1) (2024-01-09)
 
 ### Bug Fixes
