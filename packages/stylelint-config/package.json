@@ -16,7 +16,7 @@
   ],
   "main": "dist",
   "peerDependencies": {
-    "stylelint": ">=15",
+    "stylelint": "^15.0.0",
     "stylelint-config-standard": ">=33"
   },
   "dependencies": {

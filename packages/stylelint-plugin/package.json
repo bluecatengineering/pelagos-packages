@@ -17,7 +17,7 @@
   "main": "dist",
   "peerDependencies": {
     "@bluecateng/pelagos": ">=8",
-    "stylelint": ">=14"
+    "stylelint": "^15.0.0"
   },
   "dependencies": {
     "yaml": "^2.1.1"
