@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.7.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.6.0...@bluecateng/pelagos@12.7.0) (2024-01-16)
+
+### Features
+
+- add optional icon property to CopyButton ([ffb7000](https://github.com/bluecatengineering/pelagos-packages/commit/ffb70009b0f60b98de531d77f593f5d1a0549b9e))
+
+### Bug Fixes
+
+- fix error when TabList is unmounted by Suspense ([96e0beb](https://github.com/bluecatengineering/pelagos-packages/commit/96e0beb89198003a41d559f848467fdcc7ed9001))
+- improve Breadcrumb ([3740107](https://github.com/bluecatengineering/pelagos-packages/commit/37401072cb76313999afc8b5f1e34839b131c029))
+- improve Table styles ([2545bb4](https://github.com/bluecatengineering/pelagos-packages/commit/2545bb4e1ad347ecf44e4ca5de6470d22b63722b))
+- remove Dialog shadow per Carbon v11 ([aa936a2](https://github.com/bluecatengineering/pelagos-packages/commit/aa936a2f51691be8701e7f6eb3938eeb287d44b6))
+- set aria-describedby only if it was saved ([97b8938](https://github.com/bluecatengineering/pelagos-packages/commit/97b8938ca65647b273a3f8134516628a4a9a5ab8))
+- use correct icon in ButtonMenu ([c081f60](https://github.com/bluecatengineering/pelagos-packages/commit/c081f60b3edbd8a8ae43d8f5da577a5352cafdcb))
+
 ## [12.6.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.5.2...@bluecateng/pelagos@12.6.0) (2023-12-04)
 
 ### Features
