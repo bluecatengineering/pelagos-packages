@@ -33,7 +33,7 @@ export default {
 		theme: {
 			name: 'Theme',
 			description: 'Preview theme',
-			defaultValue: 'cg00',
+			defaultValue: 'white',
 			toolbar: {
 				icon: 'paintbrush',
 				items: [
