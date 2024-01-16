@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup node
-        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # tag=v4.0.0
+        uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # tag=v4.0.1
         with:
           node-version: 18
 
@@ -27,7 +27,7 @@ jobs:
           npx lerna run prepack
 
       - name: Publish to Chromatic
-        uses: chromaui/action@2f12dc37555ffc9ed980d883e96b6d03724a2d6a # tag=v10.0.0
+        uses: chromaui/action@722516a3934360dac82cdef8dbab38e824fc6fa1 # tag=v10.3.0
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true

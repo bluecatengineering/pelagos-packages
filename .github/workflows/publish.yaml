@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # tag=v4.1.1
 
       - name: Setup node
-        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # tag=v4.0.0
+        uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # tag=v4.0.1
         with:
           node-version: 18
 
@@ -26,7 +26,7 @@ jobs:
           scripts/generate-figma-tokens.js
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@a753861a5debcf57bf8b404356158c8e1e33150c # tag=v2.0.0
+        uses: actions/upload-pages-artifact@0252fc4ba7626f0298f0cf00902a25c6afc77fa8 # tag=v3.0.0
         with:
           path: build/storybook
           retention-days: 1
@@ -46,4 +46,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@77d7344265e1f960dab5c00dbff52287a70b0d4f # tag=v3.0.0
+        uses: actions/deploy-pages@87c3283f01cd6fe19a0ab93a23b2f6fcba5a8e42 # tag=v4.0.3
