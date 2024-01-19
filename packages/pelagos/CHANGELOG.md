@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.7.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.7.0...@bluecateng/pelagos@12.7.1) (2024-01-19)
+
+### Bug Fixes
+
+- handle alphabetic keys in Select when closed ([4e20c5c](https://github.com/bluecatengineering/pelagos-packages/commit/4e20c5cc704b24e63a2bd7c31c5f4ad9e27e16b0))
+
 ## [12.7.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.6.0...@bluecateng/pelagos@12.7.0) (2024-01-16)
 
 ### Features
