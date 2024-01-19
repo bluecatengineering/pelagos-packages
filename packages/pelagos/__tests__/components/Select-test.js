@@ -7,6 +7,7 @@ import pageDown from '../../src/functions/pageDown';
 import pageUp from '../../src/functions/pageUp';
 import scrollToItem from '../../src/functions/scrollToItem';
 import smoothScroll from '../../src/functions/smoothScroll';
+import getInnerText from '../../src/functions/getInnerText';
 
 jest.unmock('../../src/components/Select');
 
@@ -21,6 +22,8 @@ const options = Object.keys(strings);
 const renderOption = (o) => strings[o];
 
 global.document = {};
+
+getInnerText.mockReturnValue('text');
 
 describe('Select', () => {
 	describe('rendering', () => {
@@ -420,12 +423,7 @@ describe('Select', () => {
 				preventDefault: jest.fn(),
 				nativeEvent: {stopImmediatePropagation: jest.fn()},
 			};
-			const list = {
-				clientHeight: 75,
-				scrollTop: 0,
-				scrollHeight: 75,
-				children: options.map((o) => ({textContent: renderOption(o)})),
-			};
+			const list = {children: []};
 			const find = jest.fn().mockReturnValue(1);
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
@@ -439,7 +437,32 @@ describe('Select', () => {
 			expect(smoothScroll).not.toHaveBeenCalled();
 			expect(find.mock.calls).toEqual([[84, 0, 3, anyFunction]]);
 
-			expect(find.mock.calls[0][3](1)).toBe('TWO');
+			expect(find.mock.calls[0][3](1)).toBe('TEXT');
+		});
+
+		it('finds an option starting with typed key when the list is not visible and an alphanumeric key is pressed', () => {
+			const setFocused = jest.fn();
+			const event = {
+				keyCode: 'T'.codePointAt(0),
+				preventDefault: jest.fn(),
+				nativeEvent: {stopImmediatePropagation: jest.fn()},
+			};
+			const find = jest.fn().mockReturnValue(1);
+			const onChange = jest.fn();
+			useState.mockReturnValueOnce([false]).mockReturnValueOnce([0, setFocused]);
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({});
+			useStringFinder.mockReturnValue(find);
+			const wrapper = shallow(
+				<Select id="test" value="one" options={options} renderOption={renderOption} onChange={onChange} />
+			);
+			wrapper.find('[as="button"]').simulate('keydown', event);
+			expect(event.preventDefault).toHaveBeenCalledTimes(1);
+			expect(setFocused.mock.calls).toEqual([]);
+			expect(smoothScroll.mock.calls).toEqual([]);
+			expect(find.mock.calls).toEqual([[84, 0, 3, anyFunction]]);
+			expect(onChange.mock.calls).toEqual([['two']]);
+
+			expect(find.mock.calls[0][3](1)).toBe('TEXT');
 		});
 
 		it('does not change focused when the list is visible and an alphanumeric key with no matches is pressed', () => {

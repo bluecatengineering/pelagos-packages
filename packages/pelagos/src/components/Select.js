@@ -9,6 +9,7 @@ import useSelectPositioner from '../hooks/useSelectPositioner';
 import pageUp from '../functions/pageUp';
 import pageDown from '../functions/pageDown';
 import scrollToItem from '../functions/scrollToItem';
+import getInnerText from '../functions/getInnerText';
 
 import Layer from './Layer';
 import SelectArrow from './SelectArrow';
@@ -34,11 +35,15 @@ const Select = ({
 
 	const renderedOptions = useMemo(
 		() =>
-			options.map((option) => ({
-				value: option,
-				key: getOptionKey(option),
-				element: renderOption(option),
-			})),
+			options.map((option) => {
+				const element = renderOption(option);
+				return {
+					value: option,
+					key: getOptionKey(option),
+					text: getInnerText(element).toUpperCase(),
+					element,
+				};
+			}),
 		[options, getOptionKey, renderOption]
 	);
 
@@ -149,22 +154,23 @@ const Select = ({
 						break;
 					}
 					default:
-						if (open && keyCode >= 48 && keyCode <= 90) {
+						if (keyCode >= 48 && keyCode <= 90) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
-							const children = listRef.current.children;
-							const i = findItemToFocus(keyCode, focused, children.length, (i) =>
-								children[i].textContent.toUpperCase()
-							);
+							const i = findItemToFocus(keyCode, focused, renderedOptions.length, (i) => renderedOptions[i].text);
 							if (i !== -1) {
-								updateFocused(i);
+								if (open) {
+									updateFocused(i);
+								} else {
+									onChange(renderedOptions[i].value);
+								}
 							}
 						}
 						break;
 				}
 			}
 		},
-		[open, focused, select, renderedOptions, updateFocused, findItemToFocus, showList, hideList]
+		[open, hideList, select, renderedOptions, focused, showList, updateFocused, findItemToFocus, onChange]
 	);
 
 	const handleBlur = useCallback(() => hideList(), [hideList]);
