@@ -42,24 +42,39 @@ export const Overlay = {
 export const AllStates = () => (
 	<div className="Story__row">
 		<div className="Story__group">
-			<IconButton id="test0p" icon={faCat} type="primary" tooltipText="Primary" aria-label="Label" />
-			<IconButton id="test1p" icon={faCat} type="primary" tooltipText="Primary" aria-label="Label" size="large" />
-			<IconButton id="test2p" icon={faCat} type="primary" tooltipText="Primary" aria-label="Label" disabled />
+			<IconButton icon={faCat} type="primary" tooltipText="Primary" aria-label="Label" />
+			<IconButton icon={faCat} type="primary" tooltipText="Primary" aria-label="Label" size="large" />
+			<IconButton icon={faCat} type="primary" tooltipText="Primary" aria-label="Label" disabled />
 		</div>
 		<div className="Story__group">
-			<IconButton id="test0s" icon={faCat} type="secondary" tooltipText="Secondary" aria-label="Label" />
-			<IconButton id="test1s" icon={faCat} type="secondary" tooltipText="Secondary" aria-label="Label" size="large" />
-			<IconButton id="test2s" icon={faCat} type="secondary" tooltipText="Secondary" aria-label="Label" disabled />
+			<IconButton icon={faCat} type="secondary" tooltipText="Secondary" aria-label="Label" />
+			<IconButton icon={faCat} type="secondary" tooltipText="Secondary" aria-label="Label" size="large" />
+			<IconButton icon={faCat} type="secondary" tooltipText="Secondary" aria-label="Label" disabled />
 		</div>
 		<div className="Story__group">
-			<IconButton id="test0t" icon={faCat} type="tertiary" tooltipText="Tertiary" aria-label="Label" />
-			<IconButton id="test1t" icon={faCat} type="tertiary" tooltipText="Tertiary" aria-label="Label" size="large" />
-			<IconButton id="test2t" icon={faCat} type="tertiary" tooltipText="Tertiary" aria-label="Label" disabled />
+			<IconButton icon={faCat} type="tertiary" tooltipText="Tertiary" aria-label="Label" />
+			<IconButton icon={faCat} type="tertiary" tooltipText="Tertiary" aria-label="Label" size="large" />
+			<IconButton icon={faCat} type="tertiary" tooltipText="Tertiary" aria-label="Label" disabled />
 		</div>
 		<div className="Story__group">
-			<IconButton id="test0g" icon={faCat} type="ghost" tooltipText="Ghost" aria-label="Label" />
-			<IconButton id="test1g" icon={faCat} type="ghost" tooltipText="Ghost" aria-label="Label" size="large" />
-			<IconButton id="test2g" icon={faCat} type="ghost" tooltipText="Ghost" aria-label="Label" disabled />
+			<IconButton icon={faCat} type="ghost" tooltipText="Ghost" aria-label="Label" />
+			<IconButton icon={faCat} type="ghost" tooltipText="Ghost" aria-label="Label" size="large" />
+			<IconButton icon={faCat} type="ghost" tooltipText="Ghost" aria-label="Label" disabled />
+		</div>
+		<div className="Story__group">
+			<IconButton icon={faCat} type="dangerPrimary" tooltipText="Danger primary" aria-label="Label" />
+			<IconButton icon={faCat} type="dangerPrimary" tooltipText="Danger primary" aria-label="Label" size="large" />
+			<IconButton icon={faCat} type="dangerPrimary" tooltipText="Danger primary" aria-label="Label" disabled />
+		</div>
+		<div className="Story__group">
+			<IconButton icon={faCat} type="dangerTertiary" tooltipText="Danger tertiary" aria-label="Label" />
+			<IconButton icon={faCat} type="dangerTertiary" tooltipText="Danger tertiary" aria-label="Label" size="large" />
+			<IconButton icon={faCat} type="dangerTertiary" tooltipText="Danger tertiary" aria-label="Label" disabled />
+		</div>
+		<div className="Story__group">
+			<IconButton icon={faCat} type="dangerGhost" tooltipText="Danger ghost" aria-label="Label" />
+			<IconButton icon={faCat} type="dangerGhost" tooltipText="Danger ghost" aria-label="Label" size="large" />
+			<IconButton icon={faCat} type="dangerGhost" tooltipText="Danger ghost" aria-label="Label" disabled />
 		</div>
 	</div>
 );

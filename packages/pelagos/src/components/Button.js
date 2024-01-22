@@ -55,7 +55,15 @@ Button.propTypes = {
 	/** The size of the button. */
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	/** The button type. */
-	type: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'ghost']),
+	type: PropTypes.oneOf([
+		'primary',
+		'secondary',
+		'tertiary',
+		'ghost',
+		'dangerPrimary',
+		'dangerTertiary',
+		'dangerGhost',
+	]),
 	/** Whether the button is disabled. */
 	disabled: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
