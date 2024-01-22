@@ -41,7 +41,15 @@ IconButton.propTypes = {
 	/** The component size. */
 	size: PropTypes.oneOf(['medium', 'large']),
 	/** The button type. */
-	type: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'ghost']),
+	type: PropTypes.oneOf([
+		'primary',
+		'secondary',
+		'tertiary',
+		'ghost',
+		'dangerPrimary',
+		'dangerTertiary',
+		'dangerGhost',
+	]),
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */

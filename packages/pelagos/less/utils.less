@@ -73,6 +73,79 @@
 	}
 };
 
+@ghost-button-effects: {
+	transition:
+		color 0.15s ease-out,
+		background-color 0.15s ease-out;
+
+	&:hover {
+		color: var(--link-primary-hover);
+		background-color: var(--layer-hover);
+	}
+
+	&:active {
+		background-color: var(--layer-active);
+	}
+};
+
+@danger-primary-button-effects: {
+	transition: background-color 0.15s ease-out;
+
+	&:hover {
+		background-color: var(--button-danger-hover);
+	}
+
+	&:active {
+		background-color: var(--button-danger-active);
+	}
+};
+
+@danger-tertiary-button-effects: {
+	transition:
+		color 0.15s ease-out,
+		background-color 0.15s ease-out,
+		border-color 0.15s ease-out;
+
+	&:focus {
+		color: var(--text-on-color);
+		background-color: var(--button-danger-secondary);
+		border-color: var(--button-danger-secondary);
+	}
+
+	&:hover {
+		color: var(--text-on-color);
+		background-color: var(--button-danger-hover);
+		border-color: var(--button-danger-hover);
+	}
+
+	&:active {
+		color: var(--text-on-color);
+		background-color: var(--button-danger-active);
+		border-color: var(--button-danger-active);
+	}
+};
+
+@danger-ghost-button-effects: {
+	transition:
+		color 0.15s ease-out,
+		background-color 0.15s ease-out;
+
+	&:focus {
+		color: var(--text-on-color);
+		background-color: var(--button-danger-secondary);
+	}
+
+	&:hover {
+		color: var(--text-on-color);
+		background-color: var(--button-danger-hover);
+	}
+
+	&:active {
+		color: var(--text-on-color);
+		background-color: var(--button-danger-active);
+	}
+};
+
 @icon-button: {
 	@focus-visible();
 	cursor: pointer;

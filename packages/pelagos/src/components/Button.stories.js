@@ -15,6 +15,12 @@ export const Tertiary = {args: {text: 'Tertiary', type: 'tertiary'}};
 
 export const Ghost = {args: {text: 'Ghost', type: 'ghost'}};
 
+export const DangerPrimary = {args: {text: 'Danger primary', type: 'dangerPrimary'}};
+
+export const DangerTertiary = {args: {text: 'Danger tertiary', type: 'dangerTertiary'}};
+
+export const DangerGhost = {args: {text: 'Danger ghost', type: 'dangerGhost'}};
+
 export const Disabled = {args: {text: 'Disabled', disabled: true}};
 
 export const WithIcon = {args: {text: 'Primary', icon: faCat, type: 'primary'}};
@@ -44,6 +50,24 @@ export const AllStates = () => (
 			<Button text="Ghost" type="ghost" />
 			<Button text="Ghost" size="large" type="ghost" />
 			<Button text="Ghost" type="ghost" tooltipText="Disabled" disabled />
+		</div>
+		<div className="Story__group">
+			<Button text="Primary" size="small" type="dangerPrimary" />
+			<Button text="Primary" type="dangerPrimary" />
+			<Button text="Primary" size="large" type="dangerPrimary" />
+			<Button text="Primary" type="dangerPrimary" tooltipText="Disabled" disabled />
+		</div>
+		<div className="Story__group">
+			<Button text="Tertiary" size="small" type="dangerTertiary" />
+			<Button text="Tertiary" type="dangerTertiary" />
+			<Button text="Tertiary" size="large" type="dangerTertiary" />
+			<Button text="Tertiary" type="dangerTertiary" tooltipText="Disabled" disabled />
+		</div>
+		<div className="Story__group">
+			<Button text="Ghost" size="small" type="dangerGhost" />
+			<Button text="Ghost" type="dangerGhost" />
+			<Button text="Ghost" size="large" type="dangerGhost" />
+			<Button text="Ghost" type="dangerGhost" tooltipText="Disabled" disabled />
 		</div>
 	</div>
 );

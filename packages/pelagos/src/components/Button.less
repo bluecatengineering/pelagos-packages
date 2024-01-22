@@ -57,15 +57,52 @@
 			border: 1px solid var(--button-tertiary);
 
 			&[aria-disabled='true'] {
-				color: var(--text-on-color-disabled);
+				color: var(--text-disabled);
 				background-color: transparent;
 				border-color: var(--button-disabled);
 			}
 		}
 
 		&--ghost {
-			@layer-hover-effects();
+			@ghost-button-effects();
 			color: var(--link-primary);
+			background-color: transparent;
+			border: 1px solid transparent;
+
+			&[aria-disabled='true'] {
+				color: var(--text-disabled);
+				background-color: transparent;
+			}
+		}
+
+		&--dangerPrimary {
+			@danger-primary-button-effects();
+			color: var(--text-on-color);
+			background-color: var(--button-danger-primary);
+			border: 1px solid transparent;
+
+			&[aria-disabled='true'] {
+				color: var(--text-on-color-disabled);
+				background-color: var(--button-disabled);
+			}
+		}
+
+		&--dangerTertiary {
+			@danger-tertiary-button-effects();
+			color: var(--button-danger-secondary);
+			background-color: transparent;
+			border: 1px solid var(--button-danger-secondary);
+
+			&[aria-disabled='true'] {
+				color: var(--text-disabled);
+				background-color: transparent;
+				border-color: var(--button-disabled);
+			}
+		}
+
+		&--dangerGhost {
+			@danger-ghost-button-effects();
+			color: var(--button-danger-secondary);
 			background-color: transparent;
 			border: 1px solid transparent;
 
