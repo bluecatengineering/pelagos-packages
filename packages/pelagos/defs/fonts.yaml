@@ -7,6 +7,7 @@ families:
     css: "Inconsolata, Menlo, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace"
 fonts:
   code-01:
+    group: code
     use: inline code snippets and smaller code elements.
     specs:
       fontFamily: 'Inconsolata'
@@ -15,6 +16,7 @@ fonts:
       fontWeight: '400'
       letterSpacing: '.32px'
   code-02:
+    group: code
     use: large code snippets and larger code elements.
     specs:
       fontFamily: 'Inconsolata'
@@ -23,6 +25,7 @@ fonts:
       fontWeight: '400'
       letterSpacing: '.32px'
   label-01:
+    group: label
     use: field labels in components, error messages, and captions.
     specs:
       fontFamily: 'Open Sans'
@@ -31,6 +34,7 @@ fonts:
       fontWeight: '400'
       letterSpacing: '.32px'
   label-02:
+    group: label
     use: field labels in components, error messages, and captions.
     specs:
       fontFamily: 'Open Sans'
@@ -39,6 +43,7 @@ fonts:
       fontWeight: '400'
       letterSpacing: '.16px'
   helper-text-01:
+    group: helper
     use: explanatory helper text that appears below a field title within a component.
     specs:
       fontFamily: 'Open Sans'
@@ -47,6 +52,7 @@ fonts:
       fontWeight: '400'
       letterSpacing: '.32px'
   helper-text-02:
+    group: helper
     use: explanatory helper text that appears below a field title within a component.
     specs:
       fontFamily: 'Open Sans'
@@ -55,6 +61,7 @@ fonts:
       fontWeight: '400'
       letterSpacing: '.16px'
   legal-01:
+    group: legal
     use: legal copy appearing in product pages.
     specs:
       fontFamily: 'Open Sans'
@@ -63,6 +70,7 @@ fonts:
       fontWeight: '400'
       letterSpacing: '.32px'
   legal-02:
+    group: legal
     use: legal copy appearing in web pages.
     specs:
       fontFamily: 'Open Sans'
@@ -72,6 +80,7 @@ fonts:
       letterSpacing: '.16px'
 
   body-compact-01:
+    group: body
     use: short paragraphs with no more than four lines and is commonly used in components.
     specs:
       fontFamily: 'Open Sans'
@@ -81,6 +90,7 @@ fonts:
       letterSpacing: '.16px'
 
   body-compact-02:
+    group: body
     use: short paragraphs with no more than four lines. Use in expressive components, such as button and link.
     specs:
       fontFamily: 'Open Sans'
@@ -90,6 +100,7 @@ fonts:
       letterSpacing: '0'
 
   body-01:
+    group: body
     use: productive layouts for long paragraphs with more than four lines. Use also for longer body copy in components such as accordion or structured list. It is always left-aligned.
     specs:
       fontFamily: 'Open Sans'
@@ -99,6 +110,7 @@ fonts:
       letterSpacing: '.16px'
 
   body-02:
+    group: body
     use: expressive layouts for long paragraphs with four lines or more. It is always left-aligned.
     specs:
       fontFamily: 'Open Sans'
@@ -108,6 +120,7 @@ fonts:
       letterSpacing: '0'
 
   heading-compact-01:
+    group: heading
     use: component and layout headings. It pairs with body-compact-01.
     specs:
       fontFamily: 'Open Sans'
@@ -117,6 +130,7 @@ fonts:
       letterSpacing: '.16px'
 
   heading-compact-02:
+    group: heading
     use: smaller layout headings. It pairs with body-compact-02.
     specs:
       fontFamily: 'Open Sans'
@@ -126,6 +140,7 @@ fonts:
       letterSpacing: '0'
 
   heading-01:
+    group: heading
     use: component and layout headings. It pairs with body-01.
     specs:
       fontFamily: 'Open Sans'
@@ -135,6 +150,7 @@ fonts:
       letterSpacing: '.16px'
 
   heading-02:
+    group: heading
     use: smaller layout headings. It pairs with body-02.
     specs:
       fontFamily: 'Open Sans'
@@ -144,6 +160,7 @@ fonts:
       letterSpacing: '0'
 
   heading-03:
+    group: heading
     use: component and layout headings.
     specs:
       fontFamily: 'Open Sans'
@@ -153,6 +170,7 @@ fonts:
       letterSpacing: '0'
 
   heading-04:
+    group: heading
     use: layout headings.
     specs:
       fontFamily: 'Open Sans'
@@ -162,6 +180,7 @@ fonts:
       letterSpacing: '0'
 
   heading-05:
+    group: heading
     use: layout headings.
     specs:
       fontFamily: 'Open Sans'
@@ -171,6 +190,7 @@ fonts:
       letterSpacing: '0'
 
   heading-06:
+    group: heading
     use: layout headings.
     specs:
       fontFamily: 'Open Sans'
@@ -180,6 +200,7 @@ fonts:
       letterSpacing: '0'
 
   heading-07:
+    group: heading
     use: layout headings.
     specs:
       fontFamily: 'Open Sans'
