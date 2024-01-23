@@ -4,6 +4,28 @@ const {readFile, writeFile} = require('node:fs/promises');
 
 const {parse} = require('yaml');
 
+const groupBy = (items, getKey) => {
+	const map = new Map();
+	for (const item of items) {
+		const key = getKey(item);
+		const array = map.get(key);
+		if (array) {
+			array.push(item);
+		} else {
+			map.set(key, [item]);
+		}
+	}
+	return map;
+};
+
+const process = (map, mapFn) => {
+	const result = {};
+	for (const [k, v] of map.entries()) {
+		result[k] = Object.fromEntries(v.map(mapFn));
+	}
+	return result;
+};
+
 const loadColors = () =>
 	readFile('packages/pelagos/defs/colors.yaml', 'utf8').then((text) => {
 		const allColors = Object.entries(parse(text));
@@ -31,23 +53,25 @@ const loadThemes = () =>
 		([themes, metaText]) => {
 			const meta = parse(metaText);
 			return Object.fromEntries(
-				Object.entries(parse(themes))
-					.filter(([k]) => meta[k]?.group !== 'deprecated')
-					.map(([k, v]) => [
-						k,
-						Object.fromEntries(
-							Object.entries(v).map(([k, v]) => {
-								const parts = v.split('/');
-								return [
-									k,
-									{
-										type: 'color',
-										value: parts.length === 1 ? `{colors.${v}}` : `rgba($colors.${parts[0]},${parts[1]})`,
-									},
-								];
-							})
+				Object.entries(parse(themes)).map(([k, v]) => [
+					k,
+					process(
+						groupBy(
+							Object.entries(v).filter(([k]) => meta[k]?.group !== 'deprecated'),
+							([k]) => meta[k].group
 						),
-					])
+						([k, v]) => {
+							const parts = v.split('/');
+							return [
+								k,
+								{
+									type: 'color',
+									value: parts.length === 1 ? `{colors.${v}}` : `rgba($colors.${parts[0]},${parts[1]})`,
+								},
+							];
+						}
+					),
+				])
 			);
 		}
 	);
@@ -59,24 +83,26 @@ const loadSpacing = () =>
 
 const loadFonts = () =>
 	readFile('packages/pelagos/defs/fonts.yaml', 'utf8').then((text) =>
-		Object.fromEntries(
-			Object.entries(parse(text).fonts)
-				.filter(([, v]) => !v.deprecated)
-				.map(([k, {use, specs}]) => [
-					k,
-					{
-						type: 'typography',
-						value: specs,
-						description: use,
-					},
-				])
+		process(
+			groupBy(
+				Object.entries(parse(text).fonts).filter(([, v]) => !v.deprecated),
+				([, {group}]) => group
+			),
+			([k, {use, specs}]) => [
+				k,
+				{
+					type: 'typography',
+					value: specs,
+					description: use,
+				},
+			]
 		)
 	);
 
 const shadowNames = ['umbra', 'penumbra', 'ambient'];
 const generateShadow = (values, index) => {
 	const [x, y, blur, spread] = values.split(' ');
-	return {type: 'dropShadow', color: `{shadow-${shadowNames[index]}}`, x, y, blur, spread};
+	return {type: 'dropShadow', color: `{shadow.shadow-${shadowNames[index]}}`, x, y, blur, spread};
 };
 
 const loadShadows = () =>
@@ -94,7 +120,7 @@ Promise.all([loadColors(), loadThemes(), loadSpacing(), loadFonts(), loadShadows
 	.then(([colors, themes, spacing, fonts, shadows]) =>
 		writeFile(
 			'build/storybook/figma-tokens.json',
-			JSON.stringify({global: {colors}, ...themes, spacing, fonts, shadows})
+			JSON.stringify({global: {colors, ...spacing, ...fonts, ...shadows}, ...themes})
 		)
 	)
 	// eslint-disable-next-line no-console
