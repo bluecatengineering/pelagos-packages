@@ -135,15 +135,14 @@ exports[`Pagination rendering renders expected elements when pageSizes is set 1`
       <SelectNative
         id="random-id-pageSize"
         onChange={[Function]}
+        value={10}
       >
         <option
-          selected={true}
           value={10}
         >
           10
         </option>
         <option
-          selected={false}
           value={20}
         >
           20
@@ -226,81 +225,69 @@ exports[`Pagination rendering renders expected elements when totalItems is set 1
       <SelectNative
         id="random-id-page"
         onChange={[Function]}
+        value={2}
       >
         <option
-          selected={false}
           value={1}
         >
           1
         </option>
         <option
-          selected={true}
           value={2}
         >
           2
         </option>
         <option
-          selected={false}
           value={3}
         >
           3
         </option>
         <option
-          selected={false}
           value={4}
         >
           4
         </option>
         <option
-          selected={false}
           value={5}
         >
           5
         </option>
         <option
-          selected={false}
           value={6}
         >
           6
         </option>
         <option
-          selected={false}
           value={7}
         >
           7
         </option>
         <option
-          selected={false}
           value={8}
         >
           8
         </option>
         <option
-          selected={false}
           value={9}
         >
           9
         </option>
         <option
-          selected={false}
           value={10}
         >
           10
         </option>
         <option
-          selected={false}
           value={11}
         >
           11
         </option>
         <option
-          selected={false}
           value={12}
         >
           12
         </option>
         <option
-          selected={false}
           value={13}
         >
           13

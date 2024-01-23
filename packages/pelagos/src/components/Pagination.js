@@ -43,9 +43,9 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 				{pageSizes && (
 					<div className="Pagination__pageSize">
 						<label htmlFor={pageSizeId}>{t`Items per page`}</label>
-						<SelectNative id={pageSizeId} onChange={handlePageSizeChange}>
+						<SelectNative id={pageSizeId} value={pageSize} onChange={handlePageSizeChange}>
 							{pageSizes.map((n) => (
-								<option key={n} value={n} selected={n === pageSize}>
+								<option key={n} value={n}>
 									{n}
 								</option>
 							))}
@@ -64,9 +64,9 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 				) : (
 					<>
 						<label htmlFor={pageId}>{t`page`}</label>
-						<SelectNative id={pageId} onChange={handlePageChange}>
+						<SelectNative id={pageId} value={page} onChange={handlePageChange}>
 							{pages.map((n) => (
-								<option key={n} value={n} selected={n === page}>
+								<option key={n} value={n}>
 									{n}
 								</option>
 							))}
