@@ -3,6 +3,13 @@ import Pagination from './Pagination';
 export default {
 	title: 'Components/Pagination',
 	component: Pagination,
+	decorators: [
+		(Story) => (
+			<div style={{marginTop: '24px'}}>
+				<Story />
+			</div>
+		),
+	],
 };
 
 export const Default = {

@@ -157,6 +157,10 @@ msgstr ""
 msgid "Next month"
 msgstr ""
 
+#: 4bf
+msgid "Next page"
+msgstr ""
+
 #: 350
 msgid "of {totalPages}"
 msgstr ""
@@ -183,6 +187,10 @@ msgstr ""
 
 #: 46a
 msgid "Previous month"
+msgstr ""
+
+#: 81f
+msgid "Previous page"
 msgstr ""
 
 #: df7

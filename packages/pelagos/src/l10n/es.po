@@ -157,6 +157,10 @@ msgstr "miembro"
 msgid "Next month"
 msgstr "Mes siguiente"
 
+#: 4bf
+msgid "Next page"
+msgstr "Página siguiente"
+
 #: 350
 msgid "of {totalPages}"
 msgstr "de {totalPages}"
@@ -184,6 +188,10 @@ msgstr "Presione Entrar para añadir elementos a la lista."
 #: 46a
 msgid "Previous month"
 msgstr "Mes anterior"
+
+#: 81f
+msgid "Previous page"
+msgstr "Página anterior"
 
 #: df7
 msgid "Remove {name}"
