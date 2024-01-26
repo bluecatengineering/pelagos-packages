@@ -75,11 +75,22 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 					</>
 				)}
 				<div className="Pagination__buttons">
-					<IconButton id={`${id}-prev`} icon={faChevronLeft} disabled={page === 1} onClick={handlePreviousClick} />
+					<IconButton
+						id={`${id}-prev`}
+						icon={faChevronLeft}
+						disabled={page === 1}
+						tooltipText={t`Previous page`}
+						tooltipPlacement="top"
+						aria-label={t`Previous page`}
+						onClick={handlePreviousClick}
+					/>
 					<IconButton
 						id={`${id}-next`}
 						icon={faChevronRight}
 						disabled={page === totalPages}
+						tooltipText={t`Next page`}
+						tooltipPlacement="top"
+						aria-label={t`Next page`}
 						onClick={handleNextClick}
 					/>
 				</div>
