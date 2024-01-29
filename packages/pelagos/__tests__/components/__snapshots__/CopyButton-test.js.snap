@@ -11,13 +11,7 @@ exports[`CopyButton rendering renders expected elements 1`] = `
   type="button"
 >
   <SvgIcon
-    icon={
-      {
-        "icon": [],
-        "iconName": "copy",
-        "prefix": "far",
-      }
-    }
+    icon={[Function]}
   />
 </button>
 `;
@@ -31,13 +25,7 @@ exports[`CopyButton rendering renders expected elements when disabled is true an
   onMouseEnter={[Function]}
 >
   <SvgIcon
-    icon={
-      {
-        "icon": [],
-        "iconName": "copy",
-        "prefix": "far",
-      }
-    }
+    icon={[Function]}
   />
 </span>
 `;

@@ -1,3 +1,4 @@
+/** @deprecated use @carbon/icons-react/es/ErrorFilled instead. */
 export default {
 	iconName: 'rhombus-exclamation',
 	icon: [

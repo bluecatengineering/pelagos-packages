@@ -2,7 +2,7 @@ import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import {createPortal} from 'react-dom';
 import {t} from '@bluecateng/l10n.macro';
-import {faFilter} from '@fortawesome/free-solid-svg-icons';
+import Filter from '@carbon/icons-react/es/Filter';
 
 import IconMenu from '../components/IconMenu';
 import MenuItem from '../menu/MenuItem';
@@ -25,7 +25,7 @@ const FilterMenu = ({flipped, options, filters, getOptionText, getEditor, onAppl
 			<IconMenu
 				id="filterButton"
 				className={`FilterMenu${filterName ? ' FilterMenu--active' : ''}`}
-				icon={faFilter}
+				icon={Filter}
 				arrow
 				disabled={filteredOptions.length === 0}
 				flipped={flipped}

@@ -29,14 +29,7 @@ exports[`FilterChip rendering renders expected elements 1`] = `
     id="test-remove"
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
-    />
+    <Close />
   </button>
 </Layer>
 `;

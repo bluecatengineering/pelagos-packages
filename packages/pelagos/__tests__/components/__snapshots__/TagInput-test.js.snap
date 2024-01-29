@@ -20,14 +20,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
       data-index={0}
       type="button"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
-          }
-        }
-      />
+      <Close />
     </button>
   </span>
   <span
@@ -40,14 +33,7 @@ exports[`TagInput rendering renders expected elements 1`] = `
       data-index={1}
       type="button"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
-          }
-        }
-      />
+      <Close />
     </button>
   </span>
   <input
@@ -83,14 +69,7 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
       data-index={0}
       type="button"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
-          }
-        }
-      />
+      <Close />
     </button>
   </span>
   <span
@@ -103,14 +82,7 @@ exports[`TagInput rendering renders expected elements when error is set 1`] = `
       data-index={1}
       type="button"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
-          }
-        }
-      />
+      <Close />
     </button>
   </span>
   <input

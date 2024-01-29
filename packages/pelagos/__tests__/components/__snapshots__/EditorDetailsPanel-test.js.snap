@@ -18,12 +18,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     <IconButton
       aria-label="Close"
       className="EditorDetailsPanel__close"
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
+      icon={[Function]}
       id="closeDetailsPanelBtn"
       size="large"
       tooltipPlacement="left"
@@ -55,12 +50,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
     <IconButton
       aria-label="Close"
       className="EditorDetailsPanel__close"
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
+      icon={[Function]}
       id="closeDetailsPanelBtn"
       size="large"
       tooltipPlacement="left"
@@ -104,12 +94,7 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     <IconButton
       aria-label="Close"
       className="EditorDetailsPanel__close"
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
+      icon={[Function]}
       id="closeDetailsPanelBtn"
       size="large"
       tooltipPlacement="left"
@@ -142,12 +127,7 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
     <IconButton
       aria-label="Close"
       className="EditorDetailsPanel__close"
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
+      icon={[Function]}
       id="closeDetailsPanelBtn"
       size="large"
       tooltipPlacement="left"

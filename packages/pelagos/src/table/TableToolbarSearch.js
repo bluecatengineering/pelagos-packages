@@ -1,10 +1,8 @@
 import {useCallback, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
-import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
-
-import xmarkThin from '../icons/xmarkThin';
-import SvgIcon from '../components/SvgIcon';
+import Close from '@carbon/icons-react/es/Close';
+import Search from '@carbon/icons-react/es/Search';
 
 /** Search input for a table toolbar. */
 export const OldTableToolbarSearch = ({className, initialText, onChange, ...props}) => {
@@ -32,7 +30,7 @@ export const OldTableToolbarSearch = ({className, initialText, onChange, ...prop
 	return (
 		<div className={`Table__search${className ? ` ${className}` : ''}`}>
 			<span onClick={handleSearchClick} aria-hidden>
-				<SvgIcon className="Table__searchIcon" icon={faMagnifyingGlass} />
+				<Search className="Table__searchIcon" />
 			</span>
 			<input
 				{...props}
@@ -46,7 +44,7 @@ export const OldTableToolbarSearch = ({className, initialText, onChange, ...prop
 			/>
 			{text && (
 				<button className="Table__searchClear" aria-label={t`Clear search`} onClick={handleClearClick}>
-					<SvgIcon icon={xmarkThin} />
+					<Close />
 				</button>
 			)}
 		</div>
@@ -79,7 +77,7 @@ export const NewTableToolbarSearch = ({className, value, onChange, ...props}) =>
 	return (
 		<div className={`Table__search${className ? ` ${className}` : ''}`}>
 			<span onClick={handleSearchClick} aria-hidden>
-				<SvgIcon className="Table__searchIcon" icon={faMagnifyingGlass} />
+				<Search className="Table__searchIcon" />
 			</span>
 			<input
 				{...props}
@@ -93,7 +91,7 @@ export const NewTableToolbarSearch = ({className, value, onChange, ...props}) =>
 			/>
 			{value && (
 				<button className="Table__searchClear" aria-label={t`Clear search`} onClick={handleClearClick}>
-					<SvgIcon icon={xmarkThin} />
+					<Close />
 				</button>
 			)}
 		</div>

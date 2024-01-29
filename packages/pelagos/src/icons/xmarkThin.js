@@ -1,3 +1,4 @@
+/** @deprecated use @carbon/icons-react/es/Close instead. */
 export default {
 	iconName: 'xmark-thin',
 	icon: [

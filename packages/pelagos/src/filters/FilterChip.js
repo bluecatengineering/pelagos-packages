@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
+import Close from '@carbon/icons-react/es/Close';
 
 import Layer from '../components/Layer';
 import MenuArrow from '../components/MenuArrow';
-import SvgIcon from '../components/SvgIcon';
-import xmarkThin from '../icons/xmarkThin';
 
 import './FilterChip.less';
 
@@ -22,7 +21,7 @@ const FilterChip = ({id, name, children, onEditClick, onRemoveClick, ...props}) 
 			type="button"
 			aria-label={t`Remove ${name} filter`}
 			onClick={onRemoveClick}>
-			<SvgIcon icon={xmarkThin} />
+			<Close />
 		</button>
 	</Layer>
 );

@@ -1,7 +1,8 @@
 import {forwardRef, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import ChevronLeft from '@carbon/icons-react/es/ChevronLeft';
+import ChevronRight from '@carbon/icons-react/es/ChevronRight';
 
 import l10n from '../l10n';
 import useRandomId from '../hooks/useRandomId';
@@ -228,7 +229,7 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 			<div className="Calendar__monthHeader">
 				<IconButton
 					className="Calendar__previous"
-					icon={faChevronLeft}
+					icon={ChevronLeft}
 					aria-label={t`Previous month`}
 					onMouseDown={preventDefault}
 					onClick={selectPrevMonth}
@@ -238,7 +239,7 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 				</div>
 				<IconButton
 					className="Calendar__next"
-					icon={faChevronRight}
+					icon={ChevronRight}
 					aria-label={t`Next month`}
 					onMouseDown={preventDefault}
 					onClick={selectNextMonth}
@@ -292,8 +293,8 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 														!isCurMonth
 															? ' Calendar__cell--disabled'
 															: highlighted
-															? tempHighlight(time, curTime, highlighted)
-															: curHighlight(time, rangeStart, rangeEnd)
+																? tempHighlight(time, curTime, highlighted)
+																: curHighlight(time, rangeStart, rangeEnd)
 													}`}
 													tabIndex={isSelected ? 0 : -1}
 													aria-selected={isSelected}

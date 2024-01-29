@@ -27,13 +27,7 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     aria-label="Add"
     className="ComboBox__add"
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "plus",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="test-add"
     onClick={[Function]}
     size="medium"
@@ -85,13 +79,7 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     aria-label="Add"
     className="ComboBox__add"
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "plus",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="test-add"
     onClick={[Function]}
     size="medium"
@@ -145,13 +133,7 @@ exports[`ComboBox rendering renders expected elements when noLayer is true 1`] =
     aria-label="Add"
     className="ComboBox__add"
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "plus",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="test-add"
     onClick={[Function]}
     size="medium"
@@ -203,13 +185,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     aria-label="Add"
     className="ComboBox__add"
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "plus",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="test-add"
     onClick={[Function]}
     size="medium"

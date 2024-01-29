@@ -8,13 +8,7 @@ exports[`ButtonMenu rendering renders expected elements 1`] = `
     className="ButtonMenu"
     data-layer={null}
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "angle-down",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="random-id"
     size="small"
     text="Test"
@@ -32,13 +26,7 @@ exports[`ButtonMenu rendering renders expected elements when expanded is true 1`
     className="ButtonMenu"
     data-layer={2}
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "angle-down",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="random-id"
     size="small"
     text="Test"
@@ -73,13 +61,7 @@ exports[`ButtonMenu rendering renders expected elements when optional properties
     className="ButtonMenu TestClass"
     data-layer={null}
     disabled={true}
-    icon={
-      {
-        "icon": [],
-        "iconName": "angle-down",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="random-id"
     size="small"
     text="Test"

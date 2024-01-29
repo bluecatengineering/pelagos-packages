@@ -1,14 +1,15 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
-import {faCircleCheck, faTriangleExclamation, faCircleInfo} from '@fortawesome/free-solid-svg-icons';
+import CheckmarkFilled from '@carbon/icons-react/es/CheckmarkFilled';
+import InformationFilled from '@carbon/icons-react/es/InformationFilled';
+import WarningFilled from '@carbon/icons-react/es/WarningFilled';
+import ErrorFilled from '@carbon/icons-react/es/ErrorFilled';
+import Close from '@carbon/icons-react/es/Close';
 
 import ToastTypes from '../toasts/ToastTypes';
-import rhombusExclamation from '../icons/rhombusExclamation';
-import xmarkThin from '../icons/xmarkThin';
 
 import Button from './Button';
-import SvgIcon from './SvgIcon';
 import './ToastMessage.less';
 
 const SHORT_DURATION = 3000;
@@ -16,11 +17,11 @@ const DEFAULT_DURATION = 8000;
 const REQUIRES_CLOSE = [ToastTypes.INFO, ToastTypes.WARNING, ToastTypes.ERROR];
 
 const icons = {
-	success: faCircleCheck,
-	info: faCircleInfo,
-	warning: faTriangleExclamation,
-	error: rhombusExclamation,
-	fatal: rhombusExclamation,
+	success: CheckmarkFilled,
+	info: InformationFilled,
+	warning: WarningFilled,
+	error: ErrorFilled,
+	fatal: ErrorFilled,
 };
 
 const ToastMessage = ({message, onRemove}) => {
@@ -49,9 +50,10 @@ const ToastMessage = ({message, onRemove}) => {
 	const {id, type: tmp, text, actionText} = message;
 	const type = tmp === ToastTypes.ACTION ? ToastTypes.INFO : tmp;
 	const requiresClose = REQUIRES_CLOSE.includes(type);
+	const Icon = icons[type];
 	return (
 		<div id={`toast-${id}`} className={`ToastMessage ToastMessage--${type}`} role="alert" data-testid={`toast-${type}`}>
-			<SvgIcon className="ToastMessage__icon" icon={icons[type]} />
+			<Icon className="ToastMessage__icon" size={20} />
 			<div data-testid="message" className="ToastMessage__text">
 				{text}
 			</div>
@@ -72,7 +74,7 @@ const ToastMessage = ({message, onRemove}) => {
 					aria-label={t`Dismiss`}
 					data-testid="toast-close"
 					onClick={handleCloseClick}>
-					<SvgIcon icon={xmarkThin} />
+					<Close size={20} />
 				</button>
 			)}
 			{type !== ToastTypes.FATAL && !actionText && (

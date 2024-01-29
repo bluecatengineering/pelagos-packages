@@ -1,3 +1,4 @@
+/** @deprecated use @carbon/icons-react/es/ArrowUp instead. */
 export default {
 	iconName: 'sort-up',
 	icon: [

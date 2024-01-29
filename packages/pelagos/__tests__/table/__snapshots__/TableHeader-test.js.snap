@@ -42,14 +42,8 @@ exports[`TableHeader rendering renders expected elements when sortable is true 1
     >
       body
     </div>
-    <SvgIcon
+    <ArrowUp
       className="Table__sortIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "sort-up",
-        }
-      }
     />
   </button>
 </th>
@@ -70,14 +64,8 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
     >
       body
     </div>
-    <SvgIcon
+    <ArrowsVertical
       className="Table__sortIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "sort",
-        }
-      }
     />
   </button>
 </th>
@@ -98,14 +86,8 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
     >
       body
     </div>
-    <SvgIcon
+    <ArrowDown
       className="Table__sortIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "sort-down",
-        }
-      }
     />
   </button>
 </th>
@@ -126,14 +108,8 @@ exports[`TableHeader rendering renders expected elements when sortable is true a
     >
       body
     </div>
-    <SvgIcon
+    <ArrowsVertical
       className="Table__sortIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "sort",
-        }
-      }
     />
   </button>
 </th>

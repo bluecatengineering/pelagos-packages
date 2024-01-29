@@ -1,6 +1,7 @@
 import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
-import {faFile, faFolder} from '@fortawesome/free-regular-svg-icons';
+import DocumentBlank from '@carbon/icons-react/es/DocumentBlank';
+import Folder from '@carbon/icons-react/es/Folder';
 
 import LabelLine from '../components/LabelLine';
 import Layer from '../components/Layer';
@@ -58,7 +59,7 @@ const renderNodesWithIcons = (nodes) =>
 			key={id}
 			id={id}
 			label={getLabel(id, label)}
-			icon={expanded === undefined ? faFile : faFolder}
+			icon={expanded === undefined ? DocumentBlank : Folder}
 			expanded={expanded}>
 			{children && renderNodesWithIcons(children)}
 		</TreeNode>
@@ -127,7 +128,11 @@ const generateNodes = (parent) => {
 		const id = `${prefix}${i}`;
 		const label = getLabel(id);
 		nodes.push(
-			i % 2 ? <ParentNode key={id} id={id} label={label} /> : <TreeNode key={id} id={id} label={label} icon={faFile} />
+			i % 2 ? (
+				<ParentNode key={id} id={id} label={label} />
+			) : (
+				<TreeNode key={id} id={id} label={label} icon={DocumentBlank} />
+			)
 		);
 	}
 	return nodes;
@@ -151,7 +156,7 @@ const ParentNode = ({id, label}) => {
 		[children]
 	);
 	return (
-		<TreeNode id={id} label={label} icon={faFolder} expanded={expanded} loading={loading} onToggle={handleToggle}>
+		<TreeNode id={id} label={label} icon={Folder} expanded={expanded} loading={loading} onToggle={handleToggle}>
 			{children}
 		</TreeNode>
 	);

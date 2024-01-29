@@ -17,14 +17,7 @@ exports[`SearchField rendering renders expected elements 1`] = `
     className="SearchField__icon"
     onClick={[Function]}
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
-    />
+    <Close />
   </button>
 </Layer>
 `;

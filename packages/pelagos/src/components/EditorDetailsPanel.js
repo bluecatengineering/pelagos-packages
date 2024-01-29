@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
+import Close from '@carbon/icons-react/es/Close';
 
 import cloneWithClassName from '../functions/cloneWithClassName';
 import useSlidingPanel from '../hooks/useSlidingPanel';
-import xmarkThin from '../icons/xmarkThin';
 
 import IconButton from './IconButton';
 import DefaultDetailsButtons from './DefaultDetailsButtons';
@@ -34,7 +34,7 @@ const EditorDetailsPanel = ({
 			<IconButton
 				id="closeDetailsPanelBtn"
 				className="EditorDetailsPanel__close"
-				icon={xmarkThin}
+				icon={Close}
 				size="large"
 				aria-label={t`Close`}
 				tooltipText={t`Close`}

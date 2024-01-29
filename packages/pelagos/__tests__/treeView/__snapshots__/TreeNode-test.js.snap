@@ -51,15 +51,8 @@ exports[`TreeNode rendering renders expected elements when expanded is false 1`]
       className="TreeView__iconWrapper"
       onClick={[Function]}
     >
-      <SvgIcon
+      <CaretRight
         className="TreeView__icon"
-        icon={
-          {
-            "icon": [],
-            "iconName": "caret-right",
-            "prefix": "fas",
-          }
-        }
       />
     </span>
     <span
@@ -188,15 +181,8 @@ exports[`TreeNode rendering renders expected elements when optional properties a
       className="TreeView__iconWrapper"
       onClick={[Function]}
     >
-      <SvgIcon
+      <CaretRight
         className="TreeView__icon TreeView--expanded"
-        icon={
-          {
-            "icon": [],
-            "iconName": "caret-right",
-            "prefix": "fas",
-          }
-        }
       />
     </span>
     <span

@@ -19,14 +19,7 @@ exports[`FileUploaderItem rendering renders expected elements 1`] = `
       className="FileUploader__fileRemove"
       type="button"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
-          }
-        }
-      />
+      <Close />
     </button>
   </div>
 </Layer>
@@ -46,14 +39,8 @@ exports[`FileUploaderItem rendering renders expected elements when optional prop
   <div
     className="FileUploader__fileIcons"
   >
-    <SvgIcon
+    <WarningFilled
       className="FileUploader__errorIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "rhombus-exclamation",
-        }
-      }
     />
     <button
       aria-label="Delete foo.txt"
@@ -61,14 +48,7 @@ exports[`FileUploaderItem rendering renders expected elements when optional prop
       disabled={true}
       type="button"
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
-          }
-        }
-      />
+      <Close />
     </button>
   </div>
   <div

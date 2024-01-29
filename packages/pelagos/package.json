@@ -40,8 +40,7 @@
   "dependencies": {
     "@bluecateng/l10n-core": "^0.2.0",
     "@bluecateng/smooth-reorder": "^2.1.0",
-    "@fortawesome/free-regular-svg-icons": "^6.2.0",
-    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@carbon/icons-react": "^11.34.1",
     "focus-trap": "^7.0.0",
     "lodash-es": "^4.17.21",
     "prop-types": "^15.8.1"

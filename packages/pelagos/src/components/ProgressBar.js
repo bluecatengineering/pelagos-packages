@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
-import {faCircleCheck} from '@fortawesome/free-solid-svg-icons';
+import CheckmarkFilled from '@carbon/icons-react/es/CheckmarkFilled';
+import ErrorFilled from '@carbon/icons-react/es/ErrorFilled';
 
 import useRandomId from '../hooks/useRandomId';
-import rhombusExclamation from '../icons/rhombusExclamation';
 
-import SvgIcon from './SvgIcon';
 import Layer from './Layer';
 
 import './ProgressBar.less';
 
-const icons = {finished: faCircleCheck, error: rhombusExclamation};
+const icons = {finished: CheckmarkFilled, error: ErrorFilled};
 
 /** Displays the progress status for tasks that take a long time. */
 const ProgressBar = ({id, className, label, helperText, type, size, status, max, value}) => {
@@ -19,6 +18,7 @@ const ProgressBar = ({id, className, label, helperText, type, size, status, max,
 	if (status === 'active' && (value === null || value === undefined)) {
 		status = 'indeterminate';
 	}
+	const Icon = icons[status];
 	return (
 		<div
 			className={`ProgressBar ProgressBar--${type} ProgressBar--${size} ProgressBar--${status}${
@@ -26,7 +26,7 @@ const ProgressBar = ({id, className, label, helperText, type, size, status, max,
 			}`}>
 			<div id={labelId} className="ProgressBar__label">
 				<span className="ProgressBar__labelText">{label}</span>
-				{status in icons && <SvgIcon className="ProgressBar__icon" icon={icons[status]} aria-hidden />}
+				{Icon && <Icon className="ProgressBar__icon" />}
 			</div>
 			<Layer
 				id={id}

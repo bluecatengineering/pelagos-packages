@@ -14,13 +14,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
     <IconButton
       aria-label="Previous month"
       className="Calendar__previous"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -37,13 +31,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
     <IconButton
       aria-label="Next month"
       className="Calendar__next"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -483,13 +471,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
     <IconButton
       aria-label="Previous month"
       className="Calendar__previous"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -506,13 +488,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
     <IconButton
       aria-label="Next month"
       className="Calendar__next"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -952,13 +928,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
     <IconButton
       aria-label="Previous month"
       className="Calendar__previous"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -975,13 +945,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
     <IconButton
       aria-label="Next month"
       className="Calendar__next"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -1421,13 +1385,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
     <IconButton
       aria-label="Previous month"
       className="Calendar__previous"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -1444,13 +1402,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
     <IconButton
       aria-label="Next month"
       className="Calendar__next"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -1890,13 +1842,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
     <IconButton
       aria-label="Previous month"
       className="Calendar__previous"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"
@@ -1913,13 +1859,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
     <IconButton
       aria-label="Next month"
       className="Calendar__next"
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
+      icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="medium"

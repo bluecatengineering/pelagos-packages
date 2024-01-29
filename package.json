@@ -36,9 +36,9 @@
     "@bluecateng/l10n-loader": "^0.1.5",
     "@bluecateng/l10n.macro": "^0.1.6",
     "@bluecateng/prettier-config": "^1.0.0",
+    "@carbon/icons-react": "^11.34.1",
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
-    "@fortawesome/free-brands-svg-icons": "^6.2.0",
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
     "@storybook/addon-a11y": "^7.0.0",
     "@storybook/addon-essentials": "^7.0.0",
@@ -143,7 +143,7 @@
       "\\.po$": "@bluecateng/l10n-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(lodash-es|@bluecateng)/)"
+      "node_modules/(?!(lodash-es|@bluecateng|@carbon)/)"
     ],
     "unmockedModulePathPatterns": [
       "enzyme",

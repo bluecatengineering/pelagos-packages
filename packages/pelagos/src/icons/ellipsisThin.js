@@ -1,3 +1,4 @@
+/** @deprecated use @carbon/icons-react/es/OverflowMenuHorizontal instead. */
 export default {
 	iconName: 'ellipsis-thin',
 	icon: [

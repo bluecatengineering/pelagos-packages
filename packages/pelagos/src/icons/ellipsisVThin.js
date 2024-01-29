@@ -1,3 +1,4 @@
+/** @deprecated use @carbon/icons-react/es/OverflowMenuVertical instead. */
 export default {
 	iconName: 'ellipsis-v-thin',
 	icon: [

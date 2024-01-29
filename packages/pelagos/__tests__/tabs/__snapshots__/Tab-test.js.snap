@@ -41,14 +41,7 @@ exports[`Tab rendering renders expected elements when optional properties are se
       role="button"
       tabIndex={-1}
     >
-      <SvgIcon
-        icon={
-          {
-            "icon": [],
-            "iconName": "xmark-thin",
-          }
-        }
-      />
+      <Close />
     </span>
   </div>
   <div

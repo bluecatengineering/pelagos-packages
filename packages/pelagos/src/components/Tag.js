@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
+import Close from '@carbon/icons-react/es/Close';
 
 import useRandomId from '../hooks/useRandomId';
-import xmarkThin from '../icons/xmarkThin';
-
-import SvgIcon from './SvgIcon';
 
 import './Tag.less';
 
@@ -37,7 +35,7 @@ const Tag = ({id, className, size, type, removeTitle, children, onClick, onRemov
 			{children}
 			{onRemove && (
 				<button className="Tag__remove" type="button" title={removeTitle} aria-labelledby={id} onClick={onRemove}>
-					<SvgIcon icon={xmarkThin} aria-hidden />
+					<Close />
 				</button>
 			)}
 		</div>

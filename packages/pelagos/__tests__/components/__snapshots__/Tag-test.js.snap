@@ -22,15 +22,7 @@ exports[`Tag rendering renders expected elements when onRemove is ser 1`] = `
     title="Remove title"
     type="button"
   >
-    <SvgIcon
-      aria-hidden={true}
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
-    />
+    <Close />
   </button>
 </div>
 `;

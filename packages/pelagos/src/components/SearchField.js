@@ -2,11 +2,9 @@ import {useCallback, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
-
-import xmarkThin from '../icons/xmarkThin';
+import Close from '@carbon/icons-react/es/Close';
 
 import Layer from './Layer';
-import SvgIcon from './SvgIcon';
 import './SearchField.less';
 
 /** @deprecated use `TableToolbarSearch` instead. */
@@ -36,7 +34,7 @@ const SearchField = ({className, initialText, onChange, ...props}) => {
 			/>
 			{text && (
 				<button className="SearchField__icon" aria-label={t`Clear search`} onClick={handleClick}>
-					<SvgIcon icon={xmarkThin} />
+					<Close />
 				</button>
 			)}
 		</Layer>

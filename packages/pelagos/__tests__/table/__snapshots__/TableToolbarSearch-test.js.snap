@@ -8,15 +8,8 @@ exports[`TableToolbarSearch NewTableToolbarSearch rendering renders expected ele
     aria-hidden={true}
     onClick={[Function]}
   >
-    <SvgIcon
+    <Search
       className="Table__searchIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "magnifying-glass",
-          "prefix": "fas",
-        }
-      }
     />
   </span>
   <input
@@ -33,14 +26,7 @@ exports[`TableToolbarSearch NewTableToolbarSearch rendering renders expected ele
     className="Table__searchClear"
     onClick={[Function]}
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
-    />
+    <Close />
   </button>
 </div>
 `;
@@ -53,15 +39,8 @@ exports[`TableToolbarSearch NewTableToolbarSearch rendering renders expected ele
     aria-hidden={true}
     onClick={[Function]}
   >
-    <SvgIcon
+    <Search
       className="Table__searchIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "magnifying-glass",
-          "prefix": "fas",
-        }
-      }
     />
   </span>
   <input
@@ -78,14 +57,7 @@ exports[`TableToolbarSearch NewTableToolbarSearch rendering renders expected ele
     className="Table__searchClear"
     onClick={[Function]}
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
-    />
+    <Close />
   </button>
 </div>
 `;
@@ -98,15 +70,8 @@ exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected ele
     aria-hidden={true}
     onClick={[Function]}
   >
-    <SvgIcon
+    <Search
       className="Table__searchIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "magnifying-glass",
-          "prefix": "fas",
-        }
-      }
     />
   </span>
   <input
@@ -123,14 +88,7 @@ exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected ele
     className="Table__searchClear"
     onClick={[Function]}
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
-    />
+    <Close />
   </button>
 </div>
 `;
@@ -143,15 +101,8 @@ exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected ele
     aria-hidden={true}
     onClick={[Function]}
   >
-    <SvgIcon
+    <Search
       className="Table__searchIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "magnifying-glass",
-          "prefix": "fas",
-        }
-      }
     />
   </span>
   <input
@@ -168,14 +119,7 @@ exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected ele
     className="Table__searchClear"
     onClick={[Function]}
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
-    />
+    <Close />
   </button>
 </div>
 `;
@@ -188,15 +132,8 @@ exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected ele
     aria-hidden={true}
     onClick={[Function]}
   >
-    <SvgIcon
+    <Search
       className="Table__searchIcon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "magnifying-glass",
-          "prefix": "fas",
-        }
-      }
     />
   </span>
   <input
@@ -213,14 +150,7 @@ exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected ele
     className="Table__searchClear"
     onClick={[Function]}
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
-    />
+    <Close />
   </button>
 </div>
 `;

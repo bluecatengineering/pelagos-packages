@@ -7,13 +7,7 @@ exports[`FilterMenu rendering renders expected elements 1`] = `
     arrow={true}
     className="FilterMenu"
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "filter",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="filterButton"
     tooltipPlacement="top"
     tooltipText="Add filter"
@@ -39,13 +33,7 @@ exports[`FilterMenu rendering renders expected elements when filter is set 1`] =
     arrow={true}
     className="FilterMenu FilterMenu--active"
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "filter",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="filterButton"
     tooltipPlacement="top"
     tooltipText="Add filter"
@@ -102,13 +90,7 @@ exports[`FilterMenu rendering renders expected elements when filters is set 1`] 
     arrow={true}
     className="FilterMenu"
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "filter",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     id="filterButton"
     tooltipPlacement="top"
     tooltipText="Add filter"

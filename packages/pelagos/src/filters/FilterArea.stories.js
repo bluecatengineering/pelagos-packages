@@ -1,5 +1,4 @@
 import {action} from '@storybook/addon-actions';
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 import ButtonMenu from '../menu/ButtonMenu';
 import MenuItem from '../menu/MenuItem';
@@ -31,7 +30,7 @@ export const Default = {
 				baa values
 			</FilterChip>,
 			<li key="menu">
-				<ButtonMenu text="Add filter" icon={faPlus} type="ghost">
+				<ButtonMenu text="Add filter" type="ghost">
 					<MenuItem onClick={handleClick}>Option 1</MenuItem>
 					<MenuItem onClick={handleClick}>Option 2</MenuItem>
 				</ButtonMenu>

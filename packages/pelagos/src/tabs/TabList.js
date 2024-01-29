@@ -1,9 +1,9 @@
 import {Children, forwardRef, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import ChevronLeft from '@carbon/icons-react/es/ChevronLeft';
+import ChevronRight from '@carbon/icons-react/es/ChevronRight';
 
-import SvgIcon from '../components/SvgIcon';
 import setRefs from '../functions/setRefs';
 import addResizeObserver from '../functions/addResizeObserver';
 
@@ -117,7 +117,7 @@ const TabList = forwardRef(({className, selectedIndex, contained, children, onCh
 				tabIndex={-1}
 				aria-hidden
 				onClick={handleLeftClick}>
-				<SvgIcon icon={faChevronLeft} />
+				<ChevronLeft />
 			</button>
 			<div
 				{...props}
@@ -140,7 +140,7 @@ const TabList = forwardRef(({className, selectedIndex, contained, children, onCh
 				tabIndex={-1}
 				aria-hidden
 				onClick={handleRightClick}>
-				<SvgIcon icon={faChevronRight} />
+				<ChevronRight />
 			</button>
 		</div>
 	);

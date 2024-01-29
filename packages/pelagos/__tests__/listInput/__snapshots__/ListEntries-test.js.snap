@@ -22,14 +22,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
         data-testid="remove-item"
         type="button"
       >
-        <SvgIcon
-          icon={
-            {
-              "icon": [],
-              "iconName": "xmark-thin",
-            }
-          }
-        />
+        <Close />
       </button>
       <div
         className="ListEntries__name"
@@ -63,14 +56,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
         data-testid="remove-item"
         type="button"
       >
-        <SvgIcon
-          icon={
-            {
-              "icon": [],
-              "iconName": "xmark-thin",
-            }
-          }
-        />
+        <Close />
       </button>
       <div
         className="ListEntries__name"
@@ -104,14 +90,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
         data-testid="remove-item"
         type="button"
       >
-        <SvgIcon
-          icon={
-            {
-              "icon": [],
-              "iconName": "xmark-thin",
-            }
-          }
-        />
+        <Close />
       </button>
       <div
         className="ListEntries__name"
@@ -145,14 +124,7 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
         data-testid="remove-item"
         type="button"
       >
-        <SvgIcon
-          icon={
-            {
-              "icon": [],
-              "iconName": "xmark-thin",
-            }
-          }
-        />
+        <Close />
       </button>
       <div
         className="ListEntries__name"
@@ -186,14 +158,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
         data-testid="remove-item"
         type="button"
       >
-        <SvgIcon
-          icon={
-            {
-              "icon": [],
-              "iconName": "xmark-thin",
-            }
-          }
-        />
+        <Close />
       </button>
       <div
         className="TestClass ListEntries__name"

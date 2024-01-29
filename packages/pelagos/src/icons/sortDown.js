@@ -1,3 +1,4 @@
+/** @deprecated use @carbon/icons-react/es/ArrowDown instead. */
 export default {
 	iconName: 'sort-down',
 	icon: [

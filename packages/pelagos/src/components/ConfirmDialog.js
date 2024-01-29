@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
-import {faTriangleExclamation} from '@fortawesome/free-solid-svg-icons';
+import WarningAltFilled from '@carbon/icons-react/es/WarningAltFilled';
 
 import Dialog from './Dialog';
-import SvgIcon from './SvgIcon';
 import Button from './Button';
 import './ConfirmDialog.less';
 
@@ -11,7 +10,7 @@ import './ConfirmDialog.less';
 const ConfirmDialog = ({title, body, confirmText, size, onClose, onConfirm}) => (
 	<Dialog title={title} role="alertdialog" size={size}>
 		<div className="ConfirmDialog__body">
-			<SvgIcon className="ConfirmDialog__icon" icon={faTriangleExclamation} />
+			<WarningAltFilled className="ConfirmDialog__icon" size={20} />
 			<p className="ConfirmDialog__text">{body}</p>
 		</div>
 		<div>

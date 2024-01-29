@@ -1,6 +1,7 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import ChevronLeft from '@carbon/icons-react/es/ChevronLeft';
+import ChevronRight from '@carbon/icons-react/es/ChevronRight';
 
 import addResizeObserver from '../functions/addResizeObserver';
 
@@ -37,7 +38,7 @@ const ScrollBox = ({className, trackId, children, onResize}) => {
 		<div className={`ScrollBox${className ? ` ${className}` : ''}`}>
 			<IconButton
 				className="ScrollBox__btn"
-				icon={faChevronLeft}
+				icon={ChevronLeft}
 				tabIndex="-1"
 				aria-hidden="true"
 				onMouseDown={preventDefault}
@@ -48,7 +49,7 @@ const ScrollBox = ({className, trackId, children, onResize}) => {
 			</div>
 			<IconButton
 				className="ScrollBox__btn"
-				icon={faChevronRight}
+				icon={ChevronRight}
 				tabIndex="-1"
 				aria-hidden="true"
 				onMouseDown={preventDefault}

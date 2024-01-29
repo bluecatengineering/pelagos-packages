@@ -1,13 +1,12 @@
 import {useCallback, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
+import Close from '@carbon/icons-react/es/Close';
 
 import useTooltip from '../hooks/useTooltip';
 import useRandomId from '../hooks/useRandomId';
-import xmarkThin from '../icons/xmarkThin';
 
 import Layer from './Layer';
-import SvgIcon from './SvgIcon';
 import './TagInput.less';
 
 const removeTag = (tags, i) => {
@@ -113,17 +112,17 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 						<span key={name} className="TagInput__tag">
 							{name}
 							<button className="TagInput__remove" type="button" aria-label={t`Remove ${name}`} data-index={i}>
-								<SvgIcon icon={xmarkThin} />
+								<Close />
 							</button>
 						</span>
-				  ))
+					))
 				: defaultTags?.length
-				? defaultTags.map((tag) => (
-						<span key={tag} className="TagInput__defaultTag" ref={tooltip}>
-							{tag}
-						</span>
-				  ))
-				: null}
+					? defaultTags.map((tag) => (
+							<span key={tag} className="TagInput__defaultTag" ref={tooltip}>
+								{tag}
+							</span>
+						))
+					: null}
 			<input
 				{...props}
 				id={id}

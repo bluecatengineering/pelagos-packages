@@ -1,6 +1,6 @@
 import {useCallback, useContext, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {faCaretRight} from '@fortawesome/free-solid-svg-icons';
+import CaretRight from '@carbon/icons-react/es/CaretRight';
 
 import SvgIcon from '../components/SvgIcon';
 
@@ -153,7 +153,7 @@ const TreeNode = ({id, labelClassName, label, icon, expanded, loading, children,
 						{loading ? (
 							<span className="CssSpinner TreeView__loading" />
 						) : (
-							<SvgIcon className={`TreeView__icon${expanded ? ' TreeView--expanded' : ''}`} icon={faCaretRight} />
+							<CaretRight className={`TreeView__icon${expanded ? ' TreeView--expanded' : ''}`} />
 						)}
 					</span>
 				)}
@@ -187,7 +187,7 @@ TreeNode.propTypes = {
 	/** The node label. */
 	label: PropTypes.node,
 	/** The node icon. */
-	icon: PropTypes.object,
+	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]),
 	/** Whether the node is expanded. Either true or false denote a parent node, undefined (or not set) denotes a leaf (or end) node. */
 	expanded: PropTypes.bool,
 	/** Whether the child nodes are being loaded. */

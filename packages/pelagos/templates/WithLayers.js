@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import {faLayerGroup} from '@fortawesome/free-solid-svg-icons';
+import Layers from '@carbon/icons-react/es/Layers';
 
-import {Layer, SvgIcon} from '../src';
+import {Layer} from '../src';
 
 import './WithLayers.less';
 
 const WithLayers = ({align, children}) => (
 	<div className="WithLayers">
 		<div className="WithLayers__label">
-			<SvgIcon icon={faLayerGroup} />
+			<Layers />
 			Layer 1
 		</div>
 		<div className={`WithLayers__content WithLayers--${align}`}>
@@ -16,7 +16,7 @@ const WithLayers = ({align, children}) => (
 
 			<Layer className="WithLayers">
 				<div className="WithLayers__label">
-					<SvgIcon icon={faLayerGroup} />
+					<Layers />
 					Layer 2
 				</div>
 				<div className={`WithLayers__content WithLayers--${align}`}>
@@ -24,7 +24,7 @@ const WithLayers = ({align, children}) => (
 
 					<Layer className="WithLayers">
 						<div className="WithLayers__label">
-							<SvgIcon icon={faLayerGroup} />
+							<Layers />
 							Layer 3
 						</div>
 						<div className={`WithLayers__content WithLayers--${align}`}>{children(2)}</div>

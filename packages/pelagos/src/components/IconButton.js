@@ -35,7 +35,7 @@ IconButton.propTypes = {
 	/** The component id. */
 	id: PropTypes.string,
 	/** The object representing the icon. (using FontAwesome, etc.) */
-	icon: PropTypes.object.isRequired,
+	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]).isRequired,
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The component size. */

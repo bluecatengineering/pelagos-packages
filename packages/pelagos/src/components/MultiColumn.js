@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {select, t} from '@bluecateng/l10n.macro';
-import {faCaretRight} from '@fortawesome/free-solid-svg-icons';
+import CaretRight from '@carbon/icons-react/es/CaretRight';
 
 import useStringFinder from '../hooks/useStringFinder';
 import useRandomId from '../hooks/useRandomId';
@@ -11,7 +11,6 @@ import pageUp from '../functions/pageUp';
 import pageDown from '../functions/pageDown';
 import scrollToItem from '../functions/scrollToItem';
 
-import SvgIcon from './SvgIcon';
 import Spinner from './Spinner';
 import './MultiColumn.less';
 
@@ -312,7 +311,7 @@ const MultiColumn = ({
 											aria-selected={itmIndex === path[colIndex]}
 											data-index={itmIndex}>
 											<div className="MultiColumn__text">{text}</div>
-											{!leaf && <SvgIcon className="MultiColumn__arrow" icon={faCaretRight} />}
+											{!leaf && <CaretRight className="MultiColumn__arrow" />}
 										</div>
 									);
 								}
