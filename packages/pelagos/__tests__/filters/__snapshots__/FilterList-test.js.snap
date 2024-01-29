@@ -75,14 +75,7 @@ exports[`FilterList rendering renders expected elements when filter is set 1`] =
             id="filter-view-remove"
             type="button"
           >
-            <SvgIcon
-              icon={
-                {
-                  "icon": [],
-                  "iconName": "xmark-thin",
-                }
-              }
-            />
+            <Close />
           </button>
         </Layer>
       </ul>
@@ -185,14 +178,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
             id="filter-view-remove"
             type="button"
           >
-            <SvgIcon
-              icon={
-                {
-                  "icon": [],
-                  "iconName": "xmark-thin",
-                }
-              }
-            />
+            <Close />
           </button>
         </Layer>
         <Layer
@@ -224,14 +210,7 @@ exports[`FilterList rendering renders expected elements when filters are set 1`]
             id="filter-zoneName-remove"
             type="button"
           >
-            <SvgIcon
-              icon={
-                {
-                  "icon": [],
-                  "iconName": "xmark-thin",
-                }
-              }
-            />
+            <Close />
           </button>
         </Layer>
       </ul>

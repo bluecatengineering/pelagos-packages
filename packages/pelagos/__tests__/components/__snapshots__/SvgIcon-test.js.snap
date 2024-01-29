@@ -18,10 +18,12 @@ exports[`SvgIcon rendering renders expected elements 1`] = `
 </svg>
 `;
 
+exports[`SvgIcon rendering renders expected elements for Carbon icon 1`] = `<svg />`;
+
 exports[`SvgIcon rendering renders expected elements when optional properties are set 1`] = `
 <svg
   aria-hidden={true}
-  className="SvgIcon SvgIcon--spin TestClass"
+  className="SvgIcon TestClass"
   focusable="false"
   style={
     {

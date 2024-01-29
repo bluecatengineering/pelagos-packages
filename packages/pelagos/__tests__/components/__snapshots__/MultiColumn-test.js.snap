@@ -36,15 +36,8 @@ exports[`MultiColumn rendering renders expected elements 1`] = `
       >
         item00
       </div>
-      <SvgIcon
+      <CaretRight
         className="MultiColumn__arrow"
-        icon={
-          {
-            "icon": [],
-            "iconName": "caret-right",
-            "prefix": "fas",
-          }
-        }
       />
     </div>
     <div
@@ -125,15 +118,8 @@ exports[`MultiColumn rendering renders expected elements when focused is true 1`
       >
         item00
       </div>
-      <SvgIcon
+      <CaretRight
         className="MultiColumn__arrow"
-        icon={
-          {
-            "icon": [],
-            "iconName": "caret-right",
-            "prefix": "fas",
-          }
-        }
       />
     </div>
   </div>
@@ -199,15 +185,8 @@ exports[`MultiColumn rendering renders expected elements when optional propertie
       >
         item00
       </div>
-      <SvgIcon
+      <CaretRight
         className="MultiColumn__arrow"
-        icon={
-          {
-            "icon": [],
-            "iconName": "caret-right",
-            "prefix": "fas",
-          }
-        }
       />
     </div>
   </div>

@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import AddLarge from '@carbon/icons-react/es/AddLarge';
 
 import scrollToItem from '../functions/scrollToItem';
 import useLayer from '../hooks/useLayer';
@@ -173,7 +173,7 @@ const ComboBox = ({
 				<IconButton
 					id={`${id}-add`}
 					className="ComboBox__add"
-					icon={faPlus}
+					icon={AddLarge}
 					aria-label={t`Add`}
 					disabled={disabled || !text}
 					onClick={handleAddClick}

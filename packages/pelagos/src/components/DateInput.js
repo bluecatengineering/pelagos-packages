@@ -2,13 +2,14 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import {createFocusTrap} from 'focus-trap';
-import {Calendar, IconButton} from '@bluecateng/pelagos';
 import {t} from '@bluecateng/l10n.macro';
-import {faCalendar} from '@fortawesome/free-regular-svg-icons';
+import CalendarIcon from '@carbon/icons-react/es/Calendar';
 
 import useLayer from '../hooks/useLayer';
 
 import Layer from './Layer';
+import Calendar from './Calendar';
+import IconButton from './IconButton';
 
 import './DateInput.less';
 
@@ -72,7 +73,7 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 			/>
 			<IconButton
 				className="DateInput__icon"
-				icon={faCalendar}
+				icon={CalendarIcon}
 				disabled={disabled}
 				aria-label={value ? t`Change date, ${value}` : t`Choose date`}
 				onClick={handleButtonClick}

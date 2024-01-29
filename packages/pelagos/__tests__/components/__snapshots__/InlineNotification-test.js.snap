@@ -4,15 +4,9 @@ exports[`InlineNotification rendering renders expected elements 1`] = `
 <div
   className="InlineNotification InlineNotification--info"
 >
-  <SvgIcon
+  <InformationFilled
     className="InlineNotification__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "circle-info",
-        "prefix": "fas",
-      }
-    }
+    size={20}
   />
   <div
     className="InlineNotification__wrapper"
@@ -28,15 +22,9 @@ exports[`InlineNotification rendering renders expected elements when className i
 <div
   className="InlineNotification InlineNotification--info TestClass"
 >
-  <SvgIcon
+  <InformationFilled
     className="InlineNotification__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "circle-info",
-        "prefix": "fas",
-      }
-    }
+    size={20}
   />
   <div
     className="InlineNotification__wrapper"
@@ -52,15 +40,9 @@ exports[`InlineNotification rendering renders expected elements when title is se
 <div
   className="InlineNotification InlineNotification--info"
 >
-  <SvgIcon
+  <InformationFilled
     className="InlineNotification__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "circle-info",
-        "prefix": "fas",
-      }
-    }
+    size={20}
   />
   <div
     className="InlineNotification__wrapper"

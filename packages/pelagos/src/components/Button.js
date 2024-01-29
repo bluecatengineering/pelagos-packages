@@ -49,7 +49,7 @@ Button.propTypes = {
 	/** The child elements, can be provided instead of text. */
 	children: PropTypes.node,
 	/** The object representing the icon. (using FontAwesome, etc.) */
-	icon: PropTypes.object,
+	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]),
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The size of the button. */

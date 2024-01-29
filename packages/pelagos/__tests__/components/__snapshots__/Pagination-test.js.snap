@@ -26,13 +26,7 @@ exports[`Pagination rendering renders expected elements 1`] = `
       <IconButton
         aria-label="Previous page"
         disabled={false}
-        icon={
-          {
-            "icon": [],
-            "iconName": "chevron-left",
-            "prefix": "fas",
-          }
-        }
+        icon={[Function]}
         id="random-id-prev"
         onClick={[Function]}
         size="medium"
@@ -43,13 +37,7 @@ exports[`Pagination rendering renders expected elements 1`] = `
       <IconButton
         aria-label="Next page"
         disabled={false}
-        icon={
-          {
-            "icon": [],
-            "iconName": "chevron-right",
-            "prefix": "fas",
-          }
-        }
+        icon={[Function]}
         id="random-id-next"
         onClick={[Function]}
         size="medium"
@@ -88,13 +76,7 @@ exports[`Pagination rendering renders expected elements when className is set 1`
       <IconButton
         aria-label="Previous page"
         disabled={false}
-        icon={
-          {
-            "icon": [],
-            "iconName": "chevron-left",
-            "prefix": "fas",
-          }
-        }
+        icon={[Function]}
         id="random-id-prev"
         onClick={[Function]}
         size="medium"
@@ -105,13 +87,7 @@ exports[`Pagination rendering renders expected elements when className is set 1`
       <IconButton
         aria-label="Next page"
         disabled={false}
-        icon={
-          {
-            "icon": [],
-            "iconName": "chevron-right",
-            "prefix": "fas",
-          }
-        }
+        icon={[Function]}
         id="random-id-next"
         onClick={[Function]}
         size="medium"
@@ -175,13 +151,7 @@ exports[`Pagination rendering renders expected elements when pageSizes is set 1`
       <IconButton
         aria-label="Previous page"
         disabled={false}
-        icon={
-          {
-            "icon": [],
-            "iconName": "chevron-left",
-            "prefix": "fas",
-          }
-        }
+        icon={[Function]}
         id="random-id-prev"
         onClick={[Function]}
         size="medium"
@@ -192,13 +162,7 @@ exports[`Pagination rendering renders expected elements when pageSizes is set 1`
       <IconButton
         aria-label="Next page"
         disabled={false}
-        icon={
-          {
-            "icon": [],
-            "iconName": "chevron-right",
-            "prefix": "fas",
-          }
-        }
+        icon={[Function]}
         id="random-id-next"
         onClick={[Function]}
         size="medium"
@@ -315,13 +279,7 @@ exports[`Pagination rendering renders expected elements when totalItems is set 1
       <IconButton
         aria-label="Previous page"
         disabled={false}
-        icon={
-          {
-            "icon": [],
-            "iconName": "chevron-left",
-            "prefix": "fas",
-          }
-        }
+        icon={[Function]}
         id="random-id-prev"
         onClick={[Function]}
         size="medium"
@@ -332,13 +290,7 @@ exports[`Pagination rendering renders expected elements when totalItems is set 1
       <IconButton
         aria-label="Next page"
         disabled={false}
-        icon={
-          {
-            "icon": [],
-            "iconName": "chevron-right",
-            "prefix": "fas",
-          }
-        }
+        icon={[Function]}
         id="random-id-next"
         onClick={[Function]}
         size="medium"

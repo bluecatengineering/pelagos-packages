@@ -1,3 +1,4 @@
+/** @deprecated use @carbon/icons-react/es/Information instead. */
 export default {
 	iconName: 'circle-info-outline',
 	icon: [

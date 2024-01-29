@@ -11,11 +11,14 @@
 		color: var(--support-warning);
 		margin-right: @sp-16;
 		margin-top: @sp-04;
-		font-size: 20px;
+
+		[data-icon-path] {
+			fill: #000000;
+			opacity: 1;
+		}
 	}
 
 	.ConfirmDialog__text {
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: hidden auto;
 	}
 }

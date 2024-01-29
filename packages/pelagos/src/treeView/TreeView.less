@@ -18,7 +18,9 @@
 			height: 32px;
 			padding-right: @sp-16;
 			color: var(--text-secondary);
-			transition: color 0.15s ease-out, background-color 0.15s ease-out;
+			transition:
+				color 0.15s ease-out,
+				background-color 0.15s ease-out;
 
 			.TreeView--xs & {
 				height: 24px;
@@ -64,9 +66,10 @@
 		}
 
 		&__icon {
-			font-size: 14px;
 			color: var(--icon-secondary);
-			transition: color 0.15s ease-out, transform 0.15s ease-out;
+			transition:
+				color 0.15s ease-out,
+				transform 0.15s ease-out;
 
 			[aria-selected='true'] &,
 			.TreeView__label:hover & {

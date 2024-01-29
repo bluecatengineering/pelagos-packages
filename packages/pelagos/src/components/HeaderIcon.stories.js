@@ -1,4 +1,4 @@
-import {faCat} from '@fortawesome/free-solid-svg-icons';
+import Model from '@carbon/icons-react/es/Model';
 
 import HeaderIcon from './HeaderIcon';
 
@@ -7,4 +7,4 @@ export default {
 	component: HeaderIcon,
 };
 
-export const Default = {args: {icon: faCat, label: 'Default'}};
+export const Default = {args: {icon: Model, label: 'Default'}};

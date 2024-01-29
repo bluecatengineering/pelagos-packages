@@ -4,14 +4,7 @@ exports[`InfoTooltip rendering renders expected elements 1`] = `
 <button
   className="InfoTooltip"
 >
-  <SvgIcon
-    icon={
-      {
-        "icon": [],
-        "iconName": "circle-info-outline",
-      }
-    }
-  />
+  <Information />
 </button>
 `;
 
@@ -20,13 +13,6 @@ exports[`InfoTooltip rendering renders expected elements when className is set 1
   className="InfoTooltip TestClass"
   id="test"
 >
-  <SvgIcon
-    icon={
-      {
-        "icon": [],
-        "iconName": "circle-info-outline",
-      }
-    }
-  />
+  <Information />
 </button>
 `;

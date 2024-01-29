@@ -7,13 +7,7 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
   <IconButton
     aria-hidden="true"
     className="ScrollBox__btn"
-    icon={
-      {
-        "icon": [],
-        "iconName": "chevron-left",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
     size="medium"
@@ -31,13 +25,7 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
   <IconButton
     aria-hidden="true"
     className="ScrollBox__btn"
-    icon={
-      {
-        "icon": [],
-        "iconName": "chevron-right",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
     size="medium"
@@ -55,13 +43,7 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
   <IconButton
     aria-hidden="true"
     className="ScrollBox__btn"
-    icon={
-      {
-        "icon": [],
-        "iconName": "chevron-left",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
     size="medium"
@@ -79,13 +61,7 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
   <IconButton
     aria-hidden="true"
     className="ScrollBox__btn"
-    icon={
-      {
-        "icon": [],
-        "iconName": "chevron-right",
-        "prefix": "fas",
-      }
-    }
+    icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
     size="medium"

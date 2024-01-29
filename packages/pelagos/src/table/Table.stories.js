@@ -1,6 +1,8 @@
 import {useCallback, useMemo, useState} from 'react';
-import {faCat, faCog} from '@fortawesome/free-solid-svg-icons';
-import {faEdit, faTrashAlt} from '@fortawesome/free-regular-svg-icons';
+import Model from '@carbon/icons-react/es/Model';
+import Settings from '@carbon/icons-react/es/Settings';
+import Edit from '@carbon/icons-react/es/Edit';
+import TrashCan from '@carbon/icons-react/es/TrashCan';
 
 import Button from '../components/Button';
 import IconButton from '../components/IconButton';
@@ -246,8 +248,8 @@ export const DefaultToolbar = (args) => {
 			<TableToolbar>
 				<TableToolbarDefault>
 					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
-					<IconButton icon={faCat} />
-					<IconMenu icon={faCog} arrow flipped>
+					<IconButton icon={Model} />
+					<IconMenu icon={Settings} arrow flipped>
 						<MenuItem>Option one</MenuItem>
 						<MenuItem>Option two</MenuItem>
 						<MenuItem disabled>Option three</MenuItem>
@@ -318,7 +320,7 @@ export const BatchActions = (args) => {
 				<TableToolbarBatch selectedCount={selectedCount} onCancel={handleBatchCancel}>
 					<Button type="primary" text="Action 1" />
 					<Button type="primary" text="Action 2" />
-					<IconMenu icon={faCog} type="primary" arrow flipped>
+					<IconMenu icon={Settings} type="primary" arrow flipped>
 						<MenuItem>Batch option one</MenuItem>
 						<MenuItem>Batch option two</MenuItem>
 						<MenuItem disabled>Batch option three</MenuItem>
@@ -328,8 +330,8 @@ export const BatchActions = (args) => {
 				</TableToolbarBatch>
 				<TableToolbarDefault hidden={someSelected}>
 					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
-					<IconButton icon={faCat} />
-					<IconMenu icon={faCog} arrow flipped>
+					<IconButton icon={Model} />
+					<IconMenu icon={Settings} arrow flipped>
 						<MenuItem>Option one</MenuItem>
 						<MenuItem>Option two</MenuItem>
 						<MenuItem disabled>Option three</MenuItem>
@@ -406,8 +408,8 @@ export const InlineActions = (args) => (
 						))}
 						<TableCell>
 							<div className="TableStory__inlineButtons">
-								<IconButton icon={faEdit} />
-								<IconButton icon={faTrashAlt} />
+								<IconButton icon={Edit} />
+								<IconButton icon={TrashCan} />
 							</div>
 						</TableCell>
 					</TableRow>
@@ -479,7 +481,7 @@ export const WithPagination = (args) => {
 			<TableToolbar>
 				<TableToolbarDefault>
 					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
-					<IconButton icon={faCat} />
+					<IconButton icon={Model} />
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
 			</TableToolbar>
@@ -575,8 +577,8 @@ export const ForFigma = {
 									<TableCell>
 										{actions === 'icons' ? (
 											<div className="TableStory__inlineButtons">
-												<IconButton icon={faEdit} />
-												<IconButton icon={faTrashAlt} />
+												<IconButton icon={Edit} />
+												<IconButton icon={TrashCan} />
 											</div>
 										) : (
 											<IconMenu flipped>

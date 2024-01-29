@@ -15,15 +15,8 @@ exports[`SideNavMenu rendering renders expected elements 1`] = `
     >
       Test Title
     </span>
-    <SvgIcon
+    <ChevronDown
       className="SideNav__icon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "angle-down",
-          "prefix": "fas",
-        }
-      }
     />
   </button>
   <ul
@@ -47,15 +40,8 @@ exports[`SideNavMenu rendering renders expected elements when a child element ha
     >
       Test Title
     </span>
-    <SvgIcon
+    <ChevronDown
       className="SideNav__icon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "angle-down",
-          "prefix": "fas",
-        }
-      }
     />
   </button>
   <ul
@@ -82,15 +68,8 @@ exports[`SideNavMenu rendering renders expected elements when boolean properties
     >
       Test Title
     </span>
-    <SvgIcon
+    <ChevronDown
       className="SideNav__icon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "angle-down",
-          "prefix": "fas",
-        }
-      }
     />
   </button>
   <ul

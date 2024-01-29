@@ -1,3 +1,4 @@
+/** @deprecated use @carbon/icons-react/es/ArrowsVertical instead. */
 export default {
 	iconName: 'sort',
 	icon: [

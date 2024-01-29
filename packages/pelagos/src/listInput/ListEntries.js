@@ -2,10 +2,9 @@ import {cloneElement, useCallback, useEffect, useMemo, useRef} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
+import Close from '@carbon/icons-react/es/Close';
 
 import renderListItem from '../listItems/renderListItem';
-import SvgIcon from '../components/SvgIcon';
-import xmarkThin from '../icons/xmarkThin';
 import scrollIntoView from '../functions/scrollIntoView';
 
 import './ListEntries.less';
@@ -76,7 +75,7 @@ const ListEntries = ({
 								aria-label={t`Remove ${name}`}
 								data-testid="remove-item"
 								data-index={i}>
-								<SvgIcon icon={xmarkThin} />
+								<Close />
 							</button>
 							{cloneElement(element, {className})}
 						</li>

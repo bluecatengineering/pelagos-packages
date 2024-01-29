@@ -13,13 +13,7 @@ exports[`DateInput rendering renders expected elements 1`] = `
   <IconButton
     aria-label="Choose date"
     className="DateInput__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "calendar",
-        "prefix": "far",
-      }
-    }
+    icon={[Function]}
     onClick={[Function]}
     size="medium"
     tooltipPlacement="right"
@@ -41,13 +35,7 @@ exports[`DateInput rendering renders expected elements when calendarTime is set 
   <IconButton
     aria-label="Choose date"
     className="DateInput__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "calendar",
-        "prefix": "far",
-      }
-    }
+    icon={[Function]}
     onClick={[Function]}
     size="medium"
     tooltipPlacement="right"
@@ -86,13 +74,7 @@ exports[`DateInput rendering renders expected elements when className is set 1`]
   <IconButton
     aria-label="Choose date"
     className="DateInput__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "calendar",
-        "prefix": "far",
-      }
-    }
+    icon={[Function]}
     onClick={[Function]}
     size="medium"
     tooltipPlacement="right"
@@ -115,13 +97,7 @@ exports[`DateInput rendering renders expected elements when value is set 1`] = `
   <IconButton
     aria-label="Change date, foo"
     className="DateInput__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "calendar",
-        "prefix": "far",
-      }
-    }
+    icon={[Function]}
     onClick={[Function]}
     size="medium"
     tooltipPlacement="right"

@@ -1,4 +1,4 @@
-import {faCat} from '@fortawesome/free-solid-svg-icons';
+import Model from '@carbon/icons-react/es/Model';
 
 import SvgIcon from './SvgIcon';
 
@@ -7,4 +7,4 @@ export default {
 	component: SvgIcon,
 };
 
-export const Default = {args: {icon: faCat}};
+export const Default = {args: {icon: Model}};

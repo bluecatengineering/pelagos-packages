@@ -1,7 +1,8 @@
 import {useCallback, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import CaretLeft from '@carbon/icons-react/es/CaretLeft';
+import CaretRight from '@carbon/icons-react/es/CaretRight';
 
 import useRandomId from '../hooks/useRandomId';
 
@@ -77,7 +78,7 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 				<div className="Pagination__buttons">
 					<IconButton
 						id={`${id}-prev`}
-						icon={faChevronLeft}
+						icon={CaretLeft}
 						disabled={page === 1}
 						tooltipText={t`Previous page`}
 						tooltipPlacement="top"
@@ -86,7 +87,7 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 					/>
 					<IconButton
 						id={`${id}-next`}
-						icon={faChevronRight}
+						icon={CaretRight}
 						disabled={page === totalPages}
 						tooltipText={t`Next page`}
 						tooltipPlacement="top"

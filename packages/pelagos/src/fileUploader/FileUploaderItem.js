@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
+import Close from '@carbon/icons-react/es/Close';
+import WarningFilled from '@carbon/icons-react/es/WarningFilled';
 
 import Layer from '../components/Layer';
-import SvgIcon from '../components/SvgIcon';
-import rhombusExclamation from '../icons/rhombusExclamation';
-import xmarkThin from '../icons/xmarkThin';
 
 import './FileUploader.less';
 
@@ -17,7 +16,7 @@ const FileUploaderItem = ({className, name, error, disableDelete, onDelete, ...p
 			{name}
 		</p>
 		<div className="FileUploader__fileIcons">
-			{error && <SvgIcon className="FileUploader__errorIcon" icon={rhombusExclamation} />}
+			{error && <WarningFilled className="FileUploader__errorIcon" />}
 			<button
 				{...props}
 				className="FileUploader__fileRemove"
@@ -25,7 +24,7 @@ const FileUploaderItem = ({className, name, error, disableDelete, onDelete, ...p
 				disabled={disableDelete}
 				aria-label={t`Delete ${name}`}
 				onClick={onDelete}>
-				<SvgIcon icon={xmarkThin} />
+				<Close />
 			</button>
 		</div>
 		{error && <div className="FileUploader__fileError">{error}</div>}

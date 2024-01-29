@@ -1,4 +1,4 @@
-import {faCat} from '@fortawesome/free-solid-svg-icons';
+import Model from '@carbon/icons-react/es/Model';
 
 import Button from './Button';
 
@@ -23,7 +23,7 @@ export const DangerGhost = {args: {text: 'Danger ghost', type: 'dangerGhost'}};
 
 export const Disabled = {args: {text: 'Disabled', disabled: true}};
 
-export const WithIcon = {args: {text: 'Primary', icon: faCat, type: 'primary'}};
+export const WithIcon = {args: {text: 'Primary', icon: Model, type: 'primary'}};
 
 export const AllStates = () => (
 	<div className="Story__row">

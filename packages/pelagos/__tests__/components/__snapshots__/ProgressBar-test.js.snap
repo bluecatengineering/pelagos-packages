@@ -92,15 +92,8 @@ exports[`ProgressBar rendering renders expected elements when status is error 1`
     >
       Test label
     </span>
-    <SvgIcon
-      aria-hidden={true}
+    <ErrorFilled
       className="ProgressBar__icon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "rhombus-exclamation",
-        }
-      }
     />
   </div>
   <Layer
@@ -134,16 +127,8 @@ exports[`ProgressBar rendering renders expected elements when status is finished
     >
       Test label
     </span>
-    <SvgIcon
-      aria-hidden={true}
+    <CheckmarkFilled
       className="ProgressBar__icon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "circle-check",
-          "prefix": "fas",
-        }
-      }
     />
   </div>
   <Layer

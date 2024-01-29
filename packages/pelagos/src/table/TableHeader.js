@@ -1,14 +1,13 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
-
-import SvgIcon from '../components/SvgIcon';
-import sort from '../icons/sort';
-import sortUp from '../icons/sortUp';
-import sortDown from '../icons/sortDown';
+import ArrowDown from '@carbon/icons-react/es/ArrowDown';
+import ArrowUp from '@carbon/icons-react/es/ArrowUp';
+import ArrowsVertical from '@carbon/icons-react/es/ArrowsVertical';
 
 /** Header element for a table component. */
-const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, children, ...props}, ref) =>
-	sortable ? (
+const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, children, ...props}, ref) => {
+	const Icon = sortOrder === 'a' ? ArrowUp : sortOrder === 'd' ? ArrowDown : ArrowsVertical;
+	return sortable ? (
 		<th
 			{...props}
 			className={`Table--sortable${className ? ` ${className}` : ''}`}
@@ -16,7 +15,7 @@ const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, c
 			ref={ref}>
 			<button className={`Table__sort${sortOrder ? ' Table__sort--active' : ''}`} type="button">
 				<div className={`Table__sortLabel Table--${align}`}>{children}</div>
-				<SvgIcon className="Table__sortIcon" icon={sortOrder === 'a' ? sortUp : sortOrder === 'd' ? sortDown : sort} />
+				<Icon className="Table__sortIcon" />
 			</button>
 		</th>
 	) : (
@@ -25,8 +24,8 @@ const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, c
 			className={`Table--${align}${radio ? ' Table--radioHeader' : ''}${className ? ` ${className}` : ''}`}>
 			{children}
 		</th>
-	)
-);
+	);
+});
 
 TableHeader.displayName = 'TableHeader';
 

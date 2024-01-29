@@ -7,14 +7,9 @@ exports[`ToastMessage rendering does not render close button if type is fatal 1`
   id="toast-0"
   role="alert"
 >
-  <SvgIcon
+  <ErrorFilled
     className="ToastMessage__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "rhombus-exclamation",
-      }
-    }
+    size={20}
   />
   <div
     className="ToastMessage__text"
@@ -32,15 +27,9 @@ exports[`ToastMessage rendering renders action button if type is action 1`] = `
   id="toast-0"
   role="alert"
 >
-  <SvgIcon
+  <InformationFilled
     className="ToastMessage__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "circle-info",
-        "prefix": "fas",
-      }
-    }
+    size={20}
   />
   <div
     className="ToastMessage__text"
@@ -63,13 +52,8 @@ exports[`ToastMessage rendering renders action button if type is action 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
+    <Close
+      size={20}
     />
   </button>
 </div>
@@ -82,14 +66,9 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
   id="toast-0"
   role="alert"
 >
-  <SvgIcon
+  <ErrorFilled
     className="ToastMessage__icon"
-    icon={
-      {
-        "icon": [],
-        "iconName": "rhombus-exclamation",
-      }
-    }
+    size={20}
   />
   <div
     className="ToastMessage__text"
@@ -104,13 +83,8 @@ exports[`ToastMessage rendering renders close button if type is error 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "xmark-thin",
-        }
-      }
+    <Close
+      size={20}
     />
   </button>
   <div

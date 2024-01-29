@@ -8,12 +8,7 @@ exports[`IconMenu rendering renders expected elements 1`] = `
     className="IconMenu"
     data-layer={null}
     disabled={false}
-    icon={
-      {
-        "icon": [],
-        "iconName": "ellipsis-v-thin",
-      }
-    }
+    icon={[Function]}
     id="random-id"
     size="medium"
     tooltipPlacement="right"

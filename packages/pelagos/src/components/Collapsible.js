@@ -1,12 +1,11 @@
 import {cloneElement, useMemo} from 'react';
 import PropTypes from 'prop-types';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
+import ChevronDown from '@carbon/icons-react/es/ChevronDown';
 
 import addClassName from '../functions/addClassName';
 import cloneWithClassName from '../functions/cloneWithClassName';
 import useCollapse from '../hooks/useCollapse';
 
-import SvgIcon from './SvgIcon';
 import './Collapsible.less';
 
 /** A collapsible container. */
@@ -26,7 +25,7 @@ const Collapsible = ({id, className, open, children, onHeaderClick}) => {
 				aria-controls={contentId}
 				onClick={onHeaderClick}>
 				{headerElement}
-				<SvgIcon className={`Collapsible__arrow${open ? ' Collapsible__arrow--open' : ''}`} icon={faAngleDown} />
+				<ChevronDown className={`Collapsible__arrow${open ? ' Collapsible__arrow--open' : ''}`} />
 			</button>
 			{cloneElement(contentElement, {
 				id: contentId,

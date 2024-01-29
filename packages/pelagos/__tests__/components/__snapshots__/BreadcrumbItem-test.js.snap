@@ -61,12 +61,7 @@ exports[`BreadcrumbItem rendering renders expected elements when the child is an
   className="Breadcrumb__item"
 >
   <IconMenu
-    icon={
-      {
-        "icon": [],
-        "iconName": "ellipsis-thin",
-      }
-    }
+    icon={[Function]}
   >
     <MenuItem
       type="default"

@@ -12,15 +12,7 @@ exports[`TabList rendering renders expected elements 1`] = `
     tabIndex={-1}
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
-    />
+    <ChevronLeft />
   </button>
   <div
     className="TabList__list"
@@ -51,15 +43,7 @@ exports[`TabList rendering renders expected elements 1`] = `
     tabIndex={-1}
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
-    />
+    <ChevronRight />
   </button>
 </div>
 `;
@@ -76,15 +60,7 @@ exports[`TabList rendering renders expected elements when optional properties ar
     tabIndex={-1}
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
-    />
+    <ChevronLeft />
   </button>
   <div
     className="TabList__list"
@@ -115,15 +91,7 @@ exports[`TabList rendering renders expected elements when optional properties ar
     tabIndex={-1}
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
-    />
+    <ChevronRight />
   </button>
 </div>
 `;
@@ -140,15 +108,7 @@ exports[`TabList rendering renders expected elements when tabs have secondary la
     tabIndex={-1}
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-left",
-          "prefix": "fas",
-        }
-      }
-    />
+    <ChevronLeft />
   </button>
   <div
     className="TabList__list"
@@ -181,15 +141,7 @@ exports[`TabList rendering renders expected elements when tabs have secondary la
     tabIndex={-1}
     type="button"
   >
-    <SvgIcon
-      icon={
-        {
-          "icon": [],
-          "iconName": "chevron-right",
-          "prefix": "fas",
-        }
-      }
-    />
+    <ChevronRight />
   </button>
 </div>
 `;

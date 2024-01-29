@@ -2,12 +2,11 @@ import {useCallback, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
+import Close from '@carbon/icons-react/es/Close';
 
 import Layer from '../components/Layer';
 import ScrollBox from '../components/ScrollBox';
-import SvgIcon from '../components/SvgIcon';
 import MenuArrow from '../components/MenuArrow';
-import xmarkThin from '../icons/xmarkThin';
 
 import FilterEditor from './LegacyFilterEditor';
 import './FilterList.less';
@@ -68,10 +67,10 @@ const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues
 													aria-label={t`Remove ${name} filter`}
 													data-kind="remove"
 													data-key={key}>
-													<SvgIcon icon={xmarkThin} />
+													<Close />
 												</button>
 											</Layer>;
-									  }
+										}
 									: null
 							)}
 					</ul>

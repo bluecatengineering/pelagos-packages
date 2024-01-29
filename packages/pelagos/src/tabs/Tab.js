@@ -1,9 +1,7 @@
 import {forwardRef, useCallback, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
-
-import SvgIcon from '../components/SvgIcon';
-import xmarkThin from '../icons/xmarkThin';
+import Close from '@carbon/icons-react/es/Close';
 
 import TabListContext from './TabContext';
 
@@ -52,7 +50,7 @@ const Tab = forwardRef(({className, secondaryLabel, children, onRemove, ...props
 				{/* can't nest buttons, span it is; keyboard support is on the button */}
 				{onRemove && (
 					<span className="TabList__remove" tabIndex={-1} role="button" aria-hidden onClick={handleRemoveClick}>
-						<SvgIcon icon={xmarkThin} />
+						<Close />
 					</span>
 				)}
 			</div>

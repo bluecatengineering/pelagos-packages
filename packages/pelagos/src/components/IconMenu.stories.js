@@ -1,8 +1,9 @@
 import {action} from '@storybook/addon-actions';
-import {faCat} from '@fortawesome/free-solid-svg-icons';
+import Model from '@carbon/icons-react/es/Model';
 
 import WithLayers from '../../templates/WithLayers';
 import MenuItem from '../menu/MenuItem';
+import MenuItemDivider from '../menu/MenuItemDivider';
 
 import IconMenu from './IconMenu';
 
@@ -14,33 +15,18 @@ export default {
 };
 
 const children = [
-	<MenuItem key="1" onClick={handleClick}>
-		Option 1
-	</MenuItem>,
-	<MenuItem key="2" onClick={handleClick}>
-		Option 2
-	</MenuItem>,
-	<MenuItem key="3" disabled onClick={handleClick}>
-		Option 3
-	</MenuItem>,
-	<MenuItem key="4" hasDivider onClick={handleClick}>
-		Option 4
-	</MenuItem>,
+	<MenuItem key="1" text="Option 1" onClick={handleClick} />,
+	<MenuItem key="2" text="Option 2" onClick={handleClick} />,
+	<MenuItem key="3" text="Option 3" disabled onClick={handleClick} />,
+	<MenuItemDivider key="d" />,
+	<MenuItem key="4" text="Option 4" type="danger" onClick={handleClick} />,
 ];
-export const Default = {args: {'aria-label': 'Cat actions', children}};
+export const Default = {args: {'aria-label': 'Actions', children}};
 
-export const WithCustomIcon = {args: {icon: faCat, arrow: true, 'aria-label': 'Cat actions', children}};
+export const WithCustomIcon = {args: {icon: Model, arrow: true, 'aria-label': 'Actions', children}};
 
 export const _WithLayers = {
-	render: () => (
-		<WithLayers>
-			{() => (
-				<IconMenu icon={faCat} arrow aria-label="Cat actions">
-					{children}
-				</IconMenu>
-			)}
-		</WithLayers>
-	),
+	render: () => <WithLayers>{() => <IconMenu aria-label="Actions">{children}</IconMenu>}</WithLayers>,
 	parameters: {
 		controls: {hideNoControlsWarning: true},
 	},

@@ -1,7 +1,7 @@
 import {useCallback, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {faCopy} from '@fortawesome/free-regular-svg-icons';
 import {t} from '@bluecateng/l10n.macro';
+import Copy from '@carbon/icons-react/es/Copy';
 
 import useTooltipBase from '../hooks/useTooltipBase';
 import copyToClipboard from '../functions/copyToClipboard';
@@ -40,7 +40,7 @@ const CopyButton = ({id, className, data, icon, tooltipText, tooltipPlacement, d
 			aria-disabled="true"
 			onMouseEnter={show}
 			onMouseLeave={hide}>
-			<SvgIcon icon={icon || faCopy} />
+			<SvgIcon icon={icon || Copy} />
 		</span>
 	) : (
 		<button
@@ -54,7 +54,7 @@ const CopyButton = ({id, className, data, icon, tooltipText, tooltipPlacement, d
 			onFocus={show}
 			onBlur={hide}
 			onClick={handleClick}>
-			<SvgIcon icon={icon || faCopy} />
+			<SvgIcon icon={icon || Copy} />
 		</button>
 	);
 };
@@ -67,7 +67,7 @@ CopyButton.propTypes = {
 	/** The data to copy to the clipboard. */
 	data: PropTypes.string,
 	/** The object representing the icon. (using FontAwesome, etc.) */
-	icon: PropTypes.object,
+	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]),
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */

@@ -9,15 +9,9 @@ exports[`ConfirmDialog rendering renders expected elements 1`] = `
   <div
     className="ConfirmDialog__body"
   >
-    <SvgIcon
+    <WarningAltFilled
       className="ConfirmDialog__icon"
-      icon={
-        {
-          "icon": [],
-          "iconName": "triangle-exclamation",
-          "prefix": "fas",
-        }
-      }
+      size={20}
     />
     <p
       className="ConfirmDialog__text"

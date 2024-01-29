@@ -1,13 +1,13 @@
 import {Children, cloneElement, forwardRef, useMemo} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
+import OverflowMenuVertical from '@carbon/icons-react/es/OverflowMenuVertical';
 
 import setRefs from '../functions/setRefs';
 import useRandomId from '../hooks/useRandomId';
 import useMenuHandler from '../hooks/useMenuHandler';
 import useLayer from '../hooks/useLayer';
 import useMenuPositioner from '../hooks/useMenuPositioner';
-import ellipsisVThin from '../icons/ellipsisVThin';
 
 import IconButton from './IconButton';
 import MenuArrow from './MenuArrow';
@@ -69,7 +69,7 @@ IconMenu.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The object representing the icon. (using FontAwesome, etc.) */
-	icon: PropTypes.object,
+	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]),
 	/** The tooltip text to display. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
@@ -85,7 +85,7 @@ IconMenu.propTypes = {
 };
 
 IconMenu.defaultProps = {
-	icon: ellipsisVThin,
+	icon: OverflowMenuVertical,
 };
 
 export default IconMenu;

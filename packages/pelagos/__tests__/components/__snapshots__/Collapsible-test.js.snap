@@ -13,15 +13,8 @@ exports[`Collapsible rendering renders expected elements 1`] = `
     type="button"
   >
     cloneWithClassName
-    <SvgIcon
+    <ChevronDown
       className="Collapsible__arrow Collapsible__arrow--open"
-      icon={
-        {
-          "icon": [],
-          "iconName": "angle-down",
-          "prefix": "fas",
-        }
-      }
     />
   </button>
   <div
@@ -46,15 +39,8 @@ exports[`Collapsible rendering renders expected elements when className is set 1
     type="button"
   >
     cloneWithClassName
-    <SvgIcon
+    <ChevronDown
       className="Collapsible__arrow Collapsible__arrow--open"
-      icon={
-        {
-          "icon": [],
-          "iconName": "angle-down",
-          "prefix": "fas",
-        }
-      }
     />
   </button>
   <div
@@ -79,15 +65,8 @@ exports[`Collapsible rendering sets a random id if not provided 1`] = `
     type="button"
   >
     cloneWithClassName
-    <SvgIcon
+    <ChevronDown
       className="Collapsible__arrow"
-      icon={
-        {
-          "icon": [],
-          "iconName": "angle-down",
-          "prefix": "fas",
-        }
-      }
     />
   </button>
   <div

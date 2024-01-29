@@ -1,7 +1,6 @@
 import {cloneElement} from 'react';
 import PropTypes from 'prop-types';
-
-import ellipsisThin from '../icons/ellipsisThin';
+import OverflowMenuHorizontal from '@carbon/icons-react/es/OverflowMenuHorizontal';
 
 /** An item in a Breadcrumb. */
 const BreadcrumbItem = ({href, children, ...props}) => (
@@ -11,7 +10,7 @@ const BreadcrumbItem = ({href, children, ...props}) => (
 				{children}
 			</a>
 		) : children?.type?.displayName === 'IconMenu' ? (
-			cloneElement(children, {icon: ellipsisThin})
+			cloneElement(children, {icon: OverflowMenuHorizontal})
 		) : (
 			children
 		)}

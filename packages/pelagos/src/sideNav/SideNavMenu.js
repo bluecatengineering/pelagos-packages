@@ -1,8 +1,7 @@
 import {forwardRef, Children, useContext} from 'react';
 import PropTypes from 'prop-types';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
+import ChevronDown from '@carbon/icons-react/es/ChevronDown';
 
-import SvgIcon from '../components/SvgIcon';
 import useCollapse from '../hooks/useCollapse';
 
 import SideNavContext from './SideNavContext';
@@ -28,7 +27,7 @@ const SideNavMenu = forwardRef(({className, title, expanded, children, ...props}
 				<span className="SideNav__submenuTitle" title={title}>
 					{title}
 				</span>
-				<SvgIcon className="SideNav__icon" icon={faAngleDown} />
+				<ChevronDown className="SideNav__icon" />
 			</button>
 			<ul className="SideNav__menu" ref={useCollapse(expanded)}>
 				{children}

@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
+import Information from '@carbon/icons-react/es/Information';
 
-import circleInfoOutline from '../icons/circleInfoOutline';
 import useTooltip from '../hooks/useTooltip';
 
-import SvgIcon from './SvgIcon';
 import './InfoTooltip.less';
 
 /** A component displaying an informational tooltip. */
 const InfoTooltip = ({className, text, placement, ...props}) => (
 	<button {...props} className={`InfoTooltip${className ? ` ${className}` : ''}`} ref={useTooltip(text, placement)}>
-		<SvgIcon icon={circleInfoOutline} />
+		<Information />
 	</button>
 );
 
