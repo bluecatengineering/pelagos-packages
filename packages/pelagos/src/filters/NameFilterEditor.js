@@ -8,6 +8,7 @@ import getGenericSuggestions from '../functions/getGenericSuggestions';
 import renderSuggestion from '../suggestions/renderSuggestion';
 import renderNamedListItem from '../listItems/renderNamedListItem';
 import ListItem from '../listItems/ListItem';
+import useRandomId from '../hooks/useRandomId';
 
 import FilterEditor from './FilterEditor';
 
@@ -119,10 +120,11 @@ export const NewNameFilterEditor = ({
 		[list, onSave, text]
 	);
 
+	id = useRandomId(id);
 	return (
-		<FilterEditor id={id} chipId={chipId} onClose={onClose} onSave={handleSave}>
+		<FilterEditor id={id} chipId={chipId} aria-labelledby={`${id}-list-label`} onClose={onClose} onSave={handleSave}>
 			<ListInput
-				id="nameFilterEditorInput"
+				id={`${id}-list`}
 				label={label}
 				placeholder={placeholder}
 				column

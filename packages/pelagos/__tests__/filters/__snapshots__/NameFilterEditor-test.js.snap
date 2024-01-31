@@ -2,8 +2,9 @@
 
 exports[`NameFilterEditor NewNameFilterEditor rendering renders expected elements 1`] = `
 <FilterEditor
+  aria-labelledby="random-id-list-label"
   chipId="button"
-  id="test"
+  id="random-id"
   onSave={[Function]}
 >
   <ListInput
@@ -14,7 +15,7 @@ exports[`NameFilterEditor NewNameFilterEditor rendering renders expected element
     getItemName={[Function]}
     getSuggestionValue={[Function]}
     getSuggestions={[Function]}
-    id="nameFilterEditorInput"
+    id="random-id-list"
     label="label"
     list={
       [
@@ -34,8 +35,9 @@ exports[`NameFilterEditor NewNameFilterEditor rendering renders expected element
 
 exports[`NameFilterEditor NewNameFilterEditor rendering renders expected elements when list is not set 1`] = `
 <FilterEditor
+  aria-labelledby="random-id-list-label"
   chipId="button"
-  id="test"
+  id="random-id"
   onSave={[Function]}
 >
   <ListInput
@@ -46,7 +48,7 @@ exports[`NameFilterEditor NewNameFilterEditor rendering renders expected element
     getItemName={[Function]}
     getSuggestionValue={[Function]}
     getSuggestions={[Function]}
-    id="nameFilterEditorInput"
+    id="random-id-list"
     label="label"
     list={[]}
     onErrorChange={[MockFunction]}

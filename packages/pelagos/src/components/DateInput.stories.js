@@ -22,20 +22,22 @@ export default {
 };
 
 export const Default = {
-	args: {className: 'DateInputStory', value: '', format, parse},
+	args: {className: 'DateInputStory', value: '', format, parse, 'aria-label': 'Date'},
 };
 
 export const Disabled = {
-	args: {className: 'DateInputStory', value: '', disabled: true, format, parse},
+	args: {className: 'DateInputStory', value: '', disabled: true, format, parse, 'aria-label': 'Date'},
 };
 
 export const Error = {
-	args: {className: 'DateInputStory', value: '', error: true, format, parse},
+	args: {className: 'DateInputStory', value: '', error: true, format, parse, 'aria-label': 'Date'},
 };
 
 export const _WithLayers = {
 	render: () => (
-		<WithLayers>{() => <DateInput className="DateInputStory" value="" format={format} parse={parse} />}</WithLayers>
+		<WithLayers>
+			{() => <DateInput className="DateInputStory" value="" format={format} parse={parse} aria-label="Date" />}
+		</WithLayers>
 	),
 	parameters: {
 		controls: {hideNoControlsWarning: true},

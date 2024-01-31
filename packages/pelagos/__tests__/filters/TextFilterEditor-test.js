@@ -2,8 +2,11 @@ import {useState} from 'react';
 import {shallow} from 'enzyme';
 
 import TextFilterEditor, {OldTextFilterEditor, NewTextFilterEditor} from '../../src/filters/TextFilterEditor';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/filters/TextFilterEditor');
+
+useRandomId.mockReturnValue('random-id');
 
 describe('TextFilterEditor', () => {
 	describe('rendering', () => {
@@ -127,7 +130,7 @@ describe('TextFilterEditor', () => {
 						onSave={onSave}
 					/>
 				);
-				wrapper.find('#test').prop('onSave')();
+				wrapper.find('#random-id').prop('onSave')();
 				expect(onSave.mock.calls).toEqual([[list]]);
 			});
 
@@ -143,7 +146,7 @@ describe('TextFilterEditor', () => {
 						onSave={onSave}
 					/>
 				);
-				wrapper.find('#test').prop('onSave')();
+				wrapper.find('#random-id').prop('onSave')();
 				expect(onSave.mock.calls).toEqual([[null]]);
 			});
 
@@ -161,7 +164,7 @@ describe('TextFilterEditor', () => {
 						onSave={onSave}
 					/>
 				);
-				wrapper.find('#test').prop('onSave')();
+				wrapper.find('#random-id').prop('onSave')();
 				expect(onSave.mock.calls).toEqual([]);
 				expect(setError.mock.calls).toEqual([['Press Enter to add items to the list.']]);
 			});

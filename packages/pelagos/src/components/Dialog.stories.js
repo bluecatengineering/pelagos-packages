@@ -36,6 +36,7 @@ export const Default = {
 				<Button text="Button" type="primary" />
 			</div>,
 		],
+		onSubmit: null,
 	},
 };
 

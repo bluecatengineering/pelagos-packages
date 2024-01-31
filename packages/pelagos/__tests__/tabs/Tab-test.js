@@ -73,7 +73,7 @@ describe('Tab', () => {
 			const stopPropagation = jest.fn();
 			useContext.mockReturnValueOnce({index: 0});
 			const wrapper = shallow(<Tab onRemove={onRemove}>Test</Tab>);
-			wrapper.find('[role="button"]').simulate('click', {stopPropagation});
+			wrapper.find('.TabList__remove').simulate('click', {stopPropagation});
 			expect(stopPropagation.mock.calls).toEqual([[]]);
 			expect(onRemove.mock.calls).toEqual([[0]]);
 		});

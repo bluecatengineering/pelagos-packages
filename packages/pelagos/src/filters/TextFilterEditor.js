@@ -5,6 +5,7 @@ import {t} from '@bluecateng/l10n.macro';
 
 import ListInput from '../listInput/ListInput';
 import renderSuggestion from '../suggestions/renderSuggestion';
+import useRandomId from '../hooks/useRandomId';
 
 import FilterEditor from './FilterEditor';
 
@@ -96,10 +97,11 @@ export const NewTextFilterEditor = ({
 		[list, onSave, text]
 	);
 
+	id = useRandomId(id);
 	return (
-		<FilterEditor id={id} chipId={chipId} onClose={onClose} onSave={handleSave}>
+		<FilterEditor id={id} chipId={chipId} aria-labelledby={`${id}-list-label`} onClose={onClose} onSave={handleSave}>
 			<ListInput
-				id="textFilterEditorInput"
+				id={`${id}-list`}
 				label={label}
 				placeholder={placeholder}
 				type="text"

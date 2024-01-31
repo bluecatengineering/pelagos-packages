@@ -7,6 +7,7 @@ const renderLineTab = ({id, text}, current, focused) => (
 		id={`tabs-${id}`}
 		className="Tabs__tab"
 		style={{height: '40px', padding: '0 16px', justifyContent: 'center'}}
+		role="tab"
 		aria-selected={current}
 		data-focused={focused}>
 		{text}
@@ -18,6 +19,7 @@ const renderContainedTab = ({id, text}, current, focused) => (
 		id={`tabs-${id}`}
 		className="Tabs__containedTab"
 		style={{height: '40px', padding: '0 16px', justifyContent: 'center'}}
+		role="tab"
 		aria-selected={current}
 		data-focused={focused}>
 		{text}

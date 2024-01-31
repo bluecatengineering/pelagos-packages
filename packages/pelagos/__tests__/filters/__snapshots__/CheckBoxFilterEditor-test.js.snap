@@ -2,8 +2,9 @@
 
 exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected elements 1`] = `
 <FilterEditor
+  aria-labelledby="random-id-label"
   chipId="button"
-  id="test"
+  id="random-id"
   onSave={[Function]}
 >
   <fieldset
@@ -11,13 +12,14 @@ exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected
   >
     <legend
       className="CheckBoxFilterEditor__legend"
+      id="random-id-label"
     >
       label
     </legend>
     <CheckBox
       checked={true}
       className="CheckBoxFilterEditor__option"
-      id="test-a"
+      id="random-id-a"
       label="a"
       onChange={[Function]}
       value={0}
@@ -25,7 +27,7 @@ exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected
     <CheckBox
       checked={false}
       className="CheckBoxFilterEditor__option"
-      id="test-b"
+      id="random-id-b"
       label="b"
       onChange={[Function]}
       value={1}
@@ -36,8 +38,9 @@ exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected
 
 exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected elements when list is not set 1`] = `
 <FilterEditor
+  aria-labelledby="random-id-label"
   chipId="button"
-  id="test"
+  id="random-id"
   onSave={[Function]}
 >
   <fieldset
@@ -45,13 +48,14 @@ exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected
   >
     <legend
       className="CheckBoxFilterEditor__legend"
+      id="random-id-label"
     >
       label
     </legend>
     <CheckBox
       checked={false}
       className="CheckBoxFilterEditor__option"
-      id="test-a"
+      id="random-id-a"
       label="a"
       onChange={[Function]}
       value={0}
@@ -59,7 +63,7 @@ exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected
     <CheckBox
       checked={false}
       className="CheckBoxFilterEditor__option"
-      id="test-b"
+      id="random-id-b"
       label="b"
       onChange={[Function]}
       value={1}

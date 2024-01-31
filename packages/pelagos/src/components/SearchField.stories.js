@@ -5,4 +5,4 @@ export default {
 	component: SearchField,
 };
 
-export const Default = {};
+export const Default = {args: {'aria-label': 'Search'}};

@@ -4,10 +4,13 @@ import {shallow} from 'enzyme';
 import NameFilterEditor, {NewNameFilterEditor, OldNameFilterEditor} from '../../src/filters/NameFilterEditor';
 import getGenericSuggestions from '../../src/functions/getGenericSuggestions';
 import ListItem from '../../src/listItems/ListItem';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/filters/NameFilterEditor');
 
 const anyFunction = expect.any(Function);
+
+useRandomId.mockReturnValue('random-id');
 
 describe('NameFilterEditor', () => {
 	describe('rendering', () => {
@@ -230,7 +233,7 @@ describe('NameFilterEditor', () => {
 						errorMessage="error message"
 					/>
 				);
-				wrapper.find('#nameFilterEditorInput').prop('getSuggestions')('value', ['a']);
+				wrapper.find('#random-id-list').prop('getSuggestions')('value', ['a']);
 				expect(getGenericSuggestions.mock.calls).toEqual([['value', anyFunction, [{name: 'Alpha'}], 'error message']]);
 				expect(getGenericSuggestions.mock.calls[0][1]('a')).toBe(true);
 			});
@@ -246,7 +249,7 @@ describe('NameFilterEditor', () => {
 						errorMessage="error message"
 					/>
 				);
-				const getItemName = wrapper.find('#nameFilterEditorInput').prop('getItemName');
+				const getItemName = wrapper.find('#random-id-list').prop('getItemName');
 				expect(getItemName('a')).toBe('Alpha');
 				expect(getItemName('b')).toBe('b');
 			});
@@ -262,7 +265,7 @@ describe('NameFilterEditor', () => {
 						errorMessage="error message"
 					/>
 				);
-				const renderItem = wrapper.find('#nameFilterEditorInput').prop('renderItem');
+				const renderItem = wrapper.find('#random-id-list').prop('renderItem');
 				expect(renderItem('a')).toEqual(<ListItem item="Alpha" unresolved={false} />);
 				expect(renderItem('b')).toEqual(<ListItem item="b" unresolved={true} />);
 			});
@@ -281,7 +284,7 @@ describe('NameFilterEditor', () => {
 						onSave={onSave}
 					/>
 				);
-				wrapper.find('#test').prop('onSave')();
+				wrapper.find('#random-id').prop('onSave')();
 				expect(onSave.mock.calls).toEqual([[list]]);
 			});
 
@@ -298,7 +301,7 @@ describe('NameFilterEditor', () => {
 						onSave={onSave}
 					/>
 				);
-				wrapper.find('#test').prop('onSave')();
+				wrapper.find('#random-id').prop('onSave')();
 				expect(onSave.mock.calls).toEqual([[null]]);
 			});
 
@@ -317,7 +320,7 @@ describe('NameFilterEditor', () => {
 						onSave={onSave}
 					/>
 				);
-				wrapper.find('#test').prop('onSave')();
+				wrapper.find('#random-id').prop('onSave')();
 				expect(onSave.mock.calls).toEqual([]);
 				expect(setError.mock.calls).toEqual([['Press Enter to add items to the list.']]);
 			});

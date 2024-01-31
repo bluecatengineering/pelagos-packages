@@ -49,7 +49,7 @@ const Tab = forwardRef(({className, secondaryLabel, children, onRemove, ...props
 				{children}
 				{/* can't nest buttons, span it is; keyboard support is on the button */}
 				{onRemove && (
-					<span className="TabList__remove" tabIndex={-1} role="button" aria-hidden onClick={handleRemoveClick}>
+					<span className="TabList__remove" tabIndex={-1} aria-hidden onClick={handleRemoveClick}>
 						<Close />
 					</span>
 				)}

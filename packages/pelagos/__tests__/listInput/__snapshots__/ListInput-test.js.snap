@@ -11,6 +11,7 @@ exports[`ListInput rendering renders expected elements 1`] = `
   <LabelLine
     error={false}
     htmlFor="test"
+    id="test-label"
     required={true}
     text="Test"
   />
@@ -60,6 +61,7 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
   <LabelLine
     error={false}
     htmlFor="test"
+    id="test-label"
     text="Test"
   />
   <ComboBox
@@ -107,6 +109,7 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
   <LabelLine
     error={true}
     htmlFor="test"
+    id="test-label"
     text="Test"
   />
   <ComboBox
@@ -154,6 +157,7 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
   <LabelLine
     error={false}
     htmlFor="test"
+    id="test-label"
     text="Test"
   />
   <ComboBox
