@@ -1,0 +1,42 @@
+@import '../../less/spacing';
+
+@layer pelagos {
+	.ProgressStep {
+		position: relative;
+		display: flex;
+		flex: 1;
+		overflow: visible;
+		border-top: 2px solid var(--border-subtle);
+		align-items: center;
+		min-width: 128px;
+		cursor: default;
+
+		&--complete,
+		&--current {
+			border-top-color: var(--border-interactive);
+		}
+
+		&__icon {
+			min-width: 16px;
+			height: 16px;
+			margin: @sp-08 @sp-08 0 0;
+		}
+
+		&__icon--incomplete {
+			color: var(--icon-primary);
+		}
+
+		&__icon--current,
+		&__icon--complete {
+			color: var(--interactive);
+		}
+
+		&__icon--error {
+			color: var(--support-error);
+		}
+
+		&__label {
+			margin-top: @sp-08;
+		}
+	}
+}
