@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressIndicator rendering renders expected elements 1`] = `
+<ul
+  className="ProgressIndicator"
+>
+  <ProgressStep
+    complete={true}
+    current={false}
+    key={0}
+  />
+  <ProgressStep
+    complete={false}
+    current={true}
+    key={1}
+  />
+</ul>
+`;
+
+exports[`ProgressIndicator rendering renders expected elements when optional properties are set 1`] = `
+<ul
+  className="ProgressIndicator TestClass"
+>
+  <ProgressStep
+    complete={true}
+    current={false}
+    key={0}
+  />
+  <ProgressStep
+    complete={false}
+    current={true}
+    key={1}
+  />
+</ul>
+`;

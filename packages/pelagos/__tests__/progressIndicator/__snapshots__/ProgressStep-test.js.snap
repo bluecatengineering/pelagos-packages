@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressStep rendering renders expected elements for completed step 1`] = `
+<li
+  className="ProgressStep ProgressStep--complete"
+>
+  <span
+    className="sr-only"
+  >
+    , 
+    Complete
+  </span>
+  <CheckmarkOutline
+    className="ProgressStep__icon ProgressStep__icon--complete"
+  />
+  <p
+    className="ProgressStep__label"
+  >
+    Foo
+  </p>
+</li>
+`;
+
+exports[`ProgressStep rendering renders expected elements for current 1`] = `
+<li
+  aria-current="step"
+  className="ProgressStep ProgressStep--current"
+>
+  <span
+    className="sr-only"
+  >
+    , 
+    Current
+  </span>
+  <Incomplete
+    className="ProgressStep__icon ProgressStep__icon--current"
+  />
+  <p
+    className="ProgressStep__label"
+  >
+    Foo
+  </p>
+</li>
+`;
+
+exports[`ProgressStep rendering renders expected elements for invalid current step 1`] = `
+<li
+  aria-current="step"
+  className="ProgressStep ProgressStep--current"
+>
+  <span
+    className="sr-only"
+  >
+    , 
+    Invalid
+  </span>
+  <Warning
+    className="ProgressStep__icon ProgressStep__icon--error"
+  />
+  <p
+    className="ProgressStep__label"
+  >
+    Foo
+  </p>
+</li>
+`;
+
+exports[`ProgressStep rendering renders expected elements for invalid step 1`] = `
+<li
+  className="ProgressStep ProgressStep--incomplete"
+>
+  <span
+    className="sr-only"
+  >
+    , 
+    Invalid
+  </span>
+  <Warning
+    className="ProgressStep__icon ProgressStep__icon--error"
+  />
+  <p
+    className="ProgressStep__label"
+  >
+    Foo
+  </p>
+</li>
+`;
+
+exports[`ProgressStep rendering renders expected elements for next step 1`] = `
+<li
+  className="ProgressStep ProgressStep--incomplete"
+>
+  <span
+    className="sr-only"
+  >
+    , 
+    Incomplete
+  </span>
+  <CircleDash
+    className="ProgressStep__icon ProgressStep__icon--incomplete"
+  />
+  <p
+    className="ProgressStep__label"
+  >
+    Foo
+  </p>
+</li>
+`;

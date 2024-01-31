@@ -105,6 +105,10 @@ msgstr "Cerrar"
 msgid "Column {column} of {columnCount}"
 msgstr "Columna {column} de {columnCount}"
 
+#: 1f5
+msgid "Complete"
+msgstr "Completo"
+
 #: 8e3
 msgid "Copied"
 msgstr "Copiado"
@@ -116,6 +120,10 @@ msgstr "Copiar"
 #: 54c
 msgid "Copy failed: {message}"
 msgstr "Fallo en copia: {message}"
+
+#: 4fc
+msgid "Current"
+msgstr "Actual"
 
 #: f6f
 msgid "Delete"
@@ -140,6 +148,14 @@ msgstr "Archivo {0} subido"
 #: 7ec
 msgid "Files {0} uploaded"
 msgstr "Archivos {0} subidos"
+
+#: 387
+msgid "Incomplete"
+msgstr "Incompleto"
+
+#: 54e
+msgid "Invalid"
+msgstr "Inválido"
 
 #: 6a0
 msgid "Items per page"

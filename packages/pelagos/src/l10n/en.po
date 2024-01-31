@@ -105,6 +105,10 @@ msgstr ""
 msgid "Column {column} of {columnCount}"
 msgstr ""
 
+#: 1f5
+msgid "Complete"
+msgstr ""
+
 #: 8e3
 msgid "Copied"
 msgstr ""
@@ -115,6 +119,10 @@ msgstr ""
 
 #: 54c
 msgid "Copy failed: {message}"
+msgstr ""
+
+#: 4fc
+msgid "Current"
 msgstr ""
 
 #: f6f
@@ -139,6 +147,14 @@ msgstr ""
 
 #: 7ec
 msgid "Files {0} uploaded"
+msgstr ""
+
+#: 387
+msgid "Incomplete"
+msgstr ""
+
+#: 54e
+msgid "Invalid"
 msgstr ""
 
 #: 6a0

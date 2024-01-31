@@ -8,6 +8,7 @@ export * from './icons';
 export * from './listInput';
 export * from './listItems';
 export * from './menu';
+export * from './progressIndicator';
 export * from './sideNav';
 export * from './suggestions';
 export * from './table';
