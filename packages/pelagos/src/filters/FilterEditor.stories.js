@@ -8,7 +8,7 @@ export default {
 };
 
 export const Default = {
-	args: {chipId: 'chip', children: 'Editor'},
+	args: {chipId: 'chip', children: <div id="label">Editor</div>, 'aria-labelledby': 'label'},
 	decorators: [
 		(Story) => (
 			<>

@@ -4,6 +4,7 @@ exports[`TableScrollWrapper rendering renders expected elements 1`] = `
 <div
   className="Table__wrapper"
   id="test"
+  tabIndex={0}
 >
   body
 </div>
@@ -13,6 +14,7 @@ exports[`TableScrollWrapper rendering renders expected elements when className i
 <div
   className="Table__wrapper TestClass"
   id="test"
+  tabIndex={0}
 >
   body
 </div>

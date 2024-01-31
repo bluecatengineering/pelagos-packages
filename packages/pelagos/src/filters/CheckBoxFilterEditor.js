@@ -2,6 +2,7 @@ import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 
 import CheckBox from '../components/CheckBox';
+import useRandomId from '../hooks/useRandomId';
 
 import FilterEditor from './FilterEditor';
 
@@ -59,10 +60,14 @@ export const NewCheckBoxFilterEditor = ({id, label, options, list: initialList, 
 		[options]
 	);
 	const handleSave = useCallback(() => onSave(list.length ? list : null), [list, onSave]);
+	id = useRandomId(id);
+	const labelId = `${id}-label`;
 	return (
-		<FilterEditor id={id} chipId={chipId} onClose={onClose} onSave={handleSave}>
+		<FilterEditor id={id} chipId={chipId} aria-labelledby={labelId} onClose={onClose} onSave={handleSave}>
 			<fieldset className="CheckBoxFilterEditor">
-				<legend className="CheckBoxFilterEditor__legend">{label}</legend>
+				<legend id={labelId} className="CheckBoxFilterEditor__legend">
+					{label}
+				</legend>
 				{options.map((opt, index) => (
 					<CheckBox
 						key={opt}

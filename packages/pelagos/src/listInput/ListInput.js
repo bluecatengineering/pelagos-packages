@@ -145,12 +145,13 @@ const ListInput = ({
 	const handleHighlightClear = useCallback(() => setHighlightKey(null), []);
 
 	const empty = !list?.length;
+	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
 	return (
 		<div className="ListInput">
 			<div className="sr-only" aria-live="assertive" ref={liveRef} />
-			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
+			<LabelLine id={labelId} htmlFor={id} text={label} required={required} error={!!error} />
 			<ComboBox
 				{...props}
 				id={id}

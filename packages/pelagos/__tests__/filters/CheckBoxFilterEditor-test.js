@@ -5,10 +5,13 @@ import CheckBoxFilterEditor, {
 	NewCheckBoxFilterEditor,
 	OldCheckBoxFilterEditor,
 } from '../../src/filters/CheckBoxFilterEditor';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/filters/CheckBoxFilterEditor');
 
 const anyFunction = expect.any(Function);
+
+useRandomId.mockReturnValue('random-id');
 
 describe('CheckBoxFilterEditor', () => {
 	describe('rendering', () => {
@@ -128,7 +131,7 @@ describe('CheckBoxFilterEditor', () => {
 				const wrapper = shallow(
 					<NewCheckBoxFilterEditor id="test" label="label" list={list} options={['a']} getLabel={jest.fn()} />
 				);
-				wrapper.find('#test-a').simulate('change', {target: {checked: true, value: '0'}});
+				wrapper.find('#random-id-a').simulate('change', {target: {checked: true, value: '0'}});
 				expect(setList.mock.calls).toEqual([[anyFunction]]);
 				expect(setList.mock.calls[0][0](list)).toEqual(['b', 'a']);
 			});
@@ -140,7 +143,7 @@ describe('CheckBoxFilterEditor', () => {
 				const wrapper = shallow(
 					<NewCheckBoxFilterEditor id="test" label="label" list={list} options={['a']} getLabel={jest.fn()} />
 				);
-				wrapper.find('#test-a').simulate('change', {target: {checked: false, value: '0'}});
+				wrapper.find('#random-id-a').simulate('change', {target: {checked: false, value: '0'}});
 				expect(setList.mock.calls).toEqual([[anyFunction]]);
 				expect(setList.mock.calls[0][0](list)).toEqual(['b']);
 			});
@@ -158,7 +161,7 @@ describe('CheckBoxFilterEditor', () => {
 						onSave={onSave}
 					/>
 				);
-				wrapper.find('#test').prop('onSave')();
+				wrapper.find('#random-id').prop('onSave')();
 				expect(onSave.mock.calls).toEqual([[list]]);
 			});
 
@@ -174,7 +177,7 @@ describe('CheckBoxFilterEditor', () => {
 						onSave={onSave}
 					/>
 				);
-				wrapper.find('#test').prop('onSave')();
+				wrapper.find('#random-id').prop('onSave')();
 				expect(onSave.mock.calls).toEqual([[null]]);
 			});
 		});

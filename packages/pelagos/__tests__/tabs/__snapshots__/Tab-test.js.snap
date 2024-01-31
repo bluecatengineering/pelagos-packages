@@ -38,7 +38,6 @@ exports[`Tab rendering renders expected elements when optional properties are se
       aria-hidden={true}
       className="TabList__remove"
       onClick={[Function]}
-      role="button"
       tabIndex={-1}
     >
       <Close />

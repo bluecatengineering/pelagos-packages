@@ -2,6 +2,7 @@
 
 exports[`InfoTooltip rendering renders expected elements 1`] = `
 <button
+  aria-label="Text"
   className="InfoTooltip"
 >
   <Information />
@@ -10,6 +11,7 @@ exports[`InfoTooltip rendering renders expected elements 1`] = `
 
 exports[`InfoTooltip rendering renders expected elements when className is set 1`] = `
 <button
+  aria-label="Text"
   className="InfoTooltip TestClass"
   id="test"
 >

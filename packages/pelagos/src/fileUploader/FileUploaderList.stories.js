@@ -11,6 +11,7 @@ export const Default = {
 		children: [
 			<FileUploaderItem key="foo" name="foo.txt" />,
 			<FileUploaderItem key="bar" name="bar.bin" error="File type not supported." />,
+			<FileUploaderItem key="baz" name="baz.txt" disableDelete />,
 		],
 	},
 };

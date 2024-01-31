@@ -313,6 +313,7 @@
 		}
 
 		&__wrapper {
+			@focus-visible();
 			flex: 1;
 			overflow: hidden scroll;
 			contain: strict;
@@ -331,7 +332,12 @@
 	td.Table--selectRow {
 		width: 40px;
 		min-width: 40px;
+		max-width: 40px;
 		padding: 0 @sp-04 0 @sp-16;
 		text-align: left;
+	}
+
+	th.Table--radioHeader {
+		opacity: 0;
 	}
 }

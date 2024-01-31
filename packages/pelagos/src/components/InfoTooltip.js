@@ -7,7 +7,11 @@ import './InfoTooltip.less';
 
 /** A component displaying an informational tooltip. */
 const InfoTooltip = ({className, text, placement, ...props}) => (
-	<button {...props} className={`InfoTooltip${className ? ` ${className}` : ''}`} ref={useTooltip(text, placement)}>
+	<button
+		{...props}
+		className={`InfoTooltip${className ? ` ${className}` : ''}`}
+		aria-label={text}
+		ref={useTooltip(text, placement)}>
 		<Information />
 	</button>
 );

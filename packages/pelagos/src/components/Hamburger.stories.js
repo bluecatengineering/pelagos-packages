@@ -5,6 +5,6 @@ export default {
 	component: Hamburger,
 };
 
-export const Default = {};
+export const Default = {args: {'aria-label': 'Hamburger default'}};
 
-export const Active = {args: {active: true}};
+export const Active = {args: {active: true, 'aria-label': 'Hamburger active'}};

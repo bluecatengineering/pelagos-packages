@@ -27,6 +27,18 @@ export default {
 				return order[aGroup] - order[bGroup] || aName.localeCompare(bName);
 			},
 		},
+		a11y: {
+			config: {
+				rules: [
+					{
+						// Carbon uses empty headers for actions
+						// this is not a WCAG violation: https://dequeuniversity.com/rules/axe/4.8/empty-table-header
+						id: 'empty-table-header',
+						selector: 'th:not([aria-label])',
+					},
+				],
+			},
+		},
 	},
 
 	globalTypes: {

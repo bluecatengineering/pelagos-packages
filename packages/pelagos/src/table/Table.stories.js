@@ -208,7 +208,7 @@ export const RadioSelection = (args) => (
 		<Table {...args}>
 			<TableHead>
 				<TableRow>
-					<TableHeader radio />
+					<TableHeader radio aria-label="Select" />
 					{columns.map(({id, header, align, sortable}) => (
 						<TableHeader key={id} align={align} sortable={sortable} sortOrder={id === sort.id ? sort.order : null}>
 							{header}
@@ -248,8 +248,8 @@ export const DefaultToolbar = (args) => {
 			<TableToolbar>
 				<TableToolbarDefault>
 					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
-					<IconButton icon={Model} />
-					<IconMenu icon={Settings} arrow flipped>
+					<IconButton icon={Model} aria-label="Example action" />
+					<IconMenu icon={Settings} arrow flipped aria-label="Example menu">
 						<MenuItem>Option one</MenuItem>
 						<MenuItem>Option two</MenuItem>
 						<MenuItem disabled>Option three</MenuItem>
@@ -330,8 +330,8 @@ export const BatchActions = (args) => {
 				</TableToolbarBatch>
 				<TableToolbarDefault hidden={someSelected}>
 					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
-					<IconButton icon={Model} />
-					<IconMenu icon={Settings} arrow flipped>
+					<IconButton icon={Model} aria-label="Example action" />
+					<IconMenu icon={Settings} arrow flipped aria-label="Example menu">
 						<MenuItem>Option one</MenuItem>
 						<MenuItem>Option two</MenuItem>
 						<MenuItem disabled>Option three</MenuItem>
@@ -395,7 +395,7 @@ export const InlineActions = (args) => (
 							{header}
 						</TableHeader>
 					))}
-					<TableHeader />
+					<TableHeader aria-label="Actions" />
 				</TableRow>
 			</TableHead>
 			<TableBody>
@@ -408,8 +408,8 @@ export const InlineActions = (args) => (
 						))}
 						<TableCell>
 							<div className="TableStory__inlineButtons">
-								<IconButton icon={Edit} />
-								<IconButton icon={TrashCan} />
+								<IconButton icon={Edit} aria-label="Edit" />
+								<IconButton icon={TrashCan} aria-label="Delete" />
 							</div>
 						</TableCell>
 					</TableRow>
@@ -435,7 +435,7 @@ export const InlineMenu = (args) => (
 							{header}
 						</TableHeader>
 					))}
-					<TableHeader />
+					<TableHeader aria-label="Actions" />
 				</TableRow>
 			</TableHead>
 			<TableBody>
@@ -447,7 +447,7 @@ export const InlineMenu = (args) => (
 							</TableCell>
 						))}
 						<TableCell>
-							<IconMenu flipped>
+							<IconMenu flipped aria-label="Example menu">
 								<MenuItem>Option one</MenuItem>
 								<MenuItem>Option two</MenuItem>
 								<MenuItem disabled>Option three</MenuItem>
@@ -481,7 +481,7 @@ export const WithPagination = (args) => {
 			<TableToolbar>
 				<TableToolbarDefault>
 					<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
-					<IconButton icon={Model} />
+					<IconButton icon={Model} aria-label="Example action" />
 					<Button type="primary" text="Primary button" />
 				</TableToolbarDefault>
 			</TableToolbar>
