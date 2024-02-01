@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.7.1...@bluecateng/pelagos@12.8.0) (2024-02-01)
+
+### Features
+
+- add danger buttons ([ff3e76c](https://github.com/bluecatengineering/pelagos-packages/commit/ff3e76c9b1f44dec5d495c35301da5662723e51d))
+- add ProgressIndicator component ([3f3bd15](https://github.com/bluecatengineering/pelagos-packages/commit/3f3bd15ea8aab3f3ff17d57bccfcbf937bade0a6))
+- use Carbon icons ([15db067](https://github.com/bluecatengineering/pelagos-packages/commit/15db067789e3066086c6086f7fe3b45c401a88b5))
+
+### Bug Fixes
+
+- add aria label and tooltip to Pagination buttons ([3b06f57](https://github.com/bluecatengineering/pelagos-packages/commit/3b06f576aab845629324f215cf96c7b4f48ca935))
+- fix accessibility issues ([cfb9e50](https://github.com/bluecatengineering/pelagos-packages/commit/cfb9e50e19abc6dbc0a725fe8a9042355425050c))
+- set value in select elements rather than selected in the options ([858c6b1](https://github.com/bluecatengineering/pelagos-packages/commit/858c6b15be56aa1319326f1a713ca7019a27f18a))
+
 ## [12.7.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.7.0...@bluecateng/pelagos@12.7.1) (2024-01-19)
 
 ### Bug Fixes
