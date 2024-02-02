@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.8.0...@bluecateng/pelagos@12.8.1) (2024-02-02)
+
+### Bug Fixes
+
+- add a less mixin for the warning icon fill ([9955d15](https://github.com/bluecatengineering/pelagos-packages/commit/9955d1515817549df29845d20245a0d3cd635838))
+
 ## [12.8.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.7.1...@bluecateng/pelagos@12.8.0) (2024-02-01)
 
 ### Features
