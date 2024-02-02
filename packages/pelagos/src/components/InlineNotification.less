@@ -1,5 +1,6 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 @layer pelagos {
 	.InlineNotification {
@@ -62,6 +63,7 @@
 		}
 
 		&--warning {
+			@warning-fill();
 			background-color: var(--notification-background-warning);
 			border-left-color: var(--support-warning);
 
@@ -71,11 +73,6 @@
 
 			& > .InlineNotification__icon {
 				color: var(--support-warning);
-			}
-
-			[data-icon-path] {
-				fill: #000000;
-				opacity: 1;
 			}
 		}
 

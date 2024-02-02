@@ -1,6 +1,7 @@
 @import '../../less/fonts';
 @import '../../less/focus';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 @layer pelagos {
 	.ToastMessage {
@@ -41,16 +42,12 @@
 	}
 
 	.ToastMessage--warning {
+		@warning-fill();
 		background-color: var(--notification-background-warning);
 		border-left-color: var(--support-warning);
 
 		& > .ToastMessage__icon {
 			color: var(--support-warning);
-		}
-
-		[data-icon-path] {
-			fill: #000000;
-			opacity: 1;
 		}
 	}
 

@@ -1,4 +1,5 @@
 @import '../../less/spacing';
+@import '../../less/utils';
 
 @layer pelagos {
 	.ConfirmDialog__body {
@@ -6,16 +7,12 @@
 	}
 
 	.ConfirmDialog__icon {
+		@warning-fill();
 		flex: none;
 		align-self: flex-start;
 		color: var(--support-warning);
 		margin-right: @sp-16;
 		margin-top: @sp-04;
-
-		[data-icon-path] {
-			fill: #000000;
-			opacity: 1;
-		}
 	}
 
 	.ConfirmDialog__text {
