@@ -42,6 +42,13 @@
 			@ellipsis();
 		}
 
+		&__arrow {
+			transition: transform 0.15s ease-out;
+			[aria-expanded='true'] > & {
+				transform: rotate(180deg);
+			}
+		}
+
 		&__remove {
 			@icon-button();
 			padding: @sp-02;

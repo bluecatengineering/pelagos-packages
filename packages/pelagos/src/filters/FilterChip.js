@@ -13,7 +13,7 @@ const FilterChip = ({id, name, children, onEditClick, onRemoveClick, ...props}) 
 		<button id={id} className="FilterChip__button" type="button" aria-haspopup="dialog" onClick={onEditClick}>
 			<span className="FilterChip__title">{name}</span>
 			<span className="FilterChip__values">{children}</span>
-			<MenuArrow />
+			<MenuArrow className="FilterChip__arrow" />
 		</button>
 		<button
 			id={`${id}-remove`}

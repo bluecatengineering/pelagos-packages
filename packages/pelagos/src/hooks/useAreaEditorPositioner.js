@@ -39,8 +39,13 @@ const useAreaEditorPositioner = (ref, buttonId, onClose) =>
 		document.addEventListener('scroll', setEditorPosition, {passive: true, capture: true});
 		const trap = createFocusTrap(editor, {
 			setReturnFocus: button,
-			clickOutsideDeactivates: (event) => !event.target.closest('[role="listbox"]'),
-			onDeactivate: onClose,
+			allowOutsideClick: (event) => {
+				if (event.type === 'click') {
+					trap.deactivate();
+				}
+				return false;
+			},
+			onPostDeactivate: onClose,
 		});
 		trap.activate();
 

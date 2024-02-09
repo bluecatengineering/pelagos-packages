@@ -25,7 +25,6 @@ describe('useAreaEditorPositioner', () => {
 		const buttonId = 'buttonId';
 		const activate = jest.fn();
 		const deactivate = jest.fn();
-		const closest = jest.fn().mockReturnValue({});
 		getElementById.mockReturnValueOnce(button);
 		createFocusTrap.mockReturnValue({activate, deactivate});
 
@@ -41,7 +40,7 @@ describe('useAreaEditorPositioner', () => {
 		]);
 		expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
 		expect(createFocusTrap.mock.calls).toEqual([
-			[editor, {setReturnFocus: button, clickOutsideDeactivates: anyFunction, onDeactivate: onClose}],
+			[editor, {setReturnFocus: button, allowOutsideClick: anyFunction, onPostDeactivate: onClose}],
 		]);
 		expect(activate.mock.calls).toEqual([[]]);
 
@@ -50,14 +49,16 @@ describe('useAreaEditorPositioner', () => {
 		expect(editor.style.top).toBe('180px');
 		expect(editor.style.left).toBe('350px');
 
-		const {clickOutsideDeactivates} = createFocusTrap.mock.calls[0][1];
-		expect(clickOutsideDeactivates({target: {closest}})).toBe(false);
-		expect(closest.mock.calls).toEqual([['[role="listbox"]']]);
+		const {allowOutsideClick} = createFocusTrap.mock.calls[0][1];
+		expect(allowOutsideClick({type: 'other'})).toBe(false);
+		expect(deactivate.mock.calls).toEqual([]);
+		expect(allowOutsideClick({type: 'click'})).toBe(false);
+		expect(deactivate.mock.calls).toEqual([[]]);
 
 		remove();
 		expect(removeAttribute.mock.calls).toEqual([['aria-expanded'], ['aria-controls']]);
 		expect(removeEventListener.mock.calls).toEqual(addEventListener.mock.calls);
-		expect(deactivate.mock.calls).toEqual([[]]);
+		expect(deactivate.mock.calls).toEqual([[], []]);
 	});
 
 	it('places the editor at the page top when the it is too tall', () => {

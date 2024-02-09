@@ -73,6 +73,10 @@ msgstr "Añadir"
 msgid "Add filter"
 msgstr "Añadir filtro"
 
+#: cfe
+msgid "Apply"
+msgstr "Aplicar"
+
 #: c76
 msgid "Breadcrumb"
 msgstr ""
