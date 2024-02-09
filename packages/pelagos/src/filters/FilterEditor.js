@@ -19,7 +19,7 @@ const FilterEditor = ({id, chipId, children, onClose, onSave, ...props}) => {
 	return (
 		<Layer {...props} id={id} className="FilterEditor" role="dialog" ref={editorRef}>
 			{children}
-			<Button id="saveBtn" className="FilterEditor__save" size="small" text={t`Save`} onClick={onSave} />
+			<Button id="saveBtn" className="FilterEditor__save" size="small" text={t`Apply`} onClick={onSave} />
 		</Layer>
 	);
 };

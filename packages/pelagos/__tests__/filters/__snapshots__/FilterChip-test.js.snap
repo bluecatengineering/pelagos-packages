@@ -21,7 +21,9 @@ exports[`FilterChip rendering renders expected elements 1`] = `
     >
       test value
     </span>
-    <MenuArrow />
+    <MenuArrow
+      className="FilterChip__arrow"
+    />
   </button>
   <button
     aria-label="Remove Test filter"

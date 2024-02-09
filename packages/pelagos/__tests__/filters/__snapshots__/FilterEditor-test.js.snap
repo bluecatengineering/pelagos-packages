@@ -11,7 +11,7 @@ exports[`FilterEditor rendering renders expected elements 1`] = `
     className="FilterEditor__save"
     id="saveBtn"
     size="small"
-    text="Save"
+    text="Apply"
     type="tertiary"
   />
 </Layer>
