@@ -85,36 +85,38 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
   <Layer
     aria-labelledby="dialogTitle"
     aria-modal={true}
-    as="form"
     className="Dialog Dialog--md"
     id="test-dialog"
     level={1}
-    onSubmit={[Function]}
     role="dialog"
   >
-    <React.Fragment>
-      <div
-        className="Dialog__title"
-        id="dialogTitle"
-      >
-        Test
-      </div>
-      <div
-        className="TestClass Dialog__body"
-      >
-        This is a test
-      </div>
-      <div
-        className="Dialog__buttons"
-      >
-        <Button
-          id="a"
-          size="medium"
-          text="A"
-          type="tertiary"
-        />
-      </div>
-    </React.Fragment>
+    <form
+      onSubmit={[Function]}
+    >
+      <React.Fragment>
+        <div
+          className="Dialog__title"
+          id="dialogTitle"
+        >
+          Test
+        </div>
+        <div
+          className="TestClass Dialog__body"
+        >
+          This is a test
+        </div>
+        <div
+          className="Dialog__buttons"
+        >
+          <Button
+            id="a"
+            size="medium"
+            text="A"
+            type="tertiary"
+          />
+        </div>
+      </React.Fragment>
+    </form>
   </Layer>
 </div>
 `;
