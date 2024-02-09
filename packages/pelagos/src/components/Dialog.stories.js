@@ -40,6 +40,20 @@ export const Default = {
 	},
 };
 
+export const WithForm = {
+	args: {
+		title: 'Title',
+		children: [
+			<div key="body">
+				<p>{body}</p>
+			</div>,
+			<div key="buttons">
+				<Button text="Button" type="primary" />
+			</div>,
+		],
+	},
+};
+
 const WiredComponent = () => {
 	const [visible, setVisible] = useState(false);
 	const show = useCallback(() => setVisible(true), []);

@@ -43,31 +43,16 @@ const Dialog = ({id, className, title, role, size, stretch, initialFocus, childr
 	const fullClassName = `Dialog Dialog--${size}${stretch ? ' Dialog--stretch' : ''}${className ? ` ${className}` : ''}`;
 	return (
 		<div className="Dialog__backdrop">
-			{onSubmit ? (
-				<Layer
-					as="form"
-					id={id}
-					className={fullClassName}
-					level={1}
-					role={role}
-					aria-modal
-					aria-labelledby="dialogTitle"
-					ref={element}
-					onSubmit={handleSubmit}>
-					{content}
-				</Layer>
-			) : (
-				<Layer
-					id={id}
-					className={fullClassName}
-					level={1}
-					role={role}
-					aria-modal
-					aria-labelledby="dialogTitle"
-					ref={element}>
-					{content}
-				</Layer>
-			)}
+			<Layer
+				id={id}
+				className={fullClassName}
+				level={1}
+				role={role}
+				aria-modal
+				aria-labelledby="dialogTitle"
+				ref={element}>
+				{onSubmit ? <form onSubmit={handleSubmit}>{content}</form> : content}
+			</Layer>
 		</div>
 	);
 };
