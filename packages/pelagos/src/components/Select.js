@@ -207,6 +207,7 @@ const Select = ({
 				className={`Select__text${selected ? '' : ' Select__text--empty'}${className ? ` ${className}` : ''}`}
 				type="button"
 				disabled={disabled}
+				role="combobox"
 				aria-haspopup="listbox"
 				aria-expanded={open}
 				aria-owns={open ? listId : null}

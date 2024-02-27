@@ -14,6 +14,7 @@ exports[`Select rendering renders expected elements 1`] = `
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
+    role="combobox"
     type="button"
   >
     <div
@@ -43,6 +44,7 @@ exports[`Select rendering renders expected elements when className is not set 1`
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
+    role="combobox"
     type="button"
   >
     <div
@@ -71,6 +73,7 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     disabled={true}
     id="test"
     onBlur={[Function]}
+    role="combobox"
     type="button"
   >
     <div
@@ -101,6 +104,7 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
+    role="combobox"
     type="button"
   >
     <div
@@ -131,6 +135,7 @@ exports[`Select rendering renders expected elements when noLayer is true 1`] = `
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
+    role="combobox"
     type="button"
   >
     <div
@@ -160,6 +165,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
+    role="combobox"
     type="button"
   >
     <div
@@ -227,6 +233,7 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
+    role="combobox"
     type="button"
   >
     <div
@@ -256,6 +263,7 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
+    role="combobox"
     type="button"
   >
     <div
