@@ -313,10 +313,19 @@
 		}
 
 		&__wrapper {
-			@focus-visible();
 			flex: 1;
 			overflow: hidden scroll;
 			contain: strict;
+			outline: none;
+
+			// workaround to avoid the focus ring to be truncated
+			&:focus-visible::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border: 2px solid var(--focus);
+				z-index: 1000;
+			}
 		}
 
 		&__empty {
