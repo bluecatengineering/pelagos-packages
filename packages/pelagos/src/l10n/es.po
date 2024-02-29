@@ -169,6 +169,10 @@ msgstr "Elementos por página"
 msgid "Loading"
 msgstr "Cargando"
 
+#: 689
+msgid "Loading node"
+msgstr "Cargando nodo"
+
 #: 646
 msgid "member"
 msgstr "miembro"

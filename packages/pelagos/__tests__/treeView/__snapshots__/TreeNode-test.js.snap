@@ -145,7 +145,9 @@ exports[`TreeNode rendering renders expected elements when loading is set 1`] = 
       onClick={[Function]}
     >
       <span
+        aria-label="Loading node"
         className="CssSpinner TreeView__loading"
+        role="status"
       />
     </span>
     <span

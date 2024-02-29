@@ -1,5 +1,6 @@
 import {useCallback, useContext, useRef} from 'react';
 import PropTypes from 'prop-types';
+import {t} from '@bluecateng/l10n.macro';
 import CaretRight from '@carbon/icons-react/es/CaretRight';
 
 import SvgIcon from '../components/SvgIcon';
@@ -151,7 +152,7 @@ const TreeNode = ({id, labelClassName, label, icon, expanded, loading, children,
 				{!leaf && (
 					<span className="TreeView__iconWrapper" onClick={handleToggleClick}>
 						{loading ? (
-							<span className="CssSpinner TreeView__loading" />
+							<span className="CssSpinner TreeView__loading" role="status" aria-label={t`Loading node`} />
 						) : (
 							<CaretRight className={`TreeView__icon${expanded ? ' TreeView--expanded' : ''}`} />
 						)}
