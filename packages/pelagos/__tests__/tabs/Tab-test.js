@@ -54,10 +54,13 @@ describe('Tab', () => {
 
 		it('calls onRemove when the delete key is pressed', () => {
 			const onRemove = jest.fn();
+			const preventDefault = jest.fn();
 			useContext.mockReturnValueOnce({index: 0});
 			const wrapper = shallow(<Tab onRemove={onRemove}>Test</Tab>);
-			wrapper.simulate('keydown', {key: 'Delete'});
-			expect(onRemove.mock.calls).toEqual([[0]]);
+			wrapper.simulate('keydown', {key: 'Delete', preventDefault});
+			wrapper.simulate('keydown', {key: 'Backspace', preventDefault});
+			expect(preventDefault.mock.calls).toEqual([[], []]);
+			expect(onRemove.mock.calls).toEqual([[0], [0]]);
 		});
 
 		it('does not call onRemove when another key is pressed', () => {

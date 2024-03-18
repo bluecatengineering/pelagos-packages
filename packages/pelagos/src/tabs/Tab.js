@@ -20,7 +20,8 @@ const Tab = forwardRef(({className, secondaryLabel, children, onRemove, ...props
 	);
 	const handleKeyDown = useCallback(
 		(event) => {
-			if (onRemove && event.key === 'Delete') {
+			if (onRemove && (event.key === 'Delete' || event.key === 'Backspace')) {
+				event.preventDefault();
 				onRemove(index);
 			}
 		},
