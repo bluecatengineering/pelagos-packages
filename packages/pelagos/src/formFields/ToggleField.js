@@ -8,7 +8,7 @@ import useRandomId from '../hooks/useRandomId';
 import './ToggleField.less';
 
 /** A toggle button field. */
-const ToggleField = ({id, className, label, value, disabled, onChange}) => {
+const ToggleField = ({id, className, label, value, disabled, labelOn, labelOff, onChange}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	return (
@@ -19,10 +19,11 @@ const ToggleField = ({id, className, label, value, disabled, onChange}) => {
 
 			<Toggle
 				id={id}
-				className="ToggleField__field"
 				checked={value}
 				disabled={disabled}
 				aria-labelledby={labelId}
+				labelOn={labelOn}
+				labelOff={labelOff}
 				onChange={useCallback(() => onChange(!value), [value, onChange])}
 			/>
 		</div>
@@ -40,6 +41,10 @@ ToggleField.propTypes = {
 	value: PropTypes.bool,
 	/** Whether the toggle is disabled */
 	disabled: PropTypes.bool,
+	/** The label for the "on" position. */
+	labelOn: PropTypes.string,
+	/** The label for the "off" position. */
+	labelOff: PropTypes.string,
 	/** Function invoked when the value changes. */
 	onChange: PropTypes.func.isRequired,
 };

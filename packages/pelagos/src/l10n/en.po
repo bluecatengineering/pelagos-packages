@@ -189,6 +189,14 @@ msgstr ""
 msgid "of {totalPages}"
 msgstr ""
 
+#: e3d
+msgid "Off"
+msgstr ""
+
+#: e00
+msgid "On"
+msgstr ""
+
 #: 6bf
 msgid "Options"
 msgstr ""

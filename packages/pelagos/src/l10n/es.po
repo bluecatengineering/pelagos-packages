@@ -189,6 +189,14 @@ msgstr "Página siguiente"
 msgid "of {totalPages}"
 msgstr "de {totalPages}"
 
+#: e3d
+msgid "Off"
+msgstr "Apagado"
+
+#: e00
+msgid "On"
+msgstr "Encendido"
+
 #: 6bf
 msgid "Options"
 msgstr "Opciones"
