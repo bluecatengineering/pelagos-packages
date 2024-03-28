@@ -430,7 +430,7 @@ yg100:
   focus: cyan-gray-20
   focus-inset: cyan-gray-100
   focus-inverse: cyan-60
-  skeleton-background: cyan-gray-80-hover
+  skeleton-background: cyan-gray-90-hover
   skeleton-element: cyan-gray-70
   interactive: cyan-50
   highlight: cyan-90
@@ -598,7 +598,7 @@ g100:
   focus: white
   focus-inset: gray-100
   focus-inverse: blue-60
-  skeleton-background: gray-80-hover
+  skeleton-background: gray-90-hover
   skeleton-element: gray-70
   interactive: blue-50
   highlight: blue-90
