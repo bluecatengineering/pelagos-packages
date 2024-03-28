@@ -15,7 +15,7 @@ const HEADER = [
 	'',
 ];
 
-const FOOTER = ['.theme-dark() {', '\t.theme-yg100();', '}', '', '.theme-light() {', '\t.theme-cg00();', '}', ''];
+const FOOTER = ['.theme-dark() {', '\t.theme-g100();', '}', '', '.theme-light() {', '\t.theme-white();', '}', ''];
 
 const SHADOWS = parse(readFileSync('defs/shadows.yaml', 'utf8')).levels.map((l) => `${l}`.padStart(2, '0'));
 
