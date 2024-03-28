@@ -17,6 +17,7 @@ exports[`ToggleField rendering renders expected elements 1`] = `
     checked={true}
     className="ToggleField__field"
     disabled={true}
+    getSideLabel={[MockFunction]}
     id="random-id"
     onChange={[Function]}
   />
@@ -39,6 +40,7 @@ exports[`ToggleField rendering renders expected elements when className is set 1
     aria-labelledby="random-id-label"
     checked={true}
     className="ToggleField__field"
+    getSideLabel={[MockFunction]}
     id="random-id"
     onChange={[Function]}
   />
