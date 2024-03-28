@@ -9,19 +9,39 @@ exports[`Toggle rendering renders expected elements 1`] = `
   onClick={[MockFunction]}
   role="switch"
   type="button"
-/>
+>
+  <span
+    className="Toggle__switch"
+  />
+  <span
+    aria-hidden="true"
+    className="Toggle__actionText"
+  >
+    foo
+  </span>
+</button>
 `;
 
 exports[`Toggle rendering renders expected elements when className is not set 1`] = `
 <button
-  aria-checked={true}
+  aria-checked={false}
   aria-label="Test"
   className="Toggle"
   id="test"
   onClick={[MockFunction]}
   role="switch"
   type="button"
-/>
+>
+  <span
+    className="Toggle__switch"
+  />
+  <span
+    aria-hidden="true"
+    className="Toggle__actionText"
+  >
+    Off
+  </span>
+</button>
 `;
 
 exports[`Toggle rendering renders expected elements when disabled is true 1`] = `
@@ -34,5 +54,15 @@ exports[`Toggle rendering renders expected elements when disabled is true 1`] = 
   onClick={[MockFunction]}
   role="switch"
   type="button"
-/>
+>
+  <span
+    className="Toggle__switch"
+  />
+  <span
+    aria-hidden="true"
+    className="Toggle__actionText"
+  >
+    On
+  </span>
+</button>
 `;

@@ -15,7 +15,6 @@ exports[`ToggleField rendering renders expected elements 1`] = `
   <Toggle
     aria-labelledby="random-id-label"
     checked={true}
-    className="ToggleField__field"
     disabled={true}
     id="random-id"
     onChange={[Function]}
@@ -38,7 +37,6 @@ exports[`ToggleField rendering renders expected elements when className is set 1
   <Toggle
     aria-labelledby="random-id-label"
     checked={true}
-    className="ToggleField__field"
     id="random-id"
     onChange={[Function]}
   />

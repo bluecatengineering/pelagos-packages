@@ -1,69 +1,85 @@
-@import '../../less/spacing';
 @import '../../less/focus';
+@import '../../less/spacing';
 
 @layer pelagos {
 	.Toggle {
-		@focus-visible();
-		display: inline-block;
-		position: relative;
-		width: 48px;
-		height: 24px;
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		gap: @sp-08;
+		flex: none;
+		border: none;
 		margin: @sp-04;
 		padding: 0;
-		border: none;
+		background-color: transparent;
 		cursor: pointer;
-		background-color: var(--toggle-off);
-		border-radius: 12px;
-		transition: background-color 0.15s ease-out;
+		outline: none;
 
-		&:focus {
-			outline-offset: 1px;
+		&__switch {
+			display: inline-block;
+			position: relative;
+			width: 48px;
+			height: 24px;
+			background-color: var(--toggle-off);
+			border-radius: 12px;
+			transition: background-color 0.15s ease-out;
+
+			&:hover {
+				background-color: var(--toggle-off-hover);
+			}
+
+			&:active {
+				background-color: var(--toggle-off-active);
+			}
+
+			.Toggle:focus-visible > & {
+				@focus-ring();
+				outline-offset: 1px;
+			}
+
+			.Toggle:disabled > & {
+				background-color: var(--icon-disabled);
+				cursor: not-allowed;
+				pointer-events: none;
+			}
+
+			.Toggle[aria-checked='true']:not(:disabled) > & {
+				background-color: var(--support-success);
+
+				&:hover {
+					background-color: var(--toggle-on-hover);
+				}
+
+				&:active {
+					background-color: var(--toggle-on-active);
+				}
+			}
+
+			&::after {
+				position: absolute;
+				content: '';
+				top: 3px;
+				left: 3px;
+				width: 18px;
+				height: 18px;
+				border-radius: 50%;
+				background-color: var(--icon-on-color);
+				transition: transform 0.15s ease-out;
+			}
+
+			.Toggle[aria-checked='true'] > &::after {
+				transform: translateX(24px);
+			}
+
+			.Toggle:disabled > &::after {
+				background-color: var(--icon-on-color-disabled);
+			}
 		}
 
-		&:hover {
-			background-color: var(--toggle-off-hover);
-		}
-
-		&:active {
-			background-color: var(--toggle-off-active);
-		}
-
-		&[aria-checked='true'] {
-			background-color: var(--support-success);
-		}
-
-		&[aria-checked='true']:hover {
-			background-color: var(--toggle-on-hover);
-		}
-
-		&[aria-checked='true']:active {
-			background-color: var(--toggle-on-active);
-		}
-
-		&:disabled {
-			background-color: var(--icon-disabled);
-			cursor: not-allowed;
-			pointer-events: none;
-		}
-
-		&::after {
-			position: absolute;
-			content: '';
-			top: 3px;
-			left: 3px;
-			width: 18px;
-			height: 18px;
-			border-radius: 50%;
-			background-color: var(--icon-on-color);
-			transition: transform 0.15s ease-out;
-		}
-
-		&[aria-checked='true']::after {
-			transform: translateX(24px);
-		}
-
-		&:disabled::after {
-			background-color: var(--icon-on-color-disabled);
+		&__actionText {
+			.Toggle:disabled > & {
+				color: var(--text-disabled);
+			}
 		}
 	}
 }
