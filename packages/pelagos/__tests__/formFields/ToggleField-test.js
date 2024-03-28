@@ -9,9 +9,19 @@ useRandomId.mockReturnValue('random-id');
 
 describe('ToggleField', () => {
 	describe('rendering', () => {
+		const onChange = jest.fn();
+		const getSideLabel = jest.fn();
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<ToggleField id="test" label="Test" icons={false} value={true} disabled={true} onChange={jest.fn()} />
+				<ToggleField
+					id="test"
+					label="Test"
+					icons={false}
+					value={true}
+					disabled={true}
+					onChange={onChange}
+					getSideLabel={getSideLabel}
+				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 			expect(useRandomId.mock.calls).toEqual([['test']]);
@@ -19,7 +29,15 @@ describe('ToggleField', () => {
 
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
-				<ToggleField id="test" className="TestClass" label="Test" icons={false} value={true} onChange={jest.fn()} />
+				<ToggleField
+					id="test"
+					className="TestClass"
+					label="Test"
+					icons={false}
+					value={true}
+					onChange={onChange}
+					getSideLabel={getSideLabel}
+				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

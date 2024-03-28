@@ -5,8 +5,10 @@ export default {
 	component: ToggleField,
 };
 
-export const Default = {args: {label: 'Default'}};
+const getSideLabel = (checked) => (checked ? 'Active' : 'Inactive');
 
-export const Checked = {args: {label: 'Checked', value: true}};
+export const Default = {args: {label: 'Default', getSideLabel}};
 
-export const Disabled = {args: {label: 'Disabled', disabled: true}};
+export const Checked = {args: {label: 'Checked', value: true, getSideLabel}};
+
+export const Disabled = {args: {label: 'Disabled', disabled: true, getSideLabel}};

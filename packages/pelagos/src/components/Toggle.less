@@ -1,69 +1,82 @@
-@import '../../less/spacing';
 @import '../../less/focus';
+@import '../../less/spacing';
+@import '../../less/fonts';
 
 @layer pelagos {
 	.Toggle {
-		@focus-visible();
-		display: inline-block;
-		position: relative;
-		width: 48px;
-		height: 24px;
-		margin: @sp-04;
-		padding: 0;
-		border: none;
-		cursor: pointer;
-		background-color: var(--toggle-off);
-		border-radius: 12px;
-		transition: background-color 0.15s ease-out;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 
-		&:focus {
-			outline-offset: 1px;
+		&__btn {
+			@focus-visible();
+			display: inline-block;
+			position: relative;
+			width: 48px;
+			height: 24px;
+			margin: @sp-04;
+			padding: 0;
+			border: none;
+			cursor: pointer;
+			background-color: var(--toggle-off);
+			border-radius: 12px;
+			transition: background-color 0.15s ease-out;
+
+
+			&:focus {
+				outline-offset: 1px;
+			}
+
+			&:hover {
+				background-color: var(--toggle-off-hover);
+			}
+
+			&:active {
+				background-color: var(--toggle-off-active);
+			}
+
+			&[aria-checked='true'] {
+				background-color: var(--support-success);
+			}
+
+			&[aria-checked='true']:hover {
+				background-color: var(--toggle-on-hover);
+			}
+
+			&[aria-checked='true']:active {
+				background-color: var(--toggle-on-active);
+			}
+
+			&:disabled {
+				background-color: var(--icon-disabled);
+				cursor: not-allowed;
+				pointer-events: none;
+			}
+
+			&::after {
+				position: absolute;
+				content: '';
+				top: 3px;
+				left: 3px;
+				width: 18px;
+				height: 18px;
+				border-radius: 50%;
+				background-color: var(--icon-on-color);
+				transition: transform 0.15s ease-out;
+			}
+
+			&[aria-checked='true']::after {
+				transform: translateX(24px);
+			}
+
+			&:disabled::after {
+				background-color: var(--icon-on-color-disabled);
+			}
 		}
 
-		&:hover {
-			background-color: var(--toggle-off-hover);
-		}
-
-		&:active {
-			background-color: var(--toggle-off-active);
-		}
-
-		&[aria-checked='true'] {
-			background-color: var(--support-success);
-		}
-
-		&[aria-checked='true']:hover {
-			background-color: var(--toggle-on-hover);
-		}
-
-		&[aria-checked='true']:active {
-			background-color: var(--toggle-on-active);
-		}
-
-		&:disabled {
-			background-color: var(--icon-disabled);
-			cursor: not-allowed;
-			pointer-events: none;
-		}
-
-		&::after {
-			position: absolute;
-			content: '';
-			top: 3px;
-			left: 3px;
-			width: 18px;
-			height: 18px;
-			border-radius: 50%;
-			background-color: var(--icon-on-color);
-			transition: transform 0.15s ease-out;
-		}
-
-		&[aria-checked='true']::after {
-			transform: translateX(24px);
-		}
-
-		&:disabled::after {
-			background-color: var(--icon-on-color-disabled);
+		&__sideLabel {
+			@helper-text-01();
+			margin-left: @sp-12;
 		}
 	}
 }
