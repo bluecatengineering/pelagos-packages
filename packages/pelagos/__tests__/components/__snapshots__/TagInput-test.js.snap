@@ -49,6 +49,88 @@ exports[`TagInput rendering renders expected elements 1`] = `
 </Layer>
 `;
 
+exports[`TagInput rendering renders expected elements when disabled 1`] = `
+<Layer
+  className="TagInput TagInput--disabled"
+  id="random-id-tags"
+  onClick={[Function]}
+>
+  <span
+    aria-live="assertive"
+    className="sr-only"
+  />
+  <span
+    aria-disabled={true}
+    className="TagInput__tag"
+  >
+    foo
+    <span
+      aria-disabled="true"
+      className="TagInput__remove"
+    >
+      <Close />
+    </span>
+  </span>
+  <span
+    aria-disabled={true}
+    className="TagInput__tag"
+  >
+    bar
+    <span
+      aria-disabled="true"
+      className="TagInput__remove"
+    >
+      <Close />
+    </span>
+  </span>
+  <input
+    aria-invalid={false}
+    className="TagInput__input"
+    disabled={true}
+    id="random-id"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    type="text"
+    value=""
+  />
+</Layer>
+`;
+
+exports[`TagInput rendering renders expected elements when disabled and defaultTags is set 1`] = `
+<Layer
+  className="TagInput TagInput--disabled"
+  id="random-id-tags"
+  onClick={[Function]}
+>
+  <span
+    aria-live="assertive"
+    className="sr-only"
+  />
+  <span
+    className="TagInput__defaultTag TagInput__defaultTag--disabled"
+  >
+    foo
+  </span>
+  <span
+    className="TagInput__defaultTag TagInput__defaultTag--disabled"
+  >
+    bar
+  </span>
+  <input
+    aria-invalid={false}
+    className="TagInput__input"
+    disabled={true}
+    id="random-id"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    type="text"
+    value=""
+  />
+</Layer>
+`;
+
 exports[`TagInput rendering renders expected elements when error is set 1`] = `
 <Layer
   className="TagInput TagInput--error"
