@@ -9,7 +9,7 @@ import FieldHelper from './FieldHelper';
 import './TagInputField.less';
 
 /** A tag input field. */
-const TagInputField = ({id, className, label, required, tags, helperText, error, ...props}) => {
+const TagInputField = ({id, className, label, required, tags, helperText, error, disabled, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
@@ -22,6 +22,7 @@ const TagInputField = ({id, className, label, required, tags, helperText, error,
 				id={id}
 				tags={tags}
 				error={error}
+				disabled={disabled}
 				aria-required={required}
 				aria-labelledby={labelId}
 				aria-describedby={error ? errorId : helperId}
@@ -50,6 +51,8 @@ TagInputField.propTypes = {
 	helperText: PropTypes.string,
 	/** The error text. */
 	error: PropTypes.string,
+	/** Whether the field is disabled. */
+	disabled: PropTypes.bool,
 	/** Function invoked to validate each tag. */
 	validate: PropTypes.func.isRequired,
 	/** Function invoked when the tags change. */

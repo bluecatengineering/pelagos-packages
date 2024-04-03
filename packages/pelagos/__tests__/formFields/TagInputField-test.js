@@ -56,5 +56,22 @@ describe('TagInputField', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when disabled', () => {
+			const wrapper = shallow(
+				<TagInputField
+					id="test"
+					label="Label"
+					required
+					tags={['foo']}
+					helperText="Helper text"
+					disabled
+					validate={jest.fn()}
+					onChange={jest.fn()}
+					onError={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });
