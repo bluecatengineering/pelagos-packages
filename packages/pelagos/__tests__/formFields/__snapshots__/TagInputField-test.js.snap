@@ -91,3 +91,36 @@ exports[`TagInputField rendering renders expected elements when className is set
   />
 </div>
 `;
+
+exports[`TagInputField rendering renders expected elements when disabled 1`] = `
+<div
+  className="TagInputField"
+>
+  <LabelLine
+    error={false}
+    htmlFor="random-id"
+    id="random-id-label"
+    required={true}
+    text="Label"
+  />
+  <TagInput
+    aria-describedby="random-id-helper"
+    aria-labelledby="random-id-label"
+    aria-required={true}
+    disabled={true}
+    id="random-id"
+    onChange={[MockFunction]}
+    onError={[MockFunction]}
+    tags={
+      [
+        "foo",
+      ]
+    }
+    validate={[MockFunction]}
+  />
+  <FieldHelper
+    id="random-id-helper"
+    text="Helper text"
+  />
+</div>
+`;

@@ -57,6 +57,38 @@ describe('TagInput', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 			expect(useTooltip.mock.calls).toEqual([['Test tooltip', 'top']]);
 		});
+
+		it('renders expected elements when disabled', () => {
+			const wrapper = shallow(
+				<TagInput
+					id="test"
+					tags={['foo', 'bar']}
+					validate={jest.fn()}
+					disabled
+					onChange={jest.fn()}
+					onError={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
+		});
+
+		it('renders expected elements when disabled and defaultTags is set', () => {
+			const wrapper = shallow(
+				<TagInput
+					id="test"
+					tags={[]}
+					defaultTags={['foo', 'bar']}
+					defaultTooltipText="Test tooltip"
+					disabled
+					validate={jest.fn()}
+					onChange={jest.fn()}
+					onError={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useTooltip.mock.calls).toEqual([['Test tooltip', 'top']]);
+		});
 	});
 
 	describe('behaviour', () => {

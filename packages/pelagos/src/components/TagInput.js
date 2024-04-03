@@ -21,7 +21,18 @@ const hasTag = (tags, value) => {
 };
 
 /** A component to enter tags. */
-const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, onChange, onError, ...props}) => {
+const TagInput = ({
+	id,
+	tags,
+	defaultTags,
+	defaultTooltipText,
+	error,
+	validate,
+	disabled,
+	onChange,
+	onError,
+	...props
+}) => {
 	id = useRandomId(id);
 	const inputRef = useRef(null);
 	const liveRef = useRef(null);
@@ -105,20 +116,35 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 
 	const length = tags.length;
 	return (
-		<Layer id={`${id}-tags`} className={`TagInput${error ? ' TagInput--error' : ''}`} onClick={handleTagClick}>
+		<Layer
+			id={`${id}-tags`}
+			className={`TagInput${error ? ' TagInput--error' : ''}${disabled ? ' TagInput--disabled' : ''}`}
+			onClick={handleTagClick}>
 			<span className="sr-only" aria-live="assertive" ref={liveRef} />
 			{length
-				? tags.map((name, i) => (
-						<span key={name} className="TagInput__tag">
-							{name}
-							<button className="TagInput__remove" type="button" aria-label={t`Remove ${name}`} data-index={i}>
-								<Close />
-							</button>
-						</span>
-					))
+				? tags.map((name, i) =>
+						disabled ? (
+							<span key={name} className="TagInput__tag" aria-disabled={disabled}>
+								{name}
+								<span className="TagInput__remove" aria-disabled="true">
+									<Close />
+								</span>
+							</span>
+						) : (
+							<span key={name} className="TagInput__tag">
+								{name}
+								<button className="TagInput__remove" type="button" aria-label={t`Remove ${name}`} data-index={i}>
+									<Close />
+								</button>
+							</span>
+						)
+					)
 				: defaultTags?.length
 					? defaultTags.map((tag) => (
-							<span key={tag} className="TagInput__defaultTag" ref={tooltip}>
+							<span
+								key={tag}
+								className={`TagInput__defaultTag${disabled ? ' TagInput__defaultTag--disabled' : ''}`}
+								ref={tooltip}>
 								{tag}
 							</span>
 						))
@@ -130,6 +156,7 @@ const TagInput = ({id, tags, defaultTags, defaultTooltipText, error, validate, o
 				className="TagInput__input"
 				value={text}
 				aria-invalid={!!error}
+				disabled={disabled}
 				onKeyDown={handleKeyDown}
 				onChange={handleChange}
 				onBlur={handleBlur}
@@ -152,6 +179,8 @@ TagInput.propTypes = {
 	error: PropTypes.string,
 	/** Function invoked to validate each tag. */
 	validate: PropTypes.func.isRequired,
+	/** Whether the input is disabled. */
+	disabled: PropTypes.bool,
 	/** Function invoked when the tags change. */
 	onChange: PropTypes.func.isRequired,
 	/** Function invoked when an error is detected. */

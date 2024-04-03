@@ -21,6 +21,14 @@ export const Defaults = {
 	args: {label: 'Defaults', defaultTags: ['Alpha'], tags: [], validate},
 };
 
+export const Disabled = {
+	args: {label: 'Disabled', tags: ['Alpha'], validate, disabled: true},
+};
+
+export const DisabledWithDefault = {
+	args: {label: 'Disabled', defaultTags: ['Alpha'], tags: [], validate, disabled: true},
+};
+
 export const _WithLayers = {
 	render: () => (
 		<WithLayers>
