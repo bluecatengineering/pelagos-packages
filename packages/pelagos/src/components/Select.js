@@ -157,7 +157,8 @@ const Select = ({
 						if (keyCode >= 48 && keyCode <= 90) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
-							const i = findItemToFocus(keyCode, focused, renderedOptions.length, (i) => renderedOptions[i].text);
+							const current = open ? focused : value ? options.indexOf(value) : 0;
+							const i = findItemToFocus(keyCode, current, renderedOptions.length, (i) => renderedOptions[i].text);
 							if (i !== -1) {
 								if (open) {
 									updateFocused(i);
@@ -170,7 +171,19 @@ const Select = ({
 				}
 			}
 		},
-		[open, hideList, select, renderedOptions, focused, showList, updateFocused, findItemToFocus, onChange]
+		[
+			open,
+			hideList,
+			select,
+			renderedOptions,
+			focused,
+			showList,
+			updateFocused,
+			value,
+			options,
+			findItemToFocus,
+			onChange,
+		]
 	);
 
 	const handleBlur = useCallback(() => hideList(), [hideList]);
@@ -202,23 +215,22 @@ const Select = ({
 		<>
 			<Layer
 				{...props}
-				as="button"
 				id={id}
 				className={`Select__text${selected ? '' : ' Select__text--empty'}${className ? ` ${className}` : ''}`}
-				type="button"
-				disabled={disabled}
+				tabIndex="0"
 				role="combobox"
 				aria-haspopup="listbox"
 				aria-expanded={open}
 				aria-owns={open ? listId : null}
 				aria-activedescendant={focused === -1 ? null : `${id}-${focused}`}
+				aria-disabled={disabled}
 				aria-invalid={error}
 				data-placeholder={placeholder}
 				ref={buttonRef}
 				onMouseDown={disabled ? undefined : handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
 				onBlur={handleBlur}>
-				<div className="Select__value">{selected ? selected.element : ''}</div>
+				<p className="Select__value">{selected ? selected.element : ''}</p>
 				<SelectArrow className="Select__arrow" open={open} />
 			</Layer>
 			{open &&

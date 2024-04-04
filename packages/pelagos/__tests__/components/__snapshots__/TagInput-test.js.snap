@@ -60,7 +60,7 @@ exports[`TagInput rendering renders expected elements when disabled 1`] = `
     className="sr-only"
   />
   <span
-    aria-disabled={true}
+    aria-disabled="true"
     className="TagInput__tag"
   >
     foo
@@ -72,7 +72,7 @@ exports[`TagInput rendering renders expected elements when disabled 1`] = `
     </span>
   </span>
   <span
-    aria-disabled={true}
+    aria-disabled="true"
     className="TagInput__tag"
   >
     bar
@@ -108,12 +108,14 @@ exports[`TagInput rendering renders expected elements when disabled and defaultT
     className="sr-only"
   />
   <span
-    className="TagInput__defaultTag TagInput__defaultTag--disabled"
+    aria-disabled={true}
+    className="TagInput__defaultTag"
   >
     foo
   </span>
   <span
-    className="TagInput__defaultTag TagInput__defaultTag--disabled"
+    aria-disabled={true}
+    className="TagInput__defaultTag"
   >
     bar
   </span>

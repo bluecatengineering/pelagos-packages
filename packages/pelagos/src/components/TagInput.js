@@ -124,7 +124,7 @@ const TagInput = ({
 			{length
 				? tags.map((name, i) =>
 						disabled ? (
-							<span key={name} className="TagInput__tag" aria-disabled={disabled}>
+							<span key={name} className="TagInput__tag" aria-disabled="true">
 								{name}
 								<span className="TagInput__remove" aria-disabled="true">
 									<Close />
@@ -141,10 +141,7 @@ const TagInput = ({
 					)
 				: defaultTags?.length
 					? defaultTags.map((tag) => (
-							<span
-								key={tag}
-								className={`TagInput__defaultTag${disabled ? ' TagInput__defaultTag--disabled' : ''}`}
-								ref={tooltip}>
+							<span key={tag} className="TagInput__defaultTag" aria-disabled={disabled} ref={tooltip}>
 								{tag}
 							</span>
 						))

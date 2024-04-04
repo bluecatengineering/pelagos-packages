@@ -13,7 +13,7 @@
     "lint-ci": "eslint . -f @microsoft/eslint-formatter-sarif -o build/eslint-results.sarif",
     "lint-styles": "stylelint **/*.less",
     "reformat": "prettier --write \"**/*.+(js|json|less)\"",
-    "a11y-report": "storybook-a11y-report --storybookUrl http://localhost:9001 --outDir build",
+    "a11y-report": "storybook-a11y-report --storybookUrl http://localhost:9001 --outDir build --exit",
     "prepack": "npm t",
     "prepare": "husky"
   },

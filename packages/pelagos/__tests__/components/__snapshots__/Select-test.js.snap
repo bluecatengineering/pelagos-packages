@@ -7,7 +7,6 @@ exports[`Select rendering renders expected elements 1`] = `
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    as="button"
     className="Select__text Test"
     data-placeholder="Testing"
     id="test"
@@ -15,13 +14,13 @@ exports[`Select rendering renders expected elements 1`] = `
     onKeyDown={[Function]}
     onMouseDown={[Function]}
     role="combobox"
-    type="button"
+    tabIndex="0"
   >
-    <div
+    <p
       className="Select__value"
     >
       Two
-    </div>
+    </p>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -37,7 +36,6 @@ exports[`Select rendering renders expected elements when className is not set 1`
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    as="button"
     className="Select__text"
     data-placeholder="Testing"
     id="test"
@@ -45,13 +43,13 @@ exports[`Select rendering renders expected elements when className is not set 1`
     onKeyDown={[Function]}
     onMouseDown={[Function]}
     role="combobox"
-    type="button"
+    tabIndex="0"
   >
-    <div
+    <p
       className="Select__value"
     >
       Two
-    </div>
+    </p>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -64,23 +62,22 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
 <React.Fragment>
   <Layer
     aria-activedescendant={null}
+    aria-disabled={true}
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    as="button"
     className="Select__text Test"
     data-placeholder="Testing"
-    disabled={true}
     id="test"
     onBlur={[Function]}
     role="combobox"
-    type="button"
+    tabIndex="0"
   >
-    <div
+    <p
       className="Select__value"
     >
       Two
-    </div>
+    </p>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -97,7 +94,6 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     aria-haspopup="listbox"
     aria-invalid={true}
     aria-owns={null}
-    as="button"
     className="Select__text Test"
     data-placeholder="Testing"
     id="test"
@@ -105,13 +101,13 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     onKeyDown={[Function]}
     onMouseDown={[Function]}
     role="combobox"
-    type="button"
+    tabIndex="0"
   >
-    <div
+    <p
       className="Select__value"
     >
       Two
-    </div>
+    </p>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -127,7 +123,6 @@ exports[`Select rendering renders expected elements when noLayer is true 1`] = `
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    as="button"
     className="Select__text Test"
     data-placeholder="Testing"
     id="test"
@@ -136,13 +131,13 @@ exports[`Select rendering renders expected elements when noLayer is true 1`] = `
     onKeyDown={[Function]}
     onMouseDown={[Function]}
     role="combobox"
-    type="button"
+    tabIndex="0"
   >
-    <div
+    <p
       className="Select__value"
     >
       Two
-    </div>
+    </p>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -158,7 +153,6 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     aria-expanded={true}
     aria-haspopup="listbox"
     aria-owns="test-list"
-    as="button"
     className="Select__text Test"
     data-placeholder="Testing"
     id="test"
@@ -166,13 +160,13 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     onKeyDown={[Function]}
     onMouseDown={[Function]}
     role="combobox"
-    type="button"
+    tabIndex="0"
   >
-    <div
+    <p
       className="Select__value"
     >
       Two
-    </div>
+    </p>
     <SelectArrow
       className="Select__arrow"
       open={true}
@@ -226,7 +220,6 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    as="button"
     className="Select__text Test"
     data-placeholder="Testing"
     id="test"
@@ -234,13 +227,13 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     onKeyDown={[Function]}
     onMouseDown={[Function]}
     role="combobox"
-    type="button"
+    tabIndex="0"
   >
-    <div
+    <p
       className="Select__value"
     >
       No
-    </div>
+    </p>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -256,7 +249,6 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     aria-expanded={false}
     aria-haspopup="listbox"
     aria-owns={null}
-    as="button"
     className="Select__text Select__text--empty Test"
     data-placeholder="Testing"
     id="test"
@@ -264,13 +256,13 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     onKeyDown={[Function]}
     onMouseDown={[Function]}
     role="combobox"
-    type="button"
+    tabIndex="0"
   >
-    <div
+    <p
       className="Select__value"
     >
       
-    </div>
+    </p>
     <SelectArrow
       className="Select__arrow"
       open={false}

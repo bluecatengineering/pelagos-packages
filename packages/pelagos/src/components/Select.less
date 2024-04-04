@@ -13,10 +13,8 @@
 		height: 32px;
 		padding: 0 @sp-16;
 		background-color: var(--field);
-		border: none;
 		border-bottom: 1px solid var(--border-strong);
 		white-space: nowrap;
-		text-align: left;
 		cursor: pointer;
 
 		&:hover {
@@ -42,27 +40,27 @@
 			@focus-ring-error();
 		}
 
-		&:disabled {
+		&[aria-disabled='true'] {
 			color: var(--text-disabled);
 			background-color: var(--field-disabled);
 			border-color: transparent;
 			cursor: not-allowed;
-		}
 
-		&:disabled::before {
-			color: var(--text-disabled);
+			&::before {
+				color: var(--text-disabled);
+			}
 		}
 	}
 
 	.Select__value {
-		@ellipsis();
+		@base-ellipsis();
 		flex: 1;
 	}
 
 	.Select__arrow {
 		margin-left: @sp-12;
 
-		:disabled > & {
+		[aria-disabled='true'] > & {
 			fill: var(--icon-disabled);
 		}
 	}
