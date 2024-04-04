@@ -28,7 +28,7 @@ const WiredComponent = () => {
 
 	return (
 		<>
-			<Toggle checked={checked} onChange={handleChange} disabled={disabled} />
+			<Toggle checked={checked} onChange={handleChange} disabled={disabled} aria-label="Test" />
 			<Button style={{marginTop: '16px'}} text="Disable toggle" type="primary" onClick={handleClick} />
 		</>
 	);

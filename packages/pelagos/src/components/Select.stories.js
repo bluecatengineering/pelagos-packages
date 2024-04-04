@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import identity from 'lodash-es/identity';
 
 import Select from './Select';
@@ -9,10 +10,15 @@ const renderOption = identity;
 export default {
 	title: 'Components/Select',
 	component: Select,
+	render: (args) => {
+		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
+		const [value, setValue] = useState(args.value);
+		return <Select {...args} value={value} onChange={setValue} />;
+	},
 };
 
 export const Default = {
-	args: {id: 'default', value: 'Alpha', options, getOptionKey, renderOption},
+	args: {id: 'default', value: 'Alpha', 'aria-label': 'Default', options, getOptionKey, renderOption},
 };
 
 export const Empty = {
@@ -20,9 +26,9 @@ export const Empty = {
 };
 
 export const Disabled = {
-	args: {id: 'disabled', disabled: true, value: 'Alpha', options, getOptionKey, renderOption},
+	args: {id: 'disabled', disabled: true, value: 'Alpha', 'aria-label': 'Disabled', options, getOptionKey, renderOption},
 };
 
 export const Error = {
-	args: {id: 'error', error: true, value: 'Alpha', options, getOptionKey, renderOption},
+	args: {id: 'error', error: true, value: 'Alpha', 'aria-label': 'Error', options, getOptionKey, renderOption},
 };
