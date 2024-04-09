@@ -1,4 +1,5 @@
 .breakpoints() {
+	@sm: 320px;
 	@md: 672px;
 	@lg: 1056px;
 	@xlg: 1312px;
@@ -6,6 +7,7 @@
 }
 
 .breakpoint(@name; @content) {
+	// stylelint-disable-next-line media-query-no-invalid -- the value is a variable
 	@media (min-width: .breakpoints[@@name]) {
 		@content();
 	}
