@@ -190,9 +190,8 @@ exports[`TreeNode rendering renders expected elements when optional properties a
     <span
       className="TreeView__iconWrapper"
     >
-      <SvgIcon
+      <test-icon
         className="TreeView__icon"
-        icon="test-icon"
       />
     </span>
     <span
