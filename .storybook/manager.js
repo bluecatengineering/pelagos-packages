@@ -6,7 +6,7 @@ addons.setConfig({
 		base: 'light',
 		brandTitle: 'Pelagos',
 		appBg: '#f4f4f4',
-		fontBase: 'Open Sans, sans-serif',
+		fontBase: 'Roboto, sans-serif',
 		textColor: '#161616',
 		textInverseColor: '#ffffff',
 	}),
