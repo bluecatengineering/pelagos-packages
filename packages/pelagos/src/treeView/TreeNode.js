@@ -3,19 +3,17 @@ import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 import CaretRight from '@carbon/icons-react/es/CaretRight';
 
-import SvgIcon from '../components/SvgIcon';
-
 import TreeViewContext from './TreeViewContext';
 import TreeNodeContext from './TreeNodeContext';
 
 /** A node in a TreeView. */
-const TreeNode = ({id, labelClassName, label, icon, expanded, loading, children, onToggle, ...props}) => {
+const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, children, onToggle, ...props}) => {
 	const nodeRef = useRef(null);
 	const {selected, focused, setFocused, onSelect} = useContext(TreeViewContext);
 	const {level, padding: parentPadding, hasIcon} = useContext(TreeNodeContext);
 	const leaf = expanded === undefined;
 	const padding = parentPadding + 16 + (leaf ? 24 : 0) + (hasIcon ? 8 : 0);
-	const nodeContextValue = {level: level + 1, padding, hasIcon: !!icon};
+	const nodeContextValue = {level: level + 1, padding, hasIcon: !!Icon};
 
 	const handleClick = useCallback(
 		(event) => {
@@ -167,9 +165,9 @@ const TreeNode = ({id, labelClassName, label, icon, expanded, loading, children,
 						)}
 					</span>
 				)}
-				{icon && (
+				{Icon && (
 					<span className="TreeView__iconWrapper">
-						<SvgIcon className="TreeView__icon" icon={icon} />
+						<Icon className="TreeView__icon" />
 					</span>
 				)}
 				<span
@@ -197,7 +195,7 @@ TreeNode.propTypes = {
 	/** The node label. */
 	label: PropTypes.node,
 	/** The node icon. */
-	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]),
+	icon: PropTypes.elementType,
 	/** Whether the node is expanded. Either true or false denote a parent node, undefined (or not set) denotes a leaf (or end) node. */
 	expanded: PropTypes.bool,
 	/** Whether the child nodes are being loaded. */
