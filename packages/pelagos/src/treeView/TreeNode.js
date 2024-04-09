@@ -73,11 +73,11 @@ const TreeNode = ({id, labelClassName, label, icon, expanded, loading, children,
 						event.stopPropagation();
 						const previousSibling = node.previousSibling;
 						if (previousSibling) {
-							if (previousSibling.getAttribute('aria-expanded') === 'true') {
-								focusNode(previousSibling.lastChild.lastChild);
-							} else {
-								focusNode(previousSibling);
+							let currentNode = previousSibling;
+							while (currentNode.getAttribute('aria-expanded') === 'true') {
+								currentNode = currentNode.lastChild.lastChild;
 							}
+							focusNode(currentNode);
 						} else if (level !== 0) {
 							focusNode(node.parentNode.parentNode);
 						}
@@ -90,10 +90,19 @@ const TreeNode = ({id, labelClassName, label, icon, expanded, loading, children,
 							focusNode(node.lastChild.firstChild);
 						} else if (node.nextSibling) {
 							focusNode(node.nextSibling);
-						} else if (level !== 0) {
-							const parentNode = node.parentNode.parentNode;
-							if (parentNode.nextSibling) {
-								focusNode(parentNode.nextSibling);
+						} else {
+							let done;
+							let currentLevel = level;
+							let currentNode = node;
+							while (!done && currentLevel !== 0) {
+								const parentNode = currentNode.parentNode.parentNode;
+								if (parentNode.nextSibling) {
+									focusNode(parentNode.nextSibling);
+									done = true;
+								} else {
+									--currentLevel;
+									currentNode = parentNode;
+								}
 							}
 						}
 						break;

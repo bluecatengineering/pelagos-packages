@@ -123,17 +123,28 @@ export const Loading = {
 
 const generateNodes = (parent) => {
 	const prefix = parent ? `${parent}-` : '';
+	const reversed = /3$/.test(parent);
 	const nodes = [];
 	for (let i = 0; i < 5; ++i) {
 		const id = `${prefix}${i}`;
 		const label = getLabel(id);
-		nodes.push(
-			i % 2 ? (
-				<ParentNode key={id} id={id} label={label} />
-			) : (
-				<TreeNode key={id} id={id} label={label} icon={DocumentBlank} />
-			)
-		);
+		if (reversed) {
+			nodes.push(
+				!(i % 2) ? (
+					<ParentNode key={id} id={id} label={label} />
+				) : (
+					<TreeNode key={id} id={id} label={label} icon={DocumentBlank} />
+				)
+			);
+		} else {
+			nodes.push(
+				i % 2 ? (
+					<ParentNode key={id} id={id} label={label} />
+				) : (
+					<TreeNode key={id} id={id} label={label} icon={DocumentBlank} />
+				)
+			);
+		}
 	}
 	return nodes;
 };

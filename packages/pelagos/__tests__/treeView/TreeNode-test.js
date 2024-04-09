@@ -180,17 +180,26 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			const getAttribute = jest.fn().mockReturnValue('true');
+			const getAttribute = jest
+				.fn()
+				.mockReturnValueOnce('true')
+				.mockReturnValueOnce('true')
+				.mockReturnValueOnce('false');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({
-				current: {previousSibling: {getAttribute, lastChild: {lastChild: {id: 'child-id', focus}}}},
+				current: {
+					previousSibling: {
+						getAttribute,
+						lastChild: {lastChild: {getAttribute, lastChild: {lastChild: {id: 'child-id', getAttribute, focus}}}},
+					},
+				},
 			});
 			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowUp', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['aria-expanded']]);
+			expect(getAttribute.mock.calls).toEqual([['aria-expanded'], ['aria-expanded'], ['aria-expanded']]);
 			expect(setFocused.mock.calls).toEqual([['child-id']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
@@ -286,9 +295,9 @@ describe('TreeNode', () => {
 			const stopPropagation = jest.fn();
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({
-				current: {parentNode: {parentNode: {nextSibling: {id: 'sibling-id', focus}}}},
+				current: {parentNode: {parentNode: {parentNode: {parentNode: {nextSibling: {id: 'sibling-id', focus}}}}}},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 1, padding: 0});
+			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 2, padding: 0});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
