@@ -1,6 +1,10 @@
 module.exports = {
 	stories: ['./welcome.mdx', '../packages/**/*.@(mdx|stories.js)'],
-	addons: [{name: '@storybook/addon-essentials', options: {backgrounds: false}}, '@storybook/addon-a11y'],
+	addons: [
+		{name: '@storybook/addon-essentials', options: {backgrounds: false}},
+		'@storybook/addon-a11y',
+		'@storybook/addon-webpack5-compiler-babel',
+	],
 	framework: {
 		name: '@storybook/react-webpack5',
 		options: {},
