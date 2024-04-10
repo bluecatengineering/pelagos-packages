@@ -92,7 +92,7 @@ const renderComplexNodes = (nodes) =>
 export const Default = {
 	args: {
 		size: 'sm',
-		selected: '1-1-1',
+		selected: ['1', '1-1', '1-1-1'],
 		children: renderNodes(nodes),
 	},
 };
@@ -100,7 +100,7 @@ export const Default = {
 export const WithIcons = {
 	args: {
 		size: 'sm',
-		selected: '1-1-1',
+		selected: ['1', '1-1', '1-1-1'],
 		children: renderNodesWithIcons(nodes),
 	},
 };
@@ -108,7 +108,7 @@ export const WithIcons = {
 export const WithComplexLabels = {
 	args: {
 		size: 'sm',
-		selected: '1-1-1',
+		selected: ['1', '1-1', '1-1-1'],
 		children: renderComplexNodes(nodes),
 	},
 };

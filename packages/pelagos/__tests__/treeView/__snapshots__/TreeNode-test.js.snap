@@ -65,6 +65,43 @@ exports[`TreeNode rendering renders expected elements when expanded is false 1`]
 </li>
 `;
 
+exports[`TreeNode rendering renders expected elements when expanded is false and selected matches partially 1`] = `
+<li
+  aria-expanded={false}
+  aria-selected={true}
+  className="TreeView__node"
+  id="test-id"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="treeitem"
+  tabIndex={-1}
+>
+  <div
+    className="TreeView__label"
+    style={
+      {
+        "paddingLeft": "16px",
+      }
+    }
+  >
+    <span
+      className="TreeView__iconWrapper"
+      onClick={[Function]}
+    >
+      <CaretRight
+        className="TreeView__icon"
+      />
+    </span>
+    <span
+      className="TreeView__text"
+      title="Test"
+    >
+      Test
+    </span>
+  </div>
+</li>
+`;
+
 exports[`TreeNode rendering renders expected elements when focused equals id 1`] = `
 <li
   aria-selected={false}
@@ -163,7 +200,7 @@ exports[`TreeNode rendering renders expected elements when loading is set 1`] = 
 exports[`TreeNode rendering renders expected elements when optional properties are set 1`] = `
 <li
   aria-expanded={true}
-  aria-selected={false}
+  aria-selected={true}
   className="TreeView__node"
   id="test-id"
   onClick={[Function]}
@@ -205,8 +242,12 @@ exports[`TreeNode rendering renders expected elements when optional properties a
     value={
       {
         "hasIcon": true,
-        "level": 1,
+        "level": 2,
         "padding": 24,
+        "parentPath": [
+          "parent-id",
+          "test-id",
+        ],
       }
     }
   >

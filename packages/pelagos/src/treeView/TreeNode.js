@@ -1,27 +1,29 @@
-import {useCallback, useContext, useRef} from 'react';
+import {useCallback, useContext, useMemo, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 import CaretRight from '@carbon/icons-react/es/CaretRight';
 
 import TreeViewContext from './TreeViewContext';
 import TreeNodeContext from './TreeNodeContext';
+import arrayEquals from './arrayEquals';
 
 /** A node in a TreeView. */
 const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, children, onToggle, ...props}) => {
 	const nodeRef = useRef(null);
 	const {selected, focused, setFocused, onSelect} = useContext(TreeViewContext);
-	const {level, padding: parentPadding, hasIcon} = useContext(TreeNodeContext);
+	const {level, padding: parentPadding, parentPath, hasIcon} = useContext(TreeNodeContext);
 	const leaf = expanded === undefined;
 	const padding = parentPadding + 16 + (leaf ? 24 : 0) + (hasIcon ? 8 : 0);
-	const nodeContextValue = {level: level + 1, padding, hasIcon: !!Icon};
+	const path = useMemo(() => [...parentPath, id], [id, parentPath]);
+	const nodeContextValue = {level: level + 1, padding, parentPath: path, hasIcon: !!Icon};
 
 	const handleClick = useCallback(
 		(event) => {
 			event.stopPropagation();
-			onSelect?.(id);
+			onSelect?.(path);
 			setFocused(id);
 		},
-		[id, onSelect, setFocused]
+		[id, onSelect, path, setFocused]
 	);
 	const handleToggleClick = useCallback(
 		(event) => {
@@ -43,8 +45,8 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 					case ' ':
 						event.preventDefault();
 						event.stopPropagation();
-						if (id !== selected) {
-							onSelect?.(id);
+						if (!arrayEquals(path, selected)) {
+							onSelect?.(path);
 						}
 						break;
 					case 'ArrowLeft':
@@ -140,7 +142,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 				}
 			}
 		},
-		[expanded, id, level, onSelect, onToggle, selected, setFocused]
+		[expanded, level, onSelect, onToggle, path, selected, setFocused]
 	);
 
 	return (
@@ -151,7 +153,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 			tabIndex={focused === id ? 0 : -1}
 			role="treeitem"
 			aria-expanded={expanded}
-			aria-selected={selected === id}
+			aria-selected={arrayEquals(expanded ? selected : selected?.slice(0, level + 1), path)}
 			ref={nodeRef}
 			onClick={handleClick}
 			onKeyDown={handleKeyDown}>
