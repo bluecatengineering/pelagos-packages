@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.8.1...@bluecateng/pelagos@12.9.0) (2024-04-10)
+
+### Features
+
+- add action text to Toggle ([c6dafbc](https://github.com/bluecatengineering/pelagos-packages/commit/c6dafbc101e547300676cf0afe80a83d6db1b08f))
+- add disabled state to tag input ([93245d2](https://github.com/bluecatengineering/pelagos-packages/commit/93245d2be0db05a33cff8879ece30d528da1e4c3))
+- use a path to identify the selected node in TreeView ([d4dbe9e](https://github.com/bluecatengineering/pelagos-packages/commit/d4dbe9eab775b1ff093b7c2e5e42dfb9e43451cd))
+
+### Bug Fixes
+
+- add small breakpoint (320px) ([a88f7b5](https://github.com/bluecatengineering/pelagos-packages/commit/a88f7b5801fa2c441bac87f79f70c7053c4b180f))
+- allow removing tabs using either delete or backspace ([0ab03e9](https://github.com/bluecatengineering/pelagos-packages/commit/0ab03e93c67b37a1647a62f10d55eee5f9aeb33d))
+- change default light and dark themes to white and g100 ([962c6c9](https://github.com/bluecatengineering/pelagos-packages/commit/962c6c98593ea56d6fe008ff1bda013db1d30b2e))
+- fix a11y issues ([7c794b5](https://github.com/bluecatengineering/pelagos-packages/commit/7c794b579fa897376b2cab2241fd5e8bb4e4f689))
+- fix FilterChip behaviour ([d40577a](https://github.com/bluecatengineering/pelagos-packages/commit/d40577a57a91244977549328fd9799fd1253d493))
+- handle correctly arrow up/down at deeper levels ([5622440](https://github.com/bluecatengineering/pelagos-packages/commit/56224403dd3c7ed58023e8f17e3287b45b6d5afe))
+- increase contrast in dark skeleton colours ([4ade6eb](https://github.com/bluecatengineering/pelagos-packages/commit/4ade6eb443e2102abc686cb49b83cbd634fa846b))
+- remove both parameters from onToggle ([408c494](https://github.com/bluecatengineering/pelagos-packages/commit/408c494fa5a5fe3bb6f197c3a316175d68b50077))
+- remove support for legacy icons in TreeNode ([801857d](https://github.com/bluecatengineering/pelagos-packages/commit/801857d897c1cc4f058e8642f51d1918d6a95fd3))
+- set role and label on the tree spinner ([1a90a98](https://github.com/bluecatengineering/pelagos-packages/commit/1a90a98bec7660b696c3264fabacda56297fa9a7))
+- use a nested form inside dialogs ([48df6f0](https://github.com/bluecatengineering/pelagos-packages/commit/48df6f039b27f8cbda72835541f304bbc6ea289f))
+- use a pointer cursor in ContentSwitcher buttons ([7abed67](https://github.com/bluecatengineering/pelagos-packages/commit/7abed676e6948b3a386268b1734030be392a213a))
+- use a workaround for focus ring on Table ([de7b587](https://github.com/bluecatengineering/pelagos-packages/commit/de7b587187a3fa490d5546b11fc9f14252b24026))
+- use combobox role for Select ([fb4e6fa](https://github.com/bluecatengineering/pelagos-packages/commit/fb4e6faf62046e6209bad9549b7480a4b5fd1953))
+
 ## [12.8.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.8.0...@bluecateng/pelagos@12.8.1) (2024-02-02)
 
 ### Bug Fixes
