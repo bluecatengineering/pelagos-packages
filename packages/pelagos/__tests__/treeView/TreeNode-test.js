@@ -68,7 +68,7 @@ describe('TreeNode', () => {
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded={false} onToggle={onToggle} />);
 			wrapper.find('.TreeView__iconWrapper').simulate('click', {stopPropagation});
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(onToggle.mock.calls).toEqual([['test-id', true]]);
+			expect(onToggle.mock.calls).toEqual([[]]);
 		});
 
 		it('calls onSelect when either Enter or Space are pressed', () => {
@@ -105,7 +105,7 @@ describe('TreeNode', () => {
 			wrapper.simulate('keydown', {key: 'ArrowLeft', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(onToggle.mock.calls).toEqual([['test-id', false]]);
+			expect(onToggle.mock.calls).toEqual([[]]);
 		});
 
 		it('calls setFocused when ArrowLeft is pressed, expanded is not true and level is not 0', () => {
@@ -145,7 +145,7 @@ describe('TreeNode', () => {
 			wrapper.simulate('keydown', {key: 'ArrowRight', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(onToggle.mock.calls).toEqual([['test-id', true]]);
+			expect(onToggle.mock.calls).toEqual([[]]);
 		});
 
 		it('calls setFocused when ArrowRight is pressed and expanded is true', () => {
@@ -418,7 +418,7 @@ describe('TreeNode', () => {
 			wrapper.simulate('keydown', {key: '-', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(onToggle.mock.calls).toEqual([['test-id', false]]);
+			expect(onToggle.mock.calls).toEqual([[]]);
 		});
 
 		it('does not call onToggle when - is pressed and expanded is not true', () => {
@@ -442,7 +442,7 @@ describe('TreeNode', () => {
 			wrapper.simulate('keydown', {key: '+', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(onToggle.mock.calls).toEqual([['test-id', true]]);
+			expect(onToggle.mock.calls).toEqual([[]]);
 		});
 
 		it('does not call onToggle when + is pressed and expanded is true', () => {

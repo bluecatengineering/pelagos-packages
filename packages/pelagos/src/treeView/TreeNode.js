@@ -26,9 +26,9 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 	const handleToggleClick = useCallback(
 		(event) => {
 			event.stopPropagation();
-			onToggle?.(id, !expanded);
+			onToggle?.();
 		},
-		[expanded, id, onToggle]
+		[onToggle]
 	);
 	const handleKeyDown = useCallback(
 		(event) => {
@@ -51,7 +51,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 						event.preventDefault();
 						event.stopPropagation();
 						if (expanded) {
-							onToggle?.(id, false);
+							onToggle?.();
 						} else if (level !== 0) {
 							focusNode(node.parentNode.parentNode);
 						}
@@ -61,7 +61,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 						event.stopPropagation();
 						// explicit check for false since undefined means leaf node
 						if (expanded === false) {
-							onToggle?.(id, true);
+							onToggle?.();
 						} else if (expanded) {
 							focusNode(node.lastChild.firstChild);
 						}
@@ -126,7 +126,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 						event.preventDefault();
 						event.stopPropagation();
 						if (expanded) {
-							onToggle?.(id, false);
+							onToggle?.();
 						}
 						break;
 					case '+':
@@ -134,7 +134,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 						event.stopPropagation();
 						// explicit check for false since undefined means leaf node
 						if (expanded === false) {
-							onToggle?.(id, true);
+							onToggle?.();
 						}
 						break;
 				}

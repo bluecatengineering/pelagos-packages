@@ -154,17 +154,18 @@ const ParentNode = ({id, label}) => {
 	const [loading, setLoading] = useState(false);
 	const [children, setChildren] = useState(null);
 	const handleToggle = useCallback(
-		(id, expand) => {
-			setExpanded(expand);
-			if (expand && !children) {
-				setLoading(true);
-				setTimeout(() => {
-					setChildren(generateNodes(id));
-					setLoading(false);
-				}, 500);
-			}
-		},
-		[children]
+		() =>
+			setExpanded((expanded) => {
+				if (!expanded && !children) {
+					setLoading(true);
+					setTimeout(() => {
+						setChildren(generateNodes(id));
+						setLoading(false);
+					}, 500);
+				}
+				return !expanded;
+			}),
+		[children, id]
 	);
 	return (
 		<TreeNode id={id} label={label} icon={Folder} expanded={expanded} loading={loading} onToggle={handleToggle}>
