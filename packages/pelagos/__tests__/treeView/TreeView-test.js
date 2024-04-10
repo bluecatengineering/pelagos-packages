@@ -18,7 +18,7 @@ describe('TreeView', () => {
 
 		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
-				<TreeView className="TestClass" size="xs" selected="test-id">
+				<TreeView className="TestClass" size="xs" selected={['test-id']}>
 					children
 				</TreeView>
 			);
@@ -28,7 +28,7 @@ describe('TreeView', () => {
 
 	describe('behaviour', () => {
 		it('initializes focused to selected when specified', () => {
-			shallow(<TreeView selected="test-id" />);
+			shallow(<TreeView selected={['test-id']} />);
 			expect(useState.mock.calls).toEqual([[anyFunction]]);
 			expect(useState.mock.calls[0][0]()).toBe('test-id');
 		});
@@ -49,8 +49,8 @@ describe('TreeView', () => {
 			const setFocused = jest.fn();
 			useRef.mockReturnValueOnce({current: {contains}});
 			useState.mockReturnValueOnce(['test-id', setFocused]);
-			shallow(<TreeView selected="other-id">{children}</TreeView>);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [children, 'other-id']]);
+			shallow(<TreeView selected={['other-id']}>{children}</TreeView>);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [children, ['other-id']]]);
 
 			useEffect.mock.calls[0][0]();
 			expect(contains.mock.calls).toEqual([['active-element']]);
@@ -77,8 +77,8 @@ describe('TreeView', () => {
 			const setFocused = jest.fn();
 			useRef.mockReturnValueOnce({current: {contains}});
 			useState.mockReturnValueOnce(['test-id', setFocused]);
-			shallow(<TreeView selected="other-id">{children}</TreeView>);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [children, 'other-id']]);
+			shallow(<TreeView selected={['other-id']}>{children}</TreeView>);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [children, ['other-id']]]);
 
 			useEffect.mock.calls[0][0]();
 			expect(contains.mock.calls).toEqual([['active-element']]);

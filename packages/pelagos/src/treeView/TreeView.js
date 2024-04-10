@@ -6,15 +6,17 @@ import TreeNodeContext from './TreeNodeContext';
 
 import './TreeView.less';
 
-const nodeContextValue = {level: 0, padding: 0};
+const nodeContextValue = {level: 0, padding: 0, parentPath: []};
+
+const getFocusedId = (selected, children) => (selected ? selected.at(-1) : Children.toArray(children)[0]?.props.id);
 
 /** A component implementing the tree view pattern. */
 const TreeView = ({className, size, selected, children, onSelect, ...props}) => {
 	const rootRef = useRef(null);
-	const [focused, setFocused] = useState(() => selected || Children.toArray(children)[0]?.props.id);
+	const [focused, setFocused] = useState(() => getFocusedId(selected, children));
 	useEffect(() => {
 		if (!rootRef.current.contains(document.activeElement)) {
-			setFocused(selected || Children.toArray(children)[0]?.props.id);
+			setFocused(getFocusedId(selected, children));
 		}
 	}, [children, selected]);
 	return (
@@ -38,7 +40,7 @@ TreeView.propTypes = {
 	/** The node size. */
 	size: PropTypes.oneOf(['sm', 'xs']),
 	/** The ID of the selected node. */
-	selected: PropTypes.string,
+	selected: PropTypes.arrayOf(PropTypes.string),
 	/** The child nodes. */
 	children: PropTypes.node,
 	/** Function invoked when a node is selected. */
