@@ -5,7 +5,6 @@ import CaretRight from '@carbon/icons-react/es/CaretRight';
 
 import TreeViewContext from './TreeViewContext';
 import TreeNodeContext from './TreeNodeContext';
-import arrayEquals from './arrayEquals';
 
 /** A node in a TreeView. */
 const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, children, onToggle, ...props}) => {
@@ -13,17 +12,18 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 	const {selected, focused, setFocused, onSelect} = useContext(TreeViewContext);
 	const {level, padding: parentPadding, parentPath, hasIcon} = useContext(TreeNodeContext);
 	const leaf = expanded === undefined;
+	const childrenLevel = level + 1;
 	const padding = parentPadding + 16 + (leaf ? 24 : 0) + (hasIcon ? 8 : 0);
 	const path = useMemo(() => [...parentPath, id], [id, parentPath]);
-	const nodeContextValue = {level: level + 1, padding, parentPath: path, hasIcon: !!Icon};
+	const nodeContextValue = {level: childrenLevel, padding, parentPath: path, hasIcon: !!Icon};
 
 	const handleClick = useCallback(
 		(event) => {
 			event.stopPropagation();
 			onSelect?.(path);
-			setFocused(id);
+			setFocused(path);
 		},
-		[id, onSelect, path, setFocused]
+		[onSelect, path, setFocused]
 	);
 	const handleToggleClick = useCallback(
 		(event) => {
@@ -38,14 +38,19 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 				const node = nodeRef.current;
 				const focusNode = (node) => {
 					node.focus();
-					setFocused(node.id);
+					const nodePath = [node.id];
+					while (node.parentNode.getAttribute('role') !== 'tree') {
+						node = node.parentNode.parentNode;
+						nodePath.push(node.id);
+					}
+					setFocused(nodePath.reverse());
 				};
 				switch (event.key) {
 					case 'Enter':
 					case ' ':
 						event.preventDefault();
 						event.stopPropagation();
-						if (!arrayEquals(path, selected)) {
+						if (selected?.at(-1) !== id) {
 							onSelect?.(path);
 						}
 						break;
@@ -142,18 +147,22 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 				}
 			}
 		},
-		[expanded, level, onSelect, onToggle, path, selected, setFocused]
+		[expanded, id, level, onSelect, onToggle, path, selected, setFocused]
 	);
+
+	if (!expanded && focused.length > childrenLevel && focused[level] === id) {
+		setFocused(path);
+	}
 
 	return (
 		<li
 			{...props}
 			id={id}
 			className="TreeView__node"
-			tabIndex={focused === id ? 0 : -1}
+			tabIndex={focused.at(-1) === id ? 0 : -1}
 			role="treeitem"
 			aria-expanded={expanded}
-			aria-selected={arrayEquals(expanded ? selected : selected?.slice(0, level + 1), path)}
+			aria-selected={selected?.at(expanded ? -1 : level) === id}
 			ref={nodeRef}
 			onClick={handleClick}
 			onKeyDown={handleKeyDown}>
@@ -190,7 +199,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 };
 
 TreeNode.propTypes = {
-	/** The node identifier. */
+	/** The node identifier. Must be globally unique since it's use as DOM id. */
 	id: PropTypes.string,
 	/** The label element class name(s). */
 	labelClassName: PropTypes.string,
