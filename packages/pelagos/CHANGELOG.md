@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.9.0...@bluecateng/pelagos@12.9.1) (2024-04-12)
+
+### Bug Fixes
+
+- update focused node when node visibility changes ([e7a0452](https://github.com/bluecatengineering/pelagos-packages/commit/e7a0452072f3577f6a7a1231a3880c419c1c6535))
+
 ## [12.9.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.8.1...@bluecateng/pelagos@12.9.0) (2024-04-10)
 
 ### Features
