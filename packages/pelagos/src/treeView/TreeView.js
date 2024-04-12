@@ -8,15 +8,23 @@ import './TreeView.less';
 
 const nodeContextValue = {level: 0, padding: 0, parentPath: []};
 
-const getFocusedId = (selected, children) => (selected ? selected.at(-1) : Children.toArray(children)[0]?.props.id);
+const getFocused = (selected, children) => {
+	if (selected?.length) {
+		return selected;
+	}
+	if (children) {
+		return [Children.toArray(children)[0].props.id];
+	}
+	return [];
+};
 
 /** A component implementing the tree view pattern. */
 const TreeView = ({className, size, selected, children, onSelect, ...props}) => {
 	const rootRef = useRef(null);
-	const [focused, setFocused] = useState(() => getFocusedId(selected, children));
+	const [focused, setFocused] = useState(() => getFocused(selected, children));
 	useEffect(() => {
 		if (!rootRef.current.contains(document.activeElement)) {
-			setFocused(getFocusedId(selected, children));
+			setFocused(getFocused(selected, children));
 		}
 	}, [children, selected]);
 	return (

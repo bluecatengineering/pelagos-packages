@@ -102,7 +102,7 @@ exports[`TreeNode rendering renders expected elements when expanded is false and
 </li>
 `;
 
-exports[`TreeNode rendering renders expected elements when focused equals id 1`] = `
+exports[`TreeNode rendering renders expected elements when focused equals path 1`] = `
 <li
   aria-selected={false}
   className="TreeView__node"

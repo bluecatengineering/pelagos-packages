@@ -2,102 +2,92 @@ import {useContext, useRef} from 'react';
 import {shallow} from 'enzyme';
 
 import TreeNode from '../../src/treeView/TreeNode';
-import arrayEquals from '../../src/treeView/arrayEquals';
 
 jest.unmock('../../src/treeView/TreeNode');
 
 describe('TreeNode', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			arrayEquals.mockReturnValueOnce(false);
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(arrayEquals.mock.calls).toEqual([[undefined, ['test-id']]]);
 		});
 
 		it('renders expected elements when optional properties are set', () => {
 			useContext
-				.mockReturnValueOnce({selected: ['parent-id', 'test-id']})
+				.mockReturnValueOnce({selected: ['parent-id', 'test-id'], focused: []})
 				.mockReturnValueOnce({level: 1, padding: 0, parentPath: ['parent-id'], hasIcon: true});
-			arrayEquals.mockReturnValueOnce(true);
 			const wrapper = shallow(
 				<TreeNode id="test-id" labelClassName="TestClass" label="Test" icon="test-icon" expanded>
 					children
 				</TreeNode>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(arrayEquals.mock.calls).toEqual([
-				[
-					['parent-id', 'test-id'],
-					['parent-id', 'test-id'],
-				],
-			]);
 		});
 
 		it('renders expected elements when expanded is false', () => {
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			arrayEquals.mockReturnValueOnce(false);
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded={false} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when expanded is false and selected matches partially', () => {
 			useContext
-				.mockReturnValueOnce({selected: ['parent-id', 'test-id', 'child-id']})
+				.mockReturnValueOnce({selected: ['parent-id', 'test-id', 'child-id'], focused: []})
 				.mockReturnValueOnce({level: 1, padding: 0, parentPath: ['parent-id']});
-			arrayEquals.mockReturnValueOnce(true);
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded={false} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(arrayEquals.mock.calls).toEqual([
-				[
-					['parent-id', 'test-id'],
-					['parent-id', 'test-id'],
-				],
-			]);
 		});
 
 		it('renders expected elements when loading is set', () => {
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			arrayEquals.mockReturnValueOnce(false);
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" loading expanded={false} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when label is not a string', () => {
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			arrayEquals.mockReturnValueOnce(false);
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label={<span />} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when focused equals id', () => {
-			useContext.mockReturnValueOnce({focused: 'test-id'}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			arrayEquals.mockReturnValueOnce(false);
+		it('renders expected elements when focused equals path', () => {
+			useContext
+				.mockReturnValueOnce({focused: ['test-id']})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});
 
 	describe('behaviour', () => {
+		it('calls setFocused when focused is a child node', () => {
+			const setFocused = jest.fn();
+			useContext
+				.mockReturnValueOnce({focused: ['test-id', 'child-id'], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			shallow(<TreeNode id="test-id" label="Test" />);
+			expect(setFocused.mock.calls).toEqual([[['test-id']]]);
+		});
+
 		it('calls onSelect when the node is clicked', () => {
 			const onSelect = jest.fn();
 			const setFocused = jest.fn();
 			const stopPropagation = jest.fn();
 			useContext
-				.mockReturnValueOnce({onSelect, setFocused})
+				.mockReturnValueOnce({focused: [], onSelect, setFocused})
 				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('click', {stopPropagation});
 			expect(stopPropagation.mock.calls).toEqual([[]]);
 			expect(onSelect.mock.calls).toEqual([[['test-id']]]);
-			expect(setFocused.mock.calls).toEqual([['test-id']]);
+			expect(setFocused.mock.calls).toEqual([[['test-id']]]);
 		});
 
 		it('calls onToggle when the toggle icon is clicked', () => {
 			const onToggle = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded={false} onToggle={onToggle} />);
 			wrapper.find('.TreeView__iconWrapper').simulate('click', {stopPropagation});
 			expect(stopPropagation.mock.calls).toEqual([[]]);
@@ -108,7 +98,9 @@ describe('TreeNode', () => {
 			const onSelect = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({onSelect}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], onSelect})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'Enter', preventDefault, stopPropagation});
 			wrapper.simulate('keydown', {key: ' ', preventDefault, stopPropagation});
@@ -122,17 +114,12 @@ describe('TreeNode', () => {
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
 			useContext
-				.mockReturnValueOnce({selected: ['test-id'], onSelect})
+				.mockReturnValueOnce({selected: ['test-id'], focused: [], onSelect})
 				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			arrayEquals.mockReturnValueOnce(true).mockReturnValueOnce(true);
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'Enter', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(arrayEquals.mock.calls).toEqual([
-				[['test-id'], ['test-id']],
-				[['test-id'], ['test-id']],
-			]);
 			expect(onSelect.mock.calls).toEqual([]);
 		});
 
@@ -140,7 +127,7 @@ describe('TreeNode', () => {
 			const onToggle = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded onToggle={onToggle} />);
 			wrapper.simulate('keydown', {key: 'ArrowLeft', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -152,14 +139,20 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
+			const getAttribute = jest.fn().mockReturnValueOnce('tree');
 			const focus = jest.fn();
-			useRef.mockReturnValueOnce({current: {parentNode: {parentNode: {id: 'parent-id', focus}}}});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
+			useRef.mockReturnValueOnce({
+				current: {parentNode: {getAttribute, parentNode: {id: 'parent-id', focus, parentNode: {getAttribute}}}},
+			});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowLeft', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(setFocused.mock.calls).toEqual([['parent-id']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
+			expect(setFocused.mock.calls).toEqual([[['parent-id']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -168,7 +161,9 @@ describe('TreeNode', () => {
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
 			useRef.mockReturnValueOnce({current: {}});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowLeft', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -180,7 +175,7 @@ describe('TreeNode', () => {
 			const onToggle = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded={false} onToggle={onToggle} />);
 			wrapper.simulate('keydown', {key: 'ArrowRight', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -192,14 +187,25 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
+			const getAttribute = jest.fn().mockReturnValueOnce('group').mockReturnValueOnce('tree');
 			const focus = jest.fn();
-			useRef.mockReturnValueOnce({current: {lastChild: {firstChild: {id: 'child-id', focus}}}});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			const current = {
+				id: 'test-id',
+				parentNode: {getAttribute},
+				lastChild: {getAttribute, firstChild: {id: 'child-id', focus}},
+			};
+			useRef.mockReturnValueOnce({current});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			current.lastChild.parentNode = current;
+			current.lastChild.firstChild.parentNode = current.lastChild;
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded />);
 			wrapper.simulate('keydown', {key: 'ArrowRight', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(setFocused.mock.calls).toEqual([['child-id']]);
+			expect(getAttribute.mock.calls).toEqual([['role'], ['role']]);
+			expect(setFocused.mock.calls).toEqual([[['test-id', 'child-id']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -208,7 +214,9 @@ describe('TreeNode', () => {
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
 			useRef.mockReturnValueOnce({current: {}});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowRight', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -224,42 +232,48 @@ describe('TreeNode', () => {
 				.fn()
 				.mockReturnValueOnce('true')
 				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('false');
+				.mockReturnValueOnce('false')
+				.mockReturnValueOnce('group')
+				.mockReturnValueOnce('group')
+				.mockReturnValueOnce('tree');
 			const focus = jest.fn();
-			useRef.mockReturnValueOnce({
-				current: {
-					previousSibling: {
+			const current = {
+				previousSibling: {
+					id: 'id-0',
+					getAttribute,
+					parentNode: {getAttribute},
+					lastChild: {
 						getAttribute,
-						lastChild: {lastChild: {getAttribute, lastChild: {lastChild: {id: 'child-id', getAttribute, focus}}}},
+						lastChild: {
+							id: 'id-1',
+							getAttribute,
+							lastChild: {getAttribute, lastChild: {id: 'id-2', getAttribute, focus}},
+						},
 					},
 				},
-			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			};
+			useRef.mockReturnValueOnce({current});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			current.previousSibling.lastChild.parentNode = current.previousSibling;
+			current.previousSibling.lastChild.lastChild.parentNode = current.previousSibling.lastChild;
+			current.previousSibling.lastChild.lastChild.lastChild.parentNode = current.previousSibling.lastChild.lastChild;
+			current.previousSibling.lastChild.lastChild.lastChild.lastChild.parentNode =
+				current.previousSibling.lastChild.lastChild.lastChild;
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowUp', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['aria-expanded'], ['aria-expanded'], ['aria-expanded']]);
-			expect(setFocused.mock.calls).toEqual([['child-id']]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-
-		it('calls setFocused when ArrowUp is pressed and the previous sibling aria-expanded is not true', () => {
-			const setFocused = jest.fn();
-			const preventDefault = jest.fn();
-			const stopPropagation = jest.fn();
-			const getAttribute = jest.fn();
-			const focus = jest.fn();
-			useRef.mockReturnValueOnce({
-				current: {previousSibling: {getAttribute, id: 'sibling-id', focus}},
-			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
-			wrapper.simulate('keydown', {key: 'ArrowUp', preventDefault, stopPropagation});
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['aria-expanded']]);
-			expect(setFocused.mock.calls).toEqual([['sibling-id']]);
+			expect(getAttribute.mock.calls).toEqual([
+				['aria-expanded'],
+				['aria-expanded'],
+				['aria-expanded'],
+				['role'],
+				['role'],
+				['role'],
+			]);
+			expect(setFocused.mock.calls).toEqual([[['id-0', 'id-1', 'id-2']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -267,16 +281,20 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
+			const getAttribute = jest.fn().mockReturnValueOnce('tree');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({
-				current: {parentNode: {parentNode: {id: 'parent-id', focus}}},
+				current: {parentNode: {parentNode: {id: 'parent-id', focus, parentNode: {getAttribute}}}},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowUp', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(setFocused.mock.calls).toEqual([['parent-id']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
+			expect(setFocused.mock.calls).toEqual([[['parent-id']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -287,7 +305,9 @@ describe('TreeNode', () => {
 			useRef.mockReturnValueOnce({
 				current: {},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowUp', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -299,16 +319,25 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
+			const getAttribute = jest.fn().mockReturnValueOnce('group').mockReturnValueOnce('tree');
 			const focus = jest.fn();
-			useRef.mockReturnValueOnce({
-				current: {lastChild: {firstChild: {id: 'child-id', focus}}},
-			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			const current = {
+				id: 'test-id',
+				parentNode: {getAttribute},
+				lastChild: {getAttribute, firstChild: {id: 'child-id', focus}},
+			};
+			useRef.mockReturnValueOnce({current});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			current.lastChild.parentNode = current;
+			current.lastChild.firstChild.parentNode = current.lastChild;
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded />);
 			wrapper.simulate('keydown', {key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(setFocused.mock.calls).toEqual([['child-id']]);
+			expect(getAttribute.mock.calls).toEqual([['role'], ['role']]);
+			expect(setFocused.mock.calls).toEqual([[['test-id', 'child-id']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -316,16 +345,20 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
+			const getAttribute = jest.fn().mockReturnValueOnce('tree');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({
-				current: {nextSibling: {id: 'sibling-id', focus}},
+				current: {nextSibling: {id: 'sibling-id', focus, parentNode: {getAttribute}}},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(setFocused.mock.calls).toEqual([['sibling-id']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
+			expect(setFocused.mock.calls).toEqual([[['sibling-id']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -333,16 +366,26 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
+			const getAttribute = jest.fn().mockReturnValueOnce('tree');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({
-				current: {parentNode: {parentNode: {parentNode: {parentNode: {nextSibling: {id: 'sibling-id', focus}}}}}},
+				current: {
+					parentNode: {
+						parentNode: {
+							parentNode: {parentNode: {nextSibling: {id: 'sibling-id', focus, parentNode: {getAttribute}}}},
+						},
+					},
+				},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 2, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 2, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(setFocused.mock.calls).toEqual([['sibling-id']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
+			expect(setFocused.mock.calls).toEqual([[['sibling-id']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -353,7 +396,9 @@ describe('TreeNode', () => {
 			useRef.mockReturnValueOnce({
 				current: {parentNode: {parentNode: {}}},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -368,7 +413,9 @@ describe('TreeNode', () => {
 			useRef.mockReturnValueOnce({
 				current: {},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -380,16 +427,20 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
+			const getAttribute = jest.fn().mockReturnValueOnce('tree');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({
-				current: {parentNode: {firstChild: {id: 'child-id', focus}}},
+				current: {parentNode: {firstChild: {id: 'child-id', focus, parentNode: {getAttribute}}}},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'Home', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(setFocused.mock.calls).toEqual([['child-id']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
+			expect(setFocused.mock.calls).toEqual([[['child-id']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -400,7 +451,9 @@ describe('TreeNode', () => {
 			useRef.mockReturnValueOnce({
 				current: {},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'Home', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([]);
@@ -412,25 +465,56 @@ describe('TreeNode', () => {
 			const setFocused = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('true').mockReturnValueOnce('true').mockReturnValueOnce();
+			const getAttribute = jest
+				.fn()
+				.mockReturnValueOnce('true')
+				.mockReturnValueOnce('true')
+				.mockReturnValueOnce()
+				.mockReturnValueOnce('group')
+				.mockReturnValueOnce('group')
+				.mockReturnValueOnce('tree');
 			const focus = jest.fn();
-			useRef.mockReturnValueOnce({
-				current: {
-					parentNode: {
+			const current = {
+				parentNode: {
+					getAttribute,
+					lastChild: {
+						id: 'id-0',
+						getAttribute,
 						lastChild: {
 							getAttribute,
-							lastChild: {lastChild: {getAttribute, lastChild: {lastChild: {id: 'child-id', focus, getAttribute}}}},
+							lastChild: {
+								id: 'id-1',
+								getAttribute,
+								lastChild: {getAttribute, lastChild: {id: 'id-2', focus, getAttribute}},
+							},
 						},
 					},
 				},
-			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			};
+			useRef.mockReturnValueOnce({current});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			current.parentNode.lastChild.parentNode = current.parentNode;
+			current.parentNode.lastChild.lastChild.parentNode = current.parentNode.lastChild;
+			current.parentNode.lastChild.lastChild.lastChild.parentNode = current.parentNode.lastChild.lastChild;
+			current.parentNode.lastChild.lastChild.lastChild.lastChild.parentNode =
+				current.parentNode.lastChild.lastChild.lastChild;
+			current.parentNode.lastChild.lastChild.lastChild.lastChild.lastChild.parentNode =
+				current.parentNode.lastChild.lastChild.lastChild.lastChild;
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'End', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['aria-expanded'], ['aria-expanded'], ['aria-expanded']]);
-			expect(setFocused.mock.calls).toEqual([['child-id']]);
+			expect(getAttribute.mock.calls).toEqual([
+				['aria-expanded'],
+				['aria-expanded'],
+				['aria-expanded'],
+				['role'],
+				['role'],
+				['role'],
+			]);
+			expect(setFocused.mock.calls).toEqual([[['id-0', 'id-1', 'id-2']]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -441,7 +525,9 @@ describe('TreeNode', () => {
 			useRef.mockReturnValueOnce({
 				current: {},
 			});
-			useContext.mockReturnValueOnce({setFocused}).mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
+			useContext
+				.mockReturnValueOnce({focused: [], setFocused})
+				.mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'End', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([]);
@@ -453,7 +539,7 @@ describe('TreeNode', () => {
 			const onToggle = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded onToggle={onToggle} />);
 			wrapper.simulate('keydown', {key: '-', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -465,7 +551,7 @@ describe('TreeNode', () => {
 			const onToggle = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" onToggle={onToggle} />);
 			wrapper.simulate('keydown', {key: '-', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -477,7 +563,7 @@ describe('TreeNode', () => {
 			const onToggle = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded={false} onToggle={onToggle} />);
 			wrapper.simulate('keydown', {key: '+', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -489,7 +575,7 @@ describe('TreeNode', () => {
 			const onToggle = jest.fn();
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" expanded onToggle={onToggle} />);
 			wrapper.simulate('keydown', {key: '+', preventDefault, stopPropagation});
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -500,7 +586,7 @@ describe('TreeNode', () => {
 		it('ignores event if any modifier is set', () => {
 			const preventDefault = jest.fn();
 			const stopPropagation = jest.fn();
-			useContext.mockReturnValueOnce({}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused: []}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
 			wrapper.simulate('keydown', {key: 'Enter', ctrlKey: true, preventDefault, stopPropagation});
 			wrapper.simulate('keydown', {key: 'Enter', altKey: true, preventDefault, stopPropagation});

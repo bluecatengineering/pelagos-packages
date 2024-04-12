@@ -30,7 +30,7 @@ describe('TreeView', () => {
 		it('initializes focused to selected when specified', () => {
 			shallow(<TreeView selected={['test-id']} />);
 			expect(useState.mock.calls).toEqual([[anyFunction]]);
-			expect(useState.mock.calls[0][0]()).toBe('test-id');
+			expect(useState.mock.calls[0][0]()).toEqual(['test-id']);
 		});
 
 		it('initializes focused to the id of the first child when selected is not specified', () => {
@@ -40,7 +40,13 @@ describe('TreeView', () => {
 				</TreeView>
 			);
 			expect(useState.mock.calls).toEqual([[anyFunction]]);
-			expect(useState.mock.calls[0][0]()).toBe('child-id');
+			expect(useState.mock.calls[0][0]()).toEqual(['child-id']);
+		});
+
+		it('initializes focused to empty when selected is not specified and the tree is empty', () => {
+			shallow(<TreeView />);
+			expect(useState.mock.calls).toEqual([[anyFunction]]);
+			expect(useState.mock.calls[0][0]()).toEqual([]);
 		});
 
 		it('adds an effect which calls setFocused when selected changes', () => {
@@ -54,7 +60,7 @@ describe('TreeView', () => {
 
 			useEffect.mock.calls[0][0]();
 			expect(contains.mock.calls).toEqual([['active-element']]);
-			expect(setFocused.mock.calls).toEqual([['other-id']]);
+			expect(setFocused.mock.calls).toEqual([[['other-id']]]);
 		});
 
 		it('adds an effect which calls setFocused when selected changes to null', () => {
@@ -68,7 +74,7 @@ describe('TreeView', () => {
 
 			useEffect.mock.calls[0][0]();
 			expect(contains.mock.calls).toEqual([['active-element']]);
-			expect(setFocused.mock.calls).toEqual([['child-id']]);
+			expect(setFocused.mock.calls).toEqual([[['child-id']]]);
 		});
 
 		it('adds an effect which does not call setFocused when a node in the tree has focus', () => {
