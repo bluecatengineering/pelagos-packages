@@ -3,6 +3,8 @@ families:
   Roboto:
     css: "Roboto, 'Open Sans', Helvetica, Arial, sans-serif"
     default: true
+  Roboto Condensed:
+    css: "'Roboto Condensed', Helvetica, Arial, sans-serif"
   Inconsolata:
     css: "Inconsolata, Menlo, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace"
 fonts:
@@ -78,6 +80,25 @@ fonts:
       lineHeight: '1.125rem'
       fontWeight: '400'
       letterSpacing: '.16px'
+
+  condensed-01:
+    group: condensed
+    use: short text in narrow spaces.
+    specs:
+      fontFamily: 'Roboto Condensed'
+      fontSize: '.75rem'
+      lineHeight: '1rem'
+      fontWeight: '400'
+      letterSpacing: '0'
+  condensed-02:
+    group: condensed
+    use: short text in narrow spaces.
+    specs:
+      fontFamily: 'Roboto Condensed'
+      fontSize: '.875rem'
+      lineHeight: '1.125rem'
+      fontWeight: '400'
+      letterSpacing: '0'
 
   body-compact-01:
     group: body
