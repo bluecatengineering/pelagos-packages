@@ -1,4 +1,4 @@
-import {useCallback, useMemo, useState} from 'react';
+import {Fragment, useCallback, useMemo, useState} from 'react';
 import Model from '@carbon/icons-react/es/Model';
 import Settings from '@carbon/icons-react/es/Settings';
 import Edit from '@carbon/icons-react/es/Edit';
@@ -11,6 +11,7 @@ import Layer from '../components/Layer';
 import Pagination from '../components/Pagination';
 import MenuItem from '../menu/MenuItem';
 import MenuItemDivider from '../menu/MenuItemDivider';
+import loremIpsumShort from '../../stories/LoremIpsumShort';
 
 import Table from './Table';
 import TableBody from './TableBody';
@@ -27,6 +28,9 @@ import TableToolbar from './TableToolbar';
 import TableToolbarBatch from './TableToolbarBatch';
 import TableToolbarDefault from './TableToolbarDefault';
 import TableToolbarSearch from './TableToolbarSearch';
+import TableExpandHeader from './TableExpandHeader';
+import TableExpandRow from './TableExpandRow';
+import TableExpandableRow from './TableExpandableRow';
 
 import './Table.stories.less';
 
@@ -465,6 +469,75 @@ InlineMenu.args = {
 	id: 'inlineMenu',
 	className: 'TableStory--inlineMenu',
 	fixedLayout: true,
+};
+
+const initialExpanded = {
+	1: true,
+	2: false,
+	3: false,
+	4: false,
+	5: false,
+	6: false,
+};
+
+export const WithExpansion = {
+	args: {
+		id: 'expandable',
+		className: 'TableStory--expandable',
+		fixedLayout: true,
+	},
+	render: (args) => {
+		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
+		const [expanded, setExpanded] = useState(initialExpanded);
+
+		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
+		const handleExpand = useCallback(
+			(event) => {
+				const rowId = event.target.closest('tr').dataset.id;
+				setExpanded({...expanded, [rowId]: !expanded[rowId]});
+			},
+			[expanded]
+		);
+
+		return (
+			<Layer className="TableStory__wrapper">
+				<TableTitle title="Table" description="With expansion." />
+				<Table {...args}>
+					<TableHead>
+						<TableRow>
+							<TableExpandHeader aria-label="Expansion" />
+							{columns.map(({id, header, align, sortable}) => (
+								<TableHeader key={id} align={align} sortable={sortable} sortOrder={id === sort.id ? sort.order : null}>
+									{header}
+								</TableHeader>
+							))}
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{data.map((row) => (
+							<Fragment key={row.id}>
+								<TableExpandRow
+									expanded={expanded[row.id]}
+									aria-controls={`expandable-${row.id}`}
+									data-id={row.id}
+									onExpand={handleExpand}>
+									{columns.map(({id, align}) => (
+										<TableCell key={id} align={align}>
+											{row[id]}
+										</TableCell>
+									))}
+								</TableExpandRow>
+								<TableExpandableRow id={`expandable-${row.id}`} colSpan={columns.length + 1}>
+									<h6>Expandable content</h6>
+									<div>{loremIpsumShort}</div>
+								</TableExpandableRow>
+							</Fragment>
+						))}
+					</TableBody>
+				</Table>
+			</Layer>
+		);
+	},
 };
 
 export const WithPagination = (args) => {

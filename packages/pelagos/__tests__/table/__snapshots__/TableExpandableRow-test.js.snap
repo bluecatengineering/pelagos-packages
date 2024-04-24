@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableExpandableRow rendering renders expected elements 1`] = `
+<tr
+  className="Table__expandableRow"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <td
+    colSpan={2}
+  >
+    <div
+      className="Table__childContainer"
+    >
+      Test child
+    </div>
+  </td>
+</tr>
+`;
+
+exports[`TableExpandableRow rendering renders expected elements when optional properties are set 1`] = `
+<tr
+  className="Table__expandableRow TestClass"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <td
+    colSpan={2}
+  >
+    <div
+      className="Table__childContainer"
+    >
+      Test child
+    </div>
+  </td>
+</tr>
+`;
