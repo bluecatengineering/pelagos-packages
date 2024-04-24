@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableExpandHeader rendering renders expected elements 1`] = `
+<th
+  className="Table__expandHeader"
+/>
+`;
+
+exports[`TableExpandHeader rendering renders expected elements when optional properties are set 1`] = `
+<th
+  className="Table__expandHeader TestClass"
+/>
+`;

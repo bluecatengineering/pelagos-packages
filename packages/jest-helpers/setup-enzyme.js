@@ -13,6 +13,8 @@ const handlerNames = {
 	keydown: 'onKeyDown',
 	keyup: 'onKeyUp',
 	mousedown: 'onMouseDown',
+	mouseenter: 'onMouseEnter',
+	mouseleave: 'onMouseLeave',
 	mousemove: 'onMouseMove',
 	mouseout: 'onMouseOut',
 	mouseover: 'onMouseOver',
@@ -64,8 +66,8 @@ class ShallowRenderer {
 				typeof type === 'string'
 					? shallow({type, props})
 					: type.prototype && type.prototype.render
-					? this._renderClass(type, props)
-					: {nodeType: 'function', type, props, rendered: shallow(type(props))};
+						? this._renderClass(type, props)
+						: {nodeType: 'function', type, props, rendered: shallow(type(props))};
 		}
 	}
 

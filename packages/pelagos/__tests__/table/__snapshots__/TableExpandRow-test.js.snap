@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableExpandRow rendering renders expected elements 1`] = `
+<tr
+  className="Table__parentRow"
+>
+  <td
+    className="Table__expandCell"
+  >
+    <button
+      aria-controls="test-row"
+      aria-label="Collapse current row"
+      className="Table__expandBtn"
+      type="button"
+    >
+      <ChevronDown
+        className="Table__expandArrow"
+      />
+    </button>
+  </td>
+  Test child
+</tr>
+`;
+
+exports[`TableExpandRow rendering renders expected elements when optional properties are set 1`] = `
+<tr
+  aria-selected={true}
+  className="Table__parentRow Table--expandedRow TestClass"
+>
+  <td
+    className="Table__expandCell"
+  >
+    <button
+      aria-controls="test-row"
+      aria-expanded={true}
+      aria-label="Expand current row"
+      className="Table__expandBtn"
+      type="button"
+    >
+      <ChevronDown
+        className="Table__expandArrow"
+      />
+    </button>
+  </td>
+  Test child
+</tr>
+`;

@@ -105,6 +105,10 @@ msgstr "Limpiar búsqueda"
 msgid "Close"
 msgstr "Cerrar"
 
+#: c84
+msgid "Collapse current row"
+msgstr "Contraer fila actual"
+
 #: 4df
 msgid "Column {column} of {columnCount}"
 msgstr "Columna {column} de {columnCount}"
@@ -144,6 +148,10 @@ msgstr "Descartar"
 #: 530
 msgid "Edit"
 msgstr "Editar"
+
+#: 8dc
+msgid "Expand current row"
+msgstr "Expandir fila actual"
 
 #: 63a
 msgid "File {0} uploaded"

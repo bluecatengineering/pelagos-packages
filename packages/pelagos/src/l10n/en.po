@@ -105,6 +105,10 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: c84
+msgid "Collapse current row"
+msgstr ""
+
 #: 4df
 msgid "Column {column} of {columnCount}"
 msgstr ""
@@ -143,6 +147,10 @@ msgstr ""
 
 #: 530
 msgid "Edit"
+msgstr ""
+
+#: 8dc
+msgid "Expand current row"
 msgstr ""
 
 #: 63a

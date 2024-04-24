@@ -69,16 +69,16 @@
 			}
 		}
 
-		&--line > tbody > tr {
+		& > tbody > tr:hover {
+			color: var(--text-primary);
+		}
+
+		&--line td {
 			border-bottom: 1px solid var(--border-subtle);
 
 			@media print {
 				border-bottom-color: transparent;
 			}
-		}
-
-		& > tbody > tr:hover {
-			color: var(--text-primary);
 		}
 
 		&--zebra > tbody > tr:nth-child(even) {
@@ -136,7 +136,8 @@
 		& th[aria-sort='ascending']::before,
 		& th[aria-sort='descending']::before,
 		& th[aria-sort='ascending'] + th::before,
-		& th[aria-sort='descending'] + th::before {
+		& th[aria-sort='descending'] + th::before,
+		& th.Table__expandHeader + th::before {
 			display: none;
 		}
 
@@ -200,6 +201,75 @@
 			@media print {
 				display: none;
 			}
+		}
+
+		&__expandBtn {
+			@focus-visible();
+			display: flex;
+			width: 32px;
+			height: 32px;
+			align-items: center;
+			justify-content: center;
+			background-color: transparent;
+			border: none;
+			padding: 0;
+			cursor: pointer;
+			transition: background-color 0.15s ease-out;
+
+			&:hover {
+				background-color: var(--layer-accent-hover);
+			}
+
+			&:active {
+				background-color: var(--layer-accent-active);
+			}
+		}
+
+		&__expandArrow {
+			color: var(--link-primary);
+			transition: transform 0.15s ease-out;
+
+			.Table--expandedRow & {
+				transform: rotate(180deg);
+			}
+		}
+
+		&__childContainer {
+			// stylelint-disable-next-line @bluecateng/selector-bem -- the selector is too complex
+			.Table__parentRow.Table--expandedRow + .Table__expandableRow & {
+				padding: @sp-16 0 @sp-24;
+			}
+
+			.Table__parentRow:not(.Table--expandedRow) + .Table__expandableRow & {
+				height: 0;
+				overflow: hidden;
+			}
+		}
+
+		& > tbody > tr.Table__expandableRow > td {
+			// stylelint-disable-next-line @bluecateng/property-strict-value -- matches parent row spacing
+			padding-left: 56px;
+			border: none;
+		}
+
+		&__expandableRow {
+			.Table__parentRow:hover + & {
+				background-color: var(--layer-hover);
+			}
+
+			.Table__parentRow:not(.Table--expandedRow) + & {
+				height: 0;
+				transition: height 0.15s ease-out;
+			}
+
+			// stylelint-disable-next-line @bluecateng/selector-bem -- the selector is too complex
+			.Table__parentRow.Table--expandedRow + & td {
+				border-bottom: 1px solid var(--border-subtle);
+			}
+		}
+
+		&--parentRowHover {
+			background-color: var(--layer-hover);
 		}
 
 		&__header {
@@ -348,5 +418,17 @@
 
 	th.Table--radioHeader {
 		opacity: 0;
+	}
+
+	th.Table__expandHeader,
+	td.Table__expandCell {
+		width: 40px;
+		min-width: 40px;
+		max-width: 40px;
+		padding: 0 0 0 @sp-08;
+	}
+
+	.Table--expandedRow > .Table__expandCell {
+		border-bottom: 1px solid transparent;
 	}
 }
