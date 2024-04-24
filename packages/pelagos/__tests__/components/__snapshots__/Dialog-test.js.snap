@@ -91,6 +91,7 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
     role="dialog"
   >
     <form
+      className="Dialog__form"
       onSubmit={[Function]}
     >
       <React.Fragment>

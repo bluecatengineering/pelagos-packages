@@ -51,7 +51,13 @@ const Dialog = ({id, className, title, role, size, stretch, initialFocus, childr
 				aria-modal
 				aria-labelledby="dialogTitle"
 				ref={element}>
-				{onSubmit ? <form onSubmit={handleSubmit}>{content}</form> : content}
+				{onSubmit ? (
+					<form className="Dialog__form" onSubmit={handleSubmit}>
+						{content}
+					</form>
+				) : (
+					content
+				)}
 			</Layer>
 		</div>
 	);
