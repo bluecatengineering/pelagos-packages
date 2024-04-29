@@ -65,10 +65,6 @@ msgstr ""
 msgid "{text}, column {column}, {leaf, select, true {leaf} other {group}}"
 msgstr ""
 
-#: dfb
-msgid "{transformed} added"
-msgstr ""
-
 #: 61c
 msgid "Add"
 msgstr ""

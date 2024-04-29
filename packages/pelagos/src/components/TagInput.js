@@ -56,16 +56,16 @@ const TagInput = ({
 	);
 
 	const addTag = useCallback(
-		(name) => {
-			const transformed = transform(name);
+		(inputName) => {
+			const name = transform(inputName);
 
-			if (!hasTag(tags, transformed)) {
-				const error = validate(transformed);
+			if (!hasTag(tags, name)) {
+				const error = validate(name);
 				if (error) {
 					onError(error);
 				} else {
-					liveRef.current.textContent = t`${transformed} added`;
-					onChange([...tags, transformed]);
+					liveRef.current.textContent = t`${name} added`;
+					onChange([...tags, name]);
 					setText('');
 				}
 			} else {
