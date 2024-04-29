@@ -2,6 +2,7 @@ import {useCallback, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 import Close from '@carbon/icons-react/es/Close';
+import identity from 'lodash-es/identity';
 
 import useTooltip from '../hooks/useTooltip';
 import useRandomId from '../hooks/useRandomId';
@@ -29,6 +30,7 @@ const TagInput = ({
 	error,
 	validate,
 	disabled,
+	transform = identity,
 	onChange,
 	onError,
 	...props
@@ -55,20 +57,22 @@ const TagInput = ({
 
 	const addTag = useCallback(
 		(name) => {
-			if (!hasTag(tags, name)) {
-				const error = validate(name);
+			const transformed = transform(name);
+
+			if (!hasTag(tags, transformed)) {
+				const error = validate(transformed);
 				if (error) {
 					onError(error);
 				} else {
-					liveRef.current.textContent = t`${name} added`;
-					onChange([...tags, name]);
+					liveRef.current.textContent = t`${transformed} added`;
+					onChange([...tags, transformed]);
 					setText('');
 				}
 			} else {
 				setText('');
 			}
 		},
-		[tags, validate, onChange, onError]
+		[tags, transform, validate, onError, onChange]
 	);
 
 	const handleKeyDown = useCallback(
@@ -178,6 +182,8 @@ TagInput.propTypes = {
 	validate: PropTypes.func.isRequired,
 	/** Whether the input is disabled. */
 	disabled: PropTypes.bool,
+	/** Function that transforms a tag before it is added. */
+	transform: PropTypes.func,
 	/** Function invoked when the tags change. */
 	onChange: PropTypes.func.isRequired,
 	/** Function invoked when an error is detected. */

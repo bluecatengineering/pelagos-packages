@@ -132,6 +132,33 @@ describe('TagInput', () => {
 			expect(live.textContent).toBe('baz added');
 		});
 
+		it('calls onChange when enter is pressed with a transform function', () => {
+			const onChange = jest.fn();
+			const transform = jest.fn().mockReturnValue('transform');
+			const validate = jest.fn();
+			const preventDefault = jest.fn();
+			const focus = jest.fn();
+			const live = {};
+			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({current: live});
+			const wrapper = shallow(
+				<TagInput
+					id="test"
+					tags={['foo', 'bar']}
+					validate={validate}
+					transform={transform}
+					onChange={onChange}
+					onError={jest.fn()}
+				/>
+			);
+			wrapper.find('#random-id').simulate('keydown', {keyCode: 13, preventDefault, target: {value: 'baz'}});
+			expect(transform.mock.calls).toEqual([['baz']]);
+			expect(validate.mock.calls).toEqual([['transform']]);
+			expect(onChange.mock.calls).toEqual([[['foo', 'bar', 'transform']]]);
+			expect(preventDefault.mock.calls).toEqual([[]]);
+			expect(focus.mock.calls).toEqual([[]]);
+			expect(live.textContent).toBe('transform added');
+		});
+
 		it('does not call onChange when enter is pressed and the input text is empty', () => {
 			const onChange = jest.fn();
 			const preventDefault = jest.fn();

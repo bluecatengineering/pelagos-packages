@@ -65,6 +65,10 @@ msgstr "{selectedCount, plural, one {un elemento seleccionado} other {# elemento
 msgid "{text}, column {column}, {leaf, select, true {leaf} other {group}}"
 msgstr "{text}, columna {column}, {leaf, select, true {terminal} other {grupo}}"
 
+#: dfb
+msgid "{transformed} added"
+msgstr ""
+
 #: 61c
 msgid "Add"
 msgstr "Añadir"
