@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/jest-helpers@3.1.0...@bluecateng/jest-helpers@3.2.0) (2024-04-30)
+
+### Features
+
+- implement expandable table rows ([6073442](https://github.com/bluecatengineering/pelagos-packages/commit/6073442312a1dcba1ad156fa3b0a27c2f9cb972f))
+
 ## [3.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/jest-helpers@3.0.0...@bluecateng/jest-helpers@3.1.0) (2023-06-09)
 
 ### Features

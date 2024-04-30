@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.10.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.9.1...@bluecateng/pelagos@12.10.0) (2024-04-30)
+
+### Features
+
+- add transform function to tag input ([#179](https://github.com/bluecatengineering/pelagos-packages/issues/179)) ([8fd9f58](https://github.com/bluecatengineering/pelagos-packages/commit/8fd9f58b32f5706a564f4a4832c4ded25ec9d235))
+- implement expandable table rows ([6073442](https://github.com/bluecatengineering/pelagos-packages/commit/6073442312a1dcba1ad156fa3b0a27c2f9cb972f))
+
+### Bug Fixes
+
+- ensure the table search shrinks to 0 width ([a190d6f](https://github.com/bluecatengineering/pelagos-packages/commit/a190d6ff2bffd6ba74d5bb7cb0381b6df4dadcef))
+- set background colour for TagInput when disabled ([a17b970](https://github.com/bluecatengineering/pelagos-packages/commit/a17b97068c8bce5b6d2efc503bc0b066a988b7e1))
+- stretch the Dialog form ([0e843b9](https://github.com/bluecatengineering/pelagos-packages/commit/0e843b98b982f1cd6e2b7c8d43ec7cbcc068b1e5))
+- use 100% height rather than flex in the Dialog form ([3622b2c](https://github.com/bluecatengineering/pelagos-packages/commit/3622b2c1f01d19fc3e00f416b92e6b786f690078))
+
 ## [12.9.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.9.0...@bluecateng/pelagos@12.9.1) (2024-04-12)
 
 ### Bug Fixes
