@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.10.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.10.0...@bluecateng/pelagos@12.10.1) (2024-05-01)
+
+### Bug Fixes
+
+- export components for expandable table rows ([b7b2781](https://github.com/bluecatengineering/pelagos-packages/commit/b7b2781cc80e1c2c82ad19b2c843f1521c1be415))
+
 ## [12.10.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.9.1...@bluecateng/pelagos@12.10.0) (2024-04-30)
 
 ### Features
