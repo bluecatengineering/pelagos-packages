@@ -638,8 +638,8 @@ export const ForFigma = {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{Array.from({length: rows}).map((row) => (
-							<TableRow key={row}>
+						{Array.from({length: rows}, (_, index) => (
+							<TableRow key={index}>
 								{selection === 'none' ? null : (
 									<TableSelectRow radio={selection === 'radio'} name="select" aria-label="Select row" />
 								)}
