@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiHint rendering renders expected elements 1`] = `
+<Layer
+  as="ul"
+  className="Chart Chart__hint"
+>
+  <li>
+    <span>
+      Test title
+    </span>
+    <span>
+      header
+    </span>
+  </li>
+  <li>
+    <span
+      className="Chart__hintColor hintClass"
+    />
+    <span>
+      group
+    </span>
+    <span>
+      value
+    </span>
+  </li>
+  <li>
+    <span
+      className="Chart__hintColor hintClass"
+    />
+    <span>
+      group
+    </span>
+    <span>
+      value
+    </span>
+  </li>
+</Layer>
+`;
+
+exports[`MultiHint rendering renders expected elements when showTotal is set 1`] = `
+<Layer
+  as="ul"
+  className="Chart Chart__hint"
+>
+  <li>
+    <span>
+      Test title
+    </span>
+    <span>
+      header
+    </span>
+  </li>
+  <li>
+    <span
+      className="Chart__hintColor hintClass"
+    />
+    <span>
+      group
+    </span>
+    <span>
+      value
+    </span>
+  </li>
+  <li>
+    <span
+      className="Chart__hintColor hintClass"
+    />
+    <span>
+      group
+    </span>
+    <span>
+      value
+    </span>
+  </li>
+  <li>
+    <span
+      className="Chart__hintTotal"
+    >
+      Total
+    </span>
+    <span>
+      value
+    </span>
+  </li>
+</Layer>
+`;
+
+exports[`MultiHint rendering renders expected elements when showTotal is set and values is not 1`] = `
+<Layer
+  as="ul"
+  className="Chart Chart__hint"
+>
+  <li>
+    <span>
+      Test title
+    </span>
+    <span>
+      header
+    </span>
+  </li>
+  <li>
+    <span
+      className="Chart__hintTotal"
+    >
+      Total
+    </span>
+    <span>
+      value
+    </span>
+  </li>
+</Layer>
+`;

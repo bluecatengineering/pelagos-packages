@@ -18,9 +18,10 @@ export default {
 					Icons: 2,
 					Styles: 3,
 					Components: 4,
-					Experimental: 5,
-					hooks: 6,
-					functions: 7,
+					hooks: 5,
+					functions: 6,
+					Experimental: 7,
+					'Experimental Charts': 8,
 				};
 				const [aGroup, aName = ''] = a.title.split('/');
 				const [bGroup, bName = ''] = b.title.split('/');

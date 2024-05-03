@@ -1,0 +1,64 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2024-05-03T19:27:25.396Z\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @bluecateng/l10n-cli\n"
+"Language: en\n"
+
+#: ff3
+msgid "{group} {value, number, percent}"
+msgstr ""
+
+#: 4e7
+msgid "{total, number} {unit} total"
+msgstr ""
+
+#: 9fe
+msgid "{used, number} {unit} used ({available, number} {unit} available)"
+msgstr ""
+
+#: 62c
+msgid "bar"
+msgstr ""
+
+#: 5f3
+msgid "bottom axis"
+msgstr ""
+
+#: 305
+msgid "center"
+msgstr ""
+
+#: a17
+msgid "data"
+msgstr ""
+
+#: 68f
+msgid "Data groups"
+msgstr ""
+
+#: 171
+msgid "Group"
+msgstr ""
+
+#: dbc
+msgid "left axis"
+msgstr ""
+
+#: 264
+msgid "line"
+msgstr ""
+
+#: 71a
+msgid "point"
+msgstr ""
+
+#: 0a5
+msgid "slice"
+msgstr ""
+
+#: b25
+msgid "Total"
+msgstr ""

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChartAxes rendering renders expected elements 1`] = `
+<g
+  className="Chart__axes"
+>
+  <g>
+    <g
+      aria-hidden={true}
+    />
+  </g>
+  <g>
+    <g
+      aria-hidden={true}
+    />
+  </g>
+</g>
+`;

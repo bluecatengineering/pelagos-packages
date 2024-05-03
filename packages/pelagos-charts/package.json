@@ -1,0 +1,47 @@
+{
+  "name": "@bluecateng/pelagos-charts",
+  "version": "0.1.0",
+  "description": "Chart components",
+  "license": "ISC",
+  "sideEffects": [
+    "*.less"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && babel -d dist --env-name production --root-mode upward --ignore '**/*.stories.js' src && npm run copy-resources dist",
+    "copy-resources": "node ../../scripts/copy-resources",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bluecatengineering/pelagos-packages.git",
+    "directory": "packages/pelagos-charts"
+  },
+  "keywords": [
+    "react"
+  ],
+  "files": [
+    "dist",
+    "less"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./less/*": "./less/*"
+  },
+  "peerDependencies": {
+    "@bluecateng/pelagos": ">=12",
+    "core-js": "^3.37.0"
+  },
+  "dependencies": {
+    "@bluecateng/l10n-core": "^0.2.0",
+    "@carbon/icons-react": "^11.34.1",
+    "d3-array": "^3.2.4",
+    "d3-axis": "^3.0.0",
+    "d3-format": "^3.1.0",
+    "d3-scale": "^4.0.2",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.2.0",
+    "d3-time-format": "^4.1.0",
+    "lodash-es": "^4.17.21",
+    "prop-types": "^15.8.1"
+  }
+}

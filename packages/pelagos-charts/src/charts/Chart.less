@@ -1,0 +1,612 @@
+@import '~@bluecateng/pelagos/less/elevations';
+@import '~@bluecateng/pelagos/less/spacing';
+@import '~@bluecateng/pelagos/less/utils';
+
+// stylelint-disable @bluecateng/selector-bem -- modifier
+// stylelint-disable @bluecateng/property-strict-value -- local value
+
+.fill(@variant) {
+	@selector: ~'.fill-@{variant}';
+	@{selector} {
+		fill: var(~'--charts-@{variant}');
+	}
+}
+
+.stroke(@variant) {
+	@selector: ~'.stroke-@{variant}';
+	@{selector} {
+		stroke: var(~'--charts-@{variant}');
+	}
+}
+
+.bg(@variant) {
+	@selector: ~'.bg-@{variant}';
+	@{selector} {
+		background-color: var(~'--charts-@{variant}');
+	}
+}
+
+.Chart {
+	@chart-font-family: 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+
+	&__wrapper {
+		position: relative;
+		display: grid;
+		grid-template: 't t t' 'l c r' 'b b b';
+		grid-template-columns: auto 1fr auto;
+		grid-template-rows: auto 1fr auto;
+	}
+
+	&__chart {
+		grid-area: c;
+		place-self: stretch;
+	}
+
+	&__ruler {
+		stroke: var(--border-inverse);
+		stroke-width: 1px;
+		stroke-dasharray: 2;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.15s ease-out;
+	}
+
+	&__grid {
+		rect {
+			stroke: var(--layer-accent);
+			fill: transparent;
+		}
+
+		line {
+			stroke: var(--layer-accent);
+			stroke-width: 1px;
+			pointer-events: none;
+		}
+	}
+
+	&__axes {
+		.domain {
+			stroke: var(--border-strong);
+		}
+
+		.tick {
+			> line {
+				display: none;
+			}
+
+			> text {
+				fill: var(--text-secondary);
+				font-family: @chart-font-family;
+				font-size: 12px;
+			}
+		}
+
+		.title {
+			text-anchor: middle;
+			fill: var(--text-primary);
+			font-family: @chart-font-family;
+			font-size: 12px;
+		}
+	}
+
+	&__zero {
+		stroke: var(--border-strong);
+		pointer-events: none;
+	}
+
+	&__legend {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-family: @chart-font-family;
+		font-size: 12px;
+		line-height: 1rem;
+		white-space: nowrap;
+
+		&.horizontal {
+			gap: @sp-12;
+
+			&.center {
+				justify-self: center;
+			}
+
+			&.end {
+				justify-self: end;
+			}
+		}
+
+		&.vertical {
+			flex-direction: column;
+			gap: @sp-04;
+
+			&.center {
+				align-self: center;
+			}
+
+			&.end {
+				align-self: end;
+			}
+		}
+
+		&.right {
+			grid-area: r;
+			margin-left: @sp-16;
+		}
+
+		&.left {
+			grid-area: l;
+			margin-right: @sp-16;
+		}
+
+		&.top {
+			grid-area: t;
+			margin-bottom: @sp-16;
+		}
+
+		&.bottom {
+			grid-area: b;
+			margin-top: @sp-16;
+		}
+
+		> li {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: @sp-04;
+			color: var(--text-secondary);
+		}
+
+		p {
+			@base-ellipsis();
+		}
+	}
+
+	&__legendCheck {
+		position: relative;
+		width: 13px;
+		height: 13px;
+		border: 1px solid var(--layer);
+		border-radius: 2px;
+
+		// increment specificity
+		.Chart__legend &:not([aria-checked='true']) {
+			border-color: var(--icon-primary);
+			background-color: var(--layer);
+		}
+
+		.Chart__legend.clickable &:focus-visible {
+			@focus-ring();
+			outline-offset: 0;
+		}
+
+		&[aria-checked='true']::after {
+			display: none;
+			position: absolute;
+			content: '';
+			top: 1px;
+			left: 3px;
+			width: 5px;
+			height: 7px;
+			border: solid var(--background);
+			border-width: 0 2px 2px 0;
+			transform: rotate(45deg);
+
+			.Chart__legend.some-selected & {
+				display: block;
+			}
+		}
+	}
+
+	&__hintContainer {
+		position: absolute;
+		will-change: opacity, transform;
+		opacity: 0;
+		transition: opacity 0.15s ease-out;
+		z-index: 1000;
+		pointer-events: none;
+
+		&.visible {
+			opacity: 1;
+		}
+	}
+
+	&__simpleHint {
+		@elv-06();
+		font-family: @chart-font-family;
+		font-size: 12px;
+		flex-direction: row;
+		gap: @sp-12;
+		padding: @sp-04 @sp-08;
+	}
+
+	&__hint {
+		@elv-06();
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-family: @chart-font-family;
+		font-size: 12px;
+		white-space: nowrap;
+
+		> li {
+			position: relative;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			gap: @sp-12;
+			padding: @sp-02 @sp-08;
+
+			&:not(:first-child) {
+				border-top: 1px solid var(--border-subtle);
+			}
+		}
+	}
+
+	&__hintColor {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 4px;
+		height: 100%;
+	}
+
+	&__hintTotal {
+		font-weight: 600;
+	}
+
+	// the only place where stylelint doesn't complain
+	&__legend.clickable > li {
+		cursor: pointer;
+	}
+
+	&__selection {
+		position: absolute;
+		border-left: 1px solid var(--border-inverse);
+		border-right: 1px solid var(--border-inverse);
+		background-color: var(--layer-selected);
+		opacity: 0.5;
+	}
+
+	&__range {
+		position: absolute;
+		top: 0;
+		font-family: @chart-font-family;
+		font-size: 12px;
+		color: var(--text-inverse);
+		background-color: var(--background-inverse);
+		padding: @sp-04 @sp-08;
+		white-space: nowrap;
+		transform: translateX(-50%);
+		box-shadow: var(--shadow-06);
+	}
+
+	&__stackBars {
+		pointer-events: none;
+	}
+
+	&__lines {
+		fill: none;
+		stroke-width: 1.5;
+		pointer-events: none;
+	}
+
+	&__dots {
+		> .hollow {
+			fill: var(--layer);
+			stroke-width: 1.5;
+		}
+	}
+
+	&__donutWrapper {
+		overflow: visible;
+	}
+
+	&__donutTitle {
+		font-family: @chart-font-family;
+		font-size: 14px;
+		fill: var(--text-secondary);
+	}
+
+	&__donutNumber {
+		font-family: @chart-font-family;
+		font-size: 24px;
+		fill: var(--text-secondary);
+	}
+
+	&--donutEmpty {
+		fill: var(--layer-accent);
+	}
+
+	&__meter {
+		grid-area: c;
+		gap: @sp-08;
+		place-self: start stretch;
+	}
+
+	&__meterLabels {
+		flex-direction: row;
+		gap: @sp-32;
+	}
+
+	&__meterEndLabel {
+		flex-direction: row;
+		gap: @sp-08;
+	}
+
+	&__meterTitle {
+		@ellipsis();
+		flex: 1;
+		width: 0;
+	}
+
+	&__meterTitle,
+	&__meterTotal {
+		font-family: @chart-font-family;
+		font-size: 12px;
+	}
+
+	&__meterTrack {
+		position: relative;
+		flex-direction: row;
+		gap: 1px;
+		background-color: var(--layer);
+	}
+
+	&__meterPeak {
+		position: absolute;
+		height: 100%;
+		border-left: 2px solid var(--border-inverse);
+	}
+
+	&__meterSuccess {
+		color: var(--support-success);
+	}
+
+	&__meterWarning {
+		@warning-fill();
+		color: var(--support-warning);
+	}
+
+	&__meterDanger {
+		color: var(--support-error);
+	}
+
+	&__meterSuccessBg {
+		background-color: var(--support-success);
+	}
+
+	&__meterWarningBg {
+		background-color: var(--support-warning);
+	}
+
+	&__meterDangerBg {
+		background-color: var(--support-error);
+	}
+
+	&__skeletonBackdrop {
+		fill: var(--background);
+	}
+
+	&__loadingAreas {
+		& > .stop-bg {
+			stop-color: var(--skeleton-background);
+		}
+		& > .stop-fg {
+			stop-color: var(--skeleton-element);
+		}
+	}
+
+	&__loadingLines {
+		& > .stop-bg {
+			stop-color: var(--skeleton-background);
+		}
+		& > .stop-fg {
+			stop-color: var(--border-inverse);
+		}
+	}
+
+	&__shimmerLines {
+		stroke-width: 1px;
+	}
+
+	.fill('1-1-1');
+	.fill('1-2-1');
+	.fill('1-3-1');
+	.fill('1-4-1');
+	.fill('2-1-1');
+	.fill('2-1-2');
+	.fill('2-2-1');
+	.fill('2-2-2');
+	.fill('2-3-1');
+	.fill('2-3-2');
+	.fill('2-4-1');
+	.fill('2-4-2');
+	.fill('2-5-1');
+	.fill('2-5-2');
+	.fill('3-1-1');
+	.fill('3-1-2');
+	.fill('3-1-3');
+	.fill('3-2-1');
+	.fill('3-2-2');
+	.fill('3-2-3');
+	.fill('3-3-1');
+	.fill('3-3-2');
+	.fill('3-3-3');
+	.fill('3-4-1');
+	.fill('3-4-2');
+	.fill('3-4-3');
+	.fill('3-5-1');
+	.fill('3-5-2');
+	.fill('3-5-3');
+	.fill('4-1-1');
+	.fill('4-1-2');
+	.fill('4-1-3');
+	.fill('4-1-4');
+	.fill('4-2-1');
+	.fill('4-2-2');
+	.fill('4-2-3');
+	.fill('4-2-4');
+	.fill('4-3-1');
+	.fill('4-3-2');
+	.fill('4-3-3');
+	.fill('4-3-4');
+	.fill('5-1-1');
+	.fill('5-1-2');
+	.fill('5-1-3');
+	.fill('5-1-4');
+	.fill('5-1-5');
+	.fill('5-2-1');
+	.fill('5-2-2');
+	.fill('5-2-3');
+	.fill('5-2-4');
+	.fill('5-2-5');
+	.fill('14-1-1');
+	.fill('14-1-2');
+	.fill('14-1-3');
+	.fill('14-1-4');
+	.fill('14-1-5');
+	.fill('14-1-6');
+	.fill('14-1-7');
+	.fill('14-1-8');
+	.fill('14-1-9');
+	.fill('14-1-10');
+	.fill('14-1-11');
+	.fill('14-1-12');
+	.fill('14-1-13');
+	.fill('14-1-14');
+
+	.stroke('1-1-1');
+	.stroke('1-2-1');
+	.stroke('1-3-1');
+	.stroke('1-4-1');
+	.stroke('2-1-1');
+	.stroke('2-1-2');
+	.stroke('2-2-1');
+	.stroke('2-2-2');
+	.stroke('2-3-1');
+	.stroke('2-3-2');
+	.stroke('2-4-1');
+	.stroke('2-4-2');
+	.stroke('2-5-1');
+	.stroke('2-5-2');
+	.stroke('3-1-1');
+	.stroke('3-1-2');
+	.stroke('3-1-3');
+	.stroke('3-2-1');
+	.stroke('3-2-2');
+	.stroke('3-2-3');
+	.stroke('3-3-1');
+	.stroke('3-3-2');
+	.stroke('3-3-3');
+	.stroke('3-4-1');
+	.stroke('3-4-2');
+	.stroke('3-4-3');
+	.stroke('3-5-1');
+	.stroke('3-5-2');
+	.stroke('3-5-3');
+	.stroke('4-1-1');
+	.stroke('4-1-2');
+	.stroke('4-1-3');
+	.stroke('4-1-4');
+	.stroke('4-2-1');
+	.stroke('4-2-2');
+	.stroke('4-2-3');
+	.stroke('4-2-4');
+	.stroke('4-3-1');
+	.stroke('4-3-2');
+	.stroke('4-3-3');
+	.stroke('4-3-4');
+	.stroke('5-1-1');
+	.stroke('5-1-2');
+	.stroke('5-1-3');
+	.stroke('5-1-4');
+	.stroke('5-1-5');
+	.stroke('5-2-1');
+	.stroke('5-2-2');
+	.stroke('5-2-3');
+	.stroke('5-2-4');
+	.stroke('5-2-5');
+	.stroke('14-1-1');
+	.stroke('14-1-2');
+	.stroke('14-1-3');
+	.stroke('14-1-4');
+	.stroke('14-1-5');
+	.stroke('14-1-6');
+	.stroke('14-1-7');
+	.stroke('14-1-8');
+	.stroke('14-1-9');
+	.stroke('14-1-10');
+	.stroke('14-1-11');
+	.stroke('14-1-12');
+	.stroke('14-1-13');
+	.stroke('14-1-14');
+
+	.bg('1-1-1');
+	.bg('1-2-1');
+	.bg('1-3-1');
+	.bg('1-4-1');
+	.bg('2-1-1');
+	.bg('2-1-2');
+	.bg('2-2-1');
+	.bg('2-2-2');
+	.bg('2-3-1');
+	.bg('2-3-2');
+	.bg('2-4-1');
+	.bg('2-4-2');
+	.bg('2-5-1');
+	.bg('2-5-2');
+	.bg('3-1-1');
+	.bg('3-1-2');
+	.bg('3-1-3');
+	.bg('3-2-1');
+	.bg('3-2-2');
+	.bg('3-2-3');
+	.bg('3-3-1');
+	.bg('3-3-2');
+	.bg('3-3-3');
+	.bg('3-4-1');
+	.bg('3-4-2');
+	.bg('3-4-3');
+	.bg('3-5-1');
+	.bg('3-5-2');
+	.bg('3-5-3');
+	.bg('4-1-1');
+	.bg('4-1-2');
+	.bg('4-1-3');
+	.bg('4-1-4');
+	.bg('4-2-1');
+	.bg('4-2-2');
+	.bg('4-2-3');
+	.bg('4-2-4');
+	.bg('4-3-1');
+	.bg('4-3-2');
+	.bg('4-3-3');
+	.bg('4-3-4');
+	.bg('5-1-1');
+	.bg('5-1-2');
+	.bg('5-1-3');
+	.bg('5-1-4');
+	.bg('5-1-5');
+	.bg('5-2-1');
+	.bg('5-2-2');
+	.bg('5-2-3');
+	.bg('5-2-4');
+	.bg('5-2-5');
+	.bg('14-1-1');
+	.bg('14-1-2');
+	.bg('14-1-3');
+	.bg('14-1-4');
+	.bg('14-1-5');
+	.bg('14-1-6');
+	.bg('14-1-7');
+	.bg('14-1-8');
+	.bg('14-1-9');
+	.bg('14-1-10');
+	.bg('14-1-11');
+	.bg('14-1-12');
+	.bg('14-1-13');
+	.bg('14-1-14');
+}

@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MeterChart rendering renders expected elements 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <div
+    className="Chart__meter"
+  >
+    <div
+      className="Chart__meterLabels"
+    >
+      <div
+        className="Chart__meterTitle"
+        title="a 35%"
+      >
+        a 35%
+      </div>
+      <div
+        className="Chart__meterEndLabel"
+      />
+    </div>
+    <div
+      className="Chart__meterTrack"
+      style={
+        {
+          "height": "8px",
+        }
+      }
+    >
+      <div
+        style={
+          {
+            "width": "35%",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MeterChart rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Chart Chart__wrapper TestClass"
+  id="random-id"
+>
+  <div
+    className="Chart__meter"
+  >
+    <div
+      className="Chart__meterTrack"
+      style={
+        {
+          "height": "8px",
+        }
+      }
+    >
+      <div
+        style={
+          {
+            "width": "42%",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MeterChart rendering renders expected elements when proportional is set 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <div
+    className="Chart__meter"
+  >
+    <div
+      className="Chart__meterLabels"
+    >
+      <div
+        className="Chart__meterTitle"
+        title="NaN GB used (NaN GB available)"
+      >
+        NaN GB used (NaN GB available)
+      </div>
+      <div
+        className="Chart__meterEndLabel"
+      >
+        <span
+          className="Chart__meterTotal"
+        >
+          64 GB total
+        </span>
+      </div>
+    </div>
+    <div
+      className="Chart__meterTrack"
+      style={
+        {
+          "height": "8px",
+        }
+      }
+    >
+      <div
+        style={
+          {
+            "width": "18.75%",
+          }
+        }
+      />
+      <div
+        style={
+          {
+            "width": "23.4375%",
+          }
+        }
+      />
+      <div
+        style={
+          {
+            "width": "9.375%",
+          }
+        }
+      />
+      <div
+        className="Chart__meterPeak"
+        style={
+          {
+            "left": "90.625%",
+          }
+        }
+      />
+    </div>
+  </div>
+  <Legend
+    className="start bottom"
+    clickable={false}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[Function]}
+    groups={
+      [
+        "Alpha",
+        "Beta",
+        "Gamma",
+      ]
+    }
+  />
+</div>
+`;
+
+exports[`MeterChart rendering renders expected elements when status is set and value matches danger 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <div
+    className="Chart__meter"
+  >
+    <div
+      className="Chart__meterLabels"
+    >
+      <div
+        className="Chart__meterTitle"
+        title="a 95%"
+      >
+        a 95%
+      </div>
+      <div
+        className="Chart__meterEndLabel"
+      >
+        <ErrorFilled
+          className="Chart__meterDanger"
+        />
+      </div>
+    </div>
+    <div
+      className="Chart__meterTrack"
+      style={
+        {
+          "height": "8px",
+        }
+      }
+    >
+      <div
+        className="Chart__meterDangerBg"
+        style={
+          {
+            "width": "95%",
+          }
+        }
+      />
+      <div
+        className="Chart__meterPeak"
+        style={
+          {
+            "left": "97%",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MeterChart rendering renders expected elements when status is set and value matches success 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <div
+    className="Chart__meter"
+  >
+    <div
+      className="Chart__meterLabels"
+    >
+      <div
+        className="Chart__meterTitle"
+        title="a 35%"
+      >
+        a 35%
+      </div>
+      <div
+        className="Chart__meterEndLabel"
+      >
+        <CheckmarkFilled
+          className="Chart__meterSuccess"
+        />
+      </div>
+    </div>
+    <div
+      className="Chart__meterTrack"
+      style={
+        {
+          "height": "8px",
+        }
+      }
+    >
+      <div
+        className="Chart__meterSuccessBg"
+        style={
+          {
+            "width": "35%",
+          }
+        }
+      />
+      <div
+        className="Chart__meterPeak"
+        style={
+          {
+            "left": "90%",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MeterChart rendering renders expected elements when status is set and value matches warning 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <div
+    className="Chart__meter"
+  >
+    <div
+      className="Chart__meterLabels"
+    >
+      <div
+        className="Chart__meterTitle"
+        title="a 85%"
+      >
+        a 85%
+      </div>
+      <div
+        className="Chart__meterEndLabel"
+      >
+        <WarningFilled
+          className="Chart__meterWarning"
+        />
+      </div>
+    </div>
+    <div
+      className="Chart__meterTrack"
+      style={
+        {
+          "height": "8px",
+        }
+      }
+    >
+      <div
+        className="Chart__meterWarningBg"
+        style={
+          {
+            "width": "85%",
+          }
+        }
+      />
+      <div
+        className="Chart__meterPeak"
+        style={
+          {
+            "left": "90%",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

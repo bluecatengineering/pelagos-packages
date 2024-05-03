@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScatterChart rendering renders expected elements 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <g
+      className="Chart__grid"
+    >
+      <rect />
+      <g />
+      <g />
+    </g>
+    <ChartAxes />
+    <g
+      aria-label="data"
+      className="Chart__dots"
+      role="group"
+    />
+    <g
+      className="Chart__zero"
+    />
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[Function]}
+    groups={[]}
+  />
+  <div
+    className="Chart__hintContainer"
+  />
+</div>
+`;
+
+exports[`ScatterChart rendering renders expected elements when data loading is set 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <g
+      className="Chart__grid"
+    >
+      <rect />
+      <g />
+      <g />
+    </g>
+    <ChartAxes />
+    <g
+      aria-label="data"
+      className="Chart__dots"
+      role="group"
+    />
+    <g
+      className="Chart__zero"
+    />
+    <LoadingGrid
+      gradientId="random-id-loading"
+    />
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[Function]}
+    groups={[]}
+  />
+  <div
+    className="Chart__hintContainer"
+  />
+</div>
+`;
+
+exports[`ScatterChart rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Chart Chart__wrapper TestClass"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <g
+      className="Chart__grid"
+    >
+      <rect />
+      <g />
+      <g />
+    </g>
+    <ChartAxes />
+    <g
+      aria-label="data"
+      className="Chart__dots"
+      role="group"
+    />
+    <g
+      className="Chart__zero"
+    />
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[Function]}
+    groups={[]}
+  />
+  <div
+    className="Chart__hintContainer visible"
+  >
+    test-hint
+  </div>
+</div>
+`;
