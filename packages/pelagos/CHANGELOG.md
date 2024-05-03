@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.11.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.10.1...@bluecateng/pelagos@12.11.0) (2024-05-03)
+
+### Features
+
+- add condensed fonts ([682cd0e](https://github.com/bluecatengineering/pelagos-packages/commit/682cd0e7d6b1c4aae85d459a33ed33256c58afc9))
+- change default font to Roboto ([ad54e8d](https://github.com/bluecatengineering/pelagos-packages/commit/ad54e8d448714d4bc50959925224a2ad470d039d))
+
+### Bug Fixes
+
+- allow using fragments as children of TableBody ([a32676e](https://github.com/bluecatengineering/pelagos-packages/commit/a32676e36f1620ed1bfb674617d9876fd6a91713))
+
 ## [12.10.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.10.0...@bluecateng/pelagos@12.10.1) (2024-05-01)
 
 ### Bug Fixes
