@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Legend rendering renders expected elements 1`] = `
+<ul
+  aria-label="Data groups"
+  className="Chart Chart__legend horizontal"
+  id="random-id"
+  onClick={null}
+  onKeyDown={null}
+>
+  <li
+    data-group="foo"
+    data-index={0}
+  >
+    <div
+      aria-checked={true}
+      aria-labelledby="random-id-0"
+      className="Chart__legendCheck undefined"
+      role="checkbox"
+      tabIndex={-1}
+    />
+    <p
+      aria-hidden={true}
+      id="random-id-0"
+    >
+      foo
+    </p>
+  </li>
+  <li
+    data-group="bar"
+    data-index={1}
+  >
+    <div
+      aria-checked={true}
+      aria-labelledby="random-id-1"
+      className="Chart__legendCheck undefined"
+      role="checkbox"
+      tabIndex={-1}
+    />
+    <p
+      aria-hidden={true}
+      id="random-id-1"
+    >
+      bar
+    </p>
+  </li>
+</ul>
+`;
+
+exports[`Legend rendering renders expected elements when optional properties are set 1`] = `
+<ul
+  aria-label="Data groups"
+  className="Chart Chart__legend vertical clickable some-selected TestClass"
+  id="random-id"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+>
+  <li
+    data-group="foo"
+    data-index={0}
+  >
+    <div
+      aria-checked={false}
+      aria-labelledby="random-id-0"
+      className="Chart__legendCheck undefined"
+      role="checkbox"
+      tabIndex={0}
+    />
+    <p
+      aria-hidden={true}
+      id="random-id-0"
+    >
+      foo
+    </p>
+  </li>
+  <li
+    data-group="bar"
+    data-index={1}
+  >
+    <div
+      aria-checked={true}
+      aria-labelledby="random-id-1"
+      className="Chart__legendCheck undefined"
+      role="checkbox"
+      tabIndex={0}
+    />
+    <p
+      aria-hidden={true}
+      id="random-id-1"
+    >
+      bar
+    </p>
+  </li>
+</ul>
+`;

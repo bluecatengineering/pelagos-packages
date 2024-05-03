@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DonutChart rendering renders expected elements 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <svg
+      className="Chart__donutWrapper"
+    >
+      <g
+        aria-label="data"
+        onMouseLeave={[Function]}
+        role="group"
+      />
+      <g
+        aria-label="center"
+        role="group"
+      >
+        <text
+          className="Chart__donutTitle"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          y={0}
+        />
+      </g>
+    </svg>
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[Function]}
+    groups={[]}
+  />
+  <div
+    className="Chart__hintContainer"
+  />
+</div>
+`;
+
+exports[`DonutChart rendering renders expected elements when data loading is set 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <svg
+      className="Chart__donutWrapper"
+    >
+      <g
+        aria-label="data"
+        onMouseLeave={[Function]}
+        role="group"
+      />
+      <LoadingGradient
+        className="Chart__loadingAreas"
+        id="random-id-loading"
+      />
+    </svg>
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[Function]}
+    groups={[]}
+  />
+  <div
+    className="Chart__hintContainer"
+  />
+</div>
+`;
+
+exports[`DonutChart rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Chart Chart__wrapper TestClass"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <svg
+      className="Chart__donutWrapper"
+    >
+      <g
+        aria-label="data"
+        onMouseLeave={[Function]}
+        role="group"
+      />
+      <g
+        aria-label="center"
+        role="group"
+      >
+        <text
+          className="Chart__donutNumber"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          y="-10"
+        >
+          format-.3s
+        </text>
+        <text
+          className="Chart__donutTitle"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          y={10}
+        >
+          Foo
+        </text>
+      </g>
+    </svg>
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[Function]}
+    groups={
+      [
+        "a",
+        "b",
+      ]
+    }
+    selected={
+      [
+        "b",
+      ]
+    }
+  />
+  <div
+    className="Chart__hintContainer visible"
+  >
+    test-hint
+  </div>
+</div>
+`;

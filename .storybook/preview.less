@@ -5,21 +5,26 @@
 @import '../packages/pelagos/less/spacing';
 @import '../packages/pelagos/less/spinner';
 @import '../packages/pelagos/less/themes';
+@import '../packages/pelagos-charts/less/palettes';
 
 [data-theme='white'] {
 	.theme-white();
+	.charts-light();
 }
 
 [data-theme='cg00'] {
 	.theme-cg00();
+	.charts-light();
 }
 
 [data-theme='yg100'] {
 	.theme-yg100();
+	.charts-dark();
 }
 
 [data-theme='g100'] {
 	.theme-g100();
+	.charts-dark();
 }
 
 :root {
@@ -60,6 +65,11 @@ body {
 
 .Story__alignStretch {
 	align-self: stretch;
+}
+
+.Story__chart {
+	width: calc(100vw - 2rem);
+	height: calc(100vh - 2rem);
 }
 
 .CssSpinner {

@@ -16,7 +16,7 @@
     "update-shadows": "node scripts/update-shadows",
     "update-spacing": "node scripts/update-spacing",
     "update-themes": "node scripts/update-themes",
-    "copy-resources": "node scripts/copy-resources",
+    "copy-resources": "node ../../scripts/copy-resources",
     "prepack": "npm run build"
   },
   "repository": {

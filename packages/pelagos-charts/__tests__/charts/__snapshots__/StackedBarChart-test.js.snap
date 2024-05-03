@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StackedBarChart rendering renders expected elements 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <g
+      className="Chart__grid"
+    >
+      <rect />
+      <g />
+      <g />
+    </g>
+    <ChartAxes />
+    <g
+      aria-label="data"
+      className="Chart__stackBars"
+      role="group"
+    />
+    <g
+      className="Chart__zero"
+    />
+    <line
+      className="Chart__ruler"
+    />
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[MockFunction]}
+    groups={
+      [
+        "a",
+      ]
+    }
+  />
+  <div
+    className="Chart__hintContainer"
+  />
+</div>
+`;
+
+exports[`StackedBarChart rendering renders expected elements when data loading is set 1`] = `
+<div
+  className="Chart Chart__wrapper"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <g
+      className="Chart__grid"
+    >
+      <rect />
+      <g />
+      <g />
+    </g>
+    <ChartAxes />
+    <g
+      aria-label="data"
+      className="Chart__stackBars"
+      role="group"
+    />
+    <g
+      className="Chart__zero"
+    />
+    <line
+      className="Chart__ruler"
+    />
+    <LoadingGrid
+      gradientId="random-id-loading"
+    />
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[MockFunction]}
+    groups={[]}
+  />
+  <div
+    className="Chart__hintContainer"
+  />
+</div>
+`;
+
+exports[`StackedBarChart rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Chart Chart__wrapper TestClass"
+  id="random-id"
+>
+  <svg
+    className="Chart__chart"
+  >
+    <g
+      className="Chart__grid"
+    >
+      <rect />
+      <g />
+      <g />
+    </g>
+    <ChartAxes />
+    <g
+      aria-label="data"
+      className="Chart__stackBars"
+      role="group"
+    />
+    <g
+      className="Chart__zero"
+    />
+    <line
+      className="Chart__ruler"
+    />
+  </svg>
+  <Legend
+    className="start bottom"
+    clickable={true}
+    direction="horizontal"
+    formatter={[Function]}
+    getBgClass={[MockFunction]}
+    groups={
+      [
+        "a",
+      ]
+    }
+  />
+  <div
+    className="Chart__hintContainer visible"
+    style="test-style"
+  >
+    test-hint
+  </div>
+</div>
+`;

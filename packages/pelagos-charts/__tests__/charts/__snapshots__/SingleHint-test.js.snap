@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingleHint rendering renders expected elements 1`] = `
+<Layer
+  as="ul"
+  className="Chart Chart__hint"
+>
+  <li>
+    <span>
+      x
+    </span>
+    <span>
+      bottomFormatter
+    </span>
+  </li>
+  <li>
+    <span>
+      y
+    </span>
+    <span>
+      leftFormatter
+    </span>
+  </li>
+  <li>
+    <span
+      className="Chart__hintColor getBgClass"
+    />
+    <span>
+      group-label
+    </span>
+    <span>
+      groupFormatter
+    </span>
+  </li>
+</Layer>
+`;
+
+exports[`SingleHint rendering renders expected elements when optional properties are set 1`] = `
+<Layer
+  as="ul"
+  className="Chart Chart__hint"
+>
+  <li>
+    <span>
+      bottom-title
+    </span>
+    <span>
+      bottomFormatter
+    </span>
+  </li>
+  <li>
+    <span>
+      left-title
+    </span>
+    <span>
+      leftFormatter
+    </span>
+  </li>
+  <li>
+    <span
+      className="Chart__hintColor getBgClass"
+    />
+    <span>
+      group-label
+    </span>
+    <span>
+      groupFormatter
+    </span>
+  </li>
+</Layer>
+`;

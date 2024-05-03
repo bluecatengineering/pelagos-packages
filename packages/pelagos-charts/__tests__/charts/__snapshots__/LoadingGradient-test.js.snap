@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingGradient rendering renders expected elements 1`] = `
+<defs>
+  <linearGradient
+    className="TestClass"
+    gradientUnits="userSpaceOnUse"
+    id="test"
+  >
+    <stop
+      className="stop-bg"
+      offset={0}
+    >
+      <animate
+        attributeName="offset"
+        calcMode="spline"
+        dur="3s"
+        from={0}
+        keySplines=".5 0 .5 1"
+        keyTimes="0;1"
+        repeatCount="indefinite"
+        to={0.75}
+      />
+    </stop>
+    <stop
+      className="stop-fg"
+      offset={0.125}
+    >
+      <animate
+        attributeName="offset"
+        calcMode="spline"
+        dur="3s"
+        from={0.125}
+        keySplines=".5 0 .5 1"
+        keyTimes="0;1"
+        repeatCount="indefinite"
+        to={0.875}
+      />
+    </stop>
+    <stop
+      className="stop-bg"
+      offset={0.25}
+    >
+      <animate
+        attributeName="offset"
+        calcMode="spline"
+        dur="3s"
+        from={0.25}
+        keySplines=".5 0 .5 1"
+        keyTimes="0;1"
+        repeatCount="indefinite"
+        to={1}
+      />
+    </stop>
+  </linearGradient>
+</defs>
+`;

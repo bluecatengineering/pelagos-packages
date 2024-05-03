@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingGrid rendering renders expected elements 1`] = `
+<g
+  className="Chart__shimmerLines"
+  stroke="url('#test')"
+>
+  <LoadingGradient
+    className="Chart__loadingLines"
+    id="test"
+  />
+  <rect
+    className="Chart__skeletonBackdrop"
+    height="100%"
+    width="100%"
+  />
+  <g />
+  <g />
+</g>
+`;
