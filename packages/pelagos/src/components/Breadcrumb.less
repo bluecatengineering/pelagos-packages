@@ -1,6 +1,5 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
-@import '../../less/utils';
 
 @layer pelagos {
 	.Breadcrumb {
@@ -31,11 +30,6 @@
 	.Breadcrumb__item {
 		display: flex;
 		align-items: center;
-
-		& > a {
-			@base-ellipsis();
-			max-width: 150px;
-		}
 
 		& > .IconMenu {
 			width: 20px;
