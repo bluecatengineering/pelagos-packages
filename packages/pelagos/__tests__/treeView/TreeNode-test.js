@@ -1,9 +1,11 @@
-import {useContext, useRef} from 'react';
+import {useContext, useEffect, useRef} from 'react';
 import {shallow} from 'enzyme';
 
 import TreeNode from '../../src/treeView/TreeNode';
 
 jest.unmock('../../src/treeView/TreeNode');
+
+const anyFunction = expect.any(Function);
 
 describe('TreeNode', () => {
 	describe('rendering', () => {
@@ -61,13 +63,32 @@ describe('TreeNode', () => {
 	});
 
 	describe('behaviour', () => {
-		it('calls setFocused when focused is a child node', () => {
+		it('adds an effect which calls setFocused when focused is a child node', () => {
+			const focused = ['test-id', 'child-id'];
 			const setFocused = jest.fn();
-			useContext
-				.mockReturnValueOnce({focused: ['test-id', 'child-id'], setFocused})
-				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			useContext.mockReturnValueOnce({focused, setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
 			shallow(<TreeNode id="test-id" label="Test" />);
+			expect(useEffect.mock.calls[0]).toEqual([
+				anyFunction,
+				[1, undefined, focused, 'test-id', 0, ['test-id'], setFocused],
+			]);
+
+			useEffect.mock.calls[0][0]();
 			expect(setFocused.mock.calls).toEqual([[['test-id']]]);
+		});
+
+		it('adds an effect which does not call setFocused when focused is not a child node', () => {
+			const focused = ['other-id'];
+			const setFocused = jest.fn();
+			useContext.mockReturnValueOnce({focused, setFocused}).mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			shallow(<TreeNode id="test-id" label="Test" />);
+			expect(useEffect.mock.calls[0]).toEqual([
+				anyFunction,
+				[1, undefined, focused, 'test-id', 0, ['test-id'], setFocused],
+			]);
+
+			useEffect.mock.calls[0][0]();
+			expect(setFocused.mock.calls).toEqual([]);
 		});
 
 		it('calls onSelect when the node is clicked', () => {
