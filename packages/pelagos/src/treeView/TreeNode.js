@@ -1,4 +1,4 @@
-import {useCallback, useContext, useMemo, useRef} from 'react';
+import {useCallback, useContext, useEffect, useMemo, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 import CaretRight from '@carbon/icons-react/es/CaretRight';
@@ -150,9 +150,11 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 		[expanded, id, level, onSelect, onToggle, path, selected, setFocused]
 	);
 
-	if (!expanded && focused.length > childrenLevel && focused[level] === id) {
-		setFocused(path);
-	}
+	useEffect(() => {
+		if (!expanded && focused.length > childrenLevel && focused[level] === id) {
+			setFocused(path);
+		}
+	}, [childrenLevel, expanded, focused, id, level, path, setFocused]);
 
 	return (
 		<li
