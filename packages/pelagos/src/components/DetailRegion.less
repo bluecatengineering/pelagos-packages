@@ -1,5 +1,6 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
+@import '../../less/utils';
 
 @layer pelagos {
 	.DetailRegion {
@@ -14,7 +15,16 @@
 
 		&__title {
 			@label-01();
+			@base-ellipsis();
 			color: var(--text-secondary);
+
+			&.no-info {
+				max-width: 100%;
+			}
+
+			&.info {
+				max-width: calc(100% - 24px);
+			}
 		}
 	}
 }
