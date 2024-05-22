@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {useCallback, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
@@ -203,9 +203,14 @@ const Select = ({
 
 	useSelectPositioner(open, buttonRef, listRef);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (open) {
-			scrollToItem(listRef.current, listRef.current.children[focused]);
+			const list = listRef.current;
+			scrollToItem(list, list.children[focused]);
+			const themeElement = buttonRef.current.closest('[data-theme]');
+			if (themeElement) {
+				list.dataset.theme = themeElement.dataset.theme;
+			}
 		}
 	}, [open, focused]);
 
