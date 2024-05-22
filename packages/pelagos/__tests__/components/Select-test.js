@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useLayoutEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import Select from '../../src/components/Select';
@@ -153,27 +153,51 @@ describe('Select', () => {
 	describe('behaviour', () => {
 		it('scrolls to current option when open changes from false to true', () => {
 			const child = {offsetTop: 50, offsetHeight: 25};
+			const button = {closest: jest.fn().mockReturnValue({dataset: {theme: 'white'}})};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
 				scrollHeight: 75,
 
 				children: [{}, {}, child],
+				dataset: {},
 			};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2]);
-			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
+			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [true, 2]]);
+			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, 2]]);
 
-			useEffect.mock.calls[0][0]();
+			useLayoutEffect.mock.calls[0][0]();
 			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
+			expect(list.dataset.theme).toBe('white');
+		});
+
+		it('scrolls to current option when open changes from false to true and closest returns null', () => {
+			const child = {offsetTop: 50, offsetHeight: 25};
+			const button = {closest: jest.fn().mockReturnValue(null)};
+			const list = {
+				clientHeight: 50,
+				scrollTop: 0,
+				scrollHeight: 75,
+
+				children: [{}, {}, child],
+				dataset: {},
+			};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2]);
+			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
+			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
+			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, 2]]);
+
+			useLayoutEffect.mock.calls[0][0]();
+			expect(scrollToItem.mock.calls).toEqual([[list, child]]);
+			expect(list.dataset.theme).toBeUndefined();
 		});
 
 		it('does not scroll to current option when open changes from true to false', () => {
 			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [false, -1]]);
+			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [false, -1]]);
 
-			useEffect.mock.calls[0][0]();
+			useLayoutEffect.mock.calls[0][0]();
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 

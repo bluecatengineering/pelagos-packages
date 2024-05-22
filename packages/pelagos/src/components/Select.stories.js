@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import identity from 'lodash-es/identity';
 
+import WithLayers from '../../templates/WithLayers';
+
 import Select from './Select';
 
 const options = ['Alpha', 'Beta', 'Gamma'];
@@ -31,4 +33,27 @@ export const Disabled = {
 
 export const Error = {
 	args: {id: 'error', error: true, value: 'Alpha', 'aria-label': 'Error', options, getOptionKey, renderOption},
+};
+
+// eslint-disable-next-line react/prop-types -- story
+const LayeredSelect = ({level}) => {
+	const [value, setValue] = useState('Alpha');
+	return (
+		<Select
+			id={`level-${level}`}
+			value={value}
+			aria-label="Default"
+			options={options}
+			getOptionKey={getOptionKey}
+			renderOption={renderOption}
+			onChange={setValue}
+		/>
+	);
+};
+
+export const _WithLayers = {
+	render: () => <WithLayers>{(level) => <LayeredSelect level={level} />}</WithLayers>,
+	parameters: {
+		controls: {hideNoControlsWarning: true},
+	},
 };
