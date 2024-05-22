@@ -6,9 +6,8 @@ jest.unmock('../../src/hooks/useSelectPositioner');
 
 const anyFunction = expect.any(Function);
 
-const addEventListener = jest.fn();
-const removeEventListener = jest.fn();
-global.document = {addEventListener, removeEventListener};
+global.document = {addEventListener: jest.fn(), removeEventListener: jest.fn()};
+global.window = {addEventListener: jest.fn(), removeEventListener: jest.fn()};
 global.innerHeight = 500;
 
 describe('useSelectPositioner', () => {
@@ -23,14 +22,20 @@ describe('useSelectPositioner', () => {
 		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [buttonRef, popUpRef, true]]);
 		const remove = useLayoutEffect.mock.calls[0][0]();
 		expect(popUp.style).toEqual({top: '100px', left: '200px', width: '400px'});
-		expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
+		expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
+		expect(window.addEventListener.mock.calls).toEqual([['resize', anyFunction, {passive: true, capture: true}]]);
 
 		button.getBoundingClientRect = () => ({top: 330, bottom: 350, left: 200, width: 400});
-		addEventListener.mock.calls[0][1]();
+		document.addEventListener.mock.calls[0][1]();
 		expect(popUp.style).toEqual({top: '130px', left: '200px', width: '400px'});
 
+		button.getBoundingClientRect = () => ({top: 230, bottom: 250, left: 200, width: 400});
+		window.addEventListener.mock.calls[0][1]();
+		expect(popUp.style).toEqual({top: '250px', left: '200px', width: '400px'});
+
 		remove();
-		expect(removeEventListener.mock.calls).toEqual(addEventListener.mock.calls);
+		expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
+		expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
 	});
 
 	it('does not set the pop-up location when open is false', () => {

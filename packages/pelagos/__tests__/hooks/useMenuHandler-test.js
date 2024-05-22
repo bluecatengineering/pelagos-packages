@@ -8,6 +8,7 @@ jest.unmock('../../src/hooks/useMenuHandler');
 const anyFunction = expect.any(Function);
 
 global.document = {addEventListener: jest.fn(), removeEventListener: jest.fn()};
+global.window = {addEventListener: jest.fn(), removeEventListener: jest.fn()};
 
 describe('useMenuHandler', () => {
 	describe('handleButtonKeyDown', () => {
@@ -405,6 +406,7 @@ describe('useMenuHandler', () => {
 			const remove = useLayoutEffect.mock.calls[0][0]();
 			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
 			expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
+			expect(window.addEventListener.mock.calls).toEqual([['resize', anyFunction, {passive: true, capture: true}]]);
 			expect(createFocusTrap.mock.calls).toEqual([
 				[menu, {initialFocus: firstChild, allowOutsideClick: anyFunction, onPostDeactivate: anyFunction}],
 			]);
@@ -430,8 +432,18 @@ describe('useMenuHandler', () => {
 				[button, menu],
 			]);
 
+			const onResize = window.addEventListener.mock.calls[0][1];
+			onResize();
+
+			expect(setPopUpPosition.mock.calls).toEqual([
+				[button, menu],
+				[button, menu],
+				[button, menu],
+			]);
+
 			remove();
 			expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
+			expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
 		});
 
 		it('does nothing when menuVisible is false', () => {

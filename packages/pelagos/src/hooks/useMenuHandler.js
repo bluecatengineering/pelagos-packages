@@ -135,9 +135,11 @@ const useMenuHandler = (setPopUpPosition) => {
 			}));
 			trap.activate();
 			document.addEventListener('scroll', handleScroll, {passive: true, capture: true});
+			window.addEventListener('resize', handleScroll, {passive: true, capture: true});
 		}
 		return () => {
 			document.removeEventListener('scroll', handleScroll, {passive: true, capture: true});
+			window.removeEventListener('resize', handleScroll, {passive: true, capture: true});
 		};
 	}, [expanded, setPopUpPosition]);
 
