@@ -37,6 +37,7 @@ const useAreaEditorPositioner = (ref, buttonId, onClose) =>
 		button.setAttribute('aria-controls', editor.id);
 
 		document.addEventListener('scroll', setEditorPosition, {passive: true, capture: true});
+		window.addEventListener('resize', setEditorPosition, {passive: true, capture: true});
 		const trap = createFocusTrap(editor, {
 			setReturnFocus: button,
 			allowOutsideClick: (event) => {
@@ -53,6 +54,7 @@ const useAreaEditorPositioner = (ref, buttonId, onClose) =>
 			button.removeAttribute('aria-expanded');
 			button.removeAttribute('aria-controls');
 			document.removeEventListener('scroll', setEditorPosition, {passive: true, capture: true});
+			window.removeEventListener('resize', setEditorPosition, {passive: true, capture: true});
 			trap.deactivate();
 		};
 	}, [ref, buttonId, onClose]);

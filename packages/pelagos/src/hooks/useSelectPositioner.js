@@ -18,9 +18,11 @@ export default (open, buttonRef, popUpRef) =>
 		if (open) {
 			setPosition(button, popUp);
 			document.addEventListener('scroll', setPosition, {passive: true, capture: true});
+			window.addEventListener('resize', setPosition, {passive: true, capture: true});
 		}
 
 		return () => {
 			document.removeEventListener('scroll', setPosition, {passive: true, capture: true});
+			window.removeEventListener('resize', setPosition, {passive: true, capture: true});
 		};
 	}, [buttonRef, popUpRef, open]);

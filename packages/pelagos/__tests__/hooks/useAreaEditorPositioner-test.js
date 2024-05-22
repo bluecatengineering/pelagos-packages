@@ -7,12 +7,10 @@ jest.unmock('../../src/hooks/useAreaEditorPositioner');
 
 const anyFunction = expect.any(Function);
 
-const getElementById = jest.fn();
-const addEventListener = jest.fn();
-const removeEventListener = jest.fn();
 global.innerWidth = 500;
 global.innerHeight = 500;
-global.document = {getElementById, addEventListener, removeEventListener};
+global.document = {getElementById: jest.fn(), addEventListener: jest.fn(), removeEventListener: jest.fn()};
+global.window = {addEventListener: jest.fn(), removeEventListener: jest.fn()};
 
 describe('useAreaEditorPositioner', () => {
 	it('sets the editor location relative the button', () => {
@@ -25,29 +23,34 @@ describe('useAreaEditorPositioner', () => {
 		const buttonId = 'buttonId';
 		const activate = jest.fn();
 		const deactivate = jest.fn();
-		getElementById.mockReturnValueOnce(button);
+		document.getElementById.mockReturnValueOnce(button);
 		createFocusTrap.mockReturnValue({activate, deactivate});
 
 		useAreaEditorPositioner(ref, buttonId, onClose);
 		expect(useLayoutEffect.mock.calls).toEqual([[expect.any(Function), [ref, buttonId, onClose]]]);
 		const remove = useLayoutEffect.mock.calls[0][0]();
-		expect(getElementById.mock.calls).toEqual([[buttonId]]);
+		expect(document.getElementById.mock.calls).toEqual([[buttonId]]);
 		expect(editor.style.top).toBe('100px');
 		expect(editor.style.left).toBe('200px');
 		expect(setAttribute.mock.calls).toEqual([
 			['aria-expanded', 'true'],
 			['aria-controls', 'editor'],
 		]);
-		expect(addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
+		expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
 		expect(createFocusTrap.mock.calls).toEqual([
 			[editor, {setReturnFocus: button, allowOutsideClick: anyFunction, onPostDeactivate: onClose}],
 		]);
 		expect(activate.mock.calls).toEqual([[]]);
 
 		button.getBoundingClientRect = () => ({top: 330, bottom: 350, left: 300, right: 400});
-		addEventListener.mock.calls[0][1]();
+		document.addEventListener.mock.calls[0][1]();
 		expect(editor.style.top).toBe('180px');
 		expect(editor.style.left).toBe('350px');
+
+		button.getBoundingClientRect = () => ({top: 230, bottom: 250, left: 200, right: 300});
+		window.addEventListener.mock.calls[0][1]();
+		expect(editor.style.top).toBe('250px');
+		expect(editor.style.left).toBe('200px');
 
 		const {allowOutsideClick} = createFocusTrap.mock.calls[0][1];
 		expect(allowOutsideClick({type: 'other'})).toBe(false);
@@ -57,7 +60,8 @@ describe('useAreaEditorPositioner', () => {
 
 		remove();
 		expect(removeAttribute.mock.calls).toEqual([['aria-expanded'], ['aria-controls']]);
-		expect(removeEventListener.mock.calls).toEqual(addEventListener.mock.calls);
+		expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
+		expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
 		expect(deactivate.mock.calls).toEqual([[], []]);
 	});
 
@@ -67,12 +71,12 @@ describe('useAreaEditorPositioner', () => {
 		const button = {setAttribute, getBoundingClientRect: () => ({top: 80, bottom: 100, left: 200})};
 		const ref = {current: editor};
 		const buttonId = 'buttonId';
-		getElementById.mockReturnValueOnce(button);
+		document.getElementById.mockReturnValueOnce(button);
 
 		useAreaEditorPositioner(ref, buttonId, null);
 		expect(useLayoutEffect.mock.calls).toEqual([[expect.any(Function), [ref, buttonId, null]]]);
 		useLayoutEffect.mock.calls[0][0]();
-		expect(getElementById.mock.calls).toEqual([[buttonId]]);
+		expect(document.getElementById.mock.calls).toEqual([[buttonId]]);
 		expect(editor.style.top).toBe('0px');
 		expect(editor.style.left).toBe('200px');
 	});
