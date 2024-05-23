@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.11.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.11.0...@bluecateng/pelagos@12.11.1) (2024-05-23)
+
+### Bug Fixes
+
+- add resize listeners in pop-up positioner hooks ([eb4abdf](https://github.com/bluecatengineering/pelagos-packages/commit/eb4abdf6892637e77282307655329c2e54ad5452))
+- display Select correctly in mixed theme setups ([af7863f](https://github.com/bluecatengineering/pelagos-packages/commit/af7863f3a82d31fadeff8e22ee5f1111baa09c48))
+- fix warning in TreeNode when state is changed on render ([7e1fa9f](https://github.com/bluecatengineering/pelagos-packages/commit/7e1fa9fe967feaa536d7114415e3522cb36af9b0))
+- remove size restriction on breadcrumb links ([481a8f6](https://github.com/bluecatengineering/pelagos-packages/commit/481a8f68ffb7fda6f2d799d4ce573841635afbd9))
+- remove usages of field-disabled ([0d17879](https://github.com/bluecatengineering/pelagos-packages/commit/0d17879d404d88e6d5389c48e075f904872144a7))
+- truncate ContentSwitcher buttons with an ellipsis ([dc1134e](https://github.com/bluecatengineering/pelagos-packages/commit/dc1134e66d12ed7b96a665589f199f5bb7608f4d))
+- truncate detail region labels if too long ([e3f10c4](https://github.com/bluecatengineering/pelagos-packages/commit/e3f10c484313e6bb790ef901993e8f1fb493a920))
+
 ## [12.11.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.10.1...@bluecateng/pelagos@12.11.0) (2024-05-03)
 
 ### Features
