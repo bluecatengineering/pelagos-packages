@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # tag=v4.1.2
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # tag=v4.1.6
         with:
           fetch-depth: 0
 
@@ -27,7 +27,7 @@ jobs:
           npx lerna run prepack
 
       - name: Publish to Chromatic
-        uses: chromaui/action@3dcb6636a4f8eed347ef6214f5d74d2b5fee45e4 # tag=v11.3.0
+        uses: chromaui/action@57a72947e9d7a6d213906cd506276c707e0c580f # tag=v11.4.0
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true
