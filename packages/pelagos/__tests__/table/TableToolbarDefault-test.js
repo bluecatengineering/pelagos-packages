@@ -19,9 +19,9 @@ describe('TableToolbarDefault', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when className is set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
-				<TableToolbarDefault className="TestClass">
+				<TableToolbarDefault className="TestClass" align="start">
 					<Button />
 				</TableToolbarDefault>
 			);

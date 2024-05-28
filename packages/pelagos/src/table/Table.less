@@ -345,12 +345,19 @@
 
 		&__toolbarDefault {
 			flex-direction: row;
-			justify-content: flex-end;
 			transition: transform 0.15s ease-out;
 
 			.Table__toolbarBatch--active + & {
 				transform: translateY(var(--table-row-height));
 			}
+		}
+
+		&--toolbarStart {
+			justify-content: flex-start;
+		}
+
+		&--toolbarEnd {
+			justify-content: flex-end;
 		}
 
 		&__search {

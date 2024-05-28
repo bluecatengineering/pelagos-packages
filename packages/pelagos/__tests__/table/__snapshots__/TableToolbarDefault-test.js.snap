@@ -2,18 +2,7 @@
 
 exports[`TableToolbarDefault rendering renders expected elements 1`] = `
 <div
-  className="Table__toolbarDefault"
->
-  <Button
-    size="medium"
-    type="tertiary"
-  />
-</div>
-`;
-
-exports[`TableToolbarDefault rendering renders expected elements when className is set 1`] = `
-<div
-  className="Table__toolbarDefault TestClass"
+  className="Table__toolbarDefault Table--toolbarEnd"
 >
   <Button
     size="medium"
@@ -25,7 +14,7 @@ exports[`TableToolbarDefault rendering renders expected elements when className 
 exports[`TableToolbarDefault rendering renders expected elements when hidden is set 1`] = `
 <div
   aria-hidden={true}
-  className="Table__toolbarDefault"
+  className="Table__toolbarDefault Table--toolbarEnd"
 >
   hideChild
 </div>
@@ -34,9 +23,20 @@ exports[`TableToolbarDefault rendering renders expected elements when hidden is 
 exports[`TableToolbarDefault rendering renders expected elements when hidden is set and children is a list 1`] = `
 <div
   aria-hidden={true}
-  className="Table__toolbarDefault"
+  className="Table__toolbarDefault Table--toolbarEnd"
 >
   hideChild
   hideChild
+</div>
+`;
+
+exports[`TableToolbarDefault rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Table__toolbarDefault Table--toolbarStart TestClass"
+>
+  <Button
+    size="medium"
+    type="tertiary"
+  />
 </div>
 `;
