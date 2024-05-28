@@ -1,8 +1,8 @@
-import timeTickFormat from './timeTickFormat';
+import timeTickFormatter from './timeTickFormatter';
 
 export default {
 	labels: null,
 	linear: null,
 	log: null,
-	time: timeTickFormat,
+	time: timeTickFormatter,
 };

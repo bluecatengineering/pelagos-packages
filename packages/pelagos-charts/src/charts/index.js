@@ -5,3 +5,4 @@ export {default as MeterChart} from './MeterChart';
 export {default as ScatterChart} from './ScatterChart';
 export {default as SimpleBarChart} from './SimpleBarChart';
 export {default as StackedBarChart} from './StackedBarChart';
+export {default as timeTickFormatter} from './timeTickFormatter';
