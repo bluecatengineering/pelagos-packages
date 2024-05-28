@@ -1,53 +1,25 @@
-import {useCallback, useRef, useState} from 'react';
+import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecateng/l10n.macro';
-import Close from '@carbon/icons-react/es/Close';
-import Search from '@carbon/icons-react/es/Search';
+
+import Search from '../components/Search';
 
 /** Search input for a table toolbar. */
 export const OldTableToolbarSearch = ({className, initialText, onChange, ...props}) => {
-	const inputRef = useRef(null);
 	const [text, setText] = useState(initialText || '');
 	const handleChange = useCallback(
-		(event) => {
-			const text = event.target.value.toLowerCase();
+		(text) => {
 			setText(text);
 			onChange(text);
 		},
 		[onChange]
 	);
-	const handleKeyDown = useCallback(
-		(event) => {
-			if (event.keyCode === 27) {
-				setText('');
-				onChange('');
-			}
-		},
-		[onChange]
-	);
-	const handleSearchClick = useCallback(() => inputRef.current.focus(), []);
-	const handleClearClick = useCallback(() => (inputRef.current.focus(), setText(''), onChange('')), [onChange]);
 	return (
-		<div className={`Table__search${className ? ` ${className}` : ''}`}>
-			<span onClick={handleSearchClick} aria-hidden>
-				<Search className="Table__searchIcon" />
-			</span>
-			<input
-				{...props}
-				className="Table__searchInput"
-				type="text"
-				role="searchbox"
-				value={text}
-				ref={inputRef}
-				onChange={handleChange}
-				onKeyDown={handleKeyDown}
-			/>
-			{text && (
-				<button className="Table__searchClear" aria-label={t`Clear search`} onClick={handleClearClick}>
-					<Close />
-				</button>
-			)}
-		</div>
+		<Search
+			{...props}
+			className={`Table__search${className ? ` ${className}` : ''}`}
+			value={text}
+			onChange={handleChange}
+		/>
 	);
 };
 
@@ -61,42 +33,9 @@ OldTableToolbarSearch.propTypes = {
 };
 
 /** Search input for a table toolbar. */
-export const NewTableToolbarSearch = ({className, value, onChange, ...props}) => {
-	const inputRef = useRef(null);
-	const handleChange = useCallback((event) => onChange(event.target.value.toLowerCase()), [onChange]);
-	const handleKeyDown = useCallback(
-		(event) => {
-			if (event.keyCode === 27) {
-				onChange('');
-			}
-		},
-		[onChange]
-	);
-	const handleSearchClick = useCallback(() => inputRef.current.focus(), []);
-	const handleClearClick = useCallback(() => (inputRef.current.focus(), onChange('')), [onChange]);
-	return (
-		<div className={`Table__search${className ? ` ${className}` : ''}`}>
-			<span onClick={handleSearchClick} aria-hidden>
-				<Search className="Table__searchIcon" />
-			</span>
-			<input
-				{...props}
-				className="Table__searchInput"
-				type="text"
-				role="searchbox"
-				value={value}
-				ref={inputRef}
-				onChange={handleChange}
-				onKeyDown={handleKeyDown}
-			/>
-			{value && (
-				<button className="Table__searchClear" aria-label={t`Clear search`} onClick={handleClearClick}>
-					<Close />
-				</button>
-			)}
-		</div>
-	);
-};
+export const NewTableToolbarSearch = ({className, value, onChange, ...props}) => (
+	<Search {...props} className={`Table__search${className ? ` ${className}` : ''}`} value={value} onChange={onChange} />
+);
 
 NewTableToolbarSearch.propTypes = {
 	/** The component class name(s). */

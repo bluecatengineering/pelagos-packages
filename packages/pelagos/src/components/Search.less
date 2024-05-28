@@ -1,0 +1,78 @@
+@import '../../less/spacing';
+@import '../../less/utils';
+
+@layer pelagos {
+	.Search {
+		position: relative;
+		flex-direction: row;
+
+		&__input[type='text'] {
+			flex: 1;
+			width: 0;
+			padding: 0 @sp-48;
+		}
+
+		&__icon {
+			position: absolute;
+			top: @sp-08;
+			left: @sp-16;
+			color: var(--icon-secondary);
+			pointer-events: none;
+		}
+
+		&__clear {
+			@icon-button();
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 32px;
+			height: 32px;
+			border-bottom: 1px solid transparent;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 2px;
+				bottom: 1px;
+				left: 0;
+				width: 2px;
+				background-color: var(--field);
+				transition: background-color 0.15s ease-out;
+			}
+
+			&:hover {
+				border-color: var(--border-strong);
+
+				&::before {
+					background-color: var(--field-hover);
+				}
+			}
+
+			&:focus-visible {
+				&::before {
+					background-color: var(--focus);
+				}
+			}
+
+			&:active {
+				&::before {
+					background-color: var(--layer-active);
+				}
+			}
+
+			.Search__input:hover + &::before {
+				background-color: var(--field-hover);
+			}
+
+			.Search__input:focus + &:hover {
+				@focus-ring();
+			}
+		}
+
+		&--disabled svg {
+			color: var(--icon-disabled);
+		}
+	}
+}
