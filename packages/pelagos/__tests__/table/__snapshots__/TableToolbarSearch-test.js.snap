@@ -1,158 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableToolbarSearch NewTableToolbarSearch rendering renders expected elements 1`] = `
-<div
+<Search
   className="Table__search"
->
-  <span
-    aria-hidden={true}
-    onClick={[Function]}
-  >
-    <Search
-      className="Table__searchIcon"
-    />
-  </span>
-  <input
-    className="Table__searchInput"
-    id="test"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    role="searchbox"
-    type="text"
-    value="test"
-  />
-  <button
-    aria-label="Clear search"
-    className="Table__searchClear"
-    onClick={[Function]}
-  >
-    <Close />
-  </button>
-</div>
+  id="test"
+  onChange={[MockFunction]}
+  value="test"
+/>
 `;
 
 exports[`TableToolbarSearch NewTableToolbarSearch rendering renders expected elements when className is set 1`] = `
-<div
+<Search
   className="Table__search TestClass"
->
-  <span
-    aria-hidden={true}
-    onClick={[Function]}
-  >
-    <Search
-      className="Table__searchIcon"
-    />
-  </span>
-  <input
-    className="Table__searchInput"
-    id="test"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    role="searchbox"
-    type="text"
-    value="test"
-  />
-  <button
-    aria-label="Clear search"
-    className="Table__searchClear"
-    onClick={[Function]}
-  >
-    <Close />
-  </button>
-</div>
+  id="test"
+  onChange={[MockFunction]}
+  value="test"
+/>
 `;
 
 exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected elements 1`] = `
-<div
+<Search
   className="Table__search"
->
-  <span
-    aria-hidden={true}
-    onClick={[Function]}
-  >
-    <Search
-      className="Table__searchIcon"
-    />
-  </span>
-  <input
-    className="Table__searchInput"
-    id="test"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    role="searchbox"
-    type="text"
-    value="foo"
-  />
-  <button
-    aria-label="Clear search"
-    className="Table__searchClear"
-    onClick={[Function]}
-  >
-    <Close />
-  </button>
-</div>
+  id="test"
+  onChange={[Function]}
+  value="foo"
+/>
 `;
 
 exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected elements when className is set 1`] = `
-<div
+<Search
   className="Table__search TestClass"
->
-  <span
-    aria-hidden={true}
-    onClick={[Function]}
-  >
-    <Search
-      className="Table__searchIcon"
-    />
-  </span>
-  <input
-    className="Table__searchInput"
-    id="test"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    role="searchbox"
-    type="text"
-    value="foo"
-  />
-  <button
-    aria-label="Clear search"
-    className="Table__searchClear"
-    onClick={[Function]}
-  >
-    <Close />
-  </button>
-</div>
+  id="test"
+  onChange={[Function]}
+  value="foo"
+/>
 `;
 
 exports[`TableToolbarSearch OldTableToolbarSearch rendering renders expected elements when initialText is set 1`] = `
-<div
+<Search
   className="Table__search"
->
-  <span
-    aria-hidden={true}
-    onClick={[Function]}
-  >
-    <Search
-      className="Table__searchIcon"
-    />
-  </span>
-  <input
-    className="Table__searchInput"
-    id="test"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    role="searchbox"
-    type="text"
-    value="bar"
-  />
-  <button
-    aria-label="Clear search"
-    className="Table__searchClear"
-    onClick={[Function]}
-  >
-    <Close />
-  </button>
-</div>
+  id="test"
+  onChange={[Function]}
+  value="bar"
+/>
 `;
 
 exports[`TableToolbarSearch rendering renders expected elements when value is not set 1`] = `

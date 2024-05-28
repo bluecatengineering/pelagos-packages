@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search rendering renders expected elements 1`] = `
+<div
+  className="Search"
+>
+  <Search
+    className="Search__icon"
+  />
+  <input
+    className="Search__input"
+    id="test"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    role="searchbox"
+    type="text"
+    value="test"
+  />
+  <button
+    aria-label="Clear search"
+    className="Search__clear"
+    onClick={[Function]}
+  >
+    <Close />
+  </button>
+</div>
+`;
+
+exports[`Search rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Search Search--disabled TestClass"
+>
+  <Search
+    className="Search__icon"
+  />
+  <input
+    className="Search__input"
+    disabled={true}
+    id="test"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    role="searchbox"
+    type="text"
+    value="test"
+  />
+  <button
+    aria-label="Clear search"
+    className="Search__clear"
+    disabled={true}
+    onClick={[Function]}
+  >
+    <Close />
+  </button>
+</div>
+`;
