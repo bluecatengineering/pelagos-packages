@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.11.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.11.2...@bluecateng/pelagos@12.11.2) (2024-05-28)
+
+### Bug Fixes
+
+- add option to align the table toolbar to the start ([d70ad22](https://github.com/bluecatengineering/pelagos-packages/commit/d70ad226209db1209f8f8f2d3753efc5f0ddfe98))
+
 ## [12.11.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.11.0...@bluecateng/pelagos@12.11.1) (2024-05-23)
 
 ### Bug Fixes
