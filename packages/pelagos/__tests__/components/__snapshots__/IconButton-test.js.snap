@@ -44,6 +44,20 @@ exports[`IconButton rendering renders the expected elements if disabled is true 
 </span>
 `;
 
+exports[`IconButton rendering renders the expected elements if pressed is true 1`] = `
+<button
+  aria-label="Test"
+  className="IconButton IconButton--medium IconButton--ghost IconButton--pressed"
+  id="test"
+  type="button"
+>
+  <SvgIcon
+    aria-hidden={true}
+    icon={{}}
+  />
+</button>
+`;
+
 exports[`IconButton rendering renders the expected elements when className is not set 1`] = `
 <button
   aria-label="Test"

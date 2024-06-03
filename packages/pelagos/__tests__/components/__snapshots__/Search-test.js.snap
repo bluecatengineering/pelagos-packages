@@ -7,7 +7,8 @@ exports[`Search rendering renders expected elements 1`] = `
   <Search
     className="Search__icon"
   />
-  <input
+  <Layer
+    as="input"
     className="Search__input"
     id="test"
     onChange={[Function]}
@@ -33,7 +34,8 @@ exports[`Search rendering renders expected elements when optional properties are
   <Search
     className="Search__icon"
   />
-  <input
+  <Layer
+    as="input"
     className="Search__input"
     disabled={true}
     id="test"

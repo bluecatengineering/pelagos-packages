@@ -16,3 +16,4 @@ export {default as TableToolbar} from './TableToolbar';
 export {default as TableToolbarBatch} from './TableToolbarBatch';
 export {default as TableToolbarDefault} from './TableToolbarDefault';
 export {default as TableToolbarSearch} from './TableToolbarSearch';
+export {default as TableToolbarSection} from './TableToolbarSection';

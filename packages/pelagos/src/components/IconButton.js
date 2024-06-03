@@ -9,12 +9,15 @@ import './IconButton.less';
 
 /** An icon button. */
 const IconButton = forwardRef(
-	({id, icon, className, size, type, tooltipText, tooltipPlacement, overlay, disabled, onClick, ...props}, ref) => {
+	(
+		{id, icon, className, size, type, tooltipText, tooltipPlacement, overlay, disabled, pressed, onClick, ...props},
+		ref
+	) => {
 		const tooltip = useTooltip(tooltipText, tooltipPlacement, 'labelledby');
 		const refs = ref ? setRefs(ref, tooltip) : tooltip;
 		const finalClassName = `IconButton IconButton--${size} IconButton--${type}${
 			overlay ? ' IconButton--container' : ''
-		}${className ? ` ${className}` : ''}`;
+		}${pressed ? ' IconButton--pressed' : ''}${className ? ` ${className}` : ''}`;
 		return disabled ? (
 			<span {...props} id={id} className={finalClassName} role="button" aria-disabled="true" ref={refs}>
 				<SvgIcon icon={icon} aria-hidden />
@@ -58,6 +61,8 @@ IconButton.propTypes = {
 	overlay: PropTypes.node,
 	/** Whether the button is disabled. */
 	disabled: PropTypes.bool,
+	/** Whether the button is pressed, applies only for ghost buttons. */
+	pressed: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
 	onClick: PropTypes.func,
 };

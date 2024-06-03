@@ -16,12 +16,8 @@ describe('TableToolbar', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when className is set', () => {
-			const wrapper = shallow(
-				<TableToolbar className="TestClass">
-					<TableToolbarDefault />
-				</TableToolbar>
-			);
+		it('renders expected elements when optional properties are set', () => {
+			const wrapper = shallow(<TableToolbar className="TestClass" type="sectioned" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});

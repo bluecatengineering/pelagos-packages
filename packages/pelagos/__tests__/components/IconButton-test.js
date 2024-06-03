@@ -35,6 +35,13 @@ describe('IconButton', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders the expected elements if pressed is true', () => {
+			const wrapper = shallow(
+				<IconButton id="test" icon={{}} aria-label="Test" tooltipText="This is a test" pressed />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders the expected elements if disabled is true and className is set', () => {
 			const wrapper = shallow(
 				<IconButton
