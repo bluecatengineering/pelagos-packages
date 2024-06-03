@@ -2,16 +2,14 @@
 
 exports[`TableToolbar rendering renders expected elements 1`] = `
 <div
-  className="Table__toolbar"
+  className="Table__toolbar Table__toolbar--default "
 >
   <TableToolbarDefault />
 </div>
 `;
 
-exports[`TableToolbar rendering renders expected elements when className is set 1`] = `
+exports[`TableToolbar rendering renders expected elements when optional properties are set 1`] = `
 <div
-  className="Table__toolbar TestClass"
->
-  <TableToolbarDefault />
-</div>
+  className="Table__toolbar Table__toolbar--sectioned  TestClass"
+/>
 `;

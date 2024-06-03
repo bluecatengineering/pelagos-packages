@@ -22,21 +22,21 @@ describe('Search', () => {
 		it('calls onChange when the text changes', () => {
 			const onChange = jest.fn();
 			const wrapper = shallow(<Search value="test" onChange={onChange} />);
-			wrapper.find('input').simulate('change', {target: {value: 'TEST'}});
+			wrapper.find('[as="input"]').simulate('change', {target: {value: 'TEST'}});
 			expect(onChange.mock.calls).toEqual([['test']]);
 		});
 
 		it('calls onChange when escape key is pressed', () => {
 			const onChange = jest.fn();
 			const wrapper = shallow(<Search value="test" onChange={onChange} />);
-			wrapper.find('input').simulate('keydown', {keyCode: 27});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 27});
 			expect(onChange.mock.calls).toEqual([['']]);
 		});
 
 		it('does not call onChange when other key is pressed', () => {
 			const onChange = jest.fn();
 			const wrapper = shallow(<Search value="test" onChange={onChange} />);
-			wrapper.find('input').simulate('keydown', {keyCode: 13});
+			wrapper.find('[as="input"]').simulate('keydown', {keyCode: 13});
 			expect(onChange.mock.calls).toEqual([]);
 		});
 

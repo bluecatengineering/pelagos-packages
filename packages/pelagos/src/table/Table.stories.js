@@ -2,6 +2,7 @@ import {Fragment, useCallback, useMemo, useState} from 'react';
 import Model from '@carbon/icons-react/es/Model';
 import Settings from '@carbon/icons-react/es/Settings';
 import Edit from '@carbon/icons-react/es/Edit';
+import Filter from '@carbon/icons-react/es/Filter';
 import TrashCan from '@carbon/icons-react/es/TrashCan';
 
 import Button from '../components/Button';
@@ -11,6 +12,8 @@ import Layer from '../components/Layer';
 import Pagination from '../components/Pagination';
 import MenuItem from '../menu/MenuItem';
 import MenuItemDivider from '../menu/MenuItemDivider';
+import ButtonMenu from '../menu/ButtonMenu';
+import FilterArea from '../filters/FilterArea';
 import loremIpsumShort from '../../stories/LoremIpsumShort';
 
 import Table from './Table';
@@ -31,6 +34,7 @@ import TableToolbarSearch from './TableToolbarSearch';
 import TableExpandHeader from './TableExpandHeader';
 import TableExpandRow from './TableExpandRow';
 import TableExpandableRow from './TableExpandableRow';
+import TableToolbarSection from './TableToolbarSection';
 
 import './Table.stories.less';
 
@@ -386,6 +390,86 @@ export const BatchActions = (args) => {
 BatchActions.args = {
 	id: 'batch-actions',
 	className: 'TableStory--selection',
+};
+
+export const SectionedToolbar = {
+	args: {
+		id: 'default-toolbar',
+		className: 'TableStory--default',
+		fixedLayout: true,
+	},
+	render: (args) => {
+		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
+		const [search, setSearch] = useState('');
+		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
+		const [expanded, setExpanded] = useState(true);
+		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
+		const filteredData = useMemo(
+			() => (search ? data.filter(({name}) => name.toLowerCase().includes(search)) : data),
+			[search]
+		);
+		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
+		const handleFilterClick = useCallback(() => setExpanded((expanded) => !expanded), []);
+		return (
+			<Layer className="TableStory__wrapper">
+				<TableTitle title="Table" description="With sectioned toolbar." />
+				<TableToolbar type="sectioned">
+					<TableToolbarSection area="start">
+						<Button type="primary" text="Primary button" />
+						<ButtonMenu text="Menu" type="tertiary">
+							<MenuItem>Option one</MenuItem>
+							<MenuItem>Option two</MenuItem>
+						</ButtonMenu>
+					</TableToolbarSection>
+					<TableToolbarSection area="middle">
+						<TableToolbarSearch value={search} placeholder="Filter table" onChange={setSearch} />
+					</TableToolbarSection>
+					<TableToolbarSection area="end">
+						<IconButton icon={Filter} pressed={expanded} aria-label="Toggle filters" onClick={handleFilterClick} />
+						<IconButton icon={Model} aria-label="Example action" />
+						<IconMenu icon={Settings} arrow flipped aria-label="Example menu">
+							<MenuItem>Option one</MenuItem>
+							<MenuItem>Option two</MenuItem>
+							<MenuItem disabled>Option three</MenuItem>
+							<MenuItemDivider />
+							<MenuItem>Option four</MenuItem>
+						</IconMenu>
+					</TableToolbarSection>
+				</TableToolbar>
+				<FilterArea expanded={expanded}>
+					<li>
+						<ButtonMenu text="Add filter" type="ghost">
+							<MenuItem>Option one</MenuItem>
+							<MenuItem>Option two</MenuItem>
+						</ButtonMenu>
+					</li>
+					<li className="TableStory__emptyFilters">No filters have been applied.</li>
+				</FilterArea>
+				<Table {...args}>
+					<TableHead>
+						<TableRow>
+							{columns.map(({id, header, align, sortable}) => (
+								<TableHeader key={id} align={align} sortable={sortable} sortOrder={id === sort.id ? sort.order : null}>
+									{header}
+								</TableHeader>
+							))}
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{filteredData.map((row) => (
+							<TableRow key={row.id}>
+								{columns.map(({id, align}) => (
+									<TableCell key={id} align={align}>
+										{row[id]}
+									</TableCell>
+								))}
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</Layer>
+		);
+	},
 };
 
 export const InlineActions = (args) => (

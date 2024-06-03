@@ -290,6 +290,12 @@
 			contain: content;
 			overflow: hidden;
 
+			&--sectioned {
+				flex-direction: row;
+				gap: @sp-16;
+				margin-bottom: @sp-16;
+			}
+
 			& .Button {
 				height: var(--table-row-height);
 			}
@@ -360,14 +366,33 @@
 			justify-content: flex-end;
 		}
 
+		&__toolbarSection {
+			position: relative;
+			contain: content;
+			overflow: hidden;
+			flex-direction: row;
+
+			&--start {
+				gap: @sp-08;
+			}
+
+			&--middle {
+				flex: 1;
+			}
+
+			&--end {
+				align-self: flex-end;
+			}
+		}
+
 		&__search {
 			flex: 1;
 
-			.Search__input {
+			.Table__toolbar--default & .Search__input {
 				border-bottom: none;
 			}
 
-			.Search__clear:hover {
+			.Table__toolbar--default & .Search__clear:hover {
 				border-bottom: none;
 			}
 

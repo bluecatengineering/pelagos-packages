@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableToolbarSection rendering renders expected elements 1`] = `
+<div
+  className="Table__toolbarSection Table__toolbarSection--start "
+/>
+`;
+
+exports[`TableToolbarSection rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="Table__toolbarSection Table__toolbarSection--end  TestClass"
+/>
+`;

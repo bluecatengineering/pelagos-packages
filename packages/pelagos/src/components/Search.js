@@ -4,6 +4,8 @@ import {t} from '@bluecateng/l10n.macro';
 import Close from '@carbon/icons-react/es/Close';
 import SearchIcon from '@carbon/icons-react/es/Search';
 
+import Layer from './Layer';
+
 import './Search.less';
 
 /** Search input. */
@@ -22,8 +24,9 @@ export const Search = ({className, value, disabled, onChange, ...props}) => {
 	return (
 		<div className={`Search${disabled ? ' Search--disabled' : ''}${className ? ` ${className}` : ''}`}>
 			<SearchIcon className="Search__icon" />
-			<input
+			<Layer
 				{...props}
+				as="input"
 				className="Search__input"
 				type="text"
 				role="searchbox"
