@@ -1,0 +1,48 @@
+{/* DO NOT EDIT, generated from moveEffect.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/moveEffect" />
+
+# moveEffect
+
+Starts a move animation on the specified element.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>element</td>
+			<td>`Element`</td>
+			<td>the element to animate.</td>
+		</tr>
+		<tr>
+			<td>rect</td>
+			<td>`DOMRectReadOnly`</td>
+			<td>the rectangle of the target position.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Example
+
+```js
+import {moveEffect} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => {
+		const element = document.getElementById('test');
+		const rect = document.getElementById('other').getBoundingClientRect();
+		moveEffect(element, rect);
+	}, []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

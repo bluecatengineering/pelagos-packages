@@ -53,6 +53,10 @@ msgstr ""
 msgid "{name} removed"
 msgstr ""
 
+#: 938
+msgid "{name} removed. {allItemsRemovedText}"
+msgstr ""
+
 #: 990
 msgid "{required, select, true {{label}, required. {text}} other {{label}. {text}}}"
 msgstr ""
@@ -69,12 +73,20 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
+#: d36
+msgid "Add {label}"
+msgstr ""
+
 #: 854
 msgid "Add filter"
 msgstr ""
 
 #: cfe
 msgid "Apply"
+msgstr ""
+
+#: 7c6
+msgid "Available"
 msgstr ""
 
 #: c76
@@ -225,6 +237,10 @@ msgstr ""
 msgid "Press Enter to add items to the list."
 msgstr ""
 
+#: 7ce
+msgid "Press space bar to reorder"
+msgstr ""
+
 #: 46a
 msgid "Previous month"
 msgstr ""
@@ -241,8 +257,20 @@ msgstr ""
 msgid "Remove {name} filter"
 msgstr ""
 
+#: 894
+msgid "Restore defaults"
+msgstr ""
+
 #: efc
 msgid "Save"
+msgstr ""
+
+#: 9a9
+msgid "Selected"
+msgstr ""
+
+#: 109
+msgid "The default settings have been restored."
 msgstr ""
 
 #: 67a

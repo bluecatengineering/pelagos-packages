@@ -53,6 +53,10 @@ msgstr "{name} añadido"
 msgid "{name} removed"
 msgstr "{name} removido"
 
+#: 938
+msgid "{name} removed. {allItemsRemovedText}"
+msgstr "{name} removido. {allItemsRemovedText}"
+
 #: 990
 msgid "{required, select, true {{label}, required. {text}} other {{label}. {text}}}"
 msgstr "{required, select, true {{label}, obligatorio. {text}} other {{label}. {text}}}"
@@ -69,6 +73,10 @@ msgstr "{text}, columna {column}, {leaf, select, true {terminal} other {grupo}}"
 msgid "Add"
 msgstr "Añadir"
 
+#: d36
+msgid "Add {label}"
+msgstr "Añadir {label}"
+
 #: 854
 msgid "Add filter"
 msgstr "Añadir filtro"
@@ -76,6 +84,10 @@ msgstr "Añadir filtro"
 #: cfe
 msgid "Apply"
 msgstr "Aplicar"
+
+#: 7c6
+msgid "Available"
+msgstr "Disponibles"
 
 #: c76
 msgid "Breadcrumb"
@@ -225,6 +237,10 @@ msgstr "Presione suprimir para eliminar la pestaña"
 msgid "Press Enter to add items to the list."
 msgstr "Presione Entrar para añadir elementos a la lista."
 
+#: 7ce
+msgid "Press space bar to reorder"
+msgstr "Presione la barra espaciadora para reordenar"
+
 #: 46a
 msgid "Previous month"
 msgstr "Mes anterior"
@@ -241,9 +257,21 @@ msgstr "Eliminar {name}"
 msgid "Remove {name} filter"
 msgstr "Eliminar filtro {name}"
 
+#: 894
+msgid "Restore defaults"
+msgstr "Restaurar valores por defecto"
+
 #: efc
 msgid "Save"
 msgstr "Guardar"
+
+#: 9a9
+msgid "Selected"
+msgstr "Seleccionados"
+
+#: 109
+msgid "The default settings have been restored."
+msgstr "Los valores por defecto han sido restaurados."
 
 #: 67a
 msgid "Use cursor keys to select an item"

@@ -4,8 +4,12 @@ export {default as buildSimpleSuggestionsParser} from './buildSimpleSuggestionsP
 export {default as compareSuggestions} from './compareSuggestions';
 export {default as copyToClipboard} from './copyToClipboard';
 export {default as getGenericSuggestions} from './getGenericSuggestions';
+export {default as moveEffect} from './moveEffect';
+export {default as moveListItem} from './moveListItem';
 export {default as scrollIntoView} from './scrollIntoView';
 export {default as scrollToItem} from './scrollToItem';
 export {default as setLocale} from './setLocale';
+export {default as slideDownEffect} from './slideDownEffect';
+export {default as slideUpEffect} from './slideUpEffect';
 export {default as smoothScroll} from './smoothScroll';
 export {default as throttleAF} from './throttleAF';
