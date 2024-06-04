@@ -1,0 +1,111 @@
+@import '../../less/focus';
+@import '../../less/spacing';
+@import '../../less/utils';
+
+@layer pelagos {
+	.ListSelectorDialog {
+		&__lists {
+			flex-direction: row;
+			margin-top: @sp-16;
+			flex: 1;
+			overflow: hidden;
+
+			& > :not(:last-child) {
+				padding-right: @sp-24;
+				margin-right: @sp-24;
+				border-right: 1px solid var(--border-subtle);
+			}
+		}
+
+		&__column {
+			flex: 1;
+			overflow: hidden;
+		}
+
+		&__list {
+			@focus-visible();
+			margin: @sp-04 @sp-02 @sp-02;
+			flex: 1;
+			overflow: hidden auto;
+		}
+
+		&__entry {
+			@focus-visible();
+			flex-direction: row;
+			align-items: center;
+			padding: @sp-04 @sp-08;
+			border-radius: 3px;
+		}
+
+		&__name {
+			flex: 1;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		&__text {
+			@base-ellipsis();
+			flex: 1;
+		}
+
+		&__grip {
+			color: var(--icon-secondary);
+			opacity: 0.5;
+			transition: opacity 0.15s ease-out;
+
+			:hover > & {
+				opacity: 1;
+			}
+		}
+
+		&__available {
+			flex-direction: row;
+			align-items: center;
+			padding: @sp-04 @sp-08;
+		}
+
+		&__remove,
+		&__add {
+			@icon-button-nested();
+			flex: none;
+			padding: @sp-04;
+			opacity: 0.4;
+			transition-property: color, background-color, opacity;
+		}
+
+		&__remove {
+			margin-right: @sp-08;
+
+			&:focus {
+				opacity: 1;
+			}
+
+			&__entry:hover > & {
+				opacity: 1;
+			}
+		}
+
+		&__add {
+			margin-left: auto;
+
+			&:focus {
+				opacity: 1;
+			}
+
+			&__available:hover > & {
+				opacity: 1;
+			}
+		}
+
+		&__empty {
+			color: var(--text-helper);
+			margin: auto;
+			text-align: center;
+		}
+
+		&__buttons {
+			flex-direction: row;
+			margin-top: @sp-08;
+		}
+	}
+}

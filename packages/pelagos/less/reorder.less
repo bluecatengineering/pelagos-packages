@@ -1,0 +1,28 @@
+@import './elevations';
+@import './spacing';
+
+// stylelint-disable @bluecateng/selector-bem
+
+@layer pelagos {
+	.draggable {
+		cursor: grab;
+		touch-action: none;
+	}
+
+	.dragging {
+		@elv-08();
+	}
+
+	.placeholder {
+		opacity: 0;
+	}
+
+	.clone {
+		position: absolute;
+		left: 0;
+		top: 0;
+		cursor: grabbing;
+		will-change: transform;
+		z-index: 1000;
+	}
+}

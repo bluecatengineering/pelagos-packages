@@ -1,0 +1,42 @@
+{/* DO NOT EDIT, generated from slideUpEffect.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/slideUpEffect" />
+
+# slideUpEffect
+
+Starts a slide up animation on the specified element.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>element</td>
+			<td>`Element`</td>
+			<td>the element to animate.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Example
+
+```js
+import {slideUpEffect} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => {
+		const element = document.getElementById('test');
+		slideUpEffect(element);
+	}, []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

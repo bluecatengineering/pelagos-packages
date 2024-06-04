@@ -1,0 +1,42 @@
+{/* DO NOT EDIT, generated from slideDownEffect.js */}
+
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="functions/slideDownEffect" />
+
+# slideDownEffect
+
+Starts a slide down animation on the specified element.
+
+## Parameters
+
+<table>
+	<thead>
+		<tr>
+			<th>Param</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>element</td>
+			<td>`Element`</td>
+			<td>the element to animate.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Example
+
+```js
+import {slideDownEffect} from '@bluecateng/pelagos';
+
+const Example = () => {
+	const handleClick = useCallback(() => {
+		const element = document.getElementById('test');
+		slideDownEffect(element);
+	}, []);
+	return <button onClick={handleClick}>...</button>;
+};
+```

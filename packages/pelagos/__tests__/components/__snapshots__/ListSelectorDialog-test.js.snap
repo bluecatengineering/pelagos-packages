@@ -1,0 +1,504 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListSelectorDialog rendering renders expected elements 1`] = `
+<Dialog
+  role="dialog"
+  size="sm"
+  stretch={true}
+  title="Test title"
+>
+  <div>
+    <div
+      className="sr-only"
+      id="item-reorder-operation"
+    >
+      Press space bar to reorder
+    </div>
+    <div
+      aria-live="assertive"
+      className="sr-only"
+    />
+    <div
+      className="ListSelectorDialog__lists"
+    >
+      <div
+        className="ListSelectorDialog__column"
+      >
+        <Label
+          id="ListSelectorDialogAvailable"
+          text="Available"
+        />
+        <div
+          aria-labelledby="ListSelectorDialogAvailable"
+          className="ListSelectorDialog__list"
+          onClick={[Function]}
+          role="list"
+        >
+          <div
+            aria-labelledby="item-baz"
+            className="ListSelectorDialog__available"
+            data-key="baz"
+            role="listitem"
+          >
+            <div
+              id="item-baz"
+            >
+              Baz
+            </div>
+            <button
+              aria-label="Add Baz"
+              className="ListSelectorDialog__add"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+          <div
+            aria-labelledby="item-oof"
+            className="ListSelectorDialog__available"
+            data-key="oof"
+            role="listitem"
+          >
+            <div
+              id="item-oof"
+            >
+              Oof
+            </div>
+            <button
+              aria-label="Add Oof"
+              className="ListSelectorDialog__add"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ListSelectorDialog__column"
+      >
+        <Label
+          id="ListSelectorDialogSelected"
+          text="Selected"
+        />
+        <div
+          aria-labelledby="ListSelectorDialogSelected"
+          className="ListSelectorDialog__list"
+          onClick={[Function]}
+          role="list"
+        >
+          <div
+            aria-describedby="item-reorder-operation"
+            aria-labelledby="item-foo"
+            className="ListSelectorDialog__entry"
+            data-index={0}
+            data-key="foo"
+            role="listitem"
+            tabIndex="0"
+          >
+            <button
+              aria-label="Remove Foo"
+              className="ListSelectorDialog__remove"
+              type="button"
+            >
+              <ArrowLeft />
+            </button>
+            <div
+              className="ListSelectorDialog__name draggable"
+              id="item-foo"
+            >
+              <span
+                className="ListSelectorDialog__text"
+              >
+                Foo
+              </span>
+              <Draggable
+                className="ListSelectorDialog__grip"
+              />
+            </div>
+          </div>
+          <div
+            aria-describedby="item-reorder-operation"
+            aria-labelledby="item-bar"
+            className="ListSelectorDialog__entry"
+            data-index={1}
+            data-key="bar"
+            role="listitem"
+            tabIndex="0"
+          >
+            <button
+              aria-label="Remove Bar"
+              className="ListSelectorDialog__remove"
+              type="button"
+            >
+              <ArrowLeft />
+            </button>
+            <div
+              className="ListSelectorDialog__name draggable"
+              id="item-bar"
+            >
+              <span
+                className="ListSelectorDialog__text"
+              >
+                Bar
+              </span>
+              <Draggable
+                className="ListSelectorDialog__grip"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <Button
+      id="closeDialogBtn"
+      size="medium"
+      text="Cancel"
+      type="tertiary"
+    />
+    <Button
+      disabled={false}
+      id="saveItemsBtn"
+      onClick={[Function]}
+      size="medium"
+      text="Test save"
+      type="primary"
+    />
+  </div>
+</Dialog>
+`;
+
+exports[`ListSelectorDialog rendering renders expected elements when defaultItems is set 1`] = `
+<Dialog
+  role="dialog"
+  size="sm"
+  stretch={true}
+  title="Test title"
+>
+  <div>
+    <div
+      className="sr-only"
+      id="item-reorder-operation"
+    >
+      Press space bar to reorder
+    </div>
+    <div
+      aria-live="assertive"
+      className="sr-only"
+    />
+    <div
+      className="ListSelectorDialog__lists"
+    >
+      <div
+        className="ListSelectorDialog__column"
+      >
+        <Label
+          id="ListSelectorDialogAvailable"
+          text="Available"
+        />
+        <div
+          aria-labelledby="ListSelectorDialogAvailable"
+          className="ListSelectorDialog__list"
+          onClick={[Function]}
+          role="list"
+        >
+          <div
+            aria-labelledby="item-baz"
+            className="ListSelectorDialog__available"
+            data-key="baz"
+            role="listitem"
+          >
+            <div
+              id="item-baz"
+            >
+              Baz
+            </div>
+            <button
+              aria-label="Add Baz"
+              className="ListSelectorDialog__add"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+          <div
+            aria-labelledby="item-oof"
+            className="ListSelectorDialog__available"
+            data-key="oof"
+            role="listitem"
+          >
+            <div
+              id="item-oof"
+            >
+              Oof
+            </div>
+            <button
+              aria-label="Add Oof"
+              className="ListSelectorDialog__add"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ListSelectorDialog__column"
+      >
+        <Label
+          id="ListSelectorDialogSelected"
+          text="Selected"
+        />
+        <div
+          aria-labelledby="ListSelectorDialogSelected"
+          className="ListSelectorDialog__list"
+          onClick={[Function]}
+          role="list"
+        >
+          <div
+            aria-describedby="item-reorder-operation"
+            aria-labelledby="item-foo"
+            className="ListSelectorDialog__entry"
+            data-index={0}
+            data-key="foo"
+            role="listitem"
+            tabIndex="0"
+          >
+            <button
+              aria-label="Remove Foo"
+              className="ListSelectorDialog__remove"
+              type="button"
+            >
+              <ArrowLeft />
+            </button>
+            <div
+              className="ListSelectorDialog__name draggable"
+              id="item-foo"
+            >
+              <span
+                className="ListSelectorDialog__text"
+              >
+                Foo
+              </span>
+              <Draggable
+                className="ListSelectorDialog__grip"
+              />
+            </div>
+          </div>
+          <div
+            aria-describedby="item-reorder-operation"
+            aria-labelledby="item-bar"
+            className="ListSelectorDialog__entry"
+            data-index={1}
+            data-key="bar"
+            role="listitem"
+            tabIndex="0"
+          >
+            <button
+              aria-label="Remove Bar"
+              className="ListSelectorDialog__remove"
+              type="button"
+            >
+              <ArrowLeft />
+            </button>
+            <div
+              className="ListSelectorDialog__name draggable"
+              id="item-bar"
+            >
+              <span
+                className="ListSelectorDialog__text"
+              >
+                Bar
+              </span>
+              <Draggable
+                className="ListSelectorDialog__grip"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ListSelectorDialog__buttons"
+    >
+      <Button
+        onClick={[Function]}
+        size="small"
+        text="Restore defaults"
+        type="tertiary"
+      />
+    </div>
+  </div>
+  <div>
+    <Button
+      id="closeDialogBtn"
+      size="medium"
+      text="Cancel"
+      type="tertiary"
+    />
+    <Button
+      disabled={false}
+      id="saveItemsBtn"
+      onClick={[Function]}
+      size="medium"
+      text="Test save"
+      type="primary"
+    />
+  </div>
+</Dialog>
+`;
+
+exports[`ListSelectorDialog rendering renders expected elements when items is empty 1`] = `
+<Dialog
+  role="dialog"
+  size="sm"
+  stretch={true}
+  title="Test title"
+>
+  <div>
+    <div
+      className="sr-only"
+      id="item-reorder-operation"
+    >
+      Press space bar to reorder
+    </div>
+    <div
+      aria-live="assertive"
+      className="sr-only"
+    />
+    <div
+      className="ListSelectorDialog__lists"
+    >
+      <div
+        className="ListSelectorDialog__column"
+      >
+        <Label
+          id="ListSelectorDialogAvailable"
+          text="Available"
+        />
+        <div
+          aria-labelledby="ListSelectorDialogAvailable"
+          className="ListSelectorDialog__list"
+          onClick={[Function]}
+          role="list"
+        >
+          <div
+            aria-labelledby="item-bar"
+            className="ListSelectorDialog__available"
+            data-key="bar"
+            role="listitem"
+          >
+            <div
+              id="item-bar"
+            >
+              Bar
+            </div>
+            <button
+              aria-label="Add Bar"
+              className="ListSelectorDialog__add"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+          <div
+            aria-labelledby="item-baz"
+            className="ListSelectorDialog__available"
+            data-key="baz"
+            role="listitem"
+          >
+            <div
+              id="item-baz"
+            >
+              Baz
+            </div>
+            <button
+              aria-label="Add Baz"
+              className="ListSelectorDialog__add"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+          <div
+            aria-labelledby="item-foo"
+            className="ListSelectorDialog__available"
+            data-key="foo"
+            role="listitem"
+          >
+            <div
+              id="item-foo"
+            >
+              Foo
+            </div>
+            <button
+              aria-label="Add Foo"
+              className="ListSelectorDialog__add"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+          <div
+            aria-labelledby="item-oof"
+            className="ListSelectorDialog__available"
+            data-key="oof"
+            role="listitem"
+          >
+            <div
+              id="item-oof"
+            >
+              Oof
+            </div>
+            <button
+              aria-label="Add Oof"
+              className="ListSelectorDialog__add"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ListSelectorDialog__column"
+      >
+        <Label
+          id="ListSelectorDialogSelected"
+          text="Selected"
+        />
+        <div
+          aria-labelledby="ListSelectorDialogSelected"
+          className="ListSelectorDialog__list"
+          onClick={[Function]}
+          role="list"
+        >
+          <div
+            className="ListSelectorDialog__empty"
+          >
+            Test empty.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <Button
+      id="closeDialogBtn"
+      size="medium"
+      text="Cancel"
+      type="tertiary"
+    />
+    <Button
+      disabled={true}
+      id="saveItemsBtn"
+      onClick={[Function]}
+      size="medium"
+      text="Test save"
+      type="primary"
+    />
+  </div>
+</Dialog>
+`;
