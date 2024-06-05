@@ -8,7 +8,7 @@ The callbacks allow implementation of feedback for accessibility.
 The article [4 Major Patterns for Accessible Drag and Drop / Sorting a List](https://medium.com/salesforce-ux/4-major-patterns-for-accessible-drag-and-drop-1d43f64ebf09#0303)
 in Medium has an example of how to implement accessibility.
 
-Size: 4,090 bytes before compression.
+Size: 4,102 bytes before compression.
 
 # Installation
 

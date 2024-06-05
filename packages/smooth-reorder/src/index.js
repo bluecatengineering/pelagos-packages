@@ -59,16 +59,17 @@ export default (container, options) => {
 				element.style.transition = translateTransition;
 				element.style.transform = transformElement(er, pr);
 			}
+			const currentElement = element;
 			setTimeout(() => {
 				for (const target of all) {
 					target.style.transition = '';
 					target.style.transform = '';
 				}
-				all[all.length - 1].insertAdjacentElement(position, element);
+				all[all.length - 1].insertAdjacentElement(position, currentElement);
 				if (transformElement) {
-					element.style.transition = '';
-					element.style.transform = '';
-					setFocus(element);
+					currentElement.style.transition = '';
+					currentElement.style.transform = '';
+					setFocus(currentElement);
 				}
 				busy = false;
 				if (pending) {
