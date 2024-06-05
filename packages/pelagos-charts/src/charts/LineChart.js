@@ -120,7 +120,7 @@ const LineChart = ({
 	id,
 	className,
 	data,
-	curve,
+	curve = 'monotone',
 	dataOptions,
 	color,
 	bottomAxis,
@@ -512,10 +512,6 @@ LineChart.propTypes = {
 	onDrag: PropTypes.func,
 	onLegendClick: PropTypes.func,
 	onSelectionChange: PropTypes.func,
-};
-
-LineChart.defaultProps = {
-	curve: 'monotone',
 };
 
 export default LineChart;

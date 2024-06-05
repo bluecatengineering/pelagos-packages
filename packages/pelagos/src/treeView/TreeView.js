@@ -19,7 +19,7 @@ const getFocused = (selected, children) => {
 };
 
 /** A component implementing the tree view pattern. */
-const TreeView = ({className, size, selected, children, onSelect, ...props}) => {
+const TreeView = ({className, size = 'sm', selected, children, onSelect, ...props}) => {
 	const rootRef = useRef(null);
 	const [focused, setFocused] = useState(() => getFocused(selected, children));
 	useEffect(() => {
@@ -53,10 +53,6 @@ TreeView.propTypes = {
 	children: PropTypes.node,
 	/** Function invoked when a node is selected. */
 	onSelect: PropTypes.func,
-};
-
-TreeView.defaultProps = {
-	size: 'sm',
 };
 
 export default TreeView;

@@ -5,7 +5,7 @@ import {Layer} from '../src';
 
 import './WithLayers.less';
 
-const WithLayers = ({align, children}) => (
+const WithLayers = ({align = 'stretch', children}) => (
 	<div className="WithLayers">
 		<div className="WithLayers__label">
 			<Layers />
@@ -38,10 +38,6 @@ const WithLayers = ({align, children}) => (
 WithLayers.propTypes = {
 	align: PropTypes.oneOf(['stretch', 'start']),
 	children: PropTypes.func,
-};
-
-WithLayers.defaultProps = {
-	align: 'stretch',
 };
 
 export default WithLayers;

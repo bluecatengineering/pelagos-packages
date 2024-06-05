@@ -4,10 +4,7 @@ exports[`TableToolbarDefault rendering renders expected elements 1`] = `
 <div
   className="Table__toolbarDefault Table--toolbarEnd"
 >
-  <Button
-    size="medium"
-    type="tertiary"
-  />
+  <Button />
 </div>
 `;
 
@@ -34,9 +31,6 @@ exports[`TableToolbarDefault rendering renders expected elements when optional p
 <div
   className="Table__toolbarDefault Table--toolbarStart TestClass"
 >
-  <Button
-    size="medium"
-    type="tertiary"
-  />
+  <Button />
 </div>
 `;

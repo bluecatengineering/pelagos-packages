@@ -7,7 +7,17 @@ import './Button.less';
 import './LinkButton.less';
 
 /** A link styled as a button. */
-const LinkButton = ({id, className, text, tooltipText, size, type, disabled, onClick, ...props}) => {
+const LinkButton = ({
+	id,
+	className,
+	text,
+	tooltipText,
+	size = 'medium',
+	type = 'tertiary',
+	disabled,
+	onClick,
+	...props
+}) => {
 	const tooltip = useTooltip(tooltipText, 'top');
 	const handleKeyDown = useCallback((event) => {
 		if (event.key === ' ') {
@@ -54,11 +64,6 @@ LinkButton.propTypes = {
 	disabled: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
 	onClick: PropTypes.func,
-};
-
-LinkButton.defaultProps = {
-	size: 'medium',
-	type: 'tertiary',
 };
 
 export default LinkButton;

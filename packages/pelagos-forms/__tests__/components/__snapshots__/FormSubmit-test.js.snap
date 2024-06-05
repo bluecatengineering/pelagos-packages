@@ -3,7 +3,6 @@
 exports[`FormSubmit renders expected elements 1`] = `
 <Button
   id="test"
-  size="medium"
   type="primary"
 />
 `;
@@ -11,7 +10,6 @@ exports[`FormSubmit renders expected elements 1`] = `
 exports[`FormSubmit renders expected elements when is changed returns false 1`] = `
 <Button
   id="test"
-  size="medium"
   type="tertiary"
 />
 `;

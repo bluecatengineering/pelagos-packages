@@ -17,9 +17,6 @@ exports[`Calendar rendering renders expected elements 1`] = `
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
     <div
       aria-live="polite"
@@ -34,9 +31,6 @@ exports[`Calendar rendering renders expected elements 1`] = `
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
   </div>
   <table
@@ -474,9 +468,6 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
     <div
       aria-live="polite"
@@ -491,9 +482,6 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
   </div>
   <table
@@ -931,9 +919,6 @@ exports[`Calendar rendering renders expected elements when focused is later than
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
     <div
       aria-live="polite"
@@ -948,9 +933,6 @@ exports[`Calendar rendering renders expected elements when focused is later than
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
   </div>
   <table
@@ -1388,9 +1370,6 @@ exports[`Calendar rendering renders expected elements when optional properties a
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
     <div
       aria-live="polite"
@@ -1405,9 +1384,6 @@ exports[`Calendar rendering renders expected elements when optional properties a
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
   </div>
   <table
@@ -1845,9 +1821,6 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
     <div
       aria-live="polite"
@@ -1862,9 +1835,6 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
       icon={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
-      size="medium"
-      tooltipPlacement="right"
-      type="ghost"
     />
   </div>
   <table

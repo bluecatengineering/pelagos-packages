@@ -10,9 +10,6 @@ exports[`IconMenu rendering renders expected elements 1`] = `
     disabled={false}
     icon={[Function]}
     id="random-id"
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </React.Fragment>
 `;
@@ -31,9 +28,6 @@ exports[`IconMenu rendering renders expected elements when all items are disable
       }
     }
     id="random-id"
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </React.Fragment>
 `;
@@ -52,9 +46,6 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
       }
     }
     id="random-id"
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </React.Fragment>
 `;
@@ -74,9 +65,6 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
       }
     }
     id="random-id"
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
   <React.Portal
     container="body"
@@ -94,14 +82,12 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
         <MenuItem
           data-index={0}
           id="random-id-0"
-          type="default"
         >
           one
         </MenuItem>
         <MenuItem
           data-index={1}
           id="random-id-1"
-          type="default"
         >
           two
         </MenuItem>
@@ -130,9 +116,6 @@ exports[`IconMenu rendering renders expected elements when optional properties a
         className="IconMenu__overlay"
       />
     }
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </React.Fragment>
 `;

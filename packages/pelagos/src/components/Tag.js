@@ -21,7 +21,7 @@ export const types = [
 ];
 
 /** A tag. */
-const Tag = ({id, className, size, type, removeTitle, children, onClick, onRemove, ...props}) => {
+const Tag = ({id, className, size = 'md', type = 'gray', removeTitle, children, onClick, onRemove, ...props}) => {
 	id = useRandomId(id);
 	const fullClassName = `Tag Tag--${size} Tag--${type}${onRemove ? ' Tag--removable' : ''}${
 		className ? ` ${className}` : ''
@@ -59,11 +59,6 @@ Tag.propTypes = {
 	onClick: PropTypes.func,
 	/** Function invoked when the remove button is clicked. Can't be used at the same time as onClick. The remove button is displayed only when this property is not null. */
 	onRemove: PropTypes.func,
-};
-
-Tag.defaultProps = {
-	size: 'md',
-	type: 'gray',
 };
 
 export default Tag;

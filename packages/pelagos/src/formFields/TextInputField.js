@@ -10,7 +10,18 @@ import FieldHelper from './FieldHelper';
 import './TextInputField.less';
 
 /** A text input field. */
-const TextInputField = ({id, className, label, value, required, helperText, error, onChange, ...props}) => {
+const TextInputField = ({
+	id,
+	className,
+	label,
+	type = 'text',
+	value,
+	required,
+	helperText,
+	error,
+	onChange,
+	...props
+}) => {
 	id = useRandomId(id);
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
@@ -22,6 +33,7 @@ const TextInputField = ({id, className, label, value, required, helperText, erro
 				as="input"
 				id={id}
 				className={`TextInputField__input${error ? ' TextInputField--error' : ''}`}
+				type={type}
 				value={value}
 				aria-describedby={error ? errorId : helperId}
 				aria-required={required}
@@ -64,10 +76,6 @@ TextInputField.propTypes = {
 	error: PropTypes.string,
 	/** Function invoked when the value changes. */
 	onChange: PropTypes.func.isRequired,
-};
-
-TextInputField.defaultProps = {
-	type: 'text',
 };
 
 export default TextInputField;

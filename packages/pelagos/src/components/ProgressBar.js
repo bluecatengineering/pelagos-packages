@@ -11,7 +11,17 @@ import './ProgressBar.less';
 const icons = {finished: CheckmarkFilled, error: ErrorFilled};
 
 /** Displays the progress status for tasks that take a long time. */
-const ProgressBar = ({id, className, label, helperText, type, size, status, max, value}) => {
+const ProgressBar = ({
+	id,
+	className,
+	label,
+	helperText,
+	type = 'default',
+	size = 'big',
+	status = 'active',
+	max = 100,
+	value,
+}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
@@ -68,13 +78,6 @@ ProgressBar.propTypes = {
 	max: PropTypes.number,
 	/** The current value. */
 	value: PropTypes.number,
-};
-
-ProgressBar.defaultProps = {
-	type: 'default',
-	size: 'big',
-	status: 'active',
-	max: 100,
 };
 
 export default ProgressBar;

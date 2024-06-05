@@ -8,7 +8,7 @@ import Layer from './Layer';
 import './SearchField.less';
 
 /** @deprecated use `TableToolbarSearch` instead. */
-const SearchField = ({className, initialText, onChange, ...props}) => {
+const SearchField = ({className, initialText = '', onChange, ...props}) => {
 	const inputRef = useRef(null);
 	const [text, setText] = useState(initialText);
 	const debouncedOnChange = useMemo(() => debounce(onChange, 300), [onChange]);
@@ -48,9 +48,6 @@ SearchField.propTypes = {
 	initialText: PropTypes.string,
 	/** Function invoked when the text changes. */
 	onChange: PropTypes.func.isRequired,
-};
-SearchField.defaultProps = {
-	initialText: '',
 };
 
 export default SearchField;

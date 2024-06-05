@@ -12,7 +12,6 @@ exports[`FilterEditor rendering renders expected elements 1`] = `
     id="saveBtn"
     size="small"
     text="Apply"
-    type="tertiary"
   />
 </Layer>
 `;

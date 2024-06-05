@@ -29,9 +29,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
       >
         <Button
           id="a"
-          size="medium"
           text="A"
-          type="tertiary"
         />
       </div>
     </React.Fragment>
@@ -68,9 +66,7 @@ exports[`Dialog rendering renders expected elements when child has no className 
       >
         <Button
           id="a"
-          size="medium"
           text="A"
-          type="tertiary"
         />
       </div>
     </React.Fragment>
@@ -111,9 +107,7 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
         >
           <Button
             id="a"
-            size="medium"
             text="A"
-            type="tertiary"
           />
         </div>
       </React.Fragment>
@@ -151,9 +145,7 @@ exports[`Dialog rendering renders expected elements when stretch is set 1`] = `
       >
         <Button
           id="a"
-          size="medium"
           text="A"
-          type="tertiary"
         />
       </div>
     </React.Fragment>

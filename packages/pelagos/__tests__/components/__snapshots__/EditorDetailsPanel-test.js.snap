@@ -23,7 +23,6 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
       size="large"
       tooltipPlacement="left"
       tooltipText="Close"
-      type="ghost"
     />
   </div>
   <React.Fragment>
@@ -55,7 +54,6 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
       size="large"
       tooltipPlacement="left"
       tooltipText="Close"
-      type="ghost"
     />
   </div>
   <React.Fragment>
@@ -99,7 +97,6 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
       size="large"
       tooltipPlacement="left"
       tooltipText="Close"
-      type="ghost"
     />
   </div>
   <React.Fragment>
@@ -132,7 +129,6 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
       size="large"
       tooltipPlacement="left"
       tooltipText="Close"
-      type="ghost"
     />
   </div>
   <React.Fragment>

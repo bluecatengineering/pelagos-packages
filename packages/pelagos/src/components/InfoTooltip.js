@@ -6,7 +6,7 @@ import useTooltip from '../hooks/useTooltip';
 import './InfoTooltip.less';
 
 /** A component displaying an informational tooltip. */
-const InfoTooltip = ({className, text, placement, ...props}) => (
+const InfoTooltip = ({className, text, placement = 'top', ...props}) => (
 	<button
 		{...props}
 		className={`InfoTooltip${className ? ` ${className}` : ''}`}
@@ -23,10 +23,6 @@ InfoTooltip.propTypes = {
 	text: PropTypes.string,
 	/** The placement of the tooltip relative to the icon. */
 	placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-};
-
-InfoTooltip.defaultProps = {
-	placement: 'top',
 };
 
 export default InfoTooltip;

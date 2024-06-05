@@ -15,7 +15,6 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     aria-labelledby="random-id-label"
     className="DropDownField__select"
     error={false}
-    getOptionKey={[MockFunction]}
     id="random-id"
     onChange={[MockFunction]}
     options={
@@ -52,7 +51,6 @@ exports[`DropDownField rendering renders expected elements when optional propert
     className="DropDownField__select"
     disabled={true}
     error={true}
-    getOptionKey={[MockFunction]}
     id="random-id"
     onChange={[MockFunction]}
     options={

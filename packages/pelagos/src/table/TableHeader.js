@@ -5,7 +5,7 @@ import ArrowUp from '@carbon/icons-react/es/ArrowUp';
 import ArrowsVertical from '@carbon/icons-react/es/ArrowsVertical';
 
 /** Header element for a table component. */
-const TableHeader = forwardRef(({className, align, sortable, sortOrder, radio, children, ...props}, ref) => {
+const TableHeader = forwardRef(({className, align = 'left', sortable, sortOrder, radio, children, ...props}, ref) => {
 	const Icon = sortOrder === 'a' ? ArrowUp : sortOrder === 'd' ? ArrowDown : ArrowsVertical;
 	return sortable ? (
 		<th
@@ -42,10 +42,6 @@ TableHeader.propTypes = {
 	radio: PropTypes.bool,
 	/** The child elements. */
 	children: PropTypes.node,
-};
-
-TableHeader.defaultProps = {
-	align: 'left',
 };
 
 export default TableHeader;

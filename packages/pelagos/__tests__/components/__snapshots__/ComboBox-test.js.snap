@@ -30,9 +30,6 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     icon={[Function]}
     id="test-add"
     onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
   <React.Portal>
     <Layer
@@ -82,9 +79,6 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     icon={[Function]}
     id="test-add"
     onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
   <React.Portal>
     <Layer
@@ -136,9 +130,6 @@ exports[`ComboBox rendering renders expected elements when noLayer is true 1`] =
     icon={[Function]}
     id="test-add"
     onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
   <React.Portal>
     <Layer
@@ -188,9 +179,6 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     icon={[Function]}
     id="test-add"
     onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
   <React.Portal>
     <Layer

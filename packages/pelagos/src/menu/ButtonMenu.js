@@ -16,50 +16,54 @@ import Menu from './Menu';
 import './ButtonMenu.less';
 
 /** A button with a pop-up menu. */
-const ButtonMenu = forwardRef(({id, className, disabled, flipped, children, ...props}, ref) => {
-	id = useRandomId(id);
-	const menuId = `${id}-menu`;
+const ButtonMenu = forwardRef(
+	({id, className, size = 'small', type = 'ghost', disabled, flipped, children, ...props}, ref) => {
+		id = useRandomId(id);
+		const menuId = `${id}-menu`;
 
-	const allDisabled = useMemo(() => Children.toArray(children).every((child) => child.props.disabled), [children]);
+		const allDisabled = useMemo(() => Children.toArray(children).every((child) => child.props.disabled), [children]);
 
-	const level = useLayer() + 1;
+		const level = useLayer() + 1;
 
-	const setPopUpPosition = useMenuPositioner(flipped);
+		const setPopUpPosition = useMenuPositioner(flipped);
 
-	const {expanded, buttonProps, menuProps, buttonRef} = useMenuHandler(setPopUpPosition);
+		const {expanded, buttonProps, menuProps, buttonRef} = useMenuHandler(setPopUpPosition);
 
-	return (
-		<>
-			<Button
-				{...buttonProps}
-				{...props}
-				id={id}
-				className={`ButtonMenu${className ? ` ${className}` : ''}`}
-				icon={ChevronDown}
-				disabled={disabled || allDisabled}
-				aria-controls={expanded ? menuId : null}
-				aria-haspopup="true"
-				aria-expanded={expanded}
-				data-layer={expanded ? level : null}
-				ref={ref ? setRefs(ref, buttonRef) : buttonRef}
-			/>
-			{expanded &&
-				createPortal(
-					<Layer className="ButtonMenu__popUp" level={level}>
-						<Menu {...menuProps} id={menuId} aria-labelledby={id}>
-							{Children.map(children, (child, index) =>
-								cloneElement(child, {
-									id: `${id}-${index}`,
-									'data-index': index,
-								})
-							)}
-						</Menu>
-					</Layer>,
-					document.body
-				)}
-		</>
-	);
-});
+		return (
+			<>
+				<Button
+					{...buttonProps}
+					{...props}
+					id={id}
+					className={`ButtonMenu${className ? ` ${className}` : ''}`}
+					icon={ChevronDown}
+					size={size}
+					type={type}
+					disabled={disabled || allDisabled}
+					aria-controls={expanded ? menuId : null}
+					aria-haspopup="true"
+					aria-expanded={expanded}
+					data-layer={expanded ? level : null}
+					ref={ref ? setRefs(ref, buttonRef) : buttonRef}
+				/>
+				{expanded &&
+					createPortal(
+						<Layer className="ButtonMenu__popUp" level={level}>
+							<Menu {...menuProps} id={menuId} aria-labelledby={id}>
+								{Children.map(children, (child, index) =>
+									cloneElement(child, {
+										id: `${id}-${index}`,
+										'data-index': index,
+									})
+								)}
+							</Menu>
+						</Layer>,
+						document.body
+					)}
+			</>
+		);
+	}
+);
 
 ButtonMenu.displayName = 'ButtonMenu';
 
@@ -84,11 +88,6 @@ ButtonMenu.propTypes = {
 	flipped: PropTypes.bool,
 	/** The menu items. */
 	children: PropTypes.arrayOf(PropTypes.node).isRequired,
-};
-
-ButtonMenu.defaultProps = {
-	size: 'small',
-	type: 'ghost',
 };
 
 export default ButtonMenu;

@@ -6,8 +6,6 @@ exports[`ModalSpinner rendering renders expected elements 1`] = `
   id="test"
 >
   <Spinner
-    aria-label="Loading"
-    role="status"
     size="large"
   />
 </div>

@@ -12,7 +12,7 @@ import FilterEditor from './LegacyFilterEditor';
 import './FilterList.less';
 
 /** @deprecated use FilterArea instead. */
-const FilterList = ({className, filters, excludedKeys, getFilterTitle, getValues, getEditor, onApply}) => {
+const FilterList = ({className, filters, excludedKeys = [], getFilterTitle, getValues, getEditor, onApply}) => {
 	const [filterName, setFilterName] = useState(null);
 
 	const handleClose = useCallback(() => setFilterName(null), []);
@@ -109,10 +109,6 @@ FilterList.propTypes = {
 	getEditor: PropTypes.func,
 	/** Function invoked to apply changes. */
 	onApply: PropTypes.func,
-};
-
-FilterList.defaultProps = {
-	excludedKeys: [],
 };
 
 export default FilterList;

@@ -9,7 +9,7 @@ import TableBody from './TableBody';
 import './Table.less';
 
 /** Basic table component. */
-const Table = forwardRef(({className, rowMode, stickyHeader, fixedLayout, children, ...props}, ref) => (
+const Table = forwardRef(({className, rowMode = 'line', stickyHeader, fixedLayout, children, ...props}, ref) => (
 	<table
 		{...props}
 		className={`Table Table--${rowMode}${stickyHeader ? ' Table--sticky' : ''}${fixedLayout ? ' Table--fixed' : ''}${
@@ -35,10 +35,6 @@ Table.propTypes = {
 	fixedLayout: PropTypes.bool,
 	/** The child elements. */
 	children: PropTypes.oneOfType([headOrBody, PropTypes.arrayOf(headOrBody)]),
-};
-
-Table.defaultProps = {
-	rowMode: 'line',
 };
 
 export default Table;

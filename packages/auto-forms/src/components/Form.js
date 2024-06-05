@@ -57,7 +57,19 @@ const resetForm = (initialValues, initialExtras, dispatch) =>
 	dispatch({type: 'RESET', payload: getInitialState({initialValues, initialExtras})});
 
 const Form = forwardRef(
-	({initialValues, initialExtras, rules, children, getActiveFields, extraValidation, onSubmit, ...props}, ref) => {
+	(
+		{
+			initialValues,
+			initialExtras = {},
+			rules,
+			children,
+			getActiveFields,
+			extraValidation = identity,
+			onSubmit,
+			...props
+		},
+		ref
+	) => {
 		const [state, dispatch] = useReducer(reducer, {initialValues, initialExtras}, getInitialState);
 		const submit = useCallback(
 			() => submitForm(state, dispatch, rules, getActiveFields, extraValidation, onSubmit),
@@ -89,11 +101,6 @@ Form.propTypes = {
 	getActiveFields: PropTypes.func,
 	extraValidation: PropTypes.func,
 	onSubmit: PropTypes.func,
-};
-
-Form.defaultProps = {
-	initialExtras: {},
-	extraValidation: identity,
 };
 
 export default Form;

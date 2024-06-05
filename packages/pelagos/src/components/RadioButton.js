@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './RadioButton.less';
 
 /** A radio button. */
-const RadioButton = ({className, label, error, ...props}) => (
+const RadioButton = ({className, label, error, tabIndex = 0, ...props}) => (
 	<label className={`RadioButton${className ? ` ${className}` : ''}`}>
-		<input {...props} className={error ? 'error' : ''} type="radio" aria-invalid={error} />
+		<input {...props} className={error ? 'error' : ''} type="radio" tabIndex={tabIndex} aria-invalid={error} />
 		{label}
 	</label>
 );
@@ -25,10 +25,6 @@ RadioButton.propTypes = {
 	tabIndex: PropTypes.number,
 	/** Function invoked when checked status changes. */
 	onChange: PropTypes.func,
-};
-
-RadioButton.defaultProps = {
-	tabIndex: 0,
 };
 
 export default RadioButton;

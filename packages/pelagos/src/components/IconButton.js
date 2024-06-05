@@ -10,7 +10,20 @@ import './IconButton.less';
 /** An icon button. */
 const IconButton = forwardRef(
 	(
-		{id, icon, className, size, type, tooltipText, tooltipPlacement, overlay, disabled, pressed, onClick, ...props},
+		{
+			id,
+			icon,
+			className,
+			size = 'medium',
+			type = 'ghost',
+			tooltipText,
+			tooltipPlacement = 'right',
+			overlay,
+			disabled,
+			pressed,
+			onClick,
+			...props
+		},
 		ref
 	) => {
 		const tooltip = useTooltip(tooltipText, tooltipPlacement, 'labelledby');
@@ -65,12 +78,6 @@ IconButton.propTypes = {
 	pressed: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
 	onClick: PropTypes.func,
-};
-
-IconButton.defaultProps = {
-	size: 'medium',
-	type: 'ghost',
-	tooltipPlacement: 'right',
 };
 
 export default IconButton;
