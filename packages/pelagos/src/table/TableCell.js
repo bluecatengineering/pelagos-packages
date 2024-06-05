@@ -2,7 +2,7 @@ import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
 /** Cell element for a table component. */
-const TableCell = forwardRef(({className, align, children, ...props}, ref) => (
+const TableCell = forwardRef(({className, align = 'left', children, ...props}, ref) => (
 	<td {...props} className={`Table--${align}${className ? ` ${className}` : ''}`} ref={ref}>
 		{children}
 	</td>
@@ -17,10 +17,6 @@ TableCell.propTypes = {
 	align: PropTypes.oneOf(['left', 'center', 'right']),
 	/** The child elements. */
 	children: PropTypes.node,
-};
-
-TableCell.defaultProps = {
-	align: 'left',
 };
 
 export default TableCell;

@@ -25,7 +25,7 @@ const Select = ({
 	placeholder,
 	disabled,
 	error,
-	getOptionKey,
+	getOptionKey = identity,
 	renderOption,
 	onChange,
 	...props
@@ -287,10 +287,6 @@ Select.propTypes = {
 	renderOption: PropTypes.func.isRequired,
 	/** Function invoked when the selected option changes. */
 	onChange: PropTypes.func.isRequired,
-};
-
-Select.defaultProps = {
-	getOptionKey: identity,
 };
 
 export default Select;

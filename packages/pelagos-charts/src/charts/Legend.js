@@ -14,7 +14,7 @@ const Legend = ({
 	className,
 	groups,
 	formatter = identity,
-	direction,
+	direction = 'horizontal',
 	clickable,
 	selected,
 	color,
@@ -101,10 +101,6 @@ Legend.propTypes = {
 	getBgClass: PropTypes.func,
 	onClick: PropTypes.func,
 	onChange: PropTypes.func,
-};
-
-Legend.defaultProps = {
-	direction: 'horizontal',
 };
 
 export default Legend;

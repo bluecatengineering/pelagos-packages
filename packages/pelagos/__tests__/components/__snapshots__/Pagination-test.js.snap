@@ -29,10 +29,8 @@ exports[`Pagination rendering renders expected elements 1`] = `
         icon={[Function]}
         id="random-id-prev"
         onClick={[Function]}
-        size="medium"
         tooltipPlacement="top"
         tooltipText="Previous page"
-        type="ghost"
       />
       <IconButton
         aria-label="Next page"
@@ -40,10 +38,8 @@ exports[`Pagination rendering renders expected elements 1`] = `
         icon={[Function]}
         id="random-id-next"
         onClick={[Function]}
-        size="medium"
         tooltipPlacement="top"
         tooltipText="Next page"
-        type="ghost"
       />
     </div>
   </div>
@@ -79,10 +75,8 @@ exports[`Pagination rendering renders expected elements when className is set 1`
         icon={[Function]}
         id="random-id-prev"
         onClick={[Function]}
-        size="medium"
         tooltipPlacement="top"
         tooltipText="Previous page"
-        type="ghost"
       />
       <IconButton
         aria-label="Next page"
@@ -90,10 +84,8 @@ exports[`Pagination rendering renders expected elements when className is set 1`
         icon={[Function]}
         id="random-id-next"
         onClick={[Function]}
-        size="medium"
         tooltipPlacement="top"
         tooltipText="Next page"
-        type="ghost"
       />
     </div>
   </div>
@@ -154,10 +146,8 @@ exports[`Pagination rendering renders expected elements when pageSizes is set 1`
         icon={[Function]}
         id="random-id-prev"
         onClick={[Function]}
-        size="medium"
         tooltipPlacement="top"
         tooltipText="Previous page"
-        type="ghost"
       />
       <IconButton
         aria-label="Next page"
@@ -165,10 +155,8 @@ exports[`Pagination rendering renders expected elements when pageSizes is set 1`
         icon={[Function]}
         id="random-id-next"
         onClick={[Function]}
-        size="medium"
         tooltipPlacement="top"
         tooltipText="Next page"
-        type="ghost"
       />
     </div>
   </div>
@@ -282,10 +270,8 @@ exports[`Pagination rendering renders expected elements when totalItems is set 1
         icon={[Function]}
         id="random-id-prev"
         onClick={[Function]}
-        size="medium"
         tooltipPlacement="top"
         tooltipText="Previous page"
-        type="ghost"
       />
       <IconButton
         aria-label="Next page"
@@ -293,10 +279,8 @@ exports[`Pagination rendering renders expected elements when totalItems is set 1
         icon={[Function]}
         id="random-id-next"
         onClick={[Function]}
-        size="medium"
         tooltipPlacement="top"
         tooltipText="Next page"
-        type="ghost"
       />
     </div>
   </div>

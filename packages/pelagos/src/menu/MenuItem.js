@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Menu.less';
 
 /** A menu item. */
-const MenuItem = forwardRef(({className, text, type, children, disabled, hasDivider, ...props}, ref) => (
+const MenuItem = forwardRef(({className, text, type = 'default', children, disabled, hasDivider, ...props}, ref) => (
 	<li
 		{...props}
 		className={`Menu__item Menu--${type}${hasDivider ? ' Menu--divider' : ''}${className ? ` ${className}` : ''}`}
@@ -31,10 +31,6 @@ MenuItem.propTypes = {
 	disabled: PropTypes.bool,
 	/** @deprecated use MenuItemDivider instead. */
 	hasDivider: PropTypes.bool,
-};
-
-MenuItem.defaultProps = {
-	type: 'default',
 };
 
 export default MenuItem;

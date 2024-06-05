@@ -21,7 +21,6 @@ exports[`LegacyFilterEditor rendering renders expected elements 1`] = `
     onClick={[Function]}
     size="small"
     text="Save"
-    type="tertiary"
   />
 </Layer>
 `;

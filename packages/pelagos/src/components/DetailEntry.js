@@ -14,7 +14,7 @@ const DetailEntry = ({
 	infoText,
 	infoTextPlacement,
 	value,
-	direction,
+	direction = 'column',
 	valueClass,
 	valueTitle,
 	children,
@@ -62,10 +62,6 @@ DetailEntry.propTypes = {
 	valueTitle: PropTypes.string,
 	/** The child elements, can be provided instead of the value. */
 	children: PropTypes.any,
-};
-
-DetailEntry.defaultProps = {
-	direction: 'column',
 };
 
 export default DetailEntry;

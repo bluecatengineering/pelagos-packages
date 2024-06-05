@@ -2,7 +2,6 @@
 
 exports[`ListSelectorDialog rendering renders expected elements 1`] = `
 <Dialog
-  role="dialog"
   size="sm"
   stretch={true}
   title="Test title"
@@ -154,15 +153,12 @@ exports[`ListSelectorDialog rendering renders expected elements 1`] = `
   <div>
     <Button
       id="closeDialogBtn"
-      size="medium"
       text="Cancel"
-      type="tertiary"
     />
     <Button
       disabled={false}
       id="saveItemsBtn"
       onClick={[Function]}
-      size="medium"
       text="Test save"
       type="primary"
     />
@@ -172,7 +168,6 @@ exports[`ListSelectorDialog rendering renders expected elements 1`] = `
 
 exports[`ListSelectorDialog rendering renders expected elements when defaultItems is set 1`] = `
 <Dialog
-  role="dialog"
   size="sm"
   stretch={true}
   title="Test title"
@@ -327,22 +322,18 @@ exports[`ListSelectorDialog rendering renders expected elements when defaultItem
         onClick={[Function]}
         size="small"
         text="Restore defaults"
-        type="tertiary"
       />
     </div>
   </div>
   <div>
     <Button
       id="closeDialogBtn"
-      size="medium"
       text="Cancel"
-      type="tertiary"
     />
     <Button
       disabled={false}
       id="saveItemsBtn"
       onClick={[Function]}
-      size="medium"
       text="Test save"
       type="primary"
     />
@@ -352,7 +343,6 @@ exports[`ListSelectorDialog rendering renders expected elements when defaultItem
 
 exports[`ListSelectorDialog rendering renders expected elements when items is empty 1`] = `
 <Dialog
-  role="dialog"
   size="sm"
   stretch={true}
   title="Test title"
@@ -487,15 +477,12 @@ exports[`ListSelectorDialog rendering renders expected elements when items is em
   <div>
     <Button
       id="closeDialogBtn"
-      size="medium"
       text="Cancel"
-      type="tertiary"
     />
     <Button
       disabled={true}
       id="saveItemsBtn"
       onClick={[Function]}
-      size="medium"
       text="Test save"
       type="primary"
     />

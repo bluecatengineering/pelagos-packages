@@ -101,7 +101,7 @@ const MultiColumn = ({
 	id,
 	className,
 	path,
-	colWidth,
+	colWidth = '12em',
 	emptyText,
 	getItemCount,
 	isLeaf,
@@ -345,10 +345,6 @@ MultiColumn.propTypes = {
 	renderItem: PropTypes.func,
 	/** Function invoked when the selection changes. */
 	onChange: PropTypes.func,
-};
-
-MultiColumn.defaultProps = {
-	colWidth: '12em',
 };
 
 export default MultiColumn;

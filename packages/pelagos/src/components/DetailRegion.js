@@ -4,7 +4,7 @@ import InfoTooltip from './InfoTooltip';
 import './DetailRegion.less';
 
 /** A region in the details panel. */
-const DetailRegion = ({id, className, level: Level, label, infoText, infoTextPlacement, children}) => (
+const DetailRegion = ({id, className, level: Level = 'h3', label, infoText, infoTextPlacement, children}) => (
 	<div className={`DetailRegion${className ? ` ${className}` : ''}`}>
 		<div className="DetailRegion__header">
 			<Level id={id} className={`DetailRegion__title ${infoText ? 'info' : 'no-info'}`}>
@@ -31,10 +31,6 @@ DetailRegion.propTypes = {
 	infoTextPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
 	/** The child elements. */
 	children: PropTypes.any,
-};
-
-DetailRegion.defaultProps = {
-	level: 'h3',
 };
 
 export default DetailRegion;

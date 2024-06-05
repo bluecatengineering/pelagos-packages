@@ -15,9 +15,6 @@ exports[`DateInput rendering renders expected elements 1`] = `
     className="DateInput__icon"
     icon={[Function]}
     onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </div>
 `;
@@ -37,9 +34,6 @@ exports[`DateInput rendering renders expected elements when calendarTime is set 
     className="DateInput__icon"
     icon={[Function]}
     onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
   <React.Portal
     container={
@@ -76,9 +70,6 @@ exports[`DateInput rendering renders expected elements when className is set 1`]
     className="DateInput__icon"
     icon={[Function]}
     onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </div>
 `;
@@ -99,9 +90,6 @@ exports[`DateInput rendering renders expected elements when value is set 1`] = `
     className="DateInput__icon"
     icon={[Function]}
     onClick={[Function]}
-    size="medium"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </div>
 `;

@@ -63,9 +63,7 @@ exports[`BreadcrumbItem rendering renders expected elements when the child is an
   <IconMenu
     icon={[Function]}
   >
-    <MenuItem
-      type="default"
-    />
+    <MenuItem />
   </IconMenu>
   <span
     aria-hidden="true"

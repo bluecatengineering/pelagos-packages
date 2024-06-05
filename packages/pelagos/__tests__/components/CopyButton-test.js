@@ -11,7 +11,7 @@ describe('CopyButton', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			useTooltipBase.mockReturnValue([]);
-			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" />);
+			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 

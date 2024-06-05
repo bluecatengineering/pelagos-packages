@@ -4,9 +4,7 @@ exports[`TableRow rendering renders expected elements 1`] = `
 <tr
   id="test"
 >
-  <TableCell
-    align="left"
-  />
+  <TableCell />
 </tr>
 `;
 
@@ -15,8 +13,6 @@ exports[`TableRow rendering renders expected elements when selected is set 1`] =
   aria-selected={true}
   id="test"
 >
-  <TableCell
-    align="left"
-  />
+  <TableCell />
 </tr>
 `;

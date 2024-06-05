@@ -8,15 +8,12 @@ exports[`DefaultDetailsButtons rendering renders expected elements 1`] = `
     disabled={false}
     id="deleteBtn"
     onClick={[Function]}
-    size="medium"
     text="Delete"
-    type="tertiary"
   />
   <Button
     disabled={false}
     id="editBtn"
     onClick={[Function]}
-    size="medium"
     text="Edit"
     type="primary"
   />
@@ -29,16 +26,13 @@ exports[`DefaultDetailsButtons rendering renders expected elements when disableE
     disabled={true}
     id="deleteBtn"
     onClick={[Function]}
-    size="medium"
     text="Delete"
     tooltipText="Disable Delete"
-    type="tertiary"
   />
   <Button
     disabled={true}
     id="editBtn"
     onClick={[Function]}
-    size="medium"
     text="Edit"
     tooltipText="Disable Edit"
     type="primary"
@@ -52,7 +46,6 @@ exports[`DefaultDetailsButtons rendering renders expected elements when onDelete
     disabled={false}
     id="editBtn"
     onClick={[Function]}
-    size="medium"
     text="Edit"
     type="primary"
   />

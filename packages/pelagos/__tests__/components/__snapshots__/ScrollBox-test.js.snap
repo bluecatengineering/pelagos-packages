@@ -10,10 +10,7 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
     icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
-    size="medium"
     tabIndex="-1"
-    tooltipPlacement="right"
-    type="ghost"
   />
   <div
     className="ScrollBox__track"
@@ -28,10 +25,7 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
     icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
-    size="medium"
     tabIndex="-1"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </div>
 `;
@@ -46,10 +40,7 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
     icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
-    size="medium"
     tabIndex="-1"
-    tooltipPlacement="right"
-    type="ghost"
   />
   <div
     className="ScrollBox__track"
@@ -64,10 +55,7 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
     icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
-    size="medium"
     tabIndex="-1"
-    tooltipPlacement="right"
-    type="ghost"
   />
 </div>
 `;

@@ -10,7 +10,10 @@ import './Button.less';
 
 /** A button. */
 const Button = forwardRef(
-	({id, className, text, children, icon, tooltipText, size, type, disabled, onClick, ...props}, ref) => {
+	(
+		{id, className, text, children, icon, tooltipText, size = 'medium', type = 'tertiary', disabled, onClick, ...props},
+		ref
+	) => {
 		const tooltip = useTooltip(tooltipText, 'top');
 		const refs = ref ? setRefs(ref, tooltip) : tooltip;
 		return disabled ? (
@@ -68,11 +71,6 @@ Button.propTypes = {
 	disabled: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
 	onClick: PropTypes.func,
-};
-
-Button.defaultProps = {
-	size: 'medium',
-	type: 'tertiary',
 };
 
 export default Button;

@@ -6,7 +6,17 @@ import Layer from './Layer';
 import './Dialog.less';
 
 /** A modal dialog box. */
-const Dialog = ({id, className, title, role, size, stretch, initialFocus, children: [body, buttons], onSubmit}) => {
+const Dialog = ({
+	id,
+	className,
+	title,
+	role = 'dialog',
+	size = 'md',
+	stretch,
+	initialFocus,
+	children: [body, buttons],
+	onSubmit,
+}) => {
 	const previousActive = useRef(document.activeElement);
 	const element = useRef(null);
 
@@ -82,11 +92,6 @@ Dialog.propTypes = {
 	children: PropTypes.arrayOf(PropTypes.element).isRequired,
 	/** Function invoked when a submit button is clicked. */
 	onSubmit: PropTypes.func,
-};
-
-Dialog.defaultProps = {
-	role: 'dialog',
-	size: 'md',
 };
 
 export default Dialog;
