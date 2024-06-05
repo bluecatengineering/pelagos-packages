@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.12.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.11.2...@bluecateng/pelagos@12.12.0) (2024-06-05)
+
+### Features
+
+- add expanded property to FilterArea ([f3b7644](https://github.com/bluecatengineering/pelagos-packages/commit/f3b76449b54029e57dc8584a43c8e82b3da13cd3))
+- add list selector dialog ([43e7333](https://github.com/bluecatengineering/pelagos-packages/commit/43e7333335db1ee6e1b26453ca2941873b9da643))
+- add Search component ([b7c97b7](https://github.com/bluecatengineering/pelagos-packages/commit/b7c97b7b0bcab0d0936d87ae0a69043b84ce08c5))
+- add sectioned table toolbar ([16c845f](https://github.com/bluecatengineering/pelagos-packages/commit/16c845f4e1fee6a2fdd4d92b60f927b9a018a7e9))
+
+### Bug Fixes
+
+- remove obsolete defaultProps ([0b65593](https://github.com/bluecatengineering/pelagos-packages/commit/0b655931265c973169ea4c2a3bc7c42083223f3e))
+
 ## [12.11.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.11.2...@bluecateng/pelagos@12.11.2) (2024-05-28)
 
 ### Bug Fixes

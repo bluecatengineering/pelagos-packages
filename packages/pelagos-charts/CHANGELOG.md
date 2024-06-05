@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.1...@bluecateng/pelagos-charts@0.1.2) (2024-06-05)
+
+### Bug Fixes
+
+- remove obsolete defaultProps ([0b65593](https://github.com/bluecatengineering/pelagos-packages/commit/0b655931265c973169ea4c2a3bc7c42083223f3e))
+
 ## [0.1.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.0...@bluecateng/pelagos-charts@0.1.1) (2024-05-28)
 
 ### Bug Fixes
