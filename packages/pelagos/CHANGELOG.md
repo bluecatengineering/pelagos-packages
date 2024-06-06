@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.12.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.12.0...@bluecateng/pelagos@12.12.1) (2024-06-06)
+
+### Bug Fixes
+
+- fix incorrect search box background in default table toolbar ([f816a10](https://github.com/bluecatengineering/pelagos-packages/commit/f816a108b613667497bec471e63072f2b844128f))
+
 ## [12.12.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.11.2...@bluecateng/pelagos@12.12.0) (2024-06-05)
 
 ### Features
