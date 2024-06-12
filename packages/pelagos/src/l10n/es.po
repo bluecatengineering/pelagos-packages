@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: f52
+msgid "\"From\" must be less than \"To\"."
+msgstr "\"Desde\" debe ser menor que \"Hasta\""
+
 #: 048
 msgid "(configured)"
 msgstr "(configurado)"
@@ -145,6 +149,10 @@ msgstr "Fallo en copia: {message}"
 msgid "Current"
 msgstr "Actual"
 
+#: 081
+msgid "Custom"
+msgstr "Específico"
+
 #: f6f
 msgid "Delete"
 msgstr "Borrar"
@@ -161,6 +169,10 @@ msgstr "Descartar"
 msgid "Edit"
 msgstr "Editar"
 
+#: fcc
+msgid "Enter either one or both values."
+msgstr "Entre uno o los dos valores."
+
 #: 8dc
 msgid "Expand current row"
 msgstr "Expandir fila actual"
@@ -172,6 +184,10 @@ msgstr "Archivo {0} subido"
 #: 7ec
 msgid "Files {0} uploaded"
 msgstr "Archivos {0} subidos"
+
+#: 3f6
+msgid "From"
+msgstr "Desde"
 
 #: 387
 msgid "Incomplete"
@@ -272,6 +288,10 @@ msgstr "Seleccionados"
 #: 109
 msgid "The default settings have been restored."
 msgstr "Los valores por defecto han sido restaurados."
+
+#: ae7
+msgid "To"
+msgstr "Hasta"
 
 #: 67a
 msgid "Use cursor keys to select an item"

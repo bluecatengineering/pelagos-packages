@@ -12,14 +12,18 @@ global.document = {activeElement: 'active-element'};
 describe('TreeView', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<TreeView>children</TreeView>);
+			const wrapper = shallow(
+				<TreeView>
+					<div id="child-0" />
+				</TreeView>
+			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
 				<TreeView className="TestClass" size="xs" selected={['test-id']}>
-					children
+					<div id="child-0" />
 				</TreeView>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();

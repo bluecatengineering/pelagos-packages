@@ -4,7 +4,9 @@ exports[`TreeView rendering renders expected elements 1`] = `
 <Context.Provider
   value={
     {
-      "focused": [Function],
+      "focused": [
+        "child-0",
+      ],
       "onSelect": undefined,
       "selected": undefined,
       "setFocused": [MockFunction],
@@ -24,7 +26,9 @@ exports[`TreeView rendering renders expected elements 1`] = `
       className="TreeView TreeView--sm"
       role="tree"
     >
-      children
+      <div
+        id="child-0"
+      />
     </ul>
   </Context.Provider>
 </Context.Provider>
@@ -34,7 +38,9 @@ exports[`TreeView rendering renders expected elements when optional properties a
 <Context.Provider
   value={
     {
-      "focused": [Function],
+      "focused": [
+        "test-id",
+      ],
       "onSelect": undefined,
       "selected": [
         "test-id",
@@ -56,7 +62,9 @@ exports[`TreeView rendering renders expected elements when optional properties a
       className="TreeView TreeView--xs TestClass"
       role="tree"
     >
-      children
+      <div
+        id="child-0"
+      />
     </ul>
   </Context.Provider>
 </Context.Provider>
