@@ -1,6 +1,6 @@
 module.exports = {
 	...jest.requireActual('react'),
-	useState: jest.fn((v) => [v, jest.fn()]),
+	useState: jest.fn((v) => [typeof v === 'function' ? v() : v, jest.fn()]),
 	useCallback: (fn) => fn,
 	useContext: jest.fn(),
 	useEffect: jest.fn(),

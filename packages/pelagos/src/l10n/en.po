@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: f52
+msgid "\"From\" must be less than \"To\"."
+msgstr ""
+
 #: 048
 msgid "(configured)"
 msgstr ""
@@ -145,6 +149,10 @@ msgstr ""
 msgid "Current"
 msgstr ""
 
+#: 081
+msgid "Custom"
+msgstr ""
+
 #: f6f
 msgid "Delete"
 msgstr ""
@@ -161,6 +169,10 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: fcc
+msgid "Enter either one or both values."
+msgstr ""
+
 #: 8dc
 msgid "Expand current row"
 msgstr ""
@@ -171,6 +183,10 @@ msgstr ""
 
 #: 7ec
 msgid "Files {0} uploaded"
+msgstr ""
+
+#: 3f6
+msgid "From"
 msgstr ""
 
 #: 387
@@ -271,6 +287,10 @@ msgstr ""
 
 #: 109
 msgid "The default settings have been restored."
+msgstr ""
+
+#: ae7
+msgid "To"
 msgstr ""
 
 #: 67a

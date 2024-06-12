@@ -166,7 +166,7 @@
     "outputDirectory": "build"
   },
   "bc-l10n": {
-    "hashLength": 3,
+    "hashLength": 4,
     "sourcePath": "packages/pelagos/src",
     "module": "packages/pelagos/src/l10n",
     "catalogPath": "packages/pelagos/src/l10n/{locale}",

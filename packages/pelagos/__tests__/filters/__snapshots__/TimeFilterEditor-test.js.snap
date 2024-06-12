@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeFilterEditor rendering renders expected elements 1`] = `
+<FilterEditor
+  chipId="chip"
+  id="test"
+  onSave={[Function]}
+>
+  <div
+    className="TimeFilterEditor__body"
+  >
+    <div>
+      <LabelLine
+        text="Test"
+      />
+      <RadioGroup
+        id="time-options"
+        onChange={[MockFunction]}
+        options={
+          [
+            "foo",
+            "bar",
+          ]
+        }
+        value="all"
+      />
+      <div
+        aria-label="Custom"
+        role="group"
+      >
+        <TextInputField
+          className="TimeFilterEditor__input"
+          disabled={true}
+          error={null}
+          id="time-from"
+          label="From"
+          onChange={[Function]}
+          value=""
+        />
+        <TextInputField
+          className="TimeFilterEditor__input"
+          disabled={true}
+          error={null}
+          id="time-to"
+          label="To"
+          onChange={[Function]}
+          value=""
+        />
+      </div>
+    </div>
+    <Calendar
+      id="time-calendar"
+      onChange={[Function]}
+      value={[]}
+    />
+  </div>
+</FilterEditor>
+`;
+
+exports[`TimeFilterEditor rendering renders expected elements when from and to are set 1`] = `
+<FilterEditor
+  chipId="chip"
+  id="test"
+  onSave={[Function]}
+>
+  <div
+    className="TimeFilterEditor__body"
+  >
+    <div>
+      <LabelLine
+        text="Test"
+      />
+      <RadioGroup
+        id="time-options"
+        options={
+          [
+            "foo",
+            "bar",
+          ]
+        }
+        value="custom"
+      />
+      <div
+        aria-label="Custom"
+        role="group"
+      >
+        <TextInputField
+          className="TimeFilterEditor__input"
+          disabled={false}
+          error={null}
+          id="time-from"
+          label="From"
+          onChange={[Function]}
+          value="test-from"
+        />
+        <TextInputField
+          className="TimeFilterEditor__input"
+          disabled={false}
+          error={null}
+          id="time-to"
+          label="To"
+          onChange={[Function]}
+          value="test-to"
+        />
+      </div>
+    </div>
+    <Calendar
+      id="time-calendar"
+      onChange={[Function]}
+      value={
+        [
+          1000,
+          2000,
+        ]
+      }
+    />
+  </div>
+</FilterEditor>
+`;
