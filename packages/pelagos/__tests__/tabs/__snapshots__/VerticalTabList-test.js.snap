@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalTabList rendering renders expected elements 1`] = `
+<div
+  className="VerticalTabList"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+  role="tablist"
+>
+  <Context.Provider
+    value={
+      {
+        "focused": 0,
+        "index": 0,
+        "onChange": undefined,
+        "selectedIndex": 0,
+      }
+    }
+  >
+    <VerticalTab />
+  </Context.Provider>
+</div>
+`;
+
+exports[`VerticalTabList rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="VerticalTabList TestClass"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+  role="tablist"
+>
+  <Context.Provider
+    value={
+      {
+        "focused": 0,
+        "index": 0,
+        "onChange": undefined,
+        "selectedIndex": 0,
+      }
+    }
+  >
+    <VerticalTab />
+  </Context.Provider>
+</div>
+`;
