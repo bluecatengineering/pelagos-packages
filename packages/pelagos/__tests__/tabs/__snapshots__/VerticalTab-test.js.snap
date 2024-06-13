@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalTab rendering renders expected elements 1`] = `
+<button
+  aria-selected={false}
+  className="VerticalTabList__tab"
+  onClick={[Function]}
+  role="tab"
+  tabIndex={-1}
+  type="button"
+>
+  <div
+    className="VerticalTabList__labelWrapper"
+  >
+    <div
+      className="VerticalTabList__label"
+    >
+      Test
+    </div>
+  </div>
+</button>
+`;
+
+exports[`VerticalTab rendering renders expected elements when optional properties are set 1`] = `
+<button
+  aria-selected={true}
+  className="VerticalTabList__tab VerticalTabList__tab--error TestClass"
+  onClick={[Function]}
+  role="tab"
+  tabIndex={0}
+  type="button"
+>
+  <div
+    className="VerticalTabList__labelWrapper"
+  >
+    <div
+      className="VerticalTabList__label"
+    >
+      Test
+    </div>
+    <div
+      className="VerticalTabList__secondaryLabel"
+    >
+      Test secondary
+    </div>
+  </div>
+  <WarningFilled
+    className="VerticalTabList__error"
+  />
+</button>
+`;

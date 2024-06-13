@@ -1,0 +1,82 @@
+@import '../../less/focus';
+@import '../../less/fonts';
+@import '../../less/spacing';
+@import '../../less/utils';
+
+@layer pelagos {
+	.VerticalTabList {
+		color: var(--text-secondary);
+		overflow: hidden auto;
+		padding: @sp-16;
+		gap: 1px;
+
+		&__tab {
+			@focus-visible();
+			display: flex;
+			align-items: center;
+			gap: @sp-32;
+			flex: none;
+			padding: 0 @sp-16;
+			height: 48px;
+			background-color: transparent;
+			border: none;
+			border-left: 2px solid var(--border-subtle);
+			text-align: left;
+			overflow: hidden;
+			white-space: nowrap;
+			cursor: pointer;
+			transition:
+				color 0.15s ease-out,
+				background-color 0.15s ease-out,
+				border-color 0.15s ease-out;
+
+			&:hover {
+				color: var(--text-primary);
+				background-color: var(--layer-hover);
+				border-color: var(--border-strong);
+			}
+
+			&:disabled {
+				color: var(--text-disabled);
+				background-color: transparent;
+				border-color: var(--border-disabled);
+				cursor: not-allowed;
+			}
+
+			&[aria-selected='true'] {
+				@heading-compact-01();
+				color: var(--text-primary);
+				border-color: var(--border-interactive);
+			}
+
+			&--error,
+			&--error:hover,
+			&--error[aria-selected='true'] {
+				border-color: var(--support-error);
+			}
+		}
+
+		&__labelWrapper {
+			overflow: hidden;
+			flex: 1;
+		}
+
+		&__label {
+			@ellipsis();
+		}
+
+		&__secondaryLabel {
+			@label-01();
+			@ellipsis();
+			color: var(--text-helper);
+
+			:disabled & {
+				color: var(--text-disabled);
+			}
+		}
+
+		&__error {
+			color: var(--support-error);
+		}
+	}
+}
