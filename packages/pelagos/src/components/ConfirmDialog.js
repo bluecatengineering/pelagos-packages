@@ -7,7 +7,7 @@ import Button from './Button';
 import './ConfirmDialog.less';
 
 /** A confirmation dialog. */
-const ConfirmDialog = ({title, body, confirmText, size = 'sm', onClose, onConfirm}) => (
+const ConfirmDialog = ({title, body, confirmText, confirmBtnType = 'primary', size = 'sm', onClose, onConfirm}) => (
 	<Dialog title={title} role="alertdialog" size={size}>
 		<div className="ConfirmDialog__body">
 			<WarningAltFilled className="ConfirmDialog__icon" size={20} />
@@ -15,7 +15,7 @@ const ConfirmDialog = ({title, body, confirmText, size = 'sm', onClose, onConfir
 		</div>
 		<div>
 			<Button id="closeDialogBtn" text={t`Cancel`} onClick={onClose} />
-			<Button id="confirmBtn" text={confirmText} type="primary" onClick={onConfirm} />
+			<Button id="confirmBtn" text={confirmText} type={confirmBtnType} onClick={onConfirm} />
 		</div>
 	</Dialog>
 );
@@ -27,6 +27,8 @@ ConfirmDialog.propTypes = {
 	body: PropTypes.string,
 	/** The text to display in the confirm button. */
 	confirmText: PropTypes.string,
+	/** The confirm button type. */
+	confirmBtnType: PropTypes.oneOf(['primary', 'dangerPrimary']),
 	/** The dialog size. */
 	size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
 	/** Function invoked when the close button is clicked. */
