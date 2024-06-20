@@ -7,6 +7,7 @@ exports[`LineChart rendering renders expected elements 1`] = `
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
@@ -57,6 +58,7 @@ exports[`LineChart rendering renders expected elements when data loading is set 
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
@@ -106,6 +108,7 @@ exports[`LineChart rendering renders expected elements when optional properties 
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"

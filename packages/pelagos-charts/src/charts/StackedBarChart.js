@@ -423,7 +423,7 @@ const StackedBarChart = ({
 		<div {...props} id={id} className={`Chart Chart__wrapper${className ? ` ${className}` : ''}`}>
 			{useMemo(
 				() => (
-					<svg className="Chart__chart" ref={ref}>
+					<svg className="Chart__chart" data-chromatic="ignore" ref={ref}>
 						<g className="Chart__grid">
 							<rect />
 							<g />

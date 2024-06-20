@@ -7,6 +7,7 @@ exports[`StackedBarChart rendering renders expected elements 1`] = `
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
@@ -53,6 +54,7 @@ exports[`StackedBarChart rendering renders expected elements when data loading i
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
@@ -98,6 +100,7 @@ exports[`StackedBarChart rendering renders expected elements when optional prope
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"

@@ -7,6 +7,7 @@ exports[`SimpleBarChart rendering renders expected elements 1`] = `
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
@@ -38,6 +39,7 @@ exports[`SimpleBarChart rendering renders expected elements when data loading is
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
@@ -72,6 +74,7 @@ exports[`SimpleBarChart rendering renders expected elements when optional proper
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"

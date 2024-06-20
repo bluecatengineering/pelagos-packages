@@ -7,6 +7,7 @@ exports[`ScatterChart rendering renders expected elements 1`] = `
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
@@ -46,6 +47,7 @@ exports[`ScatterChart rendering renders expected elements when data loading is s
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
@@ -88,6 +90,7 @@ exports[`ScatterChart rendering renders expected elements when optional properti
 >
   <svg
     className="Chart__chart"
+    data-chromatic="ignore"
   >
     <g
       className="Chart__grid"
