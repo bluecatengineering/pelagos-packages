@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # tag=v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # tag=v4.1.7
 
       - name: Setup node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # tag=v4.0.2
@@ -31,7 +31,7 @@ jobs:
           TZ: America/Toronto
 
       - name: Publish test report
-        uses: mikepenz/action-junit-report@ac30be7acb0a361e5492575ab42e47fcadec4928 # tag=v4.2.2
+        uses: mikepenz/action-junit-report@db71d41eb79864e25ab0337e395c352e84523afe # tag=v4.3.1
         if: always()
         with:
           report_paths: build/junit.xml
