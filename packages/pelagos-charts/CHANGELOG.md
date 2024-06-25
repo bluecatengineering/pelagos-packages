@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.2...@bluecateng/pelagos-charts@0.1.3) (2024-06-25)
+
+### Bug Fixes
+
+- use a thinner mark in checkboxes ([ef31090](https://github.com/bluecatengineering/pelagos-packages/commit/ef31090a92993de52e0b2b2de31d1f6d803733d3))
+
 ## [0.1.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.1...@bluecateng/pelagos-charts@0.1.2) (2024-06-05)
 
 ### Bug Fixes

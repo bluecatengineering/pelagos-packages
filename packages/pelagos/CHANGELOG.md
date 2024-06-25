@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.13.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.12.1...@bluecateng/pelagos@12.13.0) (2024-06-25)
+
+### Features
+
+- add confirm button type to confirm dialog ([5023052](https://github.com/bluecatengineering/pelagos-packages/commit/50230527c666649564ae66a1a30457cde4cc1eb4))
+- add time filter editor ([1b12196](https://github.com/bluecatengineering/pelagos-packages/commit/1b12196bef8c59a3de69efee5061902f6ebea4b8))
+- add vertical tabs component ([5d073bd](https://github.com/bluecatengineering/pelagos-packages/commit/5d073bd3adaf94e75647632cce8aecb1b4c43819))
+
+### Bug Fixes
+
+- align filter button to the box end ([606f820](https://github.com/bluecatengineering/pelagos-packages/commit/606f8201e256e890bae42d5135fb2f057ef1c75c))
+- update text field read-only styles per new specs ([39397e9](https://github.com/bluecatengineering/pelagos-packages/commit/39397e9235e6ec2ce2d837041c1e41c9ecd58192))
+- use a thinner mark in checkboxes ([ef31090](https://github.com/bluecatengineering/pelagos-packages/commit/ef31090a92993de52e0b2b2de31d1f6d803733d3))
+
 ## [12.12.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.12.0...@bluecateng/pelagos@12.12.1) (2024-06-06)
 
 ### Bug Fixes
