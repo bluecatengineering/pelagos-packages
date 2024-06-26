@@ -2,7 +2,7 @@
 
 exports[`TableScrollWrapper rendering renders expected elements 1`] = `
 <div
-  className="Table__wrapper"
+  className="Table__wrapper vertical"
   id="test"
   tabIndex={0}
 >
@@ -10,9 +10,9 @@ exports[`TableScrollWrapper rendering renders expected elements 1`] = `
 </div>
 `;
 
-exports[`TableScrollWrapper rendering renders expected elements when className is set 1`] = `
+exports[`TableScrollWrapper rendering renders expected elements when optional properties are set 1`] = `
 <div
-  className="Table__wrapper TestClass"
+  className="Table__wrapper both TestClass"
   id="test"
   tabIndex={0}
 >

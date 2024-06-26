@@ -12,6 +12,12 @@ exports[`Table rendering renders expected elements when className is set 1`] = `
 />
 `;
 
+exports[`Table rendering renders expected elements when fixedColumns is set 1`] = `
+<table
+  className="Table Table--line Table--fixed Table--fixedColumns"
+/>
+`;
+
 exports[`Table rendering renders expected elements when fixedLayout is set 1`] = `
 <table
   className="Table Table--line Table--fixed"
