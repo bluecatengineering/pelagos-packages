@@ -2,12 +2,15 @@ import {useEffect, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import TimeFilterEditor from '../../src/filters/TimeFilterEditor';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/filters/TimeFilterEditor');
 
 const anyFunction = expect.any(Function);
 
 global.document = {getElementById: jest.fn()};
+
+useRandomId.mockReturnValue('random-id');
 
 describe('TimeFilterEditor', () => {
 	describe('rendering', () => {
@@ -224,7 +227,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce(['Error'])
 				.mockReturnValueOnce([null]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" onSave={onSave} />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(onSave.mock.calls).toEqual([]);
 		});
 
@@ -238,7 +241,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce([null])
 				.mockReturnValueOnce(['Error']);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" onSave={onSave} />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(onSave.mock.calls).toEqual([]);
 		});
 
@@ -252,7 +255,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce([null, setFromError])
 				.mockReturnValueOnce([null]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(setFromError.mock.calls).toEqual([['Enter either one or both values.']]);
 		});
 
@@ -271,7 +274,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce([null, setFromError])
 				.mockReturnValueOnce([null]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(parse.mock.calls).toEqual([
 				['test-from', true],
 				['test-to', false],
@@ -296,7 +299,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce([null])
 				.mockReturnValueOnce([null]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" onSave={onSave} />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(parse.mock.calls).toEqual([
 				['test-from', true],
 				['test-to', false],
@@ -316,7 +319,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce([null])
 				.mockReturnValueOnce([null]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" onSave={onSave} />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(parse.mock.calls).toEqual([
 				['test-from', true],
 				['test-from', true],
@@ -334,7 +337,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce([null])
 				.mockReturnValueOnce([null]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" onSave={onSave} />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(parse.mock.calls).toEqual([
 				['test-to', false],
 				['test-to', false],
@@ -352,7 +355,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce(['Error'])
 				.mockReturnValueOnce([null]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" onSave={onSave} />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(onSave.mock.calls).toEqual([['last1hour']]);
 		});
 
@@ -366,7 +369,7 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce(['Error'])
 				.mockReturnValueOnce([null]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" onSave={onSave} />);
-			wrapper.find('#test').prop('onSave')();
+			wrapper.find('#random-id').prop('onSave')();
 			expect(onSave.mock.calls).toEqual([[null]]);
 		});
 
