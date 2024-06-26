@@ -12,6 +12,10 @@
 			table-layout: fixed;
 		}
 
+		&--fixedColumns {
+			width: fit-content;
+		}
+
 		&--left {
 			text-align: left;
 		}
@@ -407,9 +411,16 @@
 
 		&__wrapper {
 			flex: 1;
-			overflow: hidden scroll;
 			contain: strict;
 			outline: none;
+
+			&.vertical {
+				overflow: hidden scroll;
+			}
+
+			&.both {
+				overflow: auto scroll;
+			}
 
 			// workaround to avoid the focus ring to be truncated
 			&:focus-visible::before {

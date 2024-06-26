@@ -70,13 +70,13 @@ const data = [
 const largeColumns = [];
 const largeData = [];
 
-for (let j = 0; j < 3; ++j) {
+for (let j = 0; j < 6; ++j) {
 	largeColumns.push(`Column ${j}`);
 }
 
 for (let i = 0; i < 300; ++i) {
 	const item = [];
-	for (let j = 0; j < 3; ++j) {
+	for (let j = 0; j < 6; ++j) {
 		item.push(`row ${i}, cell ${j}`);
 	}
 	largeData.push(item);
@@ -158,6 +158,43 @@ export const ScrollWrapper = {
 						<TableRow>
 							{largeColumns.map((header, j) => (
 								<TableHeader key={j}>{header}</TableHeader>
+							))}
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{largeData.map((row, i) => (
+							<TableRow key={i}>
+								{row.map((text, j) => (
+									<TableCell key={j}>{text}</TableCell>
+								))}
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableScrollWrapper>
+		</Layer>
+	),
+};
+
+export const FixedColumns = {
+	parameters: {layout: 'fullscreen'},
+	args: {
+		id: 'default',
+		className: 'TableStory--scroll',
+		stickyHeader: true,
+		fixedColumns: true,
+	},
+	render: (args) => (
+		<Layer className="TableStory__wrapperScroll">
+			<TableTitle title="Table" description="With fixed column widths." />
+			<TableScrollWrapper direction="both">
+				<Table {...args}>
+					<TableHead>
+						<TableRow>
+							{largeColumns.map((header, j) => (
+								<TableHeader key={j} style={{width: '263px'}}>
+									{header}
+								</TableHeader>
 							))}
 						</TableRow>
 					</TableHead>
