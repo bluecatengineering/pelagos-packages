@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.13.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.13.0...@bluecateng/pelagos@12.13.1) (2024-06-26)
+
+### Bug Fixes
+
+- add missing export for TimeFilterEditor ([31d17f9](https://github.com/bluecatengineering/pelagos-packages/commit/31d17f964dc8c26a120218dac7118647fadfeb61))
+- set aria-labelledby on the TimeFilterEditor ([1945b3e](https://github.com/bluecatengineering/pelagos-packages/commit/1945b3ec4b4d2c08c622d33b0384aa76b0b6c0ac))
+
 ## [12.13.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.12.1...@bluecateng/pelagos@12.13.0) (2024-06-25)
 
 ### Features
