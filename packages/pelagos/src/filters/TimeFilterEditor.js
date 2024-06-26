@@ -6,6 +6,7 @@ import LabelLine from '../components/LabelLine';
 import RadioGroup from '../components/RadioGroup';
 import TextInputField from '../formFields/TextInputField';
 import Calendar from '../components/Calendar';
+import useRandomId from '../hooks/useRandomId';
 
 import FilterEditor from './FilterEditor';
 
@@ -104,12 +105,14 @@ export const TimeFilterEditor = ({
 		}
 	}, [option]);
 
+	id = useRandomId(id);
+	const labelId = `${id}-label`;
 	const isCustom = option === 'custom';
 	return (
-		<FilterEditor id={id} chipId={chipId} onClose={onClose} onSave={handleSave}>
+		<FilterEditor id={id} chipId={chipId} aria-labelledby={labelId} onClose={onClose} onSave={handleSave}>
 			<div className="TimeFilterEditor__body">
 				<div>
-					<LabelLine text={label} />
+					<LabelLine id={labelId} text={label} />
 					<RadioGroup
 						id="time-options"
 						renderLabel={getOptionLabel}
