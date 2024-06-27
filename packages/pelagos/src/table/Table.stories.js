@@ -399,16 +399,12 @@ export const SectionedToolbar = {
 		fixedLayout: true,
 	},
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [search, setSearch] = useState('');
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [expanded, setExpanded] = useState(true);
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const filteredData = useMemo(
 			() => (search ? data.filter(({name}) => name.toLowerCase().includes(search)) : data),
 			[search]
 		);
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const handleFilterClick = useCallback(() => setExpanded((expanded) => !expanded), []);
 		return (
 			<Layer className="TableStory__wrapper">
@@ -571,10 +567,8 @@ export const WithExpansion = {
 		fixedLayout: true,
 	},
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [expanded, setExpanded] = useState(initialExpanded);
 
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const handleExpand = useCallback(
 			(event) => {
 				const rowId = event.target.closest('tr').dataset.id;

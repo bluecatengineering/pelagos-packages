@@ -6,7 +6,6 @@ export default {
 	title: 'Components/Search',
 	component: Search,
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [value, setValue] = useState(args.value);
 		return (
 			<div className="Story__alignStretch">

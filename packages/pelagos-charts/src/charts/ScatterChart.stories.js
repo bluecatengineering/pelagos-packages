@@ -6,7 +6,6 @@ export default {
 	title: 'Experimental Charts/ScatterChart',
 	component: ScatterChart,
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [selectedGroups, setSelectedGroups] = useState([]);
 		return (
 			<ScatterChart

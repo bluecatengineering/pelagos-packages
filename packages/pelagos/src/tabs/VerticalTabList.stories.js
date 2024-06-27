@@ -36,7 +36,6 @@ export const Default = {
 		],
 	},
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [index, setIndex] = useState(args.selectedIndex);
 		return <VerticalTabList {...args} selectedIndex={index} onChange={setIndex} />;
 	},

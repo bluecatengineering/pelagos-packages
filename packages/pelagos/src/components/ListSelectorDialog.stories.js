@@ -44,11 +44,8 @@ export const TryItOut = {
 	args,
 	name: 'Try it out!',
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [visible, setVisible] = useState(false);
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const show = useCallback(() => setVisible(true), []);
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const hide = useCallback(() => setVisible(false), []);
 		return (
 			<>

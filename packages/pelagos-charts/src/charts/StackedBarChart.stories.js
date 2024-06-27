@@ -6,7 +6,6 @@ export default {
 	title: 'Experimental Charts/StackedBarChart',
 	component: StackedBarChart,
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [selectedGroups, setSelectedGroups] = useState([]);
 		return (
 			<StackedBarChart

@@ -95,7 +95,15 @@
     },
     "rules": {
       "regexp/no-unused-capturing-group": "off"
-    }
+    },
+    "overrides": [
+      {
+        "files": ["**/*.stories.js"],
+        "rules": {
+          "react-hooks/rules-of-hooks": "off"
+        }
+      }
+    ]
   },
   "stylelint": {
     "extends": [

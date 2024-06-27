@@ -9,7 +9,6 @@ export default {
 	title: 'Experimental Charts/LineChart',
 	component: LineChart,
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [selectedGroups, setSelectedGroups] = useState([]);
 		return (
 			<LineChart {...args} dataOptions={{...args?.dataOptions, selectedGroups}} onSelectionChange={setSelectedGroups} />

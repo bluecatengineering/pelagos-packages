@@ -13,7 +13,6 @@ export default {
 	title: 'Components/Select',
 	component: Select,
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [value, setValue] = useState(args.value);
 		return <Select {...args} value={value} onChange={setValue} />;
 	},

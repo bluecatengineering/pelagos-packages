@@ -15,7 +15,6 @@ export default {
 	title: 'Components/DropDownField',
 	component: DropDownField,
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [value, setValue] = useState(args.value);
 		return <DropDownField {...args} value={value} onChange={setValue} />;
 	},

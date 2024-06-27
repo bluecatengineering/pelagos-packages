@@ -7,7 +7,6 @@ export default {
 	component: DonutChart,
 	parameters: {layout: 'fullscreen'},
 	render: (args) => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks -- story
 		const [selectedGroups, setSelectedGroups] = useState([]);
 		return (
 			<DonutChart
