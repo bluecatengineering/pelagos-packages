@@ -273,6 +273,10 @@ msgstr "Eliminar {name}"
 msgid "Remove {name} filter"
 msgstr "Eliminar filtro {name}"
 
+#: a352
+msgid "Resize column"
+msgstr "Cambiar ancho de la columna"
+
 #: 894
 msgid "Restore defaults"
 msgstr "Restaurar valores por defecto"
