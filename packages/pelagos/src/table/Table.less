@@ -120,11 +120,19 @@
 		}
 
 		& th {
-			@base-ellipsis();
 			position: relative;
 
 			&.Table--sortable {
 				padding: 0;
+			}
+
+			&.Table--resizable {
+				will-change: width;
+			}
+
+			// stylelint-disable-next-line @bluecateng/selector-bem -- the selector is too complex
+			&:not(.Table--sortable, .Table--resizable) {
+				@base-ellipsis();
 			}
 
 			&:not(:first-child)::before {
@@ -204,6 +212,55 @@
 
 			@media print {
 				display: none;
+			}
+		}
+
+		&__resizableLabel {
+			@ellipsis();
+		}
+
+		&__resizeHandle {
+			position: absolute;
+			top: 0;
+			right: -@sp-08;
+			width: @sp-16;
+			height: 100%;
+			cursor: col-resize;
+			outline: none;
+			touch-action: pan-x;
+			z-index: 2;
+		}
+
+		&__resizeIndicator {
+			position: absolute;
+			top: 0;
+			right: 0;
+			pointer-events: none;
+			z-index: 2;
+
+			.Table__resizeHandle:is(.resizing, :focus-visible) + & {
+				height: var(--table-height);
+				border-left: 1px solid var(--border-subtle);
+
+				&::before {
+					content: '';
+					position: absolute;
+					top: 2px;
+					left: -1px;
+					height: calc(var(--table-row-height) - 4px);
+					border-left: 2px solid var(--interactive);
+				}
+
+				&::after {
+					content: '';
+					position: absolute;
+					top: calc(var(--table-row-height) / 2 - 4px);
+					left: -4px;
+					width: 8px;
+					height: 8px;
+					background-color: var(--interactive);
+					border-radius: 50%;
+				}
 			}
 		}
 

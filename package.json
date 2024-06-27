@@ -94,6 +94,7 @@
       "showOpenFilePicker": false
     },
     "rules": {
+      "react/no-unknown-property": ["error", { "ignore": ["onPointerDown"] }],
       "regexp/no-unused-capturing-group": "off"
     },
     "overrides": [

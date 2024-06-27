@@ -192,7 +192,7 @@ export const FixedColumns = {
 					<TableHead>
 						<TableRow>
 							{largeColumns.map((header, j) => (
-								<TableHeader key={j} style={{width: '263px'}}>
+								<TableHeader key={j} width={263}>
 									{header}
 								</TableHeader>
 							))}
@@ -211,6 +211,55 @@ export const FixedColumns = {
 			</TableScrollWrapper>
 		</Layer>
 	),
+};
+
+export const ResizableColumns = {
+	parameters: {layout: 'fullscreen'},
+	args: {
+		id: 'default',
+		className: 'TableStory--scroll',
+		stickyHeader: true,
+		fixedColumns: true,
+	},
+	render: (args) => {
+		const [widths, setWidths] = useState(() => largeColumns.map(() => 263));
+		const handleResize = useCallback(
+			(width, header) =>
+				setWidths((widths) => {
+					const newWidths = widths.slice();
+					newWidths[+header.dataset.column] = width;
+					return newWidths;
+				}),
+			[]
+		);
+		return (
+			<Layer className="TableStory__wrapperScroll">
+				<TableTitle title="Table" description="With resizable columns." />
+				<TableScrollWrapper direction="both">
+					<Table {...args}>
+						<TableHead>
+							<TableRow>
+								{largeColumns.map((header, j) => (
+									<TableHeader key={j} width={widths[j]} data-column={j} onResize={handleResize}>
+										{header}
+									</TableHeader>
+								))}
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{largeData.map((row, i) => (
+								<TableRow key={i}>
+									{row.map((text, j) => (
+										<TableCell key={j}>{text}</TableCell>
+									))}
+								</TableRow>
+							))}
+						</TableBody>
+					</Table>
+				</TableScrollWrapper>
+			</Layer>
+		);
+	},
 };
 
 export const Selection = (args) => (
