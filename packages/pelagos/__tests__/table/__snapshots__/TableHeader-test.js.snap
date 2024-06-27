@@ -1,11 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TableHeader rendering renders expected elements when both onResize and className are set 1`] = `
+<th
+  className="Table--resizable TestClass"
+  id="test"
+  style={
+    {
+      "width": "100px",
+    }
+  }
+>
+  <div
+    className="Table__resizableLabel Table--left"
+  >
+    body
+  </div>
+  <React.Fragment>
+    <div
+      aria-label="Resize column"
+      aria-valuemin={40}
+      aria-valuenow={100}
+      className="Table__resizeHandle"
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onPointerDown={[Function]}
+      role="slider"
+      tabIndex={0}
+    />
+    <div
+      className="Table__resizeIndicator"
+    />
+  </React.Fragment>
+</th>
+`;
+
 exports[`TableHeader rendering renders expected elements when className is set 1`] = `
 <th
   className="Table--left TestClass"
   id="test"
 >
   body
+</th>
+`;
+
+exports[`TableHeader rendering renders expected elements when onResize is set 1`] = `
+<th
+  className="Table--resizable"
+  id="test"
+  style={
+    {
+      "width": "100px",
+    }
+  }
+>
+  <div
+    className="Table__resizableLabel Table--left"
+  >
+    body
+  </div>
+  <React.Fragment>
+    <div
+      aria-label="Resize column"
+      aria-valuemin={40}
+      aria-valuenow={100}
+      className="Table__resizeHandle"
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onPointerDown={[Function]}
+      role="slider"
+      tabIndex={0}
+    />
+    <div
+      className="Table__resizeIndicator"
+    />
+  </React.Fragment>
 </th>
 `;
 
