@@ -20,6 +20,10 @@ const handlerNames = {
 	mouseover: 'onMouseOver',
 	mouseup: 'onMouseUp',
 	paste: 'onPaste',
+	pointercancel: 'onPointerCancel',
+	pointerdown: 'onPointerDown',
+	pointermove: 'onPointerMove',
+	pointerup: 'onPointerUp',
 	scroll: 'onScroll',
 	submit: 'onSubmit',
 };
