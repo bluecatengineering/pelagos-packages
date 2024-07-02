@@ -19,7 +19,7 @@ export default {
 export const Default = {
 	args: {
 		label: 'Default',
-		value: 'foo',
+		value: {to: 1680667200000},
 		fromPlaceholder: 'From placeholder',
 		toPlaceholder: 'To placeholder',
 		options,
