@@ -11,9 +11,9 @@ describe('TableScrollWrapper', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when className is set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
-				<TableScrollWrapper id="test" className="TestClass">
+				<TableScrollWrapper id="test" className="TestClass" direction="both">
 					body
 				</TableScrollWrapper>
 			);

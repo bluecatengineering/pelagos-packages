@@ -9,16 +9,18 @@ import TableBody from './TableBody';
 import './Table.less';
 
 /** Basic table component. */
-const Table = forwardRef(({className, rowMode = 'line', stickyHeader, fixedLayout, children, ...props}, ref) => (
-	<table
-		{...props}
-		className={`Table Table--${rowMode}${stickyHeader ? ' Table--sticky' : ''}${fixedLayout ? ' Table--fixed' : ''}${
-			className ? ` ${className}` : ''
-		}`}
-		ref={ref}>
-		{children}
-	</table>
-));
+const Table = forwardRef(
+	({className, rowMode = 'line', stickyHeader, fixedLayout, fixedColumns, children, ...props}, ref) => (
+		<table
+			{...props}
+			className={`Table Table--${rowMode}${stickyHeader ? ' Table--sticky' : ''}${fixedLayout || fixedColumns ? ' Table--fixed' : ''}${fixedColumns ? ' Table--fixedColumns' : ''}${
+				className ? ` ${className}` : ''
+			}`}
+			ref={ref}>
+			{children}
+		</table>
+	)
+);
 
 Table.displayName = 'Table';
 
@@ -33,6 +35,8 @@ Table.propTypes = {
 	stickyHeader: PropTypes.bool,
 	/** Whether to enable fixed layout. */
 	fixedLayout: PropTypes.bool,
+	/** Whether to enable fixed column widths, implies fixed layout and requires `direction="both"` on the wrapper. */
+	fixedColumns: PropTypes.bool,
 	/** The child elements. */
 	children: PropTypes.oneOfType([headOrBody, PropTypes.arrayOf(headOrBody)]),
 };

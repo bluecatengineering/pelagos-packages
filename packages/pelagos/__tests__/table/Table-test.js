@@ -25,5 +25,10 @@ describe('Table', () => {
 			const wrapper = shallow(<Table fixedLayout></Table>);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when fixedColumns is set', () => {
+			const wrapper = shallow(<Table fixedColumns></Table>);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });
