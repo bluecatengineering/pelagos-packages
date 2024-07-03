@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/jest-helpers@3.2.0...@bluecateng/jest-helpers@3.2.1) (2024-07-03)
+
+### Bug Fixes
+
+- add pointer events to enzyme handlers ([7d266be](https://github.com/bluecatengineering/pelagos-packages/commit/7d266be52d45c311e82d1d7aaaec89b5c0164370))
+
 ## [3.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/jest-helpers@3.1.0...@bluecateng/jest-helpers@3.2.0) (2024-04-30)
 
 ### Features

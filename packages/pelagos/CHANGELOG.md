@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.14.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.13.1...@bluecateng/pelagos@12.14.0) (2024-07-03)
+
+### Features
+
+- add option to resize table columns ([19d4fdb](https://github.com/bluecatengineering/pelagos-packages/commit/19d4fdba23ce64cd223f6faee560043b518ae2a6))
+- add option to set fixed column widths on the table ([99d92b1](https://github.com/bluecatengineering/pelagos-packages/commit/99d92b1f0b71d11599e1f31f4552ccd709218180))
+
+### Reverts
+
+- revert workaround for Table focus ring ([3f7ca5e](https://github.com/bluecatengineering/pelagos-packages/commit/3f7ca5e8aa4ced8ded1210fc2ac517809e71244b))
+
 ## [12.13.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.13.0...@bluecateng/pelagos@12.13.1) (2024-06-26)
 
 ### Bug Fixes
