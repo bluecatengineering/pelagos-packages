@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.14.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.14.0...@bluecateng/pelagos@12.14.1) (2024-07-04)
+
+### Bug Fixes
+
+- add missing exports for VerticalTab and VerticalTabList ([a372e3a](https://github.com/bluecatengineering/pelagos-packages/commit/a372e3abbd41ff0b638909bf9f4289028e8f31b4))
+
 ## [12.14.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.13.1...@bluecateng/pelagos@12.14.0) (2024-07-03)
 
 ### Features
