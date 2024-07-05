@@ -96,6 +96,31 @@ export const useDataLoader = (path, getItemCount, isLeaf) => {
 	return columns;
 };
 
+const renderElements = (id, path, colIndex, column, count, isLeaf, colCurr, itmCurr, renderItem) => {
+	const itmPath = path.slice(0, colIndex);
+	const elements = [];
+	for (let itmIndex = 0; itmIndex < count; ++itmIndex) {
+		itmPath[colIndex] = itmIndex;
+		const leaf = isLeaf(itmPath);
+		const text = renderItem(itmPath);
+		elements.push(
+			<div
+				key={itmIndex}
+				id={`${id}-${colIndex}-${itmIndex}`}
+				className="MultiColumn__item"
+				tabIndex={colIndex === colCurr && itmIndex === itmCurr ? 0 : -1}
+				role="option"
+				aria-label={t`${text}, column ${column}, ${select(leaf, {true: 'leaf', other: 'group'})}`}
+				aria-selected={itmIndex === path[colIndex]}
+				data-index={itmIndex}>
+				<div className="MultiColumn__text">{text}</div>
+				{!leaf && <CaretRight className="MultiColumn__arrow" />}
+			</div>
+		);
+	}
+	return elements;
+};
+
 /** A component which presents a tree path as multiple columns. */
 const MultiColumn = ({
 	id,
@@ -293,30 +318,7 @@ const MultiColumn = ({
 						{count === -1 ? (
 							<Spinner size="tiny" aria-hidden />
 						) : (
-							do {
-								const itmPath = path.slice(0, colIndex);
-								const elements = [];
-								for (let itmIndex = 0; itmIndex < count; ++itmIndex) {
-									itmPath[colIndex] = itmIndex;
-									const leaf = isLeaf(itmPath);
-									const text = renderItem(itmPath);
-									elements.push(
-										<div
-											key={itmIndex}
-											id={`${id}-${colIndex}-${itmIndex}`}
-											className="MultiColumn__item"
-											tabIndex={colIndex === colCurr && itmIndex === itmCurr ? 0 : -1}
-											role="option"
-											aria-label={t`${text}, column ${column}, ${select(leaf, {true: 'leaf', other: 'group'})}`}
-											aria-selected={itmIndex === path[colIndex]}
-											data-index={itmIndex}>
-											<div className="MultiColumn__text">{text}</div>
-											{!leaf && <CaretRight className="MultiColumn__arrow" />}
-										</div>
-									);
-								}
-								elements;
-							}
+							renderElements(id, path, colIndex, column, count, isLeaf, colCurr, itmCurr, renderItem)
 						)}
 					</div>
 				);

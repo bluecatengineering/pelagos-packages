@@ -79,6 +79,56 @@ const updateMonth = (focused, month) => {
 	return date;
 };
 
+const renderHeaders = (firstDate, weekDayFmtLong, weekDayFmtNarrow) => {
+	const headers = [];
+	const day = new Date(firstDate);
+	for (let i = 0; i < 7; ++i) {
+		headers.push(
+			<th key={i} className="Calendar__dayLabel" abbr={weekDayFmtLong.format(day)} aria-hidden="true">
+				{weekDayFmtNarrow.format(day)}
+			</th>
+		);
+		day.setDate(day.getDate() + 1);
+	}
+	return headers;
+};
+
+const renderCells = (day, curMonth, curTime, highlighted, rangeStart, rangeEnd) => {
+	const cells = [];
+	for (let c = 0; c < 7; ++c) {
+		const time = day.getTime();
+		const isCurMonth = day.getMonth() === curMonth;
+		const isSelected = time === curTime;
+		cells.push(
+			<td
+				key={c}
+				className={`Calendar__cell${
+					!isCurMonth
+						? ' Calendar__cell--disabled'
+						: highlighted
+							? tempHighlight(time, curTime, highlighted)
+							: curHighlight(time, rangeStart, rangeEnd)
+				}`}
+				tabIndex={isSelected ? 0 : -1}
+				aria-selected={isSelected}
+				data-time={isCurMonth ? time : null}>
+				{isCurMonth ? day.getDate() : ''}
+			</td>
+		);
+		day.setDate(day.getDate() + 1);
+	}
+	return cells;
+};
+
+const renderRows = (firstDate, curMonth, curTime, highlighted, rangeStart, rangeEnd) => {
+	const rows = [];
+	const day = new Date(firstDate);
+	for (let r = 0; r < 6; ++r) {
+		rows.push(<tr key={r}>{renderCells(day, curMonth, curTime, highlighted, rangeStart, rangeEnd)}</tr>);
+	}
+	return rows;
+};
+
 const preventDefault = (event) => event.preventDefault();
 
 /** A component which allows selecting either a single date or a date range. Passing an array in `value` enables range selection. */
@@ -257,61 +307,9 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 				onFocusCapture={handleFocus}
 				onBlurCapture={handleBlur}>
 				<thead>
-					<tr>
-						{do {
-							const headers = [];
-							const day = new Date(firstDate);
-							for (let i = 0; i < 7; ++i) {
-								headers.push(
-									<th key={i} className="Calendar__dayLabel" abbr={weekDayFmtLong.format(day)} aria-hidden="true">
-										{weekDayFmtNarrow.format(day)}
-									</th>
-								);
-								day.setDate(day.getDate() + 1);
-							}
-							headers;
-						}}
-					</tr>
+					<tr>{renderHeaders(firstDate, weekDayFmtLong, weekDayFmtNarrow)}</tr>
 				</thead>
-				<tbody>
-					{do {
-						const rows = [];
-						const day = new Date(firstDate);
-						for (let r = 0; r < 6; ++r) {
-							rows.push(
-								<tr key={r}>
-									{do {
-										const cells = [];
-										for (let c = 0; c < 7; ++c) {
-											const time = day.getTime();
-											const isCurMonth = day.getMonth() === curMonth;
-											const isSelected = time === curTime;
-											cells.push(
-												<td
-													key={c}
-													className={`Calendar__cell${
-														!isCurMonth
-															? ' Calendar__cell--disabled'
-															: highlighted
-																? tempHighlight(time, curTime, highlighted)
-																: curHighlight(time, rangeStart, rangeEnd)
-													}`}
-													tabIndex={isSelected ? 0 : -1}
-													aria-selected={isSelected}
-													data-time={isCurMonth ? time : null}>
-													{isCurMonth ? day.getDate() : ''}
-												</td>
-											);
-											day.setDate(day.getDate() + 1);
-										}
-										cells;
-									}}
-								</tr>
-							);
-						}
-						rows;
-					}}
-				</tbody>
+				<tbody>{renderRows(firstDate, curMonth, curTime, highlighted, rangeStart, rangeEnd)}</tbody>
 			</table>
 		</div>
 	);

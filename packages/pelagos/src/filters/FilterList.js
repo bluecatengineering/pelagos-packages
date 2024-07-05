@@ -11,6 +11,36 @@ import MenuArrow from '../components/MenuArrow';
 import FilterEditor from './LegacyFilterEditor';
 import './FilterList.less';
 
+const renderEntry = (filterName, key, v, getFilterTitle, getValues) => {
+	const name = getFilterTitle(key);
+	return (
+		<Layer key={key} as="li" className="FilterList__item">
+			<button
+				id={`filter-${key}`}
+				className="FilterList__button"
+				type="button"
+				aria-haspopup="dialog"
+				aria-expanded={key === filterName}
+				aria-controls={key === filterName ? 'filterListDropDown' : null}
+				data-kind="item"
+				data-key={key}>
+				<span className="FilterList__filterTitle">{name}</span>
+				{getValues(key, v)}
+				<MenuArrow />
+			</button>
+			<button
+				id={`filter-${key}-remove`}
+				className="FilterList__remove"
+				type="button"
+				aria-label={t`Remove ${name} filter`}
+				data-kind="remove"
+				data-key={key}>
+				<Close />
+			</button>
+		</Layer>
+	);
+};
+
 /** @deprecated use FilterArea instead. */
 const FilterList = ({className, filters, excludedKeys = [], getFilterTitle, getValues, getEditor, onApply}) => {
 	const [filterName, setFilterName] = useState(null);
@@ -43,35 +73,7 @@ const FilterList = ({className, filters, excludedKeys = [], getFilterTitle, getV
 					<ul className="FilterList__items" onClick={handleClick}>
 						{filters &&
 							Object.entries(filters).map(([key, v]) =>
-								!excludedKeys.includes(key)
-									? do {
-											const name = getFilterTitle(key);
-											<Layer key={key} as="li" className="FilterList__item">
-												<button
-													id={`filter-${key}`}
-													className="FilterList__button"
-													type="button"
-													aria-haspopup="dialog"
-													aria-expanded={key === filterName}
-													aria-controls={key === filterName ? 'filterListDropDown' : null}
-													data-kind="item"
-													data-key={key}>
-													<span className="FilterList__filterTitle">{name}</span>
-													{getValues(key, v)}
-													<MenuArrow />
-												</button>
-												<button
-													id={`filter-${key}-remove`}
-													className="FilterList__remove"
-													type="button"
-													aria-label={t`Remove ${name} filter`}
-													data-kind="remove"
-													data-key={key}>
-													<Close />
-												</button>
-											</Layer>;
-										}
-									: null
+								!excludedKeys.includes(key) ? renderEntry(filterName, key, v, getFilterTitle, getValues) : null
 							)}
 					</ul>
 				</ScrollBox>

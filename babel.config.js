@@ -1,6 +1,6 @@
 module.exports = {
 	presets: [['@babel/react', {useBuiltIns: true, runtime: 'automatic'}]],
-	plugins: ['macros', '@babel/plugin-proposal-do-expressions'],
+	plugins: ['macros'],
 	env: {
 		test: {
 			sourceMaps: 'both',
