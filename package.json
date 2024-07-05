@@ -77,6 +77,11 @@
     "yaml": "^2.0.1",
     "yaml-loader": "^0.8.0"
   },
+  "overrides": {
+    "lerna": {
+      "nx": "^18.0.0"
+    }
+  },
   "workspaces": [
     "packages/*"
   ],
