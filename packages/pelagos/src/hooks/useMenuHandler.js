@@ -20,16 +20,15 @@ const findFocused = (index, increment, children) => {
 		} else if (index > last) {
 			index = 0;
 		}
-	} while (
-		children[index].getAttribute('role') !== 'menuitem' ||
-		children[index].getAttribute('aria-disabled') === 'true'
-	);
+	} while (children[index].getAttribute('role') !== 'menuitem');
 	const child = children[index];
 	child.tabIndex = 0;
 	return child;
 };
 
 const setFocus = (index, increment, children) => findFocused(index, increment, children).focus();
+
+const isDisabled = (element) => element.getAttribute('aria-disabled') === 'true';
 
 /**
  * Returns properties to be added to the button which displays a menu and to the menu elements.
@@ -84,8 +83,10 @@ const useMenuHandler = (setPopUpPosition) => {
 				case 'Enter': // enter
 				case ' ': // space
 					event.preventDefault();
-					document.activeElement.click();
-					trapRef.current.deactivate();
+					if (!isDisabled(document.activeElement)) {
+						document.activeElement.click();
+						trapRef.current.deactivate();
+					}
 					break;
 				case 'End': // end
 					event.preventDefault();

@@ -7,7 +7,6 @@ exports[`ButtonMenu rendering renders expected elements 1`] = `
     aria-haspopup="true"
     className="ButtonMenu"
     data-layer={null}
-    disabled={false}
     icon={[Function]}
     id="random-id"
     size="small"
@@ -25,7 +24,6 @@ exports[`ButtonMenu rendering renders expected elements when expanded is true 1`
     aria-haspopup="true"
     className="ButtonMenu"
     data-layer={2}
-    disabled={false}
     icon={[Function]}
     id="random-id"
     size="small"

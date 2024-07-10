@@ -1,4 +1,4 @@
-import {Children, cloneElement, forwardRef, useMemo} from 'react';
+import {Children, cloneElement, forwardRef} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import ChevronDown from '@carbon/icons-react/es/ChevronDown';
@@ -21,8 +21,6 @@ const ButtonMenu = forwardRef(
 		id = useRandomId(id);
 		const menuId = `${id}-menu`;
 
-		const allDisabled = useMemo(() => Children.toArray(children).every((child) => child.props.disabled), [children]);
-
 		const level = useLayer() + 1;
 
 		const setPopUpPosition = useMenuPositioner(flipped);
@@ -39,7 +37,7 @@ const ButtonMenu = forwardRef(
 					icon={ChevronDown}
 					size={size}
 					type={type}
-					disabled={disabled || allDisabled}
+					disabled={disabled}
 					aria-controls={expanded ? menuId : null}
 					aria-haspopup="true"
 					aria-expanded={expanded}
