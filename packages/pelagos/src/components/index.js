@@ -30,6 +30,7 @@ export {default as Label} from './Label';
 export {default as LabelLine} from './LabelLine';
 export {default as Layer} from './Layer';
 export {default as LinkButton} from './LinkButton';
+export {default as ListSelector} from './ListSelector';
 export {default as ListSelectorDialog} from './ListSelectorDialog';
 export {default as MenuArrow} from './MenuArrow';
 export {default as ModalSpinner} from './ModalSpinner';

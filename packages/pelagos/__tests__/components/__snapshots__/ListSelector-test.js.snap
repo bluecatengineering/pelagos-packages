@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListSelector rendering renders expected elements 1`] = `
+<div
+  className="ListSelector"
+  id="random-id"
+>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="sr-only"
+    id="random-id-operation"
+  >
+    Press space bar to reorder
+  </div>
+  <div
+    className="ListSelector__column"
+  >
+    <Label
+      id="random-id-available"
+      text="Available"
+    />
+    <div
+      aria-labelledby="random-id-available"
+      className="ListSelector__list"
+      onClick={[Function]}
+      role="list"
+    >
+      <div
+        aria-labelledby="item-baz"
+        className="ListSelector__available"
+        data-key="baz"
+        role="listitem"
+      >
+        <div
+          id="item-baz"
+        >
+          Baz
+        </div>
+        <button
+          aria-label="Add Baz"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </div>
+      <div
+        aria-labelledby="item-oof"
+        className="ListSelector__available"
+        data-key="oof"
+        role="listitem"
+      >
+        <div
+          id="item-oof"
+        >
+          Oof
+        </div>
+        <button
+          aria-label="Add Oof"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ListSelector__column"
+  >
+    <Label
+      id="random-id-selected"
+      text="Selected"
+    />
+    <div
+      aria-labelledby="random-id-selected"
+      className="ListSelector__list"
+      onClick={[Function]}
+      role="list"
+    >
+      <div
+        aria-describedby="random-id-operation"
+        aria-labelledby="item-foo"
+        className="ListSelector__entry"
+        data-index={0}
+        data-key="foo"
+        role="listitem"
+        tabIndex="0"
+      >
+        <button
+          aria-label="Remove Foo"
+          className="ListSelector__remove"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <div
+          className="ListSelector__name draggable"
+          id="item-foo"
+        >
+          <span
+            className="ListSelector__text"
+          >
+            Foo
+          </span>
+          <Draggable
+            className="ListSelector__grip"
+          />
+        </div>
+      </div>
+      <div
+        aria-describedby="random-id-operation"
+        aria-labelledby="item-bar"
+        className="ListSelector__entry"
+        data-index={1}
+        data-key="bar"
+        role="listitem"
+        tabIndex="0"
+      >
+        <button
+          aria-label="Remove Bar"
+          className="ListSelector__remove"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <div
+          className="ListSelector__name draggable"
+          id="item-bar"
+        >
+          <span
+            className="ListSelector__text"
+          >
+            Bar
+          </span>
+          <Draggable
+            className="ListSelector__grip"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListSelector rendering renders expected elements when items is empty 1`] = `
+<div
+  className="ListSelector"
+  id="random-id"
+>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="sr-only"
+    id="random-id-operation"
+  >
+    Press space bar to reorder
+  </div>
+  <div
+    className="ListSelector__column"
+  >
+    <Label
+      id="random-id-available"
+      text="Available"
+    />
+    <div
+      aria-labelledby="random-id-available"
+      className="ListSelector__list"
+      onClick={[Function]}
+      role="list"
+    >
+      <div
+        aria-labelledby="item-bar"
+        className="ListSelector__available"
+        data-key="bar"
+        role="listitem"
+      >
+        <div
+          id="item-bar"
+        >
+          Bar
+        </div>
+        <button
+          aria-label="Add Bar"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </div>
+      <div
+        aria-labelledby="item-baz"
+        className="ListSelector__available"
+        data-key="baz"
+        role="listitem"
+      >
+        <div
+          id="item-baz"
+        >
+          Baz
+        </div>
+        <button
+          aria-label="Add Baz"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </div>
+      <div
+        aria-labelledby="item-foo"
+        className="ListSelector__available"
+        data-key="foo"
+        role="listitem"
+      >
+        <div
+          id="item-foo"
+        >
+          Foo
+        </div>
+        <button
+          aria-label="Add Foo"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </div>
+      <div
+        aria-labelledby="item-oof"
+        className="ListSelector__available"
+        data-key="oof"
+        role="listitem"
+      >
+        <div
+          id="item-oof"
+        >
+          Oof
+        </div>
+        <button
+          aria-label="Add Oof"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ListSelector__column"
+  >
+    <Label
+      id="random-id-selected"
+      text="Selected"
+    />
+    <div
+      aria-labelledby="random-id-selected"
+      className="ListSelector__list"
+      onClick={[Function]}
+      role="list"
+    >
+      <div
+        className="ListSelector__empty"
+      >
+        Test empty.
+      </div>
+    </div>
+  </div>
+</div>
+`;
