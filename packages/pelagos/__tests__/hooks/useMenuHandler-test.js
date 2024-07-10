@@ -92,87 +92,65 @@ describe('useMenuHandler', () => {
 		it('calls click on the focused element when enter or space are pressed', () => {
 			const deactivate = jest.fn();
 			const preventDefault = jest.fn();
+			const getAttribute = jest.fn();
 			const click = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {}}).mockReturnValueOnce({current: {deactivate}});
-			document.activeElement = {click};
+			document.activeElement = {getAttribute, click};
 			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
 			onKeyDown({key: 'Enter', preventDefault});
 			onKeyDown({key: ' ', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[], []]);
+			expect(getAttribute.mock.calls).toEqual([['aria-disabled'], ['aria-disabled']]);
 			expect(deactivate.mock.calls).toEqual([[], []]);
 			expect(click.mock.calls).toEqual([[], []]);
 		});
 
+		it('does not call click on the focused element when enter is pressed and the element is disabled', () => {
+			const deactivate = jest.fn();
+			const preventDefault = jest.fn();
+			const getAttribute = jest.fn().mockReturnValueOnce('true');
+			const click = jest.fn();
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {}}).mockReturnValueOnce({current: {deactivate}});
+			document.activeElement = {getAttribute, click};
+			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
+			onKeyDown({key: 'Enter', preventDefault});
+
+			expect(preventDefault.mock.calls).toEqual([[]]);
+			expect(getAttribute.mock.calls).toEqual([['aria-disabled']]);
+			expect(deactivate.mock.calls).toEqual([]);
+			expect(click.mock.calls).toEqual([]);
+		});
+
 		it('calls focus on last item when end is pressed', () => {
 			const preventDefault = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('menuitem').mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{}, {getAttribute, focus}]}});
 			useState.mockReturnValueOnce([true]);
 			useMenuHandler().menuProps.onKeyDown({key: 'End', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-
-		it('calls focus on second last item when end is pressed and the last item is disabled', () => {
-			const preventDefault = jest.fn();
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce();
-			const focus = jest.fn();
-			useRef
-				.mockReturnValueOnce({})
-				.mockReturnValueOnce({current: {childNodes: [{}, {getAttribute, focus}, {getAttribute}]}});
-			useState.mockReturnValueOnce([true]);
-			useMenuHandler().menuProps.onKeyDown({key: 'End', preventDefault});
-
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled'], ['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls focus on first item when home is pressed', () => {
 			const preventDefault = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('menuitem').mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, {}]}});
 			useState.mockReturnValueOnce([true]);
 			useMenuHandler().menuProps.onKeyDown({key: 'Home', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-
-		it('calls focus on second item when home is pressed and first item is disabled', () => {
-			const preventDefault = jest.fn();
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce();
-			const focus = jest.fn();
-			useRef
-				.mockReturnValueOnce({})
-				.mockReturnValueOnce({current: {childNodes: [{getAttribute}, {getAttribute, focus}, {}]}});
-			useState.mockReturnValueOnce([true]);
-			useMenuHandler().menuProps.onKeyDown({key: 'Home', preventDefault});
-
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled'], ['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls focus on last item when up is pressed and first item is focused', () => {
 			const preventDefault = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('menuitem').mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			const item0 = {};
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [item0, {getAttribute, focus}]}});
@@ -181,35 +159,13 @@ describe('useMenuHandler', () => {
 			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-
-		it('calls focus on last item when up is pressed, second item is focused, and first item is disabled', () => {
-			const preventDefault = jest.fn();
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce();
-			const focus = jest.fn();
-			const item1 = {};
-			useRef
-				.mockReturnValueOnce({})
-				.mockReturnValueOnce({current: {childNodes: [{getAttribute}, item1, {getAttribute, focus}]}});
-			useState.mockReturnValueOnce([true]);
-			document.activeElement = item1;
-			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
-
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled'], ['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls focus on previous item when up is pressed and focused item is not first', () => {
 			const preventDefault = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('menuitem').mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			const item1 = {};
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, item1]}});
@@ -218,17 +174,13 @@ describe('useMenuHandler', () => {
 			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls focus on second previous item when up is pressed, focused item is not first and the previous item is a separator', () => {
 			const preventDefault = jest.fn();
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce('separator')
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('separator').mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			const item2 = {};
 			useRef
@@ -239,35 +191,13 @@ describe('useMenuHandler', () => {
 			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['role'], ['aria-disabled']]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-
-		it('calls focus on second previous item when up is pressed, focused item is not first and the previous item is disabled', () => {
-			const preventDefault = jest.fn();
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce();
-			const focus = jest.fn();
-			const item2 = {};
-			useRef
-				.mockReturnValueOnce({})
-				.mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, {getAttribute}, item2]}});
-			useState.mockReturnValueOnce([true]);
-			document.activeElement = item2;
-			useMenuHandler().menuProps.onKeyDown({key: 'ArrowUp', preventDefault});
-
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled'], ['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role'], ['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls focus on first item when down is pressed and last item is focused', () => {
 			const preventDefault = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('menuitem').mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			const item1 = {};
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, item1]}});
@@ -276,13 +206,13 @@ describe('useMenuHandler', () => {
 			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls focus on first item when down is pressed and no item is focused', () => {
 			const preventDefault = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('menuitem').mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, {}]}});
 			useState.mockReturnValueOnce([true]);
@@ -290,35 +220,13 @@ describe('useMenuHandler', () => {
 			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-
-		it('calls focus on first item when down is pressed, second item is focused, and last item is disabled', () => {
-			const preventDefault = jest.fn();
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce();
-			const focus = jest.fn();
-			const item1 = {};
-			useRef
-				.mockReturnValueOnce({})
-				.mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, item1, {getAttribute}]}});
-			useState.mockReturnValueOnce([true]);
-			document.activeElement = item1;
-			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
-
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled'], ['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls focus on next item when down is pressed and focused item is not last', () => {
 			const preventDefault = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('menuitem').mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			const item0 = {};
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [item0, {getAttribute, focus}]}});
@@ -327,29 +235,7 @@ describe('useMenuHandler', () => {
 			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-
-		it('calls focus on second next item when down is pressed, focused item is not last and the next item is disabled', () => {
-			const preventDefault = jest.fn();
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('menuitem')
-				.mockReturnValueOnce();
-			const focus = jest.fn();
-			const item0 = {};
-			useRef
-				.mockReturnValueOnce({})
-				.mockReturnValueOnce({current: {childNodes: [item0, {getAttribute}, {getAttribute, focus}]}});
-			useState.mockReturnValueOnce([true]);
-			document.activeElement = item0;
-			useMenuHandler().menuProps.onKeyDown({key: 'ArrowDown', preventDefault});
-
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled'], ['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
@@ -387,7 +273,7 @@ describe('useMenuHandler', () => {
 
 	describe('layout effect 0', () => {
 		it('sets the menu position', () => {
-			const getAttribute = jest.fn().mockReturnValueOnce('menuitem').mockReturnValueOnce();
+			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const firstChild = {getAttribute};
 			const menu = {childNodes: [firstChild]};
 			const button = {};
@@ -404,7 +290,7 @@ describe('useMenuHandler', () => {
 			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, setPopUpPosition]]);
 
 			const remove = useLayoutEffect.mock.calls[0][0]();
-			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-disabled']]);
+			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
 			expect(window.addEventListener.mock.calls).toEqual([['resize', anyFunction, {passive: true, capture: true}]]);
 			expect(createFocusTrap.mock.calls).toEqual([
