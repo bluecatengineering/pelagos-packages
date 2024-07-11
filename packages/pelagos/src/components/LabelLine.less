@@ -3,9 +3,12 @@
 
 @layer pelagos {
 	.LabelLine {
+		flex-direction: row;
+		margin-bottom: @sp-08;
+		justify-content: space-between;
+
 		&__label {
 			flex-direction: row;
-			margin-bottom: @sp-08;
 			align-items: baseline;
 		}
 
@@ -17,6 +20,11 @@
 
 		&--error {
 			color: var(--support-error);
+		}
+
+		&__counter {
+			@label-01();
+			color: var(--text-secondary);
 		}
 	}
 }

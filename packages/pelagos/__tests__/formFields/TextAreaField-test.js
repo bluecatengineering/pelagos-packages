@@ -64,6 +64,21 @@ describe('TextAreaField', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when showCounter is true', () => {
+			const wrapper = shallow(
+				<TextAreaField
+					id="test"
+					label="Label"
+					value="value"
+					placeholder="placeholder"
+					maxLength={10}
+					showCounter
+					onChange={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('adds the error class if the error is set', () => {
 			const wrapper = shallow(
 				<TextAreaField

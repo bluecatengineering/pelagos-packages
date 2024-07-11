@@ -10,13 +10,32 @@ import FieldHelper from './FieldHelper';
 import './TextAreaField.less';
 
 /** A text area field. */
-const TextAreaField = ({id, className, label, value, required, resize, helperText, error, onChange, ...props}) => {
+const TextAreaField = ({
+	id,
+	className,
+	label,
+	value,
+	required,
+	resize,
+	maxLength,
+	showCounter,
+	helperText,
+	error,
+	onChange,
+	...props
+}) => {
 	id = useRandomId(id);
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
 	return (
 		<div className={`TextAreaField${className ? ` ${className}` : ''}`}>
-			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
+			<LabelLine
+				htmlFor={id}
+				text={label}
+				counter={showCounter && maxLength ? `${value.length}/${maxLength}` : null}
+				required={required}
+				error={!!error}
+			/>
 			<Layer
 				{...props}
 				as="textarea"
@@ -25,6 +44,7 @@ const TextAreaField = ({id, className, label, value, required, resize, helperTex
 					error ? ' TextAreaField--error' : ''
 				}`}
 				value={value}
+				maxLength={maxLength}
 				aria-describedby={error ? errorId : helperId}
 				aria-required={required}
 				aria-invalid={!!error}
@@ -52,6 +72,8 @@ TextAreaField.propTypes = {
 	resize: PropTypes.bool,
 	/** The maximum text length. */
 	maxLength: PropTypes.number,
+	/** Whether to show the character counter, requires `maxLength` to be set. */
+	showCounter: PropTypes.bool,
 	/** Additional information for the field. */
 	helperText: PropTypes.string,
 	/** The error text. */
