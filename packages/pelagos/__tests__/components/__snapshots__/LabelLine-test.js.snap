@@ -2,45 +2,77 @@
 
 exports[`LabelLine rendering renders expected elements 1`] = `
 <div
-  className="LabelLine__label"
+  className="LabelLine"
 >
-  <Label
-    htmlFor="test-id"
-    text="Test"
-  />
+  <div
+    className="LabelLine__label"
+  >
+    <Label
+      htmlFor="test-id"
+      text="Test"
+    />
+  </div>
+</div>
+`;
+
+exports[`LabelLine rendering renders expected elements when counter is set 1`] = `
+<div
+  className="LabelLine"
+>
+  <div
+    className="LabelLine__label"
+  >
+    <Label
+      htmlFor="test-id"
+      text="Test"
+    />
+  </div>
+  <p
+    className="LabelLine__counter"
+  >
+    test counter
+  </p>
 </div>
 `;
 
 exports[`LabelLine rendering renders expected elements when error is set 1`] = `
 <div
-  className="LabelLine__label"
+  className="LabelLine"
 >
-  <Label
-    htmlFor="test-id"
-    text="Test"
-  />
-  <span
-    aria-hidden={true}
-    className="LabelLine__required LabelLine--error"
+  <div
+    className="LabelLine__label"
   >
-    *
-  </span>
+    <Label
+      htmlFor="test-id"
+      text="Test"
+    />
+    <span
+      aria-hidden={true}
+      className="LabelLine__required LabelLine--error"
+    >
+      *
+    </span>
+  </div>
 </div>
 `;
 
 exports[`LabelLine rendering renders expected elements when required is set 1`] = `
 <div
-  className="LabelLine__label"
+  className="LabelLine"
 >
-  <Label
-    htmlFor="test-id"
-    text="Test"
-  />
-  <span
-    aria-hidden={true}
-    className="LabelLine__required"
+  <div
+    className="LabelLine__label"
   >
-    *
-  </span>
+    <Label
+      htmlFor="test-id"
+      text="Test"
+    />
+    <span
+      aria-hidden={true}
+      className="LabelLine__required"
+    >
+      *
+    </span>
+  </div>
 </div>
 `;

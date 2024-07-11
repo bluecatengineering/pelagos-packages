@@ -11,6 +11,11 @@ describe('LabelLine', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when counter is set', () => {
+			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" counter="test counter" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when required is set', () => {
 			const wrapper = shallow(<LabelLine htmlFor="test-id" text="Test" required />);
 			expect(wrapper.getElement()).toMatchSnapshot();
