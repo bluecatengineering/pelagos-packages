@@ -35,7 +35,11 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+		gap: @sp-12;
 		overflow: hidden;
+		background-color: var(--field);
+		min-height: 32px;
+		padding: 0 @sp-12 0 @sp-16;
 	}
 
 	.ListEntries__item--highlight {
@@ -43,8 +47,8 @@
 	}
 
 	.ListEntries__icon {
-		@icon-button-nested();
-		padding: @sp-02;
+		@icon-button();
+		padding: @sp-04;
 
 		.ListEntries__item--highlight > & {
 			color: var(--link-primary);
@@ -53,6 +57,5 @@
 
 	.ListEntries__name {
 		flex: 1;
-		padding-left: @sp-04;
 	}
 }

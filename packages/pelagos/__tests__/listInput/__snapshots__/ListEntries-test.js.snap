@@ -11,10 +11,16 @@ exports[`ListEntries rendering renders expected elements 1`] = `
     id="test"
     onClick={[Function]}
   >
-    <li
+    <Layer
+      as="li"
       className="ListEntries__item"
       data-testid="list-item"
     >
+      <div
+        className="ListEntries__name"
+      >
+        test
+      </div>
       <button
         aria-label="Remove test"
         className="ListEntries__icon"
@@ -24,12 +30,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
       >
         <Close />
       </button>
-      <div
-        className="ListEntries__name"
-      >
-        test
-      </div>
-    </li>
+    </Layer>
   </ul>
 </React.Fragment>
 `;
@@ -45,10 +46,16 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
     id="test"
     onClick={[Function]}
   >
-    <li
+    <Layer
+      as="li"
       className="ListEntries__item"
       data-testid="list-item"
     >
+      <div
+        className="ListEntries__name"
+      >
+        test
+      </div>
       <button
         aria-label="Remove test"
         className="ListEntries__icon"
@@ -58,12 +65,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
       >
         <Close />
       </button>
-      <div
-        className="ListEntries__name"
-      >
-        test
-      </div>
-    </li>
+    </Layer>
   </ul>
 </React.Fragment>
 `;
@@ -79,10 +81,16 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
     id="test"
     onClick={[Function]}
   >
-    <li
+    <Layer
+      as="li"
       className="ListEntries__item ListEntries__item--highlight"
       data-testid="list-item"
     >
+      <div
+        className="ListEntries__name"
+      >
+        test
+      </div>
       <button
         aria-label="Remove test"
         className="ListEntries__icon"
@@ -92,12 +100,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
       >
         <Close />
       </button>
-      <div
-        className="ListEntries__name"
-      >
-        test
-      </div>
-    </li>
+    </Layer>
   </ul>
 </React.Fragment>
 `;
@@ -113,10 +116,16 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
     id="test"
     onClick={[Function]}
   >
-    <li
+    <Layer
+      as="li"
       className="ListEntries__item"
       data-testid="list-item"
     >
+      <div
+        className="ListEntries__name"
+      >
+        test
+      </div>
       <button
         aria-label="Remove test"
         className="ListEntries__icon"
@@ -126,12 +135,7 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
       >
         <Close />
       </button>
-      <div
-        className="ListEntries__name"
-      >
-        test
-      </div>
-    </li>
+    </Layer>
   </ul>
 </React.Fragment>
 `;
@@ -147,10 +151,16 @@ exports[`ListEntries rendering renders expected elements when the item has class
     id="test"
     onClick={[Function]}
   >
-    <li
+    <Layer
+      as="li"
       className="ListEntries__item"
       data-testid="list-item"
     >
+      <div
+        className="TestClass ListEntries__name"
+      >
+        test
+      </div>
       <button
         aria-label="Remove test"
         className="ListEntries__icon"
@@ -160,12 +170,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
       >
         <Close />
       </button>
-      <div
-        className="TestClass ListEntries__name"
-      >
-        test
-      </div>
-    </li>
+    </Layer>
   </ul>
 </React.Fragment>
 `;
