@@ -4,7 +4,7 @@ import {scaleQuantize} from 'd3-scale';
 import {select} from 'd3-selection';
 import {curveLinear, curveMonotoneX, curveNatural, curveStep, line} from 'd3-shape';
 import identity from 'lodash-es/identity';
-import {addResizeObserver} from '@bluecateng/pelagos';
+import {addResizeObserver, useRandomId} from '@bluecateng/pelagos';
 import 'core-js/actual/iterator/map';
 
 import {
@@ -34,7 +34,6 @@ import hintFormatters from './hintFormatters';
 import updateHint from './updateHint';
 import legendDirections from './legendDirections';
 import Legend from './Legend';
-import useRandomId from './useRandomId';
 import drawLoadingGrid from './drawLoadingGrid';
 import ChartAxes from './ChartAxes';
 import LoadingGrid from './LoadingGrid';

@@ -17,7 +17,7 @@ import {
 	stackOrderReverse,
 } from 'd3-shape';
 import identity from 'lodash-es/identity';
-import {addResizeObserver} from '@bluecateng/pelagos';
+import {addResizeObserver, useRandomId} from '@bluecateng/pelagos';
 import 'core-js/actual/array/to-reversed';
 
 import {axisPropType, colorPropType, dataPropType, hintPropType, legendPropType} from './ChartPropTypes';
@@ -40,7 +40,6 @@ import MultiHint from './MultiHint';
 import updateHint from './updateHint';
 import legendDirections from './legendDirections';
 import Legend from './Legend';
-import useRandomId from './useRandomId';
 import drawLoadingGrid from './drawLoadingGrid';
 import ChartAxes from './ChartAxes';
 import LoadingGrid from './LoadingGrid';

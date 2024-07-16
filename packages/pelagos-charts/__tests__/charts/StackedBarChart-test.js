@@ -4,7 +4,7 @@ import {scaleQuantize} from 'd3-scale';
 import {select} from 'd3-selection';
 import {stack} from 'd3-shape';
 import identity from 'lodash-es/identity';
-import {addResizeObserver} from '@bluecateng/pelagos';
+import {addResizeObserver, useRandomId} from '@bluecateng/pelagos';
 
 import StackedBarChart from '../../src/charts/StackedBarChart';
 import {getDefaultClass, getGroup, getValue} from '../../src/charts/Getters';
@@ -21,7 +21,6 @@ import updateHint from '../../src/charts/updateHint';
 import MultiHint from '../../src/charts/MultiHint';
 import extendDomain from '../../src/charts/extendDomain';
 import extractStackDataFromTidy from '../../src/charts/extractStackDataFromTidy';
-import useRandomId from '../../src/charts/useRandomId';
 import drawLoadingGrid from '../../src/charts/drawLoadingGrid';
 
 jest.unmock('../../src/charts/StackedBarChart');

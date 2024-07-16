@@ -5,13 +5,12 @@ import {format} from 'd3-format';
 import {select} from 'd3-selection';
 import {arc, pie} from 'd3-shape';
 import identity from 'lodash-es/identity';
-import {addResizeObserver, Layer} from '@bluecateng/pelagos';
+import {addResizeObserver, Layer, useRandomId} from '@bluecateng/pelagos';
 
 import DonutChart from '../../src/charts/DonutChart';
 import {getDefaultClass} from '../../src/charts/Getters';
 import getColorVariant from '../../src/charts/getColorVariant';
 import getColorClass from '../../src/charts/getColorClass';
-import useRandomId from '../../src/charts/useRandomId';
 import setGradientParameters from '../../src/charts/setGradientParameters';
 
 jest.unmock('../../src/charts/DonutChart');

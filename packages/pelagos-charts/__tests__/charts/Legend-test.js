@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
+import {useRandomId} from '@bluecateng/pelagos';
 
 import Legend from '../../src/charts/Legend';
-import useRandomId from '../../src/charts/useRandomId';
 
 jest.unmock('../../src/charts/Legend');
 
