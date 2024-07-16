@@ -2,7 +2,7 @@ import {shallow} from 'enzyme';
 import {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import identity from 'lodash-es/identity';
 import {select} from 'd3-selection';
-import {addResizeObserver} from '@bluecateng/pelagos';
+import {addResizeObserver, useRandomId} from '@bluecateng/pelagos';
 
 import ScatterChart from '../../src/charts/ScatterChart';
 import getDomain from '../../src/charts/getDomain';
@@ -16,7 +16,6 @@ import getColorClass from '../../src/charts/getColorClass';
 import getColorVariant from '../../src/charts/getColorVariant';
 import {getDefaultClass, getKey, getValue} from '../../src/charts/Getters';
 import SingleHint from '../../src/charts/SingleHint';
-import useRandomId from '../../src/charts/useRandomId';
 import drawLoadingGrid from '../../src/charts/drawLoadingGrid';
 import tickFormatters from '../../src/charts/tickFormatters';
 

@@ -1,8 +1,8 @@
 import {shallow} from 'enzyme';
 import {sum} from 'd3-array';
+import {useRandomId} from '@bluecateng/pelagos';
 
 import MeterChart from '../../src/charts/MeterChart';
-import useRandomId from '../../src/charts/useRandomId';
 
 jest.unmock('../../src/charts/MeterChart');
 jest.unmock('../../src/charts/Getters');

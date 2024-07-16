@@ -2,7 +2,7 @@ import {shallow} from 'enzyme';
 import {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import {select} from 'd3-selection';
 import identity from 'lodash-es/identity';
-import {addResizeObserver, Layer} from '@bluecateng/pelagos';
+import {addResizeObserver, Layer, useRandomId} from '@bluecateng/pelagos';
 
 import SimpleBarChart from '../../src/charts/SimpleBarChart';
 import {getDefaultClass} from '../../src/charts/Getters';
@@ -15,7 +15,6 @@ import drawGrid from '../../src/charts/drawGrid';
 import getColorClass from '../../src/charts/getColorClass';
 import getColorVariant from '../../src/charts/getColorVariant';
 import extendDomain from '../../src/charts/extendDomain';
-import useRandomId from '../../src/charts/useRandomId';
 import drawLoadingGrid from '../../src/charts/drawLoadingGrid';
 
 jest.unmock('../../src/charts/SimpleBarChart');

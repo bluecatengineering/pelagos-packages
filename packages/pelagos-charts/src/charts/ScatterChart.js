@@ -2,7 +2,7 @@ import {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {select} from 'd3-selection';
 import identity from 'lodash-es/identity';
-import {addResizeObserver} from '@bluecateng/pelagos';
+import {addResizeObserver, useRandomId} from '@bluecateng/pelagos';
 import 'core-js/actual/iterator/map';
 
 import {
@@ -30,7 +30,6 @@ import SingleHint from './SingleHint';
 import useSetHintPosition from './useSetHintPosition';
 import legendDirections from './legendDirections';
 import Legend from './Legend';
-import useRandomId from './useRandomId';
 import drawLoadingGrid from './drawLoadingGrid';
 import ChartAxes from './ChartAxes';
 import LoadingGrid from './LoadingGrid';

@@ -2,7 +2,7 @@ import {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {select} from 'd3-selection';
 import identity from 'lodash-es/identity';
-import {addResizeObserver, Layer} from '@bluecateng/pelagos';
+import {addResizeObserver, Layer, useRandomId} from '@bluecateng/pelagos';
 
 import {axisPropType, colorPropType, dataPropType, hintPropType, legendPropType} from './ChartPropTypes';
 import {getDefaultClass, getGroup} from './Getters';
@@ -21,7 +21,6 @@ import tickFormatters from './tickFormatters';
 import useSetHintPosition from './useSetHintPosition';
 import legendDirections from './legendDirections';
 import Legend from './Legend';
-import useRandomId from './useRandomId';
 import drawLoadingGrid from './drawLoadingGrid';
 import ChartAxes from './ChartAxes';
 import LoadingGrid from './LoadingGrid';

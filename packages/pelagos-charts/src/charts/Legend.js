@@ -1,12 +1,12 @@
 import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
+import {useRandomId} from '@bluecateng/pelagos';
 
 import {colorPropType} from './ChartPropTypes';
 import {getDefaultClass} from './Getters';
 import getColorClass from './getColorClass';
 import getColorVariant from './getColorVariant';
-import useRandomId from './useRandomId';
 import './Chart.less';
 
 const Legend = ({

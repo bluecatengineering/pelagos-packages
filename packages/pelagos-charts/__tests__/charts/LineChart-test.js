@@ -4,7 +4,7 @@ import identity from 'lodash-es/identity';
 import {scaleQuantize} from 'd3-scale';
 import {select} from 'd3-selection';
 import {line} from 'd3-shape';
-import {addResizeObserver} from '@bluecateng/pelagos';
+import {addResizeObserver, useRandomId} from '@bluecateng/pelagos';
 
 import LineChart from '../../src/charts/LineChart';
 import createScale from '../../src/charts/createScale';
@@ -21,7 +21,6 @@ import mappers from '../../src/charts/mappers';
 import updateHint from '../../src/charts/updateHint';
 import getDomain from '../../src/charts/getDomain';
 import extractLineDataFromTidy from '../../src/charts/extractLineDataFromTidy';
-import useRandomId from '../../src/charts/useRandomId';
 import drawLoadingGrid from '../../src/charts/drawLoadingGrid';
 
 jest.unmock('../../src/charts/LineChart');

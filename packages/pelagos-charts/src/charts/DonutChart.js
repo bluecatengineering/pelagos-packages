@@ -5,7 +5,7 @@ import {format} from 'd3-format';
 import {select} from 'd3-selection';
 import {arc, pie} from 'd3-shape';
 import identity from 'lodash-es/identity';
-import {addResizeObserver, Layer} from '@bluecateng/pelagos';
+import {addResizeObserver, Layer, useRandomId} from '@bluecateng/pelagos';
 
 import {colorPropType, dataPropType, hintPropType, legendPropType} from './ChartPropTypes';
 import {getDefaultClass, getGroup, getValue} from './Getters';
@@ -14,7 +14,6 @@ import getColorVariant from './getColorVariant';
 import useSetHintPosition from './useSetHintPosition';
 import legendDirections from './legendDirections';
 import Legend from './Legend';
-import useRandomId from './useRandomId';
 import setGradientParameters from './setGradientParameters';
 import LoadingGradient from './LoadingGradient';
 import './Chart.less';
