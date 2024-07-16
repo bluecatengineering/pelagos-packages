@@ -10,18 +10,18 @@ exports[`ListInput rendering renders expected elements 1`] = `
   />
   <LabelLine
     error={false}
-    htmlFor="test"
-    id="test-label"
+    htmlFor="random-id"
+    id="random-id-label"
     required={true}
     text="Test"
   />
   <ComboBox
-    aria-describedby="test-helper"
+    aria-describedby="random-id-helper"
     aria-required={true}
     autoSelect={true}
     error={false}
     getSuggestions={[Function]}
-    id="test"
+    id="random-id"
     onChange={[Function]}
     onEnter={[Function]}
     onTextChange={[Function]}
@@ -29,13 +29,13 @@ exports[`ListInput rendering renders expected elements 1`] = `
     text=""
   />
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
     text="Helper text"
   />
   <ListEntries
     className="ListInput__list"
     highlightKey={null}
-    id="test-grid"
+    id="random-id-grid"
     list={
       [
         {
@@ -60,16 +60,16 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
   />
   <LabelLine
     error={false}
-    htmlFor="test"
-    id="test-label"
+    htmlFor="random-id"
+    id="random-id-label"
     text="Test"
   />
   <ComboBox
-    aria-describedby="test-helper"
+    aria-describedby="random-id-helper"
     autoSelect={true}
     error={false}
     getSuggestions={[Function]}
-    id="test"
+    id="random-id"
     onChange={[Function]}
     onEnter={[Function]}
     onTextChange={[Function]}
@@ -77,13 +77,13 @@ exports[`ListInput rendering renders expected elements when column is set 1`] = 
     text=""
   />
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
   />
   <ListEntries
     className="ListInput__list"
     column={true}
     highlightKey={null}
-    id="test-grid"
+    id="random-id-grid"
     list={
       [
         {
@@ -108,16 +108,16 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
   />
   <LabelLine
     error={true}
-    htmlFor="test"
-    id="test-label"
+    htmlFor="random-id"
+    id="random-id-label"
     text="Test"
   />
   <ComboBox
-    aria-describedby="test-error"
+    aria-describedby="random-id-error"
     autoSelect={true}
     error={true}
     getSuggestions={[Function]}
-    id="test"
+    id="random-id"
     onChange={[Function]}
     onEnter={[Function]}
     onTextChange={[Function]}
@@ -125,13 +125,13 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
     text=""
   />
   <FieldError
-    id="test-error"
+    id="random-id-error"
     text="Error"
   />
   <ListEntries
     className="ListInput__list"
     highlightKey={null}
-    id="test-grid"
+    id="random-id-grid"
     list={
       [
         {
@@ -156,16 +156,16 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
   />
   <LabelLine
     error={false}
-    htmlFor="test"
-    id="test-label"
+    htmlFor="random-id"
+    id="random-id-label"
     text="Test"
   />
   <ComboBox
-    aria-describedby="test-helper"
+    aria-describedby="random-id-helper"
     autoSelect={true}
     error={false}
     getSuggestions={[Function]}
-    id="test"
+    id="random-id"
     onChange={[Function]}
     onEnter={[Function]}
     onTextChange={[Function]}
@@ -173,12 +173,12 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
     text=""
   />
   <FieldHelper
-    id="test-helper"
+    id="random-id-helper"
   />
   <div
     aria-live="polite"
     className="ListInput__empty"
-    id="test-empty"
+    id="random-id-empty"
   >
     Test empty
   </div>

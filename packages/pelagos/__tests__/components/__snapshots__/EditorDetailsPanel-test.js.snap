@@ -4,7 +4,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
 <aside
   aria-labelledby="detailsPanelTitle"
   className="EditorDetailsPanel"
-  id="test"
+  id="random-id"
 >
   <div
     className="EditorDetailsPanel__header"
@@ -35,7 +35,7 @@ exports[`EditorDetailsPanel rendering renders expected elements when showButtons
 <aside
   aria-labelledby="detailsPanelTitle"
   className="EditorDetailsPanel"
-  id="test"
+  id="random-id"
 >
   <div
     className="EditorDetailsPanel__header"
@@ -78,7 +78,7 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
 <aside
   aria-labelledby="detailsPanelTitle"
   className="EditorDetailsPanel"
-  id="test"
+  id="random-id"
 >
   <div
     className="EditorDetailsPanel__header"
@@ -110,7 +110,7 @@ exports[`EditorDetailsPanel rendering renders expected elements with two childre
 <aside
   aria-labelledby="detailsPanelTitle"
   className="EditorDetailsPanel"
-  id="test"
+  id="random-id"
 >
   <div
     className="EditorDetailsPanel__header"

@@ -2,6 +2,7 @@ import {useCallback, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 
+import useRandomId from '../hooks/useRandomId';
 import LabelLine from '../components/LabelLine';
 import ComboBox from '../components/ComboBox';
 import FieldError from '../formFields/FieldError';
@@ -36,6 +37,8 @@ const ListInput = ({
 	onErrorChange,
 	...props
 }) => {
+	id = useRandomId(id);
+
 	const liveRef = useRef(null);
 
 	const [text, setText] = useState('');
@@ -191,7 +194,7 @@ const ListInput = ({
 
 ListInput.propTypes = {
 	/** The component id. */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/** The label text. */
 	label: PropTypes.string,
 	/** Whether the field is required. */

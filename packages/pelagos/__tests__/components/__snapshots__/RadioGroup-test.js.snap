@@ -3,13 +3,13 @@
 exports[`RadioGroup rendering renders expected elements 1`] = `
 <div
   className="RadioGroup TestClass"
-  id="test"
+  id="random-id"
   onKeyDown={[Function]}
   role="radiogroup"
 >
   <RadioButton
     checked={true}
-    id="test-foo"
+    id="random-id-foo"
     label="FOO"
     onChange={[Function]}
     tabIndex={0}
@@ -17,7 +17,7 @@ exports[`RadioGroup rendering renders expected elements 1`] = `
   />
   <RadioButton
     checked={false}
-    id="test-bar"
+    id="random-id-bar"
     label="BAR"
     onChange={[Function]}
     tabIndex={-1}
@@ -25,7 +25,7 @@ exports[`RadioGroup rendering renders expected elements 1`] = `
   />
   <RadioButton
     checked={false}
-    id="test-baz"
+    id="random-id-baz"
     label="BAZ"
     onChange={[Function]}
     tabIndex={-1}
@@ -37,13 +37,13 @@ exports[`RadioGroup rendering renders expected elements 1`] = `
 exports[`RadioGroup rendering renders expected elements when className is not set 1`] = `
 <div
   className="RadioGroup"
-  id="test"
+  id="random-id"
   onKeyDown={[Function]}
   role="radiogroup"
 >
   <RadioButton
     checked={true}
-    id="test-foo"
+    id="random-id-foo"
     label="FOO"
     onChange={[Function]}
     tabIndex={0}
@@ -51,7 +51,7 @@ exports[`RadioGroup rendering renders expected elements when className is not se
   />
   <RadioButton
     checked={false}
-    id="test-bar"
+    id="random-id-bar"
     label="BAR"
     onChange={[Function]}
     tabIndex={-1}
@@ -59,7 +59,7 @@ exports[`RadioGroup rendering renders expected elements when className is not se
   />
   <RadioButton
     checked={false}
-    id="test-baz"
+    id="random-id-baz"
     label="BAZ"
     onChange={[Function]}
     tabIndex={-1}

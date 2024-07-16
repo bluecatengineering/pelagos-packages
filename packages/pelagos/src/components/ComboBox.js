@@ -8,6 +8,7 @@ import AddLarge from '@carbon/icons-react/es/AddLarge';
 import scrollToItem from '../functions/scrollToItem';
 import useLayer from '../hooks/useLayer';
 import useSelectPositioner from '../hooks/useSelectPositioner';
+import useRandomId from '../hooks/useRandomId';
 
 import Layer from './Layer';
 import IconButton from './IconButton';
@@ -27,6 +28,7 @@ const ComboBox = ({
 	onTextChange,
 	...props
 }) => {
+	id = useRandomId(id);
 	const buttonRef = useRef(null);
 	const listRef = useRef(null);
 
@@ -210,7 +212,7 @@ const ComboBox = ({
 
 ComboBox.propTypes = {
 	/** The component id. */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/** The placeholder text. */
 	placeholder: PropTypes.string,
 	/** Whether the first suggestion is selected by default. */

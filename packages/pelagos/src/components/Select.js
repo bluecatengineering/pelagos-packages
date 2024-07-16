@@ -3,6 +3,7 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
 
+import useRandomId from '../hooks/useRandomId';
 import useLayer from '../hooks/useLayer';
 import useStringFinder from '../hooks/useStringFinder';
 import useSelectPositioner from '../hooks/useSelectPositioner';
@@ -30,6 +31,8 @@ const Select = ({
 	onChange,
 	...props
 }) => {
+	id = useRandomId(id);
+
 	const [open, setOpen] = useState(false);
 	const [focused, setFocused] = useState(-1);
 
@@ -268,7 +271,7 @@ const Select = ({
 
 Select.propTypes = {
 	/** The component ID. */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The value of the selected option. */

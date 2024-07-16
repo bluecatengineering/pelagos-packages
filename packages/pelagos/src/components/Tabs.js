@@ -1,6 +1,8 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 
+import useRandomId from '../hooks/useRandomId';
+
 import ScrollBox from './ScrollBox';
 import './Tabs.less';
 
@@ -22,6 +24,8 @@ const scrollTabs = (track, tr, overflow) => {
 
 /** @deprecated use TabList instead. */
 const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClose}) => {
+	id = useRandomId(id);
+
 	const tabsRef = useRef(null);
 
 	const [focused, setFocused] = useState(null);
@@ -162,7 +166,7 @@ const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClo
 
 Tabs.propTypes = {
 	/** The component ID. */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/** The tab items. */
 	items: PropTypes.array.isRequired,
 	/** The key of the current tab. */

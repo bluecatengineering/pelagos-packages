@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import Tabs from '../../src/components/Tabs';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/Tabs');
 
@@ -19,6 +20,8 @@ const getElementById = jest.fn();
 global.document = {getElementById};
 global.getComputedStyle = jest.fn().mockReturnValue({paddingLeft: '0', paddingRight: '10'});
 
+useRandomId.mockReturnValue('random-id');
+
 describe('Tabs', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -35,6 +38,7 @@ describe('Tabs', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 			expect(getTabKey.mock.calls).toEqual([[items[0]], [items[0]], [items[0]], [items[1]], [items[2]]]);
 			expect(renderTab.mock.calls).toEqual([
 				[items[0], true, true],

@@ -9,7 +9,7 @@ exports[`Select rendering renders expected elements 1`] = `
     aria-owns={null}
     className="Select__text Test"
     data-placeholder="Testing"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
@@ -38,7 +38,7 @@ exports[`Select rendering renders expected elements when className is not set 1`
     aria-owns={null}
     className="Select__text"
     data-placeholder="Testing"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
@@ -68,7 +68,7 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     aria-owns={null}
     className="Select__text Test"
     data-placeholder="Testing"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     role="combobox"
     tabIndex="0"
@@ -96,7 +96,7 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     aria-owns={null}
     className="Select__text Test"
     data-placeholder="Testing"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
@@ -125,7 +125,7 @@ exports[`Select rendering renders expected elements when noLayer is true 1`] = `
     aria-owns={null}
     className="Select__text Test"
     data-placeholder="Testing"
-    id="test"
+    id="random-id"
     noLayer={true}
     onBlur={[Function]}
     onKeyDown={[Function]}
@@ -149,13 +149,13 @@ exports[`Select rendering renders expected elements when noLayer is true 1`] = `
 exports[`Select rendering renders expected elements when open is true 1`] = `
 <React.Fragment>
   <Layer
-    aria-activedescendant="test-1"
+    aria-activedescendant="random-id-1"
     aria-expanded={true}
     aria-haspopup="listbox"
-    aria-owns="test-list"
+    aria-owns="random-id-list"
     className="Select__text Test"
     data-placeholder="Testing"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
@@ -175,7 +175,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
   <React.Portal>
     <Layer
       className="Select__list"
-      id="test-list"
+      id="random-id-list"
       level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
@@ -185,7 +185,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
         aria-selected={false}
         className="Select__option"
         data-index={0}
-        id="test-0"
+        id="random-id-0"
         role="option"
       >
         One
@@ -194,7 +194,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
         aria-selected={true}
         className="Select__option"
         data-index={1}
-        id="test-1"
+        id="random-id-1"
         role="option"
       >
         Two
@@ -203,7 +203,7 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
         aria-selected={false}
         className="Select__option"
         data-index={2}
-        id="test-2"
+        id="random-id-2"
         role="option"
       >
         Three
@@ -222,7 +222,7 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     aria-owns={null}
     className="Select__text Test"
     data-placeholder="Testing"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
@@ -251,7 +251,7 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     aria-owns={null}
     className="Select__text Select__text--empty Test"
     data-placeholder="Testing"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}

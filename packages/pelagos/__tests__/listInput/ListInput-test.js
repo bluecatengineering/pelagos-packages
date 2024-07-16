@@ -2,8 +2,11 @@ import {useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import ListInput from '../../src/listInput/ListInput';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/listInput/ListInput');
+
+useRandomId.mockReturnValue('random-id');
 
 describe('ListInput', () => {
 	describe('rendering', () => {
@@ -20,6 +23,7 @@ describe('ListInput', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when the list is empty', () => {
