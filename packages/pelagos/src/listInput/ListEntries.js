@@ -4,6 +4,7 @@ import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
 import Close from '@carbon/icons-react/es/Close';
 
+import Layer from '../components/Layer';
 import renderListItem from '../listItems/renderListItem';
 import scrollIntoView from '../functions/scrollIntoView';
 
@@ -65,10 +66,12 @@ const ListEntries = ({
 					className = className ? `${className} ListEntries__name` : 'ListEntries__name';
 					const itemKey = getItemKey(item, i);
 					return (
-						<li
+						<Layer
 							key={itemKey}
+							as="li"
 							className={`ListEntries__item${itemKey === highlightKey ? ' ListEntries__item--highlight' : ''}`}
 							data-testid="list-item">
+							{cloneElement(element, {className})}
 							<button
 								className="ListEntries__icon"
 								type="button"
@@ -77,8 +80,7 @@ const ListEntries = ({
 								data-index={i}>
 								<Close />
 							</button>
-							{cloneElement(element, {className})}
-						</li>
+						</Layer>
 					);
 				})}
 			</ul>
