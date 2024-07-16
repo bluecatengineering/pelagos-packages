@@ -8,6 +8,7 @@ import pageUp from '../../src/functions/pageUp';
 import scrollToItem from '../../src/functions/scrollToItem';
 import smoothScroll from '../../src/functions/smoothScroll';
 import getInnerText from '../../src/functions/getInnerText';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/Select');
 
@@ -23,6 +24,7 @@ const renderOption = (o) => strings[o];
 
 global.document = {};
 
+useRandomId.mockReturnValue('random-id');
 getInnerText.mockReturnValue('text');
 
 describe('Select', () => {
@@ -40,6 +42,7 @@ describe('Select', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when options are booleans', () => {

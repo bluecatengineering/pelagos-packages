@@ -2,12 +2,14 @@ import {shallow} from 'enzyme';
 
 import EditorDetailsPanel from '../../src/components/EditorDetailsPanel';
 import useSlidingPanel from '../../src/hooks/useSlidingPanel';
+import useRandomId from '../../src/hooks/useRandomId';
 import cloneWithClassName from '../../src/functions/cloneWithClassName';
 
 jest.unmock('../../src/components/EditorDetailsPanel');
 
 const item = {name: 'Test'};
 
+useRandomId.mockReturnValue('random-id');
 cloneWithClassName.mockReturnValue('cloneWithClassName');
 
 describe('EditorDetailsPanel', () => {
@@ -27,6 +29,7 @@ describe('EditorDetailsPanel', () => {
 				</EditorDetailsPanel>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 			expect(cloneWithClassName.mock.calls).toEqual([[body, 'EditorDetailsPanel__body']]);
 		});
 

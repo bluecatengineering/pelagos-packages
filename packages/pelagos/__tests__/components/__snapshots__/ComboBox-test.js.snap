@@ -7,13 +7,13 @@ exports[`ComboBox rendering renders expected elements 1`] = `
   <Layer
     aria-activedescendant={null}
     aria-autocomplete="list"
-    aria-controls="test-list"
+    aria-controls="random-id-list"
     aria-expanded={false}
     aria-invalid={true}
     as="input"
     autoComplete="off"
     className="ComboBox__input"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -28,14 +28,14 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     className="ComboBox__add"
     disabled={false}
     icon={[Function]}
-    id="test-add"
+    id="random-id-add"
     onClick={[Function]}
   />
   <React.Portal>
     <Layer
       aria-label="Options"
       className="ComboBox__list"
-      id="test-list"
+      id="random-id-list"
       level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
@@ -57,12 +57,12 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
   <Layer
     aria-activedescendant={null}
     aria-autocomplete="list"
-    aria-controls="test-list"
+    aria-controls="random-id-list"
     aria-expanded={false}
     as="input"
     autoComplete="off"
     className="ComboBox__input"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -77,14 +77,14 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     className="ComboBox__add"
     disabled={false}
     icon={[Function]}
-    id="test-add"
+    id="random-id-add"
     onClick={[Function]}
   />
   <React.Portal>
     <Layer
       aria-label="Options"
       className="ComboBox__list"
-      id="test-list"
+      id="random-id-list"
       level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
@@ -106,13 +106,13 @@ exports[`ComboBox rendering renders expected elements when noLayer is true 1`] =
   <Layer
     aria-activedescendant={null}
     aria-autocomplete="list"
-    aria-controls="test-list"
+    aria-controls="random-id-list"
     aria-expanded={false}
     aria-invalid={true}
     as="input"
     autoComplete="off"
     className="ComboBox__input"
-    id="test"
+    id="random-id"
     noLayer={true}
     onBlur={[Function]}
     onChange={[Function]}
@@ -128,14 +128,14 @@ exports[`ComboBox rendering renders expected elements when noLayer is true 1`] =
     className="ComboBox__add"
     disabled={false}
     icon={[Function]}
-    id="test-add"
+    id="random-id-add"
     onClick={[Function]}
   />
   <React.Portal>
     <Layer
       aria-label="Options"
       className="ComboBox__list"
-      id="test-list"
+      id="random-id-list"
       level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
@@ -155,14 +155,14 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
   className="ComboBox"
 >
   <Layer
-    aria-activedescendant="test-0"
+    aria-activedescendant="random-id-0"
     aria-autocomplete="list"
-    aria-controls="test-list"
+    aria-controls="random-id-list"
     aria-expanded={true}
     as="input"
     autoComplete="off"
     className="ComboBox__input"
-    id="test"
+    id="random-id"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -177,14 +177,14 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     className="ComboBox__add"
     disabled={false}
     icon={[Function]}
-    id="test-add"
+    id="random-id-add"
     onClick={[Function]}
   />
   <React.Portal>
     <Layer
       aria-label="Options"
       className="ComboBox__list"
-      id="test-list"
+      id="random-id-list"
       level={NaN}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
@@ -199,7 +199,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
         aria-selected={true}
         className="ComboBox__option TestClass"
         data-index={0}
-        id="test-0"
+        id="random-id-0"
         key={0}
         role="option"
       >
@@ -209,7 +209,7 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
         aria-selected={false}
         className="ComboBox__option TestClass"
         data-index={1}
-        id="test-1"
+        id="random-id-1"
         key={1}
         role="option"
       >

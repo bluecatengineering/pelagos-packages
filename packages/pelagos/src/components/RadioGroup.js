@@ -1,12 +1,15 @@
 import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
+import useRandomId from '../hooks/useRandomId';
+
 import RadioButton from './RadioButton';
 
 import './RadioGroup.less';
 
 /** A group of radio buttons. */
 const RadioGroup = ({id, className, value, options, renderLabel, onChange, ...props}) => {
+	id = useRandomId(id);
 	const handleChange = useCallback((event) => onChange(event.target.value), [onChange]);
 
 	const handleKeyDown = useCallback(
@@ -53,7 +56,7 @@ const RadioGroup = ({id, className, value, options, renderLabel, onChange, ...pr
 
 RadioGroup.propTypes = {
 	/** The component ID. */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The value of the selected option. */

@@ -3,6 +3,7 @@ import {t} from '@bluecateng/l10n.macro';
 import Close from '@carbon/icons-react/es/Close';
 
 import cloneWithClassName from '../functions/cloneWithClassName';
+import useRandomId from '../hooks/useRandomId';
 import useSlidingPanel from '../hooks/useSlidingPanel';
 
 import IconButton from './IconButton';
@@ -26,7 +27,7 @@ const EditorDetailsPanel = ({
 	onEdit,
 	onDelete,
 }) => (
-	<aside id={id} className="EditorDetailsPanel" aria-labelledby="detailsPanelTitle">
+	<aside id={useRandomId(id)} className="EditorDetailsPanel" aria-labelledby="detailsPanelTitle">
 		<div className="EditorDetailsPanel__header">
 			<h2 id="detailsPanelTitle" className="EditorDetailsPanel__title">
 				{item.name}
@@ -68,7 +69,7 @@ const EditorDetailsPanel = ({
 
 EditorDetailsPanel.propTypes = {
 	/** The component ID. */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/** The item to display, it must have at least two properties: id and name  */
 	item: PropTypes.object.isRequired,
 	/** Whether to show the buttons. */

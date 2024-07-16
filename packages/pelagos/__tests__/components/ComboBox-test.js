@@ -4,6 +4,7 @@ import debounce from 'lodash-es/debounce';
 
 import ComboBox from '../../src/components/ComboBox';
 import scrollToItem from '../../src/functions/scrollToItem';
+import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/ComboBox');
 
@@ -12,11 +13,14 @@ jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && ((f.cancel = jest.fn(
 const getElementById = jest.fn();
 global.document = {getElementById};
 
+useRandomId.mockReturnValue('random-id');
+
 describe('ComboBox', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(<ComboBox id="test" placeholder="test placeholder" text="test text" error />);
 			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when error is not set', () => {
@@ -366,7 +370,7 @@ describe('ComboBox', () => {
 			const input = {focus, value};
 			getElementById.mockReturnValue(input);
 			const wrapper = shallow(<ComboBox id="test" onTextChange={onTextChange} onEnter={onEnter} />);
-			wrapper.find('#test-add').simulate('click');
+			wrapper.find('#random-id-add').simulate('click');
 			expect(focus.mock.calls).toEqual([[]]);
 			expect(onEnter.mock.calls).toEqual([[value]]);
 		});

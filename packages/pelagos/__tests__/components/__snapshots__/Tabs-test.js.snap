@@ -5,7 +5,7 @@ exports[`Tabs rendering renders expected elements 1`] = `
   onResize={[Function]}
 >
   <div
-    aria-activedescendant="test-1"
+    aria-activedescendant="random-id-1"
     className="Tabs"
     onClick={[Function]}
     onFocus={[Function]}
