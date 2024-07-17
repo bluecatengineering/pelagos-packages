@@ -31,10 +31,10 @@ Promise.all([readFile(IN, 'utf8'), resolveConfig(LESS)])
 						deprecated
 							? `\n/** @deprecated */\n@${key}:{font-size:${fontSize};font-weight:${fontWeight};${
 									lineHeight ? `line-height:${lineHeight}` : ''
-							  }};`
+								}};`
 							: families[fontFamily].default
-							  ? `@${key}:{font-size:${fontSize};line-height:${lineHeight};font-weight:${fontWeight};letter-spacing:${letterSpacing}};`
-							  : `@${key}:{font:${fontWeight} ${fontSize}/${lineHeight} ${families[fontFamily].css};letter-spacing:${letterSpacing}};`
+								? `@${key}:{font-size:${fontSize};line-height:${lineHeight};font-weight:${fontWeight};letter-spacing:${letterSpacing}};`
+								: `@${key}:{font:${fontWeight} ${fontSize}/${lineHeight} ${families[fontFamily].css};letter-spacing:${letterSpacing}};`
 				),
 				''
 			).join('\n'),

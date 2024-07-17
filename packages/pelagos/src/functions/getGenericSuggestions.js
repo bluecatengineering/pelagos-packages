@@ -41,7 +41,7 @@ const getGenericSuggestions = (text, selected, sourceList, errorMessage) => {
 					})
 					.sort(compareSuggestions)
 					.slice(0, 10),
-		  };
+			};
 };
 
 export default getGenericSuggestions;

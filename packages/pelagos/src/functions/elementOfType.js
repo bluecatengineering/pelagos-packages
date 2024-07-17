@@ -20,7 +20,7 @@ export default (type) => {
 					`Invalid ${location} \`${propFullName || propName}\` of type \`${
 						actualType?.displayName || actualType?.name || actualType || typeof prop
 					}\` supplied to \`${componentName}\`, expected instance of \`${expectedName}\`.`
-			  );
+				);
 	};
 	const checkOptional = (props, propName, componentName, location, propFullName) =>
 		props[propName] ? validate(props, propName, componentName, location, propFullName) : null;
@@ -34,7 +34,7 @@ export default (type) => {
 					}\` is marked as required in \`${componentName}\`, but its value is \`${
 						prop === null ? 'null' : 'undefined'
 					}\`.`
-			  );
+				);
 	};
 	return checkOptional;
 };

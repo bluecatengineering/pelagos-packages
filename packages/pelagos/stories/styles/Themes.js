@@ -82,7 +82,7 @@ const Themes = () => {
 							(currentGroup === 'All' || group === currentGroup) &&
 							(currentSet === 'All' || set === currentSet) &&
 							(currentProperty === 'All' || properties.includes(currentProperty))
-				  ),
+					),
 		[currentGroup, currentSet, currentProperty, metaList]
 	);
 	const filteredThemes = useMemo(
