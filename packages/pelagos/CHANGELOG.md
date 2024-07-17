@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.15.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.14.1...@bluecateng/pelagos@12.15.0) (2024-07-17)
+
+### Features
+
+- add option to display a character counter in TextAreaField ([ce4b554](https://github.com/bluecatengineering/pelagos-packages/commit/ce4b554a53445bda7fb584ffc0496d868dd92ff4))
+- export useRandomId ([5673f9d](https://github.com/bluecatengineering/pelagos-packages/commit/5673f9d86f37014132367b120131b170251f7c56))
+- extract ListSelector component ([869f8aa](https://github.com/bluecatengineering/pelagos-packages/commit/869f8aa3913d503bdf74d7d70711865ab2a3eb90))
+- update ListEntries component per UX designs ([cfde3d9](https://github.com/bluecatengineering/pelagos-packages/commit/cfde3d9a2818137fbb0ee6f46266d7bc861d2105))
+
+### Bug Fixes
+
+- allow focusing disabled menu entries ([7ac559d](https://github.com/bluecatengineering/pelagos-packages/commit/7ac559d46ad5d5959ffdf09fad6072e1f6901d13))
+- use useRandomId instead of making id required ([d4faa9b](https://github.com/bluecatengineering/pelagos-packages/commit/d4faa9b73c39f28a72b5448b99f2f60854073b9d))
+
 ## [12.14.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.14.0...@bluecateng/pelagos@12.14.1) (2024-07-04)
 
 ### Bug Fixes

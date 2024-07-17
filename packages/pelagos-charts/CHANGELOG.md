@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.3...@bluecateng/pelagos-charts@0.1.4) (2024-07-17)
+
+### Bug Fixes
+
+- use useRandomId from Pelagos ([ef0a5ce](https://github.com/bluecatengineering/pelagos-packages/commit/ef0a5cef477784ce4ad7818cc6100794296a1e33))
+
 ## [0.1.3](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.2...@bluecateng/pelagos-charts@0.1.3) (2024-06-25)
 
 ### Bug Fixes
