@@ -14,7 +14,7 @@ const LabelLine = ({text, counter, required, error, ...props}) => (
 				</span>
 			)}
 		</div>
-		{counter && <p className="LabelLine__counter">{counter}</p>}
+		{counter && <div className="LabelLine__counter">{counter}</div>}
 	</div>
 );
 
