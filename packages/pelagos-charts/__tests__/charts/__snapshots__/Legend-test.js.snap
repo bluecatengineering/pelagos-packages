@@ -62,7 +62,7 @@ exports[`Legend rendering renders expected elements when optional properties are
     <div
       aria-checked={false}
       aria-labelledby="random-id-0"
-      className="Chart__legendCheck undefined"
+      className="Chart__legendCheck "
       role="checkbox"
       tabIndex={0}
     />

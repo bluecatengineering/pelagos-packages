@@ -65,18 +65,16 @@ const Legend = ({
 			onClick={clickable ? handleClick : null}>
 			{groups.map((group, index) => {
 				const labelId = `${id}-${index}`;
+				const checked = !selected || selected.length === 0 || selected.includes(group);
 				return (
 					<li key={group} data-group={group} data-index={index}>
 						<div
-							className={`Chart__legendCheck ${getBgClass(
-								group,
-								null,
-								null,
-								getColorClass('bg', colorVariant, colorOption, index)
-							)}`}
+							className={`Chart__legendCheck ${
+								checked ? getBgClass(group, null, null, getColorClass('bg', colorVariant, colorOption, index)) : ''
+							}`}
 							tabIndex={clickable ? 0 : -1}
 							role="checkbox"
-							aria-checked={!selected || selected.length === 0 || selected.includes(group)}
+							aria-checked={checked}
 							aria-labelledby={labelId}
 						/>
 						<p id={labelId} aria-hidden>
