@@ -27,11 +27,11 @@ exports[`LabelLine rendering renders expected elements when counter is set 1`] =
       text="Test"
     />
   </div>
-  <p
+  <div
     className="LabelLine__counter"
   >
     test counter
-  </p>
+  </div>
 </div>
 `;
 
