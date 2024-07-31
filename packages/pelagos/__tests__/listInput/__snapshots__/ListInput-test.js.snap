@@ -184,3 +184,49 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
   </div>
 </div>
 `;
+
+exports[`ListInput rendering renders expected elements when className is set 1`] = `
+<div
+  className="ListInput TestClass"
+>
+  <div
+    aria-live="assertive"
+    className="sr-only"
+  />
+  <LabelLine
+    error={false}
+    htmlFor="random-id"
+    id="random-id-label"
+    text="Test"
+  />
+  <ComboBox
+    aria-describedby="random-id-helper"
+    autoSelect={true}
+    error={false}
+    getSuggestions={[Function]}
+    id="random-id"
+    onChange={[Function]}
+    onEnter={[Function]}
+    onTextChange={[Function]}
+    text=""
+  />
+  <FieldHelper
+    id="random-id-helper"
+  />
+  <ListEntries
+    className="ListInput__list"
+    highlightKey={null}
+    id="random-id-grid"
+    list={
+      [
+        {
+          "id": "0",
+          "name": "test",
+        },
+      ]
+    }
+    onHighlightClear={[Function]}
+    onRemoveClick={[Function]}
+  />
+</div>
+`;

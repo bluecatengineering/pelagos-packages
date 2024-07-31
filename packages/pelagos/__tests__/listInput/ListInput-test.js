@@ -33,6 +33,14 @@ describe('ListInput', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when className is set', () => {
+			const wrapper = shallow(
+				<ListInput id="test" className="TestClass" label="Test" list={[{id: '0', name: 'test'}]} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
+		});
+
 		it('renders expected elements when error is set', () => {
 			const wrapper = shallow(
 				<ListInput
