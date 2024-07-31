@@ -15,6 +15,7 @@ import './ListInput.less';
 /** An input box for a list of values. */
 const ListInput = ({
 	id,
+	className,
 	label,
 	required,
 	emptyText,
@@ -152,7 +153,7 @@ const ListInput = ({
 	const helperId = `${id}-helper`;
 	const errorId = `${id}-error`;
 	return (
-		<div className="ListInput">
+		<div className={`ListInput${className ? ` ${className}` : ''}`}>
 			<div className="sr-only" aria-live="assertive" ref={liveRef} />
 			<LabelLine id={labelId} htmlFor={id} text={label} required={required} error={!!error} />
 			<ComboBox
@@ -195,6 +196,8 @@ const ListInput = ({
 ListInput.propTypes = {
 	/** The component id. */
 	id: PropTypes.string,
+	/** The component class name(s). */
+	className: PropTypes.string,
 	/** The label text. */
 	label: PropTypes.string,
 	/** Whether the field is required. */
