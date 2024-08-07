@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.4...@bluecateng/pelagos-charts@0.1.5) (2024-08-07)
+
+### Bug Fixes
+
+- don't set background-color for checked legend items ([55af779](https://github.com/bluecatengineering/pelagos-packages/commit/55af779c7a277da12302fea146d94fc9bffaa642))
+
 ## [0.1.4](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.3...@bluecateng/pelagos-charts@0.1.4) (2024-07-17)
 
 ### Bug Fixes

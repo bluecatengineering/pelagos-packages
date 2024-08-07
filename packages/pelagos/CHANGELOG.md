@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.15.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.15.0...@bluecateng/pelagos@12.15.1) (2024-08-07)
+
+### Bug Fixes
+
+- add className property to ListInput ([806d9c9](https://github.com/bluecatengineering/pelagos-packages/commit/806d9c940dab8af487dc131a9dbe88e55000448b))
+- use a div for LabelLine counter ([dc3953d](https://github.com/bluecatengineering/pelagos-packages/commit/dc3953dd9352a6e6f357be4e3b59f9cd73c25feb))
+
 ## [12.15.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.14.1...@bluecateng/pelagos@12.15.0) (2024-07-17)
 
 ### Features
