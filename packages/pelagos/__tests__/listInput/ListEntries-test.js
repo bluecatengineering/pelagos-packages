@@ -1,23 +1,32 @@
-import {useEffect, useRef} from 'react';
 import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
+import {useEffect} from 'react';
 
+import moveListItem from '../../src/functions/moveListItem';
+import scrollIntoView from '../../src/functions/scrollIntoView';
+import useReorder from '../../src/hooks/useReorder';
 import ListEntries from '../../src/listInput/ListEntries';
 import renderListItem from '../../src/listItems/renderListItem';
-import scrollIntoView from '../../src/functions/scrollIntoView';
 
 jest.unmock('../../src/listInput/ListEntries');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)));
+const anyFunction = expect.any(Function);
+const getElementById = jest.fn();
 
+const list = [
+	{id: '0', name: 'test0'},
+	{id: '1', name: 'test1'},
+];
 const getId = (i) => i.id;
 const getName = (i) => i.name;
 
 const querySelector = jest.fn();
-global.document = {querySelector};
+global.document = {querySelector, getElementById};
 
 describe('ListEntries', () => {
 	describe('rendering', () => {
+		beforeEach(() => useReorder.mockReturnValueOnce([]));
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<ListEntries
@@ -88,7 +97,7 @@ describe('ListEntries', () => {
 			const onRemoveClick = jest.fn();
 			const item = {id: '0', name: 'test'};
 			const live = {};
-			useRef.mockReturnValueOnce({current: live});
+			useReorder.mockReturnValueOnce([null, {current: live}]);
 			const wrapper = shallow(
 				<ListEntries
 					id="test"
@@ -105,6 +114,7 @@ describe('ListEntries', () => {
 		});
 
 		it('does not call onRemoveClick when the list is clicked outside', () => {
+			useReorder.mockReturnValueOnce([]);
 			const onRemoveClick = jest.fn();
 			const item = {id: '0', name: 'test'};
 			const wrapper = shallow(
@@ -122,6 +132,7 @@ describe('ListEntries', () => {
 		});
 
 		it('calls scrollIntoView when highlightKey is set and the element is found', () => {
+			useReorder.mockReturnValueOnce([]);
 			const onHighlightClear = jest.fn();
 			const element = {};
 			querySelector.mockReturnValue(element);
@@ -147,6 +158,7 @@ describe('ListEntries', () => {
 		});
 
 		it('does not call scrollIntoView when highlightKey is set and the element is not found', () => {
+			useReorder.mockReturnValueOnce([]);
 			const onHighlightClear = jest.fn();
 			querySelector.mockReturnValue(null);
 			shallow(
@@ -167,6 +179,7 @@ describe('ListEntries', () => {
 		});
 
 		it('does not call querySelector when highlightKey is not set', () => {
+			useReorder.mockReturnValueOnce([]);
 			const onHighlightClear = jest.fn();
 			shallow(
 				<ListEntries
@@ -181,6 +194,19 @@ describe('ListEntries', () => {
 			useEffect.mock.calls[0][0]();
 			expect(querySelector).not.toHaveBeenCalled();
 			expect(onHighlightClear).not.toHaveBeenCalled();
+		});
+
+		it('adds a reorder handler', () => {
+			useReorder.mockReturnValueOnce([]);
+			shallow(
+				<ListEntries list={list} getItemKey={getId} getItemName={getName} renderItem={(i) => <div>{i.name}</div>} />
+			);
+			expect(useReorder.mock.calls).toEqual([
+				['.ListEntries__item', '.ListEntries__grip', 2, anyFunction, anyFunction],
+			]);
+			expect(useReorder.mock.calls[0][3]({dataset: {index: '0'}})).toBe('test0');
+			useReorder.mock.calls[0][4](0, 1);
+			expect(moveListItem.mock.calls).toEqual([[list, 0, 1]]);
 		});
 	});
 });

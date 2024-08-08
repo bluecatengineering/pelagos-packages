@@ -1,12 +1,15 @@
-import {cloneElement, useCallback, useEffect, useMemo, useRef} from 'react';
-import PropTypes from 'prop-types';
-import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
 import Close from '@carbon/icons-react/es/Close';
+import Draggable from '@carbon/icons-react/es/Draggable';
+import debounce from 'lodash-es/debounce';
+import PropTypes from 'prop-types';
+import {cloneElement, useCallback, useEffect, useMemo} from 'react';
 
 import Layer from '../components/Layer';
-import renderListItem from '../listItems/renderListItem';
+import moveListItem from '../functions/moveListItem';
 import scrollIntoView from '../functions/scrollIntoView';
+import useReorder from '../hooks/useReorder';
+import renderListItem from '../listItems/renderListItem';
 
 import './ListEntries.less';
 
@@ -16,14 +19,24 @@ const ListEntries = ({
 	className,
 	highlightKey,
 	list,
+	reorderable,
 	column,
 	getItemKey,
 	getItemName,
 	renderItem,
+	onReorder = moveListItem,
 	onRemoveClick,
 	onHighlightClear,
 }) => {
-	const liveRef = useRef(null);
+	const getElementName = useCallback((element) => getItemName(list[+element.dataset.index]), [list, getItemName]);
+	const updateList = useCallback((fromIndex, toIndex) => onReorder(list, fromIndex, toIndex), [list, onReorder]);
+	const [reorderRef, liveRef] = useReorder(
+		'.ListEntries__item',
+		'.ListEntries__grip',
+		list.length,
+		getElementName,
+		updateList
+	);
 
 	const clearHighlight = useMemo(() => onHighlightClear && debounce(onHighlightClear, 1000), [onHighlightClear]);
 
@@ -38,7 +51,7 @@ const ListEntries = ({
 				onRemoveClick(item, index);
 			}
 		},
-		[list, onRemoveClick, getItemName]
+		[list, getItemName, liveRef, onRemoveClick]
 	);
 
 	useEffect(() => {
@@ -52,12 +65,19 @@ const ListEntries = ({
 		return clearHighlight && clearHighlight.cancel;
 	}, [highlightKey, clearHighlight]);
 
+	const operationId = `${id}-operation`;
 	return (
 		<>
 			<div className="sr-only" aria-live="polite" ref={liveRef} />
+			{reorderable && (
+				<div id={operationId} className="sr-only">
+					{t`Press space bar to reorder`}
+				</div>
+			)}
 			<ul
+				ref={reorderRef}
 				id={id}
-				className={`ListEntries ListEntries--${column ? 'column' : 'grid'}${className ? ` ${className}` : ''}`}
+				className={`ListEntries ListEntries--${column || reorderable ? 'column' : 'grid'}${className ? ` ${className}` : ''}`}
 				onClick={handleClick}>
 				{list.map((item, i) => {
 					const name = getItemName(item);
@@ -70,7 +90,10 @@ const ListEntries = ({
 							key={itemKey}
 							as="li"
 							className={`ListEntries__item${itemKey === highlightKey ? ' ListEntries__item--highlight' : ''}`}
+							tabIndex={reorderable ? 0 : undefined}
+							aria-describedby={reorderable ? operationId : undefined}
 							data-testid="list-item">
+							{reorderable && <Draggable className="ListEntries__grip draggable" />}
 							{cloneElement(element, {className})}
 							<button
 								className="ListEntries__icon"
@@ -97,14 +120,18 @@ ListEntries.propTypes = {
 	highlightKey: PropTypes.string,
 	/** The data for the list. */
 	list: PropTypes.array,
+	/** Whether items are reorderable. */
+	reorderable: PropTypes.bool,
 	/** Whether items are listed as columns. */
 	column: PropTypes.bool,
-	/** Function invoked to get each item's key. */
+	/** Function invoked to get each item's key. Defaults to true if reorderable */
 	getItemKey: PropTypes.func,
 	/** Function invoked to get each item's name. */
 	getItemName: PropTypes.func,
 	/** Function invoked to render each list item. */
 	renderItem: PropTypes.func,
+	/** Function invoked when an item is reordered. */
+	onReorder: PropTypes.func,
 	/** Function invoked when the remove button is clicked. */
 	onRemoveClick: PropTypes.func,
 	/** Function invoked to clear the highlight key. */
