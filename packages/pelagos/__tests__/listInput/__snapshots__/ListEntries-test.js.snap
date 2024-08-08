@@ -14,6 +14,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
     <Layer
       as="li"
       className="ListEntries__item"
+      data-index={0}
       data-testid="list-item"
     >
       <div
@@ -49,6 +50,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
     <Layer
       as="li"
       className="ListEntries__item"
+      data-index={0}
       data-testid="list-item"
     >
       <div
@@ -84,6 +86,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
     <Layer
       as="li"
       className="ListEntries__item ListEntries__item--highlight"
+      data-index={0}
       data-testid="list-item"
     >
       <div
@@ -119,12 +122,64 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
     <Layer
       as="li"
       className="ListEntries__item"
+      data-index={0}
       data-testid="list-item"
     >
       <div
         className="ListEntries__name"
       >
         test
+      </div>
+      <button
+        aria-label="Remove test"
+        className="ListEntries__icon"
+        data-index={0}
+        data-testid="remove-item"
+        type="button"
+      >
+        <Close />
+      </button>
+    </Layer>
+  </ul>
+</React.Fragment>
+`;
+
+exports[`ListEntries rendering renders expected elements when reorderable is set 1`] = `
+<React.Fragment>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="sr-only"
+    id="test-operation"
+  >
+    Press space bar to reorder
+  </div>
+  <ul
+    className="ListEntries ListEntries--column"
+    id="test"
+    onClick={[Function]}
+  >
+    <Layer
+      aria-describedby="test-operation"
+      as="li"
+      className="ListEntries__item"
+      data-index={0}
+      data-testid="list-item"
+      tabIndex={0}
+    >
+      <div
+        className="ListEntries__entry draggable"
+      >
+        <Draggable
+          className="ListEntries__grip"
+        />
+        <div
+          className="ListEntries__name"
+        >
+          test
+        </div>
       </div>
       <button
         aria-label="Remove test"
@@ -154,6 +209,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
     <Layer
       as="li"
       className="ListEntries__item"
+      data-index={0}
       data-testid="list-item"
     >
       <div

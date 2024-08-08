@@ -1,6 +1,7 @@
 @import '../../less/breakpoints';
 @import '../../less/spacing';
 @import '../../less/utils';
+@import '../../less/focus';
 
 @layer pelagos {
 	.ListEntries {
@@ -29,33 +30,55 @@
 				grid-template-columns: repeat(8, 1fr)
 			});
 		}
-	}
 
-	.ListEntries__item {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: @sp-12;
-		overflow: hidden;
-		background-color: var(--field);
-		min-height: 32px;
-		padding: 0 @sp-12 0 @sp-16;
-	}
+		&__item {
+			@focus-visible();
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: @sp-12;
+			overflow: hidden;
+			background-color: var(--field);
+			min-height: 32px;
+			padding: 0 @sp-12 0 @sp-16;
 
-	.ListEntries__item--highlight {
-		animation: highlight-fade 2s ease-out;
-	}
-
-	.ListEntries__icon {
-		@icon-button();
-		padding: @sp-04;
-
-		.ListEntries__item--highlight > & {
-			color: var(--link-primary);
+			&--highlight {
+				animation: highlight-fade 2s ease-out;
+			}
 		}
-	}
 
-	.ListEntries__name {
-		flex: 1;
+		&__icon {
+			@icon-button();
+			padding: @sp-04;
+
+			.ListEntries__item--highlight > & {
+				color: var(--link-primary);
+			}
+		}
+
+		&__name {
+			flex: 1;
+		}
+
+		&__entry {
+			flex: 1;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		&__grip {
+			margin-right: @sp-04;
+			color: var(--icon-secondary);
+			opacity: 0.5;
+			transition: opacity 0.15s ease-out;
+
+			:hover > & {
+				opacity: 1;
+			}
+
+			.ListEntries__item:focus-visible > * > & {
+				opacity: 1;
+			}
+		}
 	}
 }
