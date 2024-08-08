@@ -22,6 +22,7 @@ const ListInput = ({
 	list,
 	helperText,
 	error,
+	reorderable,
 	column,
 	getSuggestions,
 	getSuggestionText,
@@ -181,10 +182,12 @@ const ListInput = ({
 					className="ListInput__list"
 					highlightKey={highlightKey}
 					list={list}
+					reorderable={reorderable}
 					column={column}
 					getItemKey={getItemKey}
 					getItemName={getItemName}
 					renderItem={renderItem}
+					onReorder={onListChange}
 					onRemoveClick={handleRemoveClick}
 					onHighlightClear={handleHighlightClear}
 				/>
@@ -212,7 +215,9 @@ ListInput.propTypes = {
 	helperText: PropTypes.string,
 	/** The error text. */
 	error: PropTypes.string,
-	/** Whether the list should be displayed as columns. */
+	/** Whether the list should be reorderable. */
+	reorderable: PropTypes.bool,
+	/** Whether the list should be displayed as columns. Set to true if reorderable. */
 	column: PropTypes.bool,
 	/** Function invoked to provide a list of suggestions. */
 	getSuggestions: PropTypes.func,

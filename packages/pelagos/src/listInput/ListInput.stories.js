@@ -50,6 +50,23 @@ export const Column = {
 	},
 };
 
+export const Reorderable = {
+	args: {
+		id: 'reorderable',
+		label: 'Reorderable',
+		placeholder,
+		autoFocus,
+		list,
+		text: '1.1',
+		reorderable: true,
+		getSuggestions,
+		getItemName,
+		getItemKey,
+		onTextChange,
+		onListChange,
+	},
+};
+
 export const Empty = {
 	args: {
 		id: 'empty',
