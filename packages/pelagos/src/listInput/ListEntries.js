@@ -3,7 +3,7 @@ import Close from '@carbon/icons-react/es/Close';
 import Draggable from '@carbon/icons-react/es/Draggable';
 import debounce from 'lodash-es/debounce';
 import PropTypes from 'prop-types';
-import {useCallback, useEffect, useMemo} from 'react';
+import {cloneElement, useCallback, useEffect, useMemo} from 'react';
 
 import Layer from '../components/Layer';
 import moveListItem from '../functions/moveListItem';
@@ -82,6 +82,8 @@ const ListEntries = ({
 				{list.map((item, i) => {
 					const name = getItemName(item);
 					const element = renderItem ? renderItem(item) : renderListItem(name);
+					let className = element.props.className;
+					className = className ? `${className} ListEntries__name` : 'ListEntries__name';
 					const itemKey = getItemKey(item, i);
 					return (
 						<Layer
@@ -91,10 +93,14 @@ const ListEntries = ({
 							tabIndex={reorderable ? 0 : undefined}
 							aria-describedby={reorderable ? operationId : undefined}
 							data-testid="list-item">
-							<div className={`ListEntries__name${reorderable ? ' draggable' : ''}`}>
-								{reorderable && <Draggable className="ListEntries__grip" />}
-								{element}
-							</div>
+							{reorderable ? (
+								<div className={`ListEntries__name${reorderable ? ' draggable' : ''}`}>
+									{reorderable && <Draggable className="ListEntries__grip" />}
+									{element}
+								</div>
+							) : (
+								cloneElement(element, {className})
+							)}
 							<button
 								className="ListEntries__icon"
 								type="button"

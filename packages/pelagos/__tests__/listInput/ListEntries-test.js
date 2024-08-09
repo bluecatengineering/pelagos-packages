@@ -89,6 +89,20 @@ describe('ListEntries', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when reorderable is set', () => {
+			const wrapper = shallow(
+				<ListEntries
+					id="test"
+					list={[{id: '0', name: 'test'}]}
+					reorderable
+					getItemKey={getId}
+					getItemName={getName}
+					renderItem={(i) => <div>{i.name}</div>}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {
