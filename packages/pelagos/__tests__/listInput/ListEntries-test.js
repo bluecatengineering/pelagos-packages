@@ -12,7 +12,6 @@ jest.unmock('../../src/listInput/ListEntries');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)));
 const anyFunction = expect.any(Function);
-const getElementById = jest.fn();
 
 const list = [
 	{id: '0', name: 'test0'},
@@ -22,7 +21,7 @@ const getId = (i) => i.id;
 const getName = (i) => i.name;
 
 const querySelector = jest.fn();
-global.document = {querySelector, getElementById};
+global.document = {querySelector};
 
 describe('ListEntries', () => {
 	describe('rendering', () => {
