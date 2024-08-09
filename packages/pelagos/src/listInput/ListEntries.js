@@ -122,9 +122,9 @@ ListEntries.propTypes = {
 	list: PropTypes.array,
 	/** Whether items are reorderable. */
 	reorderable: PropTypes.bool,
-	/** Whether items are listed as columns. */
+	/** Whether items are listed as columns. Defaults to true if reorderable */
 	column: PropTypes.bool,
-	/** Function invoked to get each item's key. Defaults to true if reorderable */
+	/** Function invoked to get each item's key. */
 	getItemKey: PropTypes.func,
 	/** Function invoked to get each item's name. */
 	getItemName: PropTypes.func,
