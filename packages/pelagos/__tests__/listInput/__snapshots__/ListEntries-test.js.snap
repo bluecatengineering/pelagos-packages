@@ -21,6 +21,13 @@ exports[`ListEntries rendering renders expected elements 1`] = `
       >
         test
       </div>
+      <div
+        className="ListEntries__name"
+      >
+        <div>
+          test
+        </div>
+      </div>
       <button
         aria-label="Remove test"
         className="ListEntries__icon"
@@ -55,6 +62,13 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
         className="ListEntries__name"
       >
         test
+      </div>
+      <div
+        className="ListEntries__name"
+      >
+        <div>
+          test
+        </div>
       </div>
       <button
         aria-label="Remove test"
@@ -91,6 +105,13 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
       >
         test
       </div>
+      <div
+        className="ListEntries__name"
+      >
+        <div>
+          test
+        </div>
+      </div>
       <button
         aria-label="Remove test"
         className="ListEntries__icon"
@@ -126,6 +147,71 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
       >
         test
       </div>
+      <div
+        className="ListEntries__name"
+      >
+        <div>
+          test
+        </div>
+      </div>
+      <button
+        aria-label="Remove test"
+        className="ListEntries__icon"
+        data-index={0}
+        data-testid="remove-item"
+        type="button"
+      >
+        <Close />
+      </button>
+    </Layer>
+  </ul>
+</React.Fragment>
+`;
+
+exports[`ListEntries rendering renders expected elements when reorderable is set 1`] = `
+<React.Fragment>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="sr-only"
+    id="test-operation"
+  >
+    Press space bar to reorder
+  </div>
+  <ul
+    className="ListEntries ListEntries--column"
+    id="test"
+    onClick={[Function]}
+  >
+    <Layer
+      aria-describedby="test-operation"
+      as="li"
+      className="ListEntries__item"
+      data-testid="list-item"
+      tabIndex={0}
+    >
+      <div
+        className="ListEntries__name draggable"
+      >
+        <Draggable
+          className="ListEntries__grip"
+        />
+        <div>
+          test
+        </div>
+      </div>
+      <div
+        className="ListEntries__name draggable"
+      >
+        <Draggable
+          className="ListEntries__grip"
+        />
+        <div>
+          test
+        </div>
+      </div>
       <button
         aria-label="Remove test"
         className="ListEntries__icon"
@@ -160,6 +246,15 @@ exports[`ListEntries rendering renders expected elements when the item has class
         className="TestClass ListEntries__name"
       >
         test
+      </div>
+      <div
+        className="ListEntries__name"
+      >
+        <div
+          className="TestClass"
+        >
+          test
+        </div>
       </div>
       <button
         aria-label="Remove test"
