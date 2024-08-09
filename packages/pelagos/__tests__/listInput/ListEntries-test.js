@@ -202,7 +202,7 @@ describe('ListEntries', () => {
 				<ListEntries list={list} getItemKey={getId} getItemName={getName} renderItem={(i) => <div>{i.name}</div>} />
 			);
 			expect(useReorder.mock.calls).toEqual([
-				['.ListEntries__item', '.ListEntries__grip', 2, anyFunction, anyFunction],
+				['.ListEntries__item', '.ListEntries__name', 2, anyFunction, anyFunction],
 			]);
 			expect(useReorder.mock.calls[0][3]({dataset: {index: '0'}})).toBe('test0');
 			useReorder.mock.calls[0][4](0, 1);

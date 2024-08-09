@@ -19,7 +19,9 @@ exports[`ListEntries rendering renders expected elements 1`] = `
       <div
         className="ListEntries__name"
       >
-        test
+        <div>
+          test
+        </div>
       </div>
       <button
         aria-label="Remove test"
@@ -54,7 +56,9 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
       <div
         className="ListEntries__name"
       >
-        test
+        <div>
+          test
+        </div>
       </div>
       <button
         aria-label="Remove test"
@@ -89,7 +93,9 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
       <div
         className="ListEntries__name"
       >
-        test
+        <div>
+          test
+        </div>
       </div>
       <button
         aria-label="Remove test"
@@ -124,7 +130,9 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
       <div
         className="ListEntries__name"
       >
-        test
+        <div>
+          test
+        </div>
       </div>
       <button
         aria-label="Remove test"
@@ -157,9 +165,13 @@ exports[`ListEntries rendering renders expected elements when the item has class
       data-testid="list-item"
     >
       <div
-        className="TestClass ListEntries__name"
+        className="ListEntries__name"
       >
-        test
+        <div
+          className="TestClass"
+        >
+          test
+        </div>
       </div>
       <button
         aria-label="Remove test"
