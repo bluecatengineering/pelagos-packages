@@ -1,16 +1,17 @@
+import {useEffect} from 'react';
 import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
-import {useEffect} from 'react';
 
-import moveListItem from '../../src/functions/moveListItem';
-import scrollIntoView from '../../src/functions/scrollIntoView';
-import useReorder from '../../src/hooks/useReorder';
 import ListEntries from '../../src/listInput/ListEntries';
 import renderListItem from '../../src/listItems/renderListItem';
+import scrollIntoView from '../../src/functions/scrollIntoView';
+import moveListItem from '../../src/functions/moveListItem';
+import useReorder from '../../src/hooks/useReorder';
 
 jest.unmock('../../src/listInput/ListEntries');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)));
+
 const anyFunction = expect.any(Function);
 
 const list = [
@@ -26,6 +27,7 @@ global.document = {querySelector};
 describe('ListEntries', () => {
 	describe('rendering', () => {
 		beforeEach(() => useReorder.mockReturnValueOnce([]));
+
 		it('renders expected elements', () => {
 			const wrapper = shallow(
 				<ListEntries
