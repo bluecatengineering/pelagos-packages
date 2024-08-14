@@ -70,8 +70,9 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     data-placeholder="Testing"
     id="random-id"
     onBlur={[Function]}
+    onMouseDown={[Function]}
     role="combobox"
-    tabIndex="0"
+    tabIndex="-1"
   >
     <p
       className="Select__value"

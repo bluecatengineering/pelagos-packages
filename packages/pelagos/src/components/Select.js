@@ -80,13 +80,18 @@ const Select = ({
 
 	const findItemToFocus = useStringFinder();
 
-	const handleMouseDown = useCallback(() => {
-		if (open) {
-			hideList();
-		} else {
-			showList();
-		}
-	}, [open, hideList, showList]);
+	const handleMouseDown = useCallback(
+		(event) => {
+			if (disabled) {
+				event.preventDefault();
+			} else if (open) {
+				hideList();
+			} else {
+				showList();
+			}
+		},
+		[open, hideList, showList, disabled]
+	);
 
 	const handleKeyDown = useCallback(
 		(event) => {
@@ -225,7 +230,7 @@ const Select = ({
 				{...props}
 				id={id}
 				className={`Select__text${selected ? '' : ' Select__text--empty'}${className ? ` ${className}` : ''}`}
-				tabIndex="0"
+				tabIndex={disabled ? '-1' : '0'}
 				role="combobox"
 				aria-haspopup="listbox"
 				aria-expanded={open}
@@ -235,7 +240,7 @@ const Select = ({
 				aria-invalid={error}
 				data-placeholder={placeholder}
 				ref={buttonRef}
-				onMouseDown={disabled ? undefined : handleMouseDown}
+				onMouseDown={handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
 				onBlur={handleBlur}>
 				<p className="Select__value">{selected ? selected.element : ''}</p>
