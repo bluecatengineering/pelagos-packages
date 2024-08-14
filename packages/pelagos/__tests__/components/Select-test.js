@@ -686,5 +686,17 @@ describe('Select', () => {
 			expect(closest.mock.calls).toEqual([['[role="option"]']]);
 			expect(event.preventDefault).not.toHaveBeenCalled();
 		});
+
+		it('prevents focus when disabled and mouse down is pressed', () => {
+			const event = {preventDefault: jest.fn()};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} disabled />
+			);
+
+			wrapper.find('[role="combobox"]').simulate('mousedown', event);
+
+			expect(event.preventDefault.mock.calls).toEqual([[]]);
+		});
 	});
 });
