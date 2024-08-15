@@ -175,7 +175,9 @@ exports[`ListEntries rendering renders expected elements when reorderable is set
         <Draggable
           className="ListEntries__grip"
         />
-        <div>
+        <div
+          className="ListEntries__name"
+        >
           test
         </div>
       </div>

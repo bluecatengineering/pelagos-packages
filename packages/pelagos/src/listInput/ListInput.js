@@ -217,7 +217,7 @@ ListInput.propTypes = {
 	error: PropTypes.string,
 	/** Whether the list should be reorderable. */
 	reorderable: PropTypes.bool,
-	/** Whether the list should be displayed as columns. Defaults to true if reorderable */
+	/** Whether the list should be displayed as columns. Set to true if reorderable. */
 	column: PropTypes.bool,
 	/** Function invoked to provide a list of suggestions. */
 	getSuggestions: PropTypes.func,

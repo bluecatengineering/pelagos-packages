@@ -99,9 +99,9 @@ const ListEntries = ({
 							data-testid="list-item"
 							data-index={i}>
 							{reorderable ? (
-								<div className={`ListEntries__entry${reorderable ? ' draggable' : ''}`}>
+								<div className={`ListEntries__entry draggable`}>
 									<Draggable className="ListEntries__grip" />
-									{element}
+									{cloneElement(element, {className})}
 								</div>
 							) : (
 								cloneElement(element, {className})
@@ -133,7 +133,7 @@ ListEntries.propTypes = {
 	list: PropTypes.array,
 	/** Whether items are reorderable. */
 	reorderable: PropTypes.bool,
-	/** Whether items are listed as columns. Defaults to true if reorderable */
+	/** Whether items are listed as columns. Set to true if reorderable. */
 	column: PropTypes.bool,
 	/** Function invoked to get each item's key. */
 	getItemKey: PropTypes.func,
