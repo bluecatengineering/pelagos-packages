@@ -58,6 +58,10 @@
 
 		&__name {
 			flex: 1;
+		}
+
+		&__entry {
+			flex: 1;
 			flex-direction: row;
 			align-items: center;
 		}
@@ -69,6 +73,10 @@
 			transition: opacity 0.15s ease-out;
 
 			:hover > & {
+				opacity: 1;
+			}
+
+			.ListEntries__item:focus-visible > * > & {
 				opacity: 1;
 			}
 		}

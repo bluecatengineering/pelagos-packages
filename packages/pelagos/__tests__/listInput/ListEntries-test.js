@@ -20,6 +20,7 @@ const list = [
 ];
 const getId = (i) => i.id;
 const getName = (i) => i.name;
+const onReorder = jest.fn();
 
 const querySelector = jest.fn();
 global.document = {querySelector};
@@ -214,10 +215,16 @@ describe('ListEntries', () => {
 		it('adds a reorder handler', () => {
 			useReorder.mockReturnValueOnce([]);
 			shallow(
-				<ListEntries list={list} getItemKey={getId} getItemName={getName} renderItem={(i) => <div>{i.name}</div>} />
+				<ListEntries
+					list={list}
+					getItemKey={getId}
+					getItemName={getName}
+					renderItem={(i) => <div>{i.name}</div>}
+					onReorder={onReorder}
+				/>
 			);
 			expect(useReorder.mock.calls).toEqual([
-				['.ListEntries__item', '.ListEntries__name', 2, anyFunction, anyFunction],
+				['.ListEntries__item', '.ListEntries__entry', 2, anyFunction, anyFunction],
 			]);
 			expect(useReorder.mock.calls[0][3]({dataset: {index: '0'}})).toBe('test0');
 			useReorder.mock.calls[0][4](0, 1);
