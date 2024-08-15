@@ -1,15 +1,15 @@
-import {cloneElement, useCallback, useEffect, useMemo} from 'react';
-import PropTypes from 'prop-types';
-import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
 import Close from '@carbon/icons-react/es/Close';
 import Draggable from '@carbon/icons-react/es/Draggable';
+import debounce from 'lodash-es/debounce';
+import PropTypes from 'prop-types';
+import {cloneElement, useCallback, useEffect, useMemo} from 'react';
 
 import Layer from '../components/Layer';
-import renderListItem from '../listItems/renderListItem';
-import scrollIntoView from '../functions/scrollIntoView';
 import moveListItem from '../functions/moveListItem';
+import scrollIntoView from '../functions/scrollIntoView';
 import useReorder from '../hooks/useReorder';
+import renderListItem from '../listItems/renderListItem';
 
 import './ListEntries.less';
 
@@ -99,7 +99,7 @@ const ListEntries = ({
 							data-testid="list-item"
 							data-index={i}>
 							{reorderable ? (
-								<div className={`ListEntries__entry draggable`}>
+								<div className="ListEntries__entry draggable">
 									<Draggable className="ListEntries__grip" />
 									{cloneElement(element, {className})}
 								</div>
