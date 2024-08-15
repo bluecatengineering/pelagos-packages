@@ -24,15 +24,14 @@ const ListEntries = ({
 	getItemKey,
 	getItemName,
 	renderItem,
-	moveItem = moveListItem,
 	onReorder,
 	onRemoveClick,
 	onHighlightClear,
 }) => {
 	const getElementName = useCallback((element) => getItemName(list[+element.dataset.index]), [list, getItemName]);
 	const updateList = useCallback(
-		(fromIndex, toIndex) => onReorder(moveItem(list, fromIndex, toIndex)),
-		[list, onReorder, moveItem]
+		(fromIndex, toIndex) => onReorder(moveListItem(list, fromIndex, toIndex)),
+		[list, onReorder]
 	);
 	const [reorderRef, liveRef] = useReorder(
 		'.ListEntries__item',
@@ -141,8 +140,6 @@ ListEntries.propTypes = {
 	getItemName: PropTypes.func,
 	/** Function invoked to render each list item. */
 	renderItem: PropTypes.func,
-	/** Function invoked to update an item's position. */
-	moveItem: PropTypes.func,
 	/** Function invoked when an item is reordered. */
 	onReorder: PropTypes.func,
 	/** Function invoked when the remove button is clicked. */
