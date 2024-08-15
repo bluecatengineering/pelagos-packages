@@ -6,10 +6,10 @@ import Close from '@carbon/icons-react/es/Close';
 import Draggable from '@carbon/icons-react/es/Draggable';
 
 import Layer from '../components/Layer';
+import renderListItem from '../listItems/renderListItem';
 import scrollIntoView from '../functions/scrollIntoView';
 import moveListItem from '../functions/moveListItem';
 import useReorder from '../hooks/useReorder';
-import renderListItem from '../listItems/renderListItem';
 
 import './ListEntries.less';
 

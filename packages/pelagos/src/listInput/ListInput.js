@@ -187,6 +187,7 @@ const ListInput = ({
 					getItemKey={getItemKey}
 					getItemName={getItemName}
 					renderItem={renderItem}
+					onReorder={onListChange}
 					onRemoveClick={handleRemoveClick}
 					onHighlightClear={handleHighlightClear}
 				/>
