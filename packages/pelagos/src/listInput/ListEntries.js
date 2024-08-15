@@ -45,7 +45,7 @@ const ListEntries = ({
 
 	const handleClick = useCallback(
 		(event) => {
-			const target = event.target.closest('[data-index]');
+			const target = event.target.closest('button[data-index]');
 			if (target) {
 				const index = +target.dataset.index;
 				const item = list[index];
