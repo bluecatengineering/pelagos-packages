@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.15.1...@bluecateng/pelagos@12.16.0) (2024-08-28)
+
+### Features
+
+- implement drag-and-drop reordering in ListEntries ([05a3adf](https://github.com/bluecatengineering/pelagos-packages/commit/05a3adffdfe2d4ead2a3a8288005f4a075341b42))
+
+### Bug Fixes
+
+- prevent focus of disabled select components ([21f6527](https://github.com/bluecatengineering/pelagos-packages/commit/21f652717c56eab6ebfaec875ca179579da7a40d))
+
 ## [12.15.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.15.0...@bluecateng/pelagos@12.15.1) (2024-08-07)
 
 ### Bug Fixes
