@@ -8,7 +8,7 @@ exports[`ListEntries rendering renders expected elements 1`] = `
   />
   <ul
     className="ListEntries ListEntries--grid TestClass"
-    id="test"
+    id="random-id"
     onClick={[Function]}
   >
     <Layer
@@ -44,7 +44,7 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
   />
   <ul
     className="ListEntries ListEntries--column"
-    id="test"
+    id="random-id"
     onClick={[Function]}
   >
     <Layer
@@ -80,7 +80,7 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
   />
   <ul
     className="ListEntries ListEntries--grid"
-    id="test"
+    id="random-id"
     onClick={[Function]}
   >
     <Layer
@@ -116,7 +116,7 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
   />
   <ul
     className="ListEntries ListEntries--grid"
-    id="test"
+    id="random-id"
     onClick={[Function]}
   >
     <Layer
@@ -152,17 +152,17 @@ exports[`ListEntries rendering renders expected elements when reorderable is set
   />
   <div
     className="sr-only"
-    id="test-operation"
+    id="random-id-operation"
   >
     Press space bar to reorder
   </div>
   <ul
     className="ListEntries ListEntries--column"
-    id="test"
+    id="random-id"
     onClick={[Function]}
   >
     <Layer
-      aria-describedby="test-operation"
+      aria-describedby="random-id-operation"
       as="li"
       className="ListEntries__item"
       data-index={0}
@@ -203,7 +203,7 @@ exports[`ListEntries rendering renders expected elements when the item has class
   />
   <ul
     className="ListEntries ListEntries--grid"
-    id="test"
+    id="random-id"
     onClick={[Function]}
   >
     <Layer
