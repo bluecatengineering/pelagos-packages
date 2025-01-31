@@ -8,6 +8,7 @@ import {cloneElement, useCallback, useEffect, useMemo} from 'react';
 import Layer from '../components/Layer';
 import moveListItem from '../functions/moveListItem';
 import scrollIntoView from '../functions/scrollIntoView';
+import useRandomId from '../hooks/useRandomId';
 import useReorder from '../hooks/useReorder';
 import renderListItem from '../listItems/renderListItem';
 
@@ -68,6 +69,7 @@ const ListEntries = ({
 		return clearHighlight && clearHighlight.cancel;
 	}, [highlightKey, clearHighlight]);
 
+	id = useRandomId(id);
 	const operationId = `${id}-operation`;
 	return (
 		<>

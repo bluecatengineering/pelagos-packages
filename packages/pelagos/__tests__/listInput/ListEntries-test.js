@@ -6,11 +6,14 @@ import ListEntries from '../../src/listInput/ListEntries';
 import renderListItem from '../../src/listItems/renderListItem';
 import scrollIntoView from '../../src/functions/scrollIntoView';
 import moveListItem from '../../src/functions/moveListItem';
+import useRandomId from '../../src/hooks/useRandomId';
 import useReorder from '../../src/hooks/useReorder';
 
 jest.unmock('../../src/listInput/ListEntries');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => ((f.cancel = jest.fn()), f)));
+
+useRandomId.mockReturnValue('random-id');
 
 const anyFunction = expect.any(Function);
 
