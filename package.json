@@ -27,8 +27,8 @@
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-react": "^7.16.7",
     "@bluecateng/commitlint-config-bluecateng": "^1.0.1",
-    "@bluecateng/eslint-config-node": "^4.0.0",
-    "@bluecateng/eslint-config-react": "^4.0.0",
+    "@bluecateng/eslint-config-node": "^5.0.2",
+    "@bluecateng/eslint-config-react": "^5.0.2",
     "@bluecateng/git-check-push": "^1.0.0",
     "@bluecateng/l10n-cli": "^0.2.0",
     "@bluecateng/l10n-icu2obj": "^0.1.5",
@@ -53,13 +53,13 @@
     "babel-plugin-macros": "^3.1.0",
     "chromatic": "^11.3.0",
     "enzyme": "^3.11.0",
-    "esbuild": "^0.23.0",
-    "eslint": "^8.6.0",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.19.0",
     "eslint-plugin-regexp": "^2.1.1",
     "husky": "^9.0.10",
     "jest": "^29.0.2",
     "jest-junit": "^16.0.0",
-    "jsdoc-api": "^8.0.0",
+    "jsdoc-api": "^9.3.4",
     "jsdoc-parse": "^6.1.0",
     "lerna": "^8.0.0",
     "less": "^4.1.2",
@@ -69,8 +69,8 @@
     "postcss-less": "^6.0.0",
     "prettier": "^3.0.0",
     "raw-loader": "^4.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "storybook": "^8.0.6",
     "storybook-a11y-report": "^0.0.21",
     "yaml": "^2.0.1",
@@ -88,39 +88,6 @@
     "packages/*"
   ],
   "prettier": "@bluecateng/prettier-config",
-  "eslintConfig": {
-    "plugins": [
-      "regexp"
-    ],
-    "extends": [
-      "@bluecateng/react",
-      "plugin:regexp/recommended"
-    ],
-    "globals": {
-      "showOpenFilePicker": false
-    },
-    "rules": {
-      "react/no-unknown-property": [
-        "error",
-        {
-          "ignore": [
-            "onPointerDown"
-          ]
-        }
-      ],
-      "regexp/no-unused-capturing-group": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.js"
-        ],
-        "rules": {
-          "react-hooks/rules-of-hooks": "off"
-        }
-      }
-    ]
-  },
   "stylelint": {
     "extends": [
       "@bluecateng/stylelint-config"

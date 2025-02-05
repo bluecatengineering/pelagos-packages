@@ -1,3 +1,5 @@
+'use strict';
+
 const {spawn} = require('node:child_process');
 const {writeFile, readdir} = require('node:fs/promises');
 const {join} = require('node:path');

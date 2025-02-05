@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 const {readFile, writeFile} = require('node:fs/promises');
 
 const {parse} = require('yaml');
@@ -18,7 +20,7 @@ const groupBy = (items, getKey) => {
 	return map;
 };
 
-const process = (map, mapFn) => {
+const processEntries = (map, mapFn) => {
 	const result = {};
 	for (const [k, v] of map.entries()) {
 		result[k] = Object.fromEntries(v.map(mapFn));
@@ -55,7 +57,7 @@ const loadThemes = () =>
 			return Object.fromEntries(
 				Object.entries(parse(themes)).map(([k, v]) => [
 					k,
-					process(
+					processEntries(
 						groupBy(
 							Object.entries(v).filter(([k]) => meta[k]?.group !== 'deprecated'),
 							([k]) => meta[k].group
@@ -83,7 +85,7 @@ const loadSpacing = () =>
 
 const loadFonts = () =>
 	readFile('packages/pelagos/defs/fonts.yaml', 'utf8').then((text) =>
-		process(
+		processEntries(
 			groupBy(
 				Object.entries(parse(text).fonts).filter(([, v]) => !v.deprecated),
 				([, {group}]) => group
@@ -123,5 +125,4 @@ Promise.all([loadColors(), loadThemes(), loadSpacing(), loadFonts(), loadShadows
 			JSON.stringify({global: {colors, ...spacing, ...fonts, ...shadows}, ...themes})
 		)
 	)
-	// eslint-disable-next-line no-console
-	.catch((error) => (console.error(error), process.exit(1)));
+	.catch((error) => (console.error(error), processEntries.exit(1)));

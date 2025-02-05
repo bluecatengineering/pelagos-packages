@@ -1,3 +1,5 @@
+'use strict';
+
 const {readFile, writeFile} = require('node:fs/promises');
 
 const {parse} = require('yaml');

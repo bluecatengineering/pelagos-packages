@@ -1,3 +1,5 @@
+'use strict';
+
 const {readFileSync, writeFileSync} = require('node:fs');
 
 const {parse} = require('yaml');

@@ -1,3 +1,5 @@
+'use strict';
+
 const {
 	constants: {COPYFILE_FICLONE},
 	copyFileSync,
