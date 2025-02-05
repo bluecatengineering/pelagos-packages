@@ -77,6 +77,9 @@
     "yaml-loader": "^0.8.0"
   },
   "overrides": {
+    "enzyme": {
+      "cheerio": "1.0.0-rc.12"
+    },
     "lerna": {
       "nx": "^18.0.0"
     }
