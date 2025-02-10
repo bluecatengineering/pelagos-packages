@@ -92,12 +92,18 @@ describe('Dialog', () => {
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [undefined]]);
 
 			const result = useEffect.mock.calls[0][0]();
-			expect(createFocusTrap.mock.calls).toEqual([[null, {escapeDeactivates: false, returnFocusOnDeactivate: false}]]);
+			expect(createFocusTrap.mock.calls).toEqual([
+				[null, {escapeDeactivates: false, returnFocusOnDeactivate: false, allowOutsideClick: anyFunction}],
+			]);
 			expect(trap.activate.mock.calls).toEqual([[]]);
 
 			result();
 			expect(trap.deactivate.mock.calls).toEqual([[]]);
 			expect(focus.mock.calls).toEqual([[]]);
+
+			const closest = jest.fn();
+			createFocusTrap.mock.calls[0][1].allowOutsideClick({target: {closest}});
+			expect(closest.mock.calls).toEqual([['.Toast']]);
 		});
 
 		it('calls only deactivate when activeElement is null', () => {

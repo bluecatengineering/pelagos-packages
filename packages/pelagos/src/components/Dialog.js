@@ -40,6 +40,7 @@ const Dialog = ({
 			initialFocus,
 			escapeDeactivates: false,
 			returnFocusOnDeactivate: false,
+			allowOutsideClick: (event) => event.target.closest('.Toast'),
 		});
 		trap.activate();
 		return () => {
