@@ -1,8 +1,12 @@
+import {action} from '@storybook/addon-actions';
+
 import MenuItem from '../menu/MenuItem';
 
 import Breadcrumb from './Breadcrumb';
 import BreadcrumbItem from './BreadcrumbItem';
 import IconMenu from './IconMenu';
+
+const handleClick = action('onClick');
 
 export default {
 	title: 'Components/Breadcrumb',
@@ -30,15 +34,9 @@ export const WithOverflowMenu = {
 			</BreadcrumbItem>,
 			<BreadcrumbItem key="b">
 				<IconMenu aria-label="Overflow menu">
-					<MenuItem>
-						<a href="#">Second</a>
-					</MenuItem>
-					<MenuItem>
-						<a href="#">Third</a>
-					</MenuItem>
-					<MenuItem>
-						<a href="#">Fourth</a>
-					</MenuItem>
+					<MenuItem text="Second" onClick={handleClick} />
+					<MenuItem text="Third" onClick={handleClick} />
+					<MenuItem text="Fourth" onClick={handleClick} />
 				</IconMenu>
 			</BreadcrumbItem>,
 			<BreadcrumbItem key="e" href="#">
