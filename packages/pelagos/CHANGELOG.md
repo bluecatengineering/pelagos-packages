@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.0...@bluecateng/pelagos@12.16.1) (2025-02-25)
+
+### Bug Fixes
+
+- allow closing toast messages when Dialog is displayed ([1711aec](https://github.com/bluecatengineering/pelagos-packages/commit/1711aec4aa101c1ab5ec7d0420d6bd81e1a0e3ed))
+- prevent id conflicts when rendering multiple ListEntries components ([ae73ce2](https://github.com/bluecatengineering/pelagos-packages/commit/ae73ce2def0e658bdfc5beafe308d15deaa8f179))
+
 ## [12.16.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.15.1...@bluecateng/pelagos@12.16.0) (2024-08-28)
 
 ### Features

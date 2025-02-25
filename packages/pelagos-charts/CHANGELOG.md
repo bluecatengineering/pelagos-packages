@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.5...@bluecateng/pelagos-charts@0.1.6) (2025-02-25)
+
+### Bug Fixes
+
+- use Layer in MeterChart ([fd9fdd4](https://github.com/bluecatengineering/pelagos-packages/commit/fd9fdd404ee438ae46e24fb37514ef1ff4225f96))
+
 ## [0.1.5](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.4...@bluecateng/pelagos-charts@0.1.5) (2024-08-07)
 
 ### Bug Fixes
