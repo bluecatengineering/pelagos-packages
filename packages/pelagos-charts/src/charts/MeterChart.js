@@ -2,7 +2,7 @@ import {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {sum} from 'd3-array';
 import identity from 'lodash-es/identity';
-import {useRandomId} from '@bluecateng/pelagos';
+import {Layer, useRandomId} from '@bluecateng/pelagos';
 import CheckmarkFilled from '@carbon/icons-react/es/CheckmarkFilled';
 import WarningFilled from '@carbon/icons-react/es/WarningFilled';
 import ErrorFilled from '@carbon/icons-react/es/ErrorFilled';
@@ -134,7 +134,7 @@ const MeterChart = ({
 						</div>
 					</div>
 				)}
-				<div className="Chart__meterTrack" style={{height: `${meterHeight}px`}}>
+				<Layer className="Chart__meterTrack" style={{height: `${meterHeight}px`}}>
 					{stateData.map(([group, value], index) => (
 						<div
 							key={index}
@@ -155,7 +155,7 @@ const MeterChart = ({
 							style={{left: meterProportional ? `${(100 * meterPeak) / proportionalTotal}%` : `${meterPeak}%`}}
 						/>
 					)}
-				</div>
+				</Layer>
 			</div>
 			{legendEnabled && (
 				<Legend
