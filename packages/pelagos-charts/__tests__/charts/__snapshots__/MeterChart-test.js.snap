@@ -21,7 +21,7 @@ exports[`MeterChart rendering renders expected elements 1`] = `
         className="Chart__meterEndLabel"
       />
     </div>
-    <div
+    <Layer
       className="Chart__meterTrack"
       style={
         {
@@ -36,7 +36,7 @@ exports[`MeterChart rendering renders expected elements 1`] = `
           }
         }
       />
-    </div>
+    </Layer>
   </div>
 </div>
 `;
@@ -49,7 +49,7 @@ exports[`MeterChart rendering renders expected elements when optional properties
   <div
     className="Chart__meter"
   >
-    <div
+    <Layer
       className="Chart__meterTrack"
       style={
         {
@@ -64,7 +64,7 @@ exports[`MeterChart rendering renders expected elements when optional properties
           }
         }
       />
-    </div>
+    </Layer>
   </div>
 </div>
 `;
@@ -96,7 +96,7 @@ exports[`MeterChart rendering renders expected elements when proportional is set
         </span>
       </div>
     </div>
-    <div
+    <Layer
       className="Chart__meterTrack"
       style={
         {
@@ -133,7 +133,7 @@ exports[`MeterChart rendering renders expected elements when proportional is set
           }
         }
       />
-    </div>
+    </Layer>
   </div>
   <Legend
     className="start bottom"
@@ -177,7 +177,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
         />
       </div>
     </div>
-    <div
+    <Layer
       className="Chart__meterTrack"
       style={
         {
@@ -201,7 +201,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
           }
         }
       />
-    </div>
+    </Layer>
   </div>
 </div>
 `;
@@ -231,7 +231,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
         />
       </div>
     </div>
-    <div
+    <Layer
       className="Chart__meterTrack"
       style={
         {
@@ -255,7 +255,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
           }
         }
       />
-    </div>
+    </Layer>
   </div>
 </div>
 `;
@@ -285,7 +285,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
         />
       </div>
     </div>
-    <div
+    <Layer
       className="Chart__meterTrack"
       style={
         {
@@ -309,7 +309,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
           }
         }
       />
-    </div>
+    </Layer>
   </div>
 </div>
 `;
