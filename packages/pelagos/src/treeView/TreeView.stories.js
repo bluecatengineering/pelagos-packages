@@ -13,7 +13,7 @@ import TreeNode from './TreeNode';
 import './TreeView.stories.less';
 
 export default {
-	title: 'Experimental/TreeView',
+	title: 'Components/TreeView',
 	component: TreeView,
 	parameters: {
 		controls: {hideNoControlsWarning: true},
