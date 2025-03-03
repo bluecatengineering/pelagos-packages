@@ -30,6 +30,14 @@ exports[`MeterChart rendering renders expected elements 1`] = `
       }
     >
       <div
+        aria-label={null}
+        className="Chart__meterBar getColorClass"
+        data-index={0}
+        id="random-id-0"
+        onClick={null}
+        onKeyDown={null}
+        onMouseLeave={null}
+        onMouseMove={null}
         style={
           {
             "width": "35%",
@@ -38,6 +46,9 @@ exports[`MeterChart rendering renders expected elements 1`] = `
       />
     </Layer>
   </div>
+  <div
+    className="Chart__hintContainer"
+  />
 </div>
 `;
 
@@ -58,13 +69,28 @@ exports[`MeterChart rendering renders expected elements when optional properties
       }
     >
       <div
+        aria-label="b, linear-hint"
+        className="Chart__meterBar getColorClass clickable"
+        data-index={0}
+        id="random-id-0"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onMouseLeave={null}
+        onMouseMove={null}
+        role="button"
         style={
           {
             "width": "42%",
           }
         }
+        tabIndex={0}
       />
     </Layer>
+  </div>
+  <div
+    className="Chart__hintContainer visible"
+  >
+    test-hint
   </div>
 </div>
 `;
@@ -105,6 +131,14 @@ exports[`MeterChart rendering renders expected elements when proportional is set
       }
     >
       <div
+        aria-label={null}
+        className="Chart__meterBar getColorClass"
+        data-index={0}
+        id="random-id-0"
+        onClick={null}
+        onKeyDown={null}
+        onMouseLeave={[Function]}
+        onMouseMove={[Function]}
         style={
           {
             "width": "18.75%",
@@ -112,6 +146,14 @@ exports[`MeterChart rendering renders expected elements when proportional is set
         }
       />
       <div
+        aria-label={null}
+        className="Chart__meterBar getColorClass"
+        data-index={1}
+        id="random-id-1"
+        onClick={null}
+        onKeyDown={null}
+        onMouseLeave={[Function]}
+        onMouseMove={[Function]}
         style={
           {
             "width": "23.4375%",
@@ -119,6 +161,14 @@ exports[`MeterChart rendering renders expected elements when proportional is set
         }
       />
       <div
+        aria-label={null}
+        className="Chart__meterBar getColorClass"
+        data-index={2}
+        id="random-id-2"
+        onClick={null}
+        onKeyDown={null}
+        onMouseLeave={[Function]}
+        onMouseMove={[Function]}
         style={
           {
             "width": "9.375%",
@@ -148,6 +198,9 @@ exports[`MeterChart rendering renders expected elements when proportional is set
         "Gamma",
       ]
     }
+  />
+  <div
+    className="Chart__hintContainer"
   />
 </div>
 `;
@@ -186,7 +239,14 @@ exports[`MeterChart rendering renders expected elements when status is set and v
       }
     >
       <div
-        className="Chart__meterDangerBg"
+        aria-label={null}
+        className="Chart__meterBar Chart__meterDangerBg"
+        data-index={0}
+        id="random-id-0"
+        onClick={null}
+        onKeyDown={null}
+        onMouseLeave={null}
+        onMouseMove={null}
         style={
           {
             "width": "95%",
@@ -203,6 +263,9 @@ exports[`MeterChart rendering renders expected elements when status is set and v
       />
     </Layer>
   </div>
+  <div
+    className="Chart__hintContainer"
+  />
 </div>
 `;
 
@@ -240,7 +303,14 @@ exports[`MeterChart rendering renders expected elements when status is set and v
       }
     >
       <div
-        className="Chart__meterSuccessBg"
+        aria-label={null}
+        className="Chart__meterBar Chart__meterSuccessBg"
+        data-index={0}
+        id="random-id-0"
+        onClick={null}
+        onKeyDown={null}
+        onMouseLeave={null}
+        onMouseMove={null}
         style={
           {
             "width": "35%",
@@ -257,6 +327,9 @@ exports[`MeterChart rendering renders expected elements when status is set and v
       />
     </Layer>
   </div>
+  <div
+    className="Chart__hintContainer"
+  />
 </div>
 `;
 
@@ -294,7 +367,14 @@ exports[`MeterChart rendering renders expected elements when status is set and v
       }
     >
       <div
-        className="Chart__meterWarningBg"
+        aria-label={null}
+        className="Chart__meterBar Chart__meterWarningBg"
+        data-index={0}
+        id="random-id-0"
+        onClick={null}
+        onKeyDown={null}
+        onMouseLeave={null}
+        onMouseMove={null}
         style={
           {
             "width": "85%",
@@ -311,5 +391,8 @@ exports[`MeterChart rendering renders expected elements when status is set and v
       />
     </Layer>
   </div>
+  <div
+    className="Chart__hintContainer"
+  />
 </div>
 `;

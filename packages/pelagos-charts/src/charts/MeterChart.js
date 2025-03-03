@@ -1,4 +1,4 @@
-import {useMemo} from 'react';
+import {useCallback, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {sum} from 'd3-array';
 import identity from 'lodash-es/identity';
@@ -7,12 +7,14 @@ import CheckmarkFilled from '@carbon/icons-react/es/CheckmarkFilled';
 import WarningFilled from '@carbon/icons-react/es/WarningFilled';
 import ErrorFilled from '@carbon/icons-react/es/ErrorFilled';
 
-import {colorPropType, dataPropType, legendPropType} from './ChartPropTypes';
+import {colorPropType, dataPropType, hintPropType, legendPropType} from './ChartPropTypes';
 import {getDefaultClass, getGroup, getValue} from './Getters';
 import legendDirections from './legendDirections';
 import Legend from './Legend';
 import getColorClass from './getColorClass';
 import getColorVariant from './getColorVariant';
+import hintFormatters from './hintFormatters';
+import useSetHintPosition from './useSetHintPosition';
 import './Chart.less';
 
 const getChartValue = (d) => d[1];
@@ -45,7 +47,9 @@ const MeterChart = ({
 	color,
 	meter,
 	legend,
+	hint,
 	getBgClass = getDefaultClass,
+	onClick,
 	onLegendClick,
 	onSelectionChange,
 }) => {
@@ -88,6 +92,11 @@ const MeterChart = ({
 		order: legendOrder,
 		position: legendPosition,
 	} = {alignment: 'start', clickable: false, enabled: !!meterProportional, position: 'bottom', ...legend};
+	const {enabled: hintEnabled, valueFormatter: hintValueFormatter} = {
+		enabled: !!meterProportional,
+		valueFormatter: hintFormatters.linear,
+		...hint,
+	};
 
 	const {
 		total: stateTotal,
@@ -101,6 +110,42 @@ const MeterChart = ({
 		return {groupIndex, data: filteredData, total: sum(filteredData, getChartValue)};
 	}, [data, dataGroupMapper, dataSelectedGroups, meterValueMapper]);
 
+	const ref = useRef(null);
+	const hintRef = useRef(null);
+	const [hintData, setHintData] = useState({});
+	useSetHintPosition(hintData, hintRef, ref);
+	const handleMouseMove = useCallback(
+		(event) => {
+			const datum = stateData[event.target.dataset.index];
+			setHintData({
+				visible: true,
+				x: event.clientX,
+				y: event.clientY,
+				content: (
+					<Layer className="Chart__simpleHint">
+						<span>{dataGroupFormatter(datum[0])}</span>
+						<span>{hintValueFormatter(datum[1])}</span>
+					</Layer>
+				),
+			});
+		},
+		[dataGroupFormatter, hintValueFormatter, stateData]
+	);
+	const handleMouseLeave = useCallback(() => setHintData((hintData) => ({...hintData, visible: false})), []);
+	const handleClick = useCallback(
+		(event) => {
+			const datum = stateData[event.target.dataset.index];
+			onClick(datum[2]);
+		},
+		[onClick, stateData]
+	);
+	const handleKeyDown = useCallback((event) => {
+		if (event.key === ' ' || event.key === 'Enter') {
+			event.preventDefault();
+			event.target.click();
+		}
+	}, []);
+
 	const colorVariant = getColorVariant(colorGroupCount, stateGroupIndex.size);
 
 	const title = !meterShowLabels
@@ -111,7 +156,7 @@ const MeterChart = ({
 
 	return (
 		<div id={id} className={`Chart Chart__wrapper${className ? ` ${className}` : ''}`}>
-			<div className="Chart__meter">
+			<div className="Chart__meter" ref={ref}>
 				{meterShowLabels && (
 					<div className="Chart__meterLabels">
 						<div className="Chart__meterTitle" title={title}>
@@ -138,15 +183,24 @@ const MeterChart = ({
 					{stateData.map(([group, value], index) => (
 						<div
 							key={index}
-							className={getBgClass(
+							id={`${id}-${index}`}
+							className={`Chart__meterBar ${getBgClass(
 								group,
 								null,
 								value,
 								meterProportional || !meterStatus?.thresholds
 									? getColorClass('bg', colorVariant, colorOption, index)
 									: getStateBg(stateTotal, thresholdWarning, thresholdDanger)
-							)}
+							)}${onClick ? ' clickable' : ''}`}
 							style={{width: meterProportional ? `${(100 * value) / proportionalTotal}%` : `${value}%`}}
+							tabIndex={onClick ? 0 : undefined}
+							role={onClick ? 'button' : undefined}
+							aria-label={onClick ? `${dataGroupFormatter(group)}, ${hintValueFormatter(value)}` : null}
+							data-index={index}
+							onMouseMove={hintEnabled ? handleMouseMove : null}
+							onMouseLeave={hintEnabled ? handleMouseLeave : null}
+							onClick={onClick ? handleClick : null}
+							onKeyDown={onClick ? handleKeyDown : null}
 						/>
 					))}
 					{Number.isFinite(meterPeak) && (
@@ -171,6 +225,9 @@ const MeterChart = ({
 					onChange={onSelectionChange}
 				/>
 			)}
+			<div className={`Chart__hintContainer${hintData.visible ? ' visible' : ''}`} ref={hintRef}>
+				{hintData.content}
+			</div>
 		</div>
 	);
 };
@@ -200,7 +257,9 @@ MeterChart.propTypes = {
 		valueMapper: PropTypes.func,
 	}),
 	legend: legendPropType,
+	hint: hintPropType,
 	getBgClass: PropTypes.func,
+	onClick: PropTypes.func,
 	onLegendClick: PropTypes.func,
 	onSelectionChange: PropTypes.func,
 };
