@@ -355,6 +355,14 @@
 			background-color: var(--layer);
 		}
 
+		&__meterBar {
+			@focus-visible();
+
+			&.clickable {
+				cursor: pointer;
+			}
+		}
+
 		&__meterPeak {
 			position: absolute;
 			height: 100%;
