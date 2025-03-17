@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.6...@bluecateng/pelagos-charts@0.2.0) (2025-03-17)
+
+### Features
+
+- add tooltip and click handler to MeterChart ([8cfb05b](https://github.com/bluecatengineering/pelagos-packages/commit/8cfb05ba0dddc6ac019ebbe185c021ccc031935f))
+
 ## [0.1.6](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.5...@bluecateng/pelagos-charts@0.1.6) (2025-02-25)
 
 ### Bug Fixes
