@@ -24,6 +24,7 @@ const hasTag = (tags, value) => {
 /** A component to enter tags. */
 const TagInput = ({
 	id,
+	className,
 	tags,
 	defaultTags,
 	defaultTooltipText,
@@ -48,7 +49,7 @@ const TagInput = ({
 				const index = +button.dataset.index;
 				const name = tags[index];
 				liveRef.current.textContent = t`${name} removed`;
-				onChange(removeTag(tags, index));
+				onChange(removeTag(tags, index), event);
 				inputRef.current.focus();
 			}
 		},
@@ -56,16 +57,16 @@ const TagInput = ({
 	);
 
 	const addTag = useCallback(
-		(inputName) => {
+		(inputName, event) => {
 			const name = transform(inputName);
 
 			if (!hasTag(tags, name)) {
 				const error = validate(name);
 				if (error) {
-					onError(error);
+					onError(error, event);
 				} else {
 					liveRef.current.textContent = t`${name} added`;
-					onChange([...tags, name]);
+					onChange([...tags, name], event);
 					setText('');
 				}
 			} else {
@@ -83,7 +84,7 @@ const TagInput = ({
 				case 32: // space
 					if (value) {
 						event.preventDefault();
-						addTag(value);
+						addTag(value, event);
 						inputRef.current.focus();
 					}
 					break;
@@ -95,7 +96,7 @@ const TagInput = ({
 							const index = length - 1;
 							const name = tags[index];
 							liveRef.current.textContent = t`${name} removed`;
-							onChange(removeTag(tags, index));
+							onChange(removeTag(tags, index), event);
 						}
 					}
 					break;
@@ -104,13 +105,13 @@ const TagInput = ({
 		[tags, onChange, addTag]
 	);
 
-	const handleChange = useCallback((event) => (onError(null), setText(event.target.value)), [onError]);
+	const handleChange = useCallback((event) => (onError(null, event), setText(event.target.value)), [onError]);
 
 	const handleBlur = useCallback(
 		(event) => {
 			const value = event.target.value;
 			if (value) {
-				addTag(value);
+				addTag(value, event);
 			}
 		},
 		[addTag]
@@ -122,7 +123,7 @@ const TagInput = ({
 	return (
 		<Layer
 			id={`${id}-tags`}
-			className={`TagInput${error ? ' TagInput--error' : ''}${disabled ? ' TagInput--disabled' : ''}`}
+			className={`TagInput${error ? ' TagInput--error' : ''}${disabled ? ' TagInput--disabled' : ''}${className ? ` ${className}` : ''}`}
 			onClick={handleTagClick}>
 			<span className="sr-only" aria-live="assertive" ref={liveRef} />
 			{length
@@ -170,6 +171,8 @@ const TagInput = ({
 TagInput.propTypes = {
 	/** The component id. */
 	id: PropTypes.string,
+	/** The component class name(s). */
+	className: PropTypes.string,
 	/** The entered tags. */
 	tags: PropTypes.array.isRequired,
 	/** The default tags. */

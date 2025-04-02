@@ -133,9 +133,9 @@ exports[`TagInput rendering renders expected elements when disabled and defaultT
 </Layer>
 `;
 
-exports[`TagInput rendering renders expected elements when error is set 1`] = `
+exports[`TagInput rendering renders expected elements when optional properties are set 1`] = `
 <Layer
-  className="TagInput TagInput--error"
+  className="TagInput TagInput--error TestClass"
   id="random-id-tags"
   onClick={[Function]}
 >
