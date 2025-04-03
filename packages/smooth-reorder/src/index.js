@@ -299,10 +299,10 @@ export default (container, options) => {
 	const handleKeyDown = (event) => {
 		if (event.keyCode === 32) {
 			const target = event.target;
-			if (target.matches(selector)) {
+			if (target.matches(focusSelector)) {
 				event.preventDefault();
 				document.addEventListener('keydown', handleGlobalKeyDown, true);
-				element = target;
+				element = target.closest(selector);
 				element.classList.add('dragging');
 				currentIndex = originalIndex = indexOfElement();
 				onStart(element, currentIndex);
