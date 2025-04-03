@@ -96,4 +96,44 @@ describe('useReorder', () => {
 			['aria-hidden'],
 		]);
 	});
+
+	it('adds a reorder handler when handleSelector is an object', () => {
+		const selector = '.Test';
+		const handleSelector = '.Test__handle';
+		const focusSelector = '.Test__focus';
+		const container = {};
+		const containerRef = {current: container};
+		const live = {};
+		const liveRef = {current: live};
+		const list = ['foo', 'bar'];
+		const getElementName = (element) => list[element.dataset.index];
+		const updateList = jest.fn();
+		const handleObject = {handle: handleSelector, focus: focusSelector};
+
+		useRef.mockReturnValueOnce(containerRef).mockReturnValueOnce(liveRef);
+
+		expect(useReorder(selector, handleObject, list.length, getElementName, updateList)).toEqual([
+			containerRef,
+			liveRef,
+		]);
+		expect(useEffect.mock.calls[0]).toEqual([
+			expect.any(Function),
+			[selector, handleObject, getElementName, updateList, list.length],
+		]);
+		useEffect.mock.calls[0][0](container);
+		expect(reorder.mock.calls).toEqual([
+			[
+				container,
+				{
+					selector,
+					focusSelector,
+					handleSelector,
+					onStart: anyFunction,
+					onMove: anyFunction,
+					onFinish: anyFunction,
+					onCancel: anyFunction,
+				},
+			],
+		]);
+	});
 });

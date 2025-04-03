@@ -9,7 +9,7 @@ const setLiveText = (ref, text) => (ref.current.textContent = text);
 /**
  * Returns two React refs which enable reordering child nodes using drag and drop.
  * @param {string} selector CSS selector for elements to reorder.
- * @param {string} handleSelector CSS selector for reorder handle.
+ * @param {(string|{handle:string,focus:string})} handleSelector CSS selector for reorder handle or selectors for the handle and focus elements.
  * @param {number} count the number of elements.
  * @param {function(Element): string} getElementName returns the name of the specified element.
  * @param {function(number, number): void} onChange invoked when the list is changed, the first argument is the original index of the element moved, the second is the target index.
@@ -42,8 +42,8 @@ const useReorder = (selector, handleSelector, count, getElementName, onChange) =
 		let describeId;
 		return reorder(reorderRef.current, {
 			selector,
-			focusSelector: selector,
-			handleSelector,
+			handleSelector: typeof handleSelector === 'string' ? handleSelector : handleSelector.handle,
+			focusSelector: typeof handleSelector === 'string' ? selector : handleSelector.focus,
 			onStart: (element, position) => {
 				describeId = element.getAttribute('aria-describedby');
 				element.removeAttribute('aria-describedby');
