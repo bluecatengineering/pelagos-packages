@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.1...@bluecateng/pelagos@12.16.2) (2025-04-03)
+
+### Bug Fixes
+
+- add className property to TagInput and pass event back to handlers ([13d34bb](https://github.com/bluecatengineering/pelagos-packages/commit/13d34bbf8f8ec641ef19dc84070b0daecd301ebd))
+
 ## [12.16.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.0...@bluecateng/pelagos@12.16.1) (2025-02-25)
 
 ### Bug Fixes
