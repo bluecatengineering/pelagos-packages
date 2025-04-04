@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.3](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.2...@bluecateng/pelagos@12.16.3) (2025-04-04)
+
+### Bug Fixes
+
+- allow a different focus selector in useReorder ([5c863d3](https://github.com/bluecatengineering/pelagos-packages/commit/5c863d363251fbf50ca92a494e0b200cf79747f1))
+
 ## [12.16.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.1...@bluecateng/pelagos@12.16.2) (2025-04-03)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/smooth-reorder@2.1.1...@bluecateng/smooth-reorder@2.1.2) (2025-04-04)
+
+### Bug Fixes
+
+- use focusSelector to match the focused element on key down ([7b55b93](https://github.com/bluecatengineering/pelagos-packages/commit/7b55b93179bc481b663d88a86dc20817f7450c54))
+
 ## [2.1.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/smooth-reorder@2.1.0...@bluecateng/smooth-reorder@2.1.1) (2024-06-05)
 
 ### Bug Fixes
