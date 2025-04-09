@@ -10,6 +10,7 @@ export {default as useMenuHandler} from './useMenuHandler';
 export {default as useMenuPositioner} from './useMenuPositioner';
 export {default as useRandomId} from './useRandomId';
 export {default as useReorder} from './useReorder';
+export {default as useSelectPositioner} from './useSelectPositioner';
 export {default as useSlidingPanel} from './useSlidingPanel';
 export {default as useToggle} from './useToggle';
 export {default as useTooltip} from './useTooltip';

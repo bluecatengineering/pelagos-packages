@@ -2,10 +2,26 @@ import {useLayoutEffect} from 'react';
 
 const {max} = Math;
 
-/** @private */
-export default (open, buttonRef, popUpRef) =>
+/**
+ * Returns an effect which positions the pop-up for a select box.
+ * @param {boolean} open whether the pop-up is open.
+ * @param {MutableRefObject<Element>} boxRef React ref to the select box.
+ * @param {MutableRefObject<Element>} popUpRef React ref to the pop-up box.
+ *
+ * @example
+ * import {useRef, useState} from 'react';
+ * import {useSelectPositioner} from '@bluecateng/pelagos';
+ *
+ * const Example = () => {
+ *   const boxRef = useRef(null);
+ *   const popUpRef = useRef(null);
+ *   const [open, setOpen] = useState(false);
+ *   useSelectPositioner(open, boxRef, popUpRef);
+ * }
+ */
+const useSelectPositioner = (open, boxRef, popUpRef) =>
 	useLayoutEffect(() => {
-		const button = buttonRef.current;
+		const button = boxRef.current;
 		const popUp = popUpRef.current;
 		const setPosition = () => {
 			const {height: popUpHeight} = popUp.getBoundingClientRect();
@@ -25,4 +41,6 @@ export default (open, buttonRef, popUpRef) =>
 			document.removeEventListener('scroll', setPosition, {passive: true, capture: true});
 			window.removeEventListener('resize', setPosition, {passive: true, capture: true});
 		};
-	}, [buttonRef, popUpRef, open]);
+	}, [boxRef, popUpRef, open]);
+
+export default useSelectPositioner;
