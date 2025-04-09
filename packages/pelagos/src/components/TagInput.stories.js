@@ -1,10 +1,16 @@
+import {useState} from 'react';
+
 import TagInput from './TagInput';
 
-const validate = () => true;
+const validate = () => null;
 
 export default {
 	title: 'Components/TagInput',
 	component: TagInput,
+	render: (args) => {
+		const [value, setValue] = useState(args.tags);
+		return <TagInput {...args} tags={value} onChange={setValue} />;
+	},
 };
 
 export const Default = {

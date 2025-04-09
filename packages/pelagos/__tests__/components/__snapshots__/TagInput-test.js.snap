@@ -4,38 +4,29 @@ exports[`TagInput rendering renders expected elements 1`] = `
 <Layer
   className="TagInput"
   id="random-id-tags"
-  onClick={[Function]}
 >
   <span
     aria-live="assertive"
     className="sr-only"
   />
-  <span
+  <Tag
     className="TagInput__tag"
+    data-index={0}
+    onRemove={[Function]}
+    removeTitle="Remove foo"
+    type="gray"
   >
     foo
-    <button
-      aria-label="Remove foo"
-      className="TagInput__remove"
-      data-index={0}
-      type="button"
-    >
-      <Close />
-    </button>
-  </span>
-  <span
+  </Tag>
+  <Tag
     className="TagInput__tag"
+    data-index={1}
+    onRemove={[Function]}
+    removeTitle="Remove bar"
+    type="gray"
   >
     bar
-    <button
-      aria-label="Remove bar"
-      className="TagInput__remove"
-      data-index={1}
-      type="button"
-    >
-      <Close />
-    </button>
-  </span>
+  </Tag>
   <input
     aria-invalid={false}
     className="TagInput__input"
@@ -53,36 +44,31 @@ exports[`TagInput rendering renders expected elements when disabled 1`] = `
 <Layer
   className="TagInput TagInput--disabled"
   id="random-id-tags"
-  onClick={[Function]}
 >
   <span
     aria-live="assertive"
     className="sr-only"
   />
-  <span
-    aria-disabled="true"
+  <Tag
+    aria-disabled={true}
     className="TagInput__tag"
+    data-index={0}
+    onRemove={null}
+    removeTitle="Remove foo"
+    type="gray"
   >
     foo
-    <span
-      aria-disabled="true"
-      className="TagInput__remove"
-    >
-      <Close />
-    </span>
-  </span>
-  <span
-    aria-disabled="true"
+  </Tag>
+  <Tag
+    aria-disabled={true}
     className="TagInput__tag"
+    data-index={1}
+    onRemove={null}
+    removeTitle="Remove bar"
+    type="gray"
   >
     bar
-    <span
-      aria-disabled="true"
-      className="TagInput__remove"
-    >
-      <Close />
-    </span>
-  </span>
+  </Tag>
   <input
     aria-invalid={false}
     className="TagInput__input"
@@ -101,24 +87,25 @@ exports[`TagInput rendering renders expected elements when disabled and defaultT
 <Layer
   className="TagInput TagInput--disabled"
   id="random-id-tags"
-  onClick={[Function]}
 >
   <span
     aria-live="assertive"
     className="sr-only"
   />
-  <span
+  <Tag
     aria-disabled={true}
     className="TagInput__defaultTag"
+    type="gray"
   >
     foo
-  </span>
-  <span
+  </Tag>
+  <Tag
     aria-disabled={true}
     className="TagInput__defaultTag"
+    type="gray"
   >
     bar
-  </span>
+  </Tag>
   <input
     aria-invalid={false}
     className="TagInput__input"
@@ -137,38 +124,29 @@ exports[`TagInput rendering renders expected elements when optional properties a
 <Layer
   className="TagInput TagInput--error TestClass"
   id="random-id-tags"
-  onClick={[Function]}
 >
   <span
     aria-live="assertive"
     className="sr-only"
   />
-  <span
+  <Tag
     className="TagInput__tag"
+    data-index={0}
+    onRemove={[Function]}
+    removeTitle="Remove foo"
+    type="gray"
   >
     foo
-    <button
-      aria-label="Remove foo"
-      className="TagInput__remove"
-      data-index={0}
-      type="button"
-    >
-      <Close />
-    </button>
-  </span>
-  <span
+  </Tag>
+  <Tag
     className="TagInput__tag"
+    data-index={1}
+    onRemove={[Function]}
+    removeTitle="Remove bar"
+    type="gray"
   >
     bar
-    <button
-      aria-label="Remove bar"
-      className="TagInput__remove"
-      data-index={1}
-      type="button"
-    >
-      <Close />
-    </button>
-  </span>
+  </Tag>
   <input
     aria-invalid={true}
     className="TagInput__input"
@@ -186,7 +164,6 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
 <Layer
   className="TagInput"
   id="random-id-tags"
-  onClick={[Function]}
 >
   <span
     aria-live="assertive"
@@ -209,22 +186,23 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
 <Layer
   className="TagInput"
   id="random-id-tags"
-  onClick={[Function]}
 >
   <span
     aria-live="assertive"
     className="sr-only"
   />
-  <span
+  <Tag
     className="TagInput__defaultTag"
+    type="gray"
   >
     foo
-  </span>
-  <span
+  </Tag>
+  <Tag
     className="TagInput__defaultTag"
+    type="gray"
   >
     bar
-  </span>
+  </Tag>
   <input
     aria-invalid={false}
     className="TagInput__input"

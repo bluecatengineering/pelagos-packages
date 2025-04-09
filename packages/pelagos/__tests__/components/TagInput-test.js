@@ -103,19 +103,10 @@ describe('TagInput', () => {
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
 			const event = {target: {closest: jest.fn().mockReturnValue(button)}};
-			wrapper.simulate('click', event);
+			wrapper.find('Tag').at(0).prop('onRemove')(event);
 			expect(onChange.mock.calls).toEqual([[['bar'], event]]);
 			expect(focus.mock.calls).toEqual([[]]);
 			expect(live.textContent).toBe('foo removed');
-		});
-
-		it('does not call onChange when the container is clicked but not on a remove button', () => {
-			const onChange = jest.fn();
-			const wrapper = shallow(
-				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
-			);
-			wrapper.simulate('click', {target: {closest: jest.fn()}});
-			expect(onChange).not.toHaveBeenCalled();
 		});
 
 		it('calls onChange when enter is pressed', () => {

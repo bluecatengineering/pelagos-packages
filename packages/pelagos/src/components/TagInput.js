@@ -1,13 +1,13 @@
 import {useCallback, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
-import Close from '@carbon/icons-react/es/Close';
 import identity from 'lodash-es/identity';
 
 import useTooltip from '../hooks/useTooltip';
 import useRandomId from '../hooks/useRandomId';
 
 import Layer from './Layer';
+import Tag from './Tag';
 import './TagInput.less';
 
 const removeTag = (tags, i) => {
@@ -42,16 +42,14 @@ const TagInput = ({
 
 	const [text, setText] = useState('');
 
-	const handleTagClick = useCallback(
+	const handleRemove = useCallback(
 		(event) => {
-			const button = event.target.closest('button');
-			if (button) {
-				const index = +button.dataset.index;
-				const name = tags[index];
-				liveRef.current.textContent = t`${name} removed`;
-				onChange(removeTag(tags, index), event);
-				inputRef.current.focus();
-			}
+			const element = event.target.closest('[data-index]');
+			const index = +element.dataset.index;
+			const name = tags[index];
+			liveRef.current.textContent = t`${name} removed`;
+			onChange(removeTag(tags, index), event);
+			inputRef.current.focus();
 		},
 		[tags, onChange]
 	);
@@ -123,32 +121,26 @@ const TagInput = ({
 	return (
 		<Layer
 			id={`${id}-tags`}
-			className={`TagInput${error ? ' TagInput--error' : ''}${disabled ? ' TagInput--disabled' : ''}${className ? ` ${className}` : ''}`}
-			onClick={handleTagClick}>
+			className={`TagInput${error ? ' TagInput--error' : ''}${disabled ? ' TagInput--disabled' : ''}${className ? ` ${className}` : ''}`}>
 			<span className="sr-only" aria-live="assertive" ref={liveRef} />
 			{length
-				? tags.map((name, i) =>
-						disabled ? (
-							<span key={name} className="TagInput__tag" aria-disabled="true">
-								{name}
-								<span className="TagInput__remove" aria-disabled="true">
-									<Close />
-								</span>
-							</span>
-						) : (
-							<span key={name} className="TagInput__tag">
-								{name}
-								<button className="TagInput__remove" type="button" aria-label={t`Remove ${name}`} data-index={i}>
-									<Close />
-								</button>
-							</span>
-						)
-					)
+				? tags.map((name, i) => (
+						<Tag
+							key={name}
+							className="TagInput__tag"
+							type="gray"
+							removeTitle={`Remove ${name}`}
+							aria-disabled={disabled}
+							data-index={i}
+							onRemove={disabled ? null : handleRemove}>
+							{name}
+						</Tag>
+					))
 				: defaultTags?.length
 					? defaultTags.map((tag) => (
-							<span key={tag} className="TagInput__defaultTag" aria-disabled={disabled} ref={tooltip}>
+							<Tag key={tag} className="TagInput__defaultTag" type="gray" aria-disabled={disabled} ref={tooltip}>
 								{tag}
-							</span>
+							</Tag>
 						))
 					: null}
 			<input

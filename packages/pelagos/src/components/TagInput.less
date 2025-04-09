@@ -10,7 +10,8 @@
 		column-gap: @sp-08;
 		background-color: var(--field);
 		border-bottom: 1px solid var(--border-strong);
-		padding: 0 @sp-16;
+		// stylelint-disable-next-line @bluecateng/property-strict-value
+		padding: @sp-02 @sp-16 (@sp-04 - 1px); // minus 1px for the border
 
 		&:hover {
 			background-color: var(--field-hover);
@@ -30,11 +31,6 @@
 			border-color: transparent;
 		}
 
-		& > * {
-			// stylelint-disable-next-line @bluecateng/property-strict-value
-			margin: @sp-02 0 (@sp-04 - 1px); // minus 1px for the border
-		}
-
 		&--error {
 			outline: 2px solid var(--support-error);
 			outline-offset: -2px;
@@ -46,15 +42,13 @@
 
 		&__tag,
 		&__defaultTag {
-			padding: @sp-02 @sp-04;
 			white-space: nowrap;
 		}
 
 		&__tag {
-			background-color: var(--layer-selected);
-
 			&[aria-disabled='true'] {
 				color: var(--text-disabled);
+				background-color: var(--layer-accent);
 			}
 
 			@media print {
@@ -63,6 +57,7 @@
 		}
 
 		&__defaultTag {
+			color: var(--text-secondary);
 			background-color: var(--layer-accent);
 
 			&[aria-disabled='true'] {
@@ -73,13 +68,6 @@
 				color: var(--print-medium);
 				background-color: transparent;
 			}
-		}
-
-		&__remove {
-			@icon-button-nested();
-			padding: @sp-02;
-			margin-left: @sp-04;
-			vertical-align: middle;
 		}
 
 		&__input[type='text'] {
