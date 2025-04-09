@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.5](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.4...@bluecateng/pelagos@12.16.5) (2025-04-09)
+
+### Bug Fixes
+
+- use forwardRef in Tag ([ffbd262](https://github.com/bluecatengineering/pelagos-packages/commit/ffbd262d4fce140423e2a00e6bba7cf489dc25de))
+
 ## [12.16.4](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.3...@bluecateng/pelagos@12.16.4) (2025-04-09)
 
 ### Bug Fixes
