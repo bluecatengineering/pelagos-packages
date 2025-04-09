@@ -1,3 +1,4 @@
+import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import Close from '@carbon/icons-react/es/Close';
 
@@ -21,26 +22,30 @@ export const types = [
 ];
 
 /** A tag. */
-const Tag = ({id, className, size = 'md', type = 'gray', removeTitle, children, onClick, onRemove, ...props}) => {
-	id = useRandomId(id);
-	const fullClassName = `Tag Tag--${size} Tag--${type}${onRemove ? ' Tag--removable' : ''}${
-		className ? ` ${className}` : ''
-	}`;
-	return onClick ? (
-		<button {...props} id={id} className={fullClassName} type="button" onClick={onClick}>
-			{children}
-		</button>
-	) : (
-		<div {...props} id={id} className={fullClassName}>
-			{children}
-			{onRemove && (
-				<button className="Tag__remove" type="button" title={removeTitle} aria-labelledby={id} onClick={onRemove}>
-					<Close />
-				</button>
-			)}
-		</div>
-	);
-};
+const Tag = forwardRef(
+	({id, className, size = 'md', type = 'gray', removeTitle, children, onClick, onRemove, ...props}, ref) => {
+		id = useRandomId(id);
+		const fullClassName = `Tag Tag--${size} Tag--${type}${onRemove ? ' Tag--removable' : ''}${
+			className ? ` ${className}` : ''
+		}`;
+		return onClick ? (
+			<button {...props} id={id} className={fullClassName} type="button" onClick={onClick} ref={ref}>
+				{children}
+			</button>
+		) : (
+			<div {...props} id={id} className={fullClassName} ref={ref}>
+				{children}
+				{onRemove && (
+					<button className="Tag__remove" type="button" title={removeTitle} aria-labelledby={id} onClick={onRemove}>
+						<Close />
+					</button>
+				)}
+			</div>
+		);
+	}
+);
+
+Tag.displayName = 'Tag';
 
 Tag.propTypes = {
 	/** The component id. */
