@@ -85,7 +85,7 @@ const useTooltipBase = () => {
 				tooltip.textContent = text;
 				document.body.appendChild(tooltip);
 				animation.pause();
-				animation.playbackRate = 1;
+				animation.updatePlaybackRate(1);
 				animation.play();
 
 				const attribute = `aria-${aria || 'describedby'}`;
@@ -101,7 +101,7 @@ const useTooltipBase = () => {
 		if (tooltip.parentNode) {
 			targetRef.current.removeAttribute(attributeRef.current);
 			animation.pause();
-			animation.playbackRate = -1;
+			animation.updatePlaybackRate(-1);
 			animation.play();
 		}
 	}, [tooltip, animation]);
