@@ -6,7 +6,8 @@ const anyFunction = expect.any(Function);
 
 const pause = jest.fn();
 const play = jest.fn();
-const animate = jest.fn().mockReturnValue({pause, play});
+const updatePlaybackRate = jest.fn();
+const animate = jest.fn().mockReturnValue({pause, play, updatePlaybackRate});
 const elementBoundingRect = jest.fn();
 const setProperty = jest.fn();
 const baseElement = {
@@ -37,7 +38,7 @@ describe('useTooltipBase', () => {
 				[[{opacity: 0}, {opacity: 1}], {duration: 150, fill: 'both', easing: 'ease-out'}],
 			]);
 			const animation = animate.mock.results[0].value;
-			expect(animation).toEqual({pause, play, onfinish: anyFunction});
+			expect(animation).toEqual({pause, play, updatePlaybackRate, onfinish: anyFunction});
 
 			const tooltipDiv = createElement.mock.results[0].value;
 			show('Test', 'top', {setAttribute, removeAttribute, getBoundingClientRect});
@@ -49,6 +50,7 @@ describe('useTooltipBase', () => {
 			hide();
 			expect(pause.mock.calls).toEqual([[], [], []]);
 			expect(play.mock.calls).toEqual([[], []]);
+			expect(updatePlaybackRate.mock.calls).toEqual([[1], [-1]]);
 
 			animation.onfinish({currentTime: 0});
 			expect(removeAttribute.mock.calls).toEqual([['aria-describedby']]);
