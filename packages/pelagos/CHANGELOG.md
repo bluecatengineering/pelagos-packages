@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.6](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.5...@bluecateng/pelagos@12.16.6) (2025-04-10)
+
+### Bug Fixes
+
+- increase tree view toggle size to 24x24 ([66256ee](https://github.com/bluecatengineering/pelagos-packages/commit/66256eeca6e4b27295c73bdcb4de90b0b0d46711))
+- use 2px for all focus rings ([6378c4c](https://github.com/bluecatengineering/pelagos-packages/commit/6378c4cc9de5d230e6286d74495a2ff27fec1f79))
+- use updatePlaybackRate to avoid leaving tooltips in the screen ([5c319db](https://github.com/bluecatengineering/pelagos-packages/commit/5c319db3b81ffbd911371daad7713f194a7f300a))
+
 ## [12.16.5](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.4...@bluecateng/pelagos@12.16.5) (2025-04-09)
 
 ### Bug Fixes
