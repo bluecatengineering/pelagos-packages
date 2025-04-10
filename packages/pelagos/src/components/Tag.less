@@ -1,5 +1,8 @@
+@import '../../less/focus';
 @import '../../less/fonts';
 @import '../../less/spacing';
+
+// stylelint-disable declaration-property-value-no-unknown -- spurious errors, probably parser error
 
 .tag-styles(@color; @background; @hover) {
 	color: var(@color);
@@ -90,6 +93,7 @@
 		}
 
 		&__remove {
+			@focus-visible();
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -99,7 +103,6 @@
 			border: none;
 			border-radius: 50%;
 			cursor: pointer;
-			outline: none;
 			transition: background-color 0.15s ease-out;
 
 			.Tag--sm > & {
@@ -110,11 +113,6 @@
 			.Tag--md > & {
 				width: 24px;
 				height: 24px;
-			}
-
-			&:focus-visible {
-				outline: 1px solid var(--focus);
-				outline-offset: -1px;
 			}
 
 			// stylelint-disable-next-line @bluecateng/selector-bem
