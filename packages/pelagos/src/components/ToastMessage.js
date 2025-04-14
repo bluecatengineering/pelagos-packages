@@ -47,9 +47,8 @@ const ToastMessage = ({message, onRemove}) => {
 		return undefined;
 	}, [message, onRemove]);
 
-	const {id, type: tmp, text, actionText} = message;
-	const type = tmp === ToastTypes.ACTION ? ToastTypes.INFO : tmp;
-	const requiresClose = REQUIRES_CLOSE.includes(type);
+	const {id, type, text, actionText} = message;
+	const requiresClose = REQUIRES_CLOSE.includes(type) || actionText;
 	const Icon = icons[type];
 	return (
 		<div id={`toast-${id}`} className={`ToastMessage ToastMessage--${type}`} role="alert" data-testid={`toast-${type}`}>

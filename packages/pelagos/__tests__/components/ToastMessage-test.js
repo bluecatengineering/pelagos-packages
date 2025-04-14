@@ -20,17 +20,6 @@ describe('ToastMessage', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders action button if type is action', () => {
-			const message = {
-				id: '0',
-				type: ToastTypes.ACTION,
-				text: 'This is a test',
-				actionText: 'Action',
-			};
-			const wrapper = shallow(<ToastMessage message={message} />);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
 		it('does not render close button if type is fatal', () => {
 			const message = {
 				id: '0',
