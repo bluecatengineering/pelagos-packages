@@ -34,11 +34,13 @@ exports[`ListSelector rendering renders expected elements 1`] = `
         data-key="baz"
         role="listitem"
       >
-        <div
+        <span
+          className="ListSelector__text"
           id="item-baz"
+          title="Baz"
         >
           Baz
-        </div>
+        </span>
         <button
           aria-label="Add Baz"
           className="ListSelector__add"
@@ -53,11 +55,13 @@ exports[`ListSelector rendering renders expected elements 1`] = `
         data-key="oof"
         role="listitem"
       >
-        <div
+        <span
+          className="ListSelector__text"
           id="item-oof"
+          title="Oof"
         >
           Oof
-        </div>
+        </span>
         <button
           aria-label="Add Oof"
           className="ListSelector__add"
@@ -103,6 +107,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
         >
           <span
             className="ListSelector__text"
+            title="Foo"
           >
             Foo
           </span>
@@ -133,6 +138,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
         >
           <span
             className="ListSelector__text"
+            title="Bar"
           >
             Bar
           </span>
@@ -180,11 +186,13 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
         data-key="bar"
         role="listitem"
       >
-        <div
+        <span
+          className="ListSelector__text"
           id="item-bar"
+          title="Bar"
         >
           Bar
-        </div>
+        </span>
         <button
           aria-label="Add Bar"
           className="ListSelector__add"
@@ -199,11 +207,13 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
         data-key="baz"
         role="listitem"
       >
-        <div
+        <span
+          className="ListSelector__text"
           id="item-baz"
+          title="Baz"
         >
           Baz
-        </div>
+        </span>
         <button
           aria-label="Add Baz"
           className="ListSelector__add"
@@ -218,11 +228,13 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
         data-key="foo"
         role="listitem"
       >
-        <div
+        <span
+          className="ListSelector__text"
           id="item-foo"
+          title="Foo"
         >
           Foo
-        </div>
+        </span>
         <button
           aria-label="Add Foo"
           className="ListSelector__add"
@@ -237,11 +249,13 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
         data-key="oof"
         role="listitem"
       >
-        <div
+        <span
+          className="ListSelector__text"
           id="item-oof"
+          title="Oof"
         >
           Oof
-        </div>
+        </span>
         <button
           aria-label="Add Oof"
           className="ListSelector__add"

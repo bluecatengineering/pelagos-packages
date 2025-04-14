@@ -124,7 +124,9 @@ const ListSelector = forwardRef(({id, items, allItems, emptyText, allItemsRemove
 								role="listitem"
 								aria-labelledby={labelId}
 								data-key={key}>
-								<div id={labelId}>{label}</div>
+								<span id={labelId} className="ListSelector__text" title={label}>
+									{label}
+								</span>
 								<button className="ListSelector__add" type="button" aria-label={t`Add ${label}`}>
 									<ArrowRight />
 								</button>
@@ -158,7 +160,9 @@ const ListSelector = forwardRef(({id, items, allItems, emptyText, allItemsRemove
 									<ArrowLeft />
 								</button>
 								<div id={labelId} className="ListSelector__name draggable">
-									<span className="ListSelector__text">{name}</span>
+									<span className="ListSelector__text" title={name}>
+										{name}
+									</span>
 									<Draggable className="ListSelector__grip" />
 								</div>
 							</div>
