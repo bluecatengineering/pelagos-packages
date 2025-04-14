@@ -20,45 +20,6 @@ exports[`ToastMessage rendering does not render close button if type is fatal 1`
 </div>
 `;
 
-exports[`ToastMessage rendering renders action button if type is action 1`] = `
-<div
-  className="ToastMessage ToastMessage--info"
-  data-testid="toast-info"
-  id="toast-0"
-  role="alert"
->
-  <InformationFilled
-    className="ToastMessage__icon"
-    size={20}
-  />
-  <div
-    className="ToastMessage__text"
-    data-testid="message"
-  >
-    This is a test
-  </div>
-  <Button
-    className="ToastMessage__button"
-    data-testid="toast-button"
-    onClick={[Function]}
-    size="small"
-    text="Action"
-    type="ghost"
-  />
-  <button
-    aria-label="Dismiss"
-    className="ToastMessage__close"
-    data-testid="toast-close"
-    onClick={[Function]}
-    type="button"
-  >
-    <Close
-      size={20}
-    />
-  </button>
-</div>
-`;
-
 exports[`ToastMessage rendering renders close button if type is error 1`] = `
 <div
   className="ToastMessage ToastMessage--error"
