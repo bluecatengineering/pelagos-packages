@@ -4,7 +4,13 @@ import {Canvas, Controls, Description, Subtitle, Title} from '@storybook/blocks'
 import ListSelectorDialog from './ListSelectorDialog';
 import Button from './Button';
 
-const headers = {foo: 'Foo', bar: 'Bar', baz: 'Baz', oof: 'Oof'};
+const headers = {
+	foo: 'Foo',
+	bar: 'Bar',
+	baz: 'Baz',
+	oof: 'Oof',
+	long: 'Additional item with a very long name that should take more space than the space available in the dialog',
+};
 
 const args = {
 	title: 'Select columns',
@@ -12,7 +18,7 @@ const args = {
 	allItemsRemovedText: 'The list of columns is now empty. You must add at least one column to the list.',
 	saveText: 'Update columns',
 	items: ['foo', 'bar'],
-	allItems: ['foo', 'bar', 'baz', 'oof'],
+	allItems: ['foo', 'bar', 'baz', 'oof', 'long'],
 	defaultItems: ['bar', 'baz'],
 	getLabel: (key) => headers[key],
 };

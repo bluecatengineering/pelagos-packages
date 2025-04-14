@@ -21,6 +21,11 @@ export const Default = {
 	args,
 	render: (args) => {
 		const [items, setItems] = useState(args.items);
-		return <ListSelector {...args} items={items} onChange={setItems} />;
+		// forcing width to 300px otherwise strings are truncated
+		return (
+			<div style={{width: '300px'}}>
+				<ListSelector {...args} items={items} onChange={setItems} />
+			</div>
+		);
 	},
 };
