@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export const dataPropType = PropTypes.shape({
 	format: PropTypes.oneOf(['tidy', 'columns', 'native']),
 	groupFormatter: PropTypes.func,
-	groupMapper: PropTypes.func,
+	groupMapsTo: PropTypes.string,
 	loading: PropTypes.bool,
 	selectedGroups: PropTypes.array,
 });
@@ -14,7 +14,7 @@ export const colorPropType = PropTypes.shape({
 
 export const axisPropType = PropTypes.shape({
 	domain: PropTypes.array,
-	mapper: PropTypes.func,
+	mapsTo: PropTypes.string,
 	scaleType: PropTypes.oneOf(['labels', 'time', 'linear', 'log']),
 	ticks: PropTypes.shape({formatter: PropTypes.func}),
 	title: PropTypes.string,

@@ -1,4 +1,4 @@
-export default (data, selected, getGroup, getLabel, getValue) => {
+export default (data, selected, groupMapsTo, labelMapsTo, valueMapsTo) => {
 	const selectedSet = new Set(selected);
 	const allSelected = selectedSet.size === 0;
 	const groupSet = new Set();
@@ -7,15 +7,15 @@ export default (data, selected, getGroup, getLabel, getValue) => {
 	const groupIndex = new Map();
 	const hintValues = new Map();
 	for (const d of data) {
-		const group = getGroup(d);
+		const group = d[groupMapsTo];
 		if (!groupIndex.has(group)) {
 			groupIndex.set(group, groupIndex.size);
 		}
 		if (allSelected || selectedSet.has(group)) {
-			const value = getValue(d);
+			const value = d[valueMapsTo];
 			groupSet.add(group);
 			if (value !== null) {
-				const label = getLabel(d);
+				const label = d[labelMapsTo];
 				labelSet.add(label);
 				const hintValue = [group, value];
 				const hintList = hintValues.get(label);

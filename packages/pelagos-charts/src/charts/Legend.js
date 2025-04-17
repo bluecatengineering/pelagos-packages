@@ -4,7 +4,7 @@ import identity from 'lodash-es/identity';
 import {useRandomId} from '@bluecateng/pelagos';
 
 import {colorPropType} from './ChartPropTypes';
-import {getDefaultClass} from './Getters';
+import getDefaultClass from './getDefaultClass';
 import getColorClass from './getColorClass';
 import getColorVariant from './getColorVariant';
 import './Chart.less';

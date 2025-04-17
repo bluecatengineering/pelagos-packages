@@ -7,8 +7,7 @@ import identity from 'lodash-es/identity';
 import {addResizeObserver, useRandomId} from '@bluecateng/pelagos';
 
 import StackedBarChart from '../../src/charts/StackedBarChart';
-import {getDefaultClass, getGroup, getValue} from '../../src/charts/Getters';
-import mappers from '../../src/charts/mappers';
+import getDefaultClass from '../../src/charts/getDefaultClass';
 import getColorVariant from '../../src/charts/getColorVariant';
 import getColorClass from '../../src/charts/getColorClass';
 import getPlotBottom from '../../src/charts/getPlotBottom';
@@ -24,7 +23,6 @@ import extractStackDataFromTidy from '../../src/charts/extractStackDataFromTidy'
 import drawLoadingGrid from '../../src/charts/drawLoadingGrid';
 
 jest.unmock('../../src/charts/StackedBarChart');
-jest.unmock('../../src/charts/mappers');
 
 jest.mock('../../src/charts/hintFormatters', () => ({
 	labels: 'labels-hint',
@@ -157,7 +155,7 @@ describe('StackedBarChart', () => {
 			select.mockReturnValueOnce(zero).mockReturnValueOnce(bars).mockReturnValueOnce(grid);
 			scaleQuantize.mockReturnValueOnce(quantize);
 			shallow(<StackedBarChart data={data} onClick={onClick} />);
-			expect(extractStackDataFromTidy.mock.calls).toEqual([[data, undefined, getGroup, mappers.labels, getValue]]);
+			expect(extractStackDataFromTidy.mock.calls).toEqual([[data, undefined, 'group', 'key', 'value']]);
 			expect(stackFn.keys.mock.calls).toEqual([[groupSet]]);
 			expect(stackFn.value.mock.calls).toEqual([[anyFunction]]);
 			expect(stackFn.order.mock.calls).toEqual([['stackOrderNone']]);
@@ -547,8 +545,8 @@ describe('StackedBarChart', () => {
 						{group: 'b', key: 'foo', value: 5},
 						{group: 'b', key: 'bar', value: null},
 					]}
-					bottomAxis={{scaleType: 'linear', mapper: (d) => d.value}}
-					leftAxis={{scaleType: 'labels', mapper: (d) => d.key}}
+					bottomAxis={{scaleType: 'linear', mapsTo: 'value'}}
+					leftAxis={{scaleType: 'labels', mapsTo: 'key'}}
 					onClick={onClick}
 				/>
 			);
@@ -742,8 +740,8 @@ describe('StackedBarChart', () => {
 						{group: 'b', key: 'foo', value: 5},
 						{group: 'b', key: 'bar', value: null},
 					]}
-					bottomAxis={{scaleType: 'linear', mapper: (d) => d.value}}
-					leftAxis={{scaleType: 'labels', mapper: (d) => d.key}}
+					bottomAxis={{scaleType: 'linear', mapsTo: 'value'}}
+					leftAxis={{scaleType: 'labels', mapsTo: 'key'}}
 				/>
 			);
 
@@ -868,7 +866,7 @@ describe('StackedBarChart', () => {
 					hint={{enabled: false, headerFormatter: 'test-header-formatter', valueFormatter: 'test-value-formatter'}}
 				/>
 			);
-			expect(extractStackDataFromTidy.mock.calls).toEqual([[data, ['a'], getGroup, mappers.labels, getValue]]);
+			expect(extractStackDataFromTidy.mock.calls).toEqual([[data, ['a'], 'group', 'key', 'value']]);
 
 			expect(useLayoutEffect.mock.calls[0]).toEqual([
 				anyFunction,

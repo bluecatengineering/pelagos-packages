@@ -8,13 +8,12 @@ import identity from 'lodash-es/identity';
 import {addResizeObserver, Layer, useRandomId} from '@bluecateng/pelagos';
 
 import DonutChart from '../../src/charts/DonutChart';
-import {getDefaultClass} from '../../src/charts/Getters';
+import getDefaultClass from '../../src/charts/getDefaultClass';
 import getColorVariant from '../../src/charts/getColorVariant';
 import getColorClass from '../../src/charts/getColorClass';
 import setGradientParameters from '../../src/charts/setGradientParameters';
 
 jest.unmock('../../src/charts/DonutChart');
-jest.unmock('../../src/charts/Getters');
 
 jest.mock('d3-format', () => ({format: jest.fn((fmt) => jest.fn().mockReturnValue(`format-${fmt}`))}));
 
@@ -34,6 +33,7 @@ const createPaths = () => ({
 
 useRandomId.mockReturnValue('random-id');
 addResizeObserver.mockReturnValue('addResizeObserver');
+getDefaultClass.mockReturnValue('getDefaultClass');
 getColorClass.mockReturnValue('getColorClass');
 getColorVariant.mockReturnValue('getColorVariant');
 
@@ -147,8 +147,9 @@ describe('DonutChart', () => {
 
 			expect(sum.mock.calls[0][1](pieData[0])).toBe(3);
 
-			expect(paths.attr.mock.calls[0][1](arc1)).toBe('getColorClass');
+			expect(paths.attr.mock.calls[0][1](arc1)).toBe('getDefaultClass');
 			expect(getColorClass.mock.calls).toEqual([['fill', 'getColorVariant', 1, 1]]);
+			expect(getDefaultClass.mock.calls).toEqual([['b', null, 7, 'getColorClass']]);
 
 			expect(paths.attr.mock.calls[1][1](arc0)).toBe('d0');
 			expect(arcFn.mock.calls).toEqual([[arc0]]);

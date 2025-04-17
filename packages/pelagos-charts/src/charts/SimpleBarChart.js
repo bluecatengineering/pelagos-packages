@@ -5,7 +5,7 @@ import identity from 'lodash-es/identity';
 import {addResizeObserver, Layer, useRandomId} from '@bluecateng/pelagos';
 
 import {axisPropType, colorPropType, dataPropType, hintPropType, legendPropType} from './ChartPropTypes';
-import {getDefaultClass, getGroup} from './Getters';
+import getDefaultClass from './getDefaultClass';
 import extendDomain from './extendDomain';
 import getColorClass from './getColorClass';
 import getColorVariant from './getColorVariant';
@@ -16,7 +16,7 @@ import drawLeftAxis from './drawLeftAxis';
 import drawBottomAxis from './drawBottomAxis';
 import drawGrid from './drawGrid';
 import hintFormatters from './hintFormatters';
-import mappers from './mappers';
+import scaleProperties from './scaleProperties';
 import tickFormatters from './tickFormatters';
 import useSetHintPosition from './useSetHintPosition';
 import legendDirections from './legendDirections';
@@ -51,21 +51,21 @@ const SimpleBarChart = ({
 
 	const {
 		groupFormatter: dataGroupFormatter,
-		groupMapper: dataGroupMapper,
+		groupMapsTo: dataGroupMapsTo,
 		loading: dataLoading,
 		selectedGroups: dataSelectedGroups,
 	} = {
 		groupFormatter: identity,
-		groupMapper: getGroup,
+		groupMapsTo: 'group',
 		loading: false,
 		...dataOptions,
 	};
 	const {groupCount: colorGroupCount, option: colorOption} = {groupCount: null, option: 1, ...color?.pairing};
 	const {domain: bottomDomain, scaleType: bottomScaleType, title: bottomTitle} = {scaleType: 'labels', ...bottomAxis};
-	const bottomMapper = bottomAxis?.mapper || mappers[bottomScaleType];
+	const bottomMapsTo = bottomAxis?.mapsTo || scaleProperties[bottomScaleType];
 	const {formatter: bottomTickFormatter} = {formatter: tickFormatters[bottomScaleType], ...bottomAxis?.ticks};
 	const {domain: leftDomain, scaleType: leftScaleType, title: leftTitle} = {scaleType: 'linear', ...leftAxis};
-	const leftMapper = leftAxis?.mapper || mappers[leftScaleType];
+	const leftMapsTo = leftAxis?.mapsTo || scaleProperties[leftScaleType];
 	const {formatter: leftTickFormatter} = {formatter: tickFormatters[leftScaleType], ...leftAxis?.ticks};
 	const vertical = bottomScaleType === 'labels';
 	const {
@@ -91,8 +91,8 @@ const SimpleBarChart = ({
 		if (dataLoading) {
 			return {groupIndex: new Map()};
 		}
-		const getLabel = vertical ? bottomMapper : leftMapper;
-		const getValue = vertical ? leftMapper : bottomMapper;
+		const labelMapsTo = vertical ? bottomMapsTo : leftMapsTo;
+		const valueMapsTo = vertical ? leftMapsTo : bottomMapsTo;
 		const selectedSet = new Set(dataSelectedGroups);
 		const allSelected = selectedSet.size === 0;
 		const selectedData = [];
@@ -101,13 +101,13 @@ const SimpleBarChart = ({
 		let min = 0;
 		let max = 0;
 		for (const d of data) {
-			const group = dataGroupMapper(d);
+			const group = d[dataGroupMapsTo];
 			if (!groupIndex.has(group)) {
 				groupIndex.set(group, groupIndex.size);
 			}
 			if (allSelected || selectedSet.has(group)) {
-				const label = getLabel(d);
-				const value = getValue(d);
+				const label = d[labelMapsTo];
+				const value = d[valueMapsTo];
 				selectedData.push([group, label, value]);
 				labelSet.add(label);
 				if (value < min) min = value;
@@ -123,13 +123,13 @@ const SimpleBarChart = ({
 		};
 	}, [
 		bottomDomain,
-		bottomMapper,
+		bottomMapsTo,
 		data,
-		dataGroupMapper,
+		dataGroupMapsTo,
 		dataLoading,
 		dataSelectedGroups,
 		leftDomain,
-		leftMapper,
+		leftMapsTo,
 		vertical,
 	]);
 	const ref = useRef(null);

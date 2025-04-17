@@ -8,7 +8,7 @@ import identity from 'lodash-es/identity';
 import {addResizeObserver, Layer, useRandomId} from '@bluecateng/pelagos';
 
 import {colorPropType, dataPropType, hintPropType, legendPropType} from './ChartPropTypes';
-import {getDefaultClass, getGroup, getValue} from './Getters';
+import getDefaultClass from './getDefaultClass';
 import getColorClass from './getColorClass';
 import getColorVariant from './getColorVariant';
 import useSetHintPosition from './useSetHintPosition';
@@ -46,12 +46,12 @@ const DonutChart = ({
 
 	const {
 		groupFormatter: dataGroupFormatter,
-		groupMapper: dataGroupMapper,
+		groupMapsTo: dataGroupMapsTo,
 		loading: dataLoading,
 		selectedGroups: dataSelectedGroups,
 	} = {
 		groupFormatter: identity,
-		groupMapper: getGroup,
+		groupMapsTo: 'group',
 		loading: false,
 		...dataOptions,
 	};
@@ -61,7 +61,7 @@ const DonutChart = ({
 		number: centerNumber,
 		numberFormatter: centerNumberFormatter,
 	} = {numberFormatter: siFormatter, ...center};
-	const {valueMapper: donutValueMapper} = {valueMapper: getValue, ...donut};
+	const {valueMapsTo: donutValueMapsTo} = {valueMapsTo: 'value', ...donut};
 	const {
 		alignment: legendAlignment,
 		clickable: legendClickable,
@@ -81,13 +81,13 @@ const DonutChart = ({
 			return {groupIndex: new Map(), empty: true};
 		}
 		const selectedSet = new Set(dataSelectedGroups);
-		const chartData = data.map((d) => [dataGroupMapper(d), donutValueMapper(d), d]);
+		const chartData = data.map((d) => [d[dataGroupMapsTo], d[donutValueMapsTo], d]);
 		const groupIndex = new Map(chartData.map((d, index) => [d[0], index]));
 		const filteredData = selectedSet.size === 0 ? chartData : chartData.filter((d) => selectedSet.has(d[0]));
 		const empty = sum(filteredData, getChartValue) === 0;
 		const arcs = empty ? null : pie().value(getChartValue).padAngle(0.01)(filteredData);
 		return {arcs, groupIndex, empty};
-	}, [data, dataGroupMapper, dataLoading, dataSelectedGroups, donutValueMapper]);
+	}, [data, dataGroupMapsTo, dataLoading, dataSelectedGroups, donutValueMapsTo]);
 
 	const ref = useRef(null);
 	const drawRef = useRef(null);
@@ -246,7 +246,7 @@ DonutChart.propTypes = {
 	dataOptions: dataPropType,
 	color: colorPropType,
 	center: PropTypes.shape({label: PropTypes.string, number: PropTypes.number, numberFormatter: PropTypes.func}),
-	donut: PropTypes.shape({valueMapper: PropTypes.func}),
+	donut: PropTypes.shape({valueMapsTo: PropTypes.string}),
 	legend: legendPropType,
 	hint: hintPropType,
 	getFillClass: PropTypes.func,

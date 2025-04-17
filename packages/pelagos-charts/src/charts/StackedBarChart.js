@@ -21,10 +21,10 @@ import {addResizeObserver, useRandomId} from '@bluecateng/pelagos';
 import 'core-js/actual/array/to-reversed';
 
 import {axisPropType, colorPropType, dataPropType, hintPropType, legendPropType} from './ChartPropTypes';
-import {getDefaultClass, getGroup} from './Getters';
+import getDefaultClass from './getDefaultClass';
 import extractStackDataFromTidy from './extractStackDataFromTidy';
 import extractStackDataFromColumns from './extractStackDataFromColumns';
-import mappers from './mappers';
+import scaleProperties from './scaleProperties';
 import tickFormatters from './tickFormatters';
 import hintFormatters from './hintFormatters';
 import extendDomain from './extendDomain';
@@ -103,13 +103,13 @@ const StackedBarChart = ({
 	const {
 		format: dataFormat,
 		groupFormatter: dataGroupFormatter,
-		groupMapper: dataGroupMapper,
+		groupMapsTo: dataGroupMapsTo,
 		loading: dataLoading,
 		selectedGroups: dataSelectedGroups,
 	} = {
 		format: 'tidy',
 		groupFormatter: identity,
-		groupMapper: getGroup,
+		groupMapsTo: 'group',
 		loading: false,
 		...dataOptions,
 	};
@@ -117,10 +117,10 @@ const StackedBarChart = ({
 	const {order: stackOrder, offset: stackOffset} = {order: 'none', offset: 'none', ...stack};
 	const {groupCount: colorGroupCount, option: colorOption} = {groupCount: null, option: 1, ...color?.pairing};
 	const {domain: bottomDomain, scaleType: bottomScaleType, title: bottomTitle} = {scaleType: 'labels', ...bottomAxis};
-	const bottomMapper = bottomAxis?.mapper || mappers[bottomScaleType];
+	const bottomMapsTo = bottomAxis?.mapsTo || scaleProperties[bottomScaleType];
 	const {formatter: bottomTickFormatter} = {formatter: tickFormatters[bottomScaleType], ...bottomAxis?.ticks};
 	const {domain: leftDomain, scaleType: leftScaleType, title: leftTitle} = {scaleType: 'linear', ...leftAxis};
-	const leftMapper = leftAxis?.mapper || mappers[leftScaleType];
+	const leftMapsTo = leftAxis?.mapsTo || scaleProperties[leftScaleType];
 	const {formatter: leftTickFormatter} = {formatter: tickFormatters[leftScaleType], ...leftAxis?.ticks};
 	const vertical = bottomScaleType === 'labels';
 	const {
@@ -155,9 +155,9 @@ const StackedBarChart = ({
 		const {stackData, groupSet, groupIndex, hintValues, labelSet} = dataExtract(
 			data,
 			dataSelectedGroups,
-			dataGroupMapper,
-			vertical ? bottomMapper : leftMapper,
-			vertical ? leftMapper : bottomMapper
+			dataGroupMapsTo,
+			vertical ? bottomMapsTo : leftMapsTo,
+			vertical ? leftMapsTo : bottomMapsTo
 		);
 		const series = d3Stack()
 			.keys(groupSet)
@@ -174,14 +174,14 @@ const StackedBarChart = ({
 		};
 	}, [
 		bottomDomain,
-		bottomMapper,
+		bottomMapsTo,
 		data,
 		dataExtract,
-		dataGroupMapper,
+		dataGroupMapsTo,
 		dataLoading,
 		dataSelectedGroups,
 		leftDomain,
-		leftMapper,
+		leftMapsTo,
 		stackOffset,
 		stackOrder,
 		vertical,

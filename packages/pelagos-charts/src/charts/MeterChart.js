@@ -8,7 +8,7 @@ import WarningFilled from '@carbon/icons-react/es/WarningFilled';
 import ErrorFilled from '@carbon/icons-react/es/ErrorFilled';
 
 import {colorPropType, dataPropType, hintPropType, legendPropType} from './ChartPropTypes';
-import {getDefaultClass, getGroup, getValue} from './Getters';
+import getDefaultClass from './getDefaultClass';
 import legendDirections from './legendDirections';
 import Legend from './Legend';
 import getColorClass from './getColorClass';
@@ -56,11 +56,11 @@ const MeterChart = ({
 	id = useRandomId(id);
 	const {
 		groupFormatter: dataGroupFormatter,
-		groupMapper: dataGroupMapper,
+		groupMapsTo: dataGroupMapsTo,
 		selectedGroups: dataSelectedGroups,
 	} = {
 		groupFormatter: identity,
-		groupMapper: getGroup,
+		groupMapsTo: 'group',
 		...dataOptions,
 	};
 	const {groupCount: colorGroupCount, option: colorOption} = {groupCount: null, option: 1, ...color?.pairing};
@@ -70,8 +70,8 @@ const MeterChart = ({
 		proportional: meterProportional,
 		showLabels: meterShowLabels,
 		status: meterStatus,
-		valueMapper: meterValueMapper,
-	} = {height: 8, showLabels: true, valueMapper: getValue, ...meter};
+		valueMapsTo: meterValueMapsTo,
+	} = {height: 8, showLabels: true, valueMapsTo: 'value', ...meter};
 	const {
 		total: proportionalTotal,
 		unit: proportionalUnit,
@@ -104,11 +104,11 @@ const MeterChart = ({
 		groupIndex: stateGroupIndex,
 	} = useMemo(() => {
 		const selectedSet = new Set(dataSelectedGroups);
-		const chartData = data.map((d) => [dataGroupMapper(d), meterValueMapper(d), d]);
+		const chartData = data.map((d) => [d[dataGroupMapsTo], d[meterValueMapsTo], d]);
 		const groupIndex = new Map(chartData.map((d, index) => [d[0], index]));
 		const filteredData = selectedSet.size === 0 ? chartData : chartData.filter((d) => selectedSet.has(d[0]));
 		return {groupIndex, data: filteredData, total: sum(filteredData, getChartValue)};
-	}, [data, dataGroupMapper, dataSelectedGroups, meterValueMapper]);
+	}, [data, dataGroupMapsTo, dataSelectedGroups, meterValueMapsTo]);
 
 	const ref = useRef(null);
 	const hintRef = useRef(null);
@@ -254,7 +254,7 @@ MeterChart.propTypes = {
 				danger: PropTypes.number.isRequired,
 			}),
 		}),
-		valueMapper: PropTypes.func,
+		valueMapsTo: PropTypes.string,
 	}),
 	legend: legendPropType,
 	hint: hintPropType,
