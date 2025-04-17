@@ -15,6 +15,7 @@ export const colorPropType = PropTypes.shape({
 export const axisPropType = PropTypes.shape({
 	domain: PropTypes.array,
 	mapsTo: PropTypes.string,
+	extendLinearDomainBy: PropTypes.string,
 	scaleType: PropTypes.oneOf(['labels', 'time', 'linear', 'log']),
 	ticks: PropTypes.shape({formatter: PropTypes.func}),
 	title: PropTypes.string,

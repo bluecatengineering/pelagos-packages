@@ -68,7 +68,7 @@ describe('SimpleBarChart', () => {
 			const onClick = jest.fn();
 			const setHintData = jest.fn();
 			const current = {
-				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}],
+				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}, {id: '4'}],
 				getBoundingClientRect: () => ({left: 20, width: 400, height: 300}),
 			};
 			const leftScale = jest.fn().mockReturnValueOnce(140).mockReturnValueOnce(90).mockReturnValueOnce(190);
@@ -88,6 +88,12 @@ describe('SimpleBarChart', () => {
 				attr: jest.fn().mockReturnThis(),
 				on: jest.fn().mockReturnThis(),
 			};
+			const markerSelect = {
+				selectAll: jest.fn().mockReturnThis(),
+				data: jest.fn().mockReturnThis(),
+				join: jest.fn().mockReturnThis(),
+				attr: jest.fn().mockReturnThis(),
+			};
 			const bottomSet = new Set(['foo', 'bar']);
 			const selectedData = [
 				['a', 'foo', 8],
@@ -102,7 +108,7 @@ describe('SimpleBarChart', () => {
 			createScale.mockReturnValueOnce(leftScale).mockReturnValueOnce(bottomScale);
 			getTicks.mockReturnValueOnce(leftTicks).mockReturnValueOnce(bottomSet);
 			drawLeftAxis.mockReturnValueOnce(38);
-			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect);
+			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect).mockReturnValueOnce(markerSelect);
 			shallow(
 				<SimpleBarChart
 					data={[
@@ -138,6 +144,7 @@ describe('SimpleBarChart', () => {
 							['b', 1],
 						]),
 						selectedData,
+						markerData: [],
 						leftDomain,
 						bottomDomain: bottomSet,
 					},
@@ -165,7 +172,7 @@ describe('SimpleBarChart', () => {
 			expect(drawGrid.mock.calls).toEqual([
 				[current.childNodes[0], leftTicks, leftScale, bottomSet, bottomScale, 400, 38, 262],
 			]);
-			expect(select.mock.calls).toEqual([[current.childNodes[3]], [current.childNodes[2]]]);
+			expect(select.mock.calls).toEqual([[current.childNodes[4]], [current.childNodes[2]], [current.childNodes[3]]]);
 			expect(bottomScale.step.mock.calls).toEqual([[]]);
 
 			expect(zero.selectAll.mock.calls).toEqual([['line']]);
@@ -226,6 +233,11 @@ describe('SimpleBarChart', () => {
 			barSelect.on.mock.calls[2][1](null, ['', 'bar']);
 			expect(onClick.mock.calls).toEqual([['bar']]);
 
+			expect(markerSelect.selectAll.mock.calls).toEqual([['path']]);
+			expect(markerSelect.data.mock.calls).toEqual([[[]]]);
+			expect(markerSelect.join.mock.calls).toEqual([['path']]);
+			expect(markerSelect.attr.mock.calls).toEqual([['d', anyFunction]]);
+
 			expect(leftScale.mock.calls).toEqual([[0], [5], [-5]]);
 			expect(bottomScale.mock.calls).toEqual([['foo'], ['bar'], ['baz']]);
 			expect(getColorClass.mock.calls).toEqual([['fill', 'getColorVariant', 1, 1]]);
@@ -234,11 +246,11 @@ describe('SimpleBarChart', () => {
 
 		it('adds an effect which renders the chart when alternate options are specified', () => {
 			const current = {
-				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}],
+				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}, {id: '4'}],
 				getBoundingClientRect: () => ({width: 400, height: 300}),
 			};
-			const leftScale = jest.fn().mockReturnValueOnce(140).mockReturnValueOnce(90).mockReturnValueOnce(190);
-			const bottomScale = jest.fn().mockReturnValueOnce(80).mockReturnValueOnce(160).mockReturnValueOnce(240);
+			const leftScale = jest.fn().mockReturnValueOnce(140).mockReturnValueOnce(90);
+			const bottomScale = jest.fn().mockReturnValueOnce(80);
 			bottomScale.step = jest.fn().mockReturnValue(16);
 			const leftTicks = [1, 5, 8];
 			const zero = {
@@ -254,29 +266,36 @@ describe('SimpleBarChart', () => {
 				attr: jest.fn().mockReturnThis(),
 				on: jest.fn().mockReturnThis(),
 			};
+			const markerSelect = {
+				selectAll: jest.fn().mockReturnThis(),
+				data: jest.fn().mockReturnThis(),
+				join: jest.fn().mockReturnThis(),
+				attr: jest.fn().mockReturnThis(),
+			};
 			const bottomList = ['foo', 'bar'];
 			const selectedData = [
 				['a', 'foo', 8],
 				['a', 'bar', -1],
 			];
+			const markerData = [9, 2];
 			const leftDomain = [-1, 8];
 			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({}).mockReturnValueOnce({});
 			getPlotBottom.mockReturnValueOnce(262);
 			createScale.mockReturnValueOnce(leftScale).mockReturnValueOnce(bottomScale);
 			getTicks.mockReturnValueOnce(leftTicks).mockReturnValueOnce(bottomList);
 			drawLeftAxis.mockReturnValueOnce(38);
-			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect);
+			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect).mockReturnValueOnce(markerSelect);
 			shallow(
 				<SimpleBarChart
 					data={[
-						{group: 'a', key: 'foo', value: 8},
-						{group: 'a', key: 'bar', value: -1},
-						{group: 'b', key: 'foo', value: 5},
+						{group: 'a', key: 'foo', value: 8, marker: 9},
+						{group: 'a', key: 'bar', value: -1, marker: 2},
+						{group: 'b', key: 'foo', value: 5, marker: 4},
 					]}
 					dataOptions={{groupFormatter: 'test-formatter', selectedGroups: ['a']}}
 					color={{pairing: {groupCount: 5, option: 2}}}
 					bottomAxis={{domain: 'test-bottom-domain', title: 'Bottom title'}}
-					leftAxis={{domain: leftDomain, scaleType: 'linear', title: 'Left title'}}
+					leftAxis={{domain: leftDomain, scaleType: 'linear', title: 'Left title', extendLinearDomainBy: 'marker'}}
 					hint={{enabled: false, headerFormatter: 'test-header-formatter', valueFormatter: 'test-value-formatter'}}
 				/>
 			);
@@ -304,6 +323,7 @@ describe('SimpleBarChart', () => {
 							['b', 1],
 						]),
 						selectedData,
+						markerData,
 						leftDomain,
 						bottomDomain: 'test-bottom-domain',
 					},
@@ -311,7 +331,7 @@ describe('SimpleBarChart', () => {
 				],
 			]);
 			expect(useLayoutEffect.mock.calls[0][0]()).toBeUndefined();
-			expect(extendDomain.mock.calls).toEqual([[[-1, 8]]]);
+			expect(extendDomain.mock.calls).toEqual([[[-1, 9]]]);
 			expect(getColorVariant.mock.calls).toEqual([[5, 2]]);
 			expect(getPlotBottom.mock.calls).toEqual([[300, 'Bottom title']]);
 			expect(createScale.mock.calls).toEqual([
@@ -328,16 +348,36 @@ describe('SimpleBarChart', () => {
 				['y1', 140],
 				['y2', 140],
 			]);
+
+			expect(markerSelect.selectAll.mock.calls).toEqual([['path']]);
+			expect(markerSelect.data.mock.calls).toEqual([[markerData]]);
+			expect(markerSelect.join.mock.calls).toEqual([['path']]);
+			expect(markerSelect.attr.mock.calls).toEqual([['d', anyFunction]]);
+
+			expect(markerSelect.attr.mock.calls[0][1](9, 0)).toBe('m75,90h10');
+
+			expect(leftScale.mock.calls).toEqual([[0], [9]]);
+			expect(bottomScale.mock.calls).toEqual([['foo']]);
 		});
 
 		it('adds an effect which renders the chart when leftScaleType is labels', () => {
 			const current = {
-				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}],
+				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}, {id: '4'}],
 				getBoundingClientRect: () => ({width: 400, height: 300}),
 			};
-			const leftScale = jest.fn().mockReturnValueOnce(80).mockReturnValueOnce(160).mockReturnValueOnce(240);
+			const leftScale = jest
+				.fn()
+				.mockReturnValueOnce(80)
+				.mockReturnValueOnce(160)
+				.mockReturnValueOnce(240)
+				.mockReturnValueOnce(80);
 			leftScale.step = jest.fn().mockReturnValue(16);
-			const bottomScale = jest.fn().mockReturnValueOnce(280).mockReturnValueOnce(330).mockReturnValueOnce(230);
+			const bottomScale = jest
+				.fn()
+				.mockReturnValueOnce(280)
+				.mockReturnValueOnce(330)
+				.mockReturnValueOnce(230)
+				.mockReturnValueOnce(400);
 			const leftTicks = [1, 5, 8];
 			const zero = {
 				selectAll: jest.fn().mockReturnThis(),
@@ -352,12 +392,19 @@ describe('SimpleBarChart', () => {
 				attr: jest.fn().mockReturnThis(),
 				on: jest.fn().mockReturnThis(),
 			};
+			const markerSelect = {
+				selectAll: jest.fn().mockReturnThis(),
+				data: jest.fn().mockReturnThis(),
+				join: jest.fn().mockReturnThis(),
+				attr: jest.fn().mockReturnThis(),
+			};
 			const leftSet = new Set(['foo', 'bar']);
 			const selectedData = [
 				['a', 'foo', 8],
 				['a', 'bar', 1],
 				['b', 'foo', 5],
 			];
+			const markerData = [9, 2, 4];
 			const bottomDomain = [0, 8.8];
 			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({}).mockReturnValueOnce({});
 			extendDomain.mockReturnValueOnce(bottomDomain);
@@ -365,15 +412,15 @@ describe('SimpleBarChart', () => {
 			createScale.mockReturnValueOnce(leftScale).mockReturnValueOnce(bottomScale);
 			getTicks.mockReturnValueOnce(leftTicks).mockReturnValueOnce(leftSet);
 			drawLeftAxis.mockReturnValueOnce(38);
-			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect);
+			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect).mockReturnValueOnce(markerSelect);
 			shallow(
 				<SimpleBarChart
 					data={[
-						{group: 'a', key: 'foo', value: 8},
-						{group: 'a', key: 'bar', value: 1},
-						{group: 'b', key: 'foo', value: 5},
+						{group: 'a', key: 'foo', value: 8, marker: 9},
+						{group: 'a', key: 'bar', value: 1, marker: 2},
+						{group: 'b', key: 'foo', value: 5, marker: 4},
 					]}
-					bottomAxis={{scaleType: 'linear', mapsTo: 'value'}}
+					bottomAxis={{scaleType: 'linear', mapsTo: 'value', extendLinearDomainBy: 'marker'}}
 					leftAxis={{scaleType: 'labels', mapsTo: 'key'}}
 				/>
 			);
@@ -401,6 +448,7 @@ describe('SimpleBarChart', () => {
 							['b', 1],
 						]),
 						selectedData,
+						markerData,
 						leftDomain: leftSet,
 						bottomDomain,
 					},
@@ -408,7 +456,7 @@ describe('SimpleBarChart', () => {
 				],
 			]);
 			expect(useLayoutEffect.mock.calls[0][0]()).toBeUndefined();
-			expect(extendDomain.mock.calls).toEqual([[[0, 8]]]);
+			expect(extendDomain.mock.calls).toEqual([[[0, 9]]]);
 			expect(getColorVariant.mock.calls).toEqual([[null, 2]]);
 			expect(getPlotBottom.mock.calls).toEqual([[300, undefined]]);
 			expect(createScale.mock.calls).toEqual([
@@ -437,13 +485,20 @@ describe('SimpleBarChart', () => {
 			expect(barSelect.attr.mock.calls[1][1](['', 'bar', 0])).toBe('m280,156v8h0v-8z');
 			expect(barSelect.attr.mock.calls[1][1](['', 'baz', -5])).toBe('m280,236v8h-50v-8z');
 
-			expect(leftScale.mock.calls).toEqual([['foo'], ['bar'], ['baz']]);
-			expect(bottomScale.mock.calls).toEqual([[0], [5], [-5]]);
+			expect(markerSelect.selectAll.mock.calls).toEqual([['path']]);
+			expect(markerSelect.data.mock.calls).toEqual([[markerData]]);
+			expect(markerSelect.join.mock.calls).toEqual([['path']]);
+			expect(markerSelect.attr.mock.calls).toEqual([['d', anyFunction]]);
+
+			expect(markerSelect.attr.mock.calls[0][1](9, 0)).toBe('m400,75v10');
+
+			expect(leftScale.mock.calls).toEqual([['foo'], ['bar'], ['baz'], ['foo']]);
+			expect(bottomScale.mock.calls).toEqual([[0], [5], [-5], [9]]);
 		});
 
 		it('adds an effect which renders the chart when leftScaleType is labels and bottomDomain min is negative', () => {
 			const current = {
-				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}],
+				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}, {id: '4'}],
 				getBoundingClientRect: () => ({width: 400, height: 300}),
 			};
 			const leftScale = jest.fn().mockReturnValueOnce(80).mockReturnValueOnce(160).mockReturnValueOnce(240);
@@ -463,6 +518,12 @@ describe('SimpleBarChart', () => {
 				attr: jest.fn().mockReturnThis(),
 				on: jest.fn().mockReturnThis(),
 			};
+			const markerSelect = {
+				selectAll: jest.fn().mockReturnThis(),
+				data: jest.fn().mockReturnThis(),
+				join: jest.fn().mockReturnThis(),
+				attr: jest.fn().mockReturnThis(),
+			};
 			const leftSet = new Set(['foo', 'bar']);
 			const selectedData = [
 				['a', 'foo', 8],
@@ -476,7 +537,7 @@ describe('SimpleBarChart', () => {
 			createScale.mockReturnValueOnce(leftScale).mockReturnValueOnce(bottomScale);
 			getTicks.mockReturnValueOnce(leftTicks).mockReturnValueOnce(leftSet);
 			drawLeftAxis.mockReturnValueOnce(38);
-			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect);
+			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect).mockReturnValueOnce(markerSelect);
 			shallow(
 				<SimpleBarChart
 					data={[
@@ -512,6 +573,7 @@ describe('SimpleBarChart', () => {
 							['b', 1],
 						]),
 						selectedData,
+						markerData: [],
 						leftDomain: leftSet,
 						bottomDomain,
 					},

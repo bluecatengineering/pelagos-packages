@@ -61,10 +61,20 @@ const SimpleBarChart = ({
 		...dataOptions,
 	};
 	const {groupCount: colorGroupCount, option: colorOption} = {groupCount: null, option: 1, ...color?.pairing};
-	const {domain: bottomDomain, scaleType: bottomScaleType, title: bottomTitle} = {scaleType: 'labels', ...bottomAxis};
+	const {
+		domain: bottomDomain,
+		extendLinearDomainBy: bottomExtendLinearDomainBy,
+		scaleType: bottomScaleType,
+		title: bottomTitle,
+	} = {scaleType: 'labels', ...bottomAxis};
 	const bottomMapsTo = bottomAxis?.mapsTo || scaleProperties[bottomScaleType];
 	const {formatter: bottomTickFormatter} = {formatter: tickFormatters[bottomScaleType], ...bottomAxis?.ticks};
-	const {domain: leftDomain, scaleType: leftScaleType, title: leftTitle} = {scaleType: 'linear', ...leftAxis};
+	const {
+		domain: leftDomain,
+		extendLinearDomainBy: leftExtendLinearDomainBy,
+		scaleType: leftScaleType,
+		title: leftTitle,
+	} = {scaleType: 'linear', ...leftAxis};
 	const leftMapsTo = leftAxis?.mapsTo || scaleProperties[leftScaleType];
 	const {formatter: leftTickFormatter} = {formatter: tickFormatters[leftScaleType], ...leftAxis?.ticks};
 	const vertical = bottomScaleType === 'labels';
@@ -93,9 +103,11 @@ const SimpleBarChart = ({
 		}
 		const labelMapsTo = vertical ? bottomMapsTo : leftMapsTo;
 		const valueMapsTo = vertical ? leftMapsTo : bottomMapsTo;
+		const extendLinearDomainBy = vertical ? leftExtendLinearDomainBy : bottomExtendLinearDomainBy;
 		const selectedSet = new Set(dataSelectedGroups);
 		const allSelected = selectedSet.size === 0;
 		const selectedData = [];
+		const markerData = [];
 		const groupIndex = new Map();
 		const labelSet = new Set();
 		let min = 0;
@@ -112,23 +124,31 @@ const SimpleBarChart = ({
 				labelSet.add(label);
 				if (value < min) min = value;
 				if (value > max) max = value;
+				if (extendLinearDomainBy) {
+					const marker = d[extendLinearDomainBy];
+					markerData.push(marker);
+					if (marker > max) max = marker;
+				}
 			}
 		}
 		const valueDomain = extendDomain([min, max]);
 		return {
 			selectedData,
+			markerData,
 			groupIndex,
 			leftDomain: leftDomain || (vertical ? valueDomain : labelSet),
 			bottomDomain: bottomDomain || (vertical ? labelSet : valueDomain),
 		};
 	}, [
 		bottomDomain,
+		bottomExtendLinearDomainBy,
 		bottomMapsTo,
 		data,
 		dataGroupMapsTo,
 		dataLoading,
 		dataSelectedGroups,
 		leftDomain,
+		leftExtendLinearDomainBy,
 		leftMapsTo,
 		vertical,
 	]);
@@ -137,7 +157,7 @@ const SimpleBarChart = ({
 	const hintRef = useRef(null);
 	const [hintData, setHintData] = useState({});
 	useLayoutEffect(() => {
-		const {selectedData, groupIndex, leftDomain, bottomDomain} = state;
+		const {selectedData, markerData, groupIndex, leftDomain, bottomDomain} = state;
 		const colorVariant = getColorVariant(colorGroupCount, groupIndex.size);
 		const bottomTickFormatterFn = bottomTickFormatter || identity;
 
@@ -187,7 +207,7 @@ const SimpleBarChart = ({
 			const zero = (vertical ? leftScale : bottomScale)(0);
 			if (vertical) {
 				const needsZero = leftScaleType === 'linear' && leftDomain[0] < 0;
-				select(nodes[3])
+				select(nodes[4])
 					.selectAll('line')
 					.data(needsZero ? [1] : [])
 					.join('line')
@@ -197,7 +217,7 @@ const SimpleBarChart = ({
 					.attr('y2', zero);
 			} else {
 				const needsZero = bottomScaleType === 'linear' && bottomDomain[0] < 0;
-				select(nodes[3])
+				select(nodes[4])
 					.selectAll('line')
 					.data(needsZero ? [1] : [])
 					.join('line')
@@ -233,6 +253,28 @@ const SimpleBarChart = ({
 				.attr('role', 'graphics-symbol')
 				.attr('aria-roledescription', `bar`) // TODO translate
 				.attr('aria-label', (d) => `${dataGroupFormatter(d[0]) || ''}, ${bottomTickFormatterFn(d[1])}, ${d[2]}`);
+
+			const markerWidth = barWidth * 1.25;
+			const markerOffset = markerWidth / 2;
+			select(nodes[3])
+				.selectAll('path')
+				.data(markerData)
+				.join('path')
+				.attr(
+					'd',
+					vertical
+						? (d, i) => {
+								const x = bottomScale(selectedData[i][1]) - markerOffset;
+								const y = leftScale(d);
+								return `m${x},${y}h${markerWidth}`;
+							}
+						: (d, i) => {
+								const x = bottomScale(d);
+								const y = leftScale(selectedData[i][1]) - markerOffset;
+								return `m${x},${y}v${markerWidth}`;
+							}
+				);
+
 			if (hintEnabled) {
 				bar
 					.on('mousemove', (event, d) =>
@@ -294,6 +336,7 @@ const SimpleBarChart = ({
 						</g>
 						<ChartAxes />
 						<g className="Chart__bars" role="group" aria-label={/* TODO translate */ `data`} />
+						<g className="Chart__markers" />
 						<g className="Chart__zero" />
 						{dataLoading && <LoadingGrid gradientId={gradientId} />}
 					</svg>
