@@ -15,7 +15,7 @@ import {
 	pointsPropType,
 	legendPropType,
 } from './ChartPropTypes';
-import {getDefaultClass, getGroup} from './Getters';
+import getDefaultClass from './getDefaultClass';
 import extractLineDataFromTidy from './extractLineDataFromTidy';
 import extractLineDataFromColumns from './extractLineDataFromColumns';
 import getDomain from './getDomain';
@@ -28,7 +28,7 @@ import getTicks from './getTicks';
 import drawLeftAxis from './drawLeftAxis';
 import drawBottomAxis from './drawBottomAxis';
 import drawGrid from './drawGrid';
-import mappers from './mappers';
+import scaleProperties from './scaleProperties';
 import tickFormatters from './tickFormatters';
 import hintFormatters from './hintFormatters';
 import updateHint from './updateHint';
@@ -141,23 +141,23 @@ const LineChart = ({
 	const {
 		format: dataFormat,
 		groupFormatter: dataGroupFormatter,
-		groupMapper: dataGroupMapper,
+		groupMapsTo: dataGroupMapsTo,
 		loading: dataLoading,
 		selectedGroups: dataSelectedGroups,
 	} = {
 		format: 'tidy',
 		groupFormatter: identity,
-		groupMapper: getGroup,
+		groupMapsTo: 'group',
 		loading: false,
 		...dataOptions,
 	};
 	const dataExtract = dataExtractors[dataFormat];
 	const {groupCount: colorGroupCount, option: colorOption} = {groupCount: null, option: 1, ...color?.pairing};
 	const {domain: bottomDomain, scaleType: bottomScaleType, title: bottomTitle} = {scaleType: 'labels', ...bottomAxis};
-	const bottomMapper = bottomAxis?.mapper || mappers[bottomScaleType];
+	const bottomMapsTo = bottomAxis?.mapsTo || scaleProperties[bottomScaleType];
 	const {formatter: bottomTickFormatter} = {formatter: tickFormatters[bottomScaleType], ...bottomAxis?.ticks};
 	const {domain: leftDomain, scaleType: leftScaleType, title: leftTitle} = {scaleType: 'linear', ...leftAxis};
-	const leftMapper = leftAxis?.mapper || mappers[leftScaleType];
+	const leftMapsTo = leftAxis?.mapsTo || scaleProperties[leftScaleType];
 	const {formatter: leftTickFormatter} = {formatter: tickFormatters[leftScaleType], ...leftAxis?.ticks};
 	const {
 		enabled: pointsEnabled,
@@ -196,9 +196,9 @@ const LineChart = ({
 		const {groups, groupIndex, hintValues, leftList, bottomList, pointList} = dataExtract(
 			data,
 			dataSelectedGroups,
-			dataGroupMapper,
-			bottomMapper,
-			leftMapper
+			dataGroupMapsTo,
+			bottomMapsTo,
+			leftMapsTo
 		);
 		return {
 			groups,
@@ -211,15 +211,15 @@ const LineChart = ({
 		};
 	}, [
 		bottomDomain,
-		bottomMapper,
+		bottomMapsTo,
 		bottomScaleType,
 		data,
 		dataExtract,
-		dataGroupMapper,
+		dataGroupMapsTo,
 		dataLoading,
 		dataSelectedGroups,
 		leftDomain,
-		leftMapper,
+		leftMapsTo,
 		leftScaleType,
 	]);
 

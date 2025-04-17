@@ -1,4 +1,4 @@
-export default (data, selected, getGroup, getBottomValue, getLeftValue) => {
+export default (data, selected, groupMapsTo, bottomMapsTo, leftMapsTo) => {
 	const selectedSet = new Set(selected);
 	const allSelected = selectedSet.size === 0;
 	const bottomSet = new Set();
@@ -8,13 +8,13 @@ export default (data, selected, getGroup, getBottomValue, getLeftValue) => {
 	const hintValues = new Map();
 	const pointList = [];
 	for (const d of data) {
-		const group = getGroup(d);
+		const group = d[groupMapsTo];
 		if (!groupIndex.has(group)) {
 			groupIndex.set(group, groupIndex.size);
 		}
 		if (allSelected || selectedSet.has(group)) {
-			const bottomValue = getBottomValue(d);
-			const leftValue = getLeftValue(d);
+			const bottomValue = d[bottomMapsTo];
+			const leftValue = d[leftMapsTo];
 			bottomSet.add(bottomValue);
 			if (leftValue !== null) {
 				leftSet.add(leftValue);

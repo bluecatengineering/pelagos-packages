@@ -31,7 +31,7 @@ exports[`MeterChart rendering renders expected elements 1`] = `
     >
       <div
         aria-label={null}
-        className="Chart__meterBar getColorClass"
+        className="Chart__meterBar getDefaultClass"
         data-index={0}
         id="random-id-0"
         onClick={null}
@@ -70,7 +70,7 @@ exports[`MeterChart rendering renders expected elements when optional properties
     >
       <div
         aria-label="b, linear-hint"
-        className="Chart__meterBar getColorClass clickable"
+        className="Chart__meterBar getDefaultClass clickable"
         data-index={0}
         id="random-id-0"
         onClick={[Function]}
@@ -132,7 +132,7 @@ exports[`MeterChart rendering renders expected elements when proportional is set
     >
       <div
         aria-label={null}
-        className="Chart__meterBar getColorClass"
+        className="Chart__meterBar getDefaultClass"
         data-index={0}
         id="random-id-0"
         onClick={null}
@@ -147,7 +147,7 @@ exports[`MeterChart rendering renders expected elements when proportional is set
       />
       <div
         aria-label={null}
-        className="Chart__meterBar getColorClass"
+        className="Chart__meterBar getDefaultClass"
         data-index={1}
         id="random-id-1"
         onClick={null}
@@ -162,7 +162,7 @@ exports[`MeterChart rendering renders expected elements when proportional is set
       />
       <div
         aria-label={null}
-        className="Chart__meterBar getColorClass"
+        className="Chart__meterBar getDefaultClass"
         data-index={2}
         id="random-id-2"
         onClick={null}
@@ -190,7 +190,44 @@ exports[`MeterChart rendering renders expected elements when proportional is set
     clickable={false}
     direction="horizontal"
     formatter={[Function]}
-    getBgClass={[Function]}
+    getBgClass={
+      [MockFunction] {
+        "calls": [
+          [
+            "Alpha",
+            null,
+            12,
+            "getColorClass",
+          ],
+          [
+            "Beta",
+            null,
+            15,
+            "getColorClass",
+          ],
+          [
+            "Gamma",
+            null,
+            6,
+            "getColorClass",
+          ],
+        ],
+        "results": [
+          {
+            "type": "return",
+            "value": "getDefaultClass",
+          },
+          {
+            "type": "return",
+            "value": "getDefaultClass",
+          },
+          {
+            "type": "return",
+            "value": "getDefaultClass",
+          },
+        ],
+      }
+    }
     groups={
       [
         "Alpha",
@@ -240,7 +277,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
     >
       <div
         aria-label={null}
-        className="Chart__meterBar Chart__meterDangerBg"
+        className="Chart__meterBar getDefaultClass"
         data-index={0}
         id="random-id-0"
         onClick={null}
@@ -304,7 +341,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
     >
       <div
         aria-label={null}
-        className="Chart__meterBar Chart__meterSuccessBg"
+        className="Chart__meterBar getDefaultClass"
         data-index={0}
         id="random-id-0"
         onClick={null}
@@ -368,7 +405,7 @@ exports[`MeterChart rendering renders expected elements when status is set and v
     >
       <div
         aria-label={null}
-        className="Chart__meterBar Chart__meterWarningBg"
+        className="Chart__meterBar getDefaultClass"
         data-index={0}
         id="random-id-0"
         onClick={null}

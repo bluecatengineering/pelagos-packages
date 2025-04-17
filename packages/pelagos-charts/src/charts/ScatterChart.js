@@ -13,7 +13,7 @@ import {
 	pointsPropType,
 	legendPropType,
 } from './ChartPropTypes';
-import {getDefaultClass, getGroup} from './Getters';
+import getDefaultClass from './getDefaultClass';
 import getDomain from './getDomain';
 import getColorClass from './getColorClass';
 import getColorVariant from './getColorVariant';
@@ -23,7 +23,7 @@ import getTicks from './getTicks';
 import drawLeftAxis from './drawLeftAxis';
 import drawBottomAxis from './drawBottomAxis';
 import drawGrid from './drawGrid';
-import mappers from './mappers';
+import scaleProperties from './scaleProperties';
 import tickFormatters from './tickFormatters';
 import hintFormatters from './hintFormatters';
 import SingleHint from './SingleHint';
@@ -35,7 +35,7 @@ import ChartAxes from './ChartAxes';
 import LoadingGrid from './LoadingGrid';
 import './Chart.less';
 
-const defaultExtractor = (data, selected, getGroup, getBottomValue, getLeftValue) => {
+const defaultExtractor = (data, selected, groupMapsTo, bottomMapsTo, leftMapsTo) => {
 	const selectedSet = new Set(selected);
 	const allSelected = selectedSet.size === 0;
 	const bottomSet = new Set();
@@ -43,13 +43,13 @@ const defaultExtractor = (data, selected, getGroup, getBottomValue, getLeftValue
 	const groupIndex = new Map();
 	const pointList = [];
 	for (const d of data) {
-		const group = getGroup(d);
+		const group = d[groupMapsTo];
 		if (!groupIndex.has(group)) {
 			groupIndex.set(group, groupIndex.size);
 		}
 		if (allSelected || selectedSet.has(group)) {
-			const bottomValue = getBottomValue(d);
-			const leftValue = getLeftValue(d);
+			const bottomValue = d[bottomMapsTo];
+			const leftValue = d[leftMapsTo];
 			bottomSet.add(bottomValue);
 			if (leftValue !== null) {
 				leftSet.add(leftValue);
@@ -87,21 +87,21 @@ const ScatterChart = ({
 
 	const {
 		groupFormatter: dataGroupFormatter,
-		groupMapper: dataGroupMapper,
+		groupMapsTo: dataGroupMapsTo,
 		loading: dataLoading,
 		selectedGroups: dataSelectedGroups,
 	} = {
 		groupFormatter: identity,
-		groupMapper: getGroup,
+		groupMapsTo: 'group',
 		loading: false,
 		...dataOptions,
 	};
 	const {groupCount: colorGroupCount, option: colorOption} = {groupCount: null, option: 1, ...color?.pairing};
 	const {domain: bottomDomain, scaleType: bottomScaleType, title: bottomTitle} = {scaleType: 'labels', ...bottomAxis};
-	const bottomMapper = bottomAxis?.mapper || mappers[bottomScaleType];
+	const bottomMapsTo = bottomAxis?.mapsTo || scaleProperties[bottomScaleType];
 	const {formatter: bottomTickFormatter} = {formatter: tickFormatters[bottomScaleType], ...bottomAxis?.ticks};
 	const {domain: leftDomain, scaleType: leftScaleType, title: leftTitle} = {scaleType: 'linear', ...leftAxis};
-	const leftMapper = leftAxis?.mapper || mappers[leftScaleType];
+	const leftMapsTo = leftAxis?.mapsTo || scaleProperties[leftScaleType];
 	const {formatter: leftTickFormatter} = {formatter: tickFormatters[leftScaleType], ...leftAxis?.ticks};
 	const {
 		enabled: pointsEnabled,
@@ -139,9 +139,9 @@ const ScatterChart = ({
 		const {groupIndex, leftList, bottomList, pointList} = defaultExtractor(
 			data,
 			dataSelectedGroups,
-			dataGroupMapper,
-			bottomMapper,
-			leftMapper
+			dataGroupMapsTo,
+			bottomMapsTo,
+			leftMapsTo
 		);
 		return {
 			groupIndex,
@@ -151,14 +151,14 @@ const ScatterChart = ({
 		};
 	}, [
 		bottomDomain,
-		bottomMapper,
+		bottomMapsTo,
 		bottomScaleType,
 		data,
-		dataGroupMapper,
+		dataGroupMapsTo,
 		dataLoading,
 		dataSelectedGroups,
 		leftDomain,
-		leftMapper,
+		leftMapsTo,
 		leftScaleType,
 	]);
 

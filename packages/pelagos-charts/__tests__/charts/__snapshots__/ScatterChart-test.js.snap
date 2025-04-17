@@ -31,7 +31,7 @@ exports[`ScatterChart rendering renders expected elements 1`] = `
     clickable={true}
     direction="horizontal"
     formatter={[Function]}
-    getBgClass={[Function]}
+    getBgClass={[MockFunction]}
     groups={[]}
   />
   <div
@@ -74,7 +74,7 @@ exports[`ScatterChart rendering renders expected elements when data loading is s
     clickable={true}
     direction="horizontal"
     formatter={[Function]}
-    getBgClass={[Function]}
+    getBgClass={[MockFunction]}
     groups={[]}
   />
   <div
@@ -114,7 +114,7 @@ exports[`ScatterChart rendering renders expected elements when optional properti
     clickable={true}
     direction="horizontal"
     formatter={[Function]}
-    getBgClass={[Function]}
+    getBgClass={[MockFunction]}
     groups={[]}
   />
   <div

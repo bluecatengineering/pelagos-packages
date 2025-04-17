@@ -2,10 +2,6 @@ import extractLineDataFromTidy from '../../src/charts/extractLineDataFromTidy';
 
 jest.unmock('../../src/charts/extractLineDataFromTidy');
 
-const getGroup = (d) => d.group;
-const getDate = (d) => d.date;
-const getValue = (d) => d.value;
-
 const data = [
 	{group: 'a', date: 1577854800000, value: 8},
 	{group: 'a', date: 1579064400000, value: 1},
@@ -17,7 +13,7 @@ const data = [
 
 describe('extractLineDataFromTidy', () => {
 	it('returns expected data', () => {
-		expect(extractLineDataFromTidy(data, null, getGroup, getDate, getValue)).toEqual({
+		expect(extractLineDataFromTidy(data, null, 'group', 'date', 'value')).toEqual({
 			groups: new Map([
 				['a', [8, 1, 3]],
 				['b', [5, null, 9]],
@@ -56,7 +52,7 @@ describe('extractLineDataFromTidy', () => {
 	});
 
 	it('returns expected data when selected is set', () => {
-		expect(extractLineDataFromTidy(data, ['b'], getGroup, getDate, getValue)).toEqual({
+		expect(extractLineDataFromTidy(data, ['b'], 'group', 'date', 'value')).toEqual({
 			groups: new Map([['b', [5, null, 9]]]),
 			groupIndex: new Map([
 				['a', 0],

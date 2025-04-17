@@ -5,10 +5,10 @@ import {Layer, useRandomId} from '@bluecateng/pelagos';
 
 import MeterChart from '../../src/charts/MeterChart';
 import getColorClass from '../../src/charts/getColorClass';
+import getDefaultClass from '../../src/charts/getDefaultClass';
 import hintFormatters from '../../src/charts/hintFormatters';
 
 jest.unmock('../../src/charts/MeterChart');
-jest.unmock('../../src/charts/Getters');
 
 jest.mock('../../src/charts/hintFormatters', () => ({
 	linear: jest.fn().mockReturnValue('linear-hint'),
@@ -18,6 +18,7 @@ const anyFunction = expect.any(Function);
 
 useRandomId.mockReturnValue('random-id');
 getColorClass.mockReturnValue('getColorClass');
+getDefaultClass.mockReturnValue('getDefaultClass');
 
 describe('MeterChart', () => {
 	describe('rendering', () => {
@@ -25,6 +26,7 @@ describe('MeterChart', () => {
 			const wrapper = shallow(<MeterChart data={[{group: 'a', value: 35}]} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 			expect(getColorClass.mock.calls).toEqual([['bg', undefined, 1, 0]]);
+			expect(getDefaultClass.mock.calls).toEqual([['a', null, 35, 'getColorClass']]);
 		});
 
 		it('renders expected elements when optional properties are set', () => {

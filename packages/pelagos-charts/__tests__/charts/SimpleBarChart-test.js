@@ -5,7 +5,7 @@ import identity from 'lodash-es/identity';
 import {addResizeObserver, Layer, useRandomId} from '@bluecateng/pelagos';
 
 import SimpleBarChart from '../../src/charts/SimpleBarChart';
-import {getDefaultClass} from '../../src/charts/Getters';
+import getDefaultClass from '../../src/charts/getDefaultClass';
 import getPlotBottom from '../../src/charts/getPlotBottom';
 import createScale from '../../src/charts/createScale';
 import getTicks from '../../src/charts/getTicks';
@@ -18,8 +18,6 @@ import extendDomain from '../../src/charts/extendDomain';
 import drawLoadingGrid from '../../src/charts/drawLoadingGrid';
 
 jest.unmock('../../src/charts/SimpleBarChart');
-jest.unmock('../../src/charts/Getters');
-jest.unmock('../../src/charts/mappers');
 
 jest.mock('../../src/charts/hintFormatters', () => ({
 	labels: 'labels-hint',
@@ -40,6 +38,7 @@ global.innerWidth = 800;
 
 useRandomId.mockReturnValue('random-id');
 addResizeObserver.mockReturnValue('addResizeObserver');
+getDefaultClass.mockReturnValue('getDefaultClass');
 getColorClass.mockReturnValue('getColorClass');
 getColorVariant.mockReturnValue('getColorVariant');
 
@@ -195,7 +194,7 @@ describe('SimpleBarChart', () => {
 				['click', anyFunction],
 			]);
 
-			expect(barSelect.attr.mock.calls[0][1](['b'])).toBe('getColorClass');
+			expect(barSelect.attr.mock.calls[0][1](['b'])).toBe('getDefaultClass');
 			expect(barSelect.attr.mock.calls[1][1](['', 'foo', 5])).toBe('m56,140h48v-50h-48z');
 			expect(barSelect.attr.mock.calls[1][1](['', 'bar', 0])).toBe('m136,140h48v0h-48z');
 			expect(barSelect.attr.mock.calls[1][1](['', 'baz', -5])).toBe('m216,140h48v50h-48z');
@@ -230,6 +229,7 @@ describe('SimpleBarChart', () => {
 			expect(leftScale.mock.calls).toEqual([[0], [5], [-5]]);
 			expect(bottomScale.mock.calls).toEqual([['foo'], ['bar'], ['baz']]);
 			expect(getColorClass.mock.calls).toEqual([['fill', 'getColorVariant', 1, 1]]);
+			expect(getDefaultClass.mock.calls).toEqual([['b', undefined, undefined, 'getColorClass']]);
 		});
 
 		it('adds an effect which renders the chart when alternate options are specified', () => {
@@ -373,8 +373,8 @@ describe('SimpleBarChart', () => {
 						{group: 'a', key: 'bar', value: 1},
 						{group: 'b', key: 'foo', value: 5},
 					]}
-					bottomAxis={{scaleType: 'linear', mapper: (d) => d.value}}
-					leftAxis={{scaleType: 'labels', mapper: (d) => d.key}}
+					bottomAxis={{scaleType: 'linear', mapsTo: 'value'}}
+					leftAxis={{scaleType: 'labels', mapsTo: 'key'}}
 				/>
 			);
 			expect(useLayoutEffect.mock.calls[0]).toEqual([
@@ -484,8 +484,8 @@ describe('SimpleBarChart', () => {
 						{group: 'a', key: 'bar', value: -1},
 						{group: 'b', key: 'foo', value: 5},
 					]}
-					bottomAxis={{scaleType: 'linear', mapper: (d) => d.value}}
-					leftAxis={{scaleType: 'labels', mapper: (d) => d.key}}
+					bottomAxis={{scaleType: 'linear', mapsTo: 'value'}}
+					leftAxis={{scaleType: 'labels', mapsTo: 'key'}}
 				/>
 			);
 			expect(useLayoutEffect.mock.calls[0]).toEqual([

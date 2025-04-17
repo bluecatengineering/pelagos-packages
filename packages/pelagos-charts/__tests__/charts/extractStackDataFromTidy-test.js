@@ -2,10 +2,6 @@ import extractStackDataFromTidy from '../../src/charts/extractStackDataFromTidy'
 
 jest.unmock('../../src/charts/extractStackDataFromTidy');
 
-const getGroup = (d) => d.group;
-const getKey = (d) => d.key;
-const getValue = (d) => d.value;
-
 const data = [
 	{group: 'a', key: 'foo', value: 8},
 	{group: 'a', key: 'bar', value: 1},
@@ -15,7 +11,7 @@ const data = [
 
 describe('extractStackDataFromTidy', () => {
 	it('returns expected data', () => {
-		expect(extractStackDataFromTidy(data, null, getGroup, getKey, getValue)).toEqual({
+		expect(extractStackDataFromTidy(data, null, 'group', 'key', 'value')).toEqual({
 			stackData: new Map([
 				[
 					'foo',
@@ -46,7 +42,7 @@ describe('extractStackDataFromTidy', () => {
 	});
 
 	it('returns expected data when selected is set', () => {
-		expect(extractStackDataFromTidy(data, ['b'], getGroup, getKey, getValue)).toEqual({
+		expect(extractStackDataFromTidy(data, ['b'], 'group', 'key', 'value')).toEqual({
 			stackData: new Map([['foo', new Map([['b', 5]])]]),
 			groupSet: new Set(['b']),
 			groupIndex: new Map([

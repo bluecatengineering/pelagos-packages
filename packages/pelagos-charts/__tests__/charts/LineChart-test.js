@@ -16,15 +16,13 @@ import drawBottomAxis from '../../src/charts/drawBottomAxis';
 import drawGrid from '../../src/charts/drawGrid';
 import getColorClass from '../../src/charts/getColorClass';
 import getColorVariant from '../../src/charts/getColorVariant';
-import {getDefaultClass, getGroup, getValue} from '../../src/charts/Getters';
-import mappers from '../../src/charts/mappers';
+import getDefaultClass from '../../src/charts/getDefaultClass';
 import updateHint from '../../src/charts/updateHint';
 import getDomain from '../../src/charts/getDomain';
 import extractLineDataFromTidy from '../../src/charts/extractLineDataFromTidy';
 import drawLoadingGrid from '../../src/charts/drawLoadingGrid';
 
 jest.unmock('../../src/charts/LineChart');
-jest.unmock('../../src/charts/mappers');
 
 jest.mock('d3-shape', () => ({curveMonotoneX: 'curveMonotoneX', line: jest.fn()}));
 
@@ -42,9 +40,6 @@ jest.mock('../../src/charts/hintFormatters', () => ({
 }));
 
 const anyFunction = expect.any(Function);
-
-const getX = (d) => d.x;
-const getY = (d) => d.y;
 
 const createLineFn = () =>
 	Object.assign(jest.fn().mockReturnValue('line'), {
@@ -223,7 +218,7 @@ describe('LineChart', () => {
 					onDrag={onDrag}
 				/>
 			);
-			expect(extractLineDataFromTidy.mock.calls).toEqual([[data, undefined, getGroup, mappers.time, getValue]]);
+			expect(extractLineDataFromTidy.mock.calls).toEqual([[data, undefined, 'group', 'date', 'value']]);
 			expect(useLayoutEffect.mock.calls[0]).toEqual([
 				anyFunction,
 				[
@@ -612,8 +607,8 @@ describe('LineChart', () => {
 					curve="natural"
 					dataOptions={{groupFormatter: 'test-formatter', selectedGroups: ['a']}}
 					color={{pairing: {groupCount: 5, option: 2}}}
-					bottomAxis={{domain: 'bottom-domain', scaleType: 'log', title: 'Bottom title', mapper: getX}}
-					leftAxis={{domain: 'left-domain', scaleType: 'linear', title: 'Left title', mapper: getY}}
+					bottomAxis={{domain: 'bottom-domain', scaleType: 'log', title: 'Bottom title', mapsTo: 'x'}}
+					leftAxis={{domain: 'left-domain', scaleType: 'linear', title: 'Left title', mapsTo: 'y'}}
 					points={{filled: true, radius: 5}}
 					hint={{
 						enabled: false,
@@ -625,7 +620,7 @@ describe('LineChart', () => {
 					}}
 				/>
 			);
-			expect(extractLineDataFromTidy.mock.calls).toEqual([[data, ['a'], getGroup, getX, getY]]);
+			expect(extractLineDataFromTidy.mock.calls).toEqual([[data, ['a'], 'group', 'x', 'y']]);
 			expect(useLayoutEffect.mock.calls[0]).toEqual([
 				anyFunction,
 				[

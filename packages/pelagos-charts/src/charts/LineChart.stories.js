@@ -2,9 +2,6 @@ import {useState} from 'react';
 
 import LineChart from './LineChart';
 
-const getX = (d) => d.x;
-const getY = (d) => d.y;
-
 export default {
 	title: 'Experimental Charts/LineChart',
 	component: LineChart,
@@ -118,8 +115,8 @@ export const BothScalesLinear = {
 			{group: 'Gamma', x: 3, y: 12e3},
 			{group: 'Gamma', x: 4, y: 6e3},
 		],
-		bottomAxis: {scaleType: 'linear', mapper: getX},
-		leftAxis: {mapper: getY},
+		bottomAxis: {scaleType: 'linear', mapsTo: 'x'},
+		leftAxis: {mapsTo: 'y'},
 	},
 };
 
@@ -140,8 +137,8 @@ export const BothScalesLabels = {
 			{group: 'Gamma', x: 'c', y: 'One'},
 			{group: 'Gamma', x: 'd', y: 'Five'},
 		],
-		bottomAxis: {mapper: getX},
-		leftAxis: {scaleType: 'labels', mapper: getY},
+		bottomAxis: {mapsTo: 'x'},
+		leftAxis: {scaleType: 'labels', mapsTo: 'y'},
 		hint: {showTotal: false},
 	},
 };

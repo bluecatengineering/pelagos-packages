@@ -14,14 +14,12 @@ import drawBottomAxis from '../../src/charts/drawBottomAxis';
 import drawGrid from '../../src/charts/drawGrid';
 import getColorClass from '../../src/charts/getColorClass';
 import getColorVariant from '../../src/charts/getColorVariant';
-import {getDefaultClass, getKey, getValue} from '../../src/charts/Getters';
+import getDefaultClass from '../../src/charts/getDefaultClass';
 import SingleHint from '../../src/charts/SingleHint';
 import drawLoadingGrid from '../../src/charts/drawLoadingGrid';
 import tickFormatters from '../../src/charts/tickFormatters';
 
 jest.unmock('../../src/charts/ScatterChart');
-jest.unmock('../../src/charts/Getters');
-jest.unmock('../../src/charts/mappers');
 
 jest.mock('../../src/charts/tickFormatters', () => ({
 	labels: null,
@@ -59,6 +57,7 @@ useRandomId.mockReturnValue('random-id');
 addResizeObserver.mockReturnValue('addResizeObserver');
 getColorClass.mockReturnValue('getColorClass');
 getColorVariant.mockReturnValue('getColorVariant');
+getDefaultClass.mockReturnValue('getDefaultClass');
 
 describe('ScatterChart', () => {
 	describe('rendering', () => {
@@ -215,7 +214,7 @@ describe('ScatterChart', () => {
 			]);
 			const dotsDatum = ['b', 1580533200000, 8];
 			tickFormatters.time.mockReturnValueOnce('time-tick-1').mockReturnValueOnce('time-tick-2');
-			expect(dots.attr.mock.calls[0][1](dotsDatum)).toBe('filled getColorClass getColorClass');
+			expect(dots.attr.mock.calls[0][1](dotsDatum)).toBe('filled getDefaultClass getDefaultClass');
 			expect(dots.attr.mock.calls[3][1](dotsDatum)).toBe(100);
 			expect(dots.attr.mock.calls[4][1](dotsDatum)).toBe(50);
 			expect(dots.attr.mock.calls[7][1](dotsDatum)).toBe('b, time-tick-1, 8');
@@ -274,6 +273,10 @@ describe('ScatterChart', () => {
 				['stroke', 'getColorVariant', 1, 1],
 				['fill', 'getColorVariant', 1, 1],
 			]);
+			expect(getDefaultClass.mock.calls).toEqual([
+				['b', 1580533200000, 8, 'getColorClass'],
+				['b', 1580533200000, 8, 'getColorClass'],
+			]);
 		});
 
 		it('adds an effect which renders the chart when alternate options are specified', () => {
@@ -303,8 +306,8 @@ describe('ScatterChart', () => {
 					data={data}
 					dataOptions={{groupFormatter: 'test-formatter', selectedGroups: ['a']}}
 					color={{pairing: {groupCount: 5, option: 2}}}
-					bottomAxis={{domain: 'bottom-domain', scaleType: 'log', title: 'Bottom title', mapper: getValue}}
-					leftAxis={{domain: 'left-domain', scaleType: 'labels', title: 'Left title', mapper: getKey}}
+					bottomAxis={{domain: 'bottom-domain', scaleType: 'log', title: 'Bottom title', mapsTo: 'value'}}
+					leftAxis={{domain: 'left-domain', scaleType: 'labels', title: 'Left title', mapsTo: 'key'}}
 					points={{fillOpacity: 0.8, filled: false, radius: 5}}
 					hint={{
 						enabled: false,
@@ -379,7 +382,7 @@ describe('ScatterChart', () => {
 				['aria-roledescription', 'point'],
 				['aria-label', anyFunction],
 			]);
-			expect(dots.attr.mock.calls[0][1](['a', 'foo', 8])).toBe('hollow getColorClass getColorClass');
+			expect(dots.attr.mock.calls[0][1](['a', 'foo', 8])).toBe('hollow getDefaultClass getDefaultClass');
 
 			expect(leftScale.mock.calls).toEqual([]);
 			expect(bottomScale.mock.calls).toEqual([]);

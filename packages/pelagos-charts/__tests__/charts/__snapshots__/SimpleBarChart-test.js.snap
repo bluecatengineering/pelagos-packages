@@ -98,7 +98,7 @@ exports[`SimpleBarChart rendering renders expected elements when optional proper
     clickable={true}
     direction="horizontal"
     formatter={[Function]}
-    getBgClass={[Function]}
+    getBgClass={[MockFunction]}
     groups={[]}
   />
   <div
