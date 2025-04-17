@@ -1,4 +1,25 @@
+import {Layer} from '@bluecateng/pelagos';
+import {format} from 'd3-format';
+
 import SimpleBarChart from './SimpleBarChart';
+
+const siFormatter = format('.3s');
+
+const markerHint = (item) => (
+	<Layer as="ul" className="Chart__hint">
+		<li>
+			<span>{item.key}</span>
+		</li>
+		<li>
+			<span>Value</span>
+			<span>{siFormatter(item.value)}</span>
+		</li>
+		<li>
+			<span>Marker</span>
+			<span>{siFormatter(item.marker)}</span>
+		</li>
+	</Layer>
+);
 
 export default {
 	title: 'Experimental Charts/SimpleBarChart',
@@ -40,6 +61,7 @@ export const WithMarker = {
 			{key: 'Delta', value: 2e3, marker: 2.5e3},
 		],
 		leftAxis: {extendLinearDomainBy: 'marker'},
+		hint: {custom: markerHint},
 	},
 };
 
@@ -83,6 +105,7 @@ export const HorizontalWithMarker = {
 		],
 		bottomAxis: {scaleType: 'linear', extendLinearDomainBy: 'marker'},
 		leftAxis: {scaleType: 'labels'},
+		hint: {custom: markerHint},
 	},
 };
 

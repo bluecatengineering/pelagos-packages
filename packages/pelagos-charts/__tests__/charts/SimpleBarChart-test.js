@@ -63,6 +63,11 @@ describe('SimpleBarChart', () => {
 
 	describe('behaviour', () => {
 		it('adds an effect which renders the chart', () => {
+			const data = [
+				{group: 'a', key: 'foo', value: 8},
+				{group: 'a', key: 'bar', value: 1},
+				{group: 'b', key: 'foo', value: 5},
+			];
 			const headerFormatter = jest.fn().mockReturnValue('header');
 			const valueFormatter = jest.fn().mockReturnValue('value');
 			const onClick = jest.fn();
@@ -96,9 +101,9 @@ describe('SimpleBarChart', () => {
 			};
 			const bottomSet = new Set(['foo', 'bar']);
 			const selectedData = [
-				['a', 'foo', 8],
-				['a', 'bar', 1],
-				['b', 'foo', 5],
+				['a', 'foo', 8, data[0]],
+				['a', 'bar', 1, data[1]],
+				['b', 'foo', 5, data[2]],
 			];
 			const leftDomain = [0, 8.8];
 			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({}).mockReturnValueOnce({});
@@ -109,17 +114,7 @@ describe('SimpleBarChart', () => {
 			getTicks.mockReturnValueOnce(leftTicks).mockReturnValueOnce(bottomSet);
 			drawLeftAxis.mockReturnValueOnce(38);
 			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect).mockReturnValueOnce(markerSelect);
-			shallow(
-				<SimpleBarChart
-					data={[
-						{group: 'a', key: 'foo', value: 8},
-						{group: 'a', key: 'bar', value: 1},
-						{group: 'b', key: 'foo', value: 5},
-					]}
-					hint={{headerFormatter, valueFormatter}}
-					onClick={onClick}
-				/>
-			);
+			shallow(<SimpleBarChart data={data} hint={{headerFormatter, valueFormatter}} onClick={onClick} />);
 			expect(useLayoutEffect.mock.calls[0]).toEqual([
 				anyFunction,
 				[
@@ -131,6 +126,7 @@ describe('SimpleBarChart', () => {
 					identity,
 					false,
 					getDefaultClass,
+					anyFunction,
 					true,
 					headerFormatter,
 					valueFormatter,
@@ -245,6 +241,11 @@ describe('SimpleBarChart', () => {
 		});
 
 		it('adds an effect which renders the chart when alternate options are specified', () => {
+			const data = [
+				{group: 'a', key: 'foo', value: 8, marker: 9},
+				{group: 'a', key: 'bar', value: -1, marker: 2},
+				{group: 'b', key: 'foo', value: 5, marker: 4},
+			];
 			const current = {
 				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}, {id: '4'}],
 				getBoundingClientRect: () => ({width: 400, height: 300}),
@@ -274,8 +275,8 @@ describe('SimpleBarChart', () => {
 			};
 			const bottomList = ['foo', 'bar'];
 			const selectedData = [
-				['a', 'foo', 8],
-				['a', 'bar', -1],
+				['a', 'foo', 8, data[0]],
+				['a', 'bar', -1, data[1]],
 			];
 			const markerData = [9, 2];
 			const leftDomain = [-1, 8];
@@ -287,11 +288,7 @@ describe('SimpleBarChart', () => {
 			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect).mockReturnValueOnce(markerSelect);
 			shallow(
 				<SimpleBarChart
-					data={[
-						{group: 'a', key: 'foo', value: 8, marker: 9},
-						{group: 'a', key: 'bar', value: -1, marker: 2},
-						{group: 'b', key: 'foo', value: 5, marker: 4},
-					]}
+					data={data}
 					dataOptions={{groupFormatter: 'test-formatter', selectedGroups: ['a']}}
 					color={{pairing: {groupCount: 5, option: 2}}}
 					bottomAxis={{domain: 'test-bottom-domain', title: 'Bottom title'}}
@@ -310,6 +307,7 @@ describe('SimpleBarChart', () => {
 					'test-formatter',
 					false,
 					getDefaultClass,
+					anyFunction,
 					false,
 					'test-header-formatter',
 					'test-value-formatter',
@@ -361,6 +359,11 @@ describe('SimpleBarChart', () => {
 		});
 
 		it('adds an effect which renders the chart when leftScaleType is labels', () => {
+			const data = [
+				{group: 'a', key: 'foo', value: 8, marker: 9},
+				{group: 'a', key: 'bar', value: 1, marker: 2},
+				{group: 'b', key: 'foo', value: 5, marker: 4},
+			];
 			const current = {
 				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}, {id: '4'}],
 				getBoundingClientRect: () => ({width: 400, height: 300}),
@@ -400,9 +403,9 @@ describe('SimpleBarChart', () => {
 			};
 			const leftSet = new Set(['foo', 'bar']);
 			const selectedData = [
-				['a', 'foo', 8],
-				['a', 'bar', 1],
-				['b', 'foo', 5],
+				['a', 'foo', 8, data[0]],
+				['a', 'bar', 1, data[1]],
+				['b', 'foo', 5, data[2]],
 			];
 			const markerData = [9, 2, 4];
 			const bottomDomain = [0, 8.8];
@@ -415,11 +418,7 @@ describe('SimpleBarChart', () => {
 			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect).mockReturnValueOnce(markerSelect);
 			shallow(
 				<SimpleBarChart
-					data={[
-						{group: 'a', key: 'foo', value: 8, marker: 9},
-						{group: 'a', key: 'bar', value: 1, marker: 2},
-						{group: 'b', key: 'foo', value: 5, marker: 4},
-					]}
+					data={data}
 					bottomAxis={{scaleType: 'linear', mapsTo: 'value', extendLinearDomainBy: 'marker'}}
 					leftAxis={{scaleType: 'labels', mapsTo: 'key'}}
 				/>
@@ -435,6 +434,7 @@ describe('SimpleBarChart', () => {
 					identity,
 					false,
 					getDefaultClass,
+					anyFunction,
 					true,
 					'labels-hint',
 					'linear-hint',
@@ -497,6 +497,11 @@ describe('SimpleBarChart', () => {
 		});
 
 		it('adds an effect which renders the chart when leftScaleType is labels and bottomDomain min is negative', () => {
+			const data = [
+				{group: 'a', key: 'foo', value: 8},
+				{group: 'a', key: 'bar', value: -1},
+				{group: 'b', key: 'foo', value: 5},
+			];
 			const current = {
 				childNodes: [{id: '0'}, {id: '1', firstChild: {}, lastChild: {}}, {id: '2'}, {id: '3'}, {id: '4'}],
 				getBoundingClientRect: () => ({width: 400, height: 300}),
@@ -526,9 +531,9 @@ describe('SimpleBarChart', () => {
 			};
 			const leftSet = new Set(['foo', 'bar']);
 			const selectedData = [
-				['a', 'foo', 8],
-				['a', 'bar', -1],
-				['b', 'foo', 5],
+				['a', 'foo', 8, data[0]],
+				['a', 'bar', -1, data[1]],
+				['b', 'foo', 5, data[2]],
 			];
 			const bottomDomain = [-1.1, 8.8];
 			useRef.mockReturnValueOnce({current}).mockReturnValueOnce({}).mockReturnValueOnce({});
@@ -540,11 +545,7 @@ describe('SimpleBarChart', () => {
 			select.mockReturnValueOnce(zero).mockReturnValueOnce(barSelect).mockReturnValueOnce(markerSelect);
 			shallow(
 				<SimpleBarChart
-					data={[
-						{group: 'a', key: 'foo', value: 8},
-						{group: 'a', key: 'bar', value: -1},
-						{group: 'b', key: 'foo', value: 5},
-					]}
+					data={data}
 					bottomAxis={{scaleType: 'linear', mapsTo: 'value'}}
 					leftAxis={{scaleType: 'labels', mapsTo: 'key'}}
 				/>
@@ -560,6 +561,7 @@ describe('SimpleBarChart', () => {
 					identity,
 					false,
 					getDefaultClass,
+					anyFunction,
 					true,
 					'labels-hint',
 					'linear-hint',
@@ -631,6 +633,7 @@ describe('SimpleBarChart', () => {
 					identity,
 					true,
 					getDefaultClass,
+					anyFunction,
 					true,
 					'labels-hint',
 					'linear-hint',

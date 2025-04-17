@@ -30,6 +30,8 @@ const {max, min} = Math;
 
 const minBarWidth = 48;
 
+const defaultHint = (_, node) => node;
+
 const SimpleBarChart = ({
 	id,
 	className,
@@ -86,10 +88,12 @@ const SimpleBarChart = ({
 		position: legendPosition,
 	} = {alignment: 'start', clickable: true, enabled: false, position: 'bottom', ...legend};
 	const {
+		custom: hintCustom,
 		enabled: hintEnabled,
 		headerFormatter: hintHeaderFormatter,
 		valueFormatter: hintValueFormatter,
 	} = {
+		custom: defaultHint,
 		enabled: true,
 		headerFormatter: hintFormatters[vertical ? bottomScaleType : leftScaleType],
 		valueFormatter: hintFormatters[vertical ? leftScaleType : bottomScaleType],
@@ -120,7 +124,7 @@ const SimpleBarChart = ({
 			if (allSelected || selectedSet.has(group)) {
 				const label = d[labelMapsTo];
 				const value = d[valueMapsTo];
-				selectedData.push([group, label, value]);
+				selectedData.push([group, label, value, d]);
 				labelSet.add(label);
 				if (value < min) min = value;
 				if (value > max) max = value;
@@ -277,15 +281,16 @@ const SimpleBarChart = ({
 
 			if (hintEnabled) {
 				bar
-					.on('mousemove', (event, d) =>
+					.on('mousemove', (event, [, label, value, data]) =>
 						setHintData({
 							visible: true,
 							x: event.clientX,
 							y: event.clientY,
-							content: (
+							content: hintCustom(
+								data,
 								<Layer className="Chart__simpleHint">
-									<span>{hintHeaderFormatter(d[1])}</span>
-									<span>{hintValueFormatter(d[2])}</span>
+									<span>{hintHeaderFormatter(label)}</span>
+									<span>{hintValueFormatter(value)}</span>
 								</Layer>
 							),
 						})
@@ -310,6 +315,7 @@ const SimpleBarChart = ({
 		dataGroupFormatter,
 		dataLoading,
 		getFillClass,
+		hintCustom,
 		hintEnabled,
 		hintHeaderFormatter,
 		hintValueFormatter,
