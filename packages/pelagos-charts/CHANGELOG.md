@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.2.0...@bluecateng/pelagos-charts@0.3.0) (2025-04-22)
+
+### ⚠ BREAKING CHANGES
+
+- callers must change the implementation to accept a single item.
+- all previous mappers must be changed to property names:
+  groupMapper -> groupMapsTo
+  mapper -> mapsTo
+  valueMapper -> valueMapsTo
+
+### Features
+
+- add option to display markers in SimpleBarChart ([8902a61](https://github.com/bluecatengineering/pelagos-packages/commit/8902a61b608c698590f1a96b9ae7df4f4d4d1f37))
+- add option to specify a custom hint in SimpleBarChart ([22629d0](https://github.com/bluecatengineering/pelagos-packages/commit/22629d0d0f2bcac2d0b5c9ccee6c6e4566035a54))
+- replace property mappers with names ([9aaa1b8](https://github.com/bluecatengineering/pelagos-packages/commit/9aaa1b8844f296584d7033e02d81eb7846a328aa))
+- simplify custom hint parameter in ScatterChart ([6589a7f](https://github.com/bluecatengineering/pelagos-packages/commit/6589a7f0bdb1debe74da1530f834a7e7f5cf6337))
+
 ## [0.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.1.6...@bluecateng/pelagos-charts@0.2.0) (2025-03-17)
 
 ### Features

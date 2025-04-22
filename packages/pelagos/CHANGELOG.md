@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.7](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.6...@bluecateng/pelagos@12.16.7) (2025-04-22)
+
+### Bug Fixes
+
+- show the close button on all toasts with actions ([df2880b](https://github.com/bluecatengineering/pelagos-packages/commit/df2880bef456f9040f203b19679124329aeb8a49))
+- truncate long strings in ListSelector ([f542ff9](https://github.com/bluecatengineering/pelagos-packages/commit/f542ff941df6cf8f6e1e9bcfd9d35bc71cd2ed38))
+
 ## [12.16.6](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.5...@bluecateng/pelagos@12.16.6) (2025-04-10)
 
 ### Bug Fixes
