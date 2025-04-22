@@ -266,7 +266,7 @@ const ScatterChart = ({
 								x: event.clientX,
 								y: event.clientY,
 								content: hintCustom(
-									[data],
+									data,
 									<SingleHint
 										bottomTitle={bottomTitle}
 										bottomValue={bottomValue}
