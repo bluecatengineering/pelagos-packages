@@ -19,63 +19,6 @@ exports[`ListSelector rendering renders expected elements 1`] = `
     className="ListSelector__column"
   >
     <Label
-      id="random-id-available"
-      text="Available"
-    />
-    <div
-      aria-labelledby="random-id-available"
-      className="ListSelector__list"
-      onClick={[Function]}
-      role="list"
-    >
-      <div
-        aria-labelledby="item-baz"
-        className="ListSelector__available"
-        data-key="baz"
-        role="listitem"
-      >
-        <span
-          className="ListSelector__text"
-          id="item-baz"
-          title="Baz"
-        >
-          Baz
-        </span>
-        <button
-          aria-label="Add Baz"
-          className="ListSelector__add"
-          type="button"
-        >
-          <ArrowRight />
-        </button>
-      </div>
-      <div
-        aria-labelledby="item-oof"
-        className="ListSelector__available"
-        data-key="oof"
-        role="listitem"
-      >
-        <span
-          className="ListSelector__text"
-          id="item-oof"
-          title="Oof"
-        >
-          Oof
-        </span>
-        <button
-          aria-label="Add Oof"
-          className="ListSelector__add"
-          type="button"
-        >
-          <ArrowRight />
-        </button>
-      </div>
-    </div>
-  </div>
-  <div
-    className="ListSelector__column"
-  >
-    <Label
       id="random-id-selected"
       text="Selected"
     />
@@ -85,7 +28,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
       onClick={[Function]}
       role="list"
     >
-      <div
+      <Layer
         aria-describedby="random-id-operation"
         aria-labelledby="item-foo"
         className="ListSelector__entry"
@@ -94,29 +37,29 @@ exports[`ListSelector rendering renders expected elements 1`] = `
         role="listitem"
         tabIndex="0"
       >
-        <button
-          aria-label="Remove Foo"
-          className="ListSelector__remove"
-          type="button"
-        >
-          <ArrowLeft />
-        </button>
         <div
           className="ListSelector__name draggable"
           id="item-foo"
         >
+          <Draggable
+            className="ListSelector__grip"
+          />
           <span
             className="ListSelector__text"
             title="Foo"
           >
             Foo
           </span>
-          <Draggable
-            className="ListSelector__grip"
-          />
         </div>
-      </div>
-      <div
+        <button
+          aria-label="Remove Foo"
+          className="ListSelector__remove"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </Layer>
+      <Layer
         aria-describedby="random-id-operation"
         aria-labelledby="item-bar"
         className="ListSelector__entry"
@@ -125,28 +68,85 @@ exports[`ListSelector rendering renders expected elements 1`] = `
         role="listitem"
         tabIndex="0"
       >
-        <button
-          aria-label="Remove Bar"
-          className="ListSelector__remove"
-          type="button"
-        >
-          <ArrowLeft />
-        </button>
         <div
           className="ListSelector__name draggable"
           id="item-bar"
         >
+          <Draggable
+            className="ListSelector__grip"
+          />
           <span
             className="ListSelector__text"
             title="Bar"
           >
             Bar
           </span>
-          <Draggable
-            className="ListSelector__grip"
-          />
         </div>
-      </div>
+        <button
+          aria-label="Remove Bar"
+          className="ListSelector__remove"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </Layer>
+    </div>
+  </div>
+  <div
+    className="ListSelector__column"
+  >
+    <Label
+      id="random-id-available"
+      text="Available"
+    />
+    <div
+      aria-labelledby="random-id-available"
+      className="ListSelector__list"
+      onClick={[Function]}
+      role="list"
+    >
+      <Layer
+        aria-labelledby="item-baz"
+        className="ListSelector__available"
+        data-key="baz"
+        role="listitem"
+      >
+        <button
+          aria-label="Add Baz"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <span
+          className="ListSelector__text"
+          id="item-baz"
+          title="Baz"
+        >
+          Baz
+        </span>
+      </Layer>
+      <Layer
+        aria-labelledby="item-oof"
+        className="ListSelector__available"
+        data-key="oof"
+        role="listitem"
+      >
+        <button
+          aria-label="Add Oof"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <span
+          className="ListSelector__text"
+          id="item-oof"
+          title="Oof"
+        >
+          Oof
+        </span>
+      </Layer>
     </div>
   </div>
 </div>
@@ -171,105 +171,6 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
     className="ListSelector__column"
   >
     <Label
-      id="random-id-available"
-      text="Available"
-    />
-    <div
-      aria-labelledby="random-id-available"
-      className="ListSelector__list"
-      onClick={[Function]}
-      role="list"
-    >
-      <div
-        aria-labelledby="item-bar"
-        className="ListSelector__available"
-        data-key="bar"
-        role="listitem"
-      >
-        <span
-          className="ListSelector__text"
-          id="item-bar"
-          title="Bar"
-        >
-          Bar
-        </span>
-        <button
-          aria-label="Add Bar"
-          className="ListSelector__add"
-          type="button"
-        >
-          <ArrowRight />
-        </button>
-      </div>
-      <div
-        aria-labelledby="item-baz"
-        className="ListSelector__available"
-        data-key="baz"
-        role="listitem"
-      >
-        <span
-          className="ListSelector__text"
-          id="item-baz"
-          title="Baz"
-        >
-          Baz
-        </span>
-        <button
-          aria-label="Add Baz"
-          className="ListSelector__add"
-          type="button"
-        >
-          <ArrowRight />
-        </button>
-      </div>
-      <div
-        aria-labelledby="item-foo"
-        className="ListSelector__available"
-        data-key="foo"
-        role="listitem"
-      >
-        <span
-          className="ListSelector__text"
-          id="item-foo"
-          title="Foo"
-        >
-          Foo
-        </span>
-        <button
-          aria-label="Add Foo"
-          className="ListSelector__add"
-          type="button"
-        >
-          <ArrowRight />
-        </button>
-      </div>
-      <div
-        aria-labelledby="item-oof"
-        className="ListSelector__available"
-        data-key="oof"
-        role="listitem"
-      >
-        <span
-          className="ListSelector__text"
-          id="item-oof"
-          title="Oof"
-        >
-          Oof
-        </span>
-        <button
-          aria-label="Add Oof"
-          className="ListSelector__add"
-          type="button"
-        >
-          <ArrowRight />
-        </button>
-      </div>
-    </div>
-  </div>
-  <div
-    className="ListSelector__column"
-  >
-    <Label
       id="random-id-selected"
       text="Selected"
     />
@@ -284,6 +185,105 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
       >
         Test empty.
       </div>
+    </div>
+  </div>
+  <div
+    className="ListSelector__column"
+  >
+    <Label
+      id="random-id-available"
+      text="Available"
+    />
+    <div
+      aria-labelledby="random-id-available"
+      className="ListSelector__list"
+      onClick={[Function]}
+      role="list"
+    >
+      <Layer
+        aria-labelledby="item-bar"
+        className="ListSelector__available"
+        data-key="bar"
+        role="listitem"
+      >
+        <button
+          aria-label="Add Bar"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <span
+          className="ListSelector__text"
+          id="item-bar"
+          title="Bar"
+        >
+          Bar
+        </span>
+      </Layer>
+      <Layer
+        aria-labelledby="item-baz"
+        className="ListSelector__available"
+        data-key="baz"
+        role="listitem"
+      >
+        <button
+          aria-label="Add Baz"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <span
+          className="ListSelector__text"
+          id="item-baz"
+          title="Baz"
+        >
+          Baz
+        </span>
+      </Layer>
+      <Layer
+        aria-labelledby="item-foo"
+        className="ListSelector__available"
+        data-key="foo"
+        role="listitem"
+      >
+        <button
+          aria-label="Add Foo"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <span
+          className="ListSelector__text"
+          id="item-foo"
+          title="Foo"
+        >
+          Foo
+        </span>
+      </Layer>
+      <Layer
+        aria-labelledby="item-oof"
+        className="ListSelector__available"
+        data-key="oof"
+        role="listitem"
+      >
+        <button
+          aria-label="Add Oof"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <span
+          className="ListSelector__text"
+          id="item-oof"
+          title="Oof"
+        >
+          Oof
+        </span>
+      </Layer>
     </div>
   </div>
 </div>

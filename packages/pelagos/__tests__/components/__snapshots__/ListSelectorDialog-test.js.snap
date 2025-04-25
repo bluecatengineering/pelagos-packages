@@ -87,6 +87,7 @@ exports[`ListSelectorDialog rendering renders expected elements when defaultItem
         onClick={[Function]}
         size="small"
         text="Restore defaults"
+        type="ghost"
       />
     </div>
   </div>

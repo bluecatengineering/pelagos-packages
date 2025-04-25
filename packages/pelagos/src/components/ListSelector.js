@@ -13,6 +13,7 @@ import useReorder from '../hooks/useReorder';
 import useRandomId from '../hooks/useRandomId';
 
 import Label from './Label';
+import Layer from './Layer';
 
 import './ListSelector.less';
 
@@ -113,29 +114,6 @@ const ListSelector = forwardRef(({id, items, allItems, emptyText, allItemsRemove
 				{t`Press space bar to reorder`}
 			</div>
 			<div className="ListSelector__column">
-				<Label id={availableId} text={t`Available`} />
-				<div className="ListSelector__list" role="list" aria-labelledby={availableId} onClick={handleAddItem}>
-					{availableItems.map(({key, label}) => {
-						const labelId = `item-${key}`;
-						return (
-							<div
-								key={key}
-								className="ListSelector__available"
-								role="listitem"
-								aria-labelledby={labelId}
-								data-key={key}>
-								<span id={labelId} className="ListSelector__text" title={label}>
-									{label}
-								</span>
-								<button className="ListSelector__add" type="button" aria-label={t`Add ${label}`}>
-									<ArrowRight />
-								</button>
-							</div>
-						);
-					})}
-				</div>
-			</div>
-			<div className="ListSelector__column">
 				<Label id={selectedId} text={t`Selected`} />
 				<div
 					className="ListSelector__list"
@@ -147,7 +125,7 @@ const ListSelector = forwardRef(({id, items, allItems, emptyText, allItemsRemove
 						const name = getLabel(key);
 						const labelId = `item-${key}`;
 						return (
-							<div
+							<Layer
 								key={key}
 								className="ListSelector__entry"
 								tabIndex="0"
@@ -156,19 +134,42 @@ const ListSelector = forwardRef(({id, items, allItems, emptyText, allItemsRemove
 								aria-describedby={operationId}
 								data-key={key}
 								data-index={index}>
-								<button className="ListSelector__remove" type="button" aria-label={t`Remove ${name}`}>
-									<ArrowLeft />
-								</button>
 								<div id={labelId} className="ListSelector__name draggable">
+									<Draggable className="ListSelector__grip" />
 									<span className="ListSelector__text" title={name}>
 										{name}
 									</span>
-									<Draggable className="ListSelector__grip" />
 								</div>
-							</div>
+								<button className="ListSelector__remove" type="button" aria-label={t`Remove ${name}`}>
+									<ArrowRight />
+								</button>
+							</Layer>
 						);
 					})}
 					{!items.length && <div className="ListSelector__empty">{emptyText}</div>}
+				</div>
+			</div>
+			<div className="ListSelector__column">
+				<Label id={availableId} text={t`Available`} />
+				<div className="ListSelector__list" role="list" aria-labelledby={availableId} onClick={handleAddItem}>
+					{availableItems.map(({key, label}) => {
+						const labelId = `item-${key}`;
+						return (
+							<Layer
+								key={key}
+								className="ListSelector__available"
+								role="listitem"
+								aria-labelledby={labelId}
+								data-key={key}>
+								<button className="ListSelector__add" type="button" aria-label={t`Add ${label}`}>
+									<ArrowLeft />
+								</button>
+								<span id={labelId} className="ListSelector__text" title={label}>
+									{label}
+								</span>
+							</Layer>
+						);
+					})}
 				</div>
 			</div>
 		</div>

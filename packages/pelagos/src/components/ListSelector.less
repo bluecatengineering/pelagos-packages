@@ -24,6 +24,7 @@
 			@focus-visible();
 			margin: @sp-04 @sp-02 @sp-02;
 			flex: 1;
+			gap: @sp-04;
 			overflow: hidden auto;
 		}
 
@@ -31,14 +32,16 @@
 			@focus-visible();
 			flex-direction: row;
 			align-items: center;
+			gap: @sp-04;
 			padding: @sp-04 @sp-08;
-			border-radius: 3px;
+			background-color: var(--layer);
 		}
 
 		&__name {
 			flex: 1;
 			flex-direction: row;
 			align-items: center;
+			gap: @sp-04;
 			overflow: hidden;
 		}
 
@@ -60,8 +63,10 @@
 		&__available {
 			flex-direction: row;
 			align-items: center;
+			gap: @sp-04;
 			padding: @sp-04 @sp-08;
 			overflow: hidden;
+			background-color: var(--layer);
 		}
 
 		&__remove,

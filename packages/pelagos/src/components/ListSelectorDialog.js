@@ -66,7 +66,7 @@ const ListSelectorDialog = ({
 				/>
 				{defaultItems && (
 					<div className="ListSelectorDialog__buttons">
-						<Button text={t`Restore defaults`} size="small" onClick={handleRestore} />
+						<Button text={t`Restore defaults`} size="small" type="ghost" onClick={handleRestore} />
 					</div>
 				)}
 			</div>

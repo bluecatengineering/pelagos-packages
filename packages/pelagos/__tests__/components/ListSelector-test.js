@@ -57,7 +57,7 @@ describe('ListSelector', () => {
 			const wrapper = shallow(
 				<ListSelector items={items} allItems={allItems} getLabel={getLabel} onChange={onChange} />
 			);
-			wrapper.find('[role="list"]').first().simulate('click', {target});
+			wrapper.find('[role="list"]').last().simulate('click', {target});
 			expect(closest.mock.calls).toEqual([['button']]);
 			expect(onChange.mock.calls).toEqual([[['foo', 'bar', 'baz']]]);
 			expect(ref.current).toEqual({i: 'item-baz', r: 'bounds', u: 'next', m: 'Baz added'});
@@ -71,7 +71,7 @@ describe('ListSelector', () => {
 			const wrapper = shallow(
 				<ListSelector items={items} allItems={allItems} getLabel={getLabel} onChange={onChange} />
 			);
-			wrapper.find('[role="list"]').first().simulate('click', {target});
+			wrapper.find('[role="list"]').last().simulate('click', {target});
 			expect(closest.mock.calls).toEqual([['button']]);
 			expect(onChange.mock.calls).toEqual([]);
 		});
@@ -88,7 +88,7 @@ describe('ListSelector', () => {
 			const wrapper = shallow(
 				<ListSelector items={items} allItems={allItems} getLabel={getLabel} onChange={onChange} />
 			);
-			wrapper.find('[role="list"]').last().simulate('click', {target});
+			wrapper.find('[role="list"]').first().simulate('click', {target});
 			expect(closest.mock.calls).toEqual([['button']]);
 			expect(onChange.mock.calls).toEqual([[['foo']]]);
 			expect(getElementById.mock.calls).toEqual([['item-baz']]);
@@ -114,7 +114,7 @@ describe('ListSelector', () => {
 					onChange={onChange}
 				/>
 			);
-			wrapper.find('[role="list"]').last().simulate('click', {target});
+			wrapper.find('[role="list"]').first().simulate('click', {target});
 			expect(closest.mock.calls).toEqual([['button']]);
 			expect(onChange.mock.calls).toEqual([[[]]]);
 			expect(getElementById.mock.calls).toEqual([['item-baz']]);
@@ -135,7 +135,7 @@ describe('ListSelector', () => {
 			const wrapper = shallow(
 				<ListSelector items={items} allItems={allItems} getLabel={getLabel} onChange={onChange} />
 			);
-			wrapper.find('[role="list"]').last().simulate('click', {target});
+			wrapper.find('[role="list"]').first().simulate('click', {target});
 			expect(closest.mock.calls).toEqual([['button']]);
 			expect(onChange.mock.calls).toEqual([]);
 		});
