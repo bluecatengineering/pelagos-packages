@@ -443,8 +443,8 @@ describe('Tabs', () => {
 			);
 			const list = wrapper.find('[role="tablist"]');
 
-			list.simulate('keydown', {keyCode: 13, target, preventDefault});
-			list.simulate('keydown', {keyCode: 32, target, preventDefault});
+			list.simulate('keydown', {key: 'Enter', target, preventDefault});
+			list.simulate('keydown', {key: ' ', target, preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[], []]);
 			expect(click.mock.calls).toEqual([[], []]);
@@ -469,7 +469,7 @@ describe('Tabs', () => {
 			);
 			const list = wrapper.find('[role="tablist"]');
 
-			list.simulate('keydown', {keyCode: 13, target, preventDefault});
+			list.simulate('keydown', {key: 'Enter', target, preventDefault});
 
 			expect(getAttribute.mock.calls).toEqual([['role'], ['aria-activedescendant']]);
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -479,7 +479,7 @@ describe('Tabs', () => {
 
 		it('focuses the last tab when end is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 35};
+			const event = {key: 'End'};
 			useRef
 				.mockReturnValueOnce({})
 				.mockReturnValueOnce({current: items})
@@ -505,7 +505,7 @@ describe('Tabs', () => {
 
 		it('focuses the first tab when home is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 36};
+			const event = {key: 'Home'};
 			useRef
 				.mockReturnValueOnce({})
 				.mockReturnValueOnce({current: items})
@@ -531,7 +531,7 @@ describe('Tabs', () => {
 
 		it('focuses the previous tab when left is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 37};
+			const event = {key: 'ArrowLeft'};
 			useRef
 				.mockReturnValueOnce({})
 				.mockReturnValueOnce({current: items})
@@ -558,7 +558,7 @@ describe('Tabs', () => {
 
 		it('focuses the last tab when left is pressed and the first tab is focused', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 37};
+			const event = {key: 'ArrowLeft'};
 			useRef
 				.mockReturnValueOnce({})
 				.mockReturnValueOnce({current: items})
@@ -585,7 +585,7 @@ describe('Tabs', () => {
 
 		it('focuses the next tab when right is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 39};
+			const event = {key: 'ArrowRight'};
 			useRef
 				.mockReturnValueOnce({})
 				.mockReturnValueOnce({current: items})
@@ -612,7 +612,7 @@ describe('Tabs', () => {
 
 		it('focuses the first tab when right is pressed and the last tab is focused', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 39};
+			const event = {key: 'ArrowRight'};
 			useRef
 				.mockReturnValueOnce({})
 				.mockReturnValueOnce({current: items})
@@ -652,10 +652,10 @@ describe('Tabs', () => {
 			);
 			const list = wrapper.find('[role="tablist"]');
 
-			list.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
-			list.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
-			list.simulate('keydown', {keyCode: 13, altKey: true, preventDefault});
-			list.simulate('keydown', {keyCode: 13, metaKey: true, preventDefault});
+			list.simulate('keydown', {key: 'Enter', shiftKey: true, preventDefault});
+			list.simulate('keydown', {key: 'Enter', ctrlKey: true, preventDefault});
+			list.simulate('keydown', {key: 'Enter', altKey: true, preventDefault});
+			list.simulate('keydown', {key: 'Enter', metaKey: true, preventDefault});
 
 			expect(preventDefault).not.toHaveBeenCalled();
 		});

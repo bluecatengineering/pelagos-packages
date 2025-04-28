@@ -118,7 +118,7 @@ describe('TagInput', () => {
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
-			const event = {keyCode: 13, preventDefault, target: {value: 'baz'}};
+			const event = {key: 'Enter', preventDefault, target: {value: 'baz'}};
 			wrapper.find('#random-id').simulate('keydown', event);
 			expect(onChange.mock.calls).toEqual([[['foo', 'bar', 'baz'], event]]);
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -144,7 +144,7 @@ describe('TagInput', () => {
 					onError={jest.fn()}
 				/>
 			);
-			const event = {keyCode: 13, preventDefault, target: {value: 'baz'}};
+			const event = {key: 'Enter', preventDefault, target: {value: 'baz'}};
 			wrapper.find('#random-id').simulate('keydown', event);
 			expect(transform.mock.calls).toEqual([['baz']]);
 			expect(validate.mock.calls).toEqual([['transform']]);
@@ -160,7 +160,7 @@ describe('TagInput', () => {
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
-			wrapper.find('#random-id').simulate('keydown', {keyCode: 13, preventDefault, target: {value: ''}});
+			wrapper.find('#random-id').simulate('keydown', {key: 'Enter', preventDefault, target: {value: ''}});
 			expect(onChange).not.toHaveBeenCalled();
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
@@ -173,7 +173,7 @@ describe('TagInput', () => {
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
-			wrapper.find('#random-id').simulate('keydown', {keyCode: 13, preventDefault, target: {value: 'bar'}});
+			wrapper.find('#random-id').simulate('keydown', {key: 'Enter', preventDefault, target: {value: 'bar'}});
 			expect(onChange).not.toHaveBeenCalled();
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(focus.mock.calls).toEqual([[]]);
@@ -189,7 +189,7 @@ describe('TagInput', () => {
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={validate} onChange={onChange} onError={onError} />
 			);
-			const event = {keyCode: 13, preventDefault, target: {value: 'baz'}};
+			const event = {key: 'Enter', preventDefault, target: {value: 'baz'}};
 			wrapper.find('#random-id').simulate('keydown', event);
 			expect(onChange).not.toHaveBeenCalled();
 			expect(onError.mock.calls).toEqual([['error', event]]);
@@ -205,7 +205,7 @@ describe('TagInput', () => {
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
-			const event = {keyCode: 8, preventDefault, target: {value: ''}};
+			const event = {key: 'Backspace', preventDefault, target: {value: ''}};
 			wrapper.find('#random-id').simulate('keydown', event);
 			expect(onChange.mock.calls).toEqual([[['foo'], event]]);
 			expect(preventDefault.mock.calls).toEqual([[]]);
@@ -218,7 +218,7 @@ describe('TagInput', () => {
 			const wrapper = shallow(
 				<TagInput id="test" tags={['foo', 'bar']} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
-			wrapper.find('#random-id').simulate('keydown', {keyCode: 8, preventDefault, target: {value: 'x'}});
+			wrapper.find('#random-id').simulate('keydown', {key: 'Backspace', preventDefault, target: {value: 'x'}});
 			expect(onChange).not.toHaveBeenCalled();
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
@@ -229,7 +229,7 @@ describe('TagInput', () => {
 			const wrapper = shallow(
 				<TagInput id="test" tags={[]} validate={jest.fn()} onChange={onChange} onError={jest.fn()} />
 			);
-			wrapper.find('#random-id').simulate('keydown', {keyCode: 8, preventDefault, target: {value: ''}});
+			wrapper.find('#random-id').simulate('keydown', {key: 'Backspace', preventDefault, target: {value: ''}});
 			expect(onChange).not.toHaveBeenCalled();
 			expect(preventDefault.mock.calls).toEqual([[]]);
 		});

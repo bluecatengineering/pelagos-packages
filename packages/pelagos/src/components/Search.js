@@ -14,7 +14,7 @@ export const Search = ({className, value, disabled, onChange, ...props}) => {
 	const handleChange = useCallback((event) => onChange(event.target.value.toLowerCase()), [onChange]);
 	const handleKeyDown = useCallback(
 		(event) => {
-			if (event.keyCode === 27) {
+			if (event.key === 'Escape') {
 				onChange('');
 			}
 		},

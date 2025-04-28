@@ -551,7 +551,7 @@ describe('reorder', () => {
 
 			const keydown = container.addEventListener.mock.calls[3][1];
 
-			keydown({keyCode: 32, target: c0, preventDefault});
+			keydown({key: ' ', target: c0, preventDefault});
 			expect(c0.matches.mock.calls).toEqual([['.draggable']]);
 			expect(c0.classList.add.mock.calls).toEqual([['dragging']]);
 			expect(onStart.mock.calls).toEqual([[c0, 0]]);
@@ -559,7 +559,7 @@ describe('reorder', () => {
 
 			const documentKeyDown = document.addEventListener.mock.calls[0][1];
 
-			documentKeyDown({keyCode: 40, preventDefault, stopPropagation});
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(c0.style.transform).toBe('translate(0px,10px)');
 			expect(c1.style.transform).toBe('translate(0px,-10px)');
 
@@ -569,10 +569,10 @@ describe('reorder', () => {
 			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
 
 			// try moving past last
-			documentKeyDown({keyCode: 40, preventDefault, stopPropagation});
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
 
-			documentKeyDown({keyCode: 32, preventDefault, stopPropagation});
+			documentKeyDown({key: ' ', preventDefault, stopPropagation});
 			expect(c0.classList.remove.mock.calls).toEqual([['dragging']]);
 			expect(onMove.mock.calls).toEqual([[c0, 1]]);
 			expect(onFinish.mock.calls).toEqual([[c0]]);
@@ -595,7 +595,7 @@ describe('reorder', () => {
 
 			const keydown = container.addEventListener.mock.calls[3][1];
 
-			keydown({keyCode: 32, target: c1, preventDefault});
+			keydown({key: ' ', target: c1, preventDefault});
 			expect(c1.matches.mock.calls).toEqual([['.draggable']]);
 			expect(c1.classList.add.mock.calls).toEqual([['dragging']]);
 			expect(onStart.mock.calls).toEqual([[c1, 1]]);
@@ -603,7 +603,7 @@ describe('reorder', () => {
 
 			const documentKeyDown = document.addEventListener.mock.calls[0][1];
 
-			documentKeyDown({keyCode: 38, preventDefault, stopPropagation});
+			documentKeyDown({key: 'ArrowUp', preventDefault, stopPropagation});
 			expect(c0.style.transform).toBe('translate(0px,10px)');
 			expect(c1.style.transform).toBe('translate(0px,-10px)');
 
@@ -613,10 +613,10 @@ describe('reorder', () => {
 			expect(c0.insertAdjacentElement.mock.calls).toEqual([['beforebegin', c1]]);
 
 			// try moving before first
-			documentKeyDown({keyCode: 38, preventDefault, stopPropagation});
+			documentKeyDown({key: 'ArrowUp', preventDefault, stopPropagation});
 			expect(c0.insertAdjacentElement.mock.calls).toEqual([['beforebegin', c1]]);
 
-			documentKeyDown({keyCode: 32, preventDefault, stopPropagation});
+			documentKeyDown({key: ' ', preventDefault, stopPropagation});
 			expect(c1.classList.remove.mock.calls).toEqual([['dragging']]);
 			expect(onMove.mock.calls).toEqual([[c1, 0]]);
 			expect(onFinish.mock.calls).toEqual([[c1]]);
@@ -639,7 +639,7 @@ describe('reorder', () => {
 
 			const keydown = container.addEventListener.mock.calls[3][1];
 
-			keydown({keyCode: 32, target: c0, preventDefault});
+			keydown({key: ' ', target: c0, preventDefault});
 			expect(c0.matches.mock.calls).toEqual([['.draggable']]);
 			expect(c0.classList.add.mock.calls).toEqual([['dragging']]);
 			expect(onStart.mock.calls).toEqual([[c0, 0]]);
@@ -647,7 +647,7 @@ describe('reorder', () => {
 
 			const documentKeyDown = document.addEventListener.mock.calls[0][1];
 
-			documentKeyDown({keyCode: 39, preventDefault, stopPropagation});
+			documentKeyDown({key: 'ArrowRight', preventDefault, stopPropagation});
 			expect(c0.style.transform).toBe('translate(20px,0px)');
 			expect(c1.style.transform).toBe('translate(-20px,0px)');
 
@@ -656,7 +656,7 @@ describe('reorder', () => {
 			expect(c1.style.transform).toBe('');
 			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
 
-			documentKeyDown({keyCode: 32, preventDefault, stopPropagation});
+			documentKeyDown({key: ' ', preventDefault, stopPropagation});
 			expect(c0.classList.remove.mock.calls).toEqual([['dragging']]);
 			expect(onMove.mock.calls).toEqual([[c0, 1]]);
 			expect(onFinish.mock.calls).toEqual([[c0]]);
@@ -679,7 +679,7 @@ describe('reorder', () => {
 
 			const keydown = container.addEventListener.mock.calls[3][1];
 
-			keydown({keyCode: 32, target: c1, preventDefault});
+			keydown({key: ' ', target: c1, preventDefault});
 			expect(c1.matches.mock.calls).toEqual([['.draggable']]);
 			expect(c1.classList.add.mock.calls).toEqual([['dragging']]);
 			expect(onStart.mock.calls).toEqual([[c1, 1]]);
@@ -687,7 +687,7 @@ describe('reorder', () => {
 
 			const documentKeyDown = document.addEventListener.mock.calls[0][1];
 
-			documentKeyDown({keyCode: 37, preventDefault, stopPropagation});
+			documentKeyDown({key: 'ArrowLeft', preventDefault, stopPropagation});
 			expect(c0.style.transform).toBe('translate(20px,0px)');
 			expect(c1.style.transform).toBe('translate(-20px,0px)');
 
@@ -696,7 +696,7 @@ describe('reorder', () => {
 			expect(c1.style.transform).toBe('');
 			expect(c0.insertAdjacentElement.mock.calls).toEqual([['beforebegin', c1]]);
 
-			documentKeyDown({keyCode: 32, preventDefault, stopPropagation});
+			documentKeyDown({key: ' ', preventDefault, stopPropagation});
 			expect(c1.classList.remove.mock.calls).toEqual([['dragging']]);
 			expect(onMove.mock.calls).toEqual([[c1, 0]]);
 			expect(onFinish.mock.calls).toEqual([[c1]]);
@@ -721,7 +721,7 @@ describe('reorder', () => {
 
 			const keydown = container.addEventListener.mock.calls[3][1];
 
-			keydown({keyCode: 32, target: c0, preventDefault});
+			keydown({key: ' ', target: c0, preventDefault});
 			expect(c0.matches.mock.calls).toEqual([['.draggable']]);
 			expect(c0.classList.add.mock.calls).toEqual([['dragging']]);
 			expect(onStart.mock.calls).toEqual([[c0, 0]]);
@@ -729,12 +729,12 @@ describe('reorder', () => {
 
 			const documentKeyDown = document.addEventListener.mock.calls[0][1];
 
-			documentKeyDown({keyCode: 40, preventDefault, stopPropagation});
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
 			expect(c0.style.transform).toBe('translate(0px,10px)');
 			expect(c1.style.transform).toBe('translate(0px,-10px)');
 
 			// cancel while busy
-			documentKeyDown({keyCode: 27, preventDefault, stopPropagation});
+			documentKeyDown({key: 'Escape', preventDefault, stopPropagation});
 			jest.runOnlyPendingTimers();
 			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
 
@@ -763,7 +763,7 @@ describe('reorder', () => {
 
 			const keydown = container.addEventListener.mock.calls[3][1];
 
-			keydown({keyCode: 32, target: c0, preventDefault});
+			keydown({key: ' ', target: c0, preventDefault});
 			expect(c0.matches.mock.calls).toEqual([['.draggable']]);
 			expect(c0.classList.add.mock.calls).toEqual([['dragging']]);
 			expect(onStart.mock.calls).toEqual([[c0, 0]]);
@@ -771,7 +771,7 @@ describe('reorder', () => {
 
 			const documentKeyDown = document.addEventListener.mock.calls[0][1];
 
-			documentKeyDown({keyCode: 27, preventDefault, stopPropagation});
+			documentKeyDown({key: 'Escape', preventDefault, stopPropagation});
 			jest.runOnlyPendingTimers();
 			expect(onCancel.mock.calls).toEqual([[c0]]);
 		});
@@ -785,7 +785,7 @@ describe('reorder', () => {
 
 			const keydown = container.addEventListener.mock.calls[3][1];
 
-			keydown({keyCode: 13, target: container, preventDefault});
+			keydown({key: 'Enter', target: container, preventDefault});
 			expect(container.matches.mock.calls).toEqual([]);
 			expect(onFinish.mock.calls).toEqual([]);
 		});
@@ -799,7 +799,7 @@ describe('reorder', () => {
 
 			const keydown = container.addEventListener.mock.calls[3][1];
 
-			keydown({keyCode: 32, target: container, preventDefault});
+			keydown({key: ' ', target: container, preventDefault});
 			expect(document.addEventListener.mock.calls).toEqual([]);
 		});
 	});

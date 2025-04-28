@@ -93,25 +93,25 @@ const Tabs = ({id, items, currentTab, getTabKey, renderTab, onTabClick, onTabClo
 		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				const last = items.length - 1;
-				switch (event.keyCode) {
-					case 13: // enter or space
-					case 32: {
+				switch (event.key) {
+					case 'Enter':
+					case ' ': {
 						const target = event.target;
 						event.preventDefault();
 						// Must use getAttribute because Firefox
 						(target.getAttribute('role') === 'tablist' ? getCurrentTab(target) : target).click();
 						break;
 					}
-					case 35: // end
+					case 'End':
 						setFocused(last);
 						break;
-					case 36: // home
+					case 'Home':
 						setFocused(0);
 						break;
-					case 37: // left
+					case 'ArrowLeft':
 						setFocused((focused) => (focused === 0 ? last : focused - 1));
 						break;
-					case 39: // right
+					case 'ArrowRight':
 						setFocused((focused) => (focused === last ? 0 : focused + 1));
 						break;
 				}

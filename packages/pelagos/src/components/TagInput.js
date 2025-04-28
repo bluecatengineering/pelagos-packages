@@ -77,16 +77,16 @@ const TagInput = ({
 	const handleKeyDown = useCallback(
 		(event) => {
 			const value = event.target.value;
-			switch (event.keyCode) {
-				case 13: // enter
-				case 32: // space
+			switch (event.key) {
+				case 'Enter':
+				case ' ':
 					if (value) {
 						event.preventDefault();
 						addTag(value, event);
 						inputRef.current.focus();
 					}
 					break;
-				case 8: // backspace
+				case 'Backspace':
 					if (!value) {
 						event.preventDefault();
 						const length = tags.length;

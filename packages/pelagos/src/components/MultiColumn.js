@@ -160,10 +160,9 @@ const MultiColumn = ({
 	const handleKeyDown = useCallback(
 		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-				const keyCode = event.keyCode;
-				switch (keyCode) {
-					case 33: {
-						// page up
+				const key = event.key;
+				switch (key) {
+					case 'PageUp': {
 						event.preventDefault();
 						const newPath = path.slice(0, -1);
 						const lastIndex = newPath.length;
@@ -171,8 +170,7 @@ const MultiColumn = ({
 						onChange(newPath);
 						break;
 					}
-					case 34: {
-						// page down
+					case 'PageDown': {
 						event.preventDefault();
 						const newPath = path.slice(0, -1);
 						const lastIndex = newPath.length;
@@ -180,32 +178,28 @@ const MultiColumn = ({
 						onChange(newPath);
 						break;
 					}
-					case 35: {
-						// end
+					case 'End': {
 						event.preventDefault();
 						const newPath = path.slice(0, -1);
 						newPath.push(columns[newPath.length] - 1);
 						onChange(newPath);
 						break;
 					}
-					case 36: {
-						// home
+					case 'Home': {
 						event.preventDefault();
 						const newPath = path.slice(0, -1);
 						newPath.push(0);
 						onChange(newPath);
 						break;
 					}
-					case 37: {
-						// left
+					case 'ArrowLeft': {
 						event.preventDefault();
 						if (path.length > 1) {
 							onChange(path.slice(0, -1));
 						}
 						break;
 					}
-					case 38: {
-						// up
+					case 'ArrowUp': {
 						event.preventDefault();
 						const newPath = path.slice(0, -1);
 						const index = path[newPath.length];
@@ -213,16 +207,14 @@ const MultiColumn = ({
 						onChange(newPath);
 						break;
 					}
-					case 39: {
-						// right
+					case 'ArrowRight': {
 						event.preventDefault();
 						if (path.length < columns.length) {
 							onChange([...path, 0]);
 						}
 						break;
 					}
-					case 40: {
-						// down
+					case 'ArrowDown': {
 						event.preventDefault();
 						const newPath = path.slice(0, -1);
 						const index = path[newPath.length];
@@ -231,11 +223,11 @@ const MultiColumn = ({
 						break;
 					}
 					default:
-						if (keyCode >= 48 && keyCode <= 90) {
+						if (/^\w$/.test(key)) {
 							event.preventDefault();
 							const column = path.length - 1;
 							const children = rootRef.current.children[column].children;
-							const i = findItemToFocus(keyCode, path[column], children.length, (i) =>
+							const i = findItemToFocus(key, path[column], children.length, (i) =>
 								children[i].textContent.toUpperCase()
 							);
 							if (i !== -1) {
