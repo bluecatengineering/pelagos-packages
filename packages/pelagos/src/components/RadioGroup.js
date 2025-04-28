@@ -14,14 +14,14 @@ const RadioGroup = ({id, className, value, options, renderLabel, onChange, ...pr
 
 	const handleKeyDown = useCallback(
 		(event) => {
-			const keyCode = event.keyCode;
-			if (keyCode === 37 || keyCode === 38) {
+			const key = event.key;
+			if (key === 'ArrowLeft' || key === 'ArrowUp') {
 				const current = options.indexOf(value);
 				const focused = current === 0 ? options.length - 1 : current - 1;
 				event.currentTarget.childNodes[focused].focus();
 				onChange(options[focused]);
 				event.preventDefault();
-			} else if (keyCode === 39 || keyCode === 40) {
+			} else if (key === 'ArrowRight' || key === 'ArrowDown') {
 				const current = options.indexOf(value);
 				const focused = current === options.length - 1 ? 0 : current + 1;
 				event.currentTarget.childNodes[focused].focus();

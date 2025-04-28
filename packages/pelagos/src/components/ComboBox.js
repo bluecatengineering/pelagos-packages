@@ -64,8 +64,8 @@ const ComboBox = ({
 
 	const handleKeyDown = useCallback(
 		(event) => {
-			switch (event.keyCode) {
-				case 13: // enter
+			switch (event.key) {
+				case 'Enter':
 					event.preventDefault();
 					if (selected !== -1) {
 						selectSuggestion(selected);
@@ -74,12 +74,12 @@ const ComboBox = ({
 						onEnter(event.target.value);
 					}
 					break;
-				case 27: // escape
+				case 'Escape':
 					event.preventDefault();
 					hideList();
 					onTextChange('');
 					break;
-				case 38: // up
+				case 'ArrowUp':
 					event.preventDefault();
 					if (open) {
 						const index = selected <= 0 ? suggestions.length - 1 : selected - 1;
@@ -87,7 +87,7 @@ const ComboBox = ({
 						scrollToItem(listRef.current, listRef.current.children[index]);
 					}
 					break;
-				case 40: // down
+				case 'ArrowDown':
 					event.preventDefault();
 					if (open) {
 						const index = selected === -1 || selected === suggestions.length - 1 ? 0 : selected + 1;

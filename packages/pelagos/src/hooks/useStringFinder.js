@@ -18,8 +18,8 @@ export default () => {
 	const searchString = useRef(null);
 	const searchIndex = useRef(-1);
 	const keyTimer = useRef(null);
-	return useCallback((keyCode, current, listLength, getUpperCaseText) => {
-		const char = String.fromCharCode(keyCode);
+	return useCallback((key, current, listLength, getUpperCaseText) => {
+		const char = key.toUpperCase();
 		if (!searchString.current) {
 			searchString.current = char;
 			searchIndex.current = current;

@@ -230,7 +230,7 @@ describe('Select', () => {
 
 		it('scrolls the list up when it is visible and page up is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'PageUp', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2, setFocused]);
 			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
@@ -245,7 +245,7 @@ describe('Select', () => {
 		});
 
 		it('ignores the event when the list is not visible and page up is pressed', () => {
-			const event = {keyCode: 33, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'PageUp', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -255,7 +255,7 @@ describe('Select', () => {
 
 		it('scrolls the list down when it is visible and page down is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'PageDown', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {};
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
@@ -270,7 +270,7 @@ describe('Select', () => {
 		});
 
 		it('ignores the event when the list is not visible and page down is pressed', () => {
-			const event = {keyCode: 34, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'PageDown', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -280,7 +280,7 @@ describe('Select', () => {
 
 		it('focuses the last option when the list is visible and end is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 35, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'End', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const child = {offsetTop: 50, offsetHeight: 25};
 			const list = {
 				clientHeight: 50,
@@ -300,7 +300,7 @@ describe('Select', () => {
 		});
 
 		it('ignores the event when the list is not visible and end is pressed', () => {
-			const event = {keyCode: 35, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'End', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -310,7 +310,7 @@ describe('Select', () => {
 
 		it('focuses the first option when the list is visible and home is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 36, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'Home', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const child = {offsetTop: 0, offsetHeight: 25};
 			const list = {
 				clientHeight: 50,
@@ -330,7 +330,7 @@ describe('Select', () => {
 		});
 
 		it('ignores the event when the list is not visible and home is pressed', () => {
-			const event = {keyCode: 36, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'Home', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -340,7 +340,7 @@ describe('Select', () => {
 
 		it('focuses the previous option when the list is visible and up is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'ArrowUp', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 0,
@@ -360,7 +360,7 @@ describe('Select', () => {
 
 		it('focuses the last option when the list is visible, up is pressed and the first option is focused', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'ArrowUp', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const child = {offsetTop: 50, offsetHeight: 25};
 			const list = {
 				clientHeight: 50,
@@ -380,7 +380,7 @@ describe('Select', () => {
 		});
 
 		it('only prevents the event default when the list is not visible and up is pressed', () => {
-			const event = {keyCode: 38, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'ArrowUp', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -390,7 +390,7 @@ describe('Select', () => {
 
 		it('focuses the next option when the list is visible and down is pressed', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'ArrowDown', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
@@ -410,7 +410,7 @@ describe('Select', () => {
 
 		it('focuses the first option when the list is visible, down is pressed and the last option is focused', () => {
 			const setFocused = jest.fn();
-			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'ArrowDown', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const list = {
 				clientHeight: 50,
 				scrollTop: 25,
@@ -432,7 +432,7 @@ describe('Select', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
 			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
-			const event = {keyCode: 40, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'ArrowDown', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -446,7 +446,7 @@ describe('Select', () => {
 		it('finds an option starting with typed key when the list is visible and an alphanumeric key is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {
-				keyCode: 'T'.codePointAt(0),
+				key: 'T',
 				preventDefault: jest.fn(),
 				nativeEvent: {stopImmediatePropagation: jest.fn()},
 			};
@@ -462,7 +462,7 @@ describe('Select', () => {
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([[1]]);
 			expect(smoothScroll).not.toHaveBeenCalled();
-			expect(find.mock.calls).toEqual([[84, 0, 3, anyFunction]]);
+			expect(find.mock.calls).toEqual([['T', 0, 3, anyFunction]]);
 
 			expect(find.mock.calls[0][3](1)).toBe('TEXT');
 		});
@@ -470,7 +470,7 @@ describe('Select', () => {
 		it('finds an option starting with typed key when the list is not visible and an alphanumeric key is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {
-				keyCode: 'T'.codePointAt(0),
+				key: 'T',
 				preventDefault: jest.fn(),
 				nativeEvent: {stopImmediatePropagation: jest.fn()},
 			};
@@ -486,7 +486,7 @@ describe('Select', () => {
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([]);
 			expect(smoothScroll.mock.calls).toEqual([]);
-			expect(find.mock.calls).toEqual([[84, 1, 3, anyFunction]]);
+			expect(find.mock.calls).toEqual([['T', 1, 3, anyFunction]]);
 			expect(onChange.mock.calls).toEqual([['two']]);
 
 			expect(find.mock.calls[0][3](1)).toBe('TEXT');
@@ -495,7 +495,7 @@ describe('Select', () => {
 		it('finds an option starting with typed key when the list is not visible, value is not set and an alphanumeric key is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {
-				keyCode: 'T'.codePointAt(0),
+				key: 'T',
 				preventDefault: jest.fn(),
 				nativeEvent: {stopImmediatePropagation: jest.fn()},
 			};
@@ -509,7 +509,7 @@ describe('Select', () => {
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused.mock.calls).toEqual([]);
 			expect(smoothScroll.mock.calls).toEqual([]);
-			expect(find.mock.calls).toEqual([[84, 0, 3, anyFunction]]);
+			expect(find.mock.calls).toEqual([['T', 0, 3, anyFunction]]);
 			expect(onChange.mock.calls).toEqual([['two']]);
 
 			expect(find.mock.calls[0][3](1)).toBe('TEXT');
@@ -518,7 +518,7 @@ describe('Select', () => {
 		it('does not change focused when the list is visible and an alphanumeric key with no matches is pressed', () => {
 			const setFocused = jest.fn();
 			const event = {
-				keyCode: 'X'.codePointAt(0),
+				key: 'X',
 				preventDefault: jest.fn(),
 				nativeEvent: {stopImmediatePropagation: jest.fn()},
 			};
@@ -539,7 +539,7 @@ describe('Select', () => {
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
 			expect(setFocused).not.toHaveBeenCalled();
 			expect(smoothScroll).not.toHaveBeenCalled();
-			expect(find.mock.calls).toEqual([[88, 0, 3, anyFunction]]);
+			expect(find.mock.calls).toEqual([['X', 0, 3, anyFunction]]);
 		});
 
 		it('ignores the event when an unknown key is pressed', () => {
@@ -549,8 +549,7 @@ describe('Select', () => {
 			);
 			const button = wrapper.find('[role="combobox"]');
 
-			button.simulate('keydown', {keyCode: 47, preventDefault});
-			button.simulate('keydown', {keyCode: 91, preventDefault});
+			button.simulate('keydown', {key: 'Other', preventDefault});
 
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
@@ -562,10 +561,10 @@ describe('Select', () => {
 			);
 			const button = wrapper.find('[role="combobox"]');
 
-			button.simulate('keydown', {keyCode: 13, shiftKey: true, preventDefault});
-			button.simulate('keydown', {keyCode: 13, ctrlKey: true, preventDefault});
-			button.simulate('keydown', {keyCode: 13, altKey: true, preventDefault});
-			button.simulate('keydown', {keyCode: 13, metaKey: true, preventDefault});
+			button.simulate('keydown', {key: 'Enter', shiftKey: true, preventDefault});
+			button.simulate('keydown', {key: 'Enter', ctrlKey: true, preventDefault});
+			button.simulate('keydown', {key: 'Enter', altKey: true, preventDefault});
+			button.simulate('keydown', {key: 'Enter', metaKey: true, preventDefault});
 
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
@@ -574,7 +573,7 @@ describe('Select', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
 			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([2, setFocused]);
-			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'Enter', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const onChange = jest.fn();
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={onChange} />
@@ -590,7 +589,7 @@ describe('Select', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
 			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
-			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'Enter', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
 			);
@@ -605,7 +604,7 @@ describe('Select', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
 			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
-			const event = {keyCode: 13, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'Enter', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			const wrapper = shallow(<Select id="test" options={options} renderOption={renderOption} onChange={jest.fn()} />);
 			wrapper.find('[role="combobox"]').simulate('keydown', event);
 			expect(event.preventDefault).toHaveBeenCalledTimes(1);
@@ -618,7 +617,7 @@ describe('Select', () => {
 			const onChange = jest.fn();
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
-			const event = {keyCode: 27, preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			const event = {key: 'Escape', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
 			useState.mockReturnValueOnce([true, setOpen]).mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
 				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={onChange} />

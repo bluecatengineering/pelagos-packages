@@ -258,8 +258,8 @@ export default (container, options) => {
 	const handleGlobalKeyDown = (event) => {
 		event.preventDefault();
 		event.stopPropagation();
-		switch (event.keyCode) {
-			case 27: // escape
+		switch (event.key) {
+			case 'Escape':
 				element.classList.remove('dragging');
 				document.removeEventListener('keydown', handleGlobalKeyDown, true);
 				if (currentIndex === originalIndex) {
@@ -269,14 +269,14 @@ export default (container, options) => {
 					swapElements(originalIndex, true);
 				}
 				break;
-			case 32: // space
+			case ' ':
 				element.classList.remove('dragging');
 				document.removeEventListener('keydown', handleGlobalKeyDown, true);
 				onFinish(element);
 				element = null;
 				break;
-			case 37: // left or up
-			case 38: {
+			case 'ArrowLeft':
+			case 'ArrowUp': {
 				const prev = element.previousSibling;
 				if (prev) {
 					swapElements(--currentIndex);
@@ -284,8 +284,8 @@ export default (container, options) => {
 				}
 				break;
 			}
-			case 39: // right or down
-			case 40: {
+			case 'ArrowRight':
+			case 'ArrowDown': {
 				const next = element.nextSibling;
 				if (next) {
 					swapElements(++currentIndex);
@@ -297,7 +297,7 @@ export default (container, options) => {
 	};
 
 	const handleKeyDown = (event) => {
-		if (event.keyCode === 32) {
+		if (event.key === ' ') {
 			const target = event.target;
 			if (target.matches(focusSelector)) {
 				event.preventDefault();

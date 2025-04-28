@@ -189,34 +189,33 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 	const handleKeyDown = useCallback(
 		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-				const keyCode = event.keyCode;
-				switch (keyCode) {
-					case 13: // enter
-					case 32: // space
+				switch (event.key) {
+					case 'Enter':
+					case ' ':
 						event.preventDefault();
 						handleHighlight(focused.getTime());
 						break;
-					case 33: // page up
+					case 'PageUp':
 						event.preventDefault();
 						selectPrevMonth();
 						break;
-					case 34: // page down
+					case 'PageDown':
 						event.preventDefault();
 						selectNextMonth();
 						break;
-					case 37: // left
+					case 'ArrowLeft':
 						event.preventDefault();
 						setFocused((focused) => updateDayOfMonth(focused, focused.getDate() - 1));
 						break;
-					case 38: // up
+					case 'ArrowUp':
 						event.preventDefault();
 						setFocused((focused) => updateDayOfMonth(focused, focused.getDate() - 7));
 						break;
-					case 39: // right
+					case 'ArrowRight':
 						event.preventDefault();
 						setFocused((focused) => updateDayOfMonth(focused, focused.getDate() + 1));
 						break;
-					case 40: // down
+					case 'ArrowDown':
 						event.preventDefault();
 						setFocused((focused) => updateDayOfMonth(focused, focused.getDate() + 7));
 						break;

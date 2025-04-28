@@ -45,7 +45,7 @@ describe('RadioGroup', () => {
 			);
 			wrapper
 				.find('#random-id')
-				.simulate('keydown', {keyCode: 37, currentTarget: {childNodes: [{focus}]}, preventDefault});
+				.simulate('keydown', {key: 'ArrowLeft', currentTarget: {childNodes: [{focus}]}, preventDefault});
 			expect(onChange.mock.calls).toEqual([['foo']]);
 			expect(focus).toHaveBeenCalledTimes(1);
 			expect(preventDefault).toHaveBeenCalledTimes(1);
@@ -60,7 +60,7 @@ describe('RadioGroup', () => {
 			);
 			wrapper
 				.find('#random-id')
-				.simulate('keydown', {keyCode: 38, currentTarget: {childNodes: [{}, {}, {focus}]}, preventDefault});
+				.simulate('keydown', {key: 'ArrowUp', currentTarget: {childNodes: [{}, {}, {focus}]}, preventDefault});
 			expect(onChange.mock.calls).toEqual([['baz']]);
 			expect(focus).toHaveBeenCalledTimes(1);
 			expect(preventDefault).toHaveBeenCalledTimes(1);
@@ -75,7 +75,7 @@ describe('RadioGroup', () => {
 			);
 			wrapper
 				.find('#random-id')
-				.simulate('keydown', {keyCode: 39, currentTarget: {childNodes: [{}, {}, {focus}]}, preventDefault});
+				.simulate('keydown', {key: 'ArrowRight', currentTarget: {childNodes: [{}, {}, {focus}]}, preventDefault});
 			expect(onChange.mock.calls).toEqual([['baz']]);
 			expect(focus).toHaveBeenCalledTimes(1);
 			expect(preventDefault).toHaveBeenCalledTimes(1);
@@ -90,7 +90,7 @@ describe('RadioGroup', () => {
 			);
 			wrapper
 				.find('#random-id')
-				.simulate('keydown', {keyCode: 40, currentTarget: {childNodes: [{focus}]}, preventDefault});
+				.simulate('keydown', {key: 'ArrowDown', currentTarget: {childNodes: [{focus}]}, preventDefault});
 			expect(onChange.mock.calls).toEqual([['foo']]);
 			expect(focus).toHaveBeenCalledTimes(1);
 			expect(preventDefault).toHaveBeenCalledTimes(1);
@@ -101,7 +101,7 @@ describe('RadioGroup', () => {
 			const wrapper = shallow(
 				<RadioGroup id="test" value="baz" options={options} renderLabel={renderLabel} onChange={onChange} />
 			);
-			wrapper.find('#random-id').simulate('keydown', {keyCode: 32});
+			wrapper.find('#random-id').simulate('keydown', {key: ' '});
 			expect(onChange).not.toHaveBeenCalled();
 		});
 	});

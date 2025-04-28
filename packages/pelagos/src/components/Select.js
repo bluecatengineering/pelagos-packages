@@ -96,10 +96,10 @@ const Select = ({
 	const handleKeyDown = useCallback(
 		(event) => {
 			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-				const keyCode = event.keyCode;
-				switch (keyCode) {
-					case 13: // enter
-					case 32: // space
+				const key = event.key;
+				switch (key) {
+					case 'Enter':
+					case ' ':
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
 						if (open) {
@@ -108,41 +108,40 @@ const Select = ({
 							showList();
 						}
 						break;
-					case 27: // escape
+					case 'Escape':
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
 						hideList();
 						break;
-					case 33: // page up
+					case 'PageUp':
 						if (open) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
 							setFocused(pageUp(listRef.current, focused));
 						}
 						break;
-					case 34: // page down
+					case 'PageDown':
 						if (open) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
 							setFocused(pageDown(listRef.current, focused));
 						}
 						break;
-					case 35: // end
+					case 'End':
 						if (open) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
 							updateFocused(renderedOptions.length - 1);
 						}
 						break;
-					case 36: // home
+					case 'Home':
 						if (open) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
 							updateFocused(0);
 						}
 						break;
-					case 38: {
-						// up
+					case 'ArrowUp': {
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
 						if (open) {
@@ -150,8 +149,7 @@ const Select = ({
 						}
 						break;
 					}
-					case 40: {
-						// down
+					case 'ArrowDown': {
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
 						if (open) {
@@ -162,11 +160,11 @@ const Select = ({
 						break;
 					}
 					default:
-						if (keyCode >= 48 && keyCode <= 90) {
+						if (/^\w$/.test(key)) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
 							const current = open ? focused : value ? options.indexOf(value) : 0;
-							const i = findItemToFocus(keyCode, current, renderedOptions.length, (i) => renderedOptions[i].text);
+							const i = findItemToFocus(key, current, renderedOptions.length, (i) => renderedOptions[i].text);
 							if (i !== -1) {
 								if (open) {
 									updateFocused(i);

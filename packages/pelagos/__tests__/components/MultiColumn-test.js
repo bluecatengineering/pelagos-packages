@@ -138,7 +138,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			pageUp.mockReturnValue(2);
-			wrapper.simulate('keydown', {keyCode: 33, preventDefault});
+			wrapper.simulate('keydown', {key: 'PageUp', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(pageUp.mock.calls).toEqual([[child1, 1]]);
 			expect(onChange.mock.calls).toEqual([[[0, 2]]]);
@@ -157,7 +157,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
 			pageDown.mockReturnValue(2);
-			wrapper.simulate('keydown', {keyCode: 34, preventDefault});
+			wrapper.simulate('keydown', {key: 'PageDown', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(pageDown.mock.calls).toEqual([[child1, 1]]);
 			expect(onChange.mock.calls).toEqual([[[0, 2]]]);
@@ -173,7 +173,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: [1, 3]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 35, preventDefault});
+			wrapper.simulate('keydown', {key: 'End', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[0, 2]]]);
 		});
@@ -188,7 +188,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: []})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 36, preventDefault});
+			wrapper.simulate('keydown', {key: 'Home', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[0, 0]]]);
 		});
@@ -203,7 +203,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: []})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 37, preventDefault});
+			wrapper.simulate('keydown', {key: 'ArrowLeft', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[0]]]);
 		});
@@ -218,7 +218,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: []})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 37, preventDefault});
+			wrapper.simulate('keydown', {key: 'ArrowLeft', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange).not.toHaveBeenCalled();
 		});
@@ -233,7 +233,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: []})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 38, preventDefault});
+			wrapper.simulate('keydown', {key: 'ArrowUp', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[0, 0]]]);
 		});
@@ -248,7 +248,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: [1, 3]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 38, preventDefault});
+			wrapper.simulate('keydown', {key: 'ArrowUp', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[0, 2]]]);
 		});
@@ -263,7 +263,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: [1, 2]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 39, preventDefault});
+			wrapper.simulate('keydown', {key: 'ArrowRight', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[0, 0]]]);
 		});
@@ -278,7 +278,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: [1]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 39, preventDefault});
+			wrapper.simulate('keydown', {key: 'ArrowRight', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange).not.toHaveBeenCalled();
 		});
@@ -293,7 +293,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: [1, 3]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 40, preventDefault});
+			wrapper.simulate('keydown', {key: 'ArrowDown', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[0, 2]]]);
 		});
@@ -308,7 +308,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: [1, 3]})
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 40, preventDefault});
+			wrapper.simulate('keydown', {key: 'ArrowDown', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange.mock.calls).toEqual([[[0, 0]]]);
 		});
@@ -328,9 +328,9 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: path});
 			useStringFinder.mockReturnValue(findItemToFocus);
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 48, preventDefault});
+			wrapper.simulate('keydown', {key: '0', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(findItemToFocus.mock.calls).toEqual([[48, 2, 1, anyFunction]]);
+			expect(findItemToFocus.mock.calls).toEqual([['0', 2, 1, anyFunction]]);
 			expect(onChange.mock.calls).toEqual([[[0, 1]]]);
 
 			expect(findItemToFocus.mock.calls[0][3](0)).toBe('FOO');
@@ -350,7 +350,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: path});
 			useStringFinder.mockReturnValue(findItemToFocus);
 			const wrapper = shallow(<MultiColumn path={path} onChange={onChange} />);
-			wrapper.simulate('keydown', {keyCode: 48, preventDefault});
+			wrapper.simulate('keydown', {key: '0', preventDefault});
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(onChange).not.toHaveBeenCalled();
 		});
@@ -365,8 +365,7 @@ describe('MultiColumn', () => {
 				.mockReturnValueOnce({current: path});
 			const wrapper = shallow(<MultiColumn path={path} />);
 
-			wrapper.simulate('keydown', {keyCode: 47, preventDefault});
-			wrapper.simulate('keydown', {keyCode: 91, preventDefault});
+			wrapper.simulate('keydown', {key: 'Other', preventDefault});
 
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
