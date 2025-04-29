@@ -84,8 +84,9 @@ const renderHeaders = (firstDate, weekDayFmtLong, weekDayFmtNarrow) => {
 	const day = new Date(firstDate);
 	for (let i = 0; i < 7; ++i) {
 		headers.push(
-			<th key={i} className="Calendar__dayLabel" abbr={weekDayFmtLong.format(day)} aria-hidden="true">
-				{weekDayFmtNarrow.format(day)}
+			<th key={i} className="Calendar__dayLabel">
+				<span aria-hidden>{weekDayFmtNarrow.format(day)}</span>
+				<span className="sr-only">{weekDayFmtLong.format(day)}</span>
 			</th>
 		);
 		day.setDate(day.getDate() + 1);
@@ -93,12 +94,13 @@ const renderHeaders = (firstDate, weekDayFmtLong, weekDayFmtNarrow) => {
 	return headers;
 };
 
-const renderCells = (day, curMonth, curTime, highlighted, rangeStart, rangeEnd) => {
+const renderCells = (day, curMonth, curTime, highlighted, rangeStart, rangeEnd, dateFmt) => {
 	const cells = [];
 	for (let c = 0; c < 7; ++c) {
 		const time = day.getTime();
 		const isCurMonth = day.getMonth() === curMonth;
-		const isSelected = time === curTime;
+		const isSelected =
+			(rangeStart || rangeEnd) && (!rangeStart || time >= rangeStart) && (!rangeEnd || time <= rangeEnd);
 		cells.push(
 			<td
 				key={c}
@@ -109,10 +111,11 @@ const renderCells = (day, curMonth, curTime, highlighted, rangeStart, rangeEnd) 
 							? tempHighlight(time, curTime, highlighted)
 							: curHighlight(time, rangeStart, rangeEnd)
 				}`}
-				tabIndex={isSelected ? 0 : -1}
+				tabIndex={time === curTime ? 0 : -1}
 				aria-selected={isSelected}
 				data-time={isCurMonth ? time : null}>
-				{isCurMonth ? day.getDate() : ''}
+				<span aria-hidden>{isCurMonth ? day.getDate() : ''}</span>
+				<span className="sr-only">{dateFmt.format(time)}</span>
 			</td>
 		);
 		day.setDate(day.getDate() + 1);
@@ -120,11 +123,11 @@ const renderCells = (day, curMonth, curTime, highlighted, rangeStart, rangeEnd) 
 	return cells;
 };
 
-const renderRows = (firstDate, curMonth, curTime, highlighted, rangeStart, rangeEnd) => {
+const renderRows = (firstDate, curMonth, curTime, highlighted, rangeStart, rangeEnd, dateFmt) => {
 	const rows = [];
 	const day = new Date(firstDate);
 	for (let r = 0; r < 6; ++r) {
-		rows.push(<tr key={r}>{renderCells(day, curMonth, curTime, highlighted, rangeStart, rangeEnd)}</tr>);
+		rows.push(<tr key={r}>{renderCells(day, curMonth, curTime, highlighted, rangeStart, rangeEnd, dateFmt)}</tr>);
 	}
 	return rows;
 };
@@ -141,14 +144,16 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 	const [focused, setFocused] = useState(() => getInitialDate(value));
 	const [highlighted, setHighlighted] = useState(null);
 
-	const [monthFmt, weekDayFmtLong, weekDayFmtNarrow] = useMemo(() => {
-		const locale = l10n.locale;
-		return [
+	const locale = l10n.locale;
+	const [monthFmt, weekDayFmtLong, weekDayFmtNarrow, dateFmt] = useMemo(
+		() => [
 			new Intl.DateTimeFormat(locale, {year: 'numeric', month: 'long'}),
 			new Intl.DateTimeFormat(locale, {weekday: 'long'}),
 			new Intl.DateTimeFormat(locale, {weekday: 'narrow'}),
-		];
-	}, []);
+			new Intl.DateTimeFormat(locale, {year: 'numeric', month: 'long', day: 'numeric'}),
+		],
+		[locale]
+	);
 
 	const handleHighlight = useCallback(
 		(time) => {
@@ -257,11 +262,10 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 	useEffect(() => {
 		const table = tableRef.current;
 		if (document.activeElement && table.contains(document.activeElement)) {
-			table.querySelector('[aria-selected="true"]').focus();
+			table.querySelector('[tabindex="0"]').focus();
 		}
 	}, [focused]);
 
-	const labelId = `${id}-label`;
 	const firstDayOfMonth = new Date(focused);
 	firstDayOfMonth.setDate(1);
 	const firstDate = new Date(firstDayOfMonth);
@@ -283,7 +287,7 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 					onMouseDown={preventDefault}
 					onClick={selectPrevMonth}
 				/>
-				<div id={labelId} className="Calendar__monthLabel" aria-live="polite">
+				<div className="Calendar__monthLabel" aria-live="polite">
 					{monthFmt.format(focused)}
 				</div>
 				<IconButton
@@ -298,7 +302,6 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 				id={id}
 				className="Calendar__days"
 				role="grid"
-				aria-labelledby={labelId}
 				ref={tableRef}
 				onKeyDown={handleKeyDown}
 				onMouseOver={handleMouseOver}
@@ -308,7 +311,7 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 				<thead>
 					<tr>{renderHeaders(firstDate, weekDayFmtLong, weekDayFmtNarrow)}</tr>
 				</thead>
-				<tbody>{renderRows(firstDate, curMonth, curTime, highlighted, rangeStart, rangeEnd)}</tbody>
+				<tbody>{renderRows(firstDate, curMonth, curTime, highlighted, rangeStart, rangeEnd, dateFmt)}</tbody>
 			</table>
 		</div>
 	);

@@ -447,7 +447,7 @@ describe('Calendar', () => {
 
 			useEffect.mock.calls[0][0]();
 			expect(contains.mock.calls).toEqual([[activeElement]]);
-			expect(querySelector.mock.calls).toEqual([['[aria-selected="true"]']]);
+			expect(querySelector.mock.calls).toEqual([['[tabindex="0"]']]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
 
