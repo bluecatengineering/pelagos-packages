@@ -135,6 +135,7 @@ describe('TimeFilterEditor', () => {
 		it('calls setFromError when from value changes to a non valid string', () => {
 			const setFrom = jest.fn();
 			const setFromError = jest.fn();
+			const setSaveError = jest.fn();
 			const parse = jest.fn();
 			const validateFrom = jest.fn().mockReturnValueOnce('Test error');
 			useState
@@ -142,12 +143,14 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce(['test-from', setFrom])
 				.mockReturnValueOnce([''])
 				.mockReturnValueOnce([null, setFromError])
-				.mockReturnValueOnce([null]);
+				.mockReturnValueOnce([null])
+				.mockReturnValueOnce([null, setSaveError]);
 			shallow(<TimeFilterEditor id="test" parse={parse} validateFrom={validateFrom} chipId="chip" />)
 				.find('#time-from')
 				.simulate('change', 'changed-from');
 			expect(setFrom.mock.calls).toEqual([['changed-from']]);
 			expect(setFromError.mock.calls).toEqual([['Test error']]);
+			expect(setSaveError.mock.calls).toEqual([[null]]);
 		});
 
 		it('calls setTo when to value changes to a valid time', () => {
@@ -172,6 +175,7 @@ describe('TimeFilterEditor', () => {
 		it('calls setToError when to value changes to a non valid string', () => {
 			const setTo = jest.fn();
 			const setToError = jest.fn();
+			const setSaveError = jest.fn();
 			const parse = jest.fn();
 			const validateTo = jest.fn().mockReturnValueOnce('Test error');
 			useState
@@ -179,12 +183,14 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce(['test-from'])
 				.mockReturnValueOnce(['test-to', setTo])
 				.mockReturnValueOnce([null])
-				.mockReturnValueOnce([null, setToError]);
+				.mockReturnValueOnce([null, setToError])
+				.mockReturnValueOnce([null, setSaveError]);
 			shallow(<TimeFilterEditor id="test" parse={parse} validateTo={validateTo} chipId="chip" />)
 				.find('#time-to')
 				.simulate('change', 'changed-to');
 			expect(setTo.mock.calls).toEqual([['changed-to']]);
 			expect(setToError.mock.calls).toEqual([['Test error']]);
+			expect(setSaveError.mock.calls).toEqual([[null]]);
 		});
 
 		it('calls setFrom and setTo when the calendar changes', () => {
@@ -193,6 +199,7 @@ describe('TimeFilterEditor', () => {
 			const setTo = jest.fn();
 			const setFromError = jest.fn();
 			const setToError = jest.fn();
+			const setSaveError = jest.fn();
 			const format = jest.fn().mockReturnValue('format');
 			const validateFrom = jest.fn().mockReturnValueOnce(null);
 			const validateTo = jest.fn().mockReturnValueOnce(null);
@@ -201,7 +208,8 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce(['', setFrom])
 				.mockReturnValueOnce(['', setTo])
 				.mockReturnValueOnce([null, setFromError])
-				.mockReturnValueOnce([null, setToError]);
+				.mockReturnValueOnce([null, setToError])
+				.mockReturnValueOnce([null, setSaveError]);
 			shallow(
 				<TimeFilterEditor id="test" format={format} validateFrom={validateFrom} validateTo={validateTo} chipId="chip" />
 			)
@@ -214,6 +222,7 @@ describe('TimeFilterEditor', () => {
 			expect(validateTo.mock.calls).toEqual([['format']]);
 			expect(setFromError.mock.calls).toEqual([[null]]);
 			expect(setToError.mock.calls).toEqual([[null]]);
+			expect(setSaveError.mock.calls).toEqual([[null]]);
 			expect(format.mock.calls).toEqual([['changed-from'], ['changed-to']]);
 		});
 
@@ -245,22 +254,23 @@ describe('TimeFilterEditor', () => {
 			expect(onSave.mock.calls).toEqual([]);
 		});
 
-		it('calls setFromError when the editor calls onSave and neither from nor to are set', () => {
+		it('calls setSaveError when the editor calls onSave and neither from nor to are set', () => {
 			const parse = jest.fn();
-			const setFromError = jest.fn();
+			const setSaveError = jest.fn();
 			useState
 				.mockReturnValueOnce(['custom'])
 				.mockReturnValueOnce([''])
 				.mockReturnValueOnce([''])
-				.mockReturnValueOnce([null, setFromError])
-				.mockReturnValueOnce([null]);
+				.mockReturnValueOnce([null])
+				.mockReturnValueOnce([null])
+				.mockReturnValueOnce([null, setSaveError]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" />);
 			wrapper.find('#random-id').prop('onSave')();
-			expect(setFromError.mock.calls).toEqual([['Enter either one or both values.']]);
+			expect(setSaveError.mock.calls).toEqual([['Enter either one or both values.']]);
 		});
 
-		it('calls setFromError when the editor calls onSave and from is greater than to', () => {
-			const setFromError = jest.fn();
+		it('calls setSaveError when the editor calls onSave and from is greater than to', () => {
+			const setSaveError = jest.fn();
 			const parse = jest
 				.fn()
 				.mockReturnValueOnce(2000)
@@ -271,8 +281,9 @@ describe('TimeFilterEditor', () => {
 				.mockReturnValueOnce(['custom'])
 				.mockReturnValueOnce(['test-from'])
 				.mockReturnValueOnce(['test-to'])
-				.mockReturnValueOnce([null, setFromError])
-				.mockReturnValueOnce([null]);
+				.mockReturnValueOnce([null])
+				.mockReturnValueOnce([null])
+				.mockReturnValueOnce([null, setSaveError]);
 			const wrapper = shallow(<TimeFilterEditor id="test" parse={parse} chipId="chip" />);
 			wrapper.find('#random-id').prop('onSave')();
 			expect(parse.mock.calls).toEqual([
@@ -281,7 +292,7 @@ describe('TimeFilterEditor', () => {
 				['test-from', true],
 				['test-to', false],
 			]);
-			expect(setFromError.mock.calls).toEqual([['"From" must be less than "To".']]);
+			expect(setSaveError.mock.calls).toEqual([['"From" must be less than "To".']]);
 		});
 
 		it('calls onSave when the editor calls onSave and there are no errors', () => {

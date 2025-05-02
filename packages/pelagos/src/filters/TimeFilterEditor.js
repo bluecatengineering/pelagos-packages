@@ -49,11 +49,13 @@ export const TimeFilterEditor = ({
 	const [to, setTo] = useState(() => (value?.to ? format(value.to) : ''));
 	const [fromError, setFromError] = useState(null);
 	const [toError, setToError] = useState(null);
+	const [saveError, setSaveError] = useState(null);
 
 	const handleFromChange = useCallback(
 		(from) => {
 			setFrom(from);
 			setFromError(validateFrom(from));
+			setSaveError(null);
 		},
 		[validateFrom]
 	);
@@ -61,6 +63,7 @@ export const TimeFilterEditor = ({
 		(to) => {
 			setTo(to);
 			setToError(validateTo(to));
+			setSaveError(null);
 		},
 		[validateTo]
 	);
@@ -74,6 +77,7 @@ export const TimeFilterEditor = ({
 			setTo(formattedTo);
 			setFromError(validateFrom(formattedFrom));
 			setToError(validateTo(formattedTo));
+			setSaveError(null);
 		},
 		[format, validateFrom, validateTo]
 	);
@@ -84,13 +88,13 @@ export const TimeFilterEditor = ({
 				return;
 			}
 			if (!from && !to) {
-				setFromError(t`Enter either one or both values.`);
+				setSaveError(t`Enter either one or both values.`);
 				return;
 			}
 			const fromTime = from ? parse(from, true) : undefined;
 			const toTime = to ? parse(to, false) : undefined;
 			if (fromTime && toTime && fromTime >= toTime) {
-				setFromError(t`"From" must be less than "To".`);
+				setSaveError(t`"From" must be less than "To".`);
 				return;
 			}
 			onSave(buildCustomRange(fromTime, toTime));
@@ -128,7 +132,7 @@ export const TimeFilterEditor = ({
 							value={from}
 							placeholder={fromPlaceholder}
 							disabled={!isCustom}
-							error={fromError}
+							error={fromError ?? saveError}
 							onChange={handleFromChange}
 						/>
 						<TextInputField
