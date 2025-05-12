@@ -13,11 +13,11 @@ exports[`ProgressStep rendering renders expected elements for completed step 1`]
   <CheckmarkOutline
     className="ProgressStep__icon ProgressStep__icon--complete"
   />
-  <p
+  <span
     className="ProgressStep__label"
   >
     Foo
-  </p>
+  </span>
 </li>
 `;
 
@@ -35,11 +35,11 @@ exports[`ProgressStep rendering renders expected elements for current 1`] = `
   <Incomplete
     className="ProgressStep__icon ProgressStep__icon--current"
   />
-  <p
+  <span
     className="ProgressStep__label"
   >
     Foo
-  </p>
+  </span>
 </li>
 `;
 
@@ -57,11 +57,11 @@ exports[`ProgressStep rendering renders expected elements for invalid current st
   <Warning
     className="ProgressStep__icon ProgressStep__icon--error"
   />
-  <p
+  <span
     className="ProgressStep__label"
   >
     Foo
-  </p>
+  </span>
 </li>
 `;
 
@@ -78,11 +78,11 @@ exports[`ProgressStep rendering renders expected elements for invalid step 1`] =
   <Warning
     className="ProgressStep__icon ProgressStep__icon--error"
   />
-  <p
+  <span
     className="ProgressStep__label"
   >
     Foo
-  </p>
+  </span>
 </li>
 `;
 
@@ -99,10 +99,10 @@ exports[`ProgressStep rendering renders expected elements for next step 1`] = `
   <CircleDash
     className="ProgressStep__icon ProgressStep__icon--incomplete"
   />
-  <p
+  <span
     className="ProgressStep__label"
   >
     Foo
-  </p>
+  </span>
 </li>
 `;

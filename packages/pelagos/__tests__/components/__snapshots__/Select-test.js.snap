@@ -16,11 +16,11 @@ exports[`Select rendering renders expected elements 1`] = `
     role="combobox"
     tabIndex="0"
   >
-    <p
+    <span
       className="Select__value"
     >
       Two
-    </p>
+    </span>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -45,11 +45,11 @@ exports[`Select rendering renders expected elements when className is not set 1`
     role="combobox"
     tabIndex="0"
   >
-    <p
+    <span
       className="Select__value"
     >
       Two
-    </p>
+    </span>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -74,11 +74,11 @@ exports[`Select rendering renders expected elements when disabled is true 1`] = 
     role="combobox"
     tabIndex="-1"
   >
-    <p
+    <span
       className="Select__value"
     >
       Two
-    </p>
+    </span>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -104,11 +104,11 @@ exports[`Select rendering renders expected elements when error is true 1`] = `
     role="combobox"
     tabIndex="0"
   >
-    <p
+    <span
       className="Select__value"
     >
       Two
-    </p>
+    </span>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -134,11 +134,11 @@ exports[`Select rendering renders expected elements when noLayer is true 1`] = `
     role="combobox"
     tabIndex="0"
   >
-    <p
+    <span
       className="Select__value"
     >
       Two
-    </p>
+    </span>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -163,11 +163,11 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
     role="combobox"
     tabIndex="0"
   >
-    <p
+    <span
       className="Select__value"
     >
       Two
-    </p>
+    </span>
     <SelectArrow
       className="Select__arrow"
       open={true}
@@ -230,11 +230,11 @@ exports[`Select rendering renders expected elements when options are booleans 1`
     role="combobox"
     tabIndex="0"
   >
-    <p
+    <span
       className="Select__value"
     >
       No
-    </p>
+    </span>
     <SelectArrow
       className="Select__arrow"
       open={false}
@@ -259,11 +259,11 @@ exports[`Select rendering renders expected elements when value is not set 1`] = 
     role="combobox"
     tabIndex="0"
   >
-    <p
+    <span
       className="Select__value"
     >
       
-    </p>
+    </span>
     <SelectArrow
       className="Select__arrow"
       open={false}
