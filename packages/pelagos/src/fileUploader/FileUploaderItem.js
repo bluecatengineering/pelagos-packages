@@ -12,9 +12,9 @@ const FileUploaderItem = ({className, name, error, disableDelete, onDelete, ...p
 	<Layer
 		as="li"
 		className={`FileUploader__file${error ? ' FileUploader__file--error' : ''}${className ? ` ${className}` : ''}`}>
-		<p className="FileUploader__fileName" title={name}>
+		<div className="FileUploader__fileName" title={name}>
 			{name}
-		</p>
+		</div>
 		<div className="FileUploader__fileIcons">
 			{error && <WarningFilled className="FileUploader__errorIcon" />}
 			<button

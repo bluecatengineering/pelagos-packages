@@ -27,7 +27,7 @@ const ProgressStep = ({label, complete, current, invalid}) => (
 		) : (
 			<CircleDash className="ProgressStep__icon ProgressStep__icon--incomplete" />
 		)}
-		<p className="ProgressStep__label">{label}</p>
+		<span className="ProgressStep__label">{label}</span>
 	</li>
 );
 

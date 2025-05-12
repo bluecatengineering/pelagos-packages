@@ -5,12 +5,12 @@ exports[`FileUploaderItem rendering renders expected elements 1`] = `
   as="li"
   className="FileUploader__file"
 >
-  <p
+  <div
     className="FileUploader__fileName"
     title="foo.txt"
   >
     foo.txt
-  </p>
+  </div>
   <div
     className="FileUploader__fileIcons"
   >
@@ -30,12 +30,12 @@ exports[`FileUploaderItem rendering renders expected elements when optional prop
   as="li"
   className="FileUploader__file FileUploader__file--error TestClass"
 >
-  <p
+  <div
     className="FileUploader__fileName"
     title="foo.txt"
   >
     foo.txt
-  </p>
+  </div>
   <div
     className="FileUploader__fileIcons"
   >
