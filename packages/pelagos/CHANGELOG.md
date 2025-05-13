@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.8](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.7...@bluecateng/pelagos@12.16.8) (2025-05-13)
+
+### Bug Fixes
+
+- fix a11y issues in Calendar ([eb71a42](https://github.com/bluecatengineering/pelagos-packages/commit/eb71a42ac66c6f01439f89b4cf8fe80e424edfc7))
+- fix incorrect use of p element ([4e782d3](https://github.com/bluecatengineering/pelagos-packages/commit/4e782d379677285ee5acdf9a4da4a1ff3a909a6a))
+- separate field errors from save errors ([5b1980c](https://github.com/bluecatengineering/pelagos-packages/commit/5b1980c7c883e6283987c0aed02939d45107b10f))
+- swap columns in ListSelector per new designs ([2d2fc13](https://github.com/bluecatengineering/pelagos-packages/commit/2d2fc132fca47387b9d04b408af55142b46bf083))
+- use key instead of keyCode ([69aa05c](https://github.com/bluecatengineering/pelagos-packages/commit/69aa05cafa7a442a18f46913a6e8c914fe2dfe04))
+
 ## [12.16.7](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.6...@bluecateng/pelagos@12.16.7) (2025-04-22)
 
 ### Bug Fixes

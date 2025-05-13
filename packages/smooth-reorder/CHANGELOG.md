@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/smooth-reorder@2.1.2...@bluecateng/smooth-reorder@2.1.3) (2025-05-13)
+
+### Bug Fixes
+
+- use key instead of keyCode ([69aa05c](https://github.com/bluecatengineering/pelagos-packages/commit/69aa05cafa7a442a18f46913a6e8c914fe2dfe04))
+
 ## [2.1.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/smooth-reorder@2.1.1...@bluecateng/smooth-reorder@2.1.2) (2025-04-04)
 
 ### Bug Fixes
