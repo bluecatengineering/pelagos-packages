@@ -97,10 +97,7 @@ describe('DateInput', () => {
 			expect(popUp).toEqual({style: {top: '100px', left: '200px'}});
 			expect(activate.mock.calls).toEqual([[]]);
 			expect(createFocusTrap.mock.calls).toEqual([
-				[
-					popUp,
-					{initialFocus: '.Calendar [aria-selected="true"]', allowOutsideClick: anyFunction, onDeactivate: anyFunction},
-				],
+				[popUp, {initialFocus: '.Calendar [tabindex="0"]', allowOutsideClick: anyFunction, onDeactivate: anyFunction}],
 			]);
 
 			const {allowOutsideClick, onDeactivate} = createFocusTrap.mock.calls[0][1];
