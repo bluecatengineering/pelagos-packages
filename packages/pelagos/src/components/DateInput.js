@@ -46,7 +46,7 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 		popUp.style.left = `${left}px`;
 
 		const trap = createFocusTrap(popUp, {
-			initialFocus: '.Calendar [aria-selected="true"]',
+			initialFocus: '.Calendar [tabindex="0"]',
 			allowOutsideClick: (event) => {
 				if (event.type === 'click') {
 					trap.deactivate();
