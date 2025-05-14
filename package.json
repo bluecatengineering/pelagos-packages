@@ -95,6 +95,7 @@
     ],
     "customSyntax": "postcss-less",
     "rules": {
+      "declaration-property-value-no-unknown": null,
       "no-invalid-double-slash-comments": null
     }
   },
