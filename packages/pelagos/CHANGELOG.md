@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.16.9](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.8...@bluecateng/pelagos@12.16.9) (2025-05-14)
+
+### Bug Fixes
+
+- leave table sort icons fully visible at all times ([86ed942](https://github.com/bluecatengineering/pelagos-packages/commit/86ed942410aca144a9a5138292397cbe8593df5d))
+- update initial focus selector in DateInput ([ede1512](https://github.com/bluecatengineering/pelagos-packages/commit/ede1512ffcfdd17d0ea83b922656f053887eda59))
+
 ## [12.16.8](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.7...@bluecateng/pelagos@12.16.8) (2025-05-13)
 
 ### Bug Fixes
