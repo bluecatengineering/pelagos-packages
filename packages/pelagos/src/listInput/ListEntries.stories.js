@@ -16,3 +16,7 @@ export const Grid = {args: {id: 'grid', list, getItemKey, getItemName}};
 export const Column = {args: {id: 'column', list, column: true, getItemKey, getItemName}};
 
 export const Reorderable = {args: {id: 'reorderable', list, reorderable: true, getItemKey, getItemName}};
+
+export const ReorderableWithNumbers = {
+	args: {id: 'reorderable', list, reorderable: 'numbers', getItemKey, getItemName},
+};

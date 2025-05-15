@@ -109,6 +109,20 @@ describe('ListEntries', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when reorderable is numbers', () => {
+			const wrapper = shallow(
+				<ListEntries
+					id="test"
+					list={[{id: '0', name: 'test'}]}
+					reorderable="numbers"
+					getItemKey={getId}
+					getItemName={getName}
+					renderItem={(i) => <div>{i.name}</div>}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {
@@ -227,7 +241,7 @@ describe('ListEntries', () => {
 				/>
 			);
 			expect(useReorder.mock.calls).toEqual([
-				['.ListEntries__item', '.ListEntries__entry', 2, anyFunction, anyFunction],
+				['.ListEntries__listItem', '.ListEntries__entry', 2, anyFunction, anyFunction],
 			]);
 			expect(useReorder.mock.calls[0][3]({dataset: {index: '0'}})).toBe('test0');
 			useReorder.mock.calls[0][4](0, 1);

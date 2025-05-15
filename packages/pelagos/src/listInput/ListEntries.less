@@ -31,8 +31,20 @@
 			});
 		}
 
-		&__item {
+		&.numbers {
+			list-style: decimal;
+			padding-left: @sp-32;
+		}
+
+		&__listItem {
 			@focus-visible();
+
+			&.clone {
+				list-style: none;
+			}
+		}
+
+		&__item {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
