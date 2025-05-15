@@ -35,7 +35,7 @@ const ListEntries = ({
 		[list, onReorder]
 	);
 	const [reorderRef, liveRef] = useReorder(
-		'.ListEntries__item',
+		'.ListEntries__listItem',
 		'.ListEntries__entry',
 		list.length,
 		getElementName,
@@ -71,6 +71,7 @@ const ListEntries = ({
 
 	id = useRandomId(id);
 	const operationId = `${id}-operation`;
+	const List = reorderable ? 'ol' : 'ul';
 	return (
 		<>
 			<div className="sr-only" aria-live="polite" ref={liveRef} />
@@ -79,10 +80,10 @@ const ListEntries = ({
 					{t`Press space bar to reorder`}
 				</div>
 			)}
-			<ul
+			<List
 				ref={reorderRef}
 				id={id}
-				className={`ListEntries ListEntries--${column || reorderable ? 'column' : 'grid'}${className ? ` ${className}` : ''}`}
+				className={`ListEntries ListEntries--${column || reorderable ? 'column' : 'grid'}${reorderable === 'numbers' ? ' numbers' : ''}${className ? ` ${className}` : ''}`}
 				onClick={handleClick}>
 				{list.map((item, i) => {
 					const name = getItemName(item);
@@ -91,34 +92,35 @@ const ListEntries = ({
 					className = className ? `${className} ListEntries__name` : 'ListEntries__name';
 					const itemKey = getItemKey(item, i);
 					return (
-						<Layer
+						<li
 							key={itemKey}
-							as="li"
-							className={`ListEntries__item${itemKey === highlightKey ? ' ListEntries__item--highlight' : ''}`}
+							className="ListEntries__listItem"
 							tabIndex={reorderable ? 0 : undefined}
 							aria-describedby={reorderable ? operationId : undefined}
 							data-testid="list-item"
 							data-index={i}>
-							{reorderable ? (
-								<div className="ListEntries__entry draggable">
-									<Draggable className="ListEntries__grip" />
-									{cloneElement(element, {className})}
-								</div>
-							) : (
-								cloneElement(element, {className})
-							)}
-							<button
-								className="ListEntries__icon"
-								type="button"
-								aria-label={t`Remove ${name}`}
-								data-testid="remove-item"
-								data-index={i}>
-								<Close />
-							</button>
-						</Layer>
+							<Layer className={`ListEntries__item${itemKey === highlightKey ? ' ListEntries__item--highlight' : ''}`}>
+								{reorderable ? (
+									<div className="ListEntries__entry draggable">
+										<Draggable className="ListEntries__grip" />
+										{cloneElement(element, {className})}
+									</div>
+								) : (
+									cloneElement(element, {className})
+								)}
+								<button
+									className="ListEntries__icon"
+									type="button"
+									aria-label={t`Remove ${name}`}
+									data-testid="remove-item"
+									data-index={i}>
+									<Close />
+								</button>
+							</Layer>
+						</li>
 					);
 				})}
-			</ul>
+			</List>
 		</>
 	);
 };
@@ -133,7 +135,7 @@ ListEntries.propTypes = {
 	/** The data for the list. */
 	list: PropTypes.array,
 	/** Whether items are reorderable. */
-	reorderable: PropTypes.bool,
+	reorderable: PropTypes.oneOf([true, false, 'numbers']),
 	/** Whether items are listed as columns. Set to true if reorderable. */
 	column: PropTypes.bool,
 	/** Function invoked to get each item's key. */

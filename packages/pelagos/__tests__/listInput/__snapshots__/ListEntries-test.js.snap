@@ -11,27 +11,30 @@ exports[`ListEntries rendering renders expected elements 1`] = `
     id="random-id"
     onClick={[Function]}
   >
-    <Layer
-      as="li"
-      className="ListEntries__item"
+    <li
+      className="ListEntries__listItem"
       data-index={0}
       data-testid="list-item"
     >
-      <div
-        className="ListEntries__name"
+      <Layer
+        className="ListEntries__item"
       >
-        test
-      </div>
-      <button
-        aria-label="Remove test"
-        className="ListEntries__icon"
-        data-index={0}
-        data-testid="remove-item"
-        type="button"
-      >
-        <Close />
-      </button>
-    </Layer>
+        <div
+          className="ListEntries__name"
+        >
+          test
+        </div>
+        <button
+          aria-label="Remove test"
+          className="ListEntries__icon"
+          data-index={0}
+          data-testid="remove-item"
+          type="button"
+        >
+          <Close />
+        </button>
+      </Layer>
+    </li>
   </ul>
 </React.Fragment>
 `;
@@ -47,27 +50,30 @@ exports[`ListEntries rendering renders expected elements when column is set 1`] 
     id="random-id"
     onClick={[Function]}
   >
-    <Layer
-      as="li"
-      className="ListEntries__item"
+    <li
+      className="ListEntries__listItem"
       data-index={0}
       data-testid="list-item"
     >
-      <div
-        className="ListEntries__name"
+      <Layer
+        className="ListEntries__item"
       >
-        test
-      </div>
-      <button
-        aria-label="Remove test"
-        className="ListEntries__icon"
-        data-index={0}
-        data-testid="remove-item"
-        type="button"
-      >
-        <Close />
-      </button>
-    </Layer>
+        <div
+          className="ListEntries__name"
+        >
+          test
+        </div>
+        <button
+          aria-label="Remove test"
+          className="ListEntries__icon"
+          data-index={0}
+          data-testid="remove-item"
+          type="button"
+        >
+          <Close />
+        </button>
+      </Layer>
+    </li>
   </ul>
 </React.Fragment>
 `;
@@ -83,27 +89,30 @@ exports[`ListEntries rendering renders expected elements when highlightKey is se
     id="random-id"
     onClick={[Function]}
   >
-    <Layer
-      as="li"
-      className="ListEntries__item ListEntries__item--highlight"
+    <li
+      className="ListEntries__listItem"
       data-index={0}
       data-testid="list-item"
     >
-      <div
-        className="ListEntries__name"
+      <Layer
+        className="ListEntries__item ListEntries__item--highlight"
       >
-        test
-      </div>
-      <button
-        aria-label="Remove test"
-        className="ListEntries__icon"
-        data-index={0}
-        data-testid="remove-item"
-        type="button"
-      >
-        <Close />
-      </button>
-    </Layer>
+        <div
+          className="ListEntries__name"
+        >
+          test
+        </div>
+        <button
+          aria-label="Remove test"
+          className="ListEntries__icon"
+          data-index={0}
+          data-testid="remove-item"
+          type="button"
+        >
+          <Close />
+        </button>
+      </Layer>
+    </li>
   </ul>
 </React.Fragment>
 `;
@@ -119,28 +128,85 @@ exports[`ListEntries rendering renders expected elements when renderItem is not 
     id="random-id"
     onClick={[Function]}
   >
-    <Layer
-      as="li"
-      className="ListEntries__item"
+    <li
+      className="ListEntries__listItem"
       data-index={0}
       data-testid="list-item"
     >
-      <div
-        className="ListEntries__name"
+      <Layer
+        className="ListEntries__item"
       >
-        test
-      </div>
-      <button
-        aria-label="Remove test"
-        className="ListEntries__icon"
-        data-index={0}
-        data-testid="remove-item"
-        type="button"
-      >
-        <Close />
-      </button>
-    </Layer>
+        <div
+          className="ListEntries__name"
+        >
+          test
+        </div>
+        <button
+          aria-label="Remove test"
+          className="ListEntries__icon"
+          data-index={0}
+          data-testid="remove-item"
+          type="button"
+        >
+          <Close />
+        </button>
+      </Layer>
+    </li>
   </ul>
+</React.Fragment>
+`;
+
+exports[`ListEntries rendering renders expected elements when reorderable is numbers 1`] = `
+<React.Fragment>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="sr-only"
+    id="random-id-operation"
+  >
+    Press space bar to reorder
+  </div>
+  <ol
+    className="ListEntries ListEntries--column numbers"
+    id="random-id"
+    onClick={[Function]}
+  >
+    <li
+      aria-describedby="random-id-operation"
+      className="ListEntries__listItem"
+      data-index={0}
+      data-testid="list-item"
+      tabIndex={0}
+    >
+      <Layer
+        className="ListEntries__item"
+      >
+        <div
+          className="ListEntries__entry draggable"
+        >
+          <Draggable
+            className="ListEntries__grip"
+          />
+          <div
+            className="ListEntries__name"
+          >
+            test
+          </div>
+        </div>
+        <button
+          aria-label="Remove test"
+          className="ListEntries__icon"
+          data-index={0}
+          data-testid="remove-item"
+          type="button"
+        >
+          <Close />
+        </button>
+      </Layer>
+    </li>
+  </ol>
 </React.Fragment>
 `;
 
@@ -156,42 +222,45 @@ exports[`ListEntries rendering renders expected elements when reorderable is set
   >
     Press space bar to reorder
   </div>
-  <ul
+  <ol
     className="ListEntries ListEntries--column"
     id="random-id"
     onClick={[Function]}
   >
-    <Layer
+    <li
       aria-describedby="random-id-operation"
-      as="li"
-      className="ListEntries__item"
+      className="ListEntries__listItem"
       data-index={0}
       data-testid="list-item"
       tabIndex={0}
     >
-      <div
-        className="ListEntries__entry draggable"
+      <Layer
+        className="ListEntries__item"
       >
-        <Draggable
-          className="ListEntries__grip"
-        />
         <div
-          className="ListEntries__name"
+          className="ListEntries__entry draggable"
         >
-          test
+          <Draggable
+            className="ListEntries__grip"
+          />
+          <div
+            className="ListEntries__name"
+          >
+            test
+          </div>
         </div>
-      </div>
-      <button
-        aria-label="Remove test"
-        className="ListEntries__icon"
-        data-index={0}
-        data-testid="remove-item"
-        type="button"
-      >
-        <Close />
-      </button>
-    </Layer>
-  </ul>
+        <button
+          aria-label="Remove test"
+          className="ListEntries__icon"
+          data-index={0}
+          data-testid="remove-item"
+          type="button"
+        >
+          <Close />
+        </button>
+      </Layer>
+    </li>
+  </ol>
 </React.Fragment>
 `;
 
@@ -206,27 +275,30 @@ exports[`ListEntries rendering renders expected elements when the item has class
     id="random-id"
     onClick={[Function]}
   >
-    <Layer
-      as="li"
-      className="ListEntries__item"
+    <li
+      className="ListEntries__listItem"
       data-index={0}
       data-testid="list-item"
     >
-      <div
-        className="TestClass ListEntries__name"
+      <Layer
+        className="ListEntries__item"
       >
-        test
-      </div>
-      <button
-        aria-label="Remove test"
-        className="ListEntries__icon"
-        data-index={0}
-        data-testid="remove-item"
-        type="button"
-      >
-        <Close />
-      </button>
-    </Layer>
+        <div
+          className="TestClass ListEntries__name"
+        >
+          test
+        </div>
+        <button
+          aria-label="Remove test"
+          className="ListEntries__icon"
+          data-index={0}
+          data-testid="remove-item"
+          type="button"
+        >
+          <Close />
+        </button>
+      </Layer>
+    </li>
   </ul>
 </React.Fragment>
 `;
