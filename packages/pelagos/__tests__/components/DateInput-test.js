@@ -94,7 +94,6 @@ describe('DateInput', () => {
 			shallow(<DateInput className="TestClass" />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [1000]]);
 			expect(useEffect.mock.calls[0][0]()).toBe(deactivate);
-			expect(popUp).toEqual({style: {top: '100px', left: '200px'}});
 			expect(activate.mock.calls).toEqual([[]]);
 			expect(createFocusTrap.mock.calls).toEqual([
 				[popUp, {initialFocus: '.Calendar [tabindex="0"]', allowOutsideClick: anyFunction, onDeactivate: anyFunction}],

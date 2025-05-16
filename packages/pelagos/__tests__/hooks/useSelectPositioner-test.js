@@ -19,7 +19,7 @@ describe('useSelectPositioner', () => {
 		const buttonRef = {current: button};
 		const popUpRef = {current: popUp};
 		useSelectPositioner(true, buttonRef, popUpRef);
-		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [buttonRef, popUpRef, true]]);
+		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [buttonRef, popUpRef, true, true]]);
 		const remove = useLayoutEffect.mock.calls[0][0]();
 		expect(popUp.style).toEqual({top: '100px', left: '200px', width: '400px'});
 		expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
@@ -38,9 +38,22 @@ describe('useSelectPositioner', () => {
 		expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
 	});
 
+	it('does not set the pop-up width when changePopUpWidth is false', () => {
+		const button = {
+			getBoundingClientRect: () => ({bottom: 100, left: 200, width: 400}),
+		};
+		const popUp = {style: {width: '100px'}, getBoundingClientRect: () => ({height: 200})};
+		const buttonRef = {current: button};
+		const popUpRef = {current: popUp};
+		useSelectPositioner(true, buttonRef, popUpRef, {changePopUpWidth: false});
+		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [buttonRef, popUpRef, true, false]]);
+		useLayoutEffect.mock.calls[0][0]();
+		expect(popUp.style).toEqual({top: '100px', left: '200px', width: '100px'});
+	});
+
 	it('does not set the pop-up location when open is false', () => {
 		useSelectPositioner(false, {}, {});
-		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [{}, {}, false]]);
+		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [{}, {}, false, true]]);
 		expect(() => useLayoutEffect.mock.calls[0][0]()).not.toThrow();
 	});
 });
