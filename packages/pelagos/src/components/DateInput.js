@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useCallback, useLayoutEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import {createFocusTrap} from 'focus-trap';
@@ -33,18 +33,24 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 		[format, onChange]
 	);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (calendarTime === null) {
 			return undefined;
 		}
 
 		const wrapper = wrapperRef.current;
-		const {bottom, left} = wrapper.getBoundingClientRect();
-
 		const popUp = popUpRef.current;
-		popUp.style.top = `${bottom}px`;
-		popUp.style.left = `${left}px`;
+		const setPosition = () => {
+			const {height: popUpHeight} = popUp.getBoundingClientRect();
+			const {top, bottom, left} = wrapper.getBoundingClientRect();
 
+			popUp.style.top = `${bottom + popUpHeight + 8 < innerHeight ? bottom : Math.max(0, top - popUpHeight)}px`;
+			popUp.style.left = `${left}px`;
+		};
+		setPosition();
+
+		document.addEventListener('scroll', setPosition, {passive: true, capture: true});
+		window.addEventListener('resize', setPosition, {passive: true, capture: true});
 		const trap = createFocusTrap(popUp, {
 			initialFocus: '.Calendar [tabindex="0"]',
 			allowOutsideClick: (event) => {
@@ -56,7 +62,12 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 			onDeactivate: () => setCalendarTime(null),
 		});
 		trap.activate();
-		return trap.deactivate;
+
+		return () => {
+			document.removeEventListener('scroll', setPosition, {passive: true, capture: true});
+			window.removeEventListener('resize', setPosition, {passive: true, capture: true});
+			trap.deactivate();
+		};
 	}, [calendarTime]);
 
 	return (

@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useLayoutEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 import {createFocusTrap} from 'focus-trap';
 
@@ -9,7 +9,9 @@ jest.unmock('../../src/components/DateInput');
 const anyFunction = expect.any(Function);
 
 const body = {tag: 'body'};
-global.document = {body};
+global.document = {body, addEventListener: jest.fn(), removeEventListener: jest.fn()};
+global.window = {addEventListener: jest.fn(), removeEventListener: jest.fn()};
+global.innerHeight = 500;
 
 describe('DateInput', () => {
 	describe('rendering', () => {
@@ -82,9 +84,12 @@ describe('DateInput', () => {
 		it('adds an effect which creates and activates a focus trap', () => {
 			const wrapper = {
 				closest: jest.fn().mockReturnValue({dataset: {layer: '2'}}),
-				getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200}),
+				getBoundingClientRect: jest.fn().mockReturnValue({top: 0, bottom: 100, left: 200}),
 			};
-			const popUp = {style: {}};
+			const popUp = {
+				style: {},
+				getBoundingClientRect: jest.fn().mockReturnValue({height: 100}),
+			};
 			const setCalendarTime = jest.fn();
 			const activate = jest.fn();
 			const deactivate = jest.fn();
@@ -92,13 +97,23 @@ describe('DateInput', () => {
 			useState.mockReturnValueOnce([1000, setCalendarTime]);
 			createFocusTrap.mockReturnValue({activate, deactivate});
 			shallow(<DateInput className="TestClass" />);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [1000]]);
-			expect(useEffect.mock.calls[0][0]()).toBe(deactivate);
-			expect(popUp).toEqual({style: {top: '100px', left: '200px'}});
+			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [1000]]);
+			const remove = useLayoutEffect.mock.calls[0][0]();
+			expect(popUp.style).toEqual({top: '100px', left: '200px'});
 			expect(activate.mock.calls).toEqual([[]]);
 			expect(createFocusTrap.mock.calls).toEqual([
 				[popUp, {initialFocus: '.Calendar [tabindex="0"]', allowOutsideClick: anyFunction, onDeactivate: anyFunction}],
 			]);
+			expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
+			expect(window.addEventListener.mock.calls).toEqual([['resize', anyFunction, {passive: true, capture: true}]]);
+
+			wrapper.getBoundingClientRect = () => ({top: 300, bottom: 400, left: 200});
+			document.addEventListener.mock.calls[0][1]();
+			expect(popUp.style).toEqual({top: '200px', left: '200px'});
+
+			wrapper.getBoundingClientRect = () => ({top: 50, bottom: 450, left: 200});
+			document.addEventListener.mock.calls[0][1]();
+			expect(popUp.style).toEqual({top: '0px', left: '200px'});
 
 			const {allowOutsideClick, onDeactivate} = createFocusTrap.mock.calls[0][1];
 
@@ -108,6 +123,10 @@ describe('DateInput', () => {
 			expect(allowOutsideClick({type: 'click'})).toBe(false);
 			expect(deactivate.mock.calls).toEqual([[]]);
 
+			remove();
+			expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
+			expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
+			expect(deactivate.mock.calls).toEqual([[], []]);
 			onDeactivate();
 			expect(setCalendarTime.mock.calls).toEqual([[null]]);
 		});
@@ -118,8 +137,8 @@ describe('DateInput', () => {
 			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: popUp});
 			useState.mockReturnValueOnce([null]);
 			shallow(<DateInput className="TestClass" />);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [null]]);
-			expect(useEffect.mock.calls[0][0]()).toBeUndefined();
+			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [null]]);
+			expect(useLayoutEffect.mock.calls[0][0]()).toBeUndefined();
 			expect(createFocusTrap.mock.calls).toEqual([]);
 		});
 	});
