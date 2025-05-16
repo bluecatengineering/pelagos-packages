@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.17.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.9...@bluecateng/pelagos@12.17.0) (2025-05-16)
+
+### Features
+
+- add option to show numbers in reorderable list entries ([05e56ce](https://github.com/bluecatengineering/pelagos-packages/commit/05e56ce6ee91ea7ae5dfea7cbd3f941b1f616635))
+
+### Bug Fixes
+
+- handle mouse events on calendar table cell spans ([ae311d4](https://github.com/bluecatengineering/pelagos-packages/commit/ae311d42fe2d0589374d4dda81e4262b56a06726))
+- reposition calendar popup on resize and scroll ([96ac63e](https://github.com/bluecatengineering/pelagos-packages/commit/96ac63efd39b91db3342f5e3f75dddaf8ed083cf))
+- set overflow: hidden on ListEntries\_\_entry ([c9a3189](https://github.com/bluecatengineering/pelagos-packages/commit/c9a3189b12ef7ba1adf348e98d46a659857b3f15))
+
 ## [12.16.9](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.8...@bluecateng/pelagos@12.16.9) (2025-05-14)
 
 ### Bug Fixes
