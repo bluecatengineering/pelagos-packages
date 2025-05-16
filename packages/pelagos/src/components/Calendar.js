@@ -232,7 +232,7 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 
 	const handleMouseOver = useCallback(
 		(event) => {
-			const time = event.target.dataset.time;
+			const time = event.target.closest('td')?.dataset.time;
 			if (time && highlighted) {
 				setFocused(new Date(+time));
 			}
@@ -242,7 +242,7 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 
 	const handleMouseUp = useCallback(
 		(event) => {
-			const time = event.target.dataset.time;
+			const time = event.target.closest('td')?.dataset.time;
 			if (time) {
 				setFocused(new Date(+time));
 				handleHighlight(+time);
