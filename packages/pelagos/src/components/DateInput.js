@@ -6,6 +6,7 @@ import {t} from '@bluecateng/l10n.macro';
 import CalendarIcon from '@carbon/icons-react/es/Calendar';
 
 import useLayer from '../hooks/useLayer';
+import useSelectPositioner from '../hooks/useSelectPositioner';
 
 import Layer from './Layer';
 import Calendar from './Calendar';
@@ -33,19 +34,14 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 		[format, onChange]
 	);
 
+	useSelectPositioner(calendarTime !== null, wrapperRef, popUpRef, {changePopUpWidth: false});
+
 	useEffect(() => {
 		if (calendarTime === null) {
 			return undefined;
 		}
 
-		const wrapper = wrapperRef.current;
-		const {bottom, left} = wrapper.getBoundingClientRect();
-
-		const popUp = popUpRef.current;
-		popUp.style.top = `${bottom}px`;
-		popUp.style.left = `${left}px`;
-
-		const trap = createFocusTrap(popUp, {
+		const trap = createFocusTrap(popUpRef.current, {
 			initialFocus: '.Calendar [tabindex="0"]',
 			allowOutsideClick: (event) => {
 				if (event.type === 'click') {

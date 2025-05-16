@@ -7,6 +7,8 @@ const {max} = Math;
  * @param {boolean} open whether the pop-up is open.
  * @param {MutableRefObject<Element>} boxRef React ref to the select box.
  * @param {MutableRefObject<Element>} popUpRef React ref to the pop-up box.
+ * @param {Object} options the positioning options.
+ * @param {boolean} [options.changePopUpWidth] whether the width should be set, default: true.
  *
  * @example
  * import {useRef, useState} from 'react';
@@ -19,7 +21,7 @@ const {max} = Math;
  *   useSelectPositioner(open, boxRef, popUpRef);
  * }
  */
-const useSelectPositioner = (open, boxRef, popUpRef) =>
+const useSelectPositioner = (open, boxRef, popUpRef, {changePopUpWidth} = {changePopUpWidth: true}) =>
 	useLayoutEffect(() => {
 		const button = boxRef.current;
 		const popUp = popUpRef.current;
@@ -28,7 +30,9 @@ const useSelectPositioner = (open, boxRef, popUpRef) =>
 			const {top, bottom, left, width} = button.getBoundingClientRect();
 			popUp.style.top = `${bottom + popUpHeight + 8 < innerHeight ? bottom : max(0, top - popUpHeight)}px`;
 			popUp.style.left = `${left}px`;
-			popUp.style.width = `${width}px`;
+			if (changePopUpWidth) {
+				popUp.style.width = `${width}px`;
+			}
 		};
 
 		if (open) {
@@ -41,6 +45,6 @@ const useSelectPositioner = (open, boxRef, popUpRef) =>
 			document.removeEventListener('scroll', setPosition, {passive: true, capture: true});
 			window.removeEventListener('resize', setPosition, {passive: true, capture: true});
 		};
-	}, [boxRef, popUpRef, open]);
+	}, [boxRef, popUpRef, open, changePopUpWidth]);
 
 export default useSelectPositioner;
