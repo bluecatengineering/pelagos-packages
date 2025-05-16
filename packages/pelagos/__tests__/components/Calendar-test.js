@@ -311,8 +311,11 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15), setFocused]).mockReturnValueOnce([1]);
 
 			const wrapper = shallow(<Calendar />);
+			const closest = jest.fn();
+			closest.mockReturnValueOnce({dataset: {time: '1567656000000'}});
 
-			wrapper.find('#random-id').simulate('mouseover', {target: {dataset: {time: '1567656000000'}}});
+			wrapper.find('#random-id').simulate('mouseover', {target: {closest}});
+			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setFocused.mock.calls).toEqual([[new Date(2019, 8, 5)]]);
 		});
 
@@ -321,8 +324,11 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15), setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
+			const closest = jest.fn();
+			closest.mockReturnValueOnce({dataset: {}});
 
-			wrapper.find('#random-id').simulate('mouseover', {target: {dataset: {}}});
+			wrapper.find('#random-id').simulate('mouseover', {target: {closest}});
+			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 
@@ -331,8 +337,11 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15), setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar />);
+			const closest = jest.fn();
+			closest.mockReturnValueOnce({dataset: {}});
 
-			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {}}});
+			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
+			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setFocused).not.toHaveBeenCalled();
 		});
 
@@ -342,8 +351,11 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15), setFocused]).mockReturnValueOnce([null]);
 
 			const wrapper = shallow(<Calendar onChange={onChange} />);
-			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			const closest = jest.fn();
+			closest.mockReturnValueOnce({dataset: {time: '1567656000000'}});
 
+			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
+			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setFocused.mock.calls).toEqual([[new Date(2019, 8, 5)]]);
 			expect(onChange.mock.calls).toEqual([[1567656000000]]);
 		});
@@ -354,8 +366,11 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([new Date(2019, 8, 15), setFocused]).mockReturnValueOnce([null, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[]} />);
-			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			const closest = jest.fn();
+			closest.mockReturnValueOnce({dataset: {time: '1567656000000'}});
 
+			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
+			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setFocused.mock.calls).toEqual([[new Date(2019, 8, 5)]]);
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
 			expect(setHighlighted.mock.calls[0][0](null)).toBe(1567656000000);
@@ -371,8 +386,11 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([highlighted, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[]} onChange={onChange} />);
-			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			const closest = jest.fn();
+			closest.mockReturnValueOnce({dataset: {time: '1567656000000'}});
 
+			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
+			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
 			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();
 			expect(onChange.mock.calls).toEqual([[[1567656000000, highlighted]]]);
@@ -388,8 +406,11 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([highlighted, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[]} onChange={onChange} />);
-			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			const closest = jest.fn();
+			closest.mockReturnValueOnce({dataset: {time: '1567656000000'}});
 
+			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
+			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
 			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();
 			expect(onChange.mock.calls).toEqual([[[highlighted, 1567656000000]]]);
@@ -407,8 +428,11 @@ describe('Calendar', () => {
 			useState.mockReturnValueOnce([focused, setFocused]).mockReturnValueOnce([highlighted, setHighlighted]);
 
 			const wrapper = shallow(<Calendar value={[startTime, endTime]} onChange={onChange} />);
-			wrapper.find('#random-id').simulate('mouseup', {target: {dataset: {time: '1567656000000'}}});
+			const closest = jest.fn();
+			closest.mockReturnValueOnce({dataset: {time: '1567656000000'}});
 
+			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
+			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
 			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();
 			expect(onChange.mock.calls).toEqual([
