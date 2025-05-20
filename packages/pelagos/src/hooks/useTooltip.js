@@ -16,7 +16,7 @@ import useTooltipBase from './useTooltipBase';
  */
 const useTooltip = (text, placement, aria) => {
 	const targetRef = useRef(null);
-	const [showTooltip, hide] = useTooltipBase();
+	const [showTooltip, hide, tooltip] = useTooltipBase();
 
 	const show = useCallback(
 		() => showTooltip(text, placement, targetRef.current, aria),
@@ -25,13 +25,25 @@ const useTooltip = (text, placement, aria) => {
 
 	return useCallback(
 		(element) => {
+			const handleMouseEnter = (event) => {
+				if (event.relatedTarget !== tooltip && event.relatedTarget !== targetRef.current) {
+					show();
+				}
+			};
+			const handleMouseLeave = (event) => {
+				if (event.relatedTarget !== tooltip && event.relatedTarget !== targetRef.current) {
+					hide();
+				}
+			};
 			const handleKeyDown = (event) => {
 				if (event.key === 'Escape') hide();
 			};
 			const target = targetRef.current;
 			if (target) {
-				target.removeEventListener('mouseenter', show);
-				target.removeEventListener('mouseleave', hide);
+				tooltip.removeEventListener('mouseenter', handleMouseEnter);
+				tooltip.removeEventListener('mouseleave', handleMouseLeave);
+				target.removeEventListener('mouseenter', handleMouseEnter);
+				target.removeEventListener('mouseleave', handleMouseLeave);
 				target.removeEventListener('focus', show);
 				target.removeEventListener('blur', hide);
 				target.removeEventListener('keydown', handleKeyDown);
@@ -39,15 +51,17 @@ const useTooltip = (text, placement, aria) => {
 				hide();
 			}
 			if (element) {
-				element.addEventListener('mouseenter', show);
-				element.addEventListener('mouseleave', hide);
+				tooltip.addEventListener('mouseenter', handleMouseEnter);
+				tooltip.addEventListener('mouseleave', handleMouseLeave);
+				element.addEventListener('mouseenter', handleMouseEnter);
+				element.addEventListener('mouseleave', handleMouseLeave);
 				element.addEventListener('focus', show);
 				element.addEventListener('blur', hide);
 				element.addEventListener('keydown', handleKeyDown);
 			}
 			targetRef.current = element;
 		},
-		[hide, show, targetRef]
+		[hide, show, tooltip]
 	);
 };
 

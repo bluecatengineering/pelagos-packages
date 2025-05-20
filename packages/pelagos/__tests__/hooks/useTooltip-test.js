@@ -11,19 +11,29 @@ describe('useTooltip', () => {
 		const show = jest.fn();
 		const hide = jest.fn();
 		const element = {addEventListener};
-		useTooltipBase.mockReturnValue([show, hide]);
+		const tooltipElement = {addEventListener};
+		useTooltipBase.mockReturnValue([show, hide, tooltipElement]);
 		const tooltip = useTooltip('Test', 'top');
 		tooltip(element);
 		expect(addEventListener.mock.calls).toEqual([
 			['mouseenter', anyFunction],
-			['mouseleave', hide],
+			['mouseleave', anyFunction],
+			['mouseenter', anyFunction],
+			['mouseleave', anyFunction],
 			['focus', anyFunction],
 			['blur', hide],
 			['keydown', anyFunction],
 		]);
 
-		addEventListener.mock.calls[0][1]();
+		addEventListener.mock.calls[0][1]({});
+		addEventListener.mock.calls[0][1]({relatedTarget: tooltipElement});
+		addEventListener.mock.calls[0][1]({relatedTarget: element});
 		expect(show.mock.calls).toEqual([['Test', 'top', element]]);
+
+		addEventListener.mock.calls[1][1]({});
+		addEventListener.mock.calls[1][1]({relatedTarget: tooltipElement});
+		addEventListener.mock.calls[1][1]({relatedTarget: element});
+		expect(hide.mock.calls).toEqual([[]]);
 	});
 
 	it('shows tooltip on mouse over when aria is set', () => {
@@ -31,18 +41,21 @@ describe('useTooltip', () => {
 		const show = jest.fn();
 		const hide = jest.fn();
 		const element = {addEventListener};
-		useTooltipBase.mockReturnValue([show, hide]);
+		const tooltipElement = {addEventListener};
+		useTooltipBase.mockReturnValue([show, hide, tooltipElement]);
 		const tooltip = useTooltip('Test', 'top', 'labelledby');
 		tooltip(element);
 		expect(addEventListener.mock.calls).toEqual([
 			['mouseenter', anyFunction],
-			['mouseleave', hide],
+			['mouseleave', anyFunction],
+			['mouseenter', anyFunction],
+			['mouseleave', anyFunction],
 			['focus', anyFunction],
 			['blur', hide],
 			['keydown', anyFunction],
 		]);
 
-		addEventListener.mock.calls[0][1]();
+		addEventListener.mock.calls[0][1]({});
 		expect(show.mock.calls).toEqual([['Test', 'top', element, 'labelledby']]);
 	});
 
@@ -51,19 +64,22 @@ describe('useTooltip', () => {
 		const show = jest.fn();
 		const hide = jest.fn();
 		const element = {addEventListener};
-		useTooltipBase.mockReturnValue([show, hide]);
+		const tooltipElement = {addEventListener};
+		useTooltipBase.mockReturnValue([show, hide, tooltipElement]);
 		const tooltip = useTooltip('Test', 'top', 'labelledby');
 		tooltip(element);
 		expect(addEventListener.mock.calls).toEqual([
 			['mouseenter', anyFunction],
-			['mouseleave', hide],
+			['mouseleave', anyFunction],
+			['mouseenter', anyFunction],
+			['mouseleave', anyFunction],
 			['focus', anyFunction],
 			['blur', hide],
 			['keydown', anyFunction],
 		]);
 
-		addEventListener.mock.calls[4][1]({key: 'Escape'});
-		addEventListener.mock.calls[4][1]({key: 'Other'});
+		addEventListener.mock.calls[6][1]({key: 'Escape'});
+		addEventListener.mock.calls[6][1]({key: 'Other'});
 		expect(hide.mock.calls).toEqual([[]]);
 	});
 
@@ -72,12 +88,14 @@ describe('useTooltip', () => {
 		const removeEventListener = jest.fn();
 		const show = jest.fn();
 		const hide = jest.fn();
-		useTooltipBase.mockReturnValue([show, hide]);
+		useTooltipBase.mockReturnValue([show, hide, {addEventListener, removeEventListener}]);
 		const tooltip = useTooltip('Test', 'top');
 		tooltip({addEventListener, removeEventListener});
 		expect(addEventListener.mock.calls).toEqual([
 			['mouseenter', anyFunction],
-			['mouseleave', hide],
+			['mouseleave', anyFunction],
+			['mouseenter', anyFunction],
+			['mouseleave', anyFunction],
 			['focus', anyFunction],
 			['blur', hide],
 			['keydown', anyFunction],

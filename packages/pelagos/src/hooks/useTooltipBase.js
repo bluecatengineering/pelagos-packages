@@ -105,7 +105,7 @@ const useTooltipBase = () => {
 			animation.play();
 		}
 	}, [tooltip, animation]);
-	return [show, hide];
+	return [show, hide, tooltip];
 };
 
 export default useTooltipBase;
