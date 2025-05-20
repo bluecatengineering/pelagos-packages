@@ -5,6 +5,7 @@
 // stylelint-disable @bluecateng/property-strict-value
 
 @tooltip-arrow-width: 5px;
+@tooltip-offset: 9px;
 
 @layer pelagos {
 	.Tooltip {
@@ -19,6 +20,39 @@
 		border-radius: 2px;
 		white-space: pre-line;
 		box-shadow: var(--shadow-06);
+
+		&::before {
+			content: '';
+			position: absolute;
+		}
+
+		&--right::before {
+			left: -@tooltip-offset;
+			top: 0;
+			height: 100%;
+			width: @tooltip-offset;
+		}
+
+		&--left::before {
+			right: -@tooltip-offset;
+			top: 0;
+			height: 100%;
+			width: @tooltip-offset;
+		}
+
+		&--top::before {
+			left: 0;
+			bottom: -@tooltip-offset;
+			height: @tooltip-offset;
+			width: 100%;
+		}
+
+		&--bottom::before {
+			left: 0;
+			top: -@tooltip-offset;
+			height: @tooltip-offset;
+			width: 100%;
+		}
 
 		&::after {
 			content: '';
