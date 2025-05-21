@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.17.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.17.0...@bluecateng/pelagos@12.17.1) (2025-05-21)
+
+### Bug Fixes
+
+- don't hide tooltip when the mouse moves between the button and the tooltip ([952544b](https://github.com/bluecatengineering/pelagos-packages/commit/952544ba6db205b35f3b1c8db096719d2b5bd98e))
+- fix type for reorderable in ListInput ([dbdf405](https://github.com/bluecatengineering/pelagos-packages/commit/dbdf4055fe2bd0ec4585cd2cb27eae84db173704))
+- hide tooltip when escape is pressed ([e4f8988](https://github.com/bluecatengineering/pelagos-packages/commit/e4f89884c82718f65a55cf3e70f6c1b85dd7227e))
+- mark the toast container as live area ([6212d8f](https://github.com/bluecatengineering/pelagos-packages/commit/6212d8fa15145c77bb402f8b4cc7051b79228887))
+- move box shadow on expand from IconButton to IconMenu ([dfdb0a5](https://github.com/bluecatengineering/pelagos-packages/commit/dfdb0a57eb4e080ff55884bcc0a17618d6979e93))
+
 ## [12.17.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.16.9...@bluecateng/pelagos@12.17.0) (2025-05-16)
 
 ### Features
