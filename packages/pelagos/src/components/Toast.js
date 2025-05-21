@@ -93,7 +93,9 @@ const Toast = ({messages, onRemove}) => {
 
 	return (
 		<div className="Toast">
-			<div className="Toast__messages">{children}</div>
+			<div className="Toast__messages" aria-live="polite">
+				{children}
+			</div>
 			{hasFatalError(messages) && <div className="Toast__backdrop" />}
 		</div>
 	);
