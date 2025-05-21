@@ -28,6 +28,7 @@ exports[`Toast rendering renders all messages 1`] = `
   className="Toast"
 >
   <div
+    aria-live="polite"
     className="Toast__messages"
   >
     <div />
@@ -41,6 +42,7 @@ exports[`Toast rendering renders modal backdrop when hasFatalError returns true 
   className="Toast"
 >
   <div
+    aria-live="polite"
     className="Toast__messages"
   >
     <div />
