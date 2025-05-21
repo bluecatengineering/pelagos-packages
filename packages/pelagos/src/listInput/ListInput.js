@@ -216,7 +216,7 @@ ListInput.propTypes = {
 	/** The error text. */
 	error: PropTypes.string,
 	/** Whether the list should be reorderable. */
-	reorderable: PropTypes.bool,
+	reorderable: PropTypes.oneOf([true, false, 'numbers']),
 	/** Whether the list should be displayed as columns. Set to true if reorderable. */
 	column: PropTypes.bool,
 	/** Function invoked to provide a list of suggestions. */
