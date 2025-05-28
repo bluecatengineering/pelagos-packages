@@ -7,7 +7,7 @@ digital experiences.
 ![ESLint](https://github.com/bluecatengineering/pelagos-packages/workflows/ESLint/badge.svg)
 ![Jest](https://github.com/bluecatengineering/pelagos-packages/workflows/Jest/badge.svg)
 ![CodeQL](https://github.com/bluecatengineering/pelagos-packages/workflows/CodeQL/badge.svg)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/bluecatengineering/pelagos-packages/badge)](https://api.securityscorecards.dev/projects/github.com/bluecatengineering/pelagos-packages)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/bluecatengineering/pelagos-packages/badge)](https://scorecard.dev/viewer/?uri=github.com/bluecatengineering/pelagos-packages)
 
 ## Getting started
 
