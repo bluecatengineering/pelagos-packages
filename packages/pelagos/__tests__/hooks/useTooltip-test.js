@@ -22,7 +22,6 @@ describe('useTooltip', () => {
 			['mouseleave', anyFunction],
 			['focus', anyFunction],
 			['blur', hide],
-			['keydown', anyFunction],
 		]);
 
 		addEventListener.mock.calls[0][1]({});
@@ -52,35 +51,10 @@ describe('useTooltip', () => {
 			['mouseleave', anyFunction],
 			['focus', anyFunction],
 			['blur', hide],
-			['keydown', anyFunction],
 		]);
 
 		addEventListener.mock.calls[0][1]({});
 		expect(show.mock.calls).toEqual([['Test', 'top', element, 'labelledby']]);
-	});
-
-	it('hides tooltip when escape is pressed', () => {
-		const addEventListener = jest.fn();
-		const show = jest.fn();
-		const hide = jest.fn();
-		const element = {addEventListener};
-		const tooltipElement = {addEventListener};
-		useTooltipBase.mockReturnValue([show, hide, tooltipElement]);
-		const tooltip = useTooltip('Test', 'top', 'labelledby');
-		tooltip(element);
-		expect(addEventListener.mock.calls).toEqual([
-			['mouseenter', anyFunction],
-			['mouseleave', anyFunction],
-			['mouseenter', anyFunction],
-			['mouseleave', anyFunction],
-			['focus', anyFunction],
-			['blur', hide],
-			['keydown', anyFunction],
-		]);
-
-		addEventListener.mock.calls[6][1]({key: 'Escape'});
-		addEventListener.mock.calls[6][1]({key: 'Other'});
-		expect(hide.mock.calls).toEqual([[]]);
 	});
 
 	it('removes listeners from previous target when target changes', () => {
@@ -98,7 +72,6 @@ describe('useTooltip', () => {
 			['mouseleave', anyFunction],
 			['focus', anyFunction],
 			['blur', hide],
-			['keydown', anyFunction],
 		]);
 
 		tooltip(null);
