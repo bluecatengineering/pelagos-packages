@@ -41,6 +41,10 @@ msgstr "Reorganización de {0} cancelada."
 msgid "{0}. Current position in list: {1} of {count}."
 msgstr "{0}. Posición actual en la lista: {1} de {count}."
 
+#: e7c9
+msgid "{0}{isSelected, select, true {, selected} other {}}"
+msgstr "{0}{isSelected, select, true {, seleccionado} other {}}"
+
 #: e3e
 msgid "{min}-{max} items"
 msgstr "Elementos {min}-{max}"

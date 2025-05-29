@@ -1,6 +1,6 @@
 import {forwardRef, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {t} from '@bluecateng/l10n.macro';
+import {t, select} from '@bluecateng/l10n.macro';
 import ChevronLeft from '@carbon/icons-react/es/ChevronLeft';
 import ChevronRight from '@carbon/icons-react/es/ChevronRight';
 
@@ -115,7 +115,7 @@ const renderCells = (day, curMonth, curTime, highlighted, rangeStart, rangeEnd, 
 				aria-selected={isSelected}
 				data-time={isCurMonth ? time : null}>
 				<span aria-hidden>{isCurMonth ? day.getDate() : ''}</span>
-				<span className="sr-only">{dateFmt.format(time)}</span>
+				<span className="sr-only">{t`${dateFmt.format(time)}${select(isSelected, {true: ', selected', other: ''})}`}</span>
 			</td>
 		);
 		day.setDate(day.getDate() + 1);

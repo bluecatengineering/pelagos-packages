@@ -3732,7 +3732,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
           <span
             className="sr-only"
           >
-            September 5, 2019
+            September 5, 2019, selected
           </span>
         </td>
         <td
@@ -3749,7 +3749,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
           <span
             className="sr-only"
           >
-            September 6, 2019
+            September 6, 2019, selected
           </span>
         </td>
         <td
@@ -3766,7 +3766,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
           <span
             className="sr-only"
           >
-            September 7, 2019
+            September 7, 2019, selected
           </span>
         </td>
       </tr>
@@ -3785,7 +3785,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
           <span
             className="sr-only"
           >
-            September 8, 2019
+            September 8, 2019, selected
           </span>
         </td>
         <td
@@ -3802,7 +3802,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
           <span
             className="sr-only"
           >
-            September 9, 2019
+            September 9, 2019, selected
           </span>
         </td>
         <td
@@ -3819,7 +3819,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
           <span
             className="sr-only"
           >
-            September 10, 2019
+            September 10, 2019, selected
           </span>
         </td>
         <td
