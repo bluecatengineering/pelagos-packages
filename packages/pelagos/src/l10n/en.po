@@ -41,6 +41,10 @@ msgstr ""
 msgid "{0}. Current position in list: {1} of {count}."
 msgstr ""
 
+#: e7c9
+msgid "{0}{isSelected, select, true {, selected} other {}}"
+msgstr ""
+
 #: e3e
 msgid "{min}-{max} items"
 msgstr ""
