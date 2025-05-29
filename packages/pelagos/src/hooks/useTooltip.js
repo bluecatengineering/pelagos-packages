@@ -35,9 +35,6 @@ const useTooltip = (text, placement, aria) => {
 					hide();
 				}
 			};
-			const handleKeyDown = (event) => {
-				if (event.key === 'Escape') hide();
-			};
 			const target = targetRef.current;
 			if (target) {
 				tooltip.removeEventListener('mouseenter', handleMouseEnter);
@@ -46,7 +43,6 @@ const useTooltip = (text, placement, aria) => {
 				target.removeEventListener('mouseleave', handleMouseLeave);
 				target.removeEventListener('focus', show);
 				target.removeEventListener('blur', hide);
-				target.removeEventListener('keydown', handleKeyDown);
 
 				hide();
 			}
@@ -57,7 +53,6 @@ const useTooltip = (text, placement, aria) => {
 				element.addEventListener('mouseleave', handleMouseLeave);
 				element.addEventListener('focus', show);
 				element.addEventListener('blur', hide);
-				element.addEventListener('keydown', handleKeyDown);
 			}
 			targetRef.current = element;
 		},

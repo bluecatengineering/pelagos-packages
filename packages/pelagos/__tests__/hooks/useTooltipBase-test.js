@@ -21,7 +21,9 @@ const createElement = jest.fn(() => {
 });
 const appendChild = jest.fn();
 const removeChild = jest.fn();
-global.document = {createElement, body: {appendChild, removeChild}};
+const addEventListener = jest.fn();
+const removeEventListener = jest.fn();
+global.document = {createElement, body: {appendChild, removeChild, addEventListener, removeEventListener}};
 global.window = {innerWidth: 1024, innerHeight: 768};
 
 jest.spyOn(Math, 'random').mockReturnValue(0.1);
@@ -55,6 +57,23 @@ describe('useTooltipBase', () => {
 			animation.onfinish({currentTime: 0});
 			expect(removeAttribute.mock.calls).toEqual([['aria-describedby']]);
 			expect(removeChild.mock.calls).toEqual([[tooltipDiv]]);
+		});
+
+		it('hides tooltip when escape is pressed', () => {
+			const setAttribute = jest.fn();
+			const removeAttribute = jest.fn();
+			const getBoundingClientRect = jest.fn().mockReturnValue({top: 100, left: 100, width: 200, height: 50});
+			const [show] = useTooltipBase();
+			elementBoundingRect.mockReturnValue({width: 20, height: 10});
+
+			show('Test', 'top', {setAttribute, removeAttribute, getBoundingClientRect});
+			expect(addEventListener.mock.calls).toEqual([['keydown', anyFunction]]);
+
+			const handleKeyDown = addEventListener.mock.calls[0][1];
+			createElement.mock.results[0].value.parentNode = document.body;
+			handleKeyDown({key: 'Other'});
+			handleKeyDown({key: 'Escape'});
+			expect(removeEventListener.mock.calls).toEqual([['keydown', handleKeyDown]]);
 		});
 
 		it('shows tooltip on mouse over when placement is bottom', () => {

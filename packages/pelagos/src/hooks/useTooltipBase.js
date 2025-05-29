@@ -47,6 +47,16 @@ const createTooltip = () => {
 	return [tooltip, animation];
 };
 
+const hideTooltip = (tooltip, targetRef, attributeRef, animation, handleKeyDown) => {
+	if (tooltip.parentNode) {
+		document.body.removeEventListener('keydown', handleKeyDown);
+		targetRef.current.removeAttribute(attributeRef.current);
+		animation.pause();
+		animation.updatePlaybackRate(-1);
+		animation.play();
+	}
+};
+
 /**
  * return type for `useTooltipBase`.
  * @typedef {Array} useTooltipBase~Return
@@ -78,6 +88,15 @@ const useTooltipBase = () => {
 	const targetRef = useRef(null);
 	const attributeRef = useRef(null);
 	const [tooltip, animation] = useMemo(() => createTooltip(), []);
+	const handleKeyDown = useCallback(
+		(event) => {
+			if (event.key === 'Escape') hideTooltip(tooltip, targetRef, attributeRef, animation, handleKeyDown);
+		},
+		[animation, tooltip]
+	);
+	const hide = useCallback(() => {
+		hideTooltip(tooltip, targetRef, attributeRef, animation, handleKeyDown);
+	}, [tooltip, animation, handleKeyDown]);
 	const show = useCallback(
 		(text, placement, target, aria) => {
 			if (text) {
@@ -93,18 +112,12 @@ const useTooltipBase = () => {
 				attributeRef.current = attribute;
 				updatePosition(target, tooltip, placement);
 				targetRef.current = target;
+
+				document.body.addEventListener('keydown', handleKeyDown);
 			}
 		},
-		[tooltip, animation]
+		[tooltip, animation, handleKeyDown]
 	);
-	const hide = useCallback(() => {
-		if (tooltip.parentNode) {
-			targetRef.current.removeAttribute(attributeRef.current);
-			animation.pause();
-			animation.updatePlaybackRate(-1);
-			animation.play();
-		}
-	}, [tooltip, animation]);
 	return [show, hide, tooltip];
 };
 
