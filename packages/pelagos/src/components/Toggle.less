@@ -15,6 +15,10 @@
 		cursor: pointer;
 		outline: none;
 
+		&:disabled {
+			cursor: not-allowed;
+		}
+
 		&__switch {
 			display: inline-block;
 			position: relative;
@@ -39,8 +43,6 @@
 
 			.Toggle:disabled > & {
 				background-color: var(--icon-disabled);
-				cursor: not-allowed;
-				pointer-events: none;
 			}
 
 			.Toggle[aria-checked='true']:not(:disabled) > & {
