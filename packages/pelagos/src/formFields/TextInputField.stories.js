@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {action} from '@storybook/addon-actions';
 
 import WithLayers from '../../templates/WithLayers';
@@ -9,6 +10,10 @@ const handleChange = action('onChange');
 export default {
 	title: 'Components/TextInputField',
 	component: TextInputField,
+	render: (args) => {
+		const [value, setValue] = useState(args.value);
+		return <TextInputField {...args} value={value} onChange={setValue} />;
+	},
 };
 
 export const Default = {

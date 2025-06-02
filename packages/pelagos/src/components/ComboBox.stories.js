@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {action} from '@storybook/addon-actions';
 
 import WithLayers from '../../templates/WithLayers';
@@ -12,6 +13,10 @@ const handleTextChange = action('onTextChange');
 export default {
 	title: 'Components/ComboBox',
 	component: ComboBox,
+	render: (args) => {
+		const [text, setText] = useState(args.text);
+		return <ComboBox {...args} text={text} onTextChange={setText} onChange={setText} />;
+	},
 };
 
 export const Default = {

@@ -1,15 +1,19 @@
+import {useState} from 'react';
+
 import Pagination from './Pagination';
 
 export default {
 	title: 'Components/Pagination',
 	component: Pagination,
-	decorators: [
-		(Story) => (
+	render: (args) => {
+		const [page, setPage] = useState(args.page);
+		const [pageSize, setPageSize] = useState(args.pageSize);
+		return (
 			<div style={{marginTop: '24px'}}>
-				<Story />
+				<Pagination {...args} page={page} pageSize={pageSize} onPageChange={setPage} onPageSizeChange={setPageSize} />
 			</div>
-		),
-	],
+		);
+	},
 };
 
 export const Default = {

@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {action} from '@storybook/addon-actions';
 
 import TabList from './TabList';
@@ -8,6 +9,10 @@ const handleRemove = action('onRemove');
 export default {
 	title: 'Components/TabList',
 	component: TabList,
+	render: (args) => {
+		const [selectedIndex, setSelectedIndex] = useState(args.selectedIndex);
+		return <TabList {...args} selectedIndex={selectedIndex} onChange={setSelectedIndex} />;
+	},
 };
 
 export const Default = {

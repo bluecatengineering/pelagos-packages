@@ -1,8 +1,15 @@
+import {useCallback, useState} from 'react';
+
 import ToggleField from './ToggleField';
 
 export default {
 	title: 'Components/ToggleField',
 	component: ToggleField,
+	render: (args) => {
+		const [value, setValue] = useState(args.value);
+		const handleChange = useCallback(() => setValue((o) => !o), []);
+		return <ToggleField {...args} value={value} onChange={handleChange} />;
+	},
 };
 
 export const Default = {args: {label: 'Default'}};

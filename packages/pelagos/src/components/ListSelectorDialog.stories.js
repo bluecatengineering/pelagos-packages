@@ -34,7 +34,7 @@ export default {
 					<Title />
 					<Subtitle />
 					<Description />
-					<Canvas of={TryItOut} />
+					<Canvas of={FromButton} />
 					<Controls />
 				</>
 			),
@@ -46,9 +46,8 @@ export const Default = {
 	args,
 };
 
-export const TryItOut = {
+export const FromButton = {
 	args,
-	name: 'Try it out!',
 	render: (args) => {
 		const [visible, setVisible] = useState(false);
 		const show = useCallback(() => setVisible(true), []);

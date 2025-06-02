@@ -1,3 +1,5 @@
+import {useState} from 'react';
+
 import WithLayers from '../../templates/WithLayers';
 
 import DateInput from './DateInput';
@@ -19,6 +21,10 @@ const parse = (string) => {
 export default {
 	title: 'Components/DateInput',
 	component: DateInput,
+	render: (args) => {
+		const [value, setValue] = useState(args.value);
+		return <DateInput {...args} value={value} onChange={setValue} />;
+	},
 };
 
 export const Default = {

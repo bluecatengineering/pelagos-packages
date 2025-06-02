@@ -1,9 +1,15 @@
+import {useState} from 'react';
+
 import ContentSwitcher from './ContentSwitcher';
 import ContentSwitcherButton from './ContentSwitcherButton';
 
 export default {
 	title: 'Components/ContentSwitcher',
 	component: ContentSwitcher,
+	render: (args) => {
+		const [selected, setSelected] = useState(args.selected);
+		return <ContentSwitcher {...args} selected={selected} onChange={setSelected} />;
+	},
 };
 
 export const Default = {
