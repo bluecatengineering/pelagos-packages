@@ -1,16 +1,21 @@
+import {useState} from 'react';
 import {action} from '@storybook/addon-actions';
 
 import WithLayers from '../../templates/WithLayers';
 
 import TagInputField from './TagInputField';
 
-const validate = () => true;
+const validate = () => null;
 const handleChange = action('onChange');
 const handleError = () => null;
 
 export default {
 	title: 'Components/TagInputField',
 	component: TagInputField,
+	render: (args) => {
+		const [value, setValue] = useState(args.tags);
+		return <TagInputField {...args} tags={value} onChange={setValue} />;
+	},
 };
 
 export const Default = {

@@ -15,6 +15,10 @@ import './TreeView.stories.less';
 export default {
 	title: 'Components/TreeView',
 	component: TreeView,
+	render: (args) => {
+		const [selected, setSelected] = useState(args.selected);
+		return <TreeView {...args} selected={selected} onSelect={setSelected} />;
+	},
 	parameters: {
 		controls: {hideNoControlsWarning: true},
 	},
@@ -41,51 +45,82 @@ const nodes = [
 		],
 	},
 	{id: '2', label: `Node 2 - ${loremIpsumShort}`, fill: 55},
-	{id: '3', fill: 8, expanded: false},
+	{id: '3', fill: 8, expanded: false, children: [{id: '3-0', fill: 28}]},
 ];
 
 const getLabel = (id, label) => label || `Node ${id}`;
 
-const renderNodes = (nodes) =>
-	nodes.map(({id, label, expanded, children}) => (
-		<TreeNode key={id} id={id} label={getLabel(id, label)} expanded={expanded}>
-			{children && renderNodes(children)}
+const SimpleParentNode = ({id, labelClassName, label, icon, expanded: initialExpanded, children}) => {
+	const [expanded, setExpanded] = useState(initialExpanded);
+	const handleToggle = useCallback(() => setExpanded((expanded) => !expanded), []);
+	return (
+		<TreeNode
+			id={id}
+			labelClassName={labelClassName}
+			label={label}
+			icon={icon}
+			expanded={expanded}
+			onToggle={handleToggle}>
+			{children}
 		</TreeNode>
-	));
+	);
+};
+
+SimpleParentNode.propTypes = {
+	id: PropTypes.string,
+	labelClassName: PropTypes.string,
+	label: PropTypes.node,
+	icon: PropTypes.elementType,
+	expanded: PropTypes.bool,
+	children: PropTypes.node,
+};
+
+const renderNodes = (nodes) =>
+	nodes.map(({id, label, expanded, children}) =>
+		children ? (
+			<SimpleParentNode key={id} id={id} label={getLabel(id, label)} expanded={expanded}>
+				{renderNodes(children)}
+			</SimpleParentNode>
+		) : (
+			<TreeNode key={id} id={id} label={getLabel(id, label)} />
+		)
+	);
 
 const renderNodesWithIcons = (nodes) =>
-	nodes.map(({id, label, expanded, children}) => (
-		<TreeNode
-			key={id}
-			id={id}
-			label={getLabel(id, label)}
-			icon={expanded === undefined ? DocumentBlank : Folder}
-			expanded={expanded}>
-			{children && renderNodesWithIcons(children)}
-		</TreeNode>
-	));
+	nodes.map(({id, label, expanded, children}) =>
+		children ? (
+			<SimpleParentNode key={id} id={id} label={getLabel(id, label)} icon={Folder} expanded={expanded}>
+				{children && renderNodesWithIcons(children)}
+			</SimpleParentNode>
+		) : (
+			<TreeNode key={id} id={id} label={getLabel(id, label)} icon={DocumentBlank} />
+		)
+	);
 
 const renderComplexNodes = (nodes) =>
 	nodes.map(({id, label, fill, expanded, children}) => {
 		const labelText = getLabel(id, label);
-		return (
-			<TreeNode
+		const labelElement = (
+			<>
+				<span className="TreeViewStories__text" title={labelText}>
+					{labelText}
+				</span>
+				<span className="TreeViewStories__bar">
+					<span className="TreeViewStories__barFill" style={{width: `${fill}px`}} />
+				</span>
+			</>
+		);
+		return children ? (
+			<SimpleParentNode
 				key={id}
 				id={id}
 				labelClassName="TreeViewStories__label"
-				label={
-					<>
-						<span className="TreeViewStories__text" title={labelText}>
-							{labelText}
-						</span>
-						<span className="TreeViewStories__bar">
-							<span className="TreeViewStories__barFill" style={{width: `${fill}px`}} />
-						</span>
-					</>
-				}
+				label={labelElement}
 				expanded={expanded}>
 				{children && renderComplexNodes(children)}
-			</TreeNode>
+			</SimpleParentNode>
+		) : (
+			<TreeNode key={id} id={id} labelClassName="TreeViewStories__label" label={labelElement} />
 		);
 	});
 
@@ -181,21 +216,18 @@ ParentNode.propTypes = {
 
 const wiredNodes = generateNodes('');
 
-const WiredComponent = () => {
-	const [selected, setSelected] = useState(null);
-	return (
-		<>
-			<LabelLine id="label" text="Tree view" />
-			<Layer className="TreeViewStories__layer">
-				<TreeView selected={selected} aria-labelledby="label" onSelect={setSelected}>
-					{wiredNodes}
-				</TreeView>
-			</Layer>
-		</>
-	);
-};
-
-export const TryItOut = {
-	name: 'Try it out!',
-	render: () => <WiredComponent />,
+export const DeepExample = {
+	render: () => {
+		const [selected, setSelected] = useState(null);
+		return (
+			<>
+				<LabelLine id="label" text="Tree view" />
+				<Layer className="TreeViewStories__layer">
+					<TreeView selected={selected} aria-labelledby="label" onSelect={setSelected}>
+						{wiredNodes}
+					</TreeView>
+				</Layer>
+			</>
+		);
+	},
 };
