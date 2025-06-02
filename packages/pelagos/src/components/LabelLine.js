@@ -7,7 +7,7 @@ import './LabelLine.less';
 const LabelLine = ({text, counter, required, error, ...props}) => (
 	<div className="LabelLine">
 		<div className="LabelLine__label">
-			<Label {...props} text={text} />
+			<Label {...props} text={text} title={text} />
 			{required && (
 				<span className={`LabelLine__required${error ? ' LabelLine--error' : ''}`} aria-hidden>
 					*
