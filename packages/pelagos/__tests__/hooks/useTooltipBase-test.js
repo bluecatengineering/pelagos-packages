@@ -59,6 +59,16 @@ describe('useTooltipBase', () => {
 			expect(removeChild.mock.calls).toEqual([[tooltipDiv]]);
 		});
 
+		it('sets the tooltip position again when the size changes', () => {
+			const setAttribute = jest.fn();
+			const getBoundingClientRect = jest.fn().mockReturnValue({top: 100, left: 100, width: 200, height: 50});
+			const [show] = useTooltipBase();
+			elementBoundingRect.mockReturnValueOnce({width: 20, height: 10}).mockReturnValueOnce({width: 10, height: 20});
+
+			show('Test', 'top', {setAttribute, getBoundingClientRect});
+			expect(createElement.mock.results[0].value).toMatchSnapshot();
+		});
+
 		it('hides tooltip when escape is pressed', () => {
 			const setAttribute = jest.fn();
 			const removeAttribute = jest.fn();
@@ -150,10 +160,9 @@ describe('useTooltipBase', () => {
 
 	describe('hide', () => {
 		it('does not remove tooltip if not in the DOM', () => {
-			jest.spyOn(global, 'setTimeout');
 			const [, hide] = useTooltipBase();
 			hide();
-			expect(setTimeout).not.toHaveBeenCalled();
+			expect(play).not.toHaveBeenCalled();
 		});
 	});
 });

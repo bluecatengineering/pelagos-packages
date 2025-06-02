@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`useTooltipBase show sets the tooltip position again when the size changes 1`] = `
+{
+  "className": "Tooltip Tooltip--top",
+  "id": "tooltip-1",
+  "style": {
+    "left": "195px",
+    "setProperty": [MockFunction] {
+      "calls": [
+        [
+          "--arrow-position",
+          "50%",
+        ],
+        [
+          "--arrow-position",
+          "50%",
+        ],
+      ],
+      "results": [
+        {
+          "type": "return",
+          "value": undefined,
+        },
+        {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
+    "top": "71px",
+  },
+  "textContent": "Test",
+}
+`;
+
 exports[`useTooltipBase show shows tooltip 1`] = `
 {
   "className": "Tooltip Tooltip--top",
