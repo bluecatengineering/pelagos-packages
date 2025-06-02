@@ -8,9 +8,9 @@ const arrowSpacing = 9;
 const getOffset = (position, size, windowSize) =>
 	position < 0 ? -position : position + size > windowSize ? windowSize - position - size : 0;
 
-const updatePosition = (target, tooltip, placement) => {
-	const {left, top, width, height} = target.getBoundingClientRect();
-	const {width: childWidth, height: childHeight} = tooltip.getBoundingClientRect();
+const setTooltipPosition = (tooltip, placement, targetRect, tooltipRect) => {
+	const {left, top, width, height} = targetRect;
+	const {width: childWidth, height: childHeight} = tooltipRect;
 
 	let tooltipLeft, tooltipTop, arrowPosition;
 	if (placement === 'left' || placement === 'right') {
@@ -30,6 +30,18 @@ const updatePosition = (target, tooltip, placement) => {
 	tooltip.style.left = `${round(tooltipLeft)}px`;
 	tooltip.style.top = `${round(tooltipTop)}px`;
 	tooltip.style.setProperty('--arrow-position', arrowPosition);
+};
+
+const updatePosition = (target, tooltip, placement) => {
+	const targetRect = target.getBoundingClientRect();
+	const tooltipRect = tooltip.getBoundingClientRect();
+	setTooltipPosition(tooltip, placement, targetRect, tooltipRect);
+
+	// Sometimes the size changes when the position is set
+	const newTooltipRect = tooltip.getBoundingClientRect();
+	if (tooltipRect.width !== newTooltipRect.width || tooltipRect.height !== newTooltipRect.height) {
+		setTooltipPosition(tooltip, placement, targetRect, newTooltipRect);
+	}
 };
 
 const createTooltip = () => {
@@ -110,8 +122,8 @@ const useTooltipBase = () => {
 				const attribute = `aria-${aria || 'describedby'}`;
 				target.setAttribute(attribute, tooltip.id);
 				attributeRef.current = attribute;
-				updatePosition(target, tooltip, placement);
 				targetRef.current = target;
+				updatePosition(target, tooltip, placement);
 
 				document.body.addEventListener('keydown', handleKeyDown);
 			}
