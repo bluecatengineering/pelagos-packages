@@ -50,20 +50,26 @@ if (process.argv.length !== 3) {
 	process.exit(2);
 }
 
-const map = loadImports(process.argv[2]);
-const adjacent = new Map();
-for (const [dir, imports] of map.entries()) {
-	const vertices = new Set();
-	for (const i of imports.keys()) {
-		const target = map.has(i) ? i : dirname(i);
-		if (target !== dir) {
-			vertices.add(target);
+loadImports(process.argv[2])
+	.then((map) => {
+		const adjacent = new Map();
+		for (const [dir, imports] of map.entries()) {
+			const vertices = new Set();
+			for (const i of imports.keys()) {
+				const target = map.has(i) ? i : dirname(i);
+				if (target !== dir) {
+					vertices.add(target);
+				}
+			}
+			adjacent.set(dir, vertices);
 		}
-	}
-	adjacent.set(dir, vertices);
-}
-const cycles = findCycles(adjacent);
-if (cycles.length) {
-	console.error(`Cycles found:\n${cycles.map((nodes) => `  ${nodes.join(' → ')}`).join('\n')}`);
-	process.exit(1);
-}
+		const cycles = findCycles(adjacent);
+		if (cycles.length) {
+			console.error(`Cycles found:\n${cycles.map((nodes) => `  ${nodes.join(' → ')}`).join('\n')}`);
+			process.exit(1);
+		}
+	})
+	.catch((error) => {
+		console.error(error);
+		process.exit(1);
+	});
