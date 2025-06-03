@@ -7,7 +7,7 @@ import './DetailRegion.less';
 const DetailRegion = ({id, className, level: Level = 'h3', label, infoText, infoTextPlacement, children}) => (
 	<div className={`DetailRegion${className ? ` ${className}` : ''}`}>
 		<div className="DetailRegion__header">
-			<Level id={id} className={`DetailRegion__title ${infoText ? 'info' : 'no-info'}`}>
+			<Level id={id} className={`DetailRegion__title ${infoText ? 'info' : 'no-info'}`} title={label}>
 				{label}
 			</Level>
 			{infoText && <InfoTooltip text={infoText} placement={infoTextPlacement} />}

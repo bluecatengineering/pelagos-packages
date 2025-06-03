@@ -9,6 +9,7 @@ exports[`DetailRegion rendering renders expected elements 1`] = `
   >
     <h3
       className="DetailRegion__title no-info"
+      title="Test Label"
     >
       Test Label
     </h3>
@@ -27,6 +28,7 @@ exports[`DetailRegion rendering renders expected elements when optional properti
     <h4
       className="DetailRegion__title info"
       id="test"
+      title="Test Label"
     >
       Test Label
     </h4>
