@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.17.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.17.1...@bluecateng/pelagos@12.17.2) (2025-06-03)
+
+### Bug Fixes
+
+- add workaround for bug in VoiceOver announcing aria-selected ([22d1aba](https://github.com/bluecatengineering/pelagos-packages/commit/22d1aba8b47dc968d59c5037dfcb909822978fad))
+- hide tooltip when escape is pressed even if not focused ([b304141](https://github.com/bluecatengineering/pelagos-packages/commit/b304141611238478d8472401fede36e56770286a))
+- move disabled cursor in Toggle to the correct element ([851575e](https://github.com/bluecatengineering/pelagos-packages/commit/851575eb27d1f20ccdd5b6bdf79133410ef6131f))
+- pass title to Label in LabelLine ([a1ea9cf](https://github.com/bluecatengineering/pelagos-packages/commit/a1ea9cf8f93610deac0679c499429d740ef600d4))
+- pass title to Level in DetailRegion ([9383739](https://github.com/bluecatengineering/pelagos-packages/commit/93837398291a668288a54cfbeee8cd5e5e057312))
+- set tooltip position again if the size changes when displayed ([0fbe446](https://github.com/bluecatengineering/pelagos-packages/commit/0fbe4464a0fab03f02249959f037817965531c77))
+
 ## [12.17.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.17.0...@bluecateng/pelagos@12.17.1) (2025-05-21)
 
 ### Bug Fixes
