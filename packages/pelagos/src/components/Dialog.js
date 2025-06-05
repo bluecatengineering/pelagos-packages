@@ -1,6 +1,8 @@
 import {cloneElement, useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {createFocusTrap} from 'focus-trap';
+import {t} from '@bluecateng/l10n.macro';
+import Help from '@carbon/icons-react/es/Help';
 
 import Layer from './Layer';
 import './Dialog.less';
@@ -10,6 +12,7 @@ const Dialog = ({
 	id,
 	className,
 	title,
+	helpHref,
 	role = 'dialog',
 	size = 'md',
 	stretch,
@@ -22,8 +25,16 @@ const Dialog = ({
 
 	const content = (
 		<>
-			<div id="dialogTitle" className="Dialog__title">
-				{title}
+			<div className="Dialog__heading">
+				<div id="dialogTitle" className="Dialog__title" title={title}>
+					{title}
+				</div>
+				{!!helpHref && (
+					<a className="Dialog__help" href={helpHref} target="_blank" rel="noreferrer">
+						<Help />
+						{t`Help`}
+					</a>
+				)}
 			</div>
 			{cloneElement(body, {
 				className: body.props.className ? body.props.className + ' Dialog__body' : 'Dialog__body',
@@ -81,6 +92,8 @@ Dialog.propTypes = {
 	className: PropTypes.string,
 	/** The dialog title. */
 	title: PropTypes.string.isRequired,
+	/** The URL to use in the help link, if specified a link will be added in the header. */
+	helpHref: PropTypes.string,
 	/** The dialog ARIA role. */
 	role: PropTypes.oneOf(['dialog', 'alertdialog']),
 	/** The dialog size. */

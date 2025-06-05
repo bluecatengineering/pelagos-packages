@@ -193,6 +193,10 @@ msgstr "Archivos {0} subidos"
 msgid "From"
 msgstr "Desde"
 
+#: c47a
+msgid "Help"
+msgstr "Ayuda"
+
 #: 387
 msgid "Incomplete"
 msgstr "Incompleto"

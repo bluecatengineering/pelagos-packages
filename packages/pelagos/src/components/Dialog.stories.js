@@ -58,6 +58,23 @@ export const WithForm = {
 	},
 };
 
+export const WithHelp = {
+	args: {
+		title: 'Title',
+		helpHref: '#',
+		initialFocus: '#button',
+		children: [
+			<div key="body">
+				<p>{body}</p>
+			</div>,
+			<div key="buttons">
+				<Button id="button" text="Button" type="primary" />
+			</div>,
+		],
+		onSubmit: null,
+	},
+};
+
 const tabTitles = ['Tab one', 'Tab two', 'Tab three', 'Tab four'];
 
 const TabsBody = ({className}) => {

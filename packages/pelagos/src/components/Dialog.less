@@ -110,11 +110,25 @@
 			height: 100%;
 		}
 
+		&__heading {
+			flex-direction: row;
+			align-items: center;
+			gap: @sp-08;
+			padding: @sp-16;
+			border-bottom: 1px solid var(--border-subtle);
+		}
+
 		&__title {
 			@heading-03();
 			@ellipsis();
-			padding: @sp-16;
-			border-bottom: 1px solid var(--border-subtle);
+			flex: 1;
+		}
+
+		&__help {
+			@label-01();
+			display: flex;
+			align-items: center;
+			gap: @sp-04;
 		}
 
 		&__body {
