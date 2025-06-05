@@ -60,6 +60,18 @@ describe('Dialog', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when helpHref is set', () => {
+			const wrapper = shallow(
+				<Dialog id="test-dialog" className="TestClass" title="Test" helpHref="#">
+					<div className="TestClass">This is a test</div>
+					<div>
+						<Button id="a" text="A" />
+					</div>
+				</Dialog>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {

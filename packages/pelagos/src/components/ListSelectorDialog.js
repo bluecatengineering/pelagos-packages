@@ -15,6 +15,7 @@ const getListItems = () => document.getElementById('listSelector').querySelector
 /** A dialog to select a subset of items from a list. */
 const ListSelectorDialog = ({
 	title,
+	helpHref,
 	emptyText,
 	allItemsRemovedText,
 	saveText,
@@ -52,7 +53,7 @@ const ListSelectorDialog = ({
 	});
 
 	return (
-		<Dialog title={title} size="sm" stretch>
+		<Dialog title={title} helpHref={helpHref} size="sm" stretch>
 			<div>
 				<div className="sr-only" aria-live="polite" ref={liveRef} />
 				<ListSelector
@@ -81,6 +82,8 @@ const ListSelectorDialog = ({
 ListSelectorDialog.propTypes = {
 	/** The dialog title. */
 	title: PropTypes.string,
+	/** The URL to use in the help link, if specified a link will be added in the header. */
+	helpHref: PropTypes.string,
 	/** The text to display when no items are selected. */
 	emptyText: PropTypes.string,
 	/** The text to announce when all items are removed. */

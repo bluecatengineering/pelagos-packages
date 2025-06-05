@@ -14,10 +14,15 @@ exports[`Dialog rendering renders expected elements 1`] = `
   >
     <React.Fragment>
       <div
-        className="Dialog__title"
-        id="dialogTitle"
+        className="Dialog__heading"
       >
-        Test
+        <div
+          className="Dialog__title"
+          id="dialogTitle"
+          title="Test"
+        >
+          Test
+        </div>
       </div>
       <div
         className="TestClass Dialog__body"
@@ -51,13 +56,69 @@ exports[`Dialog rendering renders expected elements when child has no className 
   >
     <React.Fragment>
       <div
-        className="Dialog__title"
-        id="dialogTitle"
+        className="Dialog__heading"
       >
-        Test
+        <div
+          className="Dialog__title"
+          id="dialogTitle"
+          title="Test"
+        >
+          Test
+        </div>
       </div>
       <div
         className="Dialog__body"
+      >
+        This is a test
+      </div>
+      <div
+        className="Dialog__buttons"
+      >
+        <Button
+          id="a"
+          text="A"
+        />
+      </div>
+    </React.Fragment>
+  </Layer>
+</div>
+`;
+
+exports[`Dialog rendering renders expected elements when helpHref is set 1`] = `
+<div
+  className="Dialog__backdrop"
+>
+  <Layer
+    aria-labelledby="dialogTitle"
+    aria-modal={true}
+    className="Dialog Dialog--md TestClass"
+    id="test-dialog"
+    level={1}
+    role="dialog"
+  >
+    <React.Fragment>
+      <div
+        className="Dialog__heading"
+      >
+        <div
+          className="Dialog__title"
+          id="dialogTitle"
+          title="Test"
+        >
+          Test
+        </div>
+        <a
+          className="Dialog__help"
+          href="#"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <Help />
+          Help
+        </a>
+      </div>
+      <div
+        className="TestClass Dialog__body"
       >
         This is a test
       </div>
@@ -92,10 +153,15 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
     >
       <React.Fragment>
         <div
-          className="Dialog__title"
-          id="dialogTitle"
+          className="Dialog__heading"
         >
-          Test
+          <div
+            className="Dialog__title"
+            id="dialogTitle"
+            title="Test"
+          >
+            Test
+          </div>
         </div>
         <div
           className="TestClass Dialog__body"
@@ -130,10 +196,15 @@ exports[`Dialog rendering renders expected elements when stretch is set 1`] = `
   >
     <React.Fragment>
       <div
-        className="Dialog__title"
-        id="dialogTitle"
+        className="Dialog__heading"
       >
-        Test
+        <div
+          className="Dialog__title"
+          id="dialogTitle"
+          title="Test"
+        >
+          Test
+        </div>
       </div>
       <div
         className="TestClass Dialog__body"

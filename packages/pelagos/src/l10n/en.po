@@ -193,6 +193,10 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+#: c47a
+msgid "Help"
+msgstr ""
+
 #: 387
 msgid "Incomplete"
 msgstr ""
