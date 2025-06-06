@@ -1,4 +1,7 @@
+import {useState} from 'react';
 import identity from 'lodash-es/identity';
+
+import {buildSimpleSuggestionsParser} from '../functions';
 
 import ListInput from './ListInput';
 
@@ -8,12 +11,16 @@ const list = ['1.1.1.1', '1.1.1.2'];
 const getSuggestions = () => ({suggestions: []});
 const getItemName = identity;
 const getItemKey = identity;
+const parseInput = buildSimpleSuggestionsParser(() => null);
 const onTextChange = identity;
-const onListChange = identity;
 
 export default {
 	title: 'Components/ListInput',
 	component: ListInput,
+	render: (args) => {
+		const [list, setList] = useState(args.list);
+		return <ListInput {...args} list={list} onListChange={setList} />;
+	},
 };
 
 export const Grid = {
@@ -23,13 +30,12 @@ export const Grid = {
 		placeholder,
 		autoFocus,
 		list,
-		text: '1.1',
 		helperText: 'Helper text',
 		getSuggestions,
 		getItemName,
 		getItemKey,
+		parseInput,
 		onTextChange,
-		onListChange,
 	},
 };
 
@@ -40,13 +46,12 @@ export const Column = {
 		placeholder,
 		autoFocus,
 		list,
-		text: '1.1',
 		column: true,
 		getSuggestions,
 		getItemName,
 		getItemKey,
+		parseInput,
 		onTextChange,
-		onListChange,
 	},
 };
 
@@ -57,13 +62,12 @@ export const Reorderable = {
 		placeholder,
 		autoFocus,
 		list,
-		text: '1.1',
 		reorderable: true,
 		getSuggestions,
 		getItemName,
 		getItemKey,
+		parseInput,
 		onTextChange,
-		onListChange,
 	},
 };
 
@@ -74,12 +78,33 @@ export const Empty = {
 		placeholder,
 		autoFocus,
 		list: [],
-		text: '1.1',
 		emptyText: 'The list is empty',
 		getSuggestions,
 		getItemName,
 		getItemKey,
+		parseInput,
 		onTextChange,
-		onListChange,
+	},
+};
+
+export const WithSuggestions = {
+	args: {
+		id: 'grid',
+		label: 'With suggestions',
+		placeholder: 'Greek letter',
+		autoFocus,
+		list: ['Alpha', 'Beta'],
+		helperText: 'Helper text',
+		getSuggestions: (text, list) => ({
+			suggestions: ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon'].filter(
+				(name) => name.toLowerCase().includes(text.toLowerCase()) && !list.includes(name)
+			),
+		}),
+		getSuggestionText: identity,
+		renderSuggestion: (text) => <div>{text}</div>,
+		getHighlightKey: () => null,
+		getItemName,
+		getItemKey,
+		onTextChange,
 	},
 };

@@ -5,7 +5,7 @@ import TextFilterEditor from './TextFilterEditor';
 
 const list = ['foo', 'baz'];
 const getSuggestions = () => ({suggestions: [{name: 'bar'}]});
-const parseInput = buildSimpleSuggestionsParser();
+const parseInput = buildSimpleSuggestionsParser(() => null);
 
 export default {
 	title: 'Components/TextFilterEditor',

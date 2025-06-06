@@ -15,6 +15,8 @@ To start see [@bluecateng/pelagos](packages/pelagos).
 
 For examples and documentation, please see [the Storybook site](https://storybook.dnsedge.tools/).
 
+Also check the [example application](https://github.com/bluecatengineering/pelagos-example).
+
 ## Packages
 
 | Package                                                 | Description                             |
