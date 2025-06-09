@@ -10,13 +10,20 @@ useRandomId.mockReturnValue('random-id');
 describe('Tag', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
-			const wrapper = shallow(<Tag>gray</Tag>);
+			const wrapper = shallow(<Tag text="gray" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
 		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
-				<Tag id="test" className="TestClass" size="sm" type="red" onClick={jest.fn()}>
+				<Tag
+					id="test"
+					className="TestClass"
+					size="sm"
+					type="red"
+					icon="test-icon"
+					tagTitle="Test tag title"
+					onClick={jest.fn()}>
 					red
 				</Tag>
 			);
@@ -25,11 +32,7 @@ describe('Tag', () => {
 		});
 
 		it('renders expected elements when onRemove is ser', () => {
-			const wrapper = shallow(
-				<Tag removeTitle="Remove title" onRemove={jest.fn()}>
-					gray
-				</Tag>
-			);
+			const wrapper = shallow(<Tag text="gray" removeTitle="Remove title" onRemove={jest.fn()} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 	});

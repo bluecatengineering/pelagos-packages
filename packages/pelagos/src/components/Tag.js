@@ -19,22 +19,43 @@ export const types = [
 	'warm-gray',
 	'cyan-gray',
 	'high-contrast',
+	'outline',
 ];
 
 /** A tag. */
 const Tag = forwardRef(
-	({id, className, size = 'md', type = 'gray', removeTitle, children, onClick, onRemove, ...props}, ref) => {
+	(
+		{
+			id,
+			className,
+			size = 'md',
+			type = 'gray',
+			icon: Icon,
+			text,
+			tagTitle,
+			removeTitle,
+			children,
+			onClick,
+			onRemove,
+			...props
+		},
+		ref
+	) => {
 		id = useRandomId(id);
 		const fullClassName = `Tag Tag--${size} Tag--${type}${onRemove ? ' Tag--removable' : ''}${
 			className ? ` ${className}` : ''
 		}`;
+		const icon = Icon ? <Icon className="Tag__icon" /> : null;
+		const content = <span title={tagTitle || text}>{text || children}</span>;
 		return onClick ? (
 			<button {...props} id={id} className={fullClassName} type="button" onClick={onClick} ref={ref}>
-				{children}
+				{icon}
+				{content}
 			</button>
 		) : (
 			<div {...props} id={id} className={fullClassName} ref={ref}>
-				{children}
+				{icon}
+				{content}
 				{onRemove && (
 					<button className="Tag__remove" type="button" title={removeTitle} aria-labelledby={id} onClick={onRemove}>
 						<Close />
@@ -56,9 +77,15 @@ Tag.propTypes = {
 	size: PropTypes.oneOf(['sm', 'md']),
 	/** The tag type. */
 	type: PropTypes.oneOf(types),
+	/** The tag icon. */
+	icon: PropTypes.elementType,
+	/** The tag text. */
+	text: PropTypes.string,
+	/** The tag title if different from the text. */
+	tagTitle: PropTypes.string,
 	/** The title for the remove button. */
 	removeTitle: PropTypes.string,
-	/** The child elements. */
+	/** @deprecated use text instead. */
 	children: PropTypes.node,
 	/** Function invoked when the tag is clicked. */
 	onClick: PropTypes.func,

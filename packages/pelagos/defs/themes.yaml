@@ -125,38 +125,49 @@ white:
   notification-close-hover: black/12%
   notification-close-active: black/20%
   tag-background-red: red-20
-  tag-color-red: red-80
-  tag-hover-red: red-30
+  tag-color-red: red-70
+  tag-hover-red: red-20-hover
+  tag-border-red: red-40
   tag-background-magenta: magenta-20
-  tag-color-magenta: magenta-80
-  tag-hover-magenta: magenta-30
+  tag-color-magenta: magenta-70
+  tag-hover-magenta: magenta-20-hover
+  tag-border-magenta: magenta-40
   tag-background-purple: purple-20
-  tag-color-purple: purple-80
-  tag-hover-purple: purple-30
+  tag-color-purple: purple-70
+  tag-hover-purple: purple-20-hover
+  tag-border-purple: purple-40
   tag-background-blue: blue-20
-  tag-color-blue: blue-80
-  tag-hover-blue: blue-30
+  tag-color-blue: blue-70
+  tag-hover-blue: blue-20-hover
+  tag-border-blue: blue-40
   tag-background-cyan: cyan-20
-  tag-color-cyan: cyan-80
-  tag-hover-cyan: cyan-30
+  tag-color-cyan: cyan-70
+  tag-hover-cyan: cyan-20-hover
+  tag-border-cyan: cyan-40
   tag-background-teal: teal-20
-  tag-color-teal: teal-80
-  tag-hover-teal: teal-30
+  tag-color-teal: teal-70
+  tag-hover-teal: teal-20-hover
+  tag-border-teal: teal-40
   tag-background-green: green-20
-  tag-color-green: green-80
-  tag-hover-green: green-30
+  tag-color-green: green-70
+  tag-hover-green: green-20-hover
+  tag-border-green: green-40
   tag-background-gray: gray-20
-  tag-color-gray: gray-80
-  tag-hover-gray: gray-30
+  tag-color-gray: gray-100
+  tag-hover-gray: gray-20-hover
+  tag-border-gray: gray-40
   tag-background-cool-gray: cool-gray-20
-  tag-color-cool-gray: cool-gray-80
-  tag-hover-cool-gray: cool-gray-30
+  tag-color-cool-gray: cool-gray-100
+  tag-hover-cool-gray: cool-gray-20-hover
+  tag-border-cool-gray: cool-gray-40
   tag-background-warm-gray: warm-gray-20
-  tag-color-warm-gray: warm-gray-80
-  tag-hover-warm-gray: warm-gray-30
+  tag-color-warm-gray: warm-gray-100
+  tag-hover-warm-gray: warm-gray-20-hover
+  tag-border-warm-gray: warm-gray-40
   tag-background-cyan-gray: cyan-gray-20
-  tag-color-cyan-gray: cyan-gray-80
-  tag-hover-cyan-gray: cyan-gray-30
+  tag-color-cyan-gray: cyan-gray-100
+  tag-hover-cyan-gray: cyan-gray-20-hover
+  tag-border-cyan-gray: cyan-gray-40
   text-value: teal-60
   status-true: green-20
   status-false: gray-20
@@ -293,38 +304,49 @@ cg00:
   notification-close-hover: black/12%
   notification-close-active: black/20%
   tag-background-red: red-20
-  tag-color-red: red-80
-  tag-hover-red: red-30
+  tag-color-red: red-70
+  tag-hover-red: red-20-hover
+  tag-border-red: red-40
   tag-background-magenta: magenta-20
-  tag-color-magenta: magenta-80
-  tag-hover-magenta: magenta-30
+  tag-color-magenta: magenta-70
+  tag-hover-magenta: magenta-20-hover
+  tag-border-magenta: magenta-40
   tag-background-purple: purple-20
-  tag-color-purple: purple-80
-  tag-hover-purple: purple-30
+  tag-color-purple: purple-70
+  tag-hover-purple: purple-20-hover
+  tag-border-purple: purple-40
   tag-background-blue: blue-20
-  tag-color-blue: blue-80
-  tag-hover-blue: blue-30
+  tag-color-blue: blue-70
+  tag-hover-blue: blue-20-hover
+  tag-border-blue: blue-40
   tag-background-cyan: cyan-20
-  tag-color-cyan: cyan-80
-  tag-hover-cyan: cyan-30
+  tag-color-cyan: cyan-70
+  tag-hover-cyan: cyan-20-hover
+  tag-border-cyan: cyan-40
   tag-background-teal: teal-20
-  tag-color-teal: teal-80
-  tag-hover-teal: teal-30
+  tag-color-teal: teal-70
+  tag-hover-teal: teal-20-hover
+  tag-border-teal: teal-40
   tag-background-green: green-20
-  tag-color-green: green-80
-  tag-hover-green: green-30
+  tag-color-green: green-70
+  tag-hover-green: green-20-hover
+  tag-border-green: green-40
   tag-background-gray: gray-20
-  tag-color-gray: gray-80
-  tag-hover-gray: gray-30
+  tag-color-gray: gray-100
+  tag-hover-gray: gray-20-hover
+  tag-border-gray: gray-40
   tag-background-cool-gray: cool-gray-20
-  tag-color-cool-gray: cool-gray-80
-  tag-hover-cool-gray: cool-gray-30
+  tag-color-cool-gray: cool-gray-100
+  tag-hover-cool-gray: cool-gray-20-hover
+  tag-border-cool-gray: cool-gray-40
   tag-background-warm-gray: warm-gray-20
-  tag-color-warm-gray: warm-gray-80
-  tag-hover-warm-gray: warm-gray-30
+  tag-color-warm-gray: warm-gray-100
+  tag-hover-warm-gray: warm-gray-20-hover
+  tag-border-warm-gray: warm-gray-40
   tag-background-cyan-gray: cyan-gray-20
-  tag-color-cyan-gray: cyan-gray-80
-  tag-hover-cyan-gray: cyan-gray-30
+  tag-color-cyan-gray: cyan-gray-100
+  tag-hover-cyan-gray: cyan-gray-20-hover
+  tag-border-cyan-gray: cyan-gray-40
   text-value: teal-60
   status-true: green-20
   status-false: gray-20
@@ -463,36 +485,47 @@ yg100:
   tag-background-red: red-70
   tag-color-red: red-20
   tag-hover-red: red-70-hover
+  tag-border-red: red-50
   tag-background-magenta: magenta-70
   tag-color-magenta: magenta-20
   tag-hover-magenta: magenta-70-hover
+  tag-border-magenta: magenta-50
   tag-background-purple: purple-70
   tag-color-purple: purple-20
   tag-hover-purple: purple-70-hover
+  tag-border-purple: purple-50
   tag-background-blue: blue-70
   tag-color-blue: blue-20
   tag-hover-blue: blue-70-hover
+  tag-border-blue: blue-50
   tag-background-cyan: cyan-70
   tag-color-cyan: cyan-20
   tag-hover-cyan: cyan-70-hover
+  tag-border-cyan: cyan-50
   tag-background-teal: teal-70
   tag-color-teal: teal-20
   tag-hover-teal: teal-70-hover
+  tag-border-teal: teal-50
   tag-background-green: green-70
   tag-color-green: green-20
   tag-hover-green: green-70-hover
+  tag-border-green: green-50
   tag-background-gray: gray-70
   tag-color-gray: gray-20
   tag-hover-gray: gray-70-hover
+  tag-border-gray: gray-50
   tag-background-cool-gray: cool-gray-70
   tag-color-cool-gray: cool-gray-20
   tag-hover-cool-gray: cool-gray-70-hover
+  tag-border-cool-gray: cool-gray-50
   tag-background-warm-gray: warm-gray-70
   tag-color-warm-gray: warm-gray-20
   tag-hover-warm-gray: warm-gray-70-hover
+  tag-border-warm-gray: warm-gray-50
   tag-background-cyan-gray: cyan-gray-70
   tag-color-cyan-gray: cyan-gray-20
   tag-hover-cyan-gray: cyan-gray-70-hover
+  tag-border-cyan-gray: cyan-gray-50
   text-value: green-30
   status-true: green-70
   status-false: gray-70
@@ -631,36 +664,47 @@ g100:
   tag-background-red: red-70
   tag-color-red: red-20
   tag-hover-red: red-70-hover
+  tag-border-red: red-50
   tag-background-magenta: magenta-70
   tag-color-magenta: magenta-20
   tag-hover-magenta: magenta-70-hover
+  tag-border-magenta: magenta-50
   tag-background-purple: purple-70
   tag-color-purple: purple-20
   tag-hover-purple: purple-70-hover
+  tag-border-purple: purple-50
   tag-background-blue: blue-70
   tag-color-blue: blue-20
   tag-hover-blue: blue-70-hover
+  tag-border-blue: blue-50
   tag-background-cyan: cyan-70
   tag-color-cyan: cyan-20
   tag-hover-cyan: cyan-70-hover
+  tag-border-cyan: cyan-50
   tag-background-teal: teal-70
   tag-color-teal: teal-20
   tag-hover-teal: teal-70-hover
+  tag-border-teal: teal-50
   tag-background-green: green-70
   tag-color-green: green-20
   tag-hover-green: green-70-hover
+  tag-border-green: green-50
   tag-background-gray: gray-70
   tag-color-gray: gray-20
   tag-hover-gray: gray-70-hover
+  tag-border-gray: gray-50
   tag-background-cool-gray: cool-gray-70
   tag-color-cool-gray: cool-gray-20
   tag-hover-cool-gray: cool-gray-70-hover
+  tag-border-cool-gray: cool-gray-50
   tag-background-warm-gray: warm-gray-70
   tag-color-warm-gray: warm-gray-20
   tag-hover-warm-gray: warm-gray-70-hover
+  tag-border-warm-gray: warm-gray-50
   tag-background-cyan-gray: cyan-gray-70
   tag-color-cyan-gray: cyan-gray-20
   tag-hover-cyan-gray: cyan-gray-70-hover
+  tag-border-cyan-gray: cyan-gray-50
   text-value: green-30
   status-true: green-70
   status-false: gray-70
