@@ -14,19 +14,17 @@ exports[`TagInput rendering renders expected elements 1`] = `
     data-index={0}
     onRemove={[Function]}
     removeTitle="Remove foo"
+    text="foo"
     type="gray"
-  >
-    foo
-  </Tag>
+  />
   <Tag
     className="TagInput__tag"
     data-index={1}
     onRemove={[Function]}
     removeTitle="Remove bar"
+    text="bar"
     type="gray"
-  >
-    bar
-  </Tag>
+  />
   <input
     aria-invalid={false}
     className="TagInput__input"
@@ -55,20 +53,18 @@ exports[`TagInput rendering renders expected elements when disabled 1`] = `
     data-index={0}
     onRemove={null}
     removeTitle="Remove foo"
+    text="foo"
     type="gray"
-  >
-    foo
-  </Tag>
+  />
   <Tag
     aria-disabled={true}
     className="TagInput__tag"
     data-index={1}
     onRemove={null}
     removeTitle="Remove bar"
+    text="bar"
     type="gray"
-  >
-    bar
-  </Tag>
+  />
   <input
     aria-invalid={false}
     className="TagInput__input"
@@ -95,17 +91,15 @@ exports[`TagInput rendering renders expected elements when disabled and defaultT
   <Tag
     aria-disabled={true}
     className="TagInput__defaultTag"
+    text="foo"
     type="gray"
-  >
-    foo
-  </Tag>
+  />
   <Tag
     aria-disabled={true}
     className="TagInput__defaultTag"
+    text="bar"
     type="gray"
-  >
-    bar
-  </Tag>
+  />
   <input
     aria-invalid={false}
     className="TagInput__input"
@@ -134,19 +128,17 @@ exports[`TagInput rendering renders expected elements when optional properties a
     data-index={0}
     onRemove={[Function]}
     removeTitle="Remove foo"
+    text="foo"
     type="gray"
-  >
-    foo
-  </Tag>
+  />
   <Tag
     className="TagInput__tag"
     data-index={1}
     onRemove={[Function]}
     removeTitle="Remove bar"
+    text="bar"
     type="gray"
-  >
-    bar
-  </Tag>
+  />
   <input
     aria-invalid={true}
     className="TagInput__input"
@@ -193,16 +185,14 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
   />
   <Tag
     className="TagInput__defaultTag"
+    text="foo"
     type="gray"
-  >
-    foo
-  </Tag>
+  />
   <Tag
     className="TagInput__defaultTag"
+    text="bar"
     type="gray"
-  >
-    bar
-  </Tag>
+  />
   <input
     aria-invalid={false}
     className="TagInput__input"

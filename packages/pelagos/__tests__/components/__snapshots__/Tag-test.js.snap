@@ -5,7 +5,11 @@ exports[`Tag rendering renders expected elements 1`] = `
   className="Tag Tag--md Tag--gray"
   id="random-id"
 >
-  gray
+  <span
+    title="gray"
+  >
+    gray
+  </span>
 </div>
 `;
 
@@ -14,7 +18,11 @@ exports[`Tag rendering renders expected elements when onRemove is ser 1`] = `
   className="Tag Tag--md Tag--gray Tag--removable"
   id="random-id"
 >
-  gray
+  <span
+    title="gray"
+  >
+    gray
+  </span>
   <button
     aria-labelledby="random-id"
     className="Tag__remove"
@@ -34,6 +42,13 @@ exports[`Tag rendering renders expected elements when optional properties are se
   onClick={[MockFunction]}
   type="button"
 >
-  red
+  <test-icon
+    className="Tag__icon"
+  />
+  <span
+    title="Test tag title"
+  >
+    red
+  </span>
 </button>
 `;

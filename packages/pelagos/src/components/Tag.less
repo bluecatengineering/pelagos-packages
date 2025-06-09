@@ -2,12 +2,16 @@
 @import '../../less/fonts';
 @import '../../less/spacing';
 
-.tag-styles(@color; @background; @hover) {
+.tag-styles(@color; @background; @hover; @border) {
 	color: var(@color);
 	background-color: var(@background);
 
-	&:is(button):hover {
-		background-color: var(@hover);
+	&:is(button) {
+		border-color: var(@border);
+
+		&:hover {
+			background-color: var(@hover);
+		}
 	}
 
 	& > .Tag__remove:hover {
@@ -18,14 +22,21 @@
 @layer pelagos {
 	.Tag {
 		@label-01();
+		display: flex;
 		flex-direction: row;
 		align-items: center;
 		padding: 0 @sp-08;
 		transition: background-color 0.15s ease-out;
 
 		&:is(button) {
-			border: none;
+			@focus-visible();
+			border: 1px solid;
 			cursor: pointer;
+		}
+
+		// stylelint-disable-next-line @bluecateng/selector-bem -- currently doesn't support :has
+		&:has(> .Tag__icon) {
+			padding-left: @sp-04;
 		}
 
 		&--sm {
@@ -39,55 +50,65 @@
 		}
 
 		&--red {
-			.tag-styles(--tag-color-red, --tag-background-red, --tag-hover-red);
+			.tag-styles(--tag-color-red, --tag-background-red, --tag-hover-red, --tag-border-red);
 		}
 
 		&--magenta {
-			.tag-styles(--tag-color-magenta, --tag-background-magenta, --tag-hover-magenta);
+			.tag-styles(--tag-color-magenta, --tag-background-magenta, --tag-hover-magenta, --tag-border-magenta);
 		}
 
 		&--purple {
-			.tag-styles(--tag-color-purple, --tag-background-purple, --tag-hover-purple);
+			.tag-styles(--tag-color-purple, --tag-background-purple, --tag-hover-purple, --tag-border-purple);
 		}
 
 		&--blue {
-			.tag-styles(--tag-color-blue, --tag-background-blue, --tag-hover-blue);
+			.tag-styles(--tag-color-blue, --tag-background-blue, --tag-hover-blue, --tag-border-blue);
 		}
 
 		&--cyan {
-			.tag-styles(--tag-color-cyan, --tag-background-cyan, --tag-hover-cyan);
+			.tag-styles(--tag-color-cyan, --tag-background-cyan, --tag-hover-cyan, --tag-border-cyan);
 		}
 
 		&--teal {
-			.tag-styles(--tag-color-teal, --tag-background-teal, --tag-hover-teal);
+			.tag-styles(--tag-color-teal, --tag-background-teal, --tag-hover-teal, --tag-border-teal);
 		}
 
 		&--green {
-			.tag-styles(--tag-color-green, --tag-background-green, --tag-hover-green);
+			.tag-styles(--tag-color-green, --tag-background-green, --tag-hover-green, --tag-border-green);
 		}
 
 		&--gray {
-			.tag-styles(--tag-color-gray, --tag-background-gray, --tag-hover-gray);
+			.tag-styles(--tag-color-gray, --tag-background-gray, --tag-hover-gray, --tag-border-gray);
 		}
 
 		&--cool-gray {
-			.tag-styles(--tag-color-cool-gray, --tag-background-cool-gray, --tag-hover-cool-gray);
+			.tag-styles(--tag-color-cool-gray, --tag-background-cool-gray, --tag-hover-cool-gray, --tag-border-cool-gray);
 		}
 
 		&--warm-gray {
-			.tag-styles(--tag-color-warm-gray, --tag-background-warm-gray, --tag-hover-warm-gray);
+			.tag-styles(--tag-color-warm-gray, --tag-background-warm-gray, --tag-hover-warm-gray, --tag-border-warm-gray);
 		}
 
 		&--cyan-gray {
-			.tag-styles(--tag-color-cyan-gray, --tag-background-cyan-gray, --tag-hover-cyan-gray);
+			.tag-styles(--tag-color-cyan-gray, --tag-background-cyan-gray, --tag-hover-cyan-gray, --tag-border-cyan-gray);
 		}
 
 		&--high-contrast {
-			.tag-styles(--text-inverse, --background-inverse, --background-inverse-hover);
+			.tag-styles(--text-inverse, --background-inverse, --background-inverse-hover, --border-inverse);
+		}
+
+		&--outline {
+			.tag-styles(--text-primary, --background, --background-hover, --border-inverse);
+			outline: 1px solid var(--background-inverse);
+			outline-offset: -1px;
 		}
 
 		&--removable {
 			padding-right: 0;
+		}
+
+		&__icon {
+			margin-right: @sp-04;
 		}
 
 		&__remove {
@@ -97,7 +118,7 @@
 			justify-content: center;
 			background-color: transparent;
 			padding: 0;
-			margin: 0 0 0 @sp-02;
+			margin: 0 0 0 @sp-04;
 			border: none;
 			border-radius: 50%;
 			cursor: pointer;

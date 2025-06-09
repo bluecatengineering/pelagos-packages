@@ -129,18 +129,23 @@ const TagInput = ({
 							key={name}
 							className="TagInput__tag"
 							type="gray"
+							text={name}
 							removeTitle={`Remove ${name}`}
 							aria-disabled={disabled}
 							data-index={i}
-							onRemove={disabled ? null : handleRemove}>
-							{name}
-						</Tag>
+							onRemove={disabled ? null : handleRemove}
+						/>
 					))
 				: defaultTags?.length
 					? defaultTags.map((tag) => (
-							<Tag key={tag} className="TagInput__defaultTag" type="gray" aria-disabled={disabled} ref={tooltip}>
-								{tag}
-							</Tag>
+							<Tag
+								key={tag}
+								className="TagInput__defaultTag"
+								type="gray"
+								text={tag}
+								aria-disabled={disabled}
+								ref={tooltip}
+							/>
 						))
 					: null}
 			<input
