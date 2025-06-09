@@ -7,7 +7,7 @@
     "*.less"
   ],
   "scripts": {
-    "build:dist": "rm -rf dist && babel -d dist --env-name production --root-mode upward --ignore '**/*.stories.js' src && npm run copy-resources dist",
+    "build:dist": "rm -rf dist && babel -d dist --env-name production --root-mode upward --ignore '**/*.stories.js' --ignore **/story-helpers.js src && npm run copy-resources dist",
     "build": "npm run update-colors && npm run update-elevations && npm run update-fonts && npm run update-shadows && npm run update-spacing && npm run update-themes && npm run build:dist",
     "update-colors": "node scripts/update-colors",
     "update-docs": "node scripts/update-docs",

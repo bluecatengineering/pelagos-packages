@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagComboBoxField rendering renders expected elements 1`] = `
+<div
+  className="TagComboBoxField"
+>
+  <LabelLine
+    error={false}
+    htmlFor="random-id"
+    id="random-id-label"
+    text="Label"
+  />
+  <TagComboBox
+    aria-describedby="random-id-helper"
+    aria-labelledby="random-id-label"
+    id="random-id"
+    onChange={[MockFunction]}
+    onError={[MockFunction]}
+    tags={[]}
+    validate={[MockFunction]}
+  />
+  <FieldHelper
+    id="random-id-helper"
+    text="Helper text"
+  />
+</div>
+`;
+
+exports[`TagComboBoxField rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="TagComboBoxField TestClass"
+>
+  <LabelLine
+    error={true}
+    htmlFor="random-id"
+    id="random-id-label"
+    required={true}
+    text="Label"
+  />
+  <TagComboBox
+    aria-describedby="random-id-error"
+    aria-labelledby="random-id-label"
+    aria-required={true}
+    error="Error"
+    id="random-id"
+    onChange={[MockFunction]}
+    onError={[MockFunction]}
+    tags={[]}
+    validate={[MockFunction]}
+  />
+  <FieldError
+    id="random-id-error"
+    text="Error"
+  />
+</div>
+`;
