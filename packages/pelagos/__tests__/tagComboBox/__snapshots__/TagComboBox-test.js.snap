@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagComboBox rendering renders expected elements 1`] = `
+<Layer
+  className="TagComboBox"
+  id="random-id-tags"
+>
+  <span
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="TagComboBox__content"
+  >
+    <Tag
+      className="TagComboBox__tag"
+      data-index={0}
+      key="foo"
+      onRemove={[Function]}
+      removeTitle="Remove foo"
+      type="gray"
+    >
+      foo
+    </Tag>
+    <Tag
+      className="TagComboBox__tag"
+      data-index={1}
+      key="bar"
+      onRemove={[Function]}
+      removeTitle="Remove bar"
+      type="gray"
+    >
+      bar
+    </Tag>
+    <input
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls="random-id-list"
+      aria-expanded={false}
+      aria-invalid={false}
+      autoComplete="off"
+      className="TagComboBox__input"
+      id="random-id"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value=""
+    />
+  </div>
+  <Layer
+    className="TagComboBox__list"
+    id="random-id-list"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    popover="manual"
+    role="listbox"
+  />
+</Layer>
+`;
+
+exports[`TagComboBox rendering renders expected elements when disabled 1`] = `
+<Layer
+  className="TagComboBox TagComboBox--disabled"
+  id="random-id-tags"
+>
+  <span
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="TagComboBox__content"
+  >
+    <Tag
+      aria-disabled={true}
+      className="TagComboBox__tag"
+      data-index={0}
+      key="foo"
+      onRemove={null}
+      removeTitle="Remove foo"
+      type="gray"
+    >
+      foo
+    </Tag>
+    <Tag
+      aria-disabled={true}
+      className="TagComboBox__tag"
+      data-index={1}
+      key="bar"
+      onRemove={null}
+      removeTitle="Remove bar"
+      type="gray"
+    >
+      bar
+    </Tag>
+    <input
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls="random-id-list"
+      aria-expanded={false}
+      aria-invalid={false}
+      autoComplete="off"
+      className="TagComboBox__input"
+      disabled={true}
+      id="random-id"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value=""
+    />
+  </div>
+  <Layer
+    className="TagComboBox__list"
+    id="random-id-list"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    popover="manual"
+    role="listbox"
+  />
+</Layer>
+`;
+
+exports[`TagComboBox rendering renders expected elements when disabled and defaultTags is set 1`] = `
+<Layer
+  className="TagComboBox TagComboBox--disabled"
+  id="random-id-tags"
+>
+  <span
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="TagComboBox__content"
+  >
+    <Tag
+      aria-disabled={true}
+      className="TagComboBox__defaultTag"
+      key="foo"
+      type="gray"
+    >
+      foo
+    </Tag>
+    <Tag
+      aria-disabled={true}
+      className="TagComboBox__defaultTag"
+      key="bar"
+      type="gray"
+    >
+      bar
+    </Tag>
+    <input
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls="random-id-list"
+      aria-expanded={false}
+      aria-invalid={false}
+      autoComplete="off"
+      className="TagComboBox__input"
+      disabled={true}
+      id="random-id"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value=""
+    />
+  </div>
+  <Layer
+    className="TagComboBox__list"
+    id="random-id-list"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    popover="manual"
+    role="listbox"
+  />
+</Layer>
+`;
+
+exports[`TagComboBox rendering renders expected elements when optional properties are set 1`] = `
+<Layer
+  className="TagComboBox TagComboBox--error TestClass"
+  id="random-id-tags"
+>
+  <span
+    aria-live="polite"
+    className="sr-only"
+  >
+    Test of live text
+  </span>
+  <div
+    className="TagComboBox__content"
+  >
+    <Tag
+      className="TagComboBox__tag"
+      data-index={0}
+      key="foo"
+      onRemove={[Function]}
+      removeTitle="Remove foo"
+      type="gray"
+    >
+      foo
+    </Tag>
+    <Tag
+      className="TagComboBox__tag"
+      data-index={1}
+      key="bar"
+      onRemove={[Function]}
+      removeTitle="Remove bar"
+      type="gray"
+    >
+      bar
+    </Tag>
+    <input
+      aria-activedescendant="random-id-1"
+      aria-autocomplete="list"
+      aria-controls="random-id-list"
+      aria-expanded={true}
+      aria-invalid={true}
+      autoComplete="off"
+      className="TagComboBox__input"
+      id="random-id"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value="text"
+    />
+  </div>
+  <Layer
+    className="TagComboBox__list"
+    id="random-id-list"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    popover="manual"
+    role="listbox"
+  >
+    <div
+      aria-selected={false}
+      className="TagComboBox__option"
+      data-index={0}
+      id="random-id-0"
+      key={0}
+      role="option"
+    >
+      Foo A
+    </div>
+    <div
+      aria-selected={true}
+      className="TagComboBox__option TestClass"
+      data-index={1}
+      id="random-id-1"
+      key={1}
+      role="option"
+    >
+      Foo B
+    </div>
+  </Layer>
+</Layer>
+`;
+
+exports[`TagComboBox rendering renders expected elements when tags is empty and defaultTags is not set 1`] = `
+<Layer
+  className="TagComboBox"
+  id="random-id-tags"
+>
+  <span
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="TagComboBox__content"
+  >
+    <input
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls="random-id-list"
+      aria-expanded={false}
+      aria-invalid={false}
+      autoComplete="off"
+      className="TagComboBox__input"
+      id="random-id"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value=""
+    />
+  </div>
+  <Layer
+    className="TagComboBox__list"
+    id="random-id-list"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    popover="manual"
+    role="listbox"
+  />
+</Layer>
+`;
+
+exports[`TagComboBox rendering renders expected elements when tags is empty and defaultTags is set 1`] = `
+<Layer
+  className="TagComboBox"
+  id="random-id-tags"
+>
+  <span
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="TagComboBox__content"
+  >
+    <Tag
+      className="TagComboBox__defaultTag"
+      key="foo"
+      type="gray"
+    >
+      foo
+    </Tag>
+    <Tag
+      className="TagComboBox__defaultTag"
+      key="bar"
+      type="gray"
+    >
+      bar
+    </Tag>
+    <input
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls="random-id-list"
+      aria-expanded={false}
+      aria-invalid={false}
+      autoComplete="off"
+      className="TagComboBox__input"
+      id="random-id"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value=""
+    />
+  </div>
+  <Layer
+    className="TagComboBox__list"
+    id="random-id-list"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    popover="manual"
+    role="listbox"
+  />
+</Layer>
+`;

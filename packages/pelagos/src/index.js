@@ -13,5 +13,6 @@ export * from './sideNav';
 export * from './suggestions';
 export * from './table';
 export * from './tabs';
+export * from './tagComboBox';
 export * from './toasts';
 export * from './treeView';
