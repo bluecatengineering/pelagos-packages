@@ -510,6 +510,10 @@ tag-hover-red:
   group: tag
   set: base
   properties: []
+tag-border-red:
+  group: tag
+  set: base
+  properties: []
 tag-background-magenta:
   group: tag
   set: base
@@ -519,6 +523,10 @@ tag-color-magenta:
   set: base
   properties: []
 tag-hover-magenta:
+  group: tag
+  set: base
+  properties: []
+tag-border-magenta:
   group: tag
   set: base
   properties: []
@@ -534,6 +542,10 @@ tag-hover-purple:
   group: tag
   set: base
   properties: []
+tag-border-purple:
+  group: tag
+  set: base
+  properties: []
 tag-background-blue:
   group: tag
   set: base
@@ -543,6 +555,10 @@ tag-color-blue:
   set: base
   properties: []
 tag-hover-blue:
+  group: tag
+  set: base
+  properties: []
+tag-border-blue:
   group: tag
   set: base
   properties: []
@@ -558,6 +574,10 @@ tag-hover-cyan:
   group: tag
   set: base
   properties: []
+tag-border-cyan:
+  group: tag
+  set: base
+  properties: []
 tag-background-teal:
   group: tag
   set: base
@@ -567,6 +587,10 @@ tag-color-teal:
   set: base
   properties: []
 tag-hover-teal:
+  group: tag
+  set: base
+  properties: []
+tag-border-teal:
   group: tag
   set: base
   properties: []
@@ -582,6 +606,10 @@ tag-hover-green:
   group: tag
   set: base
   properties: []
+tag-border-green:
+  group: tag
+  set: base
+  properties: []
 tag-background-gray:
   group: tag
   set: base
@@ -591,6 +619,10 @@ tag-color-gray:
   set: base
   properties: []
 tag-hover-gray:
+  group: tag
+  set: base
+  properties: []
+tag-border-gray:
   group: tag
   set: base
   properties: []
@@ -606,6 +638,10 @@ tag-hover-cool-gray:
   group: tag
   set: base
   properties: []
+tag-border-cool-gray:
+  group: tag
+  set: base
+  properties: []
 tag-background-warm-gray:
   group: tag
   set: base
@@ -618,6 +654,10 @@ tag-hover-warm-gray:
   group: tag
   set: base
   properties: []
+tag-border-warm-gray:
+  group: tag
+  set: base
+  properties: []
 tag-background-cyan-gray:
   group: tag
   set: base
@@ -627,6 +667,10 @@ tag-color-cyan-gray:
   set: base
   properties: []
 tag-hover-cyan-gray:
+  group: tag
+  set: base
+  properties: []
+tag-border-cyan-gray:
   group: tag
   set: base
   properties: []
