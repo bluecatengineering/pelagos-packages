@@ -9,7 +9,7 @@ import TagComboBox from './TagComboBox';
 
 import './TagComboBoxField.less';
 
-/** A tag combo box field. */
+/** A form field wrapper for [TagComboBox](/docs/experimental-tagcombobox--docs). */
 const TagComboBoxField = ({id, className, label, required, helperText, error, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
