@@ -7,7 +7,7 @@ import useRandomId from '../hooks/useRandomId';
 
 import './ToggleField.less';
 
-/** A toggle button field. */
+/** A form field wrapper for [Toggle](/docs/components-toggle--docs). */
 const ToggleField = ({id, className, label, value, disabled, labelOn, labelOff, onChange}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;

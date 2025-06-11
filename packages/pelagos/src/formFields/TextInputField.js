@@ -9,7 +9,7 @@ import FieldError from './FieldError';
 import FieldHelper from './FieldHelper';
 import './TextInputField.less';
 
-/** A text input field. */
+/** A text input form field. */
 const TextInputField = ({
 	id,
 	className,

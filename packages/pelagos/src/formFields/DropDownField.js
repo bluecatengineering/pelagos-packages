@@ -8,7 +8,7 @@ import FieldError from './FieldError';
 import FieldHelper from './FieldHelper';
 import './DropDownField.less';
 
-/** A dropdown field. */
+/** A form field wrapper for [Select](/docs/components-select--docs). */
 const DropDownField = ({id, className, label, required, helperText, error, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;

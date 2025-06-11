@@ -9,7 +9,7 @@ import FieldError from './FieldError';
 import FieldHelper from './FieldHelper';
 import './TextAreaField.less';
 
-/** A text area field. */
+/** A text area form field. */
 const TextAreaField = ({
 	id,
 	className,

@@ -8,7 +8,7 @@ import FieldError from './FieldError';
 import FieldHelper from './FieldHelper';
 import './TagInputField.less';
 
-/** A tag input field. */
+/** A form field wrapper for [TagInput](/docs/components-taginput--docs). */
 const TagInputField = ({id, className, label, required, tags, helperText, error, disabled, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
