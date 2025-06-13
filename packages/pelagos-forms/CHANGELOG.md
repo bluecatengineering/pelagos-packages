@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@5.0.1...@bluecateng/pelagos-forms@5.1.0) (2025-06-13)
+
+### Features
+
+- add TagComboBox component ([3db7beb](https://github.com/bluecatengineering/pelagos-packages/commit/3db7beb3b5d221171dfed6d8b2d76226181e2ce2))
+
 ## [5.0.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@5.0.0...@bluecateng/pelagos-forms@5.0.1) (2024-06-05)
 
 ### Bug Fixes

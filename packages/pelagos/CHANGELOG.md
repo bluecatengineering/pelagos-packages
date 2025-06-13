@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.18.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.17.2...@bluecateng/pelagos@12.18.0) (2025-06-13)
+
+### Features
+
+- add property to display a help link in Dialog ([f3f8e9c](https://github.com/bluecatengineering/pelagos-packages/commit/f3f8e9cecad8ec8020e56001fd8601a3897211e1))
+- add property to display an icon in the tags ([ccd37bd](https://github.com/bluecatengineering/pelagos-packages/commit/ccd37bd5057c98cf6450ee9288687af2fd68859b))
+- add TagComboBox component ([3db7beb](https://github.com/bluecatengineering/pelagos-packages/commit/3db7beb3b5d221171dfed6d8b2d76226181e2ce2))
+
 ## [12.17.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.17.1...@bluecateng/pelagos@12.17.2) (2025-06-03)
 
 ### Bug Fixes
