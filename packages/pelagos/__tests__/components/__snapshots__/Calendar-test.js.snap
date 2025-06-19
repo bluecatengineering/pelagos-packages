@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Calendar rendering renders expected elements 1`] = `
 <div
@@ -672,9 +672,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -689,9 +687,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -706,9 +702,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -723,9 +717,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -740,9 +732,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -759,9 +749,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -776,9 +764,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -793,9 +779,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -810,9 +794,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -827,9 +809,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -844,9 +824,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -861,9 +839,7 @@ exports[`Calendar rendering renders expected elements 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1548,9 +1524,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1565,9 +1539,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1582,9 +1554,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1599,9 +1569,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1616,9 +1584,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1635,9 +1601,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1652,9 +1616,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1669,9 +1631,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1686,9 +1646,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1703,9 +1661,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1720,9 +1676,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -1737,9 +1691,7 @@ exports[`Calendar rendering renders expected elements when focused is earlier th
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2424,9 +2376,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2441,9 +2391,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2458,9 +2406,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2475,9 +2421,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2492,9 +2436,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2511,9 +2453,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2528,9 +2468,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2545,9 +2483,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2562,9 +2498,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2579,9 +2513,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2596,9 +2528,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -2613,9 +2543,7 @@ exports[`Calendar rendering renders expected elements when focused is later than
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3300,9 +3228,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3317,9 +3243,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3334,9 +3258,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3351,9 +3273,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3368,9 +3288,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3387,9 +3305,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3404,9 +3320,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3421,9 +3335,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3438,9 +3350,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3455,9 +3365,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3472,9 +3380,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -3489,9 +3395,7 @@ exports[`Calendar rendering renders expected elements when optional properties a
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4176,9 +4080,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4193,9 +4095,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4210,9 +4110,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4227,9 +4125,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4244,9 +4140,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4263,9 +4157,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4280,9 +4172,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4297,9 +4187,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4314,9 +4202,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4331,9 +4217,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4348,9 +4232,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
@@ -4365,9 +4247,7 @@ exports[`Calendar rendering renders expected elements when value is set 1`] = `
         >
           <span
             aria-hidden={true}
-          >
-            
-          </span>
+          />
           <span
             className="sr-only"
           >
