@@ -22,8 +22,14 @@ export const Default = {
 	args: {label: 'Default', tags: ['Alpha'], helperText: 'Helper text', validate},
 };
 
-export const Defaults = {
-	args: {label: 'Defaults', defaultTags: ['Alpha'], tags: [], validate},
+export const DefaultTags = {
+	args: {
+		label: 'Default tags',
+		defaultTags: ['Alpha'],
+		defaultTooltipText: 'This is a default',
+		tags: [],
+		validate,
+	},
 };
 
 export const Disabled = {

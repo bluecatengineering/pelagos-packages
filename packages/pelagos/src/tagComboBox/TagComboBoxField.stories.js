@@ -43,6 +43,85 @@ export const Default = {
 	},
 };
 
+export const DefaultTags = {
+	args: {
+		label: 'Default tags',
+		defaultTags: [{type: 'purple', name: 'Alpha'}],
+		defaultTooltipText: 'This is a default',
+		tags: [],
+		helperText: 'Helper text',
+		getKey,
+		getName,
+		renderTag,
+		hasTag,
+		validate,
+		textToTag,
+		getSuggestions,
+		renderSuggestion,
+	},
+};
+
+export const Required = {
+	args: {
+		label: 'Required',
+		tags: [
+			{type: 'purple', name: 'Alpha'},
+			{type: 'green', name: 'Banana'},
+		],
+		helperText: 'Helper text',
+		required: true,
+		getKey,
+		getName,
+		renderTag,
+		hasTag,
+		validate,
+		textToTag,
+		getSuggestions,
+		renderSuggestion,
+	},
+};
+
+export const Disabled = {
+	args: {
+		label: 'Disabled',
+		tags: [
+			{type: 'purple', name: 'Alpha'},
+			{type: 'green', name: 'Banana'},
+		],
+		helperText: 'Helper text',
+		disabled: true,
+		getKey,
+		getName,
+		renderTag,
+		hasTag,
+		validate,
+		textToTag,
+		getSuggestions,
+		renderSuggestion,
+	},
+};
+
+export const Error = {
+	args: {
+		label: 'Error',
+		tags: [
+			{type: 'purple', name: 'Alpha'},
+			{type: 'green', name: 'Banana'},
+		],
+		helperText: 'Helper text',
+		required: true,
+		error: 'Error message',
+		getKey,
+		getName,
+		renderTag,
+		hasTag,
+		validate,
+		textToTag,
+		getSuggestions,
+		renderSuggestion,
+	},
+};
+
 export const _WithLayers = {
 	render: () => (
 		<WithLayers>

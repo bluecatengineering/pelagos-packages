@@ -39,9 +39,9 @@ export const Default = {
 	},
 };
 
-export const Defaults = {
+export const DefaultTags = {
 	args: {
-		'aria-label': 'Defaults',
+		'aria-label': 'Default tags',
 		defaultTags: [{type: 'purple', name: 'Alpha'}],
 		defaultTooltipText: 'Default',
 		tags: [],

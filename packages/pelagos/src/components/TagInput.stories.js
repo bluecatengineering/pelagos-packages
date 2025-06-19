@@ -17,8 +17,8 @@ export const Default = {
 	args: {'aria-label': 'Default', tags: ['Alpha'], validate},
 };
 
-export const Defaults = {
-	args: {'aria-label': 'Defaults', defaultTags: ['Alpha'], defaultTooltipText: 'Default', tags: [], validate},
+export const DefaultTags = {
+	args: {'aria-label': 'Default tags', defaultTags: ['Alpha'], defaultTooltipText: 'Default', tags: [], validate},
 };
 
 export const Disabled = {
