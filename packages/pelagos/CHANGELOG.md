@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.18.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.18.0...@bluecateng/pelagos@12.18.1) (2025-06-19)
+
+### Bug Fixes
+
+- create separate callbacks for event handlers ([e812c6e](https://github.com/bluecatengineering/pelagos-packages/commit/e812c6e7ca771a8fa3c90cd400ae97390ac14667))
+
 ## [12.18.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.17.2...@bluecateng/pelagos@12.18.0) (2025-06-13)
 
 ### Features
