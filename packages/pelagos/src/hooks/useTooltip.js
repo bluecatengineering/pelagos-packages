@@ -23,18 +23,26 @@ const useTooltip = (text, placement, aria) => {
 		[text, placement, showTooltip, aria]
 	);
 
+	const handleMouseEnter = useCallback(
+		(event) => {
+			if (event.relatedTarget !== tooltip && event.relatedTarget !== targetRef.current) {
+				show();
+			}
+		},
+		[show, tooltip]
+	);
+
+	const handleMouseLeave = useCallback(
+		(event) => {
+			if (event.relatedTarget !== tooltip && event.relatedTarget !== targetRef.current) {
+				hide();
+			}
+		},
+		[hide, tooltip]
+	);
+
 	return useCallback(
 		(element) => {
-			const handleMouseEnter = (event) => {
-				if (event.relatedTarget !== tooltip && event.relatedTarget !== targetRef.current) {
-					show();
-				}
-			};
-			const handleMouseLeave = (event) => {
-				if (event.relatedTarget !== tooltip && event.relatedTarget !== targetRef.current) {
-					hide();
-				}
-			};
 			const target = targetRef.current;
 			if (target) {
 				tooltip.removeEventListener('mouseenter', handleMouseEnter);
@@ -56,7 +64,7 @@ const useTooltip = (text, placement, aria) => {
 			}
 			targetRef.current = element;
 		},
-		[hide, show, tooltip]
+		[handleMouseEnter, handleMouseLeave, hide, show, tooltip]
 	);
 };
 
