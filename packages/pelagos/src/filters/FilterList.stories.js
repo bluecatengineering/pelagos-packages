@@ -9,7 +9,7 @@ const getValues = (key, values) => values;
 const getEditor = (name) => <div>Mock Editor for {name}</div>;
 
 export default {
-	title: 'Components/FilterList',
+	title: 'Deprecated/FilterList',
 	component: FilterList,
 };
 

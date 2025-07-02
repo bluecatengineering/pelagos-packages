@@ -33,7 +33,7 @@ const items = [
 ];
 
 export default {
-	title: 'Components/Tabs',
+	title: 'Deprecated/Tabs',
 	component: Tabs,
 };
 

@@ -3,7 +3,7 @@ import Model from '@carbon/icons-react/es/Model';
 import SvgIcon from './SvgIcon';
 
 export default {
-	title: 'Components/SvgIcon',
+	title: 'Deprecated/SvgIcon',
 	component: SvgIcon,
 };
 

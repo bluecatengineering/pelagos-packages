@@ -7,7 +7,7 @@ const options = ['Foo', 'Bar', 'Baz'];
 const getEditor = (name) => <div>Mock Editor for {name}</div>;
 
 export default {
-	title: 'Components/FilterMenu',
+	title: 'Deprecated/FilterMenu',
 	component: FilterMenu,
 };
 

@@ -1,7 +1,7 @@
 import SearchField from './SearchField';
 
 export default {
-	title: 'Components/SearchField',
+	title: 'Deprecated/SearchField',
 	component: SearchField,
 };
 

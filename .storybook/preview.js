@@ -22,6 +22,7 @@ export default {
 					functions: 6,
 					Experimental: 7,
 					'Experimental Charts': 8,
+					Deprecated: 9,
 				};
 				const [aGroup, aName = ''] = a.title.split('/');
 				const [bGroup, bName = ''] = b.title.split('/');
