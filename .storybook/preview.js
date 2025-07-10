@@ -30,6 +30,7 @@ export default {
 			},
 		},
 		a11y: {
+			test: 'error',
 			config: {
 				rules: [
 					{

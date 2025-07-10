@@ -692,7 +692,7 @@ export const WithExpansion = {
 									))}
 								</TableExpandRow>
 								<TableExpandableRow id={`expandable-${row.id}`} colSpan={columns.length + 1}>
-									<h6>Expandable content</h6>
+									<h3>Expandable content</h3>
 									<div>{loremIpsumShort}</div>
 								</TableExpandableRow>
 							</Fragment>
