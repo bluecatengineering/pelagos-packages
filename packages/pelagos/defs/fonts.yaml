@@ -1,4 +1,4 @@
-rootFont: 400 16px/1.375 Roboto, 'Open Sans', Helvetica, Arial, sans-serif
+rootFont: 400 1rem/1.375 Roboto, 'Open Sans', Helvetica, Arial, sans-serif
 families:
   Roboto:
     css: "Roboto, 'Open Sans', Helvetica, Arial, sans-serif"

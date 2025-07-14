@@ -18,7 +18,7 @@ const spacing = Object.entries(parse(readFileSync(IN, 'utf8')));
 writeFileSync(
 	LESS,
 	HEADER.concat(
-		spacing.map(([key, {size}]) => '@' + key + ': ' + size + 'px;'),
+		spacing.map(([key, size]) => `@${key}: ${size}px;`),
 		''
 	).join('\n')
 );

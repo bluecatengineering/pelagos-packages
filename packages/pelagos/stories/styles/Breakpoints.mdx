@@ -1,4 +1,5 @@
 import {Meta} from '@storybook/addon-docs';
+import breakpoints from '../../defs/breakpoints.yaml';
 
 <Meta title="Styles/Breakpoints" />
 
@@ -9,28 +10,16 @@ import {Meta} from '@storybook/addon-docs';
 		<tr>
 			<th>Breakpoint</th>
 			<th>min-width (px)</th>
+			<th>min-width (rem)</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>sm</td>
-			<td>320</td>
-		</tr>
-		<tr>
-			<td>md</td>
-			<td>672</td>
-		</tr>
-		<tr>
-			<td>lg</td>
-			<td>1056</td>
-		</tr>
-		<tr>
-			<td>xlg</td>
-			<td>1312</td>
-		</tr>
-		<tr>
-			<td>max</td>
-			<td>1584</td>
-		</tr>
+		{Object.entries(breakpoints).map(([key, size]) => (
+			<tr key={key}>
+				<td>{key}</td>
+				<td>{size}</td>
+				<td>{size / 16}</td>
+			</tr>
+		))}
 	</tbody>
 </table>
