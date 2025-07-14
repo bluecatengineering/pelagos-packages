@@ -80,7 +80,7 @@ const loadThemes = () =>
 
 const loadSpacing = () =>
 	readFile('packages/pelagos/defs/spacing.yaml', 'utf8').then((text) =>
-		Object.fromEntries(Object.entries(parse(text)).map(([k, {size}]) => [k, {type: 'spacing', value: `${size}px`}]))
+		Object.fromEntries(Object.entries(parse(text)).map(([k, size]) => [k, {type: 'spacing', value: `${size}px`}]))
 	);
 
 const loadFonts = () =>

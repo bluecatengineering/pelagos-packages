@@ -15,10 +15,10 @@ import './Spacing.less';
 		</tr>
 	</thead>
 	<tbody>
-		{Object.entries(spacing).map(([key, {size, factor}]) => (
+		{Object.entries(spacing).map(([key, size]) => (
 			<tr key={key}>
 				<td>{key}</td>
-				<td>{factor}</td>
+				<td>{size / 16}</td>
 				<td>
 					<div className="Spacing__sample" style={{width: size}} />
 				</td>

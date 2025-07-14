@@ -1,16 +1,8 @@
 # This file is used to generate spacing.less,
 # it will be processed on commit, to generate manually run `npm run update-spacing`
 
-sp-02: 2
-sp-04: 4
-sp-08: 8
-sp-12: 12
-sp-16: 16
-sp-24: 24
-sp-32: 32
-sp-40: 40
-sp-48: 48
-sp-64: 64
-sp-80: 80
-sp-96: 96
-sp-160: 160
+sm: 320
+md: 672
+lg: 1056
+xlg: 1312
+max: 1584

@@ -1,4 +1,5 @@
 #! /bin/sh
+git diff --quiet --cached packages/pelagos/defs/breakpoints.yaml || (npm -w packages/pelagos run update-breakpoints && git add packages/pelagos/less/breakpoints.less)
 git diff --quiet --cached packages/pelagos/defs/colors.yaml || (npm -w packages/pelagos run update-colors && git add packages/pelagos/less/colors.less)
 git diff --quiet --cached packages/pelagos/defs/elevations.yaml || (npm -w packages/pelagos run update-elevations && git add packages/pelagos/less/elevations.less)
 git diff --quiet --cached packages/pelagos/defs/fonts.yaml || (npm -w packages/pelagos run update-fonts && git add packages/pelagos/less/fonts.less)
