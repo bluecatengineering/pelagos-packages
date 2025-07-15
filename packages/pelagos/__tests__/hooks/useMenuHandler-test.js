@@ -1,6 +1,7 @@
 import {useLayoutEffect, useRef, useState} from 'react';
 
 import useMenuHandler from '../../src/hooks/useMenuHandler';
+import createPopUpTrap from '../../src/functions/createPopUpTrap';
 
 jest.unmock('../../src/hooks/useMenuHandler');
 
@@ -44,27 +45,13 @@ describe('useMenuHandler', () => {
 		});
 	});
 
-	describe('handleButtonMouseDown', () => {
-		it('calls setMouseDown', () => {
-			const setMouseDown = jest.fn();
-			useState.mockReturnValueOnce([false]).mockReturnValueOnce([false, setMouseDown]);
-			useMenuHandler().buttonProps.onMouseDown();
-
-			expect(setMouseDown.mock.calls).toEqual([[true]]);
-		});
-	});
-
 	describe('handleButtonClick', () => {
 		it('calls setMenuVisible', () => {
 			const setMenuVisible = jest.fn();
-			const setMouseDown = jest.fn();
-			useState.mockReturnValueOnce([false, setMenuVisible]).mockReturnValueOnce([false, setMouseDown]);
+			useState.mockReturnValueOnce([false, setMenuVisible]);
 			useMenuHandler().buttonProps.onClick();
 
-			expect(setMenuVisible.mock.calls).toEqual([[anyFunction]]);
-			expect(setMouseDown.mock.calls).toEqual([[false]]);
-
-			expect(setMenuVisible.mock.calls[0][0](true)).toBe(false);
+			expect(setMenuVisible.mock.calls).toEqual([[true]]);
 		});
 	});
 
@@ -91,10 +78,9 @@ describe('useMenuHandler', () => {
 		});
 
 		it('calls setExpanded when Tab is pressed', () => {
-			const focus = jest.fn();
 			const setExpanded = jest.fn();
 			const preventDefault = jest.fn();
-			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({current: {}});
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {}});
 			useState.mockReturnValueOnce([true, setExpanded]);
 			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
 			onKeyDown({key: 'Tab', preventDefault});
@@ -102,16 +88,14 @@ describe('useMenuHandler', () => {
 
 			expect(preventDefault.mock.calls).toEqual([[], []]);
 			expect(setExpanded.mock.calls).toEqual([[false], [false]]);
-			expect(focus.mock.calls).toEqual([[], []]);
 		});
 
 		it('calls click on the focused element when enter or space are pressed', () => {
-			const focus = jest.fn();
 			const setExpanded = jest.fn();
 			const preventDefault = jest.fn();
 			const getAttribute = jest.fn();
 			const click = jest.fn();
-			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({current: {}});
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {}});
 			useState.mockReturnValueOnce([true, setExpanded]);
 			document.activeElement = {getAttribute, click};
 			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
@@ -121,7 +105,6 @@ describe('useMenuHandler', () => {
 			expect(preventDefault.mock.calls).toEqual([[], []]);
 			expect(getAttribute.mock.calls).toEqual([['aria-disabled'], ['aria-disabled']]);
 			expect(setExpanded.mock.calls).toEqual([[false], [false]]);
-			expect(focus.mock.calls).toEqual([[], []]);
 			expect(click.mock.calls).toEqual([[], []]);
 		});
 
@@ -139,33 +122,17 @@ describe('useMenuHandler', () => {
 			expect(click.mock.calls).toEqual([]);
 		});
 
-		it('calls setExpanded when Escape is pressed', () => {
-			const focus = jest.fn();
-			const setExpanded = jest.fn();
-			const preventDefault = jest.fn();
-			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({current: {}});
-			useState.mockReturnValueOnce([true, setExpanded]);
-			const onKeyDown = useMenuHandler().menuProps.onKeyDown;
-			onKeyDown({key: 'Escape', preventDefault});
-
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(setExpanded.mock.calls).toEqual([[false]]);
-			expect(focus.mock.calls).toEqual([[]]);
-		});
-
 		it('calls focus on last item when end is pressed', () => {
 			const preventDefault = jest.fn();
 			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{}, {getAttribute, focus}]}});
 			useState.mockReturnValueOnce([true]);
-			document.activeElement = {};
 			useMenuHandler().menuProps.onKeyDown({key: 'End', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.activeElement).toEqual({tabIndex: -1});
 		});
 
 		it('calls focus on first item when home is pressed', () => {
@@ -174,13 +141,11 @@ describe('useMenuHandler', () => {
 			const focus = jest.fn();
 			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {childNodes: [{getAttribute, focus}, {}]}});
 			useState.mockReturnValueOnce([true]);
-			document.activeElement = {};
 			useMenuHandler().menuProps.onKeyDown({key: 'Home', preventDefault});
 
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.activeElement).toEqual({tabIndex: -1});
 		});
 
 		it('calls focus on last item when up is pressed and first item is focused', () => {
@@ -196,7 +161,6 @@ describe('useMenuHandler', () => {
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.activeElement).toEqual({tabIndex: -1});
 		});
 
 		it('calls focus on previous item when up is pressed and focused item is not first', () => {
@@ -212,7 +176,6 @@ describe('useMenuHandler', () => {
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.activeElement).toEqual({tabIndex: -1});
 		});
 
 		it('calls focus on second previous item when up is pressed, focused item is not first and the previous item is a separator', () => {
@@ -230,7 +193,6 @@ describe('useMenuHandler', () => {
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['role'], ['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.activeElement).toEqual({tabIndex: -1});
 		});
 
 		it('calls focus on first item when down is pressed and last item is focused', () => {
@@ -246,7 +208,6 @@ describe('useMenuHandler', () => {
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.activeElement).toEqual({tabIndex: -1});
 		});
 
 		it('calls focus on first item when down is pressed and no item is focused', () => {
@@ -261,7 +222,6 @@ describe('useMenuHandler', () => {
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.activeElement).toEqual({tabIndex: -1});
 		});
 
 		it('calls focus on next item when down is pressed and focused item is not last', () => {
@@ -277,7 +237,6 @@ describe('useMenuHandler', () => {
 			expect(preventDefault.mock.calls).toEqual([[]]);
 			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(focus.mock.calls).toEqual([[]]);
-			expect(document.activeElement).toEqual({tabIndex: -1});
 		});
 
 		it('ignores the event when an unknown key is pressed', () => {
@@ -292,16 +251,14 @@ describe('useMenuHandler', () => {
 
 	describe('handleMenuClick', () => {
 		it('calls setExpanded when a menu item is found', () => {
-			const focus = jest.fn();
 			const setExpanded = jest.fn();
 			const closest = jest.fn().mockReturnValue({});
-			useRef.mockReturnValueOnce({current: {focus}}).mockReturnValueOnce({});
+			useRef.mockReturnValueOnce({}).mockReturnValueOnce({});
 			useState.mockReturnValueOnce([true, setExpanded]);
 			useMenuHandler().menuProps.onClick({target: {closest}});
 
 			expect(closest.mock.calls).toEqual([['li']]);
 			expect(setExpanded.mock.calls).toEqual([[false]]);
-			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('ignores the event when the menu item is not found', () => {
@@ -315,52 +272,20 @@ describe('useMenuHandler', () => {
 		});
 	});
 
-	describe('handleMenuBlur', () => {
-		it('calls setExpanded when relatedTarget is outside the menu and mouseDown is false', () => {
-			const setExpanded = jest.fn();
-			const contains = jest.fn().mockReturnValue(false);
-			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {contains}});
-			useState.mockReturnValueOnce([true, setExpanded]).mockReturnValueOnce([false]);
-			useMenuHandler().menuProps.onBlur({relatedTarget: 'test-target'});
-
-			expect(contains.mock.calls).toEqual([['test-target']]);
-			expect(setExpanded.mock.calls).toEqual([[false]]);
-		});
-
-		it('does not call setExpanded when mouseDown is true', () => {
-			const setExpanded = jest.fn();
-			const contains = jest.fn().mockReturnValueOnce(false).mockReturnValueOnce(true);
-			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {contains}});
-			useState.mockReturnValueOnce([true, setExpanded]).mockReturnValueOnce([true]);
-			useMenuHandler().menuProps.onBlur({relatedTarget: 'test-target'});
-
-			expect(contains.mock.calls).toEqual([]);
-			expect(setExpanded.mock.calls).toEqual([]);
-		});
-
-		it('does not call setExpanded when relatedTarget is inside the menu', () => {
-			const setExpanded = jest.fn();
-			const contains = jest.fn().mockReturnValue(true);
-			useRef.mockReturnValueOnce({}).mockReturnValueOnce({current: {contains}});
-			useState.mockReturnValueOnce([true, setExpanded]).mockReturnValueOnce([false]);
-			useMenuHandler().menuProps.onBlur({relatedTarget: 'test-target'});
-
-			expect(contains.mock.calls).toEqual([['test-target']]);
-			expect(setExpanded.mock.calls).toEqual([]);
-		});
-	});
-
 	describe('layout effect 0', () => {
 		it('sets the menu position', () => {
-			const focus = jest.fn();
 			const getAttribute = jest.fn().mockReturnValueOnce('menuitem');
-			const firstChild = {getAttribute, focus};
+			const firstChild = {getAttribute};
 			const menu = {childNodes: [firstChild]};
 			const button = {};
 			const setExpanded = jest.fn();
 			const setPopUpPosition = jest.fn();
+			const activate = jest.fn();
+			const deactivate = jest.fn();
+			const trap = {activate, deactivate};
 			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: menu});
 			useState.mockReturnValueOnce([true, setExpanded]);
+			createPopUpTrap.mockReturnValue(trap);
 			useMenuHandler(setPopUpPosition);
 			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, setPopUpPosition]]);
 
@@ -368,7 +293,15 @@ describe('useMenuHandler', () => {
 			expect(getAttribute.mock.calls).toEqual([['role']]);
 			expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
 			expect(window.addEventListener.mock.calls).toEqual([['resize', anyFunction, {passive: true, capture: true}]]);
-			expect(focus.mock.calls).toEqual([[]]);
+			expect(createPopUpTrap.mock.calls).toEqual([
+				[menu, button, {initialFocus: firstChild, onDeactivate: anyFunction}],
+			]);
+			expect(activate.mock.calls).toEqual([[]]);
+
+			const {onDeactivate} = createPopUpTrap.mock.calls[0][2];
+
+			onDeactivate();
+			expect(setExpanded.mock.calls).toEqual([[false]]);
 
 			const onScroll = document.addEventListener.mock.calls[0][1];
 			onScroll();

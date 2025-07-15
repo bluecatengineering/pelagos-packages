@@ -1,8 +1,8 @@
 import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
-import {createFocusTrap} from 'focus-trap';
 
 import DateInput from '../../src/components/DateInput';
+import createPopUpTrap from '../../src/functions/createPopUpTrap';
 
 jest.unmock('../../src/components/DateInput');
 
@@ -88,24 +88,21 @@ describe('DateInput', () => {
 			const setCalendarTime = jest.fn();
 			const activate = jest.fn();
 			const deactivate = jest.fn();
-			useRef.mockReturnValueOnce({current: wrapper}).mockReturnValueOnce({current: popUp});
+			useRef
+				.mockReturnValueOnce({current: wrapper})
+				.mockReturnValueOnce({current: 'test-button'})
+				.mockReturnValueOnce({current: popUp});
 			useState.mockReturnValueOnce([1000, setCalendarTime]);
-			createFocusTrap.mockReturnValue({activate, deactivate});
+			createPopUpTrap.mockReturnValue({activate, deactivate});
 			shallow(<DateInput className="TestClass" />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [1000]]);
 			expect(useEffect.mock.calls[0][0]()).toBe(deactivate);
 			expect(activate.mock.calls).toEqual([[]]);
-			expect(createFocusTrap.mock.calls).toEqual([
-				[popUp, {initialFocus: '.Calendar [tabindex="0"]', allowOutsideClick: anyFunction, onDeactivate: anyFunction}],
+			expect(createPopUpTrap.mock.calls).toEqual([
+				[popUp, 'test-button', {initialFocus: '.Calendar [tabindex="0"]', onDeactivate: anyFunction}],
 			]);
 
-			const {allowOutsideClick, onDeactivate} = createFocusTrap.mock.calls[0][1];
-
-			expect(allowOutsideClick({type: 'foo'})).toBe(false);
-			expect(deactivate.mock.calls).toEqual([]);
-
-			expect(allowOutsideClick({type: 'click'})).toBe(false);
-			expect(deactivate.mock.calls).toEqual([[]]);
+			const {onDeactivate} = createPopUpTrap.mock.calls[0][2];
 
 			onDeactivate();
 			expect(setCalendarTime.mock.calls).toEqual([[null]]);
@@ -114,12 +111,15 @@ describe('DateInput', () => {
 		it('adds an effect which does not create a focus trap when calendarTime is null', () => {
 			const button = {};
 			const popUp = {};
-			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: popUp});
+			useRef
+				.mockReturnValueOnce({current: button})
+				.mockReturnValueOnce({current: 'test-button'})
+				.mockReturnValueOnce({current: popUp});
 			useState.mockReturnValueOnce([null]);
 			shallow(<DateInput className="TestClass" />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [null]]);
 			expect(useEffect.mock.calls[0][0]()).toBeUndefined();
-			expect(createFocusTrap.mock.calls).toEqual([]);
+			expect(createPopUpTrap.mock.calls).toEqual([]);
 		});
 	});
 });
