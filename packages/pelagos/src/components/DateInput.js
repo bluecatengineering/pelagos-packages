@@ -1,12 +1,12 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
-import {createFocusTrap} from 'focus-trap';
 import {t} from '@bluecateng/l10n.macro';
 import CalendarIcon from '@carbon/icons-react/es/Calendar';
 
 import useLayer from '../hooks/useLayer';
 import useSelectPositioner from '../hooks/useSelectPositioner';
+import createPopUpTrap from '../functions/createPopUpTrap';
 
 import Layer from './Layer';
 import Calendar from './Calendar';
@@ -16,6 +16,7 @@ import './DateInput.less';
 
 const DateInput = ({className, value, disabled, error, format, parse, onChange, ...props}) => {
 	const wrapperRef = useRef(null);
+	const buttonRef = useRef(null);
 	const popUpRef = useRef(null);
 
 	const level = useLayer();
@@ -41,14 +42,8 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 			return undefined;
 		}
 
-		const trap = createFocusTrap(popUpRef.current, {
+		const trap = createPopUpTrap(popUpRef.current, buttonRef.current, {
 			initialFocus: '.Calendar [tabindex="0"]',
-			allowOutsideClick: (event) => {
-				if (event.type === 'click') {
-					trap.deactivate();
-				}
-				return false;
-			},
 			onDeactivate: () => setCalendarTime(null),
 		});
 		trap.activate();
@@ -73,6 +68,7 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 				disabled={disabled}
 				aria-label={value ? t`Change date, ${value}` : t`Choose date`}
 				onClick={handleButtonClick}
+				ref={buttonRef}
 			/>
 			{calendarTime !== null &&
 				createPortal(

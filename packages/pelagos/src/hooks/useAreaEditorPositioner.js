@@ -1,5 +1,6 @@
 import {useLayoutEffect} from 'react';
-import {createFocusTrap} from 'focus-trap';
+
+import createPopUpTrap from '../functions/createPopUpTrap';
 
 const {max} = Math;
 
@@ -38,16 +39,7 @@ const useAreaEditorPositioner = (ref, buttonId, onClose) =>
 
 		document.addEventListener('scroll', setEditorPosition, {passive: true, capture: true});
 		window.addEventListener('resize', setEditorPosition, {passive: true, capture: true});
-		const trap = createFocusTrap(editor, {
-			setReturnFocus: button,
-			allowOutsideClick: (event) => {
-				if (event.type === 'click') {
-					trap.deactivate();
-				}
-				return false;
-			},
-			onPostDeactivate: onClose,
-		});
+		const trap = createPopUpTrap(editor, button, {onDeactivate: onClose});
 		trap.activate();
 
 		return () => {

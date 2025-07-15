@@ -14,7 +14,7 @@ export default {
 };
 
 const validate = () => null;
-const getEmptySuggestions = () => ({suggestions: []});
+const getSuggestions = () => ({suggestions: [{name: 'a'}, {name: 'b'}, {name: 'c'}]});
 
 const WiredComponent = (args) => {
 	const [filters, setFilters] = useState({foo: ['a', 'b'], bar: null});
@@ -72,7 +72,7 @@ const WiredComponent = (args) => {
 					label={editKey}
 					list={filters[editKey]}
 					placeholder="Type something"
-					getSuggestions={getEmptySuggestions}
+					getSuggestions={getSuggestions}
 					parseInput={buildSimpleSuggestionsParser(validate)}
 					chipId={`${editKey}-chip`}
 					onClose={handleEditorClose}

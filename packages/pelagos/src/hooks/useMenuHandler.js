@@ -1,5 +1,7 @@
 import {useCallback, useLayoutEffect, useRef, useState} from 'react';
 
+import createPopUpTrap from '../functions/createPopUpTrap';
+
 const findCurrent = (children) => {
 	const n = children.length;
 	for (let i = 0; i < n; ++i) {
@@ -59,7 +61,6 @@ const useMenuHandler = (setPopUpPosition) => {
 	const menuRef = useRef(null);
 
 	const [expanded, setExpanded] = useState(false);
-	const [mouseDown, setMouseDown] = useState(false);
 
 	const handleButtonKeyDown = useCallback((event) => {
 		if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey && event.key === 'ArrowDown') {
@@ -68,16 +69,13 @@ const useMenuHandler = (setPopUpPosition) => {
 		}
 	}, []);
 
-	const handleButtonMouseDown = useCallback(() => setMouseDown(true), []);
-
-	const handleButtonClick = useCallback(() => (setMouseDown(false), setExpanded((expanded) => !expanded)), []);
+	const handleButtonClick = useCallback(() => setExpanded(true), []);
 
 	const handleMenuKeyDown = useCallback((event) => {
 		if (event.key === 'Tab') {
 			if (!event.ctrlKey && !event.altKey && !event.metaKey) {
 				event.preventDefault();
 				setExpanded(false);
-				buttonRef.current.focus();
 			}
 		} else if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 			const menuChildren = menuRef.current.childNodes;
@@ -88,13 +86,7 @@ const useMenuHandler = (setPopUpPosition) => {
 					if (!isDisabled(document.activeElement)) {
 						document.activeElement.click();
 						setExpanded(false);
-						buttonRef.current.focus();
 					}
-					break;
-				case 'Escape':
-					event.preventDefault();
-					setExpanded(false);
-					buttonRef.current.focus();
 					break;
 				case 'End': // end
 					event.preventDefault();
@@ -123,33 +115,28 @@ const useMenuHandler = (setPopUpPosition) => {
 	const handleMenuClick = useCallback((event) => {
 		if (event.target.closest('li')) {
 			setExpanded(false);
-			buttonRef.current.focus();
 		}
 	}, []);
-
-	const handleMenuBlur = useCallback(
-		(event) => {
-			const relatedTarget = event.relatedTarget;
-			if (!mouseDown && !menuRef.current.contains(relatedTarget)) {
-				setExpanded(false);
-			}
-		},
-		[mouseDown]
-	);
 
 	useLayoutEffect(() => {
 		const button = buttonRef.current;
 		const menu = menuRef.current;
 		const handleScroll = () => setPopUpPosition?.(button, menu);
+		// the focus trap allows menus to be nested inside another focus trap
+		const trap = createPopUpTrap(menu, button, {
+			initialFocus: expanded && findFocused(-1, 1, menu.childNodes),
+			onDeactivate: () => setExpanded(false),
+		});
 		if (expanded) {
 			setPopUpPosition?.(button, menu);
-			setFocus(-1, 1, menu.childNodes);
+			trap.activate();
 			document.addEventListener('scroll', handleScroll, {passive: true, capture: true});
 			window.addEventListener('resize', handleScroll, {passive: true, capture: true});
 		}
 		return () => {
 			document.removeEventListener('scroll', handleScroll, {passive: true, capture: true});
 			window.removeEventListener('resize', handleScroll, {passive: true, capture: true});
+			trap.deactivate();
 		};
 	}, [expanded, setPopUpPosition]);
 
@@ -158,14 +145,12 @@ const useMenuHandler = (setPopUpPosition) => {
 		buttonProps: {
 			ref: buttonRef,
 			onKeyDown: handleButtonKeyDown,
-			onMouseDown: handleButtonMouseDown,
 			onClick: handleButtonClick,
 		},
 		menuProps: {
 			ref: menuRef,
 			onKeyDown: handleMenuKeyDown,
 			onClick: handleMenuClick,
-			onBlur: handleMenuBlur,
 		},
 		guardProps: {},
 		buttonRef,

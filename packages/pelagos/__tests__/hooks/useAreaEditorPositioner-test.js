@@ -1,7 +1,7 @@
 import {useLayoutEffect} from 'react';
-import {createFocusTrap} from 'focus-trap';
 
 import useAreaEditorPositioner from '../../src/hooks/useAreaEditorPositioner';
+import createPopUpTrap from '../../src/functions/createPopUpTrap';
 
 jest.unmock('../../src/hooks/useAreaEditorPositioner');
 
@@ -24,7 +24,7 @@ describe('useAreaEditorPositioner', () => {
 		const activate = jest.fn();
 		const deactivate = jest.fn();
 		document.getElementById.mockReturnValueOnce(button);
-		createFocusTrap.mockReturnValue({activate, deactivate});
+		createPopUpTrap.mockReturnValue({activate, deactivate});
 
 		useAreaEditorPositioner(ref, buttonId, onClose);
 		expect(useLayoutEffect.mock.calls).toEqual([[expect.any(Function), [ref, buttonId, onClose]]]);
@@ -37,9 +37,7 @@ describe('useAreaEditorPositioner', () => {
 			['aria-controls', 'editor'],
 		]);
 		expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
-		expect(createFocusTrap.mock.calls).toEqual([
-			[editor, {setReturnFocus: button, allowOutsideClick: anyFunction, onPostDeactivate: onClose}],
-		]);
+		expect(createPopUpTrap.mock.calls).toEqual([[editor, button, {onDeactivate: onClose}]]);
 		expect(activate.mock.calls).toEqual([[]]);
 
 		button.getBoundingClientRect = () => ({top: 330, bottom: 350, left: 300, right: 400});
@@ -52,17 +50,11 @@ describe('useAreaEditorPositioner', () => {
 		expect(editor.style.top).toBe('250px');
 		expect(editor.style.left).toBe('200px');
 
-		const {allowOutsideClick} = createFocusTrap.mock.calls[0][1];
-		expect(allowOutsideClick({type: 'other'})).toBe(false);
-		expect(deactivate.mock.calls).toEqual([]);
-		expect(allowOutsideClick({type: 'click'})).toBe(false);
-		expect(deactivate.mock.calls).toEqual([[]]);
-
 		remove();
 		expect(removeAttribute.mock.calls).toEqual([['aria-expanded'], ['aria-controls']]);
 		expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
 		expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
-		expect(deactivate.mock.calls).toEqual([[], []]);
+		expect(deactivate.mock.calls).toEqual([[]]);
 	});
 
 	it('places the editor at the page top when the it is too tall', () => {
