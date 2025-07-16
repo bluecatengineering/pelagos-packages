@@ -1,7 +1,16 @@
+import ArrowRight from '@carbon/icons-react/es/ArrowRight';
+
 export default {
 	title: 'Components/Link',
 };
 
-// eslint-disable-next-line react/prop-types -- false positive, this is not a component
-export const Default = ({text}) => <a href="#">{text}</a>;
-Default.args = {text: 'Link'};
+export const Default = {args: {text: 'Link'}, render: ({text}) => <a href="#">{text}</a>};
+
+export const WithIcon = {
+	args: {text: 'Link with icon'},
+	render: ({text}) => (
+		<a href="#">
+			{text} <ArrowRight className="LinkIcon" />
+		</a>
+	),
+};
