@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.19.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.18.1...@bluecateng/pelagos@12.19.0) (2025-07-17)
+
+### Features
+
+- remove link underlines again ([a2568e8](https://github.com/bluecatengineering/pelagos-packages/commit/a2568e8ad59073a6fa3a1f109a52bd3de732f63e))
+
+### Bug Fixes
+
+- improve click behaviour in useMenuHandler ([3dd77ad](https://github.com/bluecatengineering/pelagos-packages/commit/3dd77ad6397948b32dc84fd8605bc8b0d32f2408))
+- improve click behaviour of pop-up focus traps ([e6f74aa](https://github.com/bluecatengineering/pelagos-packages/commit/e6f74aa938a1160506b8990345ffa53f4f388b87))
+- use rem to set breakpoint sizes ([3a1d327](https://github.com/bluecatengineering/pelagos-packages/commit/3a1d3277a8e30d5046f33f2fc6ddf1df5b142ca0))
+
 ## [12.18.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.18.0...@bluecateng/pelagos@12.18.1) (2025-06-19)
 
 ### Bug Fixes
