@@ -143,7 +143,7 @@ const ListInput = ({
 	);
 
 	const handleRemoveClick = useCallback(
-		(item) => onListChange(list.filter((old) => old !== item)),
+		(item, index) => onListChange([...list.slice(0, index), ...list.slice(index + 1)]),
 		[list, onListChange]
 	);
 
