@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.19.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.19.0...@bluecateng/pelagos@12.19.1) (2025-07-18)
+
+### Bug Fixes
+
+- improve remove handling in ListInput ([6a9748e](https://github.com/bluecatengineering/pelagos-packages/commit/6a9748e93eaafd7ef4cb180f3bd82161ccbf0cea))
+
 ## [12.19.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.18.1...@bluecateng/pelagos@12.19.0) (2025-07-17)
 
 ### Features
