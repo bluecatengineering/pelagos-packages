@@ -362,7 +362,7 @@ describe('ListInput', () => {
 			const item1 = {id: 1};
 			const onListChange = jest.fn();
 			const wrapper = shallow(<ListInput id="test" list={[item0, item1]} onListChange={onListChange} />);
-			wrapper.find('ListEntries').prop('onRemoveClick')(item0);
+			wrapper.find('ListEntries').prop('onRemoveClick')(item0, 0);
 			expect(onListChange.mock.calls).toEqual([[[item1]]]);
 		});
 
