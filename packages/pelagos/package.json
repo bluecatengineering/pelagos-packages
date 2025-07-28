@@ -33,6 +33,7 @@
     "dist",
     "less"
   ],
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./defs/*": "./defs/*",

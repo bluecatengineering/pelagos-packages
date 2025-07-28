@@ -13,7 +13,7 @@ const {join} = require('node:path');
 
 const converter = require('@bluecateng/l10n-icu2obj');
 
-const EXTENSIONS = /\.(less|po|yaml)$/;
+const EXTENSIONS = /\.(d\.ts|less|po|yaml)$/;
 const EXCLUDED = /\.stories\.less$/;
 const PO = /\.po$/;
 
