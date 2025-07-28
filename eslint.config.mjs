@@ -1,8 +1,10 @@
+import {defineConfig} from 'eslint/config';
 import regexpPlugin from 'eslint-plugin-regexp';
+import tseslint from 'typescript-eslint';
 import blueCatNode from '@bluecateng/eslint-config-node';
 import blueCatReact from '@bluecateng/eslint-config-react';
 
-export default [
+export default defineConfig([
 	blueCatReact,
 	regexpPlugin.configs['flat/recommended'],
 	{
@@ -40,6 +42,16 @@ export default [
 		},
 	},
 	{
+		files: ['packages/*/src/**/*.d.ts'],
+		extends: [tseslint.configs.recommended],
+	},
+	{
+		files: ['eslint.config.mjs'],
+		rules: {
+			'import/extensions': ['error', 'ignorePackages'],
+		},
+	},
+	{
 		ignores: ['build/**', '**/dist/**'],
 	},
-];
+]);
