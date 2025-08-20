@@ -16,6 +16,7 @@ const Dialog = ({
 	role = 'dialog',
 	size = 'md',
 	stretch,
+	scrollable,
 	initialFocus,
 	children: [body, buttons],
 	onSubmit,
@@ -37,7 +38,7 @@ const Dialog = ({
 				)}
 			</div>
 			{cloneElement(body, {
-				className: body.props.className ? body.props.className + ' Dialog__body' : 'Dialog__body',
+				className: `Dialog__body${scrollable ? ' scrollable' : ''}${body.props.className ? ` ${body.props.className}` : ''}`,
 			})}
 			{cloneElement(buttons, {className: 'Dialog__buttons'})}
 		</>
@@ -100,6 +101,8 @@ Dialog.propTypes = {
 	size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
 	/** Whether the dialog should use the maximum height for the size. */
 	stretch: PropTypes.bool,
+	/** Whether the dialog body can scroll. */
+	scrollable: PropTypes.bool,
 	/** The ID of the component to focus. */
 	initialFocus: PropTypes.string,
 	/** The dialog children. */

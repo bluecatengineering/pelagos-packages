@@ -17,7 +17,7 @@ const ConfirmDialog = ({
 	onClose,
 	onConfirm,
 }) => (
-	<Dialog title={title} helpHref={helpHref} role="alertdialog" size={size}>
+	<Dialog title={title} helpHref={helpHref} role="alertdialog" size={size} scrollable>
 		<div className="ConfirmDialog__body">
 			<WarningAltFilled className="ConfirmDialog__icon" size={20} />
 			<p className="ConfirmDialog__text">{body}</p>
