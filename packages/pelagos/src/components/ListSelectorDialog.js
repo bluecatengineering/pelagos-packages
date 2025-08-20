@@ -58,6 +58,7 @@ const ListSelectorDialog = ({
 				<div className="sr-only" aria-live="polite" ref={liveRef} />
 				<ListSelector
 					id="listSelector"
+					className="ListSelectorDialog__selector"
 					items={items}
 					allItems={allItems}
 					emptyText={emptyText}

@@ -3,6 +3,8 @@ import type {FunctionComponent} from 'react';
 interface ListSelectorProps {
 	/** The component id. */
 	id?: string;
+	/** The component class name(s). */
+	className?: string;
 	/** The current items. */
 	items: string[];
 	/** All items which can be selected. */

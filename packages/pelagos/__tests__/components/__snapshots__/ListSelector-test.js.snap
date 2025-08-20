@@ -1,8 +1,160 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ListSelector rendering renders expected elements 1`] = `
 <div
   className="ListSelector"
+  id="random-id"
+>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <div
+    className="sr-only"
+    id="random-id-operation"
+  >
+    Press space bar to reorder
+  </div>
+  <div
+    className="ListSelector__column"
+  >
+    <Label
+      id="random-id-selected"
+      text="Selected"
+    />
+    <div
+      aria-labelledby="random-id-selected"
+      className="ListSelector__list"
+      onClick={[Function]}
+      role="list"
+    >
+      <Layer
+        aria-describedby="random-id-operation"
+        aria-labelledby="item-foo"
+        className="ListSelector__entry"
+        data-index={0}
+        data-key="foo"
+        role="listitem"
+        tabIndex="0"
+      >
+        <div
+          className="ListSelector__name draggable"
+          id="item-foo"
+        >
+          <Draggable
+            className="ListSelector__grip"
+          />
+          <span
+            className="ListSelector__text"
+            title="Foo"
+          >
+            Foo
+          </span>
+        </div>
+        <button
+          aria-label="Remove Foo"
+          className="ListSelector__remove"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </Layer>
+      <Layer
+        aria-describedby="random-id-operation"
+        aria-labelledby="item-bar"
+        className="ListSelector__entry"
+        data-index={1}
+        data-key="bar"
+        role="listitem"
+        tabIndex="0"
+      >
+        <div
+          className="ListSelector__name draggable"
+          id="item-bar"
+        >
+          <Draggable
+            className="ListSelector__grip"
+          />
+          <span
+            className="ListSelector__text"
+            title="Bar"
+          >
+            Bar
+          </span>
+        </div>
+        <button
+          aria-label="Remove Bar"
+          className="ListSelector__remove"
+          type="button"
+        >
+          <ArrowRight />
+        </button>
+      </Layer>
+    </div>
+  </div>
+  <div
+    className="ListSelector__column"
+  >
+    <Label
+      id="random-id-available"
+      text="Available"
+    />
+    <div
+      aria-labelledby="random-id-available"
+      className="ListSelector__list"
+      onClick={[Function]}
+      role="list"
+    >
+      <Layer
+        aria-labelledby="item-baz"
+        className="ListSelector__available"
+        data-key="baz"
+        role="listitem"
+      >
+        <button
+          aria-label="Add Baz"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <span
+          className="ListSelector__text"
+          id="item-baz"
+          title="Baz"
+        >
+          Baz
+        </span>
+      </Layer>
+      <Layer
+        aria-labelledby="item-oof"
+        className="ListSelector__available"
+        data-key="oof"
+        role="listitem"
+      >
+        <button
+          aria-label="Add Oof"
+          className="ListSelector__add"
+          type="button"
+        >
+          <ArrowLeft />
+        </button>
+        <span
+          className="ListSelector__text"
+          id="item-oof"
+          title="Oof"
+        >
+          Oof
+        </span>
+      </Layer>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ListSelector rendering renders expected elements when className is set 1`] = `
+<div
+  className="ListSelector TestClass"
   id="random-id"
 >
   <div

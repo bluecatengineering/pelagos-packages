@@ -36,6 +36,20 @@ describe('ListSelector', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when className is set', () => {
+			useReorder.mockReturnValueOnce([]);
+			const wrapper = shallow(
+				<ListSelector
+					className="TestClass"
+					emptyText={emptyText}
+					items={items}
+					allItems={allItems}
+					getLabel={getLabel}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when items is empty', () => {
 			useReorder.mockReturnValueOnce([]);
 			const wrapper = shallow(
