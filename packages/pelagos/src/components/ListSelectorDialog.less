@@ -1,7 +1,16 @@
+@import '../../less/breakpoints';
 @import '../../less/spacing';
 
 @layer pelagos {
 	.ListSelectorDialog {
+		&__selector {
+			margin-top: 0;
+
+			.breakpoint(md, {
+				flex: none;
+			});
+		}
+
 		&__buttons {
 			flex-direction: row;
 			margin-top: @sp-08;

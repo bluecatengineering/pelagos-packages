@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ListSelectorDialog rendering renders expected elements 1`] = `
 <Dialog
@@ -21,6 +21,7 @@ exports[`ListSelectorDialog rendering renders expected elements 1`] = `
         ]
       }
       allItemsRemovedText="Test all items removed."
+      className="ListSelectorDialog__selector"
       emptyText="Test empty."
       getLabel={[Function]}
       id="listSelector"
@@ -69,6 +70,7 @@ exports[`ListSelectorDialog rendering renders expected elements when defaultItem
           "oof",
         ]
       }
+      className="ListSelectorDialog__selector"
       emptyText="Test empty."
       getLabel={[Function]}
       id="listSelector"
