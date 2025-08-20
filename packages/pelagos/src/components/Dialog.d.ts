@@ -15,6 +15,8 @@ interface DialogProps {
 	size?: 'xs' | 'sm' | 'md' | 'lg';
 	/** Whether the dialog should use the maximum height for the size. */
 	stretch?: boolean;
+	/** Whether the dialog body can scroll. */
+	scrollable?: boolean;
 	/** The ID of the component to focus. */
 	initialFocus?: string;
 	/** The dialog children (content and buttons). */

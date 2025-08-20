@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Dialog rendering renders expected elements 1`] = `
 <div
@@ -25,7 +25,49 @@ exports[`Dialog rendering renders expected elements 1`] = `
         </div>
       </div>
       <div
-        className="TestClass Dialog__body"
+        className="Dialog__body TestClass"
+      >
+        This is a test
+      </div>
+      <div
+        className="Dialog__buttons"
+      >
+        <Button
+          id="a"
+          text="A"
+        />
+      </div>
+    </React.Fragment>
+  </Layer>
+</div>
+`;
+
+exports[`Dialog rendering renders expected elements when boolean properties are set 1`] = `
+<div
+  className="Dialog__backdrop"
+>
+  <Layer
+    aria-labelledby="dialogTitle"
+    aria-modal={true}
+    className="Dialog Dialog--md Dialog--stretch TestClass"
+    id="test-dialog"
+    level={1}
+    role="dialog"
+  >
+    <React.Fragment>
+      <div
+        className="Dialog__heading"
+      >
+        <div
+          className="Dialog__title"
+          id="dialogTitle"
+          title="Test"
+        >
+          Test
+        </div>
+      </div>
+      <div
+        className="Dialog__body scrollable TestClass"
       >
         This is a test
       </div>
@@ -118,7 +160,7 @@ exports[`Dialog rendering renders expected elements when helpHref is set 1`] = `
         </a>
       </div>
       <div
-        className="TestClass Dialog__body"
+        className="Dialog__body TestClass"
       >
         This is a test
       </div>
@@ -164,7 +206,7 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
           </div>
         </div>
         <div
-          className="TestClass Dialog__body"
+          className="Dialog__body TestClass"
         >
           This is a test
         </div>
@@ -178,48 +220,6 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
         </div>
       </React.Fragment>
     </form>
-  </Layer>
-</div>
-`;
-
-exports[`Dialog rendering renders expected elements when stretch is set 1`] = `
-<div
-  className="Dialog__backdrop"
->
-  <Layer
-    aria-labelledby="dialogTitle"
-    aria-modal={true}
-    className="Dialog Dialog--md Dialog--stretch TestClass"
-    id="test-dialog"
-    level={1}
-    role="dialog"
-  >
-    <React.Fragment>
-      <div
-        className="Dialog__heading"
-      >
-        <div
-          className="Dialog__title"
-          id="dialogTitle"
-          title="Test"
-        >
-          Test
-        </div>
-      </div>
-      <div
-        className="TestClass Dialog__body"
-      >
-        This is a test
-      </div>
-      <div
-        className="Dialog__buttons"
-      >
-        <Button
-          id="a"
-          text="A"
-        />
-      </div>
-    </React.Fragment>
   </Layer>
 </div>
 `;

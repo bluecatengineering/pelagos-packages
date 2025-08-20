@@ -37,9 +37,9 @@ describe('Dialog', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when stretch is set', () => {
+		it('renders expected elements when boolean properties are set', () => {
 			const wrapper = shallow(
-				<Dialog id="test-dialog" className="TestClass" title="Test" stretch>
+				<Dialog id="test-dialog" className="TestClass" title="Test" stretch scrollable>
 					<div className="TestClass">This is a test</div>
 					<div>
 						<Button id="a" text="A" />
