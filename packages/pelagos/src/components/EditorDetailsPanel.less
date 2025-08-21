@@ -1,3 +1,4 @@
+@import '../../less/breakpoints';
 @import '../../less/fonts';
 @import '../../less/spacing';
 
@@ -11,8 +12,13 @@
 		right: 0;
 		width: 45vw;
 		border-left: 1px solid var(--border-subtle);
+		overflow: hidden auto;
 		will-change: transform;
 		transform: translateX(100%);
+
+		.breakpoint(md, {
+			overflow: hidden;
+		});
 
 		@media print {
 			bottom: initial;
@@ -31,17 +37,25 @@
 	}
 
 	.EditorDetailsPanel__body {
-		flex: 1;
-		overflow: hidden auto;
 		padding: 0 @sp-24 @sp-24;
 		margin-right: @sp-04;
+
+		.breakpoint(md, {
+			flex: 1;
+			overflow: hidden auto;
+		});
 	}
 
 	.EditorDetailsPanel__buttons {
-		flex-direction: row;
+		flex-flow: row wrap;
 		gap: @sp-12;
 		padding: @sp-12 @sp-24 @sp-24;
 		justify-content: flex-end;
+		margin-top: auto;
+
+		.breakpoint(md, {
+			margin-top: 0;
+		});
 
 		@media print {
 			display: none;
