@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/jest-helpers@3.2.2...@bluecateng/jest-helpers@3.3.0) (2025-08-21)
+
+### Features
+
+- **jest-helpers:** store the ref property in the returned element ([a748bfc](https://github.com/bluecatengineering/pelagos-packages/commit/a748bfce5e2b682d10a38cdc76570b335bac4fc0))
+
 ## [3.2.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/jest-helpers@3.2.1...@bluecateng/jest-helpers@3.2.2) (2024-07-17)
 
 **Note:** Version bump only for package @bluecateng/jest-helpers

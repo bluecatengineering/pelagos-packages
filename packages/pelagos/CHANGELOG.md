@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.20.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.19.1...@bluecateng/pelagos@12.20.0) (2025-08-21)
+
+### Features
+
+- add scrollable property to Dialog ([c1e5585](https://github.com/bluecatengineering/pelagos-packages/commit/c1e55856e9c0fbf67399fd688e1623b01505bdcc))
+- add typescript definitions to pelagos components ([4367938](https://github.com/bluecatengineering/pelagos-packages/commit/4367938829c634378c10dedb4e824329b10830a4))
+
+### Bug Fixes
+
+- make the entire details panel scrollable below the medium breakpoint ([e0b9773](https://github.com/bluecatengineering/pelagos-packages/commit/e0b97733f2e22264af09c2d93d3e7623ea627177))
+- make the entire dialog scrollable below the medium breakpoint ([4d44c98](https://github.com/bluecatengineering/pelagos-packages/commit/4d44c987457ee3c0a35b98f5b2d1e36251f8999c))
+- use padding rather than margin for the dialog body ([b31de5c](https://github.com/bluecatengineering/pelagos-packages/commit/b31de5cbdf14f97e79e9ca8839e2a36bd9262fec))
+
 ## [12.19.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.19.0...@bluecateng/pelagos@12.19.1) (2025-07-18)
 
 ### Bug Fixes
