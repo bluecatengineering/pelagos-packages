@@ -45,13 +45,14 @@ const jsx = (type, props, key) => {
 		throw new Error(`The element type must be either a string or a function, got ${typeType}`);
 	}
 
+	const ref = props.ref;
 	delete props.ref;
 
 	if (typeof type === 'function' && type.defaultProps) {
 		props = {...type.defaultProps, ...props};
 	}
 
-	return {type, props, key, $$typeof: REACT_ELEMENT_TYPE};
+	return {type, props, key, ref, $$typeof: REACT_ELEMENT_TYPE};
 };
 
 const memo = (component) => {
