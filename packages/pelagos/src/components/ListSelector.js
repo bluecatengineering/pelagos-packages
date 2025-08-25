@@ -23,7 +23,7 @@ const collator = new Intl.Collator(undefined, {sensitivity: 'base'});
 const ListSelector = forwardRef(
 	({id, className, items, allItems, emptyText, allItemsRemovedText, getLabel, onChange}, ref) => {
 		id = useRandomId(id);
-		const animationsRef = useRef();
+		const animationsRef = useRef(null);
 		const availableItems = useMemo(
 			() =>
 				allItems
@@ -186,15 +186,15 @@ ListSelector.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The current items. */
-	items: PropTypes.arrayOf(PropTypes.string),
+	items: PropTypes.arrayOf(PropTypes.string).isRequired,
 	/** All items which can be selected. */
-	allItems: PropTypes.arrayOf(PropTypes.string),
+	allItems: PropTypes.arrayOf(PropTypes.string).isRequired,
 	/** The text to display when no items are selected. */
 	emptyText: PropTypes.string,
 	/** The text to announce when all items are removed. */
-	allItemsRemovedText: PropTypes.string,
+	allItemsRemovedText: PropTypes.string.isRequired,
 	/** Function returning the item label. */
-	getLabel: PropTypes.func,
+	getLabel: PropTypes.func.isRequired,
 	/** Function invoked when the list changes. */
 	onChange: PropTypes.func,
 };

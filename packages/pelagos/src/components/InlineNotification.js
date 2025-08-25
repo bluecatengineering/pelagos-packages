@@ -31,11 +31,11 @@ InlineNotification.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The notification type. */
-	type: PropTypes.oneOf(['success', 'info', 'warning', 'error']),
+	type: PropTypes.oneOf(['success', 'info', 'warning', 'error']).isRequired,
 	/** The notification title. */
 	title: PropTypes.string,
 	/** The notification text. */
-	text: PropTypes.string,
+	text: PropTypes.string.isRequired,
 };
 
 export default InlineNotification;

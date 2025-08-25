@@ -105,7 +105,7 @@ FileUploader.propTypes = {
 	/** Whether the field is disabled. */
 	disabled: PropTypes.bool,
 	/** Function invoked when the list of files changes. */
-	onChange: PropTypes.func,
+	onChange: PropTypes.func.isRequired,
 };
 
 export default FileUploader;

@@ -15,7 +15,7 @@ Label.propTypes = {
 	/** The identifier of the accompanying element. */
 	htmlFor: PropTypes.string,
 	/** The label text. */
-	text: PropTypes.string,
+	text: PropTypes.string.isRequired,
 };
 
 export default Label;

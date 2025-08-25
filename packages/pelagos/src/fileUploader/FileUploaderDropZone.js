@@ -42,7 +42,7 @@ const convertToAccept = (types) =>
 
 /** Drop zone for a file uploader. */
 const FileUploaderDropZone = ({id, label, text, types, required, multiple, error, disabled, onAddFiles, ...props}) => {
-	const liveRef = useRef();
+	const liveRef = useRef(null);
 
 	const handleClick = useCallback(
 		(event) =>
@@ -122,7 +122,7 @@ FileUploaderDropZone.propTypes = {
 	/** Whether the field is disabled. */
 	disabled: PropTypes.bool,
 	/** Function invoked when files are added. */
-	onAddFiles: PropTypes.func,
+	onAddFiles: PropTypes.func.isRequired,
 };
 
 export default FileUploaderDropZone;

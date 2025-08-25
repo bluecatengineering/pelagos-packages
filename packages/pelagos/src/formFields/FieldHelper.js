@@ -12,7 +12,7 @@ const FieldHelper = ({text, ...props}) => (
 FieldHelper.propTypes = {
 	/** The component id. */
 	id: PropTypes.string,
-	/** The error text. */
+	/** The helper text. */
 	text: PropTypes.string,
 };
 

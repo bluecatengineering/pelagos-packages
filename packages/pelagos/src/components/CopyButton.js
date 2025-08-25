@@ -65,7 +65,7 @@ CopyButton.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The data to copy to the clipboard. */
-	data: PropTypes.string,
+	data: PropTypes.string.isRequired,
 	/** The object representing the icon. (using FontAwesome, etc.) */
 	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]),
 	/** The tooltip text to display. */

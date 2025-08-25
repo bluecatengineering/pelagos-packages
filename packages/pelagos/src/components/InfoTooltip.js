@@ -20,7 +20,7 @@ InfoTooltip.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The tooltip text to display. */
-	text: PropTypes.string,
+	text: PropTypes.string.isRequired,
 	/** The placement of the tooltip relative to the icon. */
 	placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
 };

@@ -16,7 +16,7 @@ interface CheckBoxProps extends Omit<HTMLProps<HTMLInputElement>, 'label'> {
 	/** Whether the box is in error. */
 	error?: boolean;
 	/** Function invoked when the checked status is changed. */
-	onChange: ChangeEventHandler<HTMLInputElement>;
+	onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
 /* A checkbox. */

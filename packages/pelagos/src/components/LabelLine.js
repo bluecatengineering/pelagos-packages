@@ -20,7 +20,7 @@ const LabelLine = ({text, counter, required, error, ...props}) => (
 
 LabelLine.propTypes = {
 	/** The label text. */
-	text: PropTypes.string,
+	text: PropTypes.string.isRequired,
 	/** The character counter. */
 	counter: PropTypes.string,
 	/** Whether to mark the field as required. */

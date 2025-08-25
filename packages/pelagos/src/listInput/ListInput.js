@@ -234,15 +234,15 @@ ListInput.propTypes = {
 	/** Function invoked to render the suggestions. */
 	renderSuggestion: PropTypes.func,
 	/** Function invoked to get each item's key. */
-	getItemKey: PropTypes.func,
+	getItemKey: PropTypes.func.isRequired,
 	/** Function invoked to get each item's name. */
-	getItemName: PropTypes.func,
+	getItemName: PropTypes.func.isRequired,
 	/** Function invoked to render each list item. */
 	renderItem: PropTypes.func,
 	/** Function invoked when the list changes. */
-	onListChange: PropTypes.func,
+	onListChange: PropTypes.func.isRequired,
 	/** Function invoked when the text input changes. */
-	onTextChange: PropTypes.func,
+	onTextChange: PropTypes.func.isRequired,
 	/** Function invoked when error status changes. */
 	onErrorChange: PropTypes.func,
 };

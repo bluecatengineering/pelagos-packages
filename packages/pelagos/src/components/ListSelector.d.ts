@@ -12,7 +12,7 @@ interface ListSelectorProps {
 	/** The text to display when no items are selected. */
 	emptyText?: string;
 	/** The text to announce when all items are removed. */
-	allItemsRemovedText?: string;
+	allItemsRemovedText: string;
 	/** Function returning the item label. */
 	getLabel: (key: string) => string;
 	/** Function invoked when the list changes. */

@@ -177,7 +177,7 @@ TagInput.propTypes = {
 	/** The tooltip for default tags. */
 	defaultTooltipText: PropTypes.string,
 	/** Whether the component is in error. */
-	error: PropTypes.string,
+	error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 	/** Function invoked to validate each tag. */
 	validate: PropTypes.func.isRequired,
 	/** Whether the input is disabled. */

@@ -31,7 +31,7 @@ const ConfirmDialog = ({
 
 ConfirmDialog.propTypes = {
 	/** The dialog title. */
-	title: PropTypes.string,
+	title: PropTypes.string.isRequired,
 	/** The URL to use in the help link, if specified a link will be added in the header. */
 	helpHref: PropTypes.string,
 	/** The text to display in the dialog body. */
@@ -43,9 +43,9 @@ ConfirmDialog.propTypes = {
 	/** The dialog size. */
 	size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
 	/** Function invoked when the close button is clicked. */
-	onClose: PropTypes.func,
+	onClose: PropTypes.func.isRequired,
 	/** Function invoked when the confirm button is clicked. */
-	onConfirm: PropTypes.func,
+	onConfirm: PropTypes.func.isRequired,
 };
 
 export default ConfirmDialog;
