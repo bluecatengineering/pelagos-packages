@@ -2,7 +2,7 @@ import type {FunctionComponent, ReactNode} from 'react';
 
 interface TableToolbarProps {
 	/** The component class name(s). */
-	className: string;
+	className?: string;
 	/** The toolbar type. */
 	type?: 'default' | 'sectioned';
 	/** The child elements. */

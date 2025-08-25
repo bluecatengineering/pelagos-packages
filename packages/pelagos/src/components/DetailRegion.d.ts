@@ -6,7 +6,7 @@ interface DetailRegionProps {
 	/** The component class name(s). */
 	className?: string;
 	/** The header level. */
-	level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+	level?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 	/** The label text. */
 	label: string;
 	/** The text of the info tooltip to display. */

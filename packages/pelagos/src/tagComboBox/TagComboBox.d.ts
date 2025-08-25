@@ -1,6 +1,6 @@
 import type {HTMLProps, ReactElement, ReactNode} from 'react';
 
-import type {ListInputSuggestion} from '../listInput/ListInput';
+import type {ListInputSuggestion} from '../listInput';
 
 interface TagComboBoxProps<T> extends Omit<HTMLProps<HTMLInputElement>, 'onChange' | 'onError'> {
 	/** The component id. */
@@ -28,9 +28,9 @@ interface TagComboBoxProps<T> extends Omit<HTMLProps<HTMLInputElement>, 'onChang
 	/** Function invoked to validate each tag. */
 	validate: (text: string) => string | null;
 	/** Function that transforms the text input before it is validated. */
-	transform: (input: string) => string;
+	transform?: (input: string) => string;
 	/** Function that converts the text input to a tag. */
-	textToTag: (text: string) => T;
+	textToTag?: (text: string) => T;
 	/** Function invoked to get suggestions based on text input, can return a promise. */
 	getSuggestions?: (text: string) => ListInputSuggestion[] | Promise<ListInputSuggestion[]>;
 	/** Function invoked to render suggestions. */

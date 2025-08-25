@@ -16,7 +16,7 @@ HeaderIcon.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The icon to display. */
-	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]),
+	icon: PropTypes.oneOfType([PropTypes.object, PropTypes.elementType]).isRequired,
 	/** The label text. */
 	label: PropTypes.string,
 	/** Whether the first letter of the label is underlined. */

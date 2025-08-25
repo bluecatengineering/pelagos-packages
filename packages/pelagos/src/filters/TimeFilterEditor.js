@@ -169,9 +169,9 @@ TimeFilterEditor.propTypes = {
 	/** The hint for the "to" field. */
 	toPlaceholder: PropTypes.string,
 	/** The list of predefined time ranges. */
-	options: PropTypes.arrayOf(PropTypes.string),
+	options: PropTypes.arrayOf(PropTypes.string).isRequired,
 	/** Function returning the label for the specified option. */
-	getOptionLabel: PropTypes.func,
+	getOptionLabel: PropTypes.func.isRequired,
 	/** Function returning a formatted time. */
 	format: PropTypes.func,
 	/** Function returning the parsed time as a number. */

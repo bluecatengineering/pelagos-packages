@@ -139,15 +139,15 @@ ListEntries.propTypes = {
 	/** Whether items are listed as columns. Set to true if reorderable. */
 	column: PropTypes.bool,
 	/** Function invoked to get each item's key. */
-	getItemKey: PropTypes.func,
+	getItemKey: PropTypes.func.isRequired,
 	/** Function invoked to get each item's name. */
-	getItemName: PropTypes.func,
+	getItemName: PropTypes.func.isRequired,
 	/** Function invoked to render each list item. */
 	renderItem: PropTypes.func,
 	/** Function invoked when an item is reordered. */
 	onReorder: PropTypes.func,
 	/** Function invoked when the remove button is clicked. */
-	onRemoveClick: PropTypes.func,
+	onRemoveClick: PropTypes.func.isRequired,
 	/** Function invoked to clear the highlight key. */
 	onHighlightClear: PropTypes.func,
 };

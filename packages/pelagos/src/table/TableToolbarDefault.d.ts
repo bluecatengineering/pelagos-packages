@@ -6,7 +6,7 @@ interface TableToolbarDefaultProps {
 	/** Whether this toolbar should be hidden (when TableToolbarBatch is visible). */
 	hidden?: boolean;
 	/** The alignment for children. */
-	align: 'start' | 'end';
+	align?: 'start' | 'end';
 	/** The child elements. */
 	children?: ReactNode;
 }

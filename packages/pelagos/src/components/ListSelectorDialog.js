@@ -26,8 +26,8 @@ const ListSelectorDialog = ({
 	onClose,
 	onSave,
 }) => {
-	const animationsRef = useRef();
-	const liveRef = useRef();
+	const animationsRef = useRef(null);
+	const liveRef = useRef(null);
 	const [items, setItems] = useState(initialItems);
 	const handleRestore = useCallback(() => {
 		setItems(defaultItems);
@@ -82,27 +82,27 @@ const ListSelectorDialog = ({
 
 ListSelectorDialog.propTypes = {
 	/** The dialog title. */
-	title: PropTypes.string,
+	title: PropTypes.string.isRequired,
 	/** The URL to use in the help link, if specified a link will be added in the header. */
 	helpHref: PropTypes.string,
 	/** The text to display when no items are selected. */
 	emptyText: PropTypes.string,
 	/** The text to announce when all items are removed. */
-	allItemsRemovedText: PropTypes.string,
+	allItemsRemovedText: PropTypes.string.isRequired,
 	/** The text to display in the save button. */
 	saveText: PropTypes.string,
 	/** The current items. */
-	items: PropTypes.arrayOf(PropTypes.string),
+	items: PropTypes.arrayOf(PropTypes.string).isRequired,
 	/** All items which can be selected. */
-	allItems: PropTypes.arrayOf(PropTypes.string),
+	allItems: PropTypes.arrayOf(PropTypes.string).isRequired,
 	/** The default items. */
 	defaultItems: PropTypes.arrayOf(PropTypes.string),
 	/** Function returning the item label. */
-	getLabel: PropTypes.func,
+	getLabel: PropTypes.func.isRequired,
 	/** Function invoked when the close button is clicked. */
-	onClose: PropTypes.func,
+	onClose: PropTypes.func.isRequired,
 	/** Function invoked when the save button is clicked. */
-	onSave: PropTypes.func,
+	onSave: PropTypes.func.isRequired,
 };
 
 export default ListSelectorDialog;

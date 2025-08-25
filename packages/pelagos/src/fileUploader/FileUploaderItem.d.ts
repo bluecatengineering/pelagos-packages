@@ -10,7 +10,7 @@ interface FileUploaderItemProps {
 	/** Whether the delete button is disabled. */
 	disableDelete?: boolean;
 	/** Function invoked when the delete button is clicked. */
-	onDelete: MouseEventHandler<HTMLButtonElement>;
+	onDelete?: MouseEventHandler<HTMLButtonElement>;
 }
 
 /** An uploaded file in a file uploader. */

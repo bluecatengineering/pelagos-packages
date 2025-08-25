@@ -6,7 +6,7 @@ interface LabelLineProps extends HTMLProps<HTMLLabelElement> {
 	/** The identifier of the accompanying element. */
 	htmlFor?: string;
 	/** The label text. */
-	text?: string;
+	text: string;
 	/** The character counter. */
 	counter?: string;
 	/** Whether to mark the field as required. */
