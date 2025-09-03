@@ -8,6 +8,8 @@ const setTheme = (theme) => (document.documentElement.dataset.theme = theme);
 const setLocale = (locale) => setPelagosLocale(locale).catch(console.error);
 
 export default {
+	tags: ['autodocs'],
+
 	parameters: {
 		actions: {argTypesRegex: '^on[A-Z].*'},
 		backgrounds: {disable: true},
