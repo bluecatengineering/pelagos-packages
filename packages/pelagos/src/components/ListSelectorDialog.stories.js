@@ -1,5 +1,5 @@
 import {useCallback, useState} from 'react';
-import {Canvas, Controls, Description, Subtitle, Title} from '@storybook/blocks';
+import {Canvas, Controls, Description, Subtitle, Title} from '@storybook/addon-docs/blocks';
 
 import ListSelectorDialog from './ListSelectorDialog';
 import Button from './Button';

@@ -9,6 +9,7 @@ export default defineConfig([
 	regexpPlugin.configs['flat/recommended'],
 	{
 		rules: {
+			'import/extensions': ['warn', 'ignorePackages', {js: 'never'}],
 			'react/no-unknown-property': ['error', {ignore: ['onPointerDown']}],
 			'regexp/no-unused-capturing-group': 'off',
 		},
@@ -44,12 +45,6 @@ export default defineConfig([
 	{
 		files: ['packages/*/src/**/*.d.ts'],
 		extends: [tseslint.configs.recommended],
-	},
-	{
-		files: ['eslint.config.mjs'],
-		rules: {
-			'import/extensions': ['error', 'ignorePackages'],
-		},
 	},
 	{
 		ignores: ['build/**', '**/dist/**'],
