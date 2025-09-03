@@ -31,29 +31,35 @@
 	}
 
 	.EditorDetailsPanel__title {
-		padding: @sp-12 @sp-24;
+		padding: @sp-08;
 		word-break: break-all;
 		flex: 1;
+
+		.breakpoint(md, {
+			padding: @sp-16;
+		});
 	}
 
 	.EditorDetailsPanel__body {
-		padding: 0 @sp-24 @sp-24;
+		padding: 0 @sp-08;
 		margin-right: @sp-04;
 
 		.breakpoint(md, {
 			flex: 1;
 			overflow: hidden auto;
+			padding: 0 @sp-16;
 		});
 	}
 
 	.EditorDetailsPanel__buttons {
 		flex-flow: row wrap;
 		gap: @sp-12;
-		padding: @sp-12 @sp-24 @sp-24;
+		padding: @sp-08;
 		justify-content: flex-end;
 		margin-top: auto;
 
 		.breakpoint(md, {
+			padding: @sp-16;
 			margin-top: 0;
 		});
 
