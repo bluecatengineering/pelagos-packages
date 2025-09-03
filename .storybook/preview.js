@@ -10,6 +10,7 @@ const setLocale = (locale) => setPelagosLocale(locale).catch(console.error);
 export default {
 	parameters: {
 		actions: {argTypesRegex: '^on[A-Z].*'},
+		backgrounds: {disable: true},
 		options: {
 			storySort: (a, b) => {
 				const order = {

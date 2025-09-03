@@ -97,7 +97,7 @@ const renderMD = (
 	[{id, description, params, returns, examples, meta}, ...others]
 ) => `{/* DO NOT EDIT, generated from ${meta.filename} */}
 
-import {Meta} from '@storybook/addon-docs';
+import {Meta} from '@storybook/addon-docs/blocks';
 
 <Meta title="${group}/${id}" />
 

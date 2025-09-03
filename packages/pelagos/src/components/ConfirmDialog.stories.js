@@ -1,5 +1,5 @@
 import {useCallback, useState} from 'react';
-import {Title, Subtitle, Description, Canvas, Controls} from '@storybook/blocks';
+import {Title, Subtitle, Description, Canvas, Controls} from '@storybook/addon-docs/blocks';
 
 import body from '../../stories/LoremIpsum';
 

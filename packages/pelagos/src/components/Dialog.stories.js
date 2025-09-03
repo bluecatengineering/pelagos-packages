@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
-import {Title, Subtitle, Description, Canvas, Controls} from '@storybook/blocks';
+import {Title, Subtitle, Description, Canvas, Controls} from '@storybook/addon-docs/blocks';
 
 import body from '../../stories/LoremIpsum';
 import loremIpsumShort from '../../stories/LoremIpsumShort';
