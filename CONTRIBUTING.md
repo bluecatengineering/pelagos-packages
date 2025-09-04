@@ -12,6 +12,7 @@ Thank you for your interest in contributing to this component library for our de
 - Do not manually reformat code; let Prettier handle it for consistency.
 - **JavaScript code must pass all ESLint checks.**
 - **Less (CSS) files must pass all Stylelint checks.**
+- CSS class names must follow [the BEM convention](https://getbem.com/naming) with the "block" using the component name as is (e.g. "Button") and the "element" and "modifier" using camel case.
 
 ### 2. Commit Messages
 
@@ -31,6 +32,7 @@ Thank you for your interest in contributing to this component library for our de
 - **100% unit test coverage is required** for all code contributions.
 - Add appropriate tests for any new components, features, or bug fixes.
 - PRs lacking coverage will not be accepted.
+- All components must be tested with VoiceOver on macOS on Chrome and ideally also on Firefox and Safari.
 
 ### 5. Storybook
 
