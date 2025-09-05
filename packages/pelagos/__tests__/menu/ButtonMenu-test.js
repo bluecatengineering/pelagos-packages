@@ -4,7 +4,6 @@ import ButtonMenu from '../../src/menu/ButtonMenu';
 import useRandomId from '../../src/hooks/useRandomId';
 import useMenuHandler from '../../src/hooks/useMenuHandler';
 import useLayer from '../../src/hooks/useLayer';
-import setRefs from '../../src/functions/setRefs';
 
 jest.unmock('../../src/menu/ButtonMenu');
 
@@ -44,16 +43,6 @@ describe('ButtonMenu', () => {
 				</ButtonMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-	});
-
-	describe('behaviour', () => {
-		it('calls setRefs when ref is set', () => {
-			const ref = {foo: 'test'};
-			const buttonRef = {bar: 'test'};
-			useMenuHandler.mockReturnValueOnce({buttonRef});
-			ButtonMenu({children: []}, ref); // ref doesn't seem to be passed any other way
-			expect(setRefs.mock.calls).toEqual([[ref, buttonRef]]);
 		});
 	});
 });

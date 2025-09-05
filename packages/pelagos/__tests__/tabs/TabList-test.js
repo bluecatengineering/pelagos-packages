@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 
 import TabList from '../../src/tabs/TabList';
 import Tab from '../../src/tabs/Tab';
-import setRefs from '../../src/functions/setRefs';
 import addResizeObserver from '../../src/functions/addResizeObserver';
 
 jest.unmock('../../src/tabs/TabList');
@@ -443,13 +442,6 @@ describe('TabList', () => {
 			expect(useEffect.mock.calls[4]).toEqual([anyFunction, [false, undefined, 0]]);
 			useEffect.mock.calls[4][0]();
 			expect(setScrollLeft.mock.calls).toEqual([]);
-		});
-
-		it('calls setRefs when ref is set', () => {
-			const ref = {foo: 'test'};
-			useRef.mockReturnValueOnce('useRef');
-			TabList({}, ref); // ref is not passed any other way
-			expect(setRefs.mock.calls).toEqual([[ref, 'useRef']]);
 		});
 	});
 });

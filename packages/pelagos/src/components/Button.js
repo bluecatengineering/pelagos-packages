@@ -1,7 +1,7 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
-import setRefs from '../functions/setRefs';
+import useSetRefs from '../hooks/useSetRefs';
 import useTooltip from '../hooks/useTooltip';
 
 import SvgIcon from './SvgIcon';
@@ -15,13 +15,13 @@ const Button = forwardRef(
 		ref
 	) => {
 		const tooltip = useTooltip(tooltipText, 'top');
-		const refs = ref ? setRefs(ref, tooltip) : tooltip;
+		const setRefs = useSetRefs(tooltip, ref);
 		return disabled ? (
 			<span
 				id={id}
 				className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
 				aria-disabled="true"
-				ref={refs}>
+				ref={setRefs}>
 				{children || text}
 				{icon && <SvgIcon className="Button__icon" icon={icon} />}
 			</span>
@@ -31,7 +31,7 @@ const Button = forwardRef(
 				type={onClick ? 'button' : 'submit'}
 				id={id}
 				className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
-				ref={refs}
+				ref={setRefs}
 				onClick={onClick}>
 				{children || text}
 				{icon && <SvgIcon className="Button__icon" icon={icon} />}
