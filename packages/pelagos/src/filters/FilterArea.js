@@ -2,16 +2,16 @@ import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
 import useCollapse from '../hooks/useCollapse';
-import setRefs from '../functions/setRefs';
+import useSetRefs from '../hooks/useSetRefs';
 
 import './FilterArea.less';
 
 /** Displays a list of filters. */
 const FilterArea = forwardRef(({className, expanded = true, children, ...props}, ref) => {
 	const collapse = useCollapse(expanded);
-	const refs = ref ? setRefs(ref, collapse) : collapse;
+	const setRefs = useSetRefs(collapse, ref);
 	return (
-		<ul {...props} className={`FilterArea${className ? ` ${className}` : ''}`} ref={refs}>
+		<ul {...props} className={`FilterArea${className ? ` ${className}` : ''}`} ref={setRefs}>
 			{children}
 		</ul>
 	);

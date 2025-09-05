@@ -1,7 +1,7 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
-import setRefs from '../functions/setRefs';
+import useSetRefs from '../hooks/useSetRefs';
 import useTooltip from '../hooks/useTooltip';
 
 import SvgIcon from './SvgIcon';
@@ -27,17 +27,17 @@ const IconButton = forwardRef(
 		ref
 	) => {
 		const tooltip = useTooltip(tooltipText, tooltipPlacement, 'labelledby');
-		const refs = ref ? setRefs(ref, tooltip) : tooltip;
+		const setRefs = useSetRefs(tooltip, ref);
 		const finalClassName = `IconButton IconButton--${size} IconButton--${type}${
 			overlay ? ' IconButton--container' : ''
 		}${pressed ? ' IconButton--pressed' : ''}${className ? ` ${className}` : ''}`;
 		return disabled ? (
-			<span {...props} id={id} className={finalClassName} role="button" aria-disabled="true" ref={refs}>
+			<span {...props} id={id} className={finalClassName} role="button" aria-disabled="true" ref={setRefs}>
 				<SvgIcon icon={icon} aria-hidden />
 				{overlay}
 			</span>
 		) : (
-			<button {...props} id={id} className={finalClassName} type="button" ref={refs} onClick={onClick}>
+			<button {...props} id={id} className={finalClassName} type="button" ref={setRefs} onClick={onClick}>
 				<SvgIcon icon={icon} aria-hidden />
 				{overlay}
 			</button>

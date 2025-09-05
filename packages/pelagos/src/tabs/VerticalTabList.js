@@ -1,7 +1,7 @@
 import {Children, forwardRef, useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 
-import setRefs from '../functions/setRefs';
+import useSetRefs from '../hooks/useSetRefs';
 
 import TabContext from './TabContext';
 
@@ -29,7 +29,7 @@ const keyHandlers = {
 /** A list of tabs arranged vertically. When using this component the related tab panels should follow the indication in: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/ */
 const VerticalTabList = forwardRef(({className, selectedIndex, children, onChange, ...props}, ref) => {
 	const listRef = useRef(null);
-	const refs = ref ? setRefs(ref, listRef) : listRef;
+	const setRefs = useSetRefs(listRef, ref);
 	const [focused, setFocused] = useState(selectedIndex);
 
 	const handleKeyDown = useCallback((event) => {
@@ -63,7 +63,7 @@ const VerticalTabList = forwardRef(({className, selectedIndex, children, onChang
 			{...props}
 			className={`VerticalTabList${className ? ` ${className}` : ''}`}
 			role="tablist"
-			ref={refs}
+			ref={setRefs}
 			onKeyDown={handleKeyDown}
 			onBlur={handleBlur}>
 			{Children.map(children, (child, index) => (

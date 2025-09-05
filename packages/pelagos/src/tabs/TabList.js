@@ -4,7 +4,7 @@ import debounce from 'lodash-es/debounce';
 import ChevronLeft from '@carbon/icons-react/es/ChevronLeft';
 import ChevronRight from '@carbon/icons-react/es/ChevronRight';
 
-import setRefs from '../functions/setRefs';
+import useSetRefs from '../hooks/useSetRefs';
 import addResizeObserver from '../functions/addResizeObserver';
 
 import TabContext from './TabContext';
@@ -23,7 +23,7 @@ const keyHandlers = {
 /** A list of tabs. When using this component the related tab panels should follow the indication in: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/ */
 const TabList = forwardRef(({className, selectedIndex, contained, children, onChange, ...props}, ref) => {
 	const listRef = useRef(null);
-	const refs = ref ? setRefs(ref, listRef) : listRef;
+	const setRefs = useSetRefs(listRef, ref);
 	const [focused, setFocused] = useState(selectedIndex);
 	const [canScroll, setCanScroll] = useState(false);
 	const [scrollLeft, setScrollLeft] = useState(0);
@@ -123,7 +123,7 @@ const TabList = forwardRef(({className, selectedIndex, contained, children, onCh
 				{...props}
 				className="TabList__list"
 				role="tablist"
-				ref={refs}
+				ref={setRefs}
 				onKeyDown={handleKeyDown}
 				onBlur={handleBlur}
 				onScroll={handleScroll}>

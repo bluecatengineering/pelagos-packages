@@ -3,11 +3,11 @@ import {createPortal} from 'react-dom';
 import PropTypes from 'prop-types';
 import OverflowMenuVertical from '@carbon/icons-react/es/OverflowMenuVertical';
 
-import setRefs from '../functions/setRefs';
 import useRandomId from '../hooks/useRandomId';
 import useMenuHandler from '../hooks/useMenuHandler';
 import useLayer from '../hooks/useLayer';
 import useMenuPositioner from '../hooks/useMenuPositioner';
+import useSetRefs from '../hooks/useSetRefs';
 
 import IconButton from './IconButton';
 import MenuArrow from './MenuArrow';
@@ -42,7 +42,7 @@ const IconMenu = forwardRef(
 					aria-haspopup="true"
 					aria-expanded={expanded}
 					data-layer={expanded ? level : null}
-					ref={ref ? setRefs(ref, buttonRef) : buttonRef}
+					ref={useSetRefs(buttonRef, ref)}
 				/>
 				{expanded &&
 					createPortal(

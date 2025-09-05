@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 
 import VerticalTabList from '../../src/tabs/VerticalTabList';
 import VerticalTab from '../../src/tabs/VerticalTab';
-import setRefs from '../../src/functions/setRefs';
 
 jest.unmock('../../src/tabs/VerticalTabList');
 
@@ -260,13 +259,6 @@ describe('VerticalTabList', () => {
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [0]]);
 			useEffect.mock.calls[0][0]();
 			expect(setFocused.mock.calls).toEqual([[0]]);
-		});
-
-		it('calls setRefs when ref is set', () => {
-			const ref = {foo: 'test'};
-			useRef.mockReturnValueOnce('useRef');
-			VerticalTabList({}, ref); // ref is not passed any other way
-			expect(setRefs.mock.calls).toEqual([[ref, 'useRef']]);
 		});
 	});
 });

@@ -3,7 +3,6 @@ import {shallow} from 'enzyme';
 import IconMenu from '../../src/components/IconMenu';
 import MenuItem from '../../src/menu/MenuItem';
 import useRandomId from '../../src/hooks/useRandomId';
-import setRefs from '../../src/functions/setRefs';
 import useMenuHandler from '../../src/hooks/useMenuHandler';
 import useLayer from '../../src/hooks/useLayer';
 
@@ -66,16 +65,6 @@ describe('IconMenu', () => {
 				</IconMenu>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-	});
-
-	describe('behaviour', () => {
-		it('calls setRefs when ref is set', () => {
-			const ref = {foo: 'test'};
-			const buttonRef = {bar: 'test'};
-			useMenuHandler.mockReturnValueOnce({buttonRef});
-			IconMenu({children: []}, ref); // ref doesn't seem to be passed any other way
-			expect(setRefs.mock.calls).toEqual([[ref, buttonRef]]);
 		});
 	});
 });

@@ -2,7 +2,6 @@ import {shallow} from 'enzyme';
 
 import Button from '../../src/components/Button';
 import useTooltip from '../../src/hooks/useTooltip';
-import setRefs from '../../src/functions/setRefs';
 
 jest.unmock('../../src/components/Button');
 
@@ -87,12 +86,6 @@ describe('Button', () => {
 			const wrapper = shallow(<Button id="test" text="Test" onClick={onClick} />);
 			wrapper.simulate('click');
 			expect(onClick).toHaveBeenCalled();
-		});
-
-		it('calls setRefs when ref is set', () => {
-			const ref = {foo: 'test'};
-			Button({}, ref); // ref doesn't seem to be passed any other way
-			expect(setRefs.mock.calls).toEqual([[ref, 'useTooltip']]);
 		});
 	});
 });

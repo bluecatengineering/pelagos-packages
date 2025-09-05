@@ -1,13 +1,13 @@
-import setRefs from '../../src/functions/setRefs';
+import useSetRefs from '../../src/hooks/useSetRefs';
 
-jest.unmock('../../src/functions/setRefs');
+jest.unmock('../../src/hooks/useSetRefs');
 
-describe('setRefs', () => {
+describe('useSetRefs', () => {
 	it('handles both object and function refs', () => {
 		const ref1 = {};
 		const ref2 = jest.fn();
 		const current = {foo: 'test'};
-		setRefs(ref1, ref2)(current);
+		useSetRefs(ref1, ref2, null)(current);
 		expect(ref1.current).toBe(current);
 		expect(ref2.mock.calls).toEqual([[current]]);
 	});
