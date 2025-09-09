@@ -212,7 +212,8 @@ const Select = ({
 	useLayoutEffect(() => {
 		if (open) {
 			const list = listRef.current;
-			scrollToItem(list, list.children[focused]);
+			const child = list.children[focused];
+			if (child) scrollToItem(list, child);
 			const themeElement = buttonRef.current.closest('[data-theme]');
 			if (themeElement) {
 				list.dataset.theme = themeElement.dataset.theme;

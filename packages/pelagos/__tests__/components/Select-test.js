@@ -204,6 +204,19 @@ describe('Select', () => {
 			expect(smoothScroll).not.toHaveBeenCalled();
 		});
 
+		it('does not scroll to current option when the child element is not found', () => {
+			const button = {closest: jest.fn().mockReturnValue({dataset: {theme: 'white'}})};
+			const list = {children: [], dataset: {}};
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([2]);
+			useRef.mockReturnValueOnce({current: button}).mockReturnValueOnce({current: list});
+			shallow(<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />);
+			expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [true, 2]]);
+
+			useLayoutEffect.mock.calls[0][0]();
+			expect(scrollToItem.mock.calls).toEqual([]);
+			expect(list.dataset.theme).toBe('white');
+		});
+
 		it('shows the list when it is hidden and the button receives mouse down', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
