@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.20.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.20.0...@bluecateng/pelagos@12.20.1) (2025-09-10)
+
+### Bug Fixes
+
+- avoid error in Select when the focused option is not found ([293ab65](https://github.com/bluecatengineering/pelagos-packages/commit/293ab65f5b02d3c93e60d08fe651051958ea8dce))
+- change propTypes and TypeScript property definitions to match ([596d49b](https://github.com/bluecatengineering/pelagos-packages/commit/596d49bbb8bf447f7b7dcfae81bec6f709a1f9f0))
+- change setRefs to a hook ([c61579a](https://github.com/bluecatengineering/pelagos-packages/commit/c61579a3b10c86b09db1de443dfbacd034c364ca))
+- reduce details panel padding below the medium breakpoint ([5ccf9f7](https://github.com/bluecatengineering/pelagos-packages/commit/5ccf9f729e981c9dd435ab1ceb5be691a05f917b))
+
 ## [12.20.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.19.1...@bluecateng/pelagos@12.20.0) (2025-08-21)
 
 ### Features
