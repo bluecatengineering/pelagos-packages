@@ -15,7 +15,6 @@ describe('ListInput', () => {
 				<ListInput
 					id="test"
 					label="Test"
-					required
 					placeholder="test placeholder"
 					emptyText="Test empty"
 					list={[{id: '0', name: 'test'}]}
@@ -33,37 +32,19 @@ describe('ListInput', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when className is set', () => {
-			const wrapper = shallow(
-				<ListInput id="test" className="TestClass" label="Test" list={[{id: '0', name: 'test'}]} />
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(useRandomId.mock.calls).toEqual([['test']]);
-		});
-
-		it('renders expected elements when error is set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
 				<ListInput
 					id="test"
+					className="TestClass"
 					label="Test"
+					required
+					disabled
 					placeholder="test placeholder"
 					emptyText="Test empty"
 					list={[{id: '0', name: 'test'}]}
 					helperText="Helper text"
 					error="Error"
-				/>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when column is set', () => {
-			const wrapper = shallow(
-				<ListInput
-					id="test"
-					label="Test"
-					placeholder="test placeholder"
-					emptyText="Test empty"
-					list={[{id: '0', name: 'test'}]}
 					column
 				/>
 			);

@@ -20,6 +20,7 @@ const ListEntries = ({
 	className,
 	highlightKey,
 	list,
+	disabled,
 	reorderable,
 	column,
 	getItemKey,
@@ -84,6 +85,8 @@ const ListEntries = ({
 				ref={reorderRef}
 				id={id}
 				className={`ListEntries ListEntries--${column || reorderable ? 'column' : 'grid'}${reorderable === 'numbers' ? ' numbers' : ''}${className ? ` ${className}` : ''}`}
+				inert={disabled}
+				aria-disabled={disabled}
 				onClick={handleClick}>
 				{list.map((item, i) => {
 					const name = getItemName(item);
@@ -134,6 +137,8 @@ ListEntries.propTypes = {
 	highlightKey: PropTypes.string,
 	/** The data for the list. */
 	list: PropTypes.array,
+	/** Whether the items are disabled. */
+	disabled: PropTypes.bool,
 	/** Whether items are reorderable. */
 	reorderable: PropTypes.oneOf([true, false, 'numbers']),
 	/** Whether items are listed as columns. Set to true if reorderable. */

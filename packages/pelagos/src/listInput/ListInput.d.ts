@@ -16,6 +16,8 @@ interface ListInputProps<T> extends Omit<HTMLProps<HTMLInputElement>, 'list'> {
 	label: string;
 	/** Whether the field is required. */
 	required?: boolean;
+	/** Whether the field is disabled. */
+	disabled?: boolean;
 	/** The placeholder text in the input box. */
 	placeholder?: string;
 	/** The text below input box when list is empty. */

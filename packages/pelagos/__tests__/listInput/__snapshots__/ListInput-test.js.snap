@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ListInput rendering renders expected elements 1`] = `
 <div
@@ -12,12 +12,10 @@ exports[`ListInput rendering renders expected elements 1`] = `
     error={false}
     htmlFor="random-id"
     id="random-id-label"
-    required={true}
     text="Test"
   />
   <ComboBox
     aria-describedby="random-id-helper"
-    aria-required={true}
     autoSelect={true}
     error={false}
     getSuggestions={[Function]}
@@ -50,57 +48,9 @@ exports[`ListInput rendering renders expected elements 1`] = `
 </div>
 `;
 
-exports[`ListInput rendering renders expected elements when column is set 1`] = `
+exports[`ListInput rendering renders expected elements when optional properties are set 1`] = `
 <div
-  className="ListInput"
->
-  <div
-    aria-live="assertive"
-    className="sr-only"
-  />
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    id="random-id-label"
-    text="Test"
-  />
-  <ComboBox
-    aria-describedby="random-id-helper"
-    autoSelect={true}
-    error={false}
-    getSuggestions={[Function]}
-    id="random-id"
-    onChange={[Function]}
-    onEnter={[Function]}
-    onTextChange={[Function]}
-    placeholder="test placeholder"
-    text=""
-  />
-  <FieldHelper
-    id="random-id-helper"
-  />
-  <ListEntries
-    className="ListInput__list"
-    column={true}
-    highlightKey={null}
-    id="random-id-grid"
-    list={
-      [
-        {
-          "id": "0",
-          "name": "test",
-        },
-      ]
-    }
-    onHighlightClear={[Function]}
-    onRemoveClick={[Function]}
-  />
-</div>
-`;
-
-exports[`ListInput rendering renders expected elements when error is set 1`] = `
-<div
-  className="ListInput"
+  className="ListInput TestClass"
 >
   <div
     aria-live="assertive"
@@ -110,11 +60,14 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
     error={true}
     htmlFor="random-id"
     id="random-id-label"
+    required={true}
     text="Test"
   />
   <ComboBox
     aria-describedby="random-id-error"
+    aria-required={true}
     autoSelect={true}
+    disabled={true}
     error={true}
     getSuggestions={[Function]}
     id="random-id"
@@ -130,6 +83,8 @@ exports[`ListInput rendering renders expected elements when error is set 1`] = `
   />
   <ListEntries
     className="ListInput__list"
+    column={true}
+    disabled={true}
     highlightKey={null}
     id="random-id-grid"
     list={
@@ -182,51 +137,5 @@ exports[`ListInput rendering renders expected elements when the list is empty 1`
   >
     Test empty
   </div>
-</div>
-`;
-
-exports[`ListInput rendering renders expected elements when className is set 1`] = `
-<div
-  className="ListInput TestClass"
->
-  <div
-    aria-live="assertive"
-    className="sr-only"
-  />
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    id="random-id-label"
-    text="Test"
-  />
-  <ComboBox
-    aria-describedby="random-id-helper"
-    autoSelect={true}
-    error={false}
-    getSuggestions={[Function]}
-    id="random-id"
-    onChange={[Function]}
-    onEnter={[Function]}
-    onTextChange={[Function]}
-    text=""
-  />
-  <FieldHelper
-    id="random-id-helper"
-  />
-  <ListEntries
-    className="ListInput__list"
-    highlightKey={null}
-    id="random-id-grid"
-    list={
-      [
-        {
-          "id": "0",
-          "name": "test",
-        },
-      ]
-    }
-    onHighlightClear={[Function]}
-    onRemoveClick={[Function]}
-  />
 </div>
 `;

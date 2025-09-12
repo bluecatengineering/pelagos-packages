@@ -18,6 +18,7 @@ const ListInput = ({
 	className,
 	label,
 	required,
+	disabled,
 	emptyText,
 	list,
 	helperText,
@@ -162,6 +163,7 @@ const ListInput = ({
 				id={id}
 				autoSelect={!parseInput}
 				text={text}
+				disabled={disabled}
 				error={!!error}
 				getSuggestions={handleGetSuggestions}
 				renderSuggestion={renderSuggestion}
@@ -182,6 +184,7 @@ const ListInput = ({
 					className="ListInput__list"
 					highlightKey={highlightKey}
 					list={list}
+					disabled={disabled}
 					reorderable={reorderable}
 					column={column}
 					getItemKey={getItemKey}
@@ -205,6 +208,8 @@ ListInput.propTypes = {
 	label: PropTypes.string,
 	/** Whether the field is required. */
 	required: PropTypes.bool,
+	/** Whether the field is disabled. */
+	disabled: PropTypes.bool,
 	/** The placeholder text in the input box. */
 	placeholder: PropTypes.string,
 	/** The text below input box when list is empty. */

@@ -9,6 +9,8 @@ interface ListEntriesProps<T> {
 	highlightKey?: string | null;
 	/** The data for the list. */
 	list: T[];
+	/** Whether the items are disabled. */
+	disabled?: boolean;
 	/** Whether items are reorderable. */
 	reorderable?: boolean | 'numbers';
 	/** Whether items are listed as columns. Set to true if reorderable. */
