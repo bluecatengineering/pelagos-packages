@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ListEntries rendering renders expected elements 1`] = `
 <React.Fragment>
@@ -39,54 +39,17 @@ exports[`ListEntries rendering renders expected elements 1`] = `
 </React.Fragment>
 `;
 
-exports[`ListEntries rendering renders expected elements when column is set 1`] = `
+exports[`ListEntries rendering renders expected elements when optional properties are set 1`] = `
 <React.Fragment>
   <div
     aria-live="polite"
     className="sr-only"
   />
   <ul
+    aria-disabled={true}
     className="ListEntries ListEntries--column"
     id="random-id"
-    onClick={[Function]}
-  >
-    <li
-      className="ListEntries__listItem"
-      data-index={0}
-      data-testid="list-item"
-    >
-      <Layer
-        className="ListEntries__item"
-      >
-        <div
-          className="ListEntries__name"
-        >
-          test
-        </div>
-        <button
-          aria-label="Remove test"
-          className="ListEntries__icon"
-          data-index={0}
-          data-testid="remove-item"
-          type="button"
-        >
-          <Close />
-        </button>
-      </Layer>
-    </li>
-  </ul>
-</React.Fragment>
-`;
-
-exports[`ListEntries rendering renders expected elements when highlightKey is set 1`] = `
-<React.Fragment>
-  <div
-    aria-live="polite"
-    className="sr-only"
-  />
-  <ul
-    className="ListEntries ListEntries--grid"
-    id="random-id"
+    inert={true}
     onClick={[Function]}
   >
     <li

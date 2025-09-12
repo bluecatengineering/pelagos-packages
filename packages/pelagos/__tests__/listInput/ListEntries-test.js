@@ -68,26 +68,14 @@ describe('ListEntries', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when highlightKey is set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			const wrapper = shallow(
 				<ListEntries
 					id="test"
 					highlightKey="0"
-					list={[{id: '0', name: 'test'}]}
-					getItemKey={getId}
-					getItemName={getName}
-					renderItem={(i) => <div>{i.name}</div>}
-				/>
-			);
-			expect(wrapper.getElement()).toMatchSnapshot();
-		});
-
-		it('renders expected elements when column is set', () => {
-			const wrapper = shallow(
-				<ListEntries
-					id="test"
-					list={[{id: '0', name: 'test'}]}
+					disabled
 					column
+					list={[{id: '0', name: 'test'}]}
 					getItemKey={getId}
 					getItemName={getName}
 					renderItem={(i) => <div>{i.name}</div>}
