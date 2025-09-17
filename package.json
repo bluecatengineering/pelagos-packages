@@ -52,6 +52,7 @@
     "babel-loader": "^10.0.0",
     "babel-plugin-macros": "^3.1.0",
     "chromatic": "^13.0.1",
+    "dts-bundle-generator": "^9.5.1",
     "enzyme": "^3.11.0",
     "esbuild": "^0.25.0",
     "eslint": "^9.19.0",
