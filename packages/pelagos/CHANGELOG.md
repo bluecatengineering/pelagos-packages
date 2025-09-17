@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.21.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.20.1...@bluecateng/pelagos@12.21.0) (2025-09-17)
+
+### Features
+
+- add disabled property to ListInput ([e278e14](https://github.com/bluecatengineering/pelagos-packages/commit/e278e14eec025f9aab6d2d44c1cf67c3b9f7e439))
+
+### Bug Fixes
+
+- make list selector dialog columns scrollable above the medium breakpoint ([546805b](https://github.com/bluecatengineering/pelagos-packages/commit/546805b12f512bbd1bbf82fa3d7e682e06f5111f))
+
 ## [12.20.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.20.0...@bluecateng/pelagos@12.20.1) (2025-09-10)
 
 ### Bug Fixes
