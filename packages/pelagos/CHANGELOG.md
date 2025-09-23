@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.22.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.21.0...@bluecateng/pelagos@12.22.0) (2025-09-23)
+
+### Features
+
+- add support for additional locales ([b66d55c](https://github.com/bluecatengineering/pelagos-packages/commit/b66d55c0d0630c78127959ea2624533fd28c2941))
+
 ## [12.21.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.20.1...@bluecateng/pelagos@12.21.0) (2025-09-17)
 
 ### Features
