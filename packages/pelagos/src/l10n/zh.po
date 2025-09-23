@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-09-09T16:22:37.743Z\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @bluecateng/l10n-cli\n"
+"Language: zh\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-09-22 17:24+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: f523
+msgid "\"From\" must be less than \"To\"."
+msgstr "“起始值”必须小于“结束值”。"
+
+#: 0489
+msgid "(configured)"
+msgstr "（已配置）"
+
+#: b16c
+msgid "(optional)"
+msgstr "（可选）"
+
+#: 0279
+msgid "{0} dropped. Final position in list: {1} of {count}."
+msgstr "{0}已删除。列表中的最终位置：{1}/{count}。"
+
+#: b2b7
+msgid "{0} grabbed. Current position in list: {1} of {count}. Press up or down arrow keys to change position, space bar to drop, Escape key to cancel."
+msgstr "{0}已抓取。列表中的当前位置：{1}/{count}。按向上或向下箭头键改变位置，按空格键放下，按 Esc 键取消。"
+
+#: f7b5
+msgid "{0} reorder cancelled."
+msgstr "{0}重新订购已取消。"
+
+#: 607a
+msgid "{0}. Current position in list: {1} of {count}."
+msgstr "{0}。列表中的当前位置：{1}/{count}。"
+
+#: e7c9
+msgid "{0}{isSelected, select, true {, selected} other {}}"
+msgstr "{0}{isSelected, select, true {，已选择} other {}}"
+
+#: e3e8
+msgid "{min}-{max} items"
+msgstr "{min} - {max}项"
+
+#: 846a
+msgid "{min}-{max} of {total} items"
+msgstr "{min} - {max}/{total}项"
+
+#: dae4
+msgid "{name} added"
+msgstr "已添加{name}"
+
+#: c5fe
+msgid "{name} removed"
+msgstr "已移除{name}"
+
+#: 9388
+msgid "{name} removed. {allItemsRemovedText}"
+msgstr "已移除{name}。{allItemsRemovedText}"
+
+#: 990a
+msgid "{required, select, true {{label}, required. {text}} other {{label}. {text}}}"
+msgstr "{required, select, true {{label}，必填。{text}} other {{label}。{text}}}"
+
+#: 1e61
+msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
+msgstr "{selectedCount, plural, one {已选择一项} other {已选择 # 项}}"
+
+#: 13fc
+msgid "{text}, column {column}, {leaf, select, true {leaf} other {group}}"
+msgstr "{text}， 列{column}，{leaf, select, true {叶子} other {组}}"
+
+#: 61cc
+msgid "Add"
+msgstr "添加"
+
+#: d360
+msgid "Add {label}"
+msgstr "添加{label}"
+
+#: 8542
+msgid "Add filter"
+msgstr "添加过滤器"
+
+#: cfea
+msgid "Apply"
+msgstr "应用"
+
+#: 7c62
+msgid "Available"
+msgstr "可用的"
+
+#: c766
+msgid "Breadcrumb"
+msgstr "路径导航"
+
+#: 77df
+msgid "Cancel"
+msgstr "取消"
+
+#: 7bde
+msgid "Change date, {value}"
+msgstr "更改日期，{value}"
+
+#: e787
+msgid "Choose date"
+msgstr "选择日期"
+
+#: 719e
+msgid "Clear"
+msgstr "清除"
+
+#: 6730
+msgid "Clear search"
+msgstr "清除搜索"
+
+#: bbfa
+msgid "Close"
+msgstr "关闭"
+
+#: c84d
+msgid "Collapse current row"
+msgstr "折叠当前行"
+
+#: 4dfa
+msgid "Column {column} of {columnCount}"
+msgstr "列 {column}/{columnCount}"
+
+#: 1f5a
+msgid "Complete"
+msgstr "完成"
+
+#: 8e3d
+msgid "Copied"
+msgstr "已复制"
+
+#: af74
+msgid "Copy"
+msgstr "复制"
+
+#: 54c0
+msgid "Copy failed: {message}"
+msgstr "复制失败：{message}"
+
+#: 4fc0
+msgid "Current"
+msgstr "当前"
+
+#: 081a
+msgid "Custom"
+msgstr "自定义"
+
+#: f6fd
+msgid "Delete"
+msgstr "删除"
+
+#: 1164
+msgid "Delete {name}"
+msgstr "删除{name}"
+
+#: 70af
+msgid "Dismiss"
+msgstr "解雇"
+
+#: 5301
+msgid "Edit"
+msgstr "编辑"
+
+#: fccf
+msgid "Enter either one or both values."
+msgstr "输入一个或两个值。"
+
+#: 8dca
+msgid "Expand current row"
+msgstr "展开当前行"
+
+#: 63a1
+msgid "File {0} uploaded"
+msgstr "文件{0}已上传"
+
+#: 7ec2
+msgid "Files {0} uploaded"
+msgstr "文件{0}已上传"
+
+#: 3f66
+msgid "From"
+msgstr "从"
+
+#: c47a
+msgid "Help"
+msgstr "帮助"
+
+#: 387f
+msgid "Incomplete"
+msgstr "不完整"
+
+#: 54e0
+msgid "Invalid"
+msgstr "无效"
+
+#: 6a01
+msgid "Items per page"
+msgstr "每页项目数"
+
+#: 8f26
+msgid "Loading"
+msgstr "加载中"
+
+#: 689e
+msgid "Loading node"
+msgstr "正在加载节点"
+
+#: 6467
+msgid "member"
+msgstr "成员"
+
+#: 8abf
+msgid "Next month"
+msgstr "下个月"
+
+#: 4bfc
+msgid "Next page"
+msgstr "下一页"
+
+#: 3501
+msgid "of {totalPages}"
+msgstr "共{totalPages}页"
+
+#: e3de
+msgid "Off"
+msgstr "关"
+
+#: e004
+msgid "On"
+msgstr "开"
+
+#: 6bf5
+msgid "Options"
+msgstr "选项"
+
+#: 7670
+msgid "page"
+msgstr "页面"
+
+#: d146
+msgid "page {page}"
+msgstr "页面{page}"
+
+#: ae7c
+msgid "Press delete to remove tab"
+msgstr "按删除键移除标签"
+
+#: 0363
+msgid "Press Enter to add items to the list."
+msgstr "按 Enter 键将项目添加到列表中。"
+
+#: 7ce8
+msgid "Press space bar to reorder"
+msgstr "按空格键重新排序"
+
+#: 46a2
+msgid "Previous month"
+msgstr "上个月"
+
+#: 81f5
+msgid "Previous page"
+msgstr "上一页"
+
+#: df71
+msgid "Remove {name}"
+msgstr "移除{name}"
+
+#: 9e5f
+msgid "Remove {name} filter"
+msgstr "移除{name}筛选"
+
+#: a352
+msgid "Resize column"
+msgstr "调整列大小"
+
+#: 894a
+msgid "Restore defaults"
+msgstr "恢复默认值"
+
+#: efc0
+msgid "Save"
+msgstr "保存"
+
+#: 9a97
+msgid "Selected"
+msgstr "已选"
+
+#: 1098
+msgid "The default settings have been restored."
+msgstr "已恢复默认设置。"
+
+#: ae79
+msgid "To"
+msgstr "至"
+
+#: 67a8
+msgid "Use cursor keys to select an item"
+msgstr "使用光标键选择项目"
+
+#: ea2d
+msgid "Use cursor keys to select date"
+msgstr "使用光标键选择日期"

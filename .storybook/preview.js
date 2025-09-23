@@ -70,7 +70,12 @@ export default {
 				icon: 'globe',
 				items: [
 					{value: 'en', right: '🇺🇸', title: 'English'},
+					{value: 'de', right: '🇩🇪', title: 'Deutsch'},
 					{value: 'es', right: '🇪🇸', title: 'Español'},
+					{value: 'fr', right: '🇫🇷', title: 'Français'},
+					{value: 'ja', right: '🇯🇵', title: '日本語'},
+					{value: 'pt', right: '🇵🇹', title: 'Português'},
+					{value: 'zh', right: '🇨🇳', title: '中文'},
 				],
 			},
 		},

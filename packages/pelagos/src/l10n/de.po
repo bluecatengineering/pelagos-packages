@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-09-09T16:22:37.743Z\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @bluecateng/l10n-cli\n"
+"Language: de\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-09-22 17:24+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: f523
+msgid "\"From\" must be less than \"To\"."
+msgstr "„From“ muss kleiner sein als „To“."
+
+#: 0489
+msgid "(configured)"
+msgstr "(konfiguriert)"
+
+#: b16c
+msgid "(optional)"
+msgstr "(optional)"
+
+#: 0279
+msgid "{0} dropped. Final position in list: {1} of {count}."
+msgstr "{0} verworfen. Endgültige Position in Liste: {1} von {count}."
+
+#: b2b7
+msgid "{0} grabbed. Current position in list: {1} of {count}. Press up or down arrow keys to change position, space bar to drop, Escape key to cancel."
+msgstr "{0} erfasst. Aktuelle Position in Liste: {1} von {count}. Drücken Sie die Pfeiltasten nach oben oder unten, um die Position zu ändern, die Leertaste zum Ablegen, die Escape-Taste zum Abbrechen."
+
+#: f7b5
+msgid "{0} reorder cancelled."
+msgstr "{0} Nachbestellung storniert."
+
+#: 607a
+msgid "{0}. Current position in list: {1} of {count}."
+msgstr "{0}. Aktuelle Position in der Liste: {1} von {count}."
+
+#: e7c9
+msgid "{0}{isSelected, select, true {, selected} other {}}"
+msgstr "{0}{isSelected, select, true {, auswgewähte} other {}}"
+
+#: e3e8
+msgid "{min}-{max} items"
+msgstr "{min}-{max} Elemente"
+
+#: 846a
+msgid "{min}-{max} of {total} items"
+msgstr "{min}-{max} von {total} Element"
+
+#: dae4
+msgid "{name} added"
+msgstr "{name} hinzugefügt"
+
+#: c5fe
+msgid "{name} removed"
+msgstr "{name} entfernt"
+
+#: 9388
+msgid "{name} removed. {allItemsRemovedText}"
+msgstr "{name} entfernt. {allItemsRemovedText}"
+
+#: 990a
+msgid "{required, select, true {{label}, required. {text}} other {{label}. {text}}}"
+msgstr "{required, select, true {{label}, erforderlich. {text}} other {{label}. {text}}}"
+
+#: 1e61
+msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
+msgstr "{selectedCount, plural, one {ein ausgewähltes Element} other {# ausgewählte Elemente}}"
+
+#: 13fc
+msgid "{text}, column {column}, {leaf, select, true {leaf} other {group}}"
+msgstr "{text}, Spalte {column}, {leaf, select, true {Blatt} other {Gruppe}}"
+
+#: 61cc
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: d360
+msgid "Add {label}"
+msgstr "Hinzufügen von {label}"
+
+#: 8542
+msgid "Add filter"
+msgstr "Filter hinzufügen"
+
+#: cfea
+msgid "Apply"
+msgstr "Bewerben"
+
+#: 7c62
+msgid "Available"
+msgstr "Verfügbar"
+
+#: c766
+msgid "Breadcrumb"
+msgstr "Breadcrumb"
+
+#: 77df
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: 7bde
+msgid "Change date, {value}"
+msgstr "Datum ändern, {value}"
+
+#: e787
+msgid "Choose date"
+msgstr "Datum auswählen"
+
+#: 719e
+msgid "Clear"
+msgstr "Löschen"
+
+#: 6730
+msgid "Clear search"
+msgstr "Suche löschen"
+
+#: bbfa
+msgid "Close"
+msgstr "Schließen"
+
+#: c84d
+msgid "Collapse current row"
+msgstr "Aktuelle Zeile einklappen"
+
+#: 4dfa
+msgid "Column {column} of {columnCount}"
+msgstr "Spalte {column} von {columnCount}"
+
+#: 1f5a
+msgid "Complete"
+msgstr "Abgeschlossen"
+
+#: 8e3d
+msgid "Copied"
+msgstr "Kopiert"
+
+#: af74
+msgid "Copy"
+msgstr "Kopieren"
+
+#: 54c0
+msgid "Copy failed: {message}"
+msgstr "Kopie fehlgeschlagen: {message}"
+
+#: 4fc0
+msgid "Current"
+msgstr "Aktuell"
+
+#: 081a
+msgid "Custom"
+msgstr "Benutzerdefiniert"
+
+#: f6fd
+msgid "Delete"
+msgstr "Löschen"
+
+#: 1164
+msgid "Delete {name}"
+msgstr "{name} löschen"
+
+#: 70af
+msgid "Dismiss"
+msgstr "Verwerfen"
+
+#: 5301
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: fccf
+msgid "Enter either one or both values."
+msgstr "Geben Sie entweder einen oder beide Werte ein."
+
+#: 8dca
+msgid "Expand current row"
+msgstr "Aktuelle Zeile erweitern"
+
+#: 63a1
+msgid "File {0} uploaded"
+msgstr "Datei {0} hochgeladen"
+
+#: 7ec2
+msgid "Files {0} uploaded"
+msgstr "Dateien {0} hochgeladen"
+
+#: 3f66
+msgid "From"
+msgstr "Von"
+
+#: c47a
+msgid "Help"
+msgstr "Hilfe"
+
+#: 387f
+msgid "Incomplete"
+msgstr "Unvollständig"
+
+#: 54e0
+msgid "Invalid"
+msgstr "Ungültig"
+
+#: 6a01
+msgid "Items per page"
+msgstr "Elemente pro Seite"
+
+#: 8f26
+msgid "Loading"
+msgstr "Wird geladen"
+
+#: 689e
+msgid "Loading node"
+msgstr "Knoten laden"
+
+#: 6467
+msgid "member"
+msgstr "Mitglied"
+
+#: 8abf
+msgid "Next month"
+msgstr "Nächster Monat"
+
+#: 4bfc
+msgid "Next page"
+msgstr "Nächste Seite"
+
+#: 3501
+msgid "of {totalPages}"
+msgstr "von {totalPages}"
+
+#: e3de
+msgid "Off"
+msgstr "Aus"
+
+#: e004
+msgid "On"
+msgstr "Auf"
+
+#: 6bf5
+msgid "Options"
+msgstr "Optionen"
+
+#: 7670
+msgid "page"
+msgstr "Seite"
+
+#: d146
+msgid "page {page}"
+msgstr "Seite {page}"
+
+#: ae7c
+msgid "Press delete to remove tab"
+msgstr "Drücken Sie auf Löschen, um die Registerkarte zu entfernen"
+
+#: 0363
+msgid "Press Enter to add items to the list."
+msgstr "Drücken Sie die Eingabetaste, um der Liste Elemente hinzuzufügen."
+
+#: 7ce8
+msgid "Press space bar to reorder"
+msgstr "Drücken Sie die Leertaste zum Neuordnen"
+
+#: 46a2
+msgid "Previous month"
+msgstr "Vorheriger Monat"
+
+#: 81f5
+msgid "Previous page"
+msgstr "Vorherige Seite"
+
+#: df71
+msgid "Remove {name}"
+msgstr "{name} entfernen"
+
+#: 9e5f
+msgid "Remove {name} filter"
+msgstr "{name}-Filter entfernen"
+
+#: a352
+msgid "Resize column"
+msgstr "Größe der Spalte ändern"
+
+#: 894a
+msgid "Restore defaults"
+msgstr "Standardwerte wiederherstellen"
+
+#: efc0
+msgid "Save"
+msgstr "Speichern"
+
+#: 9a97
+msgid "Selected"
+msgstr "Ausgewählte"
+
+#: 1098
+msgid "The default settings have been restored."
+msgstr "Die Standardeinstellungen wurden wiederhergestellt."
+
+#: ae79
+msgid "To"
+msgstr "An"
+
+#: 67a8
+msgid "Use cursor keys to select an item"
+msgstr "Verwenden Sie die Cursortasten zur Auswahl eines Elements"
+
+#: ea2d
+msgid "Use cursor keys to select date"
+msgstr "Verwenden Sie die Cursortasten zur Auswahl des Datums"
