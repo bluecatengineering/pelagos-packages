@@ -58,7 +58,7 @@ export function scrollToItem(
  * This function should be called as early as possible,
  * the caller must catch the returned promise and handle any errors.
  */
-export function setLocale(locale: 'en' | 'es'): Promise<void>;
+export function setLocale(locale: 'de' | 'en' | 'es' | 'fr' | 'ja' | 'pt' | 'zh'): Promise<void>;
 
 /** Starts a slide down animation on the specified element. */
 export function slideDownEffect(element: Element): void;

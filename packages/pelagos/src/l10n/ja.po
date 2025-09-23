@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-09-09T16:22:37.743Z\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @bluecateng/l10n-cli\n"
+"Language: ja\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-09-22 17:24+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: f523
+msgid "\"From\" must be less than \"To\"."
+msgstr "\"From\" は \"To\" より小さくなければいけません。"
+
+#: 0489
+msgid "(configured)"
+msgstr "（設定済み）"
+
+#: b16c
+msgid "(optional)"
+msgstr "（オプション）"
+
+#: 0279
+msgid "{0} dropped. Final position in list: {1} of {count}."
+msgstr "{0} をドロップしました。リストの最終位置: {count} の {1}。"
+
+#: b2b7
+msgid "{0} grabbed. Current position in list: {1} of {count}. Press up or down arrow keys to change position, space bar to drop, Escape key to cancel."
+msgstr "{0} をつかみました。リスト内の現在の位置: {count} の {1}。上下の矢印キーを押すと位置が変わり、スペースキーを押すとドロップされ、Escapeキーを押すとキャンセルされます。"
+
+#: f7b5
+msgid "{0} reorder cancelled."
+msgstr "{0} の再注文はキャンセルされました。"
+
+#: 607a
+msgid "{0}. Current position in list: {1} of {count}."
+msgstr "{0}。リスト内の現在の位置: {count} の {1}。"
+
+#: e7c9
+msgid "{0}{isSelected, select, true {, selected} other {}}"
+msgstr "{0}{isSelected, select, true {、選択済み} other {}}"
+
+#: e3e8
+msgid "{min}-{max} items"
+msgstr "{min}-{max} の項目"
+
+#: 846a
+msgid "{min}-{max} of {total} items"
+msgstr "{total} の {min}-{max} 項目"
+
+#: dae4
+msgid "{name} added"
+msgstr "{name} 追加済み"
+
+#: c5fe
+msgid "{name} removed"
+msgstr "{name} 削除済み"
+
+#: 9388
+msgid "{name} removed. {allItemsRemovedText}"
+msgstr "{name} を削除しました。{allItemsRemovedText}"
+
+#: 990a
+msgid "{required, select, true {{label}, required. {text}} other {{label}. {text}}}"
+msgstr "{required, select, true {{label}、必須。{text}} other {{label}. {text}}}"
+
+#: 1e61
+msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
+msgstr "{selectedCount, plural, one {1 個の項目を選択済み} other {# 個の項目を選択済み}}"
+
+#: 13fc
+msgid "{text}, column {column}, {leaf, select, true {leaf} other {group}}"
+msgstr "{text}、列 {column}、{leaf, select, true {リーフ} other {グループ}}"
+
+#: 61cc
+msgid "Add"
+msgstr "追加"
+
+#: d360
+msgid "Add {label}"
+msgstr "{label} を追加"
+
+#: 8542
+msgid "Add filter"
+msgstr "フィルタの追加"
+
+#: cfea
+msgid "Apply"
+msgstr "適用"
+
+#: 7c62
+msgid "Available"
+msgstr "使用可能"
+
+#: c766
+msgid "Breadcrumb"
+msgstr "階層リンク"
+
+#: 77df
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: 7bde
+msgid "Change date, {value}"
+msgstr "変更日、{value}"
+
+#: e787
+msgid "Choose date"
+msgstr "日付を選択"
+
+#: 719e
+msgid "Clear"
+msgstr "クリア"
+
+#: 6730
+msgid "Clear search"
+msgstr "検索のクリア"
+
+#: bbfa
+msgid "Close"
+msgstr "閉じる"
+
+#: c84d
+msgid "Collapse current row"
+msgstr "現在の行を折りたたむ"
+
+#: 4dfa
+msgid "Column {column} of {columnCount}"
+msgstr "列 {columnCount} の {column}"
+
+#: 1f5a
+msgid "Complete"
+msgstr "完了"
+
+#: 8e3d
+msgid "Copied"
+msgstr "コピー済み"
+
+#: af74
+msgid "Copy"
+msgstr "コピー"
+
+#: 54c0
+msgid "Copy failed: {message}"
+msgstr "コピーに失敗しました: {message}"
+
+#: 4fc0
+msgid "Current"
+msgstr "現在"
+
+#: 081a
+msgid "Custom"
+msgstr "カスタム"
+
+#: f6fd
+msgid "Delete"
+msgstr "削除"
+
+#: 1164
+msgid "Delete {name}"
+msgstr "{name} の削除"
+
+#: 70af
+msgid "Dismiss"
+msgstr "解散"
+
+#: 5301
+msgid "Edit"
+msgstr "編集"
+
+#: fccf
+msgid "Enter either one or both values."
+msgstr "どちらか一方、または両方の値を入力します。"
+
+#: 8dca
+msgid "Expand current row"
+msgstr "現在の行を展開する"
+
+#: 63a1
+msgid "File {0} uploaded"
+msgstr "ファイル {0} をアップロード済み"
+
+#: 7ec2
+msgid "Files {0} uploaded"
+msgstr "ファイル {0} をアップロード済み"
+
+#: 3f66
+msgid "From"
+msgstr "から"
+
+#: c47a
+msgid "Help"
+msgstr "Help"
+
+#: 387f
+msgid "Incomplete"
+msgstr "未完了"
+
+#: 54e0
+msgid "Invalid"
+msgstr "無効"
+
+#: 6a01
+msgid "Items per page"
+msgstr "ページごとの項目"
+
+#: 8f26
+msgid "Loading"
+msgstr "ロード中"
+
+#: 689e
+msgid "Loading node"
+msgstr "ノードをロード中"
+
+#: 6467
+msgid "member"
+msgstr "メンバー"
+
+#: 8abf
+msgid "Next month"
+msgstr "次の月"
+
+#: 4bfc
+msgid "Next page"
+msgstr "次のページ"
+
+#: 3501
+msgid "of {totalPages}"
+msgstr "{totalPages} の"
+
+#: e3de
+msgid "Off"
+msgstr "Off"
+
+#: e004
+msgid "On"
+msgstr "On"
+
+#: 6bf5
+msgid "Options"
+msgstr "オプション"
+
+#: 7670
+msgid "page"
+msgstr "ページ"
+
+#: d146
+msgid "page {page}"
+msgstr "page {page}"
+
+#: ae7c
+msgid "Press delete to remove tab"
+msgstr "deleteを押してタブを削除"
+
+#: 0363
+msgid "Press Enter to add items to the list."
+msgstr "Enter キーを押してリストに項目を追加します。"
+
+#: 7ce8
+msgid "Press space bar to reorder"
+msgstr "スペースバーを押して順序変更"
+
+#: 46a2
+msgid "Previous month"
+msgstr "前の月"
+
+#: 81f5
+msgid "Previous page"
+msgstr "前のページ"
+
+#: df71
+msgid "Remove {name}"
+msgstr "{name} の削除"
+
+#: 9e5f
+msgid "Remove {name} filter"
+msgstr "{name} のフィルタの削除"
+
+#: a352
+msgid "Resize column"
+msgstr "列のサイズを変更する"
+
+#: 894a
+msgid "Restore defaults"
+msgstr "デフォルトに戻す"
+
+#: efc0
+msgid "Save"
+msgstr "保存"
+
+#: 9a97
+msgid "Selected"
+msgstr "選択済み"
+
+#: 1098
+msgid "The default settings have been restored."
+msgstr "デフォルト設定が復元されました。"
+
+#: ae79
+msgid "To"
+msgstr "まで"
+
+#: 67a8
+msgid "Use cursor keys to select an item"
+msgstr "カーソルキーで項目を選択"
+
+#: ea2d
+msgid "Use cursor keys to select date"
+msgstr "カーソルキーで日付を選択"

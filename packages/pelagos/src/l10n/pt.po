@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-09-09T16:22:37.743Z\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @bluecateng/l10n-cli\n"
+"Language: pt\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-09-22 17:24+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: f523
+msgid "\"From\" must be less than \"To\"."
+msgstr "\"De\" deve ser inferior a \"Até\""
+
+#: 0489
+msgid "(configured)"
+msgstr "(configurado)"
+
+#: b16c
+msgid "(optional)"
+msgstr "(opcional)"
+
+#: 0279
+msgid "{0} dropped. Final position in list: {1} of {count}."
+msgstr "{0} foi largado. Posição final na lista: {1} de {count}."
+
+#: b2b7
+msgid "{0} grabbed. Current position in list: {1} of {count}. Press up or down arrow keys to change position, space bar to drop, Escape key to cancel."
+msgstr "{0} foi agarrado. Posição atual na lista: {1} de {count}. Prima as teclas de seta para cima ou para baixo para mudar de posição, a barra de espaços para largar, a tecla Escape para cancelar."
+
+#: f7b5
+msgid "{0} reorder cancelled."
+msgstr "{0} reordenação cancelada."
+
+#: 607a
+msgid "{0}. Current position in list: {1} of {count}."
+msgstr "{0}. Posição atual na lista: {1} de {count}."
+
+#: e7c9
+msgid "{0}{isSelected, select, true {, selected} other {}}"
+msgstr "{0}{isSelected, select, true {, selecionado} other {}}"
+
+#: e3e8
+msgid "{min}-{max} items"
+msgstr "{min}-{max} itens"
+
+#: 846a
+msgid "{min}-{max} of {total} items"
+msgstr "{min}-{max} de {total} itens"
+
+#: dae4
+msgid "{name} added"
+msgstr "{name} adicionado"
+
+#: c5fe
+msgid "{name} removed"
+msgstr "{name} removido"
+
+#: 9388
+msgid "{name} removed. {allItemsRemovedText}"
+msgstr "{name} removido. {allItemsRemovedText}"
+
+#: 990a
+msgid "{required, select, true {{label}, required. {text}} other {{label}. {text}}}"
+msgstr "{required, select, true {{label}, obrigatório. {text}} other {{label}. {text}}}"
+
+#: 1e61
+msgid "{selectedCount, plural, one {one item selected} other {# items selected}}"
+msgstr "{selectedCount, plural, one {um item selecionado} other {# itens selecionados}}"
+
+#: 13fc
+msgid "{text}, column {column}, {leaf, select, true {leaf} other {group}}"
+msgstr "{text}, coluna {column}, {leaf, select, true {folha} other {grupo}}"
+
+#: 61cc
+msgid "Add"
+msgstr "Adicionar"
+
+#: d360
+msgid "Add {label}"
+msgstr "Adicionar {label}"
+
+#: 8542
+msgid "Add filter"
+msgstr "Adicionar filtro"
+
+#: cfea
+msgid "Apply"
+msgstr "Aplicar"
+
+#: 7c62
+msgid "Available"
+msgstr "Disponível"
+
+#: c766
+msgid "Breadcrumb"
+msgstr "Trilho"
+
+#: 77df
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: 7bde
+msgid "Change date, {value}"
+msgstr "Data de modificação, {value}"
+
+#: e787
+msgid "Choose date"
+msgstr "Escolher data"
+
+#: 719e
+msgid "Clear"
+msgstr "Limpar"
+
+#: 6730
+msgid "Clear search"
+msgstr "Limpar pesquisa"
+
+#: bbfa
+msgid "Close"
+msgstr "Fechar"
+
+#: c84d
+msgid "Collapse current row"
+msgstr "Recolher a linha atual"
+
+#: 4dfa
+msgid "Column {column} of {columnCount}"
+msgstr "Coluna {column} de {columnCount}"
+
+#: 1f5a
+msgid "Complete"
+msgstr "Concluído"
+
+#: 8e3d
+msgid "Copied"
+msgstr "Copiado"
+
+#: af74
+msgid "Copy"
+msgstr "Cópia"
+
+#: 54c0
+msgid "Copy failed: {message}"
+msgstr "A cópia falhou: {message}"
+
+#: 4fc0
+msgid "Current"
+msgstr "Atual"
+
+#: 081a
+msgid "Custom"
+msgstr "Personalizado"
+
+#: f6fd
+msgid "Delete"
+msgstr "Eliminar"
+
+#: 1164
+msgid "Delete {name}"
+msgstr "Eliminar {name}"
+
+#: 70af
+msgid "Dismiss"
+msgstr "Dispensar"
+
+#: 5301
+msgid "Edit"
+msgstr "Editar"
+
+#: fccf
+msgid "Enter either one or both values."
+msgstr "Introduza um ou ambos os valores."
+
+#: 8dca
+msgid "Expand current row"
+msgstr "Expandir a linha atual"
+
+#: 63a1
+msgid "File {0} uploaded"
+msgstr "Ficheiro {0} carregado"
+
+#: 7ec2
+msgid "Files {0} uploaded"
+msgstr "Ficheiros {0} carregados"
+
+#: 3f66
+msgid "From"
+msgstr "De"
+
+#: c47a
+msgid "Help"
+msgstr "Ajuda"
+
+#: 387f
+msgid "Incomplete"
+msgstr "Incompleto"
+
+#: 54e0
+msgid "Invalid"
+msgstr "Inválido"
+
+#: 6a01
+msgid "Items per page"
+msgstr "Itens por página"
+
+#: 8f26
+msgid "Loading"
+msgstr "Carregamento"
+
+#: 689e
+msgid "Loading node"
+msgstr "Nó de carregamento"
+
+#: 6467
+msgid "member"
+msgstr "membro"
+
+#: 8abf
+msgid "Next month"
+msgstr "Mês seguinte"
+
+#: 4bfc
+msgid "Next page"
+msgstr "Página seguinte"
+
+#: 3501
+msgid "of {totalPages}"
+msgstr "de {totalPages}"
+
+#: e3de
+msgid "Off"
+msgstr "Desligado"
+
+#: e004
+msgid "On"
+msgstr "Ligado"
+
+#: 6bf5
+msgid "Options"
+msgstr "Opções"
+
+#: 7670
+msgid "page"
+msgstr "página"
+
+#: d146
+msgid "page {page}"
+msgstr "página {page}"
+
+#: ae7c
+msgid "Press delete to remove tab"
+msgstr "Prima apagar para remover o separador"
+
+#: 0363
+msgid "Press Enter to add items to the list."
+msgstr "Prima Enter para adicionar itens à lista."
+
+#: 7ce8
+msgid "Press space bar to reorder"
+msgstr "Prima a barra de espaços para reordenar"
+
+#: 46a2
+msgid "Previous month"
+msgstr "Mês anterior"
+
+#: 81f5
+msgid "Previous page"
+msgstr "Página anterior"
+
+#: df71
+msgid "Remove {name}"
+msgstr "Remover {name}"
+
+#: 9e5f
+msgid "Remove {name} filter"
+msgstr "Remover o filtro {name}"
+
+#: a352
+msgid "Resize column"
+msgstr "Redimensionar coluna"
+
+#: 894a
+msgid "Restore defaults"
+msgstr "Repor as predefinições"
+
+#: efc0
+msgid "Save"
+msgstr "Guardar"
+
+#: 9a97
+msgid "Selected"
+msgstr "Selecionado"
+
+#: 1098
+msgid "The default settings have been restored."
+msgstr "As predefinições foram repostas."
+
+#: ae79
+msgid "To"
+msgstr "Para"
+
+#: 67a8
+msgid "Use cursor keys to select an item"
+msgstr "Utilize as teclas de cursor para selecionar um item"
+
+#: ea2d
+msgid "Use cursor keys to select date"
+msgstr "Utilize as teclas de cursor para selecionar a data"
