@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.22.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.22.0...@bluecateng/pelagos@12.22.1) (2025-09-26)
+
+### Bug Fixes
+
+- use correct imports in DateInput.less ([2894d75](https://github.com/bluecatengineering/pelagos-packages/commit/2894d7522801ebff63cfb5d9e390a8f6b1c0029c))
+
 ## [12.22.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.21.0...@bluecateng/pelagos@12.22.0) (2025-09-23)
 
 ### Features
