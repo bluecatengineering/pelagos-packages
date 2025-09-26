@@ -1,0 +1,27 @@
+{
+  "name": "@bluecateng/pelagos-gpt",
+  "version": "0.1.0",
+  "description": "Bundled version of Pelagos for use in ChatGPT",
+  "license": "ISC",
+  "scripts": {
+    "build": "rm -rf dist && node bundle.js && cp ../pelagos/dist/index.d.ts dist/",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bluecatengineering/pelagos-packages.git",
+    "directory": "packages/pelagos-gpt"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "devDependencies": {
+    "@bluecateng/pelagos": "^12.22.0"
+  }
+}
