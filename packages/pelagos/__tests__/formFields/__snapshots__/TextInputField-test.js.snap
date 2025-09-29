@@ -1,16 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TextInputField rendering adds the error class if the error is set 1`] = `
-<div
+<FieldWrapper
   className="TextInputField"
+  error="Error"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  label="Label"
 >
-  <LabelLine
-    error={true}
-    htmlFor="random-id"
-    text="Label"
-  />
   <Layer
-    aria-describedby="random-id-error"
+    aria-describedby="random-id-helper"
     aria-invalid={true}
     as="input"
     className="TextInputField__input TextInputField--error"
@@ -23,23 +23,18 @@ exports[`TextInputField rendering adds the error class if the error is set 1`] =
     type="text"
     value="value"
   />
-  <FieldError
-    id="random-id-error"
-    text="Error"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TextInputField rendering renders expected elements 1`] = `
-<div
+<FieldWrapper
   className="TextInputField"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  label="Label"
+  required={true}
 >
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    required={true}
-    text="Label"
-  />
   <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -54,22 +49,16 @@ exports[`TextInputField rendering renders expected elements 1`] = `
     type="text"
     value="value"
   />
-  <FieldHelper
-    id="random-id-helper"
-    text="Helper text"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TextInputField rendering renders expected elements when className is set 1`] = `
-<div
+<FieldWrapper
   className="TextInputField TestClass"
+  helperId="random-id-helper"
+  htmlFor="random-id"
+  label="Label"
 >
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    text="Label"
-  />
   <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -84,21 +73,16 @@ exports[`TextInputField rendering renders expected elements when className is se
     type="text"
     value="value"
   />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TextInputField rendering renders expected elements when value is empty 1`] = `
-<div
+<FieldWrapper
   className="TextInputField"
+  helperId="random-id-helper"
+  htmlFor="random-id"
+  label="Label"
 >
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    text="Label"
-  />
   <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -113,8 +97,5 @@ exports[`TextInputField rendering renders expected elements when value is empty 
     type="text"
     value=""
   />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
+</FieldWrapper>
 `;

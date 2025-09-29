@@ -5,7 +5,6 @@ import {t} from '@bluecateng/l10n.macro';
 import useRandomId from '../hooks/useRandomId';
 import LabelLine from '../components/LabelLine';
 import ComboBox from '../components/ComboBox';
-import FieldError from '../formFields/FieldError';
 import FieldHelper from '../formFields/FieldHelper';
 
 import ListEntries from './ListEntries';
@@ -153,7 +152,6 @@ const ListInput = ({
 	const empty = !list?.length;
 	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
-	const errorId = `${id}-error`;
 	return (
 		<div className={`ListInput${className ? ` ${className}` : ''}`}>
 			<div className="sr-only" aria-live="assertive" ref={liveRef} />
@@ -167,13 +165,13 @@ const ListInput = ({
 				error={!!error}
 				getSuggestions={handleGetSuggestions}
 				renderSuggestion={renderSuggestion}
-				aria-describedby={error ? errorId : helperId}
+				aria-describedby={helperId}
 				aria-required={required}
 				onChange={handleChange}
 				onEnter={handleEnter}
 				onTextChange={handleTextChange}
 			/>
-			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
+			<FieldHelper id={helperId} text={helperText} error={error} />
 			{empty ? (
 				<div className="ListInput__empty" id={id + '-empty'} aria-live="polite">
 					{emptyText}

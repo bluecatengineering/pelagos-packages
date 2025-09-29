@@ -1,14 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DropDownField rendering renders expected elements 1`] = `
-<div
+<FieldWrapper
   className="DropDownField"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  id="random-id-label"
+  label="Test"
 >
-  <LabelLine
-    error={false}
-    id="random-id-label"
-    text="Test"
-  />
   <Select
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -26,25 +25,21 @@ exports[`DropDownField rendering renders expected elements 1`] = `
     renderOption={[Function]}
     value="o0"
   />
-  <FieldHelper
-    id="random-id-helper"
-    text="Helper text"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`DropDownField rendering renders expected elements when optional properties are set 1`] = `
-<div
+<FieldWrapper
   className="DropDownField TestClass"
+  error="Error"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  id="random-id-label"
+  label="Test"
+  required={true}
 >
-  <LabelLine
-    error={true}
-    id="random-id-label"
-    required={true}
-    text="Test"
-  />
   <Select
-    aria-describedby="random-id-error"
+    aria-describedby="random-id-helper"
     aria-invalid={true}
     aria-labelledby="random-id-label"
     aria-required={true}
@@ -62,9 +57,5 @@ exports[`DropDownField rendering renders expected elements when optional propert
     renderOption={[Function]}
     value="o0"
   />
-  <FieldError
-    id="random-id-error"
-    text="Error"
-  />
-</div>
+</FieldWrapper>
 `;

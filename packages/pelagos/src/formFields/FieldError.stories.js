@@ -1,7 +1,7 @@
 import FieldError from './FieldError';
 
 export default {
-	title: 'Components/FieldError',
+	title: 'Deprecated/FieldError',
 	component: FieldError,
 };
 

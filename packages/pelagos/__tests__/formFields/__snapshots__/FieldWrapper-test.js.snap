@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`FieldWrapper rendering renders expected elements 1`] = `
+<div
+  className="FieldWrapper"
+>
+  <LabelLine
+    error={false}
+    text="Test label"
+  />
+  Children
+  <FieldHelper />
+</div>
+`;
+
+exports[`FieldWrapper rendering renders expected elements when optional properties are set 1`] = `
+<div
+  className="FieldWrapper TestClass"
+>
+  <LabelLine
+    counter="Counter"
+    error={true}
+    id="test"
+    required={true}
+    text="Test label"
+  />
+  Children
+  <FieldHelper
+    error="Test error"
+    id="helper"
+    text="Test helper"
+  />
+</div>
+`;

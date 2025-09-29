@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`FieldHelper rendering renders expected elements 1`] = `
 <div
@@ -6,6 +6,15 @@ exports[`FieldHelper rendering renders expected elements 1`] = `
   id="test"
 >
   Test
+</div>
+`;
+
+exports[`FieldHelper rendering renders expected elements when error is set 1`] = `
+<div
+  className="FieldHelper error"
+  id="test"
+>
+  Error
 </div>
 `;
 

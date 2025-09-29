@@ -1,16 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TagInputField rendering renders expected elements 1`] = `
-<div
+<FieldWrapper
   className="TagInputField"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  id="random-id-label"
+  label="Label"
+  required={true}
 >
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    id="random-id-label"
-    required={true}
-    text="Label"
-  />
   <TagInput
     aria-describedby="random-id-helper"
     aria-labelledby="random-id-label"
@@ -25,25 +24,21 @@ exports[`TagInputField rendering renders expected elements 1`] = `
     }
     validate={[MockFunction]}
   />
-  <FieldHelper
-    id="random-id-helper"
-    text="Helper text"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TagInputField rendering renders expected elements if error is set 1`] = `
-<div
+<FieldWrapper
   className="TagInputField"
+  error="Error"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  id="random-id-label"
+  label="Label"
 >
-  <LabelLine
-    error={true}
-    htmlFor="random-id"
-    id="random-id-label"
-    text="Label"
-  />
   <TagInput
-    aria-describedby="random-id-error"
+    aria-describedby="random-id-helper"
     aria-labelledby="random-id-label"
     error="Error"
     id="random-id"
@@ -56,23 +51,17 @@ exports[`TagInputField rendering renders expected elements if error is set 1`] =
     }
     validate={[MockFunction]}
   />
-  <FieldError
-    id="random-id-error"
-    text="Error"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TagInputField rendering renders expected elements when className is set 1`] = `
-<div
+<FieldWrapper
   className="TagInputField TestClass"
+  helperId="random-id-helper"
+  htmlFor="random-id"
+  id="random-id-label"
+  label="Label"
 >
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    id="random-id-label"
-    text="Label"
-  />
   <TagInput
     aria-describedby="random-id-helper"
     aria-labelledby="random-id-label"
@@ -86,23 +75,19 @@ exports[`TagInputField rendering renders expected elements when className is set
     }
     validate={[MockFunction]}
   />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TagInputField rendering renders expected elements when disabled 1`] = `
-<div
+<FieldWrapper
   className="TagInputField"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  id="random-id-label"
+  label="Label"
+  required={true}
 >
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    id="random-id-label"
-    required={true}
-    text="Label"
-  />
   <TagInput
     aria-describedby="random-id-helper"
     aria-labelledby="random-id-label"
@@ -118,9 +103,5 @@ exports[`TagInputField rendering renders expected elements when disabled 1`] = `
     }
     validate={[MockFunction]}
   />
-  <FieldHelper
-    id="random-id-helper"
-    text="Helper text"
-  />
-</div>
+</FieldWrapper>
 `;

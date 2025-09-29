@@ -1,34 +1,35 @@
 import PropTypes from 'prop-types';
 
-import LabelLine from '../components/LabelLine';
 import Select from '../components/Select';
 import useRandomId from '../hooks/useRandomId';
 
-import FieldError from './FieldError';
-import FieldHelper from './FieldHelper';
-import './DropDownField.less';
+import FieldWrapper from './FieldWrapper';
 
 /** A form field wrapper for [Select](/docs/components-select--docs). */
 const DropDownField = ({id, className, label, required, helperText, error, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
-	const errorId = `${id}-error`;
 	return (
-		<div className={'DropDownField' + (className ? ' ' + className : '')}>
-			<LabelLine id={labelId} text={label} required={required} error={!!error} />
+		<FieldWrapper
+			id={labelId}
+			className={`DropDownField${className ? ` ${className}` : ''}`}
+			label={label}
+			required={required}
+			helperId={helperId}
+			helperText={helperText}
+			error={error}>
 			<Select
 				{...props}
 				id={id}
 				error={!!error}
 				className="DropDownField__select"
 				aria-labelledby={labelId}
-				aria-describedby={error ? errorId : helperId}
+				aria-describedby={helperId}
 				aria-required={required}
 				aria-invalid={!!error}
 			/>
-			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
-		</div>
+		</FieldWrapper>
 	);
 };
 
