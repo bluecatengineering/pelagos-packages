@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`DateInputField rendering renders expected elements 1`] = `
+<FieldWrapper
+  className="DateInputField"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  label="Test"
+>
+  <DateInput
+    aria-describedby="random-id-helper"
+    aria-invalid={false}
+    error={false}
+    format={[MockFunction]}
+    id="random-id"
+    onChange={[MockFunction]}
+    parse={[MockFunction]}
+    value="2025-09-29"
+  />
+</FieldWrapper>
+`;
+
+exports[`DateInputField rendering renders expected elements when optional properties are set 1`] = `
+<FieldWrapper
+  className="DateInputField TestClass"
+  error="Error"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  label="Test"
+  required={true}
+>
+  <DateInput
+    aria-describedby="random-id-helper"
+    aria-invalid={true}
+    aria-required={true}
+    disabled={true}
+    error={true}
+    format={[MockFunction]}
+    id="random-id"
+    onChange={[MockFunction]}
+    parse={[MockFunction]}
+    value="2025-09-29"
+  />
+</FieldWrapper>
+`;
