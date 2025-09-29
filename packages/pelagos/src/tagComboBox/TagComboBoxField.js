@@ -1,33 +1,34 @@
 import PropTypes from 'prop-types';
 
-import FieldError from '../formFields/FieldError';
-import FieldHelper from '../formFields/FieldHelper';
-import LabelLine from '../components/LabelLine';
+import FieldWrapper from '../formFields/FieldWrapper';
 import useRandomId from '../hooks/useRandomId';
 
 import TagComboBox from './TagComboBox';
-
-import './TagComboBoxField.less';
 
 /** A form field wrapper for [TagComboBox](/docs/experimental-tagcombobox--docs). */
 const TagComboBoxField = ({id, className, label, required, helperText, error, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
-	const errorId = `${id}-error`;
 	return (
-		<div className={`TagComboBoxField${className ? ` ${className}` : ''}`}>
-			<LabelLine id={labelId} htmlFor={id} text={label} required={required} error={!!error} />
+		<FieldWrapper
+			id={labelId}
+			className={`TagComboBoxField${className ? ` ${className}` : ''}`}
+			htmlFor={id}
+			label={label}
+			required={required}
+			helperId={helperId}
+			helperText={helperText}
+			error={error}>
 			<TagComboBox
 				{...props}
 				id={id}
 				error={error}
 				aria-required={required}
 				aria-labelledby={labelId}
-				aria-describedby={error ? errorId : helperId}
+				aria-describedby={helperId}
 			/>
-			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
-		</div>
+		</FieldWrapper>
 	);
 };
 

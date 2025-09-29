@@ -1,15 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TagComboBoxField rendering renders expected elements 1`] = `
-<div
+<FieldWrapper
   className="TagComboBoxField"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  id="random-id-label"
+  label="Label"
 >
-  <LabelLine
-    error={false}
-    htmlFor="random-id"
-    id="random-id-label"
-    text="Label"
-  />
   <TagComboBox
     aria-describedby="random-id-helper"
     aria-labelledby="random-id-label"
@@ -19,26 +18,22 @@ exports[`TagComboBoxField rendering renders expected elements 1`] = `
     tags={[]}
     validate={[MockFunction]}
   />
-  <FieldHelper
-    id="random-id-helper"
-    text="Helper text"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TagComboBoxField rendering renders expected elements when optional properties are set 1`] = `
-<div
+<FieldWrapper
   className="TagComboBoxField TestClass"
+  error="Error"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  id="random-id-label"
+  label="Label"
+  required={true}
 >
-  <LabelLine
-    error={true}
-    htmlFor="random-id"
-    id="random-id-label"
-    required={true}
-    text="Label"
-  />
   <TagComboBox
-    aria-describedby="random-id-error"
+    aria-describedby="random-id-helper"
     aria-labelledby="random-id-label"
     aria-required={true}
     error="Error"
@@ -48,9 +43,5 @@ exports[`TagComboBoxField rendering renders expected elements when optional prop
     tags={[]}
     validate={[MockFunction]}
   />
-  <FieldError
-    id="random-id-error"
-    text="Error"
-  />
-</div>
+</FieldWrapper>
 `;

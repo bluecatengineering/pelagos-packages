@@ -1,22 +1,25 @@
 import PropTypes from 'prop-types';
 
 import TagInput from '../components/TagInput';
-import LabelLine from '../components/LabelLine';
 import useRandomId from '../hooks/useRandomId';
 
-import FieldError from './FieldError';
-import FieldHelper from './FieldHelper';
-import './TagInputField.less';
+import FieldWrapper from './FieldWrapper';
 
 /** A form field wrapper for [TagInput](/docs/components-taginput--docs). */
 const TagInputField = ({id, className, label, required, tags, helperText, error, disabled, ...props}) => {
 	id = useRandomId(id);
 	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
-	const errorId = `${id}-error`;
 	return (
-		<div className={`TagInputField${className ? ' ' + className : ''}`}>
-			<LabelLine id={labelId} htmlFor={id} text={label} required={required} error={!!error} />
+		<FieldWrapper
+			id={labelId}
+			className={`TagInputField${className ? ` ${className}` : ''}`}
+			htmlFor={id}
+			label={label}
+			required={required}
+			helperId={helperId}
+			helperText={helperText}
+			error={error}>
 			<TagInput
 				{...props}
 				id={id}
@@ -25,10 +28,9 @@ const TagInputField = ({id, className, label, required, tags, helperText, error,
 				disabled={disabled}
 				aria-required={required}
 				aria-labelledby={labelId}
-				aria-describedby={error ? errorId : helperId}
+				aria-describedby={helperId}
 			/>
-			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
-		</div>
+		</FieldWrapper>
 	);
 };
 

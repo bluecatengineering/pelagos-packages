@@ -7,6 +7,6 @@ interface FieldErrorProps extends HTMLProps<HTMLDivElement> {
 	text?: string | null;
 }
 
-/** An error message. */
+/** @deprecated use FieldHelper with an error message. */
 declare const FieldError: FunctionComponent<FieldErrorProps>;
 export default FieldError;

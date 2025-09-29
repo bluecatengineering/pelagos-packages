@@ -2,11 +2,9 @@ import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
 import Layer from '../components/Layer';
-import LabelLine from '../components/LabelLine';
 import useRandomId from '../hooks/useRandomId';
 
-import FieldError from './FieldError';
-import FieldHelper from './FieldHelper';
+import FieldWrapper from './FieldWrapper';
 import './TextAreaField.less';
 
 /** A text area form field. */
@@ -26,16 +24,16 @@ const TextAreaField = ({
 }) => {
 	id = useRandomId(id);
 	const helperId = `${id}-helper`;
-	const errorId = `${id}-error`;
 	return (
-		<div className={`TextAreaField${className ? ` ${className}` : ''}`}>
-			<LabelLine
-				htmlFor={id}
-				text={label}
-				counter={showCounter && maxLength ? `${value.length}/${maxLength}` : null}
-				required={required}
-				error={!!error}
-			/>
+		<FieldWrapper
+			className={`TextAreaField${className ? ` ${className}` : ''}`}
+			htmlFor={id}
+			label={label}
+			counter={showCounter && maxLength ? `${value.length}/${maxLength}` : null}
+			required={required}
+			helperId={helperId}
+			helperText={helperText}
+			error={error}>
 			<Layer
 				{...props}
 				as="textarea"
@@ -45,13 +43,12 @@ const TextAreaField = ({
 				}`}
 				value={value}
 				maxLength={maxLength}
-				aria-describedby={error ? errorId : helperId}
+				aria-describedby={helperId}
 				aria-required={required}
 				aria-invalid={!!error}
 				onChange={useCallback((event) => onChange(event.target.value), [onChange])}
 			/>
-			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
-		</div>
+		</FieldWrapper>
 	);
 };
 

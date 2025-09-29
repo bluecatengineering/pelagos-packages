@@ -64,7 +64,7 @@ exports[`ListInput rendering renders expected elements when optional properties 
     text="Test"
   />
   <ComboBox
-    aria-describedby="random-id-error"
+    aria-describedby="random-id-helper"
     aria-required={true}
     autoSelect={true}
     disabled={true}
@@ -77,9 +77,10 @@ exports[`ListInput rendering renders expected elements when optional properties 
     placeholder="test placeholder"
     text=""
   />
-  <FieldError
-    id="random-id-error"
-    text="Error"
+  <FieldHelper
+    error="Error"
+    id="random-id-helper"
+    text="Helper text"
   />
   <ListEntries
     className="ListInput__list"

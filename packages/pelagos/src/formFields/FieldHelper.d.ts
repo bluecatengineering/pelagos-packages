@@ -5,8 +5,10 @@ interface FieldHelperProps extends HTMLProps<HTMLDivElement> {
 	id?: string;
 	/** The helper text. */
 	text?: string | null;
+	/** The error text. */
+	error?: string | null;
 }
 
-/** A helper text. */
+/** A field helper which displays either a helper text or an error message. */
 declare const FieldHelper: FunctionComponent<FieldHelperProps>;
 export default FieldHelper;

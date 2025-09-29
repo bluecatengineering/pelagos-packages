@@ -1,10 +1,8 @@
 import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
-import LabelLine from '../components/LabelLine';
 import useRandomId from '../hooks/useRandomId';
-import FieldError from '../formFields/FieldError';
-import FieldHelper from '../formFields/FieldHelper';
+import FieldWrapper from '../formFields/FieldWrapper';
 
 import FileUploaderDropZone from './FileUploaderDropZone';
 import FileUploaderList from './FileUploaderList';
@@ -29,7 +27,6 @@ const FileUploader = ({
 }) => {
 	id = useRandomId(id);
 	const helperId = `${id}-helper`;
-	const errorId = `${id}-error`;
 
 	const handleAddFiles = useCallback(
 		(addedFiles) => onChange(multiple ? [...files, ...addedFiles] : [addedFiles[0]]),
@@ -48,8 +45,14 @@ const FileUploader = ({
 	);
 
 	return (
-		<div className={`FileUploader${className ? ` ${className}` : ''}`}>
-			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
+		<FieldWrapper
+			className={`FileUploader${className ? ` ${className}` : ''}`}
+			htmlFor={id}
+			label={label}
+			required={required}
+			helperId={helperId}
+			helperText={helperText}
+			error={error}>
 			<FileUploaderDropZone
 				id={id}
 				label={label}
@@ -59,7 +62,7 @@ const FileUploader = ({
 				multiple={multiple}
 				error={!!error}
 				disabled={disabled}
-				aria-describedby={error ? errorId : helperId}
+				aria-describedby={helperId}
 				onAddFiles={handleAddFiles}
 			/>
 			{files?.length ? (
@@ -76,8 +79,7 @@ const FileUploader = ({
 					))}
 				</FileUploaderList>
 			) : null}
-			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
-		</div>
+		</FieldWrapper>
 	);
 };
 

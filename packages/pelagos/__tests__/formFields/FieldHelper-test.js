@@ -15,5 +15,10 @@ describe('FieldHelper', () => {
 			const wrapper = shallow(<FieldHelper id="test" />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when error is set', () => {
+			const wrapper = shallow(<FieldHelper id="test" text="Test" error="Error" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

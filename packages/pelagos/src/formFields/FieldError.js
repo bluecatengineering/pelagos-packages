@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import './FieldError.less';
 
-/** An error message. */
+/** @deprecated use FieldHelper with an error message. */
 const FieldError = ({text, ...props}) => (
 	<div {...props} className="FieldError" aria-live="polite">
 		{text || '\u00a0'}

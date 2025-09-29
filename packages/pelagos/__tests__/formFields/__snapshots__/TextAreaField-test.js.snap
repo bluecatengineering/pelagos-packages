@@ -1,17 +1,17 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TextAreaField rendering adds the error class if the error is set 1`] = `
-<div
+<FieldWrapper
   className="TextAreaField"
+  counter={null}
+  error="Error"
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  label="Label"
 >
-  <LabelLine
-    counter={null}
-    error={true}
-    htmlFor="random-id"
-    text="Label"
-  />
   <Layer
-    aria-describedby="random-id-error"
+    aria-describedby="random-id-helper"
     aria-invalid={true}
     as="textarea"
     className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
@@ -21,23 +21,17 @@ exports[`TextAreaField rendering adds the error class if the error is set 1`] = 
     placeholder="placeholder"
     value="value"
   />
-  <FieldError
-    id="random-id-error"
-    text="Error"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TextAreaField rendering does not add the resize class if the resize is true 1`] = `
-<div
+<FieldWrapper
   className="TextAreaField"
+  counter={null}
+  helperId="random-id-helper"
+  htmlFor="random-id"
+  label="Label"
 >
-  <LabelLine
-    counter={null}
-    error={false}
-    htmlFor="random-id"
-    text="Label"
-  />
   <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -49,23 +43,19 @@ exports[`TextAreaField rendering does not add the resize class if the resize is 
     placeholder="placeholder"
     value="value"
   />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TextAreaField rendering renders expected elements 1`] = `
-<div
+<FieldWrapper
   className="TextAreaField"
+  counter={null}
+  helperId="random-id-helper"
+  helperText="Helper text"
+  htmlFor="random-id"
+  label="Label"
+  required={true}
 >
-  <LabelLine
-    counter={null}
-    error={false}
-    htmlFor="random-id"
-    required={true}
-    text="Label"
-  />
   <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -78,23 +68,17 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
     placeholder="placeholder"
     value="value"
   />
-  <FieldHelper
-    id="random-id-helper"
-    text="Helper text"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TextAreaField rendering renders expected elements when className is set 1`] = `
-<div
+<FieldWrapper
   className="TextAreaField TestClass"
+  counter={null}
+  helperId="random-id-helper"
+  htmlFor="random-id"
+  label="Label"
 >
-  <LabelLine
-    counter={null}
-    error={false}
-    htmlFor="random-id"
-    text="Label"
-  />
   <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -106,22 +90,17 @@ exports[`TextAreaField rendering renders expected elements when className is set
     placeholder="placeholder"
     value="value"
   />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TextAreaField rendering renders expected elements when showCounter is true 1`] = `
-<div
+<FieldWrapper
   className="TextAreaField"
+  counter="5/10"
+  helperId="random-id-helper"
+  htmlFor="random-id"
+  label="Label"
 >
-  <LabelLine
-    counter="5/10"
-    error={false}
-    htmlFor="random-id"
-    text="Label"
-  />
   <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -133,22 +112,17 @@ exports[`TextAreaField rendering renders expected elements when showCounter is t
     placeholder="placeholder"
     value="value"
   />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
+</FieldWrapper>
 `;
 
 exports[`TextAreaField rendering renders expected elements when value is empty 1`] = `
-<div
+<FieldWrapper
   className="TextAreaField"
+  counter={null}
+  helperId="random-id-helper"
+  htmlFor="random-id"
+  label="Label"
 >
-  <LabelLine
-    counter={null}
-    error={false}
-    htmlFor="random-id"
-    text="Label"
-  />
   <Layer
     aria-describedby="random-id-helper"
     aria-invalid={false}
@@ -160,8 +134,5 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
     placeholder="placeholder"
     value=""
   />
-  <FieldHelper
-    id="random-id-helper"
-  />
-</div>
+</FieldWrapper>
 `;

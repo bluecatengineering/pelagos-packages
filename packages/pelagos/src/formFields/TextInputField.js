@@ -2,11 +2,10 @@ import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
 import Layer from '../components/Layer';
-import LabelLine from '../components/LabelLine';
 import useRandomId from '../hooks/useRandomId';
 
-import FieldError from './FieldError';
-import FieldHelper from './FieldHelper';
+import FieldWrapper from './FieldWrapper';
+
 import './TextInputField.less';
 
 /** A text input form field. */
@@ -24,10 +23,15 @@ const TextInputField = ({
 }) => {
 	id = useRandomId(id);
 	const helperId = `${id}-helper`;
-	const errorId = `${id}-error`;
 	return (
-		<div className={`TextInputField${className ? ` ${className}` : ''}`}>
-			<LabelLine htmlFor={id} text={label} required={required} error={!!error} />
+		<FieldWrapper
+			className={`TextInputField${className ? ` ${className}` : ''}`}
+			htmlFor={id}
+			label={label}
+			required={required}
+			helperId={helperId}
+			helperText={helperText}
+			error={error}>
 			<Layer
 				{...props}
 				as="input"
@@ -35,13 +39,12 @@ const TextInputField = ({
 				className={`TextInputField__input${error ? ' TextInputField--error' : ''}`}
 				type={type}
 				value={value}
-				aria-describedby={error ? errorId : helperId}
+				aria-describedby={helperId}
 				aria-required={required}
 				aria-invalid={!!error}
 				onChange={useCallback((event) => onChange(event.target.value), [onChange])}
 			/>
-			{error ? <FieldError id={errorId} text={error} /> : <FieldHelper id={helperId} text={helperText} />}
-		</div>
+		</FieldWrapper>
 	);
 };
 
