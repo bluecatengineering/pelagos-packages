@@ -1,4 +1,5 @@
 export {default as FormCheckBox} from './components/FormCheckBox';
+export {default as FormDateInput} from './components/FormDateInput';
 export {default as FormDropDown} from './components/FormDropDown';
 export {default as FormFileUploader} from './components/FormFileUploader';
 export {default as FormTagComboBox} from './components/FormTagComboBox';
