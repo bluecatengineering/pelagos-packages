@@ -43,7 +43,7 @@ export default defineConfig([
 		},
 	},
 	{
-		files: ['packages/*/src/**/*.d.ts'],
+		files: ['**/*.ts'],
 		extends: [tseslint.configs.recommended],
 	},
 	{

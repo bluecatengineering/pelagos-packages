@@ -97,7 +97,7 @@ Form.propTypes = {
 	initialValues: PropTypes.object.isRequired,
 	initialExtras: PropTypes.object,
 	rules: PropTypes.object.isRequired,
-	children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
+	children: PropTypes.node,
 	getActiveFields: PropTypes.func,
 	extraValidation: PropTypes.func,
 	onSubmit: PropTypes.func,
