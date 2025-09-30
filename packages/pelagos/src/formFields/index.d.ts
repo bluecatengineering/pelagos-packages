@@ -1,4 +1,5 @@
 export {default as DropDownField} from './DropDownField';
+export {default as DateInputField} from './DateInputField';
 export {default as FieldError} from './FieldError';
 export {default as FieldHelper} from './FieldHelper';
 export {default as FieldWrapper} from './FieldWrapper';
