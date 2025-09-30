@@ -4,6 +4,7 @@
   "description": "Auto-wired form hooks",
   "license": "ISC",
   "sideEffects": false,
+  "types": "index.d.ts",
   "scripts": {
     "build": "rm -rf dist && babel -d dist --env-name production --root-mode upward src",
     "prepack": "npm run build"
@@ -19,7 +20,8 @@
     "form"
   ],
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "exports": "./dist/index.js",
   "peerDependencies": {
