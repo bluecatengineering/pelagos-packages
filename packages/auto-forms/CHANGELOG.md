@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/auto-forms@1.0.2...@bluecateng/auto-forms@1.1.0) (2025-10-06)
+
+### Features
+
+- add type definitions for auto-forms ([2bce808](https://github.com/bluecatengineering/pelagos-packages/commit/2bce808ad41fd1f7faba3f649f3cf312d9320544))
+
 ## [1.0.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/auto-forms@1.0.1...@bluecateng/auto-forms@1.0.2) (2024-06-05)
 
 ### Bug Fixes

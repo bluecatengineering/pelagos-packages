@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-gpt@0.1.0...@bluecateng/pelagos-gpt@0.1.1) (2025-10-06)
+
+**Note:** Version bump only for package @bluecateng/pelagos-gpt
+
 ## 0.1.0 (2025-09-26)
 
 ### Features

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.23.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.22.1...@bluecateng/pelagos@12.23.0) (2025-10-06)
+
+### Features
+
+- add DateInputField component ([a75d950](https://github.com/bluecatengineering/pelagos-packages/commit/a75d950bfa9386622ac5687c3fd646682b4993cf))
+- add FieldWrapper component ([5a4d249](https://github.com/bluecatengineering/pelagos-packages/commit/5a4d249a0b52cd71751a879bb3d8f763698fdbea))
+
+### Bug Fixes
+
+- add missing exports for DateInputField ([5f28fd3](https://github.com/bluecatengineering/pelagos-packages/commit/5f28fd3ae69deffbc5d81f4e43909d3969b7d3ba))
+
 ## [12.22.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.22.0...@bluecateng/pelagos@12.22.1) (2025-09-26)
 
 ### Bug Fixes

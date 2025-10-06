@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@5.1.0...@bluecateng/pelagos-forms@5.2.0) (2025-10-06)
+
+### Features
+
+- add FormDateInput component ([fd1d9ca](https://github.com/bluecatengineering/pelagos-packages/commit/fd1d9cad183c2c45dc5fee1610b5cb698f3e102e))
+
 ## [5.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@5.0.1...@bluecateng/pelagos-forms@5.1.0) (2025-06-13)
 
 ### Features
