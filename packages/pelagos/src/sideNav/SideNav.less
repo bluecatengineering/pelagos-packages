@@ -72,6 +72,10 @@
 		}
 
 		&__icon {
+			margin-right: @sp-24;
+		}
+
+		&__chevron {
 			transition: transform 0.15s ease-out;
 
 			[aria-expanded='true'] & {
@@ -137,6 +141,11 @@
 
 			.SideNav__menu &[aria-current] {
 				@heading-compact-01();
+			}
+
+			.SideNav__menu--withIcon & {
+				// stylelint-disable-next-line @bluecateng/property-strict-value -- correct indentation
+				padding-left: (@sp-32 + @sp-16 + @sp-24);
 			}
 		}
 

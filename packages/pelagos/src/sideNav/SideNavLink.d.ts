@@ -1,10 +1,13 @@
 import type {FunctionComponent, HTMLProps, MouseEventHandler, ReactNode} from 'react';
+import type {CarbonIconType} from '@carbon/icons-react/es/CarbonIcon';
 
 interface SideNavLinkProps extends HTMLProps<HTMLLinkElement> {
 	/** The component class name(s). */
 	className?: string;
 	/** The link's href. */
 	href?: string;
+	/** The icon to display */
+	icon?: CarbonIconType;
 	/** Whether the first letter should be underlined to indicate a keyboard shortcut. */
 	shortcut?: boolean;
 	/** Whether this link is for the current page. */
