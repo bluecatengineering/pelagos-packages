@@ -12,10 +12,10 @@ describe('SideNavLink', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
-		it('renders expected elements when boolean properties are set', () => {
+		it('renders expected elements when optional properties are set', () => {
 			useContext.mockReturnValueOnce(true);
 			const wrapper = shallow(
-				<SideNavLink current shortcut>
+				<SideNavLink icon="test-icon" current shortcut>
 					child
 				</SideNavLink>
 			);

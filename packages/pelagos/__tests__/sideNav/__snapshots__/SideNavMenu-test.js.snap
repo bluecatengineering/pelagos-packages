@@ -1,11 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SideNavMenu rendering renders expected elements 1`] = `
 <li
   className="TestClass"
 >
   <button
+    aria-controls="random-id-menu"
     className="SideNav__submenu"
+    id="random-id"
     tabIndex={-1}
     type="button"
   >
@@ -16,11 +18,12 @@ exports[`SideNavMenu rendering renders expected elements 1`] = `
       Test Title
     </span>
     <ChevronDown
-      className="SideNav__icon"
+      className="SideNav__chevron"
     />
   </button>
   <ul
     className="SideNav__menu"
+    id="random-id-menu"
   >
     child
   </ul>
@@ -30,7 +33,9 @@ exports[`SideNavMenu rendering renders expected elements 1`] = `
 exports[`SideNavMenu rendering renders expected elements when a child element has current set 1`] = `
 <li>
   <button
+    aria-controls="random-id-menu"
     className="SideNav__submenu SideNav__submenu--current"
+    id="random-id"
     tabIndex={-1}
     type="button"
   >
@@ -41,11 +46,12 @@ exports[`SideNavMenu rendering renders expected elements when a child element ha
       Test Title
     </span>
     <ChevronDown
-      className="SideNav__icon"
+      className="SideNav__chevron"
     />
   </button>
   <ul
     className="SideNav__menu"
+    id="random-id-menu"
   >
     <SideNavMenuItem
       current={true}
@@ -54,14 +60,19 @@ exports[`SideNavMenu rendering renders expected elements when a child element ha
 </li>
 `;
 
-exports[`SideNavMenu rendering renders expected elements when boolean properties are set 1`] = `
+exports[`SideNavMenu rendering renders expected elements when optional properties are set 1`] = `
 <li>
   <button
+    aria-controls="random-id-menu"
     aria-expanded={true}
     className="SideNav__submenu SideNav__submenu--active"
+    id="random-id"
     tabIndex={0}
     type="button"
   >
+    <test-icon
+      className="SideNav__icon"
+    />
     <span
       className="SideNav__submenuTitle"
       title="Test Title"
@@ -69,11 +80,12 @@ exports[`SideNavMenu rendering renders expected elements when boolean properties
       Test Title
     </span>
     <ChevronDown
-      className="SideNav__icon"
+      className="SideNav__chevron"
     />
   </button>
   <ul
-    className="SideNav__menu"
+    className="SideNav__menu SideNav__menu--withIcon"
+    id="random-id-menu"
   >
     <SideNavMenuItem
       current={true}
