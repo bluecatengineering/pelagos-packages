@@ -18,7 +18,7 @@ const SideNavMenuItem = forwardRef(({className, shortcut, current, children, ...
 				ref={ref}>
 				<span
 					className={`SideNav__text${shortcut ? ' SideNav__text--shortcut' : ''}`}
-					title={typeof children === 'string' ? children : ''}>
+					title={typeof children === 'string' ? children : undefined}>
 					{children}
 				</span>
 			</a>

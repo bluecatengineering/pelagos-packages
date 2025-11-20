@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import './SideNav.less';
 
 /** A divider which can be placed inside SideNavItems. */
-const SideNavDivider = ({className}) => <li className={`SideNav__divider${className ? ` ${className}` : ''}`} />;
+const SideNavDivider = ({className}) => (
+	<li className={`SideNav__divider${className ? ` ${className}` : ''}`} role="presentation" aria-hidden="true" />
+);
 
 SideNavDivider.propTypes = {
 	/** The component class name(s). */

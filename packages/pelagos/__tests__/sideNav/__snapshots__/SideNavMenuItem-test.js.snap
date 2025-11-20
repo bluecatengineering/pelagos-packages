@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SideNavMenuItem rendering renders expected elements 1`] = `
 <li
@@ -47,7 +47,6 @@ exports[`SideNavMenuItem rendering renders expected elements when children is no
   >
     <span
       className="SideNav__text"
-      title=""
     >
       <span />
     </span>

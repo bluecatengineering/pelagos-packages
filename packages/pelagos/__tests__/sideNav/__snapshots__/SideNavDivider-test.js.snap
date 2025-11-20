@@ -1,13 +1,17 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SideNavDivider rendering renders expected elements 1`] = `
 <li
+  aria-hidden="true"
   className="SideNav__divider"
+  role="presentation"
 />
 `;
 
 exports[`SideNavDivider rendering renders expected elements when className is set 1`] = `
 <li
+  aria-hidden="true"
   className="SideNav__divider TestClass"
+  role="presentation"
 />
 `;
