@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.24.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.23.0...@bluecateng/pelagos@12.24.0) (2025-11-24)
+
+### Features
+
+- allow setting icons on SideNavLink and SideNavMenu ([fbade4b](https://github.com/bluecatengineering/pelagos-packages/commit/fbade4ba550c74a78fc630b022e8cd8692d54016))
+
+### Bug Fixes
+
+- add pop-ups to document.fullscreenElement if set ([4144b0d](https://github.com/bluecatengineering/pelagos-packages/commit/4144b0deb05a9786092f7006e9fad5d48fdf515f))
+- fix small issues found in code review ([a7c8651](https://github.com/bluecatengineering/pelagos-packages/commit/a7c8651a5cc47322c15aef9ea845a4e71cd5110d))
+- fix tag input row gap ([b9e4f83](https://github.com/bluecatengineering/pelagos-packages/commit/b9e4f831e9abad8c01fadecdab009ac312ae8557))
+- prevent the side navigation from getting focus when hidden ([caface7](https://github.com/bluecatengineering/pelagos-packages/commit/caface72a16aabe8e5d83573b460d5bd0d4c818c))
+
 ## [12.23.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.22.1...@bluecateng/pelagos@12.23.0) (2025-10-06)
 
 ### Features

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.3.0...@bluecateng/pelagos-charts@0.3.1) (2025-11-24)
+
+**Note:** Version bump only for package @bluecateng/pelagos-charts
+
 ## [0.3.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-charts@0.2.0...@bluecateng/pelagos-charts@0.3.0) (2025-04-22)
 
 ### ⚠ BREAKING CHANGES

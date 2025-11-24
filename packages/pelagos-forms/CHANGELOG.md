@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@5.2.0...@bluecateng/pelagos-forms@5.3.0) (2025-11-24)
+
+### Features
+
+- add type definitions for pelagos-forms ([6f58cdf](https://github.com/bluecatengineering/pelagos-packages/commit/6f58cdf69f2589eab3f4e9f682add9b287d43c3c))
+
 ## [5.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-forms@5.1.0...@bluecateng/pelagos-forms@5.2.0) (2025-10-06)
 
 ### Features
