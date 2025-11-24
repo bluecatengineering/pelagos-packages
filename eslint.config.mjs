@@ -1,5 +1,6 @@
 import {defineConfig} from 'eslint/config';
 import regexpPlugin from 'eslint-plugin-regexp';
+import storybook from "eslint-plugin-storybook";
 import tseslint from 'typescript-eslint';
 import blueCatNode from '@bluecateng/eslint-config-node';
 import blueCatReact from '@bluecateng/eslint-config-react';
@@ -7,6 +8,7 @@ import blueCatReact from '@bluecateng/eslint-config-react';
 export default defineConfig([
 	blueCatReact,
 	regexpPlugin.configs['flat/recommended'],
+	...storybook.configs['flat/recommended'],
 	{
 		rules: {
 			'import/extensions': ['warn', 'ignorePackages', {js: 'never'}],

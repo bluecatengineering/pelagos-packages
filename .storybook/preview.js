@@ -12,7 +12,7 @@ export default {
 
 	parameters: {
 		actions: {argTypesRegex: '^on[A-Z].*'},
-		backgrounds: {disable: true},
+		backgrounds: {disabled: true},
 		options: {
 			storySort: (a, b) => {
 				const order = {
