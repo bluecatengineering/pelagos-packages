@@ -14,7 +14,6 @@
     "lint-ci": "eslint . -f @microsoft/eslint-formatter-sarif -o build/eslint-results.sarif",
     "lint-styles": "stylelint **/*.less",
     "reformat": "prettier --write \"**/*.+(js|json|less)\"",
-    "prepack": "npm t",
     "prepare": "husky"
   },
   "repository": {

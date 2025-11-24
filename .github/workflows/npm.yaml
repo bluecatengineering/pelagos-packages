@@ -27,4 +27,12 @@ jobs:
       - name: Publish packages
         run: |
           npm ci
+          npx lerna run prepack
           npx lerna publish from-package -y
+
+      - name: Upload logs
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # tag=v5.0.0
+        if: failure()
+        with:
+          name: lerna-debug-log
+          path: lerna-debug.log
