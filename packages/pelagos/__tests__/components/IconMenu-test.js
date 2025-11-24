@@ -13,6 +13,8 @@ global.document = {body: 'body'};
 useRandomId.mockReturnValue('random-id');
 
 describe('IconMenu', () => {
+	beforeEach(() => (document.fullscreenElement = null));
+
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			useMenuHandler.mockReturnValueOnce({});
@@ -58,6 +60,19 @@ describe('IconMenu', () => {
 		it('renders expected elements when expanded is true', () => {
 			useMenuHandler.mockReturnValueOnce({expanded: true});
 			useLayer.mockReturnValue(1);
+			const wrapper = shallow(
+				<IconMenu icon={{foo: 'test'}}>
+					<MenuItem>one</MenuItem>
+					<MenuItem>two</MenuItem>
+				</IconMenu>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when expanded is true and document.fullscreenElement is set', () => {
+			useMenuHandler.mockReturnValueOnce({expanded: true});
+			useLayer.mockReturnValue(1);
+			document.fullscreenElement = 'fullscreen';
 			const wrapper = shallow(
 				<IconMenu icon={{foo: 'test'}}>
 					<MenuItem>one</MenuItem>

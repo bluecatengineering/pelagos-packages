@@ -173,7 +173,78 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
       open={true}
     />
   </Layer>
-  <React.Portal>
+  <React.Portal
+    container="body"
+  >
+    <Layer
+      className="Select__list"
+      id="random-id-list"
+      level={NaN}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="listbox"
+    >
+      <div
+        aria-selected={false}
+        className="Select__option"
+        data-index={0}
+        id="random-id-0"
+        role="option"
+      >
+        One
+      </div>
+      <div
+        aria-selected={true}
+        className="Select__option"
+        data-index={1}
+        id="random-id-1"
+        role="option"
+      >
+        Two
+      </div>
+      <div
+        aria-selected={false}
+        className="Select__option"
+        data-index={2}
+        id="random-id-2"
+        role="option"
+      >
+        Three
+      </div>
+    </Layer>
+  </React.Portal>
+</React.Fragment>
+`;
+
+exports[`Select rendering renders expected elements when open is true and document.fullscreenElement is set 1`] = `
+<React.Fragment>
+  <Layer
+    aria-activedescendant="random-id-1"
+    aria-expanded={true}
+    aria-haspopup="listbox"
+    aria-owns="random-id-list"
+    className="Select__text Test"
+    data-placeholder="Testing"
+    id="random-id"
+    onBlur={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    role="combobox"
+    tabIndex="0"
+  >
+    <span
+      className="Select__value"
+    >
+      Two
+    </span>
+    <SelectArrow
+      className="Select__arrow"
+      open={true}
+    />
+  </Layer>
+  <React.Portal
+    container="fullscreen"
+  >
     <Layer
       className="Select__list"
       id="random-id-list"

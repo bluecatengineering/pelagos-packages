@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ButtonMenu rendering renders expected elements 1`] = `
 <React.Fragment>
@@ -32,6 +32,41 @@ exports[`ButtonMenu rendering renders expected elements when expanded is true 1`
   />
   <React.Portal
     container="body"
+  >
+    <Layer
+      className="ButtonMenu__popUp"
+      level={2}
+    >
+      <Menu
+        aria-labelledby="random-id"
+        id="random-id-menu"
+      >
+        <li
+          data-index={0}
+          id="random-id-0"
+        />
+      </Menu>
+    </Layer>
+  </React.Portal>
+</React.Fragment>
+`;
+
+exports[`ButtonMenu rendering renders expected elements when expanded is true and document.fullscreenElement is set 1`] = `
+<React.Fragment>
+  <Button
+    aria-controls="random-id-menu"
+    aria-expanded={true}
+    aria-haspopup="true"
+    className="ButtonMenu"
+    data-layer={2}
+    icon={[Function]}
+    id="random-id"
+    size="small"
+    text="Test"
+    type="ghost"
+  />
+  <React.Portal
+    container="fullscreen"
   >
     <Layer
       className="ButtonMenu__popUp"

@@ -267,7 +267,7 @@ const Select = ({
 							</div>
 						))}
 					</Layer>,
-					document.body
+					document.fullscreenElement || document.body
 				)}
 		</>
 	);

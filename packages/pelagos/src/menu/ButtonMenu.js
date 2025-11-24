@@ -56,7 +56,7 @@ const ButtonMenu = forwardRef(
 								)}
 							</Menu>
 						</Layer>,
-						document.body
+						document.fullscreenElement || document.body
 					)}
 			</>
 		);

@@ -204,7 +204,7 @@ const ComboBox = ({
 						});
 					})}
 				</Layer>,
-				document.body
+				document.fullscreenElement || document.body
 			)}
 		</div>
 	);

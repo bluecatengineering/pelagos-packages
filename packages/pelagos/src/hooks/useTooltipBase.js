@@ -51,7 +51,7 @@ const createTooltip = () => {
 	const animation = tooltip.animate([{opacity: 0}, {opacity: 1}], {duration: 150, fill: 'both', easing: 'ease-out'});
 	animation.onfinish = ({currentTime}) => {
 		if (currentTime === 0 && tooltip.parentNode) {
-			document.body.removeChild(tooltip);
+			tooltip.parentNode.removeChild(tooltip);
 		}
 	};
 	animation.pause();
@@ -61,7 +61,7 @@ const createTooltip = () => {
 
 const hideTooltip = (tooltip, targetRef, attributeRef, animation, handleKeyDown) => {
 	if (tooltip.parentNode) {
-		document.body.removeEventListener('keydown', handleKeyDown);
+		document.removeEventListener('keydown', handleKeyDown);
 		targetRef.current.removeAttribute(attributeRef.current);
 		animation.pause();
 		animation.updatePlaybackRate(-1);
@@ -114,7 +114,7 @@ const useTooltipBase = () => {
 			if (text) {
 				tooltip.className = `Tooltip Tooltip--${placement}`;
 				tooltip.textContent = text;
-				document.body.appendChild(tooltip);
+				(document.fullscreenElement || document.body).appendChild(tooltip);
 				animation.pause();
 				animation.updatePlaybackRate(1);
 				animation.play();
@@ -125,7 +125,7 @@ const useTooltipBase = () => {
 				targetRef.current = target;
 				updatePosition(target, tooltip, placement);
 
-				document.body.addEventListener('keydown', handleKeyDown);
+				document.addEventListener('keydown', handleKeyDown);
 			}
 		},
 		[tooltip, animation, handleKeyDown]
