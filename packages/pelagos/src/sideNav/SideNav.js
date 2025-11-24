@@ -8,7 +8,12 @@ import './SideNav.less';
 /** Side navigation component. */
 const SideNav = forwardRef(({className, active, children, ...props}, ref) => (
 	<SideNavContext.Provider value={active}>
-		<nav {...props} className={`SideNav${className ? ` ${className}` : ''}`} aria-hidden={!active} ref={ref}>
+		<nav
+			{...props}
+			className={`SideNav${className ? ` ${className}` : ''}`}
+			inert={!active}
+			aria-hidden={!active}
+			ref={ref}>
 			{children}
 		</nav>
 	</SideNavContext.Provider>
