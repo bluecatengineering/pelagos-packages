@@ -56,7 +56,7 @@ const IconMenu = forwardRef(
 								)}
 							</ul>
 						</Layer>,
-						document.body
+						document.fullscreenElement || document.body
 					)}
 			</>
 		);

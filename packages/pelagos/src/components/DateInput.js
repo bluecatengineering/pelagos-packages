@@ -14,6 +14,7 @@ import IconButton from './IconButton';
 
 import './DateInput.less';
 
+/** A date input. */
 const DateInput = ({className, value, disabled, error, format, parse, onChange, ...props}) => {
 	const wrapperRef = useRef(null);
 	const buttonRef = useRef(null);
@@ -75,7 +76,7 @@ const DateInput = ({className, value, disabled, error, format, parse, onChange, 
 					<Layer className="DateInput__popUp" level={level + 1} ref={popUpRef}>
 						<Calendar value={calendarTime} onChange={handleCalendarChange} />
 					</Layer>,
-					document.body
+					document.fullscreenElement || document.body
 				)}
 		</div>
 	);

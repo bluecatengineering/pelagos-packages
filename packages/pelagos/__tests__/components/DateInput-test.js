@@ -8,10 +8,11 @@ jest.unmock('../../src/components/DateInput');
 
 const anyFunction = expect.any(Function);
 
-const body = {tag: 'body'};
-global.document = {body};
+global.document = {body: 'body'};
 
 describe('DateInput', () => {
+	beforeEach(() => (document.fullscreenElement = null));
+
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(<DateInput />);
@@ -30,6 +31,13 @@ describe('DateInput', () => {
 
 		it('renders expected elements when calendarTime is set', () => {
 			useState.mockReturnValueOnce([1000]);
+			const wrapper = shallow(<DateInput />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when both calendarTime and document.fullscreenElement are set', () => {
+			useState.mockReturnValueOnce([1000]);
+			document.fullscreenElement = 'fullscreen';
 			const wrapper = shallow(<DateInput />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`IconMenu rendering renders expected elements 1`] = `
 <React.Fragment>
@@ -68,6 +68,53 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
   />
   <React.Portal
     container="body"
+  >
+    <Layer
+      className="IconMenu__popUp"
+      level={2}
+    >
+      <ul
+        aria-labelledby="random-id"
+        className="IconMenu__menu"
+        id="random-id-menu"
+        role="menu"
+      >
+        <MenuItem
+          data-index={0}
+          id="random-id-0"
+        >
+          one
+        </MenuItem>
+        <MenuItem
+          data-index={1}
+          id="random-id-1"
+        >
+          two
+        </MenuItem>
+      </ul>
+    </Layer>
+  </React.Portal>
+</React.Fragment>
+`;
+
+exports[`IconMenu rendering renders expected elements when expanded is true and document.fullscreenElement is set 1`] = `
+<React.Fragment>
+  <IconButton
+    aria-controls="random-id-menu"
+    aria-expanded={true}
+    aria-haspopup="true"
+    className="IconMenu"
+    data-layer={2}
+    disabled={false}
+    icon={
+      {
+        "foo": "test",
+      }
+    }
+    id="random-id"
+  />
+  <React.Portal
+    container="fullscreen"
   >
     <Layer
       className="IconMenu__popUp"

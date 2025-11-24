@@ -12,6 +12,8 @@ global.document = {body: 'body'};
 useRandomId.mockReturnValue('random-id');
 
 describe('ButtonMenu', () => {
+	beforeEach(() => (document.fullscreenElement = null));
+
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			useMenuHandler.mockReturnValueOnce({});
@@ -37,6 +39,18 @@ describe('ButtonMenu', () => {
 		it('renders expected elements when expanded is true', () => {
 			useMenuHandler.mockReturnValueOnce({expanded: true});
 			useLayer.mockReturnValue(1);
+			const wrapper = shallow(
+				<ButtonMenu text="Test">
+					<li />
+				</ButtonMenu>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when expanded is true and document.fullscreenElement is set', () => {
+			useMenuHandler.mockReturnValueOnce({expanded: true});
+			useLayer.mockReturnValue(1);
+			document.fullscreenElement = 'fullscreen';
 			const wrapper = shallow(
 				<ButtonMenu text="Test">
 					<li />

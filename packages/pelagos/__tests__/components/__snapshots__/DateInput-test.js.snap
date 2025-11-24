@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DateInput rendering renders expected elements 1`] = `
 <div
@@ -19,6 +19,38 @@ exports[`DateInput rendering renders expected elements 1`] = `
 </div>
 `;
 
+exports[`DateInput rendering renders expected elements when both calendarTime and document.fullscreenElement are set 1`] = `
+<div
+  className="DateInput"
+>
+  <Layer
+    as="input"
+    className="DateInput__input"
+    onChange={[Function]}
+    type="text"
+  />
+  <IconButton
+    aria-label="Choose date"
+    className="DateInput__icon"
+    icon={[Function]}
+    onClick={[Function]}
+  />
+  <React.Portal
+    container="fullscreen"
+  >
+    <Layer
+      className="DateInput__popUp"
+      level={NaN}
+    >
+      <Calendar
+        onChange={[Function]}
+        value={1000}
+      />
+    </Layer>
+  </React.Portal>
+</div>
+`;
+
 exports[`DateInput rendering renders expected elements when calendarTime is set 1`] = `
 <div
   className="DateInput"
@@ -36,11 +68,7 @@ exports[`DateInput rendering renders expected elements when calendarTime is set 
     onClick={[Function]}
   />
   <React.Portal
-    container={
-      {
-        "tag": "body",
-      }
-    }
+    container="body"
   >
     <Layer
       className="DateInput__popUp"

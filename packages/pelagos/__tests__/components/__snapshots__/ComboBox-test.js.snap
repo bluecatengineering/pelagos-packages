@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ComboBox rendering renders expected elements 1`] = `
 <div
@@ -31,7 +31,61 @@ exports[`ComboBox rendering renders expected elements 1`] = `
     id="random-id-add"
     onClick={[Function]}
   />
-  <React.Portal>
+  <React.Portal
+    container="body"
+  >
+    <Layer
+      aria-label="Options"
+      className="ComboBox__list"
+      id="random-id-list"
+      level={NaN}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="listbox"
+      style={
+        {
+          "display": "none",
+        }
+      }
+    />
+  </React.Portal>
+</div>
+`;
+
+exports[`ComboBox rendering renders expected elements when document.fullscreenElement is set 1`] = `
+<div
+  className="ComboBox"
+>
+  <Layer
+    aria-activedescendant={null}
+    aria-autocomplete="list"
+    aria-controls="random-id-list"
+    aria-expanded={false}
+    aria-invalid={true}
+    as="input"
+    autoComplete="off"
+    className="ComboBox__input"
+    id="random-id"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="test placeholder"
+    role="combobox"
+    type="text"
+    value="test text"
+  />
+  <IconButton
+    aria-label="Add"
+    className="ComboBox__add"
+    disabled={false}
+    icon={[Function]}
+    id="random-id-add"
+    onClick={[Function]}
+  />
+  <React.Portal
+    container="fullscreen"
+  >
     <Layer
       aria-label="Options"
       className="ComboBox__list"
@@ -80,7 +134,9 @@ exports[`ComboBox rendering renders expected elements when error is not set 1`] 
     id="random-id-add"
     onClick={[Function]}
   />
-  <React.Portal>
+  <React.Portal
+    container="body"
+  >
     <Layer
       aria-label="Options"
       className="ComboBox__list"
@@ -131,7 +187,9 @@ exports[`ComboBox rendering renders expected elements when noLayer is true 1`] =
     id="random-id-add"
     onClick={[Function]}
   />
-  <React.Portal>
+  <React.Portal
+    container="body"
+  >
     <Layer
       aria-label="Options"
       className="ComboBox__list"
@@ -180,7 +238,9 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     id="random-id-add"
     onClick={[Function]}
   />
-  <React.Portal>
+  <React.Portal
+    container="body"
+  >
     <Layer
       aria-label="Options"
       className="ComboBox__list"

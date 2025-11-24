@@ -22,12 +22,14 @@ const strings = {
 const options = Object.keys(strings);
 const renderOption = (o) => strings[o];
 
-global.document = {};
+global.document = {body: 'body'};
 
 useRandomId.mockReturnValue('random-id');
 getInnerText.mockReturnValue('text');
 
 describe('Select', () => {
+	beforeEach(() => (document.fullscreenElement = null));
+
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
@@ -138,6 +140,23 @@ describe('Select', () => {
 
 		it('renders expected elements when open is true', () => {
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1]);
+			const wrapper = shallow(
+				<Select
+					id="test"
+					className="Test"
+					value="two"
+					options={options}
+					placeholder="Testing"
+					renderOption={renderOption}
+					onChange={jest.fn()}
+				/>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when open is true and document.fullscreenElement is set', () => {
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([1]);
+			document.fullscreenElement = 'fullscreen';
 			const wrapper = shallow(
 				<Select
 					id="test"

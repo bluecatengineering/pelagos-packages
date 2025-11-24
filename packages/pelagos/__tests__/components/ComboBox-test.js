@@ -11,11 +11,13 @@ jest.unmock('../../src/components/ComboBox');
 jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && ((f.cancel = jest.fn()), (f.flush = jest.fn())), f)));
 
 const getElementById = jest.fn();
-global.document = {getElementById};
+global.document = {body: 'body', getElementById};
 
 useRandomId.mockReturnValue('random-id');
 
 describe('ComboBox', () => {
+	beforeEach(() => (document.fullscreenElement = null));
+
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(<ComboBox id="test" placeholder="test placeholder" text="test text" error />);
@@ -31,6 +33,13 @@ describe('ComboBox', () => {
 		it('renders expected elements when noLayer is true', () => {
 			const wrapper = shallow(<ComboBox id="test" placeholder="test placeholder" text="test text" noLayer error />);
 			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when document.fullscreenElement is set', () => {
+			document.fullscreenElement = 'fullscreen';
+			const wrapper = shallow(<ComboBox id="test" placeholder="test placeholder" text="test text" error />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when the suggestions are displayed', () => {

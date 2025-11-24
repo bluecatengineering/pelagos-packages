@@ -23,12 +23,14 @@ const appendChild = jest.fn();
 const removeChild = jest.fn();
 const addEventListener = jest.fn();
 const removeEventListener = jest.fn();
-global.document = {createElement, body: {appendChild, removeChild, addEventListener, removeEventListener}};
+global.document = {createElement, addEventListener, removeEventListener, body: {appendChild, removeChild}};
 global.window = {innerWidth: 1024, innerHeight: 768};
 
 jest.spyOn(Math, 'random').mockReturnValue(0.1);
 
 describe('useTooltipBase', () => {
+	beforeEach(() => (document.fullscreenElement = null));
+
 	describe('show', () => {
 		it('shows tooltip', () => {
 			const setAttribute = jest.fn();
@@ -49,6 +51,37 @@ describe('useTooltipBase', () => {
 			expect(setAttribute.mock.calls).toEqual([['aria-describedby', 'tooltip-1']]);
 
 			tooltipDiv.parentNode = document.body;
+			hide();
+			expect(pause.mock.calls).toEqual([[], [], []]);
+			expect(play.mock.calls).toEqual([[], []]);
+			expect(updatePlaybackRate.mock.calls).toEqual([[1], [-1]]);
+
+			animation.onfinish({currentTime: 0});
+			expect(removeAttribute.mock.calls).toEqual([['aria-describedby']]);
+			expect(removeChild.mock.calls).toEqual([[tooltipDiv]]);
+		});
+
+		it('shows tooltip when document.fullscreenElement is set', () => {
+			const setAttribute = jest.fn();
+			const removeAttribute = jest.fn();
+			const getBoundingClientRect = jest.fn().mockReturnValue({top: 100, left: 100, width: 200, height: 50});
+			const appendChild = jest.fn();
+			const removeChild = jest.fn();
+			document.fullscreenElement = {appendChild, removeChild};
+			const [show, hide] = useTooltipBase();
+			elementBoundingRect.mockReturnValue({width: 20, height: 10});
+			expect(animate.mock.calls).toEqual([
+				[[{opacity: 0}, {opacity: 1}], {duration: 150, fill: 'both', easing: 'ease-out'}],
+			]);
+			const animation = animate.mock.results[0].value;
+			expect(animation).toEqual({pause, play, updatePlaybackRate, onfinish: anyFunction});
+
+			const tooltipDiv = createElement.mock.results[0].value;
+			show('Test', 'top', {setAttribute, removeAttribute, getBoundingClientRect});
+			animation.onfinish({currentTime: 150});
+			expect(setAttribute.mock.calls).toEqual([['aria-describedby', 'tooltip-1']]);
+
+			tooltipDiv.parentNode = document.fullscreenElement;
 			hide();
 			expect(pause.mock.calls).toEqual([[], [], []]);
 			expect(play.mock.calls).toEqual([[], []]);
