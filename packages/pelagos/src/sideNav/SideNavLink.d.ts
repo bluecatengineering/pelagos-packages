@@ -15,7 +15,7 @@ interface SideNavLinkProps extends HTMLProps<HTMLLinkElement> {
 	/** The child elements. */
 	children?: ReactNode;
 	/** Function invoked when the link is clicked. */
-	onClick: MouseEventHandler<HTMLLinkElement>;
+	onClick?: MouseEventHandler<HTMLLinkElement>;
 }
 
 /** Link in the side navigation panel. Must be a direct child of SideNavItems. */
