@@ -11,6 +11,7 @@ exports[`Dialog rendering renders expected elements 1`] = `
     id="test-dialog"
     level={1}
     role="dialog"
+    tabIndex={-1}
   >
     <React.Fragment>
       <div
@@ -53,6 +54,7 @@ exports[`Dialog rendering renders expected elements when boolean properties are 
     id="test-dialog"
     level={1}
     role="dialog"
+    tabIndex={-1}
   >
     <React.Fragment>
       <div
@@ -95,6 +97,7 @@ exports[`Dialog rendering renders expected elements when child has no className 
     id="test-dialog"
     level={1}
     role="dialog"
+    tabIndex={-1}
   >
     <React.Fragment>
       <div
@@ -137,6 +140,7 @@ exports[`Dialog rendering renders expected elements when helpHref is set 1`] = `
     id="test-dialog"
     level={1}
     role="dialog"
+    tabIndex={-1}
   >
     <React.Fragment>
       <div
@@ -188,6 +192,7 @@ exports[`Dialog rendering renders expected elements when onSubmit is set 1`] = `
     id="test-dialog"
     level={1}
     role="dialog"
+    tabIndex={-1}
   >
     <form
       className="Dialog__form"
