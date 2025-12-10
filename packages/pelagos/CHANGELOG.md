@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.24.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.24.0...@bluecateng/pelagos@12.24.1) (2025-12-10)
+
+### Bug Fixes
+
+- set tabindex in the dialog ([0d09205](https://github.com/bluecatengineering/pelagos-packages/commit/0d09205b0d8c23d6c20a1451c95ad2b14dc23af1))
+
 ## [12.24.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.23.0...@bluecateng/pelagos@12.24.0) (2025-11-24)
 
 ### Features
