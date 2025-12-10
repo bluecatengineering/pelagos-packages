@@ -70,6 +70,7 @@ const Dialog = ({
 				id={id}
 				className={fullClassName}
 				level={1}
+				tabIndex={-1}
 				role={role}
 				aria-modal
 				aria-labelledby="dialogTitle"
