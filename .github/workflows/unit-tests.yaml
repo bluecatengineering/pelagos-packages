@@ -31,7 +31,7 @@ jobs:
           TZ: America/Toronto
 
       - name: Publish test report
-        uses: mikepenz/action-junit-report@e08919a3b1fb83a78393dfb775a9c37f17d8eea6 # tag=v6.0.1
+        uses: mikepenz/action-junit-report@a294a61c909bd8a4b563024a2faa28897fd53ebc # tag=v6.1.0
         if: always()
         with:
           report_paths: build/junit.xml
