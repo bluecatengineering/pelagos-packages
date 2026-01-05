@@ -1,3 +1,5 @@
+import {useEffect} from 'react';
+
 import useTooltipBase from '../../src/hooks/useTooltipBase';
 
 jest.unmock('../../src/hooks/useTooltipBase');
@@ -102,23 +104,6 @@ describe('useTooltipBase', () => {
 			expect(createElement.mock.results[0].value).toMatchSnapshot();
 		});
 
-		it('hides tooltip when escape is pressed', () => {
-			const setAttribute = jest.fn();
-			const removeAttribute = jest.fn();
-			const getBoundingClientRect = jest.fn().mockReturnValue({top: 100, left: 100, width: 200, height: 50});
-			const [show] = useTooltipBase();
-			elementBoundingRect.mockReturnValue({width: 20, height: 10});
-
-			show('Test', 'top', {setAttribute, removeAttribute, getBoundingClientRect});
-			expect(addEventListener.mock.calls).toEqual([['keydown', anyFunction]]);
-
-			const handleKeyDown = addEventListener.mock.calls[0][1];
-			createElement.mock.results[0].value.parentNode = document.body;
-			handleKeyDown({key: 'Other'});
-			handleKeyDown({key: 'Escape'});
-			expect(removeEventListener.mock.calls).toEqual([['keydown', handleKeyDown]]);
-		});
-
 		it('shows tooltip on mouse over when placement is bottom', () => {
 			const setAttribute = jest.fn();
 			const getBoundingClientRect = jest.fn().mockReturnValue({top: 100, left: 100, width: 200, height: 50});
@@ -196,6 +181,33 @@ describe('useTooltipBase', () => {
 			const [, hide] = useTooltipBase();
 			hide();
 			expect(play).not.toHaveBeenCalled();
+		});
+	});
+
+	describe('event handler', () => {
+		it('adds a listener which hides the tooltip when escape is pressed', () => {
+			const setAttribute = jest.fn();
+			const removeAttribute = jest.fn();
+			const getBoundingClientRect = jest.fn().mockReturnValue({top: 100, left: 100, width: 200, height: 50});
+			const [show] = useTooltipBase();
+			const animation = animate.mock.results[0].value;
+			const tooltip = createElement.mock.results[0].value;
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [animation, tooltip]]);
+
+			const remove = useEffect.mock.calls[0][0]();
+			expect(addEventListener.mock.calls).toEqual([['keydown', anyFunction]]);
+
+			elementBoundingRect.mockReturnValue({width: 20, height: 10});
+			show('Test', 'top', {setAttribute, removeAttribute, getBoundingClientRect});
+
+			const handleKeyDown = addEventListener.mock.calls[0][1];
+			tooltip.parentNode = document.body;
+			handleKeyDown({key: 'Other'});
+			handleKeyDown({key: 'Escape'});
+			expect(removeAttribute.mock.calls).toEqual([['aria-describedby']]);
+
+			remove();
+			expect(removeEventListener.mock.calls).toEqual([['keydown', handleKeyDown]]);
 		});
 	});
 });

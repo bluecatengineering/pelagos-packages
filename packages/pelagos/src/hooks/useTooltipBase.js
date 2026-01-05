@@ -1,5 +1,6 @@
+import {useCallback, useEffect, useMemo, useRef} from 'react';
+
 import './Tooltip.less';
-import {useCallback, useMemo, useRef} from 'react';
 
 const {round} = Math;
 
@@ -59,9 +60,8 @@ const createTooltip = () => {
 	return [tooltip, animation];
 };
 
-const hideTooltip = (tooltip, targetRef, attributeRef, animation, handleKeyDown) => {
+const hideTooltip = (tooltip, targetRef, attributeRef, animation) => {
 	if (tooltip.parentNode) {
-		document.removeEventListener('keydown', handleKeyDown);
 		targetRef.current.removeAttribute(attributeRef.current);
 		animation.pause();
 		animation.updatePlaybackRate(-1);
@@ -100,18 +100,13 @@ const useTooltipBase = () => {
 	const targetRef = useRef(null);
 	const attributeRef = useRef(null);
 	const [tooltip, animation] = useMemo(() => createTooltip(), []);
-	const handleKeyDown = useCallback(
-		(event) => {
-			if (event.key === 'Escape') hideTooltip(tooltip, targetRef, attributeRef, animation, handleKeyDown);
-		},
-		[animation, tooltip]
-	);
 	const hide = useCallback(() => {
-		hideTooltip(tooltip, targetRef, attributeRef, animation, handleKeyDown);
-	}, [tooltip, animation, handleKeyDown]);
+		hideTooltip(tooltip, targetRef, attributeRef, animation);
+	}, [animation, tooltip]);
 	const show = useCallback(
 		(text, placement, target, aria) => {
 			if (text) {
+				// eslint-disable-next-line react-hooks/immutability -- false positive
 				tooltip.className = `Tooltip Tooltip--${placement}`;
 				tooltip.textContent = text;
 				(document.fullscreenElement || document.body).appendChild(tooltip);
@@ -124,12 +119,19 @@ const useTooltipBase = () => {
 				attributeRef.current = attribute;
 				targetRef.current = target;
 				updatePosition(target, tooltip, placement);
-
-				document.addEventListener('keydown', handleKeyDown);
 			}
 		},
-		[tooltip, animation, handleKeyDown]
+		[animation, tooltip]
 	);
+	useEffect(() => {
+		const handleKeyDown = (event) => {
+			if (event.key === 'Escape') hideTooltip(tooltip, targetRef, attributeRef, animation);
+		};
+
+		document.addEventListener('keydown', handleKeyDown);
+
+		return () => document.removeEventListener('keydown', handleKeyDown);
+	}, [animation, tooltip]);
 	return [show, hide, tooltip];
 };
 
