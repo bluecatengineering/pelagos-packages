@@ -310,14 +310,19 @@ const TagComboBox = ({
 				onMouseUp={handleListMouseUp}>
 				{suggestions.map((item, index) => {
 					const element = renderSuggestion(item, index);
-					return cloneElement(element, {
-						key: index,
-						id: `${id}-${index}`,
-						role: 'option',
-						className: `TagComboBox__option${element.props.className ? ` ${element.props.className}` : ''}`,
-						'aria-selected': selected === index,
-						'data-index': index,
-					});
+					return (
+						<div
+							key={index}
+							id={`${id}-${index}`}
+							className="TagComboBox__option"
+							role="option"
+							aria-selected={selected === index}
+							data-index={index}>
+							{cloneElement(element, {
+								className: `TagComboBox__optionText${element.props.className ? ` ${element.props.className}` : ''}`,
+							})}
+						</div>
+					);
 				})}
 			</Layer>
 		</Layer>

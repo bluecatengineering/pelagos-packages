@@ -263,7 +263,7 @@ const Select = ({
 								role="option"
 								aria-selected={index === focused}
 								data-index={index}>
-								{o.element}
+								<div className="Select__optionText">{o.element}</div>
 							</div>
 						))}
 					</Layer>,
