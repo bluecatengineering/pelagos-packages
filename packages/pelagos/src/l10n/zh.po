@@ -25,6 +25,10 @@ msgstr "（已配置）"
 msgid "(optional)"
 msgstr "（可选）"
 
+#: c523
+msgid "{0, plural, one {1 item selected} other {# items selected}}, press Delete to clear selection."
+msgstr ""
+
 #: 0279
 msgid "{0} dropped. Final position in list: {1} of {count}."
 msgstr "{0}已删除。列表中的最终位置：{1}/{count}。"
@@ -300,6 +304,10 @@ msgstr "已选"
 #: 1098
 msgid "The default settings have been restored."
 msgstr "已恢复默认设置。"
+
+#: 4203
+msgid "The selection has been cleared"
+msgstr ""
 
 #: ae79
 msgid "To"

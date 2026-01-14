@@ -25,6 +25,10 @@ msgstr "(configurado)"
 msgid "(optional)"
 msgstr "(opcional)"
 
+#: c523
+msgid "{0, plural, one {1 item selected} other {# items selected}}, press Delete to clear selection."
+msgstr "{0, plural, one {1 elemento seleccionado} other {# elementos seleccionados}}, presione Eliminar para borrar la selección."
+
 #: 027
 msgid "{0} dropped. Final position in list: {1} of {count}."
 msgstr "{0} soltado. Posición final en la lista: {1} de {count}."
@@ -300,6 +304,10 @@ msgstr "Seleccionados"
 #: 109
 msgid "The default settings have been restored."
 msgstr "Los valores por defecto han sido restaurados."
+
+#: 4203
+msgid "The selection has been cleared"
+msgstr "La selección ha sido borrada"
 
 #: ae7
 msgid "To"

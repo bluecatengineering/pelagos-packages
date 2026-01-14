@@ -25,6 +25,10 @@ msgstr "（設定済み）"
 msgid "(optional)"
 msgstr "（オプション）"
 
+#: c523
+msgid "{0, plural, one {1 item selected} other {# items selected}}, press Delete to clear selection."
+msgstr ""
+
 #: 0279
 msgid "{0} dropped. Final position in list: {1} of {count}."
 msgstr "{0} をドロップしました。リストの最終位置: {count} の {1}。"
@@ -300,6 +304,10 @@ msgstr "選択済み"
 #: 1098
 msgid "The default settings have been restored."
 msgstr "デフォルト設定が復元されました。"
+
+#: 4203
+msgid "The selection has been cleared"
+msgstr ""
 
 #: ae79
 msgid "To"
