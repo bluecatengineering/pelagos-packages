@@ -1,0 +1,121 @@
+@import '../../less/focus';
+@import '../../less/spacing';
+@import '../../less/utils';
+
+@layer pelagos {
+	.MultiSelect {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		min-height: 32px;
+		color: var(--text-primary);
+		background-color: var(--field);
+		border-bottom: 1px solid var(--border-strong);
+		white-space: nowrap;
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--field-hover);
+		}
+
+		&:focus {
+			@focus-ring();
+		}
+
+		&[aria-invalid='true'] {
+			outline: 2px solid var(--support-error);
+			outline-offset: -2px;
+		}
+
+		&[aria-invalid='true']:focus {
+			@focus-ring-error();
+		}
+
+		&[aria-disabled='true'] {
+			color: var(--text-disabled);
+			background-color: var(--field);
+			border-color: transparent;
+			cursor: not-allowed;
+		}
+
+		&__tag {
+			margin: 0 @sp-08 0 @sp-16;
+
+			[aria-disabled='true'] > & {
+				color: var(--text-disabled);
+				background-color: var(--layer-disabled);
+				pointer-events: none;
+			}
+		}
+
+		&__textWrapper {
+			flex-direction: row;
+			align-items: center;
+			flex: 1;
+			align-self: stretch;
+			padding: 0 @sp-16;
+			overflow: hidden;
+
+			.MultiSelect__tag + & {
+				padding-left: 0;
+			}
+		}
+
+		&__text {
+			@base-ellipsis();
+			flex: 1;
+		}
+
+		&__arrow {
+			margin-left: @sp-16;
+
+			[aria-disabled='true'] > * > & {
+				fill: var(--icon-disabled);
+			}
+		}
+
+		&__list {
+			position: absolute;
+			max-height: 15em;
+			padding: @sp-04 0;
+			overflow: hidden auto;
+			background-color: var(--layer);
+			box-shadow: var(--shadow-04);
+			z-index: 1000;
+		}
+
+		&__option {
+			@layer-hover-effects();
+			flex-direction: row;
+			align-items: center;
+			color: var(--text-secondary);
+			height: 32px;
+			padding: 0 @sp-16;
+			white-space: nowrap;
+			cursor: pointer;
+
+			&--focused {
+				background-color: var(--layer-selected);
+			}
+
+			&--focused:hover {
+				background-color: var(--layer-selected-hover);
+			}
+		}
+
+		&__check {
+			overflow: hidden;
+		}
+
+		&__checkLabel {
+			@base-ellipsis();
+		}
+
+		@media print {
+			background-color: transparent;
+			border-color: transparent;
+		}
+	}
+}
