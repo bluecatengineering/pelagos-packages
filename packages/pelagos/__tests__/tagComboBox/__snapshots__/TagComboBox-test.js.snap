@@ -248,20 +248,26 @@ exports[`TagComboBox rendering renders expected elements when optional propertie
       className="TagComboBox__option"
       data-index={0}
       id="random-id-0"
-      key={0}
       role="option"
     >
-      Foo A
+      <div
+        className="TagComboBox__optionText"
+      >
+        Foo A
+      </div>
     </div>
     <div
       aria-selected={true}
-      className="TagComboBox__option TestClass"
+      className="TagComboBox__option"
       data-index={1}
       id="random-id-1"
-      key={1}
       role="option"
     >
-      Foo B
+      <div
+        className="TagComboBox__optionText TestClass"
+      >
+        Foo B
+      </div>
     </div>
   </Layer>
 </Layer>

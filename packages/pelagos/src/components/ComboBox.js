@@ -194,14 +194,19 @@ const ComboBox = ({
 					onMouseUp={handleListMouseUp}>
 					{suggestions.map((item, index) => {
 						const element = renderSuggestion(item, index);
-						return cloneElement(element, {
-							key: index,
-							id: `${id}-${index}`,
-							role: 'option',
-							className: `ComboBox__option ${element.props.className}`,
-							'aria-selected': selected === index,
-							'data-index': index,
-						});
+						return (
+							<div
+								key={index}
+								id={`${id}-${index}`}
+								className="ComboBox__option"
+								role="option"
+								aria-selected={selected === index}
+								data-index={index}>
+								{cloneElement(element, {
+									className: `ComboBox__optionText${element.props.className ? ` ${element.props.className}` : ''}`,
+								})}
+							</div>
+						);
 					})}
 				</Layer>,
 				document.fullscreenElement || document.body

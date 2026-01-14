@@ -191,7 +191,11 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
         id="random-id-0"
         role="option"
       >
-        One
+        <div
+          className="Select__optionText"
+        >
+          One
+        </div>
       </div>
       <div
         aria-selected={true}
@@ -200,7 +204,11 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
         id="random-id-1"
         role="option"
       >
-        Two
+        <div
+          className="Select__optionText"
+        >
+          Two
+        </div>
       </div>
       <div
         aria-selected={false}
@@ -209,7 +217,11 @@ exports[`Select rendering renders expected elements when open is true 1`] = `
         id="random-id-2"
         role="option"
       >
-        Three
+        <div
+          className="Select__optionText"
+        >
+          Three
+        </div>
       </div>
     </Layer>
   </React.Portal>
@@ -260,7 +272,11 @@ exports[`Select rendering renders expected elements when open is true and docume
         id="random-id-0"
         role="option"
       >
-        One
+        <div
+          className="Select__optionText"
+        >
+          One
+        </div>
       </div>
       <div
         aria-selected={true}
@@ -269,7 +285,11 @@ exports[`Select rendering renders expected elements when open is true and docume
         id="random-id-1"
         role="option"
       >
-        Two
+        <div
+          className="Select__optionText"
+        >
+          Two
+        </div>
       </div>
       <div
         aria-selected={false}
@@ -278,7 +298,11 @@ exports[`Select rendering renders expected elements when open is true and docume
         id="random-id-2"
         role="option"
       >
-        Three
+        <div
+          className="Select__optionText"
+        >
+          Three
+        </div>
       </div>
     </Layer>
   </React.Portal>

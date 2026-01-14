@@ -79,18 +79,26 @@
 
 	.Select__option {
 		@layer-hover-effects();
-		@ellipsis();
-		color: var(--text-primary);
-		padding: @sp-04 @sp-12;
+		flex-direction: row;
+		align-items: center;
+		height: 32px;
+		color: var(--text-secondary);
+		padding: 0 @sp-16;
 		cursor: pointer;
 
 		&[aria-selected='true'] {
+			color: var(--text-primary);
 			background-color: var(--layer-selected);
 		}
 
 		&[aria-selected='true']:hover {
 			background-color: var(--layer-selected-hover);
 		}
+	}
+
+	.Select__optionText {
+		@ellipsis();
+		flex: 1;
 	}
 
 	@media print {

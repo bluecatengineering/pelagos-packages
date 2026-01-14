@@ -257,23 +257,29 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
     >
       <div
         aria-selected={true}
-        className="ComboBox__option TestClass"
+        className="ComboBox__option"
         data-index={0}
         id="random-id-0"
-        key={0}
         role="option"
       >
-        Test suggestion 0
+        <div
+          className="ComboBox__optionText TestClass"
+        >
+          Test suggestion 0
+        </div>
       </div>
       <div
         aria-selected={false}
-        className="ComboBox__option TestClass"
+        className="ComboBox__option"
         data-index={1}
         id="random-id-1"
-        key={1}
         role="option"
       >
-        Test suggestion 1
+        <div
+          className="ComboBox__optionText TestClass"
+        >
+          Test suggestion 1
+        </div>
       </div>
     </Layer>
   </React.Portal>

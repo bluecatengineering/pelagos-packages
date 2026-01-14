@@ -118,8 +118,12 @@
 
 		&__option {
 			@layer-hover-effects();
-			padding: @sp-04 @sp-12;
-			cursor: default;
+			flex-direction: row;
+			align-items: center;
+			height: 32px;
+			color: var(--text-secondary);
+			padding: 0 @sp-16;
+			cursor: pointer;
 
 			&[aria-selected='true'] {
 				color: var(--text-primary);
@@ -127,9 +131,12 @@
 			}
 
 			&[aria-selected='true']:hover {
-				color: var(--text-primary);
 				background-color: var(--layer-selected-hover);
 			}
+		}
+
+		&__optionText {
+			flex: 1;
 		}
 	}
 }
