@@ -68,17 +68,19 @@ export const NewCheckBoxFilterEditor = ({id, label, options, list: initialList, 
 				<legend id={labelId} className="CheckBoxFilterEditor__legend">
 					{label}
 				</legend>
-				{options.map((opt, index) => (
-					<CheckBox
-						key={opt}
-						id={`${id}-${opt}`}
-						className="CheckBoxFilterEditor__option"
-						label={getLabel(opt)}
-						value={index}
-						checked={list.includes(opt)}
-						onChange={handleChange}
-					/>
-				))}
+				<div className="CheckBoxFilterEditor__options">
+					{options.map((opt, index) => (
+						<CheckBox
+							key={opt}
+							id={`${id}-${opt}`}
+							className="CheckBoxFilterEditor__option"
+							label={getLabel(opt)}
+							value={index}
+							checked={list.includes(opt)}
+							onChange={handleChange}
+						/>
+					))}
+				</div>
 			</fieldset>
 		</FilterEditor>
 	);
