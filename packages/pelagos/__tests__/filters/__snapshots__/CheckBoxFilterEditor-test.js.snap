@@ -16,22 +16,26 @@ exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected
     >
       label
     </legend>
-    <CheckBox
-      checked={true}
-      className="CheckBoxFilterEditor__option"
-      id="random-id-a"
-      label="a"
-      onChange={[Function]}
-      value={0}
-    />
-    <CheckBox
-      checked={false}
-      className="CheckBoxFilterEditor__option"
-      id="random-id-b"
-      label="b"
-      onChange={[Function]}
-      value={1}
-    />
+    <div
+      className="CheckBoxFilterEditor__options"
+    >
+      <CheckBox
+        checked={true}
+        className="CheckBoxFilterEditor__option"
+        id="random-id-a"
+        label="a"
+        onChange={[Function]}
+        value={0}
+      />
+      <CheckBox
+        checked={false}
+        className="CheckBoxFilterEditor__option"
+        id="random-id-b"
+        label="b"
+        onChange={[Function]}
+        value={1}
+      />
+    </div>
   </fieldset>
 </FilterEditor>
 `;
@@ -52,22 +56,26 @@ exports[`CheckBoxFilterEditor NewCheckBoxFilterEditor rendering renders expected
     >
       label
     </legend>
-    <CheckBox
-      checked={false}
-      className="CheckBoxFilterEditor__option"
-      id="random-id-a"
-      label="a"
-      onChange={[Function]}
-      value={0}
-    />
-    <CheckBox
-      checked={false}
-      className="CheckBoxFilterEditor__option"
-      id="random-id-b"
-      label="b"
-      onChange={[Function]}
-      value={1}
-    />
+    <div
+      className="CheckBoxFilterEditor__options"
+    >
+      <CheckBox
+        checked={false}
+        className="CheckBoxFilterEditor__option"
+        id="random-id-a"
+        label="a"
+        onChange={[Function]}
+        value={0}
+      />
+      <CheckBox
+        checked={false}
+        className="CheckBoxFilterEditor__option"
+        id="random-id-b"
+        label="b"
+        onChange={[Function]}
+        value={1}
+      />
+    </div>
   </fieldset>
 </FilterEditor>
 `;
