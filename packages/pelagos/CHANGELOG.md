@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.24.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.24.1...@bluecateng/pelagos@12.24.2) (2026-01-16)
+
+### Bug Fixes
+
+- fix incorrect property in SideNavLink.d.ts ([7a68345](https://github.com/bluecatengineering/pelagos-packages/commit/7a68345aaff9471ae2db80be2353222f0924d4f1))
+- fix potentially incorrect variable reference in useTooltipBase ([092dc14](https://github.com/bluecatengineering/pelagos-packages/commit/092dc14c50ce839bfb2152500545e5ca13929c2e))
+- fix spacing for Select arrow ([1e19101](https://github.com/bluecatengineering/pelagos-packages/commit/1e191013bc66994906c054bbd13875ff2ca503c9))
+- let options in CheckBoxFilterEditor scroll if there are too many ([0e8c917](https://github.com/bluecatengineering/pelagos-packages/commit/0e8c9175c07992ea6650f69c961596eb7676d397))
+- restore default flex behaviour in TabList ([f5bb57f](https://github.com/bluecatengineering/pelagos-packages/commit/f5bb57f0c18f5c93d712d1d5240fb5a97855006f))
+- update option styles for Select and ComboBox ([7fa12bb](https://github.com/bluecatengineering/pelagos-packages/commit/7fa12bb245957f34fdd91bd66f63d6c9e2f1bfa3))
+
 ## [12.24.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.24.0...@bluecateng/pelagos@12.24.1) (2025-12-10)
 
 ### Bug Fixes
