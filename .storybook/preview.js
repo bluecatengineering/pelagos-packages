@@ -5,7 +5,10 @@ import './preview.less';
 /* eslint-disable no-console -- not production code */
 
 const setTheme = (theme) => (document.documentElement.dataset.theme = theme);
-const setLocale = (locale) => setPelagosLocale(locale).catch(console.error);
+const setLocale = (locale) => {
+	document.documentElement.setAttribute('lang', locale);
+	setPelagosLocale(locale).catch(console.error);
+};
 
 export default {
 	tags: ['autodocs'],
