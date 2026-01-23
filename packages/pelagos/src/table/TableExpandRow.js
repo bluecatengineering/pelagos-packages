@@ -15,7 +15,7 @@ const TableExpandRow = forwardRef(
 				<button
 					className="Table__expandBtn"
 					type="button"
-					aria-label={expanded ? t`Expand current row` : t`Collapse current row`}
+					aria-label={expanded ? t`Collapse current row` : t`Expand current row`}
 					aria-expanded={expanded}
 					aria-controls={ariaControls}
 					onClick={onExpand}>
