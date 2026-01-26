@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.25.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.24.2...@bluecateng/pelagos@12.25.0) (2026-01-26)
+
+### Features
+
+- add multiselect component ([a7a6d23](https://github.com/bluecatengineering/pelagos-packages/commit/a7a6d23382b3b65ae07ed82864a86e8fbad85e65))
+
+### Bug Fixes
+
+- use the correct label in TableExpandRow ([55529b5](https://github.com/bluecatengineering/pelagos-packages/commit/55529b5233c53b815168a9baba00a5fd26e09fe6))
+
 ## [12.24.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.24.1...@bluecateng/pelagos@12.24.2) (2026-01-16)
 
 ### Bug Fixes
