@@ -1,6 +1,6 @@
 {
   "name": "@bluecateng/pelagos-highcharts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pelagos themes for Highcharts",
   "license": "ISC",
   "sideEffects": [
