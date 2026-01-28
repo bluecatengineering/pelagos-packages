@@ -1,0 +1,34 @@
+{
+  "name": "@bluecateng/pelagos-highcharts",
+  "version": "1.0.0",
+  "description": "Pelagos themes for Highcharts",
+  "license": "ISC",
+  "sideEffects": [
+    "*.less"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && esbuild --bundle --minify --outdir=dist --format=esm src/index.js && cp src/index.d.ts dist/",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bluecatengineering/pelagos-packages.git",
+    "directory": "packages/pelagos-highcharts"
+  },
+  "keywords": [
+    "react",
+    "highcharts"
+  ],
+  "files": [
+    "dist",
+    "less"
+  ],
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./less/*": "./less/*"
+  },
+  "peerDependencies": {
+    "@bluecateng/pelagos": ">=12"
+  }
+}
