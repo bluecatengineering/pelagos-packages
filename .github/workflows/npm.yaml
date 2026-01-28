@@ -2,7 +2,7 @@ name: Npm
 
 on:
   release:
-    types: [published]
+    types: [published, edited]
 
 permissions: read-all
 
