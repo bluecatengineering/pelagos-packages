@@ -35,3 +35,23 @@ for the chart element.
 
 The class `highcharts-set-alert` may be used when the chart represents status information
 (error/caution/warning/success).
+
+## Highcharts initialization
+
+These are the suggested Highcharts options to use these themes.
+
+```javascript
+import {setOptions} from 'highcharts';
+
+setOptions({
+	chart: {animation: false, colorCount: 14, styledMode: true, spacing: [8, 0, 0, 0]},
+	credits: {enabled: false},
+	exporting: {buttons: false},
+	legend: {enabled: false, itemDistance: 12, symbolPadding: 2},
+	time: {timezone: undefined},
+	plotOptions: {series: {animation: false}},
+	title: {text: null},
+	xAxis: {tickLength: 8, labels: {distance: 12}},
+	yAxis: {tickLength: 8, labels: {distance: 12}},
+});
+```
