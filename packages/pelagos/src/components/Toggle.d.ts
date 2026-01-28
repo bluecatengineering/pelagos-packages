@@ -1,6 +1,6 @@
 import type {FunctionComponent, HTMLProps, MouseEventHandler} from 'react';
 
-interface ToggleProps extends HTMLProps<HTMLButtonElement> {
+interface ToggleProps extends Omit<HTMLProps<HTMLButtonElement>, 'onChange'> {
 	/** The component ID. */
 	id?: string;
 	/** The component class name(s). */
