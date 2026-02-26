@@ -205,6 +205,11 @@
 			outline-offset: 1px;
 		}
 
+		&:disabled {
+			cursor: default;
+			border-color: var(--icon-disabled);
+		}
+
 		&::after {
 			display: block;
 			position: absolute;
@@ -224,6 +229,10 @@
 
 		&.error:checked::after {
 			border-color: var(--support-error);
+		}
+
+		&:checked:disabled::after {
+			border-color: var(--icon-disabled);
 		}
 
 		@media print {

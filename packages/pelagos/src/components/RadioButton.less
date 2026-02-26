@@ -8,5 +8,15 @@
 		// stylelint-disable-next-line @bluecateng/property-strict-value -- minimum space to fit focus ring
 		margin-left: 3px;
 		cursor: pointer;
+
+		&--disabled {
+			color: var(--text-disabled);
+			cursor: default;
+
+			&:hover,
+			&:active {
+				background-color: transparent;
+			}
+		}
 	}
 }
