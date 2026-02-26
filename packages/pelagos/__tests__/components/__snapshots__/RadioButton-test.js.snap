@@ -32,6 +32,23 @@ exports[`RadioButton rendering renders expected elements when className is set 1
 </label>
 `;
 
+exports[`RadioButton rendering renders expected elements when disabled is true 1`] = `
+<label
+  className="RadioButton RadioButton--disabled"
+>
+  <input
+    checked={true}
+    className=""
+    disabled={true}
+    id="test"
+    onChange={[MockFunction]}
+    tabIndex={0}
+    type="radio"
+  />
+  Test
+</label>
+`;
+
 exports[`RadioButton rendering renders expected elements when error is true 1`] = `
 <label
   className="RadioButton TestClass"

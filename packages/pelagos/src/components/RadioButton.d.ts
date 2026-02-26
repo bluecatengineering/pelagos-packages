@@ -9,6 +9,8 @@ interface RadioButtonProps extends Omit<HTMLProps<HTMLInputElement>, 'label'> {
 	label?: ReactNode;
 	/** Whether the radio button is checked */
 	checked?: boolean;
+	/** Whether the radio button is disabled. */
+	disabled?: boolean;
 	/** Whether the button is in error. */
 	error?: boolean;
 	/** The tab index. */

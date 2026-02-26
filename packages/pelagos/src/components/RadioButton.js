@@ -3,9 +3,16 @@ import PropTypes from 'prop-types';
 import './RadioButton.less';
 
 /** A radio button. */
-const RadioButton = ({className, label, error, tabIndex = 0, ...props}) => (
-	<label className={`RadioButton${className ? ` ${className}` : ''}`}>
-		<input {...props} className={error ? 'error' : ''} type="radio" tabIndex={tabIndex} aria-invalid={error} />
+const RadioButton = ({className, label, disabled, error, tabIndex = 0, ...props}) => (
+	<label className={`RadioButton${disabled ? ' RadioButton--disabled' : ''}${className ? ` ${className}` : ''}`}>
+		<input
+			{...props}
+			className={error ? 'error' : ''}
+			type="radio"
+			disabled={disabled}
+			tabIndex={tabIndex}
+			aria-invalid={error}
+		/>
 		{label}
 	</label>
 );
@@ -19,6 +26,8 @@ RadioButton.propTypes = {
 	label: PropTypes.node,
 	/** Whether the radio button is checked */
 	checked: PropTypes.bool,
+	/** Whether the radio button is disabled. */
+	disabled: PropTypes.bool,
 	/** Whether the button is in error. */
 	error: PropTypes.bool,
 	/** The tab index. */
