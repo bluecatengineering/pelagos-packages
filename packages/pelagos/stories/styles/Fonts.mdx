@@ -5,6 +5,8 @@ import fontData from '../../defs/fonts.yaml';
 
 # Fonts
 
+See the "Including fonts in the page" section below.
+
 <table>
 	<thead>
 		<tr>
@@ -43,3 +45,19 @@ import fontData from '../../defs/fonts.yaml';
 			)}
 	</tbody>
 </table>
+
+<br />
+
+## Including fonts in the page
+
+You can load these fonts from Google Fonts by adding the following lines to your HTML file.
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" />
+```
+
+If needed, you can also embed the font files in the application. In that case, include the same font families and weights shown above.
