@@ -29,7 +29,6 @@
 }
 
 :root {
-	@root-font();
 	transition: background-color 0.15s ease-out;
 
 	&[data-layer='1'],
@@ -37,10 +36,6 @@
 	&[data-layer='3'] {
 		background-color: var(--layer);
 	}
-}
-
-body {
-	@body-compact-01();
 }
 
 #storybook-root {

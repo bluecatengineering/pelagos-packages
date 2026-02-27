@@ -1,10 +1,12 @@
 @import 'focus';
+@import 'fonts';
 @import 'headers';
 @import 'layers';
 @import 'spacing';
 
 @layer pelagos {
 	:root {
+		@root-font();
 		color: var(--text-primary);
 		background-color: var(--background);
 
@@ -19,6 +21,15 @@
 	*::before,
 	*::after {
 		box-sizing: border-box;
+	}
+
+	body {
+		@body-compact-01();
+	}
+
+	sup,
+	sub {
+		font-size: 67%;
 	}
 
 	div,
