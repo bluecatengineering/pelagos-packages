@@ -5,7 +5,7 @@ import WithLayers from '../../templates/WithLayers';
 
 import Select from './Select';
 
-const options = ['Alpha', 'Beta', 'Gamma'];
+const options = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'Theta'];
 const getOptionKey = identity;
 const renderOption = identity;
 
