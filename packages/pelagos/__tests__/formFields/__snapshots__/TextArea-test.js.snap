@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TextArea rendering renders expected elements 1`] = `
+<Layer
+  aria-required={true}
+  as="textarea"
+  className="TextAreaField__area TextAreaField--noresize"
+  id="test"
+  maxLength={10}
+  onChange={[Function]}
+  placeholder="placeholder"
+  value="value"
+/>
+`;
+
+exports[`TextArea rendering renders expected elements when className is set 1`] = `
+<Layer
+  as="textarea"
+  className="TextAreaField__area TextAreaField--noresize TestClass"
+  id="test"
+  maxLength={10}
+  onChange={[Function]}
+  placeholder="placeholder"
+  value="value"
+/>
+`;
+
+exports[`TextArea rendering renders expected elements when error is set 1`] = `
+<Layer
+  aria-invalid={true}
+  as="textarea"
+  className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
+  id="test"
+  maxLength={10}
+  onChange={[Function]}
+  placeholder="placeholder"
+  value="value"
+/>
+`;
+
+exports[`TextArea rendering renders expected elements when resize is set 1`] = `
+<Layer
+  as="textarea"
+  className="TextAreaField__area"
+  id="test"
+  maxLength={10}
+  onChange={[Function]}
+  placeholder="placeholder"
+  value="value"
+/>
+`;

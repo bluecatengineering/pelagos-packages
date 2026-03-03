@@ -1,31 +1,5 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`TextInputField rendering adds the error class if the error is set 1`] = `
-<FieldWrapper
-  className="TextInputField"
-  error="Error"
-  helperId="random-id-helper"
-  helperText="Helper text"
-  htmlFor="random-id"
-  label="Label"
->
-  <Layer
-    aria-describedby="random-id-helper"
-    aria-invalid={true}
-    as="input"
-    className="TextInputField__input TextInputField--error"
-    disabled={false}
-    id="random-id"
-    maxLength={10}
-    name="name"
-    onChange={[Function]}
-    placeholder="placeholder"
-    type="text"
-    value="value"
-  />
-</FieldWrapper>
-`;
-
 exports[`TextInputField rendering renders expected elements 1`] = `
 <FieldWrapper
   className="TextInputField"
@@ -35,17 +9,15 @@ exports[`TextInputField rendering renders expected elements 1`] = `
   label="Label"
   required={true}
 >
-  <Layer
+  <TextInputField
     aria-describedby="random-id-helper"
-    aria-invalid={false}
-    aria-required={true}
-    as="input"
-    className="TextInputField__input"
+    error={false}
     id="random-id"
     maxLength={10}
     name="name"
-    onChange={[Function]}
+    onChange={[MockFunction]}
     placeholder="placeholder"
+    required={true}
     type="text"
     value="value"
   />
@@ -59,16 +31,13 @@ exports[`TextInputField rendering renders expected elements when className is se
   htmlFor="random-id"
   label="Label"
 >
-  <Layer
+  <TextInputField
     aria-describedby="random-id-helper"
-    aria-invalid={false}
-    as="input"
-    className="TextInputField__input"
-    disabled={false}
+    error={false}
     id="random-id"
     maxLength={10}
     name="name"
-    onChange={[Function]}
+    onChange={[MockFunction]}
     placeholder="placeholder"
     type="text"
     value="value"
@@ -76,26 +45,25 @@ exports[`TextInputField rendering renders expected elements when className is se
 </FieldWrapper>
 `;
 
-exports[`TextInputField rendering renders expected elements when value is empty 1`] = `
+exports[`TextInputField rendering renders expected elements when error is set 1`] = `
 <FieldWrapper
   className="TextInputField"
+  error="Error"
   helperId="random-id-helper"
+  helperText="Helper text"
   htmlFor="random-id"
   label="Label"
 >
-  <Layer
+  <TextInputField
     aria-describedby="random-id-helper"
-    aria-invalid={false}
-    as="input"
-    className="TextInputField__input"
-    disabled={false}
+    error={true}
     id="random-id"
     maxLength={10}
     name="name"
-    onChange={[Function]}
+    onChange={[MockFunction]}
     placeholder="placeholder"
     type="text"
-    value=""
+    value="value"
   />
 </FieldWrapper>
 `;

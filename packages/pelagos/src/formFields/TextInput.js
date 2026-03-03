@@ -1,44 +1,28 @@
+import {useCallback} from 'react';
 import PropTypes from 'prop-types';
 
-import useRandomId from '../hooks/useRandomId';
-
-import FieldWrapper from './FieldWrapper';
-import TextInput from './TextInput';
+import Layer from '../components/Layer';
 
 import './TextInputField.less';
 
-/** A text input form field. */
-const TextInputField = ({id, className, label, required, helperText, error, onChange, ...props}) => {
-	id = useRandomId(id);
-	const helperId = `${id}-helper`;
-	return (
-		<FieldWrapper
-			className={`TextInputField${className ? ` ${className}` : ''}`}
-			htmlFor={id}
-			label={label}
-			required={required}
-			helperId={helperId}
-			helperText={helperText}
-			error={error}>
-			<TextInput
-				{...props}
-				id={id}
-				required={required}
-				error={!!error}
-				aria-describedby={helperId}
-				onChange={onChange}
-			/>
-		</FieldWrapper>
-	);
-};
+/** A text input. */
+const TextInputField = ({className, type = 'text', required, error, onChange, ...props}) => (
+	<Layer
+		{...props}
+		as="input"
+		className={`TextInputField__input${error ? ' TextInputField--error' : ''}${className ? ` ${className}` : ''}`}
+		type={type}
+		aria-required={required}
+		aria-invalid={error}
+		onChange={useCallback((event) => onChange(event.target.value), [onChange])}
+	/>
+);
 
 TextInputField.propTypes = {
 	/** The component ID. */
 	id: PropTypes.string,
 	/** The component class name(s). */
 	className: PropTypes.string,
-	/** The label text. */
-	label: PropTypes.string.isRequired,
 	/** The input type. */
 	type: PropTypes.string,
 	/** The input name. */
@@ -57,10 +41,8 @@ TextInputField.propTypes = {
 	disabled: PropTypes.bool,
 	/** Whether the field is required. */
 	required: PropTypes.bool,
-	/** Additional information for the field. */
-	helperText: PropTypes.string,
-	/** The error text. */
-	error: PropTypes.string,
+	/** Whether the component is in error. */
+	error: PropTypes.bool,
 	/** Function invoked when the value changes. */
 	onChange: PropTypes.func.isRequired,
 };

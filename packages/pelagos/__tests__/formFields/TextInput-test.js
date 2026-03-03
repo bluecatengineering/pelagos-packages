@@ -1,39 +1,32 @@
 import {shallow} from 'enzyme';
 
-import TextInputField from '../../src/formFields/TextInputField';
-import useRandomId from '../../src/hooks/useRandomId';
+import TextInput from '../../src/formFields/TextInput';
 
-jest.unmock('../../src/formFields/TextInputField');
+jest.unmock('../../src/formFields/TextInput');
 
-useRandomId.mockReturnValue('random-id');
-
-describe('TextInputField', () => {
+describe('TextInput', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
 			const wrapper = shallow(
-				<TextInputField
+				<TextInput
 					id="test"
-					label="Label"
 					type="text"
 					name="name"
 					value="value"
 					placeholder="placeholder"
 					maxLength={10}
 					required
-					helperText="Helper text"
 					onChange={jest.fn()}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(useRandomId.mock.calls).toEqual([['test']]);
 		});
 
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
-				<TextInputField
+				<TextInput
 					id="test"
 					className="TestClass"
-					label="Label"
 					type="text"
 					name="name"
 					value="value"
@@ -47,20 +40,28 @@ describe('TextInputField', () => {
 
 		it('renders expected elements when error is set', () => {
 			const wrapper = shallow(
-				<TextInputField
+				<TextInput
 					id="test"
-					label="Label"
 					type="text"
 					name="name"
 					value="value"
 					placeholder="placeholder"
 					maxLength={10}
-					helperText="Helper text"
-					error="Error"
+					error
 					onChange={jest.fn()}
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+	});
+
+	describe('behaviour', () => {
+		it('calls onChange when a change event is fired', () => {
+			const onChange = jest.fn();
+			const event = {target: {value: 'test'}};
+			const wrapper = shallow(<TextInput onChange={onChange} />);
+			wrapper.simulate('change', event);
+			expect(onChange.mock.calls).toEqual([['test']]);
 		});
 	});
 });

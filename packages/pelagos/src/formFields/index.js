@@ -5,6 +5,8 @@ export {default as FieldHelper} from './FieldHelper';
 export {default as FieldWrapper} from './FieldWrapper';
 export {default as OutputField} from './OutputField';
 export {default as TagInputField} from './TagInputField';
+export {default as TextArea} from './TextArea';
 export {default as TextAreaField} from './TextAreaField';
+export {default as TextInput} from './TextInput';
 export {default as TextInputField} from './TextInputField';
 export {default as ToggleField} from './ToggleField';
