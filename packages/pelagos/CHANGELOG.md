@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.26.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.25.0...@bluecateng/pelagos@12.26.0) (2026-03-03)
+
+### Features
+
+- extract TextInput and TextArea components ([9223715](https://github.com/bluecatengineering/pelagos-packages/commit/9223715a3de24c85a272a9e91dd8122e10d639d3))
+
+### Bug Fixes
+
+- fix bundling error in Toggle.d.ts ([d4e13cf](https://github.com/bluecatengineering/pelagos-packages/commit/d4e13cff4a634df31bd3926caf95649136c4f21e))
+- handle disabled state in RadioButton ([13dcff0](https://github.com/bluecatengineering/pelagos-packages/commit/13dcff0d6edd9d0ca1ee348e62c1c21e003d36f6))
+- set expected root and body fonts in core.less ([216fb1d](https://github.com/bluecatengineering/pelagos-packages/commit/216fb1d0588a43732d1d8500eba2d91eb582fbfa))
+
 ## [12.25.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.24.2...@bluecateng/pelagos@12.25.0) (2026-01-26)
 
 ### Features
