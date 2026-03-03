@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TextInput rendering renders expected elements 1`] = `
+<Layer
+  aria-required={true}
+  as="input"
+  className="TextInputField__input"
+  id="test"
+  maxLength={10}
+  name="name"
+  onChange={[Function]}
+  placeholder="placeholder"
+  type="text"
+  value="value"
+/>
+`;
+
+exports[`TextInput rendering renders expected elements when className is set 1`] = `
+<Layer
+  as="input"
+  className="TextInputField__input TestClass"
+  id="test"
+  maxLength={10}
+  name="name"
+  onChange={[Function]}
+  placeholder="placeholder"
+  type="text"
+  value="value"
+/>
+`;
+
+exports[`TextInput rendering renders expected elements when error is set 1`] = `
+<Layer
+  aria-invalid={true}
+  as="input"
+  className="TextInputField__input TextInputField--error"
+  id="test"
+  maxLength={10}
+  name="name"
+  onChange={[Function]}
+  placeholder="placeholder"
+  type="text"
+  value="value"
+/>
+`;

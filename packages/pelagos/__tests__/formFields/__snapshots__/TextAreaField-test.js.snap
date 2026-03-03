@@ -1,51 +1,5 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`TextAreaField rendering adds the error class if the error is set 1`] = `
-<FieldWrapper
-  className="TextAreaField"
-  counter={null}
-  error="Error"
-  helperId="random-id-helper"
-  helperText="Helper text"
-  htmlFor="random-id"
-  label="Label"
->
-  <Layer
-    aria-describedby="random-id-helper"
-    aria-invalid={true}
-    as="textarea"
-    className="TextAreaField__area TextAreaField--noresize TextAreaField--error"
-    id="random-id"
-    maxLength={10}
-    onChange={[Function]}
-    placeholder="placeholder"
-    value="value"
-  />
-</FieldWrapper>
-`;
-
-exports[`TextAreaField rendering does not add the resize class if the resize is true 1`] = `
-<FieldWrapper
-  className="TextAreaField"
-  counter={null}
-  helperId="random-id-helper"
-  htmlFor="random-id"
-  label="Label"
->
-  <Layer
-    aria-describedby="random-id-helper"
-    aria-invalid={false}
-    as="textarea"
-    className="TextAreaField__area"
-    id="random-id"
-    maxLength={10}
-    onChange={[Function]}
-    placeholder="placeholder"
-    value="value"
-  />
-</FieldWrapper>
-`;
-
 exports[`TextAreaField rendering renders expected elements 1`] = `
 <FieldWrapper
   className="TextAreaField"
@@ -56,16 +10,14 @@ exports[`TextAreaField rendering renders expected elements 1`] = `
   label="Label"
   required={true}
 >
-  <Layer
+  <TextAreaField
     aria-describedby="random-id-helper"
-    aria-invalid={false}
-    aria-required={true}
-    as="textarea"
-    className="TextAreaField__area TextAreaField--noresize"
+    error={false}
     id="random-id"
     maxLength={10}
-    onChange={[Function]}
+    onChange={[MockFunction]}
     placeholder="placeholder"
+    required={true}
     value="value"
   />
 </FieldWrapper>
@@ -79,21 +31,19 @@ exports[`TextAreaField rendering renders expected elements when className is set
   htmlFor="random-id"
   label="Label"
 >
-  <Layer
+  <TextAreaField
     aria-describedby="random-id-helper"
-    aria-invalid={false}
-    as="textarea"
-    className="TextAreaField__area TextAreaField--noresize"
+    error={false}
     id="random-id"
     maxLength={10}
-    onChange={[Function]}
+    onChange={[MockFunction]}
     placeholder="placeholder"
     value="value"
   />
 </FieldWrapper>
 `;
 
-exports[`TextAreaField rendering renders expected elements when showCounter is true 1`] = `
+exports[`TextAreaField rendering renders expected elements when showCounter is set 1`] = `
 <FieldWrapper
   className="TextAreaField"
   counter="5/10"
@@ -101,14 +51,12 @@ exports[`TextAreaField rendering renders expected elements when showCounter is t
   htmlFor="random-id"
   label="Label"
 >
-  <Layer
+  <TextAreaField
     aria-describedby="random-id-helper"
-    aria-invalid={false}
-    as="textarea"
-    className="TextAreaField__area TextAreaField--noresize"
+    error={false}
     id="random-id"
     maxLength={10}
-    onChange={[Function]}
+    onChange={[MockFunction]}
     placeholder="placeholder"
     value="value"
   />
@@ -123,14 +71,12 @@ exports[`TextAreaField rendering renders expected elements when value is empty 1
   htmlFor="random-id"
   label="Label"
 >
-  <Layer
+  <TextAreaField
     aria-describedby="random-id-helper"
-    aria-invalid={false}
-    as="textarea"
-    className="TextAreaField__area TextAreaField--noresize"
+    error={false}
     id="random-id"
     maxLength={10}
-    onChange={[Function]}
+    onChange={[MockFunction]}
     placeholder="placeholder"
     value=""
   />
