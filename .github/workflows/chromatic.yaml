@@ -28,7 +28,7 @@ jobs:
           npx lerna run prepack
 
       - name: Publish to Chromatic
-        uses: chromaui/action@07791f8243f4cb2698bf4d00426baf4b2d1cb7e0 # tag=v13.3.5
+        uses: chromaui/action@5ec258af08deb3e8c36653bd618cb7fe52090031 # tag=v15.2.0
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true
