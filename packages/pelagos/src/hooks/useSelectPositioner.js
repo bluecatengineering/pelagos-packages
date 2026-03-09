@@ -28,7 +28,7 @@ const useSelectPositioner = (open, boxRef, popUpRef, {changePopUpWidth} = {chang
 		const setPosition = () => {
 			const {height: popUpHeight} = popUp.getBoundingClientRect();
 			const {top, bottom, left, width} = button.getBoundingClientRect();
-			popUp.style.top = `${bottom + popUpHeight + 8 < innerHeight ? bottom : max(0, top - popUpHeight)}px`;
+			popUp.style.top = `${bottom + popUpHeight < innerHeight ? bottom : max(0, top - popUpHeight)}px`;
 			popUp.style.left = `${left}px`;
 			if (changePopUpWidth) {
 				popUp.style.width = `${width}px`;

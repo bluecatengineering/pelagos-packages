@@ -33,6 +33,11 @@ describe('useSelectPositioner', () => {
 		window.addEventListener.mock.calls[0][1]();
 		expect(popUp.style).toEqual({top: '250px', left: '200px', width: '400px'});
 
+		button.getBoundingClientRect = () => ({top: 80, bottom: 100, left: 200, width: 400});
+		popUp.getBoundingClientRect = () => ({height: 480});
+		window.addEventListener.mock.calls[0][1]();
+		expect(popUp.style).toEqual({top: '0px', left: '200px', width: '400px'});
+
 		remove();
 		expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
 		expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
