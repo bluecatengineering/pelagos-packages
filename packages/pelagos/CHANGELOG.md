@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.26.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.26.0...@bluecateng/pelagos@12.26.1) (2026-03-11)
+
+### Bug Fixes
+
+- limit height of all menus and select pop-ups ([8adc29b](https://github.com/bluecatengineering/pelagos-packages/commit/8adc29b9a636934e2502b3ebf84eb17be01f9ed5))
+
 ## [12.26.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.25.0...@bluecateng/pelagos@12.26.0) (2026-03-03)
 
 ### Features
