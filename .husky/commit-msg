@@ -1,1 +1,1 @@
-npx commitlint -e "$1"
+npx commitlint -s -e "$1"
