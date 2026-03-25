@@ -17,6 +17,10 @@ For examples and documentation, please see [the Storybook site](https://storyboo
 
 Also check the [example application](https://github.com/bluecatengineering/pelagos-example).
 
+## Use in ChatGPT
+
+For details about using Pelagos to build components interactively in ChatGPT, see [@bluecateng/pelagos-gpt](packages/pelagos-gpt).
+
 ## Packages
 
 | Package                                                 | Description                             |
@@ -26,6 +30,6 @@ Also check the [example application](https://github.com/bluecatengineering/pelag
 | [@bluecateng/jest-helpers](packages/jest-helpers)       | Helper scripts for Jest                 |
 | [@bluecateng/nano-spring](packages/nano-spring)         | Tiny implementation of spring animation |
 | [@bluecateng/pelagos](packages/pelagos)                 | UI components                           |
-| [@bluecateng/pelagos-charts](packages/pelagos-charts)   | Chart components                        |
 | [@bluecateng/pelagos-forms](packages/pelagos-forms)     | Form components                         |
+| [@bluecateng/pelagos-gpt](packages/pelagos-gpt)         | Bundled components for use in ChatGPT   |
 | [@bluecateng/smooth-reorder](packages/smooth-reorder)   | Smooth list reordering in vanilla JS    |
