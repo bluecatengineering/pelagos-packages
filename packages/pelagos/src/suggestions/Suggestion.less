@@ -1,10 +1,20 @@
+@import '../../less/spacing';
+@import '../../less/utils';
+
 @layer pelagos {
 	.Suggestion {
 		flex-direction: row;
-	}
+		overflow: hidden;
+		gap: @sp-08;
 
-	.Suggestion__description {
-		color: var(--text-secondary);
-		margin-left: auto;
+		&__name {
+			@ellipsis();
+			flex: 1;
+		}
+
+		&__description {
+			color: var(--text-secondary);
+			margin-left: auto;
+		}
 	}
 }

@@ -5,7 +5,10 @@ exports[`Suggestion renders expected elements 1`] = `
   className="Suggestion"
   id="0"
 >
-  <div>
+  <div
+    className="Suggestion__name"
+    title="Test"
+  >
     Test
   </div>
   <div
@@ -21,7 +24,10 @@ exports[`Suggestion renders expected elements when className is set 1`] = `
   className="Suggestion TestClass"
   id="0"
 >
-  <div>
+  <div
+    className="Suggestion__name"
+    title="Test"
+  >
     Test
   </div>
   <div

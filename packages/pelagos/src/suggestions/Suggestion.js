@@ -5,7 +5,9 @@ import './Suggestion.less';
 /** A suggestion. */
 export const Suggestion = ({className, name, description, ...props}) => (
 	<div {...props} className={'Suggestion' + (className ? ' ' + className : '')}>
-		<div>{name}</div>
+		<div className="Suggestion__name" title={name}>
+			{name}
+		</div>
 		<div className="Suggestion__description">{description}</div>
 	</div>
 );
