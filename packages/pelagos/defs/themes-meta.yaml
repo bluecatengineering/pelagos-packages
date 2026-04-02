@@ -674,6 +674,42 @@ tag-border-cyan-gray:
   group: tag
   set: base
   properties: []
+status-red:
+  group: status
+  set: base
+  properties: [color]
+status-orange:
+  group: status
+  set: base
+  properties: [color]
+status-orange-outline:
+  group: status
+  set: base
+  properties: [color]
+status-yellow:
+  group: status
+  set: base
+  properties: [color]
+status-yellow-outline:
+  group: status
+  set: base
+  properties: [color]
+status-purple:
+  group: status
+  set: base
+  properties: [color]
+status-green:
+  group: status
+  set: base
+  properties: [color]
+status-blue:
+  group: status
+  set: base
+  properties: [color]
+status-gray:
+  group: status
+  set: base
+  properties: [color]
 text-value:
   group: custom
   set: base
