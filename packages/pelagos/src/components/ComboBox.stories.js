@@ -1,7 +1,9 @@
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 import {action} from 'storybook/actions';
 
 import WithLayers from '../../templates/WithLayers';
+import renderComplexSuggestion from '../suggestions/renderSuggestion';
+import loremIpsumShort from '../../stories/LoremIpsumShort';
 
 import ComboBox from './ComboBox';
 
@@ -40,6 +42,24 @@ export const Disabled = {
 
 export const Error = {
 	args: {id: 'error', text: 'Error', 'aria-label': 'Error', error: true, getSuggestions, renderSuggestion},
+};
+
+export const ComplexSuggestions = {
+	args: {
+		id: 'default',
+		text: 'Alpha',
+		'aria-label': 'Default',
+		getSuggestions: () => [
+			{name: 'Alpha', description: 'first'},
+			{name: loremIpsumShort, description: 'second'},
+		],
+		renderSuggestion: renderComplexSuggestion,
+	},
+	render: (args) => {
+		const [text, setText] = useState(args.text);
+		const handleChange = useCallback((suggestion) => setText(suggestion.name), []);
+		return <ComboBox {...args} text={text} onTextChange={setText} onChange={handleChange} />;
+	},
 };
 
 export const _WithLayers = {
