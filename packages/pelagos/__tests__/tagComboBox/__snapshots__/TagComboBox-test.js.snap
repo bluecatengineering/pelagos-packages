@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TagComboBox rendering renders expected elements 1`] = `
-<Layer
+<div
   className="TagComboBox"
   id="random-id-tags"
 >
@@ -9,7 +9,7 @@ exports[`TagComboBox rendering renders expected elements 1`] = `
     aria-live="polite"
     className="sr-only"
   />
-  <div
+  <Layer
     className="TagComboBox__content"
   >
     <Tag
@@ -49,7 +49,7 @@ exports[`TagComboBox rendering renders expected elements 1`] = `
       type="text"
       value=""
     />
-  </div>
+  </Layer>
   <Layer
     className="TagComboBox__list"
     id="random-id-list"
@@ -58,20 +58,20 @@ exports[`TagComboBox rendering renders expected elements 1`] = `
     popover="manual"
     role="listbox"
   />
-</Layer>
+</div>
 `;
 
 exports[`TagComboBox rendering renders expected elements when disabled 1`] = `
-<Layer
-  className="TagComboBox TagComboBox--disabled"
+<div
+  className="TagComboBox"
   id="random-id-tags"
 >
   <span
     aria-live="polite"
     className="sr-only"
   />
-  <div
-    className="TagComboBox__content"
+  <Layer
+    className="TagComboBox__content disabled"
   >
     <Tag
       aria-disabled={true}
@@ -113,7 +113,7 @@ exports[`TagComboBox rendering renders expected elements when disabled 1`] = `
       type="text"
       value=""
     />
-  </div>
+  </Layer>
   <Layer
     className="TagComboBox__list"
     id="random-id-list"
@@ -122,20 +122,20 @@ exports[`TagComboBox rendering renders expected elements when disabled 1`] = `
     popover="manual"
     role="listbox"
   />
-</Layer>
+</div>
 `;
 
 exports[`TagComboBox rendering renders expected elements when disabled and defaultTags is set 1`] = `
-<Layer
-  className="TagComboBox TagComboBox--disabled"
+<div
+  className="TagComboBox"
   id="random-id-tags"
 >
   <span
     aria-live="polite"
     className="sr-only"
   />
-  <div
-    className="TagComboBox__content"
+  <Layer
+    className="TagComboBox__content disabled"
   >
     <Tag
       aria-disabled={true}
@@ -171,7 +171,7 @@ exports[`TagComboBox rendering renders expected elements when disabled and defau
       type="text"
       value=""
     />
-  </div>
+  </Layer>
   <Layer
     className="TagComboBox__list"
     id="random-id-list"
@@ -180,12 +180,12 @@ exports[`TagComboBox rendering renders expected elements when disabled and defau
     popover="manual"
     role="listbox"
   />
-</Layer>
+</div>
 `;
 
 exports[`TagComboBox rendering renders expected elements when optional properties are set 1`] = `
-<Layer
-  className="TagComboBox TagComboBox--error TestClass"
+<div
+  className="TagComboBox TestClass"
   id="random-id-tags"
 >
   <span
@@ -194,8 +194,8 @@ exports[`TagComboBox rendering renders expected elements when optional propertie
   >
     Test of live text
   </span>
-  <div
-    className="TagComboBox__content"
+  <Layer
+    className="TagComboBox__content error"
   >
     <Tag
       className="TagComboBox__tag"
@@ -234,7 +234,7 @@ exports[`TagComboBox rendering renders expected elements when optional propertie
       type="text"
       value="text"
     />
-  </div>
+  </Layer>
   <Layer
     className="TagComboBox__list"
     id="random-id-list"
@@ -270,11 +270,11 @@ exports[`TagComboBox rendering renders expected elements when optional propertie
       </div>
     </div>
   </Layer>
-</Layer>
+</div>
 `;
 
 exports[`TagComboBox rendering renders expected elements when tags is empty and defaultTags is not set 1`] = `
-<Layer
+<div
   className="TagComboBox"
   id="random-id-tags"
 >
@@ -282,7 +282,7 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
     aria-live="polite"
     className="sr-only"
   />
-  <div
+  <Layer
     className="TagComboBox__content"
   >
     <input
@@ -302,7 +302,7 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
       type="text"
       value=""
     />
-  </div>
+  </Layer>
   <Layer
     className="TagComboBox__list"
     id="random-id-list"
@@ -311,11 +311,11 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
     popover="manual"
     role="listbox"
   />
-</Layer>
+</div>
 `;
 
 exports[`TagComboBox rendering renders expected elements when tags is empty and defaultTags is set 1`] = `
-<Layer
+<div
   className="TagComboBox"
   id="random-id-tags"
 >
@@ -323,7 +323,7 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
     aria-live="polite"
     className="sr-only"
   />
-  <div
+  <Layer
     className="TagComboBox__content"
   >
     <Tag
@@ -357,7 +357,7 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
       type="text"
       value=""
     />
-  </div>
+  </Layer>
   <Layer
     className="TagComboBox__list"
     id="random-id-list"
@@ -366,5 +366,5 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
     popover="manual"
     role="listbox"
   />
-</Layer>
+</div>
 `;

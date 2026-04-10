@@ -255,14 +255,11 @@ const TagComboBox = ({
 	const length = tags.length;
 	const listId = `${id}-list`;
 	return (
-		<Layer
-			id={`${id}-tags`}
-			className={`TagComboBox${error ? ' TagComboBox--error' : ''}${disabled ? ' TagComboBox--disabled' : ''}${className ? ` ${className}` : ''}`}
-			ref={boxRef}>
+		<div id={`${id}-tags`} className={`TagComboBox${className ? ` ${className}` : ''}`} ref={boxRef}>
 			<span className="sr-only" aria-live="polite">
 				{live}
 			</span>
-			<div className="TagComboBox__content">
+			<Layer className={`TagComboBox__content${error ? ' error' : ''}${disabled ? ' disabled' : ''}`}>
 				{length
 					? tags.map((tag, index) =>
 							cloneElement(renderTag(tag, disabled, false, handleTagRemove), {
@@ -299,7 +296,7 @@ const TagComboBox = ({
 					onBlur={handleBlur}
 					ref={inputRef}
 				/>
-			</div>
+			</Layer>
 			<Layer
 				id={listId}
 				className="TagComboBox__list"
@@ -325,7 +322,7 @@ const TagComboBox = ({
 					);
 				})}
 			</Layer>
-		</Layer>
+		</div>
 	);
 };
 

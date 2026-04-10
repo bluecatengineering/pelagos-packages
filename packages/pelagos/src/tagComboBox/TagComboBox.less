@@ -4,31 +4,6 @@
 
 @layer pelagos {
 	.TagComboBox {
-		border-bottom: 1px solid var(--border-strong);
-
-		&:focus-within {
-			@focus-ring();
-		}
-
-		&--disabled {
-			border-bottom: transparent;
-			cursor: not-allowed;
-		}
-
-		&--error {
-			outline: 2px solid var(--support-error);
-			outline-offset: -2px;
-
-			&:focus-within {
-				@focus-ring-error();
-			}
-		}
-
-		@media print {
-			background-color: transparent;
-			border-color: transparent;
-		}
-
 		&__content {
 			flex-flow: row wrap;
 			align-items: center;
@@ -37,9 +12,33 @@
 			// stylelint-disable-next-line @bluecateng/property-strict-value
 			padding: @sp-02 @sp-16 (@sp-04 - 1px); // minus 1px for the border
 			background-color: var(--field);
+			border-bottom: 1px solid var(--border-strong);
 
 			&:hover {
 				background-color: var(--field-hover);
+			}
+
+			&:focus-within {
+				@focus-ring();
+			}
+
+			&.disabled {
+				border-bottom-color: transparent;
+				cursor: not-allowed;
+			}
+
+			&.error {
+				outline: 2px solid var(--support-error);
+				outline-offset: -2px;
+
+				&:focus-within {
+					@focus-ring-error();
+				}
+			}
+
+			@media print {
+				background-color: transparent;
+				border-color: transparent;
 			}
 		}
 
