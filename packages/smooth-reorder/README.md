@@ -54,4 +54,4 @@ This CSS must be added to the page:
 
 ## Output
 
-![Output](https://raw.githubusercontent.com/bluecatengineering/pelagos-packages/packages/smooth-reorder/master/example.gif)
+![Output](https://raw.githubusercontent.com/bluecatengineering/pelagos-packages/master/packages/smooth-reorder/example.gif)

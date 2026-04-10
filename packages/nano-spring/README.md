@@ -27,4 +27,4 @@ spring(
 
 ## Output
 
-![Output](https://raw.githubusercontent.com/bluecatengineering/pelagos-packages/packages/nano-spring/master/example.gif)
+![Output](https://raw.githubusercontent.com/bluecatengineering/pelagos-packages/master/packages/nano-spring/example.gif)
