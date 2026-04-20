@@ -25,7 +25,7 @@ const useMenuPositioner = (flipped) =>
 			const {width: menuWidth, height: menuHeight} = popUp.getBoundingClientRect();
 			const scrollTop = document.scrollingElement.scrollTop;
 			popUp.style.top = `${(bottom + menuHeight < innerHeight ? bottom : max(0, top - menuHeight)) + scrollTop}px`;
-			popUp.style.left = flipped ? `${right - menuWidth}px` : `${left}px`;
+			popUp.style.left = `${flipped || left + menuWidth >= innerWidth ? max(0, right - menuWidth) : left}px`;
 		},
 		[flipped]
 	);
