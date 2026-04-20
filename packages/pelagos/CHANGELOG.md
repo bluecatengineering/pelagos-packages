@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.27.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.27.0...@bluecateng/pelagos@12.27.1) (2026-04-20)
+
+### Bug Fixes
+
+- adjust horizontal menu position if it overflows the screen
+- change maximum height of menus and select pop-ups
+- ensure aria-expanded is always set in expandable buttons
+- use the correct layer for the TagComboBox pop-up
+
 ## [12.27.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.26.1...@bluecateng/pelagos@12.27.0) (2026-04-07)
 
 ### Features

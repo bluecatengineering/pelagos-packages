@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/nano-spring@2.1.0...@bluecateng/nano-spring@2.1.1) (2026-04-20)
+
+**Note:** Version bump only for package @bluecateng/nano-spring
+
 # [2.1.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/nano-spring@2.0.0...@bluecateng/nano-spring@2.1.0) (2022-10-31)
 
 ### Features
