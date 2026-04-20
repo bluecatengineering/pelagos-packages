@@ -6,6 +6,7 @@ exports[`FilterChip rendering renders expected elements 1`] = `
   className="FilterChip"
 >
   <button
+    aria-expanded="false"
     aria-haspopup="dialog"
     className="FilterChip__button"
     id="test"

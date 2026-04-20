@@ -21,7 +21,7 @@ const Collapsible = ({id, className, open, children, onHeaderClick}) => {
 				id={headerId}
 				className="Collapsible__header"
 				type="button"
-				aria-expanded={open}
+				aria-expanded={!!open}
 				aria-controls={contentId}
 				onClick={onHeaderClick}>
 				{headerElement}

@@ -43,7 +43,7 @@ const useAreaEditorPositioner = (ref, buttonId, onClose) =>
 		trap.activate();
 
 		return () => {
-			button.removeAttribute('aria-expanded');
+			button.setAttribute('aria-expanded', 'false');
 			button.removeAttribute('aria-controls');
 			document.removeEventListener('scroll', setEditorPosition, {passive: true, capture: true});
 			window.removeEventListener('resize', setEditorPosition, {passive: true, capture: true});

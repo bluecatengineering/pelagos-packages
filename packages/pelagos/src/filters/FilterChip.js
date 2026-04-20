@@ -10,7 +10,13 @@ import './FilterChip.less';
 /** Represents a filter category and the selected filter values.  */
 const FilterChip = ({id, name, children, onEditClick, onRemoveClick, ...props}) => (
 	<Layer {...props} as="li" className="FilterChip">
-		<button id={id} className="FilterChip__button" type="button" aria-haspopup="dialog" onClick={onEditClick}>
+		<button
+			id={id}
+			className="FilterChip__button"
+			type="button"
+			aria-expanded="false"
+			aria-haspopup="dialog"
+			onClick={onEditClick}>
 			<span className="FilterChip__title">{name}</span>
 			<span className="FilterChip__values">{children}</span>
 			<MenuArrow className="FilterChip__arrow" />

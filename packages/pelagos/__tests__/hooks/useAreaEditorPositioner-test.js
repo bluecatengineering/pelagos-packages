@@ -50,8 +50,10 @@ describe('useAreaEditorPositioner', () => {
 		expect(editor.style.top).toBe('250px');
 		expect(editor.style.left).toBe('200px');
 
+		setAttribute.mockReset();
 		remove();
-		expect(removeAttribute.mock.calls).toEqual([['aria-expanded'], ['aria-controls']]);
+		expect(setAttribute.mock.calls).toEqual([['aria-expanded', 'false']]);
+		expect(removeAttribute.mock.calls).toEqual([['aria-controls']]);
 		expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
 		expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
 		expect(deactivate.mock.calls).toEqual([[]]);

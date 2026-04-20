@@ -9,6 +9,7 @@ exports[`TableExpandRow rendering renders expected elements 1`] = `
   >
     <button
       aria-controls="test-row"
+      aria-expanded={false}
       aria-label="Expand current row"
       className="Table__expandBtn"
       type="button"
