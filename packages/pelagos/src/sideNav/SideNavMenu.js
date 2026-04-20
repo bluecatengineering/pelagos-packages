@@ -26,7 +26,7 @@ const SideNavMenu = forwardRef(({id, className, title, icon: Icon, expanded, chi
 				}`}
 				type="button"
 				tabIndex={active ? 0 : -1}
-				aria-expanded={expanded}
+				aria-expanded={!!expanded}
 				aria-controls={menuId}
 				ref={ref}>
 				{Icon && <Icon className="SideNav__icon" />}
