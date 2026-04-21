@@ -106,7 +106,6 @@ const useTooltipBase = () => {
 	const show = useCallback(
 		(text, placement, target, aria) => {
 			if (text) {
-				// eslint-disable-next-line react-hooks/immutability -- false positive
 				tooltip.className = `Tooltip Tooltip--${placement}`;
 				tooltip.textContent = text;
 				(document.fullscreenElement || document.body).appendChild(tooltip);

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`connect returns a component which maps state 1`] = `
-<C
+<Memo(C)
   bar="x"
   id="test"
   name="bar"
