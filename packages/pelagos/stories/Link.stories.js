@@ -1,4 +1,4 @@
-import ArrowRight from '@carbon/icons-react/es/ArrowRight';
+import Launch from '@carbon/icons-react/es/Launch';
 
 export default {
 	title: 'Components/Link',
@@ -10,7 +10,7 @@ export const WithIcon = {
 	args: {text: 'Link with icon'},
 	render: ({text}) => (
 		<a href="#">
-			{text} <ArrowRight className="LinkIcon" />
+			{text} <Launch className="LinkIcon" />
 		</a>
 	),
 };
