@@ -66,6 +66,10 @@
 		&__fileName {
 			@ellipsis();
 			margin-left: @sp-16;
+
+			&[aria-disabled='true'] {
+				color: var(--text-disabled);
+			}
 		}
 
 		&__fileIcons {
