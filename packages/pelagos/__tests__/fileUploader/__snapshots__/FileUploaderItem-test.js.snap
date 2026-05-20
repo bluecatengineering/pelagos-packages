@@ -31,6 +31,7 @@ exports[`FileUploaderItem rendering renders expected elements when optional prop
   className="FileUploader__file FileUploader__file--error TestClass"
 >
   <div
+    aria-disabled={true}
     className="FileUploader__fileName"
     title="foo.txt"
   >

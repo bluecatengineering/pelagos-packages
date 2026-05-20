@@ -12,7 +12,7 @@ const FileUploaderItem = ({className, name, error, disableDelete, onDelete, ...p
 	<Layer
 		as="li"
 		className={`FileUploader__file${error ? ' FileUploader__file--error' : ''}${className ? ` ${className}` : ''}`}>
-		<div className="FileUploader__fileName" title={name}>
+		<div className="FileUploader__fileName" title={name} aria-disabled={disableDelete}>
 			{name}
 		</div>
 		<div className="FileUploader__fileIcons">
