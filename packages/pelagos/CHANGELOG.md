@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.27.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.27.1...@bluecateng/pelagos@12.27.2) (2026-05-20)
+
+### Bug Fixes
+
+- resolve eslint warnings
+- show disabled file uploader files as disabled
+
 ## [12.27.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.27.0...@bluecateng/pelagos@12.27.1) (2026-04-20)
 
 ### Bug Fixes

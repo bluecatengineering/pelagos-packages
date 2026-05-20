@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/auto-forms@1.1.1...@bluecateng/auto-forms@1.1.2) (2026-05-20)
+
+### Bug Fixes
+
+- resolve eslint warnings
+
 ## [1.1.1](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/auto-forms@1.1.0...@bluecateng/auto-forms@1.1.1) (2025-11-24)
 
 **Note:** Version bump only for package @bluecateng/auto-forms
