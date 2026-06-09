@@ -8,6 +8,7 @@ import './LinkButton.less';
 
 /** A link styled as a button. */
 const LinkButton = ({
+	as: BaseComponent = 'a',
 	id,
 	className,
 	text,
@@ -15,7 +16,6 @@ const LinkButton = ({
 	size = 'medium',
 	type = 'tertiary',
 	disabled,
-	onClick,
 	...props
 }) => {
 	const tooltip = useTooltip(tooltipText, 'top');
@@ -33,19 +33,20 @@ const LinkButton = ({
 			{text}
 		</span>
 	) : (
-		<a
+		<BaseComponent
 			{...props}
 			id={id}
 			className={`Button Button--${size} Button--${type}${className ? ` ${className}` : ''}`}
 			ref={tooltip}
-			onKeyDown={handleKeyDown}
-			onClick={onClick}>
+			onKeyDown={handleKeyDown}>
 			{text}
-		</a>
+		</BaseComponent>
 	);
 };
 
 LinkButton.propTypes = {
+	/** Element or custom component to use as main element. */
+	as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
 	/** The component id. */
 	id: PropTypes.string,
 	/** The component class name(s). */
@@ -54,7 +55,7 @@ LinkButton.propTypes = {
 	href: PropTypes.string,
 	/** The text to display. */
 	text: PropTypes.string,
-	/** The tooltip text to display. */
+	/** The tooltip text to display. Custom components must support `ref` forwarding. */
 	tooltipText: PropTypes.string,
 	/** The size of the button. */
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
