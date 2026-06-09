@@ -1,6 +1,6 @@
-import type {FunctionComponent, HTMLProps, MouseEventHandler} from 'react';
+import type {ComponentPropsWithoutRef, ElementType, MouseEventHandler, ReactElement} from 'react';
 
-interface LinkButtonProps extends Omit<HTMLProps<HTMLLinkElement>, 'size'> {
+interface LinkButtonOwnProps {
 	/** The component id. */
 	id?: string;
 	/** The component class name(s). */
@@ -9,7 +9,7 @@ interface LinkButtonProps extends Omit<HTMLProps<HTMLLinkElement>, 'size'> {
 	href?: string;
 	/** The text to display. */
 	text: string;
-	/** The tooltip text to display. */
+	/** The tooltip text to display. Custom components must support `ref` forwarding. */
 	tooltipText?: string;
 	/** The size of the button. */
 	size?: 'small' | 'medium' | 'large';
@@ -18,9 +18,14 @@ interface LinkButtonProps extends Omit<HTMLProps<HTMLLinkElement>, 'size'> {
 	/** Whether the button is disabled. */
 	disabled?: boolean;
 	/** Function invoked when the button is clicked. */
-	onClick?: MouseEventHandler<HTMLLinkElement>;
+	onClick?: MouseEventHandler;
 }
 
+type LinkButtonProps<T extends ElementType = 'a'> = LinkButtonOwnProps & {
+	/** Element or custom component to use as main element. */
+	as?: T;
+} & Omit<ComponentPropsWithoutRef<T>, keyof LinkButtonOwnProps | 'as'>;
+
 /** A link styled as a button. */
-declare const LinkButton: FunctionComponent<LinkButtonProps>;
+declare const LinkButton: <T extends ElementType = 'a'>(props: LinkButtonProps<T>) => ReactElement | null;
 export default LinkButton;
