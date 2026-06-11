@@ -4,7 +4,7 @@ import './Menu.less';
 
 /** A menu item divider. */
 const MenuItemDivider = ({className}) => (
-	<li className={`Menu__divider${className ? ` ${className}` : ''}`} role="separator" />
+	<div className={`Menu__divider${className ? ` ${className}` : ''}`} role="separator" />
 );
 
 MenuItemDivider.propTypes = {
