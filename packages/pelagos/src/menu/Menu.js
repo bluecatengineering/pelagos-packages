@@ -5,9 +5,9 @@ import './Menu.less';
 
 /** A menu. This component can be used with useMenuHandler. */
 const Menu = forwardRef(({className, children, ...props}, ref) => (
-	<ul {...props} className={`Menu${className ? ` ${className}` : ''}`} role="menu" ref={ref}>
+	<div {...props} className={`Menu${className ? ` ${className}` : ''}`} role="menu" ref={ref}>
 		{children}
-	</ul>
+	</div>
 ));
 
 Menu.displayName = 'Menu';

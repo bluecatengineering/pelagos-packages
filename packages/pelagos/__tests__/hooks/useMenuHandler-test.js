@@ -257,7 +257,7 @@ describe('useMenuHandler', () => {
 			useState.mockReturnValueOnce([true, setExpanded]);
 			useMenuHandler().menuProps.onClick({target: {closest}});
 
-			expect(closest.mock.calls).toEqual([['li']]);
+			expect(closest.mock.calls).toEqual([['[role="menuitem"]']]);
 			expect(setExpanded.mock.calls).toEqual([[false]]);
 		});
 
@@ -267,7 +267,7 @@ describe('useMenuHandler', () => {
 			useState.mockReturnValueOnce([true]);
 			useMenuHandler().menuProps.onClick({preventDefault, target: {closest}});
 
-			expect(closest.mock.calls).toEqual([['li']]);
+			expect(closest.mock.calls).toEqual([['[role="menuitem"]']]);
 			expect(preventDefault).not.toHaveBeenCalled();
 		});
 	});

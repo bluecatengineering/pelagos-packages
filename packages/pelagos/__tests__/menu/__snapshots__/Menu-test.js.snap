@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Menu rendering renders expected elements 1`] = `
-<ul
+<div
   className="Menu"
   role="menu"
 >
   <MenuItem />
-</ul>
+</div>
 `;
 
 exports[`Menu rendering renders expected elements when optional properties are set 1`] = `
-<ul
+<div
   className="Menu TestClass"
   id="test"
   role="menu"
 >
   <MenuItem />
-</ul>
+</div>
 `;

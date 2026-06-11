@@ -47,14 +47,14 @@ const IconMenu = forwardRef(
 				{expanded &&
 					createPortal(
 						<Layer className="IconMenu__popUp" level={level}>
-							<ul {...menuProps} id={menuId} className="IconMenu__menu" role="menu" aria-labelledby={id}>
+							<div {...menuProps} id={menuId} className="IconMenu__menu" role="menu" aria-labelledby={id}>
 								{Children.map(children, (child, index) =>
 									cloneElement(child, {
 										id: `${id}-${index}`,
 										'data-index': index,
 									})
 								)}
-							</ul>
+							</div>
 						</Layer>,
 						document.fullscreenElement || document.body
 					)}

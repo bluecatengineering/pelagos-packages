@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MenuItem rendering renders expected elements 1`] = `
-<li
+<div
   className="Menu__item Menu--default"
   role="menuitem"
   tabIndex={-1}
@@ -9,7 +9,7 @@ exports[`MenuItem rendering renders expected elements 1`] = `
 `;
 
 exports[`MenuItem rendering renders expected elements when optional properties are set 1`] = `
-<li
+<div
   aria-disabled={true}
   className="Menu__item Menu--danger Menu--divider TestClass"
   id="test"
@@ -17,5 +17,5 @@ exports[`MenuItem rendering renders expected elements when optional properties a
   tabIndex={-1}
 >
   Text
-</li>
+</div>
 `;

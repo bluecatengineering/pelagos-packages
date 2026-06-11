@@ -113,7 +113,7 @@ const useMenuHandler = (setPopUpPosition) => {
 	}, []);
 
 	const handleMenuClick = useCallback((event) => {
-		if (event.target.closest('li')) {
+		if (event.target.closest('[role="menuitem"]')) {
 			setExpanded(false);
 		}
 	}, []);
