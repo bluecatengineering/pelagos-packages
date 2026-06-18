@@ -13,11 +13,11 @@ interface MenuItemOwnProps {
 	children?: ReactNode;
 }
 
-type MenuItemProps<T extends ElementType = 'div'> = MenuItemOwnProps & {
+type MenuItemProps<T extends ElementType> = MenuItemOwnProps & {
 	/** Element or custom component to use as main element. */
 	as?: T;
 } & Omit<ComponentPropsWithRef<T>, keyof MenuItemOwnProps | 'as'>;
 
 /** A menu item. */
-declare const MenuItem: <T extends ElementType = 'div'>(props: MenuItemProps<T>) => ReactElement;
+declare const MenuItem: <T extends ElementType>(props: MenuItemProps<T>) => ReactElement;
 export default MenuItem;

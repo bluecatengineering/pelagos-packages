@@ -34,7 +34,10 @@
 
 		&__tab {
 			@focus-visible();
+			display: flex;
+			flex-direction: column;
 			padding: @sp-08 @sp-16;
+			color: var(--text-secondary);
 			background-color: transparent;
 			border: none;
 			border-bottom: 2px solid var(--border-subtle);
@@ -51,6 +54,7 @@
 				color: var(--text-primary);
 				background-color: var(--layer-hover);
 				border-bottom-color: var(--border-strong);
+				text-decoration: none;
 			}
 
 			&[aria-selected='true'] {

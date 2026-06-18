@@ -27,5 +27,5 @@ type LinkButtonProps<T extends ElementType = 'a'> = LinkButtonOwnProps & {
 } & Omit<ComponentPropsWithoutRef<T>, keyof LinkButtonOwnProps | 'as'>;
 
 /** A link styled as a button. */
-declare const LinkButton: <T extends ElementType = 'a'>(props: LinkButtonProps<T>) => ReactElement | null;
+declare const LinkButton: <T extends ElementType = 'a'>(props: LinkButtonProps<T>) => ReactElement;
 export default LinkButton;
