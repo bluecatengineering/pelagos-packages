@@ -8,7 +8,7 @@ interface VerticalTabListProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange
 	/** The tabs. */
 	children: ReactNode;
 	/** Function invoked when the selected tab changes. */
-	onChange: (index: number) => void;
+	onChange?: (index: number) => void;
 }
 
 /** A list of tabs arranged vertically. When using this component the related tab panels should follow the indication in: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/ */
