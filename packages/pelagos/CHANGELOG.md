@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.28.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.27.2...@bluecateng/pelagos@12.28.0) (2026-06-18)
+
+### Features
+
+- allow other components to be used as LinkButton
+- allow other components to be used as MenuItem
+- allow other components to be used as Tab
+
+### Bug Fixes
+
+- use width: min-content in fixed columns table
+
 ## [12.27.2](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.27.1...@bluecateng/pelagos@12.27.2) (2026-05-20)
 
 ### Bug Fixes
