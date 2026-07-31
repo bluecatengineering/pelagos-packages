@@ -73,6 +73,13 @@ fight the default. `flex: none` also means children do not grow; set
 
 For examples and documentation, please see [the Storybook site](https://storybook.dnsedge.tools/)
 
+## Example application
+
+[pelagos-example](https://github.com/bluecatengineering/pelagos-example) is a
+small runnable application whose examples are indexed by what each one
+demonstrates — including the theme switching and layout patterns described
+above.
+
 ## Notes for AI coding agents
 
 [AGENTS.md](./AGENTS.md) is a compact list of the non-obvious contracts —
