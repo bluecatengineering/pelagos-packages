@@ -28,9 +28,10 @@ flex-direction: column; flex: none`. Every plain `div` is a column flex
   `role="region"` (for example a `div` wrapper): passing a `<ul>` or
   `<table>` directly overrides its semantics, so a list's `<li>` children
   lose their list parent and axe reports `listitem` violations.
-- `IconButton`'s `tooltipText` labels the button only **while the tooltip
-  is visible** (`aria-labelledby`). Also set `aria-label`, or the button
-  has no accessible name at rest and axe reports `button-name`.
+- `IconButton` uses `tooltipText` as its accessible name at rest when
+  `aria-label` is not set (an explicit `aria-label` wins). Set at least
+  one, or the button has no accessible name and axe reports
+  `button-name`.
 
 ## Theming and visual tests
 

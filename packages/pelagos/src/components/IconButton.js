@@ -18,6 +18,7 @@ const IconButton = forwardRef(
 			type = 'ghost',
 			tooltipText,
 			tooltipPlacement = 'right',
+			'aria-label': ariaLabel,
 			overlay,
 			disabled,
 			pressed,
@@ -32,12 +33,26 @@ const IconButton = forwardRef(
 			overlay ? ' IconButton--container' : ''
 		}${pressed ? ' IconButton--pressed' : ''}${className ? ` ${className}` : ''}`;
 		return disabled ? (
-			<span {...props} id={id} className={finalClassName} role="button" aria-disabled="true" ref={setRefs}>
+			<span
+				{...props}
+				id={id}
+				className={finalClassName}
+				role="button"
+				aria-label={ariaLabel ?? tooltipText}
+				aria-disabled="true"
+				ref={setRefs}>
 				<SvgIcon icon={icon} aria-hidden />
 				{overlay}
 			</span>
 		) : (
-			<button {...props} id={id} className={finalClassName} type="button" ref={setRefs} onClick={onClick}>
+			<button
+				{...props}
+				id={id}
+				className={finalClassName}
+				type="button"
+				aria-label={ariaLabel ?? tooltipText}
+				ref={setRefs}
+				onClick={onClick}>
 				<SvgIcon icon={icon} aria-hidden />
 				{overlay}
 			</button>
@@ -66,8 +81,10 @@ IconButton.propTypes = {
 		'dangerTertiary',
 		'dangerGhost',
 	]),
-	/** The tooltip text to display. Labels the button only while the tooltip is visible — also set `aria-label` so the button has an accessible name at rest. */
+	/** The tooltip text to display. Also used as the accessible name at rest when `aria-label` is not set. */
 	tooltipText: PropTypes.string,
+	/** The accessible name; defaults to `tooltipText`. */
+	'aria-label': PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
 	tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
 	/** An overlay element. */

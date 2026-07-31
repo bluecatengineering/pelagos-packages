@@ -12,7 +12,7 @@ interface IconButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
 	size?: 'medium' | 'large';
 	/** The button type. */
 	type?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'dangerTertiary' | 'dangerPrimary' | 'dangerGhost';
-	/** The tooltip text to display. Labels the button only while the tooltip is visible — also set `aria-label` so the button has an accessible name at rest. */
+	/** The tooltip text to display. Also used as the accessible name at rest when `aria-label` is not set. */
 	tooltipText?: string;
 	/** The placement of the tooltip relative to the button. */
 	tooltipPlacement?: 'bottom' | 'left' | 'right' | 'top';

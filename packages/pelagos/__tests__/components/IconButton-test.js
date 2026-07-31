@@ -69,6 +69,21 @@ describe('IconButton', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('uses tooltipText as the accessible name when aria-label is not set', () => {
+			const wrapper = shallow(<IconButton id="test" icon={{}} tooltipText="This is a test" />);
+			expect(wrapper.prop('aria-label')).toBe('This is a test');
+		});
+
+		it('prefers an explicit aria-label over tooltipText', () => {
+			const wrapper = shallow(<IconButton id="test" icon={{}} aria-label="Test" tooltipText="This is a test" />);
+			expect(wrapper.prop('aria-label')).toBe('Test');
+		});
+
+		it('uses tooltipText as the accessible name when aria-label is not set and disabled is true', () => {
+			const wrapper = shallow(<IconButton id="test" icon={{}} tooltipText="This is a test" disabled={true} />);
+			expect(wrapper.prop('aria-label')).toBe('This is a test');
+		});
+
 		it('renders the expected elements when overlay is set', () => {
 			const wrapper = shallow(
 				<IconButton
