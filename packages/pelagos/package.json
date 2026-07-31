@@ -30,6 +30,7 @@
     "react"
   ],
   "files": [
+    "AGENTS.md",
     "defs",
     "dist",
     "less"

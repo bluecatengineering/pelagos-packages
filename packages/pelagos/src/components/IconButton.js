@@ -66,7 +66,7 @@ IconButton.propTypes = {
 		'dangerTertiary',
 		'dangerGhost',
 	]),
-	/** The tooltip text to display. */
+	/** The tooltip text to display. Labels the button only while the tooltip is visible — also set `aria-label` so the button has an accessible name at rest. */
 	tooltipText: PropTypes.string,
 	/** The placement of the tooltip relative to the button. */
 	tooltipPlacement: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
