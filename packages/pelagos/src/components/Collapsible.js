@@ -45,7 +45,7 @@ Collapsible.propTypes = {
 	className: PropTypes.string,
 	/** Whether the child component is displayed. */
 	open: PropTypes.bool,
-	/** The child components. */
+	/** The child components: header and content. The content element is cloned and given an id, `role="region"`, `aria-labelledby`, and a ref — pass an element that can carry `role="region"` (e.g. a div wrapper), not a list or table, so the injected role does not override its semantics. */
 	children: PropTypes.arrayOf(PropTypes.element).isRequired,
 	/** Function invoked when the header is clicked. */
 	onHeaderClick: PropTypes.func,
