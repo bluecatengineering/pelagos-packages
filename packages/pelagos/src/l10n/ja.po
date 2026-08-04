@@ -297,6 +297,14 @@ msgstr "デフォルトに戻す"
 msgid "Save"
 msgstr "保存"
 
+#: 2c9e
+msgid "Scroll left"
+msgstr "左にスクロール"
+
+#: 2994
+msgid "Scroll right"
+msgstr "右にスクロール"
+
 #: 9a97
 msgid "Selected"
 msgstr "選択済み"

@@ -1,5 +1,6 @@
 import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
+import {t} from '@bluecateng/l10n.macro';
 import ChevronLeft from '@carbon/icons-react/es/ChevronLeft';
 import ChevronRight from '@carbon/icons-react/es/ChevronRight';
 
@@ -22,7 +23,7 @@ const showChevrons = (track, onResize) => {
 	if (onResize) onResize(track, rect, overflow);
 };
 
-/** Allows to scroll a nested component. */
+/** @deprecated no replacement. */
 const ScrollBox = ({className, trackId, children, onResize}) => {
 	const trackRef = useRef(null);
 
@@ -39,8 +40,7 @@ const ScrollBox = ({className, trackId, children, onResize}) => {
 			<IconButton
 				className="ScrollBox__btn"
 				icon={ChevronLeft}
-				tabIndex="-1"
-				aria-hidden="true"
+				aria-label={t`Scroll left`}
 				onMouseDown={preventDefault}
 				onClick={handleClickLeft}
 			/>
@@ -50,8 +50,7 @@ const ScrollBox = ({className, trackId, children, onResize}) => {
 			<IconButton
 				className="ScrollBox__btn"
 				icon={ChevronRight}
-				tabIndex="-1"
-				aria-hidden="true"
+				aria-label={t`Scroll right`}
 				onMouseDown={preventDefault}
 				onClick={handleClickRight}
 			/>

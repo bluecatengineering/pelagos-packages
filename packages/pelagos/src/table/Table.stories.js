@@ -414,7 +414,7 @@ export const BatchActions = (args) => {
 				<TableToolbarBatch selectedCount={selectedCount} onCancel={handleBatchCancel}>
 					<Button type="primary" text="Action 1" />
 					<Button type="primary" text="Action 2" />
-					<IconMenu icon={Settings} type="primary" arrow flipped>
+					<IconMenu icon={Settings} type="primary" arrow flipped aria-label="Batch actions">
 						<MenuItem>Batch option one</MenuItem>
 						<MenuItem>Batch option two</MenuItem>
 						<MenuItem disabled>Batch option three</MenuItem>
@@ -814,11 +814,11 @@ export const ForFigma = {
 									<TableCell>
 										{actions === 'icons' ? (
 											<div className="TableStory__inlineButtons">
-												<IconButton icon={Edit} />
-												<IconButton icon={TrashCan} />
+												<IconButton icon={Edit} aria-label="Edit" />
+												<IconButton icon={TrashCan} aria-label="Delete" />
 											</div>
 										) : (
-											<IconMenu flipped>
+											<IconMenu flipped aria-label="Row actions">
 												<MenuItem>Option one</MenuItem>
 											</IconMenu>
 										)}

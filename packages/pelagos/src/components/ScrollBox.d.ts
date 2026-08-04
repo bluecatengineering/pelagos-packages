@@ -11,6 +11,6 @@ interface ScrollBoxProps {
 	onResize?: (track: HTMLDivElement, rect: DOMRect, overflow: boolean) => void;
 }
 
-/** Allows to scroll a nested component. */
+/** @deprecated no replacement. */
 declare const ScrollBox: FunctionComponent<ScrollBoxProps>;
 export default ScrollBox;

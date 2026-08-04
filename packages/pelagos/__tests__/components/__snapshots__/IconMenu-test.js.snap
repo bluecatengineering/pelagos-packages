@@ -5,6 +5,7 @@ exports[`IconMenu rendering renders expected elements 1`] = `
   <IconButton
     aria-controls={null}
     aria-haspopup="true"
+    aria-label="Menu"
     className="IconMenu"
     data-layer={null}
     disabled={false}
@@ -19,6 +20,7 @@ exports[`IconMenu rendering renders expected elements when all items are disable
   <IconButton
     aria-controls={null}
     aria-haspopup="true"
+    aria-label="Menu"
     className="IconMenu"
     data-layer={null}
     disabled={true}
@@ -37,6 +39,7 @@ exports[`IconMenu rendering renders expected elements when disabled is set 1`] =
   <IconButton
     aria-controls={null}
     aria-haspopup="true"
+    aria-label="Menu"
     className="IconMenu"
     data-layer={null}
     disabled={true}
@@ -56,6 +59,7 @@ exports[`IconMenu rendering renders expected elements when expanded is true 1`] 
     aria-controls="random-id-menu"
     aria-expanded={true}
     aria-haspopup="true"
+    aria-label="Menu"
     className="IconMenu"
     data-layer={2}
     disabled={false}
@@ -103,6 +107,7 @@ exports[`IconMenu rendering renders expected elements when expanded is true and 
     aria-controls="random-id-menu"
     aria-expanded={true}
     aria-haspopup="true"
+    aria-label="Menu"
     className="IconMenu"
     data-layer={2}
     disabled={false}
@@ -149,6 +154,7 @@ exports[`IconMenu rendering renders expected elements when optional properties a
   <IconButton
     aria-controls={null}
     aria-haspopup="true"
+    aria-label="Menu"
     className="IconMenu TestClass"
     data-layer={null}
     disabled={false}
