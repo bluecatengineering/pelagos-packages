@@ -59,7 +59,7 @@
     "jest-junit": "^17.0.0",
     "jsdoc-api": "^9.3.4",
     "jsdoc-parse": "^6.1.0",
-    "lerna": "^9.0.1",
+    "lerna": "^10.0.0",
     "less": "^4.1.2",
     "less-loader": "^13.0.0",
     "lint-staged": "^17.0.7",
