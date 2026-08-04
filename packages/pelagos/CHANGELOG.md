@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.28.1](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos%4012.28.0...%40bluecateng%2Fpelagos%4012.28.1) (2026-08-04)
+
+### Bug Fixes
+
+- mark aria-label as required in IconButton and IconMenu ([5b3b2c2](https://github.com/bluecatengineering/pelagos-packages/commit/5b3b2c247254a02d225f29e58cafb45e27444b06))
+
 ## [12.28.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.27.2...@bluecateng/pelagos@12.28.0) (2026-06-18)
 
 ### Features
