@@ -61,6 +61,7 @@ exports[`BreadcrumbItem rendering renders expected elements when the child is an
   className="Breadcrumb__item"
 >
   <IconMenu
+    aria-label="Menu"
     icon={[Function]}
   >
     <MenuItem />

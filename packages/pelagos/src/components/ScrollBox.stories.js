@@ -5,7 +5,7 @@ import text from '../../stories/LoremIpsum';
 import ScrollBox from './ScrollBox';
 
 export default {
-	title: 'Components/ScrollBox',
+	title: 'Deprecated/ScrollBox',
 	component: ScrollBox,
 	args: {
 		onResize: fn(),

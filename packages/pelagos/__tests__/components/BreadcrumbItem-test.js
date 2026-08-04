@@ -34,7 +34,7 @@ describe('BreadcrumbItem', () => {
 		it('renders expected elements when the child is an IconMenu', () => {
 			const wrapper = shallow(
 				<BreadcrumbItem>
-					<IconMenu>
+					<IconMenu aria-label="Menu">
 						<MenuItem />
 					</IconMenu>
 				</BreadcrumbItem>

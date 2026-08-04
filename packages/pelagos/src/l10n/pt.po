@@ -297,6 +297,14 @@ msgstr "Repor as predefinições"
 msgid "Save"
 msgstr "Guardar"
 
+#: 2c9e
+msgid "Scroll left"
+msgstr "Deslocar para a esquerda"
+
+#: 2994
+msgid "Scroll right"
+msgstr "Deslocar para a direita"
+
 #: 9a97
 msgid "Selected"
 msgstr "Selecionado"

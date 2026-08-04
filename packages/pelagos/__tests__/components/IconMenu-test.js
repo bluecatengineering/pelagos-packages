@@ -19,7 +19,7 @@ describe('IconMenu', () => {
 		it('renders expected elements', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
-				<IconMenu>
+				<IconMenu aria-label="Menu">
 					<MenuItem>one</MenuItem>
 				</IconMenu>
 			);
@@ -29,7 +29,7 @@ describe('IconMenu', () => {
 		it('renders expected elements when optional properties are set', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
-				<IconMenu id="test" className="TestClass" icon={{foo: 'test'}} arrow>
+				<IconMenu id="test" className="TestClass" icon={{foo: 'test'}} arrow aria-label="Menu">
 					<MenuItem>one</MenuItem>
 				</IconMenu>
 			);
@@ -40,7 +40,7 @@ describe('IconMenu', () => {
 		it('renders expected elements when disabled is set', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}} disabled>
+				<IconMenu icon={{foo: 'test'}} disabled aria-label="Menu">
 					<MenuItem>one</MenuItem>
 				</IconMenu>
 			);
@@ -50,7 +50,7 @@ describe('IconMenu', () => {
 		it('renders expected elements when all items are disabled', () => {
 			useMenuHandler.mockReturnValueOnce({});
 			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}}>
+				<IconMenu icon={{foo: 'test'}} aria-label="Menu">
 					<MenuItem disabled>one</MenuItem>
 				</IconMenu>
 			);
@@ -61,7 +61,7 @@ describe('IconMenu', () => {
 			useMenuHandler.mockReturnValueOnce({expanded: true});
 			useLayer.mockReturnValue(1);
 			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}}>
+				<IconMenu icon={{foo: 'test'}} aria-label="Menu">
 					<MenuItem>one</MenuItem>
 					<MenuItem>two</MenuItem>
 				</IconMenu>
@@ -74,7 +74,7 @@ describe('IconMenu', () => {
 			useLayer.mockReturnValue(1);
 			document.fullscreenElement = 'fullscreen';
 			const wrapper = shallow(
-				<IconMenu icon={{foo: 'test'}}>
+				<IconMenu icon={{foo: 'test'}} aria-label="Menu">
 					<MenuItem>one</MenuItem>
 					<MenuItem>two</MenuItem>
 				</IconMenu>

@@ -5,12 +5,11 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
   className="ScrollBox"
 >
   <IconButton
-    aria-hidden="true"
+    aria-label="Scroll left"
     className="ScrollBox__btn"
     icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
-    tabIndex="-1"
   />
   <div
     className="ScrollBox__track"
@@ -20,12 +19,11 @@ exports[`ScrollBox rendering renders expected elements 1`] = `
     </div>
   </div>
   <IconButton
-    aria-hidden="true"
+    aria-label="Scroll right"
     className="ScrollBox__btn"
     icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
-    tabIndex="-1"
   />
 </div>
 `;
@@ -35,12 +33,11 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
   className="ScrollBox TestClass"
 >
   <IconButton
-    aria-hidden="true"
+    aria-label="Scroll left"
     className="ScrollBox__btn"
     icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
-    tabIndex="-1"
   />
   <div
     className="ScrollBox__track"
@@ -50,12 +47,11 @@ exports[`ScrollBox rendering renders expected elements when className is set 1`]
     </div>
   </div>
   <IconButton
-    aria-hidden="true"
+    aria-label="Scroll right"
     className="ScrollBox__btn"
     icon={[Function]}
     onClick={[Function]}
     onMouseDown={[Function]}
-    tabIndex="-1"
   />
 </div>
 `;

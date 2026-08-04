@@ -22,6 +22,8 @@ interface IconButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
 	disabled?: boolean;
 	/** Whether the button is pressed, applies only for ghost buttons. */
 	pressed?: boolean;
+	/** The accessible name for the button. */
+	'aria-label': string;
 	/** Function invoked when the button is clicked. */
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }

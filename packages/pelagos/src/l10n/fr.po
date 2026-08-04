@@ -297,6 +297,14 @@ msgstr "Restaurer les valeurs par défaut"
 msgid "Save"
 msgstr "Enregistrer"
 
+#: 2c9e
+msgid "Scroll left"
+msgstr "Défiler vers la gauche"
+
+#: 2994
+msgid "Scroll right"
+msgstr "Défiler vers la droite"
+
 #: 9a97
 msgid "Selected"
 msgstr "Sélectionné"

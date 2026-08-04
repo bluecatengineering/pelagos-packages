@@ -297,6 +297,14 @@ msgstr "Standardwerte wiederherstellen"
 msgid "Save"
 msgstr "Speichern"
 
+#: 2c9e
+msgid "Scroll left"
+msgstr "Nach links scrollen"
+
+#: 2994
+msgid "Scroll right"
+msgstr "Nach rechts scrollen"
+
 #: 9a97
 msgid "Selected"
 msgstr "Ausgewählte"

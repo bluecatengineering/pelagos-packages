@@ -82,6 +82,8 @@ IconMenu.propTypes = {
 	disabled: PropTypes.bool,
 	/** Whether the menu alignment should be flipped. */
 	flipped: PropTypes.bool,
+	/** The accessible name for the button. */
+	'aria-label': PropTypes.string.isRequired,
 	/** The menu items. */
 	children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };

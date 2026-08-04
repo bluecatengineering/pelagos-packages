@@ -297,6 +297,14 @@ msgstr "Restaurar valores por defecto"
 msgid "Save"
 msgstr "Guardar"
 
+#: 2c9e
+msgid "Scroll left"
+msgstr "Desplazar a la izquierda"
+
+#: 2994
+msgid "Scroll right"
+msgstr "Desplazar a la derecha"
+
 #: 9a9
 msgid "Selected"
 msgstr "Seleccionados"

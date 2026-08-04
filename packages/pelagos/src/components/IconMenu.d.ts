@@ -18,6 +18,8 @@ interface IconMenuProps extends HTMLProps<HTMLButtonElement> {
 	disabled?: boolean;
 	/** Whether the menu alignment should be flipped. */
 	flipped?: boolean;
+	/** The accessible name for the button. */
+	'aria-label': string;
 	/** The menu items. */
 	children: ReactNode;
 }

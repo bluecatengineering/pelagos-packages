@@ -76,6 +76,8 @@ IconButton.propTypes = {
 	disabled: PropTypes.bool,
 	/** Whether the button is pressed, applies only for ghost buttons. */
 	pressed: PropTypes.bool,
+	/** The accessible name for the button. */
+	'aria-label': PropTypes.string.isRequired,
 	/** Function invoked when the button is clicked. */
 	onClick: PropTypes.func,
 };

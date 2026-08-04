@@ -297,6 +297,14 @@ msgstr "恢复默认值"
 msgid "Save"
 msgstr "保存"
 
+#: 2c9e
+msgid "Scroll left"
+msgstr "向左滚动"
+
+#: 2994
+msgid "Scroll right"
+msgstr "向右滚动"
+
 #: 9a97
 msgid "Selected"
 msgstr "已选"
