@@ -8,7 +8,6 @@
     "test-ci": "jest --ci --silent --reporters=jest-junit --coverageReporters=cobertura",
     "storybook": "storybook dev -p 9001",
     "build-storybook": "storybook build -o build/storybook",
-    "test-storybook": "test-storybook --url http://localhost:9001",
     "start": "lerna run prepack && npm run storybook",
     "lint": "eslint .",
     "lint-ci": "eslint . -f @microsoft/eslint-formatter-sarif -o build/eslint-results.sarif",
@@ -44,12 +43,10 @@
     "@storybook/addon-docs": "^10.0.8",
     "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
     "@storybook/react-webpack5": "^10.0.8",
-    "@storybook/test-runner": "^0.24.1",
     "@types/jest": "^30.0.0",
-    "axe-playwright": "^2.1.0",
     "babel-loader": "^10.0.0",
     "babel-plugin-macros": "^3.1.0",
-    "chromatic": "^17.4.1",
+    "chromatic": "^18.1.0",
     "dts-bundle-generator": "^9.5.1",
     "enzyme": "^3.11.0",
     "esbuild": "^0.28.0",
@@ -192,5 +189,15 @@
     "*.{json,md,mdx,yaml,yml}": [
       "prettier --write"
     ]
+  },
+  "allowScripts": {
+    "@carbon/icon-helpers": false,
+    "@carbon/icons-react": false,
+    "@swc/core": false,
+    "core-js": false,
+    "fsevents": false,
+    "nx": false,
+    "unrs-resolver": false,
+    "esbuild@0.28.1": true
   }
 }
