@@ -106,9 +106,12 @@ const ComboBox = ({
 			onTextChange(text);
 			if (text && text[0] !== '/') {
 				updateSuggestions(text);
+			} else {
+				hideList();
+				updateSuggestions.cancel();
 			}
 		},
-		[onTextChange, updateSuggestions]
+		[onTextChange, updateSuggestions, hideList]
 	);
 
 	const handleFocus = useCallback(
@@ -138,11 +141,11 @@ const ComboBox = ({
 	);
 
 	useEffect(() => {
-		if (error || !text || text[0] === '/') {
+		if (error) {
 			hideList();
 			updateSuggestions.cancel();
 		}
-	}, [hideList, updateSuggestions, text, error]);
+	}, [error, hideList, updateSuggestions]);
 
 	useEffect(() => updateSuggestions.cancel, [updateSuggestions]);
 

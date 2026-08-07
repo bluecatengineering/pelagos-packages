@@ -60,39 +60,25 @@ describe('ComboBox', () => {
 	});
 
 	describe('behaviour', () => {
-		it('adds an effect which hides the list when text is empty', () => {
+		it('adds an effect which hides the list when error is set', () => {
+			shallow(<ComboBox id="test" error />);
+			expect(useEffect.mock.calls[0]).toEqual([
+				expect.any(Function),
+				[true, expect.any(Function), expect.any(Function)],
+			]);
+			const cancel = debounce.mock.results[0].value.cancel;
+			useEffect.mock.calls[0][0]();
+			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
+			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
+			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
+			expect(cancel.mock.calls).toEqual([[]]);
+		});
+
+		it('adds an effect which does not hide the list when error is not set', () => {
 			shallow(<ComboBox id="test" />);
 			expect(useEffect.mock.calls[0]).toEqual([
 				expect.any(Function),
-				[expect.any(Function), expect.any(Function), undefined, undefined],
-			]);
-			const cancel = debounce.mock.results[0].value.cancel;
-			useEffect.mock.calls[0][0]();
-			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
-			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
-			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
-			expect(cancel.mock.calls).toEqual([[]]);
-		});
-
-		it('adds an effect which hides the list when text starts with slash', () => {
-			shallow(<ComboBox id="test" text="/x" />);
-			expect(useEffect.mock.calls[0]).toEqual([
-				expect.any(Function),
-				[expect.any(Function), expect.any(Function), '/x', undefined],
-			]);
-			const cancel = debounce.mock.results[0].value.cancel;
-			useEffect.mock.calls[0][0]();
-			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
-			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[false]]);
-			expect(useState.mock.results[2].value[1].mock.calls).toEqual([[-1]]);
-			expect(cancel.mock.calls).toEqual([[]]);
-		});
-
-		it('adds an effect which does not hide the list when text does not start with slash', () => {
-			shallow(<ComboBox id="test" text="x" />);
-			expect(useEffect.mock.calls[0]).toEqual([
-				expect.any(Function),
-				[expect.any(Function), expect.any(Function), 'x', undefined],
+				[undefined, expect.any(Function), expect.any(Function)],
 			]);
 			const cancel = debounce.mock.results[0].value.cancel;
 			useEffect.mock.calls[0][0]();
@@ -303,7 +289,7 @@ describe('ComboBox', () => {
 			});
 		});
 
-		it('calls onTextChange on change but not getSuggestions when text is empty', () => {
+		it('calls onTextChange on change and hides the list when text is empty', () => {
 			const value = '';
 			const getSuggestions = jest.fn();
 			const onTextChange = jest.fn();
@@ -315,12 +301,17 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([false, setOpen])
 				.mockReturnValueOnce([-1, setSelected]);
 			const wrapper = shallow(<ComboBox id="test" getSuggestions={getSuggestions} onTextChange={onTextChange} />);
+			const cancel = debounce.mock.results[0].value.cancel;
 			wrapper.find('[as="input"]').simulate('change', {target: {value}});
 			expect(onTextChange.mock.calls).toEqual([[value]]);
 			expect(getSuggestions.mock.calls).toEqual([]);
+			expect(setSuggestions.mock.calls).toEqual([[[]]]);
+			expect(setOpen.mock.calls).toEqual([[false]]);
+			expect(setSelected.mock.calls).toEqual([[-1]]);
+			expect(cancel.mock.calls).toEqual([[]]);
 		});
 
-		it('calls onTextChange on change but not getSuggestions when text starts with slash', () => {
+		it('calls onTextChange on change and hides the list when text starts with slash', () => {
 			const value = '/x';
 			const getSuggestions = jest.fn();
 			const onTextChange = jest.fn();
@@ -332,9 +323,14 @@ describe('ComboBox', () => {
 				.mockReturnValueOnce([false, setOpen])
 				.mockReturnValueOnce([-1, setSelected]);
 			const wrapper = shallow(<ComboBox id="test" getSuggestions={getSuggestions} onTextChange={onTextChange} />);
+			const cancel = debounce.mock.results[0].value.cancel;
 			wrapper.find('[as="input"]').simulate('change', {target: {value}});
 			expect(onTextChange.mock.calls).toEqual([[value]]);
 			expect(getSuggestions.mock.calls).toEqual([]);
+			expect(setSuggestions.mock.calls).toEqual([[[]]]);
+			expect(setOpen.mock.calls).toEqual([[false]]);
+			expect(setSelected.mock.calls).toEqual([[-1]]);
+			expect(cancel.mock.calls).toEqual([[]]);
 		});
 
 		it('expands the list on focus', () => {
