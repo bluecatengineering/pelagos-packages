@@ -26,10 +26,8 @@
 			@focus-ring();
 		}
 
-		&--empty::before {
-			@body-compact-01();
+		&--empty {
 			color: var(--text-placeholder);
-			content: attr(data-placeholder);
 		}
 
 		&[aria-invalid='true'] {
@@ -46,10 +44,6 @@
 			background-color: var(--field);
 			border-color: transparent;
 			cursor: not-allowed;
-
-			&::before {
-				color: var(--text-disabled);
-			}
 		}
 	}
 
@@ -107,7 +101,7 @@
 			border-color: transparent;
 		}
 
-		.Select__text::before {
+		.Select__text--empty .Select__value {
 			display: none;
 		}
 	}
