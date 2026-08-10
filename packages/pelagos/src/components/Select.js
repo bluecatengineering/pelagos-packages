@@ -242,12 +242,11 @@ const Select = ({
 				aria-activedescendant={focused === -1 ? null : `${id}-${focused}`}
 				aria-disabled={disabled}
 				aria-invalid={error}
-				data-placeholder={placeholder}
 				ref={buttonRef}
 				onMouseDown={handleMouseDown}
 				onKeyDown={disabled ? undefined : handleKeyDown}
 				onBlur={handleBlur}>
-				<span className="Select__value">{selected ? selected.element : ''}</span>
+				<span className="Select__value">{selected ? selected.element : placeholder}</span>
 				<SelectArrow className="Select__arrow" open={open} />
 			</Layer>
 			{open &&
