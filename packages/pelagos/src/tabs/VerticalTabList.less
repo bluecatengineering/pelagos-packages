@@ -51,6 +51,9 @@
 				border-color: var(--border-interactive);
 			}
 
+			// &--error:hover ties in specificity with &:hover above, so it must stay
+			// after it in source order for the error border to win on hover
+			// stylelint-disable-next-line no-descending-specificity
 			&--error,
 			&--error:hover,
 			&--error[aria-selected='true'] {

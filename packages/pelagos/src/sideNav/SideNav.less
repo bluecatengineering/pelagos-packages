@@ -36,20 +36,6 @@
 				color 0.15s ease-out,
 				background-color 0.15s ease-out;
 
-			&:hover {
-				background-color: var(--background-hover);
-			}
-
-			&:active {
-				background-color: var(--background-active);
-			}
-
-			&--active,
-			&:hover,
-			&:active {
-				color: var(--text-primary);
-			}
-
 			&--current {
 				color: var(--text-primary);
 				background-color: var(--background-selected);
@@ -63,6 +49,20 @@
 				bottom: 0;
 				width: @border-size;
 				background-color: var(--border-interactive);
+			}
+
+			&--active,
+			&:hover,
+			&:active {
+				color: var(--text-primary);
+			}
+
+			&:hover {
+				background-color: var(--background-hover);
+			}
+
+			&:active {
+				background-color: var(--background-active);
 			}
 		}
 
