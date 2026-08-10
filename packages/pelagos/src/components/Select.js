@@ -55,10 +55,16 @@ const Select = ({
 
 	const level = useLayer();
 
-	const showList = useCallback(() => {
-		setOpen(true);
-		setFocused(value ? options.indexOf(value) : 0);
+	const getValueIndex = useCallback(() => {
+		const index = options.indexOf(value);
+		return index === -1 ? 0 : index;
 	}, [value, options]);
+
+	const showList = useCallback(() => {
+		if (options.length === 0) return;
+		setOpen(true);
+		setFocused(getValueIndex());
+	}, [options, getValueIndex]);
 
 	const hideList = useCallback(() => {
 		setOpen(false);
@@ -163,7 +169,7 @@ const Select = ({
 						if (/^\w$/.test(key)) {
 							event.preventDefault();
 							event.nativeEvent.stopImmediatePropagation();
-							const current = open ? focused : value ? options.indexOf(value) : 0;
+							const current = open ? focused : getValueIndex();
 							const i = findItemToFocus(key, current, renderedOptions.length, (i) => renderedOptions[i].text);
 							if (i !== -1) {
 								if (open) {
@@ -185,8 +191,7 @@ const Select = ({
 			focused,
 			showList,
 			updateFocused,
-			value,
-			options,
+			getValueIndex,
 			findItemToFocus,
 			onChange,
 		]

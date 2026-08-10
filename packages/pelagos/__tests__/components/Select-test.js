@@ -248,6 +248,18 @@ describe('Select', () => {
 			expect(setFocused.mock.calls).toEqual([[2]]);
 		});
 
+		it('does not show the list when it is hidden, there are no options, and the button receives mouse down', () => {
+			const setOpen = jest.fn();
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, setFocused]);
+			const wrapper = shallow(
+				<Select id="test" value="three" options={[]} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="combobox"]').simulate('mousedown');
+			expect(setOpen).not.toHaveBeenCalled();
+			expect(setFocused).not.toHaveBeenCalled();
+		});
+
 		it('hides the list when it is visible and the button receives mouse down', () => {
 			const setOpen = jest.fn();
 			const setFocused = jest.fn();
