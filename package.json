@@ -34,7 +34,7 @@
     "@bluecateng/l10n-loader": "^0.1.5",
     "@bluecateng/l10n.macro": "^0.1.6",
     "@bluecateng/prettier-config": "^1.0.0",
-    "@bluecateng/stylelint-config": "^7.0.0",
+    "@bluecateng/stylelint-config": "^8.0.1",
     "@carbon/icons-react": "^11.34.1",
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",

@@ -32,12 +32,6 @@
 			height: var(--table-row-height);
 		}
 
-		&--sticky > thead {
-			top: 0;
-			position: sticky;
-			z-index: 1;
-		}
-
 		& > tbody > tr {
 			@layer-hover-effects();
 			@focus-visible();
@@ -77,14 +71,6 @@
 			color: var(--text-primary);
 		}
 
-		&--line td {
-			border-bottom: 1px solid var(--border-subtle);
-
-			@media print {
-				border-bottom-color: transparent;
-			}
-		}
-
 		&--zebra > tbody > tr:nth-child(even) {
 			background-color: var(--layer-accent);
 
@@ -110,6 +96,12 @@
 				color: var(--print-medium);
 				background-color: transparent;
 			}
+		}
+
+		&--sticky > thead {
+			top: 0;
+			position: sticky;
+			z-index: 1;
 		}
 
 		& th,
@@ -158,6 +150,14 @@
 			max-width: 0;
 		}
 
+		&--line td {
+			border-bottom: 1px solid var(--border-subtle);
+
+			@media print {
+				border-bottom-color: transparent;
+			}
+		}
+
 		&__sort {
 			@focus-visible();
 			display: flex;
@@ -172,6 +172,11 @@
 			cursor: pointer;
 			transition: background-color 0.15s ease-out;
 
+			&--active {
+				color: var(--text-primary);
+				background-color: var(--layer-accent-hover);
+			}
+
 			&:hover {
 				background-color: var(--layer-accent-hover);
 			}
@@ -179,11 +184,6 @@
 			&:active {
 				color: var(--text-primary);
 				background-color: var(--layer-accent-active);
-			}
-
-			&--active {
-				color: var(--text-primary);
-				background-color: var(--layer-accent-hover);
 			}
 		}
 
