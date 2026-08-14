@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.28.2](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos%4012.28.1...%40bluecateng%2Fpelagos%4012.28.2) (2026-08-14)
+
+### Bug Fixes
+
+- avoid race condition updating suggestions in ComboBox ([1650363](https://github.com/bluecatengineering/pelagos-packages/commit/165036369140eb3c5be55e1b5f44996d1f200a78))
+- fix potential errors in Select ([1a5c111](https://github.com/bluecatengineering/pelagos-packages/commit/1a5c11159934916ed3dd81928aad04421d2c22e5))
+- show the Select placeholder in the value element ([52bdab9](https://github.com/bluecatengineering/pelagos-packages/commit/52bdab9eaf0d035736eee254dc097d33018b869a))
+
 ## [12.28.1](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos%4012.28.0...%40bluecateng%2Fpelagos%4012.28.1) (2026-08-04)
 
 ### Bug Fixes
