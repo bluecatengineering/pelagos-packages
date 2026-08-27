@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.28.3](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos%4012.28.2...%40bluecateng%2Fpelagos%4012.28.3) (2026-08-27)
+
+### Bug Fixes
+
+- update location of pop-ups when their size changes ([beb3be8](https://github.com/bluecatengineering/pelagos-packages/commit/beb3be8385cbb6f1ae743faeaaf664670b3c7068))
+- use flex layout to center the button in the radio input ([28f2cd5](https://github.com/bluecatengineering/pelagos-packages/commit/28f2cd5414d4c98b8f5df46d73c337eb2e37e00c))
+
 ## [12.28.2](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos%4012.28.1...%40bluecateng%2Fpelagos%4012.28.2) (2026-08-14)
 
 ### Bug Fixes
