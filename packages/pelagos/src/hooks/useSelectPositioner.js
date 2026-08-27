@@ -1,5 +1,7 @@
 import {useLayoutEffect} from 'react';
 
+import addResizeObserver from '../functions/addResizeObserver';
+
 const {max} = Math;
 
 /**
@@ -39,12 +41,16 @@ const useSelectPositioner = (open, boxRef, popUpRef, {changePopUpWidth} = {chang
 			setPosition(button, popUp);
 			document.addEventListener('scroll', setPosition, {passive: true, capture: true});
 			window.addEventListener('resize', setPosition, {passive: true, capture: true});
+			const removeResizeObserver = addResizeObserver(popUp, setPosition);
+
+			return () => {
+				document.removeEventListener('scroll', setPosition, {passive: true, capture: true});
+				window.removeEventListener('resize', setPosition, {passive: true, capture: true});
+				removeResizeObserver();
+			};
 		}
 
-		return () => {
-			document.removeEventListener('scroll', setPosition, {passive: true, capture: true});
-			window.removeEventListener('resize', setPosition, {passive: true, capture: true});
-		};
+		return undefined;
 	}, [boxRef, popUpRef, open, changePopUpWidth]);
 
 export default useSelectPositioner;

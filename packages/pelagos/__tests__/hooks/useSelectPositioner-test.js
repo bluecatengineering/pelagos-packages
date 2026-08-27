@@ -1,6 +1,7 @@
 import {useLayoutEffect} from 'react';
 
 import useSelectPositioner from '../../src/hooks/useSelectPositioner';
+import addResizeObserver from '../../src/functions/addResizeObserver';
 
 jest.unmock('../../src/hooks/useSelectPositioner');
 
@@ -18,12 +19,15 @@ describe('useSelectPositioner', () => {
 		const popUp = {style: {}, getBoundingClientRect: () => ({height: 200})};
 		const buttonRef = {current: button};
 		const popUpRef = {current: popUp};
+		const disconnect = jest.fn();
+		addResizeObserver.mockReturnValueOnce(disconnect);
 		useSelectPositioner(true, buttonRef, popUpRef);
 		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [buttonRef, popUpRef, true, true]]);
 		const remove = useLayoutEffect.mock.calls[0][0]();
 		expect(popUp.style).toEqual({top: '100px', left: '200px', width: '400px'});
 		expect(document.addEventListener.mock.calls).toEqual([['scroll', anyFunction, {passive: true, capture: true}]]);
 		expect(window.addEventListener.mock.calls).toEqual([['resize', anyFunction, {passive: true, capture: true}]]);
+		expect(addResizeObserver.mock.calls).toEqual([[popUp, anyFunction]]);
 
 		button.getBoundingClientRect = () => ({top: 330, bottom: 350, left: 200, width: 400});
 		document.addEventListener.mock.calls[0][1]();
@@ -38,9 +42,15 @@ describe('useSelectPositioner', () => {
 		window.addEventListener.mock.calls[0][1]();
 		expect(popUp.style).toEqual({top: '0px', left: '200px', width: '400px'});
 
+		button.getBoundingClientRect = () => ({top: 130, bottom: 150, left: 200, width: 400});
+		popUp.getBoundingClientRect = () => ({height: 100});
+		addResizeObserver.mock.calls[0][1]();
+		expect(popUp.style).toEqual({top: '150px', left: '200px', width: '400px'});
+
 		remove();
 		expect(document.removeEventListener.mock.calls).toEqual(document.addEventListener.mock.calls);
 		expect(window.removeEventListener.mock.calls).toEqual(window.addEventListener.mock.calls);
+		expect(disconnect.mock.calls).toEqual([[]]);
 	});
 
 	it('does not set the pop-up width when changePopUpWidth is false', () => {
