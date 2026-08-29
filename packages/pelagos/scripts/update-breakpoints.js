@@ -1,11 +1,12 @@
 'use strict';
 
 const {readFileSync, writeFileSync} = require('fs');
+const {join} = require('path');
 
 const {parse} = require('yaml');
 
-const IN = 'defs/breakpoints.yaml';
-const LESS = 'less/breakpoints.less';
+const IN = join(__dirname, '../defs/breakpoints.yaml');
+const LESS = join(__dirname, '../less/breakpoints.less');
 
 const HEADER = [
 	'// This file was generated from defs/breakpoints.yaml',

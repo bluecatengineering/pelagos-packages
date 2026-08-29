@@ -1,12 +1,14 @@
 'use strict';
 
 const {readFileSync, writeFileSync} = require('node:fs');
+const {join} = require('node:path');
 
 const {parse} = require('yaml');
 
-const IN = 'defs/themes.yaml';
-const META = 'defs/themes-meta.yaml';
-const LESS = 'less/themes.less';
+const IN = join(__dirname, '../defs/themes.yaml');
+const META = join(__dirname, '../defs/themes-meta.yaml');
+const SHADOWS_IN = join(__dirname, '../defs/shadows.yaml');
+const LESS = join(__dirname, '../less/themes.less');
 
 const HEADER = [
 	'// This file was generated from defs/themes.yaml',
@@ -19,7 +21,7 @@ const HEADER = [
 
 const FOOTER = ['.theme-dark() {', '\t.theme-g100();', '}', '', '.theme-light() {', '\t.theme-white();', '}', ''];
 
-const SHADOWS = parse(readFileSync('defs/shadows.yaml', 'utf8')).levels.map((l) => `${l}`.padStart(2, '0'));
+const SHADOWS = parse(readFileSync(SHADOWS_IN, 'utf8')).levels.map((l) => `${l}`.padStart(2, '0'));
 
 const themes = Object.entries(parse(readFileSync(IN, 'utf8')));
 const meta = parse(readFileSync(META, 'utf8'));
