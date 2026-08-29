@@ -1,11 +1,12 @@
 'use strict';
 
 const {readFileSync, writeFileSync} = require('fs');
+const {join} = require('path');
 
 const {parse} = require('yaml');
 
-const IN = 'defs/elevations.yaml';
-const LESS = 'less/elevations.less';
+const IN = join(__dirname, '../defs/elevations.yaml');
+const LESS = join(__dirname, '../less/elevations.less');
 
 const HEADER = [
 	'// This file was generated from defs/elevations.yaml',

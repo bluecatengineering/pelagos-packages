@@ -1,11 +1,12 @@
 'use strict';
 
 const {readFileSync, writeFileSync} = require('fs');
+const {join} = require('path');
 
 const {parse} = require('yaml');
 
-const IN = 'defs/colors.yaml';
-const LESS = 'less/colors.less';
+const IN = join(__dirname, '../defs/colors.yaml');
+const LESS = join(__dirname, '../less/colors.less');
 
 const HEADER = [
 	'// This file was generated from defs/colors.yaml',

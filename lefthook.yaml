@@ -1,0 +1,63 @@
+# Index-write invariant: `git add` takes an exclusive lock on the whole index,
+# not per-path, and fails outright rather than waiting --
+# "fatal: Unable to create '.git/index.lock': File exists." So no two index
+# writers may overlap.
+#
+# That holds here because:
+#   - `updates` is a serial job, before the parallel group;
+#   - `l10n` is the ONLY explicit `git add` inside the parallel group;
+#   - `stage_fixed` does not stage per-job -- lefthook batches every fixed file
+#     into a single `git add --force` after all jobs have finished.
+#
+# Adding a second `git add` to the parallel group would break this.
+
+pre-commit:
+  jobs:
+    # Regenerates less/*.less from defs/*.yaml and stages them. Writes the
+    # index, so it runs alone before the parallel group.
+    - name: updates
+      run: scripts/pre-commit-updates
+
+    - name: checks
+      group:
+        parallel: true
+        jobs:
+          - name: lint-js
+            glob: '*.{js,mjs,ts}'
+            run: node_modules/.bin/eslint --fix --max-warnings 0 --no-ignore {staged_files} && node_modules/.bin/prettier --write {staged_files}
+            stage_fixed: true
+
+          - name: lint-styles
+            glob: '*.less'
+            run: node_modules/.bin/stylelint {staged_files} && node_modules/.bin/prettier --write {staged_files}
+            stage_fixed: true
+
+          - name: lint-other
+            glob: '*.{json,md,mdx,yaml,yml}'
+            run: node_modules/.bin/prettier --write {staged_files}
+            stage_fixed: true
+
+          # l10n-cli rewrites the catalogs but never stages them, so without the
+          # `git add` a new translatable string commits the source without the
+          # catalog update. Path matches bc-l10n.catalogPath in package.json.
+          - name: l10n
+            glob: '*.js'
+            run: node_modules/.bin/l10n-cli && git add packages/pelagos/src/l10n/*.po
+
+          # Safe to run alongside the linters: no autofix rule here adds or removes
+          # imports, so the import graph cannot change underneath it.
+          - name: analyze-imports
+            run: packages/analyze-imports/bin/analyze-imports.js packages/pelagos/src
+
+commit-msg:
+  jobs:
+    - name: commitlint
+      run: node_modules/.bin/commitlint -s -e {1}
+
+pre-push:
+  jobs:
+    - name: git-check-push
+      run: node_modules/.bin/git-check-push {1}
+      use_stdin: true
+
+output: false

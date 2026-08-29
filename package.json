@@ -12,8 +12,7 @@
     "lint": "eslint .",
     "lint-ci": "eslint . -f @microsoft/eslint-formatter-sarif -o build/eslint-results.sarif",
     "lint-styles": "stylelint **/*.less",
-    "reformat": "prettier --write \"**/*.+(js|json|less)\"",
-    "prepare": "husky"
+    "reformat": "prettier --write \"**/*.+(js|json|less)\""
   },
   "repository": {
     "type": "git",
@@ -54,15 +53,14 @@
     "eslint": "^9.19.0",
     "eslint-plugin-regexp": "^3.0.0",
     "eslint-plugin-storybook": "^10.1.6",
-    "husky": "^9.0.10",
     "jest": "^30.0.2",
     "jest-junit": "^17.0.0",
     "jsdoc-api": "^9.3.4",
     "jsdoc-parse": "^6.1.0",
+    "lefthook": "^2.1.10",
     "lerna": "^10.0.0",
     "less": "^4.1.2",
     "less-loader": "^13.0.0",
-    "lint-staged": "^17.0.7",
     "postcss": "^8.4.5",
     "postcss-less": "^6.0.0",
     "prettier": "^3.0.0",
@@ -177,27 +175,15 @@
       "zh"
     ]
   },
-  "lint-staged": {
-    "*.{js,d.ts}": [
-      "eslint --fix --max-warnings 0 --no-ignore",
-      "prettier --write"
-    ],
-    "*.less": [
-      "stylelint",
-      "prettier --write"
-    ],
-    "*.{json,md,mdx,yaml,yml}": [
-      "prettier --write"
-    ]
-  },
   "allowScripts": {
     "@carbon/icon-helpers": false,
     "@carbon/icons-react": false,
     "@swc/core": false,
     "core-js": false,
+    "esbuild@0.28.1": true,
     "fsevents": false,
+    "lefthook@2.1.10": true,
     "nx": false,
-    "unrs-resolver": false,
-    "esbuild@0.28.1": true
+    "unrs-resolver": false
   }
 }

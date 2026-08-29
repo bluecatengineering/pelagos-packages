@@ -1,12 +1,13 @@
 'use strict';
 
 const {readFile, writeFile} = require('node:fs/promises');
+const {join} = require('node:path');
 
 const {parse} = require('yaml');
 const {resolveConfig, format} = require('prettier');
 
-const IN = 'defs/shadows.yaml';
-const LESS = 'less/shadows.less';
+const IN = join(__dirname, '../defs/shadows.yaml');
+const LESS = join(__dirname, '../less/shadows.less');
 
 const HEADER = [
 	'// This file was generated from defs/shadows.yaml',

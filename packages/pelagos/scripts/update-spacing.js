@@ -1,11 +1,12 @@
 'use strict';
 
 const {readFileSync, writeFileSync} = require('fs');
+const {join} = require('path');
 
 const {parse} = require('yaml');
 
-const IN = 'defs/spacing.yaml';
-const LESS = 'less/spacing.less';
+const IN = join(__dirname, '../defs/spacing.yaml');
+const LESS = join(__dirname, '../less/spacing.less');
 
 const HEADER = [
 	'// This file was generated from defs/spacing.yaml',
