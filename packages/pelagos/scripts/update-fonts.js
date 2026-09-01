@@ -1,12 +1,13 @@
 'use strict';
 
 const {readFile, writeFile} = require('node:fs/promises');
+const {join} = require('node:path');
 
 const {parse} = require('yaml');
 const {resolveConfig, format} = require('prettier');
 
-const IN = 'defs/fonts.yaml';
-const LESS = 'less/fonts.less';
+const IN = join(__dirname, '../defs/fonts.yaml');
+const LESS = join(__dirname, '../less/fonts.less');
 
 const HEADER = [
 	'// This file was generated from defs/fonts.yaml',
