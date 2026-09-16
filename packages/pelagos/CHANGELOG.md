@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.28.4](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos%4012.28.3...%40bluecateng%2Fpelagos%4012.28.4) (2026-09-16)
+
+### Bug Fixes
+
+- adjust horizontal pop-up position if it overflows the screen ([352bd71](https://github.com/bluecatengineering/pelagos-packages/commit/352bd71c46cb7fe05d52bf7188952f06a188ad5c))
+
 ## [12.28.3](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos%4012.28.2...%40bluecateng%2Fpelagos%4012.28.3) (2026-08-27)
 
 ### Bug Fixes
