@@ -7,8 +7,9 @@
     "*.less"
   ],
   "scripts": {
-    "build": "rm -rf dist && babel -d dist --env-name production --root-mode upward --ignore '**/*.stories.js' src && npm run copy-resources dist",
-    "copy-resources": "node ../../scripts/copy-resources",
+    "build": "rm -rf dist && babel -d dist --env-name production --root-mode upward --ignore '**/*.stories.js' src && npm run copy-resources && npm run copy-l10n",
+    "copy-resources": "node ../../scripts/copy-resources dist",
+    "copy-l10n": "npx @bluecateng/l10n-cli build dist",
     "prepack": "npm run build"
   },
   "repository": {
@@ -32,7 +33,7 @@
     "core-js": "^3.37.0"
   },
   "dependencies": {
-    "@bluecateng/l10n-core": "^0.2.0",
+    "@bluecateng/l10n-core": "^0.3.0",
     "@carbon/icons-react": "^11.34.1",
     "d3-array": "^3.2.4",
     "d3-axis": "^3.0.0",
