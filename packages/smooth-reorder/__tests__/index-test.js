@@ -20,6 +20,8 @@ const createContainer = (r, scrollWidth, scrollHeight) => ({
 	removeEventListener: jest.fn(),
 	setPointerCapture: jest.fn(),
 	releasePointerCapture: jest.fn(),
+	setAttribute: jest.fn(),
+	removeAttribute: jest.fn(),
 });
 
 const createChild = (r) => ({
@@ -31,6 +33,21 @@ const createChild = (r) => ({
 	cloneNode: jest.fn().mockReturnValue({style: {}, classList: {add: jest.fn()}, focus: jest.fn()}),
 	classList: {add: jest.fn(), remove: jest.fn()},
 });
+
+const setup = (options) => {
+	const container = createContainer({});
+	const c0 = createChild({left: 0, right: 20, top: 0, bottom: 10});
+	c0.matches = jest.fn().mockReturnValue(true);
+	c0.parentNode = container;
+	const c1 = createChild({left: 0, right: 20, top: 10, bottom: 20});
+	c1.insertAdjacentElement = jest.fn(() => ((container.childNodes = [c1, c0]), (c0.nextSibling = null)));
+	container.childNodes = [c0, c1];
+	c0.nextSibling = c1;
+	reorder(container, options);
+	document.addEventListener.mockClear();
+	container.addEventListener.mock.calls[3][1]({key: ' ', target: c0, preventDefault});
+	return {container, c0, c1, documentKeyDown: document.addEventListener.mock.calls[0][1]};
+};
 
 global.getComputedStyle = (element) => element.style;
 global.requestAnimationFrame = jest.fn().mockReturnValue(1);
@@ -81,12 +98,10 @@ describe('reorder', () => {
 
 			pointermove({clientX: 10, clientY: 20, preventDefault});
 			pointermove({clientX: 10, clientY: 20, preventDefault});
-			expect(c0.style.transform).toBeUndefined();
 			expect(c1.style.transform).toBe('translate(0px,-10px)');
 			expect(clone.style.transform).toBe('translate(0px,15px)');
 
 			jest.runOnlyPendingTimers();
-			expect(c0.style.transform).toBeUndefined();
 			expect(c1.style.transform).toBe('');
 			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
 
@@ -205,12 +220,10 @@ describe('reorder', () => {
 
 			pointermove({clientX: 40, clientY: 5, preventDefault});
 			pointermove({clientX: 40, clientY: 5, preventDefault});
-			expect(c0.style.transform).toBeUndefined();
 			expect(c1.style.transform).toBe('translate(-20px,0px)');
 			expect(clone.style.transform).toBe('translate(30px,0px)');
 
 			jest.runOnlyPendingTimers();
-			expect(c0.style.transform).toBeUndefined();
 			expect(c1.style.transform).toBe('');
 			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
 
@@ -776,9 +789,123 @@ describe('reorder', () => {
 			expect(onCancel.mock.calls).toEqual([[c0]]);
 		});
 
+		it('sets the state attribute and calls onMoveEnd when the move ends', () => {
+			const onMoveEnd = jest.fn();
+			const {container, c0, documentKeyDown} = setup({
+				onStart: jest.fn(),
+				onMove: jest.fn(),
+				onMoveEnd,
+				onFinish: jest.fn(),
+			});
+			const states = () => container.setAttribute.mock.calls.map(([name, value]) => `${name}=${value}`);
+			expect(states()).toEqual(['data-reorder-state=idle', 'data-reorder-state=grabbed']);
+
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+			expect(states().pop()).toBe('data-reorder-state=moving');
+			expect(onMoveEnd).not.toHaveBeenCalled();
+
+			jest.runOnlyPendingTimers();
+			expect(states().pop()).toBe('data-reorder-state=grabbed');
+			expect(onMoveEnd.mock.calls).toEqual([[c0, 1]]);
+
+			documentKeyDown({key: ' ', preventDefault, stopPropagation});
+			expect(states().pop()).toBe('data-reorder-state=idle');
+		});
+
+		it('queues the drop until the move ends', () => {
+			const onMove = jest.fn();
+			const onFinish = jest.fn();
+			const {c0, c1, documentKeyDown} = setup({onStart: jest.fn(), onMove, onFinish});
+
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+			documentKeyDown({key: ' ', preventDefault, stopPropagation});
+			expect(c1.insertAdjacentElement).not.toHaveBeenCalled();
+			expect(onFinish).not.toHaveBeenCalled();
+
+			jest.runOnlyPendingTimers();
+			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
+			expect(onFinish.mock.calls).toEqual([[c0]]);
+		});
+
+		it('does not report a position past the last element if the arrow is pressed during a move', () => {
+			const onMove = jest.fn();
+			const {c0, documentKeyDown} = setup({onStart: jest.fn(), onMove, onFinish: jest.fn()});
+
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+			// c0 has not been moved in the DOM yet, but it is already at the last position
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+
+			expect(onMove.mock.calls).toEqual([[c0, 1]]);
+		});
+
+		it('handles an arrow in the opposite direction pressed during a move', () => {
+			const onMove = jest.fn();
+			const {c0, documentKeyDown} = setup({onStart: jest.fn(), onMove, onFinish: jest.fn()});
+
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+			// c0 has not been moved in the DOM yet, but it is already at the last position
+			documentKeyDown({key: 'ArrowUp', preventDefault, stopPropagation});
+
+			expect(onMove.mock.calls).toEqual([
+				[c0, 1],
+				[c0, 0],
+			]);
+		});
+
+		it('moves immediately if the duration is 0', () => {
+			const onMoveEnd = jest.fn();
+			const onFinish = jest.fn();
+			const {c0, c1, documentKeyDown} = setup({duration: 0, onStart: jest.fn(), onMoveEnd, onFinish});
+
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+			expect(c1.style.transform).toBe('');
+			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
+			expect(onMoveEnd.mock.calls).toEqual([[c0, 1]]);
+
+			documentKeyDown({key: ' ', preventDefault, stopPropagation});
+			expect(onFinish.mock.calls).toEqual([[c0]]);
+		});
+
+		it('uses the specified duration', () => {
+			const {c0, c1, documentKeyDown} = setup({duration: 500, onStart: jest.fn(), onFinish: jest.fn()});
+
+			documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+			expect(c1.style.transition).toBe('transform 500ms cubic-bezier(0.3, 0, 0, 1)');
+
+			jest.advanceTimersByTime(504);
+			expect(c1.insertAdjacentElement).not.toHaveBeenCalled();
+			jest.advanceTimersByTime(1);
+			expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
+		});
+
+		it('does not animate if the user prefers reduced motion', () => {
+			global.matchMedia = jest.fn().mockReturnValue({matches: true});
+			try {
+				const {c0, c1, documentKeyDown} = setup({onStart: jest.fn(), onFinish: jest.fn()});
+
+				documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+				expect(global.matchMedia.mock.calls).toEqual([['(prefers-reduced-motion: reduce)']]);
+				expect(c1.insertAdjacentElement.mock.calls).toEqual([['afterend', c0]]);
+			} finally {
+				delete global.matchMedia;
+			}
+		});
+
+		it('animates if the user does not prefer reduced motion', () => {
+			global.matchMedia = jest.fn().mockReturnValue({matches: false});
+			try {
+				const {c1, documentKeyDown} = setup({onStart: jest.fn(), onFinish: jest.fn()});
+
+				documentKeyDown({key: 'ArrowDown', preventDefault, stopPropagation});
+				expect(c1.insertAdjacentElement).not.toHaveBeenCalled();
+			} finally {
+				delete global.matchMedia;
+			}
+		});
+
 		it('ignores keydown for other keys', () => {
 			const onFinish = jest.fn();
-			const container = {parentNode: document.body, style: {}, addEventListener: jest.fn()};
+			const container = {parentNode: document.body, style: {}, addEventListener: jest.fn(), setAttribute: jest.fn()};
 			container.matches = jest.fn().mockReturnValue(false);
 			reorder(container, {onFinish});
 			expect(container.addEventListener.mock.calls[3]).toEqual(['keydown', anyFunction]);
@@ -792,7 +919,7 @@ describe('reorder', () => {
 
 		it('ignores keydown if no draggable is found', () => {
 			const onFinish = jest.fn();
-			const container = {parentNode: document.body, style: {}, addEventListener: jest.fn()};
+			const container = {parentNode: document.body, style: {}, addEventListener: jest.fn(), setAttribute: jest.fn()};
 			container.matches = jest.fn().mockReturnValue(false);
 			reorder(container, {onFinish});
 			expect(container.addEventListener.mock.calls[3]).toEqual(['keydown', anyFunction]);

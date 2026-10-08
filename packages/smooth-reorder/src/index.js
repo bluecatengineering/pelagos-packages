@@ -2,14 +2,14 @@ import spring from '@bluecateng/nano-spring';
 
 export default (container, options) => {
 	const abs = Math.abs;
-	const translateTransition = 'transform .2s cubic-bezier(0.3, 0, 0, 1)';
-	const transitionTime = 205;
+	const stateAttribute = 'data-reorder-state';
+	const timerMargin = 5;
 
 	let element, clone, ew, eh, ecx, ecy, px, py, ofsX, ofsY;
 	let originalIndex, currentIndex;
 	let dragging = false;
 	let busy = false;
-	let pending;
+	let pending = [];
 	let scrollFrame;
 
 	const indexOfElement = () => Array.prototype.indexOf.call(element.parentNode.childNodes, element);
@@ -21,7 +21,7 @@ export default (container, options) => {
 		return element;
 	};
 
-	const {horizontal, selector = '.draggable', onStart, onMove, onFinish, onCancel} = options;
+	const {horizontal, selector = '.draggable', duration = 200, onStart, onMove, onMoveEnd, onFinish, onCancel} = options;
 	const handleSelector = options.handleSelector || selector;
 	const focusSelector = options.focusSelector || handleSelector;
 
@@ -33,6 +33,25 @@ export default (container, options) => {
 		target.focus();
 	};
 
+	const getDuration = () =>
+		typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : duration;
+
+	// "moving" while a move animation is running, "grabbed" while an element is held, "idle" otherwise
+	const updateState = () => container.setAttribute(stateAttribute, busy ? 'moving' : element ? 'grabbed' : 'idle');
+
+	const flush = () => {
+		// busy is modified by the queued functions
+		// eslint-disable-next-line no-unmodified-loop-condition
+		while (!busy && pending.length) {
+			pending.shift()();
+		}
+	};
+
+	const schedule = (fn) => {
+		pending.push(fn);
+		flush();
+	};
+
 	const cancelScroll = () => {
 		if (scrollFrame) {
 			cancelAnimationFrame(scrollFrame);
@@ -41,26 +60,27 @@ export default (container, options) => {
 	};
 
 	const move = (sibling, position, keepMoving, transform, transformElement) => {
+		const time = getDuration();
+		const translateTransition = `transform ${time}ms cubic-bezier(0.3, 0, 0, 1)`;
 		const er = element.getBoundingClientRect();
 		let r;
 		let pr = er;
 		let target = element[sibling];
 		const all = [];
 		while (target && keepMoving((r = target.getBoundingClientRect()))) {
-			target.style.transition = translateTransition;
-			target.style.transform = transform(r, pr);
+			if (time) {
+				target.style.transition = translateTransition;
+				target.style.transform = transform(r, pr);
+			}
 			all.push(target);
 			pr = r;
 			target = target[sibling];
 		}
 		if (all.length) {
 			busy = true;
-			if (transformElement) {
-				element.style.transition = translateTransition;
-				element.style.transform = transformElement(er, pr);
-			}
+			updateState();
 			const currentElement = element;
-			setTimeout(() => {
+			const finish = () => {
 				for (const target of all) {
 					target.style.transition = '';
 					target.style.transform = '';
@@ -72,12 +92,19 @@ export default (container, options) => {
 					setFocus(currentElement);
 				}
 				busy = false;
-				if (pending) {
-					const tmp = pending;
-					pending = null;
-					tmp();
+				updateState();
+				onMoveEnd?.(currentElement, indexOfElement());
+				flush();
+			};
+			if (time) {
+				if (transformElement) {
+					currentElement.style.transition = translateTransition;
+					currentElement.style.transform = transformElement(er, pr);
 				}
-			}, transitionTime);
+				setTimeout(finish, time + timerMargin);
+			} else {
+				finish();
+			}
 		}
 	};
 
@@ -117,7 +144,7 @@ export default (container, options) => {
 		if (dragging) {
 			clone.style.transform = `translate(${tx}px,${ty}px)`;
 			if (busy) {
-				pending = () => moveFromPointer(tx, ty);
+				pending = [() => moveFromPointer(tx, ty)];
 			} else {
 				moveFromPointer(tx, ty);
 			}
@@ -173,6 +200,7 @@ export default (container, options) => {
 			}
 		} else if (abs(tx - px) + abs(ty - py) > 2) {
 			dragging = true;
+			updateState();
 			element.classList.add('placeholder');
 			clone.classList.add('dragging');
 			clone.classList.add('clone');
@@ -234,26 +262,28 @@ export default (container, options) => {
 					setFocus(element);
 					onFinish(element);
 					element = null;
+					updateState();
 				}
 			);
 		}
 	};
 
-	const swapElements = (targetIndex, cancel) => {
-		if (busy) {
-			pending = () => swapElements(targetIndex, cancel);
-		} else {
+	const swapElements = (targetIndex, cancel) =>
+		schedule(() => {
 			let i = indexOfElement() - targetIndex;
 			if (i > 0) {
-				move('previousSibling', 'beforebegin', () => i-- !== 0, transformStart, transformEnd, cancel);
+				move('previousSibling', 'beforebegin', () => i-- !== 0, transformStart, transformEnd);
 			} else {
-				move('nextSibling', 'afterend', () => i++ !== 0, transformEnd, transformStart, cancel);
+				move('nextSibling', 'afterend', () => i++ !== 0, transformEnd, transformStart);
 			}
 			if (cancel) {
-				pending = () => (onCancel(element), (element = null));
+				schedule(() => {
+					onCancel(element);
+					element = null;
+					updateState();
+				});
 			}
-		}
-	};
+		});
 
 	const handleGlobalKeyDown = (event) => {
 		event.preventDefault();
@@ -263,8 +293,11 @@ export default (container, options) => {
 				element.classList.remove('dragging');
 				document.removeEventListener('keydown', handleGlobalKeyDown, true);
 				if (currentIndex === originalIndex) {
-					onCancel(element);
-					element = null;
+					schedule(() => {
+						onCancel(element);
+						element = null;
+						updateState();
+					});
 				} else {
 					swapElements(originalIndex, true);
 				}
@@ -272,24 +305,26 @@ export default (container, options) => {
 			case ' ':
 				element.classList.remove('dragging');
 				document.removeEventListener('keydown', handleGlobalKeyDown, true);
-				onFinish(element);
-				element = null;
+				schedule(() => {
+					onFinish(element);
+					element = null;
+					updateState();
+				});
 				break;
 			case 'ArrowLeft':
 			case 'ArrowUp': {
-				const prev = element.previousSibling;
-				if (prev) {
+				// bounds come from the tracked index, the DOM is stale while a move is running
+				if (currentIndex > 0) {
 					swapElements(--currentIndex);
-					onMove(element, currentIndex);
+					onMove?.(element, currentIndex);
 				}
 				break;
 			}
 			case 'ArrowRight':
 			case 'ArrowDown': {
-				const next = element.nextSibling;
-				if (next) {
+				if (currentIndex < element.parentNode.childNodes.length - 1) {
 					swapElements(++currentIndex);
-					onMove(element, currentIndex);
+					onMove?.(element, currentIndex);
 				}
 				break;
 			}
@@ -305,11 +340,13 @@ export default (container, options) => {
 				element = target.closest(selector);
 				element.classList.add('dragging');
 				currentIndex = originalIndex = indexOfElement();
+				updateState();
 				onStart(element, currentIndex);
 			}
 		}
 	};
 
+	updateState();
 	container.addEventListener('pointerdown', handlePointerDown);
 	container.addEventListener('pointerup', handlePointerUp);
 	container.addEventListener('lostpointercapture', handleLostPointerCapture);
@@ -320,5 +357,6 @@ export default (container, options) => {
 		container.removeEventListener('pointerup', handlePointerUp);
 		container.removeEventListener('lostpointercapture', handleLostPointerCapture);
 		container.removeEventListener('keydown', handleKeyDown);
+		container.removeAttribute(stateAttribute);
 	};
 };
