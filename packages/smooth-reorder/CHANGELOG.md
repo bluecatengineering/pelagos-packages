@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/smooth-reorder@2.1.4...@bluecateng/smooth-reorder@2.2.0) (2026-10-09)
+
+### Features
+
+- make smooth-reorder observable and safe for fast keyboard use ([e269559](https://github.com/bluecatengineering/pelagos-packages/commit/e26955982749d78958b7b397ff290ea544625c6d))
+
 ## [2.1.4](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/smooth-reorder@2.1.3...@bluecateng/smooth-reorder@2.1.4) (2026-04-20)
 
 **Note:** Version bump only for package @bluecateng/smooth-reorder

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.28.5](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.28.4...@bluecateng/pelagos@12.28.5) (2026-10-09)
+
+### Bug Fixes
+
+- keep useReorder bound to the current container and latest list ([6f8d7cd](https://github.com/bluecatengineering/pelagos-packages/commit/6f8d7cd037189991038f2b4b42262aefccaa24e8))
+
 ## [12.28.4](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos%4012.28.3...%40bluecateng%2Fpelagos%4012.28.4) (2026-09-16)
 
 ### Bug Fixes
