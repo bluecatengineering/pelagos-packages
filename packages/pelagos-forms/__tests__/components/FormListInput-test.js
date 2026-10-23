@@ -30,9 +30,11 @@ describe('FormListInput', () => {
 		expect(setValue.mock.calls).toEqual([['value']]);
 
 		result.onTextChange('value');
-		expect(setValue.mock.calls).toEqual([['value']]);
+		expect(setExtra.mock.calls).toEqual([['value']]);
 
 		result.onErrorChange('value');
+		expect(setError.mock.calls).toEqual([['value']]);
+
 		expect(setValue.mock.calls).toEqual([['value']]);
 	});
 });

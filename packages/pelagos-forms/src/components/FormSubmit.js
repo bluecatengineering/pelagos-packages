@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import {Button} from '@bluecateng/pelagos';
 import {useFormState} from '@bluecateng/auto-forms';
 
-const FormSubmit = ({...props}) => {
+const FormSubmit = (props) => {
 	const {isChanged} = useFormState();
 	return <Button {...props} type={isChanged() ? 'primary' : 'tertiary'} />;
 };
@@ -14,6 +14,8 @@ FormSubmit.propTypes = {
 	className: PropTypes.string,
 	tooltipText: PropTypes.string,
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
+	disabled: PropTypes.bool,
+	onClick: PropTypes.func,
 	onFocus: PropTypes.func,
 	onBlur: PropTypes.func,
 };
