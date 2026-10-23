@@ -2,7 +2,10 @@
 
 Tiny implementation of spring animation with mass set to 1.
 
-Size: 290 bytes before compression.
+Size: 321 bytes before compression.
+
+Both `stiffness` and `damping` must be greater than 0, otherwise the animation never ends.
+The function returned by `spring` cancels the animation, `done` is not called in that case.
 
 # Installation
 

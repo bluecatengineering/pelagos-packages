@@ -1,8 +1,10 @@
+const {abs, min} = Math;
+
 export default (stiffness, damping, step, done) => {
 	let f;
 	const nextStep = () => {
 		const t1 = performance.now();
-		const dt = (t1 - t0) / 1000;
+		const dt = min((t1 - t0) / 1000, 1 / 30); // clamp to keep the simulation stable after long gaps
 		t0 = t1;
 
 		const springX = stiffness * (1 - p);
@@ -11,7 +13,7 @@ export default (stiffness, damping, step, done) => {
 		v += a * dt;
 		p += v * dt;
 
-		if (Math.abs(p - 1) < 1e-3) {
+		if (abs(p - 1) < 1e-3 && abs(v) < 1e-2) {
 			step(1);
 			if (done) {
 				done();
