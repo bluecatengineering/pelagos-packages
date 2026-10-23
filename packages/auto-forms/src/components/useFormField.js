@@ -6,15 +6,13 @@ export default (name) => {
 	const {state, dispatch, rules} = useContext(FormContext);
 	const rule = rules[name];
 	const value = state.values[name];
-	const error = state.errors[name];
+	const error = state.errors[name] ?? null;
 	const extra = state.extras[name];
 	const setValue = useCallback(
-		(value) => {
-			dispatch({type: 'SET_VALUE', name, payload: value});
-			if (rule) {
-				dispatch({type: 'SET_ERROR', name, payload: rule(value)});
-			}
-		},
+		(value) =>
+			dispatch(
+				rule ? {type: 'SET_VALUE', name, payload: value, error: rule(value)} : {type: 'SET_VALUE', name, payload: value}
+			),
 		[name, rule, dispatch]
 	);
 

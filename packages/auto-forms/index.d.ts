@@ -1,4 +1,4 @@
-import type {ComponentType, FC, FormHTMLAttributes, ForwardRefExoticComponent, ReactNode, RefAttributes} from 'react';
+import type {ComponentType, FormHTMLAttributes, ForwardRefExoticComponent, ReactNode, RefAttributes} from 'react';
 
 /** ---------- Shared Types ---------- */
 
@@ -90,7 +90,7 @@ export interface FormProps<E = string> extends Omit<FormHTMLAttributes<HTMLFormE
 	 * Called when validation passes. May be async.
 	 * Return value is forwarded by `submit()`.
 	 */
-	onSubmit?: (values: FormValues, helpers: FormSubmitHelpers<E>) => unknown | Promise<unknown>;
+	onSubmit: (values: FormValues, helpers: FormSubmitHelpers<E>) => unknown | Promise<unknown>;
 }
 
 /** Form component which performs validation on nested elements base on specified rules. */
@@ -113,11 +113,13 @@ export function useFormState<E = string>(): UseFormStateResult<E>;
  *   of `P` that are not supplied by `mapState`.
  * - `mapState` receives a `FormFieldState<V, E, X>` enabling consumers to
  *   specialize value/error/extra types when desired.
+ * - `mapState` is called while the wrapper renders, so it may use hooks.
+ * - A `ref` passed to the resulting component is forwarded to `Component`.
  */
 export function connect<P extends object, V = unknown, E = string, X = unknown, Injected extends object = object>(
 	Component: ComponentType<P & Injected & {name: string}>,
 	mapState: (state: FormFieldState<V, E, X>) => Injected
-): FC<Omit<P, keyof Injected> & {name: string}>;
+): ForwardRefExoticComponent<Omit<P, keyof Injected> & {name: string} & RefAttributes<unknown>>;
 
 /** ---------- Validators ---------- */
 
@@ -125,13 +127,21 @@ export function connect<P extends object, V = unknown, E = string, X = unknown, 
  * Compose multiple validators. Returns the first non-null/truthy result, or null if all pass.
  * The composed function preserves the argument list of the input validators.
  */
-export function validateAnd<V = unknown, E = string>(rules: ((value: V) => E | null)[]): (value: V) => E | null;
+export function validateAnd<A extends unknown[], E = string>(
+	rules: ((...args: A) => E | null)[]
+): (...args: A) => E | null;
 
-/** Valid when value is falsy or matches `rx`; otherwise returns `message`. */
+/**
+ * Valid when value is falsy or matches `rx`; otherwise returns `message`.
+ * The regular expression must not use the `g` or `y` flags, they make `test` stateful.
+ */
 export function validateMatches<V = string, E = string>(rx: RegExp, message: E): (value: V) => E | null;
 
 /** Valid when value is non-empty (after trim); otherwise returns `message`. */
 export function validateNotEmpty<V = string, E = string>(message: E): (value: V) => E | null;
 
-/** Valid when value is falsy or does not match `rx`; otherwise returns `message`. */
+/**
+ * Valid when value is falsy or does not match `rx`; otherwise returns `message`.
+ * The regular expression must not use the `g` or `y` flags, they make `test` stateful.
+ */
 export function validateNotMatches<V = string, E = string>(rx: RegExp, message: E): (value: V) => E | null;

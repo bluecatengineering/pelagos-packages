@@ -1,4 +1,4 @@
-import {forwardRef, useCallback, useReducer} from 'react';
+import {forwardRef, useCallback, useMemo, useReducer} from 'react';
 import PropTypes from 'prop-types';
 import identity from 'lodash-es/identity';
 
@@ -6,10 +6,18 @@ import isNotNull from '../utils/isNotNull';
 
 import FormContext from './FormContext';
 
-const reducer = (state, {type, name, payload}) => {
+const emptyExtras = {};
+
+const reducer = (state, action) => {
+	const {type, name, payload} = action;
 	switch (type) {
 		case 'SET_VALUE':
-			return {...state, values: {...state.values, [name]: payload}};
+			return {
+				...state,
+				values: {...state.values, [name]: payload},
+				// the error is optional, it is set in the same update to avoid rendering a value with a stale error
+				...('error' in action && {errors: {...state.errors, [name]: action.error}}),
+			};
 		case 'SET_ERROR':
 			return {...state, errors: {...state.errors, [name]: payload}};
 		case 'SET_EXTRA':
@@ -23,26 +31,40 @@ const reducer = (state, {type, name, payload}) => {
 const getInitialState = ({initialValues, initialExtras}) => ({
 	initialValues,
 	values: initialValues,
-	errors: {},
+	errors: Object.fromEntries(Object.keys(initialValues).map((key) => [key, null])),
 	extras: initialExtras,
 });
 
-const submitForm = ({values, extras, initialValues}, dispatch, rules, getActiveFields, extraValidation, onSubmit) => {
+const submitForm = (
+	{values, errors: currentErrors, extras, initialValues},
+	dispatch,
+	rules,
+	getActiveFields,
+	extraValidation,
+	onSubmit
+) => {
 	const setError = (name, payload) => dispatch({type: 'SET_ERROR', name, payload});
-	const keys = getActiveFields ? getActiveFields(values, extras) : Object.keys(values);
-	const errors = keys.reduce((o, key) => {
-		const rule = rules[key];
-		if (rule) {
-			o[key] = rule(values[key]);
+	return new Promise((resolve) => {
+		const keys = getActiveFields ? getActiveFields(values, extras) : Object.keys(values);
+		if (getActiveFields) {
+			// fields which are not active cannot block the submit, their old errors would only be misleading
+			const active = new Set(keys);
+			Object.keys(values).forEach((key) => !active.has(key) && currentErrors[key] && setError(key, null));
 		}
-		return o;
-	}, {});
+		const errors = keys.reduce((o, key) => {
+			const rule = rules[key];
+			if (rule) {
+				o[key] = rule(values[key]);
+			}
+			return o;
+		}, {});
 
-	return Promise.resolve(extraValidation(errors, values, extras, initialValues)).then((errors) => {
-		const passed = Object.entries(errors).reduce(
-			(r, [name, payload]) => (isNotNull(payload) ? (setError(name, payload), false) : r),
-			true
-		);
+		resolve(extraValidation(errors, values, extras, initialValues));
+	}).then((errors) => {
+		const passed = Object.entries(errors).reduce((r, [name, payload]) => {
+			setError(name, payload);
+			return isNotNull(payload) ? false : r;
+		}, true);
 
 		if (!passed) {
 			return null;
@@ -60,7 +82,7 @@ const Form = forwardRef(
 	(
 		{
 			initialValues,
-			initialExtras = {},
+			initialExtras = emptyExtras,
 			rules,
 			children,
 			getActiveFields,
@@ -81,8 +103,9 @@ const Form = forwardRef(
 		);
 		const handleSubmit = useCallback((event) => (event.preventDefault(), submit()), [submit]);
 		const handleReset = useCallback((event) => (event.preventDefault(), reset()), [reset]);
+		const context = useMemo(() => ({rules, state, dispatch, submit, reset}), [rules, state, dispatch, submit, reset]);
 		return (
-			<FormContext.Provider value={{rules, state, dispatch, submit, reset}}>
+			<FormContext.Provider value={context}>
 				<form {...props} ref={ref} onSubmit={handleSubmit} onReset={handleReset}>
 					{children}
 				</form>
@@ -100,7 +123,7 @@ Form.propTypes = {
 	children: PropTypes.node,
 	getActiveFields: PropTypes.func,
 	extraValidation: PropTypes.func,
-	onSubmit: PropTypes.func,
+	onSubmit: PropTypes.func.isRequired,
 };
 
 export default Form;

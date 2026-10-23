@@ -28,8 +28,7 @@ describe('useFormField', () => {
 		data.setError('new-error');
 		data.setExtra('new-extra');
 		expect(dispatch.mock.calls).toEqual([
-			[{type: 'SET_VALUE', name: 'test', payload: 'new-value'}],
-			[{type: 'SET_ERROR', name: 'test', payload: 'rule-error'}],
+			[{type: 'SET_VALUE', name: 'test', payload: 'new-value', error: 'rule-error'}],
 			[{type: 'SET_ERROR', name: 'test', payload: 'new-error'}],
 			[{type: 'SET_EXTRA', name: 'test', payload: 'new-extra'}],
 		]);
@@ -41,6 +40,7 @@ describe('useFormField', () => {
 		useContext.mockReturnValue({state: {values: {}, errors: {}, extras: {}}, dispatch, rules: {}});
 
 		const data = useFormField('test');
+		expect(data.error).toBeNull();
 		data.setValue('new-value');
 		expect(dispatch.mock.calls).toEqual([[{type: 'SET_VALUE', name: 'test', payload: 'new-value'}]]);
 	});
