@@ -23,7 +23,14 @@
     "dist",
     "index.d.ts"
   ],
-  "exports": "./dist/index.js",
+  "exports": {
+    "types": "./index.d.ts",
+    "default": "./dist/index.js"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "prop-types": "^15.8.1"
+  },
   "peerDependencies": {
     "react": ">= 16.8"
   }
