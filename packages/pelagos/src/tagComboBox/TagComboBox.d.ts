@@ -14,7 +14,7 @@ interface TagComboBoxProps<T> extends Omit<HTMLProps<HTMLInputElement>, 'onChang
 	/** The tooltip for default tags. */
 	defaultTooltipText?: string;
 	/** Whether the component is in error. */
-	error?: string;
+	error?: string | null;
 	/** Whether the input is disabled. */
 	disabled?: boolean;
 	/** Function invoked to get the key of each tag. */

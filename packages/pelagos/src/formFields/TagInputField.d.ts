@@ -18,7 +18,7 @@ interface TagInputFieldProps extends Omit<HTMLProps<HTMLInputElement>, 'onChange
 	/** Additional information for the field. */
 	helperText?: string;
 	/** The error text. */
-	error?: string;
+	error?: string | null;
 	/** Whether the field is disabled. */
 	disabled?: boolean;
 	/** Function invoked to validate each tag. */

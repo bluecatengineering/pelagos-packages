@@ -18,7 +18,7 @@ interface TagComboBoxFieldProps<T> extends Omit<HTMLProps<HTMLInputElement>, 'on
 	/** Additional information for the field. */
 	helperText?: string;
 	/** Whether the component is in error. */
-	error?: string;
+	error?: string | null;
 	/** Whether the input is disabled. */
 	disabled?: boolean;
 	/** Function invoked to get the key of each tag. */
