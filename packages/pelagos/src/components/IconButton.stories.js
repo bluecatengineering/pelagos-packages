@@ -35,7 +35,7 @@ export const Overlay = {
 		type: 'primary',
 		tooltipText: 'Overlay',
 		overlay: <div className="IconButtonStory__overlay">42</div>,
-		'aria-label': 'Overlay',
+		'aria-label': 'Overlay 42',
 	},
 };
 
