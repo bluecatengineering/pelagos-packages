@@ -12,7 +12,7 @@ describe('spring', () => {
 		current += ms;
 		const [id, f] = pending.entries().next().value;
 		pending.delete(id);
-		f();
+		f(current);
 	};
 
 	// runs frames until the animation ends, returns the number of frames
@@ -29,7 +29,6 @@ describe('spring', () => {
 		current = 0;
 		nextId = 0;
 		pending = new Map();
-		global.performance = {now: () => current};
 		global.requestAnimationFrame = jest.fn((f) => (pending.set(++nextId, f), nextId));
 		global.cancelAnimationFrame = jest.fn((id) => pending.delete(id));
 	});
@@ -42,8 +41,9 @@ describe('spring', () => {
 		run(16);
 
 		const values = step.mock.calls.map(([p]) => p);
-		expect(values[0]).toBeCloseTo(0.064, 10);
-		expect(values[1]).toBeCloseTo(0.162304, 10);
+		expect(values[0]).toBe(0);
+		expect(values[1]).toBeCloseTo(0.064, 10);
+		expect(values[2]).toBeCloseTo(0.162304, 10);
 		expect(values[values.length - 1]).toBe(1);
 		expect(done.mock.calls).toEqual([[]]);
 		expect(pending.size).toBe(0);
@@ -117,8 +117,10 @@ describe('spring', () => {
 		const done = jest.fn();
 		spring(250, 25, step, done);
 
+		frame(16);
+		expect(step.mock.calls[0][0]).toBe(0);
 		frame(2000);
-		expect(step.mock.calls[0][0]).toBeCloseTo(250 / 900, 10);
+		expect(step.mock.calls[1][0]).toBeCloseTo(250 / 900, 10);
 
 		run(16);
 
