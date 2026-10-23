@@ -20,7 +20,7 @@ interface FileUploaderProps {
 	/** Additional information for the field. */
 	helperText?: string;
 	/** The field level error text. */
-	error?: string;
+	error?: string | null;
 	/** Whether the field is disabled. */
 	disabled?: boolean;
 	/** Function invoked when the list of files changes. */

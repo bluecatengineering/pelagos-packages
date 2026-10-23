@@ -20,7 +20,7 @@ interface DropDownFieldProps<T> extends Omit<HTMLProps<HTMLDivElement>, 'onChang
 	/** Additional information for the field. */
 	helperText?: string;
 	/** The error text. */
-	error?: string;
+	error?: string | null;
 	/** Function invoked to get the key of each option. */
 	getOptionKey?: (option: T) => number | string;
 	/** Function invoked to render the options. */

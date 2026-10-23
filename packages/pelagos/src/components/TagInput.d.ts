@@ -12,7 +12,7 @@ interface TagInputProps extends Omit<HTMLProps<HTMLInputElement>, 'onChange' | '
 	/** The tooltip for default tags. */
 	defaultTooltipText?: string;
 	/** Whether the component is in error. */
-	error?: boolean | string;
+	error?: boolean | string | null;
 	/** Function invoked to validate each tag. */
 	validate: (name: string) => string | null;
 	/** Whether the input is disabled. */

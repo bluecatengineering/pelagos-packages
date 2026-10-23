@@ -20,7 +20,7 @@ interface DateInputFieldProps extends Omit<HTMLProps<HTMLInputElement>, 'onChang
 	/** Additional information for the field. */
 	helperText?: string;
 	/** The error text. */
-	error?: string;
+	error?: string | null;
 	/** Function invoked to format the date selected form the calendar. */
 	format: (timestamp: number) => string;
 	/** Function invoked to parse the value to pass to the calendar, must return null if the value is not valid. */
