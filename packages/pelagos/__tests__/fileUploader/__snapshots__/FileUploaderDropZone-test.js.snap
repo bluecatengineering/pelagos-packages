@@ -78,3 +78,55 @@ exports[`FileUploaderDropZone rendering renders expected elements when showOpenF
   </button>
 </div>
 `;
+
+exports[`FileUploaderDropZone rendering uses the label as accessible name when text is not set 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <button
+    aria-label="Test"
+    className="FileUploader__dropZone"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="button"
+  />
+  <input
+    accept={null}
+    className="FileUploader__input"
+    onChange={[Function]}
+    type="file"
+  />
+</div>
+`;
+
+exports[`FileUploaderDropZone rendering uses the text as accessible name when label is not set 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    className="sr-only"
+  />
+  <button
+    aria-label="Test drop zone"
+    className="FileUploader__dropZone"
+    onClick={[Function]}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    type="button"
+  >
+    Test drop zone
+  </button>
+  <input
+    accept={null}
+    className="FileUploader__input"
+    onChange={[Function]}
+    type="file"
+  />
+</div>
+`;

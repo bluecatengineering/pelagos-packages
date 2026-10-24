@@ -22,6 +22,11 @@ describe('TextInput', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders an empty value when value is null', () => {
+			const wrapper = shallow(<TextInput id="test" value={null} onChange={jest.fn()} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when className is set', () => {
 			const wrapper = shallow(
 				<TextInput

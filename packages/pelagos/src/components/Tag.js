@@ -1,5 +1,6 @@
 import {forwardRef} from 'react';
 import PropTypes from 'prop-types';
+import {t} from '@bluecateng/l10n.macro';
 import Close from '@carbon/icons-react/es/Close';
 
 import useRandomId from '../hooks/useRandomId';
@@ -47,6 +48,10 @@ const Tag = forwardRef(
 		}`;
 		const icon = Icon ? <Icon className="Tag__icon" /> : null;
 		const content = <span title={tagTitle || text}>{text || children}</span>;
+		// The remove button needs its own name, otherwise it is announced like the tag itself.
+		// The variable is called name so the message is the existing "Remove {name}", which is already translated.
+		const name = text;
+		const removeLabel = removeTitle || (name ? t`Remove ${name}` : null);
 		return onClick ? (
 			<button {...props} id={id} className={fullClassName} type="button" onClick={onClick} ref={ref}>
 				{icon}
@@ -57,7 +62,13 @@ const Tag = forwardRef(
 				{icon}
 				{content}
 				{onRemove && (
-					<button className="Tag__remove" type="button" title={removeTitle} aria-labelledby={id} onClick={onRemove}>
+					<button
+						className="Tag__remove"
+						type="button"
+						title={removeLabel}
+						aria-label={removeLabel}
+						aria-labelledby={removeLabel ? null : id}
+						onClick={onRemove}>
 						<Close />
 					</button>
 				)}
@@ -83,7 +94,7 @@ Tag.propTypes = {
 	text: PropTypes.string,
 	/** The tag title if different from the text. */
 	tagTitle: PropTypes.string,
-	/** The title for the remove button. */
+	/** The title and accessible name for the remove button, the default is "Remove" followed by the text. */
 	removeTitle: PropTypes.string,
 	/** @deprecated use text instead. */
 	children: PropTypes.node,

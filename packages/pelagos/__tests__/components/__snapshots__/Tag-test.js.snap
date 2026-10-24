@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`Tag rendering labels the remove button with the tag when neither removeTitle nor text are set 1`] = `
+<div
+  className="Tag Tag--md Tag--gray Tag--removable"
+  id="random-id"
+>
+  <span>
+    Foo
+  </span>
+  <button
+    aria-label={null}
+    aria-labelledby="random-id"
+    className="Tag__remove"
+    onClick={[MockFunction]}
+    title={null}
+    type="button"
+  >
+    <Close />
+  </button>
+</div>
+`;
+
+exports[`Tag rendering names the remove button after the text when removeTitle is not set 1`] = `
+<div
+  className="Tag Tag--md Tag--gray Tag--removable"
+  id="random-id"
+>
+  <span
+    title="Foo"
+  >
+    Foo
+  </span>
+  <button
+    aria-label="Remove Foo"
+    aria-labelledby={null}
+    className="Tag__remove"
+    onClick={[MockFunction]}
+    title="Remove Foo"
+    type="button"
+  >
+    <Close />
+  </button>
+</div>
+`;
+
 exports[`Tag rendering renders expected elements 1`] = `
 <div
   className="Tag Tag--md Tag--gray"
@@ -24,7 +68,8 @@ exports[`Tag rendering renders expected elements when onRemove is ser 1`] = `
     gray
   </span>
   <button
-    aria-labelledby="random-id"
+    aria-label="Remove title"
+    aria-labelledby={null}
     className="Tag__remove"
     onClick={[MockFunction]}
     title="Remove title"

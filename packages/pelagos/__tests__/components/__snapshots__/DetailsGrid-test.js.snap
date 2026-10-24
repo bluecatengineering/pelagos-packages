@@ -7,3 +7,11 @@ exports[`DetailsGrid rendering renders expected elements 1`] = `
   Foo
 </div>
 `;
+
+exports[`DetailsGrid rendering renders expected elements when className is not set 1`] = `
+<div
+  className="DetailsGrid"
+>
+  Foo
+</div>
+`;

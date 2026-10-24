@@ -13,7 +13,6 @@ exports[`TagInput rendering renders expected elements 1`] = `
     className="TagInput__tag"
     data-index={0}
     onRemove={[Function]}
-    removeTitle="Remove foo"
     text="foo"
     type="gray"
   />
@@ -21,7 +20,6 @@ exports[`TagInput rendering renders expected elements 1`] = `
     className="TagInput__tag"
     data-index={1}
     onRemove={[Function]}
-    removeTitle="Remove bar"
     text="bar"
     type="gray"
   />
@@ -52,7 +50,6 @@ exports[`TagInput rendering renders expected elements when disabled 1`] = `
     className="TagInput__tag"
     data-index={0}
     onRemove={null}
-    removeTitle="Remove foo"
     text="foo"
     type="gray"
   />
@@ -61,7 +58,6 @@ exports[`TagInput rendering renders expected elements when disabled 1`] = `
     className="TagInput__tag"
     data-index={1}
     onRemove={null}
-    removeTitle="Remove bar"
     text="bar"
     type="gray"
   />
@@ -125,7 +121,6 @@ exports[`TagInput rendering renders expected elements when optional properties a
     className="TagInput__tag"
     data-index={0}
     onRemove={[Function]}
-    removeTitle="Remove foo"
     text="foo"
     type="gray"
   />
@@ -133,7 +128,6 @@ exports[`TagInput rendering renders expected elements when optional properties a
     className="TagInput__tag"
     data-index={1}
     onRemove={[Function]}
-    removeTitle="Remove bar"
     text="bar"
     type="gray"
   />

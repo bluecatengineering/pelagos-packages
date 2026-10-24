@@ -8,6 +8,9 @@ import SvgIcon from './SvgIcon';
 
 import './Button.less';
 
+// A disabled button must not react to the user, so the event handlers are not passed to it
+const omitEventHandlers = (props) => Object.fromEntries(Object.entries(props).filter(([key]) => !/^on[A-Z]/.test(key)));
+
 /** A button. */
 const Button = forwardRef(
 	(
@@ -18,8 +21,10 @@ const Button = forwardRef(
 		const setRefs = useSetRefs(tooltip, ref);
 		return disabled ? (
 			<span
+				{...omitEventHandlers(props)}
 				id={id}
 				className={`Button Button--${size} Button--${type}${className ? ' ' + className : ''}`}
+				role="button"
 				aria-disabled="true"
 				ref={setRefs}>
 				{children || text}

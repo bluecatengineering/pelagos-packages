@@ -5,7 +5,7 @@ import './EditorGrid.less';
 
 /** Grid component for editor forms. */
 const EditorGrid = forwardRef(({className, children, ...props}, ref) => (
-	<div {...props} className={`EditorGrid ${className}`} ref={ref}>
+	<div {...props} className={`EditorGrid${className ? ` ${className}` : ''}`} ref={ref}>
 		{children}
 	</div>
 ));

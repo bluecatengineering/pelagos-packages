@@ -17,21 +17,17 @@ exports[`TagComboBox rendering renders expected elements 1`] = `
       data-index={0}
       key="foo"
       onRemove={[Function]}
-      removeTitle="Remove foo"
+      text="foo"
       type="gray"
-    >
-      foo
-    </Tag>
+    />
     <Tag
       className="TagComboBox__tag"
       data-index={1}
       key="bar"
       onRemove={[Function]}
-      removeTitle="Remove bar"
+      text="bar"
       type="gray"
-    >
-      bar
-    </Tag>
+    />
     <input
       aria-activedescendant={null}
       aria-autocomplete="list"
@@ -79,22 +75,18 @@ exports[`TagComboBox rendering renders expected elements when disabled 1`] = `
       data-index={0}
       key="foo"
       onRemove={null}
-      removeTitle="Remove foo"
+      text="foo"
       type="gray"
-    >
-      foo
-    </Tag>
+    />
     <Tag
       aria-disabled={true}
       className="TagComboBox__tag"
       data-index={1}
       key="bar"
       onRemove={null}
-      removeTitle="Remove bar"
+      text="bar"
       type="gray"
-    >
-      bar
-    </Tag>
+    />
     <input
       aria-activedescendant={null}
       aria-autocomplete="list"
@@ -198,21 +190,17 @@ exports[`TagComboBox rendering renders expected elements when optional propertie
       data-index={0}
       key="foo"
       onRemove={[Function]}
-      removeTitle="Remove foo"
+      text="foo"
       type="gray"
-    >
-      foo
-    </Tag>
+    />
     <Tag
       className="TagComboBox__tag"
       data-index={1}
       key="bar"
       onRemove={[Function]}
-      removeTitle="Remove bar"
+      text="bar"
       type="gray"
-    >
-      bar
-    </Tag>
+    />
     <input
       aria-activedescendant="random-id-1"
       aria-autocomplete="list"

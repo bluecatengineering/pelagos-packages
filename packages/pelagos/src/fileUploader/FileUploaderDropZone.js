@@ -70,6 +70,8 @@ const FileUploaderDropZone = ({id, label, text, types, required, multiple, error
 	const handleChange = useCallback(
 		(event) => {
 			invokeOnAddFiles(onAddFiles, liveRef, Array.from(event.target.files));
+			// Clear the input, otherwise selecting the same file again does not trigger a change
+			event.target.value = '';
 		},
 		[onAddFiles]
 	);
@@ -83,7 +85,11 @@ const FileUploaderDropZone = ({id, label, text, types, required, multiple, error
 				type="button"
 				disabled={disabled}
 				aria-invalid={error}
-				aria-label={select(required, {true: `${label}, required. ${text}`, other: `${label}. ${text}`})}
+				aria-label={
+					label && text
+						? select(required, {true: `${label}, required. ${text}`, other: `${label}. ${text}`})
+						: label || text
+				}
 				onClick={handleClick}
 				onDragOver={disabled ? null : handleDragOver}
 				onDragEnter={disabled ? null : handleDragEnter}

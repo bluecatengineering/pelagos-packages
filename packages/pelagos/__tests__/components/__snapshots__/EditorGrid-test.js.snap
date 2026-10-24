@@ -8,3 +8,11 @@ exports[`EditorGrid rendering renders expected elements 1`] = `
   <div />
 </div>
 `;
+
+exports[`EditorGrid rendering renders expected elements when className is not set 1`] = `
+<div
+  className="EditorGrid"
+>
+  <div />
+</div>
+`;

@@ -4,6 +4,7 @@ exports[`ContentSwitcherButton rendering renders expected elements 1`] = `
 <button
   className="ContentSwitcher__button"
   role="tab"
+  type="button"
 >
   Test
 </button>
@@ -15,6 +16,7 @@ exports[`ContentSwitcherButton rendering renders expected elements when optional
   className="ContentSwitcher__button TestClass"
   id="test"
   role="tab"
+  type="button"
 >
   Test
 </button>

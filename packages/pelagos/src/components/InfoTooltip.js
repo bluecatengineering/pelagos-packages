@@ -10,6 +10,7 @@ const InfoTooltip = ({className, text, placement = 'top', ...props}) => (
 	<button
 		{...props}
 		className={`InfoTooltip${className ? ` ${className}` : ''}`}
+		type="button"
 		aria-label={text}
 		ref={useTooltip(text, placement)}>
 		<Information />

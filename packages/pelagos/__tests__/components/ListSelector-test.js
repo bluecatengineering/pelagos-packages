@@ -74,7 +74,7 @@ describe('ListSelector', () => {
 			wrapper.find('[role="list"]').last().simulate('click', {target});
 			expect(closest.mock.calls).toEqual([['button']]);
 			expect(onChange.mock.calls).toEqual([[['foo', 'bar', 'baz']]]);
-			expect(ref.current).toEqual({i: 'item-baz', r: 'bounds', u: 'next', m: 'Baz added'});
+			expect(ref.current).toEqual({i: 'random-id-item-baz', r: 'bounds', u: 'next', m: 'Baz added'});
 		});
 
 		it('does not add an item when other element is clicked on the available list', () => {
@@ -105,8 +105,8 @@ describe('ListSelector', () => {
 			wrapper.find('[role="list"]').first().simulate('click', {target});
 			expect(closest.mock.calls).toEqual([['button']]);
 			expect(onChange.mock.calls).toEqual([[['foo']]]);
-			expect(getElementById.mock.calls).toEqual([['item-baz']]);
-			expect(ref.current).toEqual({i: 'item-bar', r: 'bounds', u: 'next', d: 'parent', m: 'Bar removed'});
+			expect(getElementById.mock.calls).toEqual([['random-id-item-baz']]);
+			expect(ref.current).toEqual({i: 'random-id-item-bar', r: 'bounds', u: 'next', d: 'parent', m: 'Bar removed'});
 		});
 
 		it('removes an item when a button is clicked on the selected list and there is only one item', () => {
@@ -131,9 +131,9 @@ describe('ListSelector', () => {
 			wrapper.find('[role="list"]').first().simulate('click', {target});
 			expect(closest.mock.calls).toEqual([['button']]);
 			expect(onChange.mock.calls).toEqual([[[]]]);
-			expect(getElementById.mock.calls).toEqual([['item-baz']]);
+			expect(getElementById.mock.calls).toEqual([['random-id-item-baz']]);
 			expect(ref.current).toEqual({
-				i: 'item-bar',
+				i: 'random-id-item-bar',
 				r: 'bounds',
 				u: 'next',
 				d: 'parent',

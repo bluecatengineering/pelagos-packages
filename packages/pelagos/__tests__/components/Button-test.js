@@ -45,7 +45,17 @@ describe('Button', () => {
 		});
 
 		it('renders expected elements when disabled is true', () => {
-			const wrapper = shallow(<Button id="test" text="Test" disabled />);
+			const wrapper = shallow(
+				<Button
+					id="test"
+					text="Test"
+					aria-label="Save"
+					data-testid="save"
+					disabled
+					onMouseDown={jest.fn()}
+					onKeyDown={jest.fn()}
+				/>
+			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 

@@ -54,11 +54,11 @@ const ListSelector = forwardRef(
 					const addedKey = parentNode.dataset.key;
 					const name = getLabel(addedKey);
 					const r = parentNode.getBoundingClientRect();
-					animationsRef.current = {r, i: `item-${addedKey}`, u: parentNode.nextSibling, m: t`${name} added`};
+					animationsRef.current = {r, i: `${id}-item-${addedKey}`, u: parentNode.nextSibling, m: t`${name} added`};
 					onChange([...items, addedKey]);
 				}
 			},
-			[getLabel, items, onChange]
+			[getLabel, id, items, onChange]
 		);
 
 		const handleRemoveItem = useCallback(
@@ -72,15 +72,15 @@ const ListSelector = forwardRef(
 					const r = parentNode.getBoundingClientRect();
 					animationsRef.current = {
 						r,
-						i: `item-${removedKey}`,
+						i: `${id}-item-${removedKey}`,
 						u: parentNode.nextSibling,
-						d: nextItem && document.getElementById(`item-${nextItem.key}`).parentNode,
+						d: nextItem && document.getElementById(`${id}-item-${nextItem.key}`).parentNode,
 						m: items.length === 1 ? t`${name} removed. ${allItemsRemovedText}` : t`${name} removed`,
 					};
 					onChange(items.filter((key) => key !== removedKey));
 				}
 			},
-			[allItemsRemovedText, availableItems, getLabel, items, onChange]
+			[allItemsRemovedText, availableItems, getLabel, id, items, onChange]
 		);
 
 		useLayoutEffect(() => {
@@ -124,7 +124,7 @@ const ListSelector = forwardRef(
 						onClick={handleRemoveItem}>
 						{items.map((key, index) => {
 							const name = getLabel(key);
-							const labelId = `item-${key}`;
+							const labelId = `${id}-item-${key}`;
 							return (
 								<Layer
 									key={key}
@@ -154,7 +154,7 @@ const ListSelector = forwardRef(
 					<Label id={availableId} text={t`Available`} />
 					<div className="ListSelector__list" role="list" aria-labelledby={availableId} onClick={handleAddItem}>
 						{availableItems.map(({key, label}) => {
-							const labelId = `item-${key}`;
+							const labelId = `${id}-item-${key}`;
 							return (
 								<Layer
 									key={key}
