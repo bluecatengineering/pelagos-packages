@@ -233,6 +233,10 @@ msgstr "Nächster Monat"
 msgid "Next page"
 msgstr "Nächste Seite"
 
+#: f4e1
+msgid "No items"
+msgstr "Keine Elemente"
+
 #: 3501
 msgid "of {totalPages}"
 msgstr "von {totalPages}"

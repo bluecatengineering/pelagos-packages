@@ -233,6 +233,10 @@ msgstr "次の月"
 msgid "Next page"
 msgstr "次のページ"
 
+#: f4e1
+msgid "No items"
+msgstr "項目がありません"
+
 #: 3501
 msgid "of {totalPages}"
 msgstr "{totalPages} の"

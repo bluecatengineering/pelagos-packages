@@ -48,7 +48,7 @@ describe('ContentSwitcher', () => {
 
 	describe('behaviour', () => {
 		it('calls onChange when a button is clicked', () => {
-			const button = {dataset: {index: '0'}};
+			const button = {dataset: {index: '1'}};
 			const closest = jest.fn().mockReturnValue(button);
 			const onChange = jest.fn();
 			const setFocused = jest.fn();
@@ -56,11 +56,28 @@ describe('ContentSwitcher', () => {
 			const wrapper = shallow(
 				<ContentSwitcher id="test" selected={0} onChange={onChange}>
 					<ContentSwitcherButton />
+					<ContentSwitcherButton />
+				</ContentSwitcher>
+			);
+			wrapper.find('#test').simulate('click', {target: {closest}});
+			expect(setFocused.mock.calls).toEqual([[1]]);
+			expect(onChange.mock.calls).toEqual([[1]]);
+		});
+
+		it('does not call onChange when the selected button is clicked', () => {
+			const button = {dataset: {index: '0'}};
+			const closest = jest.fn().mockReturnValue(button);
+			const onChange = jest.fn();
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([0, setFocused]);
+			const wrapper = shallow(
+				<ContentSwitcher id="test" selected={0} onChange={onChange}>
+					<ContentSwitcherButton />
 				</ContentSwitcher>
 			);
 			wrapper.find('#test').simulate('click', {target: {closest}});
 			expect(setFocused.mock.calls).toEqual([[0]]);
-			expect(onChange.mock.calls).toEqual([[0]]);
+			expect(onChange.mock.calls).toEqual([]);
 		});
 
 		it('does not call onChange when no button is clicked', () => {
@@ -75,12 +92,12 @@ describe('ContentSwitcher', () => {
 			expect(onChange.mock.calls).toEqual([]);
 		});
 
-		it('calls onChange when either Enter or Space are pressed', () => {
+		it('leaves Enter and Space to the buttons', () => {
 			const onChange = jest.fn();
-			useState.mockReturnValueOnce([0]);
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
 				<ContentSwitcher id="test" selected={1} onChange={onChange}>
-					<ContentSwitcherButton />
 					<ContentSwitcherButton />
 					<ContentSwitcherButton />
 				</ContentSwitcher>
@@ -88,22 +105,21 @@ describe('ContentSwitcher', () => {
 			const container = wrapper.find('#test');
 			container.simulate('keydown', {key: 'Enter'});
 			container.simulate('keydown', {key: ' '});
-			expect(onChange.mock.calls).toEqual([[0], [0]]);
+			expect(onChange.mock.calls).toEqual([]);
+			expect(setFocused.mock.calls).toEqual([]);
 		});
 
-		it('does not call onChange when Enter is pressed and focused equals selected', () => {
-			const onChange = jest.fn();
-			useState.mockReturnValueOnce([1]);
+		it('keeps the focus on the only button when an arrow key is pressed', () => {
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([0, setFocused]);
 			const wrapper = shallow(
-				<ContentSwitcher id="test" selected={1} onChange={onChange}>
-					<ContentSwitcherButton />
-					<ContentSwitcherButton />
+				<ContentSwitcher id="test" selected={0}>
 					<ContentSwitcherButton />
 				</ContentSwitcher>
 			);
-			const container = wrapper.find('#test');
-			container.simulate('keydown', {key: 'Enter'});
-			expect(onChange.mock.calls).toEqual([]);
+			wrapper.find('#test').simulate('keydown', {key: 'ArrowLeft'});
+			wrapper.find('#test').simulate('keydown', {key: 'ArrowRight'});
+			expect(setFocused.mock.calls).toEqual([[0], [0]]);
 		});
 
 		it('calls setFocused when ArrowLeft is pressed', () => {
@@ -162,12 +178,13 @@ describe('ContentSwitcher', () => {
 			expect(setFocused.mock.calls).toEqual([[0]]);
 		});
 
-		it('calls onChange on blur', () => {
+		it('moves the focus back to the selected button on blur', () => {
 			const relatedTarget = {foo: 'test'};
 			const contains = jest.fn();
 			const onChange = jest.fn();
+			const setFocused = jest.fn();
 			useRef.mockReturnValue({current: {contains}});
-			useState.mockReturnValueOnce([1]);
+			useState.mockReturnValueOnce([1, setFocused]);
 			const wrapper = shallow(
 				<ContentSwitcher id="test" selected={0} onChange={onChange}>
 					<ContentSwitcherButton />
@@ -175,10 +192,11 @@ describe('ContentSwitcher', () => {
 			);
 			wrapper.find('#test').simulate('blur', {relatedTarget});
 			expect(contains.mock.calls).toEqual([[relatedTarget]]);
-			expect(onChange.mock.calls).toEqual([[1]]);
+			expect(setFocused.mock.calls).toEqual([[0]]);
+			expect(onChange.mock.calls).toEqual([]);
 		});
 
-		it('does not call onChange on blur when current is not set', () => {
+		it('does not move the focus on blur when current is not set', () => {
 			const relatedTarget = {foo: 'test'};
 			const onChange = jest.fn();
 			useRef.mockReturnValue({});
@@ -192,7 +210,7 @@ describe('ContentSwitcher', () => {
 			expect(onChange.mock.calls).toEqual([]);
 		});
 
-		it('does not call onChange on blur when relatedTarget is inside container', () => {
+		it('does not move the focus on blur when relatedTarget is inside container', () => {
 			const relatedTarget = {foo: 'test'};
 			const contains = jest.fn().mockReturnValue(true);
 			const onChange = jest.fn();
@@ -208,7 +226,7 @@ describe('ContentSwitcher', () => {
 			expect(onChange.mock.calls).toEqual([]);
 		});
 
-		it('does not call onChange on blur when focused equals selected', () => {
+		it('does not move the focus on blur when focused equals selected', () => {
 			const relatedTarget = {foo: 'test'};
 			const contains = jest.fn();
 			const onChange = jest.fn();
@@ -224,6 +242,21 @@ describe('ContentSwitcher', () => {
 			expect(onChange.mock.calls).toEqual([]);
 		});
 
+		it('adds an effect which moves the focus to the selected button when selected changes', () => {
+			const setFocused = jest.fn();
+			useState.mockReturnValueOnce([0, setFocused]);
+			shallow(
+				<ContentSwitcher selected={1}>
+					<ContentSwitcherButton />
+					<ContentSwitcherButton />
+				</ContentSwitcher>
+			);
+			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [1]]);
+
+			useEffect.mock.calls[0][0]();
+			expect(setFocused.mock.calls).toEqual([[1]]);
+		});
+
 		it('adds an effect which calls focus on selected if activeElement is inside', () => {
 			const activeElement = {foo: 'test'};
 			const contains = jest.fn().mockReturnValue(true);
@@ -235,9 +268,9 @@ describe('ContentSwitcher', () => {
 					<ContentSwitcherButton />
 				</ContentSwitcher>
 			);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [0]]);
+			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [0]]);
 
-			useEffect.mock.calls[0][0]();
+			useEffect.mock.calls[1][0]();
 			expect(contains.mock.calls).toEqual([[activeElement]]);
 			expect(focus.mock.calls).toEqual([[]]);
 		});
@@ -253,9 +286,9 @@ describe('ContentSwitcher', () => {
 					<ContentSwitcherButton />
 				</ContentSwitcher>
 			);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [0]]);
+			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [0]]);
 
-			useEffect.mock.calls[0][0]();
+			useEffect.mock.calls[1][0]();
 			expect(contains.mock.calls).toEqual([[activeElement]]);
 			expect(focus.mock.calls).toEqual([]);
 		});
@@ -269,9 +302,9 @@ describe('ContentSwitcher', () => {
 					<ContentSwitcherButton />
 				</ContentSwitcher>
 			);
-			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [0]]);
+			expect(useEffect.mock.calls[1]).toEqual([anyFunction, [0]]);
 
-			expect(() => useEffect.mock.calls[0][0]()).not.toThrow();
+			expect(() => useEffect.mock.calls[1][0]()).not.toThrow();
 		});
 	});
 });

@@ -19,6 +19,8 @@ import CheckBox from '../components/CheckBox';
 import './MultiSelect.less';
 import '../components/Tag.less';
 
+const {min} = Math;
+
 /** A multi-select drop-down. */
 const MultiSelect = ({
 	id,
@@ -36,7 +38,7 @@ const MultiSelect = ({
 	id = useRandomId(id);
 
 	const [open, setOpen] = useState(false);
-	const [focused, setFocused] = useState(-1);
+	const [focusedIndex, setFocused] = useState(-1);
 
 	const buttonRef = useRef(null);
 	const listRef = useRef(null);
@@ -69,6 +71,9 @@ const MultiSelect = ({
 		[getOptionKey, getOptionText, options, values]
 	);
 
+	// The options may change while the list is open
+	const focused = min(focusedIndex, renderedOptions.length - 1);
+
 	const showList = useCallback(() => {
 		setOpen(true);
 		if (values && values.length) {
@@ -99,8 +104,12 @@ const MultiSelect = ({
 	}, [values, onChange]);
 
 	const updateFocused = useCallback((index) => {
-		setFocused(index);
-		scrollToItem(listRef.current, listRef.current.children[index]);
+		const child = listRef.current.children[index];
+		// The list may be empty
+		if (child) {
+			setFocused(index);
+			scrollToItem(listRef.current, child);
+		}
 	}, []);
 
 	const findItemToFocus = useStringFinder();
@@ -128,15 +137,20 @@ const MultiSelect = ({
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
 						if (open) {
-							toggleValue(renderedOptions[focused].value);
+							if (focused !== -1) {
+								toggleValue(renderedOptions[focused].value);
+							}
 						} else {
 							showList();
 						}
 						break;
 					case 'Escape':
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
-						hideList();
+						// When closed, let the event reach other handlers (e.g. a dialog)
+						if (open) {
+							event.preventDefault();
+							event.nativeEvent.stopImmediatePropagation();
+							hideList();
+						}
 						break;
 					case 'Delete':
 					case 'Backspace':

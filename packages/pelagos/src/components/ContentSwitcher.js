@@ -13,46 +13,46 @@ const ContentSwitcher = ({className, selected, children, onChange, ...props}) =>
 	const ref = useRef(null);
 	const [focused, setFocused] = useState(selected);
 
+	// Enter and Space are handled by the buttons, they trigger a click
 	const handleClick = useCallback(
 		(event) => {
 			const button = event.target.closest('[role="tab"]');
 			if (button) {
 				const index = +button.dataset.index;
 				setFocused(index);
-				onChange(index);
+				if (index !== selected) {
+					onChange(index);
+				}
 			}
 		},
-		[onChange]
+		[onChange, selected]
 	);
 
+	const childCount = Children.toArray(children).length;
 	const handleKeyDown = useCallback(
 		(event) => {
 			switch (event.key) {
-				case 'Enter':
-				case ' ':
-					if (focused !== selected) {
-						onChange(focused);
-					}
-					break;
 				case 'ArrowLeft':
-					setFocused(focused === 0 ? children.length - 1 : focused - 1);
+					setFocused(focused === 0 ? childCount - 1 : focused - 1);
 					break;
 				case 'ArrowRight':
-					setFocused(focused === children.length - 1 ? 0 : focused + 1);
+					setFocused(focused === childCount - 1 ? 0 : focused + 1);
 					break;
 			}
 		},
-		[children.length, focused, onChange, selected]
+		[childCount, focused]
 	);
 
 	const handleBlur = useCallback(
 		(event) => {
 			if (ref.current && !ref.current.contains(event.relatedTarget) && focused !== selected) {
-				onChange(focused);
+				setFocused(selected);
 			}
 		},
-		[focused, onChange, selected]
+		[focused, selected]
 	);
+
+	useEffect(() => setFocused(selected), [selected]);
 
 	useEffect(() => {
 		const container = ref.current;

@@ -494,7 +494,7 @@ describe('Select', () => {
 				preventDefault: jest.fn(),
 				nativeEvent: {stopImmediatePropagation: jest.fn()},
 			};
-			const list = {children: []};
+			const list = {children: [{}, {}, {}]};
 			const find = jest.fn().mockReturnValue(1);
 			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0, setFocused]);
 			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: list});
@@ -671,6 +671,48 @@ describe('Select', () => {
 			expect(setOpen.mock.calls).toEqual([[false]]);
 			expect(setFocused.mock.calls).toEqual([[-1]]);
 			expect(onChange).not.toHaveBeenCalled();
+		});
+
+		it('lets the event through when the list is not visible and escape is pressed', () => {
+			const setOpen = jest.fn();
+			const event = {key: 'Escape', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			useState.mockReturnValueOnce([false, setOpen]).mockReturnValueOnce([-1, jest.fn()]);
+			const wrapper = shallow(
+				<Select id="test" value="three" options={options} renderOption={renderOption} onChange={jest.fn()} />
+			);
+			wrapper.find('[role="combobox"]').simulate('keydown', event);
+			expect(event.preventDefault).not.toHaveBeenCalled();
+			expect(event.nativeEvent.stopImmediatePropagation).not.toHaveBeenCalled();
+			expect(setOpen).not.toHaveBeenCalled();
+		});
+
+		it('ignores enter when the list is visible and there are no options', () => {
+			const onChange = jest.fn();
+			const event = {key: 'Enter', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			useState.mockReturnValueOnce([true, jest.fn()]).mockReturnValueOnce([0, jest.fn()]);
+			const wrapper = shallow(<Select id="test" options={[]} renderOption={renderOption} onChange={onChange} />);
+			wrapper.find('[role="combobox"]').simulate('keydown', event);
+			expect(onChange).not.toHaveBeenCalled();
+			expect(wrapper.find('[role="combobox"]').prop('aria-activedescendant')).toBeNull();
+		});
+
+		it('selects the last option when enter is pressed and the options shrank while the list was visible', () => {
+			const onChange = jest.fn();
+			const event = {key: 'Enter', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			useState.mockReturnValueOnce([true, jest.fn()]).mockReturnValueOnce([5, jest.fn()]);
+			const wrapper = shallow(<Select id="test" options={options} renderOption={renderOption} onChange={onChange} />);
+			wrapper.find('[role="combobox"]').simulate('keydown', event);
+			expect(onChange.mock.calls).toEqual([[options.at(-1)]]);
+		});
+
+		it('ignores arrow keys when the list is visible and there are no options', () => {
+			const setFocused = jest.fn();
+			const event = {key: 'ArrowDown', preventDefault: jest.fn(), nativeEvent: {stopImmediatePropagation: jest.fn()}};
+			useState.mockReturnValueOnce([true, jest.fn()]).mockReturnValueOnce([-1, setFocused]);
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: {children: []}});
+			const wrapper = shallow(<Select id="test" options={[]} renderOption={renderOption} onChange={jest.fn()} />);
+			wrapper.find('[role="combobox"]').simulate('keydown', event);
+			expect(setFocused).not.toHaveBeenCalled();
 		});
 
 		it('hides the list when it is visible and loses focus', () => {

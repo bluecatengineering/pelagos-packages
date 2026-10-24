@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import ListInput from '../../src/listInput/ListInput';
@@ -430,6 +430,70 @@ describe('ListInput', () => {
 			const wrapper = shallow(<ListInput id="test" list={[{}]} />);
 			wrapper.find('ListEntries').prop('onHighlightClear')();
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[null]]);
+		});
+
+		describe('focus after removal', () => {
+			const body = {};
+			const runEffect = (removedIndex, {activeElement = body, buttons, removedFrom = [{}]} = {}) => {
+				const input = {focus: jest.fn()};
+				const grid = buttons && {querySelectorAll: jest.fn().mockReturnValue(buttons)};
+				global.document = {
+					body,
+					activeElement,
+					getElementById: jest.fn((id) => (id === 'random-id' ? input : grid)),
+				};
+				useRef
+					.mockReturnValueOnce({current: {}})
+					.mockReturnValueOnce({current: removedIndex === null ? null : {index: removedIndex, list: removedFrom}});
+				shallow(<ListInput id="test" list={[]} />);
+				expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), ['random-id', []]]);
+				useEffect.mock.calls[0][0]();
+				return {input, grid};
+			};
+
+			it('remembers the index of the removed item and the list it was removed from', () => {
+				const list = [{}, {}];
+				const removedRef = {current: null};
+				useRef.mockReturnValueOnce({current: {}}).mockReturnValueOnce(removedRef);
+				const wrapper = shallow(<ListInput id="test" list={list} onListChange={jest.fn()} />);
+				wrapper.find('ListEntries').prop('onRemoveClick')({}, 1);
+				expect(removedRef.current).toEqual({index: 1, list});
+			});
+
+			it('moves the focus to the remove button that took the place of the removed one', () => {
+				const buttons = [{focus: jest.fn()}, {focus: jest.fn()}];
+				const {grid} = runEffect(1, {buttons});
+				expect(grid.querySelectorAll.mock.calls).toEqual([['button[data-index]']]);
+				expect(buttons[1].focus.mock.calls).toEqual([[]]);
+			});
+
+			it('moves the focus to the previous remove button when the last item was removed', () => {
+				const buttons = [{focus: jest.fn()}];
+				runEffect(1, {buttons});
+				expect(buttons[0].focus.mock.calls).toEqual([[]]);
+			});
+
+			it('moves the focus to the input when the list is empty', () => {
+				const {input} = runEffect(0);
+				expect(input.focus.mock.calls).toEqual([[]]);
+			});
+
+			it('does not move the focus when it was not lost', () => {
+				const buttons = [{focus: jest.fn()}];
+				const {input} = runEffect(0, {activeElement: {}, buttons});
+				expect(buttons[0].focus).not.toHaveBeenCalled();
+				expect(input.focus).not.toHaveBeenCalled();
+			});
+
+			it('does not move the focus when the list did not get shorter', () => {
+				const {input} = runEffect(0, {removedFrom: []});
+				expect(input.focus).not.toHaveBeenCalled();
+			});
+
+			it('does not move the focus when no item was removed', () => {
+				const {input} = runEffect(null);
+				expect(input.focus).not.toHaveBeenCalled();
+			});
 		});
 	});
 });

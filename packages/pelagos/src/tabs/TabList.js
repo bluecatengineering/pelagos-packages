@@ -24,7 +24,9 @@ const keyHandlers = {
 const TabList = forwardRef(({className, selectedIndex, contained, children, onChange, ...props}, ref) => {
 	const listRef = useRef(null);
 	const setRefs = useSetRefs(listRef, ref);
-	const [focused, setFocused] = useState(selectedIndex);
+	// When no tab is selected the first one must be reachable with Tab
+	const focusIndex = selectedIndex ?? 0;
+	const [focused, setFocused] = useState(focusIndex);
 	const [canScroll, setCanScroll] = useState(false);
 	const [scrollLeft, setScrollLeft] = useState(0);
 
@@ -45,11 +47,11 @@ const TabList = forwardRef(({className, selectedIndex, contained, children, onCh
 	}, []);
 	const handleBlur = useCallback(
 		(event) => {
-			if (listRef.current && !listRef.current.contains(event.relatedTarget) && focused !== selectedIndex) {
-				setFocused(selectedIndex);
+			if (listRef.current && !listRef.current.contains(event.relatedTarget) && focused !== focusIndex) {
+				setFocused(focusIndex);
 			}
 		},
-		[focused, selectedIndex]
+		[focused, focusIndex]
 	);
 
 	const handleScroll = useMemo(() => debounce((event) => setScrollLeft(event.target.scrollLeft), 150), []);
@@ -65,7 +67,7 @@ const TabList = forwardRef(({className, selectedIndex, contained, children, onCh
 		);
 	}, []);
 
-	useEffect(() => setFocused(selectedIndex), [selectedIndex]);
+	useEffect(() => setFocused(focusIndex), [focusIndex]);
 
 	useEffect(() => {
 		listRef.current.scrollLeft = round(scrollLeft); // scrollLeft is integer, rounding avoids off by 1 errors

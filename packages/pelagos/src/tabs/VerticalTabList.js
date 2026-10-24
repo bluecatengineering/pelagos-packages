@@ -30,7 +30,9 @@ const keyHandlers = {
 const VerticalTabList = forwardRef(({className, selectedIndex, children, onChange, ...props}, ref) => {
 	const listRef = useRef(null);
 	const setRefs = useSetRefs(listRef, ref);
-	const [focused, setFocused] = useState(selectedIndex);
+	// When no tab is selected the first one must be reachable with Tab
+	const focusIndex = selectedIndex ?? 0;
+	const [focused, setFocused] = useState(focusIndex);
 
 	const handleKeyDown = useCallback((event) => {
 		if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
@@ -49,14 +51,14 @@ const VerticalTabList = forwardRef(({className, selectedIndex, children, onChang
 	}, []);
 	const handleBlur = useCallback(
 		(event) => {
-			if (listRef.current && !listRef.current.contains(event.relatedTarget) && focused !== selectedIndex) {
-				setFocused(selectedIndex);
+			if (listRef.current && !listRef.current.contains(event.relatedTarget) && focused !== focusIndex) {
+				setFocused(focusIndex);
 			}
 		},
-		[focused, selectedIndex]
+		[focused, focusIndex]
 	);
 
-	useEffect(() => setFocused(selectedIndex), [selectedIndex]);
+	useEffect(() => setFocused(focusIndex), [focusIndex]);
 
 	return (
 		<div

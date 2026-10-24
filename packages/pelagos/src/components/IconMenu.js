@@ -84,8 +84,8 @@ IconMenu.propTypes = {
 	flipped: PropTypes.bool,
 	/** The accessible name for the button. */
 	'aria-label': PropTypes.string.isRequired,
-	/** The menu items. */
-	children: PropTypes.arrayOf(PropTypes.node).isRequired,
+	/** The menu items, there must be at least one enabled or disabled `MenuItem`. */
+	children: PropTypes.node.isRequired,
 };
 
 export default IconMenu;

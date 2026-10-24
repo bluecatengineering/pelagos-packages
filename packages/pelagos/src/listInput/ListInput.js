@@ -1,4 +1,4 @@
-import {useCallback, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 
@@ -44,6 +44,7 @@ const ListInput = ({
 	id = useRandomId(id);
 
 	const liveRef = useRef(null);
+	const removedRef = useRef(null);
 
 	const [text, setText] = useState('');
 	const [highlightKey, setHighlightKey] = useState(null);
@@ -145,9 +146,26 @@ const ListInput = ({
 	);
 
 	const handleRemoveClick = useCallback(
-		(item, index) => onListChange([...list.slice(0, index), ...list.slice(index + 1)]),
+		(item, index) => {
+			removedRef.current = {index, list};
+			onListChange([...list.slice(0, index), ...list.slice(index + 1)]);
+		},
 		[list, onListChange]
 	);
+
+	useEffect(() => {
+		const removed = removedRef.current;
+		if (removed) {
+			removedRef.current = null;
+			// The focus was on the removed button, move it to the next remove button, the previous one, or the input.
+			// The parent may have rejected the removal and changed the list for another reason, then the focus is kept.
+			const index = removed.index;
+			if (list.length < removed.list.length && document.activeElement === document.body) {
+				const buttons = document.getElementById(`${id}-grid`)?.querySelectorAll('button[data-index]') ?? [];
+				(buttons[Math.min(index, buttons.length - 1)] ?? document.getElementById(id)).focus();
+			}
+		}
+	}, [id, list]);
 
 	const handleHighlightClear = useCallback(() => setHighlightKey(null), []);
 

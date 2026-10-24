@@ -7,6 +7,58 @@ jest.unmock('../../src/treeView/TreeNode');
 
 const anyFunction = expect.any(Function);
 
+// Builds a fake DOM for a tree, each node is {id, expanded, children}
+const buildTree = (specs) => {
+	const nodes = {};
+	const make = (attributes) => ({getAttribute: (name) => attributes[name] ?? null});
+	const link = (parent, children) => {
+		children.forEach((child, i) => {
+			child.parentNode = parent;
+			child.previousSibling = children[i - 1] ?? null;
+			child.nextSibling = children[i + 1] ?? null;
+		});
+		parent.firstChild = children[0] ?? null;
+		parent.lastChild = children.at(-1) ?? null;
+	};
+	const tree = make({role: 'tree'});
+	const build = ({id, expanded, children = []}) => {
+		const node = make({'aria-expanded': expanded === undefined ? null : `${expanded}`});
+		node.id = id;
+		node.focus = jest.fn();
+		node.closest = () => tree;
+		nodes[id] = node;
+		const content = [make({})];
+		if (expanded) {
+			const group = make({role: 'group'});
+			link(group, children.map(build));
+			content.push(group);
+		}
+		link(node, content);
+		return node;
+	};
+	link(tree, specs.map(build));
+	return nodes;
+};
+
+const pressKey = (nodes, id, key, level, expanded) => {
+	const setFocused = jest.fn();
+	const preventDefault = jest.fn();
+	useRef.mockReturnValueOnce({current: nodes[id]});
+	useContext.mockReturnValueOnce({focused: [], setFocused}).mockReturnValueOnce({level, padding: 0, parentPath: []});
+	const wrapper = shallow(<TreeNode id={id} label="Test" expanded={expanded} />);
+	wrapper.simulate('keydown', {key, preventDefault, stopPropagation: jest.fn()});
+	const focused = Object.keys(nodes).filter((nodeId) => nodes[nodeId].focus.mock.calls.length);
+	return {path: setFocused.mock.calls, focused, prevented: preventDefault.mock.calls.length};
+};
+
+// a > b (loading), c > d, e (loading)
+const loadingTree = () =>
+	buildTree([
+		{id: 'a', expanded: true, children: [{id: 'b', expanded: true}]},
+		{id: 'c', expanded: true, children: [{id: 'd'}]},
+		{id: 'e', expanded: true},
+	]);
+
 describe('TreeNode', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -444,116 +496,41 @@ describe('TreeNode', () => {
 			expect(setFocused.mock.calls).toEqual([]);
 		});
 
-		it('calls setFocused when Home is pressed and level is 0', () => {
-			const setFocused = jest.fn();
-			const preventDefault = jest.fn();
-			const stopPropagation = jest.fn();
-			const getAttribute = jest.fn().mockReturnValueOnce('tree');
-			const focus = jest.fn();
-			useRef.mockReturnValueOnce({
-				current: {parentNode: {firstChild: {id: 'child-id', focus, parentNode: {getAttribute}}}},
-			});
-			useContext
-				.mockReturnValueOnce({focused: [], setFocused})
-				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
-			wrapper.simulate('keydown', {key: 'Home', preventDefault, stopPropagation});
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([['role']]);
-			expect(setFocused.mock.calls).toEqual([[['child-id']]]);
-			expect(focus.mock.calls).toEqual([[]]);
+		it('calls setFocused when Home is pressed', () => {
+			expect(pressKey(loadingTree(), 'c', 'Home', 0, true)).toEqual({path: [[['a']]], focused: ['a'], prevented: 1});
 		});
 
-		it('does not call setFocused when Home is pressed and level is not 0', () => {
-			const setFocused = jest.fn();
-			const preventDefault = jest.fn();
-			const stopPropagation = jest.fn();
-			useRef.mockReturnValueOnce({
-				current: {},
-			});
-			useContext
-				.mockReturnValueOnce({focused: [], setFocused})
-				.mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
-			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
-			wrapper.simulate('keydown', {key: 'Home', preventDefault, stopPropagation});
-			expect(preventDefault.mock.calls).toEqual([]);
-			expect(stopPropagation.mock.calls).toEqual([]);
-			expect(setFocused.mock.calls).toEqual([]);
+		it('calls setFocused when Home is pressed and level is not 0', () => {
+			expect(pressKey(loadingTree(), 'd', 'Home', 1)).toEqual({path: [[['a']]], focused: ['a'], prevented: 1});
 		});
 
-		it('calls setFocused when End is pressed and level is 0', () => {
-			const setFocused = jest.fn();
-			const preventDefault = jest.fn();
-			const stopPropagation = jest.fn();
-			const getAttribute = jest
-				.fn()
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce('true')
-				.mockReturnValueOnce()
-				.mockReturnValueOnce('group')
-				.mockReturnValueOnce('group')
-				.mockReturnValueOnce('tree');
-			const focus = jest.fn();
-			const current = {
-				parentNode: {
-					getAttribute,
-					lastChild: {
-						id: 'id-0',
-						getAttribute,
-						lastChild: {
-							getAttribute,
-							lastChild: {
-								id: 'id-1',
-								getAttribute,
-								lastChild: {getAttribute, lastChild: {id: 'id-2', focus, getAttribute}},
-							},
-						},
-					},
-				},
-			};
-			useRef.mockReturnValueOnce({current});
-			useContext
-				.mockReturnValueOnce({focused: [], setFocused})
-				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
-			current.parentNode.lastChild.parentNode = current.parentNode;
-			current.parentNode.lastChild.lastChild.parentNode = current.parentNode.lastChild;
-			current.parentNode.lastChild.lastChild.lastChild.parentNode = current.parentNode.lastChild.lastChild;
-			current.parentNode.lastChild.lastChild.lastChild.lastChild.parentNode =
-				current.parentNode.lastChild.lastChild.lastChild;
-			current.parentNode.lastChild.lastChild.lastChild.lastChild.lastChild.parentNode =
-				current.parentNode.lastChild.lastChild.lastChild.lastChild;
-			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
-			wrapper.simulate('keydown', {key: 'End', preventDefault, stopPropagation});
-			expect(preventDefault.mock.calls).toEqual([[]]);
-			expect(stopPropagation.mock.calls).toEqual([[]]);
-			expect(getAttribute.mock.calls).toEqual([
-				['aria-expanded'],
-				['aria-expanded'],
-				['aria-expanded'],
-				['role'],
-				['role'],
-				['role'],
-			]);
-			expect(setFocused.mock.calls).toEqual([[['id-0', 'id-1', 'id-2']]]);
-			expect(focus.mock.calls).toEqual([[]]);
+		it('calls setFocused with the last visible node when End is pressed', () => {
+			const nodes = buildTree([{id: 'x'}, {id: 'y', expanded: true, children: [{id: 'z'}]}]);
+			expect(pressKey(nodes, 'x', 'End', 0)).toEqual({path: [[['y', 'z']]], focused: ['z'], prevented: 1});
 		});
 
-		it('does not call setFocused when End is pressed and level is not 0', () => {
-			const setFocused = jest.fn();
-			const preventDefault = jest.fn();
-			const stopPropagation = jest.fn();
-			useRef.mockReturnValueOnce({
-				current: {},
+		it('calls setFocused when End is pressed and level is not 0', () => {
+			expect(pressKey(loadingTree(), 'd', 'End', 1)).toEqual({path: [[['e']]], focused: ['e'], prevented: 1});
+		});
+
+		it('does not call setFocused when ArrowRight is pressed and the expanded node has no children yet', () => {
+			expect(pressKey(loadingTree(), 'b', 'ArrowRight', 1, true)).toEqual({path: [], focused: [], prevented: 1});
+		});
+
+		it('moves to the next node when ArrowDown is pressed and the expanded node has no children yet', () => {
+			expect(pressKey(loadingTree(), 'b', 'ArrowDown', 1, true)).toEqual({
+				path: [[['c']]],
+				focused: ['c'],
+				prevented: 1,
 			});
-			useContext
-				.mockReturnValueOnce({focused: [], setFocused})
-				.mockReturnValueOnce({level: 1, padding: 0, parentPath: []});
-			const wrapper = shallow(<TreeNode id="test-id" label="Test" />);
-			wrapper.simulate('keydown', {key: 'End', preventDefault, stopPropagation});
-			expect(preventDefault.mock.calls).toEqual([]);
-			expect(stopPropagation.mock.calls).toEqual([]);
-			expect(setFocused.mock.calls).toEqual([]);
+		});
+
+		it('stops at an expanded node without children when ArrowUp is pressed', () => {
+			expect(pressKey(loadingTree(), 'c', 'ArrowUp', 0, true)).toEqual({
+				path: [[['a', 'b']]],
+				focused: ['b'],
+				prevented: 1,
+			});
 		});
 
 		it('calls onToggle when - is pressed and expanded is true', () => {
