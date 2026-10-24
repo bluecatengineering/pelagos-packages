@@ -47,6 +47,20 @@ describe('ButtonMenu', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('skips empty children when expanded is true', () => {
+			useMenuHandler.mockReturnValueOnce({expanded: true});
+			useLayer.mockReturnValue(1);
+			const wrapper = shallow(
+				<ButtonMenu text="Test">
+					{false}
+					<li />
+					{null}
+					<li />
+				</ButtonMenu>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when expanded is true and document.fullscreenElement is set', () => {
 			useMenuHandler.mockReturnValueOnce({expanded: true});
 			useLayer.mockReturnValue(1);

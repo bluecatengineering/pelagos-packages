@@ -69,6 +69,20 @@ describe('IconMenu', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('skips empty children when expanded is true', () => {
+			useMenuHandler.mockReturnValueOnce({expanded: true});
+			useLayer.mockReturnValue(1);
+			const wrapper = shallow(
+				<IconMenu icon={{foo: 'test'}} aria-label="Menu">
+					{false}
+					<MenuItem>one</MenuItem>
+					{null}
+					<MenuItem>two</MenuItem>
+				</IconMenu>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when expanded is true and document.fullscreenElement is set', () => {
 			useMenuHandler.mockReturnValueOnce({expanded: true});
 			useLayer.mockReturnValue(1);

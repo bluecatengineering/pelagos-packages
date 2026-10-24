@@ -27,6 +27,18 @@ describe('VerticalTabList', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('skips empty children', () => {
+			const wrapper = shallow(
+				<VerticalTabList selectedIndex={1}>
+					{false}
+					<VerticalTab />
+					{null}
+					<VerticalTab />
+				</VerticalTabList>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {

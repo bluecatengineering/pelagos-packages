@@ -6,7 +6,7 @@ interface ProgressIndicatorProps {
 	/** The index of the current step. */
 	current?: number;
 	/** The steps, must be instances of `ProgressStep`. */
-	children?: ReactNode[];
+	children?: ReactNode;
 }
 
 /** Indicates progress on a multi-step process. */

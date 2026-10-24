@@ -48,3 +48,27 @@ exports[`ContentSwitcher rendering renders expected elements when optional prope
   />
 </div>
 `;
+
+exports[`ContentSwitcher rendering skips empty children 1`] = `
+<div
+  aria-orientation="horizontal"
+  className="ContentSwitcher"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="tablist"
+>
+  <ContentSwitcherButton
+    className="Foo"
+    data-index={0}
+    selected={false}
+    tabIndex={-1}
+  />
+  <ContentSwitcherButton
+    className="Bar"
+    data-index={1}
+    selected={true}
+    tabIndex={0}
+  />
+</div>
+`;

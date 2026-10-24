@@ -32,6 +32,18 @@ describe('ContentSwitcher', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('skips empty children', () => {
+			const wrapper = shallow(
+				<ContentSwitcher selected={1}>
+					{false}
+					<ContentSwitcherButton className="Foo" />
+					{null}
+					<ContentSwitcherButton className="Bar" />
+				</ContentSwitcher>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {

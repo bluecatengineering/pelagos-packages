@@ -26,5 +26,31 @@ describe('ProgressIndicator', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when there is a single step', () => {
+			const wrapper = shallow(
+				<ProgressIndicator current={0}>
+					<ProgressStep />
+				</ProgressIndicator>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('skips empty children', () => {
+			const wrapper = shallow(
+				<ProgressIndicator current={1}>
+					{false}
+					<ProgressStep />
+					{null}
+					<ProgressStep />
+				</ProgressIndicator>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders expected elements when there are no steps', () => {
+			const wrapper = shallow(<ProgressIndicator current={0} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

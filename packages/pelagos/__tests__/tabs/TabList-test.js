@@ -30,6 +30,18 @@ describe('TabList', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('skips empty children', () => {
+			const wrapper = shallow(
+				<TabList selectedIndex={1}>
+					{false}
+					<Tab />
+					{null}
+					<Tab />
+				</TabList>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when tabs have secondary labels', () => {
 			const wrapper = shallow(
 				<TabList selectedIndex={0} contained>

@@ -7,12 +7,10 @@ exports[`ProgressIndicator rendering renders expected elements 1`] = `
   <ProgressStep
     complete={true}
     current={false}
-    key={0}
   />
   <ProgressStep
     complete={false}
     current={true}
-    key={1}
   />
 </ul>
 `;
@@ -24,12 +22,42 @@ exports[`ProgressIndicator rendering renders expected elements when optional pro
   <ProgressStep
     complete={true}
     current={false}
-    key={0}
   />
   <ProgressStep
     complete={false}
     current={true}
-    key={1}
+  />
+</ul>
+`;
+
+exports[`ProgressIndicator rendering renders expected elements when there are no steps 1`] = `
+<ul
+  className="ProgressIndicator"
+/>
+`;
+
+exports[`ProgressIndicator rendering renders expected elements when there is a single step 1`] = `
+<ul
+  className="ProgressIndicator"
+>
+  <ProgressStep
+    complete={false}
+    current={true}
+  />
+</ul>
+`;
+
+exports[`ProgressIndicator rendering skips empty children 1`] = `
+<ul
+  className="ProgressIndicator"
+>
+  <ProgressStep
+    complete={true}
+    current={false}
+  />
+  <ProgressStep
+    complete={false}
+    current={true}
   />
 </ul>
 `;

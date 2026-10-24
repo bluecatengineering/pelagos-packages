@@ -172,3 +172,51 @@ exports[`IconMenu rendering renders expected elements when optional properties a
   />
 </React.Fragment>
 `;
+
+exports[`IconMenu rendering skips empty children when expanded is true 1`] = `
+<React.Fragment>
+  <IconButton
+    aria-controls="random-id-menu"
+    aria-expanded={true}
+    aria-haspopup="true"
+    aria-label="Menu"
+    className="IconMenu"
+    data-layer={2}
+    disabled={false}
+    icon={
+      {
+        "foo": "test",
+      }
+    }
+    id="random-id"
+  />
+  <React.Portal
+    container="body"
+  >
+    <Layer
+      className="IconMenu__popUp"
+      level={2}
+    >
+      <div
+        aria-labelledby="random-id"
+        className="IconMenu__menu"
+        id="random-id-menu"
+        role="menu"
+      >
+        <MenuItem
+          data-index={0}
+          id="random-id-0"
+        >
+          one
+        </MenuItem>
+        <MenuItem
+          data-index={1}
+          id="random-id-1"
+        >
+          two
+        </MenuItem>
+      </div>
+    </Layer>
+  </React.Portal>
+</React.Fragment>
+`;

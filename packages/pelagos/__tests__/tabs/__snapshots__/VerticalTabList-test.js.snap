@@ -43,3 +43,37 @@ exports[`VerticalTabList rendering renders expected elements when optional prope
   </Context.Provider>
 </div>
 `;
+
+exports[`VerticalTabList rendering skips empty children 1`] = `
+<div
+  className="VerticalTabList"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+  role="tablist"
+>
+  <Context.Provider
+    value={
+      {
+        "focused": 1,
+        "index": 0,
+        "onChange": undefined,
+        "selectedIndex": 1,
+      }
+    }
+  >
+    <VerticalTab />
+  </Context.Provider>
+  <Context.Provider
+    value={
+      {
+        "focused": 1,
+        "index": 1,
+        "onChange": undefined,
+        "selectedIndex": 1,
+      }
+    }
+  >
+    <VerticalTab />
+  </Context.Provider>
+</div>
+`;
