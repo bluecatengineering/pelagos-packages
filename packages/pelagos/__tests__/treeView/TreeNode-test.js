@@ -157,6 +157,44 @@ describe('TreeNode', () => {
 			expect(setFocused.mock.calls).toEqual([[['test-id']]]);
 		});
 
+		it('calls onClick before selecting the node', () => {
+			const onSelect = jest.fn();
+			const onClick = jest.fn();
+			const event = {stopPropagation: jest.fn()};
+			useContext
+				.mockReturnValueOnce({focused: [], onSelect, setFocused: jest.fn()})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			const wrapper = shallow(<TreeNode id="test-id" label="Test" onClick={onClick} />);
+			wrapper.simulate('click', event);
+			expect(onClick.mock.calls).toEqual([[event]]);
+			expect(onSelect.mock.calls).toEqual([[['test-id']]]);
+		});
+
+		it('does not select the node when onClick calls preventDefault', () => {
+			const onSelect = jest.fn();
+			useContext
+				.mockReturnValueOnce({focused: [], onSelect, setFocused: jest.fn()})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			const wrapper = shallow(
+				<TreeNode id="test-id" label="Test" onClick={(event) => (event.defaultPrevented = true)} />
+			);
+			wrapper.simulate('click', {stopPropagation: jest.fn()});
+			expect(onSelect).not.toHaveBeenCalled();
+		});
+
+		it('does not handle the key when onKeyDown calls preventDefault', () => {
+			const onSelect = jest.fn();
+			const onKeyDown = jest.fn((event) => (event.defaultPrevented = true));
+			const event = {key: 'Enter', preventDefault: jest.fn(), stopPropagation: jest.fn()};
+			useContext
+				.mockReturnValueOnce({focused: [], onSelect, setFocused: jest.fn()})
+				.mockReturnValueOnce({level: 0, padding: 0, parentPath: []});
+			const wrapper = shallow(<TreeNode id="test-id" label="Test" onKeyDown={onKeyDown} />);
+			wrapper.simulate('keydown', event);
+			expect(onKeyDown.mock.calls).toEqual([[event]]);
+			expect(onSelect).not.toHaveBeenCalled();
+		});
+
 		it('calls onToggle when the toggle icon is clicked', () => {
 			const onToggle = jest.fn();
 			const stopPropagation = jest.fn();

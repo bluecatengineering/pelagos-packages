@@ -15,7 +15,19 @@ const getLastVisible = (node) => {
 };
 
 /** A node in a TreeView. */
-const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, children, onToggle, ...props}) => {
+const TreeNode = ({
+	id,
+	labelClassName,
+	label,
+	icon: Icon,
+	expanded,
+	loading,
+	children,
+	onToggle,
+	onClick,
+	onKeyDown,
+	...props
+}) => {
 	const nodeRef = useRef(null);
 	const {selected, focused, setFocused, onSelect} = useContext(TreeViewContext);
 	const {level, padding: parentPadding, parentPath, hasIcon} = useContext(TreeNodeContext);
@@ -25,13 +37,17 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 	const path = useMemo(() => [...parentPath, id], [id, parentPath]);
 	const nodeContextValue = {level: childrenLevel, padding, parentPath: path, hasIcon: !!Icon};
 
+	// The handlers set by the caller run first, they can call preventDefault to skip the default behaviour
 	const handleClick = useCallback(
 		(event) => {
-			event.stopPropagation();
-			onSelect?.(path);
-			setFocused(path);
+			onClick?.(event);
+			if (!event.defaultPrevented) {
+				event.stopPropagation();
+				onSelect?.(path);
+				setFocused(path);
+			}
 		},
-		[onSelect, path, setFocused]
+		[onClick, onSelect, path, setFocused]
 	);
 	const handleToggleClick = useCallback(
 		(event) => {
@@ -42,7 +58,8 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 	);
 	const handleKeyDown = useCallback(
 		(event) => {
-			if (!event.ctrlKey && !event.altKey && !event.metaKey) {
+			onKeyDown?.(event);
+			if (!event.defaultPrevented && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				const node = nodeRef.current;
 				const focusNode = (node) => {
 					node.focus();
@@ -143,7 +160,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 				}
 			}
 		},
-		[expanded, id, level, onSelect, onToggle, path, selected, setFocused]
+		[expanded, id, level, onKeyDown, onSelect, onToggle, path, selected, setFocused]
 	);
 
 	useEffect(() => {
@@ -213,6 +230,10 @@ TreeNode.propTypes = {
 	children: PropTypes.node,
 	/** Function invoked when a parent node is toggled. */
 	onToggle: PropTypes.func,
+	/** Function invoked when the element is clicked, before the default behaviour which is skipped if it calls preventDefault. */
+	onClick: PropTypes.func,
+	/** Function invoked when a key is pressed, before the default behaviour which is skipped if it calls preventDefault. */
+	onKeyDown: PropTypes.func,
 };
 
 export default TreeNode;

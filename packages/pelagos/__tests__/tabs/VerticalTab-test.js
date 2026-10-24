@@ -29,8 +29,28 @@ describe('VerticalTab', () => {
 			const onChange = jest.fn();
 			useContext.mockReturnValueOnce({index: 0, onChange});
 			const wrapper = shallow(<VerticalTab>Test</VerticalTab>);
-			wrapper.simulate('click');
+			wrapper.simulate('click', {});
 			expect(onChange.mock.calls).toEqual([[0]]);
+		});
+
+		it('calls onClick before onChange when the tab is clicked', () => {
+			const calls = [];
+			const onChange = jest.fn(() => calls.push('onChange'));
+			const onClick = jest.fn(() => calls.push('onClick'));
+			const event = {};
+			useContext.mockReturnValueOnce({index: 0, onChange});
+			const wrapper = shallow(<VerticalTab onClick={onClick}>Test</VerticalTab>);
+			wrapper.simulate('click', event);
+			expect(onClick.mock.calls).toEqual([[event]]);
+			expect(calls).toEqual(['onClick', 'onChange']);
+		});
+
+		it('does not call onChange when onClick calls preventDefault', () => {
+			const onChange = jest.fn();
+			useContext.mockReturnValueOnce({index: 0, onChange});
+			const wrapper = shallow(<VerticalTab onClick={(event) => (event.defaultPrevented = true)}>Test</VerticalTab>);
+			wrapper.simulate('click', {});
+			expect(onChange).not.toHaveBeenCalled();
 		});
 	});
 });

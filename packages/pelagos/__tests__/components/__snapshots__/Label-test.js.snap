@@ -8,3 +8,11 @@ exports[`Label rendering renders expected elements 1`] = `
   Test
 </label>
 `;
+
+exports[`Label rendering renders expected elements when className is set 1`] = `
+<label
+  className="Label TestClass"
+>
+  Test
+</label>
+`;

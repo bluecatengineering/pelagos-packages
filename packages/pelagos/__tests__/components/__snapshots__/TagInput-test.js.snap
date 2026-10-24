@@ -85,12 +85,16 @@ exports[`TagInput rendering renders expected elements when disabled and defaultT
     className="sr-only"
   />
   <DefaultTag
+    className="TagInput__defaultTag"
     disabled={true}
+    renderTag={[Function]}
     tag="foo"
     tooltipText="Test tooltip"
   />
   <DefaultTag
+    className="TagInput__defaultTag"
     disabled={true}
+    renderTag={[Function]}
     tag="bar"
     tooltipText="Test tooltip"
   />
@@ -176,10 +180,14 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
     className="sr-only"
   />
   <DefaultTag
+    className="TagInput__defaultTag"
+    renderTag={[Function]}
     tag="foo"
     tooltipText="Test tooltip"
   />
   <DefaultTag
+    className="TagInput__defaultTag"
+    renderTag={[Function]}
     tag="bar"
     tooltipText="Test tooltip"
   />

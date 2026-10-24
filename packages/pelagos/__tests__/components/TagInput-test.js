@@ -2,7 +2,7 @@ import {useRef, useState} from 'react';
 import {shallow} from 'enzyme';
 
 import TagInput from '../../src/components/TagInput';
-import useTooltip from '../../src/hooks/useTooltip';
+import Tag from '../../src/components/Tag';
 import useRandomId from '../../src/hooks/useRandomId';
 
 jest.unmock('../../src/components/TagInput');
@@ -10,11 +10,6 @@ jest.unmock('../../src/components/TagInput');
 jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && (f.cancel = jest.fn()), f)));
 
 useRandomId.mockReturnValue('random-id');
-
-const renderComponent = (wrapper) => {
-	const {type, props} = wrapper.getElement();
-	return type(props);
-};
 
 describe('TagInput', () => {
 	describe('rendering', () => {
@@ -61,14 +56,10 @@ describe('TagInput', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-
-			// each default tag gets its own tooltip
-			useTooltip.mockReturnValueOnce('tooltip-foo').mockReturnValueOnce('tooltip-bar');
-			expect(wrapper.find('DefaultTag').map((tag) => renderComponent(tag).ref)).toEqual(['tooltip-foo', 'tooltip-bar']);
-			expect(useTooltip.mock.calls).toEqual([
-				['Test tooltip', 'top'],
-				['Test tooltip', 'top'],
-			]);
+			const tooltip = jest.fn();
+			expect(wrapper.find('DefaultTag').first().prop('renderTag')('foo', false, true, null, tooltip)).toEqual(
+				<Tag type="gray" text="foo" aria-disabled={false} ref={tooltip} />
+			);
 		});
 
 		it('renders expected elements when disabled', () => {
@@ -100,7 +91,6 @@ describe('TagInput', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(renderComponent(wrapper.find('DefaultTag').first()).props['aria-disabled']).toBe(true);
 		});
 	});
 
@@ -270,6 +260,53 @@ describe('TagInput', () => {
 			wrapper.find('#random-id').simulate('blur', event);
 			expect(onChange.mock.calls).toEqual([[['foo', 'bar', 'baz'], event]]);
 			expect(live.textContent).toBe('baz added');
+		});
+
+		it('calls onKeyDown and onBlur before handling the events', () => {
+			const onChange = jest.fn();
+			const onKeyDown = jest.fn();
+			const onBlur = jest.fn();
+			useRef.mockReturnValue({current: {}});
+			const wrapper = shallow(
+				<TagInput
+					id="test"
+					tags={['foo']}
+					validate={jest.fn()}
+					onChange={onChange}
+					onError={jest.fn()}
+					onKeyDown={onKeyDown}
+					onBlur={onBlur}
+				/>
+			);
+			const keyDown = {key: 'Backspace', preventDefault: jest.fn(), target: {value: ''}};
+			const blur = {target: {value: 'bar'}};
+			wrapper.find('#random-id').simulate('keydown', keyDown);
+			wrapper.find('#random-id').simulate('blur', blur);
+			expect(onKeyDown.mock.calls).toEqual([[keyDown]]);
+			expect(onBlur.mock.calls).toEqual([[blur]]);
+			expect(onChange.mock.calls).toEqual([
+				[[], keyDown],
+				[['foo', 'bar'], blur],
+			]);
+		});
+
+		it('does not handle the events when onKeyDown and onBlur call preventDefault', () => {
+			const onChange = jest.fn();
+			const prevent = (event) => (event.defaultPrevented = true);
+			const wrapper = shallow(
+				<TagInput
+					id="test"
+					tags={['foo']}
+					validate={jest.fn()}
+					onChange={onChange}
+					onError={jest.fn()}
+					onKeyDown={prevent}
+					onBlur={prevent}
+				/>
+			);
+			wrapper.find('#random-id').simulate('keydown', {key: 'Backspace', target: {value: ''}});
+			wrapper.find('#random-id').simulate('blur', {target: {value: 'bar'}});
+			expect(onChange).not.toHaveBeenCalled();
 		});
 
 		it('does not call onChange on blur if the input text is empty', () => {

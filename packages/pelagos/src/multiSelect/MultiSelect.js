@@ -33,6 +33,8 @@ const MultiSelect = ({
 	getOptionKey = identity,
 	getOptionText = identity,
 	onChange,
+	onKeyDown,
+	onBlur,
 	...props
 }) => {
 	id = useRandomId(id);
@@ -127,9 +129,11 @@ const MultiSelect = ({
 		[open, hideList, showList, disabled]
 	);
 
+	// The handlers set by the caller run first, they can call preventDefault to skip the default behaviour
 	const handleKeyDown = useCallback(
 		(event) => {
-			if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+			onKeyDown?.(event);
+			if (!event.defaultPrevented && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
 				const key = event.key;
 				switch (key) {
 					case 'Enter':
@@ -236,6 +240,7 @@ const MultiSelect = ({
 			focused,
 			hideList,
 			onChange,
+			onKeyDown,
 			open,
 			options,
 			renderedOptions,
@@ -248,13 +253,17 @@ const MultiSelect = ({
 
 	const handleBlur = useCallback(
 		(event) => {
+			onBlur?.(event);
+			if (event.defaultPrevented) {
+				return;
+			}
 			if (listRef.current?.contains(event.relatedTarget)) {
 				buttonRef.current.focus();
 			} else {
 				hideList();
 			}
 		},
-		[hideList]
+		[hideList, onBlur]
 	);
 
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
@@ -379,6 +388,10 @@ MultiSelect.propTypes = {
 	getOptionText: PropTypes.func,
 	/** Function invoked when the selected values change. */
 	onChange: PropTypes.func.isRequired,
+	/** Function invoked when a key is pressed, before the default behaviour which is skipped if it calls preventDefault. */
+	onKeyDown: PropTypes.func,
+	/** Function invoked when the element loses focus, before the default behaviour which is skipped if it calls preventDefault. */
+	onBlur: PropTypes.func,
 };
 
 export default MultiSelect;
