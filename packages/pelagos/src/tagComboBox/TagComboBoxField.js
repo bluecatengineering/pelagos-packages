@@ -67,7 +67,7 @@ TagComboBoxField.propTypes = {
 	transform: PropTypes.func,
 	/** Function that converts the text input to a tag. */
 	textToTag: PropTypes.func,
-	/** Function invoked to get suggestions based on text input, can return a promise. */
+	/** Function invoked to get suggestions based on text input, can return a promise. It must be stable (for example wrapped in useCallback), a new function discards the pending suggestions. */
 	getSuggestions: PropTypes.func,
 	/** Function invoked to render suggestions. */
 	renderSuggestion: PropTypes.func,

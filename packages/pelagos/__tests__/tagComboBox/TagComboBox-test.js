@@ -3,20 +3,16 @@ import {shallow} from 'enzyme';
 import debounce from 'lodash-es/debounce';
 
 import TagComboBox from '../../src/tagComboBox/TagComboBox';
+import Tag from '../../src/components/Tag';
 import scrollToItem from '../../src/functions/scrollToItem';
 import useRandomId from '../../src/hooks/useRandomId';
-import useTooltip from '../../src/hooks/useTooltip';
+import renderSuggestion from '../../src/suggestions/renderSuggestion';
 
 jest.unmock('../../src/tagComboBox/TagComboBox');
 
 jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && (f.cancel = jest.fn()), f)));
 
 useRandomId.mockReturnValue('random-id');
-
-const renderComponent = (wrapper) => {
-	const {type, props} = wrapper.getElement();
-	return type(props);
-};
 
 describe('TagComboBox', () => {
 	describe('rendering', () => {
@@ -78,14 +74,10 @@ describe('TagComboBox', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-
-			// each default tag gets its own tooltip
-			useTooltip.mockReturnValueOnce('tooltip-foo').mockReturnValueOnce('tooltip-bar');
-			expect(wrapper.find('DefaultTag').map((tag) => renderComponent(tag).ref)).toEqual(['tooltip-foo', 'tooltip-bar']);
-			expect(useTooltip.mock.calls).toEqual([
-				['Test tooltip', 'top'],
-				['Test tooltip', 'top'],
-			]);
+			const tooltip = jest.fn();
+			expect(wrapper.find('DefaultTag').first().prop('renderTag')('foo', false, true, null, tooltip)).toEqual(
+				<Tag type="gray" text="foo" aria-disabled={false} ref={tooltip} />
+			);
 		});
 
 		it('renders expected elements when disabled', () => {
@@ -117,7 +109,21 @@ describe('TagComboBox', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(renderComponent(wrapper.find('DefaultTag').first()).props['aria-disabled']).toBe(true);
+		});
+
+		it('renders the suggestions with renderSuggestion when renderSuggestion is not set', () => {
+			renderSuggestion.mockReturnValue(<div>Rendered</div>);
+			useState
+				.mockReturnValueOnce(['text'])
+				.mockReturnValueOnce([[{name: 'foo'}]])
+				.mockReturnValueOnce([true])
+				.mockReturnValueOnce([0])
+				.mockReturnValueOnce([null]);
+			const wrapper = shallow(
+				<TagComboBox id="test" tags={[]} validate={jest.fn()} onChange={jest.fn()} onError={jest.fn()} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(renderSuggestion.mock.calls).toEqual([[{name: 'foo'}, 0]]);
 		});
 	});
 

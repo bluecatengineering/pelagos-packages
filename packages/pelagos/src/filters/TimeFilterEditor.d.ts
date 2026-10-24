@@ -17,8 +17,8 @@ interface TimeFilterEditorProps {
 	getOptionLabel: (option: string) => string;
 	/** Function returning a formatted time. */
 	format: (value: number) => string;
-	/** Function returning a formatted time. */
-	parse: (value: string) => number;
+	/** Function returning the parsed time as a number, isStart is true for the start of the range and false for the end. */
+	parse: (value: string, isStart: boolean) => number;
 	/** Function invoked to validate the "from" time, must return either an error message or `null`. */
 	validateFrom: (value?: string) => string | null;
 	/** Function invoked to validate the "to" time, must return either an error message or `null`. */

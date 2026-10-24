@@ -26,6 +26,15 @@ describe('getInnerText', () => {
 		).toBe('foobar');
 	});
 
+	it('returns expected text when node is 0', () => {
+		expect(getInnerText(0)).toBe('0');
+		expect(getInnerText(['Item ', 0])).toBe('Item 0');
+	});
+
+	it('returns expected text when node is null', () => {
+		expect(getInnerText(null)).toBe('');
+	});
+
 	it('returns expected text when node is falsy', () => {
 		expect(getInnerText(false)).toBe('');
 		expect(getInnerText(null)).toBe('');

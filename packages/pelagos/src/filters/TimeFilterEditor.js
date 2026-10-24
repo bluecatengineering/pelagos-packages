@@ -174,7 +174,7 @@ TimeFilterEditor.propTypes = {
 	getOptionLabel: PropTypes.func.isRequired,
 	/** Function returning a formatted time. */
 	format: PropTypes.func.isRequired,
-	/** Function returning the parsed time as a number. */
+	/** Function returning the parsed time as a number, the second parameter is true for the start of the range and false for the end. */
 	parse: PropTypes.func.isRequired,
 	/** Function invoked to validate the "from" time, must return either an error message or `null`. */
 	validateFrom: PropTypes.func.isRequired,

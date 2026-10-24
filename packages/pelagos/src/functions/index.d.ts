@@ -4,9 +4,9 @@ import type {ListInputSuggestion} from '../listInput/ListInput';
 export function addResizeObserver(target: Element, callback: (contentRect: DOMRectReadOnly) => void): () => void;
 
 /** Invokes the specified function using an easing curve. */
-export function animate(duration: number, f: (position: number) => void, done: () => void): {cancel: () => void};
+export function animate(duration: number, f: (position: number) => void, done?: () => void): {cancel: () => void};
 
-/** Builds a parser for simple suggestions. */
+/** Builds a parser for simple suggestions. The transform must return a string or another primitive value so duplicates can be found. */
 export function buildSimpleSuggestionsParser<T>(
 	validate: (entry: T) => string | null,
 	transform?: (entry: string) => T
@@ -24,7 +24,7 @@ export function getGenericSuggestions(
 	selected: ListInputSuggestion[] | ((id: string) => boolean),
 	sourceList: ListInputSuggestion[],
 	errorMessage: string
-): {error: string} | ListInputSuggestion[];
+): {error: string} | {suggestions: ListInputSuggestion[]};
 
 export function moveEffect(element: Element, rect: DOMRectReadOnly): void;
 
@@ -46,8 +46,8 @@ export function scrollToItem(
 	container: Element,
 	element: Element,
 	options?: {
-		headerHeight: number;
-		duration: number;
+		headerHeight?: number;
+		duration?: number;
 		done?: () => void;
 	}
 ): void;
@@ -60,10 +60,10 @@ export function scrollToItem(
  */
 export function setLocale(locale: 'de' | 'en' | 'es' | 'fr' | 'ja' | 'pt' | 'zh'): Promise<void>;
 
-/** Starts a slide down animation on the specified element. */
+/** Starts a slide down animation on the specified element and its following siblings, which must all be elements (not text nodes). */
 export function slideDownEffect(element: Element): void;
 
-/** Starts a slide up animation on the specified element. */
+/** Starts a slide up animation on the specified element and its following siblings, which must all be elements (not text nodes). */
 export function slideUpEffect(element: Element): void;
 
 /** Scrolls the specified element using an animation. */
@@ -75,7 +75,7 @@ export function smoothScroll(
 	done?: () => void
 ): {cancel: () => void};
 
-/** Throttles calls to the specified function using `requestAnimationFrame`. */
+/** Throttles calls to the specified function using `requestAnimationFrame`, the function is invoked on the next frame. */
 export function throttleAF<A, Args extends A[], R>(
 	f: (...args: Args) => R
-): {(...args: Args): R; cancel: () => void; flush: () => void};
+): {(...args: Args): void; cancel: () => void; flush: () => void};

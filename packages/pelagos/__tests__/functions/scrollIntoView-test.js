@@ -222,6 +222,24 @@ describe('scrollIntoView', () => {
 		expect(parentNode.scrollTop).toBe(10);
 	});
 
+	it('scrolls the page when no ancestor can be scrolled', () => {
+		const body = {};
+		const scrollingElement = {scrollHeight: 2000, scrollTop: 100, dispatchEvent: jest.fn()};
+		document.body = body;
+		document.scrollingElement = scrollingElement;
+		global.window = {innerHeight: 500, getComputedStyle};
+		const element = {
+			parentNode: body,
+			getBoundingClientRect() {
+				return {top: 600, bottom: 650};
+			},
+		};
+		scrollIntoView(element, {alignBottom: true});
+		expect(scrollingElement.scrollTop).toBe(250);
+		delete document.body;
+		delete document.scrollingElement;
+	});
+
 	it('does not scroll the element if not necessary', () => {
 		const parentNode = {
 			clientHeight: 10,

@@ -1,5 +1,5 @@
 /**
- * Starts a slide down animation on the specified element.
+ * Starts a slide down animation on the specified element and its following siblings, which must all be elements (not text nodes).
  * @param {Element} element the element to animate.
  *
  * @example
