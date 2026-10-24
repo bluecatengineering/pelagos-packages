@@ -15,9 +15,9 @@ interface EditorDetailsPanelProps {
 	children: ReactNode;
 	/** Function invoked when the close button is clicked. */
 	onClose: () => void;
-	/** Function invoked when the edit button is clicked. */
+	/** Function invoked when the edit button is clicked. The default edit button is displayed only when this property is set. */
 	onEdit?: ({id, name}: {id: string; name: string}) => void;
-	/** Function invoked when the delete button is clicked. */
+	/** Function invoked when the delete button is clicked. The default delete button is displayed only when this property is set. */
 	onDelete?: ({id, name}: {id: string; name: string}) => void;
 }
 

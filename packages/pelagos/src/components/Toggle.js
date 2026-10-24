@@ -34,7 +34,7 @@ Toggle.propTypes = {
 	/** Whether the toggle is disabled */
 	disabled: PropTypes.bool,
 	/** Function invoked when checked status changes. */
-	onChange: PropTypes.func,
+	onChange: PropTypes.func.isRequired,
 };
 
 export default Toggle;

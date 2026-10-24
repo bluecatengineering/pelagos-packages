@@ -51,3 +51,14 @@ exports[`DefaultDetailsButtons rendering renders expected elements when onDelete
   />
 </div>
 `;
+
+exports[`DefaultDetailsButtons rendering renders expected elements when onEdit is not set 1`] = `
+<div>
+  <Button
+    disabled={false}
+    id="deleteBtn"
+    onClick={[Function]}
+    text="Delete"
+  />
+</div>
+`;

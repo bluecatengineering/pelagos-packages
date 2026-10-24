@@ -196,7 +196,7 @@ ListSelector.propTypes = {
 	/** Function returning the item label. */
 	getLabel: PropTypes.func.isRequired,
 	/** Function invoked when the list changes. */
-	onChange: PropTypes.func,
+	onChange: PropTypes.func.isRequired,
 };
 
 export default ListSelector;

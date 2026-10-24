@@ -8,6 +8,8 @@ import './Toast.less';
 
 const duration = 150;
 
+const emptyMessages = [];
+
 const hasFatalError = (messages) => messages.some((m) => m.type === ToastTypes.FATAL);
 
 const createAnimation = (id) =>
@@ -20,7 +22,7 @@ const createAnimation = (id) =>
 	);
 
 /** Displays messages as toasts. */
-const Toast = ({messages, onRemove}) => {
+const Toast = ({messages = emptyMessages, onRemove}) => {
 	const animationsRef = useRef(null);
 	const enteringRef = useRef(null);
 	const leavingRef = useRef(null);
@@ -103,7 +105,15 @@ const Toast = ({messages, onRemove}) => {
 
 Toast.propTypes = {
 	/** Messages to display. */
-	messages: PropTypes.array,
+	messages: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			type: PropTypes.string,
+			text: PropTypes.string,
+			actionText: PropTypes.string,
+			onClick: PropTypes.func,
+		})
+	),
 	/** Function to remove a message. */
 	onRemove: PropTypes.func,
 };

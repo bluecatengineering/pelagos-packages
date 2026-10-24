@@ -114,9 +114,9 @@ Pagination.propTypes = {
 	/** The total number of items. */
 	totalItems: PropTypes.number,
 	/** Function invoked when the page changes. */
-	onPageChange: PropTypes.func,
+	onPageChange: PropTypes.func.isRequired,
 	/** Function invoked when the page size changes. */
-	onPageSizeChange: PropTypes.func,
+	onPageSizeChange: PropTypes.func.isRequired,
 };
 
 export default Pagination;

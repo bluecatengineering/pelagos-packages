@@ -90,7 +90,7 @@ ListSelectorDialog.propTypes = {
 	/** The text to announce when all items are removed. */
 	allItemsRemovedText: PropTypes.string.isRequired,
 	/** The text to display in the save button. */
-	saveText: PropTypes.string,
+	saveText: PropTypes.string.isRequired,
 	/** The current items. */
 	items: PropTypes.arrayOf(PropTypes.string).isRequired,
 	/** All items which can be selected. */

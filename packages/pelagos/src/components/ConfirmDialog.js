@@ -37,7 +37,7 @@ ConfirmDialog.propTypes = {
 	/** The text to display in the dialog body. */
 	body: PropTypes.string,
 	/** The text to display in the confirm button. */
-	confirmText: PropTypes.string,
+	confirmText: PropTypes.string.isRequired,
 	/** The confirm button type. */
 	confirmBtnType: PropTypes.oneOf(['primary', 'dangerPrimary']),
 	/** The dialog size. */

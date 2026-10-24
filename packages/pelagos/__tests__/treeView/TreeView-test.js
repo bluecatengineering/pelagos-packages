@@ -53,6 +53,11 @@ describe('TreeView', () => {
 			expect(useState.mock.calls[0][0]()).toEqual([]);
 		});
 
+		it('initializes focused to empty when selected is not specified and children is an empty array', () => {
+			shallow(<TreeView>{[]}</TreeView>);
+			expect(useState.mock.calls[0][0]()).toEqual([]);
+		});
+
 		it('adds an effect which calls setFocused when selected changes', () => {
 			const children = <div id="child-id" />;
 			const contains = jest.fn();

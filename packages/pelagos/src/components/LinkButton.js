@@ -54,7 +54,7 @@ LinkButton.propTypes = {
 	/** The link URL. */
 	href: PropTypes.string,
 	/** The text to display. */
-	text: PropTypes.string,
+	text: PropTypes.string.isRequired,
 	/** The tooltip text to display. Custom components must support `ref` forwarding. */
 	tooltipText: PropTypes.string,
 	/** The size of the button. */

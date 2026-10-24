@@ -25,7 +25,7 @@ interface IconButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
 	/** The accessible name for the button. */
 	'aria-label': string;
 	/** Function invoked when the button is clicked. */
-	onClick: MouseEventHandler<HTMLButtonElement>;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 /** An icon button. */

@@ -47,6 +47,18 @@ describe('ToastMessage', () => {
 			expect(onRemove.mock.calls).toEqual([[message]]);
 		});
 
+		it('does not throw when the action button is clicked and neither onClick nor onRemove are set', () => {
+			const message = {id: '0', type: ToastTypes.INFO, text: 'This is a test', actionText: 'Action'};
+			const wrapper = shallow(<ToastMessage message={message} />);
+			expect(() => wrapper.find('Button').simulate('click')).not.toThrow();
+		});
+
+		it('does not throw when the remove button is clicked and onRemove is not set', () => {
+			const message = {id: '0', type: ToastTypes.ERROR, text: 'This is a test'};
+			const wrapper = shallow(<ToastMessage message={message} />);
+			expect(() => wrapper.find('button').simulate('click')).not.toThrow();
+		});
+
 		it('calls onRemove when remove button is clicked', () => {
 			const onRemove = jest.fn();
 			const message = {

@@ -20,6 +20,11 @@ describe('DefaultDetailsButtons', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders expected elements when onEdit is not set', () => {
+			const wrapper = shallow(<DefaultDetailsButtons item={item} onDelete={jest.fn()} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when disableEdit and disableDelete are set', () => {
 			const wrapper = shallow(
 				<DefaultDetailsButtons

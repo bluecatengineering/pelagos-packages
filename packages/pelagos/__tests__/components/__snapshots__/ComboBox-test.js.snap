@@ -285,3 +285,67 @@ exports[`ComboBox rendering renders expected elements when the suggestions are d
   </React.Portal>
 </div>
 `;
+
+exports[`ComboBox rendering renders the suggestions with renderSuggestion when renderSuggestion is not set 1`] = `
+<div
+  className="ComboBox"
+>
+  <Layer
+    aria-activedescendant="random-id-0"
+    aria-autocomplete="list"
+    aria-controls="random-id-list"
+    aria-expanded={true}
+    as="input"
+    autoComplete="off"
+    className="ComboBox__input"
+    id="random-id"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    role="combobox"
+    type="text"
+    value="x"
+  />
+  <IconButton
+    aria-label="Add"
+    className="ComboBox__add"
+    disabled={false}
+    icon={[Function]}
+    id="random-id-add"
+    onClick={[Function]}
+  />
+  <React.Portal
+    container="body"
+  >
+    <Layer
+      aria-label="Options"
+      className="ComboBox__list"
+      id="random-id-list"
+      level={NaN}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      role="listbox"
+      style={
+        {
+          "display": null,
+        }
+      }
+    >
+      <div
+        aria-selected={true}
+        className="ComboBox__option"
+        data-index={0}
+        id="random-id-0"
+        role="option"
+      >
+        <div
+          className="ComboBox__optionText"
+        >
+          Rendered
+        </div>
+      </div>
+    </Layer>
+  </React.Portal>
+</div>
+`;

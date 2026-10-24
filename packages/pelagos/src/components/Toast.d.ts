@@ -3,7 +3,8 @@ import type {FunctionComponent} from 'react';
 import type ToastTypes from '../toasts/ToastTypes';
 
 export interface ToastMessage {
-	id?: string;
+	/** The message ID, must be unique. */
+	id: string;
 	type?: (typeof ToastTypes)[keyof typeof ToastTypes];
 	text?: string;
 	actionText?: string;

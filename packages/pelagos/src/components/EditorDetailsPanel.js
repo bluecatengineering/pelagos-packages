@@ -82,9 +82,9 @@ EditorDetailsPanel.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]).isRequired,
 	/** Function invoked when the close button is clicked. */
 	onClose: PropTypes.func,
-	/** Function invoked when the edit button is clicked. */
+	/** Function invoked when the edit button is clicked. The default edit button is displayed only when this property is set. */
 	onEdit: PropTypes.func,
-	/** Function invoked when the delete button is clicked. */
+	/** Function invoked when the delete button is clicked. The default delete button is displayed only when this property is set. */
 	onDelete: PropTypes.func,
 };
 

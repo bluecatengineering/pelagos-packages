@@ -10,6 +10,8 @@ import FileUploaderItem from './FileUploaderItem';
 
 import './FileUploader.less';
 
+const emptyFiles = [];
+
 /** Accepts one or more files to upload. */
 const FileUploader = ({
 	id,
@@ -17,7 +19,7 @@ const FileUploader = ({
 	label,
 	required,
 	dropZoneText,
-	files,
+	files = emptyFiles,
 	helperText,
 	error,
 	disabled,
@@ -65,7 +67,7 @@ const FileUploader = ({
 				aria-describedby={helperId}
 				onAddFiles={handleAddFiles}
 			/>
-			{files?.length ? (
+			{files.length ? (
 				<FileUploaderList onClick={handleRemoveClick}>
 					{files.map(({name, error}, index) => (
 						<FileUploaderItem

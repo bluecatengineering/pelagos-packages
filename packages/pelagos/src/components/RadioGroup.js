@@ -66,7 +66,7 @@ RadioGroup.propTypes = {
 	/** Function invoked to render each option. */
 	renderLabel: PropTypes.func.isRequired,
 	/** Function invoked when the selected option changes. */
-	onChange: PropTypes.func,
+	onChange: PropTypes.func.isRequired,
 };
 
 export default RadioGroup;
