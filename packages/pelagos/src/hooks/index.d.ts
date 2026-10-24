@@ -1,4 +1,4 @@
-import type {HTMLProps, MutableRefObject, Provider, RefObject} from 'react';
+import type {HTMLProps, MutableRefObject, Provider} from 'react';
 
 export declare const LayerProvider: Provider<number>;
 
@@ -9,8 +9,11 @@ export function useAreaEditorPositioner<T extends Element>(
 	onClose: () => void
 ): void;
 
-/** Returns a React ref which collapses the element. The element must have `overflow: hidden`. */
-export function useCollapse<T extends Element>(open: boolean): RefObject<T> | undefined;
+/**
+ * Returns a React ref which collapses the element. The element must have `overflow: hidden`.
+ * If the ref is merged with other refs, those must be stable, a new ref stops the running animation.
+ */
+export function useCollapse<T extends Element>(open: boolean): (element: T | null) => void;
 
 /** Adds an effect which positions an editor. */
 export function useEditorPositioner<T extends Element>(

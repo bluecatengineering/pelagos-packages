@@ -137,22 +137,18 @@ exports[`TagComboBox rendering renders expected elements when disabled and defau
   <Layer
     className="TagComboBox__content disabled"
   >
-    <Tag
-      aria-disabled={true}
-      className="TagComboBox__defaultTag"
-      key="foo"
-      type="gray"
-    >
-      foo
-    </Tag>
-    <Tag
-      aria-disabled={true}
-      className="TagComboBox__defaultTag"
-      key="bar"
-      type="gray"
-    >
-      bar
-    </Tag>
+    <DefaultTag
+      disabled={true}
+      renderTag={[Function]}
+      tag="foo"
+      tooltipText="Test tooltip"
+    />
+    <DefaultTag
+      disabled={true}
+      renderTag={[Function]}
+      tag="bar"
+      tooltipText="Test tooltip"
+    />
     <input
       aria-activedescendant={null}
       aria-autocomplete="list"
@@ -326,20 +322,16 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
   <Layer
     className="TagComboBox__content"
   >
-    <Tag
-      className="TagComboBox__defaultTag"
-      key="foo"
-      type="gray"
-    >
-      foo
-    </Tag>
-    <Tag
-      className="TagComboBox__defaultTag"
-      key="bar"
-      type="gray"
-    >
-      bar
-    </Tag>
+    <DefaultTag
+      renderTag={[Function]}
+      tag="foo"
+      tooltipText="Test tooltip"
+    />
+    <DefaultTag
+      renderTag={[Function]}
+      tag="bar"
+      tooltipText="Test tooltip"
+    />
     <input
       aria-activedescendant={null}
       aria-autocomplete="list"

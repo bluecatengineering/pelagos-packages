@@ -1,4 +1,4 @@
-import {useCallback, useRef} from 'react';
+import {useCallback, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 import Copy from '@carbon/icons-react/es/Copy';
@@ -12,15 +12,17 @@ import './CopyButton.less';
 /** Button to copy data to the clipboard. */
 const CopyButton = ({id, className, data, icon, tooltipText, tooltipPlacement = 'right', disabled}) => {
 	const targetRef = useRef(null);
+	const timerRef = useRef(null);
 	const [showTooltip, hide] = useTooltipBase();
-	const show = useCallback(
-		() => showTooltip(tooltipText, tooltipPlacement, targetRef.current),
-		[tooltipText, tooltipPlacement, showTooltip]
-	);
+	const show = useCallback(() => {
+		clearTimeout(timerRef.current);
+		showTooltip(tooltipText, tooltipPlacement, targetRef.current);
+	}, [tooltipText, tooltipPlacement, showTooltip]);
 	const showTmp = useCallback(
 		(tmpText) => {
+			clearTimeout(timerRef.current);
 			showTooltip(tmpText, tooltipPlacement, targetRef.current);
-			setTimeout(hide, 5000);
+			timerRef.current = setTimeout(hide, 5000);
 		},
 		[tooltipPlacement, showTooltip, hide]
 	);
@@ -31,6 +33,7 @@ const CopyButton = ({id, className, data, icon, tooltipText, tooltipPlacement = 
 				.catch(({message}) => showTmp(t`Copy failed: ${message}`)),
 		[data, showTmp]
 	);
+	useEffect(() => () => clearTimeout(timerRef.current), []);
 	return disabled ? (
 		<span
 			id={id}

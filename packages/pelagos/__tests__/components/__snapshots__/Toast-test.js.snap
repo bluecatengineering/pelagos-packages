@@ -10,6 +10,7 @@ exports[`Toast behaviour creates initial elements 1`] = `
         "type": "a",
       }
     }
+    onRemove={[Function]}
   />,
   <ToastMessage
     message={
@@ -19,6 +20,7 @@ exports[`Toast behaviour creates initial elements 1`] = `
         "type": "b",
       }
     }
+    onRemove={[Function]}
   />,
 ]
 `;

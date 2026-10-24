@@ -6,7 +6,7 @@ import useSetRefs from '../hooks/useSetRefs';
 
 import './FilterArea.less';
 
-/** Displays a list of filters. */
+/** Displays a list of filters. A ref set on it must be stable (for example created with useRef or wrapped in useCallback), a new ref stops the running animation. */
 const FilterArea = forwardRef(({className, expanded = true, children, ...props}, ref) => {
 	const collapse = useCollapse(expanded);
 	const setRefs = useSetRefs(collapse, ref);

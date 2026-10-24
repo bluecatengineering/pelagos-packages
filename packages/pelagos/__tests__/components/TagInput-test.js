@@ -11,6 +11,11 @@ jest.mock('lodash-es/debounce', () => jest.fn((f) => (f && (f.cancel = jest.fn()
 
 useRandomId.mockReturnValue('random-id');
 
+const renderComponent = (wrapper) => {
+	const {type, props} = wrapper.getElement();
+	return type(props);
+};
+
 describe('TagInput', () => {
 	describe('rendering', () => {
 		it('renders expected elements', () => {
@@ -56,7 +61,14 @@ describe('TagInput', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(useTooltip.mock.calls).toEqual([['Test tooltip', 'top']]);
+
+			// each default tag gets its own tooltip
+			useTooltip.mockReturnValueOnce('tooltip-foo').mockReturnValueOnce('tooltip-bar');
+			expect(wrapper.find('DefaultTag').map((tag) => renderComponent(tag).ref)).toEqual(['tooltip-foo', 'tooltip-bar']);
+			expect(useTooltip.mock.calls).toEqual([
+				['Test tooltip', 'top'],
+				['Test tooltip', 'top'],
+			]);
 		});
 
 		it('renders expected elements when disabled', () => {
@@ -88,7 +100,7 @@ describe('TagInput', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
-			expect(useTooltip.mock.calls).toEqual([['Test tooltip', 'top']]);
+			expect(renderComponent(wrapper.find('DefaultTag').first()).props['aria-disabled']).toBe(true);
 		});
 	});
 

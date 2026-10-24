@@ -40,9 +40,17 @@ const ToastMessage = ({message, onRemove}) => {
 				fill: 'both',
 			});
 			animation.onfinish = () => ((animation = null), onRemove?.(message));
-			parent.addEventListener('mouseenter', () => (animation ? animation.pause() : null));
-			parent.addEventListener('mouseleave', () => (animation ? animation.play() : null));
-			return () => (animation ? animation.cancel() : null);
+			const handleMouseEnter = () => (animation ? animation.pause() : null);
+			const handleMouseLeave = () => (animation ? animation.play() : null);
+			parent.addEventListener('mouseenter', handleMouseEnter);
+			parent.addEventListener('mouseleave', handleMouseLeave);
+			return () => {
+				parent.removeEventListener('mouseenter', handleMouseEnter);
+				parent.removeEventListener('mouseleave', handleMouseLeave);
+				if (animation) {
+					animation.cancel();
+				}
+			};
 		}
 		return undefined;
 	}, [message, onRemove]);

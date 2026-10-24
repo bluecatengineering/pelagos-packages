@@ -7,6 +7,8 @@ import {Meta} from '@storybook/addon-docs/blocks';
 # useCollapse
 
 Returns a React ref which collapses the element. The element must have `overflow: hidden`.
+If the ref is merged with other refs, those must be stable (for example created with useRef or wrapped in useCallback),
+a new ref detaches the element and stops the running animation.
 
 ## Parameters
 

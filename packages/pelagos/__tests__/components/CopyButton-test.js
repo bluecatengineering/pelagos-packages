@@ -1,4 +1,4 @@
-import {useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {shallow} from 'enzyme';
 
 import CopyButton from '../../src/components/CopyButton';
@@ -51,7 +51,7 @@ describe('CopyButton', () => {
 		it('shows tooltip on mouseenter', () => {
 			const target = {};
 			const show = jest.fn();
-			useRef.mockReturnValue({current: target});
+			useRef.mockReturnValueOnce({current: target}).mockReturnValueOnce({current: null});
 			useTooltipBase.mockReturnValue([show]);
 			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" />);
 			wrapper.find('#test-id').prop('onMouseEnter')();
@@ -61,7 +61,7 @@ describe('CopyButton', () => {
 		it('shows tooltip on mouseenter when disabled', () => {
 			const target = {};
 			const show = jest.fn();
-			useRef.mockReturnValue({current: target});
+			useRef.mockReturnValueOnce({current: target}).mockReturnValueOnce({current: null});
 			useTooltipBase.mockReturnValue([show]);
 			const wrapper = shallow(
 				<CopyButton id="test-id" tooltipText="Test tooltip" tooltipPlacement="top" disabled={true} />
@@ -93,7 +93,7 @@ describe('CopyButton', () => {
 			const show = jest.fn();
 			const hide = jest.fn();
 			copyToClipboard.mockResolvedValue();
-			useRef.mockReturnValue({current: target});
+			useRef.mockReturnValueOnce({current: target}).mockReturnValueOnce({current: null});
 			useTooltipBase.mockReturnValue([show, hide]);
 			const wrapper = shallow(
 				<CopyButton id="test-id" data="Test data" tooltipText="Test tooltip" tooltipPlacement="top" />
@@ -109,12 +109,45 @@ describe('CopyButton', () => {
 				});
 		});
 
+		it('keeps the tooltip when the button is hovered after a copy', () => {
+			const show = jest.fn();
+			const hide = jest.fn();
+			copyToClipboard.mockResolvedValue();
+			useTooltipBase.mockReturnValue([show, hide]);
+			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" />);
+			return wrapper
+				.find('#test-id')
+				.prop('onClick')()
+				.then(() => {
+					wrapper.find('#test-id').prop('onMouseEnter')();
+					jest.runOnlyPendingTimers();
+					expect(hide.mock.calls).toEqual([]);
+				});
+		});
+
+		it('adds an effect which cancels the hide timer on unmount', () => {
+			const show = jest.fn();
+			const hide = jest.fn();
+			copyToClipboard.mockResolvedValue();
+			useTooltipBase.mockReturnValue([show, hide]);
+			const wrapper = shallow(<CopyButton id="test-id" tooltipText="Test tooltip" />);
+			expect(useEffect.mock.calls).toEqual([[expect.any(Function), []]]);
+			return wrapper
+				.find('#test-id')
+				.prop('onClick')()
+				.then(() => {
+					useEffect.mock.calls[0][0]()();
+					jest.runOnlyPendingTimers();
+					expect(hide.mock.calls).toEqual([]);
+				});
+		});
+
 		it('shows temporary tooltip when copy fails', () => {
 			const target = {};
 			const show = jest.fn();
 			const hide = jest.fn();
 			copyToClipboard.mockRejectedValue(new Error('Test error'));
-			useRef.mockReturnValue({current: target});
+			useRef.mockReturnValueOnce({current: target}).mockReturnValueOnce({current: null});
 			useTooltipBase.mockReturnValue([show, hide]);
 			const wrapper = shallow(
 				<CopyButton id="test-id" data="Test data" tooltipText="Test tooltip" tooltipPlacement="top" />

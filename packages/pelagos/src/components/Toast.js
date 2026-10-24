@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 
 import ToastTypes from '../toasts/ToastTypes';
@@ -21,14 +21,33 @@ const createAnimation = (id) =>
 		{duration, fill: 'both', easing: 'ease-out'}
 	);
 
+const updateIds = (current, keep, added) => {
+	const ids = new Set(current?.filter(keep));
+	for (const id of added) {
+		ids.add(id);
+	}
+	return ids.size ? [...ids] : null;
+};
+
 /** Displays messages as toasts. */
 const Toast = ({messages = emptyMessages, onRemove}) => {
 	const animationsRef = useRef(null);
 	const enteringRef = useRef(null);
 	const leavingRef = useRef(null);
+	const onRemoveRef = useRef(onRemove);
+	const messagesRef = useRef(messages);
+
+	// The children keep this function, so it must always call the latest onRemove
+	const handleRemove = useCallback((message) => onRemoveRef.current?.(message), []);
+
 	const [children, setChildren] = useState(() =>
-		messages.map((m) => <ToastMessage key={m.id} message={m} onRemove={onRemove} />)
+		messages.map((m) => <ToastMessage key={m.id} message={m} onRemove={handleRemove} />)
 	);
+
+	useLayoutEffect(() => {
+		onRemoveRef.current = onRemove;
+		messagesRef.current = messages;
+	});
 
 	// The order of the effects is important for correct processing
 	useEffect(() => {
@@ -43,9 +62,17 @@ const Toast = ({messages = emptyMessages, onRemove}) => {
 			}
 		}
 		if (enteringRef.current) {
-			// Build animations for new children
 			for (const id of enteringRef.current) {
-				animations[id] = createAnimation(id);
+				const animation = animations[id];
+				if (animation?.leaving) {
+					// The message was added again while leaving, run the animation forwards again
+					animation.leaving = false;
+					animation.onfinish = null;
+					animation.reverse();
+				} else {
+					// Build animations for new children
+					animations[id] = createAnimation(id);
+				}
 			}
 			enteringRef.current = null;
 		}
@@ -53,11 +80,16 @@ const Toast = ({messages = emptyMessages, onRemove}) => {
 			// Run animation backwards for removed children
 			for (const id of leavingRef.current) {
 				const animation = animations[id];
-				if (animation) {
-					delete animations[id];
+				if (animation && !animation.leaving) {
+					animation.leaving = true;
 					animation.reverse();
 					animation.onfinish = () => {
-						setChildren((children) => children.filter(({key}) => key !== id));
+						// The message may have been added again before the effect could cancel this handler,
+						// in that case the child and the animation are kept so the animation can run forwards again
+						if (!messagesRef.current.some((m) => m.id === id)) {
+							delete animations[id];
+							setChildren((children) => children.filter(({key}) => key !== id));
+						}
 					};
 				}
 			}
@@ -71,27 +103,29 @@ const Toast = ({messages = emptyMessages, onRemove}) => {
 			const allIds = Object.fromEntries(children.map(({key}) => [key, true]));
 			const newIds = {};
 			const entering = [];
-			// Build children for new messages
+			// Build children for new messages, and for messages added again while leaving
 			for (const m of messages) {
 				const id = m.id;
 				newIds[id] = true;
 				if (!allIds[id]) {
-					newChildren.push(<ToastMessage key={id} message={m} onRemove={onRemove} />);
+					newChildren.push(<ToastMessage key={id} message={m} onRemove={handleRemove} />);
 					allIds[id] = true;
+					entering.push(id);
+				} else if (animationsRef.current?.[id]?.leaving) {
+					const index = newChildren.findIndex(({key}) => key === id);
+					newChildren[index] = <ToastMessage key={id} message={m} onRemove={handleRemove} />;
 					entering.push(id);
 				}
 			}
 			// Get removed messages
 			const leaving = children.map(({key}) => key).filter((key) => !newIds[key]);
-			if (entering.length) {
-				enteringRef.current = entering;
-			}
-			if (leaving.length) {
-				leavingRef.current = leaving;
-			}
+			// Several updates can be processed before the effect runs, so the ids are accumulated,
+			// dropping the ones that the latest messages contradict
+			enteringRef.current = updateIds(enteringRef.current, (id) => newIds[id], entering);
+			leavingRef.current = updateIds(leavingRef.current, (id) => !newIds[id], leaving);
 			return newChildren;
 		});
-	}, [messages, onRemove]);
+	}, [messages, handleRemove]);
 
 	return (
 		<div className="Toast">

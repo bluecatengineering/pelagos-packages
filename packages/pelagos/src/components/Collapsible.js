@@ -5,6 +5,7 @@ import ChevronDown from '@carbon/icons-react/es/ChevronDown';
 import addClassName from '../functions/addClassName';
 import cloneWithClassName from '../functions/cloneWithClassName';
 import useCollapse from '../hooks/useCollapse';
+import useSetRefs from '../hooks/useSetRefs';
 
 import './Collapsible.less';
 
@@ -15,6 +16,8 @@ const Collapsible = ({id, className, open, children, onHeaderClick}) => {
 	const contentId = id + '-content';
 	const headerElement = cloneWithClassName(children[0], 'Collapsible__title');
 	const contentElement = children[1];
+	// Keep the ref set by the caller on the content element
+	const contentRef = useSetRefs(contentElement.props.ref, useCollapse(open));
 	return (
 		<div id={id} className={`Collapsible${className ? ` ${className}` : ''}`}>
 			<button
@@ -32,7 +35,7 @@ const Collapsible = ({id, className, open, children, onHeaderClick}) => {
 				className: addClassName(contentElement, 'Collapsible__body'),
 				role: 'region',
 				'aria-labelledby': headerId,
-				ref: useCollapse(open),
+				ref: contentRef,
 			})}
 		</div>
 	);
@@ -45,7 +48,7 @@ Collapsible.propTypes = {
 	className: PropTypes.string,
 	/** Whether the child component is displayed. */
 	open: PropTypes.bool,
-	/** The child components: header and content. The content element is cloned and given an id, `role="region"`, `aria-labelledby`, and a ref — pass an element that can carry `role="region"` (e.g. a div wrapper), not a list or table, so the injected role does not override its semantics. */
+	/** The child components: header and content. The content element is cloned and given an id, `role="region"`, `aria-labelledby`, and a ref — pass an element that can carry `role="region"` (e.g. a div wrapper), not a list or table, so the injected role does not override its semantics. A ref set on the content element must be stable (for example created with useRef or wrapped in useCallback), a new ref stops the running animation. */
 	children: PropTypes.arrayOf(PropTypes.element).isRequired,
 	/** Function invoked when the header is clicked. */
 	onHeaderClick: PropTypes.func,

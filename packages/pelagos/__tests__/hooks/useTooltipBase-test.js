@@ -208,6 +208,15 @@ describe('useTooltipBase', () => {
 
 			remove();
 			expect(removeEventListener.mock.calls).toEqual([['keydown', handleKeyDown]]);
+			expect(removeAttribute.mock.calls).toEqual([['aria-describedby'], ['aria-describedby']]);
+			expect(removeChild.mock.calls).toEqual([[tooltip]]);
+		});
+
+		it('adds an effect which does not remove the tooltip on unmount if not in the DOM', () => {
+			useTooltipBase();
+
+			useEffect.mock.calls[0][0]()();
+			expect(removeChild).not.toHaveBeenCalled();
 		});
 	});
 });
