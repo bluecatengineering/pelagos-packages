@@ -54,6 +54,25 @@ describe('LinkButton', () => {
 			expect(preventDefault.mock.calls).toEqual([[]]);
 		});
 
+		it('calls onKeyDown before handling the key', () => {
+			const click = jest.fn();
+			const onKeyDown = jest.fn();
+			const event = {key: ' ', target: {click}, preventDefault: jest.fn()};
+			const wrapper = shallow(<LinkButton id="test" text="Test" onKeyDown={onKeyDown} />);
+			wrapper.find('#test').simulate('keydown', event);
+			expect(onKeyDown.mock.calls).toEqual([[event]]);
+			expect(click.mock.calls).toEqual([[]]);
+		});
+
+		it('does not click the target when onKeyDown calls preventDefault', () => {
+			const click = jest.fn();
+			const wrapper = shallow(
+				<LinkButton id="test" text="Test" onKeyDown={(event) => (event.defaultPrevented = true)} />
+			);
+			wrapper.find('#test').simulate('keydown', {key: ' ', target: {click}});
+			expect(click).not.toHaveBeenCalled();
+		});
+
 		it('does not click the target when other key is pressed', () => {
 			const click = jest.fn();
 			const wrapper = shallow(<LinkButton id="test" text="Test" />);

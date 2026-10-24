@@ -16,16 +16,22 @@ const LinkButton = ({
 	size = 'medium',
 	type = 'tertiary',
 	disabled,
+	onKeyDown,
 	...props
 }) => {
 	const tooltip = useTooltip(tooltipText, 'top');
-	const handleKeyDown = useCallback((event) => {
-		if (event.key === ' ') {
-			// Space would also scroll the page
-			event.preventDefault();
-			event.target.click();
-		}
-	}, []);
+	// The handler set by the caller runs first, it can call preventDefault to skip the default behaviour
+	const handleKeyDown = useCallback(
+		(event) => {
+			onKeyDown?.(event);
+			if (!event.defaultPrevented && event.key === ' ') {
+				// Space would also scroll the page
+				event.preventDefault();
+				event.target.click();
+			}
+		},
+		[onKeyDown]
+	);
 	return disabled ? (
 		<span
 			id={id}
@@ -67,6 +73,8 @@ LinkButton.propTypes = {
 	disabled: PropTypes.bool,
 	/** Function invoked when the button is clicked. */
 	onClick: PropTypes.func,
+	/** Function invoked when a key is pressed, before the default behaviour which is skipped if it calls preventDefault. */
+	onKeyDown: PropTypes.func,
 };
 
 export default LinkButton;

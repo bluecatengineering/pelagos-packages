@@ -3,29 +3,16 @@ import PropTypes from 'prop-types';
 import {t} from '@bluecateng/l10n.macro';
 import identity from 'lodash-es/identity';
 
-import useTooltip from '../hooks/useTooltip';
 import useRandomId from '../hooks/useRandomId';
 
+import DefaultTag from './DefaultTag';
 import Layer from './Layer';
 import Tag from './Tag';
 import './TagInput.less';
 
-// Each default tag needs its own tooltip, useTooltip can only handle one element
-const DefaultTag = ({tag, disabled, tooltipText}) => (
-	<Tag
-		className="TagInput__defaultTag"
-		type="gray"
-		text={tag}
-		aria-disabled={disabled}
-		ref={useTooltip(tooltipText, 'top')}
-	/>
+const renderDefaultTag = (tag, disabled, dft, handleRemove, tooltip) => (
+	<Tag type="gray" text={tag} aria-disabled={disabled} ref={tooltip} />
 );
-
-DefaultTag.propTypes = {
-	tag: PropTypes.string,
-	disabled: PropTypes.bool,
-	tooltipText: PropTypes.string,
-};
 
 const removeTag = (tags, i) => {
 	const newTags = [...tags];
@@ -51,6 +38,8 @@ const TagInput = ({
 	transform = identity,
 	onChange,
 	onError,
+	onKeyDown,
+	onBlur,
 	...props
 }) => {
 	id = useRandomId(id);
@@ -91,8 +80,13 @@ const TagInput = ({
 		[tags, transform, validate, onError, onChange]
 	);
 
+	// The handlers set by the caller run first, they can call preventDefault to skip the default behaviour
 	const handleKeyDown = useCallback(
 		(event) => {
+			onKeyDown?.(event);
+			if (event.defaultPrevented) {
+				return;
+			}
 			const value = event.target.value;
 			switch (event.key) {
 				case 'Enter':
@@ -117,19 +111,20 @@ const TagInput = ({
 					break;
 			}
 		},
-		[tags, onChange, addTag]
+		[onKeyDown, tags, onChange, addTag]
 	);
 
 	const handleChange = useCallback((event) => (onError(null, event), setText(event.target.value)), [onError]);
 
 	const handleBlur = useCallback(
 		(event) => {
+			onBlur?.(event);
 			const value = event.target.value;
-			if (value) {
+			if (!event.defaultPrevented && value) {
 				addTag(value, event);
 			}
 		},
-		[addTag]
+		[addTag, onBlur]
 	);
 
 	const length = tags.length;
@@ -152,7 +147,14 @@ const TagInput = ({
 					))
 				: defaultTags?.length
 					? defaultTags.map((tag) => (
-							<DefaultTag key={tag} tag={tag} disabled={disabled} tooltipText={defaultTooltipText} />
+							<DefaultTag
+								key={tag}
+								className="TagInput__defaultTag"
+								tag={tag}
+								disabled={disabled}
+								tooltipText={defaultTooltipText}
+								renderTag={renderDefaultTag}
+							/>
 						))
 					: null}
 			<input
@@ -195,6 +197,10 @@ TagInput.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	/** Function invoked when an error is detected. */
 	onError: PropTypes.func.isRequired,
+	/** Function invoked when a key is pressed, before the default behaviour which is skipped if it calls preventDefault. */
+	onKeyDown: PropTypes.func,
+	/** Function invoked when the element loses focus, before the default behaviour which is skipped if it calls preventDefault. */
+	onBlur: PropTypes.func,
 };
 
 export default TagInput;

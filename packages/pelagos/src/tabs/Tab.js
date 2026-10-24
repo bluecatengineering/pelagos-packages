@@ -7,26 +7,50 @@ import TabListContext from './TabContext';
 
 /** A single tab in a TabList. */
 const Tab = forwardRef(
-	({as: BaseComponent = 'button', className, secondaryLabel, children, onRemove, ...props}, ref) => {
+	(
+		{
+			as: BaseComponent = 'button',
+			className,
+			secondaryLabel,
+			children,
+			onRemove,
+			onClick,
+			onMouseUp,
+			onKeyDown,
+			...props
+		},
+		ref
+	) => {
 		const {index, selectedIndex, focused, hasSecondary, onChange} = useContext(TabListContext);
-		const handleClick = useCallback(() => onChange?.(index), [index, onChange]);
+		// The handlers set by the caller run first, they can call preventDefault to skip the default behaviour
+		const handleClick = useCallback(
+			(event) => {
+				onClick?.(event);
+				if (!event.defaultPrevented) {
+					onChange?.(index);
+				}
+			},
+			[index, onChange, onClick]
+		);
 		const handleMouseUp = useCallback(
 			(event) => {
-				if (event.button === 1 && onRemove) {
+				onMouseUp?.(event);
+				if (!event.defaultPrevented && event.button === 1 && onRemove) {
 					event.preventDefault();
 					onRemove(index);
 				}
 			},
-			[index, onRemove]
+			[index, onMouseUp, onRemove]
 		);
 		const handleKeyDown = useCallback(
 			(event) => {
-				if (onRemove && (event.key === 'Delete' || event.key === 'Backspace')) {
+				onKeyDown?.(event);
+				if (!event.defaultPrevented && onRemove && (event.key === 'Delete' || event.key === 'Backspace')) {
 					event.preventDefault();
 					onRemove(index);
 				}
 			},
-			[index, onRemove]
+			[index, onKeyDown, onRemove]
 		);
 		const handleRemoveClick = useCallback(
 			(event) => {
@@ -76,6 +100,12 @@ Tab.propTypes = {
 	children: PropTypes.node,
 	/** Function invoked when the remove button is clicked. The remove button is displayed only when this property is not null. */
 	onRemove: PropTypes.func,
+	/** Function invoked when the element is clicked, before the default behaviour which is skipped if it calls preventDefault. */
+	onClick: PropTypes.func,
+	/** Function invoked when a mouse button is released, before the default behaviour which is skipped if it calls preventDefault. */
+	onMouseUp: PropTypes.func,
+	/** Function invoked when a key is pressed, before the default behaviour which is skipped if it calls preventDefault. */
+	onKeyDown: PropTypes.func,
 };
 
 export default Tab;

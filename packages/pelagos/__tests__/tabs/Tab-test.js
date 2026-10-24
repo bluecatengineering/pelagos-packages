@@ -30,8 +30,28 @@ describe('Tab', () => {
 			const onChange = jest.fn();
 			useContext.mockReturnValueOnce({index: 0, onChange});
 			const wrapper = shallow(<Tab>Test</Tab>);
-			wrapper.simulate('click');
+			wrapper.simulate('click', {});
 			expect(onChange.mock.calls).toEqual([[0]]);
+		});
+
+		it('calls onClick before onChange when the tab is clicked', () => {
+			const calls = [];
+			const onChange = jest.fn(() => calls.push('onChange'));
+			const onClick = jest.fn(() => calls.push('onClick'));
+			const event = {};
+			useContext.mockReturnValueOnce({index: 0, onChange});
+			const wrapper = shallow(<Tab onClick={onClick}>Test</Tab>);
+			wrapper.simulate('click', event);
+			expect(onClick.mock.calls).toEqual([[event]]);
+			expect(calls).toEqual(['onClick', 'onChange']);
+		});
+
+		it('does not call onChange when onClick calls preventDefault', () => {
+			const onChange = jest.fn();
+			useContext.mockReturnValueOnce({index: 0, onChange});
+			const wrapper = shallow(<Tab onClick={(event) => (event.defaultPrevented = true)}>Test</Tab>);
+			wrapper.simulate('click', {});
+			expect(onChange).not.toHaveBeenCalled();
 		});
 
 		it('calls onRemove when the middle button is clicked', () => {
@@ -69,6 +89,39 @@ describe('Tab', () => {
 			const wrapper = shallow(<Tab onRemove={onRemove}>Test</Tab>);
 			wrapper.simulate('keydown', {key: 'Other'});
 			expect(onRemove.mock.calls).toEqual([]);
+		});
+
+		it('calls onMouseUp and onKeyDown before handling the event', () => {
+			const onRemove = jest.fn();
+			const onMouseUp = jest.fn();
+			const onKeyDown = jest.fn();
+			const mouseUp = {button: 1, preventDefault: jest.fn()};
+			const keyDown = {key: 'Delete', preventDefault: jest.fn()};
+			useContext.mockReturnValueOnce({index: 0});
+			const wrapper = shallow(
+				<Tab onRemove={onRemove} onMouseUp={onMouseUp} onKeyDown={onKeyDown}>
+					Test
+				</Tab>
+			);
+			wrapper.simulate('mouseup', mouseUp);
+			wrapper.simulate('keydown', keyDown);
+			expect(onMouseUp.mock.calls).toEqual([[mouseUp]]);
+			expect(onKeyDown.mock.calls).toEqual([[keyDown]]);
+			expect(onRemove.mock.calls).toEqual([[0], [0]]);
+		});
+
+		it('does not call onRemove when onMouseUp or onKeyDown call preventDefault', () => {
+			const onRemove = jest.fn();
+			const prevent = (event) => (event.defaultPrevented = true);
+			useContext.mockReturnValueOnce({index: 0});
+			const wrapper = shallow(
+				<Tab onRemove={onRemove} onMouseUp={prevent} onKeyDown={prevent}>
+					Test
+				</Tab>
+			);
+			wrapper.simulate('mouseup', {button: 1});
+			wrapper.simulate('keydown', {key: 'Delete'});
+			expect(onRemove).not.toHaveBeenCalled();
 		});
 
 		it('calls onRemove when the remove button is clicked', () => {

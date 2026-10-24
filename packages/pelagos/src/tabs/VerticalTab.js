@@ -6,9 +6,18 @@ import TabListContext from './TabContext';
 
 /** A single tab in a VerticalTabList. */
 const VerticalTab = forwardRef(
-	({as: BaseComponent = 'button', className, secondaryLabel, error, children, ...props}, ref) => {
+	({as: BaseComponent = 'button', className, secondaryLabel, error, children, onClick, ...props}, ref) => {
 		const {index, selectedIndex, focused, onChange} = useContext(TabListContext);
-		const handleClick = useCallback(() => onChange?.(index), [index, onChange]);
+		// The handler set by the caller runs first, it can call preventDefault to skip the default behaviour
+		const handleClick = useCallback(
+			(event) => {
+				onClick?.(event);
+				if (!event.defaultPrevented) {
+					onChange?.(index);
+				}
+			},
+			[index, onChange, onClick]
+		);
 		return (
 			<BaseComponent
 				{...props}
@@ -44,6 +53,8 @@ VerticalTab.propTypes = {
 	error: PropTypes.bool,
 	/** The primary label. */
 	children: PropTypes.node,
+	/** Function invoked when the element is clicked, before the default behaviour which is skipped if it calls preventDefault. */
+	onClick: PropTypes.func,
 };
 
 export default VerticalTab;
