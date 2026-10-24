@@ -40,6 +40,16 @@ describe('FileUploaderDropZone', () => {
 			const wrapper = shallow(<FileUploaderDropZone label="Test" text="Test drop zone" types={types} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('uses the label as accessible name when text is not set', () => {
+			const wrapper = shallow(<FileUploaderDropZone label="Test" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('uses the text as accessible name when label is not set', () => {
+			const wrapper = shallow(<FileUploaderDropZone text="Test drop zone" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {
@@ -130,9 +140,11 @@ describe('FileUploaderDropZone', () => {
 			useRef.mockReturnValueOnce({current: live});
 			const wrapper = shallow(<FileUploaderDropZone id="test" types={[]} multiple onAddFiles={onAddFiles} />);
 
-			wrapper.find('input').simulate('change', {target: {files}});
+			const target = {files, value: 'C:\\fakepath\\file.txt'};
+			wrapper.find('input').simulate('change', {target});
 			expect(onAddFiles.mock.calls).toEqual([[files]]);
 			expect(live.textContent).toBe('File file.txt uploaded');
+			expect(target.value).toBe('');
 		});
 
 		it('calls preventDefault on dragover', () => {

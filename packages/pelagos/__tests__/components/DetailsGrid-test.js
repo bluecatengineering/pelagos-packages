@@ -10,5 +10,10 @@ describe('DetailsGrid', () => {
 			const wrapper = shallow(<DetailsGrid className="TestClass">Foo</DetailsGrid>);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when className is not set', () => {
+			const wrapper = shallow(<DetailsGrid>Foo</DetailsGrid>);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

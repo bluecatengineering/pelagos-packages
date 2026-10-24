@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`TextInput rendering renders an empty value when value is null 1`] = `
+<Layer
+  as="input"
+  className="TextInputField__input"
+  id="test"
+  onChange={[Function]}
+  type="text"
+  value=""
+/>
+`;
+
 exports[`TextInput rendering renders expected elements 1`] = `
 <Layer
   aria-required={true}

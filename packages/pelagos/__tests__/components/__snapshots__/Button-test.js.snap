@@ -5,6 +5,7 @@ exports[`Button rendering renders expected elements when both size is small and 
   aria-disabled="true"
   className="Button Button--small Button--tertiary"
   id="test"
+  role="button"
 >
   Test
 </span>
@@ -33,8 +34,11 @@ exports[`Button rendering renders expected elements when className is set 1`] = 
 exports[`Button rendering renders expected elements when disabled is true 1`] = `
 <span
   aria-disabled="true"
+  aria-label="Save"
   className="Button Button--medium Button--tertiary"
+  data-testid="save"
   id="test"
+  role="button"
 >
   Test
 </span>
@@ -45,6 +49,7 @@ exports[`Button rendering renders expected elements when disabled is true and ch
   aria-disabled="true"
   className="Button Button--medium Button--tertiary"
   id="test"
+  role="button"
 >
   Test
 </span>
@@ -55,6 +60,7 @@ exports[`Button rendering renders expected elements when disabled is true and cl
   aria-disabled="true"
   className="Button Button--medium Button--tertiary testClass"
   id="test"
+  role="button"
 >
   Test
 </span>
@@ -65,6 +71,7 @@ exports[`Button rendering renders expected elements when disabled is true and ic
   aria-disabled="true"
   className="Button Button--medium Button--tertiary"
   id="test"
+  role="button"
 >
   Test
   <SvgIcon

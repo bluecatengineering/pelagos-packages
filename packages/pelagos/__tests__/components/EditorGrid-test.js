@@ -14,5 +14,14 @@ describe('EditorGrid', () => {
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders expected elements when className is not set', () => {
+			const wrapper = shallow(
+				<EditorGrid>
+					<div />
+				</EditorGrid>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

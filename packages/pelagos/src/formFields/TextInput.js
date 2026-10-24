@@ -6,12 +6,13 @@ import Layer from '../components/Layer';
 import './TextInputField.less';
 
 /** A text input. */
-const TextInputField = ({className, type = 'text', required, error, onChange, ...props}) => (
+const TextInputField = ({className, type = 'text', value, required, error, onChange, ...props}) => (
 	<Layer
 		{...props}
 		as="input"
 		className={`TextInputField__input${error ? ' TextInputField--error' : ''}${className ? ` ${className}` : ''}`}
 		type={type}
+		value={value === null ? '' : value}
 		aria-required={required}
 		aria-invalid={error}
 		onChange={useCallback((event) => onChange(event.target.value), [onChange])}

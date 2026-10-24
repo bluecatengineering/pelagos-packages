@@ -30,7 +30,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
     >
       <Layer
         aria-describedby="random-id-operation"
-        aria-labelledby="item-foo"
+        aria-labelledby="random-id-item-foo"
         className="ListSelector__entry"
         data-index={0}
         data-key="foo"
@@ -39,7 +39,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
       >
         <div
           className="ListSelector__name draggable"
-          id="item-foo"
+          id="random-id-item-foo"
         >
           <Draggable
             className="ListSelector__grip"
@@ -61,7 +61,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
       </Layer>
       <Layer
         aria-describedby="random-id-operation"
-        aria-labelledby="item-bar"
+        aria-labelledby="random-id-item-bar"
         className="ListSelector__entry"
         data-index={1}
         data-key="bar"
@@ -70,7 +70,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
       >
         <div
           className="ListSelector__name draggable"
-          id="item-bar"
+          id="random-id-item-bar"
         >
           <Draggable
             className="ListSelector__grip"
@@ -106,7 +106,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
       role="list"
     >
       <Layer
-        aria-labelledby="item-baz"
+        aria-labelledby="random-id-item-baz"
         className="ListSelector__available"
         data-key="baz"
         role="listitem"
@@ -120,14 +120,14 @@ exports[`ListSelector rendering renders expected elements 1`] = `
         </button>
         <span
           className="ListSelector__text"
-          id="item-baz"
+          id="random-id-item-baz"
           title="Baz"
         >
           Baz
         </span>
       </Layer>
       <Layer
-        aria-labelledby="item-oof"
+        aria-labelledby="random-id-item-oof"
         className="ListSelector__available"
         data-key="oof"
         role="listitem"
@@ -141,7 +141,7 @@ exports[`ListSelector rendering renders expected elements 1`] = `
         </button>
         <span
           className="ListSelector__text"
-          id="item-oof"
+          id="random-id-item-oof"
           title="Oof"
         >
           Oof
@@ -182,7 +182,7 @@ exports[`ListSelector rendering renders expected elements when className is set 
     >
       <Layer
         aria-describedby="random-id-operation"
-        aria-labelledby="item-foo"
+        aria-labelledby="random-id-item-foo"
         className="ListSelector__entry"
         data-index={0}
         data-key="foo"
@@ -191,7 +191,7 @@ exports[`ListSelector rendering renders expected elements when className is set 
       >
         <div
           className="ListSelector__name draggable"
-          id="item-foo"
+          id="random-id-item-foo"
         >
           <Draggable
             className="ListSelector__grip"
@@ -213,7 +213,7 @@ exports[`ListSelector rendering renders expected elements when className is set 
       </Layer>
       <Layer
         aria-describedby="random-id-operation"
-        aria-labelledby="item-bar"
+        aria-labelledby="random-id-item-bar"
         className="ListSelector__entry"
         data-index={1}
         data-key="bar"
@@ -222,7 +222,7 @@ exports[`ListSelector rendering renders expected elements when className is set 
       >
         <div
           className="ListSelector__name draggable"
-          id="item-bar"
+          id="random-id-item-bar"
         >
           <Draggable
             className="ListSelector__grip"
@@ -258,7 +258,7 @@ exports[`ListSelector rendering renders expected elements when className is set 
       role="list"
     >
       <Layer
-        aria-labelledby="item-baz"
+        aria-labelledby="random-id-item-baz"
         className="ListSelector__available"
         data-key="baz"
         role="listitem"
@@ -272,14 +272,14 @@ exports[`ListSelector rendering renders expected elements when className is set 
         </button>
         <span
           className="ListSelector__text"
-          id="item-baz"
+          id="random-id-item-baz"
           title="Baz"
         >
           Baz
         </span>
       </Layer>
       <Layer
-        aria-labelledby="item-oof"
+        aria-labelledby="random-id-item-oof"
         className="ListSelector__available"
         data-key="oof"
         role="listitem"
@@ -293,7 +293,7 @@ exports[`ListSelector rendering renders expected elements when className is set 
         </button>
         <span
           className="ListSelector__text"
-          id="item-oof"
+          id="random-id-item-oof"
           title="Oof"
         >
           Oof
@@ -353,7 +353,7 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
       role="list"
     >
       <Layer
-        aria-labelledby="item-bar"
+        aria-labelledby="random-id-item-bar"
         className="ListSelector__available"
         data-key="bar"
         role="listitem"
@@ -367,14 +367,14 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
         </button>
         <span
           className="ListSelector__text"
-          id="item-bar"
+          id="random-id-item-bar"
           title="Bar"
         >
           Bar
         </span>
       </Layer>
       <Layer
-        aria-labelledby="item-baz"
+        aria-labelledby="random-id-item-baz"
         className="ListSelector__available"
         data-key="baz"
         role="listitem"
@@ -388,14 +388,14 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
         </button>
         <span
           className="ListSelector__text"
-          id="item-baz"
+          id="random-id-item-baz"
           title="Baz"
         >
           Baz
         </span>
       </Layer>
       <Layer
-        aria-labelledby="item-foo"
+        aria-labelledby="random-id-item-foo"
         className="ListSelector__available"
         data-key="foo"
         role="listitem"
@@ -409,14 +409,14 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
         </button>
         <span
           className="ListSelector__text"
-          id="item-foo"
+          id="random-id-item-foo"
           title="Foo"
         >
           Foo
         </span>
       </Layer>
       <Layer
-        aria-labelledby="item-oof"
+        aria-labelledby="random-id-item-oof"
         className="ListSelector__available"
         data-key="oof"
         role="listitem"
@@ -430,7 +430,7 @@ exports[`ListSelector rendering renders expected elements when items is empty 1`
         </button>
         <span
           className="ListSelector__text"
-          id="item-oof"
+          id="random-id-item-oof"
           title="Oof"
         >
           Oof

@@ -145,7 +145,6 @@ const TagInput = ({
 							className="TagInput__tag"
 							type="gray"
 							text={name}
-							removeTitle={`Remove ${name}`}
 							aria-disabled={disabled}
 							data-index={i}
 							onRemove={disabled ? null : handleRemove}

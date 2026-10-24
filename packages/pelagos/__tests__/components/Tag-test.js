@@ -35,5 +35,19 @@ describe('Tag', () => {
 			const wrapper = shallow(<Tag text="gray" removeTitle="Remove title" onRemove={jest.fn()} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('names the remove button after the text when removeTitle is not set', () => {
+			const wrapper = shallow(<Tag id="test" text="Foo" onRemove={jest.fn()} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('labels the remove button with the tag when neither removeTitle nor text are set', () => {
+			const wrapper = shallow(
+				<Tag id="test" onRemove={jest.fn()}>
+					Foo
+				</Tag>
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 });

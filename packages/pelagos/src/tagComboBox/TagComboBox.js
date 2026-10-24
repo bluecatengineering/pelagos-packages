@@ -15,13 +15,9 @@ import './TagComboBox.less';
 
 const defaultRenderTag = (tag, disabled, dft, handleRemove, defaultTooltip) =>
 	dft ? (
-		<Tag type="gray" aria-disabled={disabled} ref={defaultTooltip}>
-			{tag}
-		</Tag>
+		<Tag type="gray" text={tag} aria-disabled={disabled} ref={defaultTooltip} />
 	) : (
-		<Tag type="gray" removeTitle={`Remove ${tag}`} aria-disabled={disabled} onRemove={disabled ? null : handleRemove}>
-			{tag}
-		</Tag>
+		<Tag type="gray" text={tag} aria-disabled={disabled} onRemove={disabled ? null : handleRemove} />
 	);
 
 // Each default tag needs its own tooltip, useTooltip can only handle one element

@@ -29,7 +29,7 @@ interface TagProps extends Omit<HTMLProps<HTMLButtonElement | HTMLDivElement>, '
 	text?: string;
 	/** The tag title if different from the text. */
 	tagTitle?: string;
-	/** The title for the remove button. */
+	/** The title and accessible name for the remove button, the default is "Remove" followed by the text. */
 	removeTitle?: string;
 	/** Function invoked when the tag is clicked. */
 	onClick?: MouseEventHandler<HTMLButtonElement>;

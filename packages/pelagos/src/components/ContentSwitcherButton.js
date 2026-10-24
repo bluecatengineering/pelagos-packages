@@ -5,6 +5,7 @@ const ContentSwitcherButton = ({className, text, selected, ...props}) => (
 	<button
 		{...props}
 		className={`ContentSwitcher__button${className ? ` ${className}` : ''}`}
+		type="button"
 		role="tab"
 		aria-selected={selected}>
 		{text}
