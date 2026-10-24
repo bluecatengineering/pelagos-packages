@@ -24,6 +24,19 @@ const defaultRenderTag = (tag, disabled, dft, handleRemove, defaultTooltip) =>
 		</Tag>
 	);
 
+// Each default tag needs its own tooltip, useTooltip can only handle one element
+const DefaultTag = ({tag, disabled, tooltipText, renderTag}) =>
+	cloneElement(renderTag(tag, disabled, true, null, useTooltip(tooltipText, 'top')), {
+		className: 'TagComboBox__defaultTag',
+	});
+
+DefaultTag.propTypes = {
+	tag: PropTypes.any,
+	disabled: PropTypes.bool,
+	tooltipText: PropTypes.string,
+	renderTag: PropTypes.func,
+};
+
 const defaultHasTag = (tags, value) => {
 	const lower = value.toLowerCase();
 	return tags.some((tag) => tag.toLowerCase() === lower);
@@ -250,8 +263,6 @@ const TagComboBox = ({
 
 	useEffect(() => updateSuggestions.cancel, [updateSuggestions]);
 
-	const tooltip = useTooltip(defaultTooltipText, 'top');
-
 	useSelectPositioner(open, boxRef, popUpRef);
 
 	const length = tags.length;
@@ -271,12 +282,15 @@ const TagComboBox = ({
 							})
 						)
 					: defaultTags?.length
-						? defaultTags.map((tag) =>
-								cloneElement(renderTag(tag, disabled, true, null, tooltip), {
-									key: getKey(tag),
-									className: 'TagComboBox__defaultTag',
-								})
-							)
+						? defaultTags.map((tag) => (
+								<DefaultTag
+									key={getKey(tag)}
+									tag={tag}
+									disabled={disabled}
+									tooltipText={defaultTooltipText}
+									renderTag={renderTag}
+								/>
+							))
 						: null}
 				<input
 					{...props}

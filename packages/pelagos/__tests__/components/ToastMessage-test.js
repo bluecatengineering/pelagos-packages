@@ -77,11 +77,12 @@ describe('ToastMessage', () => {
 			const onRemove = jest.fn();
 			const animate = jest.fn().mockReturnValue(animation);
 			const addEventListener = jest.fn();
+			const removeEventListener = jest.fn();
 			const message = {
 				type: ToastTypes.ERROR,
 				text: 'This is a test',
 			};
-			const current = {animate, parentNode: {addEventListener}};
+			const current = {animate, parentNode: {addEventListener, removeEventListener}};
 			useRef.mockReturnValue({current});
 			shallow(<ToastMessage message={message} onRemove={onRemove} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [message, onRemove]]);
@@ -104,7 +105,8 @@ describe('ToastMessage', () => {
 			expect(pause.mock.calls).toEqual([[]]);
 			expect(onRemove.mock.calls).toEqual([[message]]);
 
-			expect(remove()).toBeNull();
+			remove();
+			expect(removeEventListener.mock.calls).toEqual(addEventListener.mock.calls);
 		});
 
 		it('adds an effect which starts an animation when type is success', () => {
@@ -113,11 +115,12 @@ describe('ToastMessage', () => {
 			const onRemove = jest.fn();
 			const animate = jest.fn().mockReturnValue(animation);
 			const addEventListener = jest.fn();
+			const removeEventListener = jest.fn();
 			const message = {
 				type: ToastTypes.SUCCESS,
 				text: 'This is a test',
 			};
-			const current = {animate, parentNode: {addEventListener}};
+			const current = {animate, parentNode: {addEventListener, removeEventListener}};
 			useRef.mockReturnValue({current});
 			shallow(<ToastMessage message={message} onRemove={onRemove} />);
 			expect(useEffect.mock.calls[0]).toEqual([anyFunction, [message, onRemove]]);
@@ -127,8 +130,12 @@ describe('ToastMessage', () => {
 				[[{transform: 'scaleX(1)'}, {transform: 'scaleX(0)'}], {duration: 3000, fill: 'both'}],
 			]);
 
-			expect(remove()).toBe(true);
+			remove();
 			expect(cancel.mock.calls).toEqual([[]]);
+			expect(removeEventListener.mock.calls).toEqual([
+				['mouseenter', addEventListener.mock.calls[0][1]],
+				['mouseleave', addEventListener.mock.calls[1][1]],
+			]);
 		});
 
 		it('adds an effect which does not start an animation when not needed', () => {

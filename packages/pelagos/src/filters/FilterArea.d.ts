@@ -9,6 +9,6 @@ interface FilterAreaProps extends HTMLProps<HTMLUListElement> {
 	children?: ReactNode;
 }
 
-/** Displays a list of filters. */
+/** Displays a list of filters. A ref set on it must be stable (for example created with useRef or wrapped in useCallback), a new ref stops the running animation. */
 declare const FilterArea: FunctionComponent<FilterAreaProps>;
 export default FilterArea;

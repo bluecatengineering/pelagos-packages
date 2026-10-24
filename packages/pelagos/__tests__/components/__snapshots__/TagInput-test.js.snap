@@ -88,17 +88,15 @@ exports[`TagInput rendering renders expected elements when disabled and defaultT
     aria-live="assertive"
     className="sr-only"
   />
-  <Tag
-    aria-disabled={true}
-    className="TagInput__defaultTag"
-    text="foo"
-    type="gray"
+  <DefaultTag
+    disabled={true}
+    tag="foo"
+    tooltipText="Test tooltip"
   />
-  <Tag
-    aria-disabled={true}
-    className="TagInput__defaultTag"
-    text="bar"
-    type="gray"
+  <DefaultTag
+    disabled={true}
+    tag="bar"
+    tooltipText="Test tooltip"
   />
   <input
     aria-invalid={false}
@@ -183,15 +181,13 @@ exports[`TagInput rendering renders expected elements when tags is empty and def
     aria-live="assertive"
     className="sr-only"
   />
-  <Tag
-    className="TagInput__defaultTag"
-    text="foo"
-    type="gray"
+  <DefaultTag
+    tag="foo"
+    tooltipText="Test tooltip"
   />
-  <Tag
-    className="TagInput__defaultTag"
-    text="bar"
-    type="gray"
+  <DefaultTag
+    tag="bar"
+    tooltipText="Test tooltip"
   />
   <input
     aria-invalid={false}

@@ -129,7 +129,16 @@ const useTooltipBase = () => {
 
 		document.addEventListener('keydown', handleKeyDown);
 
-		return () => document.removeEventListener('keydown', handleKeyDown);
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+
+			// The tooltip is removed at once when the component is unmounted while it is displayed
+			const parent = tooltip.parentNode;
+			if (parent) {
+				targetRef.current.removeAttribute(attributeRef.current);
+				parent.removeChild(tooltip);
+			}
+		};
 	}, [animation, tooltip]);
 	return [show, hide, tooltip];
 };

@@ -10,6 +10,23 @@ import Layer from './Layer';
 import Tag from './Tag';
 import './TagInput.less';
 
+// Each default tag needs its own tooltip, useTooltip can only handle one element
+const DefaultTag = ({tag, disabled, tooltipText}) => (
+	<Tag
+		className="TagInput__defaultTag"
+		type="gray"
+		text={tag}
+		aria-disabled={disabled}
+		ref={useTooltip(tooltipText, 'top')}
+	/>
+);
+
+DefaultTag.propTypes = {
+	tag: PropTypes.string,
+	disabled: PropTypes.bool,
+	tooltipText: PropTypes.string,
+};
+
 const removeTag = (tags, i) => {
 	const newTags = [...tags];
 	newTags.splice(i, 1);
@@ -115,8 +132,6 @@ const TagInput = ({
 		[addTag]
 	);
 
-	const tooltip = useTooltip(defaultTooltipText, 'top');
-
 	const length = tags.length;
 	return (
 		<Layer
@@ -138,14 +153,7 @@ const TagInput = ({
 					))
 				: defaultTags?.length
 					? defaultTags.map((tag) => (
-							<Tag
-								key={tag}
-								className="TagInput__defaultTag"
-								type="gray"
-								text={tag}
-								aria-disabled={disabled}
-								ref={tooltip}
-							/>
+							<DefaultTag key={tag} tag={tag} disabled={disabled} tooltipText={defaultTooltipText} />
 						))
 					: null}
 			<input
