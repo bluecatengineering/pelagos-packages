@@ -32,6 +32,7 @@ const ComboBox = ({
 	id = useRandomId(id);
 	const buttonRef = useRef(null);
 	const listRef = useRef(null);
+	const requestRef = useRef(0);
 
 	const [suggestions, setSuggestions] = useState([]);
 	const [open, setOpen] = useState(false);
@@ -43,9 +44,11 @@ const ComboBox = ({
 
 	const updateSuggestions = useMemo(
 		() =>
-			debounce(
-				(text) =>
-					Promise.resolve(getSuggestions(text)).then((suggestions) => {
+			debounce((text) => {
+				const request = ++requestRef.current;
+				return Promise.resolve(getSuggestions(text)).then((suggestions) => {
+					// Ignore the response if a later request was made or the suggestions were cancelled
+					if (request === requestRef.current) {
 						if (suggestions.length === 0) {
 							hideList();
 						} else {
@@ -53,14 +56,20 @@ const ComboBox = ({
 							setOpen(true);
 							setSelected(autoSelect ? 0 : -1);
 						}
-					}),
-				150
-			),
+					}
+				});
+			}, 150),
 		[hideList, autoSelect, getSuggestions]
 	);
+	// Cancels the pending request and ignores the response of the one in progress
+	const cancelSuggestions = useCallback(() => {
+		updateSuggestions.cancel();
+		++requestRef.current;
+	}, [updateSuggestions]);
+	const hideSuggestions = useCallback(() => (hideList(), cancelSuggestions()), [hideList, cancelSuggestions]);
 	const selectSuggestion = useCallback(
-		(index) => (hideList(), onChange(suggestions[index])),
-		[suggestions, hideList, onChange]
+		(index) => (hideSuggestions(), onChange(suggestions[index])),
+		[suggestions, hideSuggestions, onChange]
 	);
 
 	const handleKeyDown = useCallback(
@@ -71,13 +80,13 @@ const ComboBox = ({
 					if (selected !== -1) {
 						selectSuggestion(selected);
 					} else if (onEnter) {
-						hideList();
+						hideSuggestions();
 						onEnter(event.target.value);
 					}
 					break;
 				case 'Escape':
 					event.preventDefault();
-					hideList();
+					hideSuggestions();
 					onTextChange('');
 					break;
 				case 'ArrowUp':
@@ -98,7 +107,7 @@ const ComboBox = ({
 					break;
 			}
 		},
-		[hideList, onEnter, onTextChange, open, selectSuggestion, selected, suggestions.length]
+		[hideSuggestions, onEnter, onTextChange, open, selectSuggestion, selected, suggestions.length]
 	);
 
 	const handleChange = useCallback(
@@ -108,11 +117,10 @@ const ComboBox = ({
 			if (text && text[0] !== '/') {
 				updateSuggestions(text);
 			} else {
-				hideList();
-				updateSuggestions.cancel();
+				hideSuggestions();
 			}
 		},
-		[onTextChange, updateSuggestions, hideList]
+		[onTextChange, updateSuggestions, hideSuggestions]
 	);
 
 	const handleFocus = useCallback(
@@ -143,12 +151,11 @@ const ComboBox = ({
 
 	useEffect(() => {
 		if (error) {
-			hideList();
-			updateSuggestions.cancel();
+			hideSuggestions();
 		}
-	}, [error, hideList, updateSuggestions]);
+	}, [error, hideSuggestions]);
 
-	useEffect(() => updateSuggestions.cancel, [updateSuggestions]);
+	useEffect(() => cancelSuggestions, [cancelSuggestions]);
 
 	useSelectPositioner(open, buttonRef, listRef);
 
@@ -232,7 +239,7 @@ ComboBox.propTypes = {
 	disabled: PropTypes.bool,
 	/** Whether the component is in error. */
 	error: PropTypes.bool,
-	/** Function invoked to get suggestions based on text input, can return a promise. */
+	/** Function invoked to get suggestions based on text input, can return a promise. It must be stable (for example wrapped in useCallback), a new function discards the pending suggestions. */
 	getSuggestions: PropTypes.func,
 	/** Function invoked to render suggestions, must return an element. Defaults to `renderSuggestion`. */
 	renderSuggestion: PropTypes.func,

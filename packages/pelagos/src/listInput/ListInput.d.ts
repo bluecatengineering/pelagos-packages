@@ -32,7 +32,7 @@ interface ListInputProps<T> extends Omit<HTMLProps<HTMLInputElement>, 'list'> {
 	reorderable?: boolean | 'numbers';
 	/** Whether the list should be reorderable. */
 	column?: boolean;
-	/** Function invoked to provide a list of suggestions. */
+	/** Function invoked to provide a list of suggestions. It must be stable (for example wrapped in useCallback), a new function discards the pending suggestions. */
 	getSuggestions: (
 		text: string,
 		list: T[]
@@ -59,7 +59,7 @@ interface ListInputProps<T> extends Omit<HTMLProps<HTMLInputElement>, 'list'> {
 	onListChange: (list: T[]) => void;
 	/** Function invoked when the text input changes. */
 	onTextChange: (hasText: boolean) => void;
-	/** Function invoked when error status changes. */
+	/** Function invoked when error status changes. It must be stable (for example wrapped in useCallback), a new function discards the pending suggestions. */
 	onErrorChange?: (error: string | null) => void;
 }
 

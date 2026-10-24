@@ -130,7 +130,7 @@ const TableHeader = forwardRef(
 				{resizeHandle}
 			</th>
 		) : onResize ? (
-			<th {...props} className={`Table--resizable${className ? ` ${className}` : ''}`} style={style}>
+			<th {...props} className={`Table--resizable${className ? ` ${className}` : ''}`} style={style} ref={ref}>
 				<div className={`Table__resizableLabel Table--${align}`}>{children}</div>
 				{resizeHandle}
 			</th>
@@ -138,7 +138,8 @@ const TableHeader = forwardRef(
 			<th
 				{...props}
 				className={`Table--${align}${radio ? ' Table--radioHeader' : ''}${className ? ` ${className}` : ''}`}
-				style={style}>
+				style={style}
+				ref={ref}>
 				{children}
 			</th>
 		);

@@ -17,7 +17,7 @@ interface DialogProps {
 	stretch?: boolean;
 	/** Whether the dialog body can scroll. */
 	scrollable?: boolean;
-	/** The ID of the component to focus. */
+	/** A CSS selector for the element to focus when the dialog opens, for example `#saveBtn`. */
 	initialFocus?: string;
 	/** The dialog children (content and buttons). */
 	children: [ReactNode, ReactNode];

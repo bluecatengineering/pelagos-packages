@@ -7,7 +7,7 @@ interface FilterEditorProps extends HTMLProps<HTMLDivElement> {
 	chipId: string;
 	/** The child elements. */
 	children?: ReactNode;
-	/** Function invoked when the editor is closed. */
+	/** Function invoked when the editor is closed. It must be stable (for example wrapped in useCallback), a new function closes the editor. */
 	onClose: () => void;
 	/** Function invoked when the save button is clicked. */
 	onSave: MouseEventHandler<HTMLButtonElement>;

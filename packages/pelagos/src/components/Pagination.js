@@ -56,7 +56,7 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 				<div className="Pagination__count">
 					{unknownSize
 						? renderUnknownRange(minIndex, maxIndex)
-						: renderKnownRange(minIndex, min(maxIndex, totalItems), totalItems)}
+						: renderKnownRange(totalItems === 0 ? 0 : minIndex, min(maxIndex, totalItems), totalItems)}
 				</div>
 			</div>
 			<div className="Pagination__end">
@@ -79,7 +79,7 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 					<IconButton
 						id={`${id}-prev`}
 						icon={CaretLeft}
-						disabled={page === 1}
+						disabled={page <= 1}
 						tooltipText={t`Previous page`}
 						tooltipPlacement="top"
 						aria-label={t`Previous page`}
@@ -88,7 +88,8 @@ const Pagination = ({id, className, page, pageSize, pageSizes, totalItems, onPag
 					<IconButton
 						id={`${id}-next`}
 						icon={CaretRight}
-						disabled={page === totalPages}
+						// page may be past the end until the parent updates it after items are removed
+						disabled={page >= totalPages}
 						tooltipText={t`Next page`}
 						tooltipPlacement="top"
 						aria-label={t`Next page`}

@@ -29,6 +29,17 @@ describe('Pagination', () => {
 			const wrapper = shallow(<Pagination id="test" page={2} pageSize={10} totalItems={123} />);
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
+
+		it('renders an empty range when totalItems is 0', () => {
+			const wrapper = shallow(<Pagination id="test" page={1} pageSize={10} totalItems={0} />);
+			expect(wrapper.find('.Pagination__count').text()).toMatch(/^0\D+0 /);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('disables next when page is past the last page', () => {
+			const wrapper = shallow(<Pagination id="test" page={3} pageSize={10} totalItems={19} />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
 	});
 
 	describe('behaviour', () => {

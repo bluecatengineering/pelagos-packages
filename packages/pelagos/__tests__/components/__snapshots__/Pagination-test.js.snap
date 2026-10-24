@@ -1,5 +1,138 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`Pagination rendering disables next when page is past the last page 1`] = `
+<div
+  className="Pagination"
+  id="random-id"
+>
+  <div
+    className="Pagination__start"
+  >
+    <div
+      className="Pagination__count"
+    >
+      21-19 of 19 items
+    </div>
+  </div>
+  <div
+    className="Pagination__end"
+  >
+    <React.Fragment>
+      <label
+        htmlFor="random-id-page"
+      >
+        page
+      </label>
+      <SelectNative
+        id="random-id-page"
+        onChange={[Function]}
+        value={3}
+      >
+        <option
+          value={1}
+        >
+          1
+        </option>
+        <option
+          value={2}
+        >
+          2
+        </option>
+      </SelectNative>
+      <div>
+        of 2
+      </div>
+    </React.Fragment>
+    <div
+      className="Pagination__buttons"
+    >
+      <IconButton
+        aria-label="Previous page"
+        disabled={false}
+        icon={[Function]}
+        id="random-id-prev"
+        onClick={[Function]}
+        tooltipPlacement="top"
+        tooltipText="Previous page"
+      />
+      <IconButton
+        aria-label="Next page"
+        disabled={true}
+        icon={[Function]}
+        id="random-id-next"
+        onClick={[Function]}
+        tooltipPlacement="top"
+        tooltipText="Next page"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pagination rendering renders an empty range when totalItems is 0 1`] = `
+<div
+  className="Pagination"
+  id="random-id"
+>
+  <div
+    className="Pagination__start"
+  >
+    <div
+      className="Pagination__count"
+    >
+      0-0 of 0 items
+    </div>
+  </div>
+  <div
+    className="Pagination__end"
+  >
+    <React.Fragment>
+      <label
+        htmlFor="random-id-page"
+      >
+        page
+      </label>
+      <SelectNative
+        id="random-id-page"
+        onChange={[Function]}
+        value={1}
+      >
+        <option
+          value={1}
+        >
+          1
+        </option>
+      </SelectNative>
+      <div>
+        of 1
+      </div>
+    </React.Fragment>
+    <div
+      className="Pagination__buttons"
+    >
+      <IconButton
+        aria-label="Previous page"
+        disabled={true}
+        icon={[Function]}
+        id="random-id-prev"
+        onClick={[Function]}
+        tooltipPlacement="top"
+        tooltipText="Previous page"
+      />
+      <IconButton
+        aria-label="Next page"
+        disabled={true}
+        icon={[Function]}
+        id="random-id-next"
+        onClick={[Function]}
+        tooltipPlacement="top"
+        tooltipText="Next page"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Pagination rendering renders expected elements 1`] = `
 <div
   className="Pagination"

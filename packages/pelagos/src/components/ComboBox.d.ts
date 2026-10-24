@@ -15,7 +15,7 @@ interface ComboBoxProps extends Omit<HTMLProps<HTMLInputElement>, 'onChange'> {
 	disabled?: boolean;
 	/** Whether the component is in error. */
 	error?: boolean;
-	/** Function invoked to get suggestions based on text input, can return a promise. */
+	/** Function invoked to get suggestions based on text input, can return a promise. It must be stable (for example wrapped in useCallback), a new function discards the pending suggestions. */
 	getSuggestions: (text: string) => ListInputSuggestion[] | Promise<ListInputSuggestion[]>;
 	/** Function invoked to render suggestions, must return an element. Defaults to `renderSuggestion`. */
 	renderSuggestion?: (suggestion: ListInputSuggestion, index: number) => ReactElement;

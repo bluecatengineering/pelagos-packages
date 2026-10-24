@@ -75,10 +75,7 @@ describe('ComboBox', () => {
 	describe('behaviour', () => {
 		it('adds an effect which hides the list when error is set', () => {
 			shallow(<ComboBox id="test" error />);
-			expect(useEffect.mock.calls[0]).toEqual([
-				expect.any(Function),
-				[true, expect.any(Function), expect.any(Function)],
-			]);
+			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [true, expect.any(Function)]]);
 			const cancel = debounce.mock.results[0].value.cancel;
 			useEffect.mock.calls[0][0]();
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([[[]]]);
@@ -89,10 +86,7 @@ describe('ComboBox', () => {
 
 		it('adds an effect which does not hide the list when error is not set', () => {
 			shallow(<ComboBox id="test" />);
-			expect(useEffect.mock.calls[0]).toEqual([
-				expect.any(Function),
-				[undefined, expect.any(Function), expect.any(Function)],
-			]);
+			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [undefined, expect.any(Function)]]);
 			const cancel = debounce.mock.results[0].value.cancel;
 			useEffect.mock.calls[0][0]();
 			expect(useState.mock.results[0].value[1].mock.calls).toEqual([]);
@@ -101,11 +95,59 @@ describe('ComboBox', () => {
 			expect(cancel.mock.calls).toEqual([]);
 		});
 
-		it('adds an effect which cancels call to updateSuggestions when it changes', () => {
+		it('adds an effect which cancels the suggestions on unmount', () => {
 			shallow(<ComboBox id="test" />);
 			const updateSuggestions = debounce.mock.results[0].value;
-			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [updateSuggestions]]);
-			expect(useEffect.mock.calls[1][0]()).toBe(updateSuggestions.cancel);
+			expect(useEffect.mock.calls[1]).toEqual([expect.any(Function), [expect.any(Function)]]);
+			useEffect.mock.calls[1][0]()();
+			expect(updateSuggestions.cancel.mock.calls).toEqual([[]]);
+		});
+
+		it('ignores suggestions received after the list was dismissed', () => {
+			let resolveSuggestions;
+			const promise = new Promise((resolve) => (resolveSuggestions = resolve));
+			const getSuggestions = jest.fn().mockReturnValue(promise);
+			const setOpen = jest.fn();
+			useRef
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: 0});
+			useState
+				.mockReturnValueOnce([[], jest.fn()])
+				.mockReturnValueOnce([false, setOpen])
+				.mockReturnValueOnce([-1, jest.fn()]);
+			const wrapper = shallow(<ComboBox id="test" getSuggestions={getSuggestions} onTextChange={jest.fn()} />);
+			const input = wrapper.find('[as="input"]');
+			input.simulate('change', {target: {value: 'abc'}});
+			input.simulate('keydown', {key: 'Escape', preventDefault: jest.fn()});
+			resolveSuggestions([{name: 'abc'}]);
+			return promise.then(() => {
+				expect(setOpen.mock.calls).toEqual([[false]]);
+			});
+		});
+
+		it('ignores suggestions received after a later request', () => {
+			const resolvers = [];
+			const getSuggestions = jest.fn(() => new Promise((resolve) => resolvers.push(resolve)));
+			const setSuggestions = jest.fn();
+			useRef
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: 0});
+			useState
+				.mockReturnValueOnce([[], setSuggestions])
+				.mockReturnValueOnce([false, jest.fn()])
+				.mockReturnValueOnce([-1, jest.fn()]);
+			const wrapper = shallow(<ComboBox id="test" getSuggestions={getSuggestions} onTextChange={jest.fn()} />);
+			const input = wrapper.find('[as="input"]');
+			input.simulate('change', {target: {value: 'a'}});
+			input.simulate('change', {target: {value: 'ab'}});
+			const latest = [{name: 'ab'}];
+			resolvers[1](latest);
+			resolvers[0]([{name: 'a'}]);
+			return Promise.all(getSuggestions.mock.results.map(({value}) => value)).then(() => {
+				expect(setSuggestions.mock.calls).toEqual([[latest]]);
+			});
 		});
 
 		it('calls onChange when enter is pressed and an item is selected', () => {
@@ -163,7 +205,7 @@ describe('ComboBox', () => {
 		it('selects the previous item when up is pressed', () => {
 			const child = {};
 			const listElement = {children: [child]};
-			useRef.mockReturnValue({current: listElement});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
 				.mockReturnValueOnce([true, jest.fn()])
@@ -177,7 +219,7 @@ describe('ComboBox', () => {
 		it('selects the last item when up is pressed and selected is 0', () => {
 			const child = {};
 			const listElement = {children: [null, child]};
-			useRef.mockReturnValue({current: listElement});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
 				.mockReturnValueOnce([true, jest.fn()])
@@ -197,7 +239,7 @@ describe('ComboBox', () => {
 		it('selects the next item when down is pressed', () => {
 			const child = {};
 			const listElement = {children: [null, child]};
-			useRef.mockReturnValue({current: listElement});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
 				.mockReturnValueOnce([true, jest.fn()])
@@ -211,7 +253,7 @@ describe('ComboBox', () => {
 		it('selects the first item when down is pressed and selected is the last item', () => {
 			const child = {};
 			const listElement = {children: [child]};
-			useRef.mockReturnValue({current: listElement});
+			useRef.mockReturnValueOnce({current: null}).mockReturnValueOnce({current: listElement});
 			useState
 				.mockReturnValueOnce([[{}, {}], jest.fn()])
 				.mockReturnValueOnce([true, jest.fn()])

@@ -162,8 +162,7 @@ describe('Calendar', () => {
 			grid.simulate('keydown', {key: ' ', preventDefault});
 
 			expect(preventDefault).toHaveBeenCalledTimes(2);
-			expect(setHighlighted.mock.calls).toEqual([[anyFunction], [anyFunction]]);
-			expect(setHighlighted.mock.calls[0][0](0)).toEqual(focused.getTime());
+			expect(setHighlighted.mock.calls).toEqual([[focused.getTime()], [focused.getTime()]]);
 		});
 
 		it('selects previous month when page up is pressed', () => {
@@ -372,8 +371,7 @@ describe('Calendar', () => {
 			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
 			expect(closest.mock.calls).toEqual([['td']]);
 			expect(setFocused.mock.calls).toEqual([[new Date(2019, 8, 5)]]);
-			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
-			expect(setHighlighted.mock.calls[0][0](null)).toBe(1567656000000);
+			expect(setHighlighted.mock.calls).toEqual([[1567656000000]]);
 		});
 
 		it('calls onChange when a day is clicked in range mode', () => {
@@ -391,8 +389,7 @@ describe('Calendar', () => {
 
 			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
 			expect(closest.mock.calls).toEqual([['td']]);
-			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
-			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();
+			expect(setHighlighted.mock.calls).toEqual([[null]]);
 			expect(onChange.mock.calls).toEqual([[[1567656000000, highlighted]]]);
 		});
 
@@ -411,8 +408,7 @@ describe('Calendar', () => {
 
 			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
 			expect(closest.mock.calls).toEqual([['td']]);
-			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
-			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();
+			expect(setHighlighted.mock.calls).toEqual([[null]]);
 			expect(onChange.mock.calls).toEqual([[[highlighted, 1567656000000]]]);
 		});
 
@@ -433,8 +429,7 @@ describe('Calendar', () => {
 
 			wrapper.find('#random-id').simulate('mouseup', {target: {closest}});
 			expect(closest.mock.calls).toEqual([['td']]);
-			expect(setHighlighted.mock.calls).toEqual([[anyFunction]]);
-			expect(setHighlighted.mock.calls[0][0](highlighted)).toBeNull();
+			expect(setHighlighted.mock.calls).toEqual([[null]]);
 			expect(onChange.mock.calls).toEqual([
 				[[offsetUTC(1567656000000 + (startTime % 8.64e7)), offsetUTC(highlighted + (endTime % 8.64e7))]],
 			]);

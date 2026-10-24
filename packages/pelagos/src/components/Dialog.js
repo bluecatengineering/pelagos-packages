@@ -104,7 +104,7 @@ Dialog.propTypes = {
 	stretch: PropTypes.bool,
 	/** Whether the dialog body can scroll. */
 	scrollable: PropTypes.bool,
-	/** The ID of the component to focus. */
+	/** A CSS selector for the element to focus when the dialog opens, for example `#saveBtn`. */
 	initialFocus: PropTypes.string,
 	/** The dialog children. */
 	children: PropTypes.arrayOf(PropTypes.element).isRequired,

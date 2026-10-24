@@ -159,28 +159,25 @@ const Calendar = forwardRef(({id, className, value, onChange, ...props}, ref) =>
 		(time) => {
 			if (!Array.isArray(value)) {
 				onChange(addTime(time, value));
+			} else if (!highlighted) {
+				setHighlighted(time);
 			} else {
-				setHighlighted((highlighted) => {
-					if (!highlighted) {
-						return time;
-					}
+				// onChange must not be called from a state updater, those are invoked during rendering
+				const [startTime, endTime] = value;
+				let start, end;
+				if (highlighted < time) {
+					start = addTime(highlighted, startTime);
+					end = addTime(time, endTime);
+				} else {
+					start = addTime(time, startTime);
+					end = addTime(highlighted, endTime);
+				}
 
-					const [startTime, endTime] = value;
-					let start, end;
-					if (highlighted < time) {
-						start = addTime(highlighted, startTime);
-						end = addTime(time, endTime);
-					} else {
-						start = addTime(time, startTime);
-						end = addTime(highlighted, endTime);
-					}
-
-					onChange([start, end]);
-					return null;
-				});
+				setHighlighted(null);
+				onChange([start, end]);
 			}
 		},
-		[value, onChange]
+		[highlighted, value, onChange]
 	);
 
 	const selectPrevMonth = useCallback(() => {

@@ -304,5 +304,12 @@ describe('TableHeader', () => {
 
 			expect(stopPropagation.mock.calls).toEqual([[], [], [], []]);
 		});
+
+		it('forwards the ref to the header cell', () => {
+			const ref = {current: null};
+			expect(TableHeader({sortable: true, children: 'body'}, ref).ref).toBe(ref);
+			expect(TableHeader({onResize: jest.fn(), children: 'body'}, ref).ref).toBe(ref);
+			expect(TableHeader({children: 'body'}, ref).ref).toBe(ref);
+		});
 	});
 });
