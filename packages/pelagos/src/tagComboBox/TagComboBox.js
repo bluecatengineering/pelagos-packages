@@ -4,12 +4,13 @@ import identity from 'lodash-es/identity';
 import debounce from 'lodash-es/debounce';
 import {t} from '@bluecateng/l10n.macro';
 
+import DefaultTag from '../components/DefaultTag';
 import Layer from '../components/Layer';
 import Tag from '../components/Tag';
 import scrollToItem from '../functions/scrollToItem';
-import useTooltip from '../hooks/useTooltip';
 import useRandomId from '../hooks/useRandomId';
 import useSelectPositioner from '../hooks/useSelectPositioner';
+import defaultRenderSuggestion from '../suggestions/renderSuggestion';
 
 import './TagComboBox.less';
 
@@ -19,19 +20,6 @@ const defaultRenderTag = (tag, disabled, dft, handleRemove, defaultTooltip) =>
 	) : (
 		<Tag type="gray" text={tag} aria-disabled={disabled} onRemove={disabled ? null : handleRemove} />
 	);
-
-// Each default tag needs its own tooltip, useTooltip can only handle one element
-const DefaultTag = ({tag, disabled, tooltipText, renderTag}) =>
-	cloneElement(renderTag(tag, disabled, true, null, useTooltip(tooltipText, 'top')), {
-		className: 'TagComboBox__defaultTag',
-	});
-
-DefaultTag.propTypes = {
-	tag: PropTypes.any,
-	disabled: PropTypes.bool,
-	tooltipText: PropTypes.string,
-	renderTag: PropTypes.func,
-};
 
 const defaultHasTag = (tags, value) => {
 	const lower = value.toLowerCase();
@@ -63,7 +51,7 @@ const TagComboBox = ({
 	transform = identity,
 	textToTag = identity,
 	getSuggestions = getNoSuggestions,
-	renderSuggestion,
+	renderSuggestion = defaultRenderSuggestion,
 	suggestionToTag = identity,
 	onChange,
 	onError,
@@ -275,6 +263,7 @@ const TagComboBox = ({
 						? defaultTags.map((tag) => (
 								<DefaultTag
 									key={getKey(tag)}
+									className="TagComboBox__defaultTag"
 									tag={tag}
 									disabled={disabled}
 									tooltipText={defaultTooltipText}
@@ -351,9 +340,9 @@ TagComboBox.propTypes = {
 	getKey: PropTypes.func,
 	/** Function invoked to get the name of each tag. */
 	getName: PropTypes.func,
-	/** Function invoked to render each tag. */
+	/** Function invoked to render each tag, it receives the tag, disabled, whether it is a default tag, the remove handler and the tooltip ref, and must return an element. */
 	renderTag: PropTypes.func,
-	/** Function invoked to check if a tag is already present. */
+	/** Function invoked to check if a tag is already present, it receives the tags and the tag. */
 	hasTag: PropTypes.func,
 	/** Function invoked to validate each tag. */
 	validate: PropTypes.func.isRequired,
@@ -361,9 +350,9 @@ TagComboBox.propTypes = {
 	transform: PropTypes.func,
 	/** Function that converts the text input to a tag. */
 	textToTag: PropTypes.func,
-	/** Function invoked to get suggestions based on text input, can return a promise. */
+	/** Function invoked to get suggestions based on text input, can return a promise. It must be stable (for example wrapped in useCallback), a new function discards the pending suggestions. */
 	getSuggestions: PropTypes.func,
-	/** Function invoked to render suggestions. */
+	/** Function invoked to render suggestions, must return an element. Defaults to `renderSuggestion`. */
 	renderSuggestion: PropTypes.func,
 	/** Function that converts a suggestion to a tag. */
 	suggestionToTag: PropTypes.func,

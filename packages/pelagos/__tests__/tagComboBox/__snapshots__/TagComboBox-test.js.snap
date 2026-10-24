@@ -130,12 +130,14 @@ exports[`TagComboBox rendering renders expected elements when disabled and defau
     className="TagComboBox__content disabled"
   >
     <DefaultTag
+      className="TagComboBox__defaultTag"
       disabled={true}
       renderTag={[Function]}
       tag="foo"
       tooltipText="Test tooltip"
     />
     <DefaultTag
+      className="TagComboBox__defaultTag"
       disabled={true}
       renderTag={[Function]}
       tag="bar"
@@ -311,11 +313,13 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
     className="TagComboBox__content"
   >
     <DefaultTag
+      className="TagComboBox__defaultTag"
       renderTag={[Function]}
       tag="foo"
       tooltipText="Test tooltip"
     />
     <DefaultTag
+      className="TagComboBox__defaultTag"
       renderTag={[Function]}
       tag="bar"
       tooltipText="Test tooltip"
@@ -346,5 +350,60 @@ exports[`TagComboBox rendering renders expected elements when tags is empty and 
     popover="manual"
     role="listbox"
   />
+</div>
+`;
+
+exports[`TagComboBox rendering renders the suggestions with renderSuggestion when renderSuggestion is not set 1`] = `
+<div
+  className="TagComboBox"
+  id="random-id-tags"
+>
+  <span
+    aria-live="polite"
+    className="sr-only"
+  />
+  <Layer
+    className="TagComboBox__content"
+  >
+    <input
+      aria-activedescendant="random-id-0"
+      aria-autocomplete="list"
+      aria-controls="random-id-list"
+      aria-expanded={true}
+      aria-invalid={false}
+      autoComplete="off"
+      className="TagComboBox__input"
+      id="random-id"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value="text"
+    />
+  </Layer>
+  <Layer
+    className="TagComboBox__list"
+    id="random-id-list"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    popover="manual"
+    role="listbox"
+  >
+    <div
+      aria-selected={true}
+      className="TagComboBox__option"
+      data-index={0}
+      id="random-id-0"
+      role="option"
+    >
+      <div
+        className="TagComboBox__optionText"
+      >
+        Rendered
+      </div>
+    </div>
+  </Layer>
 </div>
 `;

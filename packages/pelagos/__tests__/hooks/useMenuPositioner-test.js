@@ -14,6 +14,7 @@ describe('useMenuPositioner', () => {
 			getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200}),
 		};
 		document.scrollingElement.scrollTop = 0;
+		document.scrollingElement.scrollLeft = 0;
 
 		useMenuPositioner()(button, menu);
 		expect(popUp.style).toEqual({top: '100px', left: '200px'});
@@ -26,6 +27,7 @@ describe('useMenuPositioner', () => {
 			getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, right: 200}),
 		};
 		document.scrollingElement.scrollTop = 0;
+		document.scrollingElement.scrollLeft = 0;
 
 		useMenuPositioner(true)(button, menu);
 		expect(popUp.style).toEqual({top: '100px', left: '100px'});
@@ -38,6 +40,7 @@ describe('useMenuPositioner', () => {
 			getBoundingClientRect: jest.fn().mockReturnValue({top: 280, bottom: 300, left: 200, right: 280}),
 		};
 		document.scrollingElement.scrollTop = 0;
+		document.scrollingElement.scrollLeft = 0;
 
 		useMenuPositioner()(button, menu);
 		expect(popUp.style).toEqual({top: '180px', left: '80px'});
@@ -50,20 +53,22 @@ describe('useMenuPositioner', () => {
 			getBoundingClientRect: jest.fn().mockReturnValue({top: 180, bottom: 200, left: 200, right: 280}),
 		};
 		document.scrollingElement.scrollTop = 0;
+		document.scrollingElement.scrollLeft = 0;
 
 		useMenuPositioner()(button, menu);
 		expect(popUp.style).toEqual({top: '0px', left: '0px'});
 	});
 
-	it('sets the menu position when scrollTop is not 0', () => {
+	it('sets the menu position when the page is scrolled', () => {
 		const popUp = {style: {}, getBoundingClientRect: jest.fn().mockReturnValue({height: 100})};
 		const menu = {parentNode: popUp};
 		const button = {
 			getBoundingClientRect: jest.fn().mockReturnValue({bottom: 100, left: 200}),
 		};
 		document.scrollingElement.scrollTop = 10;
+		document.scrollingElement.scrollLeft = 20;
 
 		useMenuPositioner()(button, menu);
-		expect(popUp.style).toEqual({top: '110px', left: '200px'});
+		expect(popUp.style).toEqual({top: '110px', left: '220px'});
 	});
 });

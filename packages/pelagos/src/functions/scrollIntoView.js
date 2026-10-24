@@ -28,8 +28,13 @@ const scrollIntoView = (element, options = {}) => {
 	) {
 		parent = parent.parentNode;
 	}
+	// When no ancestor can scroll, the page is scrolled and the visible area is the viewport
+	const page = parent === document.body;
+	if (page) {
+		parent = document.scrollingElement;
+	}
 	const er = element.getBoundingClientRect();
-	const pr = parent.getBoundingClientRect();
+	const pr = page ? {top: 0, bottom: window.innerHeight} : parent.getBoundingClientRect();
 	if (er.top < pr.top || er.bottom > pr.bottom) {
 		const initialTop = parent.scrollTop;
 		const offset = alignBottom

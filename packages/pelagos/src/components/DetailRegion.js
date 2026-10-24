@@ -22,7 +22,7 @@ DetailRegion.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The header level. */
-	level: PropTypes.oneOf(['h3', 'h4', 'h5', 'h6']),
+	level: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
 	/** The label text. */
 	label: PropTypes.string.isRequired,
 	/** The text of the info tooltip to display. */

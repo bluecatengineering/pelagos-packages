@@ -67,6 +67,11 @@ describe('useSelectPositioner', () => {
 		expect(popUp.style).toEqual({top: '100px', left: '200px', width: '100px'});
 	});
 
+	it('sets the pop-up width when options do not include changePopUpWidth', () => {
+		useSelectPositioner(true, {}, {}, {});
+		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [{}, {}, true, true]]);
+	});
+
 	it('does not set the pop-up location when open is false', () => {
 		useSelectPositioner(false, {}, {});
 		expect(useLayoutEffect.mock.calls[0]).toEqual([anyFunction, [{}, {}, false, true]]);

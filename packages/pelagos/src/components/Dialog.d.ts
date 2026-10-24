@@ -1,4 +1,4 @@
-import type {FunctionComponent, ReactNode} from 'react';
+import type {FunctionComponent, ReactElement} from 'react';
 
 interface DialogProps {
 	/** The component ID. */
@@ -20,7 +20,7 @@ interface DialogProps {
 	/** A CSS selector for the element to focus when the dialog opens, for example `#saveBtn`. */
 	initialFocus?: string;
 	/** The dialog children (content and buttons). */
-	children: [ReactNode, ReactNode];
+	children: [ReactElement, ReactElement];
 	/** Function invoked when a submit button is clicked. */
 	onSubmit?: () => void;
 }
