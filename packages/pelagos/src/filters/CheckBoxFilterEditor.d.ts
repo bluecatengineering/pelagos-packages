@@ -13,7 +13,7 @@ interface CheckBoxFilterEditorProps {
 	getLabel: (option: string) => string;
 	/** The ID of the chip which triggered the editor. */
 	chipId: string;
-	/** Function invoked to close the editor. */
+	/** Function invoked to close the editor. It must be stable (for example wrapped in useCallback), a new function closes the editor. */
 	onClose: () => void;
 	/** Function invoked to save changes. */
 	onSave: (list: string[] | null) => void;

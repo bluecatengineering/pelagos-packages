@@ -140,7 +140,7 @@ NewTextFilterEditor.propTypes = {
 	parseInput: PropTypes.func,
 	/** The ID of the chip which triggered the editor. */
 	chipId: PropTypes.string,
-	/** Function invoked to close the editor. */
+	/** Function invoked to close the editor. It must be stable (for example wrapped in useCallback), a new function closes the editor. */
 	onClose: PropTypes.func,
 	/** Function invoked to save changes. */
 	onSave: PropTypes.func,
@@ -169,7 +169,7 @@ TextFilterEditor.propTypes = {
 	onListChange: PropTypes.func,
 	/** The ID of the chip which triggered the editor (only when forArea is true). */
 	chipId: PropTypes.string,
-	/** Function invoked to close the editor (only when forArea is true). */
+	/** Function invoked to close the editor (only when forArea is true). It must be stable (for example wrapped in useCallback), a new function closes the editor. */
 	onClose: PropTypes.func,
 	/** Function invoked to save changes (only when forArea is true). */
 	onSave: PropTypes.func,

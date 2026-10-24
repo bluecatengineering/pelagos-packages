@@ -242,7 +242,7 @@ ListInput.propTypes = {
 	reorderable: PropTypes.oneOf([true, false, 'numbers']),
 	/** Whether the list should be displayed as columns. Set to true if reorderable. */
 	column: PropTypes.bool,
-	/** Function invoked to provide a list of suggestions. */
+	/** Function invoked to provide a list of suggestions. It must be stable (for example wrapped in useCallback), a new function discards the pending suggestions. */
 	getSuggestions: PropTypes.func.isRequired,
 	/** Function invoked to render the suggestion text for the returned items. (see above) */
 	getSuggestionText: PropTypes.func,
@@ -266,7 +266,7 @@ ListInput.propTypes = {
 	onListChange: PropTypes.func.isRequired,
 	/** Function invoked when the text input changes. */
 	onTextChange: PropTypes.func.isRequired,
-	/** Function invoked when error status changes. */
+	/** Function invoked when error status changes. It must be stable (for example wrapped in useCallback), a new function discards the pending suggestions. */
 	onErrorChange: PropTypes.func,
 };
 

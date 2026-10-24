@@ -81,7 +81,7 @@ describe('EditorDetailsPanel', () => {
 					<div />
 				</EditorDetailsPanel>
 			);
-			expect(useSlidingPanel.mock.calls).toEqual([['test', onClose]]);
+			expect(useSlidingPanel.mock.calls).toEqual([['random-id', onClose]]);
 			expect(wrapper.find('#closeDetailsPanelBtn').prop('onClick')).toBe(handler);
 		});
 	});

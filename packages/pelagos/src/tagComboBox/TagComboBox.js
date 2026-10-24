@@ -73,6 +73,7 @@ const TagComboBox = ({
 	const inputRef = useRef(null);
 	const boxRef = useRef(null);
 	const popUpRef = useRef(null);
+	const requestRef = useRef(0);
 
 	const [text, setText] = useState('');
 	const [suggestions, setSuggestions] = useState([]);
@@ -118,9 +119,11 @@ const TagComboBox = ({
 
 	const updateSuggestions = useMemo(
 		() =>
-			debounce(
-				(text) =>
-					Promise.resolve(getSuggestions(text)).then((suggestions) => {
+			debounce((text) => {
+				const request = ++requestRef.current;
+				return Promise.resolve(getSuggestions(text)).then((suggestions) => {
+					// Ignore the response if a later request was made or the suggestions were cancelled
+					if (request === requestRef.current) {
 						if (suggestions.length === 0) {
 							hideList();
 						} else {
@@ -129,11 +132,17 @@ const TagComboBox = ({
 							setSelected(-1);
 							popUpRef.current.showPopover();
 						}
-					}),
-				150
-			),
+					}
+				});
+			}, 150),
 		[hideList, getSuggestions]
 	);
+	// Cancels the pending request and ignores the response of the one in progress
+	const cancelSuggestions = useCallback(() => {
+		updateSuggestions.cancel();
+		++requestRef.current;
+	}, [updateSuggestions]);
+	const hideSuggestions = useCallback(() => (hideList(), cancelSuggestions()), [hideList, cancelSuggestions]);
 	const addSuggestion = useCallback(
 		(index, event) => {
 			const tag = suggestionToTag(suggestions[index]);
@@ -143,9 +152,9 @@ const TagComboBox = ({
 				onChange([...tags, tag], event);
 			}
 			setText('');
-			hideList();
+			hideSuggestions();
 		},
-		[suggestionToTag, suggestions, hasTag, tags, hideList, getName, onChange]
+		[suggestionToTag, suggestions, hasTag, tags, hideSuggestions, getName, onChange]
 	);
 
 	const handleKeyDown = useCallback(
@@ -158,8 +167,7 @@ const TagComboBox = ({
 						addSuggestion(selected, event);
 					} else if (value) {
 						addTextTag(value, event);
-						hideList();
-						updateSuggestions.cancel();
+						hideSuggestions();
 					}
 					break;
 				case 'Backspace':
@@ -177,8 +185,7 @@ const TagComboBox = ({
 				case 'Escape':
 					event.preventDefault();
 					setText('');
-					hideList();
-					updateSuggestions.cancel();
+					hideSuggestions();
 					break;
 				case 'ArrowUp':
 					event.preventDefault();
@@ -198,18 +205,7 @@ const TagComboBox = ({
 					break;
 			}
 		},
-		[
-			selected,
-			hideList,
-			updateSuggestions,
-			open,
-			addSuggestion,
-			addTextTag,
-			tags,
-			getName,
-			onChange,
-			suggestions.length,
-		]
+		[selected, hideSuggestions, open, addSuggestion, addTextTag, tags, getName, onChange, suggestions.length]
 	);
 
 	const handleChange = useCallback(
@@ -220,11 +216,10 @@ const TagComboBox = ({
 			if (value) {
 				updateSuggestions(value);
 			} else {
-				hideList();
-				updateSuggestions.cancel();
+				hideSuggestions();
 			}
 		},
-		[hideList, onError, updateSuggestions]
+		[hideSuggestions, onError, updateSuggestions]
 	);
 
 	const handleFocus = useCallback(
@@ -237,11 +232,10 @@ const TagComboBox = ({
 			const value = event.target.value;
 			if (value) {
 				addTextTag(value, event);
-				hideList();
-				updateSuggestions.cancel();
+				hideSuggestions();
 			}
 		},
-		[addTextTag, hideList, updateSuggestions]
+		[addTextTag, hideSuggestions]
 	);
 
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
@@ -257,7 +251,7 @@ const TagComboBox = ({
 		[addSuggestion]
 	);
 
-	useEffect(() => updateSuggestions.cancel, [updateSuggestions]);
+	useEffect(() => cancelSuggestions, [cancelSuggestions]);
 
 	useSelectPositioner(open, boxRef, popUpRef);
 

@@ -8,7 +8,7 @@ const {max} = Math;
  * Adds an effect which positions an editor in a filter area.
  * @param {MutableRefObject<Element>} ref React reference to the editor.
  * @param {string} buttonId the ID of the editor trigger button.
- * @param {function(): void} onClose function invoked when the editor is closed.
+ * @param {function(): void} onClose function invoked when the editor is closed, it must be stable (for example wrapped in useCallback), a new function closes the editor.
  *
  * @example
  * import {useRef} from 'react';

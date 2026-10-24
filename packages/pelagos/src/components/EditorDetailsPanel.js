@@ -26,46 +26,50 @@ const EditorDetailsPanel = ({
 	onClose,
 	onEdit,
 	onDelete,
-}) => (
-	<aside id={useRandomId(id)} className="EditorDetailsPanel" aria-labelledby="detailsPanelTitle">
-		<div className="EditorDetailsPanel__header">
-			<h2 id="detailsPanelTitle" className="EditorDetailsPanel__title">
-				{item.name}
-			</h2>
-			<IconButton
-				id="closeDetailsPanelBtn"
-				className="EditorDetailsPanel__close"
-				icon={Close}
-				size="large"
-				aria-label={t`Close`}
-				tooltipText={t`Close`}
-				tooltipPlacement="left"
-				onClick={useSlidingPanel(id, onClose)}
-			/>
-		</div>
+}) => {
+	// useSlidingPanel finds the panel by id, so it must get the generated one too
+	id = useRandomId(id);
+	return (
+		<aside id={id} className="EditorDetailsPanel" aria-labelledby="detailsPanelTitle">
+			<div className="EditorDetailsPanel__header">
+				<h2 id="detailsPanelTitle" className="EditorDetailsPanel__title">
+					{item.name}
+				</h2>
+				<IconButton
+					id="closeDetailsPanelBtn"
+					className="EditorDetailsPanel__close"
+					icon={Close}
+					size="large"
+					aria-label={t`Close`}
+					tooltipText={t`Close`}
+					tooltipPlacement="left"
+					onClick={useSlidingPanel(id, onClose)}
+				/>
+			</div>
 
-		{Array.isArray(children) ? (
-			<>
-				{cloneWithClassName(children[0], 'EditorDetailsPanel__body')}
-				{children[1] && cloneWithClassName(children[1], 'EditorDetailsPanel__buttons')}
-			</>
-		) : (
-			<>
-				{cloneWithClassName(children, 'EditorDetailsPanel__body')}
-				{showButtons && (
-					<DefaultDetailsButtons
-						className="EditorDetailsPanel__buttons"
-						item={item}
-						disableEdit={disableEdit}
-						disableDelete={disableDelete}
-						onEdit={onEdit}
-						onDelete={onDelete}
-					/>
-				)}
-			</>
-		)}
-	</aside>
-);
+			{Array.isArray(children) ? (
+				<>
+					{cloneWithClassName(children[0], 'EditorDetailsPanel__body')}
+					{children[1] && cloneWithClassName(children[1], 'EditorDetailsPanel__buttons')}
+				</>
+			) : (
+				<>
+					{cloneWithClassName(children, 'EditorDetailsPanel__body')}
+					{showButtons && (
+						<DefaultDetailsButtons
+							className="EditorDetailsPanel__buttons"
+							item={item}
+							disableEdit={disableEdit}
+							disableDelete={disableDelete}
+							onEdit={onEdit}
+							onDelete={onDelete}
+						/>
+					)}
+				</>
+			)}
+		</aside>
+	);
+};
 
 EditorDetailsPanel.propTypes = {
 	/** The component ID. */

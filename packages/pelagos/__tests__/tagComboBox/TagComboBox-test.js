@@ -858,11 +858,50 @@ describe('TagComboBox', () => {
 			expect(closest.mock.calls).toEqual([['[role=option]']]);
 		});
 
-		it('adds an effect which cancels call to updateSuggestions when it changes', () => {
+		it('adds an effect which cancels the suggestions on unmount', () => {
 			shallow(<TagComboBox id="test" tags={[]} validate={jest.fn()} onChange={jest.fn()} onError={jest.fn()} />);
 			const updateSuggestions = debounce.mock.results[0].value;
-			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [updateSuggestions]]);
-			expect(useEffect.mock.calls[0][0]()).toBe(updateSuggestions.cancel);
+			expect(useEffect.mock.calls[0]).toEqual([expect.any(Function), [expect.any(Function)]]);
+			useEffect.mock.calls[0][0]()();
+			expect(updateSuggestions.cancel.mock.calls).toEqual([[]]);
+		});
+
+		it('ignores suggestions received after the list was dismissed', () => {
+			let resolveSuggestions;
+			const promise = new Promise((resolve) => (resolveSuggestions = resolve));
+			const getSuggestions = jest.fn().mockReturnValue(promise);
+			const showPopover = jest.fn();
+			const setOpen = jest.fn();
+			useRef
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: null})
+				.mockReturnValueOnce({current: {showPopover, hidePopover: jest.fn()}})
+				.mockReturnValueOnce({current: 0});
+			useState
+				.mockReturnValueOnce(['', jest.fn()])
+				.mockReturnValueOnce([[], jest.fn()])
+				.mockReturnValueOnce([false, setOpen])
+				.mockReturnValueOnce([-1, jest.fn()])
+				.mockReturnValueOnce([null]);
+			const wrapper = shallow(
+				<TagComboBox
+					id="test"
+					tags={[]}
+					validate={jest.fn()}
+					getSuggestions={getSuggestions}
+					onChange={jest.fn()}
+					onError={jest.fn()}
+				/>
+			);
+			wrapper.find('#random-id').simulate('change', {target: {value: 'abc'}});
+			wrapper
+				.find('#random-id')
+				.simulate('keydown', {key: 'Escape', target: {value: 'abc'}, preventDefault: jest.fn()});
+			resolveSuggestions(['abc']);
+			return promise.then(() => {
+				expect(showPopover).not.toHaveBeenCalled();
+				expect(setOpen.mock.calls).toEqual([[false]]);
+			});
 		});
 	});
 });
