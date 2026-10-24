@@ -9,6 +9,7 @@ import scrollToItem from '../functions/scrollToItem';
 import useLayer from '../hooks/useLayer';
 import useSelectPositioner from '../hooks/useSelectPositioner';
 import useRandomId from '../hooks/useRandomId';
+import defaultRenderSuggestion from '../suggestions/renderSuggestion';
 
 import Layer from './Layer';
 import IconButton from './IconButton';
@@ -22,7 +23,7 @@ const ComboBox = ({
 	disabled,
 	error,
 	getSuggestions,
-	renderSuggestion,
+	renderSuggestion = defaultRenderSuggestion,
 	onChange,
 	onEnter,
 	onTextChange,
@@ -124,7 +125,7 @@ const ComboBox = ({
 	const handleAddClick = useCallback(() => {
 		const input = document.getElementById(id);
 		input.focus();
-		onEnter(input.value);
+		onEnter?.(input.value);
 	}, [id, onEnter]);
 
 	const handleListMouseDown = useCallback((event) => event.preventDefault(), []);
@@ -233,14 +234,14 @@ ComboBox.propTypes = {
 	error: PropTypes.bool,
 	/** Function invoked to get suggestions based on text input, can return a promise. */
 	getSuggestions: PropTypes.func,
-	/** Function invoked to render suggestions. */
+	/** Function invoked to render suggestions, must return an element. Defaults to `renderSuggestion`. */
 	renderSuggestion: PropTypes.func,
 	/** Function invoked when a suggestion is selected. */
-	onChange: PropTypes.func,
+	onChange: PropTypes.func.isRequired,
 	/** Function invoked when the enter key is pressed. */
 	onEnter: PropTypes.func,
 	/** Function invoked when the text input is changed. */
-	onTextChange: PropTypes.func,
+	onTextChange: PropTypes.func.isRequired,
 };
 
 export default ComboBox;

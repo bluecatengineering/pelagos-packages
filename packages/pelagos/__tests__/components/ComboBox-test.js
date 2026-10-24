@@ -5,6 +5,7 @@ import debounce from 'lodash-es/debounce';
 import ComboBox from '../../src/components/ComboBox';
 import scrollToItem from '../../src/functions/scrollToItem';
 import useRandomId from '../../src/hooks/useRandomId';
+import renderSuggestion from '../../src/suggestions/renderSuggestion';
 
 jest.unmock('../../src/components/ComboBox');
 
@@ -56,6 +57,18 @@ describe('ComboBox', () => {
 				/>
 			);
 			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
+		it('renders the suggestions with renderSuggestion when renderSuggestion is not set', () => {
+			const suggestion = {name: 'Test suggestion'};
+			renderSuggestion.mockReturnValue(<div>Rendered</div>);
+			useState
+				.mockReturnValueOnce([[suggestion], jest.fn()])
+				.mockReturnValueOnce([true, jest.fn()])
+				.mockReturnValueOnce([0, jest.fn()]);
+			const wrapper = shallow(<ComboBox id="test" text="x" />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+			expect(renderSuggestion.mock.calls).toEqual([[suggestion, 0]]);
 		});
 	});
 
@@ -378,6 +391,14 @@ describe('ComboBox', () => {
 			wrapper.find('#random-id-add').simulate('click');
 			expect(focus.mock.calls).toEqual([[]]);
 			expect(onEnter.mock.calls).toEqual([[value]]);
+		});
+
+		it('focuses the input when the add button is clicked and onEnter is not set', () => {
+			const focus = jest.fn();
+			getElementById.mockReturnValue({focus, value: 'test value'});
+			const wrapper = shallow(<ComboBox id="test" />);
+			wrapper.find('#random-id-add').simulate('click');
+			expect(focus.mock.calls).toEqual([[]]);
 		});
 
 		it('calls preventDefault on mouse down', () => {

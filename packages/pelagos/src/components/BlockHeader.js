@@ -17,7 +17,7 @@ BlockHeader.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
 	/** The header text. */
-	header: PropTypes.string,
+	header: PropTypes.string.isRequired,
 	/** Whether the value has been configured. */
 	configured: PropTypes.bool,
 };

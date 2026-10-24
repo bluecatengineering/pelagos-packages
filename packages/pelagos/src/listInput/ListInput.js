@@ -11,6 +11,8 @@ import ListEntries from './ListEntries';
 
 import './ListInput.less';
 
+const emptyList = [];
+
 /** An input box for a list of values. */
 const ListInput = ({
 	id,
@@ -19,7 +21,7 @@ const ListInput = ({
 	required,
 	disabled,
 	emptyText,
-	list,
+	list = emptyList,
 	helperText,
 	error,
 	reorderable,
@@ -50,7 +52,7 @@ const ListInput = ({
 		(text) => {
 			const {suggestions, error} = getSuggestions(text, list);
 			if (error) {
-				onErrorChange(error);
+				onErrorChange?.(error);
 				return [];
 			}
 
@@ -61,7 +63,7 @@ const ListInput = ({
 
 	const handleChange = useCallback(
 		(suggestion) => {
-			const id = getHighlightKey(suggestion);
+			const id = getHighlightKey?.(suggestion);
 			if (id) {
 				setText('');
 				onTextChange(false);
@@ -85,7 +87,7 @@ const ListInput = ({
 				if (error) {
 					setText(name);
 					onTextChange(!!name);
-					onErrorChange(error);
+					onErrorChange?.(error);
 				} else {
 					liveRef.current.textContent = t`${name} added`;
 					setText('');
@@ -115,16 +117,16 @@ const ListInput = ({
 				onTextChange(false);
 				onListChange([]);
 			} else if (text && parseInput) {
-				const {entries, error} = parseInput(text, list);
+				const {entries = emptyList, error} = parseInput(text, list);
 				if (error) {
-					onErrorChange(error);
+					onErrorChange?.(error);
 				} else {
 					const name = entries.map(getItemName).join(', ');
 					liveRef.current.textContent = t`${name} added`;
 					setText('');
 					onTextChange(false);
 					onListChange([...entries, ...list]);
-					onErrorChange(null);
+					onErrorChange?.(null);
 				}
 			}
 		},
@@ -134,7 +136,7 @@ const ListInput = ({
 	const handleTextChange = useCallback(
 		(text) => {
 			if (error) {
-				onErrorChange(null);
+				onErrorChange?.(null);
 			}
 			setText(text);
 			onTextChange(!!text);
@@ -149,7 +151,7 @@ const ListInput = ({
 
 	const handleHighlightClear = useCallback(() => setHighlightKey(null), []);
 
-	const empty = !list?.length;
+	const empty = !list.length;
 	const labelId = `${id}-label`;
 	const helperId = `${id}-helper`;
 	return (
@@ -223,7 +225,7 @@ ListInput.propTypes = {
 	/** Whether the list should be displayed as columns. Set to true if reorderable. */
 	column: PropTypes.bool,
 	/** Function invoked to provide a list of suggestions. */
-	getSuggestions: PropTypes.func,
+	getSuggestions: PropTypes.func.isRequired,
 	/** Function invoked to render the suggestion text for the returned items. (see above) */
 	getSuggestionText: PropTypes.func,
 	/** Function invoked to get the value from the suggestion to add to the list. (see above) */

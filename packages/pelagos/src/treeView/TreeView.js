@@ -12,10 +12,8 @@ const getFocused = (selected, children) => {
 	if (selected?.length) {
 		return selected;
 	}
-	if (children) {
-		return [Children.toArray(children)[0].props.id];
-	}
-	return [];
+	const first = Children.toArray(children)[0];
+	return first ? [first.props.id] : [];
 };
 
 /** A component implementing the tree view pattern. */

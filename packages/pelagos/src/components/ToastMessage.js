@@ -27,9 +27,9 @@ const icons = {
 const ToastMessage = ({message, onRemove}) => {
 	const progressRef = useRef(null);
 
-	const handleActionClick = useCallback(() => (onRemove(message), message.onClick()), [message, onRemove]);
+	const handleActionClick = useCallback(() => (onRemove?.(message), message.onClick?.()), [message, onRemove]);
 
-	const handleCloseClick = useCallback(() => onRemove(message), [message, onRemove]);
+	const handleCloseClick = useCallback(() => onRemove?.(message), [message, onRemove]);
 
 	useEffect(() => {
 		const progress = progressRef.current;
@@ -39,7 +39,7 @@ const ToastMessage = ({message, onRemove}) => {
 				duration: message.type === ToastTypes.SUCCESS ? SHORT_DURATION : DEFAULT_DURATION,
 				fill: 'both',
 			});
-			animation.onfinish = () => ((animation = null), onRemove(message));
+			animation.onfinish = () => ((animation = null), onRemove?.(message));
 			parent.addEventListener('mouseenter', () => (animation ? animation.pause() : null));
 			parent.addEventListener('mouseleave', () => (animation ? animation.play() : null));
 			return () => (animation ? animation.cancel() : null);
@@ -85,7 +85,7 @@ const ToastMessage = ({message, onRemove}) => {
 
 ToastMessage.propTypes = {
 	message: PropTypes.shape({
-		id: PropTypes.string,
+		id: PropTypes.string.isRequired,
 		type: PropTypes.string,
 		text: PropTypes.string,
 		actionText: PropTypes.string,

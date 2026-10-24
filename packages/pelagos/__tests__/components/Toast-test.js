@@ -22,6 +22,11 @@ describe('Toast', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders no messages when messages is not set', () => {
+			const wrapper = shallow(<Toast />);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders modal backdrop when hasFatalError returns true', () => {
 			const messages = [{id: 'foo', type: ToastTypes.FATAL}];
 			useState.mockReturnValueOnce([[<div key="foo" />, <div key="bar" />]]);

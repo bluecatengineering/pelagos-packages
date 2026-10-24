@@ -574,6 +574,26 @@ describe('TagComboBox', () => {
 			expect(scrollToItem.mock.calls).toEqual([]);
 		});
 
+		it('hides the list when the input changes and getSuggestions is not set', () => {
+			const setSuggestions = jest.fn();
+			const hidePopover = jest.fn();
+			useRef.mockReturnValueOnce().mockReturnValueOnce().mockReturnValueOnce({current: {hidePopover}});
+			useState
+				.mockReturnValueOnce(['', jest.fn()])
+				.mockReturnValueOnce([[], setSuggestions])
+				.mockReturnValueOnce([false, jest.fn()])
+				.mockReturnValueOnce([-1, jest.fn()])
+				.mockReturnValueOnce([null]);
+			const wrapper = shallow(
+				<TagComboBox id="test" tags={[]} validate={jest.fn()} onChange={jest.fn()} onError={jest.fn()} />
+			);
+			wrapper.find('#random-id').simulate('change', {target: {value: 'foo'}});
+			return Promise.resolve().then(() => {
+				expect(setSuggestions.mock.calls).toEqual([[[]]]);
+				expect(hidePopover.mock.calls).toEqual([[]]);
+			});
+		});
+
 		it('calls setText and getSuggestions when the input changes', () => {
 			const setText = jest.fn();
 			const setSuggestions = jest.fn();

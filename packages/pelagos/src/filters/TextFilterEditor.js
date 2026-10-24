@@ -11,13 +11,14 @@ import FilterEditor from './FilterEditor';
 
 const getName = (o) => o.name;
 const getSuggestionHighlightKey = (s) => (s.order === 2 ? s.name : null);
+const getNoSuggestions = () => ({suggestions: []});
 
 /** Filter editor where values are typed. */
 export const OldTextFilterEditor = ({
 	label,
 	placeholder,
 	list,
-	getSuggestions,
+	getSuggestions = getNoSuggestions,
 	parseInput,
 	validateSaveRef,
 	onListChange,
@@ -82,7 +83,7 @@ export const NewTextFilterEditor = ({
 	label,
 	placeholder,
 	list: initialList,
-	getSuggestions,
+	getSuggestions = getNoSuggestions,
 	parseInput,
 	chipId,
 	onClose,

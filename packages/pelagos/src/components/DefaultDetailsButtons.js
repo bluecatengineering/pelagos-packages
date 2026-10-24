@@ -19,14 +19,16 @@ const DefaultDetailsButtons = ({className, item, disableEdit, disableDelete, onE
 					onClick={handleDelete}
 				/>
 			)}
-			<Button
-				id="editBtn"
-				text={t`Edit`}
-				tooltipText={disableEdit}
-				disabled={!!disableEdit}
-				type="primary"
-				onClick={handleEdit}
-			/>
+			{onEdit && (
+				<Button
+					id="editBtn"
+					text={t`Edit`}
+					tooltipText={disableEdit}
+					disabled={!!disableEdit}
+					type="primary"
+					onClick={handleEdit}
+				/>
+			)}
 		</div>
 	);
 };
@@ -40,9 +42,9 @@ DefaultDetailsButtons.propTypes = {
 	disableEdit: PropTypes.string,
 	/** If set the delete button is disabled and this text displayed as tooltip. */
 	disableDelete: PropTypes.string,
-	/** Function invoked when the edit button is clicked. */
+	/** Function invoked when the edit button is clicked. The edit button is displayed only when this property is set. */
 	onEdit: PropTypes.func,
-	/** Function invoked when the delete button is clicked. */
+	/** Function invoked when the delete button is clicked. The delete button is displayed only when this property is set. */
 	onDelete: PropTypes.func,
 };
 

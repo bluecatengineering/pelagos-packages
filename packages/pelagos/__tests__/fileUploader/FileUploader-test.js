@@ -49,6 +49,14 @@ describe('FileUploader', () => {
 			expect(onChange.mock.calls).toEqual([[files]]);
 		});
 
+		it('calls onChange when multiple files are added and files is not set', () => {
+			const onChange = jest.fn();
+			const wrapper = shallow(<FileUploader id="test" types={[]} multiple onChange={onChange} />);
+
+			wrapper.find('#random-id').prop('onAddFiles')([{name: 'bar.txt'}]);
+			expect(onChange.mock.calls).toEqual([[[{name: 'bar.txt'}]]]);
+		});
+
 		it('calls onChange when multiple files are added', () => {
 			const onChange = jest.fn();
 			const wrapper = shallow(

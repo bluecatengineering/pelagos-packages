@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`TextAreaField rendering renders a zero counter when showCounter is set and value is not set 1`] = `
+<FieldWrapper
+  className="TextAreaField"
+  counter="0/10"
+  helperId="random-id-helper"
+  htmlFor="random-id"
+  label="Label"
+>
+  <TextAreaField
+    aria-describedby="random-id-helper"
+    error={false}
+    id="random-id"
+    maxLength={10}
+    onChange={[MockFunction]}
+  />
+</FieldWrapper>
+`;
+
 exports[`TextAreaField rendering renders expected elements 1`] = `
 <FieldWrapper
   className="TextAreaField"

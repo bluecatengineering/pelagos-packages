@@ -53,3 +53,14 @@ exports[`Toast rendering renders modal backdrop when hasFatalError returns true 
   />
 </div>
 `;
+
+exports[`Toast rendering renders no messages when messages is not set 1`] = `
+<div
+  className="Toast"
+>
+  <div
+    aria-live="polite"
+    className="Toast__messages"
+  />
+</div>
+`;

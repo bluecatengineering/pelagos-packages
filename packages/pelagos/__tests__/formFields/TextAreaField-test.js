@@ -49,6 +49,13 @@ describe('TextAreaField', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('renders a zero counter when showCounter is set and value is not set', () => {
+			const wrapper = shallow(
+				<TextAreaField id="test" label="Label" maxLength={10} showCounter onChange={jest.fn()} />
+			);
+			expect(wrapper.getElement()).toMatchSnapshot();
+		});
+
 		it('renders expected elements when showCounter is set', () => {
 			const wrapper = shallow(
 				<TextAreaField

@@ -29,6 +29,8 @@ const defaultHasTag = (tags, value) => {
 	return tags.some((tag) => tag.toLowerCase() === lower);
 };
 
+const getNoSuggestions = () => [];
+
 const removeTag = (tags, i) => {
 	const newTags = [...tags];
 	newTags.splice(i, 1);
@@ -51,7 +53,7 @@ const TagComboBox = ({
 	disabled,
 	transform = identity,
 	textToTag = identity,
-	getSuggestions,
+	getSuggestions = getNoSuggestions,
 	renderSuggestion,
 	suggestionToTag = identity,
 	onChange,

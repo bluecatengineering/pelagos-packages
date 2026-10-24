@@ -48,7 +48,7 @@ interface ListInputProps<T> extends Omit<HTMLProps<HTMLInputElement>, 'list'> {
 	/** Function invoked to validate the suggestion. */
 	validateSuggestion?: (suggestion: ListInputSuggestion) => string | null;
 	/** Function invoked to render the suggestions. */
-	renderSuggestion?: (suggestion: ListInputSuggestion) => ReactNode;
+	renderSuggestion?: (suggestion: ListInputSuggestion, index: number) => ReactElement;
 	/** Function invoked to get each item's key. */
 	getItemKey: (item: T, index: number) => number | string;
 	/** Function invoked to get each item's name. */

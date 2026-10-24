@@ -1,4 +1,4 @@
-import type {FunctionComponent, HTMLProps, ReactNode} from 'react';
+import type {FunctionComponent, HTMLProps, ReactElement} from 'react';
 
 import type {ListInputSuggestion} from '../listInput/ListInput';
 
@@ -17,14 +17,14 @@ interface ComboBoxProps extends Omit<HTMLProps<HTMLInputElement>, 'onChange'> {
 	error?: boolean;
 	/** Function invoked to get suggestions based on text input, can return a promise. */
 	getSuggestions: (text: string) => ListInputSuggestion[] | Promise<ListInputSuggestion[]>;
-	/** Function invoked to render suggestions. */
-	renderSuggestion?: (suggestion: ListInputSuggestion) => ReactNode;
+	/** Function invoked to render suggestions, must return an element. Defaults to `renderSuggestion`. */
+	renderSuggestion?: (suggestion: ListInputSuggestion, index: number) => ReactElement;
 	/** Function invoked when a suggestion is selected. */
-	onChange?: (suggestion: ListInputSuggestion) => void;
+	onChange: (suggestion: ListInputSuggestion) => void;
 	/** Function invoked when the enter key is pressed. */
 	onEnter?: (text: string) => void;
 	/** Function invoked when the text input is changed. */
-	onTextChange?: (text: string) => void;
+	onTextChange: (text: string) => void;
 }
 
 /** A combination box of a text field and an autocomplete list. */

@@ -173,13 +173,13 @@ TimeFilterEditor.propTypes = {
 	/** Function returning the label for the specified option. */
 	getOptionLabel: PropTypes.func.isRequired,
 	/** Function returning a formatted time. */
-	format: PropTypes.func,
+	format: PropTypes.func.isRequired,
 	/** Function returning the parsed time as a number. */
-	parse: PropTypes.func,
+	parse: PropTypes.func.isRequired,
 	/** Function invoked to validate the "from" time, must return either an error message or `null`. */
-	validateFrom: PropTypes.func,
+	validateFrom: PropTypes.func.isRequired,
 	/** Function invoked to validate the "to" time, must return either an error message or `null`. */
-	validateTo: PropTypes.func,
+	validateTo: PropTypes.func.isRequired,
 	/** The ID of the chip which triggered the editor. */
 	chipId: PropTypes.string,
 	/** Function invoked to close the editor. */

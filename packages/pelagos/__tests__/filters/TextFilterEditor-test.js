@@ -47,6 +47,11 @@ describe('TextFilterEditor', () => {
 		});
 
 		describe('behaviour', () => {
+			it('returns no suggestions when getSuggestions is not set', () => {
+				const wrapper = shallow(<OldTextFilterEditor label="label" validateSaveRef={{}} />);
+				expect(wrapper.find('#textFilterEditorInput').prop('getSuggestions')('a')).toEqual({suggestions: []});
+			});
+
 			it('calls onListChange when list is changed', () => {
 				const onListChange = jest.fn();
 				const wrapper = shallow(

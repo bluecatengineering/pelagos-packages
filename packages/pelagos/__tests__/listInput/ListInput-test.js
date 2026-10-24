@@ -97,6 +97,41 @@ describe('ListInput', () => {
 			expect(useState.mock.results[1].value[1].mock.calls).toEqual([[1]]);
 		});
 
+		it('calls onListChange when the combo-box value changes and getHighlightKey is not set', () => {
+			const suggestion = {name: 'Test suggestion'};
+			const onListChange = jest.fn();
+			useRef.mockReturnValueOnce({current: {}});
+			const wrapper = shallow(
+				<ListInput
+					id="test"
+					parseInput={jest.fn()}
+					getSuggestionText={(s) => s.name}
+					onListChange={onListChange}
+					onTextChange={jest.fn()}
+				/>
+			);
+			wrapper.find('ComboBox').prop('onChange')(suggestion);
+			expect(onListChange.mock.calls).toEqual([[['Test suggestion']]]);
+		});
+
+		it('does not throw when getSuggestions returns an error and onErrorChange is not set', () => {
+			const getSuggestions = jest.fn().mockReturnValue({error: 'Error'});
+			const wrapper = shallow(<ListInput id="test" getSuggestions={getSuggestions} />);
+			expect(wrapper.find('ComboBox').prop('getSuggestions')('test')).toEqual([]);
+		});
+
+		it('does not throw when validateSuggestion returns an error and onErrorChange is not set', () => {
+			const wrapper = shallow(
+				<ListInput
+					id="test"
+					getSuggestionText={(s) => s.name}
+					validateSuggestion={() => 'Error'}
+					onTextChange={jest.fn()}
+				/>
+			);
+			expect(() => wrapper.find('ComboBox').prop('onChange')({name: 'Foo'})).not.toThrow();
+		});
+
 		it('calls onListChange when the combo-box value changes and parseInput is set', () => {
 			const suggestion = {name: 'Test suggestion'};
 			const getSuggestionText = jest.fn().mockReturnValue('Text');
@@ -300,6 +335,50 @@ describe('ListInput', () => {
 			expect(onListChange.mock.calls).toEqual([[[...entries, ...list]]]);
 			expect(onErrorChange.mock.calls).toEqual([[null]]);
 			expect(live.textContent).toBe('Foo, Bar added');
+		});
+
+		it('calls onListChange with the parsed list when enter is pressed and both list and onErrorChange are not set', () => {
+			const entries = ['Foo'];
+			const parseInput = jest.fn().mockReturnValue({entries});
+			const onListChange = jest.fn();
+			useRef.mockReturnValueOnce({current: {}});
+			const wrapper = shallow(
+				<ListInput
+					id="test"
+					parseInput={parseInput}
+					getItemName={(x) => x}
+					onListChange={onListChange}
+					onTextChange={jest.fn()}
+				/>
+			);
+			wrapper.find('ComboBox').prop('onEnter')('test');
+			expect(parseInput.mock.calls).toEqual([['test', []]]);
+			expect(onListChange.mock.calls).toEqual([[entries]]);
+		});
+
+		it('keeps the list when enter is pressed and parseInput returns neither entries nor error', () => {
+			const list = ['Foo'];
+			const onListChange = jest.fn();
+			useRef.mockReturnValueOnce({current: {}});
+			const wrapper = shallow(
+				<ListInput
+					id="test"
+					list={list}
+					parseInput={() => ({})}
+					getItemName={(x) => x}
+					onListChange={onListChange}
+					onTextChange={jest.fn()}
+				/>
+			);
+			wrapper.find('ComboBox').prop('onEnter')('test');
+			expect(onListChange.mock.calls).toEqual([[list]]);
+		});
+
+		it('does not throw when parseInput returns an error and onErrorChange is not set', () => {
+			const wrapper = shallow(
+				<ListInput id="test" parseInput={() => ({error: 'Error'})} onListChange={jest.fn()} onTextChange={jest.fn()} />
+			);
+			expect(() => wrapper.find('ComboBox').prop('onEnter')('test')).not.toThrow();
 		});
 
 		it('ignores input when enter is pressed and parseInput is not set', () => {
