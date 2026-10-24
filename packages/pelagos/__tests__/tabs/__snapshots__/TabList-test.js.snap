@@ -145,3 +145,64 @@ exports[`TabList rendering renders expected elements when tabs have secondary la
   </button>
 </div>
 `;
+
+exports[`TabList rendering skips empty children 1`] = `
+<div
+  className="TabList TabList--line"
+>
+  <button
+    aria-hidden={true}
+    className="TabList__scroll TabList--left"
+    hidden={true}
+    onClick={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <ChevronLeft />
+  </button>
+  <div
+    className="TabList__list"
+    onBlur={[Function]}
+    onKeyDown={[Function]}
+    onScroll={[Function]}
+    role="tablist"
+  >
+    <Context.Provider
+      value={
+        {
+          "focused": 1,
+          "hasSecondary": undefined,
+          "index": 0,
+          "onChange": undefined,
+          "selectedIndex": 1,
+        }
+      }
+    >
+      <Tab />
+    </Context.Provider>
+    <Context.Provider
+      value={
+        {
+          "focused": 1,
+          "hasSecondary": undefined,
+          "index": 1,
+          "onChange": undefined,
+          "selectedIndex": 1,
+        }
+      }
+    >
+      <Tab />
+    </Context.Provider>
+  </div>
+  <button
+    aria-hidden={true}
+    className="TabList__scroll TabList--right"
+    hidden={true}
+    onClick={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <ChevronRight />
+  </button>
+</div>
+`;

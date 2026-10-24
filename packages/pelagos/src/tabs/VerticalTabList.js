@@ -66,8 +66,10 @@ const VerticalTabList = forwardRef(({className, selectedIndex, children, onChang
 			ref={setRefs}
 			onKeyDown={handleKeyDown}
 			onBlur={handleBlur}>
-			{Children.map(children, (child, index) => (
-				<TabContext.Provider value={{index, selectedIndex, focused, onChange}}>{child}</TabContext.Provider>
+			{Children.toArray(children).map((child, index) => (
+				<TabContext.Provider key={child.key} value={{index, selectedIndex, focused, onChange}}>
+					{child}
+				</TabContext.Provider>
 			))}
 		</div>
 	);

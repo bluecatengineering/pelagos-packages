@@ -127,8 +127,8 @@ const TabList = forwardRef(({className, selectedIndex, contained, children, onCh
 				onKeyDown={handleKeyDown}
 				onBlur={handleBlur}
 				onScroll={handleScroll}>
-				{Children.map(children, (child, index) => (
-					<TabContext.Provider value={{index, selectedIndex, focused, hasSecondary, onChange}}>
+				{Children.toArray(children).map((child, index) => (
+					<TabContext.Provider key={child.key} value={{index, selectedIndex, focused, hasSecondary, onChange}}>
 						{child}
 					</TabContext.Provider>
 				))}

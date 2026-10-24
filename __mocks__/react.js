@@ -1,3 +1,8 @@
+const asArray = (children) => (Array.isArray(children) ? children : Array.of(children));
+
+// Like React, toArray flattens the children and drops the ones that render nothing.
+const isRendered = (child) => child !== null && child !== undefined && typeof child !== 'boolean';
+
 module.exports = {
 	...jest.requireActual('react'),
 	useState: jest.fn((v) => [typeof v === 'function' ? v() : v, jest.fn()]),
@@ -10,10 +15,10 @@ module.exports = {
 	useRef: jest.fn((current) => ({current})),
 	Children: {
 		toArray(children) {
-			return Array.isArray(children) ? children : Array.of(children);
+			return asArray(children).flat(Infinity).filter(isRendered);
 		},
 		map(children, fn) {
-			return this.toArray(children).map(fn);
+			return asArray(children).map(fn);
 		},
 	},
 };

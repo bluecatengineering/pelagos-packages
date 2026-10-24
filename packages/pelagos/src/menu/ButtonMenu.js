@@ -48,7 +48,7 @@ const ButtonMenu = forwardRef(
 					createPortal(
 						<Layer className="ButtonMenu__popUp" level={level}>
 							<Menu {...menuProps} id={menuId} aria-labelledby={id}>
-								{Children.map(children, (child, index) =>
+								{Children.toArray(children).map((child, index) =>
 									cloneElement(child, {
 										id: `${id}-${index}`,
 										'data-index': index,

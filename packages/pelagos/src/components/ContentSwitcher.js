@@ -71,7 +71,7 @@ const ContentSwitcher = ({className, selected, children, onChange, ...props}) =>
 			onClick={handleClick}
 			onKeyDown={handleKeyDown}
 			onBlur={handleBlur}>
-			{Children.map(children, (child, index) =>
+			{Children.toArray(children).map((child, index) =>
 				cloneElement(child, {
 					tabIndex: index === focused ? 0 : -1,
 					selected: index === selected,
