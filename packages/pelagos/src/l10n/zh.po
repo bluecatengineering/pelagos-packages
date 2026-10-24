@@ -233,6 +233,10 @@ msgstr "下个月"
 msgid "Next page"
 msgstr "下一页"
 
+#: f4e1
+msgid "No items"
+msgstr "没有项目"
+
 #: 3501
 msgid "of {totalPages}"
 msgstr "共{totalPages}页"

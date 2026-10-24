@@ -19,8 +19,8 @@ interface ButtonMenuProps extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
 	disabled?: boolean;
 	/** Whether the menu alignment should be flipped. */
 	flipped?: boolean;
-	/** The menu items. */
-	children: ReactNode[];
+	/** The menu items, there must be at least one enabled or disabled `MenuItem`. */
+	children: ReactNode;
 }
 
 /** A button with a pop-up menu. */

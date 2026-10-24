@@ -283,6 +283,36 @@ describe('MultiColumn', () => {
 			expect(onChange).not.toHaveBeenCalled();
 		});
 
+		it('announces that there are no items when right is pressed and the next column is empty', () => {
+			const path = [0];
+			const onChange = jest.fn();
+			const live = {};
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: live})
+				.mockReturnValueOnce({current: [1, 0]})
+				.mockReturnValueOnce({current: path});
+			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
+			wrapper.simulate('keydown', {key: 'ArrowRight', preventDefault: jest.fn()});
+			expect(onChange).not.toHaveBeenCalled();
+			expect(live.textContent).toBe('No items');
+		});
+
+		it('does not call onChange when right is pressed and the next column is loading', () => {
+			const path = [0];
+			const onChange = jest.fn();
+			const live = {};
+			useRef
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: live})
+				.mockReturnValueOnce({current: [1, -1]})
+				.mockReturnValueOnce({current: path});
+			const wrapper = shallow(<MultiColumn path={path} isLeaf={jest.fn} renderItem={jest.fn()} onChange={onChange} />);
+			wrapper.simulate('keydown', {key: 'ArrowRight', preventDefault: jest.fn()});
+			expect(onChange).not.toHaveBeenCalled();
+			expect(live.textContent).toBeUndefined();
+		});
+
 		it('calls onChange when down is pressed', () => {
 			const path = [0, 1];
 			const onChange = jest.fn();
@@ -461,6 +491,20 @@ describe('MultiColumn', () => {
 
 			useEffect.mock.calls[0][0]();
 			expect(focus.mock.calls).toEqual([[]]);
+		});
+
+		it('adds an effect which does not throw if the focused item does not exist', () => {
+			const path = [0, 0];
+			const current = {childNodes: [{childNodes: [{}]}, {childNodes: []}]};
+			useRef
+				.mockReturnValueOnce({current})
+				.mockReturnValueOnce(null)
+				.mockReturnValueOnce({current: []})
+				.mockReturnValueOnce({current: path});
+			useState.mockReturnValueOnce([true]).mockReturnValueOnce([0]);
+			shallow(<MultiColumn path={path} />);
+
+			expect(() => useEffect.mock.calls[0][0]()).not.toThrow();
 		});
 
 		it('adds an effect which does not call focus if focused is false', () => {

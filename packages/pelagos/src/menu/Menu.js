@@ -15,7 +15,7 @@ Menu.displayName = 'Menu';
 Menu.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
-	/** The menu items. */
+	/** The menu items, there must be at least one enabled or disabled `MenuItem`. */
 	children: PropTypes.node,
 };
 

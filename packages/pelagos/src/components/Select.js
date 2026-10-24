@@ -17,6 +17,8 @@ import SelectArrow from './SelectArrow';
 
 import './Select.less';
 
+const {min} = Math;
+
 /** A select drop-down. */
 const Select = ({
 	id,
@@ -34,7 +36,7 @@ const Select = ({
 	id = useRandomId(id);
 
 	const [open, setOpen] = useState(false);
-	const [focused, setFocused] = useState(-1);
+	const [focusedIndex, setFocused] = useState(-1);
 
 	const renderedOptions = useMemo(
 		() =>
@@ -49,6 +51,9 @@ const Select = ({
 			}),
 		[options, getOptionKey, renderOption]
 	);
+
+	// The options may change while the list is open
+	const focused = min(focusedIndex, renderedOptions.length - 1);
 
 	const buttonRef = useRef(null);
 	const listRef = useRef(null);
@@ -80,8 +85,12 @@ const Select = ({
 	);
 
 	const updateFocused = useCallback((index) => {
-		setFocused(index);
-		scrollToItem(listRef.current, listRef.current.children[index]);
+		const child = listRef.current.children[index];
+		// The list may be empty
+		if (child) {
+			setFocused(index);
+			scrollToItem(listRef.current, child);
+		}
 	}, []);
 
 	const findItemToFocus = useStringFinder();
@@ -109,15 +118,20 @@ const Select = ({
 						event.preventDefault();
 						event.nativeEvent.stopImmediatePropagation();
 						if (open) {
-							select(renderedOptions[focused].value);
+							if (focused !== -1) {
+								select(renderedOptions[focused].value);
+							}
 						} else {
 							showList();
 						}
 						break;
 					case 'Escape':
-						event.preventDefault();
-						event.nativeEvent.stopImmediatePropagation();
-						hideList();
+						// When closed, let the event reach other handlers (e.g. a dialog)
+						if (open) {
+							event.preventDefault();
+							event.nativeEvent.stopImmediatePropagation();
+							hideList();
+						}
 						break;
 					case 'PageUp':
 						if (open) {

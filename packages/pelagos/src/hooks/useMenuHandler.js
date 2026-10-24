@@ -33,7 +33,7 @@ const isDisabled = (element) => element.getAttribute('aria-disabled') === 'true'
 
 /**
  * Returns properties to be added to the button which displays a menu and to the menu elements.
- * The menu should be rendered using the Menu and MenuItem components.
+ * The menu should be rendered using the Menu and MenuItem components, and it must contain at least one MenuItem.
  * @param {function(Element, Element): void} [setPopUpPosition] function invoked to set the pop-up position.
  * @return {{expanded: boolean, buttonProps: Object, menuProps: Object, buttonRef: MutableRefObject<Element>, menuRef: MutableRefObject<Element>}}
  *

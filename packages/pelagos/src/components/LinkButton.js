@@ -21,6 +21,8 @@ const LinkButton = ({
 	const tooltip = useTooltip(tooltipText, 'top');
 	const handleKeyDown = useCallback((event) => {
 		if (event.key === ' ') {
+			// Space would also scroll the page
+			event.preventDefault();
 			event.target.click();
 		}
 	}, []);

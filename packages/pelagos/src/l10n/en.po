@@ -233,6 +233,10 @@ msgstr ""
 msgid "Next page"
 msgstr ""
 
+#: f4e1
+msgid "No items"
+msgstr ""
+
 #: 350
 msgid "of {totalPages}"
 msgstr ""

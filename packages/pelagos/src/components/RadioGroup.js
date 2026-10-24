@@ -12,25 +12,29 @@ const RadioGroup = ({id, className, value, options, renderLabel, onChange, ...pr
 	id = useRandomId(id);
 	const handleChange = useCallback((event) => onChange(event.target.value), [onChange]);
 
+	// Start from the radio button with focus, value may not be one of the options
 	const handleKeyDown = useCallback(
 		(event) => {
 			const key = event.key;
 			if (key === 'ArrowLeft' || key === 'ArrowUp') {
-				const current = options.indexOf(value);
-				const focused = current === 0 ? options.length - 1 : current - 1;
-				event.currentTarget.childNodes[focused].focus();
+				const current = options.indexOf(event.target.value);
+				const focused = current <= 0 ? options.length - 1 : current - 1;
+				event.currentTarget.childNodes[focused].firstChild.focus();
 				onChange(options[focused]);
 				event.preventDefault();
 			} else if (key === 'ArrowRight' || key === 'ArrowDown') {
-				const current = options.indexOf(value);
+				const current = options.indexOf(event.target.value);
 				const focused = current === options.length - 1 ? 0 : current + 1;
-				event.currentTarget.childNodes[focused].focus();
+				event.currentTarget.childNodes[focused].firstChild.focus();
 				onChange(options[focused]);
 				event.preventDefault();
 			}
 		},
-		[value, options, onChange]
+		[options, onChange]
 	);
+
+	// When no option is selected the first one must be reachable with Tab
+	const tabbable = options.includes(value) ? value : options[0];
 
 	return (
 		<div
@@ -45,7 +49,7 @@ const RadioGroup = ({id, className, value, options, renderLabel, onChange, ...pr
 					id={`${id}-${option}`}
 					label={renderLabel(option)}
 					checked={value === option}
-					tabIndex={value === option ? 0 : -1}
+					tabIndex={option === tabbable ? 0 : -1}
 					value={option}
 					onChange={handleChange}
 				/>

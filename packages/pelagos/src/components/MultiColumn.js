@@ -209,8 +209,12 @@ const MultiColumn = ({
 					}
 					case 'ArrowRight': {
 						event.preventDefault();
-						if (path.length < columns.length) {
+						// the next column may be empty or still loading (-1)
+						const count = columns[path.length];
+						if (count > 0) {
 							onChange([...path, 0]);
+						} else if (count === 0) {
+							liveRef.current.textContent = t`No items`;
 						}
 						break;
 					}
@@ -262,7 +266,7 @@ const MultiColumn = ({
 			const children = rootRef.current.childNodes;
 			if (pathLength !== 0 && pathLength <= children.length) {
 				const column = pathLength - 1;
-				children[column].childNodes[path[column]].focus();
+				children[column].childNodes[path[column]]?.focus();
 			}
 		}
 	}, [path, focused]);

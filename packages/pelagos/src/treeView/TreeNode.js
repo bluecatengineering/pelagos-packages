@@ -6,6 +6,14 @@ import CaretRight from '@carbon/icons-react/es/CaretRight';
 import TreeViewContext from './TreeViewContext';
 import TreeNodeContext from './TreeNodeContext';
 
+// Returns the last visible node in the subtree, an expanded node may have no children while they load
+const getLastVisible = (node) => {
+	while (node.getAttribute('aria-expanded') === 'true' && node.lastChild.lastChild) {
+		node = node.lastChild.lastChild;
+	}
+	return node;
+};
+
 /** A node in a TreeView. */
 const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, children, onToggle, ...props}) => {
 	const nodeRef = useRef(null);
@@ -69,7 +77,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 						// explicit check for false since undefined means leaf node
 						if (expanded === false) {
 							onToggle?.();
-						} else if (expanded) {
+						} else if (expanded && node.lastChild.firstChild) {
 							focusNode(node.lastChild.firstChild);
 						}
 						break;
@@ -78,11 +86,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 						event.stopPropagation();
 						const previousSibling = node.previousSibling;
 						if (previousSibling) {
-							let currentNode = previousSibling;
-							while (currentNode.getAttribute('aria-expanded') === 'true') {
-								currentNode = currentNode.lastChild.lastChild;
-							}
-							focusNode(currentNode);
+							focusNode(getLastVisible(previousSibling));
 						} else if (level !== 0) {
 							focusNode(node.parentNode.parentNode);
 						}
@@ -91,7 +95,7 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 					case 'ArrowDown':
 						event.preventDefault();
 						event.stopPropagation();
-						if (expanded) {
+						if (expanded && node.lastChild.firstChild) {
 							focusNode(node.lastChild.firstChild);
 						} else if (node.nextSibling) {
 							focusNode(node.nextSibling);
@@ -112,22 +116,14 @@ const TreeNode = ({id, labelClassName, label, icon: Icon, expanded, loading, chi
 						}
 						break;
 					case 'Home':
-						if (level === 0) {
-							event.preventDefault();
-							event.stopPropagation();
-							focusNode(node.parentNode.firstChild);
-						}
+						event.preventDefault();
+						event.stopPropagation();
+						focusNode(node.closest('[role="tree"]').firstChild);
 						break;
 					case 'End':
-						if (level === 0) {
-							event.preventDefault();
-							event.stopPropagation();
-							let lastNode = node.parentNode.lastChild;
-							while (lastNode.getAttribute('aria-expanded') === 'true') {
-								lastNode = lastNode.lastChild.lastChild;
-							}
-							focusNode(lastNode);
-						}
+						event.preventDefault();
+						event.stopPropagation();
+						focusNode(getLastVisible(node.closest('[role="tree"]').lastChild));
 						break;
 					case '-':
 						event.preventDefault();

@@ -84,8 +84,8 @@ ButtonMenu.propTypes = {
 	disabled: PropTypes.bool,
 	/** Whether the menu alignment should be flipped. */
 	flipped: PropTypes.bool,
-	/** The menu items. */
-	children: PropTypes.arrayOf(PropTypes.node).isRequired,
+	/** The menu items, there must be at least one enabled or disabled `MenuItem`. */
+	children: PropTypes.node.isRequired,
 };
 
 export default ButtonMenu;

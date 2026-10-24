@@ -48,8 +48,10 @@ describe('LinkButton', () => {
 		it('clicks the target when space is pressed', () => {
 			const click = jest.fn();
 			const wrapper = shallow(<LinkButton id="test" text="Test" />);
-			wrapper.find('#test').simulate('keydown', {key: ' ', target: {click}});
+			const preventDefault = jest.fn();
+			wrapper.find('#test').simulate('keydown', {key: ' ', target: {click}, preventDefault});
 			expect(click.mock.calls).toEqual([[]]);
+			expect(preventDefault.mock.calls).toEqual([[]]);
 		});
 
 		it('does not click the target when other key is pressed', () => {

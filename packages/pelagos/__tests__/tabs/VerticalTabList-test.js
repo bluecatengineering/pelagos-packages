@@ -28,6 +28,15 @@ describe('VerticalTabList', () => {
 			expect(wrapper.getElement()).toMatchSnapshot();
 		});
 
+		it('focuses the first tab when selectedIndex is not set', () => {
+			shallow(
+				<VerticalTabList>
+					<VerticalTab />
+				</VerticalTabList>
+			);
+			expect(useState.mock.calls[0]).toEqual([0]);
+		});
+
 		it('skips empty children', () => {
 			const wrapper = shallow(
 				<VerticalTabList selectedIndex={1}>
