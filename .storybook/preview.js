@@ -59,8 +59,6 @@ export default {
 				icon: 'paintbrush',
 				items: [
 					{value: 'white', title: 'White'},
-					{value: 'cg00', title: 'Cool Gray 00'},
-					{value: 'yg100', title: 'Cyan Gray 100'},
 					{value: 'g100', title: 'Gray 100'},
 				],
 			},

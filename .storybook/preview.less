@@ -13,16 +13,6 @@
 	.charts-light();
 }
 
-[data-theme='cg00'] {
-	.theme-cg00();
-	.charts-light();
-}
-
-[data-theme='yg100'] {
-	.theme-yg100();
-	.charts-dark();
-}
-
 [data-theme='g100'] {
 	.theme-g100();
 	.charts-dark();
@@ -71,12 +61,10 @@
 .CssSpinner {
 	.css-spinner();
 
-	[data-theme='g100'] &,
-	[data-theme='yg100'] & {
+	[data-theme='g100'] & {
 		animation-name: spinner-dark;
 	}
 
-	[data-theme='cg00'] &,
 	[data-theme='white'] & {
 		animation-name: spinner-light;
 	}

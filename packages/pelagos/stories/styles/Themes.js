@@ -36,22 +36,18 @@ ThemesFilter.propTypes = {
 	onChange: PropTypes.func,
 };
 
-const families = ['All', 'Carbon', 'Pelagos', 'Light', 'Dark'];
+const families = ['All', 'Light', 'Dark'];
 const familyThemes = {
-	Carbon: ['white', 'g100'],
-	Pelagos: ['cg00', 'yg100'],
-	Light: ['white', 'cg00'],
-	Dark: ['yg100', 'g100'],
+	Light: ['white'],
+	Dark: ['g100'],
 };
 const themeNames = {
 	white: 'White',
-	cg00: 'Cool Gray 00',
-	yg100: 'Cyan Gray 100',
 	g100: 'Gray 100',
 };
 
 const Themes = () => {
-	const themeList = Object.entries(themes);
+	const themeList = Object.entries(themes).filter(([key]) => key in themeNames);
 	const metaList = Object.entries(themesMeta);
 	const groupSet = new Set();
 	const setSet = new Set();
@@ -90,7 +86,7 @@ const Themes = () => {
 		[themeList, family]
 	);
 	return (
-		<div className="Themes sb-unstyled" data-theme="cg00">
+		<div className="Themes sb-unstyled" data-theme="white">
 			<div className="Themes__header">
 				<h1>{`Themes (${filtered.length}/${metaList.length} tokens)`}</h1>
 				<div className="Themes__filters">

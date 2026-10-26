@@ -6,7 +6,7 @@ import './Elevations.less';
 
 # Elevations
 
-<div className="Elevations__grid sb-unstyled" data-theme="cg00" data-layer="1">
+<div className="Elevations__grid sb-unstyled" data-theme="white" data-layer="1">
 	{Object.entries(elevations).map(([k, {bg, shadow}]) => (
 		<div key={k} className="Elevations__card" style={{backgroundColor: `var(--${bg})`, boxShadow: `var(--${shadow})`}}>
 			{k}
