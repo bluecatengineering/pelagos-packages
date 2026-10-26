@@ -12,7 +12,7 @@ const Palettes = () => {
 	const [selected, setSelected] = useState(0);
 	const field = fields[selected];
 	return (
-		<div className="sb-unstyled" data-theme="cg00" data-layer="1">
+		<div className="sb-unstyled" data-theme="white" data-layer="1">
 			<ContentSwitcher className="Palettes__switch" selected={selected} onChange={setSelected}>
 				<ContentSwitcherButton text="Main" />
 				<ContentSwitcherButton text="Hover" />
