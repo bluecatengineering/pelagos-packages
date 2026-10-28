@@ -55,21 +55,19 @@
 		border-color 0.15s ease-out;
 
 	&:focus {
-		color: var(--text-on-color);
-		background-color: var(--button-tertiary-hover);
-		border-color: var(--button-tertiary-hover);
+		color: var(--text-inverse);
+		background-color: var(--button-tertiary);
 	}
 
 	&:hover {
-		color: var(--text-on-color);
+		color: var(--text-inverse);
 		background-color: var(--button-tertiary-hover);
-		border-color: var(--button-tertiary-hover);
 	}
 
 	&:active {
-		color: var(--text-on-color);
+		color: var(--text-inverse);
 		background-color: var(--button-tertiary-active);
-		border-color: var(--button-tertiary-active);
+		border-color: transparent;
 	}
 };
 
@@ -108,8 +106,7 @@
 
 	&:focus {
 		color: var(--text-on-color);
-		background-color: var(--button-danger-secondary);
-		border-color: var(--button-danger-secondary);
+		background-color: var(--button-danger-primary);
 	}
 
 	&:hover {
@@ -129,11 +126,6 @@
 	transition:
 		color 0.15s ease-out,
 		background-color 0.15s ease-out;
-
-	&:focus {
-		color: var(--text-on-color);
-		background-color: var(--button-danger-secondary);
-	}
 
 	&:hover {
 		color: var(--text-on-color);

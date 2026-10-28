@@ -669,14 +669,14 @@ g100:
   button-secondary: gray-60
   button-secondary-hover: gray-60-hover
   button-secondary-active: gray-80
-  button-tertiary: blue-50
-  button-tertiary-hover: blue-60-hover
-  button-tertiary-active: blue-80
+  button-tertiary: white
+  button-tertiary-hover: gray-10
+  button-tertiary-active: gray-30
   button-danger-primary: red-60
   button-danger-secondary: red-50
   button-danger-hover: red-60-hover
   button-danger-active: red-80
-  button-disabled: gray-70
+  button-disabled: gray-50/30%
   toggle-off: gray-50
   toggle-off-active: gray-70
   toggle-off-hover: gray-50-hover
