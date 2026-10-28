@@ -4,7 +4,8 @@ import './preview.less';
 
 /* eslint-disable no-console -- not production code */
 
-const setTheme = (theme) => (document.documentElement.dataset.theme = theme);
+// background option keys double as theme names
+const setTheme = (background = 'white') => (document.documentElement.dataset.theme = background);
 const setLocale = (locale) => {
 	document.documentElement.setAttribute('lang', locale);
 	setPelagosLocale(locale).catch(console.error);
@@ -15,7 +16,12 @@ export default {
 
 	parameters: {
 		actions: {argTypesRegex: '^on[A-Z].*'},
-		backgrounds: {disabled: true},
+		backgrounds: {
+			options: {
+				white: {name: 'White', value: '#ffffff'},
+				g100: {name: 'Gray 100', value: '#161616'},
+			},
+		},
 		options: {
 			storySort: (a, b) => {
 				const order = {
@@ -50,23 +56,12 @@ export default {
 		},
 	},
 
+	initialGlobals: {backgrounds: {value: 'white'}, locale: 'en'},
+
 	globalTypes: {
-		theme: {
-			name: 'Theme',
-			description: 'Preview theme',
-			defaultValue: 'white',
-			toolbar: {
-				icon: 'paintbrush',
-				items: [
-					{value: 'white', title: 'White'},
-					{value: 'g100', title: 'Gray 100'},
-				],
-			},
-		},
 		locale: {
 			name: 'Locale',
 			description: 'Locale',
-			defaultValue: 'en',
 			toolbar: {
 				icon: 'globe',
 				items: [
@@ -82,5 +77,7 @@ export default {
 		},
 	},
 
-	decorators: [(Story, {globals: {theme, locale}}) => (setTheme(theme), setLocale(locale), (<Story />))],
+	decorators: [
+		(Story, {globals: {backgrounds, locale}}) => (setTheme(backgrounds?.value), setLocale(locale), (<Story />)),
+	],
 };
