@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos-highcharts@1.0.3...@bluecateng/pelagos-highcharts@1.0.4) (2026-10-29)
+
+### Bug Fixes
+
+- correct types in package exports ([0c8ef2d](https://github.com/bluecatengineering/pelagos-packages/commit/0c8ef2d57e9976d478964d3b71fb3f6614ac54c8))
+
 ## [1.0.3](https://github.com/bluecatengineering/pelagos-packages/compare/%40bluecateng%2Fpelagos-highcharts%401.0.2...%40bluecateng%2Fpelagos-highcharts%401.0.3) (2026-10-05)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@bluecateng/pelagos-gpt",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Bundled version of Pelagos for use in ChatGPT",
   "license": "ISC",
   "scripts": {
@@ -20,6 +20,6 @@
     "default": "./dist/index.js"
   },
   "devDependencies": {
-    "@bluecateng/pelagos": "^12.28.5"
+    "@bluecateng/pelagos": "^12.28.6"
   }
 }

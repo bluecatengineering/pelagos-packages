@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.28.6](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.28.5...@bluecateng/pelagos@12.28.6) (2026-10-29)
+
+### Bug Fixes
+
+- align button colours with Carbon ([236c820](https://github.com/bluecatengineering/pelagos-packages/commit/236c820e9dabef599bcd9ff81784f255f214b794))
+- allow null in the error prop of the form fields ([96aece6](https://github.com/bluecatengineering/pelagos-packages/commit/96aece6e5f534e1f8fe8e1226772a08538204bd7))
+- call the event handlers set by the caller ([9014e4a](https://github.com/bluecatengineering/pelagos-packages/commit/9014e4a7ddb8ba754749537f47152fc528df4345))
+- correct accessible names, ids and button types ([9ec5fec](https://github.com/bluecatengineering/pelagos-packages/commit/9ec5fec5e44582e9623b2c83a259f03a8dd0a923))
+- correct helper functions and their typings ([c98b24c](https://github.com/bluecatengineering/pelagos-packages/commit/c98b24cc2da00c89a3b8476df92f9e71ab5026ac))
+- correct remaining component behaviour ([04274de](https://github.com/bluecatengineering/pelagos-packages/commit/04274de80ec2a61f918df80a8e583942c4446b88))
+- correct types in package exports ([0c8ef2d](https://github.com/bluecatengineering/pelagos-packages/commit/0c8ef2d57e9976d478964d3b71fb3f6614ac54c8))
+- guard optional callbacks and data before using them ([549da68](https://github.com/bluecatengineering/pelagos-packages/commit/549da68b58c70df54a130b3a234dac3faa2c380b))
+- keep keyboard focus reachable and in range ([75e1660](https://github.com/bluecatengineering/pelagos-packages/commit/75e166066ce5a3bc781445093de16d216dd9159c))
+- keep toasts, tooltips and collapse animations in sync ([2421164](https://github.com/bluecatengineering/pelagos-packages/commit/2421164daaf9ab09489ddc9a6fce0bfcf4e20800))
+- skip empty children in components that clone or index them ([2dd3ff6](https://github.com/bluecatengineering/pelagos-packages/commit/2dd3ff6a8da70f478bed38af0ce47bc01f115d5e))
+
 ## [12.28.5](https://github.com/bluecatengineering/pelagos-packages/compare/@bluecateng/pelagos@12.28.4...@bluecateng/pelagos@12.28.5) (2026-10-09)
 
 ### Bug Fixes
