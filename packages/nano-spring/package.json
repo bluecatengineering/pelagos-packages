@@ -3,7 +3,10 @@
   "version": "2.1.1",
   "description": "Tiny implementation of spring animation",
   "license": "ISC",
-  "exports": "./dist/index.js",
+  "exports": {
+    "types": "./index.d.ts",
+    "default": "./dist/index.js"
+  },
   "main": "./dist/index.js",
   "types": "index.d.ts",
   "scripts": {

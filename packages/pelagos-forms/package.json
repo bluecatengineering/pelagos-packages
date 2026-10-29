@@ -21,7 +21,10 @@
     "dist"
   ],
   "types": "./dist/index.d.ts",
-  "exports": "./dist/index.js",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "default": "./dist/index.js"
+  },
   "dependencies": {
     "prop-types": "^15.8.1"
   },

@@ -3,7 +3,10 @@
   "version": "2.2.0",
   "description": "Smooth list reordering in vanilla JS",
   "license": "ISC",
-  "exports": "./dist/index.js",
+  "exports": {
+    "types": "./index.d.ts",
+    "default": "./dist/index.js"
+  },
   "main": "./dist/index.js",
   "types": "index.d.ts",
   "scripts": {
