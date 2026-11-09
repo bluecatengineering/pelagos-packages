@@ -28,7 +28,7 @@ const buildCustomRange = (from, to) => {
  * The list of options must have `custom` as the last entry.
  * If `value` is an object the format is `{from?: number, to?: number}`.
  */
-export const TimeFilterEditor = ({
+const TimeFilterEditor = ({
 	id,
 	label,
 	value,

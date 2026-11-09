@@ -2,8 +2,6 @@ import {setLocale as setPelagosLocale} from '../packages/pelagos/src';
 
 import './preview.less';
 
-/* eslint-disable no-console -- not production code */
-
 // background option keys double as theme names
 const setTheme = (background = 'white') => (document.documentElement.dataset.theme = background);
 const setLocale = (locale) => {
