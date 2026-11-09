@@ -5,7 +5,7 @@
   "license": "ISC",
   "sideEffects": false,
   "scripts": {
-    "build": "rm -rf dist && babel -D -d dist --env-name production --root-mode upward src && npm run bundle-dts",
+    "build": "node ../../scripts/swc-build.mjs && npm run bundle-dts",
     "bundle-dts": "dts-bundle-generator -o dist/index.d.ts --no-banner --silent --disable-symlinks-following src/index.d.ts",
     "prepack": "npm run build"
   },

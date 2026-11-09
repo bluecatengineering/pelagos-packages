@@ -19,10 +19,6 @@
     "url": "git@github.com:bluecatengineering/pelagos-packages.git"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.7",
-    "@babel/preset-env": "^7.16.8",
-    "@babel/preset-react": "^7.16.7",
     "@bluecateng/commitlint-config-bluecateng": "^1.0.1",
     "@bluecateng/eslint-config-node": "^6.0.0",
     "@bluecateng/eslint-config-react": "^6.0.0",
@@ -30,6 +26,7 @@
     "@bluecateng/l10n-cli": "^0.3.0",
     "@bluecateng/l10n-jest": "^0.4.0",
     "@bluecateng/l10n-loader": "^0.2.0",
+    "@bluecateng/l10n-swc-plugin": "^0.1.0",
     "@bluecateng/l10n.macro": "^0.2.0",
     "@bluecateng/prettier-config": "^1.0.0",
     "@bluecateng/stylelint-config": "^8.0.1",
@@ -37,13 +34,17 @@
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
+    "@rsbuild/core": "^2.3.1",
+    "@rsbuild/plugin-less": "^2.0.1",
+    "@rsbuild/plugin-react": "^2.1.1",
+    "@rsbuild/plugin-yaml": "^2.0.0",
     "@storybook/addon-a11y": "^10.0.8",
     "@storybook/addon-docs": "^10.0.8",
-    "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
-    "@storybook/react-webpack5": "^10.0.8",
+    "@swc/cli": "^0.8.2",
+    "@swc/core": "^1.16.22",
+    "@swc/helpers": "^0.5.24",
+    "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
-    "babel-loader": "^10.0.0",
-    "babel-plugin-macros": "^3.1.0",
     "chromatic": "^18.1.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "dts-bundle-generator": "^9.5.1",
@@ -60,7 +61,6 @@
     "lefthook": "^2.1.10",
     "lerna": "^10.0.1",
     "less": "^4.1.2",
-    "less-loader": "^13.0.0",
     "postcss": "^8.4.5",
     "postcss-less": "^6.0.0",
     "prettier": "^3.0.0",
@@ -68,9 +68,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "storybook": "^10.0.8",
+    "storybook-react-rsbuild": "^3.6.2",
     "typescript-eslint": "^8.38.0",
-    "yaml": "^2.0.1",
-    "yaml-loader": "^0.9.0"
+    "yaml": "^2.0.1"
   },
   "overrides": {
     "enzyme": {
@@ -85,7 +85,9 @@
     "npm": "^11.6.0"
   },
   "browserslist": [
-    "defaults"
+    "last 2 years",
+    "Firefox ESR",
+    "not dead"
   ],
   "prettier": "@bluecateng/prettier-config",
   "stylelint": {
@@ -139,13 +141,14 @@
       "globalsCleanup": "on"
     },
     "transform": {
-      "\\.js$": "babel-jest",
+      "\\.js$": "./jest-helpers/swc-transform",
       "\\.po$": "@bluecateng/l10n-jest"
     },
     "transformIgnorePatterns": [
       "node_modules/(?!(lodash-es|@bluecateng|@carbon)/)"
     ],
     "unmockedModulePathPatterns": [
+      "@swc/helpers",
       "core-js",
       "enzyme",
       "lodash-es",

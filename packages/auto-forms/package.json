@@ -6,7 +6,7 @@
   "sideEffects": false,
   "types": "index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && babel -d dist --env-name production --root-mode upward src",
+    "build": "node ../../scripts/swc-build.mjs",
     "prepack": "npm run build"
   },
   "repository": {
