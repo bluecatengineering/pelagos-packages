@@ -1,6 +1,6 @@
 import {defineConfig} from 'eslint/config';
 import regexpPlugin from 'eslint-plugin-regexp';
-import storybook from "eslint-plugin-storybook";
+import storybook from 'eslint-plugin-storybook';
 import tseslint from 'typescript-eslint';
 import blueCatNode from '@bluecateng/eslint-config-node';
 import blueCatReact from '@bluecateng/eslint-config-react';
@@ -42,6 +42,12 @@ export default defineConfig([
 		rules: {
 			...blueCatNode.rules,
 			strict: ['warn', 'global'],
+		},
+	},
+	{
+		files: ['**/*.mjs'],
+		rules: {
+			'no-console': 'off',
 		},
 	},
 	{
