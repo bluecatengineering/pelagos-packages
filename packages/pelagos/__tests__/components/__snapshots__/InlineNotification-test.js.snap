@@ -3,58 +3,199 @@
 exports[`InlineNotification rendering renders expected elements 1`] = `
 <div
   className="InlineNotification InlineNotification--info"
+  role="status"
 >
   <InformationFilled
     className="InlineNotification__icon"
     size={20}
   />
   <div
-    className="InlineNotification__wrapper"
+    className="InlineNotification__content"
   >
-    <span>
-      Test of notification
-    </span>
+    <div
+      className="InlineNotification__wrapper"
+    >
+      <span
+        id="random-id-text"
+      >
+        Test of notification
+      </span>
+    </div>
   </div>
+</div>
+`;
+
+exports[`InlineNotification rendering renders expected elements when actionText is set 1`] = `
+<div
+  className="InlineNotification InlineNotification--error"
+  role="alert"
+>
+  <ErrorFilled
+    className="InlineNotification__icon"
+    size={20}
+  />
+  <div
+    className="InlineNotification__content"
+  >
+    <div
+      className="InlineNotification__wrapper"
+    >
+      <span
+        id="random-id-text"
+      >
+        Test of notification
+      </span>
+    </div>
+    <Button
+      aria-describedby="random-id-text"
+      className="InlineNotification__action"
+      onClick={[MockFunction]}
+      size="small"
+      text="Retry"
+      type="ghost"
+    />
+  </div>
+</div>
+`;
+
+exports[`InlineNotification rendering renders expected elements when actionText, title, and onClose are set 1`] = `
+<div
+  className="InlineNotification InlineNotification--error"
+  role="alert"
+>
+  <ErrorFilled
+    className="InlineNotification__icon"
+    size={20}
+  />
+  <div
+    className="InlineNotification__content"
+  >
+    <div
+      className="InlineNotification__wrapper"
+    >
+      <span
+        className="InlineNotification__title"
+        id="random-id-title"
+      >
+        Test title
+      </span>
+      <span
+        id="random-id-text"
+      >
+        Test of notification
+      </span>
+    </div>
+    <Button
+      aria-describedby="random-id-title"
+      className="InlineNotification__action"
+      onClick={[MockFunction]}
+      size="small"
+      text="Retry"
+      type="ghost"
+    />
+  </div>
+  <button
+    aria-describedby="random-id-title"
+    aria-label="Dismiss"
+    className="InlineNotification__close"
+    onClick={[Function]}
+    type="button"
+  >
+    <Close
+      size={20}
+    />
+  </button>
 </div>
 `;
 
 exports[`InlineNotification rendering renders expected elements when className is set 1`] = `
 <div
   className="InlineNotification InlineNotification--info TestClass"
+  role="status"
 >
   <InformationFilled
     className="InlineNotification__icon"
     size={20}
   />
   <div
-    className="InlineNotification__wrapper"
+    className="InlineNotification__content"
   >
-    <span>
-      Test of notification
-    </span>
+    <div
+      className="InlineNotification__wrapper"
+    >
+      <span
+        id="random-id-text"
+      >
+        Test of notification
+      </span>
+    </div>
   </div>
+</div>
+`;
+
+exports[`InlineNotification rendering renders expected elements when onClose is set 1`] = `
+<div
+  className="InlineNotification InlineNotification--info"
+  role="status"
+>
+  <InformationFilled
+    className="InlineNotification__icon"
+    size={20}
+  />
+  <div
+    className="InlineNotification__content"
+  >
+    <div
+      className="InlineNotification__wrapper"
+    >
+      <span
+        id="random-id-text"
+      >
+        Test of notification
+      </span>
+    </div>
+  </div>
+  <button
+    aria-describedby="random-id-text"
+    aria-label="Dismiss"
+    className="InlineNotification__close"
+    onClick={[Function]}
+    type="button"
+  >
+    <Close
+      size={20}
+    />
+  </button>
 </div>
 `;
 
 exports[`InlineNotification rendering renders expected elements when title is set 1`] = `
 <div
   className="InlineNotification InlineNotification--info"
+  role="status"
 >
   <InformationFilled
     className="InlineNotification__icon"
     size={20}
   />
   <div
-    className="InlineNotification__wrapper"
+    className="InlineNotification__content"
   >
-    <span
-      className="InlineNotification__title"
+    <div
+      className="InlineNotification__wrapper"
     >
-      Test title
-    </span>
-    <span>
-      Test of notification
-    </span>
+      <span
+        className="InlineNotification__title"
+        id="random-id-title"
+      >
+        Test title
+      </span>
+      <span
+        id="random-id-text"
+      >
+        Test of notification
+      </span>
+    </div>
   </div>
 </div>
 `;
