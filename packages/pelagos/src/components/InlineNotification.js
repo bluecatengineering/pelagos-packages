@@ -30,12 +30,12 @@ const InlineNotification = ({className, type, title, text, ...props}) => {
 InlineNotification.propTypes = {
 	/** The component class name(s). */
 	className: PropTypes.string,
-	/** The notification type. */
+	/** The notification type. When used as callout, only `info` and `warning` are valid. */
 	type: PropTypes.oneOf(['success', 'info', 'warning', 'error']).isRequired,
 	/** The notification title. */
 	title: PropTypes.string,
 	/** The notification text. */
-	text: PropTypes.string.isRequired,
+	text: PropTypes.node.isRequired,
 };
 
 export default InlineNotification;

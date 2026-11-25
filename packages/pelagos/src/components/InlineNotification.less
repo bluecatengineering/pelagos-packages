@@ -4,10 +4,11 @@
 
 @layer pelagos {
 	.InlineNotification {
+		@left-border-width: 3px;
 		position: relative;
 		flex-direction: row;
 		align-items: flex-start;
-		border-left-width: 3px;
+		border-left-width: @left-border-width;
 		border-left-style: solid;
 
 		&::before {
@@ -21,13 +22,15 @@
 		}
 
 		&__icon {
-			margin: @sp-12 @sp-16;
+			// stylelint-disable-next-line @bluecateng/property-strict-value -- subtract 1px to center and 3px for the border
+			margin: (@sp-16 - 2px) 0 0 (@sp-16 - @left-border-width);
 		}
 
 		&__wrapper {
 			display: block;
 			flex: 1;
-			margin: @sp-12 @sp-16 @sp-12 0;
+			// stylelint-disable-next-line @bluecateng/property-strict-value -- adjust for line spacing to give 48px height
+			margin: (@sp-16 - 1px) @sp-16;
 			overflow-wrap: break-word;
 		}
 
