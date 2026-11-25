@@ -22,3 +22,15 @@ export const Warning = {
 export const Error = {
 	args: {type: 'error', title: 'Error', text},
 };
+
+export const WithLink = {
+	args: {
+		type: 'warning',
+		title: 'Limited resources',
+		text: (
+			<>
+				Creating a report will reduce your resource <a href="#">availability</a>.
+			</>
+		),
+	},
+};
