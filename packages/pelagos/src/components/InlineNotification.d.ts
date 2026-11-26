@@ -9,6 +9,16 @@ interface InlineNotificationProps extends HTMLProps<HTMLDivElement> {
 	title?: string;
 	/** The notification text. */
 	text: ReactNode;
+	/** The action button text, if set an action button is displayed. The notification never moves focus when it appears. */
+	actionText?: string;
+	/** Function invoked when the action button is clicked, required if `actionText` is set. */
+	onAction?: () => void;
+	/**
+	 * Function invoked when the close button is clicked, if set a close button is displayed. Before it is invoked, focus
+	 * moves to the next focusable element after the notification, or the nearest one before it. The parent is expected
+	 * to remove the notification.
+	 */
+	onClose?: () => void;
 }
 
 /** A notification to be used inside other components. */

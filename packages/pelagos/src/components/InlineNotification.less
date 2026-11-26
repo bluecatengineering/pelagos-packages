@@ -1,4 +1,5 @@
 @import '../../less/fonts';
+@import '../../less/focus';
 @import '../../less/spacing';
 @import '../../less/utils';
 
@@ -26,9 +27,17 @@
 			margin: (@sp-16 - 2px) 0 0 (@sp-16 - @left-border-width);
 		}
 
-		&__wrapper {
-			display: block;
+		&__content {
 			flex: 1;
+			flex-direction: row;
+			min-width: 0;
+		}
+
+		&__wrapper {
+			@body-compact-01();
+			display: block;
+			flex: 1 1 0;
+			min-width: 0;
 			// stylelint-disable-next-line @bluecateng/property-strict-value -- adjust for line spacing to give 48px height
 			margin: (@sp-16 - 1px) @sp-16;
 			overflow-wrap: break-word;
@@ -37,6 +46,66 @@
 		&__title {
 			@heading-compact-01();
 			margin-right: @sp-04;
+		}
+
+		&__action {
+			flex: none;
+			margin: @sp-08 @sp-08 @sp-08 0;
+
+			&:hover {
+				background-color: var(--notification-close-hover);
+			}
+
+			&:active {
+				background-color: var(--notification-close-active);
+			}
+		}
+
+		&__close {
+			@focus-visible();
+			display: flex;
+			color: var(--icon-primary);
+			background-color: transparent;
+			border: none;
+			width: 48px;
+			height: 48px;
+			padding: 0;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: background-color 0.15s ease-out;
+
+			&:hover {
+				background-color: var(--notification-close-hover);
+			}
+
+			&:active {
+				background-color: var(--notification-close-active);
+			}
+		}
+
+		&__content:last-child > &__action {
+			margin-right: @sp-16;
+		}
+
+		// below 480px of notification width the action moves under the text, the close button stays top right
+		&--narrow > &__content {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		&--narrow > &__content > &__wrapper {
+			flex: none;
+			align-self: stretch;
+		}
+
+		&--narrow > &__content > &__wrapper:not(:last-child) {
+			margin-bottom: @sp-16;
+		}
+
+		&--narrow > &__content > &__action {
+			// line up the button edge with the text
+			margin: 0 0 @sp-08 @sp-16;
 		}
 
 		&--success {
